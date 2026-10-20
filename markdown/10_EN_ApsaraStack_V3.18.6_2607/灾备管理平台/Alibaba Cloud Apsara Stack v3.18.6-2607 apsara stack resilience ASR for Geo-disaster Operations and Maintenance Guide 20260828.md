@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 113
 source_pdf: "4cacca7347e7f1f8_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and Maintenance Guide 20260828
@@ -139,9 +139,7 @@ This guide aims to help O&M engineers perform preventive maintenance on ASR for 
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, computer operations, and troubleshooting. O&M engineers must pass the related training and learn the knowledge for ASR for Geo-disaster Recovery (ASR-DR). The required knowledge includes the usage and maintenance of the tools for all modules.
 
-**Important**
-
-During the maintenance, O&M engineers must comply with operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
+> **Important:** During the maintenance, O&M engineers must comply with operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
 
 ### 1.3 Usage notes
 
@@ -279,9 +277,10 @@ cd /opt/tianji/log/
 4. Select a log file that you want to view based on the date when the logs are generated. The date is
 displayed in the ASR-DR console.
 
-**Note**
+> **Note:** If the name of a log file does not contain the date, the logs are generated on the current day.
+> If the error message that you want to view does not exist in the logs of the ASR-DR container, you can log on to another container to view operation logs. The procedure for querying logs is similar.
 
-If the name of a log file does not contain the date, the logs are generated on the current day. If the error message that you want to view does not exist in the logs of the ASR-DR container, you can log on to another container to view operation logs. The procedure for querying logs is similar. O&M
+O&M
 5. Optional. Run the following command to search for specific log information based on the time:
 
 ```
@@ -322,9 +321,8 @@ edit mode. Add `--logging.config=<logback-spring.xml>` to the Java startup comma
 Before the modification: java ${JAVA_OPTS} -jar /home/admin/asrdr/web-3.0.0.jar --server.port=8888 --spring.profiles .active=prod & After the modification: java ${JAVA_OPTS} -jar /home/admin/asrdr/web-3.0.0.jar --server.port=8888 --spring.profiles .active=prod --logging.config=/logback-spring.xml &
 ```
 
-**Note**
+> **Note:** After the modification is successful, press the Esc key to exit the edit mode and enter :wq! to save the file and exit. Replace <logback-spring.xml> with the actual path to the log configuration file.
 
-After the modification is successful, press the Esc key to exit the edit mode and enter :wq! to save the file and exit. Replace <logback-spring.xml> with the actual path to the log configuration file.
 5. Run the following command to exit and restart the ASR-DR container:
 
 ```bash
@@ -376,9 +374,8 @@ If a drill or failover plan is running, the operation to stop nodes may lead to 
 
 O&M
 
-**Note**
+> **Note:** If you stop the ASR-DR container, ASR-DR is not at desired state during the check of Apsara Infrastructure Management.
 
-If you stop the ASR-DR container, ASR-DR is not at desired state during the check of Apsara Infrastructure Management.
 1. Log in to the host where the disaster recovery environment is deployed.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.
@@ -547,9 +544,9 @@ After you perform a switchover drill, incremental data is synchronized between t
 1. Manually add a database to the secondary ApsaraDB RDS instance and create table schemas.
 Grant the read and write permissions to the synchronization account.
 
-**Note**
+> **Note:** If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account.
+> If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 
-If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account. If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 2. Manually add a database to the primary ApsaraDB RDS instance and create table schemas. Grant
 the read and write permissions to the synchronization account. If ASR-DR detects that a database is added to the primary or secondary ApsaraDB RDS instance, the corresponding protection group changes from the **Protecting** state to the **Protect failed** state.
 3. On the Protection Groups page of the ASR-DR console, find the protection group, click the
@@ -563,17 +560,26 @@ In this scenario, you do not need to modify the objects to be synchronized but y
 1. Manually add a database to the secondary ApsaraDB RDS instance and create table schemas.
 Grant the read and write permissions to the synchronization account.
 
-**Note**
+> **Note:** If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account.
+> If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 
-If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account. If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 2. Manually add a database to the primary ApsaraDB RDS instance and create table schemas. Grant
 the read and write permissions to the synchronization account.
 3. Filter out the database in the ASR-DR console. For more information, see the **DR for business >**
 **Modify table filtering** topic in ASR-DR User Guide.
 
-**Note**
+> **Note:** ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed.
+> To filter out the database in the ASR-DR console whose version is earlier than V3.15.0, perform the following steps:
+> i. Log in to the ASR-DR database. For more information, see Log in to the ASR-DR
 
-ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed. To filter out the database in the ASR-DR console whose version is earlier than V3.15.0, perform the following steps: i. Log in to the ASR-DR database. For more information, see Log in to the ASR-DR metadatabase. ii. Modify the **rwAccounts** field in **t_am_rdsSyncEntity**. Add `,New database.-.*` to the value of the **rwAccounts** field. The value of the **rwAccounts** field is in the `Database.Account.*` format. An asterisk (*) indicates that the database is filtered out. Use a hyphen (-) to indicate the account. Separate multiple databases with commas (,). iii. Check whether the modification is successful. If the modification is not successful, disable ASR-DR and perform the modification again. iv. Restart ASR-DR.
+metadatabase.
+
+> ii. Modify the **rwAccounts** field in **t_am_rdsSyncEntity**. Add `,New database.-.*` to the
+> value of the **rwAccounts** field.
+> The value of the **rwAccounts** field is in the `Database.Account.*` format. An asterisk (*) indicates that the database is filtered out. Use a hyphen (-) to indicate the account. Separate multiple databases with commas (,).
+> iii. Check whether the modification is successful. If the modification is not successful, disable
+> ASR-DR and perform the modification again.
+> iv. Restart ASR-DR.
 
 **Scenario 3: A database is added to the primary ApsaraDB RDS**
 
@@ -584,17 +590,15 @@ ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configu
 1. Manually add a database to the secondary ApsaraDB RDS instance and create table schemas.
 Grant the read and write permissions to the synchronization account.
 
-**Note**
+> **Note:** If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account.
+> If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 
-If the ApsaraDB RDS instance runs MySQL 5.7, the synchronization account is asr_sync_account. If the ApsaraDB RDS instance runs MySQL 5.6, the synchronization account is dtssyncwriter.
 2. Manually add a database to the primary ApsaraDB RDS instance and create table schemas. Grant
 the read and write permissions to the synchronization account.
 3. Filter out the database in the ASR-DR console. For more information, see the **DR for business >**
 **Modify table filtering** topic in ASR-DR User Guide.
 
-**Note**
-
-ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed.
+> **Note:** ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed.
 
 **Scenario 4: A table that does not require disaster recovery**
 
@@ -603,15 +607,12 @@ ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configu
 1. Manually create a table in the primary ApsaraDB RDS instance.
 2. Stop ASR-DR nodes. For more information, see Stop ASR-DR nodes.
 
-**Note**
+> **Note:** After a table is added, ASR-DR adds the table to the objects to be synchronized as scheduled. DTS adds the table to the objects to be synchronized. To prevent ASR-DR from adding the table to the objects to be synchronized, you must stop ASR-DR nodes.
 
-After a table is added, ASR-DR adds the table to the objects to be synchronized as scheduled. DTS adds the table to the objects to be synchronized. To prevent ASR-DR from adding the table to the objects to be synchronized, you must stop ASR-DR nodes.
 3. Filter out the database in the ASR-DR console. For more information, see the **DR for business >**
 **Modify table filtering** topic in ASR-DR User Guide.
 
-**Note**
-
-ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed.
+> **Note:** ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configuration in the ASR-DR console. In ASR-DR V3.18.6_2507 and later, this feature is removed.
 
 **Scenario 5: A table that requires disaster recovery protection is**
 
@@ -619,9 +620,7 @@ ASR-DR of versions from V3.15.0 to V3.18.6_2505 supports table filtering configu
 
 After you add a table to the primary ApsaraDB RDS instance, you need to create a table schema on the secondary ApsaraDB RDS instance.
 
-**Note**
-
-After a table is added, ASR-DR adds the table to the objects to be synchronized as scheduled. DTS adds the table to the objects to be synchronized. In this case, you do not need to modify the ASR-DR configurations.
+> **Note:** After a table is added, ASR-DR adds the table to the objects to be synchronized as scheduled. DTS adds the table to the objects to be synchronized. In this case, you do not need to modify the ASR-DR configurations.
 
 #### 5.1.2 How do I manually switch workloads between primary and secondary ApsaraDB RDS instances?
 
@@ -711,9 +710,8 @@ No host record is configured for the domain name of the primary or secondary sit
 3. On the **DNS Settings** page, click **Add DNS Record**. In the Add DNS Record dialog box,
 configure the parameters to add a host record.
 
-**Note**
+> **Note:** The record values of the primary and secondary sites must be consistent.
 
-The record values of the primary and secondary sites must be consistent.
 4. Log in to the Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) console from the
 secondary site. On the **Protection Group Details** page, find the DNS instance, click the icon in the Actions column, and then click **Retry**. The protection group enters the **Protecting** state.
 
@@ -946,9 +944,8 @@ servers. For example, if three Docker containers exist, three servers are record
 classic network. select * from app_access where app_id='app-9nh4n****h1qursq' and is_deleted=0\G;
 ```
 
-**Note**
+> **Note:** Replace app_id with the application ID that you obtained in Step 1.
 
-Replace app_id with the application ID that you obtained in Step 1.
 4. Log in to the **dtsdb** database of DTS.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.
@@ -1177,9 +1174,7 @@ the task details page, click **Details** in the **Sync** section.
 5. After the DTS synchronization task is resumed, go to the Apsara Stack Resilience for Geo-disaster
 Recovery (ASR-DR) console and reprotect the synchronization entity in the corresponding protection group. i. In the left-side navigation pane, choose **Business Disaster Recovery** > **Protect Group**. ii. In the protection group list, find the protection group that you want to manage, click the icon in the Actions column, and then select **Re-protect**.
 
-**Note**
-
-If the network is interrupted for more than 18 hours, the binary logs may be lost. In this case, you need to create another synchronization task.
+> **Note:** If the network is interrupted for more than 18 hours, the binary logs may be lost. In this case, you need to create another synchronization task.
 
 #### 5.3.7 How do I prevent binary log loss due to an extended interruption between the primary and secondary databases?
 
@@ -1219,9 +1214,9 @@ Log on to the Apsara Uni-manager Management Console. In the top navigation bar, 
 want to manage and click its name.
 3. Manually create a cross-cloud synchronization rule.
 
-**Note**
+> **Note:** Skip this step if a cross-cloud synchronization rule is created.
 
-Skip this step if a cross-cloud synchronization rule is created. i. On the bucket details page, click the **Basic Settings** tab. In the **Cross-cloud Replication** section, click **Enable Replication**. ii. In the Cross-cloud Replication panel, configure the parameters that are described in the following table.
+i. On the bucket details page, click the **Basic Settings** tab. In the **Cross-cloud Replication** section, click **Enable Replication**. ii. In the Cross-cloud Replication panel, configure the parameters that are described in the following table.
 
 | Parameter | Description |
 |---|---|
@@ -1249,9 +1244,9 @@ buckets. If no data synchronization task exists, search for the `getAddBucketRep
 how to configure OSS endpoints, see ASR-DR User Guide.
 3. Check whether chiji is of V3.10 hotfix or later.
 
-**Note**
+> **Note:** V3.10 hotfix fixes the issues related to the acceleration operation of OSS.
 
-V3.10 hotfix fixes the issues related to the acceleration operation of OSS. i. Log on to the container to which the **oss-chiji.ChijiOssAll#** server role belongs. For more information, see Log in to a container. ii. View the configuration of the `setHistorySyncStatus` parameter in the `/home/admin/admin_portal/ocm/ocm_cmd` file. The following figure shows a valid configuration. If the configuration is valid, proceed to the next step. iii. Exit the container. Query the logs that contain the same request ID as that stored in the ASR- DR logs in the `/cloud/log/oss-chiji/ChijiOssAll#/chiji_oss_all/logs` directory on the primary site. We recommend that you pay attention to the logs of the **ReplCloudService** class. If the following information is displayed in the logs, the chiji version may not meet the requirement:
+i. Log on to the container to which the **oss-chiji.ChijiOssAll#** server role belongs. For more information, see Log in to a container. ii. View the configuration of the `setHistorySyncStatus` parameter in the `/home/admin/admin_portal/ocm/ocm_cmd` file. The following figure shows a valid configuration. If the configuration is valid, proceed to the next step. iii. Exit the container. Query the logs that contain the same request ID as that stored in the ASR- DR logs in the `/cloud/log/oss-chiji/ChijiOssAll#/chiji_oss_all/logs` directory on the primary site. We recommend that you pay attention to the logs of the **ReplCloudService** class. If the following information is displayed in the logs, the chiji version may not meet the requirement:
 
 ```json
 { "msg": "[system error] Failed to run cmd reload_sync_worker.py --sbucket=asrdr-321e-0 1 --slocation=oss-cn-****-d02-a --dbucket=asrdr-33e-10 --dlocation=oss-cn-****-d01-a! ER RORMSG = (255)exception run dsu failed!\n\n, pls contact chiji support, request_id: 601ef 3f7-4cc3-****8f2c4cf22fbf", "code": -1, "format_version": "1.0", "success": false, "request_id": "601ef3f7-****-8f2c4cf22fbf", "value": {} }
@@ -1365,9 +1360,8 @@ You can use Data Transmission Service (DTS) of the secondary data center to perf
 
 **Background information**
 
-**Important**
+> **Important:** A full data verification traverses all data of the RDS and PolarDB-X databases. This operation is resource-intensive. We recommend that you contact on-site O&M engineers to perform the operation during off-peak hours.
 
-A full data verification traverses all data of the RDS and PolarDB-X databases. This operation is resource-intensive. We recommend that you contact on-site O&M engineers to perform the operation during off-peak hours.
 1. Log on to the Apsara Uni-manager Operations Console of the secondary data center.
 2. In the top navigation bar, choose **Product Operation > Databases > Data Transmission**
 **Service**.
@@ -1376,11 +1370,9 @@ A full data verification traverses all data of the RDS and PolarDB-X databases. 
 5. On the **Create Verification Task** page, configure the parameters. Retain the default values for
 parameters except for the **Correction Enabled** and **Thread Count** parameters.
 
-**Note**
+> **Note:** **Correction Enabled**: enables this option to correct discrepancies found.
+> **Thread Count**: the number of parallel verification threads. We recommend that you specify less than 5 threads to prevent excessive load on the database.
 
-**Correction Enabled**: enables this option to correct discrepancies found.
-**Thread Count**: the number of parallel verification threads. We recommend that you
-specify less than 5 threads to prevent excessive load on the database.
 6. Click **Create**.
 7. On the **Tasks** page, click the name of the verification task that you created in the preceding step.
 8. On the **Task Details** page, click **Details** in the **Consistency Verification** section to view the
@@ -1419,9 +1411,10 @@ ut data consistency verification f or products that support DR
 
 9. Views the verification results on the **Verification Objects** tab of the **Consistency Verification**.
 
-**Note**
+> **Note:** To view the differences between tables, click the
+> icon in the **Diff Row** column.
 
-To view the differences between tables, click the icon in the **Diff Row** column. You can also view the verification results in logs. The following table describes the logs.
+You can also view the verification results in logs. The following table describes the logs.
 
 | Scenario | Log path | Remarks |
 |---|---|---|
@@ -1454,17 +1447,14 @@ i. In the left-side navigation pane, click **Task Alibaba Cloud Account**. On th
 3. Create a quota group.
 i. In the left-side navigation pane, click **Quota Group Management**. On the page that appears, click **Create Quota Group**. ii. On the page that appears, configure the parameters and click **Submit**.
 
-**Note**
+> **Note:** For more information about the parameter descriptions, see **MaxCompute User Guide**.
 
-For more information about the parameter descriptions, see **MaxCompute User Guide**.
 4. Create a project.
 i. In the left-side navigation pane, click **Project Management**. On the page that appears, click
 **Create Project**.
 ut data consistency verification f or products that support DR ii. On the page that appears, configure the parameters and click **Submit**.
 
-**Note**
-
-For more information about the parameter descriptions, see **MaxCompute User Guide**.
+> **Note:** For more information about the parameter descriptions, see **MaxCompute User Guide**.
 
 **Query the number of data entries of a Tablestore table in**
 
@@ -1475,9 +1465,10 @@ In the top navigation bar of the Apsara Uni-manager Management Console, choose *
 **Big Data Computing > DataWorks: Big Data Development and Governance Platform** .
 2. **Optional.** When you use DataWorks for the first time, add a MaxCompute engine.
 
-**Note**
+> **Note:** If a message appears indicating that you do not have the required permissions, click the
+> icon to switch to another organization and administrator account before you proceed.
 
-If a message appears indicating that you do not have the required permissions, click the icon to switch to another organization and administrator account before you proceed. i. In the top navigation bar, click the icon. On the Workspace page, select a workspace. ii. In the left-side navigation pane, click **Calculation Engine**. On the MaxCompute tab, select the required MaxCompute project in the **MaxCompute Project Name** column.
+i. In the top navigation bar, click the icon. On the Workspace page, select a workspace. ii. In the left-side navigation pane, click **Calculation Engine**. On the MaxCompute tab, select the required MaxCompute project in the **MaxCompute Project Name** column.
 3. On the **DataStudio** page of DataWorks, create a workflow.
 4. Create a foreign table.
 i. In the left-side Scheduled Workflow pane, click the created workflow, right-click MaxCompute, and then choose **Create Node > ODPS SQL**. ii. In the **Create Node** dialog box, configure the Name and Path parameters, and click **Confirm**. iii. Create a MaxCompute table. Associate the table with a Tablestore table. ut data consistency verification f or products that support DR
@@ -1667,9 +1658,9 @@ d references
 
 When the ASR for Geo-disaster Recovery system encounters issues and the ASR for Geo-disaster Recovery console is inaccessible, you can use CLISH commands to perform background operations.
 
-**Warning**
+> **Warning:** Before you use a CLISH command, make sure that you understand the effects and consequences of the command.
+> Command-line operations involve risks. Proceed with caution. You can perform command-line operations only if an error occurs in the ASR for Geo-disaster Recovery system and cannot be resolved in the console.
 
-Before you use a CLISH command, make sure that you understand the effects and consequences of the command. Command-line operations involve risks. Proceed with caution. You can perform command-line operations only if an error occurs in the ASR for Geo-disaster Recovery system and cannot be resolved in the console.
 1. Log on to the container in which the ASR-DR service is running. For more information, see Log on
 to a container.
 2. Go to the CLISH directory and launch the CLISH interactive shell.
@@ -2699,9 +2690,7 @@ file.
 6. Click **Show Content**. The value of the AnycastVip field is the IP address of the DNS name server,
 which is the same as the ServerIP value shown on the DNS management interface.
 
-**Note**
-
-The first two IP addresses in the internetIps field are the source IPs used by the DNS service to forward requests. In most cases, two IPs are bound to the bindServerRole containers.
+> **Note:** The first two IP addresses in the internetIps field are the source IPs used by the DNS service to forward requests. In most cases, two IPs are bound to the bindServerRole containers.
 
 ### 8.3 Configure DNS forwarding
 
@@ -2715,9 +2704,7 @@ To configure DNS forwarding from opsDns to dnsProduct at the primary site, you m
 
 A network connection is established between the primary and secondary sites. x The primary site is successfully deployed and the DNS configuration file is generated in the container.
 
-**Note**
-
-If the prerequisites are not met, see the "Manually configure DNS forwarding" section in this topic for troubleshooting.
+> **Note:** If the prerequisites are not met, see the "Manually configure DNS forwarding" section in this topic for troubleshooting.
 
 **Automate the configuration of DNS forwarding at the two sites**
 
@@ -2726,9 +2713,9 @@ site. i. Log in to the Apsara Uni-manager Operations Console as an operations ad
 **Management > Resource Management**.
 v. On the **Product & Cluster O&M** page, enter webappAll in the search box to find the StandardCloudCluster cluster. vi. Click **Cluster Details** in the **Actions** column of the StandardCloudCluster cluster. On the cluster details page, click the **Resource Details** tab. x vii. View the pop-vip-ops resource details and click the value in the Resource Application Result column to obtain and save the value of vip_ip.
 
-**Note**
+> **Note:** If the pop-vip-ops value of the primary site changes, you must roll update the asrdr cluster of the primary site again.
 
-If the pop-vip-ops value of the primary site changes, you must roll update the asrdr cluster of the primary site again. Run the following command in the Apsara Stack Resilience for Disaster Recovery (ASR-DR) container of the secondary site: Replace pop_vip_ops, ops_admin_ak, and ops_admin_sk with the values obtained in the preceding steps. The DNS forwarding rules and IP address whitelists from the primary site to the secondary site are configured, and the DNS forwarding rules and IP address whitelists from the secondary site to the primary site are configured.
+Run the following command in the Apsara Stack Resilience for Disaster Recovery (ASR-DR) container of the secondary site: Replace pop_vip_ops, ops_admin_ak, and ops_admin_sk with the values obtained in the preceding steps. The DNS forwarding rules and IP address whitelists from the primary site to the secondary site are configured, and the DNS forwarding rules and IP address whitelists from the secondary site to the primary site are configured.
 
 ```
 python alidata/bin/dns/auto_config_dns.py asrdr -v {pop_vip_ops} -a {ops_admin_ak} -s {op s_admin_sk}
@@ -2846,9 +2833,8 @@ x
 
 **Manually configure local DTS**
 
-**Note**
+> **Note:** If the ASR-DR container at the secondary site cannot access the VIP for asrdr-backend-ops applied for by the asrdr-backend at the primary site, we recommend that you manually configure local DTS.
 
-If the ASR-DR container at the secondary site cannot access the VIP for asrdr-backend-ops applied for by the asrdr-backend at the primary site, we recommend that you manually configure local DTS.
 1. Copy the DTS SQL template /home/admin/asrdr/config/dts/dts_conf.{des_region} from the asrdr
 container at the primary site to the /home/admin/asrdr/config/dts/ directory in the asrdr container at the secondary site.
 2. Run the following command in the ASR-DR container of the secondary site:
@@ -2882,9 +2868,10 @@ If you directly import the data to the environment, no VPN connection is require
 i. Go to the Xterm > Environment Metadata Query section, select the destination environment, and then enter baseService-network-base in the service search box to query the value. ii. Replace the placeholder in the domain.py file with the nrm_domain value obtained in the preceding step. x
 4. Import the DCI and interconnect dedicated line data.
 
-**Note**
+> **Note:** Import DCI dedicated line data to the Connections/DCInterConnections.json file in the JSON format. Import interconnection dedicated line data to the Connections/ExternalConnections.json file in the JSON format.
+> DCI and interconnection data can be in object or array format.
 
-Import DCI dedicated line data to the Connections/DCInterConnections.json file in the JSON format. Import interconnection dedicated line data to the Connections/ExternalConnections.json file in the JSON format. DCI and interconnection data can be in object or array format. For information about the parameters, see AddDCInterConnection and AddExternalConnection. x
+For information about the parameters, see AddDCInterConnection and AddExternalConnection. x
 5. Execute the python importConnections2db.py script.
 x
 

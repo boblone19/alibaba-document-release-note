@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 139
 source_pdf: "96760cba07596ff6_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20SchedulerX%202.0%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 User Guide 20260828
@@ -93,33 +93,31 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter your username and password.
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
 the following scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -137,9 +135,8 @@ Enter the six-digit MFA code and click **Authenticate**.
 2. On the Forgot Password page, enter your **Account Name** and **Email Address**, complete
 the Captcha, and then click **Confirm**.
 
-**Note**
-
-For Account Name, enter your username. For Email Address, enter the email address that you used to create the account. A password reset link is sent to your email address. Open the link to reset your password.
+> **Note:** For Account Name, enter your username. For Email Address, enter the email address that you used to create the account.
+> A password reset link is sent to your email address. Open the link to reset your password.
 
 ### 2.2 Log on to the SchedulerX console
 
@@ -156,33 +153,31 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter your username and password.
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
 the following scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -198,9 +193,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 8. Click **Access With Administrator Permissions** or **Access With Role-based**
 **Authorization** to open the **Overview** page.
 
-**Note**
-
-If you are an administrator, click **Access With Administrator Permissions**. If you are not an administrator, click **Access With Role-based Authorization**.
+> **Note:** If you are an administrator, click **Access With Administrator Permissions**. If you are not an administrator, click **Access With Role-based Authorization**.
 
 ### 2.3 Get the domainName for SchedulerX
 
@@ -253,17 +246,14 @@ The process of integrating task scheduling capabilities into an application invo
 1. Create an application group.
 2. Integrate the client with SchedulerX 2.0.
 
-**Note**
-
-SchedulerX uses at-least-once scheduling semantics. You must implement idempotence as needed. For example, if a worker for a distributed task goes down or is disconnected from the network, a failover is triggered. The tasks that were running on that worker might be executed again.
+> **Note:** SchedulerX uses at-least-once scheduling semantics. You must implement idempotence as needed. For example, if a worker for a distributed task goes down or is disconnected from the network, a failover is triggered. The tasks that were running on that worker might be executed again.
 
 **Step 1: Create an application group**
 
 SchedulerX 2.0 uses application groups to isolate resources and manage task scheduling. You must create an application group and use its **GroupID** and **AppKey** as configuration parameters to integrate your application with the task scheduler.
 
-**Note**
+> **Note:** To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 
-To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 1. Log on to the SchedulerX console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, click **Create**.
@@ -326,9 +316,8 @@ Integrate task scheduling into your application by performing the following step
   </dependency>
 ```
 
-**Note**
+> **Note:** To obtain the latest version of the SchedulerX 2.0 client, see Client release history.
 
-To obtain the latest version of the SchedulerX 2.0 client, see Client release history.
 4. Initialize SchedulerxWorker in the main function.
 
 ```
@@ -382,17 +371,13 @@ After you complete the integration, you can verify it in the console.
 **Connected Machines** in the **Actions** column.
 If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
-**Note**
-
-You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
+> **Note:** You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
 
 **What to do next**
 
 Based on the hello world example in Integrate a Java application with SchedulerX 2.0, create a scheduled task in the console. For the **Processor Class Name** parameter, enter the full path of the JobProcessor, for example, `com.alibaba.armon.test.processor.demo.HelloWorldProcessor` . For more information, see Create a scheduling task.
 
-**Note**
-
-Cron expressions do not support second-level granularity. To schedule tasks at the second level, use second_delay.
+> **Note:** Cron expressions do not support second-level granularity. To schedule tasks at the second level, use second_delay.
 
 #### 2.4.2 Integrate a Spring application with SchedulerX 2.0
 
@@ -410,17 +395,14 @@ The procedure to add task scheduling capabilities to an application is as follow
 1. Create an application group.
 2. Integrate the client with SchedulerX 2.0.
 
-**Note**
-
-SchedulerX provides at-least-once scheduling semantics. You must implement idempotence in your application. For example, if a worker for a distributed task goes down or loses its network connection, a failover is triggered. Tasks that were running on that worker may be executed again.
+> **Note:** SchedulerX provides at-least-once scheduling semantics. You must implement idempotence in your application. For example, if a worker for a distributed task goes down or loses its network connection, a failover is triggered. Tasks that were running on that worker may be executed again.
 
 **Step 1: Create an application group**
 
 SchedulerX 2.0 uses application groups to isolate resources and manage task scheduling. You must create an application group and use its **GroupID** and **AppKey** as configuration parameters to integrate your application with the task scheduler.
 
-**Note**
+> **Note:** To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 
-To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 1. Log on to the SchedulerX console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, click **Create**.
@@ -483,9 +465,8 @@ To integrate task scheduling into your application, complete the following steps
   </dependency>
 ```
 
-**Note**
+> **Note:** To obtain the latest version of the SchedulerX 2.0 client, see Client release notes.
 
-To obtain the latest version of the SchedulerX 2.0 client, see Client release notes.
 4. Initialize SchedulerxWorker in the XML configuration file by injecting the bean.
 
 ```xml
@@ -509,9 +490,8 @@ init-method="init">
   </bean>
 ```
 
-**Note**
+> **Note:** All JobProcessors must be configured as beans. For example, add the @Component annotation.
 
-All JobProcessors must be configured as beans. For example, add the @Component annotation.
 5. Create a class to implement the scheduling task.
 Add a `JobProcessor` class to the application to implement task scheduling. This section describes how to implement a simple timed task that prints "hello world". The following code shows the JobProcessor:
 
@@ -534,17 +514,13 @@ After you complete the integration, you can verify it in the console.
 **Connected Machines** in the **Actions** column.
 If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
-**Note**
-
-You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
+> **Note:** You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
 
 **What to do next**
 
 Based on the "hello world" example in Integrate a Spring application with SchedulerX 2.0, create a timed scheduling task in the console. For the **Processor Class Name** parameter, enter the full path of the JobProcessor class, such as `com.alibaba.armon.test.processor.demo.HelloWorldProcessor` . For more information, see Create a scheduling task.
 
-**Note**
-
-Cron expressions do not support second-level precision. To schedule tasks by the second, use second_delay.
+> **Note:** Cron expressions do not support second-level precision. To schedule tasks by the second, use second_delay.
 
 #### 2.4.3 Integrate a Spring Boot application with SchedulerX 2.0
 
@@ -562,17 +538,14 @@ The workflow to integrate task scheduling capabilities into an application consi
 1. Create an application group.
 2. Integrate the client with SchedulerX.
 
-**Note**
-
-SchedulerX uses at-least-once scheduling semantics. Make your tasks idempotent to handle repeated executions. For example, if a worker goes down or is disconnected, a failover is triggered. Tasks that were running on the worker might be executed again.
+> **Note:** SchedulerX uses at-least-once scheduling semantics. Make your tasks idempotent to handle repeated executions. For example, if a worker goes down or is disconnected, a failover is triggered. Tasks that were running on the worker might be executed again.
 
 **Step 1: Create an application group**
 
 SchedulerX 2.0 uses application groups to isolate resources and manage task scheduling. You must create an application group and use its **GroupID** and **AppKey** as configuration parameters to integrate your application with the task scheduler.
 
-**Note**
+> **Note:** To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 
-To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000 tasks (Jobs) by default.
 1. Log on to the SchedulerX console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, click **Create**.
@@ -635,9 +608,8 @@ To integrate task scheduling into your application, follow these steps:
 </dependency>
 ```
 
-**Note**
+> **Note:** To obtain the latest version of the SchedulerX 2.0 client, see Client release notes.
 
-To obtain the latest version of the SchedulerX 2.0 client, see Client release notes.
 4. Add the **GroupID** and **AppKey** of your group to the `application.properties` file.
 
 ```bash
@@ -651,9 +623,9 @@ spring.schedulerx2.groupId=app1.defaultGroup
 ment. spring.schedulerx2.appKey=sfhdsfhdjshdgf****==
 ```
 
-**Note**
+> **Note:** All JobProcessors must be set as beans. For example, add the `@Component` annotation.
 
-All JobProcessors must be set as beans. For example, add the `@Component` annotation. Parameter descriptions:
+Parameter descriptions:
 
 | Key | Description | Value | Supp orted from versi on |
 |---|---|---|---|
@@ -706,17 +678,13 @@ After you complete the integration, you can verify it in the console.
 **Connected Machines** in the **Actions** column.
 If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
-**Note**
-
-You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
+> **Note:** You can also check the SchedulerX client logs in the ${user.home}/logs/schedulerx directory. The worker.log file contains the core runtime logs of the SchedulerX client, which include records of exceptions and other runtime events.
 
 **What to do next**
 
 Create a timed scheduling task in the console based on the "hello world" example in Integrate a Spring Boot application with SchedulerX 2.0. For the **Processor Class** parameter, enter the full path of the JobProcessor, such as `com.alibaba.armon.test.processor.demo.HelloWorldProcessor` . For more information, see Create a scheduling task.
 
-**Note**
-
-Cron expressions do not support second-level precision. To schedule tasks at the second level, use the second_delay parameter.
+> **Note:** Cron expressions do not support second-level precision. To schedule tasks at the second level, use the second_delay parameter.
 
 ### 2.5 Create standalone script tasks using an agent
 
@@ -736,9 +704,7 @@ To run only script tasks, such as Shell, Python, and Go tasks, you can download 
 
 You can download the agent in two ways: Enter the agent download URL in the address bar of your browser. Run the **wget** command on the client machine to download the agent. If your machine has a public IP address, run the following command to download the agent:
 
-**Note**
-
-X.X.X is a placeholder for the version number. Replace this placeholder with the required version number, such as 1.12.5.
+> **Note:** X.X.X is a placeholder for the version number. Replace this placeholder with the required version number, such as 1.12.5.
 
 ```
 wget https://schedulerx2.oss-cn-hangzhou.aliyuncs.com/agent/schedulerxAgent-X.X.X.tar
@@ -774,9 +740,7 @@ appKey=
 3. Go to the schedulerxAgent/bin directory and run **start-1g.sh**.
 You can also run **start-2g.sh**, **start-4g.sh**, or **start-8g.sh**, depending on the task payload and machine configuration.
 
-**Note**
-
-You can also view the SchedulerX client logs. The log path is ${user.home}/logs/schedulerx. The worker.log file is the core runtime log for the SchedulerX client. It records all runtime activities, including exceptions.
+> **Note:** You can also view the SchedulerX client logs. The log path is ${user.home}/logs/schedulerx. The worker.log file is the core runtime log for the SchedulerX client. It records all runtime activities, including exceptions.
 
 **Verify the result**
 
@@ -804,9 +768,7 @@ For example, in a Spring Boot project, import the following POM dependencies:
 </dependency>
 ```
 
-**Note**
-
-The version used in this document is 1.13.1-ipv6-SNAPSHOT, published to the EDAS Maven repository.
+> **Note:** The version used in this document is 1.13.1-ipv6-SNAPSHOT, published to the EDAS Maven repository.
 
 **Upgrade SchedulerX2 Server-side**
 
@@ -833,9 +795,8 @@ spring:
     appKey: <your appKey>
 ```
 
-**Note**
+> **Note:** By default, Spring Boot applications read the application.yaml file in the current program directory as the configuration file.
 
-By default, Spring Boot applications read the application.yaml file in the current program directory as the configuration file.
 3. Start the program. To enable IPv6 networking, add `-Djava.net.preferIPv6Addresses=true`
 to the command line parameters. Replace `demo.jar` with your actual program name.
 
@@ -1641,9 +1602,9 @@ buted programming model
 
 Parallel computing: Supports up to 300 tasks and requires a list of sub-tasks.
 
-**Important**
+> **Important:** Do not use parallel computing for tasks that complete within seconds.
 
-Do not use parallel computing for tasks that complete within seconds. Memory grid: An in-memory computing mode. It supports fewer than 50,000 sub-tasks and provides high performance. Grid computing: A file-based computing mode. It supports up to 1,000,000 sub-tasks.
+Memory grid: An in-memory computing mode. It supports fewer than 50,000 sub-tasks and provides high performance. Grid computing: A file-based computing mode. It supports up to 1,000,000 sub-tasks.
 
 **Advanced configuration**
 
@@ -1945,9 +1906,9 @@ replace them. For **BigDecimal**, serialization does not cause an error, but its
 
 Parallel computing: Supports up to 300 tasks and includes a subtask list.
 
-**Important**
+> **Important:** Do not use parallel computing for tasks that run in seconds.
 
-Do not use parallel computing for tasks that run in seconds. Memory grid: Performs high-speed, in-memory computing and supports fewer than 50,000 subtasks. Grid computing: Performs file-based computing and supports up to 1,000,000 subtasks.
+Memory grid: Performs high-speed, in-memory computing and supports fewer than 50,000 subtasks. Grid computing: Performs file-based computing and supports up to 1,000,000 subtasks.
 
 **Advanced configuration**
 
@@ -2289,9 +2250,7 @@ Sharding models include static sharding and dynamic sharding. Static sharding: P
 
 The multi-language sharding models have the following features. Compatible with the static sharding model of Elastic-Job. Supports four languages: Java, Python, Shell, and Go. High availability: The sharding model is based on the Map model and inherits its high availability (HA) features. If an exception occurs on a worker, the master worker fails the shard over to another slave node for execution. Traffic shaping: The sharding model is based on the Map model and inherits its traffic shaping features. This lets you control the concurrency of subtasks on a single machine. For example, if you have 1,000 shards and 10 machines, you can limit concurrent execution to a maximum of 5 shards. The remaining shards wait in a queue. Automatic retry on shard failure: The sharding model is based on the Map model and inherits its automatic retry feature for failed subtasks. You can set availability and traffic shaping in the advanced configuration when you create a task. For more information, see Create a scheduling task and Advanced configuration parameters for task management.
 
-**Note**
-
-Only client versions 1.1.0 and later support the multi-language sharding models.
+> **Note:** Only client versions 1.1.0 and later support the multi-language sharding models.
 
 **Java sharding task**
 
@@ -2398,9 +2357,8 @@ Use the Execution List to view today’s task execution status. The list include
 
 **View the Execution List**
 
-**Note**
+> **Note:** By default, SchedulerX retains the most recent 60 records for each task and workflow.
 
-By default, SchedulerX retains the most recent 60 records for each task and workflow.
 1. Log on to the SchedulerX console.
 2. In the navigation pane on the left, click **Execution List**.
 3. On the **Execution List** page, click the **Task Instances** tab or the **Workflow Instances**
@@ -2522,9 +2480,7 @@ ole user guide
 7. Return to the **Task Management** page. Check whether the task you just created appears
 and whether its parameters match your configuration.
 
-**Note**
-
-After creation, a scheduling task is enabled by default. You can disable or re-enable it as needed. For more information, see Enable and Disable Scheduling Tasks.
+> **Note:** After creation, a scheduling task is enabled by default. You can disable or re-enable it as needed. For more information, see Enable and Disable Scheduling Tasks.
 
 **Edit a Scheduling Task**
 
@@ -2532,9 +2488,7 @@ After creation, a scheduling task is enabled by default. You can disable or re-e
 2. On the **Edit Task** page, configure parameters for **Basic Configuration**, **Schedule**
 **Configuration**, and **Alert Configuration**.
 
-**Note**
-
-You cannot change the task group or task type while editing. For other parameters, refer to Create a Scheduling Task.
+> **Note:** You cannot change the task group or task type while editing. For other parameters, refer to Create a Scheduling Task.
 
 **Run a Scheduling Task Once**
 
@@ -2553,9 +2507,9 @@ On the **Task Progress** page, click in the Actions column, and then click **Cop
 
 If your business changes—for example, you add a field to your database or find errors in last month’s data—you can refresh task data to rerun tasks for a past time period.
 
-**Note**
+> **Note:** Both tasks and workflows support data refresh. Only day-level scheduling cycles are supported.
 
-Both tasks and workflows support data refresh. Only day-level scheduling cycles are supported. If data from a previous task run contains drift or gaps, reset the runtime parameters and run the task again to retrieve correct data. ole user guide
+If data from a previous task run contains drift or gaps, reset the runtime parameters and run the task again to retrieve correct data. ole user guide
 1. On the **Task Management** page, click
 in the Actions column of the task list, and in the pop-up menu, click **Refresh Data**.
 2. On the **Refresh Task** page, set **Start and End Time** and **Data Timestamp**. Then click
@@ -2594,9 +2548,8 @@ ole user guide
 1. On the **Task List** page, click **Export** above the list.
 2. In the **Export Task** dialog box, select an application ID. Then click **OK**.
 
-**Note**
+> **Note:** By default, all tasks are exported.
 
-By default, all tasks are exported.
 3. In the dialog box that appears, click **Download**. View the downloaded tasks locally.
 
 **Assign Machines to a Task**
@@ -2606,9 +2559,7 @@ By default, all tasks are exported.
 **Specify Machine**.
 2. In the **Machine List**, select machines. Then click **OK**.
 
-**Note**
-
-If machine transfer is enabled, the task runs on non-assigned machines when all assigned machines go offline.
+> **Note:** If machine transfer is enabled, the task runs on non-assigned machines when all assigned machines go offline.
 
 ### 6.4 Workflow Management
 
@@ -2618,9 +2569,8 @@ SchedulerX supports cross-application task orchestration. You can orchestrate ta
 
 You can create workflow Scheduling Tasks.
 
-**Note**
+> **Note:** Currently, workflow scheduling supports only Cron expressions and API scheduling.
 
-Currently, workflow scheduling supports only Cron expressions and API scheduling.
 1. Log on to the SchedulerX console.
 2. In the navigation pane on the left, click **Workflow Management**.
 3. On the **Workflow Management** page, click **Create**.
@@ -2645,9 +2595,9 @@ ole user guide
 information, see Create Scheduling Tasks.
 **Import Job**: Import an existing Job into the workflow.
 
-**Note**
+> **Note:** When you import a Job, a prompt appears: "Importing this Job will remove its scheduled configuration." Click **OK**. The Job will no longer be scheduled independently and will instead follow the workflow's scheduling cycle.
 
-When you import a Job, a prompt appears: "Importing this Job will remove its scheduled configuration." Click **OK**. The Job will no longer be scheduled independently and will instead follow the workflow's scheduling cycle. ole user guide
+ole user guide
 7. After you add the scheduling tasks, connect them with lines to define their dependencies
 and complete the workflow. In a workflow, you can pass data from upstream Jobs to downstream Jobs. For more information, see Passing data between upstream and downstream Jobs in a workflow. To delete a dependency between two tasks, select the connecting line, right-click it, and select **Remove**. To delete a task, right-click the scheduling task and click **Remove** in the shortcut menu. You can also click a task name and select **Edit** to modify the task. An example workflow is shown below: In this workflow, after Job 101 finishes executing, Jobs 102 and 103 start executing simultaneously. After Jobs 104, 105, and 106 all execute successfully, Job 107 starts executing.
 8. After you configure the workflow, click **Save Changes** and return to the **Workflow**
@@ -2685,9 +2635,8 @@ records for the workflow. For more information, see Operation records.
 
 If your business requirements change, such as adding a field to a database or discovering incorrect data from a previous month, you can re-run a workflow's tasks for a past period by refreshing the workflow data.
 
-**Note**
+> **Note:** Only day-level scheduling cycles are supported.
 
-Only day-level scheduling cycles are supported.
 1. On the **Workflow Management** page, click the
 icon in the **Actions** column and select
 **Flush Data**.
@@ -2773,10 +2722,8 @@ After an application connects to task scheduling, you can check if the schedulin
 1. On the **Application Management** page, in the **Actions** column of the group list, click
 **Connect Machines**.
 
-**Note**
+> **Note:** If the message "No available machines" appears and you are not directed to the **Connect Machines** page, the application's task scheduling connection failed.
 
-If the message "No available machines" appears and you are not directed to the
-**Connect Machines** page, the application's task scheduling connection failed.
 2. On the **Connect Machines** page, view the list of client machines in this task group and the
 status of each client machine. The number in parentheses after the client machine's IP address indicates how many SchedulerX clients are on that machine. Typically, there is one client, but a single machine supports multiple clients. Client machines have two statuses: healthy and busy. By default, tasks are not sent to busy machines. This can cause tasks to fail if all connected machines are busy. To force tasks to be sent to busy machines, you can set the **Filter Busy Machines** switch to disabled in the alert configuration.
 
@@ -2889,9 +2836,9 @@ public ProcessResult(boolean status, String result) throws Exception;
 
 Use this method at the end of the processor to return the execution result. nced features
 
-**Important**
+> **Important:** The size of `result` cannot exceed 1000 bytes. This limit is based on the byte size, not the number of characters in the string. A string that contains multi-byte characters can exceed this limit. If the size exceeds 1000 bytes, the task fails.
 
-The size of `result` cannot exceed 1000 bytes. This limit is based on the byte size, not the number of characters in the string. A string that contains multi-byte characters can exceed this limit. If the size exceeds 1000 bytes, the task fails. Obtain input data
+Obtain input data
 
 ```
 List<JobInstanceData> upstreamDatas = JobContext.getUpstreamData();
@@ -3112,9 +3059,10 @@ An organization is required to create users and user groups. ssion management
 4. In the left-side Organization Structure pane of the **Organizations** page, select a parent
 organization and click **Create Organization** in the upper-right corner of the page.
 
-**Note**
+> **Note:** If you select the root organization, a level-1 organization is created.
+> If you want to create a level-2 organization, you must select a level-1 organization. The same method applies to subordinate organizations. You can create up to five levels of organizations.
+> An operations administrator can create level-1 to level-5 organizations. An organization administrator can create only subordinate organizations under the organization to which the organization administrator belongs.
 
-If you select the root organization, a level-1 organization is created. If you want to create a level-2 organization, you must select a level-1 organization. The same method applies to subordinate organizations. You can create up to five levels of organizations. An operations administrator can create level-1 to level-5 organizations. An organization administrator can create only subordinate organizations under the organization to which the organization administrator belongs.
 5. In the **Add Organization** dialog box, configure the parameters that are described in the
 following table.
 
@@ -3311,38 +3259,30 @@ Different RAM users are typically responsible for different applications. Applic
 1. Log on to the SchedulerX console as the Alibaba Cloud account.
 2. In the navigation pane on the left, click **Application Management**.
 
-**Note**
+> **Note:** The Alibaba Cloud account can view applications created by all RAM users.
 
-The Alibaba Cloud account can view applications created by all RAM users.
 3. On the **Application Management** page, select the application you want to authorize, click
 in the **Actions** column, and select **Authorization**.
 4. In the **Authorization Management** dialog box, enter the ID of the RAM user in the **User**
 **ID** search box, click **Add**, and then click **Grant**.
 You can add multiple RAM user IDs to grant permissions in a batch.
 
-**Note**
-
-To revoke permissions for a user, select the user ID in the lower-right corner and click
-**Revoke Authorization**.
+> **Note:** To revoke permissions for a user, select the user ID in the lower-right corner and click **Revoke Authorization**.
 
 **Grant application permissions to another RAM user**
 
 1. Log on to the SchedulerX console as a RAM user.
 2. In the navigation pane on the left, click **Application Management**.
 
-**Note**
+> **Note:** By default, a RAM user can view only the applications that they created and cannot view applications created by other RAM users.
 
-By default, a RAM user can view only the applications that they created and cannot view applications created by other RAM users.
 3. On the **Application Management** page, select the application you want to authorize, click
 in the **Actions** column, and select **Authorization**. ssion management
 4. In the **Authorization Management** dialog box, enter the ID of the RAM user in the **User**
 **ID** search box, click **Add**, and then click **Grant**.
 You can add multiple RAM user IDs to grant permissions in a batch.
 
-**Note**
-
-To revoke permissions for a user, select the user ID in the lower-right corner and click
-**Revoke Authorization**.
+> **Note:** To revoke permissions for a user, select the user ID in the lower-right corner and click **Revoke Authorization**.
 
 ## 10 FAQ
 
@@ -3364,13 +3304,14 @@ icon and select **Edit**. In the
 
 Symptom When you connect an application to SchedulerX and try to verify the connection, the message No available machines is displayed. Possible causes The application failed to connect to SchedulerX. There were conflicts between JAR packages. The SchedulerXWorker was configured incorrectly. Solution i. Log on to the ECS instance where the application is deployed and check if the log directory /home/${user.home}/logs/schedulerx/worker.log exists.
 
-**Note**
+> **Note:** If the process is started by the root account, the log is located at /root/logs/schedulerx/worker.log.
+> If the process is started by the admin account, the log is located at /home/admin/schedulerx/worker.log.
 
-If the process is started by the root account, the log is located at /root/logs/schedulerx/worker.log. If the process is started by the admin account, the log is located at /home/admin/schedulerx/worker.log. If the directory does not exist, the ECS instance is not connected to the SchedulerX client. Connect the client again. For more information, see Connect a client to SchedulerX. If the directory exists, proceed to the next step. ii. Check the `worker.log` file for abnormal logs. If the log contains groupId is not existed, it indicates a configuration issue. Search for `Schedulerx WorkerConfig` in worker.log to view the current configuration, and then compare it with the configuration on the console to confirm that it is correct.
+If the directory does not exist, the ECS instance is not connected to the SchedulerX client. Connect the client again. For more information, see Connect a client to SchedulerX. If the directory exists, proceed to the next step. ii. Check the `worker.log` file for abnormal logs. If the log contains groupId is not existed, it indicates a configuration issue. Search for `Schedulerx WorkerConfig` in worker.log to view the current configuration, and then compare it with the configuration on the console to confirm that it is correct.
 
-**Important**
+> **Important:** Obtain the namespace ID from the **Namespace ID** on the **Namespace** page.
 
-Obtain the namespace ID from the **Namespace ID** on the **Namespace** page. If there are abnormal logs, check for JAR package conflicts. For more information, see JAR package conflicts. If there are no abnormal logs, search for "started" and check if the SchedulerXWorker configuration is correct.
+If there are abnormal logs, check for JAR package conflicts. For more information, see JAR package conflicts. If there are no abnormal logs, search for "started" and check if the SchedulerXWorker configuration is correct.
 
 **JAR package conflicts**
 

@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 15
 source_pdf: "a47f7502880db658_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Operations and Maintenance Guide 20260701."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%EF%BC%88%E9%BB%98%E5%AE%89%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Scanner%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Scanner Operations and Maintenance Guide

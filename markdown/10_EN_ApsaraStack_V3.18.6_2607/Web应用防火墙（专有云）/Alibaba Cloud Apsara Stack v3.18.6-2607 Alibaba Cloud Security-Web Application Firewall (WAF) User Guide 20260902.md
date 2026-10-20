@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 60
 source_pdf: "ff89d5f97889223a_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) User G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20260902
@@ -111,9 +111,16 @@ You need to obtain the endpoint of the Apsara Uni-manager Management Console fro
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press Enter. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
+press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
+
 2. Enter your username and password.
-Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Account Logon**.
 4. If your account has multi-factor authentication (MFA) enabled, perform the corresponding
 operations in the following scenarios:
@@ -132,7 +139,10 @@ Enter the 6-digit MFA code and click **Authenticate**. For more information abou
 
 1. If you forget your logon password, click **Forget Password** below the password input box.
 2. On the Forgot Password page, enter your **Account Name**, **Email Address**, and verification
-code, and then click **Confirm**. You can use the username of your account and the email address that was used to create the account. A password reset link will be sent to your email. You can enter a new password after accessing the link.
+code, and then click **Confirm**.
+
+> **Note:** You can use the username of your account and the email address that was used to create the account.
+> A password reset link will be sent to your email. You can enter a new password after accessing the link.
 
 ### 2.3 Quick start
 
@@ -177,7 +187,8 @@ You can specify the following filter conditions to view specific access informat
 **IP** or **SESSION**
 **All**, **Site**, or **URL**
 **Requests within 30 Seconds** or **Average Response Time**
-Only real-time access monitoring information about the top 100 web services that are most accessed is displayed.
+
+> **Note:** Only real-time access monitoring information about the top 100 web services that are most accessed is displayed.
 
 ### 3.3 Export protection report
 
@@ -191,7 +202,10 @@ Web Application Firewall (WAF) supports manual and automatic export of protectio
 **Region** drop-down list and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose**Statistics > Export**.
 4. On the **Export** page, export protection reports.
-All protection reports are displayed on the **Protection Reports** tab regardless of whether the protection reports are manually exported or automatically exported. Manually export a protection report On the **Protection Reports** tab, click **Generate Report**. Configure the parameters and click **OK**. The following table describes the parameters.
+
+> **Note:** All protection reports are displayed on the **Protection Reports** tab regardless of whether the protection reports are manually exported or automatically exported.
+
+Manually export a protection report On the **Protection Reports** tab, click **Generate Report**. Configure the parameters and click **OK**. The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -214,7 +228,11 @@ Automatically export a protection report On the **Scheduled Reports** tab, click
 
 **Manage protection reports**
 
-On the **Protection Reports** tab, you can view and manage the protection reports. Filter protection reports Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, WAF uses the AND operator to combine the filter conditions. The system returns reports that match the conditions. View report details Find the protection report whose details you want to view and click the icon in the
+On the **Protection Reports** tab, you can view and manage the protection reports. Filter protection reports Click **Filter**, specify filter conditions, and then click **OK**.
+
+> **Note:** If you specify multiple filter conditions, WAF uses the AND operator to combine the filter conditions. The system returns reports that match the conditions.
+
+View report details Find the protection report whose details you want to view and click the icon in the
 **Actions** column.
 Download protection reports Select the protection reports that you want to download and choose **More > Download**
 **Selected Reports**.
@@ -260,7 +278,11 @@ Attack detection logs allow you to analyze the attacks on your web services. You
 2. In the upper-right corner of the console, click **Security**.In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Detection Logs > Attack Detection Logs**.
-On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions. Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
+On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**.
+
+> **Note:** If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions.
+
+Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
 **Download selected log(.csv)** from the **More** drop-down list. In the Alert message,
 click **OK**. b. In the left-side navigation pane, choose **Detection Logs > Downloading Log**
 **Management**. Find the download task that you created and click the
@@ -281,7 +303,11 @@ HTTP flood protection logs allow you to analyze the HTTP flood attacks on your w
 2. In the upper-right corner of the console, click **Security**.In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Detection Logs > HTTP Flood Detection Logs**.
-On the HTTP Flood Detection Logs page, you can view HTTP flood protection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions. Add an HTTP flood attack to the blacklist Find the HTTP flood attack that you want to add to the blacklist and click the icon in the
+On the HTTP Flood Detection Logs page, you can view HTTP flood protection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**.
+
+> **Note:** If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions.
+
+Add an HTTP flood attack to the blacklist Find the HTTP flood attack that you want to add to the blacklist and click the icon in the
 **Actions** column to create a blacklist rule. In the **Add to Blacklist** panel, enter a name
 for the blacklist rule and click **OK**.
 
@@ -295,7 +321,11 @@ This topic describes how to view system operation logs.
 2. In the upper-right corner of the console, click **Security**.In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Detection Logs > System Operation Log**.
-On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions. Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
+On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**.
+
+> **Note:** If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions.
+
+Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
 **Download selected log(.csv)** from the **More** drop-down list. In the Alert message,
 click **OK**. b. In the left-side navigation pane, choose **Detection Logs > Downloading Log**
 **Management**. Find the download task that you created and click the
@@ -314,7 +344,11 @@ This topic describes how to view access logs.
 2. In the upper-right corner of the console, click **Security**.In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Detection Logs > Access Log**.
-On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions. Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
+On the Attack Detection Logs page, you can view attack detection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**.
+
+> **Note:** If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions.
+
+Export logs a. Select the logs that you want to export and select **Download selected log(.json)** or
 **Download selected log(.csv)** from the **More** drop-down list. In the Alert message,
 click **OK**. b. In the left-side navigation pane, choose **Detection Logs > Downloading Log**
 **Management**. Find the download task that you created and click the
@@ -416,9 +450,7 @@ parameters that are described in the following table and click **Next**.
 7. In the **Protection Policy** step of the **Add Protected Site** panel, configure the parameters
 that are described in the following table and click **Next**. Then, go to the **OK** step.
 
-**Important**
-
-You can configure a protection policy only if you set the **Configure Response Method** parameter to **Forward to Backend Servers**.
+> **Important:** You can configure a protection policy only if you set the **Configure Response Method** parameter to **Forward to Backend Servers**.
 
 | Paramet er | Description |
 |---|---|
@@ -582,7 +614,8 @@ iii. Click **OK**.
 6. Manage protection policies.
 To delete a protection policy, select the protection policy. Then, in the upper-right corner, choose **More > Delete Selected Protection Policies**. In the message that appears, click
 **OK**.
-You cannot delete the default protection policy.
+
+> **Note:** You cannot delete the default protection policy.
 
 ### 5.3 Global custom rules
 
@@ -776,7 +809,9 @@ time periods based on **Intelligence Synchronization Status**.
 
 ### 5.8 Upload a certificate
 
-After you upload a certificate on the Certificate Management page, you can select the certificate when you add a website to Web Application Firewall (WAF) on the Protection Site Management page. This topic describes how to upload a certificate. When you add an HTTPS website for protection on the **Protection Site Management** page, you must select the certificate to which the domain name of the HTTPS website is bound.
+After you upload a certificate on the Certificate Management page, you can select the certificate when you add a website to Web Application Firewall (WAF) on the Protection Site Management page. This topic describes how to upload a certificate.
+
+> **Note:** When you add an HTTPS website for protection on the **Protection Site Management** page, you must select the certificate to which the domain name of the HTTPS website is bound.
 
 **Upload a certificate**
 
@@ -801,9 +836,8 @@ You can manage certificates on the **SSL Certificate** tab. View a certificate I
 
 You can configure data masking policies to mask sensitive data in logs, such as national ID numbers, birth dates, bank card numbers, passwords, and other user-defined sensitive data.
 
-**Important**
+> **Important:** The log data masking feature for a physical WAF is only supported on x86 architectures, not on ARM, due to hardware limitations.
 
-The log data masking feature for a physical WAF is only supported on x86 architectures, not on ARM, due to hardware limitations.
 1. Log on to the Apsara Uni-manager console.
 2. In the upper-right corner of the console, click **Security** and choose **Application Security**
 **> Web Application Firewall**. On the **Web Application Firewall** authorization page,
@@ -835,7 +869,8 @@ If your computer runs Windows 7, the hosts file is stored in the following path:
 assigned by WAF><Protected domain name> .
 ```
 
-The IP address that precedes the domain name is the virtual IP address that is assigned by WAF.
+> **Note:** The IP address that precedes the domain name is the virtual IP address that is assigned by WAF.
+
 2. Ping the protected domain name.
 The returned IP address must be the virtual IP address that is assigned by WAF in the hosts file. If the returned IP address is still the IP address of the origin server, refresh the onpremises Domain Name System (DNS) cache.
 3. Enter the domain name in the address bar of your browser and press the Enter key.
@@ -857,7 +892,9 @@ icon in the
 5. On the **Basic Information** tab, record the virtual IP address that is assigned to the
 website.
 6. Log on to the console of the DNS provider and find the DNS settings for the domain name of
-the website. Then, change the IP address in the A record to the virtual IP address that is assigned to the website. We recommend that you set the time-to-live (TTL) to 600 seconds in DNS settings. If you specify a higher value for the TTL, the period of time that is required to synchronize and update DNS records is longer.
+the website. Then, change the IP address in the A record to the virtual IP address that is assigned to the website.
+
+> **Note:** We recommend that you set the time-to-live (TTL) to 600 seconds in DNS settings. If you specify a higher value for the TTL, the period of time that is required to synchronize and update DNS records is longer.
 
 ## 6 System management
 
@@ -928,7 +965,9 @@ This topic describes how to create an online backup.
 **Region** drop-down list and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **System Settings > Online Backup**.
 4. On the Online Backup page, click **Create Backup**. In the **Add Backups** panel, configure
-the Description parameter and click **OK**. You can back up information such as protected websites and related protection policies, online backup rules, and certificates.
+the Description parameter and click **OK**.
+
+> **Note:** You can back up information such as protected websites and related protection policies, online backup rules, and certificates.
 
 **Manage online backups**
 
@@ -945,20 +984,15 @@ You can view and manage online backups in the online backup list. Select the onl
 3. In the left-side navigation pane, choose **System Settings > Other System**
 **Configurations**.
 4. On the **Other System Configurations** page, click the
-icon next to the configuration item. In the **Edit Expiration Reminder for SSL Certificate** panel, specify the warning days before the certificate expiration, and then click **OK**. You can only set the value to a number from 1 to 180.
+icon next to the configuration item. In the **Edit Expiration Reminder for SSL Certificate** panel, specify the warning days before the certificate expiration, and then click **OK**.
+
+> **Note:** You can only set the value to a number from 1 to 180.
 
 ### 6.4 Global system settings
 
 You can configure global system settings to enable or disable the Web Application Firewall (WAF) global protection engine, specify an internal-facing Server Load Balancer (SLB) instance as the downstream service, and configure shared virtual IP addresses. This topic describes how to configure global system settings.
 
-**Important**
-
-The **Global System Settings** feature has been migrated to **Cloud Shield Operations**
-**Center > Cloud Services > WAF Management**. For more information, see the
-
-**Physical server-based WAF O&M in Cloud Shield Operations Center > Global**
-
-**system settings** topic in the WAF **O&M Guide (Tenant-side)-Physical servers**.
+> **Important:** The **Global System Settings** feature has been migrated to **Cloud Shield Operations** **Center > Cloud Services > WAF Management**. For more information, see the **Physical server-based WAF O&M in Cloud Shield Operations Center > Global** **system settings** topic in the WAF **O&M Guide (Tenant-side)-Physical servers**.
 
 ## 7 System information
 

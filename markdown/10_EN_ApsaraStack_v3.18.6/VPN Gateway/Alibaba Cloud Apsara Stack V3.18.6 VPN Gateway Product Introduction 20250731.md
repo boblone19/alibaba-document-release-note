@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 7
 source_pdf: "4d0538f4a7ec7af8_Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway Product Introduction 20250731.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20VPN%20Gateway%20Product%20Introduction%2020250731.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # VPN Gateway Product Introduction 20250731

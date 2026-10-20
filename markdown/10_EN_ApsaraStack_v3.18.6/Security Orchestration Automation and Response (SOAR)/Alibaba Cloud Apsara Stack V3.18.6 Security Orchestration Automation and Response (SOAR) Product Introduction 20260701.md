@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 19
 source_pdf: "3908088ed6ac84c1_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) Product Int"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20Product%20Introduction%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Security Orchestration Automation and Response (SOAR) Product Introduction 20260701

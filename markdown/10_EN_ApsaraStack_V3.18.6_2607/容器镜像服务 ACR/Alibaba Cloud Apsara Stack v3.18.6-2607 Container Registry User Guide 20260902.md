@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 118
 source_pdf: "e8d4317b20a5ef65_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902
@@ -105,7 +105,9 @@ Container Registry is a platform that allows you to manage and distribute cloud-
 
 **Classification of Container Registry Enterprise Edition**
 
-Container Registry Standard Edition is suitable for small and medium-sized enterprises. It supports secure hosting and efficient distribution of container images. You can use multiple Alibaba Cloud accounts in the Container Registry Standard Edition, create 15 namespaces for each account, and maintain 1,000 public repositories or private repositories in each namespace. Container Registry Standard Edition allows 100 nodes to concurrently pull container images. Container Registry Advanced Edition is suitable for medium and large-sized enterprises. It provides secure hosting and lifecycle management of OCI artifacts, such as container images, Helm charts, and operators. Container Registry Advanced Edition also supports efficient artifact distribution scenarios, such as multi-region replication and cross-cloud replication. You can create up to 1,000 namespaces and maintain 100,000 repositories on a Container Registry Advanced Edition instance. Container Registry Advanced Edition allows 500 nodes to concurrently pull container images. Container Registry Multi-instance Edition is suitable for medium and large-sized enterprises. Based on Container Registry Advanced Edition, Container Registry Multi-instance Edition allows you to create multiple independent Container Registry instances within a single region. Each instance has its dedicated resources such as namespaces and image repositories. Container Registry Multi-instance Edition meets the requirements for storage isolation between image repositories and fine-grained permission management. Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
+Container Registry Standard Edition is suitable for small and medium-sized enterprises. It supports secure hosting and efficient distribution of container images. You can use multiple Alibaba Cloud accounts in the Container Registry Standard Edition, create 15 namespaces for each account, and maintain 1,000 public repositories or private repositories in each namespace. Container Registry Standard Edition allows 100 nodes to concurrently pull container images. Container Registry Advanced Edition is suitable for medium and large-sized enterprises. It provides secure hosting and lifecycle management of OCI artifacts, such as container images, Helm charts, and operators. Container Registry Advanced Edition also supports efficient artifact distribution scenarios, such as multi-region replication and cross-cloud replication. You can create up to 1,000 namespaces and maintain 100,000 repositories on a Container Registry Advanced Edition instance. Container Registry Advanced Edition allows 500 nodes to concurrently pull container images. Container Registry Multi-instance Edition is suitable for medium and large-sized enterprises. Based on Container Registry Advanced Edition, Container Registry Multi-instance Edition allows you to create multiple independent Container Registry instances within a single region. Each instance has its dedicated resources such as namespaces and image repositories. Container Registry Multi-instance Edition meets the requirements for storage isolation between image repositories and fine-grained permission management.
+
+> **Note:** Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
 
 **Features**
 
@@ -191,13 +193,11 @@ key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Uni-manager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding operations
 in the following scenarios:
@@ -210,13 +210,22 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the six-digit MFA verification code and click **Authenticate**. For more information about how to bind an MFA device to enable MFA, see **Apsara Uni-**
-**manager User Guide > Manage MFA**.
+Enter the six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to bind an MFA device to enable MFA, see **Apsara Uni-** **manager User Guide > Manage MFA**.
+
 5. In the top navigation bar, choose **Products > Elastic Computing > Container Registry (ACR)**.
 6. In the left-side navigation pane, choose an instance management page to perform operations.
-On the **Standard Instance Management** page, click **Management**. You can create namespaces and upload or download images. On the **Advanced instance management** page, click **Management**. You can create namespaces and upload or download images. On the **Multi-Instance Edition List** page, click the ID of the instance that you want to manage. You can create namespaces and upload or download images. Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
+On the **Standard Instance Management** page, click **Management**. You can create namespaces and upload or download images. On the **Advanced instance management** page, click **Management**. You can create namespaces and upload or download images. On the **Multi-Instance Edition List** page, click the ID of the instance that you want to manage. You can create namespaces and upload or download images.
+
+> **Note:** Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
+
 7. Use the floating action button to perform operations.
-Click the Shopping Cart icon on the floating action button to go to the shopping cart page. Click the Arrow icon on the floating action button to expand or collapse the floating menu. The floating action button is in the lower-right corner of the page by default, and can be dragged to the desired position. andard Edition
+Click the Shopping Cart icon on the floating action button to go to the shopping cart page. Click the Arrow icon on the floating action button to expand or collapse the floating menu.
+
+> **Note:** The floating action button is in the lower-right corner of the page by default, and can be dragged to the desired position.
+
+andard Edition
 
 ## 3 Container Registry Standard Edition
 
@@ -238,7 +247,13 @@ To create a user or a user group, you must create an organization in advance.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
-Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
+
 3. Click **Log In**.
 4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
 choose **Resources > Organizations**.
@@ -308,7 +323,13 @@ The URL of the console that is obtained from the deployment personnel. A support
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console with an Alibaba Cloud account.
-You can obtain the username and password for the console from your operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You can obtain the username and password for the console from your operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types:
+> Uppercase or lowercase letters (A to Z, a to z)
+> Digits (0 to 9)
+> Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log In**.
 4. In the top navigation bar, select **Enterprise**.
 andard Edition
@@ -475,9 +496,9 @@ Scenario 1 Scenario: Grant a user the read-only permission on a namespace that i
 
 `}` andard Edition
 
-**Important**
+> **Important:** If you want to allow the user to view all the namespaces in the console, add the following authorization configurations. Then, the user can view all the namespaces and repositories. However, the user can pull only images from the repositories in the namespace juzhong.
 
-If you want to allow the user to view all the namespaces in the console, add the following authorization configurations. Then, the user can view all the namespaces and repositories. However, the user can pull only images from the repositories in the namespace juzhong. `{`
+`{`
 
 ```json
   "Statement": [
@@ -524,9 +545,9 @@ If you want to allow the user to view all the namespaces in the console, add the
 
 `}` Scenario 2 Scenario: Grant a user all permissions on a repository, such as the repository nginx in the namespace juzhong in the China (Hangzhou) region.
 
-**Important**
+> **Important:** If you want to allow the user to manage repositories in the console, add the relevant configurations by referring to scenario 1.
 
-If you want to allow the user to manage repositories in the console, add the relevant configurations by referring to scenario 1. andard Edition `{`
+andard Edition `{`
 
 ```json
   "Statement": [
@@ -571,9 +592,9 @@ If you want to allow the user to manage repositories in the console, add the rel
 
 `}` Scenario 3 Scenario: Grant a user all permissions on a namespace.
 
-**Important**
+> **Important:** You can implement the scenario only by calling API operations. If you want to allow the user to view all repositories in the console, add the relevant configurations by referring to scenario 1.
 
-You can implement the scenario only by calling API operations. If you want to allow the user to view all repositories in the console, add the relevant configurations by referring to scenario 1. `{`
+`{`
 
 ```json
     "Statement": [
@@ -666,15 +687,20 @@ andard Edition
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
 4. In the upper-left corner of the Resource Pool Configuration page, select a cloud platform, region ID,
-and zone. The Cloud Platform drop-down list is displayed only in multi-cloud environments. If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+and zone.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+> If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+
 5. Click **Container Registry Standard Edition** to go to the **Resource Pool Details** panel, and view
 the details of Container Registry Standard Edition, such as **Resource Item**, **Logical Inventory**,
 **Physical Inventory**, and **Total Activated Resources**.
 6. In the **Resource Pool Details** panel, click **Configure Quota** in the lower part.
 7. In the **Configure Quota** dialog box, add or remove quota items. For more information about quotas,
-see Quota overview. After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify**
-**Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this
-option to synchronize the quota item configurations in this zone to other zones.
+see Quota overview.
+
+> **Note:** After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify** **Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this option to synchronize the quota item configurations in this zone to other zones.
+
 **Add quota items**: In the **Available Quotas** list, select the quota items that you want to add and
 click the icon to add the quota items to the **Selected Quota Items** list.
 **Remove quota items**: In the **Selected Quota Items** list, select the quota items that you want to
@@ -690,7 +716,10 @@ organization administrator.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. In the upper-left corner of the **Quotas** page, select a cloud platform from the Cloud Platform drop-
-down list. The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+down list.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+
 5. On the right side of the product, set Region, Region, and Zone.
 6. In the left-side organizational structure of the Quotas page, select the organization or resource set
 whose resources you want to manage.
@@ -753,7 +782,9 @@ This topic describes the quotas that you can configure for Container Registry St
 
 **Calculation methods of quota usage**
 
-Usage of Image Repository Quota (Units) = Number of image repositories that are created for Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for The quota usage is calculated based on the number of resource instances.
+Usage of Image Repository Quota (Units) = Number of image repositories that are created for Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -773,13 +804,9 @@ A namespace is a collection of repositories. Group repositories from the same co
 5. On the **Namespaces** page, click **Create Namespace**.
 6. On the **Create Namespace** page, set the **organization**, **Resource Group**, **region**, **scope**, and
 **namespace** name, and then click **Confirm Order**.
-You can also click **Add to Configuration Pricer** to save the configuration to purchase later. In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see
 
-**Unified Cloud Management Platform User Guide > Operation Center > Quota**
-
-**Management > Quota Management > Set/modify quotas for a single cloud**
-
-**product**.
+> **Note:** You can also click **Add to Configuration Pricer** to save the configuration to purchase later.
+> In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see **Unified Cloud Management Platform User Guide > Operation Center > Quota** **Management > Quota Management > Set/modify quotas for a single cloud** **product**.
 
 | Parameter | Description |
 |---|---|
@@ -812,13 +839,9 @@ You can create an image repository in Container Registry to upload your containe
 4.
 5. On the **Image Repositories** page, click **Create Image Repository**.
 6. On the **Create Repository** page, configure the parameters and then click **Confirm Order**.
-You can also click **Add to Configuration Pricer** to save the configuration to purchase later. In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see
 
-**Unified Cloud Management Platform User Guide > Operation Center > Quota**
-
-**Management > Quota Management > Set/modify quotas for a single cloud**
-
-**product**.
+> **Note:** You can also click **Add to Configuration Pricer** to save the configuration to purchase later.
+> In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see **Unified Cloud Management Platform User Guide > Operation Center > Quota** **Management > Quota Management > Set/modify quotas for a single cloud** **product**.
 
 | Parameter | Description |
 |---|---|
@@ -1068,7 +1091,9 @@ CLI.
 export yourUser.
 ```
 
-For Apsara Stack instances, instanceId is set to default. andard Edition
+> **Note:** For Apsara Stack instances, instanceId is set to default.
+
+andard Edition
 
 **Sign images**
 
@@ -1120,7 +1145,10 @@ force --version 2018-12-01 --endpoint cr.inter.env17e.shuguang.com --NamespaceNa
 **Appendix 1: Use GPG commands to generate publicKeyData**
 
 1. Run the following command to find the local GPG key user that you want to use:
-The user in the following example is `abcdef@example.com` . andard Edition
+
+> **Note:** The user in the following example is `abcdef@example.com` .
+
+andard Edition
 
 ```
 gpg --list-keyspub rsa2048 2020-01-08 [SC] [Valid until: 2022-01-07] 7726310BC6E11E9B57B9CC08E2932E4363F3***uid [absolute] abcdef <abcdef@example.com>sub rsa2048 202 0-01-08 [E] [Valid until: 2022-01-07]
@@ -1215,7 +1243,13 @@ To create a user or a user group, you must create an organization in advance.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
-Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
+
 3. Click **Log In**.
 4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
 choose **Resources > Organizations**.
@@ -1283,7 +1317,13 @@ The URL of the console that is obtained from the deployment personnel. A support
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console with an Alibaba Cloud account.
-You can obtain the username and password for the console from your operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You can obtain the username and password for the console from your operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types:
+> Uppercase or lowercase letters (A to Z, a to z)
+> Digits (0 to 9)
+> Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log In**.
 4. In the top navigation bar, select **Enterprise**.
 5. In the navigation pane on the left, choose **Permission Management****>** **Role Authorization**.
@@ -1562,7 +1602,9 @@ The following table describes the parameters in the ARN format.
 | namespacename | The namespace name. |
 | repositoryname | The name of the image repository. |
 
-Authentication rules When you access the Container Registry API as a RAM user or by using Security Token Service (STS), Container Registry checks whether you have obtained the required permissions. The permissions that Container Registry checks vary based on the resources that are requested by the API operation and the syntax of the API operation. The following table describes the authentication rules of different API operations. The asterisk (*) is used as a wildcard.
+Authentication rules When you access the Container Registry API as a RAM user or by using Security Token Service (STS), Container Registry checks whether you have obtained the required permissions. The permissions that Container Registry checks vary based on the resources that are requested by the API operation and the syntax of the API operation. The following table describes the authentication rules of different API operations.
+
+> **Note:** The asterisk (*) is used as a wildcard.
 
 | API | Action | Resource |
 |---|---|---|
@@ -1598,15 +1640,20 @@ This topic describes how to allocate resource quotas for a Container Registry Ad
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
 4. In the upper-left corner of the Resource Pool Configuration page, select a cloud platform, region ID,
-and zone. The Cloud Platform drop-down list is displayed only in multi-cloud environments. If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+and zone.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+> If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+
 5. Click **Container Registry Advanced Edition**. In the **Resource Pool Details** panel, you can view the
 details of the Container Registry Advanced Edition instance, including **Resource Items**, **Logical**
 **Inventory**, **Physical Inventory**, and **Total Activated Resources**.
 6. In the **Resource Pool Details** panel, click **Configure Quota** in the lower part.
 7. In the **Configure Quota** dialog box, add or remove quota items. For more information about quotas,
-see Quota overview. After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify**
-**Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this
-option to synchronize the quota item configurations in this zone to other zones.
+see Quota overview.
+
+> **Note:** After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify** **Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this option to synchronize the quota item configurations in this zone to other zones.
+
 **Add quota items**: In the **Available Quotas** list, select the quota items that you want to add and
 click the icon to add the quota items to the **Selected Quota Items** list.
 **Remove quota items**: In the **Selected Quota Items** list, select the quota items that you want to
@@ -1622,7 +1669,10 @@ organization administrator.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. In the upper-left corner of the **Quotas** page, select a cloud platform from the Cloud Platform drop-
-down list. The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+down list.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+
 5. On the right side of the product, set Region, Region, and Zone.
 6. In the left-side organizational structure of the Quotas page, select the organization or resource set
 whose resources you want to manage.
@@ -1682,7 +1732,9 @@ This topic describes the quotas that you can configure for Container Registry Ad
 
 **Calculation methods of quota usage**
 
-Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of namespaces that are created for Container Registry Advanced Edition Usage of Apsara Stack Advanced Edition Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Advanced Edition The quota usage is calculated based on the number of resource instances.
+Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of namespaces that are created for Container Registry Advanced Edition Usage of Apsara Stack Advanced Edition Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Advanced Edition
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -1697,13 +1749,11 @@ This topic describes how to create a namespace in an Enterprise Edition instance
 4.
 5. On the **Namespaces** page, click **Create Namespace**.
 6. On the **Create Namespace** page, configure the namespace name, automatic repository creation, and
-default repository type, and then click **Confirm Order**. You can also click **Add to Configuration Pricer** to save the configuration to purchase later. In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see
+default repository type, and then click **Confirm Order**.
 
-**Unified Cloud Management Platform User Guide > Operation Center > Quota**
+> **Note:** You can also click **Add to Configuration Pricer** to save the configuration to purchase later.
+> In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see **Unified Cloud Management Platform User Guide > Operation Center > Quota** **Management > Quota Management > Set/modify quotas for a single cloud** **product**.
 
-**Management > Quota Management > Set/modify quotas for a single cloud**
-
-**product**.
 By default, pushing an image automatically creates a repository. You can disable the automatic repository creation feature by setting it to Off. Automatically created repositories are private by default. You can set the default repository type to public, so that automatically created repositories are public by default.
 
 | Parameter | Description |
@@ -1726,8 +1776,9 @@ The system allows you to modify the types of existing images and new images. Thi
 
 4.
 5. In the namespace list, click **Public** or **Private** in the **Default Repository Type** column.
-If the **Automatically Create Repository** feature is disabled, you must enable the **Automatically**
-**Create Repository** feature before you can set the **Default Repository Type** parameter.
+
+> **Note:** If the **Automatically Create Repository** feature is disabled, you must enable the **Automatically** **Create Repository** feature before you can set the **Default Repository Type** parameter.
+
 6. In the dialog box that appears, select **Inventory and new images are modified** or **Add only**
 **Image modifications** based on your business requirements, and then click **OK**.
 
@@ -1773,9 +1824,7 @@ By default, if you push an image to a repository that does not exist in a namesp
 
 You can click **Delete** in the **Operation** column of a namespace to delete the namespace.
 
-**Important**
-
-After a **namespace** is deleted, you can no longer access repositories in the namespace. Proceed with caution.
+> **Important:** After a **namespace** is deleted, you can no longer access repositories in the namespace. Proceed with caution.
 
 #### 4.7.3 Delete a namespace
 
@@ -1829,7 +1878,8 @@ This topic describes how to manage chart repositories on a Container Registry Ad
 
 **Modify a chart repository**
 
-You cannot change the namespace of a chart repository.
+> **Note:** You cannot change the namespace of a chart repository.
+
 1. On the **chart warehouse** tab, click **Editor** in the **Operation** column of a chart repository.
 2. On the **Edit the Chart repository** page, modify **Warehouse name**, **Warehouse type**, and
 **Description** and click **OK**.
@@ -1857,9 +1907,9 @@ a. On the **Chart Management** tab, click **Version** in the Operation column of
 To delete a chart version, click **Delete** in the **Operation** column of the version and click **OK**.
 **Delete a chart file**:
 
-**Important**
+> **Important:** After you delete a chart file, all versions of the chart file are deleted. Proceed with caution.
 
-After you delete a chart file, all versions of the chart file are deleted. Proceed with caution. a. On the **Chart Management** tab, click **Delete** in the Operation column of a chart. b. Click **OK**.
+a. On the **Chart Management** tab, click **Delete** in the Operation column of a chart. b. Click **OK**.
 
 #### 4.7.6 Create a synchronization source
 
@@ -1902,7 +1952,9 @@ ii. Modify the synchronization source information and click **OK**.
 
 i. In the list of synchronization sources, find the target synchronization source and click **Delete** in the
 **Actions** column.
-ii. In the confirmation dialog box, click **OK**. Deleting a synchronization source does not remove Chart packages already synchronized to your instance. It only stops future synchronizations.
+ii. In the confirmation dialog box, click **OK**.
+
+> **Note:** Deleting a synchronization source does not remove Chart packages already synchronized to your instance. It only stops future synchronizations.
 
 #### 4.7.7 Add a chart whitelist
 
@@ -1914,7 +1966,8 @@ Use an IP whitelist for access control to secure your chart repository. This ens
 5. On the **Chart repository** page, click the **Access control** tab.
 6. Turn on the **Chart ACL access control** switch, and then click **Add chart whitelist**.
 7. In the **Add chart whitelist** dialog box, set **entry** and **description**, and then click **OK**.
-Only IP addresses on the whitelist can access the instance's Helm chart repository.
+
+> **Note:** Only IP addresses on the whitelist can access the instance's Helm chart repository.
 
 **Additional operations**
 
@@ -1929,13 +1982,9 @@ This topic shows you how to create a repository in an Advanced Edition instance.
 4.
 5. On the **Repositories** page, click **Create repository**.
 6. On the **Create repository** page, set the following parameters and click **Confirm order**.
-You can also click **Add to Configuration Pricer** to save the configuration to purchase later. In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see
 
-**Unified Cloud Management Platform User Guide > Operation Center > Quota**
-
-**Management > Quota Management > Set/modify quotas for a single cloud**
-
-**product**.
+> **Note:** You can also click **Add to Configuration Pricer** to save the configuration to purchase later.
+> In the **Quota Overview** area on the right, you can view the current configuration. Click a field to quickly navigate to the corresponding section. To the right of **Quota**, click **Manage** to go to the **Quota Management** page and adjust quotas. For more information, see **Unified Cloud Management Platform User Guide > Operation Center > Quota** **Management > Quota Management > Set/modify quotas for a single cloud** **product**.
 
 | Parameter | Description |
 |---|---|
@@ -2014,7 +2063,8 @@ This topic describes how to delete a repository in an Enterprise Edition instanc
 4.
 5. On the **Repositories** page, find the repository to delete and click **Delete** in the **Actions** column.
 6. In the dialog box that appears, select the **Move to Recycle Bin** checkbox, and then click **OK**.
-You can restore or permanently delete the repository from the Recycle Bin.
+
+> **Note:** You can restore or permanently delete the repository from the Recycle Bin.
 
 **Next steps**
 
@@ -2023,9 +2073,7 @@ You can restore or permanently delete the repository from the Recycle Bin.
 1. Click the **Recycle Bin** tab. Find the repository to restore and click **Restore** in the **Actions** column.
 2. In the confirmation dialog box, read the message and click **OK**.
 
-**Important**
-
-This action restores the repository and all its image versions from the Recycle Bin. If a repository with the same name already exists in the target location, the system reports a conflict error.
+> **Important:** This action restores the repository and all its image versions from the Recycle Bin. If a repository with the same name already exists in the target location, the system reports a conflict error.
 
 **Permanently delete a repository**
 
@@ -2033,9 +2081,7 @@ This action restores the repository and all its image versions from the Recycle 
 in the **Actions** column.
 2. In the confirmation dialog box, read the message and click **OK**.
 
-**Important**
-
-This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
+> **Important:** This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
 
 ### 4.11 Export image information
 
@@ -2051,7 +2097,8 @@ Custom export fields are not supported. Only the images on which the permissions
 icon in the upper-right corner of the image list.
 5. In the **New Download Task** dialog box, confirm the download path and file name, and then click
 **Download** to export the data as an Excel file.
-After the download is complete, you can view the exported file on your on-premises machine.
+
+> **Note:** After the download is complete, you can view the exported file on your on-premises machine.
 
 ### 4.12 Configure an access credential
 
@@ -2071,7 +2118,9 @@ Access credentials are independent of Apsara Stack accounts and passwords. Acces
 
 4.
 5. On the **Access Credential** page, click **Set a fixed password**.
-On the right side of **Fixed password**, you can view whether a password has been set. Password: A password is valid permanently. Keep it safe. If the password is lost, you can reset it.
+
+> **Note:** On the right side of **Fixed password**, you can view whether a password has been set. Password: A password is valid permanently. Keep it safe. If the password is lost, you can reset it.
+
 6. In the **Set a fixed password** dialog box, configure the **Password** and **Confirm password**
 parameters. Then, click **OK**.
 7. **Optional.** For more information about how to set a temporary token, see **GetAuthorizationToken** of
@@ -2123,9 +2172,10 @@ Upload an image a. On the **Image Details** page, click **Upload Image**. b. In 
 **Open**, and then click **OK**.
 Download an image a. On the **Image Details** page, click **Download** in the **Actions** column of the desired image. b. In the **Confirm Download** message, read the information and click **OK**.
 
-**Important**
+> **Important:** Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible.
+> The download task is executed in the background. The validity period of the generated package is 24 hours.
 
-Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible. The download task is executed in the background. The validity period of the generated package is 24 hours. c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
+c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
 
 ### 4.14 Configure a trigger
 
@@ -2195,9 +2245,10 @@ After you configure an instance synchronization rule, pushing an image to the so
 | Source repository | Note This parameter is displayed only when Synchronization level is set to Repository. Specify the repository name to synchronize. |
 | Tag filter | Enter a regular expression to filter image tags. By default, all tags are synchronized. |
 
-**Important**
+> **Important:** The target instance must contain a namespace with the same name as the source, and a repository with the same name if the synchronization level is set to repository. Otherwise, the rule creation will fail. Select the source and click **Check** to confirm that the target is ready.
+> If a namespace or repository with the same name does not exist in the destination instance, create them first. For more information, see Create a namespace and Create an image repository.
 
-The target instance must contain a namespace with the same name as the source, and a repository with the same name if the synchronization level is set to repository. Otherwise, the rule creation will fail. Select the source and click **Check** to confirm that the target is ready. If a namespace or repository with the same name does not exist in the destination instance, create them first. For more information, see Create a namespace and Create an image repository. When you push an image to the source instance, instance synchronization is automatically triggered. On the management page of the Advanced Edition instance, select **Synchronization Records**. On the **Synchronization Records** page, you can see that the status of the synchronization task is Successful, and the pushed image is visible in the target instance. This indicates that the instance synchronization within the same account was successful. In the **Actions** column for the synchronization task: Click **Details** to view the synchronization path, artifact-level information (**artifact digest**, **Type**,
+When you push an image to the source instance, instance synchronization is automatically triggered. On the management page of the Advanced Edition instance, select **Synchronization Records**. On the **Synchronization Records** page, you can see that the status of the synchronization task is Successful, and the pushed image is visible in the target instance. This indicates that the instance synchronization within the same account was successful. In the **Actions** column for the synchronization task: Click **Details** to view the synchronization path, artifact-level information (**artifact digest**, **Type**,
 **operating system/architecture**, **Artifact size**, **Synced size**, and **Sync status**), and layer-level
 details (**Layer digest**, **Layer size**, **Synced size**, and **Sync status**). Use this information to confirm whether the tag is fully synchronized and to pinpoint the transfer status of a specific layer. Click **retry**. In the dialog box that appears, click **OK** to retry the synchronization task.
 
@@ -2240,7 +2291,8 @@ Container Registry allows you to configure a repository to be immutable to preve
 in the **Operation** column.
 6. On the Basic Information page, click **Edit**.
 7. In the **Modify Basic Information** dialog box, select **Immutable** for **Image Tag** and click **OK**.
-To configure a repository to be mutable, clear **Immutable**.
+
+> **Note:** To configure a repository to be mutable, clear **Immutable**.
 
 **Verify the results**
 
@@ -2437,7 +2489,8 @@ To prevent man-in-the-middle ((MITM)) attacks and the update and running of inva
 4. On the **Create Key** page, select an **organization**. The system automatically populates the **resource**
 **set** and **region** fields.
 5. In the **Basic configurations** section, configure the following parameters.
-The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Purpose parameter to SIGN/VERIFY. Other parameters are configured based on your business.
+
+> **Note:** The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Purpose parameter to SIGN/VERIFY. Other parameters are configured based on your business.
 
 | Paramete rs | Description | Example |
 |---|---|---|
@@ -2526,7 +2579,9 @@ click **Create a signature rule**.
 5. In the **Key Configuration** step, select the witness that you created in the Security Center console and
 associate the witness with the KMS key. Then, click **Next**.
 6. In the **Signature Configurations** step, configure parameters and click **Create Signing Rule**.
-A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
+
+> **Note:** A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
+
 **Signing Algorithm**: **RSA_PSS_SHA_256** or **RSA_PKCS1_SHA_256** of the two available signing
 algorithms.
 **Signing Range**: Select the namespace that you want to automatically sign.
@@ -2543,9 +2598,9 @@ indicating that image signing is automatically triggered for each image that is 
 For more information about image signature verification, see **kritis-validation-hook** of **Kubernetes**
 **Clusters > Components > Component overview** in the **ACK User Guide**.
 
-**Usage note**
-
-You can use kritis-validation-hook to automatically verify image signatures in ACK clusters. You can set a policy to block image deployment if image signatures fail the verification. We recommend that you use this method. You can also verify image signatures in Container Registry by using the signature verification feature of **KMS**.
+> **Usage note**
+> You can use kritis-validation-hook to automatically verify image signatures in ACK clusters. You can set a policy to block image deployment if image signatures fail the verification. We recommend that you use this method.
+> You can also verify image signatures in Container Registry by using the signature verification feature of **KMS**.
 
 ## 5 Container Registry Multi-instance Edition
 
@@ -2560,12 +2615,8 @@ Before you can use the Container Registry multi-instance edition, you must first
 Ensure you have granted the Container Registry multi-instance edition permission to access your OSS Bucket. For more information, see Configure RAM access control for OSS Buckets.
 3. On the **Instance List** page, click **Create Instance**.
 4. On the **Create Instance** page, configure the following parameters, then click **Submit**.
-In the **Quota Overview** section on the right, you can review the current configuration and click a parameter to navigate to the corresponding setting. To adjust quotas, click **Manage** next to
-**Quota** to open the **Quota Management** page. For more information, see **Set/Modify Quotas**
 
-**for a Single Cloud Product > Quota Management > Operations Center > Unified Cloud**
-
-**Management Platform User Guide**.
+> **Note:** In the **Quota Overview** section on the right, you can review the current configuration and click a parameter to navigate to the corresponding setting. To adjust quotas, click **Manage** next to **Quota** to open the **Quota Management** page. For more information, see **Set/Modify Quotas** **for a Single Cloud Product > Quota Management > Operations Center > Unified Cloud** **Management Platform User Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -2575,7 +2626,8 @@ In the **Quota Overview** section on the right, you can review the current confi
 | Bucket capacity | Leave this blank or enter 0 for unlimited capacity. The unit is GB. |
 
 5. In the **Operation Successful** dialog box, click **OK**.
-Based on your business needs, you can follow the steps above to create multiple multi-instance edition instances in the same region.
+
+> **Note:** Based on your business needs, you can follow the steps above to create multiple multi-instance edition instances in the same region.
 
 **View an instance**
 
@@ -2649,7 +2701,13 @@ To create a user or a user group, you must create an organization in advance.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
-Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
+
 3. Click **Log In**.
 4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
 choose **Resources > Organizations**.
@@ -2717,7 +2775,13 @@ The URL of the console that is obtained from the deployment personnel. A support
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
 key.
 2. Log on to the Apsara Uni-manager Management Console with an Alibaba Cloud account.
-You can obtain the username and password for the console from your operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You can obtain the username and password for the console from your operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change your password. Follow the prompts to change the password. For security purposes, your password must be 8 to 20 characters long and contain characters from at least two of the following types:
+> Uppercase or lowercase letters (A to Z, a to z)
+> Digits (0 to 9)
+> Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log In**.
 4. In the top navigation bar, select **Enterprise**.
 5. In the navigation pane on the left, choose **Permission Management****>** **Role Authorization**.
@@ -2996,7 +3060,9 @@ The following table describes the parameters in the ARN format.
 | namespacename | The namespace name. |
 | repositoryname | The name of the image repository. |
 
-Authentication rules When you access the Container Registry API as a RAM user or by using Security Token Service (STS), Container Registry checks whether you have obtained the required permissions. The permissions that Container Registry checks vary based on the resources that are requested by the API operation and the syntax of the API operation. The following table describes the authentication rules of different API operations. The asterisk (*) is used as a wildcard.
+Authentication rules When you access the Container Registry API as a RAM user or by using Security Token Service (STS), Container Registry checks whether you have obtained the required permissions. The permissions that Container Registry checks vary based on the resources that are requested by the API operation and the syntax of the API operation. The following table describes the authentication rules of different API operations.
+
+> **Note:** The asterisk (*) is used as a wildcard.
 
 | API | Action | Resource |
 |---|---|---|
@@ -3205,15 +3271,20 @@ This topic describes how to allocate resource quotas for a Container Registry Mu
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
 4. In the upper-left corner of the Resource Pool Configuration page, select a cloud platform, region ID,
-and zone. The Cloud Platform drop-down list is displayed only in multi-cloud environments. If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+and zone.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+> If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+
 5. Click **Container Registry Advanced Edition**. In the **Resource Pool Details** panel, you can view the
 details of the Container Registry Advanced Edition instance, including **Resource Items**, **Logical**
 **Inventory**, **Physical Inventory**, and **Total Activated Resources**.
 6. In the **Resource Pool Details** panel, click **Configure Quota** in the lower part.
 7. In the **Configure Quota** dialog box, add or remove quota items. For more information about quotas,
-see Quota description. After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify**
-**Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this
-option to synchronize the quota item configurations in this zone to other zones.
+see Quota description.
+
+> **Note:** After you select a zone on the Resource Pool Configuration page, the **Synchronously Modify** **Quotas in Other Zones** option appears in the Configure Quota dialog box. You can select this option to synchronize the quota item configurations in this zone to other zones.
+
 **Add quota items**: In the **Available Quotas** list, select the quota items that you want to add and
 click the icon to add the quota items to the **Selected Quota Items** list.
 **Remove quota items**: In the **Selected Quota Items** list, select the quota items that you want to
@@ -3229,7 +3300,10 @@ organization administrator.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. In the upper-left corner of the **Quotas** page, select a cloud platform from the Cloud Platform drop-
-down list. The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+down list.
+
+> **Note:** The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+
 5. On the right side of the product, set Region, Region, and Zone.
 6. In the left-side organizational structure of the Quotas page, select the organization or resource set
 whose resources you want to manage.
@@ -3284,7 +3358,9 @@ This topic describes the quotas that you can configure for Container Registry Mu
 
 **Calculation methods of quota usage**
 
-Usage of Apsara Stack Multi-instance Edition instance quota (units) = Number of Container Registry Multi-instance Edition instances that have been used The quota usage is calculated based on the number of resource instances.
+Usage of Apsara Stack Multi-instance Edition instance quota (units) = Number of Container Registry Multi-instance Edition instances that have been used
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -3299,12 +3375,11 @@ This topic describes how to create a namespace in an Enterprise Edition instance
 4.
 5. On the **Namespace** page, click **Create Namespace**.
 6. On the **Create Namespace** page, set the namespace name, specify whether to automatically create
-repositories, and select the default repository type. Then, click **Confirm Order**. You can also click **Add to Configuration Pricer** to save the configuration to purchase later. In the **Quota Overview** section on the right, you can view the current configuration. Click a field to quickly jump to the corresponding setting. You can adjust quotas on the **Quota**
-**Management** page. For more information, see **Unified Cloud Management Platform**
+repositories, and select the default repository type. Then, click **Confirm Order**.
 
-**User Guide > Operations Center > Quota Management > Quota Management >**
+> **Note:** You can also click **Add to Configuration Pricer** to save the configuration to purchase later.
+> In the **Quota Overview** section on the right, you can view the current configuration. Click a field to quickly jump to the corresponding setting. You can adjust quotas on the **Quota** **Management** page. For more information, see **Unified Cloud Management Platform** **User Guide > Operations Center > Quota Management > Quota Management >** **Set/Modify Quotas for a Single Cloud Product** .
 
-**Set/Modify Quotas for a Single Cloud Product** .
 By default, when you push an image, the system automatically creates a repository if a repository with the same name does not already exist. You can disable this feature by turning off the **Automatically create repository** setting. Repositories that are automatically created when you push an image are private by default. To make automatically created repositories public by default, set the **default repository type** to
 **Public Repository**.
 
@@ -3329,8 +3404,9 @@ The system allows you to modify the types of existing images and new images. Thi
 
 4.
 5. In the namespace list, click **Public** or **Private** in the **Default Repository Type** column.
-If the **Automatically Create Repository** feature is disabled, you must enable the **Automatically**
-**Create Repository** feature before you can set the **Default Repository Type** parameter.
+
+> **Note:** If the **Automatically Create Repository** feature is disabled, you must enable the **Automatically** **Create Repository** feature before you can set the **Default Repository Type** parameter.
+
 6. In the dialog box that appears, select **Inventory and new images are modified** or **Add only**
 **Image modifications** based on your business requirements, and then click **OK**.
 
@@ -3353,11 +3429,9 @@ This topic describes how to create an image repository in an Enterprise Edition 
 
 4.
 5. On the **Create Image Repository** page, set the parameters and click **Confirm Order**.
-Alternatively, click **Add to Quote** to save the configuration for later purchase. The **Quota Overview** section on the right displays the current configuration. Click a field to navigate to the corresponding setting. You can adjust quotas on the **quota management** page. For more information, see **Unified Cloud Management Platform User Guide >**
 
-**Operations center > Quota management > Quota management > Set/modify**
-
-**quotas for a single cloud product**.
+> **Note:** Alternatively, click **Add to Quote** to save the configuration for later purchase.
+> The **Quota Overview** section on the right displays the current configuration. Click a field to navigate to the corresponding setting. You can adjust quotas on the **quota management** page. For more information, see **Unified Cloud Management Platform User Guide >** **Operations center > Quota management > Quota management > Set/modify** **quotas for a single cloud product**.
 
 | Parameter | Description |
 |---|---|
@@ -3437,7 +3511,8 @@ This topic describes how to delete image repositories in an Enterprise Edition i
 5. On the **image repository** page, find the repository you want to delete and click **delete** in the **actions**
 column.
 6. In the dialog box that appears, select **Move to Recycle Bin** and click **OK**.
-You can restore or permanently delete the image repository from the recycle bin.
+
+> **Note:** You can restore or permanently delete the image repository from the recycle bin.
 
 **Next steps**
 
@@ -3446,9 +3521,7 @@ You can restore or permanently delete the image repository from the recycle bin.
 1. Click the **Recycle Bin** tab. Find the repository to restore and click **Restore** in the **Actions** column.
 2. In the confirmation dialog box, read the message and click **OK**.
 
-**Important**
-
-This action restores the repository and all its image versions from the Recycle Bin. If a repository with the same name already exists in the target location, the system reports a conflict error.
+> **Important:** This action restores the repository and all its image versions from the Recycle Bin. If a repository with the same name already exists in the target location, the system reports a conflict error.
 
 **Permanently delete a repository**
 
@@ -3456,9 +3529,7 @@ This action restores the repository and all its image versions from the Recycle 
 in the **Actions** column.
 2. In the confirmation dialog box, read the message and click **OK**.
 
-**Important**
-
-This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
+> **Important:** This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
 
 ### 5.11 Export image information
 
@@ -3475,7 +3546,8 @@ Custom export fields are not supported. Only the images on which the permissions
 icon in the upper-right corner of the image list.
 6. In the **New Download Task** dialog box, confirm the download path and file name, and then click
 **Download** to export the data as an Excel file.
-After the download is complete, you can view the exported file on your on-premises machine.
+
+> **Note:** After the download is complete, you can view the exported file on your on-premises machine.
 
 ### 5.12 Configure an access credential
 
@@ -3495,7 +3567,9 @@ Access credentials are independent of Apsara Stack accounts and passwords. Acces
 
 4.
 5. On the **Access Credential** page, click **Set a fixed password**.
-On the right side of **Fixed password**, you can view whether a password has been set. Password: A password is valid permanently. Keep it safe. If the password is lost, you can reset it.
+
+> **Note:** On the right side of **Fixed password**, you can view whether a password has been set. Password: A password is valid permanently. Keep it safe. If the password is lost, you can reset it.
+
 6. In the **Set a fixed password** dialog box, configure the **Password** and **Confirm password**
 parameters. Then, click **OK**.
 7. **Optional.** For more information about how to set a temporary token, see **GetAuthorizationToken** of
@@ -3513,11 +3587,17 @@ An instance is created. For more information, see Create an instance.
 
 4.
 5. On the **Access control** page, turn on **Access Entrance**.
-If **Access Entrance** is turned off, Internet access is disabled.
+
+> **Note:** If **Access Entrance** is turned off, Internet access is disabled.
+
 6. In the message that appears, click **OK**.
-After access control is enabled, a whitelist is added by default. Only the IP addresses in the whitelist can access Container Registry domain names.
+
+> **Note:** After access control is enabled, a whitelist is added by default. Only the IP addresses in the whitelist can access Container Registry domain names.
+
 7. Click **Add public whitelist**. In the dialog box that appears, enter the CIDR block that is allowed to
-access Container Registry domain names and the remarks, and then click **OK**. You can click **Delete** in the Operation column to remove the public IP address whitelist.
+access Container Registry domain names and the remarks, and then click **OK**.
+
+> **Note:** You can click **Delete** in the Operation column to remove the public IP address whitelist.
 
 **Verify the result**
 
@@ -3525,7 +3605,9 @@ access Container Registry domain names and the remarks, and then click **OK**. Y
 3. On the **Image Repository** page, find the image repository that you want to manage and click
 **Management** in the Operation column.
 4. Refer to the step descriptions on the **Image Instructions** tab of the **Basic Information** page. Log in
-to a public IP address in the public IP address whitelist. Then, upload and download an image. For more information, see Upload and download images. A successful image upload or download indicates that the public IP address whitelist is successfully configured. Replace <Repository address> in the command with the domain name obtained in Step 1.
+to a public IP address in the public IP address whitelist. Then, upload and download an image. For more information, see Upload and download images. A successful image upload or download indicates that the public IP address whitelist is successfully configured.
+
+> **Note:** Replace <Repository address> in the command with the domain name obtained in Step 1.
 
 ### 5.14 Upload and download images
 
@@ -3573,9 +3655,10 @@ Upload an image a. On the **Image Details** page, click **Upload Image**. b. In 
 **Open**, and then click **OK**.
 Download an image a. On the **Image Details** page, click **Download** in the **Actions** column of the desired image. b. In the **Confirm Download** message, read the information and click **OK**.
 
-**Important**
+> **Important:** Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible.
+> The download task is executed in the background. The validity period of the generated package is 24 hours.
 
-Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible. The download task is executed in the background. The validity period of the generated package is 24 hours. c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
+c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
 
 ### 5.15 Configure a trigger
 
@@ -3650,9 +3733,10 @@ You can create an instance synchronization rule to automatically synchronize an 
 | Source repository | Note This parameter is displayed only when Synchronization level is set to Repository. Specify the repository name to synchronize. |
 | Tag filter | Enter a regular expression to filter image tags. By default, all tags are synchronized. |
 
-**Important**
+> **Important:** The destination instance must contain a namespace with the same name as the source namespace. If the synchronization level is set to repository, a repository with the same name must also exist in the destination instance. Otherwise, the rule creation fails. After selecting the source, click **Check** to verify that the destination is configured correctly.
+> If a namespace or repository with the required name does not exist in the destination instance, create them first. For more information, see Create a namespace and Create an image repository.
 
-The destination instance must contain a namespace with the same name as the source namespace. If the synchronization level is set to repository, a repository with the same name must also exist in the destination instance. Otherwise, the rule creation fails. After selecting the source, click **Check** to verify that the destination is configured correctly. If a namespace or repository with the required name does not exist in the destination instance, create them first. For more information, see Create a namespace and Create an image repository. Pushing an image to the source instance automatically triggers the instance synchronization task. On the management page of the Enterprise Edition instance, select **Synchronization Records**. On the **Synchronization Records** page, you can see that the status of the synchronization task is
+Pushing an image to the source instance automatically triggers the instance synchronization task. On the management page of the Enterprise Edition instance, select **Synchronization Records**. On the **Synchronization Records** page, you can see that the status of the synchronization task is
 **Synchronization successful** and the pushed image is available in the target instance, which
 indicates that instance synchronization under the same account is successful. In the **Actions** column of the synchronization task: Click **Details** to view the synchronization path, artifact-level information (**Artifact Digest**, **Type**,
 **OS/architecture**, **Artifact Size**, **Synchronized Size**, and **Synchronization Status**), and layer
@@ -3702,7 +3786,8 @@ Container Registry allows you to configure a repository to be immutable to preve
 in the **Operation** column.
 6. On the Basic Information page, click **Edit**.
 7. In the **Modify Basic Information** dialog box, select **Immutable** for **Image Tag** and click **OK**.
-To configure a repository to be mutable, clear **Immutable**.
+
+> **Note:** To configure a repository to be mutable, clear **Immutable**.
 
 **Verify the results**
 
@@ -3899,7 +3984,8 @@ To prevent man-in-the-middle (MITM) attacks and the update and running of invali
 4. On the **Create Key** page, select an **organization**. The system automatically populates the **resource**
 **set** and **region** fields.
 5. In the **Basic configurations** section, configure the following parameters.
-The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Purpose parameter to SIGN/VERIFY. Other parameters are configured based on your business.
+
+> **Note:** The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Purpose parameter to SIGN/VERIFY. Other parameters are configured based on your business.
 
 | Paramete r | Description | Example |
 |---|---|---|
@@ -3989,7 +4075,9 @@ click **Create a signature rule**.
 5. In the **Key Configuration** step, select the witness that you created in the Security Center console and
 associate the witness with the KMS key. Then, click **Next**.
 6. In the **Signature Configurations** step, configure the parameters and click **Create Signing Rule**.
-A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
+
+> **Note:** A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
+
 **Algorithms**: You can select **RSA_PSS_SHA_256** or **RSA_PKCS1_SHA_256**.
 **Scope**: Select the instance or namespace that you want to automatically sign.
 **Signature Type**:
@@ -4005,4 +4093,6 @@ indicating that image signing is automatically triggered for each image that is 
 For more information about image signature verification, see **Use kritis-validation-hook to automate**
 **image signature verification** of **Kubernetes Clusters > Application management** in the **ACK**
 **User Guide**.
-You can use kritis-validation-hook to automatically verify image signatures in Container Service for Kubernetes (ACK) clusters. You can set a policy to block image deployment if image signatures fail the verification. We recommend that you use this method. You can also verify image signatures in Container Registry by using the signature verification feature of **KMS**.
+
+> **Note:** You can use kritis-validation-hook to automatically verify image signatures in Container Service for Kubernetes (ACK) clusters. You can set a policy to block image deployment if image signatures fail the verification. We recommend that you use this method.
+> You can also verify image signatures in Container Registry by using the signature verification feature of **KMS**.

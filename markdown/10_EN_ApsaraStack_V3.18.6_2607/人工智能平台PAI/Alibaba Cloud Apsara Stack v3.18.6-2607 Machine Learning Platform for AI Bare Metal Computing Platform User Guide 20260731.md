@@ -5,7 +5,7 @@ doc_version: "20260731"
 pdf_pages: 149
 source_pdf: "d7523c4461cd372f_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20User%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform User Guide 20260731
@@ -120,7 +120,9 @@ Bare Metal Computing Platform (BMCP) is a cutting-edge technical solution, desig
 
 **Characteristics and benefits**
 
-High performance: Bare metal servers delivers native hardware performance without the need for virtualization, enabling higher execution efficiency of computing-intensive and storage-intensive applications. Dedicated resources: Users are allocated dedicated physical server resources, eliminating the noisy neighbor effect. This ensures the more stable performance of computing and storage. Flexible configuration: Users can choose different hardware specifications, including CPU, memory, storage, and network resources, for different applications in order to balance performance and expenses. Fast provision: Compared with traditional physical servers, it requires less time to deploy bare metal instances in the BMCP platform, allowing users to quickly launch projects and efficiently reduces the release time of projects. Security and isolation: BMCP enhances security and isolation because users have full control over hardware resources. It applies to business scenarios that have high requirements on security and compliance. BMCP is an enterprise-class solution which best suits scientific research institutions that need to handle massive computing tasks, AI computing tasks, large-sized Internet enterprises, and the financial industry, providing them with a powerful and flexible computing environment.
+High performance: Bare metal servers delivers native hardware performance without the need for virtualization, enabling higher execution efficiency of computing-intensive and storage-intensive applications. Dedicated resources: Users are allocated dedicated physical server resources, eliminating the noisy neighbor effect. This ensures the more stable performance of computing and storage. Flexible configuration: Users can choose different hardware specifications, including CPU, memory, storage, and network resources, for different applications in order to balance performance and expenses. Fast provision: Compared with traditional physical servers, it requires less time to deploy bare metal instances in the BMCP platform, allowing users to quickly launch projects and efficiently reduces the release time of projects. Security and isolation: BMCP enhances security and isolation because users have full control over hardware resources. It applies to business scenarios that have high requirements on security and compliance.
+
+> **Note:** BMCP is an enterprise-class solution which best suits scientific research institutions that need to handle massive computing tasks, AI computing tasks, large-sized Internet enterprises, and the financial industry, providing them with a powerful and flexible computing environment.
 
 **Functions and features**
 
@@ -250,7 +252,9 @@ intelligent computing cluster, or bare metal-supercomputing cluster. To create a
 **Scale out a cluster**: You can scale out an existing cluster. Make sure that you have bare
 metal instances in the Bare-metal Management Service (BMS) console. Then, you can add bare metal instances (nodes) to your cluster in the BMCP console, and then configure the username and password used to log on to these instances.
 **Scale in a cluster**: You can scale in an existing cluster by removing bare metal instances
-(nodes) from the cluster in the BMCP cluster. After the bare metal instances are released, the system automatically deletes the OS and data on the disks. The bare metal instances are released to the bare metal resource pool. The procedure is only for managing intelligent computing clusters.
+(nodes) from the cluster in the BMCP cluster. After the bare metal instances are released, the system automatically deletes the OS and data on the disks. The bare metal instances are released to the bare metal resource pool.
+
+> **Note:** The procedure is only for managing intelligent computing clusters.
 
 ### 2.2 Log in to BMCP
 
@@ -262,7 +266,14 @@ To log on to BMCP, you must first log on to the Apsara Uni-manager Management Co
 1. In the address bar of the browser, enter the endpoint of the Apsara Uni-manager
 Management Console.
 2. Enter the username and password.
-Obtain the username and password used to log on to the Apsara Uni-manager Management Console from the operations administrator. If this is the first time you log on to the Apsara Uni-manager Management Console, you need to modify the username and password by following the on-screen instructions. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%) The admin account has full permissions. Proceed with caution when you use this accoun t.
+Obtain the username and password used to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** If this is the first time you log on to the Apsara Uni-manager Management Console, you need to modify the username and password by following the on-screen instructions. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+> The admin account has full permissions. Proceed with caution when you use this accoun t.
+
 3. Click **Log On** to log on to the Apsara Uni-manager Management Console.
 4. In the top navigation bar, choose **Products > Computing > BMCP** to log on to BMCP.
 
@@ -345,9 +356,7 @@ required, contact technical support in advance for impact assessment.
 |---|---|---|
 | System component | Operating system kernel | Unauthorized upgrade or replacement of kernel versions may cause incompatibility with kernel modules such as GPU and NIC drivers, leading to node unavailability. |
 
-**Important**
-
-The above configuration files and service processes are uniformly deployed and configured by the system during initial node provisioning. Do not modify them manually. If adjustments are required for business reasons, submit a ticket to technical support. Changes must be evaluated and applied uniformly by the O&M team. Unauthorized modifications may cause the node to be flagged as abnormal and trigger automatic isolation.
+> **Important:** The above configuration files and service processes are uniformly deployed and configured by the system during initial node provisioning. Do not modify them manually. If adjustments are required for business reasons, submit a ticket to technical support. Changes must be evaluated and applied uniformly by the O&M team. Unauthorized modifications may cause the node to be flagged as abnormal and trigger automatic isolation.
 
 ### 3.2 Linux system usage notes
 
@@ -379,9 +388,7 @@ issues:
 | Security risk | Unofficial kernels may contain unknown vulnerabilities and cannot receive official security updates. |
 | Rollback difficulty | Kernel rollback after an upgrade is complex. Issues in production environments may severely impact business operations. |
 
-**Important**
-
-If a kernel upgrade is required, thoroughly validate it in a test environment first and submit a ticket to technical support for impact assessment.
+> **Important:** If a kernel upgrade is required, thoroughly validate it in a test environment first and submit a ticket to technical support for impact assessment.
 
 **Network configuration**
 
@@ -494,9 +501,8 @@ configure other parameters.
 
 7. Click **Add Storage** to configure multiple storage resources for batch mount.
 8. After you complete the configuration, click **Submit**.
-You can also find the node to which you want to mount storage on the **Node**
-**Management** page, and click **Mount Storage** in the Actions column to mount third-
-party storage.
+
+> **Note:** You can also find the node to which you want to mount storage on the **Node** **Management** page, and click **Mount Storage** in the Actions column to mount third- party storage.
 
 #### 5.1.4 View operation records
 
@@ -512,7 +518,11 @@ i. Aggregation logs. a. View **aggregaion log** information, including operation
 | Operation Type | Operation types include Apply for Instance, Apply Again, O&M Instance, Mount Storage, Unmount Storage, Inspection and Diagnostics, Disable Tenant-side Authentication for Node, Register Bare Metal Resource, Apply for Bare Metal Resource, Initialize Bare Metal Resource, and Delete Bare Metal Resource. |
 | Operation Time | You can filter aggregation logs by setting a start date and an end date. |
 
-b. Click **Operation Details** for a target aggregation log to view its detailed information, including task type, subitem, start time, execution status, and description. Click **Retry** in the **Task Type** or **Subitem** column of a target task to re-execute a failed operation. Click in the **Actions** column of a failed task to diagnose the task. The diagnosis result includes **Exception Analysis** and **Solutions**. You can handle failed tasks based on the diagnosis result. The diagnosis feature depends on AI Base being deployed on the base and being online. ii. Operation logs. a. Click the **Operation Logs** tab. View **operation log** information, including operation name, operator, execution status, and operation source IP. You can use filter options or advanced filters to find operation logs that meet your requirements.
+b. Click **Operation Details** for a target aggregation log to view its detailed information, including task type, subitem, start time, execution status, and description. Click **Retry** in the **Task Type** or **Subitem** column of a target task to re-execute a failed operation. Click in the **Actions** column of a failed task to diagnose the task. The diagnosis result includes **Exception Analysis** and **Solutions**. You can handle failed tasks based on the diagnosis result.
+
+> **Note:** The diagnosis feature depends on AI Base being deployed on the base and being online.
+
+ii. Operation logs. a. Click the **Operation Logs** tab. View **operation log** information, including operation name, operator, execution status, and operation source IP. You can use filter options or advanced filters to find operation logs that meet your requirements.
 
 | Filter option | Description |
 |---|---|
@@ -522,9 +532,11 @@ b. Click **Operation Details** for a target aggregation log to view its detailed
 | Operation Source IP Address | You can enter a source IP for precise queries. |
 | Operation Time | Select a start date and an end date for the operation to query. |
 
-By default, the system retains operation logs for 7 days. To adjust this duration, contact your administrator to modify the retention period in Configuration > Log dump settings. For details, see the **Configuration**
-**center > Log dump settings** section in the Apsara Uni-manager Managem
-ent Console User Guide of the Apsara Stack documentation center. If you extend the retention period via dump settings, the system does not backfill historical log data. Advanced filtering allows you to apply multiple filter options sequentially. b. Click **Operation Details** for a target operation record to view detailed information.
+> **Note:** By default, the system retains operation logs for 7 days. To adjust this duration, contact your administrator to modify the retention period in Configuration > Log dump settings. For details, see the **Configuration** **center > Log dump settings** section in the Apsara Uni-manager Managem ent Console User Guide of the Apsara Stack documentation center.
+> If you extend the retention period via dump settings, the system does not backfill historical log data.
+> Advanced filtering allows you to apply multiple filter options sequentially.
+
+b. Click **Operation Details** for a target operation record to view detailed information.
 
 #### 5.1.5 View the monitoring data of a node
 
@@ -535,7 +547,11 @@ The node management module provides the node monitoring feature, which allows yo
 in the Actions column.
 4. On the Node Details page, click the **Monitoring** tab.
 5. View the monitoring data of a node.
-The metrics displayed in the BMCP console in your actual deployment environment prevail. For more information about the metrics, see Cluster monitoring. i. View the basic monitoring data. The **Basic Monitoring** tab is displayed by default. On this tab, you can view monitoring data in sections such as NODE_CPU_USAGE (%), NODE_MEM_USAGE (%), NODE_DISK_USAGE (%), NODE_LOAD (value), TCP_ESTAB (count), NETWORK_RX (MB/s), and NETWORK_TX (MB/s). You can also specify a time range to view the basic monitoring data. ii. View the GPU monitoring data. Click the **GPU Monitoring** tab. On this tab, you can view monitoring data in the following sections: **DCGM_FI-PROF_SM_Active (%)**, **DCGM_FI_PROF_PCIE-TX_BYTES (B/s)**,
+
+> **Note:** The metrics displayed in the BMCP console in your actual deployment environment prevail.
+> For more information about the metrics, see Cluster monitoring.
+
+i. View the basic monitoring data. The **Basic Monitoring** tab is displayed by default. On this tab, you can view monitoring data in sections such as NODE_CPU_USAGE (%), NODE_MEM_USAGE (%), NODE_DISK_USAGE (%), NODE_LOAD (value), TCP_ESTAB (count), NETWORK_RX (MB/s), and NETWORK_TX (MB/s). You can also specify a time range to view the basic monitoring data. ii. View the GPU monitoring data. Click the **GPU Monitoring** tab. On this tab, you can view monitoring data in the following sections: **DCGM_FI-PROF_SM_Active (%)**, **DCGM_FI_PROF_PCIE-TX_BYTES (B/s)**,
 **DCGM_FI_PROF_NVLINK_TX_BYTES (B/s)**, **DCGM_FI_PROF_NVLINK_RX_BYTES**
 **(B/s)**, **GPU_TEMP (°)**, **GPU_USAGE (%)**, and **GPU_POWER_USAGE (W)**. You can also
 specify a time range to view the GPU monitoring data. iii. View the RDMA monitoring data. Click the **RDMA Monitoring** tab. On this tab, you can view monitoring data in sections such as **rdma_tx_bytes (MB/s)**, **rdma_rx_bytes (MB/s)**, **rdma_out_of_buffer**
@@ -1003,18 +1019,13 @@ If the service management already contains a service where the cloud product is 
 **Metal Computing Platform (BMCP)** and the resource item matches the corresponding
 cluster type: Click **Confirm Order**. If the service management does not contain a service where the cloud product is **Bare**
 **Metal Computing Platform (BMCP)** and the resource item matches the corresponding
-cluster type: Click **Submit**. For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** . During scale-out, if the cluster type and instance type meet one of the following conditions:
-**Bare Metal - Intelligent Computing Cluster** : **Basic Intelligent Computing**,
-**Intelligent Computing High-bandwidth Network**, and **Intelligent**
-**Computing TrainingInference**.
-**ACK - Intelligent Computing Cluster** : **Basic Intelligent Computing**,
-**Intelligent Computing High-bandwidth Network**, and **Intelligent**
-**Computing Training and Inference**.
-**Converged Computing Cluster**: **Converged Basic** and **Converged High-**
-**bandwidth Network**.
-After you click **Confirm Order** or **Submit**, the system automatically checks whether the component versions of the selected machines are consistent. If inconsistent, the system displays a dialog box that lists the **SN**, **Component Type**, and **Component**
-**Version** of the inconsistent machines. After confirmation, click **OK** to complete the
-scale-out operation.
+cluster type: Click **Submit**. For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** .
+
+> **Note:** During scale-out, if the cluster type and instance type meet one of the following conditions:
+> **Bare Metal - Intelligent Computing Cluster** : **Basic Intelligent Computing**, **Intelligent Computing High-bandwidth Network**, and **Intelligent** **Computing TrainingInference**.
+> **ACK - Intelligent Computing Cluster** : **Basic Intelligent Computing**, **Intelligent Computing High-bandwidth Network**, and **Intelligent** **Computing Training and Inference**.
+> **Converged Computing Cluster**: **Converged Basic** and **Converged High-** **bandwidth Network**.
+> After you click **Confirm Order** or **Submit**, the system automatically checks whether the component versions of the selected machines are consistent. If inconsistent, the system displays a dialog box that lists the **SN**, **Component Type**, and **Component** **Version** of the inconsistent machines. After confirmation, click **OK** to complete the scale-out operation.
 
 #### 5.2.4 Scale in a cluster
 
@@ -1084,7 +1095,9 @@ and more. You can filter tasks by **Operation Type** and **Operating Time**.
 | Operating Time | You can filter by setting the start date and end date. |
 
 6. Click **Task details** on the right side of the target task row to view detailed information,
-including **Task Type**, **Subitem**, **Started At**, **Execution Status**, and **Description**. Click **Retry** in the **Task Type** or **Subitem** column of a target task to re-execute a failed operation. Click in the **Actions** column of a failed task to diagnose the task. The diagnosis result includes **Exception Analysis** and **Solutions**. You can handle failed tasks based on the diagnosis result. The diagnosis feature depends on AI Base being deployed on the base and being online.
+including **Task Type**, **Subitem**, **Started At**, **Execution Status**, and **Description**. Click **Retry** in the **Task Type** or **Subitem** column of a target task to re-execute a failed operation. Click in the **Actions** column of a failed task to diagnose the task. The diagnosis result includes **Exception Analysis** and **Solutions**. You can handle failed tasks based on the diagnosis result.
+
+> **Note:** The diagnosis feature depends on AI Base being deployed on the base and being online.
 
 #### 5.2.6 Storage management
 
@@ -1114,9 +1127,8 @@ The system supports CPFS and APFS.
 
 **Disable high-performance storage**
 
-**Important**
+> **Important:** By default, the disable operation unmounts all high-performance storage file systems mounted under the current client cluster. We recommend that you unmount file systems before disabling high-performance storage.
 
-By default, the disable operation unmounts all high-performance storage file systems mounted under the current client cluster. We recommend that you unmount file systems before disabling high-performance storage.
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Locate the target cluster and click
@@ -1135,20 +1147,26 @@ You have Enable high-performance storage.
 in the **Actions** column.
 4. Click **Storage Management > Mount**.
 5. On the **Mount** page, select **High-performance Storage** and enter **Mount Path**.
-After you specify a mount path, the system automatically creates the directory. You do not need to manually create the directory. Recommended format: /[Business name]_[Purpose] (for example,
+
+> **Note:** After you specify a mount path, the system automatically creates the directory. You do not need to manually create the directory.
+> Recommended format: /[Business name]_[Purpose] (for example,
 
 ```
  /ai_model_training ).
 ```
 
-To ensure stability, do not use the following paths: System-critical directories such as `/` , `/bin` , `/etc` , and `/tmp` . Paths that start with `/efs` (including `/efs/` custom paths). System-reserved paths. For example, if the file system ID is `efs-123456` , the default mount path is `/efs/123456` . If files already exist in the directory, these files become temporarily invisible after you mount the file system and can be restored after you unmount the file system.
+> To ensure stability, do not use the following paths:
+> System-critical directories such as `/` , `/bin` , `/etc` , and `/tmp` .
+> Paths that start with `/efs` (including `/efs/` custom paths).
+> System-reserved paths. For example, if the file system ID is `efs-123456` , the default mount path is `/efs/123456` .
+> If files already exist in the directory, these files become temporarily invisible after you mount the file system and can be restored after you unmount the file system.
+
 6. Click **OK**.
 
 **Unmount high-performance storage**
 
-**Important**
+> **Important:** When you unmount a file system, the system teminates all processes that are using this file system in the current cluster. This may cause data loss or service interruption. Proceed with caution.
 
-When you unmount a file system, the system teminates all processes that are using this file system in the current cluster. This may cause data loss or service interruption. Proceed with caution.
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Find the row that contains the target cluster and click
@@ -1268,9 +1286,8 @@ NAME STATUS AGE default Active 4h39m kube-node-lease Active 4h39m kube-public Ac
 
 In common multi-tenant scenarios, Container Service issues KubeConfig credentials embedded with identity information to users of different roles for connecting to clusters. When an internal employee leaves the company or a KubeConfig credential is suspected of being compromised, revoking the KubeConfig for that cluster effectively secures the cluster. This topic describes how to revoke your own KubeConfig credential in Container Service.
 
-**Important**
+> **Important:** After revoking the KubeConfig, you cannot use the original KubeConfig to connect to the cluster. Proceed with caution.
 
-After revoking the KubeConfig, you cannot use the original KubeConfig to connect to the cluster. Proceed with caution.
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. On the **Cluster Management** page, select **ACK - Intelligent Computing Cluster** for
@@ -1279,7 +1296,8 @@ After revoking the KubeConfig, you cannot use the original KubeConfig to connect
 5. On the cluster details page, click the **Connection Information** tab.
 6. Click **Revoke KubeConfig**.
 7. In the pop-up dialog box, click **OK**.
-After you revoke the KubeConfig credential of this cluster under your current account, the system automatically assigns you a new KubeConfig credential.
+
+> **Note:** After you revoke the KubeConfig credential of this cluster under your current account, the system automatically assigns you a new KubeConfig credential.
 
 #### 5.2.10 Software instances
 
@@ -1332,9 +1350,10 @@ You can use filters or advanced filters to find operation logs that meet your cr
 | Operation Source IP Address | Enter an operation source IP address for precise search. |
 | Operation Time | Select a start date and end date for the operation. |
 
-By default, the system retains operation logs for 7 days. To adjust this duration, contact your administrator to modify the retention period in Configuration > Log dump settings. For details, see the **Configuration center > Log dump**
-**settings** section in the Apsara Uni-manager Management Console User Guide of
-the Apsara Stack documentation center. If you extend the retention period via dump settings, the system does not backfill historical log data. Advanced filtering allows you to apply multiple filter options sequentially.
+> **Note:** By default, the system retains operation logs for 7 days. To adjust this duration, contact your administrator to modify the retention period in Configuration > Log dump settings. For details, see the **Configuration center > Log dump** **settings** section in the Apsara Uni-manager Management Console User Guide of the Apsara Stack documentation center.
+> If you extend the retention period via dump settings, the system does not backfill historical log data.
+> Advanced filtering allows you to apply multiple filter options sequentially.
+
 5. Click **Operation Details** for a target operation record to view detailed information.
 
 #### 5.2.12 Query cluster monitoring information
@@ -1346,7 +1365,11 @@ The system provides cluster monitoring in cluster management module. You can vie
 The cluster monitoring feature supports viewing performance metrics only for **bare metal -**
 **intelligent computing clusters**, **ACK - intelligent computing clusters** , and
 **converged computing clusters**, including monitoring data for resources such as
-instances, GPUs, and RDMA. The displayed monitoring metrics are subject to those shown in the Bare Metal Computing Platform (BMCP) console of your actual deployment environment. Monitoring metric data comes from the Cloud Monitor Service (CMS) platform.
+instances, GPUs, and RDMA.
+
+> **Note:** The displayed monitoring metrics are subject to those shown in the Bare Metal Computing Platform (BMCP) console of your actual deployment environment.
+
+Monitoring metric data comes from the Cloud Monitor Service (CMS) platform.
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. On the **Monitoring** dashboard or the **Monitoring** tab, view the monitoring information of
@@ -1367,10 +1390,9 @@ a. In the cluster list, click the cluster ID in the **Cluster ID/Name** column f
 | View Aspeed Management & Monitoring | Switch to the Aspeed Management & Monitoring tab to view metrics such as API requests per second, API end-to-end latency, and API request success rate. |
 |---|---|
 
-**Aspeed monitoring** and **Aspeed management & monitoring** support only
-**ACK - intelligent computing clusters** where the **cluster instance type** is
-**computing-optimized training and inference instance** and the Aspeed
-component is installed. Data collection for Aspeed monitoring and Aspeed management & monitoring depends on Managed Service for Prometheus. To use these features, purchase and deploy Managed Service for Prometheus to ensure proper collection and display of monitoring data. For more information about metric monitoring, see Cluster monitoring.
+> **Note:** **Aspeed monitoring** and **Aspeed management & monitoring** support only **ACK - intelligent computing clusters** where the **cluster instance type** is **computing-optimized training and inference instance** and the Aspeed component is installed.
+> Data collection for Aspeed monitoring and Aspeed management & monitoring depends on Managed Service for Prometheus. To use these features, purchase and deploy Managed Service for Prometheus to ensure proper collection and display of monitoring data.
+> For more information about metric monitoring, see Cluster monitoring.
 
 #### 5.2.13 Delete a cluster
 
@@ -1428,7 +1450,9 @@ mode: enabled nodes, partitioning units, and total shares.
 | Kernel-mode Interception Virtualization Mode | Includes Enable Node, GPU Memory Partition, Computing Power Partition, Total GPU Memory, and Total Computing Power. |
 | User-mode Interception Virtualization Mode | Includes Enable Node, GPU Memory Partition, Computing Power Partition, Total GPU Memory, and Total Computing Power. |
 
-For more information about GPU virtualization modes, see GPU virtualization. iii. **Allocated** Displays GPU resource allocation in the cluster, including allocation of **GPU** and **GPU**
+> **Note:** For more information about GPU virtualization modes, see GPU virtualization.
+
+iii. **Allocated** Displays GPU resource allocation in the cluster, including allocation of **GPU** and **GPU**
 **Virtualization**.
 
 ## 6 Recycle bin
@@ -1509,7 +1533,10 @@ follows:
 |   | Bucket Storage Path | The directory in the OSS bucket. The directory name must meet the following rules: The name must contain UTF-8 characters, and cannot contain emoticons. Forward slashes ( / ) are used in a directory name to indicate subdirectories. You can specify a directory name that contains multiple forward slashes (/) to create subdirectories in the directory. The directory name cannot start with a forward slash ( / ) or a backslash ( \ ), and cannot contain consecutive forward slashes ( / ). You cannot specify two consecutive periods ( .. ) as a subdirectory name. The directory name must be 1 to 254 characters in length. |
 
 5. Manage the backup vault.
-i. Modify the backup vault: Find the backup vault that you want to modify and click **Edit** in the **Actions** column. In the pop-up dialog box, modify the parameters and click **OK**. ii. Delete the backup vault: Find the backup vault that you want to delete and click **Delete** in the **Actions** column. In the pop-up dialog box, click **OK**. You cannot delete the backup vault associated with a backup plan. If snapshots are generated for the backup vault, the snapshots are also deleted after you delete the backup vault. Proceed with caution.
+i. Modify the backup vault: Find the backup vault that you want to modify and click **Edit** in the **Actions** column. In the pop-up dialog box, modify the parameters and click **OK**. ii. Delete the backup vault: Find the backup vault that you want to delete and click **Delete** in the **Actions** column. In the pop-up dialog box, click **OK**.
+
+> **Note:** You cannot delete the backup vault associated with a backup plan.
+> If snapshots are generated for the backup vault, the snapshots are also deleted after you delete the backup vault. Proceed with caution.
 
 **Step 2: Create a file backup**
 
@@ -1556,7 +1583,9 @@ You have created a backup vault.
 5. Associate the backup plan with nodes.
 i. Find the created backup plan and click **Associate Node** in the **Actions** column. ii. In the pop-up dialog box, select nodes and click **Bind Selected Nodes** at the bottom of the list. To disassociate the backup plan from nodes, click the **Bound Node** tab, select the nodes, and then click **Unbind Selected Nodes** at the bottom of the list.
 6. Manage the backup plan.
-Modify the backup plan: Find the target backup plan, and click **Edit** in the **Actions** column. In the pop-up dialog box, modify the parameters as required and click **OK**. Delete the backup plan: Find the target backup plan and click **Delete** in the **Actions** column. In the pop-up dialog box, click **OK**. You cannot be delete a backup plan associated with a node. To delete the backup plan, disassociate it from the node first.
+Modify the backup plan: Find the target backup plan, and click **Edit** in the **Actions** column. In the pop-up dialog box, modify the parameters as required and click **OK**. Delete the backup plan: Find the target backup plan and click **Delete** in the **Actions** column. In the pop-up dialog box, click **OK**.
+
+> **Note:** You cannot be delete a backup plan associated with a node. To delete the backup plan, disassociate it from the node first.
 
 **Step 2: Create a backup task**
 
@@ -1599,11 +1628,9 @@ Enter the AccessKey ID and AccessKey secret in the **[user ak]** and **[user sk]
 7. Log in to the node to which you want to roll data back as the root user and run the rollback
 script.
 
-**Important**
+> **Important:** The script restores the file system content retained in the snapshot in the **[dest** **path]** directory that you set. If the **[dest path]** destination directory is set to forward slash ( `/` ), the script overwrites the files in the source path.
+> If the script execution is interrupted, the files restored to the node from the snapshot may be damaged. Make sure that the script execution exits as expected.
 
-The script restores the file system content retained in the snapshot in the **[dest**
-**path]** directory that you set. If the **[dest path]** destination directory is set to
-forward slash ( `/` ), the script overwrites the files in the source path. If the script execution is interrupted, the files restored to the node from the snapshot may be damaged. Make sure that the script execution exits as expected.
 8. (Optional)If you no longer need the snapshot, click **Delete** in the **Actions** column. In the
 pop-up dialog box, click **OK**.
 
@@ -1623,8 +1650,9 @@ keyword to search images in fuzzy match mode.
 
 **What to do next**
 
-You can click **Container Registry** on the **Image Center** page to log on to the Container Registry console. For more information about Container Registry, see Apsara Stack Container Registry User Guide. If you have permissions to access Apsara Stack Help Center, you can find the following information in Apsara Stack Help Center: **Apsara Stack Help Center >**
-**Apsara Stack > Computing Service > Container Registry**.
+You can click **Container Registry** on the **Image Center** page to log on to the Container Registry console.
+
+> **Note:** For more information about Container Registry, see Apsara Stack Container Registry User Guide. If you have permissions to access Apsara Stack Help Center, you can find the following information in Apsara Stack Help Center: **Apsara Stack Help Center >** **Apsara Stack > Computing Service > Container Registry**.
 
 #### 8.1.1 Verify image signatures
 
@@ -1645,7 +1673,9 @@ The platform periodically checks the signature verification. The verification re
 
 **Important**
 
-If the signature verification fails, **Unknown** is displayed in the Signature Verification Status column. In this case, do not run the image. Manually verify the image signature by running the cosign verify command.
+> If the signature verification fails, **Unknown** is displayed in the Signature Verification Status column. In this case, do not run the image.
+
+Manually verify the image signature by running the cosign verify command.
 
 ```
 cosign verify \
@@ -1655,12 +1685,16 @@ cosign verify \
   your_image_name:your_image_tag
 ```
 
-For more information about the values of the your_username and your_password parameters, see the Obtain the username and password section of this topic. Replace your_image_name:your_image_tag with the URL of the image whose signature you want to verify. For more information about how to obtain the image URL, see the Obtain the image URL section of this topic.
+> **Note:** For more information about the values of the your_username and your_password parameters, see the Obtain the username and password section of this topic.
+> Replace your_image_name:your_image_tag with the URL of the image whose signature you want to verify. For more information about how to obtain the image URL, see the Obtain the image URL section of this topic.
 
 **Other signature verification methods**
 
 1. Configure Docker to enable signature verification.
-Configure Docker notary or use cosign and policy-controller to automatically intercept unsigned images. Docker Content Trust (DCT) is not compatible with cosign. We recommend that you use cosign for signature verification.
+Configure Docker notary or use cosign and policy-controller to automatically intercept unsigned images.
+
+> **Note:** Docker Content Trust (DCT) is not compatible with cosign. We recommend that you use cosign for signature verification.
+
 2. Integrate products such as Kubernetes into continuous integration and continuous delivery
 (CI/CD) pipelines to add a verification step before deployment in automation scenarios.
 
@@ -1673,7 +1707,8 @@ name: Verify image signature run: |
   {{ your_image_name:your_image_tag }}
 ```
 
-For more information about the values of the your_username and your_password parameters, see the Obtain the username and password section of this topic. Replace your_image_name:your_image_tag with the URL of the image whose signature you want to verify. For more information about how to obtain the image URL, see the Obtain the image URL section of this topic.
+> **Note:** For more information about the values of the your_username and your_password parameters, see the Obtain the username and password section of this topic.
+> Replace your_image_name:your_image_tag with the URL of the image whose signature you want to verify. For more information about how to obtain the image URL, see the Obtain the image URL section of this topic.
 
 **FAQ**
 
@@ -1746,9 +1781,8 @@ information.
 
 **Delete a cache acceleration instance**
 
-**Important**
+> **Important:** This operation is irreversible and may cause data loss. Proceed with caution.
 
-This operation is irreversible and may cause data loss. Proceed with caution.
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Application Services > Data Acceleration**.
 3. Click the **Cache-based Acceleration** tab.
@@ -1780,7 +1814,8 @@ spec:
         claimName: hadoop
 ```
 
-The claimName below persistentVolumeClaim must be set to the ID of the cache acceleration instance.
+> **Note:** The claimName below persistentVolumeClaim must be set to the ID of the cache acceleration instance.
+
 2. Run the following command to create an application:
 
 ```bash
@@ -1826,7 +1861,9 @@ NAME UFS TOTAL SIZE CACHED CACHE CAPACITY CACHED PERCENTAGE PHASE AGE hadoop 210
 
 The output indicates that 210 MiB of data is cached to the on-premises storage.
 6. Run the following command to delete the current application, and then create the same
-application. This step is performed to avoid other factors, such as the page cache, from affecting the result.
+application.
+
+> **Note:** This step is performed to avoid other factors, such as the page cache, from affecting the result.
 
 ```bash
 kubectl delete -f app.yaml && kubectl create -f app.yaml
@@ -1844,7 +1881,9 @@ Expected output:
 real 0m0.048s user 0m0.001s sys 0m0.046s
 ```
 
-The output indicates that 48 milliseconds are consumed to copy the file. This means that the time consumption is reduced by more than 300 times. This is because the file is cached. It is much faster to access a cached file.
+The output indicates that 48 milliseconds are consumed to copy the file. This means that the time consumption is reduced by more than 300 times.
+
+> **Note:** This is because the file is cached. It is much faster to access a cached file.
 
 #### 8.2.3 Configure a Dragonfly image repository to accelerate image distribution
 
@@ -1852,11 +1891,14 @@ The output indicates that 48 milliseconds are consumed to copy the file. This me
 
 You can use Dragonfly to significantly improve file transfer efficiency. This topic describes how to specify a Dragonfly image repository to accelerate image distribution. On a Bare Metal Computing Platform (BMCP) node, perform the following operations. In this example, the image repository example.com is used. Replace the image repository address with the actual address.
 
-**Important**
+> **Important:** Make sure that you have replaced all "example.com".
 
-Make sure that you have replaced all "example.com".
 1. Modify `/etc/containerd/config.toml` .
-i. Add `config_path = "/etc/containerd/certs.d"` . If it is already added, skip this step. `/etc/containerd/certs.d` is the default path of containerd. You can change the path based on your business requirements. ii. Configure an accelerated image repository.
+i. Add `config_path = "/etc/containerd/certs.d"` . If it is already added, skip this step.
+
+> **Note:** `/etc/containerd/certs.d` is the default path of containerd. You can change the path based on your business requirements.
+
+ii. Configure an accelerated image repository.
 
 ```bash
 [plugins."io.containerd.grpc.v1.cri".registry]
@@ -1869,7 +1911,10 @@ nd annotate other configurations in [plugins."io.containerd.grpc.v1.cri".registr
 ```
 
 2. Configure the hosts.toml file.
-If multiple image repositories exist, repeat the step for each image repository. i. Create an accelerated image repository directory.
+
+> **Note:** If multiple image repositories exist, repeat the step for each image repository.
+
+i. Create an accelerated image repository directory.
 
 ```
 mkdir -p /etc/containerd/certs.d/example.com
@@ -1958,7 +2003,9 @@ Upload a model file to an Object Storage Service (OSS) bucket. For more informat
 5. Click the **Software Instance** tab.
 6. On the OSS File P2P Distribution Suite card, click **Install**.
 7. In the message that appears, click **OK**.
-In addition to OSS File P2P Distribution Suite, the RAM Roles for Service Accounts (RRSA) feature is enabled and the ack-pod-identity-webhook component is installed for the ACK cluster.
+
+> **Note:** In addition to OSS File P2P Distribution Suite, the RAM Roles for Service Accounts (RRSA) feature is enabled and the ack-pod-identity-webhook component is installed for the ACK cluster.
+
 8. Distribute the model file from the storage end to destination servers in P2P mode.
 For more information, see Create a data distribution task.
 9. Start the inference service.
@@ -2029,7 +2076,9 @@ endpoint>/<subPath>/.
             "model.csi.modelpack.org/reference": "https://evan.oss-****/Qwen3-8B/"
 ```
 
-ii. Switch to the inference service pod to view the model file of the mount point. iii. Verify the performance of model loading. The results presented in the table represent the data obtained for this demonstration only.
+ii. Switch to the inference service pod to view the model file of the mount point. iii. Verify the performance of model loading.
+
+> **Note:** The results presented in the table represent the data obtained for this demonstration only.
 
 | Model loading time (unit: seconds) | Qwen3-32B | Qwen3-8B |
 |---|---|---|
@@ -2156,7 +2205,12 @@ Privileged containers cannot use KGPU.
 **Create a job to test KGPU runs normally**
 
 1. Create a file named pod-test.yaml to verify the resource scheduling feature of KGPU. This
-file defines a pod that requests and uses KGPU resources. Fill in the value of image based on your actual needs. When gpu-count is 0 or 1, the system schedules the workload to one physical GPU. If gpu-count is 0, you must request other resources together. When gpucount is greater than 1, the system schedules the workload to more physical GPUs. Example of pod-test.yaml:
+file defines a pod that requests and uses KGPU resources.
+
+> **Note:** Fill in the value of image based on your actual needs.
+> When gpu-count is 0 or 1, the system schedules the workload to one physical GPU. If gpu-count is 0, you must request other resources together. When gpu- count is greater than 1, the system schedules the workload to more physical GPUs.
+
+Example of pod-test.yaml:
 
 ```
 apiVersion: v1 kind: Pod metadata:
@@ -2335,7 +2389,7 @@ The meanings of the modifiable parameters in the preceding YAML file are as foll
 | gpu-scheduler-policy | Intra-node GPU device scheduling policy. Valid values: binpack spread |
 |---|---|
 
-By default, KGPU prefers binpack for inter-node scheduling and spread for intra-node multi-GPU card scheduling.
+> **Note:** By default, KGPU prefers binpack for inter-node scheduling and spread for intra-node multi-GPU card scheduling.
 
 **Change the minimum allocation unit for shared APG scheduling**
 
@@ -2504,7 +2558,10 @@ This topic describes how to delete an image.
 
 **Prerequisites**
 
-A custom image is created. For more information, see Upload a custom image. You can delete only custom images. Public images cannot be deleted.
+A custom image is created. For more information, see Upload a custom image.
+
+> **Note:** You can delete only custom images. Public images cannot be deleted.
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2559,7 +2616,11 @@ Bare Metal Computing Platform (BMCP) allows you to verify the integrity of publi
  openssl dgst -sha256 -verify public.key -signature signature.bin imagefile .
 ```
 
-Before you run the command, make sure that the public key, signature file, and image to be verified are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file to be verified.
+> **Note:** Before you run the command, make sure that the public key, signature file, and image to be verified are downloaded.
+> Set the following parameters to the actual values:
+> `public.key` indicates the public key.
+> `signature.bin` indicates the signature file.
+> `imagefile` indicates the image file to be verified.
 
 ## 10 Network and security
 
@@ -2676,7 +2737,10 @@ You can perform the following operations to use security groups to control the t
 2. Add rules to the security group.
 3. Add instances to the security group.
 4. Manage the security group and security group rules based on your needs.
-An instance can be added to at most five security groups. The total number of inbound and outbound rules in a security group must not exceed 200. By default, a BMCP security group allows all traffic. If you want to block traffic from specific sources, add Deny rules.
+
+> **Note:** An instance can be added to at most five security groups.
+> The total number of inbound and outbound rules in a security group must not exceed 200.
+> By default, a BMCP security group allows all traffic. If you want to block traffic from specific sources, add Deny rules.
 
 #### 10.4.2 Manage security groups
 
@@ -2722,7 +2786,9 @@ i. Delete a single security group: Find the security group that you want to dele
 **Delete** in the **Actions** column.
 ii. Delete security groups in batches: Select one or more security groups that you want to delete, and click **Delete** at the bottom of the security group list.
 5. In the confirmation dialog box, click **Delete**.
-You cannot delete a security group that contains BMCP instances. Remove the instances before deletion. You cannot delete a security group that is authorized for access by other security groups. Revoke the authorization before deletion.
+
+> **Note:** You cannot delete a security group that contains BMCP instances. Remove the instances before deletion.
+> You cannot delete a security group that is authorized for access by other security groups. Revoke the authorization before deletion.
 
 #### 10.4.3 Manage security group rules
 
@@ -2881,9 +2947,15 @@ key to your computer.
 3. In the top navigation bar, select an **Organization**, **Resource Set**, and **Region**.
 4. Find the key pair that you want to manage and click **Bind Key Pair** in the **Actions** column.
 5. In the **Select BMCP Instance** list, click the BMCP instances to which you want to bind the
-key pair. The selected instances are moved to the right-side list. To select or move all instances, click **Move All** below the list.
+key pair. The selected instances are moved to the right-side list.
+
+> **Note:** To select or move all instances, click **Move All** below the list.
+
 6. Click **OK**.
-A BMCP instance can be bound to only one key pair. If an instance is already bound to a key pair, binding a new key pair automatically replaces the existing key pair. After binding, find the key pair and click **Related Instance** in the **Actions** column to view all BMCP instances bound to the key pair. After binding a key pair to an instance, the original password of the instance remains valid. Both password-based and private key-based logins are supported.
+
+> **Note:** A BMCP instance can be bound to only one key pair. If an instance is already bound to a key pair, binding a new key pair automatically replaces the existing key pair.
+> After binding, find the key pair and click **Related Instance** in the **Actions** column to view all BMCP instances bound to the key pair.
+> After binding a key pair to an instance, the original password of the instance remains valid. Both password-based and private key-based logins are supported.
 
 **Unbind a key pair from BMCP instances**
 
@@ -2893,7 +2965,10 @@ A BMCP instance can be bound to only one key pair. If an instance is already bou
 4. Find the key pair that you want to manage and click **Unbind Key Pair** in the **Actions**
 column.
 5. In the **Select BMCP Instance** list, click the BMCP instances from which you want to unbind
-the key pair. The selected instances are moved to the right-side list. To select or move all instances, click **Move All** below the list.
+the key pair. The selected instances are moved to the right-side list.
+
+> **Note:** To select or move all instances, click **Move All** below the list.
+
 6. Click **OK**.
 
 **View bound instances**
@@ -2988,9 +3063,17 @@ This topic describes how to create a tag and add the tag to resources.
 2. In the left-side navigation pane, click **Tag Management**.
 3. Then, you are redirected to the **Tags** page. In the **Tag Key** list on the left, click
 **Create/Select Tags & Add to Resources** .
-i. In the **Create/Select Tags & Add to Resources** dialog box, select or enter a **tag key** and a **tag value** and click **Next**. You can create up to 20 tags and add the tags to resources at a time. A tag key must be unique. ii. In the **Create/Select Tags & Add to Resources** dialog box, specify **Select**
+i. In the **Create/Select Tags & Add to Resources** dialog box, select or enter a **tag key** and a **tag value** and click **Next**.
+
+> **Note:** You can create up to 20 tags and add the tags to resources at a time. A tag key must be unique.
+
+ii. In the **Create/Select Tags & Add to Resources** dialog box, specify **Select**
 **Organization and Resource Set**, **Select Region**, and **Select Cloud Products** and
-click **Next**. You can select up to 50 cloud resources at a time. iii. Confirm the information about the tags and resources and click **Confirm**.
+click **Next**.
+
+> **Note:** You can select up to 50 cloud resources at a time.
+
+iii. Confirm the information about the tags and resources and click **Confirm**.
 
 ## 12 Metering data
 
@@ -3004,7 +3087,9 @@ Bare Metal Computing Platform (BMCP) integrates the metering management module o
 page.
 3. On the **Metering Details** page, select **BMS Easy AI Cluster** from the **Metering**
 **Resource Items** drop-down list and click **Search** to view the detailed metering data of
-cluster resources. You can filter the data by **Organization**, **Resource Set**, **Region**, **Time**, or **Instance ID**. You can also click the icon in the upper-right corner to export the statistics to an XLSX file and save the file to your computer. You can view or export at most 1,000 entries in the console. To view or export more entries, call the MeteringQuery operation.
+cluster resources. You can filter the data by **Organization**, **Resource Set**, **Region**, **Time**, or **Instance ID**. You can also click the icon in the upper-right corner to export the statistics to an XLSX file and save the file to your computer.
+
+> **Note:** You can view or export at most 1,000 entries in the console. To view or export more entries, call the MeteringQuery operation.
 
 ## 13 O&M management
 
@@ -3016,7 +3101,11 @@ This topic describes how to view cluster monitoring for bare metal - intelligent
 
 This page provides performance metrics for **bare metal - intelligent computing**
 **clusters** and **ACK - intelligent computing clusters** , including monitoring of resources
-such as instances, GPUs, and RDMA. The displayed monitoring metrics are subject to the actual display in the Bare Metal Computing Platform (BMCP) console of your deployment environment. Monitoring metrics data comes from the Cloud Monitor Service (CMS) platform.
+such as instances, GPUs, and RDMA.
+
+> **Note:** The displayed monitoring metrics are subject to the actual display in the Bare Metal Computing Platform (BMCP) console of your deployment environment.
+
+Monitoring metrics data comes from the Cloud Monitor Service (CMS) platform.
 
 **View cluster monitoring**
 
@@ -3075,7 +3164,7 @@ cluster monitoring information from different perspectives. Select a target clus
 
 ### 13.2 Event monitoring
 
-This topic describes how to view the events of bare metal-intelligence computing clusters and Container Service for Kubernetes (ACK)-intelligence computing clusters. This topic also describes how to configure event-triggered alert rules.
+> This topic describes how to view the events of bare metal-intelligence computing clusters and Container Service for Kubernetes (ACK)-intelligence computing clusters. This topic also describes how to configure event-triggered alert rules.
 
 **View event monitoring**
 
@@ -3165,9 +3254,8 @@ This topic describes how to perform quick diagnostics on bare metal - intelligen
 
 This module can inspect clusters in various scenarios promptly to ensure the health of Bare Metal Computing Platform (BMCP). The quick diagnostics feature for bare metal - intelligent computing clusters supports server inspection and GPU inspection, and displays their health status in real time to detect hardware issues on bare metal nodes. Periodic inspections of physical servers identify issues such as potential hardware faults and performance bottlenecks. This helps you fix and prevent system faults promptly, ensuring the stability and reliability of intelligent computing clusters. The quick diagnostics module for ACK - intelligent computing clusters supports server inspection, GPU inspection, and Kubernetes base inspection at the IaaS and PaaS layer. This helps you identify container anomalies and abnormal health status at the earliest opportunity.
 
-**Important**
+> **Important:** If this detection includes time-consuming diagnostic items or stress tests, it occupies GPU resources. Make sure that this operation does not affect your business.
 
-If this detection includes time-consuming diagnostic items or stress tests, it occupies GPU resources. Make sure that this operation does not affect your business.
 1. Log in to BMCP.
 2. In the left-side navigation pane, select **O&M Management > One-Click Diagnosis**.
 3. In the upper-left part of the **Quick Diagnostics** page, click **Quick Diagnostics**.
@@ -3293,7 +3381,9 @@ BMCP Cloud Assistant is built on Elastic Compute Service (ECS) Cloud Assistant. 
 
 **Functions and features**
 
-After nodes that have the Cloud Assistant client installed enter the **Running** state, you can use Cloud Assistant to perform the following operations on the nodes by using the BMCP console or by calling API operations: Run batch and PowerShell scripts on Windows nodes, or run shell scripts on Linux nodes. Run the same script on multiple nodes. The execution of the script on one node does not affect that on other nodes. Specify custom parameters in a Cloud Assistant command to adapt to different scenarios. Cloud Assistant does not initiate any operations on its own. You have full control over all Cloud Assistant operations.
+After nodes that have the Cloud Assistant client installed enter the **Running** state, you can use Cloud Assistant to perform the following operations on the nodes by using the BMCP console or by calling API operations: Run batch and PowerShell scripts on Windows nodes, or run shell scripts on Linux nodes. Run the same script on multiple nodes. The execution of the script on one node does not affect that on other nodes. Specify custom parameters in a Cloud Assistant command to adapt to different scenarios.
+
+> **Note:** Cloud Assistant does not initiate any operations on its own. You have full control over all Cloud Assistant operations.
 
 **Scenarios**
 
@@ -3402,7 +3492,8 @@ When you use the immediate execution feature, take note of the following items: 
 OF=/backup/my-backup-$(date +%Y%m%d).tgz tar -cf $OF {{file}}
 ```
 
-In the preceding example, `{{file}}` is a custom parameter. When running a command, you can set this custom parameter to the name of the file to be archived. Example: /app/usrcredential. You can use custom parameters in scenarios that require dynamic values and values that are shared across multiple commands. We recommend that you specify custom parameters for sensitive data or data that changes together with the environment, such as AccessKey pairs, node IDs, authorization codes, time parameters, and important system files.
+> **Note:** In the preceding example, `{{file}}` is a custom parameter. When running a command, you can set this custom parameter to the name of the file to be archived. Example: /app/usrcredential. You can use custom parameters in scenarios that require dynamic values and values that are shared across multiple commands. We recommend that you specify custom parameters for sensitive data or data that changes together with the environment, such as AccessKey pairs, node IDs, authorization codes, time parameters, and important system files.
+
 1. Log on to the BMCP console.
 2. In the left-side navigation pane, choose **O&M Management > Cloud Assistant**.
 3. In the top navigation bar, select an organization, resource set, and region.
@@ -3444,9 +3535,8 @@ run the generated command.
 
 You can clone an existing Cloud Assistant command to create another command. You can retain all information of the original command (cloned command), or modify the name, description, type, content, execution path, or timeout period for the new command (command clone).
 
-**Important**
+> **Important:** Only operations administrators, organization administrators, and resource set administrators can clone commands.
 
-Only operations administrators, organization administrators, and resource set administrators can clone commands.
 1. Log on to the BMCP console.
 2. In the left-side navigation pane, choose **O&M Management > Cloud Assistant**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3485,9 +3575,8 @@ the generated command.
 
 The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited, and all cloud services share this quota. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
 
-**Important**
+> **Important:** Only operations administrators, organization administrators, and resource set administrators can delete commands.
 
-Only operations administrators, organization administrators, and resource set administrators can delete commands.
 1. Log on to the BMCP console.
 2. In the left-side navigation pane, choose **O&M Management > Cloud Assistant**.
 3. In the top navigation bar, select an organization, a resource set, and a region.

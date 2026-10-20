@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 27
 source_pdf: "c204d77b1df277d2_Alibaba Cloud Apsara Stack v3.18.6-2607 Time  Series and Spatial-Temporal  Database Operations and M"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%9A%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%20Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Time%20%20Series%20and%20Spatial-Temporal%20%20Database%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database Operations and Maintenance Guide 20260827
@@ -176,7 +176,9 @@ This topic describes how to migrate multiple instances at a time.
 fill in the template file.
 6. Click **Select File**.
 7. Select the completed template file and then click **Submit**.
-Interruptions occur on instances that use HAProxy only if they are migrated across clusters. Batch instance migration operations are not reviewed. Proceed with caution.
+
+> **Note:** Interruptions occur on instances that use HAProxy only if they are migrated across clusters.
+> Batch instance migration operations are not reviewed. Proceed with caution.
 
 **What to do next**
 
@@ -197,9 +199,8 @@ This topic describes how to modify multiple instance parameters at a time.
 5. Select the clusters for which you want to modify the parameters and click **Select**
 **parameter Template**.
 
-**Important**
+> **Important:** Instance parameter changes may cause risks such as transient connections or unavailability. You can modify the parameters by following the instructions on the console.
 
-Instance parameter changes may cause risks such as transient connections or unavailability. You can modify the parameters by following the instructions on the console.
 6. On the page that appears, select the parameter template and click **Next Step**
 7. Select the instances and click **Submit**.
 
@@ -320,7 +321,8 @@ table.
 | SQL script | The script of the SQL template. |
 | New reason | The reason to create the template. |
 
-Custom SQL templates support only SELECT statements and can be used only for DBaaS databases. The creation of SQL templates must be approved in the business process management system. To ensure that the SQL template is not mistakenly executed by other users, we recommend that you give the template a descriptive name and describe the purpose of the template in detail in the New reason parameter.
+> **Note:** Custom SQL templates support only SELECT statements and can be used only for DBaaS databases. The creation of SQL templates must be approved in the business process management system. To ensure that the SQL template is not mistakenly executed by other users, we recommend that you give the template a descriptive name and describe the purpose of the template in detail in the New reason parameter.
+
 7. Click **Submit**.
 
 #### 4.2.2 Singal instance management
@@ -338,7 +340,10 @@ This topic describes how to view the information about an instance, such as the 
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. On the Instance List page, find the instance that you want to manage and click its name in
-the **User instance name** column. You can search for the instance by entering keywords in the search box on the upper part of the page. You can also click **Advance search** to filter instances by condition.
+the **User instance name** column.
+
+> **Note:** You can search for the instance by entering keywords in the search box on the upper part of the page. You can also click **Advance search** to filter instances by condition.
+
 4. In the **Basic information** section, view the basic information about the instance. You can
 also click the options in the Instance details section to perform operations on the instance, such as performing backup and restoration, viewing the change records, and querying the SQL information.
 
@@ -350,9 +355,9 @@ This topic describes the operations that you can perform on instances, including
 3. In the upper part of the Instance List page, you can perform the following operations by
 clicking options to the right of the search box: Click Instance batch management to perform operations on multiple instances at a time. Click **Instance plan migration management** to migrate instances.
 
-**Important**
+> **Important:** Instance migration is a high-risk operation. We recommend that you perform this operation during off-peak hours.
 
-Instance migration is a high-risk operation. We recommend that you perform this operation during off-peak hours. Click **Instance dashboard** to view the CPU utilization, connections, IOPS, and disk usage. Click **mysql master/slave latency** to view the latency between the primary and secondary nodes of the instances.
+Click **Instance dashboard** to view the CPU utilization, connections, IOPS, and disk usage. Click **mysql master/slave latency** to view the latency between the primary and secondary nodes of the instances.
 
 ##### 4.2.2.4 Diagnose an instance
 
@@ -373,7 +378,9 @@ This topic describes how to manage emergency response plans for instances.
 4. On the Host Information page, enter keywords in the search box to find the instance that
 you want to manage and select the instance.
 5. Export the instance information to your computer by clicking the button in the upper part of
-the page. You must specify a condition to search for the instance before you can export the instance information.
+the page.
+
+> **Note:** You must specify a condition to search for the instance before you can export the instance information.
 
 ##### 4.2.2.6 View the instance dashboard
 
@@ -393,7 +400,10 @@ Instance migration plans can be uploaded by specifying the instances or the IP a
 3. In the upper part of the **Instance List** page, click **Instance plan migration**
 **management**.
 4. Select an upload mode for the list of instances to be migrated.
-Mode 1: If you select Submit by instance, when an instance that cannot be migrated is detected, submission for all the instances will be stopped. Mode 2: If you select By hostIPSubmit, the instances that cannot be migrated will be filtered out and ignored.
+
+> **Note:** Mode 1: If you select Submit by instance, when an instance that cannot be migrated is detected, submission for all the instances will be stopped.
+> Mode 2: If you select By hostIPSubmit, the instances that cannot be migrated will be filtered out and ignored.
+
 5. Click **Download template file** and fill in the template file.
 6. Click **Select File** and select the completed template file.
 7. Click **Submit**.
@@ -449,7 +459,8 @@ This topic describes how to create a PolarDB for PostgreSQL cluster.
 3. On the **System Cluster** page, click **New Cluster**.
 4. In the dialog box that appears, select a database type and click **OK**.
 5. In the **Create a cluster** dialog box, configure the parameters and click **Confirm**.
-You can refer to the tooltip or text next to the parameter for detailed description.
+
+> **Note:** You can refer to the tooltip or text next to the parameter for detailed description.
 
 **Create a user cluster template**
 
@@ -460,7 +471,8 @@ You can refer to the tooltip or text next to the parameter for detailed descript
 4. In the dialog box that appears, click **Create a cluster Template**.
 5. In the **Create a cluster Template** dialog box, configure the required parameters and click
 **Submit**.
-You can refer to the tooltip or text next to the parameter for detailed description.
+
+> **Note:** You can refer to the tooltip or text next to the parameter for detailed description.
 
 #### 4.4.2 Manage service types
 
@@ -513,7 +525,10 @@ This topic describes how to configure the locations of clusters.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **Location**.
 4. On the Location page, search for clusters by keyword and configure their locations.
-You can also perform cluster consistency check and subdomain consistency check on this page. Click **Add** next to the required unit, region, or zone. In the dialog box that appears, configure the parameters and click **Submit** to add a location node. Click **Parameters** next to the required unit, region, zone, or subdomain. In the dialog box that appears, add, modify, or delete parameters. Click **Delete** next to the required unit, region, zone, or subdomain. In the message that appears, click OK to delete the unit, region, zone, or subdomain.
+
+> **Note:** You can also perform cluster consistency check and subdomain consistency check on this page.
+
+Click **Add** next to the required unit, region, or zone. In the dialog box that appears, configure the parameters and click **Submit** to add a location node. Click **Parameters** next to the required unit, region, zone, or subdomain. In the dialog box that appears, add, modify, or delete parameters. Click **Delete** next to the required unit, region, zone, or subdomain. In the message that appears, click OK to delete the unit, region, zone, or subdomain.
 
 ### 4.5 Task management
 
@@ -522,20 +537,26 @@ You can also perform cluster consistency check and subdomain consistency check o
 This topic describes how to manage interrupted tasks, including user instance tasks, host instance tasks, and host tasks. In this example, a user instance task is managed.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System**
-console, click **Task Management**. In the upper-left corner of the **Instance tasks** page, select **Interrupted tasks** from the drop-down list. If interrupted tasks are displayed, perform the following steps. If no interrupted tasks are displayed, skip the following steps.
+console, click **Task Management**. In the upper-left corner of the **Instance tasks** page, select **Interrupted tasks** from the drop-down list.
+
+> **Note:** If interrupted tasks are displayed, perform the following steps.
+> If no interrupted tasks are displayed, skip the following steps.
+
 3. Click a task name in the **Task name** column to view and analyze the cause of the task
-failure. In most cases, if you encounter issues such as secondary databases in an abnormal state, connection timeout errors, or password errors, you can log on to the faulty instance by using the instance IP address and fix the issue.
+failure.
+
+> **Note:** In most cases, if you encounter issues such as secondary databases in an abnormal state, connection timeout errors, or password errors, you can log on to the faulty instance by using the instance IP address and fix the issue.
+
 4. After you fix the issue, find the task and click **Operation** in the **Operation** column.
 5. On the page that appears, click **Perform tasks**.
 6. In the **Re-execute the task** dialog box, click **Current step retry** to run the task again.
 
-**Important**
+> **Important:** If you want to retry the task starting from a specific step, click **Continue from the** **specified step**. We recommend that you do not retry the task if you are not familiar with the task or the purposes of its steps.
 
-If you want to retry the task starting from a specific step, click **Continue from the**
-**specified step**. We recommend that you do not retry the task if you are not familiar
-with the task or the purposes of its steps.
 7. In the upper-left corner of the Instance tasks page, select **Running tasks** from the drop-
-down list to view the status of the task. If the task fails again, repeat the preceding steps.
+down list to view the status of the task.
+
+> **Note:** If the task fails again, repeat the preceding steps.
 
 #### 4.5.2 Manage temporarily closed tasks
 
@@ -585,18 +606,34 @@ find **Backup exception** in the **Backup information** section and click the nu
 
 If you want to configure an IPv6 address when you create an instance in an Apsara Stack environment, you must turn on the IPv6 display switch in the Apsara Uni-manager Operations Console. After you turn on the switch, an IPv6 configuration option is displayed on the instance creation page in the Lindorm console.
 
-**Important**
-
-This operation is an account-level global setting. After the IPv6 display switch is turned on, all tenants within the current account can configure IPv6 when they create instances in the Lindorm console.
+> **Important:** This operation is an account-level global setting. After the IPv6 display switch is turned on, all tenants within the current account can configure IPv6 when they create instances in the Lindorm console.
 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: ops.asconsole.intranet-domain-id.com. A web browser is available. We recommend that you use Google Chrome.
 1. **Log in to the Apsara Uni-manager Operations Console**
-i. Open a browser. ii. In the address bar, enter the URL of the Apsara Uni-manager Operations Console and press Enter. You can select a language from the drop-down list in the upper-right corner of the page. Operations iii. Enter the correct username and password. Obtain the username and password that are used to log in to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** .
+i. Open a browser. ii. In the address bar, enter the URL of the Apsara Uni-manager Operations Console and press Enter.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+Operations iii. Enter the correct username and password.
+
+> **Note:** Obtain the username and password that are used to log in to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
+iv. Click **Agree to Private Policy and Log On** .
 2. **Navigate to the switch management page**
 i. In the top navigation bar of the Apsara Uni-manager Operations Console, choose
 **Platform Operation** > **Management and Control Service O&M** > **UniConsole**.
-ii. On the **Products** page, search for **lindorm** and click **Switch List** in the **Actions** column. On the **lindorm Switches** page, search for `enableIPv6` and turn on the switch. After the switch is turned on, all tenants within the current account can configure IPv6 when they create instances in the Lindorm console.
+ii. On the **Products** page, search for **lindorm** and click **Switch List** in the **Actions** column. On the **lindorm Switches** page, search for `enableIPv6` and turn on the switch.
+
+> **Note:** After the switch is turned on, all tenants within the current account can configure IPv6 when they create instances in the Lindorm console.
+
 4. **Create a Lindorm instance and configure IPv6**
 After the switch is turned on, log in to the Lindorm console, create a Lindorm instance, and configure **IP Type**. For more information, see the **Create a Lindorm instance** topic in the User Guide.

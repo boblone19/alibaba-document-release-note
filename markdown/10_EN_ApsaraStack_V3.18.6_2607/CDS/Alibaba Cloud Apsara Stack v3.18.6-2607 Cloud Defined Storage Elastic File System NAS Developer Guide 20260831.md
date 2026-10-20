@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 164
 source_pdf: "df220f98ed146bfe_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Developer Guid"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Developer Guide 20260831
@@ -227,9 +227,7 @@ An AccessKey pair is used to verify the identity of a request sender based on sy
 
 The Apsara Uni-manager Management Console provides two types of AccessKey pairs: those for personal accounts and those for organization accounts. We recommend that you use AccessKey pairs for personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-**Note**
-
-Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
+> **Note:** Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -247,15 +245,12 @@ To use AccessKey pairs for personal accounts, you must configure the header para
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-The AccessKey ID and AccessKey secret provide access to your cloud resources and grant full permissions to your account. Keep them confidential.
+> **Note:** The AccessKey ID and AccessKey secret provide access to your cloud resources and grant full permissions to your account. Keep them confidential.
 
 **Obtain the AccessKey pair of an organization**
 
-**Warning**
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. To obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. To obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the navigation pane on the left, choose **Resources > Organizations**.
@@ -278,9 +273,8 @@ iii. In the navigation pane on the left of Apsara Infrastructure Management, cli
  internet-domain .
 ```
 
-**Note**
+> **Note:** Delete ${global:} in the final endpoint.
 
-Delete ${global:} in the final endpoint.
 3. Call the AssumeRole operation of STS to obtain the AccessKey 3-tuple. The following
 example shows how to call the operation using STS SDK for Java.
 
@@ -290,7 +284,7 @@ example shows how to call the operation using STS SDK for Java.
 |---|---|
 | <yourRoleSessionName> |   |
 
-`<sts.aliyuns.com>` are placeholders. Replace them with your actual values. Do not include the angle brackets (<>).
+> `<sts.aliyuns.com>` are placeholders. Replace them with your actual values. Do not include the angle brackets (<>).
 
 ```java
 public static void main(String[] args) {
@@ -343,15 +337,13 @@ t be a RAM role that has an ASCM user as a trusted entity. Replace "<yourRoleArn
 4. After you obtain the STS AccessKey trituple, you can use it to call cloud product API
 operations. The following Java SDK example shows how to use an STS AccessKey to call a file storage API operation. The DescribeZones API operation is used as an example.
 
-**Note**
-
-In the following code example, `<efs-nas.aliyuns.com>` , `<yourRegionID>` ,
+> **Note:** In the following code example, `<efs-nas.aliyuns.com>` , `<yourRegionID>` ,
 
 | <yourStsAccessKeySecret> |   |   |   |
 |---|---|---|---|
 |   |   | , |   |
 
-`<yourResourceGroupID>` , and `<yourOrganizationID>` are placeholders. Replace them with your actual values. Do not include the angle brackets (<>). The file storage Endpoint must be configured as an environment variable.
+> `<yourResourceGroupID>` , and `<yourOrganizationID>` are placeholders. Replace them with your actual values. Do not include the angle brackets (<>). The file storage Endpoint must be configured as an environment variable.
 
 ```java
 public static void main(String[] args) {
@@ -507,9 +499,12 @@ The main steps to call the Apsara Stack Java SDK are as follows:
 3. Send the request and handle the response or exceptions.
 The following sample code shows how to use the DescribeFileSystems operation of EFS-NAS to retrieve file system information:
 
-**Note**
-
-Set the REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET environment variables to your region ID, AccessKey ID, and AccessKey secret. Replace the variable parameters in the sample code with your actual information. The angle brackets (<>) are placeholders and should not be included in your final code. The following parameters must be replaced: <efs-nas.aliyuns.com>: Replace with your actual product endpoint. <readTimeout>: Set the read timeout period in milliseconds as needed. <connectionTimeout>: Set the connection timeout period in milliseconds as needed. <http://192.168.XX:33XX>: Replace with your actual proxy IP address and port.
+> **Note:** Set the REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET environment variables to your region ID, AccessKey ID, and AccessKey secret.
+> Replace the variable parameters in the sample code with your actual information. The angle brackets (<>) are placeholders and should not be included in your final code. The following parameters must be replaced:
+> <efs-nas.aliyuns.com>: Replace with your actual product endpoint.
+> <readTimeout>: Set the read timeout period in milliseconds as needed.
+> <connectionTimeout>: Set the connection timeout period in milliseconds as needed.
+> <http://192.168.XX:33XX>: Replace with your actual proxy IP address and port.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig;
@@ -728,9 +723,13 @@ ALIBABA_CLOUD_STS_SECURITY_TOKEN environment variable.
 
 This topic describes how to configure request connections using HttpClientConfig. Use the following code to configure HttpClientConfig. You can select and set the configuration items as needed.
 
-**Note**
-
-Replace the variables in the following code example with your actual information. Do not include the angle brackets (<>) in your code. The variables to replace are as follows: Replace <readTimeout> with the read timeout in milliseconds (ms). Replace <connectionTimeout> with the connection timeout in milliseconds (ms). Replace <maxRequestsPerHost> with the maximum number of requests per host. The value must be an integer. Replace <maxRequests> with the maximum number of requests. The value must be an integer. Replace <http://192.168.XX.XX:33XX> with the actual proxy IP address and port.
+> **Note:** Replace the variables in the following code example with your actual information. Do not include the angle brackets (<>) in your code.
+> The variables to replace are as follows:
+> Replace <readTimeout> with the read timeout in milliseconds (ms).
+> Replace <connectionTimeout> with the connection timeout in milliseconds (ms).
+> Replace <maxRequestsPerHost> with the maximum number of requests per host. The value must be an integer.
+> Replace <maxRequests> with the maximum number of requests. The value must be an integer.
+> Replace <http://192.168.XX.XX:33XX> with the actual proxy IP address and port.
 
 ```
 // Obtain the HttpClientConfig object HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Set whether to ignore SSL certificates clientConfig.setIgnoreSSLCerts(true); // (Optional) Set the read timeout in milliseconds (ms) clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Set the connection timeout in milliseconds (ms) clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Set the maximum number of requests per host. The data type is INT. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Set the maximum number of requests. The data type is INT. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Set the protocol type clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Set a proxy as needed. The methods are as follows: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -775,7 +774,7 @@ You can use the CommonRequest method to call any OpenAPI operation.
 |---|---|
 | <yourCallerSdkSource> |   |
 
-include the angle brackets (<>) in your final code.
+> include the angle brackets (<>) in your final code.
 
 **Set Alibaba Cloud core SDK parameters**
 
@@ -890,9 +889,12 @@ ultiple common header parameters, including x-acs-regionid, x-acs-organizationid
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-**Note**
-
-REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, the AccessKey ID, and the AccessKey secret of your account. Set them as environment variables. In the code sample, replace all variables with your actual information. Do not include the angle brackets (<>) in your final code. The variables that need to be replaced are as follows: <efs-nas.aliyuns.com>: Replace with the actual endpoint of the product. <readTimeout>: Set the read timeout in milliseconds as needed. <connectionTimeout>: Set the connection timeout in milliseconds as needed. <http://192.168.XX:33XX>: Replace with the actual proxy IP address and port.
+> **Note:** REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, the AccessKey ID, and the AccessKey secret of your account. Set them as environment variables.
+> In the code sample, replace all variables with your actual information. Do not include the angle brackets (<>) in your final code. The variables that need to be replaced are as follows:
+> <efs-nas.aliyuns.com>: Replace with the actual endpoint of the product.
+> <readTimeout>: Set the read timeout in milliseconds as needed.
+> <connectionTimeout>: Set the connection timeout in milliseconds as needed.
+> <http://192.168.XX:33XX>: Replace with the actual proxy IP address and port.
 
 #### 3.2.5 Error handling
 
@@ -959,9 +961,12 @@ ID, and AccessKey Secret.
 3. Initiate the request and handle the response or exceptions.
 The following sample code shows how to call the EFS-NAS DescribeFileSystems operation to retrieve file system information:
 
-**Note**
+> **Note:** REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, your account's AccessKey ID, and your account's AccessKey secret. You must set these as environment variables.
+> Replace the placeholders in the sample code with your actual values. Do not include the angle brackets (<>) in your code. The placeholders are:
+> Replace <efs-nas.aliyuns.com> with the actual product endpoint.
+> Replace <http://192.168.XX:33XX> with the actual proxy IP address and port.
 
-REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, your account's AccessKey ID, and your account's AccessKey secret. You must set these as environment variables. Replace the placeholders in the sample code with your actual values. Do not include the angle brackets (<>) in your code. The placeholders are: Replace <efs-nas.aliyuns.com> with the actual product endpoint. Replace <http://192.168.XX:33XX> with the actual proxy IP address and port. s
+s
 
 ```java
 import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest def main():
@@ -1136,9 +1141,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(os.environ['ALIBAB
 
 The Python SDK supports API requests using the HTTP and HTTPS protocols. The Python SDK lets you specify the HTTP or HTTPS protocol for a single request. You can also set a global default protocol.
 
-**Note**
-
-The default protocol set for a product takes precedence over the global default protocol.
+> **Note:** The default protocol set for a product takes precedence over the global default protocol.
 
 **Add the OpenSSL dependency**
 
@@ -1154,9 +1157,7 @@ supported. If OpenSSL is not installed, run the following command to install it:
 pip install pyopenssl # Use this command for Python 2.
 ```
 
-**Note**
-
-If you are using Python 3, run the `pip3 install pyopenssl` command.
+> **Note:** If you are using Python 3, run the `pip3 install pyopenssl` command.
 
 **Set the HTTP/HTTPS protocol for a single request**
 
@@ -1203,9 +1204,7 @@ request.add_query_param('PageNum', '1') request.add_query_param('PageSize', '30'
 
 s
 
-**Note**
-
-In the preceding code sample, `<efs-nas.aliyuns.com>` is a variable. Replace it with the actual value for your service. Do not include the angle brackets (<>) in the final code.
+> **Note:** In the preceding code sample, `<efs-nas.aliyuns.com>` is a variable. Replace it with the actual value for your service. Do not include the angle brackets (<>) in the final code.
 
 **Make a call and process the response**
 
@@ -1256,9 +1255,10 @@ if __name__ == '__main__':
 
 s
 
-**Note**
-
-REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent your region ID, AccessKey ID, and AccessKey secret. You must set them as environment variables. Replace all variables in the code sample with your actual information. Do not include the angle brackets (<>) in the final code. The variables that need to be replaced are as follows: <efs-nas.aliyuns.com>: Replace this with the actual endpoint of your product. <http://192.168.XX:33XX>: Replace this with the actual proxy IP address and port.
+> **Note:** REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent your region ID, AccessKey ID, and AccessKey secret. You must set them as environment variables.
+> Replace all variables in the code sample with your actual information. Do not include the angle brackets (<>) in the final code. The variables that need to be replaced are as follows:
+> <efs-nas.aliyuns.com>: Replace this with the actual endpoint of your product.
+> <http://192.168.XX:33XX>: Replace this with the actual proxy IP address and port.
 
 #### 4.2.5 Error handling
 
@@ -1307,9 +1307,8 @@ Follow these steps to use the Go SDK:
 3. Send the request and handle the response or exceptions.
 The following sample code shows how to use the DescribeFileSystems operation of EFS-NAS to retrieve file system information:
 
-**Note**
-
-REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, your AccessKey ID, and your AccessKey secret. Set them as environment variables. In the sample code, <efs-nas.aliyuns.com> is a placeholder. Replace it with your actual product endpoint. Do not include the angle brackets (<>).
+> **Note:** REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, your AccessKey ID, and your AccessKey secret. Set them as environment variables.
+> In the sample code, <efs-nas.aliyuns.com> is a placeholder. Replace it with your actual product endpoint. Do not include the angle brackets (<>).
 
 ```java
 package main import (
@@ -1556,7 +1555,7 @@ client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(),
 |---|---|
 | <http://192.168.XX.XX:33XX> |   |
 
-values and remove the angle brackets (<>).
+> values and remove the angle brackets (<>).
 
 #### 5.2.4 Make a call
 
@@ -1578,9 +1577,7 @@ You can use the CommonRequest method to call any OpenAPI operation.
 request := requests.NewCommonRequest() request.Method = "POST" request.Domain = "<efs-nas.aliyuns.com>" // The endpoint of the EFS-NAS service. request.Product = "efs-nas" // The product name. request.Version = "2017-06-26" // The API version. request.ApiName = "DescribeFileSystems" // The API name. // Configure the business parameters of the API operation. request.QueryParams["PageSize"] = "20" request.QueryParams["PageNumber"] = "1" // Optional header. This is usually not required unless your enterprise has organizatio n or resource group requirements. request.Headers["x-acs-regionid"] = "<yourRegionID>" // Set this to the same value as t he client. // request.Headers["x-acs-resourcegroupid"] = "<yourResourceGroupID>" // Optional. // request.Headers["x-acs-organizationid"] = "<yourOrganizationID>" // Required to im plement fencing by organization.
 ```
 
-**Note**
-
-In the preceding code sample, `<efs-nas.aliyuns.com>` is a variable. Replace it with the actual endpoint for your service. Do not include the angle brackets (<>) in your final code.
+> **Note:** In the preceding code sample, `<efs-nas.aliyuns.com>` is a variable. Replace it with the actual endpoint for your service. Do not include the angle brackets (<>) in your final code.
 
 **Make the call and process the response**
 
@@ -1657,9 +1654,8 @@ o implement fencing by organization.
     fmt.Println(response.GetHttpContentString())
 ```
 
-**Note**
-
-Set the REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET environment variables. These variables represent the region ID, your AccessKey ID, and your AccessKey secret. In the code sample, <efs-nas.aliyuns.com> is a variable. Replace it with the actual endpoint for your product. Do not include the angle brackets (<>) in your final code.
+> **Note:** Set the REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET environment variables. These variables represent the region ID, your AccessKey ID, and your AccessKey secret.
+> In the code sample, <efs-nas.aliyuns.com> is a variable. Replace it with the actual endpoint for your product. Do not include the angle brackets (<>) in your final code.
 
 #### 5.2.5 Error handling
 
@@ -1741,9 +1737,7 @@ Requests and responses are encoded using the UTF-8 character set.
 
 API calls return data in a standard format. An HTTP status code in the 2xx range indicates a successful call. A status code in the 4xx or 5xx range indicates a failed call. For successful calls, data is returned in JSON format only.
 
-**Note**
-
-The response examples in this document are formatted for readability. The actual response does not include line breaks or indentation.
+> **Note:** The response examples in this document are formatted for readability. The actual response does not include line breaks or indentation.
 
 **Successful results**
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 56
 source_pdf: "6df9fa2e987e696b_Alibaba Cloud Apsara Stack V3.18.6 Operation Orchestration Service User Guide 20250627.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%BF%90%E7%BB%B4%E7%BC%96%E6%8E%92%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Operation%20Orchestration%20Service%20User%20Guide%2020250627.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Operation Orchestration Service User Guide 20250627
@@ -44,9 +44,9 @@ This topic describes how to log on to the CloudOps Orchestration Service (OOS) c
 1.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Account Logon**.
 4.
 5. In the top navigation bar, choose **Products > Migration and O&M Management >**
@@ -1146,9 +1146,9 @@ Escapes a string.
 
 String: the string to be escaped. ShellType: the type of the Shell.
 
-**Note**
+> **Note:** Set the ShellType parameter to PowerShell.
 
-Set the ShellType parameter to PowerShell. String
+String
 
 ```
     "Fn::Sub": [
@@ -2060,7 +2060,8 @@ This topic describes how to create a custom task template.
 
 **Procedure**
 
-1. Log on to the OOS console.
+## 1 Log on to the OOS console.
+
 2. In the left-side navigation pane, click **Custom Template**.
 3. On the **Custom Template** page, click **Create Template**.
 4. In the **Basic Information** section, specify the parameters, including **Template Name**,
@@ -2079,7 +2080,6 @@ This topic describes how to create and execute a task by using a template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Create Execution** in the **Actions** column.
 4. In the **Basic Information** section, specify the parameters including **Execution**
@@ -2112,7 +2112,6 @@ This topic describes how to view a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. In the template list, you can view the information about templates including the following
 parameters: Template Name, Template Description, Latest Version, Format, Created At, Updated At, Updated By, and Actions.
@@ -2125,7 +2124,6 @@ This topic describes how to update a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Update** in the **Actions** column.
 4. After you modify the template, click **Update Template**.
@@ -2136,7 +2134,6 @@ This topic describes how to delete a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Delete** in the **Actions** column.
 4. In the **Delete Template** message, click OK.

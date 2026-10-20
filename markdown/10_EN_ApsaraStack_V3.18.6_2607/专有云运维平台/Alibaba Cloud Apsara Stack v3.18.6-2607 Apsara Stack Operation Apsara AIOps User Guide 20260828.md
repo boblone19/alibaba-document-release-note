@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 21
 source_pdf: "7bbf6c81c8539ce0_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Operation%20Apsara%20AIOps%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps User Guide 20260828
@@ -38,20 +38,24 @@ You have obtained the endpoint, username, and password of the Apsara Uni-manager
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console and
 press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter the correct username and password.
 o AIOPS
 
-**Note**
+> **Note:** Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator.
+> If you enter an incorrect password for three consecutive times, the system enables image Completely Automated Public Turing Test to tell Computers and Humans Apart (CAPTCHA) verification. After five consecutive incorrect attempts, the account will be locked. Contact the administrator to unlock it.
+> When you log in to the Apsara Uni-manager Operations Console for the first time, you must change the password of the login account. Follow the prompts to complete the password change.
+> To improve security, the password must:
+> contain uppercase and lowercase letters.
+> contain digits (0 to 9).
+> contain special characters, including exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%).
+> be 10 to 20 characters in length.
 
-Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator. If you enter an incorrect password for three consecutive times, the system enables image Completely Automated Public Turing Test to tell Computers and Humans Apart (CAPTCHA) verification. After five consecutive incorrect attempts, the account will be locked. Contact the administrator to unlock it. When you log in to the Apsara Uni-manager Operations Console for the first time, you must change the password of the login account. Follow the prompts to complete the password change. To improve security, the password must: contain uppercase and lowercase letters. contain digits (0 to 9). contain special characters, including exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). be 10 to 20 characters in length.
 4. Click **Log In**.
 
-**Note**
+> **Note:** If a privacy policy has been configured, click **Agree to Privacy Policy and Log In** .
 
-If a privacy policy has been configured, click **Agree to Privacy Policy and Log In** .
 5. Access AIOps by using one of the following methods:
 Method 1: In the top navigation bar, choose **Platform Operation > Management and**
 **Control Service O&M > AIOps**.
@@ -72,9 +76,9 @@ Click **Disposal** for the target to-do task. In the dialog box below, the syste
 5. Enter your question in the chat box, press Shift + Enter to insert a line break, and then click
 .
 
-**Note**
+> **Note:** Use @ in the chat box to specify an agent to answer your question.
+> To query specific content, highlight it with the left mouse button on the console page, and click the AI Search option that appears to automatically trigger the Q&A capability.
 
-Use @ in the chat box to specify an agent to answer your question. To query specific content, highlight it with the left mouse button on the console page, and click the AI Search option that appears to automatically trigger the Q&A capability.
 6. After Apsara AIOps returns the answer, perform the following operations:
 : Click the like button to indicate that you approve of the answer. : Click the dislike button to indicate that you disapprove of the answer. Select a feedback option in the chat box and click **OK** to submit it. : Copy the answer content. : Request the system to regenerate an answer. ent dialogue : Export the answer content in formats such as Markdown, PDF, DOCX, and WPS. The system also generates relevant operations or descriptions based on your questions, and supports multi-turn conversations throughout the Q&A process.
 7. Perform the following operations in the upper-right corner of the page.
@@ -139,9 +143,7 @@ products, clusters, services, and service roles) Example: What services are avai
 6. **Function entry** (such as the "Operation Orchestration" menu link)
 : Operation Orchestration function entry, menu: Resource Management
 
-**Note**
-
-When you ask a question, if you can, include the resource identifier (such as the IP address, ID, and name), the target type (such as ECS, cluster, and service role), or your query intent (such as feature query and dependency query). This significantly improves the query accuracy.
+> **Note:** When you ask a question, if you can, include the resource identifier (such as the IP address, ID, and name), the target type (such as ECS, cluster, and service role), or your query intent (such as feature query and dependency query). This significantly improves the query accuracy.
 
 | Scenarios | Result Description |
 |---|---|

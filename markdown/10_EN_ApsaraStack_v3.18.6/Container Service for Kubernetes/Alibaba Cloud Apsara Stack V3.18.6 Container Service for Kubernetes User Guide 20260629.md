@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 734
 source_pdf: "9a4ad144eba8b57b_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Container Service for Kubernetes User Guide 20260629
@@ -315,9 +315,9 @@ The core features of Dynamic Resource Allocation (DRA) have graduated to General
 
 The PodLevelResources feature gate has graduated to Beta. This feature gate allows you to set resource requests and limits at the pod level, ensuring that the total resource consumption of all containers within a pod does not exceed the pod limits. For more information, see Pod Level Resource Specifications.
 
-**Note**
+> **Note:** Windows nodes are not supported.
 
-Windows nodes are not supported. By default, kubectl supports a `.kuberc` file for storing non-sensitive, client-side configurations and preferences. This file is different from the `kubeconfig` file, which contains authentication credentials. For more information, see Introduce kuberc.
+By default, kubectl supports a `.kuberc` file for storing non-sensitive, client-side configurations and preferences. This file is different from the `kubeconfig` file, which contains authentication credentials. For more information, see Introduce kuberc.
 
 | ExternalServiceAccountTokenSigner |   |   |
 |---|---|---|
@@ -1128,9 +1128,9 @@ All Container Service components have been upgraded and optimized to support Kub
 
 nts By default, the `node-role.kubernetes.io/control-plane` label is added by Container Service to the master nodes of a dedicated Kubernetes cluster. The `node-role.kubernetes.io/master` label is deprecated in Kubernetes versions later than 1.20. The **selfLink** field is deprecated. For more information, see Stop setting SelfLink in kube-apiserver. The `extensions/v1beta1` and `networking.k8s.io/v1beta1` API versions are no longer used to manage Ingresses and IngressClasses, and will be deprecated in Kubernetes versions later than 1.22. Use `networking.k8s.io/v1` instead.
 
-**Note**
+> **Note:** By default, the NGINX Ingress controller is installed in Container Service clusters. This component enables you to use the networking.k8s.io/v1beta1 API version to manage Ingresses and IngressClasses.
 
-By default, the NGINX Ingress controller is installed in Container Service clusters. This component enables you to use the networking.k8s.io/v1beta1 API version to manage Ingresses and IngressClasses. The required SANs must be included in the self-signed server certificates of the admission webhooks in Container Service clusters. Before you upgrade a Container Service cluster to Kubernetes 1.20 or later, make sure that the required SANs are included in the self-signed server certificates of the admission webhooks in the cluster. For more information, see the sample Helm chart.
+The required SANs must be included in the self-signed server certificates of the admission webhooks in Container Service clusters. Before you upgrade a Container Service cluster to Kubernetes 1.20 or later, make sure that the required SANs are included in the self-signed server certificates of the admission webhooks in the cluster. For more information, see the sample Helm chart.
 
 **Feature upgrades**
 
@@ -1197,18 +1197,13 @@ The CVE-2021-1056 vulnerability is related to device isolation and NVIDIA GPU dr
 
 The affected versions of NVIDIA GPU drivers are listed in the following figure based on the information published on the NVIDIA official website. For more information, see NVIDIA official website. nts If you selected a custom NVIDIA driver or updated an NVIDIA driver, check whether the NVIDIA driver that you installed is affected by this vulnerability based on the preceding figure. If you use the NVIDIA driver that is automatically installed by Container Service, you must check whether the Kubernetes version of your cluster is affected by this vulnerability. The following Kubernetes versions are affected by this vulnerability: ACK 1.16.9-aliyun.1. By default, the NVIDIA driver of version 418.87.01 is installed in clusters of this Kubernetes version. ACK 1.18.8-aliyun.1. By default, the NVIDIA driver of version 418.87.01 is installed in clusters of this Kubernetes version.
 
-**Note**
-
-The NVIDIA GPU drivers that are installed by default in clusters of other Kubernetes versions are not affected. The Container Service team of Alibaba Cloud will keep you informed of further CVE content updates and help you fix the vulnerability.
+> **Note:** The NVIDIA GPU drivers that are installed by default in clusters of other Kubernetes versions are not affected. The Container Service team of Alibaba Cloud will keep you informed of further CVE content updates and help you fix the vulnerability.
 
 **Check the version of the NVIDIA driver on a GPU-accelerated node**
 
 Log on to the GPU-accelerated node and run the following command to query the version of the NVIDIA driver.
 
-**Note**
-
-For more information about how to log on to a GPU-accelerated node, see the **Use VNC to**
-**connect to and log on to an instance** chapter of the **Elastic Compute Service (ECS) User Guide**.
+> **Note:** For more information about how to log on to a GPU-accelerated node, see the **Use VNC to** **connect to and log on to an instance** chapter of the **Elastic Compute Service (ECS) User Guide**.
 
 ```
 nvidia-smi
@@ -1239,13 +1234,13 @@ The output indicates that the version of the NVIDIA driver is 418.87.01.
 
 nts
 
-**Important**
+> **Important:** When you upgrade the NVIDIA driver for a node, the node must be restarted. This interrupts services that are deployed on the node.
 
-When you upgrade the NVIDIA driver for a node, the node must be restarted. This interrupts services that are deployed on the node. Upgrade the NVIDIA driver based on the preceding figure.
+Upgrade the NVIDIA driver based on the preceding figure.
 
-**Note**
+> **Note:** For more information about how to upgrade the NVIDIA driver, see Upgrade the NVIDIA driver on a GPU node.
 
-For more information about how to upgrade the NVIDIA driver, see Upgrade the NVIDIA driver on a GPU node. If your NVIDIA driver belongs to the R390 branch, upgrade it to version 390.141. If your NVIDIA driver belongs to the R418 branch, upgrade it to version 418.181.07. If your NVIDIA driver belongs to the R450 branch, upgrade it to version 450.102.04. If your NVIDIA driver belongs to the R460 branch, upgrade it to version 460.32.03.
+If your NVIDIA driver belongs to the R390 branch, upgrade it to version 390.141. If your NVIDIA driver belongs to the R418 branch, upgrade it to version 418.181.07. If your NVIDIA driver belongs to the R450 branch, upgrade it to version 450.102.04. If your NVIDIA driver belongs to the R460 branch, upgrade it to version 460.32.03.
 
 ## 2 Release notes
 
@@ -1477,9 +1472,7 @@ You can deploy an application by using an existing image or orchestration templa
 
 Click the account switch icon on DesktopAssistant to switch logon accounts. Click the shopping cart icon on DesktopAssistant to access the shopping cart page. Click the arrows on DesktopAssistant to show or hide the floating menu.
 
-**Note**
-
-By default, DesktopAssistant is displayed in the lower-right corner of the pages in the ACK console. You can drag it to a desired position.
+> **Note:** By default, DesktopAssistant is displayed in the lower-right corner of the pages in the ACK console. You can drag it to a desired position.
 
 #### 7.1.2 Log on to the ACK console
 
@@ -1496,15 +1489,11 @@ key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. In the top navigation bar, choose **Products > Computing > Container Service for Kubernetes**.
 5. On the **Container Service** page, select an organization and a region. Then, click **Access with**
@@ -1619,9 +1608,9 @@ cluster.
 5. On the right side of the page, click **Create Cluster**.
 6. In the **Confirm** dialog box, read and select the Terms of Service and disclaimer, and then click **OK**.
 
-**Note**
+> **Note:** You can click **Cluster Configuration Recommendations** to view the cluster configuration optimization and suggestions in the **Apsara Copilot** panel.
 
-You can click **Cluster Configuration Recommendations** to view the cluster configuration optimization and suggestions in the **Apsara Copilot** panel. After the cluster is created, you can view the cluster on the **Clusters** page.
+After the cluster is created, you can view the cluster on the **Clusters** page.
 
 **FAQ**
 
@@ -1661,9 +1650,8 @@ Before you configure the Deployment, select a namespace in the upper part of the
 | Synchronize Timezone | Specifies whether to synchronize the time zone between nodes and containers. |
 |---|---|
 
-**Note**
+> **Note:** In this example, the **Deployment** type is selected.
 
-In this example, the **Deployment** type is selected.
 7. Click **Next**.
 Proceed to the **Container** step.
 
@@ -1671,9 +1659,8 @@ Proceed to the **Container** step.
 
 In the **Container** step, configure the following container settings: the container image, resource request and limit, container ports, environment variables, health check settings, lifecycle configurations, volumes, and logging configurations.
 
-**Note**
+> **Note:** In the **Container** step, click **Add Container** to add more containers to the pod.
 
-In the **Container** step, click **Add Container** to add more containers to the pod.
 1. In the **General** section, configure the basic settings of containers.
 
 | Parameter | Description |
@@ -1742,9 +1729,7 @@ You can specify the following parameters to configure the lifecycle of the conta
 
 7. **Optional:** In the **Log** section, configure log collection and add custom tags.
 
-**Important**
-
-Make sure that the Log Service agent is installed in the cluster.
+> **Important:** Make sure that the Log Service agent is installed in the cluster.
 
 | Parameter | Description |
 |---|---|
@@ -1760,13 +1745,13 @@ Proceed to the **Advanced** step.
 In the **Advanced** step, configure the following settings: access control, scaling, scheduling, annotations, and labels.
 1. In the **Access Control** section, configure how to expose backend pods.
 
-**Note**
+> **Note:** You can configure the following access control settings based on your business requirements:
+> Internal applications: For applications that provide services within the cluster, you can create a **ClusterIP** or **NodePort** Service to enable internal communication.
+> External applications: For applications that are exposed to the Internet, you can configure access control by using one of the following methods:
+> Create a LoadBalancer Service. When you create a Service, set the Type parameter to **Server Load Balancer**. You can select or create a Server Load Balancer (SLB) instance for the Service and use the Service to expose your application to the Internet.
+> Create an Ingress and use it to expose your application to the Internet. For more information, see Ingress.
 
-You can configure the following access control settings based on your business requirements: Internal applications: For applications that provide services within the cluster, you can create a
-**ClusterIP** or **NodePort** Service to enable internal communication.
-External applications: For applications that are exposed to the Internet, you can configure access control by using one of the following methods: Create a LoadBalancer Service. When you create a Service, set the Type parameter to
-**Server Load Balancer**. You can select or create a Server Load Balancer (SLB) instance
-for the Service and use the Service to expose your application to the Internet. Create an Ingress and use it to expose your application to the Internet. For more information, see Ingress. You can also specify how backend pods are exposed to the Internet. In this example, a ClusterIP Service and an Ingress are created to expose an NGINX application to the Internet. Click **Create** to the right side of **Services**. In the Create Service dialog box, configure the following parameters.
+You can also specify how backend pods are exposed to the Internet. In this example, a ClusterIP Service and an Ingress are created to expose an NGINX application to the Internet. Click **Create** to the right side of **Services**. In the Create Service dialog box, configure the following parameters.
 
 | Parameter | Description |
 |---|---|
@@ -1787,9 +1772,7 @@ for the Service and use the Service to expose your application to the Internet. 
 
 To create an Ingress, click **Create** to the right side of **Ingresses**. In the Create dialog box, set the parameters. For more information, see Ingress configurations.
 
-**Important**
-
-When you create an application from an image, you can create an Ingress only for one Service. In this example, the name of a virtual host is specified as the test domain name. You must add a mapping in the following format to the hosts file: Ingress external endpoint + Ingress domain name. In actual scenarios, use a domain name that has an Internet Content Provider (ICP) number.
+> **Important:** When you create an application from an image, you can create an Ingress only for one Service. In this example, the name of a virtual host is specified as the test domain name. You must add a mapping in the following format to the hosts file: Ingress external endpoint + Ingress domain name. In actual scenarios, use a domain name that has an Internet Content Provider (ICP) number.
 
 ```
 101.37.xx.xx foo.bar.com # The IP address of the Ingress.
@@ -1811,9 +1794,7 @@ You can find the created Service and Ingress in the **Access Control** section. 
 2. **Optional:** In the **Scaling** section, enable **HPA** to meet the requirements of different applications.
 Horizontal Pod Autoscaling (HPA) can automatically scale the number of pods in an ACK cluster based on the CPU and memory usage.
 
-**Note**
-
-To enable HPA, you must configure resources required by the container. Otherwise, HPA does not take effect.
+> **Note:** To enable HPA, you must configure resources required by the container. Otherwise, HPA does not take effect.
 
 | Parameter | Description |
 |---|---|
@@ -1827,9 +1808,7 @@ To enable HPA, you must configure resources required by the container. Otherwise
 3. **Optional:** In the **Scheduling** section, set **Update Method**, **Node Affinity**, **Pod Affinity**, **Pod Anti-**
 **affinity**, and **Toleration**. For more information, see Affinity and anti-affinity.
 
-**Note**
-
-Pod scheduling based on node affinity and pod affinity relies on node labels and pod labels. You can add node labels and pod labels that are provided by Kubernetes to configure node affinity and pod affinity. You can also add custom labels to nodes and pods, and then configure node affinity and pod affinity based on these custom labels.
+> **Note:** Pod scheduling based on node affinity and pod affinity relies on node labels and pod labels. You can add node labels and pod labels that are provided by Kubernetes to configure node affinity and pod affinity. You can also add custom labels to nodes and pods, and then configure node affinity and pod affinity based on these custom labels.
 
 | Parameter | Description |
 |---|---|
@@ -1923,11 +1902,8 @@ deployment of resource objects. You can also create a custom template based on t
 **Save As**: You can save the template that you have configured.
 The following sample template is based on an orchestration template provided by ACK. You can use this template to create a Deployment to run an NGINX application.
 
-**Note**
-
-ACK supports Kubernetes YAML orchestration. You can use three hyphens ( `---` ) to separate resource objects. This allows you to define multiple resource objects in one template.
-**Optional:** By default, when you mount a volume to an application, the files in the mount target
-are overwritten. To avoid overwriting the existing files, you can add the `subPath` parameter.
+> **Note:** ACK supports Kubernetes YAML orchestration. You can use three hyphens ( `---` ) to separate resource objects. This allows you to define multiple resource objects in one template.
+> **Optional:** By default, when you mount a volume to an application, the files in the mount target are overwritten. To avoid overwriting the existing files, you can add the `subPath` parameter.
 
 ```
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1 kind: Deployment metadata:
@@ -2007,9 +1983,9 @@ corner of the page.
 7. Configure containers.
 The following example describes how to configure an image pull Secret. i. In the **Container** step, enter the address of the private image in the **Image Name** field in the `domainname/namespace/imagename` format.
 
-**Note**
+> **Note:** You do not need to configure a image pulling Secret for a public image registry.
 
-You do not need to configure a image pulling Secret for a public image registry. ii. Enter the image version that you want to use in the Image Version field. iii. Click **Set Image Pull Secret**, and create a Secret or select an existing Secret in the dialog box that appears. You can select **New Secret**. If you select New Secret, set the following parameters:
+ii. Enter the image version that you want to use in the Image Version field. iii. Click **Set Image Pull Secret**, and create a Secret or select an existing Secret in the dialog box that appears. You can select **New Secret**. If you select New Secret, set the following parameters:
 
 | Parameter | Description |
 |---|---|
@@ -2029,9 +2005,8 @@ On the **Deployments** page, check the status of the application. If the applica
 
 This topic provides an overview of the core features and usage of Apsara Copilot in Container Service for Kubernetes (ACK). Apsara Copilot helps you to use AI capabilities to enhance efficiency in cluster management, application deployment, and troubleshooting.
 
-**Important**
-
-The results generated by Apsara Copilot cannot be used as the basis for final technical support conclusions or business decisions. Alibaba Cloud shall not be liable for any direct or indirect losses caused by taking actions based on the output of Apsara Copilot. The query results returned by Apsara Copilot are automatically generated by AI models. The results may not be completely accurate and are for reference only. We recommend that you verify the accuracy of the results based on the actual situation.
+> **Important:** The results generated by Apsara Copilot cannot be used as the basis for final technical support conclusions or business decisions. Alibaba Cloud shall not be liable for any direct or indirect losses caused by taking actions based on the output of Apsara Copilot.
+> The query results returned by Apsara Copilot are automatically generated by AI models. The results may not be completely accurate and are for reference only. We recommend that you verify the accuracy of the results based on the actual situation.
 
 **Prerequisites**
 
@@ -2080,9 +2055,7 @@ column or click **Details** in the **Actions** column.
 5. In the upper part of the **Deployments** page, select a namespace and click **Create from Template**.
 6. Click **Smart Template Generator** to generate a YAML template by using Apsara Copilot.
 
-**Note**
-
-You can click **YAML Intelligent Analysis** to check whether the YAML format and syntax are correct by using Apsara Copilot.
+> **Note:** You can click **YAML Intelligent Analysis** to check whether the YAML format and syntax are correct by using Apsara Copilot.
 
 **Select-to-define feature**
 
@@ -2116,16 +2089,15 @@ Click the **RAM Users** tab, select the RAM user to which you want to grant perm
 Click the **RAM Roles** tab, select the RAM role to which you want to grant permissions, and then click
 **Modify Permissions** to grant permissions to the RAM role.
 
-**Note**
+> **Note:** If you log on to the ACK console as a RAM user, make sure that the RAM user is assigned the predefined RBAC administrator role or the cluster-admin role.
 
-If you log on to the ACK console as a RAM user, make sure that the RAM user is assigned the predefined RBAC administrator role or the cluster-admin role.
 4. In the **Configure Role-Based Access Control** step, click **Add Permissions** to add cluster-scoped or
 namespace-scoped permissions and select a predefined or custom RBAC role in the Permission column. You can also click the minus sign (-) to remove permissions. After you add the permissions, click **Next**
 **Step**.
 
-**Note**
+> **Note:** For each RAM user, you can assign only one predefined RBAC role but one or more custom RBAC roles to manage the same cluster or namespace.
 
-For each RAM user, you can assign only one predefined RBAC role but one or more custom RBAC roles to manage the same cluster or namespace. The following table describes the permissions that the predefined and custom RBAC roles have on clusters and namespaces. Table 1. Roles and permissions
+The following table describes the permissions that the predefined and custom RBAC roles have on clusters and namespaces. Table 1. Roles and permissions
 
 | Role | RBAC permissions on cluster resources |
 |---|---|
@@ -2141,9 +2113,9 @@ After the authorization is complete, you can log on to the ACK console as the au
 
 ACK provides the following predefined RBAC roles: Administrator, O&M Engineer, Developer, and Restricted User. You can use these roles to regulate access to the ACK console in most scenarios. In addition, you can use custom roles to control permissions on clusters. ACK provides a set of custom RBAC roles.
 
-**Note**
+> **Note:** The cluster-admin role is similar to a super administrator. By default, the cluster-admin role has the permissions to manage all resources within a cluster.
 
-The cluster-admin role is similar to a super administrator. By default, the cluster-admin role has the permissions to manage all resources within a cluster. You can log on to a master node of a cluster and run the following command to view the custom RBAC roles that are assigned to the current account:
+You can log on to a master node of a cluster and run the following command to view the custom RBAC roles that are assigned to the current account:
 
 ```bash
  # kubectl get clusterrole
@@ -2157,9 +2129,7 @@ Run the following command to query the details of a role. In this example, the p
  # kubectl get clusterrole cluster-admin -o yaml
 ```
 
-**Important**
-
-After a RAM user is assigned the cluster-admin role, the RAM user has the same permissions as the Alibaba Cloud account to which the RAM user belongs. The RAM user has full control over all resources within the cluster. Proceed with caution.
+> **Important:** After a RAM user is assigned the cluster-admin role, the RAM user has the same permissions as the Alibaba Cloud account to which the RAM user belongs. The RAM user has full control over all resources within the cluster. Proceed with caution.
 
 ```bash
 # kubectl get clusterrole cluster-admin  -o yaml
@@ -2284,11 +2254,13 @@ the pod.
 3. The application in the pod uses the OIDC token file to call the AssumeRoleWithOIDC API operation of STS
 and obtain the STS token that is used to assume a RAM role.
 
-**Note**
+> **Note:** To enable the application to perform these operations, you must first create an OIDC identity provider and allow the service account used by the pod to assume the specified RAM role.
+> The OIDC token in the OIDC token file is a temporary token. We recommend that you configure the application to read the latest token from the OIDC token file. The cluster renews the token in the OIDC token file before the token expires.
 
-To enable the application to perform these operations, you must first create an OIDC identity provider and allow the service account used by the pod to assume the specified RAM role. The OIDC token in the OIDC token file is a temporary token. We recommend that you configure the application to read the latest token from the OIDC token file. The cluster renews the token in the OIDC token file before the token expires.
 4. The application in the pod uses the obtained STS token to assume the specified RAM role and then calls
-the API operations of the relevant cloud service. RRSA is available only for ACK clusters that run Kubernetes 1.22 and later. RRSA depends on the token volume projection feature. By default, this feature is enabled for clusters that run Kubernetes 1.22 and later. Tokens are generally mounted to pods as statically provisioned volumes. After the token volume projection feature is enabled, the tokens are managed by kubelet in a more flexible manner. This reduces the risk of token leakage due to pod attacks.
+the API operations of the relevant cloud service. RRSA is available only for ACK clusters that run Kubernetes 1.22 and later.
+
+> RRSA depends on the token volume projection feature. By default, this feature is enabled for clusters that run Kubernetes 1.22 and later. Tokens are generally mounted to pods as statically provisioned volumes. After the token volume projection feature is enabled, the tokens are managed by kubelet in a more flexible manner. This reduces the risk of token leakage due to pod attacks.
 
 **Enable RRSA**
 
@@ -3498,18 +3470,16 @@ column or click **Details** in the **Actions** column.
 4. On the **Basic Information** tab, turn on **Secret Encryption** on the right side.
 5. In the **Secret Encryption** dialog box, select an existing CMK and click **OK**.
 
-**Important**
+> **Important:** This operation will cause the API server to restart. You can enable or disable this feature by using only accounts that are granted the cluster O&M or administrator permissions. We recommend that you perform this operation during off-peak hours.
+> Do not disable, delete, or schedule to delete the CMK used for Secret encryption and decryption after Secret encryption is enabled. Otherwise, the cluster API server will become unavailable.
 
-This operation will cause the API server to restart. You can enable or disable this feature by using only accounts that are granted the cluster O&M or administrator permissions. We recommend that you perform this operation during off-peak hours. Do not disable, delete, or schedule to delete the CMK used for Secret encryption and decryption after Secret encryption is enabled. Otherwise, the cluster API server will become unavailable.
 6. In the **Authorization** message, click **OK**.
 
 **What to do next**
 
 You can turn off **Secret Encryption** to disable Secret encryption.
 
-**Important**
-
-This operation will cause the API server to restart. You can enable or disable this feature by using only accounts that are granted the cluster O&M or administrator permissions. We recommend that you perform this operation during off-peak hours.
+> **Important:** This operation will cause the API server to restart. You can enable or disable this feature by using only accounts that are granted the cluster O&M or administrator permissions. We recommend that you perform this operation during off-peak hours.
 
 #### 7.3.6 Connect to an ACK cluster by using kubectl
 
@@ -3567,9 +3537,9 @@ You can add or remove master nodes only for clusters that run Kubernetes 1.28 an
 
 **Add master nodes**
 
-**Important**
+> **Important:** You can add a maximum of two master nodes at a time. You can add master nodes multiple times.
+> After you add master nodes, take notes of the number of master nodes. If the number of master nodes is an odd number, the high availability of master nodes can be ensured. We recommend that you do not use an even number of master nodes for an extended period of time.
 
-You can add a maximum of two master nodes at a time. You can add master nodes multiple times. After you add master nodes, take notes of the number of master nodes. If the number of master nodes is an odd number, the high availability of master nodes can be ensured. We recommend that you do not use an even number of master nodes for an extended period of time.
 1. Log on to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the Clusters page, find the cluster that you want to manage and click its name.
 3. In the Master Nodes section of the **Basic Information** tab, click **Scale Nodes**.
@@ -3578,13 +3548,9 @@ and click **Submit**. You can also click **Edit Advanced Configuration**, modify
 
 **Remove master nodes**
 
-**Important**
+> **Important:** **You can remove a master node only if more than three master nodes are deployed** **within a cluster.**
+> After you remove master nodes, take notes of the number of master nodes. If the number of master nodes is an odd number, the high availability of master nodes can be ensured. If the number of master nodes is an even number, we recommend that you add or remove master nodes at the earliest opportunity.
 
-**You can remove a master node only if more than three master nodes are deployed**
-
-**within a cluster.**
-
-After you remove master nodes, take notes of the number of master nodes. If the number of master nodes is an odd number, the high availability of master nodes can be ensured. If the number of master nodes is an even number, we recommend that you add or remove master nodes at the earliest opportunity.
 1. Log on to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the Clusters page, find the cluster that you want to manage and click its name to go to the cluster
 details page. In the left-side navigation pane, choose **Node****>****Node**.
@@ -3597,9 +3563,8 @@ In multi-tenant scenarios, Container Service issues kubeconfig files to users th
 
 **Procedure**
 
-**Important**
+> **Important:** After a kubeconfig file is revoked, you cannot use the kubeconfig file to connect to the cluster. Proceed with caution.
 
-After a kubeconfig file is revoked, you cannot use the kubeconfig file to connect to the cluster. Proceed with caution.
 1. Log on to the ACK console.
 2. In the left-side navigation pane, click **Clusters**.
 3. On the **Clusters** page, click the name of the cluster that you want to manage, or click **Details** in the
@@ -3619,9 +3584,7 @@ Outdated cluster versions may have security and stability issues. To ensure busi
 
 You can update an ACK cluster from a major version only to the next major version. For example, to update the Kubernetes version of an ACK cluster from 1.24 to 1.28, you need to first update the cluster to 1.26 and then update it to 1.28. To view the Kubernetes version of an ACK cluster, log in to the ACK console and check the **Version** column of the cluster on the **Clusters** page. Before you update to a Kubernetes version, read the following release notes for the corresponding Kubernetes version to learn the version details and deprecated APIs. This helps you avoid compatibility issues caused by feature updates in new Kubernetes versions. Kubernetes 1.34 release notes Kubernetes 1.32 release notes Kubernetes 1.30 release notes Kubernetes 1.22 release notes Kubernetes 1.20 release notes Kubernetes 1.18 release notes
 
-**Note**
-
-If the YAML file of your Helm chart uses discontinued resources, modify the file at the earliest opportunity. For more information, see the preceding release notes.
+> **Note:** If the YAML file of your Helm chart uses discontinued resources, modify the file at the earliest opportunity. For more information, see the preceding release notes.
 
 **Features and custom configurations**
 
@@ -3680,9 +3643,8 @@ the **Actions** column.
 **Mode** to **Control Planes and All Node Pools** , set **Maximum Number of Nodes to Repair per Batch**
 in the **Batch Update Policy** section, and then click **Precheck**. After the precheck is complete, click **View Details** to view the report. If **Result** displays **Normal**, you can continue to update the cluster. If **Result** displays **Abnormal**, click the **Troubleshoot** tab and follow the suggestions to fix the issues.
 
-**Note**
+> **Note:** If your cluster runs Kubernetes 1.20 or later, the precheck checks whether deprecated APIs are used in your cluster. The precheck result is for reference only and does not determine whether the cluster is updatable.
 
-If your cluster runs Kubernetes 1.20 or later, the precheck checks whether deprecated APIs are used in your cluster. The precheck result is for reference only and does not determine whether the cluster is updatable.
 4. After the cluster passes the precheck, click **Start Update**.
 During the update, do not add or remove nodes. To add or remove nodes, you need to first cancel the update. You can view the update progress in the **Event Rotation** section at the bottom of the **Upgrade**
 **Cluster** page. You can also perform the following operations as needed:
@@ -3690,9 +3652,10 @@ Pause and resume the update: You can click **Pause** to pause the update. To res
 **Continue**.
 After you pause the update, the cluster remains in an intermediate state. Do not perform operations on the cluster when the update is paused and complete the update at the earliest opportunity. The update is terminated after the cluster remains in the Paused state for seven days. ACK automatically deletes the events and logs related to the update. Cancel the update: You can click **Cancel** and click **OK** in the message that appears to cancel the update. After you cancel the update, ACK continues to update the nodes in the current batch and the update cannot be rolled back. The remaining batches are not updated.
 
-**Note**
+> **Note:** If errors occur during the update, ACK pauses the update. The cause of failure is displayed in the lower part of the page. You can follow the suggestions on how to fix the error.
+> Do not modify the resources in the kube-upgrade namespace during the update unless an error occurs.
 
-If errors occur during the update, ACK pauses the update. The cause of failure is displayed in the lower part of the page. You can follow the suggestions on how to fix the error. Do not modify the resources in the kube-upgrade namespace during the update unless an error occurs. After the update is complete, you can go to the Clusters page and check the Kubernetes version of your cluster to verify that the control plane components are updated. You can also choose **Notes** > **Nodes** in the left-side navigation pane to view the Kubernetes version of the nodes.
+After the update is complete, you can go to the Clusters page and check the Kubernetes version of your cluster to verify that the control plane components are updated. You can also choose **Notes** > **Nodes** in the left-side navigation pane to view the Kubernetes version of the nodes.
 
 **Update only the control plane**
 
@@ -3708,9 +3671,8 @@ the **Actions** column.
 **Mode** to **Control Planes Only**, and then click **Precheck**.
 After the precheck is complete, click **View Details** to view the report. If **Result** displays **Normal** in the report, the cluster passes the precheck and you can update the cluster. If **Result** displays **Abnormal** in the report, the cluster can still run as expected and the cluster status does not change. Click the **Troubleshoot** tab and follow the suggestions displayed on the page to resolve the issues. For more information, see Cluster check items and suggestions on how to fix cluster issues.
 
-**Note**
+> **Note:** If your cluster runs Kubernetes 1.20 or later, the precheck checks whether deprecated APIs are used in your cluster. The precheck result is for reference only and does not determine whether the cluster is updatable.
 
-If your cluster runs Kubernetes 1.20 or later, the precheck checks whether deprecated APIs are used in your cluster. The precheck result is for reference only and does not determine whether the cluster is updatable.
 4. After the cluster passes the precheck, click **Start Update**.
 You can view the update progress on the **Upgrade Cluster** page. After the update is complete, you can go to the Clusters page and check the Kubernetes version of your cluster to verify that the control plane components are updated.
 
@@ -3869,9 +3831,8 @@ A Kubernetes cluster is created and the cluster certificate is about to expire.
 3. Select the cluster for which you want to renew the certificate and click **Update Certificate**. The **Update**
 **Certificate** message appears.
 
-**Note**
+> **Note:** The **Update Certificate** button will be displayed two months before your cluster certificate expires.
 
-The **Update Certificate** button will be displayed two months before your cluster certificate expires.
 4. Click **Update** and the **Confirm** page appears.
 5. Click **OK**.
 
@@ -3919,9 +3880,8 @@ on to a master node from another master node. If the system prompts you to enter
 other master nodes. Replace $(internal-ip) with the internal IP address of each master node.
 ```
 
-**Note**
+> **Note:** If you do not configure password-free logon between master nodes, the system prompts you to enter the password of the root user when you run the script.
 
-If you do not configure password-free logon between master nodes, the system prompts you to enter the password of the root user when you run the script.
 2. Obtain the domain name of the Cert component.
 i. Log on to the Apsara Infrastructure Management Console. In the top navigation bar, choose **Platform**
 **Operation > Apsara Infrastructure Management > O&M Tools**.
@@ -3941,9 +3901,9 @@ file_server=xxxxx curl -k -sSL https://$file_server:8080/static/k8s/private/pkg/
 
 If etcd CA and certs have succesfully rotated! is returned, the etcd certificates and cluster certificates on all master nodes of the cluster are renewed.
 
-**Note**
-
-When the system is running the script, the system creates backups for the client certificate and server certificate of the etcd in the following directories: /var/lib/etcd/cert_$timestamp /etc/kubernetes/pki/etcd_$timestamp
+> **Note:** When the system is running the script, the system creates backups for the client certificate and server certificate of the etcd in the following directories:
+> /var/lib/etcd/cert_$timestamp
+> /etc/kubernetes/pki/etcd_$timestamp
 
 **Scenario 2: Renew expired etcd certificates**
 
@@ -3994,9 +3954,9 @@ A Container Service for Kubernetes (ACK) cluster is created and its Kubernetes v
 
 **API Server parameter configuration**
 
-**Important**
+> **Important:** After you modify the parameters, the control plane restarts the nodes one by one. Perform this operation during off-peak hours.
+> Custom parameters overwrite the default settings of the cluster. Make sure that the values of the custom parameters are valid and complete. Incorrect configurations cause control plane startup failures.
 
-After you modify the parameters, the control plane restarts the nodes one by one. Perform this operation during off-peak hours. Custom parameters overwrite the default settings of the cluster. Make sure that the values of the custom parameters are valid and complete. Incorrect configurations cause control plane startup failures.
 1. Log in to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the **Clusters** page, find the ACK dedicated cluster that you want to manage and click its name to go to
 the cluster details page. In the left-side navigation pane, choose **Cluster Configuration > Control**
@@ -4024,9 +3984,9 @@ the cluster details page. In the left-side navigation pane, choose **Cluster Con
 
 **Kube Controller Manager parameter configuration**
 
-**Important**
+> **Important:** After you modify the parameters, the control plane restarts the nodes one by one. Perform this operation during off-peak hours.
+> Custom parameters overwrite the default settings of the cluster. Make sure that the values of the custom parameters are valid and complete. Incorrect configurations cause control plane startup failures.
 
-After you modify the parameters, the control plane restarts the nodes one by one. Perform this operation during off-peak hours. Custom parameters overwrite the default settings of the cluster. Make sure that the values of the custom parameters are valid and complete. Incorrect configurations cause control plane startup failures.
 1. Log in to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the **Clusters** page, find the ACK dedicated cluster that you want to manage and click its name to go to
 the cluster details page. In the left-side navigation pane, choose **Cluster Configuration > Control**
@@ -4104,9 +4064,8 @@ complete.
 
 **Disable Binpack scheduling**
 
-**Note**
+> **Note:** After Binpack scheduling is disabled, the default scheduling policy is restored. Specifically, the scheduler prioritizes pod packing during scheduling.
 
-After Binpack scheduling is disabled, the default scheduling policy is restored. Specifically, the scheduler prioritizes pod packing during scheduling.
 1. On the **Binpack** tab, click **Disable**.
 2. In the message that appears, read the tips and click **OK**.
 
@@ -4128,9 +4087,8 @@ the cluster details page. In the left-side navigation pane, choose **Cluster Con
 3. On the **Cluster Scheduler** page, click the **Load-Aware Scheduling** tab.
 4. Optional. On the **Load-Aware Scheduling** tab, click **Install** in the component installation step.
 
-**Note**
+> **Note:** If the component is already installed, skip this step.
 
-If the component is already installed, skip this step.
 5. In the **Load-Aware Scheduling Configuration** section, click **Configure**, configure the parameters, and
 then click **OK**. |
 
@@ -4164,9 +4122,10 @@ A Container Service for Kubernetes (ACK) cluster is created and its Kubernetes v
 
 **Enable descheduling**
 
-**Important**
+> **Important:** The hotspot spreading feature requires the load-aware scheduling feature to be enabled for the cluster, and pods are redistributed based on node utilization.
+> Risk description: Pods on hotspots are evicted after the hotspot spreading feature is enabled. To prevent evicted pods from being rescheduled back to the same node, we recommend that you set the Hotspot Load Threshold parameter to the same value as the node filtering threshold for load balancing, thereby blocking pods from being rescheduled to hotspot nodes.
+> The descheduler continuously monitors the resource utilization within a period of time and calculates the average value. Descheduling is triggered only if the average value remains above the threshold for a certain period of time. The default time period is 10 minutes.
 
-The hotspot spreading feature requires the load-aware scheduling feature to be enabled for the cluster, and pods are redistributed based on node utilization. Risk description: Pods on hotspots are evicted after the hotspot spreading feature is enabled. To prevent evicted pods from being rescheduled back to the same node, we recommend that you set the Hotspot Load Threshold parameter to the same value as the node filtering threshold for load balancing, thereby blocking pods from being rescheduled to hotspot nodes. The descheduler continuously monitors the resource utilization within a period of time and calculates the average value. Descheduling is triggered only if the average value remains above the threshold for a certain period of time. The default time period is 10 minutes.
 1. Log in to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the **Clusters** page, find the ACK dedicated cluster that you want to manage and click its name to go to
 the cluster details page. In the left-side navigation pane, choose **Cluster Configuration > Cluster**
@@ -4227,9 +4186,8 @@ column or click **Details** in the **Actions** column.
 **Actions** column.
 5. Optional. On the **QoS-Aware Scheduling Configuration** page, click **Install**.
 
-**Note**
+> **Note:** If the ack-koordinator component is already installed, skip this step.
 
-If the ack-koordinator component is already installed, skip this step.
 6. On the **QoS-Aware Scheduling Configuration** page, click **Configure**.
 7. Currently, the following two configuration methods are supported:
 
@@ -4272,9 +4230,7 @@ Container Service for Kubernetes (ACK) lets you create node pools and manage nod
 
 An ACK cluster is created, and the Kubernetes version of the cluster is later than 1.9.
 
-**Note**
-
-By default, you can deploy at most 100 nodes in a cluster.
+> **Note:** By default, you can deploy at most 100 nodes in a cluster.
 
 **Procedure**
 
@@ -4367,9 +4323,9 @@ pane of the cluster details page, choose **Nodes > Node Pools**.
 3. Click the name of a node pool to view the following information.
 View the cluster information, node pool information, and node configuration. If the cluster has auto scaling enabled, you can also view the auto scaling configuration.
 
-**Note**
+> **Note:** You can click a hyperlink in blue on the tab to modify the corresponding item.
 
-You can click a hyperlink in blue on the tab to modify the corresponding item. View all nodes in the node pool on the Nodes tab. In the node list, select the nodes that you want to manage and click **Remove Node** to remove one or more nodes. Click the **Scaling Activities** tab to view the latest scaling events of the node pool.
+View all nodes in the node pool on the Nodes tab. In the node list, select the nodes that you want to manage and click **Remove Node** to remove one or more nodes. Click the **Scaling Activities** tab to view the latest scaling events of the node pool.
 
 ##### 7.5.1.3 Modify a node pool
 
@@ -4470,9 +4426,9 @@ click Submit.
 5. **Optional**. In the dialog box that appears, click **Modify Node Pool Settings** to modify the configurations
 of the node pool. For more information about the parameters, see Create an ACK cluster. The following list describes some of the parameters: Public IP: If you select Assign a Public IPv4 Address to Each Node, public IPv4 addresses are assigned to the nodes in the node pool. You can connect to the nodes by using the assigned IP addresses. ECS Label: Add labels to the Elastic Compute Service (ECS) instances. Node Label: Add labels to the nodes in the node pool. Taints: Add taints to all worker nodes in the Kubernetes cluster.
 
-**Note**
+> **Note:** If you select **Synchronize Node Labels and Taints**, the added labels and taints are synchronized to both existing and newly added nodes.
+> If you select **Set to Unschedulable**, the nodes are unschedulable when they are added to the cluster.
 
-If you select **Synchronize Node Labels and Taints**, the added labels and taints are synchronized to both existing and newly added nodes. If you select **Set to Unschedulable**, the nodes are unschedulable when they are added to the cluster.
 6. Click **Submit**.
 On the **Node Pools** page, if the **status** of the node pool is **Scaling**, the scale-out activity is in progress. After the scale-out activity is completed, the node pool changes to the **Active****state**.
 
@@ -4665,9 +4621,7 @@ icon and select **Configure kubelet** in the **Actions** column of the node pool
 4. Read the usage notes on the page, click **Custom Parameters** to select the parameter that you want to
 customize, specify **Maximum Number of Nodes to Repair per Batch** , and then click **Submit**. Follow the instructions to complete the operation. After you specify **Maximum Number of Nodes to Repair per Batch** , the kubelet updates the configurations of the nodes in the specified batches. We recommend that you set the number of batches to 10. You can view the update progress in the Event Records section. You can also pause, resume, or cancel the update. You can pause the update and then verify the updated nodes. After you pause the update, the nodes in the current batch will still be updated. The remaining batches of nodes are not updated until you resume the update.
 
-**Note**
-
-We recommend that you complete the update at the earliest opportunity. If the update remains paused for seven days, the system automatically cancels the update and deletes the related events and logs.
+> **Note:** We recommend that you complete the update at the earliest opportunity. If the update remains paused for seven days, the system automatically cancels the update and deletes the related events and logs.
 
 **FAQ**
 
@@ -4691,9 +4645,7 @@ echo 'KUBELET_CUSTOMIZED_ARGS=""' > /etc/kubernetes/kubelet-customized-args.conf
 
 In addition, do not modify the customizable kubelet parameters by modifying the userdata file with the CLI in case configuration conflicts occur. This may result in unexpected consequences during node pool maintenance.
 
-**Important**
-
-Using the CLI to customize kubelet parameters may pose severe stability risks. You are liable for the validity and compatibility of the content in the userdata file. If you use invalid configurations or deprecated configurations, the nodes may become unavailable.
+> **Important:** Using the CLI to customize kubelet parameters may pose severe stability risks. You are liable for the validity and compatibility of the content in the userdata file. If you use invalid configurations or deprecated configurations, the nodes may become unavailable.
 
 ##### 7.5.1.8 Update a node pool
 
@@ -4713,9 +4665,7 @@ The node pool update feature allows you to update the following components in an
 | OS image | You can perform the following operations: Update the version of the OS image. Change the OS type. Note The supported OS types are displayed in the Available Images parameter on the Node Pool Upgrade page of the Container Service for Kubernetes (ACK) console. | Select the OS image that you want to use from the drop- down list on the right side of OS Image Update. After you select OS Image Update, the node pool is updated by replacing the system disks of the nodes in the node pool. You can select Create Snapshot before Update to create snapshots for the nodes in the node pool. | To update the OS images of the nodes in a node pool, the system replaces the system disks of the nodes in the node pool in batches. Therefore, do not store important data in the system disks or back up the data before you update the node pool. The data disks are not affected by the update. |
 | Container runtime | If a new container runtime version is available, you can update the container runtime of the nodes in a node pool to the new version. | You can select Create Snapshot before Update to create snapshots for the nodes in the node pool. | If the runtime update is performed by replacing system disks, back up the data in system disks of the nodes in the node pool before the update and do not store important data in the system disks. The data disks are not affected by the update. During the runtime update, pod probes and lifecycle hooks may fail to run, and pods may perform in-place restarts. |
 
-**Note**
-
-When the system replaces the system disks of the nodes in a node pool, the system uses the node pool configuration to render the node component parameters. This ensures that the configurations of the node components and node pool are the same.
+> **Note:** When the system replaces the system disks of the nodes in a node pool, the system uses the node pool configuration to render the node component parameters. This ensures that the configurations of the node components and node pool are the same.
 
 **Procedure**
 
@@ -4801,11 +4751,9 @@ In most cases, an application is deployed across multiple ECS instances on the s
 
 **Associate a deployment set with a node pool in the ACK console**
 
-**Important**
+> **Important:** After you associate a deployment set with a node pool, the maximum number of nodes supported by the node pool is limited. Proceed with caution.
+> By default, the maximum number of nodes supported by a deployment set is calculated as **20 ×** **Number of zones**. Make sure that the deployment set has a sufficient node quota to avoid node scaling failures.
 
-After you associate a deployment set with a node pool, the maximum number of nodes supported by the node pool is limited. Proceed with caution. By default, the maximum number of nodes supported by a deployment set is calculated as **20 ×**
-**Number of zones**. Make sure that the deployment set has a sufficient node quota to avoid node
-scaling failures.
 1. Log on to the Container Service for Kubernetes (ACK) console. In the left-side navigation pane, click **Clusters**.
 2. On the **Clusters** page, find the cluster that you want to manage and click its name to go to the cluster
 details page. In the left-side navigation pane, choose **Nodes > Node Pools**.
@@ -5055,9 +5003,9 @@ Set **Add Method** to **Auto Add**. In the list of existing ECS instances, selec
 
 **Manually add nodes**
 
-**Important**
+> **Important:** ECS nodes that are manually added to an ACK cluster are not released when the cluster is deleted.
 
-ECS nodes that are manually added to an ACK cluster are not released when the cluster is deleted. To manually add a node, you must obtain an installation command and log on to the corresponding ECS instance to run the installation script. You can add only one ECS instance at a time.
+To manually add a node, you must obtain an installation command and log on to the corresponding ECS instance to run the installation script. You can add only one ECS instance at a time.
 1. Log on to the ACK console.
 2. In the navigation pane on the left, click **Clusters**.
 3. On the **Clusters** page, find the cluster that you want to manage and click **Details** in the **Actions** column.
@@ -5101,9 +5049,9 @@ You can view the nodes of a Container Service for Kubernetes (ACK) cluster by us
 
 **View nodes by using kubectl**
 
-**Note**
+> **Note:** Before you use kubectl to view the nodes in your cluster, you must connect to the cluster by using kubectl. For more information, see Connect to an ACK cluster by using kubectl.
 
-Before you use kubectl to view the nodes in your cluster, you must connect to the cluster by using kubectl. For more information, see Connect to an ACK cluster by using kubectl. After you use kubectl to connect to your cluster, run the following command to view the nodes in the cluster:
+After you use kubectl to connect to your cluster, run the following command to view the nodes in the cluster:
 
 ```bash
 kubectl get nodes
@@ -5176,9 +5124,8 @@ You can mark a node as schedulable or unschedulable in the Container Service for
 5. On the Nodes page, select the node that you want to manage and click **Drain/Set to Unschedulable** in
 the lower part of the page.
 
-**Note**
+> **Note:** You can also choose **More > Scheduling Settings** in the **Actions** column of the node.
 
-You can also choose **More > Scheduling Settings** in the **Actions** column of the node.
 6. In the dialog box that appears, set node schedulability.
 If you select **Set to Unschedulable**, pods are not scheduled to this node when you deploy new applications. If you select **Set to Unschedulable and Drain** , pods are not scheduled to this node when you deploy new applications. Pods on this node are evicted, except for the pods that are managed by DaemonSets. In this example, **Set to Unschedulable** is selected.
 7. Click **OK**.
@@ -5205,14 +5152,10 @@ Drain a single node a. Find the node that you want to drain and choose **More > 
 **above instructions and confirmed the execution of the selected operation.** Click **Confirm**
 **Eviction**.
 
-**Note**
+> **Note:** **Timeout**: The system automatically fails to run the draining task after the specified timeout period. A value of 0 indicates that no timeout period is specified.
 
-**Timeout**: The system automatically fails to run the draining task after the specified timeout period. A
-value of 0 indicates that no timeout period is specified.
-
-**Important**
-
-This operation may interrupt your workloads. We recommend that you perform this operation during off-peak hours. If you set the value to Unschedulable, the selected nodes are marked as SchedulingDisabled. Existing pods on the selected nodes can continue to provide services, but newly created pods are no longer scheduled to the nodes. After a node is drained, the existing pods on the node will be evicted, except for the pods controlled by DaemonSets, and the node will be marked as SchedulingDisabled. Newly created pods are no longer scheduled to the node.
+> **Important:** This operation may interrupt your workloads. We recommend that you perform this operation during off-peak hours. If you set the value to Unschedulable, the selected nodes are marked as SchedulingDisabled. Existing pods on the selected nodes can continue to provide services, but newly created pods are no longer scheduled to the nodes.
+> After a node is drained, the existing pods on the node will be evicted, except for the pods controlled by DaemonSets, and the node will be marked as SchedulingDisabled. Newly created pods are no longer scheduled to the node.
 
 ##### 7.5.2.6 Remove a node
 
@@ -5230,33 +5173,31 @@ When you remove a node, pods that run on the node are migrated to other nodes. T
 
 1. Run the following command to migrate the pods on the node that you want to remove to other nodes.
 
-**Note**
-
-Make sure that the other nodes have sufficient resources for these pods.
+> **Note:** Make sure that the other nodes have sufficient resources for these pods.
 
 ```bash
 kubectl drain node-name
 ```
 
-**Note**
+> **Note:** node-name must be in the format of your-region-name.node-id.
+> your-region-name specifies the region where the cluster that you want to manage is deployed.
+> node-id specifies the ID of the ECS instance where the node to be removed is deployed. Example: cn-hanghzou.i-xxx.
 
-node-name must be in the format of your-region-name.node-id. your-region-name specifies the region where the cluster that you want to manage is deployed. node-id specifies the ID of the ECS instance where the node to be removed is deployed. Example: cn-hanghzou.i-xxx.
 2. Log on to the ACK console.
 3. In the left-side navigation pane, click **Clusters**.
 4. On the **Clusters** page, find the cluster that you want to manage and click **Details** in the **Actions** column.
 5. In the left-side navigation pane of the details page, choose **Nodes > Node**.
 6. Find the node that you want to remove and choose **More > Remove** in the **Actions** column.
 
-**Note**
+> **Note:** To remove multiple nodes at a time, select the nodes that you want to remove on the **Nodes** page and click **Batch Remove**.
 
-To remove multiple nodes at a time, select the nodes that you want to remove on the
-**Nodes** page and click **Batch Remove**.
 7. **Optional:**Set parameters in the Remove Node dialog box.
 Select **Drain the Node** to migrate the pods on the node to other nodes. If you select this option, make sure that the other nodes have sufficient resources for these pods. Select **Release ECS Instance** to release the ECS instance where the node is deployed.
 
-**Note**
+> **Note:** Select this option to release only pay-as-you-go ECS instances.
+> Subscription ECS instances are automatically released after the subscription expires.
+> If you do not select **Release ECS Instance**, you are still billed for the ECS instance where the node is deployed.
 
-Select this option to release only pay-as-you-go ECS instances. Subscription ECS instances are automatically released after the subscription expires. If you do not select **Release ECS Instance**, you are still billed for the ECS instance where the node is deployed.
 8. In the **Remove Node** message, click **OK**.
 
 ##### 7.5.2.7 View node resource usage
@@ -5278,7 +5219,9 @@ column. You can view the request rate and usage rate of CPU and memory resources
 
 **Note**
 
-You can adjust the workload of a node based on the resource usage. For more information, see Set node schedulability. When the request or usage rate of a node reaches 100%, pods are not scheduled to the node.
+You can adjust the workload of a node based on the resource usage. For more information, see Set node schedulability.
+
+> When the request or usage rate of a node reaches 100%, pods are not scheduled to the node.
 
 #### 7.5.3 Hybrid cloud node pools
 
@@ -5330,9 +5273,10 @@ pane of the cluster details page, choose **Node > Node Pools**.
 | Node Label | Add tags to the nodes in the cluster. |
 | Taints | The taints that you want to add to all worker nodes in the cluster. |
 
-**Note**
-
-After the node pool is created, you can perform the following operations: Modify a node pool: Click **Edit** in the **Actions** column to modify the parameter settings. View the details of a node pool: Click **Details** in the **Actions** column to view the details of the node pool. Delete a node pool: Click **Delete** in the **Actions** column to delete the node pool.
+> **Note:** After the node pool is created, you can perform the following operations:
+> Modify a node pool: Click **Edit** in the **Actions** column to modify the parameter settings.
+> View the details of a node pool: Click **Details** in the **Actions** column to view the details of the node pool.
+> Delete a node pool: Click **Delete** in the **Actions** column to delete the node pool.
 
 **Add a hybrid cloud node**
 
@@ -5479,9 +5423,7 @@ i. **Create a PV of the disk type** You can create a PV of the disk type in the 
 
 Use the following `disk-pv.yaml` file to create a PV:
 
-**Note**
-
-The PV name must be the same as the disk ID.
+> **Note:** The PV name must be the same as the disk ID.
 
 ```
 apiVersion: v1 kind: PersistentVolume metadata:
@@ -5656,9 +5598,9 @@ Your application requires high disk I/O. You need a storage service that offers 
 
 If a NAS file system is mounted to multiple pods, the data in the file system is shared by the pods. In this case, the application must be able to synchronize data across the pods if the data in the NAS file system is modified by multiple pods.
 
-**Note**
+> **Note:** You cannot grant permissions to access the / directory (root directory) of the NAS file system. The user account and user group to which the directory belongs cannot be modified.
 
-You cannot grant permissions to access the / directory (root directory) of the NAS file system. The user account and user group to which the directory belongs cannot be modified. Statically provisioned NAS volumes cannot be expanded. If the **securityContext.fsgroup** parameter is specified in the application template, kubelet performs the `chmod` or `chown` operation after the volume is mounted, which increases the time consumption. You can delete this parameter to reduce the time consumption of volume mounting.
+Statically provisioned NAS volumes cannot be expanded. If the **securityContext.fsgroup** parameter is specified in the application template, kubelet performs the `chmod` or `chown` operation after the volume is mounted, which increases the time consumption. You can delete this parameter to reduce the time consumption of volume mounting.
 
 **Mount a statically provisioned NAS volume in the console**
 
@@ -5987,9 +5929,9 @@ Your application requires high disk I/O. You need a storage service that offers 
 
 To mount an Extreme NAS file system, set the `path` parameter in the StorageClass of the NAS volume to a subdirectory of /share. For example, a value of `0cd8b4a576-g****.cn-` `hangzhou.nas.aliyuncs.com:/share/subpath` indicates that the mounted subdirectory of the NAS file system is `/share/subpath` . If a NAS file system is mounted to multiple pods, the data in the file system is shared by the pods. In this case, the application must be able to synchronize data across the pods if the data in the NAS file system is modified by multiple pods.
 
-**Note**
+> **Note:** The permissions, user account, and user group of the / directory cannot be modified.
 
-The permissions, user account, and user group of the / directory cannot be modified. If the **securityContext.fsgroup** parameter is configured in the application template, kubelet performs the `chmod` or `chown` operation after the volume is mounted, which increases the time consumption.
+If the **securityContext.fsgroup** parameter is configured in the application template, kubelet performs the `chmod` or `chown` operation after the volume is mounted, which increases the time consumption.
 
 **Mount a dynamically provisioned NAS volume in the ACK console**
 
@@ -6217,9 +6159,10 @@ NAME READY STATUS RESTARTS AGE deployment-nas-1-5b5cdb85f6-n**** 1/1 Running 0 3
 
 **using kubectl**
 
-**Important**
+> **Important:** By default, if you delete a PV that is mounted in filesystem mode, the system retains the related NAS file system and mount target. To delete the NAS file system and mount target together with the PV, set
+> `reclaimPolicy` to `Delete` and set `deleteVolume` to `true` in the StorageClass configurations.
 
-By default, if you delete a PV that is mounted in filesystem mode, the system retains the related NAS file system and mount target. To delete the NAS file system and mount target together with the PV, set `reclaimPolicy` to `Delete` and set `deleteVolume` to `true` in the StorageClass configurations. You can create only one file system and one mount target for the pod that mounts a NAS volume in filesystem mode.
+You can create only one file system and one mount target for the pod that mounts a NAS volume in filesystem mode.
 1. **Optional:** Configure a Resource Access Management (RAM) policy and attach the policy to the RAM role
 assigned to your cluster. The filesystem mode allows you to dynamically create and delete NAS file systems and mount targets. You must grant the required permissions to CSI-Provisioner. The following sample code shows a RAM policy that contains the required permissions: `{`
 
@@ -6499,9 +6442,9 @@ Object Storage Service (OSS) volumes can be mounted to multiple pods. OSS is sui
 
 The Kubernetes version of the cluster is 1.26 or later. The version of the Container Storage Interface (CSI) plug-in is v1.31.4-9819c8b-aliyun or later.
 
-**Note**
+> **Note:** ACK clusters that run Kubernetes 1.26 or higher allow you to mount volumes by using RRSA authentication. ACK clusters that run other Kubernetes versions allow you to mount volumes by using AccessKey pair authentication.
 
-ACK clusters that run Kubernetes 1.26 or higher allow you to mount volumes by using RRSA authentication. ACK clusters that run other Kubernetes versions allow you to mount volumes by using AccessKey pair authentication. An OSS bucket is created. The OSS bucket and ACK cluster belong to the same Apsara Stack tenant account. For more information, see **Create a bucket** in the Buckets chapter of OSS User Guide.
+An OSS bucket is created. The OSS bucket and ACK cluster belong to the same Apsara Stack tenant account. For more information, see **Create a bucket** in the Buckets chapter of OSS User Guide.
 
 **Mount a volume using RRSA authentication**
 
@@ -6517,9 +6460,8 @@ Use RRSA to mount an OSS bucket as a statically provisioned volume.
 
 **volume**
 
-**Important**
-
-If the AccessKey pair referenced by the OSS volume is revoked or the required permissions are revoked, the application to which the volume is mounted fails to access OSS, and a permission error is reported. To resolve the issue, you need to modify the Secret that stores the AccessKey pair and mount the OSS volume to the application again. In this case, the application is restarted. To regularly rotate AccessKey pairs**,** we recommend that you use RRSA authentication.
+> **Important:** If the AccessKey pair referenced by the OSS volume is revoked or the required permissions are revoked, the application to which the volume is mounted fails to access OSS, and a permission error is reported. To resolve the issue, you need to modify the Secret that stores the AccessKey pair and mount the OSS volume to the application again. In this case, the application is restarted.
+> To regularly rotate AccessKey pairs**,** we recommend that you use RRSA authentication.
 
 **Step 1: Confirm the required permissions**
 
@@ -6812,17 +6754,16 @@ Object Storage Service (OSS) volumes can be mounted to multiple pods. OSS is sui
 
 The Kubernetes version of the cluster is 1.26 or later. The version of the Container Storage Interface (CSI) plug-in is v1.31.4-9819c8b-aliyun or later.
 
-**Note**
+> **Note:** ACK clusters that run Kubernetes 1.26 or higher allow you to mount volumes by using RRSA authentication. ACK clusters that run other Kubernetes versions allow you to mount volumes by using AccessKey pair authentication.
 
-ACK clusters that run Kubernetes 1.26 or higher allow you to mount volumes by using RRSA authentication. ACK clusters that run other Kubernetes versions allow you to mount volumes by using AccessKey pair authentication. An OSS bucket is created. The OSS bucket and ACK cluster belong to the same Apsara Stack tenant account. For more information, see **Create a bucket** in the Buckets chapter of OSS User Guide.
+An OSS bucket is created. The OSS bucket and ACK cluster belong to the same Apsara Stack tenant account. For more information, see **Create a bucket** in the Buckets chapter of OSS User Guide.
 
 **Use AccessKey pair authentication to mount a dynamically provisioned**
 
 **OSS volume**
 
-**Important**
-
-If the AccessKey pair referenced by the OSS volume is revoked or the required permissions are revoked, the application to which the volume is mounted fails to access OSS, and a permission error is reported. To resolve the issue, you need to modify the Secret that stores the AccessKey pair and mount the OSS volume to the application again. In this case, the application is restarted. If you need to regularly rotate AccessKey pairs**,** we recommend that you use RRSA authentication.
+> **Important:** If the AccessKey pair referenced by the OSS volume is revoked or the required permissions are revoked, the application to which the volume is mounted fails to access OSS, and a permission error is reported. To resolve the issue, you need to modify the Secret that stores the AccessKey pair and mount the OSS volume to the application again. In this case, the application is restarted.
+> If you need to regularly rotate AccessKey pairs**,** we recommend that you use RRSA authentication.
 
 **Step 1: Confirm the required permissions**
 
@@ -7172,9 +7113,7 @@ To enable volume snapshots, ACK uses CustomResourceDefinitions (CRDs) to define 
 
 To use volume snapshots, you must associate these resources with each other based on the following rules: Before you can use volume snapshots, associate a VolumeSnapshot with a VolumeSnapshotContent in the same way that you associate a PV with a PVC. After you specify a valid value in the VolumeSnapshotClassName field for a VolumeSnapshot, the ACK cluster automatically creates a VolumeSnapshotContent for the VolumeSnapshot. If you specify an invalid value or leave the VolumeSnapshotClassName field empty, the VolumeSnapshotContent cannot be automatically created. In this case, you must manually create a VolumeSnapshotContent and associate the VolumeSnapshotContent with the VolumeSnapshot. Each VolumeSnapshotContent can be associated with only one VolumeSnapshot.
 
-**Important**
-
-When you delete a VolumeSnapshotContent, the associated snapshot is also deleted.
+> **Important:** When you delete a VolumeSnapshotContent, the associated snapshot is also deleted.
 
 **Dynamically create a volume snapshot**
 
@@ -7367,9 +7306,10 @@ spec:
         apiGroup: snapshot.storage.k8s.io
 ```
 
-**Note**
+> **Note:** In the `dataSource` parameter of the `volumeClaimTemplates` section, set the kind field to `VolumeSnapshot` and set the name field to `new-snapshot-demo` . The new-snapshot-demo
+> `VolumeSnapshot` is created in Step 3.
 
-In the `dataSource` parameter of the `volumeClaimTemplates` section, set the kind field to `VolumeSnapshot` and set the name field to `new-snapshot-demo` . The new-snapshot-demo `VolumeSnapshot` is created in Step 3. ii. Run the following command to restore the application data:
+ii. Run the following command to restore the application data:
 
 ```bash
 kubectl apply -f nginx-restore.yaml
@@ -7486,9 +7426,10 @@ spec:
         apiGroup: snapshot.storage.k8s.io
 ```
 
-**Note**
+> **Note:** In the `dataSource` parameter of the `volumeClaimTemplates` section, set the kind field to `VolumeSnapshot` and set the name field to `new-snapshot-demo` . The new-snapshot-demo
+> `VolumeSnapshot` is created in Step 2.
 
-In the `dataSource` parameter of the `volumeClaimTemplates` section, set the kind field to `VolumeSnapshot` and set the name field to `new-snapshot-demo` . The new-snapshot-demo `VolumeSnapshot` is created in Step 2. ii. Run the following command to restore the application data:
+ii. Run the following command to restore the application data:
 
 ```bash
 kubectl apply -f nginx-restore.yaml
@@ -7529,9 +7470,7 @@ device.
 
 The following example shows how to throttle a cloud disk. The cloud disk can be mounted as a dynamically provisioned volume or a statically provisioned volume.
 
-**Note**
-
-After you configure throttling for a block storage device, the throttling configurations of the cloud disks cannot be changed. Throttling configuration changes made to the StorageClass apply only to new cloud disks. Throttling configuration changes do not take effect on existing cloud disks.
+> **Note:** After you configure throttling for a block storage device, the throttling configurations of the cloud disks cannot be changed. Throttling configuration changes made to the StorageClass apply only to new cloud disks. Throttling configuration changes do not take effect on existing cloud disks.
 
 **Mount a disk as a dynamically provisioned volume**
 
@@ -10224,9 +10163,9 @@ The first time you use the inspection feature, if the security-inspector compone
 4. In the upper-right corner of the **Inspections** page, click **Inspect**. In the **Perform Inspection** message,
 click **OK**.
 
-**Important**
+> **Important:** We recommend that you perform the inspection during off-peak hours.
 
-We recommend that you perform the inspection during off-peak hours. After the inspection is completed, click **Details** in the **Actions** column on the **Inspections** tab to view the detailed results.
+After the inspection is completed, click **Details** in the **Actions** column on the **Inspections** tab to view the detailed results.
 5. **Optional:** In the upper-right corner of the **Inspections** page, click **Configure Periodic Inspection**. In
 the panel that appears, you can enable or disable periodic inspections and configure inspection items.
 
@@ -10311,9 +10250,7 @@ This report provides statistics about common operations on computing resources, 
 
 This report provides operation details on a resource type. You can specify a resource type to query operation details in real time. The report displays the total number of operations, distribution of namespaces, operation success rate, trend of operations over time, and other operation details.
 
-**Note**
-
-To query operations related to CustomResourceDefinition (CRD) resources registered in Kubernetes or resources that are not listed in the report, enter the plural form of the resource name. For example, to query operations related to the AliyunLogConfig CRD, enter `AliyunLogConfigs` .
+> **Note:** To query operations related to CustomResourceDefinition (CRD) resources registered in Kubernetes or resources that are not listed in the report, enter the plural form of the resource name. For example, to query operations related to the AliyunLogConfig CRD, enter `AliyunLogConfigs` .
 
 **References**
 
@@ -10461,17 +10398,18 @@ quest and response bodies.
   - level: Metadata
 ```
 
-**Note**
-
-Logs are not immediately generated after requests are received. Logs are generated only after response headers are sent. The system does not audit kube-proxy watch requests, GET requests sent from the kubelet and `system:nodes` to nodes, endpoint operations performed by Kubernetes components in the kubesystem namespace, and GET requests sent from the API server to namespaces. The system records the request and response bodies based on reads and writes for the `authentication` , `rbac` , `certificates` , `autoscaling` , and `storage` APIs.
+> **Note:** Logs are not immediately generated after requests are received. Logs are generated only after response headers are sent.
+> The system does not audit kube-proxy watch requests, GET requests sent from the kubelet and
+> `system:nodes` to nodes, endpoint operations performed by Kubernetes components in the kube- system namespace, and GET requests sent from the API server to namespaces.
+> The system records the request and response bodies based on reads and writes for the
+> `authentication` , `rbac` , `certificates` , `autoscaling` , and `storage` APIs.
 
 **The audit backend**
 
 The collected audit events are stored in the backend log file system as log files in JSON format. You can configure the following flags as the boot configuration of the API server.
 
-**Note**
-
-After you log on to a master node, you can view the configuration file of the API server in the `/etc/kubernetes/manifests/kube-apiserver.yaml` directory.
+> **Note:** After you log on to a master node, you can view the configuration file of the API server in the
+> `/etc/kubernetes/manifests/kube-apiserver.yaml` directory.
 
 | Flag | Description |
 |---|---|
@@ -10537,9 +10475,8 @@ The security of Alibaba Cloud Linux images must be enhanced based on the level-3
 
 You can select **Reinforcement based on classified protection** to enable MLPS Security Hardening when you create an ACK cluster. ACK automatically enhances the security of the operating system to meet the compliance requirements in the level-3 standards of MLPS 2.0 based on Information security technology - Baseline for classified protection of cybersecurity (GB/T 22239-2019). For more information, see Create an ACK cluster.
 
-**Important**
-
-By default, ACK creates the ack_admin, ack_audit, and ack_security regular users in Alibaba Cloud Linux for which MLPS Security Hardening is enabled to ensure that the operating system complies with the level-3 standards of MLPS 2.0. To comply with the level-3 standards of MLPS 2.0, Alibaba Cloud Linux for which MLPS Security Hardening is enabled forbids the root user to log on through SSH. You can use Virtual Network Computing (VNC) to log on to the operating system from the Elastic Compute Service (ECS) console and create regular users that can log on through SSH. For more information, see ECS User Guide > Instances > Connect to an instance > Connect to an instance by using a VNC management terminal.
+> **Important:** By default, ACK creates the ack_admin, ack_audit, and ack_security regular users in Alibaba Cloud Linux for which MLPS Security Hardening is enabled to ensure that the operating system complies with the level-3 standards of MLPS 2.0.
+> To comply with the level-3 standards of MLPS 2.0, Alibaba Cloud Linux for which MLPS Security Hardening is enabled forbids the root user to log on through SSH. You can use Virtual Network Computing (VNC) to log on to the operating system from the Elastic Compute Service (ECS) console and create regular users that can log on through SSH. For more information, see ECS User Guide > Instances > Connect to an instance > Connect to an instance by using a VNC management terminal.
 
 **Configure a baseline check policy**
 
@@ -10579,13 +10516,11 @@ Container Service for Kubernetes (ACK) provides stable and high-performance cont
 
 A containerized application is deployed as multiple workloads on a node. Each workload requires a unique network namespace. To avoid network conflicts, each pod must have a unique network namespace. To enable the application that runs on a pod to communicate with other networks, the pod must be able to access other networks. Container networking has the following features: Each pod has a unique network namespace and IP address. Applications that run on different pods can listen on the same port without conflicts. Pods can access each other by using their IP addresses. A pod can communicate with other applications in a cluster by using a unique IP address. Pods can access each other within a cluster. Pods can access Elastic Compute Service (ECS) instances that are deployed in the same VPC. ECS instances can access pods that are deployed in the same VPC.
 
-**Note**
+> **Note:** To ensure that the pods and ECS instances in the same VPC can access each other, you must configure proper security group rules.
 
-To ensure that the pods and ECS instances in the same VPC can access each other, you must configure proper security group rules. ACK provides two network plug-ins to help you implement container networking: Flannel and Terway. The two network plug-ins adopt different network models and provide the following features.
+ACK provides two network plug-ins to help you implement container networking: Flannel and Terway. The two network plug-ins adopt different network models and provide the following features.
 
-**Important**
-
-After you create a cluster, you cannot change the network plug-in that is used by the cluster.
+> **Important:** After you create a cluster, you cannot change the network plug-in that is used by the cluster.
 
 | Network model | Description |
 |---|---|
@@ -10692,9 +10627,7 @@ This is the simplest scenario. The CIDR block of a VPC is specified when you cre
 
 You want to create more than one cluster in a VPC. The CIDR block of the VPC is specified when you create the VPC. When you create clusters in the VPC, make sure that the VPC CIDR block, Service CIDR block, and pod CIDR block of each cluster do not overlap with one another. The Service CIDR blocks of the clusters can overlap with each other. However, the pod CIDR blocks cannot overlap with each other. In the default network mode (Flannel), the packets of pods must be forwarded by the VPC router. Container Service automatically generates a route table for each destination pod CIDR block on the VPC router.
 
-**Note**
-
-In this case, a pod in one cluster can communicate with the pods and ECS instances in another cluster. However, the pod cannot communicate with the Services in another cluster.
+> **Note:** In this case, a pod in one cluster can communicate with the pods and ECS instances in another cluster. However, the pod cannot communicate with the Services in another cluster.
 
 **Scenario 3: Two connected VPCs**
 
@@ -10707,9 +10640,9 @@ If two VPCs are connected, you can use the route table of one VPC to specify the
 
 In this scenario, make sure that the following conditions are met when you create a cluster in VPC 1 or VPC 2: The CIDR blocks of the cluster do not overlap with the CIDR block of VPC 1. The CIDR blocks of the cluster do not overlap with the CIDR block of VPC 2. The CIDR blocks of the cluster do not overlap with those of other clusters in VPC 1 and VPC 2. The CIDR blocks of the cluster do not overlap with those of pods in VPC 1 and VPC 2. The CIDR blocks of the cluster do not overlap with those of Services in VPC 1 and VPC 2. In this example, you can set the pod CIDR block of the cluster to a subset of 10.0.0.0/8.
 
-**Note**
+> **Note:** All IP addresses in the destination CIDR block of VPC 2 can be considered in use. Therefore, the CIDR blocks of the cluster cannot overlap with the destination CIDR block.
 
-All IP addresses in the destination CIDR block of VPC 2 can be considered in use. Therefore, the CIDR blocks of the cluster cannot overlap with the destination CIDR block. To access pods in VPC 1 from VPC 2, you must configure a route in VPC 2. The route must point to the pod CIDR block of a cluster in VPC 1.
+To access pods in VPC 1 from VPC 2, you must configure a route in VPC 2. The route must point to the pod CIDR block of a cluster in VPC 1.
 
 **Scenario 4: One VPC and one data center**
 
@@ -10898,9 +10831,7 @@ The maximum number of pods that each node supports is based on the number of ENI
 
 The maximum number of pods supported by a node depends on the maximum number of ENIs supported by the instance type of the ECS instance on which that node is deployed. We recommend that you deploy nodes on ECS instances of new instance types and with high specifications. If you want to add an ECS instance to a cluster, the ENIs supported by the ECS instance must meet specific limits. For more information, see **Introduction to Instance Families and Instance Types-Elastic Compute Service** in the ECS documentation. For more information about how to call the API to query ECS instance types, see API reference > ECS API > Instances > DescribeInstanceTypes in **Elastic Compute Service Developer Guide**. The following table describes the maximum number of pods that Terway supports in different scenarios.
 
-**Note**
-
-The maximum number of pods that can be created in the node network must be equal to or greater than the maximum number of pods that can be created in the pod network.
+> **Note:** The maximum number of pods that can be created in the node network must be equal to or greater than the maximum number of pods that can be created in the pod network.
 
 | Component | Maximum number of pods supported by the node network | Maximum number of pods supported by the pod network (including static IP addresses, vSwitches, and security groups) | Limit on instance types |
 |---|---|---|---|
@@ -10913,16 +10844,13 @@ The maximum number of pods that can be created in the node network must be equal
 
 When you create an ACK cluster, you must specify a VPC, vSwitches, the CIDR block of pods, and the CIDR block of Services. If you want to install the Terway plug-in, you must first create a VPC and two vSwitches in the VPC. The two vSwitches must be created in the same zone. You can assign the following CIDR blocks for a cluster that uses Terway. VPC CIDR block: 192.168.0.0/16 vSwitch CIDR block: 192.168.0.0/19 CIDR block of pod vSwitch: 192.168.32.0/19 Service CIDR block:172.21.0.0/20
 
-**Note**
+> **Note:** IP addresses within the CIDR block of the vSwitch are assigned to nodes.
+> IP addresses within the CIDR block of the pod vSwitch are assigned to pods.
 
-IP addresses within the CIDR block of the vSwitch are assigned to nodes. IP addresses within the CIDR block of the pod vSwitch are assigned to pods. The following example describes how to create a VPC and two vSwitches. The CIDR blocks in the preceding section are assigned in this example.
+The following example describes how to create a VPC and two vSwitches. The CIDR blocks in the preceding section are assigned in this example.
 1. Log on to the VPC console.
 
-**Note**
-
-For more information, see the "Log on to the VPC console" section in **Virtual Private Cloud User**
-
-**Guide**
+> **Note:** For more information, see the "Log on to the VPC console" section in **Virtual Private Cloud User** **Guide**
 
 2. Create a VPC.
 i. In the top navigation bar, select the region in which the VPC is deployed. ii. On the **Virtual Private Clouds** page, click **Create VPC**. iii. On the **Create a VPC** page, configure the parameters that are described in the following table and click
@@ -10943,9 +10871,7 @@ i. In the top navigation bar, select the region in which the VPC is deployed. ii
 i. In the left-side navigation pane, click **vSwitch**. ii. Select the region of the VPC for which you want to create a vSwitch. iii. On the **vSwitches** page, click **Create vSwitch**. iv. On the Create vSwitch page, configure the parameters that are described in the following table and click
 **Confirm Order**.
 
-**Note**
-
-Make sure that the two vSwitches reside in the same zone.
+> **Note:** Make sure that the two vSwitches reside in the same zone.
 
 | Parameter | Description |
 |---|---|
@@ -10971,9 +10897,8 @@ Make sure that the two vSwitches reside in the same zone.
 
 To install Terway in a cluster and set up networks for the cluster, set the following parameters.
 
-**Note**
+> **Note:** An ACK cluster is used as an example to show how to set up networks for a cluster that uses Terway as the network plug-in. For more information about how to create a cluster, see Create an ACK cluster.
 
-An ACK cluster is used as an example to show how to set up networks for a cluster that uses Terway as the network plug-in. For more information about how to create a cluster, see Create an ACK cluster.
 **VPC**: the VPC that you created in Step 1: Plan CIDR blocks.
 **vSwitch**: the vSwitch that you created in Step 1: Plan CIDR blocks.
 **Network Plug-in**: the network plug-in of the cluster. Select **Terway**.
@@ -11521,9 +11446,8 @@ You can add a vSwitch in the console. First, upgrade the Terway component to the
 insufficient IP addresses. For more information, see **Virtual Private Cloud User Guide > VSwitches >**
 **Create and Manage vSwitches**.
 
-**Note**
+> **Note:** Pod density is increasing. To meet the growing demand for IP addresses, create a vSwitch for pods with a subnet mask of /19 or smaller. This means that the CIDR block must contain at least 8,192 IP addresses.
 
-Pod density is increasing. To meet the growing demand for IP addresses, create a vSwitch for pods with a subnet mask of /19 or smaller. This means that the CIDR block must contain at least 8,192 IP addresses.
 2. Log on to the ACK console. In the navigation pane on the left, click **Clusters**.
 3. On the **Clusters** page, click the name of the target cluster. In the navigation pane on the left, choose
 **Operations Management > Component Management**.
@@ -11531,9 +11455,8 @@ Pod density is increasing. To meet the growing demand for IP addresses, create a
 **Upgrade**. After the component is upgraded to the latest version, click **Configure**.
 If the **Upgrade** button is not available, the Terway component is already up to date.
 
-**Note**
+> **Note:** Changes made to the component outside of this configuration page are overwritten when the component is redeployed.
 
-Changes made to the component outside of this configuration page are overwritten when the component is redeployed.
 5. On the **Terway-eniip Parameter Settings** page, in the **PodVswitchId** section, select the vSwitch that
 you want to use. You can keep the default values for the other parameters. Make sure that the zone of the pod vSwitch includes the zone of the node.
 6. After you configure the parameters, click **OK**.
@@ -11546,9 +11469,8 @@ After the configuration is complete, go to the **Cluster Information** page and 
 insufficient IP addresses. For more information, see **Virtual Private Cloud User Guide > VSwitches >**
 **Create and Manage vSwitches**.
 
-**Note**
+> **Note:** Pod density is increasing. To meet the growing demand for IP addresses, create a vSwitch for pods with a subnet mask of /19 or smaller. This means that the CIDR block must contain at least 8,192 IP addresses.
 
-Pod density is increasing. To meet the growing demand for IP addresses, create a vSwitch for pods with a subnet mask of /19 or smaller. This means that the CIDR block must contain at least 8,192 IP addresses.
 2. Run the following command to add the vSwitch to the Terway ConfigMap:
 
 ```bash
@@ -11594,9 +11516,7 @@ kubectl get pod -n kube-system | grep terway
 
 5. Create a pod to verify that it can be assigned an IP address from the new vSwitch.
 
-**Note**
-
-After you modify the vSwitch configuration, the new settings apply only to new ENIs. Existing ENIs continue to use the old configuration. You can rotate the nodes to apply the new configuration.
+> **Note:** After you modify the vSwitch configuration, the new settings apply only to new ENIs. Existing ENIs continue to use the old configuration. You can rotate the nodes to apply the new configuration.
 
 **FAQ**
 
@@ -11693,9 +11613,7 @@ ACK lets you use annotations to enable the EIP feature. You can automatically as
 
 **Automatically allocate an EIP**
 
-**Important**
-
-When you automatically allocate EIPs, the EIP resources might be repeatedly requested and released if a pod is recreated or the Container Network Interface (CNI) fails. To prevent this, you can specify an EIP instance.
+> **Important:** When you automatically allocate EIPs, the EIP resources might be repeatedly requested and released if a pod is recreated or the Container Network Interface (CNI) fails. To prevent this, you can specify an EIP instance.
 
 | Pod Annotations | value |
 |---|---|
@@ -11717,9 +11635,7 @@ When you automatically allocate EIPs, the EIP resources might be repeatedly requ
 
 You can attach an existing EIP by specifying its instance ID. The pod annotation does not modify the EIP instance configuration. It only attaches the EIP to the specified pod.
 
-**Important**
-
-This feature is not applicable to controllers that have multiple replicas. Make sure that only one pod references the EIP instance. We recommend that you use this feature only with StatefulSet stateful applications.
+> **Important:** This feature is not applicable to controllers that have multiple replicas. Make sure that only one pod references the EIP instance. We recommend that you use this feature only with StatefulSet stateful applications.
 
 | Pod Annotations | value |
 |---|---|
@@ -11729,9 +11645,8 @@ This feature is not applicable to controllers that have multiple replicas. Make 
 
 A fixed EIP ensures that a pod continues to use the same EIP address after it is recreated. This policy can be combined with the automatic EIP allocation feature to provide fixed EIPs for stateful applications.
 
-**Important**
-
-This feature is supported only by ack-extend-network-controller and applies only to stateful controllers. It cannot be used for stateless controllers. If you specify an EIP instance ID, the EIP instance is not released.
+> **Important:** This feature is supported only by ack-extend-network-controller and applies only to stateful controllers. It cannot be used for stateless controllers.
+> If you specify an EIP instance ID, the EIP instance is not released.
 
 | Pod Annotation | value |
 |---|---|
@@ -11739,9 +11654,7 @@ This feature is supported only by ack-extend-network-controller and applies only
 
 **Enable EIPs in ack-extend-network-controller**
 
-**Note**
-
-The ack-extend-network-controller component needs to access Alibaba Cloud OpenAPI to create resources. You must configure the required permissions in RAM. Then, you can install ack-extendnetwork-controller from the marketplace and use annotations to create and associate an EIP with a specific pod.
+> **Note:** The ack-extend-network-controller component needs to access Alibaba Cloud OpenAPI to create resources. You must configure the required permissions in RAM. Then, you can install ack-extend- network-controller from the marketplace and use annotations to create and associate an EIP with a specific pod.
 
 **Create and associate an EIP with a specific pod using an annotation**
 
@@ -11948,9 +11861,9 @@ The controller configures the EIP for the pod after the pod IP address is alloca
 
 **Configure readiness gates for the pod**
 
-**Note**
+> **Note:** Configuring readiness gates for pods is supported only by ack-extend-network-controller.
 
-Configuring readiness gates for pods is supported only by ack-extend-network-controller. If you configure readinessGates in a pod, the controller sets the pod's conditions after the EIP is successfully attached. The pod does not enter the Ready state until the EIP is attached.
+If you configure readinessGates in a pod, the controller sets the pod's conditions after the EIP is successfully attached. The pod does not enter the Ready state until the EIP is attached.
 
 ```
 kind: Pod ... spec:
@@ -12049,7 +11962,9 @@ The SLB instance that you want to reuse is created in the SLB console. You canno
 | Important If you change the type from Type=LoadBalancer to Type!=LoadBalancer for a |   |   |
 | 8 > Document Version: 20260629 |   |   |
 
-Service, the CCM automatically deletes the configurations related to the SLB instance. As a result, you cannot use the SLB instance to access the Service that is associated with the SLB instance. When specific conditions are met, the CCM uses a declarative API to automatically update the configuration of an SLB instance based on the Service configuration. If you set
+> Service, the CCM automatically deletes the configurations related to the SLB instance. As a result, you cannot use the SLB instance to access the Service that is associated with the SLB instance.
+
+When specific conditions are met, the CCM uses a declarative API to automatically update the configuration of an SLB instance based on the Service configuration. If you set
 
 ```
  service.beta.kubernetes.io/alibaba-cloud-loadbalancer-force-override-listeners  to  true , the SLB
@@ -12057,9 +11972,7 @@ Service, the CCM automatically deletes the configurations related to the SLB ins
 
 configurations that you update in the SLB console may be overwritten.
 
-**Important**
-
-If the SLB instance is created and managed by the CCM, we recommend that you do not modify the configuration of the SLB instance in the SLB console. Otherwise, the CCM may overwrite the configuration and the Service may become unavailable.
+> **Important:** If the SLB instance is created and managed by the CCM, we recommend that you do not modify the configuration of the SLB instance in the SLB console. Otherwise, the CCM may overwrite the configuration and the Service may become unavailable.
 
 ##### 7.8.10.2 Use annotations to configure load balancing
 
@@ -12067,9 +11980,9 @@ You can add annotations to the YAML file of a Service to configure load balancin
 
 **Common annotations used to configure SLB instances**
 
-**Note**
+> **Note:** The values of annotations are case-sensitive.
 
-The values of annotations are case-sensitive. Create an Internet-facing SLB instance
+Create an Internet-facing SLB instance
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12105,9 +12018,7 @@ spec:
 
 Create an SLB instance of a specified specification
 
-**Important**
-
-If you use the SLB console to update the specification of an existing SLB instance, the cloud controller manager (CCM) may restore the SLB instance to the original specification. Proceed with caution. You can use the SLB console to modify the specifications of only SLB instances that use the pay-by-specification metering method.
+> **Important:** If you use the SLB console to update the specification of an existing SLB instance, the cloud controller manager (CCM) may restore the SLB instance to the original specification. Proceed with caution. You can use the SLB console to modify the specifications of only SLB instances that use the pay-by-specification metering method.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12131,9 +12042,10 @@ Use an existing SLB instance By default, the CCM does not overwrite the listener
 force-override-listeners to true .
 ```
 
-**Note**
-
-The following list explains why the CCM does not overwrite the listeners of an existing SLB instance: If the listeners of the SLB instance are associated with applications, access to the applications may be interrupted after the listener configurations are overwritten. CCM supports limited backend configurations and cannot handle complex configurations. If you require complex backend configurations, you can manually configure listeners in the SLB console without overwriting the existing listeners. In both cases, we recommend that you do not overwrite the listeners of existing SLB instances. However, you can overwrite an existing listener if the port of the listener is no longer in use.
+> **Note:** The following list explains why the CCM does not overwrite the listeners of an existing SLB instance:
+> If the listeners of the SLB instance are associated with applications, access to the applications may be interrupted after the listener configurations are overwritten.
+> CCM supports limited backend configurations and cannot handle complex configurations. If you require complex backend configurations, you can manually configure listeners in the SLB console without overwriting the existing listeners.
+> In both cases, we recommend that you do not overwrite the listeners of existing SLB instances. However, you can overwrite an existing listener if the port of the listener is no longer in use.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12153,9 +12065,7 @@ spec:
 
 Use an existing SLB instance and forcefully overwrite the listeners of the SLB instance Use the following template to create a LoadBalancer Service and forcefully overwrite an existing listener of the SLB instance. If you specify a different listener port number, the original listener is deleted.
 
-**Important**
-
-If you use an existing SLB instance and set `forceoverride` to `true` , do not associate a listener of the SLB instance with multiple Services. Otherwise, a configuration conflict occurs when these Services overwrite the configuration of the listener.
+> **Important:** If you use an existing SLB instance and set `forceoverride` to `true` , do not associate a listener of the SLB instance with multiple Services. Otherwise, a configuration conflict occurs when these Services overwrite the configuration of the listener.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12212,9 +12122,9 @@ spec:
   type: LoadBalancer
 ```
 
-**Note**
+> **Note:** The annotation `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-bandwidth` specifies the bandwidth limit.
 
-The annotation `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-bandwidth` specifies the bandwidth limit. Specify a vSwitch for an SLB instance Obtain the ID of a specific vSwitch in the Virtual Private Cloud (VPC) console. Then, use the `annotations` in the following template to specify the vSwitch for an SLB instance. The specified vSwitch and the cluster must be deployed in the same VPC. All `annotations` in the following template are required.
+Specify a vSwitch for an SLB instance Obtain the ID of a specific vSwitch in the Virtual Private Cloud (VPC) console. Then, use the `annotations` in the following template to specify the vSwitch for an SLB instance. The specified vSwitch and the cluster must be deployed in the same VPC. All `annotations` in the following template are required.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12252,9 +12162,7 @@ spec:
 
 Enable deletion protection for an SLB instance By default, deletion protection is enabled for SLB instances.
 
-**Important**
-
-If you manually enable deletion protection in the SLB console for an SLB instance that is created for a LoadBalancer Service, you can run the `kubectl delete svc {your-svc-name}` command to delete the SLB instance.
+> **Important:** If you manually enable deletion protection in the SLB console for an SLB instance that is created for a LoadBalancer Service, you can run the `kubectl delete svc {your-svc-name}` command to delete the SLB instance.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12292,9 +12200,7 @@ spec:
 
 Specify the resource group to which the SLB instance belongs Log on to the Resource Management console to obtain the ID of a resource group. Then, use the `annotation` in the following template to specify the resource group to which the SLB instance belongs.
 
-**Note**
-
-You cannot change the resource group ID after the SLB instance is created.
+> **Note:** You cannot change the resource group ID after the SLB instance is created.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12486,9 +12392,7 @@ spec:
 
 Create an HTTPS listener You must first create a certificate in the SLB console. Then, you can use the certificate ID and the following `annotations` to create a LoadBalancer Service and an HTTPS-based SLB instance.
 
-**Note**
-
-The HTTPS listeners of the SLB instance decrypt HTTPS requests into HTTP requests and forward the requests to pods on the backend servers.
+> **Note:** The HTTPS listeners of the SLB instance decrypt HTTPS requests into HTTP requests and forward the requests to pods on the backend servers.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12742,9 +12646,7 @@ spec:
 
 Add the nodes where pods that run the service are deployed as the backend servers of an SLB instance By default, `externalTrafficPolicy` is set to Cluster for a Service. In Cluster mode, all nodes in the cluster are added as the backend servers of the SLB instance. In Local mode, only nodes where the pods are deployed are added as the backend servers of the SLB instance. In Local mode, you must set the scheduling algorithm to `weighted round-robin (WRR)` .
 
-**Note**
-
-For CCM 1.9.3.164-g2105d2e-aliyun and later, node weights are calculated based on the number of pods that run on each node for Services whose externalTrafficPolicy is set to Local.
+> **Note:** For CCM 1.9.3.164-g2105d2e-aliyun and later, node weights are calculated based on the number of pods that run on each node for Services whose externalTrafficPolicy is set to Local.
 
 ```
 apiVersion: v1 kind: Service metadata:
@@ -12817,9 +12719,10 @@ Add pods that are assigned elastic network interfaces (ENIs) as the backend serv
     type: LoadBalancer
 ```
 
-**Note**
+> **Note:** You can also change `eni` in `service.beta.kubernetes.io/backend-type: "eni"` to
+> `ecs` . This allows you to add Elastic Compute Service (ECS) instances as backend severs of an SLB instance.
 
-You can also change `eni` in `service.beta.kubernetes.io/backend-type: "eni"` to `ecs` . This allows you to add Elastic Compute Service (ECS) instances as backend severs of an SLB instance. Reuse an existing vServer group
+Reuse an existing vServer group
 
 | annotation | service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port |   |   |
 |---|---|---|---|
@@ -12959,9 +12862,9 @@ le. In this example, the selector is set to app: nginx. This associates the Serv
   type: LoadBalancer
 ```
 
-**Note**
+> **Note:** The CCM uses the specified SLB instance for load balancing and configures the SLB instance based on the specified annotations. For example, the CCM automatically creates multiple vServer groups for the SLB instance.
 
-The CCM uses the specified SLB instance for load balancing and configures the SLB instance based on the specified annotations. For example, the CCM automatically creates multiple vServer groups for the SLB instance. The CCM supports a variety of annotations that you can use to customize load balancing features by using Alibaba Cloud services. For more information, see Use annotations to configure load balancing.
+The CCM supports a variety of annotations that you can use to customize load balancing features by using Alibaba Cloud services. For more information, see Use annotations to configure load balancing.
 2. Run the following command to create a Service named my-nginx-svc:
 
 ```bash
@@ -12971,9 +12874,8 @@ kubectl apply -f my-nginx-svc.yaml
 3. Log on to the SLB console, create listeners for the SLB instance, and then associate the vServer groups
 created by the CCM with the SLB instance. For more information, see the Listeners topic in SLB User Guide.
 
-**Important**
+> **Important:** The listening ports of the SLB instance must be the same as the Service ports.
 
-The listening ports of the SLB instance must be the same as the Service ports.
 4. Log on to the SLB console and add ECS instances outside your cluster to the vServer groups created by the
 CCM. Then, specify weights for these ECS instances. For more information, see the vServer groups topic in the "Backend servers" chapter of SLB User Guide. After you complete the configuration, go to the **Edit vServer Group** page of the SLB instance in the SLB console. You can view the nodes inside your cluster and the ECS instances outside your cluster. Application scaling within your cluster does not affect the ECS instance outside your cluster.
 
@@ -12992,9 +12894,8 @@ For more information, see the vServer groups topic in the "Backend servers" chap
 2. Create listeners for the SLB instance and associate the listeners with the vServer group that you created.
 Record the ID of the SLB instance. For more information, see the Listeners topic in SLB User Guide.
 
-**Important**
+> **Important:** The listening ports of the SLB instance must be the same as the Service ports.
 
-The listening ports of the SLB instance must be the same as the Service ports.
 3. Add the ECS instance outside the cluster to the vServer group and set the weight of the ECS instance. For
 more information, see the vServer groups topic in the "Backend servers" chapter of SLB User Guide.
 4. Create a file named service.yaml and copy the following content to the file:
@@ -13034,17 +12935,18 @@ After you complete the configuration, go to the **Edit vServer Group** page of t
 
 In most cases, an enterprise takes various measures, such as data backup and disaster recovery across clusters, to ensure high availability for services. To achieve this goal, the enterprise can use an SLB instance to distribute traffic to multiple Kubernetes clusters based on the weights of backend servers, as shown in the following figure.
 
-**Important**
+> **Important:** You cannot associate a vServer group with multiple SLB instances.
+> A vServer group can be associated only with one port.
+> The Services that are exposed by the SLB instance must have different names, unless they are deployed in different namespaces.
+> The clusters must reside in the same VPC.
 
-You cannot associate a vServer group with multiple SLB instances. A vServer group can be associated only with one port. The Services that are exposed by the SLB instance must have different names, unless they are deployed in different namespaces. The clusters must reside in the same VPC.
 1. Log on to the SLB console and create a vServer group with no servers. For more information, see the
 vServer groups topic in the "Backend servers" chapter of SLB User Guide.
 2. Create listeners for the SLB instance and associate the listeners with the vServer group that you created.
 For more information, see the Listeners topic in SLB User Guide.
 
-**Important**
+> **Important:** The listening ports of the SLB instance must be the same as the Service ports.
 
-The listening ports of the SLB instance must be the same as the Service ports.
 3. Create a file named service-a.yaml in Cluster A and copy the following content to the file:
 
 ```
@@ -13070,9 +12972,7 @@ spec:
   type: LoadBalancer
 ```
 
-**Note**
-
-If you want to set `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port` to multiple vServer group:port pairs, separate the pairs with commas (,). Example: "${YOUR_VGROUP_ID_1}:80,
+> **Note:** If you want to set `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port` to multiple vServer group:port pairs, separate the pairs with commas (,). Example: "${YOUR_VGROUP_ID_1}:80,
 
 ```
 ${YOUR_VGROUP_ID_2}:443" .
@@ -13109,9 +13009,7 @@ spec:
   type: LoadBalancer
 ```
 
-**Note**
-
-If you want to set `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port` to multiple vServer group:port pairs, separate the pairs with commas (,). Example: "${YOUR_VGROUP_ID_1}:80,
+> **Note:** If you want to set `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-vgroup-port` to multiple vServer group:port pairs, separate the pairs with commas (,). Example: "${YOUR_VGROUP_ID_1}:80,
 
 ```
 ${YOUR_VGROUP_ID_2}:443" .
@@ -13258,9 +13156,8 @@ Method 1 is used as an example to demonstrate how to create a Deployment in the 
 kubectl label namespace default node-local-dns-injection=enabled
 ```
 
-**Important**
+> **Important:** The admission controller ignores applications in the kube-system and kube-public namespaces. Do not configure automatic `DNSConfig` injection for applications in the two namespaces.
 
-The admission controller ignores applications in the kube-system and kube-public namespaces. Do not configure automatic `DNSConfig` injection for applications in the two namespaces.
 3. Deploy a sample application in the default namespace.
 i. Create a file named ubuntu-deployment.yaml and add the following content to the file:
 
@@ -13368,9 +13265,8 @@ click **Upgrade**. If the **Upgrade** button is not displayed in the **ACK NodeL
 
 **Uninstall NodeLocal DNSCache**
 
-**Important**
+> **Important:** After NodeLocal DNSCache is uninstalled, all DNS queries are sent to CoreDNS. We recommend that you scale out the number of CoreDNS pods before you uninstall NodeLocal DNSCache.
 
-After NodeLocal DNSCache is uninstalled, all DNS queries are sent to CoreDNS. We recommend that you scale out the number of CoreDNS pods before you uninstall NodeLocal DNSCache.
 1. Log in to the ACK console. In the left-side navigation pane, click **Clusters**. On the Clusters page, find the
 cluster that you want to manage and click its name.
 2. In the left-side navigation pane of the cluster details page, click **Components**.
@@ -14120,9 +14016,9 @@ By default, a running pod uses the CPU and memory resources of a node without li
 column.
 6. In the dialog box that appears, set resource quotas and default resource limits.
 
-**Note**
+> **Note:** After you set CPU and memory quotas for a namespace, you must specify CPU and memory limits when you create a pod. You can also set the default resource limits for the namespace. For more information, see Resource Quotas.
 
-After you set CPU and memory quotas for a namespace, you must specify CPU and memory limits when you create a pod. You can also set the default resource limits for the namespace. For more information, see Resource Quotas. i. Set resource quotas for the namespace. ii. You can set resource limits and resource requests for containers in the namespace. This enables you to control the amount of resources consumed by the containers. For more information, see https://kubernetes.io//memory-default-namespace/.
+i. Set resource quotas for the namespace. ii. You can set resource limits and resource requests for containers in the namespace. This enables you to control the amount of resources consumed by the containers. For more information, see https://kubernetes.io//memory-default-namespace/.
 7. After you set resource quotas and limits, connect to a master node of the cluster and run the following
 commands to query the resource configurations of the namespace.
 
@@ -14167,9 +14063,7 @@ A Kubernetes cluster is created. For more information, see Create an ACK cluster
 
 **Background information**
 
-**Note**
-
-When you delete a namespace, all resource objects under the namespace are deleted. Proceed with caution.
+> **Note:** When you delete a namespace, all resource objects under the namespace are deleted. Proceed with caution.
 
 **Procedure**
 
@@ -14217,9 +14111,8 @@ Before you configure the Deployment, select a namespace in the upper part of the
 | Annotations | The annotations to be added to the application. |
 | Synchronize Timezone | Specifies whether to synchronize the time zone between nodes and containers. |
 
-**Note**
+> **Note:** In this example, the **Deployment** type is selected.
 
-In this example, the **Deployment** type is selected.
 7. Click **Next**.
 Proceed to the **Container** step.
 
@@ -14227,9 +14120,8 @@ Proceed to the **Container** step.
 
 In the **Container** step, configure the following container settings: the container image, resource request and limit, container ports, environment variables, health check settings, lifecycle configurations, volumes, and logging configurations.
 
-**Note**
+> **Note:** In the **Container** step, click **Add Container** to add more containers to the pod.
 
-In the **Container** step, click **Add Container** to add more containers to the pod.
 1. In the **General** section, configure the basic settings of containers.
 
 | Parameter | Description |
@@ -14293,9 +14185,7 @@ You can specify the following parameters to configure the lifecycle of the conta
 
 7. **Optional.** In the **Log** section, configure log collection and add custom tags.
 
-**Important**
-
-Make sure that the Simple Log Service agent is installed in the cluster.
+> **Important:** Make sure that the Simple Log Service agent is installed in the cluster.
 
 | Parameter | Description |
 |---|---|
@@ -14311,13 +14201,13 @@ Proceed to the **Advanced** step.
 In the **Advanced** step, configure the following settings: access control, scaling, scheduling, annotations, and labels.
 1. In the **Access Control** section, configure how to expose backend pods.
 
-**Note**
+> **Note:** You can configure the following access control settings based on your business requirements:
+> Internal applications: For applications that provide services within the cluster, you can create a **ClusterIP** or **NodePort** Service to enable internal communication.
+> External applications: For applications that are exposed to the Internet, you can configure access control by using one of the following methods:
+> Create a LoadBalancer Service. When you create a Service, set the Type parameter to **Server Load Balancer**. You can select or create a Server Load Balancer (SLB) instance for the Service and use the Service to expose your application to the Internet.
+> Create an Ingress and use it to expose your application to the Internet. For more information, see Ingress.
 
-You can configure the following access control settings based on your business requirements: Internal applications: For applications that provide services within the cluster, you can create a
-**ClusterIP** or **NodePort** Service to enable internal communication.
-External applications: For applications that are exposed to the Internet, you can configure access control by using one of the following methods: Create a LoadBalancer Service. When you create a Service, set the Type parameter to
-**Server Load Balancer**. You can select or create a Server Load Balancer (SLB) instance
-for the Service and use the Service to expose your application to the Internet. Create an Ingress and use it to expose your application to the Internet. For more information, see Ingress. You can also specify how the backend pods are exposed to the Internet. In this example, a ClusterIP Service and an Ingress are created to expose an NGINX application to the Internet. Click **Create** to the right side of **Services**. In the Create Service dialog box, configure the following parameters.
+You can also specify how the backend pods are exposed to the Internet. In this example, a ClusterIP Service and an Ingress are created to expose an NGINX application to the Internet. Click **Create** to the right side of **Services**. In the Create Service dialog box, configure the following parameters.
 
 | Parameter | Description |
 |---|---|
@@ -14338,9 +14228,7 @@ for the Service and use the Service to expose your application to the Internet. 
 
 To create an Ingress, click **Create** to the right side of **Ingresses**. In the Create dialog box, set the parameters. For more information, see Ingress configurations.
 
-**Important**
-
-When you create an application from an image, you can create an Ingress only for one Service. In this example, the name of a virtual host is specified as the test domain name. You must add a mapping in the following format to the hosts file: Ingress external endpoint + Ingress domain name. In actual scenarios, use a domain name that has an Internet Content Provider (ICP) number.
+> **Important:** When you create an application from an image, you can create an Ingress only for one Service. In this example, the name of a virtual host is specified as the test domain name. You must add a mapping in the following format to the hosts file: Ingress external endpoint + Ingress domain name. In actual scenarios, use a domain name that has an Internet Content Provider (ICP) number.
 
 ```
 101.37.xx.xx foo.bar.com # The IP address of the Ingress.
@@ -14362,9 +14250,7 @@ You can find the created Service and Ingress in the **Access Control** section. 
 2. **Optional.** In the **Scaling** section, enable **HPA** to meet the requirements of different applications.
 HPA can automatically scale the number of pods in an ACK cluster based on the CPU and memory usage.
 
-**Note**
-
-To enable HPA, you must configure resources required by the container. Otherwise, HPA does not take effect.
+> **Note:** To enable HPA, you must configure resources required by the container. Otherwise, HPA does not take effect.
 
 | Parameter | Description |
 |---|---|
@@ -14378,9 +14264,7 @@ To enable HPA, you must configure resources required by the container. Otherwise
 3. **Optional.** In the **Scheduling** section, set **Update Method**, **Node Affinity**, **Pod Affinity**, **Pod Anti-**
 **affinity**, and **Toleration**. For more information, see Affinity and anti-affinity.
 
-**Note**
-
-Pod scheduling based on node affinity and pod affinity relies on node labels and pod labels. You can add node labels and pod labels that are provided by Kubernetes to configure node affinity and pod affinity. You can also add custom labels to nodes and pods, and then configure node affinity and pod affinity based on these custom labels.
+> **Note:** Pod scheduling based on node affinity and pod affinity relies on node labels and pod labels. You can add node labels and pod labels that are provided by Kubernetes to configure node affinity and pod affinity. You can also add custom labels to nodes and pods, and then configure node affinity and pod affinity based on these custom labels.
 
 | Parameter | Description |
 |---|---|
@@ -14478,11 +14362,8 @@ are correct by using Apsara Copilot.
 **Save Template**: You can save the template that you have configured.
 The following sample template is based on an orchestration template provided by ACK. You can use this template to create a Deployment to run an NGINX application.
 
-**Note**
-
-ACK supports Kubernetes YAML orchestration. You can use three hyphens ( `---` ) to separate resource objects. This allows you to define multiple resource objects in one template.
-**Optional:** By default, when you mount a volume to an application, the files in the mount target
-are overwritten. To avoid overwriting the existing files, you can add the `subPath` parameter.
+> **Note:** ACK supports Kubernetes YAML orchestration. You can use three hyphens ( `---` ) to separate resource objects. This allows you to define multiple resource objects in one template.
+> **Optional:** By default, when you mount a volume to an application, the files in the mount target are overwritten. To avoid overwriting the existing files, you can add the `subPath` parameter.
 
 ```
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1 kind: Deployment metadata:
@@ -14562,9 +14443,9 @@ corner of the page.
 7. Configure containers.
 The following example describes how to configure an image pull Secret. i. In the **Container** step, enter the address of the private image in the **Image Name** field in the `domainname/namespace/imagename` format.
 
-**Note**
+> **Note:** You do not need to configure an image pulling Secret for a public image registry.
 
-You do not need to configure an image pulling Secret for a public image registry. ii. Enter the image version that you want to use in the Image Version field. iii. Click **Set Image Pull Secret**, and create a Secret or select an existing Secret in the dialog box that appears. You can select **New Secret**. If you select New Secret, set the following parameters:
+ii. Enter the image version that you want to use in the Image Version field. iii. Click **Set Image Pull Secret**, and create a Secret or select an existing Secret in the dialog box that appears. You can select **New Secret**. If you select New Secret, set the following parameters:
 
 | Parameter | Description |
 |---|---|
@@ -14628,9 +14509,9 @@ In this example, set Type to **StatefulSet** to create a StatefulSet application
 7. Click **Next** to go to the **Container Configuration** tab.
 8. Configure the containers.
 
-**Note**
+> **Note:** At the top of the **Container Configuration** tab, click **Add Container** to add multiple containers to the pod.
 
-At the top of the **Container Configuration** tab, click **Add Container** to add multiple containers to the pod. The following table describes the configuration items for a container. In the **General** section, complete the basic configuration of the container.
+The following table describes the configuration items for a container. In the **General** section, complete the basic configuration of the container.
 
 | Parameter | Description |
 |---|---|
@@ -14691,9 +14572,7 @@ In the **Lifecycle** section, set the container lifecycle. You can configure sta
 
 **Optional:** In the **Log Settings** section, configure log collection and custom tags.
 
-**Important**
-
-Make sure that a Kubernetes cluster is deployed and the log plug-in is installed on the cluster.
+> **Important:** Make sure that a Kubernetes cluster is deployed and the log plug-in is installed on the cluster.
 
 | Parameter | Description |
 |---|---|
@@ -14705,9 +14584,13 @@ Make sure that a Kubernetes cluster is deployed and the log plug-in is installed
 0. **Optional:** Configure advanced settings.
 In the **Access Settings** section, set the method to expose backend pods.
 
-**Note**
+> **Note:** You can configure access settings based on your application's communication needs:
+> Internal applications: For applications that run only inside the cluster, you can create a ClusterIP or NodePort service for internal communication.
+> External applications: For applications that need to be exposed to the public network, you can configure access in one of two ways.
+> Create a LoadBalancer service: Use an Alibaba Cloud Server Load Balancer (SLB) instance to provide public network access.
+> Create an Ingress: Use an Ingress to provide public network access. For more information, see Ingress.
 
-You can configure access settings based on your application's communication needs: Internal applications: For applications that run only inside the cluster, you can create a ClusterIP or NodePort service for internal communication. External applications: For applications that need to be exposed to the public network, you can configure access in one of two ways. Create a LoadBalancer service: Use an Alibaba Cloud Server Load Balancer (SLB) instance to provide public network access. Create an Ingress: Use an Ingress to provide public network access. For more information, see Ingress. Set the method to expose backend pods. In this example, a ClusterIP service and an Ingress are created to build a publicly accessible NGINX application.
+Set the method to expose backend pods. In this example, a ClusterIP service and an Ingress are created to build a publicly accessible NGINX application.
 
 | Configuration Item | Description |
 |---|---|
@@ -14718,9 +14601,7 @@ You can configure access settings based on your application's communication need
 
 In the **Access Settings** section, you can view the created service and Ingress. You can click **Update** and **Delete** to reconfigure them. In the **Scaling Configuration** section, configure whether to enable **Metrics-based Scaling** to meet the application's needs under different loads. ACK supports metrics-based scaling for pods. This feature automatically adjusts the number of pods based on container CPU and memory usage.
 
-**Note**
-
-To enable auto scaling, you must set resource requests for the container. Otherwise, auto scaling does not take effect.
+> **Note:** To enable auto scaling, you must set resource requests for the container. Otherwise, auto scaling does not take effect.
 
 | Configuration Item | Description |
 |---|---|
@@ -14732,9 +14613,7 @@ To enable auto scaling, you must set resource requests for the container. Otherw
 In the **Scheduling Settings** section, set **Update Method**, **Node Affinity**, **Pod Affinity**, **Pod Anti-**
 **affinity**, and **Toleration**. For more information, see Affinity and anti-affinity.
 
-**Note**
-
-Affinity-based scheduling depends on node labels and pod labels. You can use built-in labels for scheduling, or configure relevant labels for nodes and pods in advance.
+> **Note:** Affinity-based scheduling depends on node labels and pod labels. You can use built-in labels for scheduling, or configure relevant labels for nodes and pods in advance.
 
 | Parameter | Description |
 |---|---|
@@ -14768,9 +14647,10 @@ In the navigation pane on the left, click **Clusters**. Find the target cluster 
 **Application Management** in the **Actions** column. In the navigation pane on the left of the cluster
 management page, choose **Workloads > StatefulSets**. On the **StatefulSets** page, click the name of the target application or click **Details** in the **Actions** column of the application.
 
-**Note**
+> **Note:** On the StatefulSets page, click the **Label** field, enter the **key** and `value` of the application label, and then click **OK** to filter the applications.
+> On the **Stateless** page, you can delete multiple applications in a batch.
 
-On the StatefulSets page, click the **Label** field, enter the **key** and `value` of the application label, and then click **OK** to filter the applications. On the **Stateless** page, you can delete multiple applications in a batch. On the application details page, you can **Edit**, **Scale**, **View YAML**, **Redeploy**, and **Refresh** the application. Edit: On the application details page, click **Edit** to modify the application information. Scale: On the application details page, click **Scale** to change the desired number of pods. View YAML: On the application details page, click **View YAML**. You can **Update**, **Download**, or **Save As** the YAML file. Redeploy: On the application details page, click **Redeploy** to redeploy the application. Refresh: On the application details page, click **Refresh** to refresh the application.
+On the application details page, you can **Edit**, **Scale**, **View YAML**, **Redeploy**, and **Refresh** the application. Edit: On the application details page, click **Edit** to modify the application information. Scale: On the application details page, click **Scale** to change the desired number of pods. View YAML: On the application details page, click **View YAML**. You can **Update**, **Download**, or **Save As** the YAML file. Redeploy: On the application details page, click **Redeploy** to redeploy the application. Refresh: On the application details page, click **Refresh** to refresh the application.
 
 **What to do next**
 
@@ -14933,9 +14813,7 @@ successful completions matches `.spec.completions` . `.spec.completions` unspeci
  .spec.parallelism :
 ```
 
-**Note**
-
-The Job created in this example is a parallel Job with a fixed completion count.
+> **Note:** The Job created in this example is a parallel Job with a fixed completion count.
 
 | Job type | Example | Behavior | completions | Parallelism |
 |---|---|---|---|---|
@@ -14976,9 +14854,7 @@ In the **Labels and Annotations** section, click **Add** to add labels and annot
 9. Click **Create**.
 On the cluster details page, choose **Workloads > Jobs**. On the **Jobs** page, you can see the created Job. In the **Status** column for the Job, view the creation status of the pods. In this example, two pods are created in parallel, as defined in the Job.
 
-**Note**
-
-After the Job is complete, you can view its completion time on the **Jobs** page. If the Job has not completed, the completion time is not displayed.
+> **Note:** After the Job is complete, you can view its completion time on the **Jobs** page. If the Job has not completed, the completion time is not displayed.
 
 **Related operations**
 
@@ -15080,9 +14956,9 @@ If `cronjob.batch/hello created` is returned, the CronJob is created.
 
 After a CronJob is created, you can perform the following operations:
 
-**Note**
+> **Note:** On the **CronJobs** page, you can select multiple CronJobs and delete them in a batch.
 
-On the **CronJobs** page, you can select multiple CronJobs and delete them in a batch. In the **Actions** column of the CronJob, click **Details** to view its basic information, such as the job list, events, and logs. In the **Actions** column of the CronJob, choose **More > View in YAML**, **More > Stop**, or **More > Delete** to view the YAML file, stop the task, or delete the task.
+In the **Actions** column of the CronJob, click **Details** to view its basic information, such as the job list, events, and logs. In the **Actions** column of the CronJob, choose **More > View in YAML**, **More > Stop**, or **More > Delete** to view the YAML file, stop the task, or delete the task.
 
 ##### 7.10.1.6 View pods
 
@@ -15100,9 +14976,9 @@ dialog box. This provides intelligent analysis and troubleshooting for the curre
 6. On the **Pods** page, select the namespace, find the pod that you want to view, and then click **View Details**
 in the Actions column.
 
-**Note**
+> **Note:** You can update or delete pods on the Pods page. We recommend that you use Deployments to manage pods that are created by Deployments.
 
-You can update or delete pods on the Pods page. We recommend that you use Deployments to manage pods that are created by Deployments. On the details page of the pod, you can view the detailed information about the pod.
+On the details page of the pod, you can view the detailed information about the pod.
 
 ##### 7.10.1.7 Manage pods
 
@@ -15117,13 +14993,11 @@ column or click **Details** in the **Actions** column.
 4. In the left-side navigation pane of the cluster details page, choose **Workloads > Pods**.
 5. Click **View Details** to the right of the pod that you want to view.
 
-**Note**
+> **Note:** To modify the configuration of the pod, click **Edit** in the upper-right corner of the page and modify the pod YAML file.
 
-To modify the configuration of the pod, click **Edit** in the upper-right corner of the page and modify the pod YAML file. You can view details of pods by using one of the following methods: Method 1: In the left-side navigation pane of the details page, choose **Workloads > Deployments**. Find the application that you want to manage and click its name. On the **Pods** tab, click the name of the pod to view details. Method 2: In the left-side navigation pane of the details page, choose **Network > Services**. Click the name of the Service that you want to manage. On the details page, find and click the name of the application that you want to manage. On the **Pods** tab, click the name of the pod to view details.
+You can view details of pods by using one of the following methods: Method 1: In the left-side navigation pane of the details page, choose **Workloads > Deployments**. Find the application that you want to manage and click its name. On the **Pods** tab, click the name of the pod to view details. Method 2: In the left-side navigation pane of the details page, choose **Network > Services**. Click the name of the Service that you want to manage. On the details page, find and click the name of the application that you want to manage. On the **Pods** tab, click the name of the pod to view details.
 
-**Note**
-
-On the Pods page, you can modify and delete pods. For pods that are created by using a Deployment, we recommend that you use the Deployment to manage the pods.
+> **Note:** On the Pods page, you can modify and delete pods. For pods that are created by using a Deployment, we recommend that you use the Deployment to manage the pods.
 
 **View pod logs**
 
@@ -15151,9 +15025,7 @@ column or click **Details** in the **Actions** column.
 manage and click **Scale** in the **Actions** column.
 6. In the Scale dialog box, set Desired Number of Pods to 4 and click **OK**.
 
-**Note**
-
-By default, Deployments are updated based on the rollingUpdate policy. This ensures that a minimum number of pods are available during the update. You can change this number in the YAML file.
+> **Note:** By default, Deployments are updated based on the rollingUpdate policy. This ensures that a minimum number of pods are available during the update. You can change this number in the YAML file.
 
 **Use a terminal to access a pod**
 
@@ -15176,9 +15048,7 @@ column or click **Details** in the **Actions** column.
 5. In the upper part of the **Pods** page, select a **namespace**. Find the pod that you want to delete and click
 **Delete** on the right side. Then, click **Confirm** in the message that appears.
 
-**Note**
-
-On the **Pods** page, you can select multiple pods and delete them at a time.
+> **Note:** On the **Pods** page, you can select multiple pods and delete them at a time.
 
 **Export pods**
 
@@ -15191,9 +15061,7 @@ column or click **Details** in the **Actions** column.
 6. In the message that appears, you can view the download path and the file name. The pod records are
 exported to an EXCEL file.
 
-**Note**
-
-After the download is complete, you can view the pod records on the on-premises machine.
+> **Note:** After the download is complete, you can view the pod records on the on-premises machine.
 
 ##### 7.10.1.8 Manage custom resources
 
@@ -15273,9 +15141,8 @@ to go to the cluster details page.
 4. In the left-side navigation pane, choose **Network > Services**.
 5. On the Services page, select a namespace and click **Create** in the upper-right corner.
 
-**Note**
+> **Note:** You can also click **Create Resources in YAML** in the upper-right corner to create a resource by using an existing YAML template and deploy the resource to the application. You can also set the resource as a template. This way, you can create service resources based on the template.
 
-You can also click **Create Resources in YAML** in the upper-right corner to create a resource by using an existing YAML template and deploy the resource to the application. You can also set the resource as a template. This way, you can create service resources based on the template.
 6. In the Create Service dialog box, configure the parameters.
 **Name**: the name of the Service. In this example, nginx-svc is used.
 **Type**: the type of the Service. This parameter specifies how the Service is accessed. Valid values:
@@ -15296,9 +15163,7 @@ After a Service is created, you can perform the following operations on the Serv
 **Actions** column:
 Click **Details** to view the basic information and application information about the Service. Click **Update** to update the configurations of the Service. Click **View in YAML** to modify the Service configurations in a YAML file. Click **Delete** to delete the Service if it is no longer needed.
 
-**Note**
-
-On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
+> **Note:** On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
 
 #### 7.10.3 View a Service
 
@@ -15352,9 +15217,7 @@ to go to the cluster details page.
 in the Actions column.
 6. In the message that appears, click **OK**.
 
-**Note**
-
-On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
+> **Note:** On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
 
 #### 7.10.6 Use a trigger to redeploy an application
 
@@ -15375,9 +15238,9 @@ application and click **Details** in the Actions column.
 5. On the details page of the application, click the **Triggers** tab. Then, click **Create Trigger**.
 6. In the dialog box that appears, set Action to **Redeploy** and click **Confirm**.
 
-**Note**
+> **Note:** You can create triggers only to redeploy applications.
 
-You can create triggers only to redeploy applications. After the trigger is created, the webhook URL of the trigger appears in the Trigger Link Address column on the **nginx - deployment** page.
+After the trigger is created, the webhook URL of the trigger appears in the Trigger Link Address column on the **nginx - deployment** page.
 7. Copy the webhook URL, enter it into the address bar of your browser, and press Enter. A message that
 indicates specific information such as the request ID appears.
 8. Go to the **nginx - deployment** page. A new pod appears on the **Pods** tab.
@@ -15419,9 +15282,7 @@ export namespace=The actual namespace export noteName=The value of noteName expo
 
 namespace: the namespace of Container Registry that is used to sign the image. noteName: the noteName setting used to sign the image. publicKeyData: the Base64-encoded GNU Privacy Guard (GPG) public key. ii. Connect to your ACK cluster by using kubectl. iii. Run the following commands to set AttestationAuthority.
 
-**Note**
-
-In the following example, the default namespace is used.
+> **Note:** In the following example, the default namespace is used.
 
 ```bash
 cat <<EOF > aa.yaml apiVersion: kritis.grafeas.io/v1beta1 kind: AttestationAuthority metadata:
@@ -15434,9 +15295,7 @@ EOF kubectl -n default apply -f aa.yaml
 
 iv. Run the following commands to set GenericAttestationPolicy.
 
-**Note**
-
-In the following example, the default namespace is used.
+> **Note:** In the following example, the default namespace is used.
 
 ```bash
 cat <<EOF > gap.yaml apiVersion: kritis.grafeas.io/v1beta1 kind: GenericAttestationPolicy metadata:
@@ -15467,9 +15326,7 @@ kubectl -n default run test-signed --image=registry.acs.example.com/kritistest/s
 kubectl -n default run test-not-signed --image=registry.acs.example/kritis-test/notsign@sha256:efc961b2b3499c25753d3c9f29977f494f49125cf1191071057aa68bffa7**** Error from server: admission webhook "kritis-validation-hook-deployments.grafeas.io" denied the req uest: image registry.acs.example/kritis-test/notsign@sha256:efc961b2b3499c25753d3c9f29977f494f49125cf1191071057aa68bffa7**** is not attested
 ```
 
-**Important**
-
-When you create a resource after signature verification is enabled, you must specify the image by using the digest of the image, such as @sha256:<hash>.
+> **Important:** When you create a resource after signature verification is enabled, you must specify the image by using the digest of the image, such as @sha256:<hash>.
 
 #### 7.10.8 Use kritis-validation-hook to automatically verify the signatures of Container Registry Advanced Edition images
 
@@ -15499,9 +15356,7 @@ permissions.
 **Resource Set** and **Region** parameters are automatically configured.
 5. In the **Basic Configurations** section, configure the parameters that are described in the following table.
 
-**Note**
-
-The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Key Purpose parameter to SIGN/VERIFY. Configure other parameters based on your business requirements.
+> **Note:** The image signing feature is implemented based on asymmetric key algorithms. When you create the KMS key, select an EC or RSA key type and set the Key Purpose parameter to SIGN/VERIFY. Configure other parameters based on your business requirements.
 
 | Paramete r | Description | Example |
 |---|---|---|
@@ -15529,9 +15384,8 @@ Signature page, create a witness and associate it with the KMS key for container
 associate the witness with the KMS key. Then, click **Next**.
 7. In the **Signature Configurations** step, configure the parameters and click **Create Signing Rule**.
 
-**Note**
+> **Note:** A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
 
-A signature rule applies only to new images that are pushed to the specified namespace. Existing images are not signed based on the signature rule.
 **Algorithms**: You can select **RSA_PSS_SHA_256** or **RSA_PKCS1_SHA_256**.
 **Scope**: Select the namespace that you want to automatically sign.
 **Signature Type**:
@@ -15555,9 +15409,9 @@ To enable signature verification for a namespace, add and enable a security poli
 
 **Step 6: Check whether signature verification is enabled**
 
-**Note**
+> **Note:** The image is immutable if signature verification is disabled. You must specify the image by using the digest of the image. For more information, see Configure a repository to be immutable.
 
-The image is immutable if signature verification is disabled. You must specify the image by using the digest of the image. For more information, see Configure a repository to be immutable. Run the following commands to check whether signature verification is enabled. After signature verification is enabled for the default namespace, unsigned images cannot be deployed in the namespace. To specify an image by tag, run the following commands:
+Run the following commands to check whether signature verification is enabled. After signature verification is enabled for the default namespace, unsigned images cannot be deployed in the namespace. To specify an image by tag, run the following commands:
 
 ```bash
 kubectl -n default create deployment not-sign --image=alpine:3.11 -- sleep 10 Error from server: admission webhook "kritis-validation-hook-deployments.grafeas.io" denied the req uest: image alpine:3.11 is not attested
@@ -15769,9 +15623,7 @@ A Container Service for Kubernetes (ACK) cluster or an ACK edge cluster is creat
 the cluster details page, choose **Operations > Add-ons**.
 3. On the **Add-ons** page, you can perform operations on the components in the cluster.
 
-**Important**
-
-When you install the aliyun-acr-credential-helper, autoscaler, csi-provisioner, kritis-validation-hook, or network-topology-controller component, you must confirm the access policies for the component to proceed with the installation.
+> **Important:** When you install the aliyun-acr-credential-helper, autoscaler, csi-provisioner, kritis-validation-hook, or network-topology-controller component, you must confirm the access policies for the component to proceed with the installation.
 
 | Operation | Description |
 |---|---|
@@ -15921,9 +15773,9 @@ The security-inspector component is a key component for performing security insp
 
 The security-inspector component allows you to configure security inspections. security-inspector uses Polaris to perform security inspections. This allows you to identify security risks of workload configurations in your cluster in real time.
 
-**Note**
+> **Note:** Polaris is an open source project that is used to identify security risks of workload configurations in a Kubernetes cluster. For more information, see Polaris.
 
-Polaris is an open source project that is used to identify security risks of workload configurations in a Kubernetes cluster. For more information, see Polaris. The security-inspector component scans workload configurations based on multiple dimensions and generates inspection reports that include information about health checks, images, networks, resources, and security. This allows you to better understand the security risks of your applications in real time and reinforce your system based on the suggestions that are provided by security-inspector. For more information, see Use the configuration inspection feature to check workloads.
+The security-inspector component scans workload configurations based on multiple dimensions and generates inspection reports that include information about health checks, images, networks, resources, and security. This allows you to better understand the security risks of your applications in real time and reinforce your system based on the suggestions that are provided by security-inspector. For more information, see Use the configuration inspection feature to check workloads.
 
 ##### 7.11.3.5 ack-koordinator
 
@@ -15978,9 +15830,8 @@ ACK re-installs ack-koordinator based on the modified configurations.
 1. Click **Upgrade** in the **ack-koordinator** card of the **Add-ons** page.
 2. In the dialog box that appears, modify the parameters based on your business requirements and click **OK**.
 
-**Important**
-
-The Upgrade button is displayed only if the component is not updated to the latest version. The update overwrites all changes that are made to the deployed components of ackkoordinator (including Deployments and DaemonSets) by using other methods.
+> **Important:** The Upgrade button is displayed only if the component is not updated to the latest version.
+> The update overwrites all changes that are made to the deployed components of ack- koordinator (including Deployments and DaemonSets) by using other methods.
 
 **Uninstall ack-koordinator**
 
@@ -16052,17 +15903,16 @@ To start a container by using an accelerated image, you must install aliyun-acr-
 1. Add the image acceleration label to nodes.
 When you create worker nodes, you can add the alibabacloud.com/image-accelerate-enabled: true label to the nodes to enable image acceleration when the nodes are initialized. After the image acceleration label is added, aliyun-acr-acceleration-suite is automatically installed when the nodes are initialized. Add the image acceleration label when you create a cluster. Set the **Labels** parameter to alibabacloud.com/image-accelerate-enabled: true when you create the cluster. For more information, see Create an ACK cluster. Add the image acceleration label when you add nodes. Set the **Node Label** parameter to alibabacloud.com/image-accelerate-enabled: true when you add nodes. This way, the alibabacloud.com/image-accelerate-enabled: true label is added to new nodes in the node pool. For more information, see Create a node pool.
 
-**Note**
+> **Note:** You can create a separate node pool to manage the nodes that support accelerated images.
 
-You can create a separate node pool to manage the nodes that support accelerated images. Add the image acceleration label when you add existing nodes. Set the **Labels** parameter to alibabacloud.com/image-accelerate-enabled: true when you add existing nodes to a node pool. For more information, see Add existing ECS instances to an ACK cluster.
+Add the image acceleration label when you add existing nodes. Set the **Labels** parameter to alibabacloud.com/image-accelerate-enabled: true when you add existing nodes to a node pool. For more information, see Add existing ECS instances to an ACK cluster.
 2. Install aliyun-acr-acceleration-suite
 i. Log on to the ACK console. In the left-side navigation pane, click **Clusters**. ii. On the **Clusters** page, find the cluster that you want to manage and click its name to go to the cluster details page. In the left-side navigation pane, choose **Operations > Add-ons**. iii. On the **Add-ons** page, click the **Others** tab. Find the **aliyun-acr-acceleration-suite** component card and click **Install**. iv. In the message that appears, click **OK**.
 
 **Uninstall aliyun-acr-acceleration-suite**
 
-**Important**
+> **Important:** Before you uninstall aliyun-acr-acceleration-suite, make sure that no container that is created by using an accelerated image is running.
 
-Before you uninstall aliyun-acr-acceleration-suite, make sure that no container that is created by using an accelerated image is running.
 1. Log on to the ACK console. In the left-side navigation pane, click **Clusters**.
 2. On the **Clusters** page, find the cluster that you want to manage and click its name to go to the cluster
 details page. In the left-side navigation pane, choose **Operations > Add-ons**.
@@ -16074,13 +15924,14 @@ and click **Uninstall**.
 
 1. Configure access credential for the repository in which the accelerated image resides.
 
-**Note**
+> **Note:** Skip this step if the image is a public image, such as a public base image managed on the BareMetal Computing Platform (BMCP).
+> If the image is a private image, you must configure the secret that is used to pull the image. This ensures that the image acceleration component can work as expected. You can use one of the following methods to configure the secret.
 
-Skip this step if the image is a public image, such as a public base image managed on the BareMetal Computing Platform (BMCP). If the image is a private image, you must configure the secret that is used to pull the image. This ensures that the image acceleration component can work as expected. You can use one of the following methods to configure the secret. Use aliyun-acr-credential-helper that allows you to pull images from an image repository without using secrets. If aliyun-acr-credential-helper has been configured for the ACK cluster and the specified information about the Container Registry Enterprise Edition is correct, you can skip this step. If aliyun-acr-credential-helper has not been configured for the ACK cluster, you can configure the component for the cluster. For more information, see Use the aliyun-acr-credential-helper component to pull images without a secret. Specify a prefix for the name of the secret that is used to pull the image.
+Use aliyun-acr-credential-helper that allows you to pull images from an image repository without using secrets. If aliyun-acr-credential-helper has been configured for the ACK cluster and the specified information about the Container Registry Enterprise Edition is correct, you can skip this step. If aliyun-acr-credential-helper has not been configured for the ACK cluster, you can configure the component for the cluster. For more information, see Use the aliyun-acr-credential-helper component to pull images without a secret. Specify a prefix for the name of the secret that is used to pull the image.
 
-**Warning**
+> **Warning:** Make sure that the principle of least privilege is followed when you configure the secret that is used to pull the image and only the required permissions are granted.
 
-Make sure that the principle of least privilege is followed when you configure the secret that is used to pull the image and only the required permissions are granted. Run the following command to create a secret whose type is kubernetes.io/dockerconfigjson and whose name starts with acr-credential-:
+Run the following command to create a secret whose type is kubernetes.io/dockerconfigjson and whose name starts with acr-credential-:
 
 ```bash
 kubectl create secret docker-registry acr-credential-test --docker-server=<RegistryVpcDomain> --d ocker-username=<UserName> --docker-password=<Password>
@@ -16088,9 +15939,9 @@ kubectl create secret docker-registry acr-credential-test --docker-server=<Regis
 
 Add a label to the secret that is used to pull images.
 
-**Note**
+> **Note:** This method is applicable to only the aliyun-acr-acceleration-suite component of V0.2.6 or later.
 
-This method is applicable to only the aliyun-acr-acceleration-suite component of V0.2.6 or later. Run the following commands to create a secret whose type is kubernetes.io/dockerconfigjson and whose label is images.alibabacloud.com/accelerated: true:
+Run the following commands to create a secret whose type is kubernetes.io/dockerconfigjson and whose label is images.alibabacloud.com/accelerated: true:
 
 ```bash
 kubectl create secret docker-registry <SecretName> --docker-server=<RegistryVpcDomain> --docker-u sername=<UserName> --docker-password=<Password> kubectl label secrets <SecretName> images.alibabacloud.com/accelerated="true"
@@ -16185,9 +16036,8 @@ OSS NAS Ceph HDFS ... Native support for dataset abstraction: Provides the funda
 
 dataset: a set of logically related data that is used by computing engines. For example, Apache Spark uses datasets in big data scenarios and TensorFlow uses datasets in AI scenarios. Datasets enable intelligent applications and help produce the core values in various industries. Dataset management involves multiple aspects, including security, versions, and data acceleration. runtime: the execution engine that implements security, version management, and data acceleration for datasets. Runtime also defines a series of lifecycle interfaces. These interfaces are used to manage and accelerate datasets. AlluxioRuntime: the execution engine of open source Alluxio. AlluxioRuntime supports dataset management and caching and accelerates access to persistent volume claims (PVCs), Ceph, and Cloud Parallel File System (CPFS). You can use AlluxioRuntime in hybrid cloud scenarios. JuiceFSRuntime: a distributed cache acceleration engine developed based on JuiceFS. JuiceFSRuntime supports scenario-specific data caching and acceleration. For more information about JuiceFS, see Introduction to JuiceFS. DadiRuntime: Originated from the DADI Cache technology developed by the Alibaba Cloud storage team, DadiRuntime is an execution engine for cache management and acceleration by using C++ and the inhouse PhotonLibOS coroutine library. It supports accelerated data access for backends such as Object Storage Service (OSS), PANGU, Apsara File Storage for HDFS, and Container Registry. EFCRuntime: the runtime for the Elastic File Client (EFC) elastic acceleration client developed by the Apsara File Storage NAS (NAS) technical team. EFCRuntime can accelerate access to NAS and CPFS, and supports hot updates and fault tolerance. ThinRuntime: an extensible general-purpose storage system that allows you to access various storage systems in a low-code way. ThinRuntime reuses the data orchestration management capabilities and core capabilities provided by Fluid to integrate with runtime platforms.
 
-**Important**
-
-The distributed cache acceleration engines AlluxioRuntime and JuiceFSRuntime in ack-fluid are free open source components provided by third-party open source communities or enterprises. You can choose to install the corresponding server and client components to use the distributed cache acceleration services. However, Alibaba Cloud is not responsible for the stability, service limits, and security compliance of third-party components. You shall pay close attention to the official websites of the third-party open source communities or enterprises and updates on code hosting platforms, and read and comply with the open source licenses. You are liable for any potential risks related to application development, maintenance, troubleshooting, and security due to the use of third-party components.
+> **Important:** The distributed cache acceleration engines AlluxioRuntime and JuiceFSRuntime in ack-fluid are free open source components provided by third-party open source communities or enterprises. You can choose to install the corresponding server and client components to use the distributed cache acceleration services.
+> However, Alibaba Cloud is not responsible for the stability, service limits, and security compliance of third-party components. You shall pay close attention to the official websites of the third-party open source communities or enterprises and updates on code hosting platforms, and read and comply with the open source licenses. You are liable for any potential risks related to application development, maintenance, troubleshooting, and security due to the use of third-party components.
 
 | Item | Alluxio | JuiceFS | Dadi | EFC |
 |---|---|---|---|---|
@@ -16227,7 +16077,7 @@ objects.
 
 **Important**
 
-This example describes how to upload a test dataset to OSS from an ECS instance that runs the Alibaba Cloud Linux 3.2104 LTS 64-bit operating system.
+> This example describes how to upload a test dataset to OSS from an ECS instance that runs the Alibaba Cloud Linux 3.2104 LTS 64-bit operating system.
 
 **Step 2: Create a dataset and a DadiRuntime instance**
 
@@ -16385,9 +16235,7 @@ NAME UFS TOTAL SIZE CACHED CACHE CAPACITY CACHED PERCENTAGE PHASE AGE hadoop 210
 The output indicates that 210 MiB of data is cached to the local storage.
 6. Run the following command to delete the current application, and then create the same application.
 
-**Note**
-
-This step is performed to avoid other factors, such as the page cache, from affecting the result.
+> **Note:** This step is performed to avoid other factors, such as the page cache, from affecting the result.
 
 ```bash
 kubectl delete -f app.yaml && kubectl create -f app.yaml
@@ -16407,9 +16255,7 @@ real 0m0.048s user 0m0.001s sys 0m0.046s
 
 The output indicates that 48 milliseconds are consumed to copy the file. This means that the time consumption is reduced by more than 300 times.
 
-**Note**
-
-This is because the file is cached by DADI. It is much faster to access a cached file.
+> **Note:** This is because the file is cached by DADI. It is much faster to access a cached file.
 
 **Clear the environment**
 
@@ -16558,9 +16404,7 @@ spec:
   type: ClusterIP
 ```
 
-**Note**
-
-Replace <Your-Registry> with the address of your image repository and upload the image file of the corresponding version.
+> **Note:** Replace <Your-Registry> with the address of your image repository and upload the image file of the corresponding version.
 
 **Step 3: Configure model storage (PVC and PV)**
 
@@ -16603,9 +16447,7 @@ spec:
   volumeMode: Filesystem
 ```
 
-**Note**
-
-Replace <Your-AK-ID>, <Your-AK-Secret>, <Your-OSS-Bucket>, and <Your-OSS-Endpoint> with your Alibaba Cloud AccessKey ID, AccessKey secret, OSS bucket name, and endpoint.
+> **Note:** Replace <Your-AK-ID>, <Your-AK-Secret>, <Your-OSS-Bucket>, and <Your-OSS-Endpoint> with your Alibaba Cloud AccessKey ID, AccessKey secret, OSS bucket name, and endpoint.
 
 **Step 4: Use the rbgs component to deploy the Dynamo + vLLM**
 
@@ -16897,13 +16739,9 @@ Gateway Ingress Controller card.
 5. In the **Install API Gateway Ingress Controller** dialog box, choose whether to select **Create public**
 **network service** based on your business requirements, and then click **OK**.
 
-**Note**
+> **Note:** The system automatically creates an API gateway that has 2 cores and 4 GB of memory and grants the required permissions to API Gateway.
 
-The system automatically creates an API gateway that has 2 cores and 4 GB of memory and grants the required permissions to API Gateway.
-
-**Important**
-
-Before you install API Gateway Ingress Controller, you must complete the RAM role authorization for API Gateway. If you have not yet completed this step, click **Authorize** to proceed with the authorization before installation.
+> **Important:** Before you install API Gateway Ingress Controller, you must complete the RAM role authorization for API Gateway. If you have not yet completed this step, click **Authorize** to proceed with the authorization before installation.
 
 **Install the component when you create a cluster**
 
@@ -16925,9 +16763,8 @@ Gateway Ingress Controller card.
 
 **Update the API Gateway Ingress Controller component**
 
-**Note**
+> **Note:** If the **Upgrade** button is no longer displayed in the card, the component is successfully updated.
 
-If the **Upgrade** button is no longer displayed in the card, the component is successfully updated.
 1. Log in to the Container Service for Kubernetes (ACK) console.
 2. In the left-side navigation pane, click **Clusters**.
 3. On the **Clusters** page, click the name of the cluster that you want to manage. In the left-side navigation
@@ -16959,9 +16796,7 @@ pane, click **Add-ons**.
 **network service** based on your business requirements, select **Load Balancer Specification**, and then
 click **OK**.
 
-**Note**
-
-If you select **Create public network service**, an additional public network service higress-gatewayinternet will be established, and a private network service higress-gateway-intranet will be established by default.
+> **Note:** If you select **Create public network service**, an additional public network service higress-gateway- internet will be established, and a private network service higress-gateway-intranet will be established by default.
 
 **Install the component when you create a cluster**
 
@@ -17027,9 +16862,7 @@ spec:
             name: nginx-html
 ```
 
-**Note**
-
-Replace <Your-Registry> with the address of your image repository and upload the image file of the corresponding version.
+> **Note:** Replace <Your-Registry> with the address of your image repository and upload the image file of the corresponding version.
 
 **Create a route**
 
@@ -17048,9 +16881,7 @@ services:
 curl -H "Host: hello.example.com" http://<External endpoint>
 ```
 
-**Note**
-
-Replace <External endpoint> with the external endpoints of the preceding services in sequence.
+> **Note:** Replace <External endpoint> with the external endpoints of the preceding services in sequence.
 
 ### 7.12 SLB and Ingress
 
@@ -17146,9 +16977,9 @@ spec:
   type: LoadBalancer
 ```
 
-**Note**
+> **Note:** Annotations are case-sensitive.
 
-Annotations are case-sensitive. Table 1. SLB annotations
+Table 1. SLB annotations
 
 | Annotation | Description | Default |
 |---|---|---|
@@ -17212,9 +17043,7 @@ root@master # kubectl get pods --selector=app=ingress-nginx -n kube-system NAME 
 
 3. Access the VTS dashboard from an on-premises machine.
 
-**Note**
-
-By default, the VTS port is not exposed due to security concerns. In the following example, port forwarding is used to access the VTS dashboard.
+> **Note:** By default, the VTS port is not exposed due to security concerns. In the following example, port forwarding is used to access the VTS dashboard.
 
 ```
 root@master # kubectl port-forward nginx-ingress-controller-79877595c8-78gq8 -n kube-system 18080 Forwarding from 127.0.0.1:18080 -> 18080 Handling connection for 18080
@@ -17294,15 +17123,13 @@ After the preceding configuration is implemented, you can visit `http://foo.bar.
 
 `svc1` , visit `http://foo.bar.com/bar` to access `http-svc2` , and visit `http://foo.example.com/film` to
 
-**Note**
-
-In a production environment, you must point the domain name to the returned address
+> **Note:** In a production environment, you must point the domain name to the returned address
 
 ```
  101.37.XXX.XXX .
 ```
 
-In a test environment, you must add the following mapping rules to the `hosts` file.
+> In a test environment, you must add the following mapping rules to the `hosts` file.
 
 ```
 101.37.19*.*** foo.bar.com 101.37.19*.*** foo.example.com
@@ -17346,9 +17173,7 @@ Container Service allows you to use multiple types of certificates to reinforce 
 1. Prepare a certificate.
 If you do not have a certificate, perform the following steps to generate a test certificate:
 
-**Note**
-
-The domain name must be the same as the one specified in your Ingress configurations.
+> **Note:** The domain name must be the same as the one specified in your Ingress configurations.
 
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=foo.bar .com/O=foo.bar.com"
@@ -17429,9 +17254,9 @@ Container Service for Kubernetes (ACK) supports IPv4/IPv6 dual stack. You can as
 
 An ACK dedicated cluster that has **IPv4/IPv6 dual stack** enabled is created. For more information, see Create an ACK cluster.
 
-**Note**
+> **Note:** Only ACK dedicated clusters support IPv4/IPv6 dual stack. ACK edge clusters do not support IPv4/IPv6 dual stack.
 
-Only ACK dedicated clusters support IPv4/IPv6 dual stack. ACK edge clusters do not support IPv4/IPv6 dual stack. The NGINX Ingress controller is installed. For more information, see Create an ACK cluster and Manage components.
+The NGINX Ingress controller is installed. For more information, see Create an ACK cluster and Manage components.
 
 **Features**
 
@@ -17471,9 +17296,9 @@ that IPv6 is used to connect backend servers to the SLB instance. spec:
    app: ingress-nginx
 ```
 
-**Note**
+> **Note:** You cannot create internal-facing IPv6 SLB instances.
+> For more information about the specifications of SLB instances, see the **Preparations** topic in the **Getting Started** chapter of the **SLB User Guide**.
 
-You cannot create internal-facing IPv6 SLB instances. For more information about the specifications of SLB instances, see the **Preparations** topic in the **Getting Started** chapter of the **SLB User Guide**.
 2. Run the following command to create a Service named `nginx-ingress-lb-v6` and use the Service to
 expose your application.
 
@@ -18001,9 +17826,8 @@ Envoy `stream_idle_timeout` . Global configuration: `higress-config` the `upstre
 **Total request timeout** → `higress.io/timeout` annotation (corresponding to Envoy route level
 `timeout` , default 15s), which is the end-to-end total timeout and has different semantics from NGINX idle timeout.
 
-**Important**
-
-NGINX differentiates idle timeout between read and write, and Envoy is merged into one `stream_idle_timeout` . If the original read and send timeout values are different, only the larger value can be used.
+> **Important:** NGINX differentiates idle timeout between read and write, and Envoy is merged into one
+> `stream_idle_timeout` . If the original read and send timeout values are different, only the larger value can be used.
 
 **P1 (Recommended)-Feature Optimization**
 
@@ -18191,9 +18015,7 @@ spec:
               idle_timeout: 300s # 5 minutes, covering the global stream_idle_timeout
 ```
 
-**Note**
-
-route idle_timeout overrides the HCM-level stream_idle_timeout, which are defined consistently: both refer to the maximum allowable interval between two Data Transmission Service in the same data stream. It is suitable for scenarios where the backend processes time-consuming requests, such as AI inference and report generation.
+> **Note:** route idle_timeout overrides the HCM-level stream_idle_timeout, which are defined consistently: both refer to the maximum allowable interval between two Data Transmission Service in the same data stream. It is suitable for scenarios where the backend processes time-consuming requests, such as AI inference and report generation.
 
 **Envoy Filter:cluster connect_timeout (alternative proxy-connect-timeout)**
 
@@ -18324,9 +18146,9 @@ the enable-access-log default of true.
 
 **Semantic comparison:**
 
-**Important**
-
-In this scenario, two Envoy filters are required: one to tag routes and the other to filter by tag in access_log. The configuration complexity is significantly higher than that of the single-annotation mode of Nginx. We recommend that you use it only when you really need to disable logs by route. If you want to reduce the noise in health check logs, you can also use the built-in not_health_check_filter of Envoy. However, this method only takes effect for Envoy health check requests and does not apply to custom health check paths.
+> **Important:** In this scenario, two Envoy filters are required: one to tag routes and the other to filter by tag in access_log.
+> The configuration complexity is significantly higher than that of the single-annotation mode of Nginx. We recommend that you use it only when you really need to disable logs by route.
+> If you want to reduce the noise in health check logs, you can also use the built-in not_health_check_filter of Envoy. However, this method only takes effect for Envoy health check requests and does not apply to custom health check paths.
 
 | Nginx Ingress | Envoy/Higress |
 |---|---|
@@ -18363,9 +18185,7 @@ spec:
 
 Nginx limit-whitelist specify a CIDR list of client IP addresses that are not subject to throttling. Higress cluster-key-rate-limit plug-ins to implement equivalent functions: limit_by_per_ip maximum threshold for whitelist CIDR and 0.0.0.0/0 normal threshold for whitelist CIDR.
 
-**Important**
-
-The C++ key-rate-limit supports only limit_by_header and limit_by_param, but does not support throttling by IP address or CIDR. You must use the Go cluster-key-rate-limit plug-in (dependent on Redis).
+> **Important:** The C++ key-rate-limit supports only limit_by_header and limit_by_param, but does not support throttling by IP address or CIDR. You must use the Go cluster-key-rate-limit plug-in (dependent on Redis).
 
 ```bash
 apiVersion: extensions.higress.io/v1alpha1 kind: WasmPlugin metadata:
@@ -18494,9 +18314,9 @@ Blocked'\""
   url: oci://higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/waf:1.0.0
 ```
 
-**Note**
-
-Each rule in secRules is a complete string of SecRule instructions. The syntax is the same as that of ModSecurity. This parameter can be used together with useCRS: true. The custom rule is appended to the CRS rule. If only secRules is used (useCRS is not enabled), only custom rules take effect, which is suitable for scenarios where fine-grained control of rule sets is required.
+> **Note:** Each rule in secRules is a complete string of SecRule instructions. The syntax is the same as that of ModSecurity.
+> This parameter can be used together with useCRS: true. The custom rule is appended to the CRS rule.
+> If only secRules is used (useCRS is not enabled), only custom rules take effect, which is suitable for scenarios where fine-grained control of rule sets is required.
 
 **Only custom rules (CRS is not enabled)**
 
@@ -18722,17 +18542,17 @@ For each Ingress, you can configure its annotations, Ingress controller, and rul
 
 Ingress rules are used to manage external access to the services in the cluster and can be HTTP or HTTPS rules. You can configure the following items in rules: domain name (virtual hostname), URL path, service name, and port. For each rule, you need to set the following parameters: Domain: The test domain or virtual hostname of your service, such as `foo.bar.com` . Path: The URL path of your service. Each path is associated with a backend service. Server Load Balancer only forwards traffic to the backend if the incoming request matches the domain and path. Service: Specify the service in the form of `service:port` . You also need to specify a route weight for each service. The Ingress routes traffic to the matching service based on the route weight. Name: The name of the backend service. Port: The port of the service. Weight: The route weight of the service in the service group.
 
-**Note**
-
-a. The weight is a percentage value. For example, you can set two services to the same weight of 50%. b. A service group includes services that have the same domain and path defined in the Ingress configuration. If no weight is set for a service, the default value, 100, is used.
+> **Note:** a. The weight is a percentage value. For example, you can set two services to the same weight of
+> 50%.
+> b. A service group includes services that have the same domain and path defined in the Ingress
+> configuration. If no weight is set for a service, the default value, 100, is used.
 
 **Canary release**
 
 Container Service supports multiple traffic splitting approaches to suit scenarios such as canary release and A/B testing.
 
-**Note**
+> **Note:** Currently, only Ingress controllers of **0.12.0-5** and later versions support traffic splitting.
 
-Currently, only Ingress controllers of **0.12.0-5** and later versions support traffic splitting.
 1. Traffic splitting based on request header
 2. Traffic splitting based on cookie
 3. Traffic splitting based on query parameter
@@ -18848,9 +18668,8 @@ to go to the cluster details page.
 4. In the left-side navigation pane, choose **Network > Ingresses**.
 5. On the **Ingresses** page, select a namespace and click **Create** in the upper-right corner.
 
-**Note**
+> **Note:** You can also click **Create Resources in YAML** in the upper-right corner to create a resource by using an existing YAML template and deploy the resource to the application. You can also set the resource as a template. This way, you can create service resources based on the template.
 
-You can also click **Create Resources in YAML** in the upper-right corner to create a resource by using an existing YAML template and deploy the resource to the application. You can also set the resource as a template. This way, you can create service resources based on the template.
 6. In the dialog box that appears, enter a name for the Ingress. In this example, the Ingress is named nginx-
 ingress.
 7. Configure Ingress rules.
@@ -18890,9 +18709,9 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 b. Run the `vim tls.key` and `vim tls.crt` commands to obtain the newly generated private key and certificate. c. Copy the certificate to the Cert field and the private key to the Key field.
 9. Configure canary release settings.
 
-**Note**
+> **Note:** Only Ingress controllers of **V0.12.0-5** and later support traffic splitting.
 
-Only Ingress controllers of **V0.12.0-5** and later support traffic splitting. ACK supports multiple traffic splitting methods. This allows you to select suitable solutions for specific scenarios, such as canary releases and A/B testing: i. Traffic splitting based on request headers ii. Traffic splitting based on cookies iii. Traffic splitting based on query parameters After canary release is configured, only requests that match the specified rules are routed to the newnginx Service. If the weight of new-nginx is lower than 100%, requests that match the specified rules are routed to the Service based on the Service weight. In this example, a rule is added to specify that only requests with headers that match the regular expression foo=^bar$ are forwarded to new-nginx.
+ACK supports multiple traffic splitting methods. This allows you to select suitable solutions for specific scenarios, such as canary releases and A/B testing: i. Traffic splitting based on request headers ii. Traffic splitting based on cookies iii. Traffic splitting based on query parameters After canary release is configured, only requests that match the specified rules are routed to the newnginx Service. If the weight of new-nginx is lower than 100%, requests that match the specified rules are routed to the Service based on the Service weight. In this example, a rule is added to specify that only requests with headers that match the regular expression foo=^bar$ are forwarded to new-nginx.
 **Service**: the Services to be accessed.
 **Type**: the type of matching rule. Valid values: Header, Cookie, and Query.
 **Name and Match Value**: the names and matching values of custom request fields in key-value pairs.
@@ -18900,9 +18719,9 @@ Only Ingress controllers of **V0.12.0-5** and later support traffic splitting. A
 0. Configure annotations.
 Click **Rewrite Annotation** and add an annotation to redirect inbound traffic for the Ingress. For example, `nginx.ingress.kubernetes.io/rewrite-target:/` specifies that /path is redirected to the root path /. The root path can be recognized by the backend Service.
 
-**Note**
+> **Note:** In this example, no path is configured for the backend Services. Therefore, you do not need to configure rewrite annotations. Rewrite annotations allow the Ingress to forward traffic through the root path to the backend Services. This avoids the 404 error that is caused by invalid paths.
 
-In this example, no path is configured for the backend Services. Therefore, you do not need to configure rewrite annotations. Rewrite annotations allow the Ingress to forward traffic through the root path to the backend Services. This avoids the 404 error that is caused by invalid paths. You can also click **Add** to enter annotation names and values in key-value pairs. For more information about Ingress annotations, visit https://kubernetes.github.io/ingress-nginx/user-guide/nginxconfiguration/annotations/.
+You can also click **Add** to enter annotation names and values in key-value pairs. For more information about Ingress annotations, visit https://kubernetes.github.io/ingress-nginx/user-guide/nginxconfiguration/annotations/.
 1. Add labels.
 Add labels to describe the characteristics of the Ingress.
 2. Click **Create**. You are redirected to the Ingresses page.
@@ -18910,9 +18729,8 @@ After the Ingress is created, the Ingress appears on the Ingresses page.
 3. Click foo.bar.com to visit the NGINX welcome page.
 Click the domain name that points to new-nginx. The old-nginx application page appears.
 
-**Note**
+> **Note:** By default, when you access the domain name from a browser, request headers do not match the regular expression foo=^bar$ . Therefore, the requests are directed to old-nginx.
 
-By default, when you access the domain name from a browser, request headers do not match the regular expression foo=^bar$ . Therefore, the requests are directed to old-nginx.
 4. Log on to a master node by using SSH. Run the following commands to simulate requests with specific
 headers and check the results:
 
@@ -18936,9 +18754,7 @@ new
 
 On the **Ingresses** page, click buttons in the **Actions** column to perform the following operations on an Ingress: Click **Details** to view the basic information about the Ingress. Click **Update** to modify the configurations of the Ingress in the console. Click **View in YAML** to modify the configurations of the Ingress in a YAML file. Choose **More >****Delete** to delete the Ingress if it is no longer needed.
 
-**Note**
-
-On the **Ingresses** page, you can also select multiple **Ingresses** and delete the selected Ingresses at a time.
+> **Note:** On the **Ingresses** page, you can also select multiple **Ingresses** and delete the selected Ingresses at a time.
 
 #### 7.12.10 Update an Ingress
 
@@ -18977,9 +18793,7 @@ A Container Service for Kubernetes (ACK) cluster is created and an Ingress contr
 choose **More > Delete** in the Actions column.
 6. In the message that appears, click **OK**.
 
-**Note**
-
-On the **Ingresses** page, you can also select multiple Ingresses and delete the selected Ingresses at a time.
+> **Note:** On the **Ingresses** page, you can also select multiple Ingresses and delete the selected Ingresses at a time.
 
 ### 7.13 Config maps and secrets
 
@@ -19207,9 +19021,7 @@ Use secrets to store sensitive information, such as passwords and certificates, 
 5. On the **Secrets** page, select a namespace at the top and click **Create** in the upper-right corner.
 6. Configure the new secret and click **OK**.
 
-**Note**
-
-If you enter a secret as plaintext, select **Encode Data Values Using Base64** .
+> **Note:** If you enter a secret as plaintext, select **Encode Data Values Using Base64** .
 
 | Parameter | Description |
 |---|---|
@@ -19252,9 +19064,7 @@ A Kubernetes cluster is created. A Secret is created. For more information, see 
 
 **Background information**
 
-**Note**
-
-Do not delete Secrets that are generated when the cluster is created.
+> **Note:** Do not delete Secrets that are generated when the cluster is created.
 
 **Procedure**
 
@@ -19282,9 +19092,8 @@ To activate SLS, perform the following steps: Log on to the Apsara Uni-manager M
 To create an ACK cluster, perform the following steps:
 1. Log on to the ACK console. In the left-side navigation pane, click **Clusters**.
 
-**Note**
+> **Note:** The specified organization must be the same as the one that you selected when you activated SLS.
 
-The specified organization must be the same as the one that you selected when you activated SLS.
 2. On the Clusters page, click **Create Kubernetes Cluster**. For more information about how to configure
 parameters for a cluster, see Create an ACK cluster.
 3. In the lower part of the page, select **Enable Log Service** to install the SLS component.
@@ -19604,9 +19413,12 @@ run the following commands. This allows you to set the environment variables and
 export ARCH=<your_server_architecture> export REGION=<your_k8s_cluster_region_id> export CLUSTER_ID=<your_k8s_cluster_id> export INTERNET_DOMAIN=<k8s_cluster_domain_suffix> export IMAGE_REPO_URL=<your_image_repo_url> export ALI_UID=<your_ali_uid> bash logtail-dedicated.sh // Run the script to install the component.
 ```
 
-**Note**
-
-`<your_server_architecture` : the server architecture, such as amd64. `<your_k8s_cluster_region_id>` : the region in which the ACK cluster is deployed, such as cnqingdao-apsara-d01. `<your_k8s_cluster_id` : the ID of the ACK cluster. `<k8s_cluster_domain_suffix>` : the domain suffix of the ACK cluster, such as env28.internet.com. `<your_ali_uid>` : the ID of the Apsara Stack tenant account, such as 1234074238634394. `<your_image_repo_url>` : the URL of the image repository, such as registry.cnhangzhou.aliyuncs.com.
+> **Note:** `<your_server_architecture` : the server architecture, such as amd64.
+> `<your_k8s_cluster_region_id>` : the region in which the ACK cluster is deployed, such as cn- qingdao-apsara-d01.
+> `<your_k8s_cluster_id` : the ID of the ACK cluster.
+> `<k8s_cluster_domain_suffix>` : the domain suffix of the ACK cluster, such as env28.internet.com.
+> `<your_ali_uid>` : the ID of the Apsara Stack tenant account, such as 1234074238634394.
+> `<your_image_repo_url>` : the URL of the image repository, such as registry.cn- hangzhou.aliyuncs.com.
 
 **Create an application and configure SLS**
 
@@ -19664,9 +19476,9 @@ Specify the following configurations in order as required: Add **log collection 
 
 In the preceding YAML template, two environment variables are added to the log collection configuration. The `aliyun_logs_log-stdout` environment variable indicates that a Logstore named logstdout is created to store the stdout files collected from containers.
 
-**Note**
+> **Note:** The name of the Logstore cannot contain underscores (_). You can use hyphens (-) instead.
 
-The name of the Logstore cannot contain underscores (_). You can use hyphens (-) instead. Add **custom tags** in the following format:
+Add **custom tags** in the following format:
 
 ```
 - name: aliyun_logs_{Tag name without underscores (_)}_tags
@@ -19762,9 +19574,9 @@ Log4j is an open source project of Apache. Log4j consists of three components: l
 1. Configure Log4jAppender in Log Service.
 i. Create a project in Log Service. In this example, a Log Service project named k8s-log4j is created in the same region as your cluster. For more information, see the **Manage projects** chapter of **Log Service User Guide**.
 
-**Note**
+> **Note:** We recommend that you create a Log Service project in the same region as your cluster. When a Log Service project and a cluster are deployed in the same region, the log is transmitted over the internal network. This enables the real-time collection and quick retrieval of log data. This also avoids cross-region transmission, which requires additional bandwidth and time costs.
 
-We recommend that you create a Log Service project in the same region as your cluster. When a Log Service project and a cluster are deployed in the same region, the log is transmitted over the internal network. This enables the real-time collection and quick retrieval of log data. This also avoids cross-region transmission, which requires additional bandwidth and time costs. ii. Create a Logstore for the k8s-log4j project. In this example, a Logstore named k8s-logstore is created. For more information, see the **Manage**
+ii. Create a Logstore for the k8s-log4j project. In this example, a Logstore named k8s-logstore is created. For more information, see the **Manage**
 **Logstores** chapter of **Log Service User Guide**.
 iii. After the k8s-logstore Logstore is created, a message appears, which prompts you to use the Data Import wizard. Click **Data Import Wizard**. iv. At the top of the **Import Data** dialog box, click the **Custom Code** tab. Then, click Log4j and configure the data import parameters based on the instructions. In this example, Log4jAppender is configured with the default settings. You can also customize the settings to meet your business requirements.
 2. Configure Log4jAppender for the cluster.
@@ -19797,9 +19609,14 @@ boot:0.0.2
         - containerPort: 8080
 ```
 
-**Note**
+> **Note:** The following information is displayed:
+> `-Dproject` : the name of your Log Service project. In this example, the name of the project is k8s-log4j.
+> `-DlogStore` : the name of your Logstore. In this example, the name of the Logstore is k8s- logstore.
+> `-Dendpoint` : the endpoint of Log Service. You must configure the endpoint based on the region of your Log Service project. In this example, the endpoint is cn- hangzhou.log.aliyuncs.com.
+> `-Daccess_key_id` : your AccessKey ID.
+> `-Daccess_key` : your AccessKey secret.
 
-The following information is displayed: `-Dproject` : the name of your Log Service project. In this example, the name of the project is k8s-log4j. `-DlogStore` : the name of your Logstore. In this example, the name of the Logstore is k8slogstore. `-Dendpoint` : the endpoint of Log Service. You must configure the endpoint based on the region of your Log Service project. In this example, the endpoint is cnhangzhou.log.aliyuncs.com. `-Daccess_key_id` : your AccessKey ID. `-Daccess_key` : your AccessKey secret. iii. Run the following command to create a Deployment:
+iii. Run the following command to create a Deployment:
 
 ```bash
 kubectl create -f demo-deployment.yaml
@@ -19826,9 +19643,7 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE log4j-appender-demo-spring-boot-svc
 
 `1h` In this example, you can run the `login` command to generate the log of the Kubernetes cluster log. Replace `K8S_SERVICE_IP` in the command with the value of `EXTERNAL-IP` .
 
-**Note**
-
-For a complete list of API operations, see GitHub log4j-appender-demo.
+> **Note:** For a complete list of API operations, see GitHub log4j-appender-demo.
 
 ```bash
 curl http://${K8S_SERVICE_IP}:8080/login?name=bruce
@@ -19875,9 +19690,7 @@ card, and then click **Install**. In the message that appears, click **OK**.
 4. On the **Prometheus Monitoring** page, click the name of a Grafana dashboard to view the monitoring
 data.
 
-**Important**
-
-If this is the first time you log on to the Managed Service for Prometheus console, you must authorize the cluster to access Managed Service for Prometheus before you can view the monitoring data. If the authorization page does not appear after you log on to the Managed Service for Prometheus console, the cluster has been authorized to access Managed Service for Prometheus.
+> **Important:** If this is the first time you log on to the Managed Service for Prometheus console, you must authorize the cluster to access Managed Service for Prometheus before you can view the monitoring data. If the authorization page does not appear after you log on to the Managed Service for Prometheus console, the cluster has been authorized to access Managed Service for Prometheus.
 
 **Configure alert rules in Managed Service for Prometheus**
 
@@ -20044,9 +19857,8 @@ spec:
 
 v. Click the **Targets (beta)** tab. Check the endpoints that Managed Service for Prometheus scrapes. You can find that the endpoints scraped by Managed Service for Prometheus are displayed.
 
-**Note**
+> **Note:** The definition of a ServiceMonitor provides more information than an annotation, which includes the namespace and name of the Service.
 
-The definition of a ServiceMonitor provides more information than an annotation, which includes the namespace and name of the Service.
 6. Access the public IP address of the Service that you created in Step 4. This operation increases the value of
 the following custom metric. For more information about metrics, see DATA MODEL.
 7. Go to the Dashboards page of the ARMS console and click a dashboard to go to the Grafana page. Click
@@ -20069,9 +19881,7 @@ details page. In the left-side navigation pane, choose **Operations > Add-ons**.
 3. On the **Add-ons** page, find **ack-arms-prometheus** and check the component version.
 If the component is updatable, you can go to the Helm page, find the component, and then click **Update** in the **Actions** column to update the component.
 
-**Note**
-
-You can update a component only if the component is not updated to the latest version.
+> **Note:** You can update a component only if the component is not updated to the latest version.
 
 **Why Managed Service for Prometheus cannot be used to monitor GPU-**
 
@@ -20394,9 +20204,8 @@ configure the following parameters, and then click **OK**.
 | CPU Redundancy Rate | If the deviation between the recommended CPU specification and the original CPU request exceeds the specified redundancy rate, the system suggests a downgrade for the CPU configuration. Unit: %. | 30 |
 | Memory Redundancy Rate | If the deviation between the recommended memory specification and the original memory request exceeds the specified redundancy rate, the system suggests a downgrade for the memory configuration. Unit: %. | 30 |
 
-**Note**
-
-In global configuration mode, resource profiling is enabled for all workloads except workloads in the arms-prom and kube-system namespaces. If your cluster has more than 1,000 nodes or you want to enable resource profiling only for specific workloads, you can select the custom configuration mode to specify the applicable scope of resource profiling.
+> **Note:** In global configuration mode, resource profiling is enabled for all workloads except workloads in the arms-prom and kube-system namespaces.
+> If your cluster has more than 1,000 nodes or you want to enable resource profiling only for specific workloads, you can select the custom configuration mode to specify the applicable scope of resource profiling.
 
 **Custom Configuration**
 
@@ -20472,9 +20281,9 @@ details page, choose **Operations > Resource Profiling**.
 3. In the resource profiling list, click a workload name or **Change Resource Configuration** in the Actions
 column. In the **Change Resource Configuration** section of the resource details page, change the resource configuration. Autofill Click **Auto Fill**.
 
-**Note**
+> **Note:** The system automatically sets Target Required Resources and Target Limit Resources. The ratio of Target Required Resources to Target Limit Resources is fixed. Target Required Resources = Portrait Value + Portrait Value × Safety Margin. Target Limit Resources = Target Required Resources × (Current Limit Resources/Current Required Resources). If Current Required Resources is left empty, the value of Target Required Resources is the same as the value of Current Limit Resources.
 
-The system automatically sets Target Required Resources and Target Limit Resources. The ratio of Target Required Resources to Target Limit Resources is fixed. Target Required Resources = Portrait Value + Portrait Value × Safety Margin. Target Limit Resources = Target Required Resources × (Current Limit Resources/Current Required Resources). If Current Required Resources is left empty, the value of Target Required Resources is the same as the value of Current Limit Resources. Manual adjustment Set **Target Required Resources** and **Target Limit Resources** and click **Apply**.
+Manual adjustment Set **Target Required Resources** and **Target Limit Resources** and click **Apply**.
 
 | Parameter | Description |
 |---|---|
@@ -20600,9 +20409,11 @@ This topic describes how to upgrade the NVIDIA driver on a GPU node when workloa
 kubectl cordon node-name
 ```
 
-**Note**
-
-Currently, you can only upgrade the NVIDIA driver on worker nodes. node-name must be in the format of your-region-name.node-id. your-region-name represents the region where your cluster is deployed. node-id represents the ID of the ECS instance where the target node is deployed. You can run the following command to query node-name.
+> **Note:** Currently, you can only upgrade the NVIDIA driver on worker nodes.
+> node-name must be in the format of your-region-name.node-id.
+> your-region-name represents the region where your cluster is deployed.
+> node-id represents the ID of the ECS instance where the target node is deployed.
+> You can run the following command to query node-name.
 
 ```bash
 kubectl get node
@@ -20628,9 +20439,8 @@ nvidia-smi
 
 6. Run the following commands to uninstall the existing driver:
 
-**Note**
-
-If your driver version is 384.111, perform the following steps. If your driver version is not 384.111, download the corresponding driver from the official NVIDIA website first.
+> **Note:** If your driver version is 384.111, perform the following steps.
+> If your driver version is not 384.111, download the corresponding driver from the official NVIDIA website first.
 
 ```bash
 cd /tmp curl -O https://cn.download.nvidia.cn/tesla/384.111/NVIDIA-Linux-x86_64-384.111.run chmod u+x NVIDIA-Linux-x86_64-384.111.run . /NVIDIA-Linux-x86_64-384.111.run --uninstall -a -s -q
@@ -20670,9 +20480,7 @@ kubectl uncordon node-name
 
 Result Run the following command on a master node to check the NVIDIA driver version on the target node. The driver version is now 410.79.
 
-**Note**
-
-Replace node-name with the target node name.
+> **Note:** Replace node-name with the target node name.
 
 ```bash
 kubectl exec -n kube-system -t nvidia-device-plugin-node-name nvidia-smi
@@ -20694,9 +20502,8 @@ nvidia-smi
 
 3. Run the following commands to uninstall the existing driver:
 
-**Note**
-
-If your driver version is 384.111, perform the following steps. If your driver version is not 384.111, download the corresponding driver from the official NVIDIA website first.
+> **Note:** If your driver version is 384.111, perform the following steps.
+> If your driver version is not 384.111, download the corresponding driver from the official NVIDIA website first.
 
 ```bash
 cd /tmp curl -O https://cn.download.nvidia.cn/tesla/384.111/NVIDIA-Linux-x86_64-384.111.run chmod u+x NVIDIA-Linux-x86_64-384.111.run
@@ -20728,9 +20535,7 @@ nvidia-smi -pm 1 || true nvidia-smi -acp 0 || true
 
 Result Run the following command on a master node to check the NVIDIA driver version on the target node. The driver version is now 410.79.
 
-**Note**
-
-Replace node-name with the target node name.
+> **Note:** Replace node-name with the target node name.
 
 ```bash
 kubectl exec -n kube-system -t nvidia-device-plugin-node-name nvidia-smi
@@ -20744,9 +20549,9 @@ This topic describes how to enable GPU sharing.
 
 A Container Service for Kubernetes (ACK) dedicated cluster that runs Kubernetes 1.18 or later is created. For more information, see Create an ACK cluster.
 
-**Note**
+> **Note:** If your cluster runs Kubernetes 1.28.3 or earlier, you need to configure the scheduler. If your cluster runs Kubernetes 1.28.9 or later, you do not need to configure the scheduler.
 
-If your cluster runs Kubernetes 1.28.3 or earlier, you need to configure the scheduler. If your cluster runs Kubernetes 1.28.9 or later, you do not need to configure the scheduler. An ACK dedicated cluster that contains GPU-accelerated nodes is created. For more information, see Create an ACK dedicated cluster with GPU-accelerated nodes. A kubectl client is connected to the ACK cluster. For more information, see Connect to an ACK cluster by using kubectl.
+An ACK dedicated cluster that contains GPU-accelerated nodes is created. For more information, see Create an ACK dedicated cluster with GPU-accelerated nodes. A kubectl client is connected to the ACK cluster. For more information, see Connect to an ACK cluster by using kubectl.
 
 **Step 1: Configure a RAM role**
 
@@ -20754,22 +20559,20 @@ For more information, see Configure RAM role authorization for ack-ai-installer.
 
 **Step 2: (Optional) Configure the scheduler**
 
-**Note**
+> **Note:** If your cluster runs Kubernetes 1.28.3 or earlier, you need to configure the scheduler. If your cluster runs Kubernetes 1.28.9 or later, you do not need to configure the scheduler.
 
-If your cluster runs Kubernetes 1.28.3 or earlier, you need to configure the scheduler. If your cluster runs Kubernetes 1.28.9 or later, you do not need to configure the scheduler.
 1. Run the following command to query the number of master nodes:
 
 ```bash
 kubectl get nodes -l node-role.kubernetes.io/master
 ```
 
-**Note**
-
-Perform the preceding operation to confirm the number of master nodes to be modified. If the cluster has five master nodes, you need to modify the scheduler configurations on the five master nodes. Add scheduler configurations on each master node.
-
-**Important**
+> **Note:** Perform the preceding operation to confirm the number of master nodes to be modified. If the cluster has five master nodes, you need to modify the scheduler configurations on the five master nodes.
 
 Add scheduler configurations on each master node.
+
+> **Important:** Add scheduler configurations on each master node.
+
 1. Create a file named scheduler-framework-config.yaml in the /etc/kubernetes/ directory and copy the
 following content to the file: In this example, the cluster runs Kubernetes 1.24.
 
@@ -20820,9 +20623,7 @@ ack-ai-installer.
 5. Click the ack-ai-installer component to go to the component details page.
 6. On the Deploy page, click **Next** to view the configuration details. Click **OK** to complete the installation.
 
-**Important**
-
-You can install ack-ai-installer only in ACK clusters that run Kubernetes version 1.18 and later. If the Kubernetes version of your cluster is earlier than 1.18, you can click **Upgrade Cluster** on the Clusters page to update the cluster.
+> **Important:** You can install ack-ai-installer only in ACK clusters that run Kubernetes version 1.18 and later. If the Kubernetes version of your cluster is earlier than 1.18, you can click **Upgrade Cluster** on the Clusters page to update the cluster.
 
 **Step 4: Create a node pool**
 
@@ -21024,34 +20825,29 @@ This topic describes how to enable GPU scheduling for Kubernetes clusters that c
 
 Container Service for Kubernetes (ACK) and Resource Orchestration Service (ROS) are activated.
 
-**Note**
-
-ACK clusters use ROS to deploy applications. Before you create an ACK cluster, you must activate ROS.
+> **Note:** ACK clusters use ROS to deploy applications. Before you create an ACK cluster, you must activate ROS.
 
 **Background Information**
 
 Starting from V1.8, Kubernetes adds support for the following hardware acceleration devices using device plug-ins: NVIDIA GPUs, InfiniBand devices, and field-programmable gate arrays (FPGAs). GPU solutions provided by the Kubernetes community will be deprecated in V1.10 and removed from the master code in V1.11. ACK lets you deploy GPU-accelerated nodes in Kubernetes clusters to run compute-intensive tasks such as machine learning tasks and image processing tasks. You can deploy applications and enable auto scaling for applications without the need to install NVIDIA drivers or Compute Unified Device Architecture (CUDA). When ACK creates a cluster, ACK performs the following operations: Creates Elastic Compute Service (ECS) instances, configures a public key to enable SSH logon from master nodes to other nodes, and configures the cluster using CloudInit. Creates a security group to allow access to the virtual private cloud (VPC) where the cluster resides over Internet Control Message Protocol (ICMP). If you do not specify an existing VPC for the cluster, ACK creates a VPC and a vSwitch for the cluster and creates SNAT entries for the vSwitch. Adds route entries to the route table of the VPC. Creates a NAT gateway and an elastic IP address (EIP). Creates an internal-facing Server Load Balancer (SLB) instance and opens port 6443. Creates an Internet-facing SLB instance and opens ports 6443, 8443, and 22. If you enable SSH logon over the Internet, ACK opens port 22. If you do not enable SSH logon over the Internet, ACK does not open port 22. ACK clusters support only VPCs. By default, each Alibaba Cloud account has specific quotas on cloud resources that can be created. You cannot create clusters if the quota is reached. Check the quota of your account before you create a cluster. If you want to increase the quota, contact the ACK technical support team. By default, you can create at most five clusters across all regions with each account. Each cluster can contain at most 40 nodes. If you want to create more clusters or nodes, contact the ACK technical support team.
 
-**Note**
+> **Note:** By default, you can add at most 48 route entries to the VPC where an ACK cluster is deployed. This means that you can create at most 48 nodes in an ACK cluster deployed in a VPC. If you want to create more nodes in a cluster, contact the VPC technical support team to increase the maximum number of route entries supported by the VPC where the cluster resides. After the quota of route entries is increased, contact the ACK technical support team to increase the node quota of the cluster.
 
-By default, you can add at most 48 route entries to the VPC where an ACK cluster is deployed. This means that you can create at most 48 nodes in an ACK cluster deployed in a VPC. If you want to create more nodes in a cluster, contact the VPC technical support team to increase the maximum number of route entries supported by the VPC where the cluster resides. After the quota of route entries is increased, contact the ACK technical support team to increase the node quota of the cluster. By default, you can create at most 100 security groups with each account. By default, you can create at most 60 pay-as-you-go SLB instances with each account. By default, you can create at most 20 EIPs with each account. Limits on ECS instances: You can select operating systems such as Alibaba Cloud Linux 3, Anolis OS, UOS, Kylin V10, Alibaba Cloud Linux 3 64-bit (MLPS 2.0 Level 3), and Alibaba Cloud Linux 4.
+By default, you can create at most 100 security groups with each account. By default, you can create at most 60 pay-as-you-go SLB instances with each account. By default, you can create at most 20 EIPs with each account. Limits on ECS instances: You can select operating systems such as Alibaba Cloud Linux 3, Anolis OS, UOS, Kylin V10, Alibaba Cloud Linux 3 64-bit (MLPS 2.0 Level 3), and Alibaba Cloud Linux 4.
 
 **Create a GN5 Kubernetes cluster**
 
-**Note**
+> **Note:** GN5 Kubernetes clusters are built on GPU-accelerated ECS instances from instance families that start with `ecs.gn5`. For more information, see **Instance Family & Instance Types > Intel Instance** **Families > Heterogeneous Computing & Bare Metal** in the Elastic Computing Service documentation.
 
-GN5 Kubernetes clusters are built on GPU-accelerated ECS instances from instance families that start with `ecs.gn5`. For more information, see **Instance Family & Instance Types > Intel Instance**
-**Families > Heterogeneous Computing & Bare Metal** in the Elastic Computing Service
-documentation.
 1. Log on to the ACK console. In the navigation pane on the left, click Clusters.
 2. In the upper-right corner of the **Clusters** page, click **Create Kubernetes Cluster**.
 The Dedicated Kubernetes tab appears. Select GPU-accelerated ECS instance types for worker nodes. For more information about the parameters, see Create an ACK cluster.
 3. Configure worker nodes. In this example, worker nodes are used to run GPU computing tasks and the gn5i-
 c4gi1 instance type is selected. i. If you choose to create worker nodes, you must set Instance Type and Quantity. In this example, three GPU-accelerated worker nodes are created.
 
-**Note**
+> **Note:** We recommend that you select standard SSDs for the **System Disk** and **Mount Data Disk** parameters.
 
-We recommend that you select standard SSDs for the **System Disk** and **Mount Data Disk** parameters. ii. To add existing instances, you must first create GPU-accelerated instances in the region where you want to create the cluster.
+ii. To add existing instances, you must first create GPU-accelerated instances in the region where you want to create the cluster.
 4. Specify other parameters and click **Create Cluster** to start the deployment.
 5. Check the GPUs that are provided by the nodes.
 i. On the **Cluster** page, find the cluster whose details you want to view and click the name of the cluster. ii. In the navigation pane on the left, choose **Nodes > Nodes**. iii. On the **Nodes** page, select a worker node and choose **More > Details** in the **Actions** column. On the node details page, you can view the GPUs provided by the node.
@@ -21528,7 +21324,8 @@ hey -n 10000 -c 200 "http://47.95.XX.XX/predict?query=music"
 |   | number of pods = ceil [Current number of pods × (Current GPU utilization/Expected GPU |   |
 |   | utilization)] |   |
 
-expected GPU utilization is 20, the expected number of pods after Auto Scaling is 2.
+> expected GPU utilization is 20, the expected number of pods after Auto Scaling is 2.
+
 2. During the stress test, run the following command to query the status of the HPA and the pods:
 i. Run the following command to query the status of the HPA:
 
@@ -21603,9 +21400,8 @@ When Kubernetes deploys nodes with NVIDIA GPUs, the attributes of these GPUs are
 3. On the **Clusters** page, find the cluster that you want to manage and click **Details** in the **Actions** column.
 4. In the left-side navigation pane of the details page, choose **Nodes > Nodes**.
 
-**Note**
+> **Note:** In this example, the Kubernetes cluster contains three master nodes, among which two are equipped with GPUs. Record the node IP addresses.
 
-In this example, the Kubernetes cluster contains three master nodes, among which two are equipped with GPUs. Record the node IP addresses.
 5. On the **Nodes** page, select the node that is equipped with GPUs and choose **More > Details** in the
 Actions column to view the labels that are added to the node. You can also log on to a master node and run the following command to view the labels of GPUaccelerated nodes:
 
@@ -21704,9 +21500,7 @@ node/cn-beijing.i-2ze19qyi8votgjz12345 cordoned WARNING: Ignoring DaemonSet-mana
 
 4. Uninstall the existing nvidia-driver.
 
-**Note**
-
-This step uninstalls the version 384.111 driver. If your driver version is not 384.111, you need to download a driver from the official NVIDIA website and replace `384.111` with your actual version number.
+> **Note:** This step uninstalls the version 384.111 driver. If your driver version is not 384.111, you need to download a driver from the official NVIDIA website and replace `384.111` with your actual version number.
 
 | Log on to the target GPU node and run the | nvidia-smi | command to query the driver version. |
 |---|---|---|
@@ -21718,9 +21512,9 @@ ii. Run the following commands to download the driver installation package:
 cd /tmp/ curl -O https://cn.download.nvidia.cn/tesla/384.111/NVIDIA-Linux-x86_64-384.111.run
 ```
 
-**Note**
+> **Note:** The installation package is required to uninstall the driver.
 
-The installation package is required to uninstall the driver. iii. Run the following commands to uninstall the existing nvidia-driver:
+iii. Run the following commands to uninstall the existing nvidia-driver:
 
 ```
 chmod u+x NVIDIA-Linux-x86_64-384.111.run . /NVIDIA-Linux-x86_64-384.111.run --uninstall -a -s -q
@@ -21887,9 +21681,7 @@ to the virtual machines (VMs) where the Cert component is deployed. The followin
 2. Upload the files to the `/opt/static/static/k8s/private/pkg/nvidia-driver` directory of the Cert
 component.
 
-**Note**
-
-Run the following command on the two VMs where the Cert component is deployed:
+> **Note:** Run the following command on the two VMs where the Cert component is deployed:
 
 ```bash
 # In this example, the installation package of NVIDIA driver 470.161.03 is uploaded. To upload othe
@@ -21990,17 +21782,17 @@ You can enable CPU Burst to meet the CPU requirements during an application star
 
 CPU resources can be reused based on time-sharing. Kubernetes allows you to specify a CPU limit for a container. If you specify a CPU limit for a container, the OS limits the amount of CPU resources that can be used by the container within a specific time period. For example, you set the CPU limit of a container to 2. The OS kernel limits the CPU time slices that the container can use to 200 milliseconds within each 100millisecond period. CPU utilization is a key metric that is used to evaluate the performance of a container. In most cases, the CPU limit is specified based on CPU utilization. CPU utilization on a per-millisecond basis shows more spikes than that on a per-second basis. If the CPU utilization of a container reaches the limit within a 100millisecond period, CPU throttling is enforced by the OS kernel and threads in the container are suspended for the rest of the time period, as shown in the following figure. The following figure shows the thread allocation of a web application container that runs on a node with four CPU cores. The CPU limit of the container is set to 2. The overall CPU utilization within the last second is low. However, Thread 2 cannot be resumed until the beginning of the third 100-millisecond period, because CPU throttling occurs at a specific point during the second 100-millisecond period. This increases the response time (RT) and causes long-tail latency problems in containers. Alibaba Cloud Linux 2 provides the CPU Burst feature in kernel version 4.19.91-22.al7. CPU Burst allows a container to accumulate CPU time slices when the container is idle. The container can use the accumulated CPU time slices to burst above the CPU limit when CPU utilization spikes. This improves performance and reduces the RT of the container. For kernel versions that do not support CPU Burst, ack-koordinator detects CPU throttling events and dynamically adjusts the CPU limit to achieve the same effect as CPU Burst.
 
-**Note**
+> **Note:** ack-koordinator achieves this by modifying the value of the `Completely Fair Scheduler (CFS) quota` in the cgroup parameters instead of modifying the value of the CPU limit in the pod specifications.
 
-ack-koordinator achieves this by modifying the value of the `Completely Fair Scheduler (CFS) quota` in the cgroup parameters instead of modifying the value of the CPU limit in the pod specifications. The preceding CFS quota adjustment policy can be used to handle CPU usage spikes For example, when traffic spikes occur, ack-koordinator can eliminate CPU bottlenecks within a few seconds, while ensuring a proper number of workloads on the node. The CPU Burst feature supported by the kernel of Alibaba Cloud Linux handles CPU usage spikes at a faster rate. We recommend that you enable the CPU Burst feature provided by the kernel of Alibaba Cloud Linux for latency-sensitive applications. For more information about CPU Burst, see the Alibaba Cloud presentation at KubeCon 2021: CPU Burst: Getting Rid of Unnecessary Throttling, Achieving High CPU Utilization and Application Performance at the Same Time.
+The preceding CFS quota adjustment policy can be used to handle CPU usage spikes For example, when traffic spikes occur, ack-koordinator can eliminate CPU bottlenecks within a few seconds, while ensuring a proper number of workloads on the node. The CPU Burst feature supported by the kernel of Alibaba Cloud Linux handles CPU usage spikes at a faster rate. We recommend that you enable the CPU Burst feature provided by the kernel of Alibaba Cloud Linux for latency-sensitive applications. For more information about CPU Burst, see the Alibaba Cloud presentation at KubeCon 2021: CPU Burst: Getting Rid of Unnecessary Throttling, Achieving High CPU Utilization and Application Performance at the Same Time.
 
 **How to use CPU Burst**
 
 **Use an annotation to enable CPU Burst**
 
-**Important**
-
-To enable CPU Burst for a pod, configure the `annotations` parameter in the `metadata` section of the pod configuration. To enable CPU Burst for a Deployment, configure the `annotations` parameter in the `template.metadata` section of the Deployment configuration.
+> **Important:** To enable CPU Burst for a pod, configure the `annotations` parameter in the `metadata` section of the pod configuration.
+> To enable CPU Burst for a Deployment, configure the `annotations` parameter in the
+> `template.metadata` section of the Deployment configuration.
 
 ```bash
 annotations:
@@ -22091,9 +21883,9 @@ The following table describes the advanced parameters of CPU Burst.
 | cfsQuotaBurstPeriod Seconds | int | Default value: -1 . Unit: seconds. This indicates that the time period in which the container can run with an increased CFS quota is unlimited. This field specifies the time period in which the container can run with an increased CFS quota, which cannot exceed the upper limit specified by cfsQuotaBurstPercent . |
 | sharePoolThreshold Percent | int | Default value: 50 . Unit: %. This field specifies the CPU utilization threshold of the node. If the CPU utilization of the node exceeds the threshold, the value of cfs quota in _ cgroup parameters is reset to the original value. |
 
-**Important**
-
-After you set `policy` to `cfsQuotaBurstOnly` or `auto` , the `CFS quota` assigned by the node OS is automatically adjusted based on whether CPU throttling is triggered. When you perform stress tests on a container, we recommend that you record the CPU utilization of the container throughout the test period or set `policy` to `cpuBurstOnly` or `none` . This ensures higher resource elasticity for your production environment.
+> **Important:** After you set `policy` to `cfsQuotaBurstOnly` or `auto` , the `CFS quota` assigned by the node OS is automatically adjusted based on whether CPU throttling is triggered.
+> When you perform stress tests on a container, we recommend that you record the CPU utilization of the container throughout the test period or set `policy` to `cpuBurstOnly` or
+> `none` . This ensures higher resource elasticity for your production environment.
 
 **Verify the effect of CPU Burst**
 
@@ -22144,9 +21936,8 @@ erver.
 ress of the application. ./wrk -H "Accept-Encoding: deflate, gzip" -t 2 -c 12 -d 120 --latency --timeout 2s -R 24 http://$target_ip_address:8010/static/file.1m.test
 ```
 
-**Note**
-
-Replace the IP address in the command with the pod IP address of the Apache application. You can modify the -R field to change the number of queries per unit time from the sender.
+> **Note:** Replace the IP address in the command with the pod IP address of the Apache application.
+> You can modify the -R field to change the number of queries per unit time from the sender.
 
 **Analyze the result**
 
@@ -22286,9 +22077,7 @@ A Container Service for Kubernetes (ACK) dedicated cluster is created. For more 
 | Helm | 3.0 or later |
 | OS | Alibaba Cloud Linux |
 
-**Note**
-
-If you do not use Alibaba Cloud Linux, you can use the elastic resource limit feature provided by ackkoordinator to ensure container CPU service quality. For more information, see Elastic resource limits.
+> **Note:** If you do not use Alibaba Cloud Linux, you can use the elastic resource limit feature provided by ack- koordinator to ensure container CPU service quality. For more information, see Elastic resource limits.
 
 **Procedure**
 
@@ -22332,9 +22121,7 @@ data:
 |   |   | groupIdentit |   |   |   |
 |   | y |   |   |   |   |
 
-**Note**
-
-For pods that do not have `koordinator.sh/qosClass` specified, ack-koordinator sets parameters based on the native QoS class of the pod. Pods of the BestEffort class use the BE configuration from the ConfigMap. Pods with other QoS classes use the LS configuration from the ConfigMap.
+> **Note:** For pods that do not have `koordinator.sh/qosClass` specified, ack-koordinator sets parameters based on the native QoS class of the pod. Pods of the BestEffort class use the BE configuration from the ConfigMap. Pods with other QoS classes use the LS configuration from the ConfigMap.
 
 | hether the | ack-slo-config |
 |---|---|
@@ -22466,9 +22253,7 @@ An ACK dedicated cluster is created. For more information, see Create an ACK clu
 
 Applications deployed in a Kubernetes cluster follow the standard Kubernetes Request/Limit model for resource usage. As shown in the following figure, a pod's memory request serves only as a reference for scheduling capacity. The memory limit is the actual constraint on a single node. In the figure, memory.limit_in_bytes represents the memory usage limit. When a pod's memory usage, including the page cache, approaches its declared limit, it triggers direct memory reclamation at the memory subsystem (Memcg) level, which blocks process execution. If the memory request rate exceeds the reclamation rate, the container triggers an OOMKilled event and releases its memory. An administrator might increase the application's memory limit to reduce the risk of a pod OOM. However, this can lead to memory overcommitment, where the sum of memory limits on a node exceeds its physical capacity. In an overcommitted state, a pod requesting a large amount of memory can cause the entire node to run out of memory. This can trigger node-level memory reclamation or OOM events for other pods that request memory, because Kubernetes does not enable Swap by default. In both scenarios, a single pod can impact the memory access performance of other pods, which significantly affects their performance even if they have not exceeded their declared memory requests. ack-koordinator, combined with Alibaba Cloud Linux, provides container memory QoS. It automatically configures the memory subsystem (Memcg) based on pod parameters. It enables Memcg QoS, background memory reclamation, and global minimum watermark classification for containers. This ensures both QoS and fairness for container memory resources. Enabling container memory QoS provides the following features: When a pod's memory usage approaches its limit, a portion of its memory is asynchronously reclaimed in the background. This mitigates the performance impact of direct memory reclamation. Memory reclamation among pods is fairer. When a node has insufficient memory resources, memory is first reclaimed from pods that are overusing memory (Memory Usage > Request). This prevents individual pods from degrading the quality of the node's memory resources. In memory overcommitment scenarios with BestEffort pods, the memory quality for Guaranteed and Burstable pods is prioritized. When differentiated Service Level Objective (SLO) co-location is enabled for a cluster, the system prioritizes the memory QoS of Latency-Sensitive (LS) pods. This delays the triggering of node-level memory reclamation for LS pods. In the following figure, memory.limit_in_bytes is the memory usage limit, memory.high is the memory throttling threshold, memory.wmark_high is the background memory reclamation threshold, and memory.min is the locked memory usage threshold.
 
-**Note**
-
-Kubernetes 1.22 introduced the MemoryQoS feature. You can enable it on the Kubelet to support container memory locking and proactive throttling, which improves the fairness of memory resource allocation. This feature is currently in the Alpha stage. It supports only Linux cgroups v2, which requires a kernel version of 4.15 or later and is incompatible with cgroups v1. Enabling it affects all containers on the node. The ACK container memory QoS feature supports this capability on cgroups v1. It also provides additional performance optimizations and differentiated SLO capabilities, such as background memory reclamation and minimum watermark classification.
+> **Note:** Kubernetes 1.22 introduced the MemoryQoS feature. You can enable it on the Kubelet to support container memory locking and proactive throttling, which improves the fairness of memory resource allocation. This feature is currently in the Alpha stage. It supports only Linux cgroups v2, which requires a kernel version of 4.15 or later and is incompatible with cgroups v1. Enabling it affects all containers on the node. The ACK container memory QoS feature supports this capability on cgroups v1. It also provides additional performance optimizations and differentiated SLO capabilities, such as background memory reclamation and minimum watermark classification.
 
 **Procedure**
 
@@ -22721,9 +22506,7 @@ kubectl apply -f stress-demo.yaml
 
 4. Run the following command to view the system's global minimum watermark.
 
-**Note**
-
-Because the system's global minimum watermark is low, memory might not be reclaimed in time to prevent a node-level OOM in a memory overcommitment scenario. Therefore, this feature is typically used with a higher global minimum watermark. For example, for a test machine with 32 GiB of memory, you can set the minimum watermark to 4,000,000 KB.
+> **Note:** Because the system's global minimum watermark is low, memory might not be reclaimed in time to prevent a node-level OOM in a memory overcommitment scenario. Therefore, this feature is typically used with a higher global minimum watermark. For example, for a test machine with 32 GiB of memory, you can set the minimum watermark to 4,000,000 KB.
 
 ```
 cat /proc/sys/vm/min_free_kbytes
@@ -22836,9 +22619,9 @@ i. Modify the /etc/default/grub file. Configure the `GRUB_CMDLINE_LINUX` field t
 ield. Irrelevant settings are omitted. GRUB_CMDLINE_LINUX="... rdt=cmt,mbmtotal,mbmlocal,l3cat,l3cdp,mba"
 ```
 
-**Important**
+> **Important:** Separate the settings that are related to the RDT feature and other settings with a space character.
 
-Separate the settings that are related to the RDT feature and other settings with a space character. ii. Run the following command to update the grub.cfg file:
+ii. Run the following command to update the grub.cfg file:
 
 ```python
 # Set the path to the actual path of the file.
@@ -22989,9 +22772,9 @@ This feature is suitable for scenarios where temporary adjustment is required. F
 
 To dynamically modify the memory limit of a pod by using cgroups, perform the following steps:
 
-**Note**
+> **Note:** You can modify the memory limit only in Kubernetes 1.22 and earlier. Other resource parameters can be modified in all Kubernetes versions.
+> If you modify the CPU limit to meet common requirements, we recommend that you use the CPU Burst feature. This feature can automatically modify the CPU limit of the pod. For more information, see CPU Burst.
 
-You can modify the memory limit only in Kubernetes 1.22 and earlier. Other resource parameters can be modified in all Kubernetes versions. If you modify the CPU limit to meet common requirements, we recommend that you use the CPU Burst feature. This feature can automatically modify the CPU limit of the pod. For more information, see CPU Burst.
 1. Create a file named pod-demo.yaml and copy the following content to the file:
 
 ```
@@ -23242,9 +23025,8 @@ The output shows that CPU Core 2 and CPU Core 3 are bound to the containers. The
 
 If you want to modify the disk IOPS for a pod, you must use Alibaba Cloud Linux as the operating system of the worker node that you want to manage. To modify the disk IOPS for a pod, perform the following steps:
 
-**Note**
+> **Note:** If you specify a blkio limit in cgroup v1, the OS kernel only limits the direct IOPS of a pod. The OS kernel does not limit the buffered IOPS of a pod. To limit the buffered IOPS of a pod, use cgroup v2 or enable the cgroup writeback feature for group v1 in Alibaba Cloud Linux. For more information, see Enable the cgroup writeback feature.
 
-If you specify a blkio limit in cgroup v1, the OS kernel only limits the direct IOPS of a pod. The OS kernel does not limit the buffered IOPS of a pod. To limit the buffered IOPS of a pod, use cgroup v2 or enable the cgroup writeback feature for group v1 in Alibaba Cloud Linux. For more information, see Enable the cgroup writeback feature.
 1. Create an I/O-intensive application with the following YAML template.
 Mount the host directory /mnt to the pod. The device name of the corresponding disk is /dev/vda1.
 
@@ -23326,13 +23108,19 @@ KServe is an open source cloud-native model service platform designed to simplif
 
 **Framework**
 
-KServe provides a series of CustomResourceDefinitions (CRDs) to manage and deliver machine learning model services. KServe provides easy-to use advanced interfaces and standardized data plane protocols for a wide range of models such as TensorFlow, XGBoost, scikit-learn, PyTorch, and Huggingface Transformer/LLM. In addition, KServe encapsulates the complex operations of AutoScaling, networking, health checking, and server configuration to implement features including GPU auto scaling, Scale to Zero, and Canary Rollouts. These features simplify the deployment and maintenance process of AI models. For more information, visit kserve on GitHub. AI Application Rest/gRPC User Request Transformer Service Predictor Service
+KServe provides a series of CustomResourceDefinitions (CRDs) to manage and deliver machine learning model services. KServe provides easy-to use advanced interfaces and standardized data plane protocols for a wide range of models such as TensorFlow, XGBoost, scikit-learn, PyTorch, and Huggingface Transformer/LLM. In addition, KServe encapsulates the complex operations of AutoScaling, networking, health checking, and server configuration to implement features including GPU auto scaling, Scale to Zero, and Canary Rollouts. These features simplify the deployment and maintenance process of AI models. For more information, visit kserve on GitHub. AI Application
+
+> Rest/gRPC User Request
+
+Transformer Service Predictor Service
 
 | /v2/models/model/infer Rest/gRPC Inference Request |   |   |
 |---|---|---|
 |   | fer quest |   |
 
-Queue Queue Queue Queue Proxy Proxy Proxy Proxy Model Server Model Server /mnt/models /mnt/models Preprocess Preprocess Predict Predict PostProcess PostProcess Initializer Initializer Transformer Pod 1 Transformer Pod 2 Predictor Pod 1 Predictor Pod 2 KPA/HPA scale between KPA/HPA scale between min/max replicas min/max replicas Deployment Storage Initializer
+Queue Queue Queue Queue Proxy Proxy Proxy Proxy Model Server Model Server /mnt/models /mnt/models Preprocess Preprocess Predict Predict PostProcess PostProcess Initializer Initializer Transformer Pod 1 Transformer Pod 2 Predictor Pod 1 Predictor Pod 2 KPA/HPA scale between KPA/HPA scale between min/max replicas min/max replicas Deployment
+
+> Storage Initializer
 
 | Raw Deplo | yment |
 |---|---|
@@ -23365,18 +23153,15 @@ the cluster details page. In the left-side navigation pane, choose **Operations 
 3. On the **Add-ons** page, find the cert-manager component card and click **Install** to install the component as
 prompted.
 
-**Note**
-
-You can also view, upgrade, and uninstall the cert-manager component on this page.
+> **Note:** You can also view, upgrade, and uninstall the cert-manager component on this page.
 
 **Step 2: Install the ack-kserve component**
 
 1. On the **Add-ons** page, find the ack-kserve component card and click **Install** to install the component as
 prompted.
 
-**Note**
+> **Note:** You can also view, upgrade, and uninstall the ack-kserve component on this page.
 
-You can also view, upgrade, and uninstall the ack-kserve component on this page.
 2. Run the following command to check whether the pod in the `kserve` namespace is in the `running`
 state:
 
@@ -23388,9 +23173,8 @@ kubectl get pod -n kserve
 
 Delete the KServe custom resources (CRs) and custom resource definitions (CRDs) in the cluster in which the ack-kserve component is installed before you uninstall the ack-kserve component. This prevents resource waste.
 
-**Important**
+> **Important:** Before you delete the CRs and CRDs, make sure that your business no longer uses these resources. If you delete a CRD, the CRs dependent on the CRD are also deleted and cannot be restored.
 
-Before you delete the CRs and CRDs, make sure that your business no longer uses these resources. If you delete a CRD, the CRs dependent on the CRD are also deleted and cannot be restored.
 1. Delete all KServe CRs in the cluster after you make sure that you no longer require them. You can run the
 following commands to delete the CRs:
 
@@ -23413,9 +23197,8 @@ kubectl delete crd clusterservingruntimes.serving.kserve.io kubectl delete crd c
 3. On the Add-ons page, find the ack-kserve and cert-manager component cards and click Uninstall in the
 lower-right corner to uninstall the components as prompted.
 
-**Important**
+> **Important:** Before you uninstall the cert-manager component, make sure that no other components in the cluster use this component. Otherwise, your business may become unavailable.
 
-Before you uninstall the cert-manager component, make sure that no other components in the cluster use this component. Otherwise, your business may become unavailable.
 4. Run the following command to delete the CRDs of cert-manager in the cluster:
 
 ```bash
@@ -23620,9 +23403,9 @@ The preceding output indicates that the request is correctly sent to the inferen
 
 **Step 4: (Optional) Delete the inference service**
 
-**Important**
+> **Important:** Before you delete the inference service, make sure that you no longer require the inference service and its related resources.
 
-Before you delete the inference service, make sure that you no longer require the inference service and its related resources. Run the following command to delete the inference service:
+Run the following command to delete the inference service:
 
 ```
 arena serve delete qwen
@@ -24129,9 +23912,7 @@ Expected output:
 The preceding output indicates that the two inferences occur during the request, and the responses to the two inferences are the same.
 4. Run the following command to initiate stress testing.
 
-**Note**
-
-For more information about hey, visit hey on GitHub.
+> **Note:** For more information about hey, visit hey on GitHub.
 
 ```
 hey -z 2m -c 20 -m POST -host $SERVICE_HOSTNAME -H "Content-Type: application/json" -D ./irisinput.json http://${NGINX_INGRESS_IP}:80/v1/models/sklearn-iris:predict
@@ -24243,9 +24024,7 @@ Expected output:
 The preceding output indicates that the request is correctly sent to the server and the server returns an expected response in the JSON format.
 5. Run the following command to perform a stress test on the service.
 
-**Note**
-
-For more information about hey, visit hey on GitHub.
+> **Note:** For more information about hey, visit hey on GitHub.
 
 ```
 hey -z 2m -c 5 -m POST -host $SERVICE_HOSTNAME -H "Content-Type: application/json" -d '{"model": "q wen", "messages": [{"role": "user", "content": "Test"}], "max_tokens": 10, "temperature": 0.7, "top _p": 0.9, "seed": 10}' http://$NGINX_INGRESS_IP:80/v1/chat/completions
@@ -24512,9 +24291,8 @@ and then click **Next**.
 7. On the **Container** wizard page, set the container parameters, select an image, and then configure the
 required computing resources. Click **Next**. For more information, see Configure the containers.
 
-**Note**
+> **Note:** You must configure the required computing resources for the Deployment. Otherwise, you cannot enable HPA.
 
-You must configure the required computing resources for the Deployment. Otherwise, you cannot enable HPA.
 8. On the **Advanced** wizard page, find the **Access Control** section, click **Create** on the right side of
 Services, and then set the parameters. For more information, see Create an application from an image.
 9. On the **Advanced** wizard page, select **Enable** for **HPA** and configure the scaling threshold and related
@@ -24610,9 +24388,8 @@ nginx Deployment.
       targetAverageUtilization: 50
 ```
 
-**Note**
+> **Note:** You must configure the requested resources for the pods of the application. Otherwise, the Horizontal Pod Autoscaler cannot be started.
 
-You must configure the requested resources for the pods of the application. Otherwise, the Horizontal Pod Autoscaler cannot be started.
 4. Run the `kubectl describe hpa name` command. The following output is an example of a warning that is
 returned:
 
@@ -24639,9 +24416,7 @@ This topic describes how to convert Managed Service for Prometheus metrics to me
 
 Administrator permissions are obtained. When you log on to the Container Service for Kubernetes (ACK) console, click **Access as Administrator** to log on as an administrator. The Managed Service for Prometheus component is installed. For more information, see Enable Managed Service for Prometheus. ack-alibaba-cloud-metrics-adapter is deployed.
 
-**Note**
-
-To deploy ack-alibaba-cloud-metrics-adapter, log on to the ACK console. In the left-side navigation pane of the details page of a cluster, choose **Operations > Components**. On the Components page, deploy the component.
+> **Note:** To deploy ack-alibaba-cloud-metrics-adapter, log on to the ACK console. In the left-side navigation pane of the details page of a cluster, choose **Operations > Components**. On the Components page, deploy the component.
 
 **Feature overview**
 
@@ -24720,9 +24495,8 @@ spec:
   type: ClusterIP
 ```
 
-**Note**
+> **Note:** The pod is used to expose the `http_requests_total` metric, which indicates the number of requests.
 
-The pod is used to expose the `http_requests_total` metric, which indicates the number of requests.
 2. Create a ServiceMonitor configuration.
 
 **Procedure for ACK dedicated clusters:**
@@ -25227,9 +25001,7 @@ ack-autoscaling-placeholder provides a buffer for the auto scaling of pods in a 
 
 An ACK dedicated cluster whose Kubernetes version is 1.11 or later is created. For more information, see Create an ACK cluster and Update the Kubernetes version of a cluster.
 
-**Note**
-
-Only ACK dedicated clusters support this feature.
+> **Note:** Only ACK dedicated clusters support this feature.
 
 **How it works**
 
@@ -25434,9 +25206,7 @@ can find the created template. On the **Templates** page, you can filter templat
 **Create from Template** to go to the **Create from Template** page. You can create and save a custom
 template based on the built-in template of ACK. i. Select a template and click **Save Template**. ii. In the Save Template dialog box, specify the name, description, and template content. Click **Save**.
 
-**Note**
-
-You can modify the template based on your requirements.
+> **Note:** You can modify the template based on your requirements.
 
 **What to do next**
 
@@ -25815,9 +25585,9 @@ Parameters page, set the `eventer.sinks.sls.enabled` parameter to `true` .
 4. In the left-side navigation pane of the details page, choose **Operations > Event Center**.
 5. Access the Kubernetes event center on the Event Center page
 
-**Note**
+> **Note:** If the Event Center page does not appear, check whether the Kubernetes event center is enabled.
 
-If the Event Center page does not appear, check whether the Kubernetes event center is enabled. On the **Event Center** page, click the **Events Overview** tab to go to the overview page of the Kubernetes event center. On the **Event Center** page, click the **Cluster Events Query** tab to customize query conditions. On the **Event Center** page, click the **Pod Events** tab to query events of pods.
+On the **Event Center** page, click the **Events Overview** tab to go to the overview page of the Kubernetes event center. On the **Event Center** page, click the **Cluster Events Query** tab to customize query conditions. On the **Event Center** page, click the **Pod Events** tab to query events of pods.
 
 **Access the Kubernetes event center by using SLS**
 
@@ -25826,9 +25596,8 @@ i. Log on to the ACK console. ii. In the left-side navigation pane, click **Clus
 2. Log on to the SLS console.
 3. In the search box of the Projects section, enter and click k8s-log-<CLUSTER_ID>.
 
-**Note**
+> **Note:** Replace the CLUSTER_ID with the cluster ID that you obtained in Step 1.
 
-Replace the CLUSTER_ID with the cluster ID that you obtained in Step 1.
 4. In the Logstores section, choose **K8s-event > Visual Dashboards > Kubernetes Event Center V1.2**.
 5. On the **Kubernetes Event Center V1.2** page, you can view the trends of WARNING events and ERROR
 events.

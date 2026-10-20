@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 131
 source_pdf: "ee833e12c0007cd0_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Operations and Maintenance Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Operations and Maintenance Guide 20260901
@@ -64,24 +64,32 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+ager Operations Console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ## 2 Basic network
 
 ### 2.1 HPN management
 
-By default, the HPN Management module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the HPN Management module.
+> **Note:** By default, the HPN Management module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the HPN Management module.
 
 #### 2.1.1 HPN network elements
 
-This topic describes how to view High Performance Network (HPN) network device assets and monitoring and O&M information in the Apsara Uni-manager Operations Console.
+> This topic describes how to view High Performance Network (HPN) network device assets and monitoring and O&M information in the Apsara Uni-manager Operations Console.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
+## 1 Log on to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **HPN**
 **Network Elements**.
@@ -95,7 +103,8 @@ network element to view the details of the network element. On the details page 
 1. On the HPN Network Element page, find the network element that you want to delete and
 click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
-Deleted network elements cannot be restored. Proceed with caution.
+
+> **Note:** Deleted network elements cannot be restored. Proceed with caution.
 
 #### 2.1.2 RDMA network interface O&M
 
@@ -108,7 +117,6 @@ processing during network transmission. RDMA directly sends data to the storage 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **RDMA**
 **Card O&M**.
@@ -123,7 +131,9 @@ processing during network transmission. RDMA directly sends data to the storage 
 
 **Super Computing Cluster (SCC)**
 
-If you select **PAI**, you must configure the **Cluster** and **ViewType** parameters. If you select **CPFS** or **SCC**, you must configure the **Cluster** parameter.
+> **Note:** If you select **PAI**, you must configure the **Cluster** and **ViewType** parameters.
+> If you select **CPFS** or **SCC**, you must configure the **Cluster** parameter.
+
 5. On the **Cluster** tab, view the monitoring data of a cluster.
 
 | Section | Description |
@@ -157,7 +167,6 @@ The Apsara Uni-manager Operations Console provides the High Performance Network 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **HPN**
 **Performance Analysis**.
@@ -211,12 +220,14 @@ High Performance Network (HPN) instant diagnostics refer to a diagnosis on HPN n
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **HPN**
 **Instant Diagnostics**.
 4. On the HPN instant diagnosis page, select a test cluster and one or more nodes from the
-drop-down lists and then click **Diagnosis**. You can select multiple nodes at a time.
+drop-down lists and then click **Diagnosis**.
+
+> **Note:** You can select multiple nodes at a time.
+
 5. View the diagnostic results.
 
 | Diagnostic result | Description |
@@ -234,7 +245,6 @@ The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN a
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnostics**.
@@ -249,12 +259,12 @@ In the Create Diagnostics Task dialog box, configure the parameters that are des
 | Group | The hosts within the cluster that are grouped based on the CIDR block of the connected vSwitch. Each group can contain up to 100 hosts. |
 | Diagnostics node | The node on which the diagnostic task is performed. |
 
-You can select multiple nodes.
+> **Note:** You can select multiple nodes.
+
 5. Click **OK**. The diagnostic task starts running immediately.
 
 **View diagnostic results**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnostics**.
@@ -291,7 +301,6 @@ You can perform a Computing Platform Network (CPN) performance analysis task to 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Performance Analysis**.
@@ -406,7 +415,6 @@ This topic describes how to manage Remote Direct Memory Access (RDMA) devices, i
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
@@ -422,7 +430,6 @@ This topic describes how to configure policies for Remote Direct Memory Access (
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
@@ -460,7 +467,6 @@ This topic describes how to manage interface policies, such as policy configurat
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
@@ -508,7 +514,6 @@ side data processing in network transmission. RDMA transfers data directly into 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > RDMA**
 **Card O&M**.
@@ -537,9 +542,15 @@ Flow Control (PFC) packets when data is sent in the RDMA network.
 **RDMA_RX_PFC_PAUSE_AVG**: the average number of PFC packets
 when data is received in the RDMA network.
 **RDMA_OOB_AVG**: the average amount of out-of-band (OOB) data
-processed in the RDMA network. OOB data is a special type of data transmitted in an RDMA network.
+processed in the RDMA network.
+
+> **Note:** OOB data is a special type of data transmitted in an RDMA network.
+
 **RDMA_OOS_AVG**: the average amount of out-of-order (OOS) data
-processed in the RDMA network. OOS data is a special type of data transmitted in an RDMA network. OOS data is generated when packet loss or latency occurs during transmission.
+processed in the RDMA network.
+
+> **Note:** OOS data is a special type of data transmitted in an RDMA network. OOS data is generated when packet loss or latency occurs during transmission.
+
 **RDMA_SENT_CNP_AVG**: the average number of CNPs sent in the
 RDMA network.
 **RDMA_MARKED_ECN_AVG**: the average number of marked Explicit
@@ -560,7 +571,6 @@ This topic describes how to query the topology information about clusters and no
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Topology**.
@@ -581,11 +591,10 @@ After the topology is displayed, you can perform the following operations:
 
 ##### 2.2.6.2 CPN network element
 
-This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
+> This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Network Element**.
@@ -620,7 +629,6 @@ You can use this feature to monitor the key metrics of remote direct memory acce
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Host Monitoring**.
@@ -640,7 +648,6 @@ You can use this feature to monitor the running status metrics of vSwitches. The
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Switcher**.
@@ -657,7 +664,6 @@ You can use this tool to collect NAK packets in real time. After the packets are
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > NAK Message Analysis Tool**.
@@ -674,7 +680,6 @@ The high-precision monitoring dashboard of Computing Platform Network (CPN) allo
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > High Precision Monitoring Dashboard** .
@@ -686,7 +691,9 @@ click Start High-precision Task.
 6. In the upper-right corner of the page, specify the time range of the monitoring. Select a
 start time and an end time, and then click **OK**.
 7. In the upper-right corner of the page, click the Refresh icon or set the automatic refresh
-interval to view the latest monitoring data. If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
+interval to view the latest monitoring data.
+
+> **Note:** If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
 
 ##### 2.2.7.5 High-precision vSwitch monitoring dashboard
 
@@ -696,7 +703,6 @@ The high-precision vSwitch monitoring dashboard of Computing Platform Network (C
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > Switch High Precision Monitoring Dashboard** .
@@ -711,11 +717,16 @@ parameters and click **Start High-precision Task**. The following table describe
 | Queue | The number of queues configured for the specified port. Valid values: 0 to 7. |
 
 5. In the dialog box that appears, configure the **Duration (s)** and **Task type** parameters.
-Valid values of the Duration (s) parameter: 1 to 600. Default value of the Duration (s) parameter: 300. Then, click **OK**. The value of the Task type indicates the monitoring object of the task. The related data of the unselected monitoring object is not displayed on the High-precision vSwitch Monitoring page.
+Valid values of the Duration (s) parameter: 1 to 600. Default value of the Duration (s) parameter: 300. Then, click **OK**.
+
+> **Note:** The value of the Task type indicates the monitoring object of the task. The related data of the unselected monitoring object is not displayed on the High-precision vSwitch Monitoring page.
+
 6. In the upper-right corner of the page, click the time range drop-down list. Then, select the
 monitoring start time and end time from the drop-down list and click **OK**.
 7. In the upper-right corner of the page, click the Refresh icon or set the automatic refresh
-time to view the latest monitoring data. If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
+time to view the latest monitoring data.
+
+> **Note:** If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
 
 ##### 2.2.7.6 Job monitoring
 
@@ -727,7 +738,6 @@ The related tasks are created in the task modeling module of AI Studio.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > Job Monitoring**.
@@ -752,7 +762,6 @@ After the database is enabled, you must restart the service.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > CPN Flow Monitor**.
@@ -774,7 +783,9 @@ View stream details a. Click **Details** in the **Actions** column to view the s
 
 ### 2.3 CGW
 
-You can connect bare metal instances to a virtual private cloud (VPC) by using Central Gateway (CGW) to manage the bare metal instances in a centralized manner. CGW instances are dedicated hybrid switches (HSWs). The system supports operations such as instance management, operation log viewing, network management of bare metal instances, and O&M configurations to help you complete the daily O&M operations of CGW. By default, the CGW feature is not displayed. To use the feature, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menu management page, find Cloud Gateways and click Modify in the Actions column. In the Edit menu items panel, turn on **Show or not**.
+You can connect bare metal instances to a virtual private cloud (VPC) by using Central Gateway (CGW) to manage the bare metal instances in a centralized manner. CGW instances are dedicated hybrid switches (HSWs). The system supports operations such as instance management, operation log viewing, network management of bare metal instances, and O&M configurations to help you complete the daily O&M operations of CGW.
+
+> **Note:** By default, the CGW feature is not displayed. To use the feature, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menu management page, find Cloud Gateways and click Modify in the Actions column. In the Edit menu items panel, turn on **Show or not**.
 
 **Instance management**
 
@@ -782,7 +793,6 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 
 **Display devices**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. On the **Display**
@@ -799,7 +809,6 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 
 **Scan new devices**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. Then, click the **Scan**
@@ -816,15 +825,18 @@ iBGP neighbor and provides server access.
 **Deploy RR on a Device**: specifies that the CGW instance acts as an RR of an iBGP
 neighbor and does not provide server access.
 
-**Important**
+> **Important:** The iBGP role configurations must meet the following networking requirements:
+> Single-data center deployment: At least one group of CGW instances whose iBGP role is an RR and other devices whose iBGP role is a client are deployed in a single data center.
+> Multi-data center deployment: One group of CGW instances whose iBGP role is an RR and other devices whose iBGP role is a client are deployed in at least two data centers.
+> RR role recommendations:
+> We recommend that you set the role to Deploy Client and RR on a Device.
+> If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
 
-The iBGP role configurations must meet the following networking requirements: Single-data center deployment: At least one group of CGW instances whose iBGP role is an RR and other devices whose iBGP role is a client are deployed in a single data center. Multi-data center deployment: One group of CGW instances whose iBGP role is an RR and other devices whose iBGP role is a client are deployed in at least two data centers. RR role recommendations: We recommend that you set the role to Deploy Client and RR on a Device. If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
 7. Click **OK**.
 
 **Operation logs**
 
 You can view records and results of CGW API operations that are called by the bare metal controller or Apsara Uni-manager Operations Console based on your O&M requirements.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Operation Logs** tab.
@@ -850,7 +862,6 @@ view the details, including the region ID, initiator, and HTTP status code.
 **Create a bare metal instance and connect it to a VPC**
 
 Create a bare metal instance and connect it to a VPC based on your O&M requirements. After the bare metal instance is connected to the VPC, the bare metal instance can communicate with other resources in the VPC over a private network.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Bare Metal Network Management** tab.
@@ -908,11 +919,17 @@ After a bare metal instance is disconnected from a VPC, access isolation of reso
 
 **Procedure**
 
-Find the bare metal instance and click **Close the Connection to VPC** or **Delete Instance** in the Actions column. Click **Close the Connection to VPC** in the **Actions** column to disconnect the bare metal instance from the VPC. The Close the Connection to VPC option appears only after the bare metal instance is connected to a VPC. Click **Delete Instance** in the Actions column to disconnect the bare metal instance from the VPC and delete the bare metal instance. The Delete Instance option appears only for bare metal instances created on the Bare Metal Network Management page.
+Find the bare metal instance and click **Close the Connection to VPC** or **Delete Instance** in the Actions column. Click **Close the Connection to VPC** in the **Actions** column to disconnect the bare metal instance from the VPC.
+
+> **Note:** The Close the Connection to VPC option appears only after the bare metal instance is connected to a VPC.
+
+Click **Delete Instance** in the Actions column to disconnect the bare metal instance from the VPC and delete the bare metal instance.
+
+> **Note:** The Delete Instance option appears only for bare metal instances created on the Bare Metal Network Management page.
 
 **Manage the IP address of a bare metal instance**
 
-In the Bare Metal IP Address Management panel, you can assign an IP address to a bare metal instance. This helps you configure the network of bare metal instances.
+> In the Bare Metal IP Address Management panel, you can assign an IP address to a bare metal instance. This helps you configure the network of bare metal instances.
 
 **Background information**
 
@@ -928,7 +945,10 @@ A bare metal instance is connected to a VPC.
 2. In the **Bare Metal IP Address Management** panel, click **Apply for Bare Metal IP**
 **Address**.
 3. In the **Apply for Bare Metal IP Address** dialog box, configure the **Bare Metal NIC**, **IP**,
-and **IP Address Description** parameters and click **OK**. If you do not specify the IP parameter, an IP address is automatically generated.
+and **IP Address Description** parameters and click **OK**.
+
+> **Note:** If you do not specify the IP parameter, an IP address is automatically generated.
+
 4. After you apply for an IP address for a bare metal instance, view the IP address in the **Bare**
 **Metal IP Address Management** panel.
 Find the IP address of the bare metal instance and click **Edit** to change the IP address. Find the IP address of the bare metal instance and click **Release** to release the IP address.
@@ -939,13 +959,12 @@ Find the IP address of the bare metal instance and click **Edit** to change the 
 
 In O&M emergency scenarios, you can use this feature to add the physical port of the CGW instance associated with a bare metal instance to the VPC.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance. Typically, you cannot use this feature to apply for a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to enable the bare metal network.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
+> Typically, you cannot use this feature to apply for a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to enable the bare metal network.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -965,7 +984,8 @@ tab.
 | SK |   |
 | Bare Metal Name | The name of the bare metal instance that you want to apply for. The name must be unique. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 After the configurations are delivered, the **Result: Successful** message appears, and you can search for the bare metal instance by bare metal instance name on the **Bare Metal**
@@ -976,13 +996,12 @@ VPC.
 
 In O&M emergency scenarios, you can use this feature to disconnect the physical port of the CGW instance associated with a bare metal instance from the VPC.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance. Typically, you cannot use this feature to release a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to delete the bare metal network.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
+> Typically, you cannot use this feature to release a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to delete the bare metal network.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -995,7 +1014,8 @@ tab.
 | Region ID | The ID of the region in which the environment resides. |
 | Bare Metal Name | The name of the bare metal instance that you want to release. You can obtain the name of the bare metal instance on theB are Metal Network Management tab. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 After the configurations are delivered, the **Result: Successful** message appears, and you can search for the bare metal instance by bare metal instance name on the **Bare Metal**
@@ -1006,13 +1026,12 @@ the VPC.
 
 In O&M emergency scenarios, you can use this feature to delete route entries that point to the bare metal subnet in the VPC and the default route entries of a VBR.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. Typically, you cannot use this feature to delete a VPC route entry. This operation is only for emergency scenarios. You can perform this operation to delete only one route entry at a time. To delete multiple route entries, you must perform this operation multiple times.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> Typically, you cannot use this feature to delete a VPC route entry. This operation is only for emergency scenarios.
+> You can perform this operation to delete only one route entry at a time. To delete multiple route entries, you must perform this operation multiple times.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1031,7 +1050,8 @@ tab.
 |---|---|---|
 | SK |   |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to deliver the configurations. After the configurations are delivered, the
@@ -1043,13 +1063,10 @@ Step 5 to Step 8 to delete other route entries.
 
 In O&M emergency scenarios, you can use this feature to delete a VPC router interface and a VBR interface.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1063,26 +1080,25 @@ This operation is only for emergency scenarios and must be performed under the g
 | AK | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni- manager Management Console User Guide. | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | SK |   |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to deliver the configurations. After the configurations are delivered, the
 **Result: Successful** message appears.
 After the configurations are delivered, you can choose **Product Operation** > **Networking**
 > **Network Intelligence** in the navigation bar of the Apsara Uni-manager Operations
+
 Console. On the homepage of Apsara Network Intelligence, enter the ID of the router interface to search for the router interface. If no search result appears, the router interface is deleted.
 
 **Delete a VBR**
 
 In O&M emergency scenarios, you can use this feature to delete a VBR.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1098,26 +1114,25 @@ This operation is only for emergency scenarios and must be performed under the g
 |---|---|
 | SK |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to deliver the configurations. After the configurations are delivered, the
 **Result: Successful** message appears.
 After the configurations are delivered, you can choose **Product Operation** > **Networking**
 > **Network Intelligence** in the navigation bar of the Apsara Uni-manager Operations
+
 Console. On the homepage of Apsara Network Intelligence, enter the ID of the VBR to search for the VBR. If no search result appears, the VBR is deleted.
 
 **Delete an Express Connect circuit**
 
 In O&M emergency scenarios, you can use this feature to delete an Express Connect circuit.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1132,26 +1147,25 @@ the tab.
 | AK | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | SK |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to deliver the configurations. After the configurations are delivered, the
 **Result: Successful** message appears.
 After the configurations are delivered, you can choose **Product Operation** > **Networking**
 > **Network Intelligence** in the navigation bar of the Apsara Uni-manager Operations
+
 Console. On the homepage of Apsara Network Intelligence, enter the ID of the Express Connect circuit to search for the Express Connect circuit. If no search result appears, the Express Connect circuit is deleted.
 
 **Delete all resources**
 
 In O&M emergency scenarios, you can use this feature to delete all resources, including VPC route entries, VBR route entries, VPC router interfaces, VBR interfaces, VBRs, and Express Connect circuits.
 
-**Warning**
-
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1176,7 +1190,8 @@ This operation is only for emergency scenarios and must be performed under the g
 | Express Connect Circuit ID | The ID of the Express Connect circuit that you want to delete. On the Operation Logs tab, specify the name and creation time of the bare metal instance to search for the operation logs and find an operation log whose API Operation is add. Click Details in the Actions column. The value of the Express Connect Circuit ID parameter in the details is the value of this parameter. |
 | Trunk ID | You do not need to specify this parameter. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to deliver the configurations. After the configurations are delivered, the
@@ -1188,7 +1203,6 @@ You can view the bandwidth of the Express Connect circuit to which a router inte
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1236,7 +1250,6 @@ This operation may affect your business. Unauthorized operations are prohibited.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1261,7 +1274,6 @@ You can view trunk usage to obtain up-to-date information about the usage of har
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1269,9 +1281,8 @@ You can view trunk usage to obtain up-to-date information about the usage of har
 6. Specify a trunk ID and CGW instance name, select a trunk state, and then click **Search** to
 view trunk usage. Valid values of the **Status** parameter are **Idle**, **Used**, **Creating**, and
 **Deleting**.
-Specify the last integer of the value of the **Port** parameter that is obtained from the
-**Bare Metal Network Management** tab as a trunk ID. For example, if the value of the
-Port parameter is 10GE1/0/40, specify 40 as a trunk ID.
+
+> **Note:** Specify the last integer of the value of the **Port** parameter that is obtained from the **Bare Metal Network Management** tab as a trunk ID. For example, if the value of the Port parameter is 10GE1/0/40, specify 40 as a trunk ID.
 
 **View VPN usage of a bare metal instance**
 
@@ -1279,7 +1290,6 @@ You can view the VPN usage of a bare metal instance, and the VPN is assigned to 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1293,7 +1303,6 @@ You can view BD usage to learn about the BD configuration distribution in a time
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1304,11 +1313,12 @@ to view BD usage. Valid values of the **Status** parameter are **Succeeded**, **
 
 **Check initialization configurations**
 
-In O&M emergency scenarios, you can use this feature to check whether the initialization configurations of the HSW are successful. This feature only checks the initialization status of the platform access gateway vSwitch and whether the initialization configurations are successful. No operation is performed on the bare metal instance.
+In O&M emergency scenarios, you can use this feature to check whether the initialization configurations of the HSW are successful.
+
+> **Note:** This feature only checks the initialization status of the platform access gateway vSwitch and whether the initialization configurations are successful. No operation is performed on the bare metal instance.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1321,7 +1331,8 @@ corner of the tab.
 | Region ID | The ID of the region in which the environment resides. |
 | HSW Name | The name of the vSwitch to be checked in instance management. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you specify the parameters, click **Next** and click **Check** to check the initialization
 configurations of the vSwitch.
 
@@ -1335,7 +1346,6 @@ You can use this operation to locate the exception and scan the HSW after a bare
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1350,7 +1360,8 @@ the tab.
 | AK | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | SK |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you specify the parameters, click **Next** and click **Check** to check the route
 configurations.
 
@@ -1364,7 +1375,6 @@ This operation is only for emergency scenarios in which the bare metal network i
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
@@ -1379,13 +1389,16 @@ list in the upper-left corner of the tab.
 | AK | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | SK |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you configure the parameters, click **Next** and click **Check** to check the information
 about the bare metal network gateway.
 
 ### 2.4 Computing access gateways
 
-You can use computing access gateways such as dedicated computing host switches (CHSWs) to connect intelligent computing servers to virtual private clouds (VPCs). This helps implement the centralized management of intelligent computing servers. The system supports operations such as instance management, operation log management, VPC management and Express Connect circuit management of bare metal instances, and O&M configurations to complete routine O&M operations on computing access gateways. By default, the Computing Access Gateway module is not displayed in the left-side navigation pane. To use this module, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menus page, find Computing Access Gateway and click Modify in the Actions column. In the Modify Menu panel, turn on **Show**.
+You can use computing access gateways such as dedicated computing host switches (CHSWs) to connect intelligent computing servers to virtual private clouds (VPCs). This helps implement the centralized management of intelligent computing servers. The system supports operations such as instance management, operation log management, VPC management and Express Connect circuit management of bare metal instances, and O&M configurations to complete routine O&M operations on computing access gateways.
+
+> **Note:** By default, the Computing Access Gateway module is not displayed in the left-side navigation pane. To use this module, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menus page, find Computing Access Gateway and click Modify in the Actions column. In the Modify Menu panel, turn on **Show**.
 
 **Manage access gateways**
 
@@ -1436,9 +1449,12 @@ the RR reflective route of the IBGP peer and is used for server access.
 **Deploy RR on a Device**: The computing access gateway serves only as the RR
 reflective route of the IBGP peer and cannot be used for server access.
 
-**Important**
-
-The following list describes the networking requirements for the IBGP role: Single-data center deployment: At least one set of computing access gateways is deployed, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client. Multi-data center deployment: A set of computing access gateways is deployed in at least two data centers, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client. RR role recommendations: We recommend that you set the role to Deploy Client and RR on A Device. If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
+> **Important:** The following list describes the networking requirements for the IBGP role:
+> Single-data center deployment: At least one set of computing access gateways is deployed, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client.
+> Multi-data center deployment: A set of computing access gateways is deployed in at least two data centers, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client.
+> RR role recommendations:
+> We recommend that you set the role to Deploy Client and RR on A Device.
+> If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
 
 **Unstacked Networking Devices**
 
@@ -1457,9 +1473,12 @@ the RR reflective route of the IBGP peer and is used for server access.
 **Deploy RR on a Device**: The computing access gateway serves only as the RR
 reflective route of the IBGP peer and cannot be used for server access.
 
-**Important**
-
-The following list describes the networking requirements for the IBGP role: Single-data center deployment: At least one set of computing access gateways is deployed, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client. Multi-data center deployment: A set of computing access gateways is deployed in at least two data centers, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client. RR role recommendations: We recommend that you set the role to Deploy Client and RR on A Device. If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
+> **Important:** The following list describes the networking requirements for the IBGP role:
+> Single-data center deployment: At least one set of computing access gateways is deployed, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client.
+> Multi-data center deployment: A set of computing access gateways is deployed in at least two data centers, and the IBGP roles of the computing access gateways are RR roles. The IBGP roles of other devices are Client.
+> RR role recommendations:
+> We recommend that you set the role to Deploy Client and RR on A Device.
+> If you have higher network stability requirements, we recommend that you set the role to Deploy RR on a Device.
 
 **Manage operation logs**
 
@@ -1542,17 +1561,18 @@ a. In the bare metal instance list, find the bare metal instance that you want t
 
 **Close the Connection to VPC**
 
-After a bare metal instance is connected to a VPC, you can click **Close the**
-**Connection to VPC** to disconnect the bare metal instance from the VPC.
-After you disconnect the bare metal instance from the VPC, the connection cannot be recovered. Proceed with caution. a. In the bare metal instance list, find the bare metal instance that you want to manage and click **Close the Connection to VPC** in the **Actions** column. b. In the message that appears, click **Exit**.
+> **Note:** After a bare metal instance is connected to a VPC, you can click **Close the** **Connection to VPC** to disconnect the bare metal instance from the VPC.
+> After you disconnect the bare metal instance from the VPC, the connection cannot be recovered. Proceed with caution.
+
+a. In the bare metal instance list, find the bare metal instance that you want to manage and click **Close the Connection to VPC** in the **Actions** column. b. In the message that appears, click **Exit**.
 
 **Delete a bare metal instance**
 
-You can delete a bare metal instance only if the instance is created on the **VPC**
-**Management** page.
-After a bare metal instance is connected to a VPC, you can click **Delete**
-**Instance** to disconnect the bare metal instance from the VPC and delete the
-instance. After you delete a bare metal instance, it cannot be recovered. Proceed with caution. a. In the bare metal instance list, find the bare metal instance that you want to delete and click **Delete Instance** in the **Actions** column. b. In the message that appears, click **Delete**.
+> **Note:** You can delete a bare metal instance only if the instance is created on the **VPC** **Management** page.
+> After a bare metal instance is connected to a VPC, you can click **Delete** **Instance** to disconnect the bare metal instance from the VPC and delete the instance.
+> After you delete a bare metal instance, it cannot be recovered. Proceed with caution.
+
+a. In the bare metal instance list, find the bare metal instance that you want to delete and click **Delete Instance** in the **Actions** column. b. In the message that appears, click **Delete**.
 
 **Manage the IP address of a bare metal instance**
 
@@ -1560,7 +1580,10 @@ Computing access gateways work with Bare Metal Management Service (BMS). BMS is 
 **Address**.
 c. In the **Apply for Bare Metal IP Address** dialog box, configure the **Bare Metal NIC**,
 **IP**, and **IP Address Description** parameters and click **OK**.
-If you leave the **IP** parameter empty, the system automatically generates an IP address. d. After you apply for an IP address for a bare metal instance, view the IP address in the
+
+> **Note:** If you leave the **IP** parameter empty, the system automatically generates an IP address.
+
+d. After you apply for an IP address for a bare metal instance, view the IP address in the
 **Bare Metal IP Address Management** panel. The IP address information includes **ID**,
 **IP Address**, **Bare Metal Name/SN**, **Bare Metal NIC**, **Created At**, **Modified At**,
 **Description**, **VPC ID**, and **vswitch id**.
@@ -1614,9 +1637,11 @@ routine O&M operations.
 
 In O&M emergency scenarios, you can use this feature to add the physical port of the computing access gateway associated with a bare metal instance to the VPC.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> This feature can be used only to connect a bare metal instance to the port of a computing access gateway but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
+> In most cases, you cannot use this feature to apply for a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to enable the bare metal network.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. This feature can be used only to connect a bare metal instance to the port of a computing access gateway but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance. In most cases, you cannot use this feature to apply for a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to enable the bare metal network. i. Select **Apply for Bare Metal in VPC** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Apply for Bare Metal in VPC** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1628,15 +1653,19 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey Secret |   |
 | Bare Metal Name | The name of the bare metal instance that you want to apply for. The name must be unique. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can search for the bare metal instance by bare metal instance name on the **VPC Management** tab. If the bare metal instance is displayed, it is connected to the VPC.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can search for the bare metal instance by bare metal instance name on the **VPC Management** tab. If the bare metal instance is displayed, it is connected to the VPC.
 
 **Release a bare metal instance from a VPC**
 
 In O&M emergency scenarios, you can use this feature to disconnect the physical port of the computing access gateway associated with a bare metal instance from a VPC.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> This feature can be used only to disconnect a bare metal instance from the port of a computing access gateway but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
+> In most cases, you cannot use the feature to release a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to delete the network of the bare metal instance.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. This feature can be used only to disconnect a bare metal instance from the port of a computing access gateway but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance. In most cases, you cannot use the feature to release a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to delete the network of the bare metal instance. i. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1644,15 +1673,19 @@ This operation is only for emergency scenarios and must be performed under the g
 | Computing Access Gateway Name | The name of the computing access gateway to which the bare metal instance is connected. You can distinguish between stacked networking devices and unstacked networking devices based on Computing Access Gateway Name to perform operations on the devices. |
 | Bare Metal Name | The name of the bare metal instance that you want to release. You can obtain the name of the bare metal instance on theV PC Management tab. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can search for the bare metal instance by bare metal instance name on the **VPC Management** tab. If the bare metal instance is not displayed, it is released from the VPC.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can search for the bare metal instance by bare metal instance name on the **VPC Management** tab. If the bare metal instance is not displayed, it is released from the VPC.
 
 **Delete a route entry**
 
 In O&M emergency scenarios, you can use this feature to delete route entries that point to the subnet of a bare metal instance in a VPC and the default route entries of a VBR.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
+> In most cases, you cannot use this feature to delete a VPC route entry. This operation is only used for emergency scenarios.
+> You can perform this operation to delete only one route entry at a time. To delete multiple route entries, you must perform this operation multiple times.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. In most cases, you cannot use this feature to delete a VPC route entry. This operation is only used for emergency scenarios. You can perform this operation to delete only one route entry at a time. To delete multiple route entries, you must perform this operation multiple times. i. Select **Delete Route Table Entry** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Delete Route Table Entry** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description about deleting a VPC route entry | Description about deleting a VBR route entry |
 |---|---|---|
@@ -1665,15 +1698,17 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni- manager Management Console User Guide. | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni- manager Management Console User Guide. |
 | AccessKey Secret |   |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. In actual fault scenarios, if multiple route entries exist in the route table, repeat Step 5 to Step 8 to delete other route entries.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. In actual fault scenarios, if multiple route entries exist in the route table, repeat Step 5 to Step 8 to delete other route entries.
 
 **Delete a router interface**
 
 In O&M emergency scenarios, you can use this feature to delete a VPC router interface and a VBR interface.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description about deleting a VPC router interface | Description about deleting a VBR interface |
 |---|---|---|
@@ -1682,7 +1717,9 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni- manager Management Console User Guide. | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
 **Networking** > **Network Intelligence** in the top navigation bar of the Apsara Uni-
 manager Operations Console. On the homepage of Apsara Network Intelligence, enter the ID of the router interface to search for the router interface. If no search result appears, the router interface is deleted.
 
@@ -1690,9 +1727,9 @@ manager Operations Console. On the homepage of Apsara Network Intelligence, ente
 
 In O&M emergency scenarios, you can use this feature to delete a VBR.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **Delete VBR** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Delete VBR** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1701,7 +1738,9 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VBR belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
 **Networking** > **Network Intelligence** in the top navigation bar of the Apsara Uni-
 manager Operations Console. On the homepage of Apsara Network Intelligence, enter the ID of the VBR to search for the VBR. If no search result appears, the VBR is deleted.
 
@@ -1709,9 +1748,9 @@ manager Operations Console. On the homepage of Apsara Network Intelligence, ente
 
 In O&M emergency scenarios, you can use this feature to delete an Express Connect circuit.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1720,7 +1759,9 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again. iv. Optional. After the configurations are applied, you can choose **Product Operation** >
 **Networking** > **Network Intelligence** in the top navigation bar of the Apsara Uni-
 manager Operations Console. On the homepage of Apsara Network Intelligence, enter the ID of the Express Connect circuit to search for the Express Connect circuit. If no search result appears, the Express Connect circuit is deleted.
 
@@ -1728,9 +1769,9 @@ manager Operations Console. On the homepage of Apsara Network Intelligence, ente
 
 In O&M emergency scenarios, you can use this feature to delete all resources, including VPC route entries, VBR route entries, VPC router interfaces, VBR interfaces, VBRs, and Express Connect circuits.
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **Delete ALL Resources** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **Delete ALL Resources** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1752,7 +1793,9 @@ This operation is only for emergency scenarios and must be performed under the g
 |---|---|
 | Trunk ID | You do not need to specify this parameter. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
 **View the bandwidth of an Express Connect circuit**
 
@@ -1806,9 +1849,8 @@ iii. Check whether the parameter configurations are valid. If yes, click **Confi
 
 You can view trunk usage to obtain up-to-date information about the usage of hardware ports. i. Select **View Trunk Usage** from the drop-down list in the upper-left corner of the tab. ii. View the trunk usage in the list. By default, all data in the **idle** state is displayed. Specify a trunk ID and computing access gateway name, select a trunk state, and then click **Search** to view trunk usage. Valid values of the **Status** parameter are **Idle**, **Used**,
 **Creating**, and **Deleting**.
-Specify the last integer of the value of the **Port** parameter that is obtained from the
-**VPC Management** tab as the **trunk ID**. For example, if the value of the Port
-parameter is 10GE1/0/40, specify 40 as the **trunk ID**.
+
+> **Note:** Specify the last integer of the value of the **Port** parameter that is obtained from the **VPC Management** tab as the **trunk ID**. For example, if the value of the Port parameter is 10GE1/0/40, specify 40 as the **trunk ID**.
 
 **View VPN usage of a bare metal instance**
 
@@ -1823,18 +1865,29 @@ You can view BD usage to learn about the BD configuration distribution in a time
 
 **Check initialization configurations**
 
-In O&M emergency scenarios, you can use this feature to check whether the initialization configurations of the HSW are successful. This feature only checks the initialization status of vSwitches for computing access gateways and whether the initialization configurations are successful. No operation is performed on the bare metal instance. i. Select **Check the Initialization Configuration** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+In O&M emergency scenarios, you can use this feature to check whether the initialization configurations of the HSW are successful.
+
+> **Note:** This feature only checks the initialization status of vSwitches for computing access gateways and whether the initialization configurations are successful. No operation is performed on the bare metal instance.
+
+i. Select **Check the Initialization Configuration** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
 | Region ID | The name of the region in which the current environment resides. |
 | HSW Name | The name of the vSwitch to be checked in instance management. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Click **Check** to check the initial configuration of the vSwitch.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Click **Check** to check the initial configuration of the vSwitch.
 
 **Check route configurations**
 
-In O&M emergency scenarios, you can use this feature to locate abnormal operations and check whether the route configurations of a bare metal instance are valid. You can use this operation to locate the exception and scan the HSW after a bare metal instance fails to be added. This feature checks only whether the route configurations of a bare metal instance are valid. No operation is performed on the bare metal instance. i. Select **Check the Route Configuration** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+In O&M emergency scenarios, you can use this feature to locate abnormal operations and check whether the route configurations of a bare metal instance are valid.
+
+> **Note:** You can use this operation to locate the exception and scan the HSW after a bare metal instance fails to be added.
+> This feature checks only whether the route configurations of a bare metal instance are valid. No operation is performed on the bare metal instance.
+
+i. Select **Check the Route Configuration** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1843,11 +1896,18 @@ In O&M emergency scenarios, you can use this feature to locate abnormal operatio
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Click **Check** to check the route configurations.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Click **Check** to check the route configurations.
 
 **Display the information about a bare metal network gateway**
 
-In O&M emergency scenarios, you can use this feature to check the gateway of a vSwitch. This operation is only for emergency scenarios in which bare metal networks are unavailable. The feature only checks the gateway information of vSwitches. It does not perform operations on bare metal instances. i. Select **Display the Information of Bare Metal Network Gateways** from the dropdown list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+In O&M emergency scenarios, you can use this feature to check the gateway of a vSwitch.
+
+> **Note:** This operation is only for emergency scenarios in which bare metal networks are unavailable.
+> The feature only checks the gateway information of vSwitches. It does not perform operations on bare metal instances.
+
+i. Select **Display the Information of Bare Metal Network Gateways** from the dropdown list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1856,7 +1916,9 @@ In O&M emergency scenarios, you can use this feature to check the gateway of a v
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Click **Check** to check the information about the bare metal network gateway.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Click **Check** to check the information about the bare metal network gateway.
 
 **Upgrade single-RR deployment to double-RR deployment**
 
@@ -1880,9 +1942,9 @@ You can view the history of changing single-RR deployment to double-RR deploymen
 
 **Associate a vSwitch with an ECR**
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **vSwitch Bound to Private Line Gateway** from the drop-down list in the upperleft corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **vSwitch Bound to Private Line Gateway** from the drop-down list in the upperleft corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1895,13 +1957,15 @@ This operation is only for emergency scenarios and must be performed under the g
 | Name of Border Gateway 2 | The name of ECR 2 to which the bare metal instance is connected. On the Private Line Management tab, specify a VPC ID and computing access gateway name and click Search. Then, view the value in the Source IP Address that Probes Gateway 2 column. |
 | Source IP Address that Probes Gateway 2 | The source IP address of ECR 2. On the Private Line Management tab, specify a VPC ID and computing access gateway name and click Search. Then, view the value in the Source IP Address that Probes Gateway 2 column. |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
 **Disassociate a vSwitch from an ECR**
 
-**Warning**
+> **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
-This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected. i. Select **vSwitch Unbound from Private Line Gateway** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
+i. Select **vSwitch Unbound from Private Line Gateway** from the drop-down list in the upper-left corner of the tab. ii. Configure the following parameters and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -1910,36 +1974,46 @@ This operation is only for emergency scenarios and must be performed under the g
 | AccessKey ID | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni- manager Management Console based on the organization to which the VPC belongs. For more information, see Manage the AccessKey pairs of an organization in Apsara Uni-manager Management Console User Guide. |
 | AccessKey Secret |   |
 
-If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
+> **Note:** If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
+iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
 ## 3 Networking products
 
 ### 3.1 CGW O&M
 
-By default, the **CGW O&M** module is hidden in the navigation pane. If you need to perform O&M operations on CGW clusters, you can modify the corresponding menu settings by referring to **User permissions** > **Menu Management** in Apsara Unimanager Operations Console User Guide.
+> **Note:** By default, the **CGW O&M** module is hidden in the navigation pane. If you need to perform O&M operations on CGW clusters, you can modify the corresponding menu settings by referring to **User permissions** > **Menu Management** in Apsara Uni- manager Operations Console User Guide.
 
 #### 3.1.1 CGW cluster management
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Network Services** > **CGW O&M** > **CGW Cluster**
 **Management**.
 4. On the CGW Cluster Management page, select a region from the **Region** drop-down list.
 The zones and cluster topology in the selected region are displayed in the **Zone List** and
 **Cluster Topology** sections.
-Only x86-based physical machines can be managed.
+
+> **Note:** Only x86-based physical machines can be managed.
+
 5. Find the zone that you want to manage and click **Set Secondary Zone** in the **Actions**
-column. You can perform this operation on zones for which the secondary zone is not configured.
+column.
+
+> **Note:** You can perform this operation on zones for which the secondary zone is not configured.
+
 6. In the Set Secondary Zone dialog box, select a secondary zone from the **Secondary Zone**
-drop-down list and click **OK**. The cluster that you select as the secondary zone must have the same architecture and reside in the same region as the current cluster. The secondary zone that you select cannot be the secondary zone of another zone.
+drop-down list and click **OK**.
+
+> **Note:** The cluster that you select as the secondary zone must have the same architecture and reside in the same region as the current cluster.
+> The secondary zone that you select cannot be the secondary zone of another zone.
 
 **What to do next**
 
 **Remove a secondary zone**
 
-You can perform this operation on zones for which the secondary zone is configured.
+> **Note:** You can perform this operation on zones for which the secondary zone is configured.
+
 1. Find the zone that you want to manage and click **Remove Secondary Zone** in the
 **Actions** column.
 2. In the message that appears, click **OK**.
@@ -1956,7 +2030,9 @@ column. On the **Execution Details** page, view detailed information. For more i
 
 ## 4 Traffic visualization
 
-The Traffic Visualization module can monitor physical and virtual networks in the cloud platform, and analyze real-time and historical traffic in the networks. This module also analyzes traffic by virtual network, public network, and border physical network and generates visualized charts. You can also troubleshoot issues based on the traffic data or monitored traffic metrics. By default, the Traffic Visualization module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the Traffic Visualization module.
+The Traffic Visualization module can monitor physical and virtual networks in the cloud platform, and analyze real-time and historical traffic in the networks. This module also analyzes traffic by virtual network, public network, and border physical network and generates visualized charts. You can also troubleshoot issues based on the traffic data or monitored traffic metrics.
+
+> **Note:** By default, the Traffic Visualization module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the Traffic Visualization module.
 
 ### 4.1 Visualization settings
 
@@ -1982,7 +2058,6 @@ specific scenario.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product O&M** > **Network O&M** > **Network O&M**
 **Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visualization Settings**.
@@ -2025,7 +2100,6 @@ Before creating a collection rule, add the required analyzers and analysis ports
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product O&M** > **Network O&M** > **Network O&M**
 **Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visualization Settings**.
@@ -2107,7 +2181,6 @@ Before creating an analysis scenario, create the required collection rules. For 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product O&M** > **Network O&M** > **Network O&M**
 **Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visualization Settings**.
@@ -2133,7 +2206,6 @@ This section displays a list of all SLB instances created by the traffic visuali
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product O&M** > **Network O&M** > **Network O&M**
 **Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visualization Settings**.

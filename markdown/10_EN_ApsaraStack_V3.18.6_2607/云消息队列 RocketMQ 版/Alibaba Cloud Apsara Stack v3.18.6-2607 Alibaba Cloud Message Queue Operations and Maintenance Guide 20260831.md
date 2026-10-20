@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 63
 source_pdf: "2d2ed928dc4f6580_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide 20260831
@@ -159,7 +159,15 @@ A RocketMQ client must be updated to the following latest versions for different
 
 Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two of the resources have a many-to-many relationship, which was difficult to comprehend. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This process was too complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the resource application process has been simplified. The resource application process has been optimized in the following aspects: Topic management, which is unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. Group management You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you need only to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be set in the **PropertyKeyConst.ConsumerId** or
 **PropertyKeyConst.GROUP_ID** parameter of the code.
-Sample code We recommend that you update a RocketMQ client to the following latest versions for different programming languages: Java: V1.8.7.1.Final C and C++: V2.0.0 .NET: V1.1.3 Existing producer IDs or consumer IDs can still be used and do not affect the current services. However, we recommend that you update your instance configuration to the recommended configuration. Recommended configuration: Integrate producer IDs and consumer IDs into group IDs.
+Sample code
+
+> **Note:** We recommend that you update a RocketMQ client to the following latest versions for different programming languages:
+
+Java: V1.8.7.1.Final C and C++: V2.0.0 .NET: V1.1.3
+
+> Existing producer IDs or consumer IDs can still be used and do not affect the current services. However, we recommend that you update your instance configuration to the recommended configuration.
+
+Recommended configuration: Integrate producer IDs and consumer IDs into group IDs.
 
 ```
 // Set the PropertyKeyConst.GROUP_ID parameter. The original PropertyKeyConst.ProducerId and PropertyKeyConst.ConsumerId parameters are deprecat ed. properties.put(PropertyKeyConst.GROUP_ID, "The original CID-XXX or the GID-XXX");
@@ -189,9 +197,15 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 5. In the top navigation bar, choose **Product Operation > Middleware > RocketMQ**
 **Operations Console**.
@@ -260,7 +274,10 @@ On the **Status Repair** tab, you can repair brokers that have an abnormal statu
 
 **Disable writes to a broker**
 
-In RocketMQ, you can disable writes to a broker to prevent new messages from being written during maintenance, troubleshooting, or emergencies. This helps prevent data inconsistency and other potential issues. You can disable writes only for broker nodes that have a **Status** of **online**.
+In RocketMQ, you can disable writes to a broker to prevent new messages from being written during maintenance, troubleshooting, or emergencies. This helps prevent data inconsistency and other potential issues.
+
+> **Note:** You can disable writes only for broker nodes that have a **Status** of **online**.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the navigation pane on the left, click **Broker Management**.
 3. On the **Broker Management** page, click **Disable Write** in the **Actions** column.
@@ -268,7 +285,10 @@ In RocketMQ, you can disable writes to a broker to prevent new messages from bei
 
 **Recover a broker**
 
-You can resume writes to a broker to allow new messages to be written to it. Write protection is available only for Broker nodes in the **readonly** state.
+You can resume writes to a broker to allow new messages to be written to it.
+
+> **Note:** Write protection is available only for Broker nodes in the **readonly** state.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the navigation pane on the left, click **Broker Management**.
 3. On the **Broker Management** page, click **Remove Write Protection** in the **Actions**
@@ -292,13 +312,20 @@ column.
 
 **Repair a broker**
 
-If a broker's state machine becomes abnormal, you can use the status repair feature to repair the broker. The following are types of abnormal states: Split-brain between primary and secondary nodes Primary and secondary nodes remain in the async_state state for a long time Primary and secondary nodes remain in the half_sync state for a long time
+If a broker's state machine becomes abnormal, you can use the status repair feature to repair the broker.
+
+> **Note:** The following are types of abnormal states:
+> Split-brain between primary and secondary nodes
+> Primary and secondary nodes remain in the async_state state for a long time
+> Primary and secondary nodes remain in the half_sync state for a long time
+
 1. In the **Current Repair Status** section, you can view the current state of the broker's state
 machine and the repair process.
 2. In the **Broker List** section, click an available operation in the **Actions** column or above the
 list, and then complete the operation as prompted.
 3. Repeat step 2 until the repair process is complete.
-In the **Status Repair Topology** section, you can view the broker's lifecycle state machine in real time.
+
+> **Note:** In the **Status Repair Topology** section, you can view the broker's lifecycle state machine in real time.
 
 ### 2.4 NameServer management
 
@@ -345,13 +372,19 @@ Click the **Configuration Management** tab. You can view the configuration items
 | Cluster | Select the cluster that you want to modify from the drop-down list. |
 | Configuration value | true: enables write authentication. false: disables write authentication. |
 
-**Important**
+> **Important:** The modification will update the configuration values of the relevant configuration items of all brokers in the cluster. Exercise caution when you perform this operation.
 
-The modification will update the configuration values of the relevant configuration items of all brokers in the cluster. Exercise caution when you perform this operation. Click the **TaoKeeper node management** tab. In the left-side navigation pane, click a node. The detailed data of the node is displayed in the right-side pane. During a switchover of the primary/secondary brokers, you can click **Delete a node** to remove metadata.
+Click the **TaoKeeper node management** tab. In the left-side navigation pane, click a node. The detailed data of the node is displayed in the right-side pane. During a switchover of the primary/secondary brokers, you can click **Delete a node** to remove metadata.
 
-**Important**
+> **Important:** If you delete a node, the normal operation of ApsaraMQ for RocketMQ is affected. Proceed with caution.
 
-If you delete a node, the normal operation of ApsaraMQ for RocketMQ is affected. Proceed with caution. On the **IP whitelist** tab, you can configure an IP address whitelist for the ApsaraMQ for RocketMQ instance. Only clients in the whitelist are allowed to update and obtain broker configurations, and update name server configurations. You cannot modify or delete the IP address whitelist that is generated by the system by default. If no whitelist is manually configured, the system disables access control by default. Search for an IP address in the IP address whitelist: On the **IP whitelist** tab, enter an IP address and click **Confirm**. The system displays a list of search results. Add an IP address to the IP address whitelist: On the **IP whitelist** tab, click **Add**. In the dialog box that appears, enter an IP address or CIDR block, and then click **OK**. Modify an IP address in the IP address whitelist: In the IP address whitelist, find the IP address that you want to modify and click **Edit** in the Operation column. In the dialog box that appears, modify the IP address and click **OK**. Delete an IP address from the IP address whitelist: Find the IP address that you want to delete and click **Delete** in the Operation column. In the message that appears, click
+On the **IP whitelist** tab, you can configure an IP address whitelist for the ApsaraMQ for RocketMQ instance.
+
+> **Note:** Only clients in the whitelist are allowed to update and obtain broker configurations, and update name server configurations.
+> You cannot modify or delete the IP address whitelist that is generated by the system by default.
+> If no whitelist is manually configured, the system disables access control by default.
+
+Search for an IP address in the IP address whitelist: On the **IP whitelist** tab, enter an IP address and click **Confirm**. The system displays a list of search results. Add an IP address to the IP address whitelist: On the **IP whitelist** tab, click **Add**. In the dialog box that appears, enter an IP address or CIDR block, and then click **OK**. Modify an IP address in the IP address whitelist: In the IP address whitelist, find the IP address that you want to modify and click **Edit** in the Operation column. In the dialog box that appears, modify the IP address and click **OK**. Delete an IP address from the IP address whitelist: Find the IP address that you want to delete and click **Delete** in the Operation column. In the message that appears, click
 **OK**.
 On the *********************** tab, you can view the information about the instances that are created by calling the SDK based on the AccessKey ID and AccessKey secret that you applied for from the baseline. The information includes ********************, **Cluster**
 **ID**, **Product Name**, and **Status**.
@@ -365,7 +398,9 @@ a. Optional. Select a cluster name from the **Cluster name** drop-down list and 
 On the **Cloud Product Account Management** tab, you can view and modify the account information that is used to access cloud products. View the account information about a cloud product: Enter a product name in the
 **Product** field to filter account information. The account information includes **Account**
 **Name/ID**, **Cloud Product**, and **Status**.
-Modify the account information about a cloud service: Find the account that you want to modify and click **Edit** in the **Operation** column. In the **Edit Account** dialog box, modify the values of **Cloud Product** and **Status** and click **OK**. You cannot modify the value of the **Account Name/ID** parameter.
+Modify the account information about a cloud service: Find the account that you want to modify and click **Edit** in the **Operation** column. In the **Edit Account** dialog box, modify the values of **Cloud Product** and **Status** and click **OK**.
+
+> **Note:** You cannot modify the value of the **Account Name/ID** parameter.
 
 ### 2.6 Copilot
 
@@ -405,7 +440,9 @@ drop-down list to filter brokers.
 
 5. Make sure that **HA status** of the broker in the broker cluster to be upgraded is
 **SYNC_STATE**.
-In this example, a group of primary and secondary nodes is upgraded. You can repeat Step 6 through Step 9 to upgrade other groups of primary and secondary nodes.
+
+> **Note:** In this example, a group of primary and secondary nodes is upgraded. You can repeat Step 6 through Step 9 to upgrade other groups of primary and secondary nodes.
+
 6. Disable writing for a group of primary/secondary nodes.
 On the **Hot upgrade** page, click **Write forbidden** in the **Operation** column for a group of primary and secondary nodes. In the message that appears, click **OK**.
 7. Upgrade the primary and secondary nodes.
@@ -435,8 +472,8 @@ A cluster that contains topics of globally ordered messages does not support dis
 
 **Deploy disaster recovery for a single cluster**
 
-You can terminate a task in the completed or uncompleted state. If you click **End**
-**disaster recovery task**, the task information table is cleared.
+> **Note:** You can terminate a task in the completed or uncompleted state. If you click **End** **disaster recovery task**, the task information table is cleared.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the left-side navigation pane, choose **Copilot > Disaster Recovery**.
 3. On the **Disaster recovery setup** page, click **Create a disaster recovery task** .
@@ -456,29 +493,37 @@ and click **OK**. This operation triggers task creation. The system checks wheth
 | Forbidden to write | Indicates whether to prohibit writing messages to the broker. Yes: indicates that messages cannot be written to the broker. No: indicates that messages can be written to the broker. |
 | idc room | The name of the data center to which the broker belongs. |
 
-In this example, a group of primary and secondary nodes is upgraded. You can repeat Step 5 through Step 10 to upgrade other groups of primary and secondary nodes.
+> **Note:** In this example, a group of primary and secondary nodes is upgraded. You can repeat Step 5 through Step 10 to upgrade other groups of primary and secondary nodes.
+
 5. Disable writing for a group of primary/secondary nodes.
 On the **Disaster recovery setup** page, click **Forbidden to write** in the **Operation** column for a group of primary and secondary nodes. In the message that appears, click **OK**. This operation disables the write feature of the corresponding node and observes that the traffic drops to 0.
 6. Unpublish the secondary node.
-i. When the traffic drops to 0, click **Downline** in the Operation column of the secondary node. In the message that appears, click **OK**. The node is unpublished, the corresponding BrokerName is deleted, and all files except `broker.conf` , `/config/topics.json` , and `/config/subscriptionGroup.json` in the store directory are deleted. After the secondary node is unpublished, the status of the primary node changes to
-**ONLY_MASTER**.
+i. When the traffic drops to 0, click **Downline** in the Operation column of the secondary node. In the message that appears, click **OK**. The node is unpublished, the corresponding BrokerName is deleted, and all files except `broker.conf` , `/config/topics.json` , and `/config/subscriptionGroup.json` in the store directory are deleted.
+
+> **Note:** After the secondary node is unpublished, the status of the primary node changes to **ONLY_MASTER**.
+
 7. Add a secondary node to the primary node.
-After the secondary node is unpublished, **Add a secondary node** appears in the
-**Operation** column of the primary node in the primary data center.
+
+> **Note:** After the secondary node is unpublished, **Add a secondary node** appears in the **Operation** column of the primary node in the primary data center.
+
 Click **Add a secondary node**, select a secondary node, and click **OK** to add a secondary node in the secondary data center, synchronize the cached metadata file to the broker, and set the broker to read and write prohibiting. Meanwhile, the information about the secondary node is inserted into the broker_name table.
 8. Promote the original secondary node to the primary node (published).
-After the secondary node is unpublished, **Go online** appears in the **Operation** column of the secondary node in the primary data center. After the secondary node in the secondary data center is added, click **Go online** and then click **OK**. The broker is configured as the new primary node, the cached metadata file is synchronized to the broker, and the broker is set to read and write prohibiting. BrokerName is applied for and inserted into the database. Then, the container is restarted.
+
+> **Note:** After the secondary node is unpublished, **Go online** appears in the **Operation** column of the secondary node in the primary data center.
+
+After the secondary node in the secondary data center is added, click **Go online** and then click **OK**. The broker is configured as the new primary node, the cached metadata file is synchronized to the broker, and the broker is set to read and write prohibiting. BrokerName is applied for and inserted into the database. Then, the container is restarted.
 9. Add a secondary node to the new primary node.
-After the original secondary node is promoted to the primary node, **Add a secondary**
-**node** appears in the **Operation** column.
+
+> **Note:** After the original secondary node is promoted to the primary node, **Add a secondary** **node** appears in the **Operation** column.
+
 Click **Add a secondary node**, select a secondary node, and click **OK** to add the second secondary node in the secondary data center, synchronize the cached metadata file to the broker, and set the broker to read and write prohibiting. Meanwhile, the information about the second secondary node is inserted into the broker_name table.
 0. Remove write prohibition.
 Click **Unban writing** in the **Operation** column for the primary and secondary nodes, and then click **OK** in the message that appears. Then, observe the increase in traffic.
 
 **Scale out a disaster recovery cluster**
 
-You can terminate a task in the completed or uncompleted state. If you click **End**
-**disaster recovery task**, the task information table is cleared.
+> **Note:** You can terminate a task in the completed or uncompleted state. If you click **End** **disaster recovery task**, the task information table is cleared.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the left-side navigation pane, choose **Copilot > Disaster Recovery**.
 3. On the **Disaster recovery setup** page, click **Create a disaster recovery task** .
@@ -489,8 +534,9 @@ If a new broker is added, **Go online** appears in the Operation column for the 
 **OK**. The broker is configured as the new primary node, the cached metadata file is
 synchronized to the broker, and the broker is set to read and write prohibiting. BrokerName is applied for and inserted into the database. Then, the container is restarted.
 6. Add a secondary node to the new primary node.
-After the original secondary node is promoted to the primary node, **Add a secondary**
-**node** appears in the **Operation** column.
+
+> **Note:** After the original secondary node is promoted to the primary node, **Add a secondary** **node** appears in the **Operation** column.
+
 Click **Add a secondary node**, select a secondary node, and click **OK** to add the second secondary node in the secondary data center, synchronize the cached metadata file to the broker, and set the broker to read and write prohibiting. Meanwhile, the information about the second secondary node is inserted into the broker_name table.
 
 #### 2.6.3 Disaster recovery removal
@@ -511,7 +557,8 @@ A disaster recovery data center needs to be converted into a single data center.
 
 **Procedure**
 
-The following procedure uses a group of brokers as an example. The procedure is the same for other groups of brokers.
+> **Note:** The following procedure uses a group of brokers as an example. The procedure is the same for other groups of brokers.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the left-side navigation pane, choose **Copilot > Disaster Recovery Remove**.
 3. On the **Release of disaster recovery relationship** page, select a cluster from the
@@ -559,7 +606,9 @@ Capacity analysis is designed to provide an intuitive and comprehensive visualiz
 3. On the **Capacity Analysis** page, specify **Cluster name** and **Time range**, and select a
 Broker specification.
 4. The page displays the Transactions Per Second (TPS) trend and save time trend.
-Move the pointer over a chart to view the detailed values at the current time point.
+
+> **Note:** Move the pointer over a chart to view the detailed values at the current time point.
+
 **tps trend**: displays the trend charts of the inbound message rate, outbound message
 rate, and total throughput of the cluster. The dotted orange line in the chart represents the theoretical maximum TPS of the broker specification.
 **Save time trend**: displays the trend chart of the retention period of messages on the
@@ -619,13 +668,20 @@ task.
 1. In the task list, you can view the information of each inspection task, including **Task ID**,
 **Cluster**, **Inspection type**, **Inspection items**, **Task Status**, **Latest inspection time**,
 **Creation time**, and **Scheduled inspection time**.
-Click the information in the **Inspection item** column. In the **Inspection item** dialog box, you can view the inspection items and inspection rules of the current task.
+
+> **Note:** Click the information in the **Inspection item** column. In the **Inspection item** dialog box, you can view the inspection items and inspection rules of the current task.
+
 2. Click **View inspection results** in the **Operation** column of the desired inspection tasks.
 3. In the **Inspection Task Result** dialog box, you can view **ID**, **Inspection Status**,
 **Inspection Duration**, **Creation time**, and **Expiration Time** of the inspection task.
 4. Click **View the inspection report** in the **Operation** column of the desired inspection task.
 5. In the **Inspection results** panel, you can view the detailed inspection report of the cluster.
-You can click **Download Report** to generate and export a complete inspection report of the cluster. The following three report formats are supported: Markdown HTML PDF
+You can click **Download Report** to generate and export a complete inspection report of the cluster.
+
+> **Note:** The following three report formats are supported:
+> Markdown
+> HTML
+> PDF
 
 **Modify an inspection task**
 
@@ -673,7 +729,8 @@ In the cluster inspection system, each inspection item is assigned a weight, whi
 item.
 4. In the **Edit Weight** dialog box, modify the value of the **Weight Score** parameter and click
 **OK**.
-A higher score indicates a greater weight, and the sum of the scores for all inspection items does not need to be equal to 100.
+
+> **Note:** A higher score indicates a greater weight, and the sum of the scores for all inspection items does not need to be equal to 100.
 
 #### 2.6.6 Topic migration
 
@@ -681,7 +738,8 @@ The topic migration feature allows you to migrate the data of a specified topic 
 
 **Create a migration task**
 
-Only topics of the normal message type can be migrated.
+> **Note:** Only topics of the normal message type can be migrated.
+
 1. Log in to the RocketMQ 4.x Operations Console.
 2. In the left-side navigation pane, choose **Copilot > Topic Migration**.
 3. On the **Topic Migration** page, click **Create Migration Task**.
@@ -698,9 +756,18 @@ Only topics of the normal message type can be migrated.
 
 5. After the migration task is created, the **Migration Task Detail** page appears. On the
 **Migration Task Detail** page, perform the following steps:
-You can cancel a migration task during the migration. In the **Step Logs** section, click **View Detail** to the right of a step to view the details of the step. If a migration step fails, you can click **Retry** to restart the task. i. Perform a pre-check a. Click **Start Check** to perform a pre-check. b. After the pre-check is complete, click **Next: Create Topic**. ii. Create a topic a. Click **Create Topic in Target Cluster** . b. After the topic is created, click **Next: Disable Write on Source Topic** . iii. Disable the write operation on the topic in the source cluster a. Click **Disable Write on Source Topic**. b. After the write operation on the topic in the source cluster is disabled, click **Next:**
+
+> **Note:** You can cancel a migration task during the migration.
+> In the **Step Logs** section, click **View Detail** to the right of a step to view the details of the step.
+> If a migration step fails, you can click **Retry** to restart the task.
+
+i. Perform a pre-check a. Click **Start Check** to perform a pre-check. b. After the pre-check is complete, click **Next: Create Topic**. ii. Create a topic a. Click **Create Topic in Target Cluster** . b. After the topic is created, click **Next: Disable Write on Source Topic** . iii. Disable the write operation on the topic in the source cluster a. Click **Disable Write on Source Topic**. b. After the write operation on the topic in the source cluster is disabled, click **Next:**
 **Monitor Consumer**.
-iv. Monitor message consumption The automatic refresh interval is 30 seconds. After the number of accumulated messages in all consumer groups becomes 0 (Lag = 0), go to the next step to disable the read on the topic of the source cluster. a. After the wait period is complete, the system automatically monitors message consumption. You can click **Skip Consumer Check and Wait Period** to immediately start monitoring consumers. b. After message consumption monitoring is complete, click **Next: Disable Read on**
+iv. Monitor message consumption
+
+> **Note:** The automatic refresh interval is 30 seconds. After the number of accumulated messages in all consumer groups becomes 0 (Lag = 0), go to the next step to disable the read on the topic of the source cluster.
+
+a. After the wait period is complete, the system automatically monitors message consumption. You can click **Skip Consumer Check and Wait Period** to immediately start monitoring consumers. b. After message consumption monitoring is complete, click **Next: Disable Read on**
 **Source Topic**.
 v. Disable the read operation on the topic in the source cluster a. Click **Disable Read on Source Topic**. b. After the read operation on the topic in the source cluster is disabled, click **Next:**
 **Cleanup Topic**.
@@ -715,37 +782,38 @@ vi. Clean up the topic a. Click **Delete Source Cluster Topic**. In the message 
 and **Create Time**.
 3. Click **View Detail** in the **Operation** column of a migration task. On the **Migration Task**
 **Detail** page, you can view **Task Info**, **Task Result**, and **Step Logs** of the migration task.
-In the **Step Logs** section, click **View Detail** to the right of a step to view the details of the step.
+
+> **Note:** In the **Step Logs** section, click **View Detail** to the right of a step to view the details of the step.
 
 **Delete a migration task**
 
-Migration tasks cannot be deleted while in progress.
+> **Note:** Migration tasks cannot be deleted while in progress.
+
 1. In the migration task list, find the migration task that you want to delete and click **Delete** in
 the **Operation** column.
 2. In the message that appears, read the tips and then click **OK**.
 
-**Important**
-
-If you delete a task, the task records and step logs are permanently removed. Proceed with caution.
+> **Important:** If you delete a task, the task records and step logs are permanently removed. Proceed with caution.
 
 **Cancel a migration task**
 
-You cannot cancel **Failed** or **Completed** migration tasks.
+> **Note:** You cannot cancel **Failed** or **Completed** migration tasks.
+
 1. In the migration task list, find the migration task that you want to cancel and click **Cancel**
 in the **Operation** column.
 2. In the dialog box that appears, enter the reason for cancellation and click **OK**.
 
-**Important**
-
-When you cancel a migration task, the executed steps are rolled back (the permissions on the source cluster are restored and the topic in the destination cluster is deleted), which may result in the loss of unconsumed messages already sent to the destination cluster. Proceed with caution.
+> **Important:** When you cancel a migration task, the executed steps are rolled back (the permissions on the source cluster are restored and the topic in the destination cluster is deleted), which may result in the loss of unconsumed messages already sent to the destination cluster. Proceed with caution.
 
 **Retry a migration task**
 
-You can retry only **Failed** migration tasks.
+> **Note:** You can retry only **Failed** migration tasks.
+
 1. In the migration task list, find the migration task that you want to retry and click **Retry** in
 the **Operation** column.
 2. In the message that appears, read the tips and then click **OK**.
-When you retry a migration task, the task will resume execution from the failed step.
+
+> **Note:** When you retry a migration task, the task will resume execution from the failed step.
 
 ### 2.7 Operational audit
 
@@ -1251,9 +1319,7 @@ Instance throttling is a high-risk operation that may adversely affect your busi
 6. Click **Modification** to the right of **enableSendFlowlimit**.
 7. In the **Modify Configuration** dialog box, turn on **Configuration Value** and click **OK**.
 
-**Important**
-
-Repeat the steps to turn on the instance throttling switch for all brokers of the cluster.
+> **Important:** Repeat the steps to turn on the instance throttling switch for all brokers of the cluster.
 
 **Step 2: Enable instance throttling reports**
 

@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 279
 source_pdf: "3dc24e1df5e4b93b_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer Guide 20260901
@@ -534,9 +534,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Unimanager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni- manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 | Header | Description |
 |---|---|
@@ -552,9 +550,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -8363,9 +8359,7 @@ These APIs provide services for platform tenants.
 
 Open APIs use API keys for authentication. This mechanism controls access to the API. Before making an API call, you must provide a valid key to verify your identity and gain access to the API. This topic describes how to obtain an API key for the Application Center API.
 
-**Important**
-
-You can obtain API keys for the Application Center API directly from the large language model (LLM) platform. To obtain API keys for the Knowledge Center API, contact the administrator of the corresponding module.
+> **Important:** You can obtain API keys for the Application Center API directly from the large language model (LLM) platform. To obtain API keys for the Knowledge Center API, contact the administrator of the corresponding module.
 
 **Procedure**
 
@@ -9875,6 +9869,7 @@ Use this API to query the details of fields in a specified table of a knowledge 
 
 Go to Homepage > Profile Picture > APP_KEY and create an APP_KEY. Then, go to Homepage > Profile Picture
 > Workspace Management to obtain the code for the target workspace. If the Workspace Management menu
+
 is not visible, contact the tenant administrator or the administrator of the target workspace.
 
 **Request URL**

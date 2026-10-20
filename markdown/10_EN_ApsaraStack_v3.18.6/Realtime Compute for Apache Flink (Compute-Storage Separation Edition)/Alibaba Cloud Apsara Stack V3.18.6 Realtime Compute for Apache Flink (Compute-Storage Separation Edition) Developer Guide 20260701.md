@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 370
 source_pdf: "6fbe874eebbdd54b_Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edi"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97FLink/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260701
@@ -190,9 +190,7 @@ To call an API through the POP Gateway, you must understand relevant information
 
 To ensure that Apsara Stack provides the same user experience as the Public Cloud, we recommend that you call Apsara Stack APIs through the POP Gateway.
 
-**Note**
-
-The API information in the API catalog of the Apsara Uni-manager Management Console serves only as a reference for API calls. For specific API usage, refer to the development guide of the corresponding cloud service. In case of inconsistency, the development guide takes precedence.
+> **Note:** The API information in the API catalog of the Apsara Uni-manager Management Console serves only as a reference for API calls. For specific API usage, refer to the development guide of the corresponding cloud service. In case of inconsistency, the development guide takes precedence.
 
 **Procedure**
 
@@ -291,9 +289,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -314,9 +310,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -569,9 +563,10 @@ P to make API calls
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -725,9 +720,7 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Configuration methods**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter t o true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTTPSInsecure parameter for the request.
@@ -852,9 +845,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -11655,9 +11647,7 @@ JsonUtil.toBean(client.doAction(listDeploymentsRequest).getHttpContentString(),
 
 `}` `}`
 
-**Note**
-
-For detailed sample code, contact Alibaba Cloud technical support.
+> **Note:** For detailed sample code, contact Alibaba Cloud technical support.
 
 #### 3.2.2 pom.xml
 
@@ -11725,9 +11715,7 @@ Flink SQL is a real-time computing SQL system designed to simplify the computing
 
 This topic describes Flink SQL keywords. For more information about SQL reserved keywords for Apache Flink 1.11, visit Reserved Keywords.
 
-**Note**
-
-To define a Flink SQL keyword in a DDL statement, surround the keyword with backticks ('), such as `value` .
+> **Note:** To define a Flink SQL keyword in a DDL statement, surround the keyword with backticks ('), such as `value` .
 
 ### 4.3 Create a data view
 
@@ -11737,9 +11725,7 @@ This topic describes how to create a data view in Realtime Compute for Apache Fl
 
 If your business logic is complex and you need to write nested statements in DML statements, it can be difficult to locate problems. To simplify the development process, you can define a data view and write nested statements to the data view.
 
-**Note**
-
-A data view displays a logical table that describes the computing logic without storing physical data.
+> **Note:** A data view displays a logical table that describes the computing logic without storing physical data.
 
 **Syntax**
 
@@ -11949,9 +11935,7 @@ QL reference
 
 **Unit prices in different regions**
 
-**Important**
-
-You can obtain the actual price on the buy page.
+> **Important:** You can obtain the actual price on the buy page.
 
 **Billing for the Intel X86 architecture**
 
@@ -12094,10 +12078,8 @@ INSERT INTO blackhole_sinkB
 END; -- This is required when you write data to multiple sinks.
 ```
 
-**Note**
+> **Note:** The statement that writes data to multiple sinks must start with **BEGIN** **STATEMENT SET;** and end with **END;**.
 
-The statement that writes data to multiple sinks must start with **BEGIN**
-**STATEMENT SET;** and end with **END;**.
 QL reference
 
 ### 4.6 Query statements
@@ -12108,21 +12090,19 @@ This topic describes the query statements provided by Flink. For more informatio
 
 This topic describes the window functions, time attributes, and window types supported by Flink SQL. Flink SQL supports aggregation over infinite windows. You do not need to explicitly define windows in SQL statements. Flink SQL also supports aggregation over a specific window. For example, if you want to count the number of users who clicked a URL in the previous minute, you can define a window to collect data about user clicks in the previous minute. Then, you can compute the data in the window to obtain the result. Flink SQL supports window aggregates and over aggregates. This topic describes window aggregates. Window aggregates support the windows that are defined based on the following time attributes: event time and processing time. The TUMBLE, HOP, and SESSION window functions are supported for each time attribute.
 
-**Warning**
-
-The TUMBLE, HOP, and SESSION functions cannot be used with the LAST_VALUE, FIRST_VALUE, or TopN function. If you use these window functions with the LAST_VALUE, FIRST_VALUE, or TopN function, the data becomes out of order and is discarded. As a result, the output data is abnormal.
+> **Warning:** The TUMBLE, HOP, and SESSION functions cannot be used with the LAST_VALUE, FIRST_VALUE, or TopN function. If you use these window functions with the LAST_VALUE, FIRST_VALUE, or TopN function, the data becomes out of order and is discarded. As a result, the output data is abnormal.
 
 **Time attributes**
 
 Flink SQL supports two time attributes: event time and processing time. For more information about time attributes, see Time attributes. Flink aggregates data in windows based on the time attributes. The windowing method varies based on the time attributes. Event time: the event time that you provide in the data store. The system closes a window based on the watermark that is generated based on the event time of the data. A window ends only when the value of the watermark is later than the time when the window closes. The output data is generated when the window ends. The window generates output data only if the data that triggers the window to end flows into Flink. The watermark value for a single subtask increments. If multiple subtasks run or multiple source tables exist, the minimum watermark value is used.
 
-**Important**
+> **Important:** If an out-of-order data record in which the time is later than the current time exists in a source table or no data exists in a subtask or a partition of a source table, the window may not be terminated and the output data may be abnormal. To avoid this issue, you must specify an offset based on the out-of-order data and make sure that data exists in all subtasks and all partitions of the source table. If no data exists in a subtask or a partition of the source table, the watermark cannot advance and the window cannot be terminated in a timely manner. In this case, you can add
+> `table.exec.source.idle-timeout: 10s` to the Other Configuration field in the Parameters section of the Configuration tab on the Deployments page to trigger the termination of the window. For more information about this parameter, see Configuration.
+> After data is processed by using GROUP BY, JOIN operations on two data streams, or OVER window nodes, the watermark property is lost and the event time can no longer be used for windowing.
 
-If an out-of-order data record in which the time is later than the current time exists in a source table or no data exists in a subtask or a partition of a source table, the window may not be terminated and the output data may be abnormal. To avoid this issue, you must specify an offset based on the out-of-order data and make sure that data exists in all subtasks and all partitions of the source table. If no data exists in a subtask or a partition of the source table, the watermark cannot advance and the window cannot be terminated in a timely manner. In this case, you can add `table.exec.source.idle-timeout: 10s` to the Other Configuration field in the Parameters section of the Configuration tab on the Deployments page to trigger the termination of the window. For more information about this parameter, see Configuration. After data is processed by using GROUP BY, JOIN operations on two data streams, or OVER window nodes, the watermark property is lost and the event time can no longer be used for windowing. QL reference Processing time: the local system time at which the system processes an event. The processing time is generated by Flink and does not exist in your raw data. Therefore, you must explicitly define a Processing Time column.
+QL reference Processing time: the local system time at which the system processes an event. The processing time is generated by Flink and does not exist in your raw data. Therefore, you must explicitly define a Processing Time column.
 
-**Note**
-
-The processing time is affected by the speed at which events reach Flink and the order in which data is processed in Flink. Therefore, the results of each backtrack may be different.
+> **Note:** The processing time is affected by the speed at which events reach Flink and the order in which data is processed in Flink. Therefore, the results of each backtrack may be different.
 
 **Cascading windows**
 
@@ -12195,9 +12175,7 @@ This topic describes the window functions, time attributes, and window types tha
 
 Flink SQL supports two time attributes: event time and processing time. Realtime Compute for Apache Flink aggregates data in windows based on these time attributes. The event time attribute specifies the time when each data entry is created. It is provided in the schema. The processing time attribute specifies the local system time at which the system processes an event.
 
-**Note**
-
-For more information about the time attributes in Apache Flink, visit Time Attributes.
+> **Note:** For more information about the time attributes in Apache Flink, visit Time Attributes.
 
 **Cascading windows**
 
@@ -12257,9 +12235,7 @@ Use the TUMBLE function in the GROUP BY clause to define a tumbling window.
 TUMBLE(<time-attr>, <size-interval>) <size-interval>: INTERVAL 'string' timeUnit
 ```
 
-**Note**
-
-The `<time-attr>` parameter must be a valid time attribute field in the time stream, specified as either Processing Time or Event Time. For more information about how to define Time attributes, see Overview.
+> **Note:** The `<time-attr>` parameter must be a valid time attribute field in the time stream, specified as either Processing Time or Event Time. For more information about how to define Time attributes, see Overview.
 
 **Identifier functions**
 
@@ -12438,9 +12414,7 @@ Use the HOP function in the GROUP BY clause to define a sliding window.
 HOP(<time-attr>, <slide-interval>,<size-interval>) <slide-interval>: INTERVAL 'string' timeUnit <size-interval>: INTERVAL 'string' timeUnit
 ```
 
-**Note**
-
-The `<time-attr>` parameter must be a valid time attribute field in the stream, specified as either Processing Time or Event Time. For more information about how to define Time attributes, see Overview.
+> **Note:** The `<time-attr>` parameter must be a valid time attribute field in the stream, specified as either Processing Time or Event Time. For more information about how to define Time attributes, see Overview.
 
 **Identifier functions**
 
@@ -12725,9 +12699,8 @@ FROM Tab1;
 
 agg1(col1): aggregates input data based on the col1 column specified by GROUP BY. OVER (definition1): defines an OVER window. AS colName: specifies the alias of a column.
 
-**Note**
-
-OVER (definition1) for agg1 through aggN must be the same. The alias specified by AS can be queried by using an outer SQL statement.
+> **Note:** OVER (definition1) for agg1 through aggN must be the same.
+> The alias specified by AS can be queried by using an outer SQL statement.
 
 **Window types**
 
@@ -13020,9 +12993,8 @@ QL reference
 
 This topic introduces the built-in functions that Realtime Compute for Apache Flink provides for data transformation. Flink V1.11: See Built-in functions in Flink V1.11. Flink V1.12: See Built-in functions in Flink V1.12.
 
-**Note**
-
-Fully managed Flink VVR 3.0.0 adds some built-in functions based on Flink V1.12. For more information, see Scalar functions. If no built-in function meets your requirements, implement a user-defined function. For more information about user-defined functions, see Overview.
+> **Note:** Fully managed Flink VVR 3.0.0 adds some built-in functions based on Flink V1.12. For more information, see Scalar functions.
+> If no built-in function meets your requirements, implement a user-defined function. For more information about user-defined functions, see Overview.
 
 #### 4.8.2 Scalar functions
 
@@ -13030,9 +13002,7 @@ Fully managed Flink VVR 3.0.0 adds some built-in functions based on Flink V1.12.
 
 This topic describes how to use the BITAND function to perform a bitwise AND operation.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13040,9 +13010,7 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 INT BITAND(INT number1,INT number2)
 ```
 
-**Note**
-
-The input and output parameters are both of the INT type.
+> **Note:** The input and output parameters are both of the INT type.
 
 **Input parameters**
 
@@ -13073,9 +13041,7 @@ QL reference
 
 This topic describes how to use the BITNOT function to perform a bitwise NOT operation.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13083,9 +13049,7 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 INT BITNOT(INT number)
 ```
 
-**Note**
-
-The input and output parameters are both of the INT type.
+> **Note:** The input and output parameters are both of the INT type.
 
 **Input parameters**
 
@@ -13111,9 +13075,7 @@ Test result
 
 This topic describes how to use the BITOR function to perform a bitwise OR operation.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13132,9 +13094,9 @@ QL reference
 |---|---|
 | number2 | INT |
 
-**Note**
+> **Note:** The input and output parameters are both of the INT type.
 
-The input and output parameters are both of the INT type. Test data
+Test data
 
 | a(INT) | b(INT) |
 |---|---|
@@ -13154,9 +13116,7 @@ Test result
 
 This topic describes how to use the BITXOR function to perform a bitwise XOR operation.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13171,9 +13131,9 @@ INT BITXOR(INT number1, INT number2)
 | number1 | INT |
 | number2 | INT |
 
-**Note**
+> **Note:** The input and output parameters are both of the INT type.
 
-The input and output parameters are both of the INT type. Test data
+Test data
 
 | a(INT) | b(INT) |
 |---|---|
@@ -13193,9 +13153,8 @@ Test result
 
 This topic describes how to use the CONV function. This function performs base conversation on numeric values or characters.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later. The **CONV()** function works with the 64-bit precision.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> The **CONV()** function works with the 64-bit precision.
 
 **Syntax**
 
@@ -13245,9 +13204,7 @@ Test result
 
 The topic describes how to use the DATEDIFF function. This function calculates the difference between two date values.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13262,9 +13219,10 @@ INT DATEDIFF(VARCHAR enddate, VARCHAR startdate) INT DATEDIFF(TIMESTAMP enddate,
 | startdate | TIMESTAMP or VARCHAR |
 | enddate | TIMESTAMP or VARCHAR |
 
-**Note**
+> **Note:** A date of the VARCHAR type is in the **yyyy-MM-dd** or **yyyy-MM-dd HH:mm:ss** format.
+> If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
-A date of the VARCHAR type is in the **yyyy-MM-dd** or **yyyy-MM-dd HH:mm:ss** format. If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+Test data
 
 | datetime1(VARCHAR) | datetime2(VARCHAR) | nullstr(VARCHAR) |
 |---|---|---|
@@ -13293,9 +13251,7 @@ Test result
 
 This topic describes how to use the DATE_ADD function. This function returns the date after the specified number of days is added to a date.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13311,9 +13267,9 @@ VARCHAR DATE_ADD(VARCHAR startdate, INT days) VARCHAR DATE_ADD(TIMESTAMP time, I
 | time | TIMESTAMP |
 | days | INT |
 
-**Note**
+> **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+Test data
 
 | datetime1(VATCHAR) | nullstr(VATCHAR) |
 |---|---|
@@ -13338,9 +13294,7 @@ Test result
 
 This topic describes how to use the DATE_FORMAT function. This function converts a date value of the STRING type from a format into a specific format.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13357,9 +13311,9 @@ VARCHAR DATE_FORMAT(TIMESTAMP time, VARCHAR to_format) VARCHAR DATE_FORMAT(VARCH
 | from format _ | VARCHAR | The original format. This parameter is optional. The default format is yyyy-MM-dd hh:mm:ss. |
 | to format _ | VARCHAR | The format of the output date. |
 
-**Note**
+> **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+Test data
 
 | date1(VARCHAR) | datetime1(VARCHAR) | nullstr(VARCHAR) |
 |---|---|---|
@@ -13387,9 +13341,7 @@ Test result
 
 This topic describes how to use the DATE_FORMAT_TZ function. This function converts data of the timestamp type into a string of the specified type based on the specified time zone.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13434,9 +13386,7 @@ QL reference
 
 The topic describes how to use the DATE_SUB function. This function subtracts specific days from a date and then returns the obtained date.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13452,9 +13402,9 @@ VARCHAR DATE_SUB(VARCHAR startdate, INT days) VARCHAR DATE_SUB(TIMESTAMP time, I
 | time | TIMESTAMP |
 | days | INT |
 
-**Note**
+> **Note:** If one of the input parameters is NULL or a parsing error occurs, the return value is NULL.
 
-If one of the input parameters is NULL or a parsing error occurs, the return value is NULL. Test data
+Test data
 
 | date1(VARCHAR) | nullstr(VARCHAR) |
 |---|---|
@@ -13479,9 +13429,7 @@ Test result
 
 QL reference This topic describes how to use the FROM_UNIXTIME function. This function returns a date of the VARCHAR type.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13496,9 +13444,9 @@ VARCHAR FROM_UNIXTIME(BIGINT unixtime, VARCHAR format)
 | unixtime | BIGINT | The timestamp. Unit: seconds. |
 | format | VARCHAR | The format of logs. This parameter is optional. The default format is yyyy-MM-dd HH:mm:ss. |
 
-**Note**
+> **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+Test data
 
 | unixtime1(BIGINT) | nullstr(VARCHAR) |
 |---|---|
@@ -13523,9 +13471,7 @@ Test result
 
 This topic describes how to use the ISNAN function. This function checks whether the specified floating-point number is NAN (Not a number). This function is similar to the Double.isNan() or Float.isNan() function in Java.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13566,9 +13512,7 @@ Test result
 
 This topic describes how to use the JSON_VALUE function. This function extracts the expression of the specified path from a JSON string.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13587,9 +13531,9 @@ QL reference
 | path | VARCHAR | The expression of the specified path. You must use single quotation marks (') in a custom path. Example: JSON VALUE(json,'$.passenger name') AS _ _ ABC The following symbols are supported in a path: $: indicates the root object. []: indicates the array subscript. *: indicates the array wildcard characters. .: indicates child elements. |
 |---|---|---|
 
-**Note**
+> **Note:** If the input parameters contain invalid JSON or NULL values, NULL is returned.
 
-If the input parameters contain invalid JSON or NULL values, NULL is returned. Test data Table 1. T1
+Test data Table 1. T1
 
 | id(INT) | json(VARCHAR) | path1(VARCHAR) |
 |---|---|---|
@@ -13629,9 +13573,7 @@ QL reference
 
 This topic describes how to use the KEYVALUE function. This function splits a string into key-value pairs based on the split1 delimiter, and splits the key-value pairs based on the split2 delimiter. The value that corresponds to the key is returned.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13648,9 +13590,12 @@ VARCHAR KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name)
 | split2 | VARCHAR | The split2 delimiter that splits the key-value pairs. |
 | key name _ | VARCHAR | The name of the key. |
 
-**Note**
+> **Note:** If the split1 or split2 parameter is NULL, NULL is returned.
+> If the str or key_name parameter is NULL, NULL is returned.
+> If no key is found, NULL is returned.
+> If multiple key-value pairs exist, the value that first matches the key is returned.
 
-If the split1 or split2 parameter is NULL, NULL is returned. If the str or key_name parameter is NULL, NULL is returned. If no key is found, NULL is returned. If multiple key-value pairs exist, the value that first matches the key is returned. Test dataTable 1. T1
+Test dataTable 1. T1
 
 | str(VARCHAR) | split1(VARCHAR) | split2(VARCHAR) | key1(VARCHAR) |
 |---|---|---|---|
@@ -13676,9 +13621,7 @@ v2 NULL NULL NULL NULL
 
 The topic describes how to use the MURMUR_HASH function. This function specifies the 32-bit hash value for a parameter by using the hash32x86 method.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13734,9 +13677,7 @@ Test result
 
 The topic describes how to use the MURMUR_HASH_64 function. This function specifies the 64-bit hash value for a parameter by using the hash128x64 method.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13792,9 +13733,7 @@ Test result
 
 The topic describes how to use the PARSE_URL function. This function parses a specific part of a URL and returns the obtained value.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13849,9 +13788,7 @@ QL reference
 
 This topic describes how to use the REGEXP function. This function searches a specified string by using a regular expression and returns a Boolean value based on the matching result.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13866,9 +13803,9 @@ BOOLEAN REGEXP(VARCHAR str, VARCHAR pattern)
 | str | VARCHAR | The specified string. |
 | pattern | VARCHAR | The specified pattern. |
 
-**Note**
+> **Note:** If the string or pattern parameter is empty or NULL, false is returned.
 
-If the string or pattern parameter is empty or NULL, false is returned. Test dataTable 1. T1
+Test dataTable 1. T1
 
 | str1(VARCHAR) | pattern1(VARCHAR) |
 |---|---|
@@ -13894,9 +13831,7 @@ true false false false false QL reference
 
 This topic describes how to use the REGEXP_REPLACE function. This function replaces the specified string with the desired string and returns a new string.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13912,9 +13847,10 @@ VARCHAR REGEXP_REPLACE(VARCHAR str, VARCHAR pattern, VARCHAR replacement)
 | pattern | VARCHAR | The original string that you want to replace. |
 | replacement | VARCHAR | The string that is used to replace the original string. |
 
-**Important**
+> **Important:** If an input parameter is NULL or the regular expression is invalid, NULL is returned.
+> The system parses the pattern and replacement parameters into regular expressions. The regular expressions are processed by using Java Pattern. Therefore, the pattern and replacement parameters must follow the syntax for Java Regex.
 
-If an input parameter is NULL or the regular expression is invalid, NULL is returned. The system parses the pattern and replacement parameters into regular expressions. The regular expressions are processed by using Java Pattern. Therefore, the pattern and replacement parameters must follow the syntax for Java Regex. Test data Table 1. T1
+Test data Table 1. T1
 
 | str1(VARCHAR) | pattern1(VARCHAR) | replace1(VARCHAR) |
 |---|---|---|
@@ -13940,9 +13876,7 @@ Test result
 
 This topic describes how to use the SPLIT_INDEX function. This function splits a string into several segments based on the specified delimiter and returns the field at the specified position.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -13958,9 +13892,9 @@ VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 | sep | VARCHAR | The delimiter. |
 | index | INT | The field position. The index starts from 0. Note If no field is obtained, NULL is returned. |
 
-**Note**
+> **Note:** If an input parameter is set to NULL, NULL is returned.
 
-If an input parameter is set to NULL, NULL is returned. Test dataTable 1. T1
+Test dataTable 1. T1
 
 | str(VARCHAR) | sep(VARCHAR) | index(INT) |
 |---|---|---|
@@ -13985,9 +13919,7 @@ QL reference Mary NULL NULL NULL
 
 The topic describes how to use the TO_DATE function. This function converts a date value from the INT or VARCHAR type to the DATE type.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14028,9 +13960,7 @@ Test result
 
 QL reference This topic describes how to use the TO_TIMESTAMP_TZ function. This function converts a date value of the VARCHAR type into the TIMESTAMP type based on the specified time zone.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14071,9 +14001,7 @@ Test result
 
 This topic describes how to use the UNIX_TIMESTAMP function. This function converts a date value into a UNIX timestamp.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14123,9 +14051,7 @@ Test result
 
 This topic describes how to use the GENERATE_SERIES function. This function generates a series of padding data based on the rule of from, from+1, from+2 ... to-1.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14167,9 +14093,7 @@ Test result
 
 This topic describes how to use the JSON_TUPLE function. This function retrieves the values that are represented by each path string from a JSON string.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14214,9 +14138,7 @@ Test result
 
 This topic describes how to use the MULTI_KEYVALUE function. This function splits a string into key-value pairs based on the key-value pair delimiter specified by split1, splits a key-value pair based on the delimiter specified by split2, and returns the values of key_name1 and key_name2.
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14273,9 +14195,7 @@ Test result
 
 This topic describes how to use the STRING_SPLIT function. This function splits a string into substrings based on the specified delimiter and returns a list of substrings. QL reference
 
-**Important**
-
-This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
+> **Important:** This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
@@ -14290,9 +14210,11 @@ string_split(string, separator)
 | string | VARCHAR | The string that you want to split. |
 | separator | VARCHAR | The delimiter. Note The delimiter must be a single string. |
 
-**Note**
+> **Note:** If the value of a string is NULL, an empty row is returned.
+> If the string contains two or more consecutive delimiters, an empty substring that does not contain characters is returned.
+> If the string does not contain the specified delimiter, the whole string that you want to split is returned.
 
-If the value of a string is NULL, an empty row is returned. If the string contains two or more consecutive delimiters, an empty substring that does not contain characters is returned. If the string does not contain the specified delimiter, the whole string that you want to split is returned. Test data Table 1. T1
+Test data Table 1. T1
 
 | d(varchar) | s(varchar) |
 |---|---|
@@ -14319,9 +14241,7 @@ Test result
 
 QL reference This topic describes how to use the APPROX_COUNT_DISTINCT function to improve the performance of your jobs.
 
-**Important**
-
-This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
+> **Important:** This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
 
 **Background information**
 
@@ -14379,9 +14299,7 @@ Test result
 
 This topic describes how to use the FIRST_VALUE function. This function returns the first non-null record of a data stream.
 
-**Important**
-
-This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
+> **Important:** This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
 
 **Syntax**
 
@@ -14396,9 +14314,9 @@ FIRST_VALUE( T value ) FIRST_VALUE( T value, BIGINT order )
 | value | Any data type | A data stream. Note If all input data is NULL, NULL is returned. |
 | order | BIGINT | The non-null record that has the smallest order value is considered the first non-null record. |
 
-**Important**
+> **Important:** All input parameters must be of the same data type.
 
-All input parameters must be of the same data type. Test data Table 1. T1
+Test data Table 1. T1
 
 | a(BIGINT) | b(INT) | c(VARCHAR) |
 |---|---|---|
@@ -14442,9 +14360,7 @@ Test results
 
 This topic describes how to use the LAST_VALUE function. This function returns the last non-null record of a data stream.
 
-**Important**
-
-This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
+> **Important:** This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VVR) 3.0.0, and later.
 
 **Syntax**
 
@@ -14463,9 +14379,9 @@ QL reference
 |---|---|---|
 | order | BIGINT | The non-null record that has the largest order value is considered the last non-null record. |
 
-**Important**
+> **Important:** All input parameters must be of the same data type.
 
-All input parameters must be of the same data type. Test data Table 1. T1
+Test data Table 1. T1
 
 | a(BIGINT) | b(INT) | c(VARCHAR) |
 |---|---|---|
@@ -14570,9 +14486,11 @@ User-defined functions are categorized as global or job-level. Registration meth
 defined function JAR file. If dependencies exist, click **Click to select** next to **Dependencies** and select the files your user-defined function JAR depends on.
 **External URL**: Enter the external URL address.
 
-**Note**
+> **Note:** Your user-defined function JAR file is uploaded to the sql-artifacts directory in the OSS bucket you selected. Additionally, the Realtime Compute for Apache Flink development console parses the JAR file to detect classes implementing Flink UDF, UDAF, and UDTF interfaces, then automatically extracts class names and populates the Function Name field.
+> For Java-based UDFs, dependencies can be packaged into the user-defined function JAR package or uploaded separately via the dependencies option.
+> When the user-defined function file or its dependencies are large, we recommend uploading via an external URL. Note that if the external URL points to an OSS bucket, dependency files must reside in the sql-artifacts/namespaces/{namespace} directory.
 
-Your user-defined function JAR file is uploaded to the sql-artifacts directory in the OSS bucket you selected. Additionally, the Realtime Compute for Apache Flink development console parses the JAR file to detect classes implementing Flink UDF, UDAF, and UDTF interfaces, then automatically extracts class names and populates the Function Name field. For Java-based UDFs, dependencies can be packaged into the user-defined function JAR package or uploaded separately via the dependencies option. When the user-defined function file or its dependencies are large, we recommend uploading via an external URL. Note that if the external URL points to an OSS bucket, dependency files must reside in the sql-artifacts/namespaces/{namespace} directory. v. Click **Confirm**. On the **SQL Editor** page, you can view all successfully registered UDFs in the **UDFs** list on the left. Job-level user-defined functions Global user-defined functions (catalog functions) default to parsing with the latest Flink version during registration. If you use a global user-defined function in a deployment while selecting a non-latest Flink version in advanced configuration, compatibility issues may arise. To resolve this, you may implement your UDF code according to the engine version required by your deployment and register it as a job-level user-defined function. Follow this process: i. Upload the user-defined function JAR package. In the left-side navigation pane, click **Artifacts** > **Upload Artifact** and upload the userdefined function JAR package. ii. Specify the job-level user-defined function in your deployment. In the **Additional Dependencies** configuration item of your deployment, specify the userdefined function JAR package. iii. Register the user-defined function. QL reference Use the `CREATE TEMPORARY FUNCTION` syntax to register a job-level user-defined function.
+v. Click **Confirm**. On the **SQL Editor** page, you can view all successfully registered UDFs in the **UDFs** list on the left. Job-level user-defined functions Global user-defined functions (catalog functions) default to parsing with the latest Flink version during registration. If you use a global user-defined function in a deployment while selecting a non-latest Flink version in advanced configuration, compatibility issues may arise. To resolve this, you may implement your UDF code according to the engine version required by your deployment and register it as a job-level user-defined function. Follow this process: i. Upload the user-defined function JAR package. In the left-side navigation pane, click **Artifacts** > **Upload Artifact** and upload the userdefined function JAR package. ii. Specify the job-level user-defined function in your deployment. In the **Additional Dependencies** configuration item of your deployment, specify the userdefined function JAR package. iii. Register the user-defined function. QL reference Use the `CREATE TEMPORARY FUNCTION` syntax to register a job-level user-defined function.
 
 ```
 CREATE TEMPORARY FUNCTION MyScalarFunc AS 'com.test.MyScalarFunc';
@@ -14584,9 +14502,8 @@ This topic describes how to develop, register, and use user-defined scalar funct
 
 **Develop a UDF**
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 1. Download and decompress the ASI_UDX_Demo example to your local machine.
 After decompression, the system generates the **ASI_UDX-main** folder, containing the following items:
 **pom.xml**: This is the project-level configuration file that primarily describes the Maven
@@ -14688,9 +14605,8 @@ This topic describes how to develop, register, and use user-defined aggregate fu
 
 **Develop a UDAF**
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 1. Download and decompress the ASI_UDX_Demo example to your local machine.
 After decompression, the system generates the **ASI_UDX-main** folder, containing the following items:
 **pom.xml**: This is the project-level configuration file that primarily describes Maven
@@ -14818,9 +14734,8 @@ This topic describes how to develop, register, and use user-defined table-valued
 
 **Develop a UDTF**
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). They come with a pre-configured development environment for the corresponding version, so you do not need to set up the environment yourself.
 1. Download and decompress the ASI_UDX_Demo example to your local machine.
 After decompression, the system generates the **ASI_UDX-main** folder, containing the following items:
 **pom.xml**: This is the project-level configuration file that primarily describes the Maven
@@ -14971,9 +14886,7 @@ Use the Pandas library In addition to standard Python user-defined functions, Fl
 | python.fn-execution.bundle.time | This parameter controls the maximum caching time for data. Computation of cached data triggers when either the number of cached records reaches the threshold defined by python.fn- execution.bundle.size or the caching time reaches the threshold defined by python.fn-execution.bundle.time. The default value is 1,000, measured in milliseconds. |
 | python.fn- execution.arrow.batch.size | When you use Pandas UDFs, this parameter defines the maximum number of data records that a single Arrow batch can hold. The default value is 10,000. Note The value of python.fn-execution.arrow.batch.size cannot exceed that of python.fn-execution.bundle.size. |
 
-**Note**
-
-Larger values for these three parameters are not always better. If you set these parameters too high, checkpoint operations may need to process excessive amount of data, leading to prolonged checkpoint durations or even checkpoint failures. For more details about these parameters, see Configuration.
+> **Note:** Larger values for these three parameters are not always better. If you set these parameters too high, checkpoint operations may need to process excessive amount of data, leading to prolonged checkpoint durations or even checkpoint failures. For more details about these parameters, see Configuration.
 
 #### 4.10.2 User-defined scalar function (UDF)
 
@@ -14985,9 +14898,8 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 
 **Develop a UDF**
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). This topic uses Windows as an example to describe how to develop a UDF.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python UDFs, Python user-defined aggregate functions (UDAFs), and Python user-defined table-valued functions (UDTFs). This topic uses Windows as an example to describe how to develop a UDF.
 1. Download and decompress the python_demo-master example to your computer.
 2. In PyCharm, click **file > open** to open the decompressed **python_demo-master**.
 3. Double-click to open \python_demo-master\udx\udfs.py. Then, modify **udfs.py** as needed.
@@ -15054,9 +14966,8 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 
 **Develop a UDAF**
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python ser-defined scalar functions (UDFs), Python UDAFs, and Python user-defined table-valued functions (UDTFs). This topic uses Windows as an example to describe how to develop a UDAF.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python ser-defined scalar functions (UDFs), Python UDAFs, and Python user-defined table-valued functions (UDTFs). This topic uses Windows as an example to describe how to develop a UDAF.
 1. Download and decompress the python_demo-master example to your computer.
 2. In PyCharm, click **file > open** to open the decompressed **python_demo-master**.
 QL reference
@@ -15145,9 +15056,8 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 
 QL reference
 
-**Note**
+> **Note:** Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python ser-defined scalar functions (UDFs), Python user-defined aggregate functions (UDAFs), and Python UDTFs. This topic uses Windows as an example to describe how to develop a UDTF.
 
-Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python ser-defined scalar functions (UDFs), Python user-defined aggregate functions (UDAFs), and Python UDTFs. This topic uses Windows as an example to describe how to develop a UDTF.
 1. Download and decompress the python_demo-master example to your computer.
 2. In PyCharm, click **file > open** to open the decompressed **python_demo-master**.
 3. Double-click and open \python_demo-master\udx\udtfs.py, then modify the content of the

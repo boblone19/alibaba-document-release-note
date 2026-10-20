@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 420
 source_pdf: "0517f54106b09eb9_Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Developer Guide 20250619.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Auto%20Scaling%20Developer%20Guide%2020250619.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Auto Scaling Developer Guide 20250619
@@ -184,9 +184,8 @@ Apsara Stack allows you to call API operations by using the Portable OpenAPI Pro
 1. Obtain AccessKey credentials.
 For information about how to obtain AccessKey credentials, see Obtain AccessKey credentials or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey credentials of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey credentials of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For information about how to obtain the region ID, see Obtain the endpoint of Auto Scaling.
 3. Obtain the organization ID and resource set ID.
@@ -216,14 +215,15 @@ You need to obtain the endpoint of the Apsara Uni-manager Management Console fro
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements. If you need to click Continue to access multiple times or cannot find the entry to the Apsara Uni-manager Management Console because of an expired browser certificate or HTTPS authentication enabled in the environment, you must install a certificate for normal access. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue to access multiple times or cannot find the entry to the Apsara Uni-manager Management Console because of an expired browser certificate or HTTPS authentication enabled in the environment, you must install a certificate for normal access. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Account Logon**.
 4. In the top navigation bar, choose **Products > Others > API Tool**.
 
@@ -249,9 +249,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 The AccessKey ID and AccessKey secret contained in AccessKey credentials are used to perform symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt a signature. You can use RAM or STS to assign AccessKey credentials: The AccessKey credentials that are assigned by RAM to a third party consist of an AccessKey ID and an AccessKey secret. The AccessKey credentials that are assigned by STS to a third party consist of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey credentials for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey credentials of organizations. We recommend that you use the AccessKey credentials of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey credentials of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey credentials of a personal account are managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey credentials of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey credentials of a personal account are managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey credentials of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Request header | Description |
 |---|---|
@@ -270,9 +268,7 @@ To obtain the AccessKey credentials of a personal account, perform the following
 **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey credentials of the personal account.
 
-**Note**
-
-The AccessKey credentials consist of an AccessKey ID and an AccessKey secret. The credentials provide full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey credentials.
+> **Note:** The AccessKey credentials consist of an AccessKey ID and an AccessKey secret. The credentials provide full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey credentials.
 
 **Obtain the AccessKey credentials of an organization**
 
@@ -305,9 +301,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right c
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role (Administrator)** dialog box, view the ARN of your RAM role.
 2. Obtain the STS AccessKey 3-tuple.
 
-**Note**
-
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourRoleSessionName>: Replace the variable parameter with the name of your session. <yourRoleArn>: Replace the variable parameter with the ARN of your RAM role. "sts.aliyuns.com": Replace the variable parameter with the endpoint of STS.
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the variable parameter with the name of your session.
+> <yourRoleArn>: Replace the variable parameter with the ARN of your RAM role.
+> "sts.aliyuns.com": Replace the variable parameter with the endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -369,9 +370,14 @@ eding step.
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following
 sample code provides an example on how to call the CreateScalingGroup operation of Auto Scaling.
 
-**Note**
-
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourStsAccesskeyID>: Replace the variable parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the variable parameter with your STS AccessKey secret. <yourStsToken>. Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID.
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourStsAccesskeyID>: Replace the variable parameter with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the variable parameter with your STS AccessKey secret.
+> <yourStsToken>. Replace the variable parameter with your security token.
+> <yourResourceGroupID>: Replace the variable parameter with your resource set ID.
+> <yourOrganizationID>: Replace the variable parameter with your organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -482,9 +488,9 @@ To use Auto Scaling SDKs, you must install Auto Scaling SDKs and Alibaba Cloud c
 
 Currently, SDKs for Java, Python, and Go are supported. You can go to the SDK Center to select the SDK version that meets your business requirements.
 
-**Important**
+> **Important:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. ng Auto Scaling SDK for Java
+ng Auto Scaling SDK for Java
 
 ## 3 Examples of using Auto Scaling SDK for Java
 
@@ -510,9 +516,18 @@ To use Auto Scaling SDK for Java, perform the following steps:
 3. Initiate the API request and handle the response or exception.
 ng Auto Scaling SDK for Java
 
-**Note**
-
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets <> in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <Product>: Replace the variable parameter with the name of your service. <Endpoint>: Replace the variable parameter with the endpoint of your service. <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the variable parameter with the maximum number of requests. <http://192.168.XX.XX:33XX>: Replace the variable parameter with the IP address and port of your proxy.
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets <> in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <Product>: Replace the variable parameter with the name of your service.
+> <Endpoint>: Replace the variable parameter with the endpoint of your service.
+> <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace the variable parameter with the maximum number of requests.
+> <http://192.168.XX.XX:33XX>: Replace the variable parameter with the IP address and port of your proxy.
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -618,9 +633,7 @@ This topic describes how to install and use Auto Scaling SDK for Java. Auto Scal
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Java supports authentication based on an AccessKey pair. For information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
-
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -630,17 +643,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
 ret.
 ```
 
-**Note**
-
-In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ng Auto Scaling SDK for Java
 
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -765,9 +780,16 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 In this example, the **CreateScalingGroup** API operation of Auto Scaling is used to show how to call an RPC API operation.
 
-**Note**
-
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. <http://192.168.XX.XX:33XX>: Replace the variable parameter with the IP address and the port number of your proxy.
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the variable parameter with your security token.
+> <yourResourceGroupID>: Replace the variable parameter with your resource set ID.
+> <yourOrganizationID>: Replace the variable parameter with your organization ID.
+> <yourInstanceID>: Replace the variable parameter with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace the variable parameter with the IP address and the port number of your proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class CreateScalingGroup {
@@ -885,9 +907,12 @@ When you create a client instance, you must obtain a region ID, AccessKey ID, an
 3. Initiate the API request and handle the response or exception.
 f Auto Scaling SDK for Python
 
-**Note**
-
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <ess.aliyuncs.com>: Replace the variable parameter with the endpoint of your service.
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <ess.aliyuncs.com>: Replace the variable parameter with the endpoint of your service.
 
 ```python
 #!/usr/bin/env python
@@ -917,17 +942,16 @@ This topic describes how to install and use Auto Scaling SDK for Python.
 
 Apsara Stack SDK for Python supports Python 2.7 and Python 3.x. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use Auto Scaling SDK for Python, you must install the core library of Apsara Stack SDK for Python and Auto Scaling SDK for Python.
 
-To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use Auto Scaling SDK for Python, you must install the core library of Apsara Stack SDK for Python and Auto Scaling SDK for Python. f Auto Scaling SDK for Python
+f Auto Scaling SDK for Python
 
 **Procedure**
 
 In this example, Python 2.7 or Python 3.x are used.
 
-**Important**
+> **Important:** You must add a blank line to the last line of the Python code. Otherwise, an alert is triggered.
 
-You must add a blank line to the last line of the Python code. Otherwise, an alert is triggered.
 1. Run the following command to install the core library of Apsara Stack SDK for Python:
 If you are using Python 2.7 or Python 3.x, run the following command to install the core library of Apsara Stack SDK for Python:
 
@@ -941,33 +965,25 @@ pip install aliyun-python-sdk-core
 pip install aliyun-python-sdk-ess==2.3.19
 ```
 
-**Note**
-
-In the preceding code, the version of `aliyun-python-sdk-ess` is 2.3.19. You can replace the version with the latest one.
+> **Note:** In the preceding code, the version of `aliyun-python-sdk-ess` is 2.3.19. You can replace the version with the latest one.
 
 #### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Auto Scaling SDK for Python supports authentication based on AccessKey credentials. For information about how to obtain the AccessKey credentials, see Obtain AccessKey credentials. If you want to use your AccessKey credentials to access Apsara Stack, you must specify the AccessKey credentials as the authentication credentials when you initialize the client.
 
-**Important**
-
-Do not disclose code that may contain your AccessKey credentials. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose code that may contain your AccessKey credentials. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-**Note**
-
-In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. f Auto Scaling SDK for Python
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -983,9 +999,7 @@ in the command output, OpenSSL is supported. If OpenSSL is not supported, run th
 pip install pyopenssl# You need to use this command if you use Python 2 in your local e nvironment.
 ```
 
-**Note**
-
-If you use Python 3 in your local environment, run the `pip3 install pyopenssl"` command.
+> **Note:** If you use Python 3 in your local environment, run the `pip3 install pyopenssl"` command.
 
 **Set the protocol to HTTP or HTTPS for a request**
 
@@ -1082,9 +1096,18 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 In this example, the **CreateScalingGroup** API operation of Auto Scaling is used to show how to call an RPC API to create a scaling group.
 
-**Note**
+> **Note:** In the following code, replace the variable parameters with your actual values. Delete the angle brackets <> in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the variable parameter with your security token.
+> <yourResourceGroupID>: Replace the variable parameter with your resource set ID.
+> <yourOrganizationID>: Replace the variable parameter with your organization ID.
+> <yourInstanceID>: Replace the variable parameter with your instance ID.
+> <your-endpoint>: Replace the variable parameter with the endpoint of your service.
 
-In the following code, replace the variable parameters with your actual values. Delete the angle brackets <> in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. <your-endpoint>: Replace the variable parameter with the endpoint of your service. f Auto Scaling SDK for Python
+f Auto Scaling SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1149,9 +1172,14 @@ In the following code, the **DescribeScalingGroups** is used to describe how to 
 2. Create an API request and configure the required parameters.
 3. Send the API request and handle the response or exception.
 
-**Note**
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <Endpoint>: Replace the variable parameter with your endpoint.
 
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint. ng Auto Scaling SDK for Go
+ng Auto Scaling SDK for Go
 
 ```java
 package main import (
@@ -1220,9 +1248,9 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 ng Auto Scaling SDK for Go When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following sample code provides an example on how to initialize an Auto Scaling client:
+The following sample code provides an example on how to initialize an Auto Scaling client:
 
 ```
 // Initialize the Auto Scaling client. essClient, err := ess.NewClientWithAccessKey(
@@ -1234,9 +1262,7 @@ essKey ID.
 AccessKey secret.
 ```
 
-**Note**
-
-In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 5.2.3 Initiate a request
 
@@ -1249,9 +1275,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ess
 
 2. Create an AcsClient instance that contains all API operations of Auto Scaling.
 
-**Note**
-
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
 
 ```
 essClient,err := <ess>.NewClientWithAccessKey( // Replace the variable parameter wit h the name of your service.
@@ -1305,9 +1329,7 @@ response,err := essClient.DescribeScalingGroups(request) if err != nil {
 
 If an error occurs in the SDK when you initiate a request and the error cannot be automatically handled, the SDK returns a `ClientError` . In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a `ClientError` that is returned by Auto Scaling SDK for Go.
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1319,7 +1341,9 @@ ame of your service.
     "fmt"
 ```
 
-`)` ng Auto Scaling SDK for Go
+> `)`
+
+ng Auto Scaling SDK for Go
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1337,9 +1361,7 @@ response, err := essClient.DescribeScalingGroups(request) if clientError, ok := 
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from Response. In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a ServerError and a Response that are returned by Auto Scaling SDK for Go.
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1351,7 +1373,7 @@ ame of your service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1388,9 +1410,18 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 The following sample code provides an example on how to obtain information about scaling activities by calling the **DescribeScalingActivities** operation of Auto Scaling.
 
-**Note**
+> **Note:** In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code.
+> Variable parameters:
+> <yourRegionID>: Replace the variable parameter with your region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret.
+> <vpc.aliyuncs.com>: Replace the variable parameter with the endpoint of your service.
+> <yourSecurityToken>: Replace the variable parameter with your security token.
+> <yourResourceGroupID>: Replace the variable parameter with your resource set ID.
+> <yourOrganizationID>: Replace the variable parameter with your organization ID.
+> <yourInstanceID>: Replace the variable parameter with your instance ID.
 
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the variable parameter with the endpoint of your service. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. ng Auto Scaling SDK for Go
+ng Auto Scaling SDK for Go
 
 ```java
 package main import (
@@ -1513,11 +1544,7 @@ Common request parameters must be included in all API requests. The following ta
 | x-acs-resourcegroupId | The ID of the resource set in the Apsara Uni-manager Management Console. For more information about how to obtain resource set IDs, see Obtain the values of common header parameters. |
 | x-acs-instanceId | The ID of the instance on which you want to perform the operation. For more information about how to obtain an instance ID, see Obtain the values of common header parameters. |
 
-**Note**
-
-When you call Auto Scaling API operations, you must configure the **x-acs-**
-**organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** headers to specify the
-organization ID, resource set ID, and instance ID. You cannot configure the x-acsinstanceid header to call API operations to create instances and query instances. If you do not configure the preceding headers, the call is directed to the root resource set and organization.
+> **Note:** When you call Auto Scaling API operations, you must configure the **x-acs-** **organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** headers to specify the organization ID, resource set ID, and instance ID. You cannot configure the x-acs- instanceid header to call API operations to create instances and query instances. If you do not configure the preceding headers, the call is directed to the root resource set and organization.
 
 **Common response parameters**
 
@@ -1529,9 +1556,9 @@ API responses use the HTTP response format: A 2xx HTTP status code indicates tha
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML.
 
-**Note**
+> **Note:** Sample responses in our API documents are formatted in a way that is easier for you to read. The actual responses are not formatted with line breaks or indentation.
 
-Sample responses in our API documents are formatted in a way that is easier for you to read. The actual responses are not formatted with line breaks or indentation. Responses in the XML format include information about whether the request succeeds and specific service data.
+Responses in the XML format include information about whether the request succeeds and specific service data.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"? > <!--Result Root Node--> <Operation Name+Response>
@@ -1580,9 +1607,10 @@ This topic describes how to use the request signature to verify the identity of 
 1. Create a canonicalized query string by using request parameters.
 i. Arrange all request parameters in alphabetical order. These parameters include all common request parameters and operation-specific parameters except the Signature parameter in the common request parameters. If you use the GET method to make a request, the request parameters are included as a part of the request URL. The first parameter follows a question mark ( ? ) in the URL, and the other parameters follow an ampersand ( `&` ). ii. Encode the name and value of each request parameter. The parameter names and values must be URL-encoded in UTF-8 based on the following encoding rules: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. `XY` represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA... format. Spaces must be encoded as %20 . Do not encode spaces as plus signs `(+)` .
 
-**Note**
+> **Note:** Most libraries that support URL encoding, such as java.net.URLEncoder, comply with the Multipurpose Internet Mail Extensions (MIME) encoding rules of
+> `application/x-www-form-urlencoded` . If this encoding method is used, replace the plus signs (+) with %20 , the asterisks (*) with %2A , and %7E with tildes (~) in the encoded strings to obtain the required strings.
 
-Most libraries that support URL encoding, such as java.net.URLEncoder, comply with the Multipurpose Internet Mail Extensions (MIME) encoding rules of `application/x-www-form-urlencoded` . If this encoding method is used, replace the plus signs (+) with %20 , the asterisks (*) with %2A , and %7E with tildes (~) in the encoded strings to obtain the required strings. iii. Connect the encoded parameter names and values with equal signs (=). iv. Arrange the parameter name and value pairs connected by equal signs in alphabetical order, and connect them with ampersands (&) to obtain a canonicalized query string.
+iii. Connect the encoded parameter names and values with equal signs (=). iv. Arrange the parameter name and value pairs connected by equal signs in alphabetical order, and connect them with ampersands (&) to obtain a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string based on the following
 rules:
 
@@ -1773,13 +1801,13 @@ Sample success responses `XML` format
 
 Modifies a scaling group. You cannot modify the following parameters: RegionId LoadBalancerId
 
-**Note**
+> **Note:** If you want to associate a Server Load Balancer (SLB) instance with a scaling group, call the AttachLoadBalancers operation. If you want to disassociate an SLB instance from a scaling group, call the DetachLoadBalancers operation.
 
-If you want to associate a Server Load Balancer (SLB) instance with a scaling group, call the AttachLoadBalancers operation. If you want to disassociate an SLB instance from a scaling group, call the DetachLoadBalancers operation. DBInstanceId
+DBInstanceId
 
-**Note**
+> **Note:** If you want to associate an ApsaraDB RDS instance with a scaling group, call the AttachDBInstances operation. If you want to disassociate an ApsaraDB RDS instance from a scaling group, call the DetachDBInstances operation.
 
-If you want to associate an ApsaraDB RDS instance with a scaling group, call the AttachDBInstances operation. If you want to disassociate an ApsaraDB RDS instance from a scaling group, call the DetachDBInstances operation. You can call this operation to modify a scaling group only when the scaling group is in the Active or Inactive state. If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group. If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range. If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
+You can call this operation to modify a scaling group only when the scaling group is in the Active or Inactive state. If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group. If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range. If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
 
 **Request parameters**
 
@@ -1877,9 +1905,9 @@ Sample success responses `XML` format
 
 Enables a scaling group. You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
 
-**Note**
+> **Note:** A scaling group can have only one active instance configuration source at a time. When you call this operation to enable a scaling group, you can specify a scaling configuration or a launch template for the scaling group. If an instance configuration source is configured for the scaling group before you call this operation, the scaling configuration or launch template that you specify in the request overwrites the original scaling configuration or launch template.
 
-A scaling group can have only one active instance configuration source at a time. When you call this operation to enable a scaling group, you can specify a scaling configuration or a launch template for the scaling group. If an instance configuration source is configured for the scaling group before you call this operation, the scaling configuration or launch template that you specify in the request overwrites the original scaling configuration or launch template. If you specify a value for the InstanceId.N parameter when you call the operation, Auto Scaling checks whether the total number of ECS instances is within the range allowed for the scaling group after you call the operation. If the total number of ECS instances is less than the minimum number of instances allowed in the scaling group, Auto Scaling automatically creates the required number of pay-as-you-go ECS instances to maintain the minimum number. For example, if the minimum number of instances allowed in your scaling group is five, and you specify the InstanceId.N parameter to add two created ECS instances to the scaling group, Auto Scaling automatically creates three instances in the scaling group after the two instances are added. If the total number of instances is greater than the maximum number of instances allowed in the scaling group, the operation fails.
+If you specify a value for the InstanceId.N parameter when you call the operation, Auto Scaling checks whether the total number of ECS instances is within the range allowed for the scaling group after you call the operation. If the total number of ECS instances is less than the minimum number of instances allowed in the scaling group, Auto Scaling automatically creates the required number of pay-as-you-go ECS instances to maintain the minimum number. For example, if the minimum number of instances allowed in your scaling group is five, and you specify the InstanceId.N parameter to add two created ECS instances to the scaling group, Auto Scaling automatically creates three instances in the scaling group after the two instances are added. If the total number of instances is greater than the maximum number of instances allowed in the scaling group, the operation fails.
 
 **Request parameters**
 
@@ -3228,9 +3256,7 @@ Sample success responses `XML` format
 
 Creates a scaling configuration. Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on a scaling configuration. ECS instances can be configured in the following modes: InstancePatternInfo.N: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and price limit. The system creates ECS instances of an instance type that is provided at the lowest price based on your configurations. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types. InstanceType: In this mode, you must specify an instance type. InstanceTypes.N: In this mode, you must specify multiple instance types. InstanceTypeOverride.N: In this mode, you must specify multiple instance types and weights for the instance types. Cpu and Memory: In this mode, you can specify the Cpu and Memory parameters to configure the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 
-**Note**
-
-You cannot specify the InstanceType, InstanceTypes.N, InstanceTypeOverride.N, and Cpu and Memory parameters at the same time. If you specify the InstanceTypes.N parameter, the InstanceType parameter is ignored. You can specify only the InstanceType parameter and the InstancePatternInfo.N parameter or the InstanceTypes.N parameter and the InstancePatternInfo.N parameter at the same time. In this case, Auto Scaling preferentially creates instances of the instance type specified by the InstanceType parameter or the InstanceTypes.N parameter. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfo.N parameter.
+> **Note:** You cannot specify the InstanceType, InstanceTypes.N, InstanceTypeOverride.N, and Cpu and Memory parameters at the same time. If you specify the InstanceTypes.N parameter, the InstanceType parameter is ignored. You can specify only the InstanceType parameter and the InstancePatternInfo.N parameter or the InstanceTypes.N parameter and the InstancePatternInfo.N parameter at the same time. In this case, Auto Scaling preferentially creates instances of the instance type specified by the InstanceType parameter or the InstanceTypes.N parameter. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfo.N parameter.
 
 **Request parameters**
 
@@ -5837,9 +5863,7 @@ Sample success responses `XML` format
 
 Modifies a scheduled task. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
 
-**Note**
-
-You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time.
+> **Note:** You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time.
 
 **Request parameters**
 
@@ -6117,9 +6141,8 @@ Creates an event-triggered task.
 
 If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see the "Custom monitoring event-triggered tasks" topic. When you create an event-triggered task, you must specify MetricName, Dimension.N.DimensionKey, and Dimension.N.DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all ECS instances in a scaling group within an Apsara Stack tenant account. If you set MetricType to custom, you can specify your custom metrics. For information about the metrics that are supported if you set MetricType to system, see the "Event-triggered task for system monitoring" topic.
 
-**Note**
-
-The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `Dimension.N.DimensionKey` and `Dimension.N.DimensionValue` in the "Request parameters" section of this topic.
+> **Note:** The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see
+> `Dimension.N.DimensionKey` and `Dimension.N.DimensionValue` in the "Request parameters" section of this topic.
 
 **Request parameters**
 
@@ -6342,9 +6365,8 @@ Modifies an event-triggered task.
 
 If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you create event-triggered tasks by using custom metrics. For more information, see the "Custom monitoring event-triggered tasks" topic. When you create an event-triggered task, you must specify **MetricName**, `Dimension.N.DimensionKey` , and `Dimension.N.DimensionValue` to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Apsara Stack tenant account. If you set MetricType to custom, you can specify your custom metrics. For information about the metrics that are supported if you set MetricType to system, see the "Event-triggered task for system monitoring" topic.
 
-**Note**
-
-The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `Dimension.N.DimensionKey` and `Dimension.N.DimensionValue` in the "Request parameters" section of this topic.
+> **Note:** The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see
+> `Dimension.N.DimensionKey` and `Dimension.N.DimensionValue` in the "Request parameters" section of this topic.
 
 **Request parameters**
 
@@ -6560,9 +6582,7 @@ Creates lifecycle hooks.
 
 You can create up to six lifecycle hooks for each scaling group. Elastic Compute Service (ECS) instances are not immediately added to or removed from scaling groups that have effective lifecycle hooks during scaling activities. The instances are added to or removed from the scaling groups only after the lifecycle hooks time out. The timeout period of the lifecycle hooks time out is specified by HeartbeatTimeout. Before lifecycle hooks time out, you can initialize the configurations of ECS instances and query data on the instances. If lifecycle hooks take effect for scale-outs, the private IP addresses of ECS instances are added to the IP address whitelists of the associated ApsaraDB RDS instances, and the ECS instances are added to the backend server groups of the associated Server Load Balancer (SLB) instances only after the lifecycle hooks time out. If lifecycle hooks take effect for scaleins, the private IP addresses of ECS instances are removed from the IP address whitelists of the disassociated ApsaraDB RDS instances, and the ECS instances are removed from the backend server groups of the disassociated SLB instances only after the lifecycle hooks time out. You can specify a notification method for a lifecycle hook. When the lifecycle hook takes effect, a notification can be sent by using a Message Service (MNS) topic, an MNS queue, or an Operation Orchestration Service (OOS) template. If you want to specify an OOS template, you must create a RAM role for OOS. For more information, see the "Grant RAM permissions to OOS" topic in the OOS documentation.
 
-**Note**
-
-If your scaling group has existing ECS instances and you specified an OOS template to add private IP addresses of ECS instances to or remove private IP addresses of ECS instances from the IP address whitelists of cloud databases that are not ApsaraDB RDS databases, you must manually add the IP addresses to or remove the IP addresses from the IP address whitelists.
+> **Note:** If your scaling group has existing ECS instances and you specified an OOS template to add private IP addresses of ECS instances to or remove private IP addresses of ECS instances from the IP address whitelists of cloud databases that are not ApsaraDB RDS databases, you must manually add the IP addresses to or remove the IP addresses from the IP address whitelists.
 
 **Request parameters**
 
@@ -8222,7 +8242,10 @@ This topic describes the details of errors caused by servers. Table 1. Descripti
 
 ### 6.20 Ensure idempotence
 
-This topic describes how to ensure that requests are idempotent by using ClientToken. If a request times out or an internal server error occurs when the ExecuteScalingRule operation is called to create or release ECS instances, the client may attempt to resend the request. In this case, the client provides the ClientToken parameter to prevent the server from creating or releasing more instances than intended. The ClientToken parameter also ensures that requests are idempotent. The ClientToken value is a unique and case-sensitive string that is generated by the client. The token can only contain ASCII characters and cannot exceed 64 characters in length. If the same ClientToken value is used to call the CreateInstance operation, the server returns identical request results with identical ScalingActivityId values. Therefore, when the request is resent due to an error, the same ClientToken value can ensure that only one scaling activity is created and the corresponding ScalingActivityId value is obtained. If you provide a used ClientToken value and other request parameters are different, Auto Scaling returns the `IdempotentParameterMismatch` error code. Note: You must specify the SignatureNonce, Timestamp, and Signature parameters again before the request is resent because Auto Scaling uses SignatureNonce to prevent replay attacks and uses Timestamp to mark the time of each request. Therefore, you must provide different SignatureNonce and Timestamp values. This also produces a different Signature value. Typically, you only need to configure the client to resend a request in the case of Error 503 (ServiceUnAvailable) or no response. If Error 200 is returned, a retry can obtain the same result as that of the previous request, but the server status is not affected. If Error 4xx or 500 is returned, the request cannot be retried unless the error message states Try it later.
+This topic describes how to ensure that requests are idempotent by using ClientToken. If a request times out or an internal server error occurs when the ExecuteScalingRule operation is called to create or release ECS instances, the client may attempt to resend the request. In this case, the client provides the ClientToken parameter to prevent the server from creating or releasing more instances than intended. The ClientToken parameter also ensures that requests are idempotent. The ClientToken value is a unique and case-sensitive string that is generated by the client. The token can only contain ASCII characters and cannot exceed 64 characters in length. If the same ClientToken value is used to call the CreateInstance operation, the server returns identical request results with identical ScalingActivityId values. Therefore, when the request is resent due to an error, the same ClientToken value can ensure that only one scaling activity is created and the corresponding ScalingActivityId value is obtained. If you provide a used ClientToken value and other request parameters are different, Auto Scaling returns the `IdempotentParameterMismatch` error code.
+
+> **Note:** You must specify the SignatureNonce, Timestamp, and Signature parameters again before the request is resent because Auto Scaling uses SignatureNonce to prevent replay attacks and uses Timestamp to mark the time of each request. Therefore, you must provide different SignatureNonce and Timestamp values. This also produces a different Signature value. Typically, you only need to configure the client to resend a request in the case of Error 503 (ServiceUnAvailable) or no response. If Error 200 is returned, a retry can obtain the same result as that of the previous request, but the server status is not affected. If Error 4xx or 500 is returned, the request cannot be retried unless the error message states Try it later.
+
 
 ## 7 Appendixes
 

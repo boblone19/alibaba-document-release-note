@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 186
 source_pdf: "e3eb3750a3f2a431_Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%20Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elasticsearch%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Elasticsearch User Guide 20260629
@@ -102,9 +102,10 @@ This topic describes the kernel version release notes of Apsara Stack Elasticsea
 | v7.10.0 | Elasticsearch | v3.20.0 | The following capabilities are added: Elasticsearch supports separated storage of cold and hot data. Elasticsearch supports large query isolation. Elasticsearch supports geo-disaster recovery. | 2026-03-20 |
 | v3.1.0 | OpenSearch | v3.18.6 | OpenSearch V3.1.0 integrates several key capabilities, including: Performance optimization for vector search and improvements to the Hierarchical Navigable Small World (HNSW) algorithm. Enhanced visualization features in OpenSearch Dashboards. Support for multi-source data association analysis. Enhanced security and fine-grained management capabilities for role- based access control (RBAC). Improved monitoring and alerting features that allow more flexible trigger conditions for custom metrics. Enhanced plug-in ecosystem compatibility to ensure stability and scalability of third-party plug-ins in new kernel versions. This version also improves cluster stability and recovery speed, and optimizes the write throughput in large-scale indexing scenarios. | 2025-12-30 |
 
-**Important**
+> **Important:** You need to purchase OpenSearch kernel features before you can use them.
+> By default, OpenSearch Dashboards and OpenSearch use the same kernel version.
 
-You need to purchase OpenSearch kernel features before you can use them. By default, OpenSearch Dashboards and OpenSearch use the same kernel version. on suggestions
+on suggestions
 
 ## 3 Limits and configuration suggestions
 
@@ -118,11 +119,16 @@ To ensure the stability of Elasticsearch clusters, we recommend that you select 
 
 **Suggested cluster storage capacity**
 
-The disk space of an Elasticsearch cluster is determined by the following factors: Number of replicas: For production reliability, you must set at least one replica. Indexing overhead: Typically 10% larger than the source data (excluding parameters such as `_all` ). Storage space reserved by the operating system: By default, the operating system reserves 5% of storage space for critical processes, system recovery, and disk fragments. Elasticsearch overheads: Elasticsearch reserves 20% of disk space for internal operations, such as segment merging and logging. Security threshold overheads: Elasticsearch reserves at least 15% of disk space as the security threshold. Therefore, in most cases, the disk space required by an Elasticsearch cluster is about 3.4 times the volume of source data. It can be calculated using the following formula: Minimum required disk space = Volume of source data × (1 + Number of replicas) × (1 + Indexing overheads)/(1 - Security threshold overheads) × Compression ratio/(1 - Space reserved by the operating system)/(1 - Elasticsearch overheads) = Volume of source data × (1 + Number of replica shards) × 1.7 on suggestions The value equals the source data multiplied by 3.4. We recommend that you disable the **_all** parameter unless you must use this parameter for your business. Indexes that have the **_all** parameter enabled incur larger overheads on disk usage. Therefore, we recommend that you assess the disk space by 1.5 times the original value. This indicates that the minimum required disk space is calculated using the following formula: Minimum required disk space = Volume of source data × (1 + Number of replica shards) × 1.7 × (1 + 0.5) = Volume of source data × 5.1. The specifications of a single Elasticsearch node limit the capacity of a cluster. Based on test results and O&M experience, the following recommendations for the maximum data volume per single node in various scenarios are provided to ensure optimal cluster performance: For general retrieval scenarios, the recommended maximum data volume for a single node is 30 times the memory. In high-performance retrieval scenarios, do not exceed 10 times the node memory. In log retrieval scenarios, do not exceed 50 times the node memory. In extreme scenarios where the cluster performance is relatively low, the volume of data on each node must not exceed 600 times the amount of memory. For example, a node with 16 GiB of memory can load up to 9,600 GiB of data.
+The disk space of an Elasticsearch cluster is determined by the following factors: Number of replicas: For production reliability, you must set at least one replica. Indexing overhead: Typically 10% larger than the source data (excluding parameters such as `_all` ). Storage space reserved by the operating system: By default, the operating system reserves 5% of storage space for critical processes, system recovery, and disk fragments. Elasticsearch overheads: Elasticsearch reserves 20% of disk space for internal operations, such as segment merging and logging. Security threshold overheads: Elasticsearch reserves at least 15% of disk space as the security threshold. Therefore, in most cases, the disk space required by an Elasticsearch cluster is about 3.4 times the volume of source data. It can be calculated using the following formula: Minimum required disk space = Volume of source data × (1 + Number of replicas) × (1 + Indexing overheads)/(1 - Security threshold overheads) × Compression ratio/(1 - Space reserved by the operating system)/(1 - Elasticsearch overheads) = Volume of source data × (1 + Number of replica shards) × 1.7 on suggestions The value equals the source data multiplied by 3.4.
 
-**Important**
+> **Note:** We recommend that you disable the **_all** parameter unless you must use this parameter for your business.
+> Indexes that have the **_all** parameter enabled incur larger overheads on disk usage. Therefore, we recommend that you assess the disk space by 1.5 times the original value. This indicates that the minimum required disk space is calculated using the following formula: Minimum required disk space = Volume of source data × (1 + Number of replica shards) × 1.7 × (1 + 0.5) = Volume of source data × 5.1.
 
-If you use clusters of Elasticsearch V5.X or V6.X to store long numbers, such as ID numbers and bank account numbers as strings, the maximum volume of data cannot exceed 25 times the amount of memory. For example, 16 GiB of memory can load up to 400 GiB of data. In the following table, cluster specifications are used as an example to calculate the maximum disk space per node.
+The specifications of a single Elasticsearch node limit the capacity of a cluster. Based on test results and O&M experience, the following recommendations for the maximum data volume per single node in various scenarios are provided to ensure optimal cluster performance: For general retrieval scenarios, the recommended maximum data volume for a single node is 30 times the memory. In high-performance retrieval scenarios, do not exceed 10 times the node memory. In log retrieval scenarios, do not exceed 50 times the node memory. In extreme scenarios where the cluster performance is relatively low, the volume of data on each node must not exceed 600 times the amount of memory. For example, a node with 16 GiB of memory can load up to 9,600 GiB of data.
+
+> **Important:** If you use clusters of Elasticsearch V5.X or V6.X to store long numbers, such as ID numbers and bank account numbers as strings, the maximum volume of data cannot exceed 25 times the amount of memory. For example, 16 GiB of memory can load up to 400 GiB of data.
+
+In the following table, cluster specifications are used as an example to calculate the maximum disk space per node.
 
 | Specificat ion | Maximu m number of nodes | Maximum disk capacity per node (general) | Maximum disk capacity per node (high-performance) | Maximum disk space per node in logging scenarios |
 |---|---|---|---|---|
@@ -131,11 +137,19 @@ If you use clusters of Elasticsearch V5.X or V6.X to store long numbers, such as
 
 **Suggestions on cluster shards**
 
-on suggestions The number of shards and the size of each shard determine the stability and performance of an Elasticsearch cluster. This prevents cluster performance degradation caused by numerous shards when it is difficult to define the business scenarios. The following guidelines can help you plan shards. These guidelines are for reference only. In versions earlier than Elasticsearch V7.X, one index has five primary shards, and each primary shard has one replica shard by default. In Elasticsearch V7.X and later, one index has one primary shard, and the primary shard has one replica shard by default. For clusters used in a production environment, all indexes must have at least one replica. Before you assign shards, assess the volume of data that you want to store. If the total data volume is large, write a small amount of data to reduce the workloads of your Elasticsearch cluster. In this case, configure multiple primary shards for each index and one replica shard for each primary shard. If both the total data volume and the volume of data that you want to write are small, configure one primary shard for each index and one or more replica shards for each primary shard. We recommend that the size of each shard does not exceed 30 GiB. However, the shard size must be at least several GiB. In log analytics scenarios or scenarios that require extremely large indexes, make sure that the size of each shard does not exceed 100 GiB. The number of shards, including replicas, must be equal to the number of data nodes or a multiple of the number of data nodes. We recommend that you specify a maximum of five shards, including replica shards, for an index on a node. A single node should not have more than 1000 shards. We recommend a maximum of 10 shards per GiB of storage. For example, an 8-core, 32 GiB node can support up to 320 shards.
+on suggestions The number of shards and the size of each shard determine the stability and performance of an Elasticsearch cluster. This prevents cluster performance degradation caused by numerous shards when it is difficult to define the business scenarios. The following guidelines can help you plan shards. These guidelines are for reference only.
+
+> **Note:** In versions earlier than Elasticsearch V7.X, one index has five primary shards, and each primary shard has one replica shard by default. In Elasticsearch V7.X and later, one index has one primary shard, and the primary shard has one replica shard by default.
+
+For clusters used in a production environment, all indexes must have at least one replica. Before you assign shards, assess the volume of data that you want to store. If the total data volume is large, write a small amount of data to reduce the workloads of your Elasticsearch cluster. In this case, configure multiple primary shards for each index and one replica shard for each primary shard. If both the total data volume and the volume of data that you want to write are small, configure one primary shard for each index and one or more replica shards for each primary shard. We recommend that the size of each shard does not exceed 30 GiB. However, the shard size must be at least several GiB. In log analytics scenarios or scenarios that require extremely large indexes, make sure that the size of each shard does not exceed 100 GiB. The number of shards, including replicas, must be equal to the number of data nodes or a multiple of the number of data nodes. We recommend that you specify a maximum of five shards, including replica shards, for an index on a node. A single node should not have more than 1000 shards. We recommend a maximum of 10 shards per GiB of storage. For example, an 8-core, 32 GiB node can support up to 320 shards.
 
 **Resource limits**
 
-Limits on the number of nodes: 3 to 50 If the cluster contains large numbers of nodes, risks in resource scheduling and cluster stability increase. We recommend that you create multiple production clusters or upgrade nodes. Limits on the disk space capacity: No more than 20 TB per node Limits on specifications: 8 CPU cores and 32 GiB of memory 16 CPU cores and 64 GiB of memory (suggested specification) 32 CPU cores and 128 GiB of memory
+Limits on the number of nodes: 3 to 50
+
+> **Note:** If the cluster contains large numbers of nodes, risks in resource scheduling and cluster stability increase. We recommend that you create multiple production clusters or upgrade nodes.
+
+Limits on the disk space capacity: No more than 20 TB per node Limits on specifications: 8 CPU cores and 32 GiB of memory 16 CPU cores and 64 GiB of memory (suggested specification) 32 CPU cores and 128 GiB of memory
 
 **Limits on features**
 
@@ -179,7 +193,11 @@ An index is a collection of documents with similar characteristics, which is equ
 
 **Type (type)**
 
-A type is usually a logical classification or partition of an index, allowing different types of documents to be stored under an index, equivalent to a table in the ApsaraDB RDS. such as user type and blog type. Elasticsearch versions later than 6.x no longer support creating multiple types in an index. Elasticsearch 5.x allows different types of documents to be stored under one index, Elasticsearch 6.x allows only one type under one index, Elasticsearch 7.x index type naming allows only_doc.
+A type is usually a logical classification or partition of an index, allowing different types of documents to be stored under an index, equivalent to a table in the ApsaraDB RDS. such as user type and blog type.
+
+> **Note:** Elasticsearch versions later than 6.x no longer support creating multiple types in an index.
+
+Elasticsearch 5.x allows different types of documents to be stored under one index, Elasticsearch 6.x allows only one type under one index, Elasticsearch 7.x index type naming allows only_doc.
 
 **Document (document)**
 
@@ -231,25 +249,27 @@ Obtain the service domain name for the Apsara Uni-manager Operation Console from
 **Procedure**
 
 1. In your browser's address bar, enter the service domain name for the Apsara Uni-manager
-Operation Console and press Enter. Click the current language in the upper-right corner to switch languages. The **federated sign-in** option is displayed only when global Identity Provider (IdP) settings are configured. The name for this option can be customized. If you are repeatedly prompted to continue, or if you cannot find the entry for the Apsara Uni-manager Operation Console, you may need to install a certificate to access the console. This can occur if your browser certificate has expired or if the environment has HTTPS authentication enabled. Click **Browser Certificate**
+Operation Console and press Enter.
+
+> **Note:** Click the current language in the upper-right corner to switch languages.
+> The **federated sign-in** option is displayed only when global Identity Provider (IdP) settings are configured. The name for this option can be customized.
+
+If you are repeatedly prompted to continue, or if you cannot find the entry for the Apsara Uni-manager Operation Console, you may need to install a certificate to access the console. This can occur if your browser certificate has expired or if the environment has HTTPS authentication enabled. Click **Browser Certificate**
 **Installation** in the upper-right corner to open the installation guide.
 2. Enter your username and password.
 Obtain the username and password from your operations administrator.
 
-**First-time sign-in**
+> **Note:** **First-time sign-in**
+> On your first sign-in to the Apsara Uni-manager Operation Console, you must change your password. Follow the on-screen prompts to complete the password change. For security purposes, the new password must be 10 to 32 characters long and include uppercase letters, lowercase letters, digits, and special characters (such as !, @, #, $, and %).
+> **Forgot Password**
+> If you forget your password, click **Forgot Password**. Enter your **username**, **Email** (the email address provided when your user account was created), and the verification code. A password reset link is sent to your email address. Click the link to set a new password.
 
-On your first sign-in to the Apsara Uni-manager Operation Console, you must change your password. Follow the on-screen prompts to complete the password change. For security purposes, the new password must be 10 to 32 characters long and include uppercase letters, lowercase letters, digits, and special characters (such as !, @, #, $, and %).
-
-**Forgot Password**
-
-If you forget your password, click **Forgot Password**. Enter your **username**,
-**Email** (the email address provided when your user account was created), and
-the verification code. A password reset link is sent to your email address. Click the link to set a new password.
 3. Click **Log on**.
 4. If multi-factor authentication (MFA) is enabled for your account, follow the relevant steps:
-First-time sign-in after an administrator has enforced MFA: a. On the Bind Virtual MFA Device page, follow the on-screen instructions. b. Enter your username and password again, and then click **Log on**. c. Enter the 6-digit MFA code and click **Authenticate**. If you have already enabled and bound a virtual MFA device: Enter the 6-digit MFA code and click **Authenticate**. For more information about binding and enabling a virtual MFA device, see **Apsara U**
-**ni-manager Operation Console User Guide** > **Security Center** > **Multi-factor**
-**authentication** > **Manage multi-factor authentication**.
+First-time sign-in after an administrator has enforced MFA: a. On the Bind Virtual MFA Device page, follow the on-screen instructions. b. Enter your username and password again, and then click **Log on**. c. Enter the 6-digit MFA code and click **Authenticate**. If you have already enabled and bound a virtual MFA device: Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For more information about binding and enabling a virtual MFA device, see **Apsara U** **ni-manager Operation Console User Guide** > **Security Center** > **Multi-factor** **authentication** > **Manage multi-factor authentication**.
+
 5. In the top navigation bar, choose **Products > Big Data Computing > Alibaba Cloud**
 **Elasticsearch** to open the Alibaba Cloud Elasticsearch console.
 
@@ -291,9 +311,13 @@ You can use the following methods to go to the Create Instance page: In the **Ov
 In the left-side navigation pane, click **Clusters List**. On the page that appears, click
 **Create**.
 3. On the **Create Instance** page, specify the parameters in the Basic Information, Data Node
-Information, Kibana Node Information, Dedicated Master Node Information, Coordinator Node Information, and Network Information sections. If you use an environment that supports the Apsara Copilot feature (corresponding to the icon in the console) and the text-selection search feature is enabled, you can select the parameters whose details you want to view and click **Consult Apsara**
-**Copilot** in the dialog box to learn more about the parameters in the Apsara Copilot
-dialog box on the right. You can enable text-selection search by clicking the button in the upper-right corner of the Apsara Copilot dialog box.
+Information, Kibana Node Information, Dedicated Master Node Information, Coordinator Node Information, and Network Information sections.
+
+> **Note:** If you use an environment that supports the Apsara Copilot feature (corresponding to the
+> icon in the console) and the text-selection search feature is enabled, you can
+> select the parameters whose details you want to view and click **Consult Apsara** **Copilot** in the dialog box to learn more about the parameters in the Apsara Copilot dialog box on the right. You can enable text-selection search by clicking the
+> button
+> in the upper-right corner of the Apsara Copilot dialog box.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -362,10 +386,10 @@ If you have not created the **Alibaba Cloud Search and Analytics Service** in cl
 For more information about service management, see the **Service management** topic in
 **Apsara Uni-manager Operations Console User Guide** .
 6. In the message that appears, click **OK**.
-A period of time is required before an Elasticsearch cluster can provide services after it is created. If **Normal** is displayed in the **Status** column of the cluster, the cluster has been successfully created. Before you use the cluster, you must configure a whitelist. Otherwise, you may encounter issues such as monitoring data collection failure or Kibana console login failure. For more information, see the Security Settings section of the Cluster configuration topic. To view information in the **Security Level** column of the cluster on the **Instance**
-**List** page, you must first enable security level-based authorization. For more
-information, see **Apsara Uni-manager Management Console User Guide >**
-**Security policies > Security level-based authorization**.
+A period of time is required before an Elasticsearch cluster can provide services after it is created. If **Normal** is displayed in the **Status** column of the cluster, the cluster has been successfully created.
+
+> **Note:** Before you use the cluster, you must configure a whitelist. Otherwise, you may encounter issues such as monitoring data collection failure or Kibana console login failure. For more information, see the Security Settings section of the Cluster configuration topic.
+> To view information in the **Security Level** column of the cluster on the **Instance** **List** page, you must first enable security level-based authorization. For more information, see **Apsara Uni-manager Management Console User Guide >** **Security policies > Security level-based authorization**.
 
 **Create an OpenSearch cluster**
 
@@ -376,9 +400,13 @@ You can use the following methods to go to the Create Instance page: In the **Ov
 In the left-side navigation pane, click **Clusters List**. On the page that appears, click
 **Create**.
 3. On the **Create Instance** page, specify the parameters in the Basic Information, Data Node
-Information, Dashboard Node Information, Dedicated Master Node Information, Coordinator Node Information, and Network Information sections. If you use an environment that supports the Apsara Copilot feature (corresponding to the icon in the console) and the text-selection search feature is enabled, you can select the parameters whose details you want to view and click **Consult Apsara**
-**Copilot** in the dialog box to learn more about the parameters in the Apsara Copilot
-dialog box on the right. You can enable text-selection search by clicking the button in the upper-right corner of the Apsara Copilot dialog box.
+Information, Dashboard Node Information, Dedicated Master Node Information, Coordinator Node Information, and Network Information sections.
+
+> **Note:** If you use an environment that supports the Apsara Copilot feature (corresponding to the
+> icon in the console) and the text-selection search feature is enabled, you can
+> select the parameters whose details you want to view and click **Consult Apsara** **Copilot** in the dialog box to learn more about the parameters in the Apsara Copilot dialog box on the right. You can enable text-selection search by clicking the
+> button
+> in the upper-right corner of the Apsara Copilot dialog box.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -450,8 +478,9 @@ If you have not created the **Alibaba Cloud Search and Analytics Service** in cl
 For more information about service management, see the **Service management** topic in
 **Apsara Uni-manager Operations Console User Guide** .
 6. In the message that appears, click **OK**.
-A period of time is required before an Elasticsearch cluster can provide services after it is created. If **Normal** is displayed in the **Status** column of the cluster, the cluster has been successfully created. To view information in the **Security Level** column of the cluster on the **Instance List** page, you must first enable security level-based authorization. For more information, see **Apsara Uni-manager Management Console User Guide > Security policies**
-**> Security level-based authorization**.
+A period of time is required before an Elasticsearch cluster can provide services after it is created. If **Normal** is displayed in the **Status** column of the cluster, the cluster has been successfully created.
+
+> **Note:** To view information in the **Security Level** column of the cluster on the **Instance List** page, you must first enable security level-based authorization. For more information, see **Apsara Uni-manager Management Console User Guide > Security policies** **> Security level-based authorization**.
 
 ### 5.4 Access a cluster
 
@@ -464,8 +493,9 @@ An Elasticsearch cluster is created and added to the whitelist. For more informa
 **Access a cluster from an ECS instance**
 
 1. Log in to the ECS instance over SSH and install the cURL tool.
-For more information about how to log in to an ECS instance, see **Quick start >**
-**Connect to an instance > Instance connecting overview** in ESC User Guide.
+
+> **Note:** For more information about how to log in to an ECS instance, see **Quick start >** **Connect to an instance > Instance connecting overview** in ESC User Guide.
+
 2. Run a cURL command to access the cluster using its private endpoint.
 
 ```bash
@@ -473,15 +503,18 @@ curl http://<HOST>:<PORT> -u elastic:<password>
 ```
 
 **<HOST>**: The private endpoint of the Elasticsearch cluster. You can obtain the endpoint
-from the Basic Information page of the cluster. Log on to the Alibaba Cloud Elasticsearch console. In the navigation pane on the left, click **Elasticsearch Instances**, and then click the ID of the target instance. On the
-**Basic Information** page, you can find the private endpoint.
+from the Basic Information page of the cluster.
+
+> **Note:** Log on to the Alibaba Cloud Elasticsearch console. In the navigation pane on the left, click **Elasticsearch Instances**, and then click the ID of the target instance. On the **Basic Information** page, you can find the private endpoint.
+
 **<PORT>**: the internal port of the Elasticsearch cluster. You can obtain the information
 from the Basic Information page. The default port is 9200.
 **<password>**: the password of the elastic account of the Elasticsearch cluster.
 
 **Access a cluster from the Kibana/Dashboard console**
 
-For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+> **Note:** For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+
 1. Log on to the Alibaba Cloud Elasticsearch console. In the left navigation pane, click **Instance**
 **List**.
 2. In the **Instance List**, click the target instance ID.
@@ -489,11 +522,12 @@ For Elasticsearch instances, use the Kibana console. For OpenSearch instances, u
 access URL for the corresponding console.
 4. Enter the username and password, and click **Login**.
 
-**Important**
+> **Important:** The default username is elastic for an Elasticsearch instance and admin for an OpenSearch instance. The password is the one that you specified when you created the cluster.
 
-The default username is elastic for an Elasticsearch instance and admin for an OpenSearch instance. The password is the one that you specified when you created the cluster.
 5. Click the
-icon in the upper-left corner, choose **Management > Dev Tools**, and then run the `GET /` command in the **Console** to access the cluster. A cluster of Elasticsearch V6.8.2 is used in this example. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+icon in the upper-left corner, choose **Management > Dev Tools**, and then run the `GET /` command in the **Console** to access the cluster.
+
+> **Note:** A cluster of Elasticsearch V6.8.2 is used in this example. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
 
 ### 5.5 View cluster information
 
@@ -501,7 +535,8 @@ This topic describes how to view Elasticsearch cluster information in the Kibana
 
 **Procedure**
 
-For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+> **Note:** For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+
 1. Log in to the Kibana console.
 2. Run the following commands to view the basic information of the cluster.
 View the Elasticsearch cluster version
@@ -558,7 +593,8 @@ This topic describes how to create an index for an Elasticsearch cluster by usin
 
 **Procedure**
 
-For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+> **Note:** For Elasticsearch instances, use the Kibana console. For OpenSearch instances, use the Dashboard console. The procedures are similar. This topic uses the Kibana console as an example.
+
 1. Log in to the Kibana console.
 2. Run the following command to create an index:
 
@@ -594,9 +630,9 @@ PUT my_index
         "analyzer": "cjk"
 ```
 
-**Important**
+> **Important:** The preceding sample code applies only to Elasticsearch V7.0.0 and later. You can modify the code based on your business requirements. For more information, see Doc index.
 
-The preceding sample code applies only to Elasticsearch V7.0.0 and later. You can modify the code based on your business requirements. For more information, see Doc index. In Elasticsearch V7.0.0 and later, mapping types are removed. However, these mapping types are still supported in earlier versions. For more information, see Removal of types. In the preceding example, an index named `my_index` is created, and the type of the index
+In Elasticsearch V7.0.0 and later, mapping types are removed. However, these mapping types are still supported in earlier versions. For more information, see Removal of types. In the preceding example, an index named `my_index` is created, and the type of the index
 
 | is | doc _ |   |
 |---|---|---|
@@ -1257,7 +1293,11 @@ This topic describes how to modify the name of an Elasticsearch cluster.
 1. Sign in to the Alibaba Cloud Elasticsearch console.
 2. In the left-side navigation pane, click **Clusters List**.
 3. Rename a cluster.
-You can use either of the following methods to rename the cluster: The cluster name must be 0 to 30 characters in length and start with a letter, digit, or Chinese character. It can contain underscores (_) or hyphens (-). Method 1: a. On the **Instance List** page, move the pointer over **Instance ID/name** and click . b. In the **Modify Name** dialog box that appears, enter a new name. c. Click **OK**. Method 2: a. On the **Instance List** page, click **Instance ID/name**. b. In the **Basic Information** section, click **Edit** next to **Name**. c. Enter a new name as prompted and click **OK**.
+You can use either of the following methods to rename the cluster:
+
+> **Note:** The cluster name must be 0 to 30 characters in length and start with a letter, digit, or Chinese character. It can contain underscores (_) or hyphens (-).
+
+Method 1: a. On the **Instance List** page, move the pointer over **Instance ID/name** and click . b. In the **Modify Name** dialog box that appears, enter a new name. c. Click **OK**. Method 2: a. On the **Instance List** page, click **Instance ID/name**. b. In the **Basic Information** section, click **Edit** next to **Name**. c. Enter a new name as prompted and click **OK**.
 
 #### 7.1.5 Manage cluster tags
 
@@ -1268,11 +1308,11 @@ If you have multiple Elasticsearch clusters, you can add tags to the clusters to
 1. Log in to the Alibaba Cloud Search and Analytics Service console.
 2. In the left-side navigation pane, click **Clusters List**.
 3. On the **Instance List** page, add tags to one or more clusters.
-Add a tag to a single cluster a. Move the pointer in the **Tag** column of the cluster to which you want to add a tag, and click the icon. b. In the **Edit Tags** dialog box, click **Add**, configure the **Tag Key** and **Tag Value** parameters, and click **OK**. c. In the Edited message, confirm that the tag is added to the cluster, and then click Close. Add tags to multiple clusters at a time a. Select multiple clusters to which you want to add tags and click **Batch Add Tags** below the cluster list. b. In the **Batch Add Tags** dialog box, click **Add**, configure the **Tag Key** and **Tag Value** parameters, and click **OK**. c. In the Edited message, confirm that the tags are added to the clusters, and then click Close. The tag key must be unique. You can create up to 20 tags at a time. For more information about how to manage tags in a centralized manner, see
+Add a tag to a single cluster a. Move the pointer in the **Tag** column of the cluster to which you want to add a tag, and click the icon. b. In the **Edit Tags** dialog box, click **Add**, configure the **Tag Key** and **Tag Value** parameters, and click **OK**. c. In the Edited message, confirm that the tag is added to the cluster, and then click Close. Add tags to multiple clusters at a time a. Select multiple clusters to which you want to add tags and click **Batch Add Tags** below the cluster list. b. In the **Batch Add Tags** dialog box, click **Add**, configure the **Tag Key** and **Tag Value** parameters, and click **OK**. c. In the Edited message, confirm that the tags are added to the clusters, and then click Close.
 
-**Apsara Uni-manager Management Console User Guide > Operation**
-
-**Center > Resource Operations > Manage tags**.
+> **Note:** The tag key must be unique.
+> You can create up to 20 tags at a time.
+> For more information about how to manage tags in a centralized manner, see **Apsara Uni-manager Management Console User Guide > Operation** **Center > Resource Operations > Manage tags**.
 
 **Filter clusters by tag**
 
@@ -1323,7 +1363,10 @@ In most cases, if the loads of a cluster are not high and the indexes in the clu
 |---|---|
 
 6. Click **OK**.
-If you perform a forced restart, you must select the **Confirm Forced Restart** checkbox. While the instance is restarting, its status is Restarting (yellow). After the restart is complete, the status changes to Normal (green).
+
+> **Note:** If you perform a forced restart, you must select the **Confirm Forced Restart** checkbox.
+
+While the instance is restarting, its status is Restarting (yellow). After the restart is complete, the status changes to Normal (green).
 
 #### 7.1.7 Releasing an instance
 
@@ -1420,7 +1463,11 @@ The instance status is Normal. A change task is running in the instance.
 icon in the upper-right corner.
 4. In the task list, you can view **Change Start Time**, **Change Type**, and **Change Status**.
 5. Click the
-icon to the left of the task to view the list that displays the status and uptime of each node in the cluster. Click **Node Information** or **Node Logs** to view the information or logs of the corresponding node. After the task completes, the icon in the upper-right corner of the Basic Information page changes to , and the icon in the task list disappears.
+icon to the left of the task to view the list that displays the status and uptime of each node in the cluster. Click **Node Information** or **Node Logs** to view the information or logs of the corresponding node.
+
+> **Note:** After the task completes, the icon in the upper-right corner of the Basic Information page changes to
+> , and the
+> icon in the task list disappears.
 
 #### 7.2.3 View the logs of a node
 
@@ -1434,7 +1481,8 @@ This topic describes how to view the logs of a node.
 3. In the **Node Visualization** section of the **Basic Information** page, move the pointer over
 the icon of a node and click **View Node Logs** in the menu that appears.
 4. In the Node Logs message, view the logs of the node.
-By default, the system displays only the latest 100 log entries of the node. If auto refresh is enabled, log data is updated every 30 seconds. For more information about how to query log details, refer to Operations and Maintenance Guide and go to the corresponding log page.
+
+> **Note:** By default, the system displays only the latest 100 log entries of the node. If auto refresh is enabled, log data is updated every 30 seconds. For more information about how to query log details, refer to Operations and Maintenance Guide and go to the corresponding log page.
 
 ### 7.3 Scale in or out a cluster
 
@@ -1450,7 +1498,8 @@ Cluster scale-in operations are high-risk operations. Improper cluster scale-in 
 
 **Procedure**
 
-The procedure for scaling OpenSearch instances is similar to that for Elasticsearch instances. This topic uses an Elasticsearch instance as an example.
+> **Note:** The procedure for scaling OpenSearch instances is similar to that for Elasticsearch instances. This topic uses an Elasticsearch instance as an example.
+
 1. Log on to the Alibaba Cloud OpenSearch service console. In the navigation pane on the left, click
 **Instance List**.
 2. On the **Instance List** page, click the ID of the target instance.
@@ -1491,9 +1540,9 @@ stores the synonym dictionary file and the name of the file. The synonym diction
 tomato, tomato Charge => Charge
 ```
 
-**Important**
-
-Elasticsearch allows you to upload synonym dictionary files from Object Storage Service (OSS). Make sure that the bucket and Elasticsearch cluster reside in the same region and the file is in the TXT format. Before you upload a synonym dictionary file, make sure that the cluster is in the Normal state. Elasticsearch supports hot and cold updates for custom dictionaries. Hot updates do not require cluster restarts.
+> **Important:** Elasticsearch allows you to upload synonym dictionary files from Object Storage Service (OSS). Make sure that the bucket and Elasticsearch cluster reside in the same region and the file is in the TXT format.
+> Before you upload a synonym dictionary file, make sure that the cluster is in the Normal state.
+> Elasticsearch supports hot and cold updates for custom dictionaries. Hot updates do not require cluster restarts.
 
 | Parameter | Description |
 |---|---|
@@ -1507,9 +1556,9 @@ If the file appears in the **Synonym Dictionary Configuration** text box and **s
 7. After the status of the Elasticsearch cluster becomes Normal, log in to the Kibana console of
 the cluster. Then, create indexes, verify synonyms, and upload test data to perform a search test.
 
-**Important**
+> **Important:** When you create an index, you must configure the `settings` and specify
 
-When you create an index, you must configure the `settings` and specify `"synonyms_path":"synonym"` for the `settings` parameter. For more information, see Using Synonyms.
+`"synonyms_path":"synonym"` for the `settings` parameter. For more information, see Using Synonyms.
 
 **Security settings**
 
@@ -1526,31 +1575,31 @@ information.
 
 View the login name elastic (or admin): The login name of an Elasticsearch cluster is elastic, while the login name of an OpenSearch cluster is admin. The login name, elastic or admin, is equivalent to the administrator account and has all permissions of a superuser.
 
-**Important**
+> **Important:** If you reset the password of the elastic or admin account for an Elasticsearch cluster, only access to the cluster by using the elastic or admin account is affected. Access to the Elasticsearch cluster by using other accounts is not affected. We recommend that you use a custom account to access your Elasticsearch cluster. The custom account must be assigned a role with the required permissions.
 
-If you reset the password of the elastic or admin account for an Elasticsearch cluster, only access to the cluster by using the elastic or admin account is affected. Access to the Elasticsearch cluster by using other accounts is not affected. We recommend that you use a custom account to access your Elasticsearch cluster. The custom account must be assigned a role with the required permissions. kibanaserver: the account used by the Kibana service. The account has the kibana_system permission and is granted only the least permissions required for initializing Kibana. The account cannot be used to access user data. The whitelist of this account must contain the IP address of the Kibana service. If the whitelist is improperly configured, Kibana cannot be accessed. monitoring_collector: the account used by the control service. The account has the aliyun-ops permission. Some control features, such as monitoring data collection and automatic backup, rely on this account. The account is granted the least control permissions. It cannot be used to access user data. The whitelist of this account must contain all possible IP addresses of the control components. If the whitelist is improperly configured, some control features will become unavailable. For example, you may be unable to view monitoring data, enable automatic backup, or perform disaster recovery failovers through Apsara Stack Resilience. Change the password Click **Change Password** to change the password of an account. This operation does not require cluster restarts. Modify the whitelist
+kibanaserver: the account used by the Kibana service. The account has the kibana_system permission and is granted only the least permissions required for initializing Kibana. The account cannot be used to access user data. The whitelist of this account must contain the IP address of the Kibana service. If the whitelist is improperly configured, Kibana cannot be accessed. monitoring_collector: the account used by the control service. The account has the aliyun-ops permission. Some control features, such as monitoring data collection and automatic backup, rely on this account. The account is granted the least control permissions. It cannot be used to access user data. The whitelist of this account must contain all possible IP addresses of the control components. If the whitelist is improperly configured, some control features will become unavailable. For example, you may be unable to view monitoring data, enable automatic backup, or perform disaster recovery failovers through Apsara Stack Resilience. Change the password Click **Change Password** to change the password of an account. This operation does not require cluster restarts. Modify the whitelist
 
-**Important**
+> **Important:** You can modify the whitelist only for Elasticsearch clusters, but not for OpenSearch clusters.
 
-You can modify the whitelist only for Elasticsearch clusters, but not for OpenSearch clusters. Click **Modify Whitelist** to modify the whitelist. Separate multiple IP addresses with commas (,). Example: `127.0.0.1,127.0.0.2` . Specify an IP address range by entering a CIDR block. For example, `1.2.3.4/24` indicates that all IP addresses in the 1.2.3.X CIDR block are allowed to access the Elasticsearch cluster. By default, the whitelist is set to `127.0.0.1` , which means that the corresponding account is not allowed to remotely access the Elasticsearch cluster.
+Click **Modify Whitelist** to modify the whitelist. Separate multiple IP addresses with commas (,). Example: `127.0.0.1,127.0.0.2` . Specify an IP address range by entering a CIDR block. For example, `1.2.3.4/24` indicates that all IP addresses in the 1.2.3.X CIDR block are allowed to access the Elasticsearch cluster. By default, the whitelist is set to `127.0.0.1` , which means that the corresponding account is not allowed to remotely access the Elasticsearch cluster.
 
 **View certificate information**
 
 The certificate is used by Elasticsearch nodes to communicate with each other. Only nodes with the same certificate can access each other.
 
-**Important**
-
-The certificate is randomly generated by the system. If you want to use the Cross Data Center Replication (XDCR), Cross-Cluster Search (CCS), or Cross- Cluster Reindex feature in Elasticsearch, make sure that the primary and secondary clusters use the same certificate. You can use custom certificates. If you want to change the certificate, contact the O&M engineer.
+> **Important:** The certificate is randomly generated by the system. If you want to use the Cross Data Center Replication (XDCR), Cross-Cluster Search (CCS), or Cross- Cluster Reindex feature in Elasticsearch, make sure that the primary and secondary clusters use the same certificate.
+> You can use custom certificates. If you want to change the certificate, contact the O&M engineer.
 
 **Troubleshoot errors and exceptions**
 
-To obtain the IP address of the Kibana service, contact the O&M engineer or refer to the cluster management operations in the O&M guide. Failure to log in to the Kibana console Error message: Elasticsearch V6.X/7.X: Kibana server is not ready yet Elasticsearch V5.X: Authorization Exception Cause: The whitelist of the kibanaserver account is improperly configured. Solution: Modify the whitelist of the kibanaserver account and add the IP address of the Kibana service to the whitelist of the kibanaserver account. You can still log in to the Kibana console after the Kibana whitelist is disabled Exception: You can still log in to the Kibana console after the Kibana whitelist is disabled. Cause: The Kibana page is not reinitialized. Solution: Contact the O&M engineer to restart the pod that runs the Kibana service. No monitoring data is displayed Exception: "no data" is displayed on the Grafana monitoring page. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the exporter service to the whitelist of the monitoring_collector account. An error is thrown when you access the Elasticsearch plug-in page Error message: 403 Forbidden:[Ip 23.5.**.** is not allow in ip white/black list] Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. An error is thrown when you access the automatic backup page Error message: proxy request fail Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. Automatic backup does not take effect Exception: The snapshot is not taken normally after the specified time point. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the snapshot service to the whitelist of the monitoring_collector account. Cross-cluster access error Error message: [][22.0.x.x:9300] general node connection failure Cause: The clusters that need to intercommunicate use different certificates. Solution: Contact the O&M engineer or refer to the cluster management operations in the O&M guide.
+> **Note:** To obtain the IP address of the Kibana service, contact the O&M engineer or refer to the cluster management operations in the O&M guide.
+
+Failure to log in to the Kibana console Error message: Elasticsearch V6.X/7.X: Kibana server is not ready yet Elasticsearch V5.X: Authorization Exception Cause: The whitelist of the kibanaserver account is improperly configured. Solution: Modify the whitelist of the kibanaserver account and add the IP address of the Kibana service to the whitelist of the kibanaserver account. You can still log in to the Kibana console after the Kibana whitelist is disabled Exception: You can still log in to the Kibana console after the Kibana whitelist is disabled. Cause: The Kibana page is not reinitialized. Solution: Contact the O&M engineer to restart the pod that runs the Kibana service. No monitoring data is displayed Exception: "no data" is displayed on the Grafana monitoring page. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the exporter service to the whitelist of the monitoring_collector account. An error is thrown when you access the Elasticsearch plug-in page Error message: 403 Forbidden:[Ip 23.5.**.** is not allow in ip white/black list] Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. An error is thrown when you access the automatic backup page Error message: proxy request fail Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. Automatic backup does not take effect Exception: The snapshot is not taken normally after the specified time point. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the snapshot service to the whitelist of the monitoring_collector account. Cross-cluster access error Error message: [][22.0.x.x:9300] general node connection failure Cause: The clusters that need to intercommunicate use different certificates. Solution: Contact the O&M engineer or refer to the cluster management operations in the O&M guide.
 
 **Modify configurations**
 
-**Important**
+> **Important:** The modification operation will cause the Elasticsearch cluster to restart. Proceed with caution.
 
-The modification operation will cause the Elasticsearch cluster to restart. Proceed with caution.
 1. Go to the Cluster Configuration page.
 2. In the **Modify Configurations** section, click **Edit** and configure the fields based on your
 business requirements. The following tables describe the configuration fields. The fields displayed on the user interface (UI) take precedence.
@@ -1606,9 +1655,7 @@ business requirements. The following tables describe the configuration fields. T
 2. In the **YML File Configuration** section, click **Modify Configuration** on the right side.
 3. In the **YML File Configuration** panel, configure the following parameters.
 
-**Warning**
-
-Improper YML file configurations may cause cluster unavailability or data loss. Do not modify the configuration unless it is necessary, especially the preset settings.
+> **Warning:** Improper YML file configurations may cause cluster unavailability or data loss. Do not modify the configuration unless it is necessary, especially the preset settings.
 
 | Parameter | Description |
 |---|---|
@@ -1813,9 +1860,9 @@ The instance status is Normal, and an O&M engineer has uploaded the required plu
 4. On the **Plug-ins** page, you can perform the following operations:
 Click the **Default Plug-ins** tab to view the plug-ins that are installed by default. Click the **Custom Plug-ins** tab to **install** or **uninstall** a plug-in. In the dialog box that appears, read the risk information and click **Confirm**.
 
-**Warning**
+> **Warning:** After you install or uninstall a plug-in, the cluster is restarted. Proceed with caution.
 
-After you install or uninstall a plug-in, the cluster is restarted. Proceed with caution. After the cluster is restarted and the status of the plug-in displays Installed or Uninstalled, the plug-in is successfully installed or uninstalled.
+After the cluster is restarted and the status of the plug-in displays Installed or Uninstalled, the plug-in is successfully installed or uninstalled.
 
 #### 7.4.3 Security settings
 
@@ -1844,9 +1891,8 @@ To modify or remove the configured IP address whitelist, click **Modify** or **D
 
 Hyper Text Transfer Protocol over Secure Socket Layer (HTTPS) is a security-enhanced version of HTTP. HTTPS works with Secure Socket Layer (SSL) to ensure the security of data transmission. HTTPS uses HTTP for communication. SSL is used to encrypt data. To ensure data security, we recommend that you enable HTTPS.
 
-**Important**
+> **Important:** By default, the HTTPS feature is disabled for Elasticsearch clusters. we recommend that you manually enable this feature. By default, the HTTPS feature is enabled for OpenSearch clusters and cannot be disabled.
 
-By default, the HTTPS feature is disabled for Elasticsearch clusters. we recommend that you manually enable this feature. By default, the HTTPS feature is enabled for OpenSearch clusters and cannot be disabled.
 1. Go to the Security page.
 2. Turn on the switch next to **Enable HTTPS** to enable HTTPS.
 
@@ -1898,9 +1944,9 @@ POST _snapshot/my_backup/ <1>
 
 <1>: the request method.
 
-**Important**
+> **Important:** When you update the settings of a repository, use the POST method instead of the PUT method. If you use the PUT method for the update, other settings of the repository are also updated.
 
-When you update the settings of a repository, use the POST method instead of the PUT method. If you use the PUT method for the update, other settings of the repository are also updated. <2>: the path of the repository. The default value is the root directory.
+<2>: the path of the repository. The default value is the root directory.
 
 **Query repository information**
 
@@ -1930,9 +1976,7 @@ After you run the command, the system does not return a response until the snaps
 
 By default, a snapshot contains all enabled indexes. If Kibana is used when you create a snapshot, you may want to ignore all diagnostic indexes (the `.kibana` indexes) because of limited disk space. To create a snapshot for specified indexes, run the following command.
 
-**Important**
-
-A repository stores multiple snapshots. Each snapshot is a copy of all indexes, specified indexes, or a single index in a cluster. When you create a snapshot, specify the desired indexes and make sure that the snapshot name is unique.
+> **Important:** A repository stores multiple snapshots. Each snapshot is a copy of all indexes, specified indexes, or a single index in a cluster. When you create a snapshot, specify the desired indexes and make sure that the snapshot name is unique.
 
 ```json
 PUT _snapshot/my_backup/snapshot_2
@@ -1994,9 +2038,8 @@ You can specify a repository name and a snapshot name in a `DELETE` request to d
 DELETE _snapshot/my_backup/snapshot_2
 ```
 
-**Important**
-
-You can delete snapshots only by calling the DELETE API operation. A snapshot may be associated with the data in other snapshots. The DELETE API operation does not delete files that are still being used by other snapshots. It deletes only the files that are associated with the deleted snapshot and are no longer used by other snapshots. If you choose to manually delete a snapshot, you may delete files that are used by other snapshots. This can cause data loss.
+> **Important:** You can delete snapshots only by calling the DELETE API operation. A snapshot may be associated with the data in other snapshots. The DELETE API operation does not delete files that are still being used by other snapshots. It deletes only the files that are associated with the deleted snapshot and are no longer used by other snapshots.
+> If you choose to manually delete a snapshot, you may delete files that are used by other snapshots. This can cause data loss.
 
 **Monitor snapshot restoration progress**
 
@@ -2008,9 +2051,9 @@ GET _snapshot/my_backup/snapshot_3
 
 If the system is creating the snapshot when you run the preceding command, the information of the creation task is returned, such as the start time and duration of the task.
 
-**Important**
+> **Important:** The preceding command shares a thread pool with the command used to create a snapshot. Therefore, if you create a snapshot for large shards, the preceding command has to wait until the resources that are used by the snapshot creation command in the thread pool are released.
 
-The preceding command shares a thread pool with the command used to create a snapshot. Therefore, if you create a snapshot for large shards, the preceding command has to wait until the resources that are used by the snapshot creation command in the thread pool are released. Call the _status API operation to query the snapshot status. Example:
+Call the _status API operation to query the snapshot status. Example:
 
 ```json
 "snapshots": [
@@ -2132,7 +2175,9 @@ After you call the _restore API operation, the system immediately returns a resp
 
 **Monitor index restoration progress**
 
-Restoring data from a repository applies the existing restoration mechanism in Elasticsearch. Restoring shards from a repository is the same as restoring data from a node. You can call the recovery API operation to monitor the progress of an index restoration task. Monitor the restoration of a specified index. Example:
+> **Note:** Restoring data from a repository applies the existing restoration mechanism in Elasticsearch. Restoring shards from a repository is the same as restoring data from a node.
+
+You can call the recovery API operation to monitor the progress of an index restoration task. Monitor the restoration of a specified index. Example:
 
 ```
 GET restored_index_3/_recovery
@@ -2261,9 +2306,7 @@ An Operations and Maintenance (O&M) engineer has created a backup repository on 
 6. Click **Set** on the right side of **Auto Snapshot Period**.
 7. In the **Auto Snapshot Configuration** panel, specify **Frequency**.
 
-**Important**
-
-The start time is based on the time zone of the current region. Avoid creating cluster snapshots during automatic data backups.
+> **Important:** The start time is based on the time zone of the current region. Avoid creating cluster snapshots during automatic data backups.
 
 | Backup Cycle | Description |
 |---|---|
@@ -2278,7 +2321,11 @@ The start time is based on the time zone of the current region. Avoid creating c
 |---|---|---|
 
 8. Click **OK**.
-After you click OK, the system automatically backs up data based on the backup cycle that you set. You can view detailed backup information in the **Snapshot List**. To back up data immediately, click **Back Up Immediately** in the **Snapshot List**. The snapshot list automatically clears automatic backup records every hour. Only the latest 10 records are retained. The snapshot list does not clear manual backup records that are generated after you click **Create Snapshot**.
+After you click OK, the system automatically backs up data based on the backup cycle that you set. You can view detailed backup information in the **Snapshot List**.
+
+> **Note:** To back up data immediately, click **Back Up Immediately** in the **Snapshot List**.
+
+The snapshot list automatically clears automatic backup records every hour. Only the latest 10 records are retained. The snapshot list does not clear manual backup records that are generated after you click **Create Snapshot**.
 
 ### 7.5 Kibana console
 
@@ -2298,7 +2345,9 @@ The Elasticsearch cluster is in the Normal state, and Kibana nodes are enabled. 
 3. On the **Basic Information** page, in the **Kibana Information** section, click the link to the
 right of **Kibana Console URL**.
 4. Enter the username and password and click Log In.
-The default username is elastic. The password is the one that you specified when you created the instance.
+
+> **Note:** The default username is elastic. The password is the one that you specified when you created the instance.
+
 5. Click the
 icon in the upper-left corner and choose **Management > Dev Tools** to go to the **Console** page.
 
@@ -2320,9 +2369,8 @@ The Elasticsearch cluster is in the Normal state. The O&M engineer has uploaded 
 4. On the **Plug-in Configuration** page, you can view the Kibana plug-in list.
 5. Click **Install** or **Remove** in the Actions column of a plug-in.
 
-**Warning**
+> **Warning:** Installing or uninstalling a plug-in restarts the cluster. Confirm the operation before you proceed.
 
-Installing or uninstalling a plug-in restarts the cluster. Confirm the operation before you proceed.
 6. In the dialog box that appears, read the risk warning and click **Confirm**.
 Wait for the cluster to restart. The status of the plug-in changes to Installed or Uninstalled, which indicates that the operation is successful.
 
@@ -2344,7 +2392,9 @@ The instance status is Normal, and the Dashboards node is enabled.
 3. On the **Basic Information** page, in the **Dashboards Information** section, click the link
 next to **Dashboards Console URL**.
 4. Enter your username and password and click **Log In**.
-The default username is admin. The password is the one that you set when you created the instance.
+
+> **Note:** The default username is admin. The password is the one that you set when you created the instance.
+
 5. Click the
 icon in the upper-left corner and choose **Management > Dev Tools** to open the **Console** page.
 
@@ -2362,9 +2412,8 @@ left, click **Instance List**.
 4. On the **Plugin Configuration** page, view the list of Dashboard plugins.
 5. Click **Install** or **Uninstall** next to the target plugin.
 
-**Warning**
+> **Warning:** Installing or uninstalling a plugin triggers a cluster restart. Proceed with caution.
 
-Installing or uninstalling a plugin triggers a cluster restart. Proceed with caution.
 6. In the dialog box that appears, read the risk notice and click **Confirm**.
 After the cluster successfully restarts, the status of an installed plugin changes to Installed and the status of an uninstalled plugin changes to Not Installed. This confirms that the plugin was successfully installed or uninstalled.
 
@@ -2439,28 +2488,37 @@ PUT _cluster/settings
             "<your cluster IP>:<your cluster Port>"
 ```
 
-`]` Replace `<your cluster IP>` and `<your cluster Port>` with the `<IP:Port>` information from Step 4 of the Preparation section.
+`]`
+
+> **Note:** Replace `<your cluster IP>` and `<your cluster Port>` with the `<IP:Port>` information from Step 4 of the Preparation section.
+
 4. Run the following command to start replicating the index.
 
 ```
 PUT _xdcr/leader/my_test_index
 ```
 
-`my_test_index` is an example index name. Replace it with the name of the index that you want to replicate from the source cluster (leader).
+> **Note:** `my_test_index` is an example index name. Replace it with the name of the index that you want to replicate from the source cluster (leader).
+
 5. Run the following command to view the status of the synchronization task.
 
 ```
 GET _cat/xdcr?v
 ```
 
-If the command is successful, it returns a result similar to the following. In the output, `index` is the index name, `repository` is the remote cluster, `shard` is the index shard, `localSeqNo` is the maximum sequence number on the local cluster, and `remoteSeqNo` is the maximum sequence number on the remote cluster.
+If the command is successful, it returns a result similar to the following.
+
+> **Note:** In the output, `index` is the index name, `repository` is the remote cluster, `shard` is the index shard, `localSeqNo` is the maximum sequence number on the local cluster, and `remoteSeqNo` is the maximum sequence number on the remote cluster.
+
 6. Run the following command to view the data in the replicated index.
 
 ```
 GET /my_test_index/_search
 ```
 
-`my_test_index` is an example index name. Replace it with the name of the replicated index. You can also run the following command to stop the index replication.
+> **Note:** `my_test_index` is an example index name. Replace it with the name of the replicated index.
+
+You can also run the following command to stop the index replication.
 
 ```
 DELETE /_xdcr/leader/my_test_index
@@ -2482,7 +2540,9 @@ You have a primary cluster and a standby cluster of the same type. Ensure that t
 
 **Procedure**
 
-Step 1: Log on to the Kibana console Step 2: Create a repository on the standby cluster Step 3: Enable cluster synchronization on the standby cluster Step 4: Verify data synchronization in different use cases Use case 1: Verify data synchronization for a new index Use case 2: Verify incremental and full synchronization for specific indexes Use case 3: Verify the use of the excludes parameter during cluster-wide synchronization Replace the variables in the commands with your actual values. The data used in this topic is for reference only.
+Step 1: Log on to the Kibana console Step 2: Create a repository on the standby cluster Step 3: Enable cluster synchronization on the standby cluster Step 4: Verify data synchronization in different use cases Use case 1: Verify data synchronization for a new index Use case 2: Verify incremental and full synchronization for specific indexes Use case 3: Verify the use of the excludes parameter during cluster-wide synchronization
+
+> **Note:** Replace the variables in the commands with your actual values. The data used in this topic is for reference only.
 
 **Step 1: Log on to the Kibana console**
 
@@ -2505,7 +2565,10 @@ PUT /_xdcr/repository/<new_repository_name>
   "password": "<primary_cluster_password>"
 ```
 
-To get the IP address and port number of the primary cluster, log on to its Kibana console and run the `GET _nodes` command to find the `<IP:Port>` information. Cluster username and password for the primary cluster: The default username is elastic. The password is the one you set when creating the cluster. The following example shows how to create a repository named `rep0801` :
+> **Note:** To get the IP address and port number of the primary cluster, log on to its Kibana console and run the `GET _nodes` command to find the `<IP:Port>` information.
+> Cluster username and password for the primary cluster: The default username is elastic. The password is the one you set when creating the cluster.
+
+The following example shows how to create a repository named `rep0801` :
 2. Run the following command to verify that the repository exists.
 
 ```
@@ -2625,9 +2688,9 @@ The following output indicates a successful creation.
 2. . Enable synchronization and verify status**
 1. On the standby cluster, enable synchronization for each specific index.
 
-**Important**
+> **Important:** If cluster synchronization is enabled, you must disable it first. This feature synchronizes all indexes and will conflict with the index-specific commands that follow, causing an error.
 
-If cluster synchronization is enabled, you must disable it first. This feature synchronizes all indexes and will conflict with the index-specific commands that follow, causing an error. Enable an incremental synchronization task for index A.
+Enable an incremental synchronization task for index A.
 
 ```
 PUT /_xdcr/index_sync/<repository_name>/<index_name>
@@ -2741,7 +2804,7 @@ The opendistro_sql plug-in is installed. For more information, see Install or un
 
 **Procedure**
 
-A cluster of Elasticsearch V6.8 is used in this example. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+> **Note:** A cluster of Elasticsearch V6.8 is used in this example. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
 
 **Step 1: Log in to the Kibana console and go to the Console tab**
 
@@ -2792,7 +2855,11 @@ POST test_user_data/_doc/3
 
 **by executing SQL statements**
 
-Elasticsearch supports the following SQL query syntax: Replace `<your_index>` in the following code with the name of the index that you want to query. Syntax for an SQL query in a GET request
+Elasticsearch supports the following SQL query syntax:
+
+> **Note:** Replace `<your_index>` in the following code with the name of the index that you want to query.
+
+Syntax for an SQL query in a GET request
 
 ```
 GET _opendistro/_sql?sql=select * from <your_index> limit 50
@@ -2935,7 +3002,9 @@ Expected return result:
 city,name,age Shanghai,Bob,28 Beijing,Alice,30 Beijing,Charlie,35
 ```
 
-For more information about SQL syntax, see SQL. If you want to execute Java code by using SQL statements, download the Java Database Connectivity (JDBC) driver from https://github.com/opendistro-forelasticsearch/sql-jdbc.
+> **Note:** For more information about SQL syntax, see SQL.
+
+If you want to execute Java code by using SQL statements, download the Java Database Connectivity (JDBC) driver from https://github.com/opendistro-forelasticsearch/sql-jdbc.
 
 #### 8.1.4 Use the vector search plugin (aliyun-knn)
 
@@ -2945,7 +3014,11 @@ The vector search plugin, developed by the Alibaba Cloud Elasticsearch team, is 
 
 **Background information**
 
-Use cases The Alibaba Cloud Elasticsearch vector search engine is battle-tested in large-scale production applications, including Pailitao (search by image), Alibaba Cloud Image Search, Qutoutiao video fingerprint sampling, personalized recommendations, personalized search, and CrossMedia search. How it works The vector search feature in Alibaba Cloud Elasticsearch is implemented as a plugin to ensure full compatibility with native Elasticsearch versions. You can use the vector search engine with no additional learning curve. In addition to supporting real-time incremental writes and near real-time (NRT) search queries, the vector index inherits all of Elasticsearch's native distributed capabilities, such as multi-replica support and fault recovery. The Alibaba Cloud Elasticsearch vector search plugin does not support data migration using methods like an OSS snapshot or DataWorks. We recommend that you use Logstash. Algorithm description The vector search engine currently supports the hnsw algorithm and the linear algorithm. These algorithms are suitable for scenarios with small, fully in-memory, single-node datasets. The following table compares the performance of the two algorithms. Table 1. Performance comparison between the hnsw and linear algorithms The data in this table was measured in an Alibaba Cloud Elasticsearch V6.8.13 environment. The test environment was configured as follows: Machine specifications: Two data nodes, each with 16 vCPUs, 64 GB of memory, and a 100 GB SSD cloud disk. Dataset: SIFT 128-dimensional float vectors. Total data volume: 20 million entries. The index used default parameters.
+Use cases The Alibaba Cloud Elasticsearch vector search engine is battle-tested in large-scale production applications, including Pailitao (search by image), Alibaba Cloud Image Search, Qutoutiao video fingerprint sampling, personalized recommendations, personalized search, and CrossMedia search. How it works The vector search feature in Alibaba Cloud Elasticsearch is implemented as a plugin to ensure full compatibility with native Elasticsearch versions. You can use the vector search engine with no additional learning curve. In addition to supporting real-time incremental writes and near real-time (NRT) search queries, the vector index inherits all of Elasticsearch's native distributed capabilities, such as multi-replica support and fault recovery.
+
+> **Note:** The Alibaba Cloud Elasticsearch vector search plugin does not support data migration using methods like an OSS snapshot or DataWorks. We recommend that you use Logstash.
+
+Algorithm description The vector search engine currently supports the hnsw algorithm and the linear algorithm. These algorithms are suitable for scenarios with small, fully in-memory, single-node datasets. The following table compares the performance of the two algorithms. Table 1. Performance comparison between the hnsw and linear algorithms The data in this table was measured in an Alibaba Cloud Elasticsearch V6.8.13 environment. The test environment was configured as follows: Machine specifications: Two data nodes, each with 16 vCPUs, 64 GB of memory, and a 100 GB SSD cloud disk. Dataset: SIFT 128-dimensional float vectors. Total data volume: 20 million entries. The index used default parameters.
 
 | Performance metric | hnsw | linear |
 |---|---|---|
@@ -2955,7 +3028,7 @@ Use cases The Alibaba Cloud Elasticsearch vector search engine is battle-tested 
 | Latency (p99) | 0.093s | 0.934s |
 | Latency (p90) | 0.018s | 0.305s |
 
-In the table, `p` stands for percentile. For example, Latency (p99) indicates that 99% of queries are completed within the specified time.
+> **Note:** In the table, `p` stands for percentile. For example, Latency (p99) indicates that 99% of queries are completed within the specified time.
 
 **Limitations**
 
@@ -3051,13 +3124,14 @@ Warm up a specific vector index.
 POST _vector/{indexName}/warmup
 ```
 
-**Important**
-
-If your cluster has many large vector indexes but you only need vector search on specific ones, warm up only those indexes to improve in-memory search performance.
+> **Important:** If your cluster has many large vector indexes but you only need vector search on specific ones, warm up only those indexes to improve in-memory search performance.
 
 **Vector scoring**
 
-Vector search uses a unified scoring formula that depends on the distance metric. The choice of distance metric directly affects search ranking. Scoring formula: Score = 1 / (distance + 1) By default, the vector scoring mechanism uses squared Euclidean distance. In practice, you can calculate the distance from the score to optimize your vectors and improve scoring accuracy.
+Vector search uses a unified scoring formula that depends on the distance metric. The choice of distance metric directly affects search ranking. Scoring formula: Score = 1 / (distance + 1)
+
+> **Note:** By default, the vector scoring mechanism uses squared Euclidean distance.
+> In practice, you can calculate the distance from the score to optimize your vectors and improve scoring accuracy.
 
 **Distance metrics**
 
@@ -3071,7 +3145,7 @@ Different distance metrics correspond to different scoring mechanisms. The follo
 |---|---|---|---|---|
 | Hamming (Hamming distance, for binary type only) | In information theory, the Hamming distance between two strings of equal length is the number of positions at which the corresponding symbols differ. | For two n-bit binary codes x and y: d(x,y) = Σ(x[i] ⊕ y[i]) for i=0 to n-1, where ⊕ is the XOR operation. Score = 1 / (distance + 1) | A typical use case is error correction and detection in data transmission, where it counts the differing bits to estimate the error rate. | The Hamming distance between 1011101 and 1001001 is 2. Important When using the aliyun- knn plugin, binary vector data must be converted into an array of unsigned 32-bit integers (uint32), and the dim must be a multiple of 32. |
 
-You can specify the distance metric using the `distance_method` parameter in the index's **mapping**.
+> **Note:** You can specify the distance metric using the `distance_method` parameter in the index's **mapping**.
 
 **Circuit breaker parameters**
 
@@ -3082,9 +3156,7 @@ You can specify the distance metric using the `distance_method` parameter in the
 |---|---|---|
 | indices.breaker.vect or.native.total.limit | The maximum percentage of off-heap memory that can be used for background vector index builds. If actual off-heap memory usage exceeds this percentage, shards may restart. | 80% |
 
-**Important**
-
-Vector circuit breaker parameters are cluster-level settings. You can view them by running the **GET _cluster/settings** command. We recommend that you do not adjust these values.
+> **Important:** Vector circuit breaker parameters are cluster-level settings. You can view them by running the **GET _cluster/settings** command. We recommend that you do not adjust these values.
 
 **Advanced parameters**
 
@@ -3101,7 +3173,9 @@ Table 2. Build parameters (hnsw)
 |---|---|---|
 | index.vector.hnsw.b uilder.scaling factor _ | This parameter specifies the factor for the exponential decrease in data size from one layer to the next. It is typically set to a value between 10 and 100. The larger the scaling factor, the _ fewer layers are generated. The recommended initial value is 50. | 50 |
 
-The preceding parameters must be configured in the index **setting** and are applicable only to the **hnsw** algorithm. Table 3. Query parameters (hnsw)
+> **Note:** The preceding parameters must be configured in the index **setting** and are applicable only to the **hnsw** algorithm.
+
+Table 3. Query parameters (hnsw)
 
 | Parameter | Description | Default |
 |---|---|---|
@@ -3121,7 +3195,11 @@ GET test/_search
 
 **FAQ**
 
-Q: How do I evaluate the query recall rate? A: You can create two indexes with identical configurations, one using the hnsw algorithm and the other using the linear algorithm. Write the same vector data to both indexes. After the data is refreshed, use the same query vector to compare the document IDs returned by the linear index and the hnsw index. The recall rate is the number of common document IDs in both result sets divided by the number of results requested. The number of common document IDs is the count of IDs present in both result sets. Q: What do I do if a `circuitBreakingException` error occurs during cluster writes? A: This error indicates that the off-heap memory usage has exceeded the limit specified by
+Q: How do I evaluate the query recall rate? A: You can create two indexes with identical configurations, one using the hnsw algorithm and the other using the linear algorithm. Write the same vector data to both indexes. After the data is refreshed, use the same query vector to compare the document IDs returned by the linear index and the hnsw index. The recall rate is the number of common document IDs in both result sets divided by the number of results requested.
+
+> **Note:** The number of common document IDs is the count of IDs present in both result sets.
+
+Q: What do I do if a `circuitBreakingException` error occurs during cluster writes? A: This error indicates that the off-heap memory usage has exceeded the limit specified by
 **indices.breaker.vector.native.indexing.limit** (default is 70%), which triggers the write
 circuit breaker. Write operations typically resume automatically after the background index build tasks are complete and memory is released. We recommend that you implement a retry mechanism in your client-side write logic. Q: Why is the CPU still active after write tasks have stopped? A: Vector index building occurs during a refresh or flush operation. Even if the write traffic has stopped, background tasks for building the vector index may still be running. The computing resources are freed after the final refresh cycle completes. Q: What do I do if vector search with the aliyun-knn plugin is slow or a memory circuit breaker is triggered? A: The aliyun-knn plugin performs searches on in-memory vectors, making it memoryintensive. Large indexes can cause slow performance or trigger the memory circuit breaker. As a best practice, ensure the index size does not exceed 50% of the data node's memory. If you cannot reduce the data volume and memory is insufficient, upgrade your cluster specifications.
 
@@ -3142,12 +3220,16 @@ Your Alibaba Cloud Elasticsearch cluster must run Elasticsearch 6.8.13_ali1.3.0 
 **Procedure**
 
 1. Log on to the Kibana console of your Alibaba Cloud Elasticsearch instance.
-For more information about how to log on to the Kibana console, see Log on to the Kibana console. The steps and examples in this topic use an Alibaba Cloud Elasticsearch 7.10.0_ali1.6.0 instance. The UI may differ for other versions.
+For more information about how to log on to the Kibana console, see Log on to the Kibana console.
+
+> **Note:** The steps and examples in this topic use an Alibaba Cloud Elasticsearch 7.10.0_ali1.6.0 instance. The UI may differ for other versions.
+
 2. In the left-side navigation pane, click the
 icon, then choose **Management > Dev**
 **tools**.
 3. On the **Console** tab, run the following command to create an ISM policy.
-The examples in this topic are based on version 7.10.0_ali1.6.0.
+
+> **Note:** The examples in this topic are based on version 7.10.0_ali1.6.0.
 
 ```json
 PUT _opendistro/_ism/policies/policy_1
@@ -3353,7 +3435,8 @@ POST test/_doc
   "message": "dummy"
 ```
 
-After you attach a policy to an index, the ISM plugin creates a job that runs every 5 minutes by default. This job executes policy actions, checks conditions, and transitions the index between states. You can also run the `GET _opendistro/_ism/explain/test-000001` command to check the current state of the ISM policy.
+> **Note:** After you attach a policy to an index, the ISM plugin creates a job that runs every 5 minutes by default. This job executes policy actions, checks conditions, and transitions the index between states.
+> You can also run the `GET _opendistro/_ism/explain/test-000001` command to check the current state of the ISM policy.
 
 #### 8.1.6 Use the opendistro_security plug-in to control permissions
 
@@ -3382,7 +3465,10 @@ Only Elasticsearch V6.8.13 and V7.10.0 support this feature.
 **Configure RBAC**
 
 1. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+
 2. Create a user.
 i. In the left-side navigation pane, click the icon, and choose **Open Distro for**
 **Elasticsearch > Security**.
@@ -3414,7 +3500,11 @@ PUT _opendistro/_security/api/roles/read_test_security1
 
 `]` `}]`
 4. Associate the role with the user.
-i. After the role is created, go to the role modification page and click the **Mapped users** tab. ii. Click **Map users**. If no user is available, click **Create internal user** to create a user. iii. On the **Map user** page, choose **Users** (the user to associate). iv. Click **Map**. You can also associate a role with a user by calling an API operation. For more information, see Create role mapping. Sample code:
+i. After the role is created, go to the role modification page and click the **Mapped users** tab. ii. Click **Map users**.
+
+> **Note:** If no user is available, click **Create internal user** to create a user.
+
+iii. On the **Map user** page, choose **Users** (the user to associate). iv. Click **Map**. You can also associate a role with a user by calling an API operation. For more information, see Create role mapping. Sample code:
 
 ```json
 PUT _opendistro/_security/api/rolesmapping/read_test_security1
@@ -3451,7 +3541,10 @@ Expected result:
 **Configure attribute-based access control (ABAC)**
 
 1. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+
 2. Create a user. For more information, see Create a user.
 When you create a user, you need to add user attributes by configuring **Attributes**. You can also create a user by calling an API operation and configure **Attributes**. For more information, see Create user. Sample code:
 
@@ -3505,7 +3598,10 @@ Expected result (only attributes that the role is allowed to access are queried)
 
 For more information about document-level access control, see Attribute-based security.
 1. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+
 2. Create a user. For more information, see Create a user.
 3. Create a role. For more information, see Create a role.
 When you create a role, you need to configure **Document level security** to specify the documents that can be accessed. Sample configuration: The user can access only documents whose **city** is **hz** in index test_security*.
@@ -3567,7 +3663,10 @@ Only Alibaba Cloud Elasticsearch instances that run version `7.10.0` with a kern
 2. In the upper-left corner, click the
 icon and choose **Management > Dev Tools**.
 3. On the **Console** tab, create an index and enable index compression.
-The following example creates an index named `index1` and uses the `zstd` algorithm to compress the source, doc_values, and postings files. To disable compression for a specific file type, set the corresponding parameter to `""` . For example, `"index.postings.compression": ""` disables compression for postings files.
+The following example creates an index named `index1` and uses the `zstd` algorithm to compress the source, doc_values, and postings files.
+
+> **Note:** To disable compression for a specific file type, set the corresponding parameter to
+> `""` . For example, `"index.postings.compression": ""` disables compression for postings files.
 
 ```json
 PUT /index1
@@ -3639,9 +3738,7 @@ Use source_reuse_doc_values
 
 The following example creates an index named `index2` and enables the `source_reuse_doc_values` feature.
 
-**Important**
-
-The `source_reuse_doc_values` feature can be enabled only when you create an index. Once enabled, it cannot be disabled.
+> **Important:** The `source_reuse_doc_values` feature can be enabled only when you create an index. Once enabled, it cannot be disabled.
 
 ```json
 PUT index2
@@ -3654,7 +3751,7 @@ PUT index2
 
 **Adjust  source_reuse_doc_values  configuration**
 
-Native ES stores multiple copies of data in its underlying structures, such as `_source` ,
+> **Note:** Native ES stores multiple copies of data in its underlying structures, such as `_source` ,
 
 |   | source reuse doc values _ _ _ |
 |---|---|
@@ -3737,11 +3834,17 @@ PUT _cluster/settings
 **apack.fasterbulk.combine.flush_threshold_size**: The maximum size of aggregated
 bulk requests. The default value is **1mb**.
 **apack.fasterbulk.combine.interval**: The maximum time interval for aggregating bulk
-requests, in `ms` . The default value is **50**. For high-concurrency workloads, consider increasing the aggregation size or time interval based on your cluster's capacity to reduce write queue congestion.
+requests, in `ms` . The default value is **50**.
+
+> **Note:** For high-concurrency workloads, consider increasing the aggregation size or time interval based on your cluster's capacity to reduce write queue congestion.
 
 **Enable direct routing**
 
-When `routing` and the primary key ( `_id` ) are not specified for bulk document writes, you can enable direct routing for the cluster or a specified index to improve write speed. If a cluster or index has direct routing enabled, and you also specify `routing` and a primary key ( `_id` ) in the write operation, direct routing will not take effect and will not affect normal business write operations. Enable direct routing for the cluster.
+When `routing` and the primary key ( `_id` ) are not specified for bulk document writes, you can enable direct routing for the cluster or a specified index to improve write speed.
+
+> **Note:** If a cluster or index has direct routing enabled, and you also specify `routing` and a primary key ( `_id` ) in the write operation, direct routing will not take effect and will not affect normal business write operations.
+
+Enable direct routing for the cluster.
 
 ```json
 PUT _cluster/settings
@@ -3749,7 +3852,9 @@ PUT _cluster/settings
     "index.direct_routing.global.enable" : "true"
 ```
 
-Create an index and enable direct routing. Replace `<index>` with your index name.
+Create an index and enable direct routing.
+
+> **Note:** Replace `<index>` with your index name.
 
 ```json
 PUT /<index>
@@ -3775,7 +3880,9 @@ The aliyun-qos plug-in is a proprietary plug-in for Alibaba Cloud Elasticsearch 
 
 **Prerequisites**
 
-You have created a version 7.10.0 Alibaba Cloud Elasticsearch instance. You have installed the aliyun-qos plug-in and upgraded it to the latest version. You have enabled a whitelist. For more information, see Security settings. You can log in to the Kibana console of the target ES instance and run the `GET` /_cat/plugins?v command to check the plug-in version. The latest version of the plug-in for ES version `7.10.0` is **7.10.0_ali1.12.0.1.2**.
+You have created a version 7.10.0 Alibaba Cloud Elasticsearch instance. You have installed the aliyun-qos plug-in and upgraded it to the latest version. You have enabled a whitelist. For more information, see Security settings. You can log in to the Kibana console of the target ES instance and run the `GET` /_cat/plugins?v command to check the plug-in version.
+
+> **Note:** The latest version of the plug-in for ES version `7.10.0` is **7.10.0_ali1.12.0.1.2**.
 
 **Usage notes**
 
@@ -3785,7 +3892,7 @@ The throttling feature of the aliyun-qos plug-in is disabled by default. This pl
 POST /_qos/limiter/ops/upgrade
 ```
 
-If the command runs for a long time without returning a response, it indicates that no legacy rate limiters exist on the instance. You can ignore this step.
+> **Note:** If the command runs for a long time without returning a response, it indicates that no legacy rate limiters exist on the instance. You can ignore this step.
 
 **Estimate thresholds**
 
@@ -3796,7 +3903,9 @@ To avoid affecting the performance of read and write requests, the aliyun-qos pl
 client requests that arrive at the ES cluster
 ```
 
-The end-to-end QPS refers only to the number of query requests that reach a coordinating node per second. Write requests The calculation for the write request throttling threshold is similar to that for query requests but must also be adjusted for the number of replicas. For example, consider a cluster with two data nodes and an index with one shard and one replica. When `10 MB` of data is written, each data node receives a `10 MB` write operation due to the replica. Additionally, internal tasks from X-Pack, such as Monitor, Audit, and Watcher, also consume write throughput. You must account for this overhead when you set the threshold.
+> **Note:** The end-to-end QPS refers only to the number of query requests that reach a coordinating node per second.
+
+Write requests The calculation for the write request throttling threshold is similar to that for query requests but must also be adjusted for the number of replicas. For example, consider a cluster with two data nodes and an index with one shard and one replica. When `10 MB` of data is written, each data node receives a `10 MB` write operation due to the replica. Additionally, internal tasks from X-Pack, such as Monitor, Audit, and Watcher, also consume write throughput. You must account for this overhead when you set the threshold.
 
 **Enable throttling**
 
@@ -3810,9 +3919,13 @@ PUT _cluster/settings
 
 **Configure a rate limiter**
 
-The following code and parameter descriptions explain how to configure a rate limiter. A rate limiter consists of two main parts: the `limiters` definition and the `tags` definition. Use the `tags` object to define the resource scope and the `limiters` object to specify the throttling type and threshold. Rate limiters are classified as regular or default. To use a default rate limiter, set a
-**tag** to **. Examples include setting a default traffic limit per `shard` or a default
-QPS for each application. When a request exceeds a throttling limit, ES rejects subsequent requests. For specific examples of how to configure a rate limiter, see Rate limiter configuration examples.
+The following code and parameter descriptions explain how to configure a rate limiter.
+
+> **Note:** A rate limiter consists of two main parts: the `limiters` definition and the `tags` definition. Use the `tags` object to define the resource scope and the `limiters` object to specify the throttling type and threshold.
+> Rate limiters are classified as regular or default. To use a default rate limiter, set a **tag** to **. Examples include setting a default traffic limit per `shard` or a default QPS for each application.
+> When a request exceeds a throttling limit, ES rejects subsequent requests.
+
+For specific examples of how to configure a rate limiter, see Rate limiter configuration examples.
 
 ```json
 PUT /_qos/limiter/${limiterName}
@@ -3855,7 +3968,8 @@ PUT /_qos/limiter/${limiterName}
 
 **Rate limiter configuration examples**
 
-In the following examples, replace ${limiterName} with the name of your rate limiter. You can define multiple rules. A request is throttled if it matches any rule.
+> **Note:** In the following examples, replace ${limiterName} with the name of your rate limiter.
+> You can define multiple rules. A request is throttled if it matches any rule.
 
 **Set search QPS throttling**
 
@@ -4011,7 +4125,9 @@ PUT /_qos/limiter/${limiterName}
 
 **Get rate limiter configurations**
 
-Use the following commands to retrieve rate limiter configurations. In the following examples, replace ${limiterName} with the name of your rate limiter.
+Use the following commands to retrieve rate limiter configurations.
+
+> **Note:** In the following examples, replace ${limiterName} with the name of your rate limiter.
 
 | Actions | Code example |
 |---|---|
@@ -4021,7 +4137,9 @@ Use the following commands to retrieve rate limiter configurations. In the follo
 
 **Delete a rate limiter configuration**
 
-Use the following commands to delete rate limiter configurations. In the following examples, replace ${limiterName} with the name of your rate limiter.
+Use the following commands to delete rate limiter configurations.
+
+> **Note:** In the following examples, replace ${limiterName} with the name of your rate limiter.
 
 | Actions | Code example |
 |---|---|
@@ -4277,9 +4395,9 @@ POST /_bulk {"index":{"_index":"hotels-index","_id":"3"}} {"location":[5.2,4.4]}
 
 3. . Set up a connection and enable replication**
 
-**Important**
+> **Important:** Ensure that the leader and follower clusters can connect. If you need assistance, contact Alibaba Cloud technical support.
+> You must replace the variables in the commands with your actual values. The data provided is for reference only.
 
-Ensure that the leader and follower clusters can connect. If you need assistance, contact Alibaba Cloud technical support. You must replace the variables in the commands with your actual values. The data provided is for reference only.
 1. On the OpenSearch Dashboards console of a new follower cluster, use one of the following
 two methods to establish a remote repository connection to the leader cluster. This example creates a remote repository named `test01` , where `lrr-test` is the name of the leader cluster. Method 1
 
@@ -4434,7 +4552,8 @@ Only Elasticsearch V6.8 supports this feature.
 4. In the **Kibana Information** section, click the endpoint next to **Kibana Console**
 **Connection URL**.
 5. Enter the username and password, and click **Log In** to log in to the Kibana console.
-The username is elastic by default. The password is the one you specified for the elastic username when you created your Elasticsearch cluster.
+
+> **Note:** The username is elastic by default. The password is the one you specified for the elastic username when you created your Elasticsearch cluster.
 
 **Step 2: Prepare test data**
 
@@ -4592,8 +4711,8 @@ Hosting mode of Apsara Copilot You can directly access the hosting mode of Apsar
 
 **Hosting mode of Apsara Copilot**
 
-Before you use the hosting mode of Apsara Copilot, refer to **Apsara Uni-manager**
-**Management Console > Apsara Copilot User Guide** and enable Apsara Copilot.
+> **Note:** Before you use the hosting mode of Apsara Copilot, refer to **Apsara Uni-manager** **Management Console > Apsara Copilot User Guide** and enable Apsara Copilot.
+
 1. Log on to the Alibaba Cloud Elasticsearch console.
 2. View the predefined MCP list.
 In the navigation pane on the left, go to **AI Column > MCP** to view the list of preset MCPs. The preset system tools are listed below:

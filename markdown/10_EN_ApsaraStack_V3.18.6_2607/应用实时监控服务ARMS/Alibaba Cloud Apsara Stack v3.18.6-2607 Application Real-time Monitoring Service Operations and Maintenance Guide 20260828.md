@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 31
 source_pdf: "b0f24a5a353a34ea_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Operations and Main"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1ARMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Real-time%20Monitoring%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Operations and Maintenance Guide 20260828
@@ -104,14 +104,13 @@ The URL of the Apsara Uni-manager Operations Console and the username and passwo
 2. In the address bar, enter the URL of the Apsara Uni-manager Operations Console in the
 format of region-id.aso.intranet-domain-id.com, and press the ENTER key.
 
-**Note**
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
 
-You can select a language from the drop-down list in the upper-right corner of the page.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, the password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
+If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, the password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
 4. Click **Log In** to log on to the Apsara Uni-manager Operations Console.
 
 ### 3.2 Log in to the Apsara Base O&M Platform
@@ -131,9 +130,10 @@ Obtain the access URL, username, and password for the Apsara Uni-manager Operati
 egion-id.aso.intranet-domain-id.com, and press Enter.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password for the Apsara Uni-manager Operations Console from deployment personnel or an administrator.
+> To switch languages, use the language selector in the upper-right corner of the page.
 
-Obtain the username and password for the Apsara Uni-manager Operations Console from deployment personnel or an administrator. To switch languages, use the language selector in the upper-right corner of the page. When you log in to the Apsara Uni-manager Operations Console for the first time, you must change your password. Follow the on-screen prompts to change your password. Your password must meet the following requirements: Uppercase and lowercase letters Numbers (0–9) Special characters (for example, !, @, #, $, and %) Password length: 10–20 characters
+When you log in to the Apsara Uni-manager Operations Console for the first time, you must change your password. Follow the on-screen prompts to change your password. Your password must meet the following requirements: Uppercase and lowercase letters Numbers (0–9) Special characters (for example, !, @, #, $, and %) Password length: 10–20 characters
 4. Click **Log In**.
 5. In the top menu bar of the Apsara Uni-manager Operations Console, click **Platform O&M**.
 6. From the drop-down list, in the **Apsara Base O&M Platform** section, select an entry to
@@ -534,9 +534,8 @@ If you encounter an **Invalid callback URL** error during logon, follow these st
 1. Check whether the back_URL in the browser's address bar is correct. The preceding figure
 shows a typical case where the back_URL is incorrectly set. It should be changed to the ARMS domain name.
 
-**Important**
+> **Important:** Do not access ARMS using an IP address.
 
-Do not access ARMS using an IP address.
 2. If you access ARMS using a domain name and the error persists, check whether the top-
 level domain of Dauth matches the top-level domain of ARMS in the back_URL. Example: A scenario where both are consistent.
 
@@ -724,9 +723,7 @@ When you sync EDAS applications in versions earlier than Shuguang V3.6.1, you ma
 select **View page source**. Find the frontend version number of ARMS. For example, in the following figure, the frontend version number is 1.2.2.
 2. Run the following commands to open the frontend JS file for the corresponding version.
 
-**Note**
-
-Replace `<version>` with the frontend version number found in the previous step (1.2.2 in this example).
+> **Note:** Replace `<version>` with the frontend version number found in the previous step (1.2.2 in this example).
 
 ```
 cd /home/admin/arms_static/arms/<version> vi armsConsole.js
@@ -750,9 +747,7 @@ In an Apsara Stack environment, some versions of the interactive dashboard do no
 select **View page source**. Find the frontend version number of ARMS. For example, in the following figure, the frontend version number is 1.2.2.
 2. Run the following commands to open the frontend JS file for the corresponding version.
 
-**Note**
-
-Replace `<version>` with the frontend version number found in the previous step (1.2.2 in this example).
+> **Note:** Replace `<version>` with the frontend version number found in the previous step (1.2.2 in this example).
 
 ```
 cd /home/admin/arms_static/arms/<version> vi armsConsole.js

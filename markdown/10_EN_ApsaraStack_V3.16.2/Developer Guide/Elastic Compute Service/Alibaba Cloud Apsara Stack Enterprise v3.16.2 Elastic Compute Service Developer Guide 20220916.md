@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 855
 source_pdf: "3e7bc98fd82b40f7_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20Compute%20Service%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Developer Guide
@@ -8822,6 +8822,7 @@ Sample success responses `XML` format
 
 You can call this operation to create a custom image. The created custom image can be used to create ECS instances (RunInstances) and replace system disks (ReplaceSystemDisk). When you call this operation, take note of the following items: The created custom image can be used only when it is in the Available (Available) state. If the API response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information of an instance, the instance is locked for security reasons and all operations are prohibited on it. You can call the CreateImage operation to create a custom image by using one of the following methods. The request parameters have the following priorities: `InstanceId` > `DiskDeviceMapping`
 > `SnapshotId` . If your request contains two or more parameters, the custom image is created based
+
 on the parameter with a higher priority by default. Met hod 1: Create a custom image from an instance. You only need to specify the instance ID ( `Inst` `anceId` ). The instance must be in the Running ( `Running` ) or Stopped ( `Stopped` ) state. After the CreateImage operation is called, a new snapshot is created for each disk of the instance. Met hod 2: Create a custom image from the system disk snapshot of an ECS instance. You only need to specify the ID of the system disk snapshot ( `SnapshotId` ). The specified snapshot cannot be created on or before July 15, 2013. Met hod 3: Create a custom image from multiple disk snapshots. You must specify the data mapping between the disks corresponding to the snapshots ( `DiskDeviceMapping` parameters). When you use method 3 to create a custom image, take note of the following items: You can specify only one system disk snapshot. The device name of the system disk must be /dev/xvda. You can specify multiple data disk snapshots. The device names of the data disks are automatically allocated by the system. The device names are unique and ascend from /dev/xvdb to /dev/xvdz. `SnapshotId` may not be specified. In this case, an empty data disk with a specific size is created. The specified snapshot cannot be created on or before July 15, 2013. Request parameters
 
 | Parameter | Type | Required | Example | Description |

@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 85
 source_pdf: "37d92285c1466abf_Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide
@@ -77,10 +77,19 @@ PostgreSQL console This topic describes how to log on to the AnalyticDB for Post
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click Log On.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
-in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
+in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e.
+
+> Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose Product s > Dat abase Services > Analyt icDB f or
 Post greSQL.
 
@@ -140,11 +149,23 @@ Create a whitelist a. Click Creat e Whit elist . b. In the Creat e Whit elist pa
 | Whit elist Name | The name of the whitelist. The name can contain lowercase letters, digits, and underscores ( ). _ The name must start with a lowercase letter and end with a lowercase letter or a digit. The name must be 2 to 32 characters in length. |
 | IP Addresses | The IP addresses or CIDR blocks that are allowed to access the instance. Separate multiple IP addresses with commas (,). A maximum of 999 unique IP addresses can be specified. Supported formats are individual IP addresses such as 10.23.12.24 and CIDR blocks such as 10.23.12.24/24. In the preceding example, /24 indicates the subnet mask that specifies the length of the IP address prefix. An IP address prefix can be 1 to 32 bits in length. If you enter CIDR blocks that have a prefix length of 0 such as 0.0.0.0/0 and 127.0.0.1/0, all IP addresses are allowed to access the instance. This poses a high security risk. Proceed with caution. An IP address of 127.0.0.1 indicates that no external IP addresses are allowed to access the instance. |
 
-c. Click OK. Modify a whitelist a. Click Modif y to the right of a whitelist. b. In the Modify Whitelist panel, add or remove IP addresses or CIDR blocks in the IP Addresses section. Not e Whit elist Name cannot be modified. c. Click OK. Delete a whitelist Not e The default whitelist cannot be deleted. a. Click Delet e to the right of a whitelist. b. In the Delet e Whit elist message, click OK. Clear the default whitelist a. Click Clear to the right of the default whitelist. b. In the Clear Whit elist message, click OK. After you clear the default whitelist, it contains only 127.0.0.1. What's next We recommend that you maintain your whitelists on a regular basis to ensure secure access for AnalyticDB for PostgreSQL. You can click Modif y or Delet e to modify or delete custom whitelists.
+c. Click OK. Modify a whitelist a. Click Modif y to the right of a whitelist. b. In the Modify Whitelist panel, add or remove IP addresses or CIDR blocks in the IP Addresses section.
+
+> Not e Whit elist Name cannot be modified.
+
+c. Click OK. Delete a whitelist
+
+> Not e The default whitelist cannot be deleted.
+
+a. Click Delet e to the right of a whitelist. b. In the Delet e Whit elist message, click OK. Clear the default whitelist a. Click Clear to the right of the default whitelist. b. In the Clear Whit elist message, click OK. After you clear the default whitelist, it contains only 127.0.0.1. What's next We recommend that you maintain your whitelists on a regular basis to ensure secure access for AnalyticDB for PostgreSQL. You can click Modif y or Delet e to modify or delete custom whitelists.
 
 ### 2.5 Create a database account
 
-This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance. Context AnalyticDB for PostgreSQL provides the following types of database accounts: Privileged account: an account that has all permissions on all databases. The first account created for an instance in the console is a privileged account. Standard accounts: accounts that have all permissions only on their authorized databases. Not e Permissions include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER. Precautions Before you use databases in an AnalyticDB for PostgreSQL instance, you must create a privileged account. Standard accounts cannot be created by using the console. For information about how to create standard accounts, see the "Execute SQL statements to create accounts" section of this topic. After you create a privileged account for an instance, you cannot delete the privileged account.
+This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance. Context AnalyticDB for PostgreSQL provides the following types of database accounts: Privileged account: an account that has all permissions on all databases. The first account created for an instance in the console is a privileged account. Standard accounts: accounts that have all permissions only on their authorized databases.
+
+> Not e Permissions include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER.
+
+Precautions Before you use databases in an AnalyticDB for PostgreSQL instance, you must create a privileged account. Standard accounts cannot be created by using the console. For information about how to create standard accounts, see the "Execute SQL statements to create accounts" section of this topic. After you create a privileged account for an instance, you cannot delete the privileged account.
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, click Account Management .
@@ -161,7 +182,10 @@ This topic describes how to create a database account for an AnalyticDB for Post
 | Conf irm Password | Enter the password of the account again. |
 
 6. Click OK.
-Not ice After the account is created, you can click Reset Password in the Act ions column to modify the account password. To ensure data security, we recommend that you change your password on a regular basis and do not use passwords that you have used before. Execute SQL statements to create accounts Before you execute SQL statements to create accounts, you must connect to a database. For more information, see Connect to a database. Create a privileged account.
+
+> Not ice After the account is created, you can click Reset Password in the Act ions column to modify the account password. To ensure data security, we recommend that you change your password on a regular basis and do not use passwords that you have used before.
+
+Execute SQL statements to create accounts Before you execute SQL statements to create accounts, you must connect to a database. For more information, see Connect to a database. Create a privileged account.
 
 ```
 CREATE ROLE <Account name> WITH LOGIN ENCRYPTED PASSWORD <Password> RDS_SUPERUSER;
@@ -187,7 +211,12 @@ CREATE role test1 WITH LOGIN ENCRYPTED PASSWORD '111111';
 
 ### 2.6 Obtain client tools
 
-The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL. Not e Apsara Stack is an isolated environment. You must deploy software installation packages to the internal environment. Graphical client tools AnalyticDB for PostgreSQL users can directly use client tools that support Greenplum, such as SQL Workbench, Navicat Premium, and Navicat for PostgreSQL. Command-line client psql (for RHEL 6, RHEL 7, CentOS 6, and CentOS 7) For Red Hat Enterprise Linux (RHEL) 6, RHEL 7, CentOS 6, and CentOS 7, download the tool from the following links and then decompress the package: RHEL 6 or CentOS 6: hybriddb_client_package_el6 RHEL 7 or CentOS 7: hybriddb_client_package_el7 Command-line client psql (for other Linux systems) For other Linux systems, perform the following operations to compile the client tools:
+The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL.
+
+> Not e
+> Apsara Stack is an isolated environment. You must deploy software installation packages to the internal environment.
+
+Graphical client tools AnalyticDB for PostgreSQL users can directly use client tools that support Greenplum, such as SQL Workbench, Navicat Premium, and Navicat for PostgreSQL. Command-line client psql (for RHEL 6, RHEL 7, CentOS 6, and CentOS 7) For Red Hat Enterprise Linux (RHEL) 6, RHEL 7, CentOS 6, and CentOS 7, download the tool from the following links and then decompress the package: RHEL 6 or CentOS 6: hybriddb_client_package_el6 RHEL 7 or CentOS 7: hybriddb_client_package_el7 Command-line client psql (for other Linux systems) For other Linux systems, perform the following operations to compile the client tools:
 1. Obtain the source code by using one of the following methods:
 Obtain the code from the git directory. You must first install the git tool.
 
@@ -212,7 +241,13 @@ psql: /usr/local/pgsql/bin/psql pg_dump: /usr/local/pgsql/bin/pg_dump Command-li
 
 ### 2.7 Connect to a database
 
-Greenplum Database and AnalyticDB for PostgreSQL are both developed based on PostgreSQL 8.2 and fully compatible with its message protocol. AnalyticDB for PostgreSQL users can use tools that support the PostgreSQL 8.2 message protocol, such as libpq, Java Database Connectivity (JDBC), Open Database Connectivity (ODBC), and psycopg2. Context AnalyticDB for PostgreSQL provides psql, a binary program of Red Hat. For more information about the download link, see Obtain the client tool. The Greenplum official website provides an easy-to-install installation package that includes JDBC, ODBC, and libpq. For more information, see Greenplum official documentation. Not e Apsara Stack is an isolated environment. To access Apsara Stack, you must prepare the necessary software installation packages in advance. By default, AnalyticDB for PostgreSQL instances can be accessed only by clients that are deployed on Elastic Compute Service (ECS) instances within the same region and zone. DMS Data Management (DMS) allows you to manage relational databases such as MySQL, SQL Server, PostgreSQL, PPAS, and Petadata, online transaction processing (OLTP) databases such as PolarDB-X, online analytical processing (OLAP) databases such as AnalyticDB and Data Lake Analytics (DLA), and NoSQL databases such as MongoDB and Redis. DMS offers an integrated solution to manage data, schemas, and servers. You can also use DMS to authorize users, audit security, view BI charts and data trends, track data, and optimize performance. This section describes how to use DMS to connect to an AnalyticDB for PostgreSQL instance.
+Greenplum Database and AnalyticDB for PostgreSQL are both developed based on PostgreSQL 8.2 and fully compatible with its message protocol. AnalyticDB for PostgreSQL users can use tools that support the PostgreSQL 8.2 message protocol, such as libpq, Java Database Connectivity (JDBC), Open Database Connectivity (ODBC), and psycopg2. Context AnalyticDB for PostgreSQL provides psql, a binary program of Red Hat. For more information about the download link, see Obtain the client tool. The Greenplum official website provides an easy-to-install installation package that includes JDBC, ODBC, and libpq. For more information, see Greenplum official documentation.
+
+> Not e
+> Apsara Stack is an isolated environment. To access Apsara Stack, you must prepare the necessary software installation packages in advance.
+> By default, AnalyticDB for PostgreSQL instances can be accessed only by clients that are deployed on Elastic Compute Service (ECS) instances within the same region and zone.
+
+DMS Data Management (DMS) allows you to manage relational databases such as MySQL, SQL Server, PostgreSQL, PPAS, and Petadata, online transaction processing (OLTP) databases such as PolarDB-X, online analytical processing (OLAP) databases such as AnalyticDB and Data Lake Analytics (DLA), and NoSQL databases such as MongoDB and Redis. DMS offers an integrated solution to manage data, schemas, and servers. You can also use DMS to authorize users, audit security, view BI charts and data trends, track data, and optimize performance. This section describes how to use DMS to connect to an AnalyticDB for PostgreSQL instance.
 1. Log on to the Log on to the AnalyticDB for PostgreSQL console.
 2. (Optional)Create an AnalyticDB for PostgreSQL instance. For more information, see Creates an
 instance. If an AnalyticDB for PostgreSQL instance has already been created, skip this step.
@@ -407,7 +442,10 @@ more information, see PostgreSQL ODBC driver and psqlODBC HOWTO - C#. References
 
 ### 3.1 Reset the password of an account
 
-If you forget the password of your database account in the AnalyticDB for PostgreSQL console, you can reset the password. Not e To ensure data security, we recommend that you change your password on a regular basis.
+If you forget the password of your database account in the AnalyticDB for PostgreSQL console, you can reset the password.
+
+> Not e To ensure data security, we recommend that you change your password on a regular basis.
+
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, click Account Management .
@@ -453,19 +491,26 @@ instance This topic describes how to change specifications for an instance in st
 column.
 3. Select new values for Comput e Group Specif icat ions and Comput e Groups.
 4. Click Submit .
-Warning When the specifications of an instance are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time. Reserved storage mode Change the specifications of the coordinator node:
+
+> **Warning:** When the specifications of an instance are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
+
+Reserved storage mode Change the specifications of the coordinator node:
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click Change Mast er Node Specif icat ions in the
 Act ions column.
 3. Select a new value for Mast er Nodes.
 4. Click Submit .
-Warning When the specifications of coordinator nodes are being changed, DDL operations may be blocked. Perform the specification change operation during an appropriate period of time. Change the specifications of compute nodes:
+
+> **Warning:** When the specifications of coordinator nodes are being changed, DDL operations may be blocked. Perform the specification change operation during an appropriate period of time.
+
+Change the specifications of compute nodes:
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click Change Comput e Node Specif icat ions in
 the Act ions column.
 3. Select new values for Comput e Group Specif icat ions and Comput e Nodes.
 4. Click Submit .
-Warning When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
+
+> **Warning:** When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
 ### 3.5 Restart an instance
 
@@ -474,7 +519,8 @@ When the number of connections of an instance reaches the upper limit or the ins
 2. Find the instance that you want to manage and click its ID.
 3. In the upper-right corner of the page, click Rest art Inst ance.
 4. In the Rest art Inst ance message, click OK.
-Warning The database service may be interrupted when you restart an instance. Proceed with caution.
+
+> **Warning:** The database service may be interrupted when you restart an instance. Proceed with caution.
 
 ### 3.6 Release an instance
 
@@ -483,7 +529,8 @@ This topic describes how to manually release an AnalyticDB for PostgreSQL instan
 2. Find the instance that you want to manage and click its ID.
 3. In the St at us section of the Basic Inf ormat ion page, click Release.
 4. In the Release Inst ance message, click OK.
-Warning After an instance is released, all of its data is deleted. Back up your data before you release an instance.
+
+> **Warning:** After an instance is released, all of its data is deleted. Back up your data before you release an instance.
 
 ### 3.7 Configure SQL audit
 
@@ -495,12 +542,19 @@ AnalyticDB for PostgreSQL allows you to use the SQL audit feature to view SQL de
 5. (Optional)Click Enable SQL Audit .
 If you have enabled SQL audit, skip this step.
 6. On the SQL Audit tab, query SQL information based on conditions such as the time range,
-database, user, and keyword. Not e You can click Disable SQL Audit to disable the SQL audit feature. Reserved storage mode
+database, user, and keyword.
+
+> Not e You can click Disable SQL Audit to disable the SQL audit feature.
+
+Reserved storage mode
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane of the Basic Information page, click SQL Audit .
 4. On the SQL Audit page, query SQL information based on conditions such as the database,
-execution duration, time range, database user, source IP address, execution status, operation category, operation type, and statement. Not e You can click the icon to export SQL information from the current page.
+execution duration, time range, database user, source IP address, execution status, operation category, operation type, and statement.
+
+> Not e You can click the
+> icon to export SQL information from the current page.
 
 ### 3.8 SSL encryption
 
@@ -511,21 +565,28 @@ To enhance data transmission security, you can enable SSL encryption for your in
 4. Click the SSL tab.
 5. On the SSL tab, turn on SSL Encrypt ion.
 6. In the Enable SSL Encrypt ion message, click OK.
-Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours. Update the validity of an SSL certificate
+
+> Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+
+Update the validity of an SSL certificate
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, click Securit y Cont rols.
 4. Click the SSL tab.
 5. On the SSL tab, click Updat e Validit y to the right of SSL Encrypt ion.
 6. In the Updat e SSL Cert if icat e Validit y message, click OK.
-Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours. Disable SSL encryption
+
+> Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+
+Disable SSL encryption
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, click Securit y Cont rols.
 4. Click the SSL tab.
 5. On the SSL tab, turn off SSL Encrypt ion.
 6. In the Disable SSL Encrypt ion message, click OK.
-Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+
+> Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
 ### 3.9 Update the minor engine version
 
@@ -534,7 +595,9 @@ To better meet your requirements, the minor engine version of AnalyticDB for Pos
 2. Find the instance that you want to manage and click its ID.
 3. In the upper-right corner of the Basic Inf ormat ion page, click Upgrade Minor Version.
 4. In the Upgrade Minor Version message, click OK.
-Not e Minor version updates take 3 to 15 minutes to complete. When an instance is being updated, it is unavailable. We recommend that you prepare in advance before you update the instance. After the update is complete, the instance enters the Running state and you can access the instance databases.
+
+> Not e Minor version updates take 3 to 15 minutes to complete. When an instance is being updated, it is unavailable. We recommend that you prepare in advance before you update the instance. After the update is complete, the instance enters the Running state and you can access the instance databases.
+
 5. After you complete the preceding steps, check the state of the instance. If the update is
 complete, the instance enters the Running state. Otherwise, the instance remains in the Upgrading version state. Before the update, the system checks the minor engine version of your instance. If the latest minor version is used, the system skips the update and restart operations.
 
@@ -553,13 +616,17 @@ INSERT INTO <Destination table> SELECT * FROM <External table>
 |   | WITH (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, B |
 | LOCKSIZE=1048576) |   |
 
-To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region. Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
+> To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region.
+
+Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
 
 ```
 INSERT INTO <External table> SELECT * FROM <Source table>
 ```
 
-Create OSS external tables Not e The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters.
+Create OSS external tables
+
+> Not e The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters.
 
 ```
 CREATE [READABLE] EXTERNAL TABLE tablename ( columnname datatype [, ...] | LIKE othertable ) LOCATION ('ossprotocol') FORMAT 'TEXT'
@@ -778,7 +845,9 @@ TEXT and CSV format description The following parameters specify the formats of 
 | ESCAPE | N/A | Same as QUOTE |
 | NULL | Backslash plus N (\N) | Empty string without quotation marks |
 
-Not e All control characters must be single-byte characters. SDK troubleshooting The following table lists the error logs generated when an error occurs during the import or export process. Error log information
+> Not e All control characters must be single-byte characters.
+
+SDK troubleshooting The following table lists the error logs generated when an error occurs during the import or export process. Error log information
 
 | Keyword | Description |
 |---|---|
@@ -793,13 +862,17 @@ You can handle timeout-related errors by using parameters related to oss_ext. Re
 
 You can use the mysql2pgsql tool to migrate tables from MySQL to AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, or Postgres Plus Advanced Server (PPAS). Background information mysql2pgsql connects to both the source MySQL database and the destination AnalyticDB for PostgreSQL database. The tool retrieves the data that you want to export from the source MySQL database, and uses a COPY statement to import the data to the destination database. This tool supports simultaneous data import over multiple threads. Each worker thread imports data from specific database tables. You can download the binary installation package of mysql2pgsql. You can view instructions on source code compilation of mysql2pgsql. Procedure
 1. Modify the my.cfg configuration file to configure the connection information of source and
-destination databases. i. Modify the connection information of the source MySQL database. Not e You must have the read permissions on all user tables.
+destination databases. i. Modify the connection information of the source MySQL database.
+
+> Not e You must have the read permissions on all user tables.
 
 ```
 [src.mysql] host = "192.168.1.1" port = "3306" user = "test" password = "test" db = "test" encodingdir = "share" encoding = "utf8"
 ```
 
-ii. Modify the connection information of the destination PostgreSQL, PPAS, or AnalyticDB for PostgreSQL database. Not e You must have the write permissions on the destination table.
+ii. Modify the connection information of the destination PostgreSQL, PPAS, or AnalyticDB for PostgreSQL database.
+
+> Not e You must have the write permissions on the destination table.
 
 ```
 [desc.pgsql] connect_string = "host=192.168.1.2 dbname=test port=3432 user=test password=pgsql"
@@ -858,7 +931,9 @@ data that meets the c1 > 138888 condition is migrated.
 
 You can use the pgsql2pgsql tool to migrate tables across AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, and Postgres Plus Advanced Server (PPAS). Context pgsql2pgsql supports the following features: Full migration across PostgreSQL, PPAS, Greenplum Database, and AnalyticDB for PostgreSQL. Full migration and incremental migration from PostgreSQL or PPAS (version 9.4 or later) to AnalyticDB for PostgreSQL or PPAS. You can perform the following operations in the dbsync project library: Download the binary installation package of pgsql2pgsql. View instructions on source code compilation of pgsql2pgsql. Procedure
 1. Modify the my.cfg configuration file to configure the connection information of source and
-destination databases. i. Modify the connection information of the source PostgreSQL database. Not e In the connection information of the source PostgreSQL database, we recommend that you set the user to the owner of the source database.
+destination databases. i. Modify the connection information of the source PostgreSQL database.
+
+> Not e In the connection information of the source PostgreSQL database, we recommend that you set the user to the owner of the source database.
 
 ```
 [src.pgsql] connect_string = "host=192.168.0.1 dbname=test port=3432 user=test password=pgsql"
@@ -870,13 +945,23 @@ ii. Modify the connection information of the self-managed PostgreSQL database.
 [local.pgsql] connect_string = "host=192.168.0.2 dbname=test port=3432 user=test2 password=pgsql
 ```
 
-`"` iii. Modify the connection information of the destination PostgreSQL database. Not e You must have the write permissions on the destination table.
+`"` iii. Modify the connection information of the destination PostgreSQL database.
+
+> Not e You must have the write permissions on the destination table.
 
 ```
 [desc.pgsql] connect_string = "host=192.168.0.2 dbname=test port=3432 user=test3 password=pgsql
 ```
 
-`"` Not e If you want to synchronize incremental data, you must have the permissions to create replication slots in the source database. PostgreSQL 9.4 and later support logic flow replication. Therefore, source databases of these versions support incremental data migration. A kernel supports logic flow replication only after you configure the following parameters: wal_level = logical max_wal_senders = 6 max_replication_slots = 6
+`"`
+
+> Not e
+> If you want to synchronize incremental data, you must have the permissions to create replication slots in the source database.
+> PostgreSQL 9.4 and later support logic flow replication. Therefore, source databases of these versions support incremental data migration. A kernel supports logic flow replication only after you configure the following parameters:
+> wal_level = logical
+> max_wal_senders = 6
+> max_replication_slots = 6
+
 2. Use pgsql2pgsql to perform full database migration.
 
 ```
@@ -1042,7 +1127,8 @@ You can use extensions to expand database features. AnalyticDB for PostgreSQL en
 CREATE EXTENSION <extension name>; CREATE SCHEMA <schema name>; CREATE EXTENSION IF NOT EXISTS <extension name> WITH SCHEMA <schema name>;
 ```
 
-Not e Before you create a MADlib extension, you must create a plpythonu extension.
+> Not e
+> Before you create a MADlib extension, you must create a plpythonu extension.
 
 ```
 CREATE EXTENSION plpythonu; CREATE EXTENSION madlib;
@@ -1054,7 +1140,7 @@ Delete an extension Execute the following statements to delete an extension.
 DROP EXTENSION <extension name>; DROP EXTENSION IF EXISTS <extension name> CASCADE;
 ```
 
-Not e If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
+> Not e If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
 
 ### 4.7 Manage users and permissions
 
@@ -1082,7 +1168,11 @@ GRANT SELECT ON TABLE t1 TO normal_user1; REVOKE UPDATE ON TABLE t1 FROM normal_
 
 ### 4.8 Manage real-time materialized views
 
-views AnalyticDB for PostgreSQL provides real-time materialized views. Compared with non-real-time materialized views, real-time materialized views can implement automatic refresh in response to data changes without the need to execute REFRESH statements. A real-time materialized view can be automatically updated with changes made to its base tables. Real-time materialized views of AnalyticDB for PostgreSQL support only statement-level automatic refresh. When an INSERT, COPY, UPDATE, or DELETE statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure strong data consistency. Not e In this mode, the write performance of base tables may be reduced. We recommend that you do not create more than five real-time materialized views on the same base table. For more information about materialized views, see CREATE MATERIALIZED VIEW. Statement-level refresh When a statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure data consistency. Such statements include INSERT, COPY, UPDATE, and DELETE. Real-time materialized views are updated based on the following logic: The database engine first updates base tables, and then updates their materialized views. If base tables fail to be updated, no data changes are made to their materialized views. If materialized views fail to be updated, no data changes are made to their base tables and an error is returned for the executed statement. For an explicit transaction that starts with the BEGIN TRANSACTION statement and ends with the COMMIT statement, after base tables are updated, data changes are also made to their materialized views in this transaction. If AnalyticDB for PostgreSQL uses the default READ COMMITTED isolation level, updates of materialized views are invisible to other transactions before this transaction is committed. If this transaction is rolled back, base tables and their materialized views are also rolled back. Limits AnalyticDB for PostgreSQL imposes the following limits on the query statements that are used to create real-time materialized views: If a query statement contains JOIN operations, only INNER JOIN can be used to join tables. OUTER JOIN or SELF JOIN is not supported. Query statements can contain most filtering and projection operations. Only the following aggregate operations are supported in a query statement: COUNT, SUM, AVG, MAX, and MIN. The HAVING clause is not supported. Complex statements such as those that contain subqueries and common table expressions (CTEs) are not supported. After you create a real-time materialized view on a base table, DDL statements that you execute on the base table are subject to the following limits: When you execute the TRUNCATE statement on the base table, the real-time materialized view is not synchronously updated. You must manually refresh the real-time materialized view or create another materialized view. You must specify the CASCADE option to execute the DROP TABLE statement on the base table. ALTER TABLE statements on the base table cannot be used to delete or modify fields referenced by the materialized view. Real-time materialized views are subject to the following limits: Real-time materialized views are supported for standard and partitioned heap tables, but not for append-optimized (AO) tables. Scenarios We recommend that you use real-time materialized views in the following scenarios: The number of rows or columns in the query results is much smaller than that of the base tables. For example, the query statement may contain a WHERE clause that effectively narrows down the results or may contain an aggregate function that consolidates multiple values into a single value. Large amounts of computations are required to obtain the query results of the following operations: Semi-structured data analysis Aggregate operations that take a long time to complete Base tables are not frequently changed. Real-time materialized views can be used in all scenarios where materialized views are suitable. Compared with non-real-time materialized views, real-time materialized views are highly consistent with their base tables. When a base table changes, its real-time materialized views synchronously change with minimal performance cost. However, when you use non-real-time materialized views, you must manually update them each time their base tables change. Therefore, when large amounts of data are changed on a base table or a streaming update is performed, real-time materialized views have great advantages over non-real-time materialized views. Disadvantages of real-time materialized views Real-time materialized views are similar to indexes maintained in real time. They can significantly optimize query performance but also reduce write performance. When you create a real-time materialized view that contains only a single table, the write performance of the related database is reduced because the data in the materialized view must be synchronously updated. The write latency can be up to three times longer compared with writing data to the base table but not updating the materialized view. We recommend that you do not create more than five real-time materialized views on the same base table. Batch data writes help reduce the maintenance overhead of real-time materialized views. When you execute COPY or INSERT statements, we recommend that you increase the number of batch processed rows within a single statement. This significantly reduces the maintenance overhead of real-time materialized views. When the query statement used to create a real-time materialized view contains a JOIN clause to join two tables, you must optimize the write performance of the real-time materialized view. If you do not have relevant experience or encounter low performance when you test the execution, we recommend that you use a real-time materialized view that contains only a single table. The following suggestions are available in scenarios where two tables are joined: Use the join key of each base table as their respective distribution keys. Create an index for the join key of each base table. Create or delete a real-time materialized view
+views AnalyticDB for PostgreSQL provides real-time materialized views. Compared with non-real-time materialized views, real-time materialized views can implement automatic refresh in response to data changes without the need to execute REFRESH statements. A real-time materialized view can be automatically updated with changes made to its base tables. Real-time materialized views of AnalyticDB for PostgreSQL support only statement-level automatic refresh. When an INSERT, COPY, UPDATE, or DELETE statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure strong data consistency.
+
+> Not e In this mode, the write performance of base tables may be reduced. We recommend that you do not create more than five real-time materialized views on the same base table.
+
+For more information about materialized views, see CREATE MATERIALIZED VIEW. Statement-level refresh When a statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure data consistency. Such statements include INSERT, COPY, UPDATE, and DELETE. Real-time materialized views are updated based on the following logic: The database engine first updates base tables, and then updates their materialized views. If base tables fail to be updated, no data changes are made to their materialized views. If materialized views fail to be updated, no data changes are made to their base tables and an error is returned for the executed statement. For an explicit transaction that starts with the BEGIN TRANSACTION statement and ends with the COMMIT statement, after base tables are updated, data changes are also made to their materialized views in this transaction. If AnalyticDB for PostgreSQL uses the default READ COMMITTED isolation level, updates of materialized views are invisible to other transactions before this transaction is committed. If this transaction is rolled back, base tables and their materialized views are also rolled back. Limits AnalyticDB for PostgreSQL imposes the following limits on the query statements that are used to create real-time materialized views: If a query statement contains JOIN operations, only INNER JOIN can be used to join tables. OUTER JOIN or SELF JOIN is not supported. Query statements can contain most filtering and projection operations. Only the following aggregate operations are supported in a query statement: COUNT, SUM, AVG, MAX, and MIN. The HAVING clause is not supported. Complex statements such as those that contain subqueries and common table expressions (CTEs) are not supported. After you create a real-time materialized view on a base table, DDL statements that you execute on the base table are subject to the following limits: When you execute the TRUNCATE statement on the base table, the real-time materialized view is not synchronously updated. You must manually refresh the real-time materialized view or create another materialized view. You must specify the CASCADE option to execute the DROP TABLE statement on the base table. ALTER TABLE statements on the base table cannot be used to delete or modify fields referenced by the materialized view. Real-time materialized views are subject to the following limits: Real-time materialized views are supported for standard and partitioned heap tables, but not for append-optimized (AO) tables. Scenarios We recommend that you use real-time materialized views in the following scenarios: The number of rows or columns in the query results is much smaller than that of the base tables. For example, the query statement may contain a WHERE clause that effectively narrows down the results or may contain an aggregate function that consolidates multiple values into a single value. Large amounts of computations are required to obtain the query results of the following operations: Semi-structured data analysis Aggregate operations that take a long time to complete Base tables are not frequently changed. Real-time materialized views can be used in all scenarios where materialized views are suitable. Compared with non-real-time materialized views, real-time materialized views are highly consistent with their base tables. When a base table changes, its real-time materialized views synchronously change with minimal performance cost. However, when you use non-real-time materialized views, you must manually update them each time their base tables change. Therefore, when large amounts of data are changed on a base table or a streaming update is performed, real-time materialized views have great advantages over non-real-time materialized views. Disadvantages of real-time materialized views Real-time materialized views are similar to indexes maintained in real time. They can significantly optimize query performance but also reduce write performance. When you create a real-time materialized view that contains only a single table, the write performance of the related database is reduced because the data in the materialized view must be synchronously updated. The write latency can be up to three times longer compared with writing data to the base table but not updating the materialized view. We recommend that you do not create more than five real-time materialized views on the same base table. Batch data writes help reduce the maintenance overhead of real-time materialized views. When you execute COPY or INSERT statements, we recommend that you increase the number of batch processed rows within a single statement. This significantly reduces the maintenance overhead of real-time materialized views. When the query statement used to create a real-time materialized view contains a JOIN clause to join two tables, you must optimize the write performance of the real-time materialized view. If you do not have relevant experience or encounter low performance when you test the execution, we recommend that you use a real-time materialized view that contains only a single table. The following suggestions are available in scenarios where two tables are joined: Use the join key of each base table as their respective distribution keys. Create an index for the join key of each base table. Create or delete a real-time materialized view
 
 | CREATE INCREMENTAL MATERIALIZED VIEW |   |   |
 |---|---|---|
@@ -1694,7 +1784,9 @@ The following information is returned:
 (1 row)
 ```
 
-Not e JSON data cannot be used as the distribution key and does not support JSON aggregate functions. The following example demonstrates how to use Python to access the database:
+> Not e JSON data cannot be used as the distribution key and does not support JSON aggregate functions.
+
+The following example demonstrates how to use Python to access the database:
 
 ```java
 #! /bin/env python
@@ -1949,7 +2041,8 @@ AnalyticDB for PostgreSQL.
 create library example language java from 'oss://oss-cn-hangzhou.aliyuncs.com filepath= analytics.jar id=xxx key=yyy bucket=zzz';
 ```
 
-Not e You can only use the filepath variable in the CREATE LIBRARY statement to import files one at a time. The CREATE LIBRARY statement also supports byte streams to import files without the need to use OSS. For more information, see Use the CREATE LIBRARY statement.
+> Not e You can only use the filepath variable in the CREATE LIBRARY statement to import files one at a time. The CREATE LIBRARY statement also supports byte streams to import files without the need to use OSS. For more information, see Use the CREATE LIBRARY statement.
+
 7. In AnalyticDB for PostgreSQL, execute the following statements to create and use the UDF:
 
 ```
@@ -2227,7 +2320,7 @@ compression features If you want to improve performance, speed up data import, o
 with (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOCKSIZE=10 48576, OIDS=false)
 ```
 
-Not e AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
+> Not e AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
 
 ### 5.4 Add a field to a column-oriented table and set the default value
 
@@ -2584,7 +2677,11 @@ Resource queue parameters
 | gp resqueue priority cpucores _ _ _ _ per segment _ | The number of CPU cores allocated to each compute node. For example, if an 8-core host is configured with two primary compute nodes, you can set the parameter to 4. If no other nodes exist on the primary node, set the parameter to 8. When the CPU is preempted, the SQL statements that are executed in a higher-priority resource group are allocated with CPU resources first. |
 | gp resqueue priority sweeper i _ _ _ _ nterval | The interval at which CPU utilization is recalculated for all active statements. The share value is calculated when the SQL statement is executed. You can calculate the share value based on the priority and gp resqueue priority cpucores per segment. _ _ _ _ _ The smaller the interval and the more frequent the calculation, the better the results achieved by the priority settings and the larger the overhead. |
 
-Tips for configuring resource queues: We recommend that you create a resource queue for each user. The default resource queue of AnalyticDB for PostgreSQL is pg_default. If no queue is created, all users are assigned to pg_default. This operation is not recommended. We recommend that you create a resource queue for each user. Typically, a database user corresponds to a business operation. Different database users may correspond to different business operations or users, such as business users, analysts, developers, and DBAs. We recommend that you do not use superusers to execute queries. Queries initiated by superusers are limited only by the preceding parameters and not by the resource queue. If you want to use resource queues to limit the use of resources, we recommend that you do not use superusers to execute queries. ACTIVE_STATEMENTS indicates the SQL statements that can be concurrently executed within a resource queue. When the cost of a query is lower than the minimum cost specified by min_cost, the query can be executed without being queued. You can specify the MEMORY_LIMIT parameter to set the allowed maximum memory usage of all the SQL statements in a resource queue. The statement_mem parameter has a higher priority that can break through the limit of resource queues. Not e The memory of all resource queues cannot exceed gp_vmem_protect_limit. You can distinguish different business operations by configuring the priorities of resource queues. For example, you can give report-related business operations a top priority while giving common business operations and analysis lower priorities. In this case, you can create three resource queues that have the max, high, and medium priorities, respectively. If the number of resources requested at different periods of time varies, you can run the crontab command to periodically adjust the limits of resource queues based on usage patterns. For example, you can give the queue of analysis a higher priority in the day and the queue of reportrelated business operations a higher priority at night. AnalyticDB for PostgreSQL does not allow you to configure resource limits by period of time. Therefore, you can only externally deploy tasks by using the ALTER RESOURCE QUEUE statement. You can use the view provided by gp_toolkit to view the resource usage of the resource queues.
+Tips for configuring resource queues: We recommend that you create a resource queue for each user. The default resource queue of AnalyticDB for PostgreSQL is pg_default. If no queue is created, all users are assigned to pg_default. This operation is not recommended. We recommend that you create a resource queue for each user. Typically, a database user corresponds to a business operation. Different database users may correspond to different business operations or users, such as business users, analysts, developers, and DBAs. We recommend that you do not use superusers to execute queries. Queries initiated by superusers are limited only by the preceding parameters and not by the resource queue. If you want to use resource queues to limit the use of resources, we recommend that you do not use superusers to execute queries. ACTIVE_STATEMENTS indicates the SQL statements that can be concurrently executed within a resource queue. When the cost of a query is lower than the minimum cost specified by min_cost, the query can be executed without being queued. You can specify the MEMORY_LIMIT parameter to set the allowed maximum memory usage of all the SQL statements in a resource queue. The statement_mem parameter has a higher priority that can break through the limit of resource queues.
+
+> Not e The memory of all resource queues cannot exceed gp_vmem_protect_limit.
+
+You can distinguish different business operations by configuring the priorities of resource queues. For example, you can give report-related business operations a top priority while giving common business operations and analysis lower priorities. In this case, you can create three resource queues that have the max, high, and medium priorities, respectively. If the number of resources requested at different periods of time varies, you can run the crontab command to periodically adjust the limits of resource queues based on usage patterns. For example, you can give the queue of analysis a higher priority in the day and the queue of reportrelated business operations a higher priority at night. AnalyticDB for PostgreSQL does not allow you to configure resource limits by period of time. Therefore, you can only externally deploy tasks by using the ALTER RESOURCE QUEUE statement. You can use the view provided by gp_toolkit to view the resource usage of the resource queues.
 
 ```
 gp_toolkit.gp_resq_activity gp_toolkit.gp_resq_activity_by_queue gp_toolkit.gp_resq_priority_backend gp_toolkit.gp_resq_priority_statement gp_toolkit.gp_resq_role gp_toolkit.gp_resqueue_status

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 279
 source_pdf: "948fabe97a572834_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Backup and Recovery Developer Gui"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%A4%87%E4%BB%BDASRBR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Backup%C2%A0and%C2%A0Recovery%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience ASR for Backup and Recovery Developer Guide 20260701
@@ -118,14 +118,10 @@ region ID.
 see Obtain the SDK package.
 6. Call API operations in ASR for Backup and Recovery.
 
-**Note**
-
-Only users who are granted the permissions of the organization backup administrator role can call API operations in ASR for Backup and Recovery. For more information about how to add the organization backup administrator role, see **Manage**
+> **Note:** Only users who are granted the permissions of the organization backup administrator role can call API operations in ASR for Backup and Recovery. For more information about how to add the organization backup administrator role, see **Manage** **authorizations of System Management** in ASR for Backup and Recovery User
 
 | in | ASR for Backup and Recovery User |
 |---|---|
-
-**authorizations of System Management** in ASR for Backup and Recovery User
 
 | Guide | . |
 |---|---|
@@ -144,9 +140,9 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 
 The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations
 
-**Note**
+> **Note:** Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations.
 
-Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. When you obtain the AccessKey pair of your personal account, make sure that you have the permissions of the organization backup administrator role. Otherwise, you may fail to call the operations.
+When you obtain the AccessKey pair of your personal account, make sure that you have the permissions of the organization backup administrator role. Otherwise, you may fail to call the operations.
 
 **Obtain the AccessKey credentials of a personal account**
 
@@ -155,15 +151,12 @@ Only the administrators of level-1 organizations and operations administrators c
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey credentials of the personal account.
 
-**Important**
-
-The AccessKey pair provides full access to cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
+> **Important:** The AccessKey pair provides full access to cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey credentials of an organization**
 
-**Warning**
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources**>**Organizations**.
@@ -199,9 +192,8 @@ region ID on the Parameter tab.
 If you want to use the POP gateway to call API operations in ASR for Backup and Recovery, you must use the SDK core library in SDK Center and the ASR for Backup and Recovery SDK in the Apsara Stack Help Center. To obtain the SDK core library: Go to SDK Center and download the **SDK core library** for your programming language. To obtain the ASR for Backup and Recovery SDK: Go to Apsara Stack Help Center. In the
 **Other Resources** section at the bottom, download ASR for Backup and Recovery SDK.
 
-**Note**
-
-We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. ASR for Backup and Recovery SDK supports Java.
+> **Note:** We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+> ASR for Backup and Recovery SDK supports Java.
 
 ## 3 Use SDK for Java
 
@@ -239,9 +231,7 @@ If you use Apache Maven to manage Java projects, you only need to copy the conte
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for identity verification. Apsara Stack SDK for Java supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, Obtain the information and the endpoint of an API operation. For more information about how to obtain a region ID, see Obtain a region ID. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
 
 ```
 //Configure the request endpoint. DefaultProfile.addEndpoint(
@@ -262,9 +252,9 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 );
 
-**Note**
-
-In the preceding sample code, replace the variables `<yourRegionID>` , `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the final code. Only users who are granted the permissions of the organization backup administrator role can call API operations in ASR for Backup and Recovery.
+> **Note:** In the preceding sample code, replace the variables `<yourRegionID>` ,
+> `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the final code.
+> Only users who are granted the permissions of the organization backup administrator role can call API operations in ASR for Backup and Recovery.
 
 ### 3.3 Initiate a request
 

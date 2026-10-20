@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 517
 source_pdf: "113e5c6fdf6d0a51_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer Guide 20260828
@@ -260,26 +260,26 @@ Apsara Stack allows you to call API operations by using the point of presence (P
 1. Obtain the AccessKey credential.
 Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For more information, see Obtain the values of common header parameters.
 3. Obtain an organization ID and a resource set ID.
 Call an API operation to obtain the organization ID. For more information about how to obtain organization IDs, see GetOrganizationList in Apsara Uni-manager Management Cons ole Developer Guide. Call an API operation to obtain the resource set ID. For more information about how to obtain resource set IDs, see ListResourceGroup in Apsara Uni-manager Management Consol e Developer Guide.
 
-**Note**
-
 |   | <x-acs- |   |
 |---|---|---|
 | <x-acs-resourcegroupid> |   |   |
 
-When you call an API operation, you can specify the organization ID by using `<x-acs-`
+> **Note:** When you call an API operation, you can specify the organization ID by using `<x-acs-`
 
 |   | organizationid> |
 |---|---|
 
-`organizationid>` and the resource set ID by using `<x-acs-resourcegroupid>` to query only resources that belong to the specified resource set and organization. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used. If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set, you must also specify an organization ID.
+> `organizationid>` and the resource set ID by using `<x-acs-resourcegroupid>` to query only resources that belong to the specified resource set and organization.
+> If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used.
+> If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set, you must also specify an organization ID.
+
 4. Obtain the API references.
 For more information about how to view, use, and obtain the developer guide of a specific service, and understand the features and usage methods of operations, see Usage notes.
 5. Obtain the endpoint of a cloud service.
@@ -300,33 +300,31 @@ Before you log in to the Apsara Uni-manager Management Console, confirm that you
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter your username and password.
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
 the following scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -364,9 +362,7 @@ AccessKey credentials are provided by Resource Access Management (RAM) or Securi
 
 An AccessKey ID and an AccessKey secret are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign AccessKey credentials: An AccessKey pair that is provided by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is provided by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -383,9 +379,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -416,9 +410,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the STS AccessKey 3-tuple.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with your RAM role. "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the parameter with the name of the current session.
+> <yourRoleArn>: Replace the parameter with your RAM role.
+> "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -480,9 +479,14 @@ step.
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following
 sample code provides an example on how to call the `DescribeVpcs` operation of Virtual Private Cloud (VPC).
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourRegionID>: Replace the parameter with the organization ID.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret.
+> <yourStsToken>. Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourRegionID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -615,9 +619,9 @@ VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies call
 
 Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. or SDK for Java
+or SDK for Java
 
 ## 3 Call examples for SDK for Java
 
@@ -658,9 +662,18 @@ To use VPC SDK for Java, perform the following steps:
 3. Initiate the API request and process the response or exceptions.
 or SDK for Java
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Product>: Replace the parameter with the service name. <Endpoint>: Replace the parameter with the endpoint of the service. <readTimeout>: Replace the parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the parameter with the maximum number of requests. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <Product>: Replace the parameter with the service name.
+> <Endpoint>: Replace the parameter with the endpoint of the service.
+> <readTimeout>: Replace the parameter with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace the parameter with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace the parameter with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace the parameter with the maximum number of requests.
+> <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.vpc.model.v20160428.*; import com.google.gson.Gson; public class Main {
@@ -756,9 +769,7 @@ This topic describes how to install and use Virtual Private Cloud (VPC) SDK for 
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client.
 
-**Note**
-
-Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Note:** Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -767,17 +778,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret.
 ```
 
-**Note**
-
-In the preceding sample code,replace the parameterswith the actual information. Remove the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code,replace the parameterswith the actual information. Remove the angle brackets (<>) in the final code.
 
 #### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java
 
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -900,9 +913,16 @@ For example, if you want to call the DescribeVpcs operation, you must use `reque
 
 The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
+> <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; public class Sample {
@@ -988,9 +1008,9 @@ You have obtained an AccessKey pair or an STS AccessKey pair. For more informati
 
 Alibaba Cloud Python SDK supports Python 2.6.x, 2.7.x, and 3.x or later. You can install the Alibaba Cloud Python SDK by using pip.
 
-**Note**
+> **Note:** We recommend that you use Python 3.x.
 
-We recommend that you use Python 3.x. For Python 3.x, run the following command:
+For Python 3.x, run the following command:
 
 ```bash
 # Install the core library of Alibaba Cloud SDK.
@@ -1016,9 +1036,7 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 
 The Python SDK supports authentication by using an AccessKey pair or an STS AccessKey pair.
 
-**Important**
-
-Ensure that the code containing your AccessKey pair or STS AccessKey pair does not leak (for example, to a publicly accessible GitHub project). Otherwise, your information security will be compromised.
+> **Important:** Ensure that the code containing your AccessKey pair or STS AccessKey pair does not leak (for example, to a publicly accessible GitHub project). Otherwise, your information security will be compromised.
 
 ```xml
 credentials = StsTokenCredential(
@@ -1032,9 +1050,8 @@ credentials = StsTokenCredential(
 
 `e.` `)`
 
-**Note**
-
-In the preceding code example, `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and `<yourSecurityToken>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and
+> `<yourSecurityToken>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
 **Create and configure a request connection**
 
@@ -1057,9 +1074,8 @@ iness requirements. Sample configuration:
 
 `)`
 
-**Note**
-
-In the preceding code example, `<connectionTimeout>` , `<readTimeout>` , and `<http://192.168.XX.XX:33XX>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<connectionTimeout>` , `<readTimeout>` , and
+> `<http://192.168.XX.XX:33XX>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
 **Create a CommonRequest**
 
@@ -1085,9 +1101,8 @@ s no practical effect. You can set it to any value. request.add_header("x-acs-ca
 request.set_content_type('application/json')
 ```
 
-**Note**
-
-In the preceding code example, `<yourCallUriPattern>` , `<ascmEndpoint>` , and `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values based on your service. Do not retain the angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<yourCallUriPattern>` , `<ascmEndpoint>` , and
+> `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values based on your service. Do not retain the angle brackets (<>) in the final code.
 
 **Configure Alibaba Cloud core library SDK parameters**
 
@@ -1181,7 +1196,7 @@ print(str(response, encoding='utf-8'))
 |---|---|
 | <ascmEndpoint> |   |
 
-parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
+> parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
 ### 4.1 Quick start
 
@@ -1229,9 +1244,12 @@ AccessKey ID, and an AccessKey secret.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuns.com>: Replace the parameter with the service endpoint.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <vpc.aliyuns.com>: Replace the parameter with the service endpoint.
 
 ```python
 #!/usr/bin/env python
@@ -1255,9 +1273,9 @@ response = clt.do_action_with_exception(request) print response # If you use Pyt
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of a cloud service, you must install the SDK core library for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python.
 
-To use the SDK of a cloud service, you must install the SDK core library for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python. If you use Python 2.x, run the following command:
+If you use Python 2.x, run the following command:
 
 ```
 pip install aliyun-python-sdk-core
@@ -1285,9 +1303,7 @@ pip3 install aliyun-python-sdk-vpc
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client.
 
-**Important**
-
-Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -1297,9 +1313,7 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
 
-**Note**
-
-The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
+> **Note:** The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
 
 **Add OpenSSL dependency**
 
@@ -1396,9 +1410,16 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
+> <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service.
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1464,9 +1485,7 @@ go env -W GOPROXY='https://goproxy.cn,direct'
 
 The Go SDK supports authentication by using an AccessKey pair or an STS AccessKey pair.
 
-**Important**
-
-Ensure that the code containing your AccessKey pair or STS AccessKey pair does not leak (for example, to a publicly accessible GitHub project). Otherwise, your information security will be compromised.
+> **Important:** Ensure that the code containing your AccessKey pair or STS AccessKey pair does not leak (for example, to a publicly accessible GitHub project). Otherwise, your information security will be compromised.
 
 ```
 credential := credentials.NewStsTokenCredential(
@@ -1480,9 +1499,8 @@ ur actual Security Token.
 
 `)`
 
-**Note**
-
-In the preceding code example, `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and `<yourSecurityToken>` are variable parameters. You must replace them with their actual values. Do not retain angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and
+> `<yourSecurityToken>` are variable parameters. You must replace them with their actual values. Do not retain angle brackets (<>) in the final code.
 
 **Create and configure a request connection**
 
@@ -1507,9 +1525,8 @@ if err != nil {
 
 `*/`
 
-**Note**
-
-In the preceding code example, `<connectionTimeout>` , `<readTimeout>` , and `<http://192.168.XX.XX:33XX>` are variable parameters. You must replace them with their actual values based on your service requirements. Do not retain angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<connectionTimeout>` , `<readTimeout>` , and
+> `<http://192.168.XX.XX:33XX>` are variable parameters. You must replace them with their actual values based on your service requirements. Do not retain angle brackets (<>) in the final code.
 
 **Create a CommonRequest**
 
@@ -1519,9 +1536,8 @@ You can use CommonRequest to call any Open API operation.
 // Create an API request and configure parameters. request := requests.NewCommonRequest() // Parameters related to the Apsara Uni-manager Management Console API. request.Product ="ascm" request.Version = "2019-05-10" // The RESTful path of the API operation to be called. For example, the RESTful path of the GetOrganizationList operation is /ascm/auth/organization/queryList. For other opera tions, see the corresponding API documentation. request.PathPattern = "<yourCallUriPattern>" // The endpoint of the Apsara Uni-manager Management Console. request.Domain = "<ascmEndpoint>" // Set the request method. request.Method = "POST" // Set the protocol type: https or http. request.Scheme = "https" // Set headers. // Set an identity identifier to indicate the source of the call. This parameter has no practical effect and can be set to any value. This parameter is required. request.Headers["x-acs-caller-sdk-source"] = "<yourCallerSdkSource>" // Configure API-specific parameters. ... // Set the Content-Type. request.SetContentType("application/json")
 ```
 
-**Note**
-
-In the preceding code example, `<yourCallUriPattern>` , `<ascmEndpoint>` , and `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values based on your service requirements. Do not retain angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, `<yourCallUriPattern>` , `<ascmEndpoint>` , and
+> `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values based on your service requirements. Do not retain angle brackets (<>) in the final code.
 
 **Configure Alibaba Cloud core SDK parameters**
 
@@ -1578,9 +1594,8 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When any call inside the SDK produces an error that cannot be handled automatically, the SDK returns a ClientError**,** and you can use the following code to identify and retrieve error information from ClientError.
 
-**Important**
-
-To use specific error structures, import the error package `github.com/aliyun/alibaba-` `cloud-sdk-go/sdk/errors` . Refer to the following code for the import method.
+> **Important:** To use specific error structures, import the error package `github.com/aliyun/alibaba-`
+> `cloud-sdk-go/sdk/errors` . Refer to the following code for the import method.
 
 ```java
 package main import (
@@ -1608,9 +1623,8 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
 
 When the server returns an incorrect response, the SDK wraps that response into a ServerError. In this case, you can still obtain the original HTTP response from Response. Use the following code to identify ServerError and retrieve error information from ServerError and Response.
 
-**Important**
-
-To use specific error structures, import the error package `github.com/aliyun/alibaba-` `cloud-sdk-go/sdk/errors` . Refer to the following code for the import method.
+> **Important:** To use specific error structures, import the error package `github.com/aliyun/alibaba-`
+> `cloud-sdk-go/sdk/errors` . Refer to the following code for the import method.
 
 ```java
 package main import (
@@ -1620,7 +1634,7 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1745,7 +1759,7 @@ fmtPrintln(serverErrorErrorCode())
 |---|---|---|
 | <http://192.168.XX.XX:33XX> |   |   |
 
-`<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
+> `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
 ### 5.1 Quick start
 
@@ -1770,9 +1784,12 @@ The following sample code shows you how to use Alibaba Cloud SDK for Go:
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with the endpoint.
+> **Note:** In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <Endpoint>: Replace the parameter with the endpoint.
 
 ```java
 package main import (
@@ -1837,9 +1854,9 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
+> **Important:** Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example to show how to initialize a vpcClient instance.
+The following code provides an example to show how to initialize a vpcClient instance.
 
 ```
 // Initialize a vpcClient instance. vpcClient, err := vpc.NewClientWithAccessKey(
@@ -1854,9 +1871,7 @@ Do not disclose any code containing your AccessKey pair. For example, do not com
 secret.
 ```
 
-**Note**
-
-In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
 #### 5.2.3 Initiate a request
 
@@ -1869,9 +1884,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/vpc
 
 2. Create a VPC client. The client includes all APIs of the VPC.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
 ```
 vpcClient,err := <vpc>.NewClientWithAccessKey( //Replace the parameter with the name of the service.
@@ -1916,9 +1929,7 @@ response,err := vpcClient.DescribeVpcs(request) if err != nil {
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain the error message in a `ClientError` of Virtual Private Cloud (VPC) SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1930,7 +1941,7 @@ ame of the service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := vpcClient.DescribeVpcs(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1948,9 +1959,7 @@ response, err := vpcClient.DescribeVpcs(request) if clientError, ok := err.(*err
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a server error and response of VPC SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1962,7 +1971,7 @@ ame of the service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1986,9 +1995,16 @@ If you want to call the API operations of a cloud service that does not provide 
 
 The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations.
 
-**Note**
-
-In the following code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID.
+> **Note:** In the following code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
 
 ```java
 package main import (
@@ -2293,9 +2309,8 @@ http://Endpoint/?Action=xx&Parameters
 Take note of the following items:
 **Endpoint**: the endpoint of the API. The endpoint of the VPC API is `vpc.example.com` .
 
-**Note**
+> **Note:** `example.com` is a custom domain name.
 
-`example.com` is a custom domain name.
 **Action**: the operation that you want to perform. For example, to query VPCs, you must set
 the Action parameter to DescribeVpcs.
 **Version**: the version of the API that you want to call. The current VPC API version is 2016-
@@ -2303,9 +2318,7 @@ the Action parameter to DescribeVpcs.
 **Parameters**: the request parameters for the operation. Separate multiple parameters with
 ampersands (&). Request parameters include common parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information about common parameters, see Common parameters. The following example describes how to call the DescribeVpcs operation.
 
-**Note**
-
-The example in this topic is formatted to improve readability.
+> **Note:** The example in this topic is formatted to improve readability.
 
 ```
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2021-06-01T12:00:00Z
@@ -7181,9 +7194,7 @@ Sample success responses `XML` format
 
 Deletes a specified NAT gateway.
 
-**Note**
-
-Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway.
+> **Note:** Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway.
 
 **Request parameters**
 
@@ -7610,9 +7621,7 @@ Sample success responses `XML` format
 
 Modifies a DNAT entry.
 
-**Note**
-
-You cannot modify DNAT entries if one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state.
+> **Note:** You cannot modify DNAT entries if one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state.
 
 **Request parameters**
 
@@ -7686,9 +7695,7 @@ Sample success responses `XML` format
 
 Deletes a DNAT entry.
 
-**Note**
-
-You cannot delete DNAT entries if one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state.
+> **Note:** You cannot delete DNAT entries if one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state.
 
 **Request parameters**
 
@@ -7922,9 +7929,7 @@ Sample success responses `XML` format
 
 Modifies a specified SNAT entry.
 
-**Note**
-
-You cannot modify SNAT entries if one or more SNAT entries in the SNAT table are in the **Pending** or **Modifying** state.
+> **Note:** You cannot modify SNAT entries if one or more SNAT entries in the SNAT table are in the **Pending** or **Modifying** state.
 
 **Request parameters**
 
@@ -7989,9 +7994,7 @@ Successful response examples `XML` format
 
 Deletes a specified SNAT entry.
 
-**Note**
-
-You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the **Pending** or **Modifying** state.
+> **Note:** You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the **Pending** or **Modifying** state.
 
 **Request parameters**
 
@@ -8156,9 +8159,7 @@ Sample success responses `XML` format
 
 Creates a NAT service plan. A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses
 
-**Note**
-
-This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs).
+> **Note:** This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs).
 
 **Request parameters**
 
@@ -11216,9 +11217,7 @@ Sample success responses `XML` format
 
 Deletes a specified VPN gateway.
 
-**Note**
-
-You cannot delete a VPN gateway that is associated with an IPsec-VPN connection.
+> **Note:** You cannot delete a VPN gateway that is associated with an IPsec-VPN connection.
 
 **Request parameters**
 
@@ -12636,9 +12635,7 @@ Sample success responses `XML` format
 
 Deletes a specified IPsec-VPN connection.
 
-**Note**
-
-After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted.
+> **Note:** After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted.
 
 **Request parameters**
 

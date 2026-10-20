@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 125
 source_pdf: "d2b899d7fa2432eb_Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Developer Guide 20251203.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97Kafka%E7%89%88%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Message%20Queue%20for%20Apache%20Kafka%20Developer%20Guide%2020251203.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Message Queue for Apache Kafka Developer Guide 20251203
@@ -138,9 +138,7 @@ You can obtain AccessKey pairs through Resource Access Management (RAM) or Secur
 
 An AccessKey pair authenticates the identity of a requester. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID identifies the user, and the AccessKey secret is used to encrypt the signature string for symmetric encryption. The two authorization modes for AccessKey pairs are as follows: RAM authorization, which grants an AccessKey ID and an AccessKey secret to a third-party requester. STS authorization, which grants an AccessKey ID, an AccessKey secret, and a security token to a third-party requester. For more information, see Obtain an STS AccessKey. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and administrators of level-1 organizations can obtain an organization's AccessKey pair. You can use the AccessKey pair of a personal account to call the APIs of the Apsara Uni-manager Management Console and other cloud products. If you use the AccessKey pair of a personal account, you must add specific parameters to the request header. Otherwise, you may receive an insufficient permissions error.
 
-**Warning**
-
-An AccessKey pair for a personal account is a restricted key managed by the permission system of the Apsara Uni-manager Management Console. An AccessKey pair for an organization has broader permissions. An administrator must ensure the security of any operation that uses an organization's AccessKey pair.
+> **Warning:** An AccessKey pair for a personal account is a restricted key managed by the permission system of the Apsara Uni-manager Management Console. An AccessKey pair for an organization has broader permissions. An administrator must ensure the security of any operation that uses an organization's AccessKey pair.
 
 | Parameter | Description |
 |---|---|
@@ -159,9 +157,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions to the cloud resources in your account. Keep your AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions to the cloud resources in your account. Keep your AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -707,9 +703,7 @@ Add the following dependencies to the pom.xml file:
 </dependency>
 ```
 
-**Note**
-
-We recommend that your client version be consistent with the major version of your ApsaraMQ for Kafka instance. You can view the major version of your ApsaraMQ for Kafka instance on the **Instance Details** page in the ApsaraMQ for Kafka console.
+> **Note:** We recommend that your client version be consistent with the major version of your ApsaraMQ for Kafka instance. You can view the major version of your ApsaraMQ for Kafka instance on the **Instance Details** page in the ApsaraMQ for Kafka console.
 
 **Create configuration files**
 
@@ -1026,9 +1020,9 @@ This topic describes how to use the SDK for Python to connect to ApsaraMQ for Ka
 
 Python is installed. For more information, see Python.
 
-**Note**
+> **Note:** Python 2.7, 3.4, 3.5, 3.6, and 3.7 are supported.
 
-Python 2.7, 3.4, 3.5, 3.6, and 3.7 are supported. pip is installed. For more information, see Installation.
+pip is installed. For more information, see Installation.
 
 **Install the Python library**
 
@@ -2538,9 +2532,9 @@ This topic describes how to use the SDK for Node.js to connect to ApsaraMQ for K
 
 GNU Compiler Collection (GCC) is installed. For more information, see Installing GCC. Node.js is installed. For more information, see Downloads.
 
-**Important**
+> **Important:** The version of Node.js must be 4.0.0 or later.
 
-The version of Node.js must be 4.0.0 or later. OpenSSL is installed. For more information, see Downloads.
+OpenSSL is installed. For more information, see Downloads.
 
 **Install the Node.js library**
 
@@ -2565,9 +2559,7 @@ r on-premises machine. export LDFLAGS=-L</usr/local/opt/openssl/lib>
 npm install i --unsafe-perm node-rdkafka
 ```
 
-**Note**
-
-Run the **whereis openssl** command to obtain the path of the OpenSSL header file and the path of the OpenSSL library.
+> **Note:** Run the **whereis openssl** command to obtain the path of the OpenSSL header file and the path of the OpenSSL library.
 
 **Create a configuration file**
 

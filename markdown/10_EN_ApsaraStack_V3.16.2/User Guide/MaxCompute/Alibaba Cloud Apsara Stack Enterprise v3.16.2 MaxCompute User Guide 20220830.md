@@ -5,7 +5,7 @@ doc_version: "20220830"
 pdf_pages: 781
 source_pdf: "03d10f6a593636a4_Alibaba Cloud Apsara Stack Enterprise v3.16.2 MaxCompute User Guide 20220830.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20MaxCompute%20User%20Guide%2020220830.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 MaxCompute User Guide
@@ -9185,7 +9185,9 @@ This topic describes limits on Python user-defined functions (UDFs). MaxCompute 
 
 ##### 6.7.6.3 Third-party libraries
 
-This topic describes third-party libraries for Python user-defined functions (UDFs). Common third-party libraries such as NumPy are installed in the runtime environment to supplement the standard library. Warning The use of third-party libraries is also subject to limits. For example, when you use a thirdparty library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled.
+This topic describes third-party libraries for Python user-defined functions (UDFs). Common third-party libraries such as NumPy are installed in the runtime environment to supplement the standard library.
+
+> **Warning:** The use of third-party libraries is also subject to limits. For example, when you use a third- party library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled.
 
 ##### 6.7.6.4 Types of parameters and return values
 
@@ -23842,6 +23844,7 @@ This topic provides examples of cross-region direct read operations in multi-reg
 1. In the AdminConsole, create two projects: testmdu and testcross5kn.
 In this example, AT-MDU-TEST and AT-5KN are selected for the testmdu project, with AT-MDU- TEST as the default cluster. AT-5KN is selected for the testcross5kn project and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090. 9090 indicates the port number of MaxCompute AG. The entry point to create the project is MaxComput e Conf igurat ion > Project Management
 > Creat e Project .
+
 2. Create tables for the testmdu and testcross5kn projects.
 
 ```
@@ -23860,6 +23863,7 @@ If the required data is returned, cross-region direct read is successful. Direct
 1. In the AdminConsole, create two projects: testmdu and testcross5kn.
 In this example, AT-MDU-TEST and AT-5KN are selected for the testmdu project, with AT-MDU- TEST as the default cluster. AT-5KN is selected for the testcross5kn project and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090. 9090 indicates the port number of MaxCompute AG. The entry point to create the project is MaxComput e Conf igurat ion > Project Management
 > Creat e Project .
+
 2. Create tables for the testmdu and testcross5kn projects.
 
 ```

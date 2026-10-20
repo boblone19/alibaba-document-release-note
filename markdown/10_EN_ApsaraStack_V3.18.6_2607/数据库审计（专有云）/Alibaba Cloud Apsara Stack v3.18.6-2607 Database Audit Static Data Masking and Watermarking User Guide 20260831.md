@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 150
 source_pdf: "f4f5c6a248397f56_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking User Gui"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Static%20Data%20Masking%20and%20Watermarking%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking User Guide 20260831
@@ -193,24 +193,16 @@ Management Console and press Enter.
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. d
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
 operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
-
-For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
 
 ### 2.3 Deploy the Static Data Masking and Watermarking system
 
@@ -360,9 +352,9 @@ change to **Verified**, click **Complete carding**.
 8. On the Add Mask Task page, perform the following steps to configure the data masking
 parameters. The scope of the tables to be masked in the data masking task is fixed to the tables discovered by the discovery task. i. Select a masking method and a lookup table. Then, click **Next**. ii. Specify masking algorithms for the sensitive columns to be masked and click **Next**. iii. Configure the masking destination parameters and click **Next**. By default, the masking destination is a database. You can change the masking destination to a local file or a remote file. If the masking destination is changed to a file, the data masking task is database-to-file masking.
 
-**Important**
+> **Important:** In this step, you must verify the schema name before you click **Next**. If you enter the schema name of an Oracle database, the schema name must be in uppercase.
 
-In this step, you must verify the schema name before you click **Next**. If you enter the schema name of an Oracle database, the schema name must be in uppercase. iv. Select an exception handling method and click **Save and Execute** to execute the data masking task. After the data masking task is executed, you can find the masked table that has the same name as the original table in the specified destination database to which the masked data is saved.
+iv. Select an exception handling method and click **Save and Execute** to execute the data masking task. After the data masking task is executed, you can find the masked table that has the same name as the original table in the specified destination database to which the masked data is saved.
 
 #### 2.6.3 File masking
 
@@ -458,9 +450,8 @@ For example, configure the SEX and AGE columns in the original table using the e
 3. Complete sensitive field type verification or Verify file columns of sensitive file types.
 4. Add a data subset.
 
-**Note**
+> **Note:** If the data source is a file, you do not need to perform this operation.
 
-If the data source is a file, you do not need to perform this operation.
 5. Add a masking policy.
 
 **Steps to configure expressions**
@@ -503,9 +494,7 @@ Before you configure incremental data masking, you must complete the following o
 **Destination parameter** section.
 i. Change the **Table Processing** method to **If the table already exists, add data to it** . d ii. In the **Incremental configuration** step, specify the **Incremental value**.
 
-**Note**
-
-The incremental value ensures that DMS masks only rows where the field value is greater than this value. For the first run, you can set this value to a number smaller than the current minimum value to mask all existing data in the table. After the masking task runs, DMS automatically updates this value to the maximum value recorded at that time. DMS uses this updated value to identify incremental data during subsequent masking runs.
+> **Note:** The incremental value ensures that DMS masks only rows where the field value is greater than this value. For the first run, you can set this value to a number smaller than the current minimum value to mask all existing data in the table. After the masking task runs, DMS automatically updates this value to the maximum value recorded at that time. DMS uses this updated value to identify incremental data during subsequent masking runs.
 
 #### 2.7.4 Composite masking algorithm
 
@@ -671,9 +660,8 @@ Database names must be unique. Each database source must have unique connection 
 byte decoding character set, and custom database driver.
 5. Click **Test Connection** to verify the connection.
 
-**Note**
+> **Note:** If the test connection fails, verify that the database information you entered is correct. Save the database information only after the test connection succeeds.
 
-If the test connection fails, verify that the database information you entered is correct. Save the database information only after the test connection succeeds.
 6. After the connection test succeeds, click **Save**.
 
 **Batch creation**
@@ -695,9 +683,8 @@ If the information about a database specified as a data source changes, such as 
 and click **Edit** in the Oper column.
 4. In the **Edit Database Source** dialog box, modify the database information.
 
-**Note**
+> **Note:** The database type cannot be modified.
 
-The database type cannot be modified.
 5. Click **Save**.
 
 ##### 3.2.1.3 Delete database sources
@@ -725,9 +712,8 @@ You can quickly search for a database source and view its details.
 3. On the **Database Sources** tab, configure the **Database Source Name** and **Database IP**
 parameters and click **Search**.
 
-**Note**
+> **Note:** Fuzzy search is supported.
 
-Fuzzy search is supported.
 4. Find the database source from the query results and click **Edit** in the Oper column. In the
 Edit Database Source dialog box, view the details of the database source.
 
@@ -746,9 +732,8 @@ The Static Data Masking and Watermarking system allows you to mask data files th
 4. In the **Create File Source** dialog box, configure the file source name, upload method, and
 description, and select a file or enter the Object Storage Service (OSS) URL of the file.
 
-**Note**
+> **Note:** The file source name must be unique.
 
-The file source name must be unique.
 5. Click **Upload**.
 6. Click **Next** to configure a custom file template or select an existing template.
 7. Click **Save**.
@@ -791,9 +776,8 @@ You can use the query feature to quickly find and view the details of a file sou
 3. In the **search conditions**, enter a **file source name**, select a **file type**, and then click
 **Query**.
 
-**Note**
+> **Note:** The file source search feature supports fuzzy search.
 
-The file source search feature supports fuzzy search.
 4. In the search results, click **Edit** next to a file source to view its details.
 
 ### 3.3 Data discovery
@@ -879,9 +863,8 @@ You can modify the data source, discovery rules, and sampling data configuration
 **More** in the **Operation** column, and then select **Edit Task**.
 4. On the **EditDiscovery Task** page, modify the database discovery task.
 
-**Note**
+> **Note:** The task name, task type, and database cannot be modified. You can modify data configurations, rule configurations, and sampling configurations.
 
-The task name, task type, and database cannot be modified. You can modify data configurations, rule configurations, and sampling configurations.
 5. Click **Save**.
 
 ##### 3.3.1.6 Delete data discovery tasks
@@ -924,9 +907,8 @@ expand icon on the left. In the Data Source List section, click the icon.
 3. In the **Add Sensitive Data** dialog box, configure the Data Source, UserName, and
 Password parameters and click **Connect**, as shown in the following figure. Figure 1: Add sensitive data
 
-**Note**
+> **Note:** After the database is connected, the database table names and schema names are displayed on the right of the Add Sensitive Data dialog box.
 
-After the database is connected, the database table names and schema names are displayed on the right of the Add Sensitive Data dialog box.
 4. Select the database tables to be discovered and click **Save**.
 The added sensitive fields are displayed in the sensitive data list on the Sensitive Field Analysis tab.
 
@@ -949,15 +931,12 @@ This topic describes how to specify sensitive data fields as non-sensitive data 
 sensitive data fields, set the **Modify type** parameter to Non-sensitive Type, and then click
 **Batch Modify**.
 
-**Note**
+> **Note:** The data fields that are identified as non-sensitive data in the Sensitivity Type column cannot be specified as non-sensitive data fields.
 
-The data fields that are identified as non-sensitive data in the Sensitivity Type column cannot be specified as non-sensitive data fields.
 4. In the **Confirm** message, click **OK**, as shown in the following figure.
 Figure 2: Prompt for setting non-sensitive data fields
 
-**Note**
-
-The sensitivity type of the data fields that are specified as non-sensitive data fields changes to Non-sensitive Type. The data fields in the corresponding discovery rules also change to non-sensitive data.
+> **Note:** The sensitivity type of the data fields that are specified as non-sensitive data fields changes to Non-sensitive Type. The data fields in the corresponding discovery rules also change to non-sensitive data.
 
 ##### 3.3.2.4 Confirm the changes of sensitive data types of data fields
 
@@ -1157,9 +1136,7 @@ You can modify only the name and description of the data subset. For more inform
 you want to delete and click the Delete icon.
 4. In the message that appears, click **OK**.
 
-**Important**
-
-If the data subset is used by a data masking solution, a message appears indicating that the data subset fails to be deleted.
+> **Important:** If the data subset is used by a data masking solution, a message appears indicating that the data subset fails to be deleted.
 
 ##### 3.4.1.4 Manage data tables in a data subset
 
@@ -1172,9 +1149,7 @@ side Data Subset List section and click **Add Data Table** on the **Data Table**
 5. To delete one or more data tables from the data subset, select the tables that you want to
 delete and click **Delete** on the **Data Table** tab. In the message that appears, click **OK**.
 
-**Important**
-
-If the data subset is used by a data masking solution, a message appears indicating that the tables fail to be deleted.
+> **Important:** If the data subset is used by a data masking solution, a message appears indicating that the tables fail to be deleted.
 
 ##### 3.4.1.5 Manage constraints of a data subset
 
@@ -1206,9 +1181,8 @@ This step is skipped for file sources.
 6. For each sensitive data type, configure a masking algorithm and its parameters, and then
 click **Save**. By default, only recommended masking algorithms are displayed for each sensitive data type. To display general algorithms, click the button in the Current Algorithm column.
 
-**Important**
+> **Important:** On this page, you can configure only one masking algorithm for each sensitive data type.
 
-On this page, you can configure only one masking algorithm for each sensitive data type.
 7. In the message box, click **Add masking task** to go to the **data masking > masking**
 **task** tab. For the next steps, see the **masking task** section.
 
@@ -1241,17 +1215,14 @@ the **Masking Tasks** tab. For more information, see **Data masking tasks**.
 that you want to delete and click the **Delete Project** icon.
 4. In the message that appears, click **OK**.
 
-**Important**
-
-If the data masking solution is referenced by a data masking task, a message appears and the data masking solution fails to be deleted.
+> **Important:** If the data masking solution is referenced by a data masking task, a message appears and the data masking solution fails to be deleted.
 
 ##### 3.4.2.5 Manage data subsets of a data masking solution
 
 **solution**
 
-**Note**
+> **Note:** Data masking solutions whose data source type is file source do not support data subset operations.
 
-Data masking solutions whose data source type is file source do not support data subset operations.
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
 3. In the left-side Project List section of the Solution Management tab, find the data masking
@@ -1261,9 +1232,8 @@ i. On the **Data Subset** tab, select the data subsets that you want to delete a
 **Delete**.
 ii. In the dialog box that appears, click **OK**.
 
-**Important**
+> **Important:** If the data masking solution is referenced by a data masking task, a message appears indicating that the data subsets fail to be deleted.
 
-If the data masking solution is referenced by a data masking task, a message appears indicating that the data subsets fail to be deleted.
 5. Configure the subset filtering feature.
 The subset filtering feature allows you to add filter conditions for tables. During data masking, only the table data that meets the filter conditions is masked, and the table data that does not meet the conditions is not masked and not migrated. In addition, you can configure an incremental field for incremental data masking when you configure the subset filtering feature. i. On the **Data Subset** tab, find the data subset that you want to manage and click the
 **Configure Filter Conditions** icon in the Operation column.
@@ -1273,9 +1243,9 @@ ii. In the Data Subset-filtering Condition dialog box, configure filter conditio
 
 a. In the Data Subset-filtering Condition dialog box, click the table for which you want to add a subset filter condition on the left. On the Filter Condition tab of the Data Subset-filtering Condition dialog box, click the Add Filter Condition icon. b. On the **Expression** tab of the Add Filter Condition dialog box, select the column for which you want to add a filter condition from the left-side list and configure a filter condition on the right.
 
-**Important**
+> **Important:** Selecting**Set to Incremental Field** is used to configure an incremental field for incremental data masking and is not used to configure the subset filtering feature.
 
-Selecting**Set to Incremental Field** is used to configure an incremental field for incremental data masking and is not used to configure the subset filtering feature. c. Click the **Logical Combination** tab of the Add Filter Condition dialog box. On the Logical Combination tab, configure the logical relationship between multiple conditions and click Save. d. Repeat the preceding steps to configure filter conditions for multiple fields of multiple tables and click **Save**.
+c. Click the **Logical Combination** tab of the Add Filter Condition dialog box. On the Logical Combination tab, configure the logical relationship between multiple conditions and click Save. d. Repeat the preceding steps to configure filter conditions for multiple fields of multiple tables and click **Save**.
 
 **Configure filter conditions by using extension conditions.**
 
@@ -1377,22 +1347,21 @@ You can also choose **Data Discovery > Discovery Tasks**, find the discovery tas
 3. In the Select desensitization range step, configure the Task Type, Source, Mask Project, and
 Select Code Table parameters and click **Next**. The valid values of the Task Type parameter are Database and File. You can select a data source or a file source from the Source dropdown list. If you set the Mask Project parameter to Custom Mask Project, the Masking Mode parameter is required. If you set the Mask Project parameter to Use an Existing Projects, the Select Mask Project parameter is required.
 
-**Important**
+> **Important:** If you create a data masking task by clicking Add desensitization task on the Discovery Tasks tab, the values of the Task Type and Source parameters cannot be changed and an existing data masking solution cannot be selected.
 
-If you create a data masking task by clicking Add desensitization task on the Discovery Tasks tab, the values of the Task Type and Source parameters cannot be changed and an existing data masking solution cannot be selected. If you set the **Task Type** parameter to **Database** and the Mask Project parameter to Custom Mask Project, the **Masking Mode** parameter is required. If the selected database does not support source mode masking, the value of the Masking Mode parameter cannot be changed. If you set the **Mask Project** parameter to **Use an Existing Projects**, the Select Mask Project parameter is required and the Masking Mode parameter is not displayed.
+> If you set the **Task Type** parameter to **Database** and the Mask Project parameter to Custom Mask Project, the **Masking Mode** parameter is required. If the selected database does not support source mode masking, the value of the Masking Mode parameter cannot be changed.
+> If you set the **Mask Project** parameter to **Use an Existing Projects**, the Select Mask Project parameter is required and the Masking Mode parameter is not displayed.
+
 4. In the Configure Data Subset step, select the tables or files to be masked and click **Next**.
 If you create a data masking task by clicking Add desensitization task on the Discovery Tasks tab, the value of the Mask Scope parameter is the table discovered by the corresponding discovery task by default. The Configure Data Subset step in the configuration process will be skipped. If you set the **Mask Project** parameter to **Use an Existing Projects** in the previous step, the Configure Data Subset step in the configuration process will be skipped. This is because the selected data masking solution contains a data subset, and the data subset is the data masking scope.
 5. In the Configure Algorithm step, configure algorithms.
 Configure data masking algorithms and parameters for sensitive data types. i. By default, the data masking algorithms displayed on the rule algorithm configuration page are the recommended data masking algorithms for the sensitive data types. You can click **General Algorithm** in the Oper column to display the general data masking algorithm. You can also click unmasked in the Oper column to unmask the data of a sensitive data type. ii. To configure different data masking algorithms for different fields of the same sensitive data type, click **Field Algorithm Configuration**. You can also click **Set Field** in the Oper column of the corresponding sensitive data type to go to the field algorithm configuration page. On the field algorithm configuration page, configure different data masking algorithms and parameters for fields. You can configure data masking algorithms for fields one by one. You can also select multiple fields and click **Batch Setting Algorithms** to configure data masking algorithms for the fields at a time. iii. Click **Save** to save the configurations. Then, click **Rule Algorithm Configuration** to return to the rule algorithm configuration page. iv. After the configurations are complete, click **Next**.
 
-**Important**
+> **Important:** To configure a data masking algorithm for another field on the field algorithm configuration page, you must click **Save** and **Rule Algorithm Configuration** to return to the rule algorithm configuration page and repeat the previous operations. Then, click **Next** to complete algorithm configuration.
 
-To configure a data masking algorithm for another field on the field algorithm configuration page, you must click **Save** and **Rule Algorithm Configuration** to return to the rule algorithm configuration page and repeat the previous operations. Then, click **Next** to complete algorithm configuration.
 6. In the Desensitization Parameter step, configure the parameters and click **Next**.
 
-**Important**
-
-The configuration items displayed in the Desensitization Parameter step vary based on your selection. For example, if you set the **Output Target** parameter to Local File or Remote File, database-related configurations are not displayed. If some types of databases do not support object migration or do not have the tablespace concept, the related configurations are not displayed.
+> **Important:** The configuration items displayed in the Desensitization Parameter step vary based on your selection. For example, if you set the **Output Target** parameter to Local File or Remote File, database-related configurations are not displayed. If some types of databases do not support object migration or do not have the tablespace concept, the related configurations are not displayed.
 
 | Paramete r | Description |
 |---|---|
@@ -1417,9 +1386,8 @@ Mask Project parameter to Use an Existing Projects in the Select desensitization
 
 ##### 3.4.3.2 Modify a data masking task
 
-**Important**
+> **Important:** Only data masking tasks that are not being executed can be modified.
 
-Only data masking tasks that are not being executed can be modified.
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
 3. On the Masking Tasks tab, find the data masking task that you want to modify, click **More**
@@ -1509,9 +1477,7 @@ modify, click the Operation List icon in the Oper column, and then select **Edit
 3. On the Auto Masking Tasks tab, find the automatic data masking task that you want to
 execute, click the Operation List icon in the Oper column, and then select **Run Task**.
 
-**Important**
-
-The source remote file directory must have a feature file. The presence of the feature file indicates that the files in the source FTP folder are transferred. This prevents data loss due to the execution of an automatic data masking task when a file is being uploaded to the source FTP folder. An automatic data masking task can be executed only if this feature file is detected; otherwise, the task fails to launch and an error is generated.
+> **Important:** The source remote file directory must have a feature file. The presence of the feature file indicates that the files in the source FTP folder are transferred. This prevents data loss due to the execution of an automatic data masking task when a file is being uploaded to the source FTP folder. An automatic data masking task can be executed only if this feature file is detected; otherwise, the task fails to launch and an error is generated.
 
 ##### 3.4.4.4 Delete an automatic data masking task
 
@@ -1713,9 +1679,8 @@ view and click **View** in the Operation column.
 
 #### 3.5.6 Data distribution management
 
-**Important**
+> **Important:** After distribution objects are distributed, related watermarking tasks cannot be executed, modified, or deleted.
 
-After distribution objects are distributed, related watermarking tasks cannot be executed, modified, or deleted.
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Data Distribution Management** tab.
 3. On the Data Distribution Management tab, find the distribution object that you want to
@@ -1914,9 +1879,7 @@ The column encryption feature consists of **encryption settings** and **database
 **permissions**. The former defines the encryption algorithm, method, and scope, whereas the
 latter controls which database accounts can access encrypted data and their permissions. The column encryption feature employs industry-standard encryption algorithms and uses local keys to encrypt columns.
 
-**Important**
-
-PolarDB-X 2.0 also supports encryption with Key Management Service (KMS). Databases of other types do not support this method.
+> **Important:** PolarDB-X 2.0 also supports encryption with Key Management Service (KMS). Databases of other types do not support this method.
 
 **Database types that support column encryption**
 
@@ -2002,9 +1965,9 @@ This topic explains how to run an encryption task.
 
 You have added a database as a data source. For more information, see Add a database source. You have enabled a data discovery task for the data source. For more information, see Add a data discovery task. You have granted the required permissions to the database account. For more information, see Configure database account permissions.
 
-**Important**
+> **Important:** For RDS PolarDB for Oracle databases, we recommend that you use one-click encryption to configure database account permissions before you configure the encryption task.
 
-For RDS PolarDB for Oracle databases, we recommend that you use one-click encryption to configure database account permissions before you configure the encryption task. You have configured an encryption rule. For more information, see Configure an encryption rule.
+You have configured an encryption rule. For more information, see Configure an encryption rule.
 
 **Run an encryption task**
 
@@ -2071,9 +2034,8 @@ This topic describes how to add, edit, and delete an encryption rule.
 
 **Delete an encryption rule**
 
-**Important**
+> **Important:** You can delete only encryption rules that are not associated with encryption tasks.
 
-You can delete only encryption rules that are not associated with encryption tasks.
 1. In the **Encryption Rule List** section, select the encryption rule that you want to delete.
 2. In the upper-right corner of the page, click **Delete**.
 3. In the **Confirm** dialog box, click **OK**.
@@ -2112,9 +2074,7 @@ Enable Code Table, and Allow Export parameters. Valid values for the Type parame
 want to manage.
 2. Click **Enable** or **Disable** in the **Status** column to disable or enable the lookup table.
 
-**Important**
-
-If a masking task associated with the lookup table is running when you disable the lookup table, an error message is displayed and the lookup table cannot be disabled.
+> **Important:** If a masking task associated with the lookup table is running when you disable the lookup table, an error message is displayed and the lookup table cannot be disabled.
 
 **View the token for a lookup table**
 
@@ -2207,7 +2167,8 @@ and click the icon in the Oper column.
 
 **Important**
 
-A data dictionary can be used only after it is archived. After a data dictionary is archived, you cannot modify or delete the dictionary content.
+> A data dictionary can be used only after it is archived. After a data dictionary is archived, you cannot modify or delete the dictionary content.
+
 1. Choose **Configuration > Data Dictionary**, and click the added data dictionary in the left-
 side dictionary list.
 2. In the right-side dictionary details list, click the

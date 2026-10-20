@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 1398
 source_pdf: "f319e7b9b7a9e74a_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902
@@ -1137,9 +1137,7 @@ ni-manager Management Consol e?
 
 If your Apsara Stack is deployed across regions, when a fault occurs to the central region, the following features become limited or unavailable in the general regions.
 
-**Important**
-
-Data inconsistency between the central and general regions may exist when the services are recovered, but will be resolved within five minutes.
+> **Important:** Data inconsistency between the central and general regions may exist when the services are recovered, but will be resolved within five minutes.
 
 | Module | Feature | Description |
 |---|---|---|
@@ -1170,9 +1168,15 @@ This topic describes how to log in to the Apsara Uni-manager Management Console.
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -1185,7 +1189,9 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to enable MFA and bind an MFA device, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to enable MFA and bind an MFA device, see Manage MFA.
 
 **What to do next**
 
@@ -1193,7 +1199,10 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the login password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. You can use the username of your account and the email address that was used to create the account. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**.
+
+> **Note:** You can use the username of your account and the email address that was used to create the account.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ### 3.2 Important notes
 
@@ -1201,9 +1210,9 @@ When viewing and operating information related to Security Level and Multi-Cloud
 
 **Security Level-Based Access**
 
-**Important**
+> **Important:** When you enable Security Level-Based Authorization, the system supports security level control for Resource Set authorization. After enabling this feature, you must assign a Security Level identifier to each Resource Set and each Role. When adding an account to a Resource Set, the Security Level identifier of the assigned Role must be equal to or higher than the Security Level identifier of the Resource Set.
 
-When you enable Security Level-Based Authorization, the system supports security level control for Resource Set authorization. After enabling this feature, you must assign a Security Level identifier to each Resource Set and each Role. When adding an account to a Resource Set, the Security Level identifier of the assigned Role must be equal to or higher than the Security Level identifier of the Resource Set. Platform administrators can enable Security Level-Based Access under **Configuration** >
+Platform administrators can enable Security Level-Based Access under **Configuration** >
 **Security Policy** > **Security Level Based Access**. For detailed operations, see Security
 policies. Enabling this feature allows tenant-side users to view and operate information related to Security Level. See the following examples:
 
@@ -1265,7 +1274,11 @@ The Apsara Uni-manager Management Console allows you to efficiently manage resou
 
 **Organizational structure**
 
-The Apsara Uni-manager Management Console provides the following features based on the multi-level organization structure of enterprises: The organizational structure is a tree structure that consists of a root organization and multiple organizational units. The root organization is automatically generated by the system and is at the top of the tree structure. An organizational structure can have multiple organizational units, which indicate the subsidiaries or departments of an enterprise. Organizational units are parallel. An organizational unit has only one level-1 organization. A level-1 organization can have multiple subordinate organizations. By default, an organizational unit can have up to five levels of organization. In the Apsara Uni-manager Management Console, cloud resources and users belong to Apsara Stack tenant accounts and each level-1 organization corresponds to an Apsara Stack tenant account. The subordinate organizations of a level-1 organization and the related users belong to the Apsara Stack tenant account to which the level-1 organization belongs. After a level-1 organization is created, the system automatically generates an AccessKey pair for the organization. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to authenticate request senders. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string.
+The Apsara Uni-manager Management Console provides the following features based on the multi-level organization structure of enterprises: The organizational structure is a tree structure that consists of a root organization and multiple organizational units. The root organization is automatically generated by the system and is at the top of the tree structure. An organizational structure can have multiple organizational units, which indicate the subsidiaries or departments of an enterprise. Organizational units are parallel.
+
+> **Note:** An organizational unit has only one level-1 organization. A level-1 organization can have multiple subordinate organizations. By default, an organizational unit can have up to five levels of organization.
+
+In the Apsara Uni-manager Management Console, cloud resources and users belong to Apsara Stack tenant accounts and each level-1 organization corresponds to an Apsara Stack tenant account. The subordinate organizations of a level-1 organization and the related users belong to the Apsara Stack tenant account to which the level-1 organization belongs. After a level-1 organization is created, the system automatically generates an AccessKey pair for the organization. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to authenticate request senders. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string.
 
 **Relationships between items**
 
@@ -1350,7 +1363,14 @@ To implement separation of privilege, the Apsara Uni-manager Management Console 
 | Global organization security inspector | This role has the permissions to use SOC to check the security conditions of all organizations. |
 | Platform security configuration administrator | This role has the permissions to configure security services in Apsara Stack, such as Server Guard and Web Application Firewall (WAF). |
 
-The preset roles and their permissions cannot be modified or deleted. The management scope indicates the scope in which the role permissions take effect. All Organizations: The role has permissions on all organizations. Specified Organization and Subordinate Organizations: The role has permissions on an organization and its subordinate organizations. Resource Sets: The role has permissions on the resource sets of the associated user. The permission list describes the permissions of the roles to perform management operations in the Apsara Uni-manager Management Console and the permissions to call API operations. The basic permissions in the permission list are a set of encapsulated permissions to perform basic operations, such as viewing the homepage and managing user information. Application permissions include the cloud products and product permissions authorized for the role. Menu permissions include the menus authorized for the role.
+> **Note:** The preset roles and their permissions cannot be modified or deleted.
+> The management scope indicates the scope in which the role permissions take effect.
+> All Organizations: The role has permissions on all organizations.
+> Specified Organization and Subordinate Organizations: The role has permissions on an organization and its subordinate organizations.
+> Resource Sets: The role has permissions on the resource sets of the associated user.
+> The permission list describes the permissions of the roles to perform management operations in the Apsara Uni-manager Management Console and the permissions to call API operations. The basic permissions in the permission list are a set of encapsulated permissions to perform basic operations, such as viewing the homepage and managing user information.
+> Application permissions include the cloud products and product permissions authorized for the role.
+> Menu permissions include the menus authorized for the role.
 
 #### 3.5.2 Configuration description
 
@@ -1379,17 +1399,35 @@ about how to create cloud service instances, see the user guide of each cloud se
 
 ## 4 Portal homepage
 
-The Home page displays the usage and monitoring status of system resources in different regions from different dimensions by using a card-based layout. This helps you understand the overall resource status and provides supporting data for refined operations and statistical analysis. The Home page displays data that you have permissions to access. By default, the card-based layout of the Home page varies based on roles. You can add or remove cards to change the layout based on your business requirements.
+The Home page displays the usage and monitoring status of system resources in different regions from different dimensions by using a card-based layout. This helps you understand the overall resource status and provides supporting data for refined operations and statistical analysis.
+
+> **Note:** The Home page displays data that you have permissions to access.
+
+By default, the card-based layout of the Home page varies based on roles. You can add or remove cards to change the layout based on your business requirements.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Home**.
 3. Switch roles in the upper-left corner of the page. You can perform this operation if you are
 assigned multiple roles.
 4. In the upper-right corner of the page, click **Add Card**.
-If multiple tabs are displayed on the Home page, you can click a specific tab, and then add cards on the tab.
+
+> **Note:** If multiple tabs are displayed on the Home page, you can click a specific tab, and then add cards on the tab.
+
 5. In the **Add Card** panel, switch between the **Preset Cards** and **My Cards** tabs, select or
-clear cards on the **Preset Cards** and **My Cards** tabs to adjust the cards displayed on the Home page. You can select or clear cards to add the cards to or remove the cards from the Home page. After you add a card, you can click the icon in the upper-right corner of the card and then click **Remove from Workbench** to remove the card from the Home page. You can click and drag the icon in the lower-right corner of a card to resize the card. You can click and drag the icon in the upper-left corner of a card to change its position on the Home page. You can click **Restore to Default Layout** at the bottom of the **Add Card** panel to restore the default layout of the Home page. If the cards on the **My Cards** tab do not meet your requirements, you can click
-**Customize** in the lower part of the tab to customize a card. To go to the card
-configuration page, you can also choose **Operations** > **Data Analysis** in the top navigation bar and then choose **Custom Analysis** > **My Dashboard** in the left-side navigation pane. After you add a custom card on the Home page, you can click the icon in the upper-right corner of the card and then click **Edit** to go to the card configuration page.
+clear cards on the **Preset Cards** and **My Cards** tabs to adjust the cards displayed on the Home page.
+
+> **Note:** You can select or clear cards to add the cards to or remove the cards from the Home page. After you add a card, you can click the
+> icon in the upper-right
+> corner of the card and then click **Remove from Workbench** to remove the card from the Home page.
+> You can click and drag the
+> icon in the lower-right corner of a card to resize the
+> card. You can click and drag the
+> icon in the upper-left corner of a card to
+> change its position on the Home page.
+> You can click **Restore to Default Layout** at the bottom of the **Add Card** panel to restore the default layout of the Home page.
+> If the cards on the **My Cards** tab do not meet your requirements, you can click **Customize** in the lower part of the tab to customize a card. To go to the card configuration page, you can also choose **Operations** > **Data Analysis** in the top navigation bar and then choose **Custom Analysis** > **My Dashboard** in the left-side navigation pane.
+> After you add a custom card on the Home page, you can click the
+> icon in the
+> upper-right corner of the card and then click **Edit** to go to the card configuration page.
 
 **Preset cards**
 
@@ -1405,7 +1443,13 @@ The commonly used information category contains the following cards: **Quick Nav
 
 This card provides multiple shortcuts for quick navigation to the corresponding pages. In the
 **Quick entry** and **Recent visit** sections, you can click the displayed shortcuts to go to the
-corresponding pages. In the Quick Entry section, you can add shortcuts based on your business requirements. You can add up to 12 shortcuts to cloud services and modules. To add a shortcut, perform the following operations: Click **Add Entry** in the Quick Entry section. In the dialog box that appears, click a product in the left-side navigation pane, move the pointer over the name of the cloud service whose shortcut you want to add, and then click the icon. After you add a shortcut, the icon is displayed to the right of the cloud service name.
+corresponding pages.
+
+> **Note:** In the Quick Entry section, you can add shortcuts based on your business requirements. You can add up to 12 shortcuts to cloud services and modules. To add a shortcut, perform the following operations: Click **Add Entry** in the Quick Entry section. In the dialog box that appears, click a product in the left-side navigation pane, move the pointer over the
+> name of the cloud service whose shortcut you want to add, and then click the
+> icon.
+> After you add a shortcut, the
+> icon is displayed to the right of the cloud service name.
 
 **Organization Overview**
 
@@ -1429,7 +1473,9 @@ This card displays global resources. You can perform the following operations to
 
 **Resource Search**
 
-This card allows you to search for resources in a global manner. You can search for resources by resource pool, resource type, organization, resource set, region, tag, and expiration time. The resource pool drop-down list is displayed only in multi-cloud environments.
+This card allows you to search for resources in a global manner. You can search for resources by resource pool, resource type, organization, resource set, region, tag, and expiration time.
+
+> **Note:** The resource pool drop-down list is displayed only in multi-cloud environments.
 
 **Resource Pool Overview**
 
@@ -1446,7 +1492,9 @@ This card displays the resource load of the current account. You can click the R
 
 **Monitoring and Alerts**
 
-This card displays the information about resource monitoring and alert analysis from the Cloud Monitor console. You can click **View more** to go to the **Alert History** page of the Cloud Monitor console. If a role is granted permissions to view alerts reported by Cloud Monitor, the Monitoring and Alerts card is visible to the role.
+This card displays the information about resource monitoring and alert analysis from the Cloud Monitor console. You can click **View more** to go to the **Alert History** page of the Cloud Monitor console.
+
+> **Note:** If a role is granted permissions to view alerts reported by Cloud Monitor, the Monitoring and Alerts card is visible to the role.
 
 **Alerts**
 
@@ -1462,19 +1510,41 @@ The resource health analytics category includes the following cards: **Resource 
 
 This card displays the health status of the resources of the current organization. You can click
 **Improve** to go to the Overall Health Score page in the Operations menu to view details.
-The overall health score is calculated based on resource usage, idle resource analytics, and resource compliance analytics. The health score levels are as follows: 0 to 50 points: poor 51 to 70 points: medium 71 to 90 points: good 91 to 100 points: healthy
+
+> **Note:** The overall health score is calculated based on resource usage, idle resource analytics, and resource compliance analytics.
+> The health score levels are as follows:
+
+0 to 50 points: poor 51 to 70 points: medium 71 to 90 points: good 91 to 100 points: healthy
 
 **Resource Health Analysis**
 
-This card displays the health status of the resources of the current account by organization or resource set. You can click **From high to low** or **From low to high** to sort the health status based on health scores. You can click to change the display order of resources based on your business requirements. You can click the icon to add the resources that you want to display.
+This card displays the health status of the resources of the current account by organization or resource set. You can click **From high to low** or **From low to high** to sort the health status based on health scores.
+
+> **Note:** You can click
+> to change the display order of resources based on your business
+> requirements.
+> You can click the
+> icon to add the resources that you want to display.
 
 **Idle Resource Ranking**
 
-This card displays idle resources by organization or resource set and provides detailed analysis data. You can click **View More** to go to the Idle Resource Analysis page in the Operations menu to view details. You can click the icon to change the display order of resources based on your business requirements. You can click the icon to add the resources that you want to display.
+This card displays idle resources by organization or resource set and provides detailed analysis data. You can click **View More** to go to the Idle Resource Analysis page in the Operations menu to view details.
+
+> **Note:** You can click the
+> icon to change the display order of resources based on your
+> business requirements.
+> You can click the
+> icon to add the resources that you want to display.
 
 **Resource Bottleneck Rankings**
 
-This card displays resource bottleneck analysis data by organization or resource set and provides detailed analysis data. You can click **View more** to go to the Bottleneck Analysis page under the Operations menu to view details. You can click the icon to change the display order of resources based on your business requirements. You can click the icon to add the resources that you want to display.
+This card displays resource bottleneck analysis data by organization or resource set and provides detailed analysis data. You can click **View more** to go to the Bottleneck Analysis page under the Operations menu to view details.
+
+> **Note:** You can click the
+> icon to change the display order of resources based on your
+> business requirements.
+> You can click the
+> icon to add the resources that you want to display.
 
 **Resource statistics and analysis**
 
@@ -1505,11 +1575,15 @@ This card displays the distribution of resource pools by region in a map.
 
 **Server Distribution**
 
-This card displays the distribution of servers and instances. The data of all resources managed by the current user is displayed. The data is updated with a latency of more than 10 minutes.
+This card displays the distribution of servers and instances.
+
+> **Note:** The data of all resources managed by the current user is displayed. The data is updated with a latency of more than 10 minutes.
 
 **Quota Overview**
 
-This card displays the usage of each quota item of cloud services. You can view quota usage by organization and region. If a role is granted permissions to configure quotas in the Operations menu, the Quota Overview card is visible to the role.
+This card displays the usage of each quota item of cloud services. You can view quota usage by organization and region.
+
+> **Note:** If a role is granted permissions to configure quotas in the Operations menu, the Quota Overview card is visible to the role.
 
 **Resource Set Resource Statistics**
 
@@ -1559,7 +1633,7 @@ This card displays the latest alerts for intelligent computing resources and Maa
 
 **Multi-chip Architecture in One Cloud**
 
-The Multi-chip Architecture in One Cloud tab is displayed only if the multi-chip architecture is adopted. This tab is visible only to operations administrators.
+> **Note:** The Multi-chip Architecture in One Cloud tab is displayed only if the multi-chip architecture is adopted. This tab is visible only to operations administrators.
 
 | Item | Description |
 |---|---|
@@ -1595,11 +1669,25 @@ In the left-side organization list, select one or more organizations and resourc
 
 In the upper part of the page, specify filter conditions to view the resources that meet the specified filter conditions. You can search for resources based on the following conditions: Cloud Platform: displays the cloud platforms visible to the current user. They are displayed only in multi-cloud environments instead of singlecloud environments. Resource Type: displays the types of deployed resources. Region: displays the regions that are visible to the current user. Label: displays the tags added to the resources on the central cloud platform and managed cloud platforms in multi-cloud environments. Managed cloud platforms include managed Apsara Stack platforms and managed Alibaba Cloud platforms. General search: Select Keyword, Resource ID, Resource Name, or Resource IP from the drop-down list and enter a keyword for fuzzy search. You can save the filter conditions that you specify. This way, you can directly select the saved filter conditions from the **My Filters** drop-down list next time and view the resources that meet the selected filter conditions. You can also delete a set of saved filter conditions from the **My Filters** drop-down list by clicking the icon next to the filter conditions. You can click **Reset** to clear the specified filter conditions.
 5. Optional. Click **Create Instance** above the resource list. In the Create Instance panel,
-select a resource that you want to create and go to the resource creation page. You can search for resources by cloud platform and cloud service name.
+select a resource that you want to create and go to the resource creation page.
+
+> **Note:** You can search for resources by cloud platform and cloud service name.
+
 6. Optional. Click the
-icon above the resource list and click the , , or icon to adjust the display items and their orders in the resource list based on your business requirements. : refreshes the resource list. You can refresh the information displayed in the resource list while retaining the specified filter conditions. : displays information in default or compact mode. : shows or hides specific items in the resource list. You can click and hold the icon in front of a display item and then drag it upward or downward to adjust the order of the item. By default, the **Resource IP** column is not displayed in the resource list. You can select Resource IP to show it in the resource list as required.
+icon above the resource list and click the , , or icon to adjust the display items and their orders in the resource list based on your business requirements.
+
+> **Note:** : refreshes the resource list. You can refresh the information displayed in the
+> resource list while retaining the specified filter conditions.
+> : displays information in default or compact mode.
+> : shows or hides specific items in the resource list. You can click and hold the
+> icon in front of a display item and then drag it upward or downward to adjust
+> the order of the item. By default, the **Resource IP** column is not displayed in the resource list. You can select Resource IP to show it in the resource list as required.
+
 7. Perform resource-related operations.
-Some resources can be viewed. You can find the resource that you want to view and click **View** in the Operation column to go to the resource console and manage the resource. Some resources support other quick operations. You can directly select an option in the Operation column to perform the related operation.
+
+> **Note:** Some resources can be viewed. You can find the resource that you want to view and click **View** in the Operation column to go to the resource console and manage the resource.
+> Some resources support other quick operations. You can directly select an option in the Operation column to perform the related operation.
+
 8. Optional. Add tags to or remove tags from one or more resources.
 In multi-cloud environments, you can add tags to and remove tags from resources on the central cloud platform or managed cloud platforms. The tags of managed Apsara Stack platforms can be added to and removed from the resources of all supported cloud services. To manage tags, you must have the tag management permissions of the roles of managed Apsara Stack platforms. For more information about cloud services that support the tag management of managed Alibaba Cloud platforms and the required user permissions, see the Cloud services that support the tag management of managed Alibaba Cloud platforms section of this topic.
 
@@ -1729,7 +1817,15 @@ In the organization tree on the left side of the page, select the target organiz
 
 Set filter conditions above the list on the right side of the page to view the resource list that matches the specified conditions. You can filter by resource pool, resource type, region, tags, expiration time, and general search (keywords, resource ID, resource name, resource IP). Resource pool: Displays the list of resource pools visible to the current user. This option appears only in multi-cloud scenarios and is hidden in single-cloud scenarios. Resource type: Displays the list of deployed resource types. Region: Displays the list of regions visible to the current user. Tags: In multi-cloud scenarios, you can view tags bound to resources in the central cloud and subordinate clouds (including multiple private clouds and public clouds).. Expiration time: Set a start time and end time for expiration to query resources by expiration time. General search: Switch as needed to keywords, resource ID, resource name, or resource IP, then enter keywords for fuzzy search. After setting filter conditions, you can save them. Next time, you can quickly select from **My Filters** to view the target resource list. You can also hover over a saved filter condition in **My Filters** and click to delete it. Click **Reset** to clear all set filter conditions.
 5. (Optional) Above the list, select
-, , or to adjust displayed items and their order according to your needs. : Refreshes the list. You can refresh resource information while preserving existing filter conditions. : Choose between default or compact display for list information. : Configure which columns to show or hide. Hover over any column, then drag the icon next to it to adjust display order. The **Resource IP** column is hidden by default; you can check it to display as needed.
+, , or to adjust displayed items and their order according to your needs.
+
+> **Note:** : Refreshes the list. You can refresh resource information while preserving
+> existing filter conditions.
+> : Choose between default or compact display for list information.
+> : Configure which columns to show or hide. Hover over any column, then drag
+> the
+> icon next to it to adjust display order. The **Resource IP** column is hidden
+> by default; you can check it to display as needed.
 
 ##### 5.1.1.2 Bind or unbind tags for resources
 
@@ -1856,9 +1952,14 @@ On the Resource Retrieval page, you can create and manage resources in a central
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
 4. On the Resource Retrieval page, click **Create Instance** above the resource list.
 5. In the **Create Instance** panel, select a resource type to go to the resource creation page.
-You can search for resource types by resource pool and cloud service name. The Resource Pool drop-down list is displayed only in multi-cloud environments.
+
+> **Note:** You can search for resource types by resource pool and cloud service name. The Resource Pool drop-down list is displayed only in multi-cloud environments.
+
 6. Perform operations on created resources based on your business requirements on the
-Resource Retrieval page. To view and manage a resource, you can find the resource and click **View** in the Operation column to go to the resource console and manage the resource. You can directly select an option in the Operation column to perform the quick operation.
+Resource Retrieval page.
+
+> **Note:** To view and manage a resource, you can find the resource and click **View** in the Operation column to go to the resource console and manage the resource.
+> You can directly select an option in the Operation column to perform the quick operation.
 
 ##### 5.1.1.4 Manage the expiration time of resources
 
@@ -1872,7 +1973,11 @@ You cannot set a validity period for pay-as-you-go Alibaba Cloud resources and m
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
 4. In the resource list, view the expiration time of resources.
 5. Manage the expiration time of resources based on your business requirements.
-The expiration time of a subscription Alibaba Cloud resource instance is the same as that of the Alibaba Cloud resource. The expiration time of a subscription Apsara Stack resource instance is the same as that of the order. Make sure that you can deploy Comprehensive O&M (COMS). If you want to restrict specific users to setting or extending a validity period, you can configure an approval process. For more information about how to define and bind a process, see Manage processes. When you set or extend the validity period of a resource, or manually renew a resource, if you select **More duration**, you must specify the number of months for the subscription duration. Valid values range from 5 to 60.
+
+> **Note:** The expiration time of a subscription Alibaba Cloud resource instance is the same as that of the Alibaba Cloud resource.
+> The expiration time of a subscription Apsara Stack resource instance is the same as that of the order. Make sure that you can deploy Comprehensive O&M (COMS).
+> If you want to restrict specific users to setting or extending a validity period, you can configure an approval process. For more information about how to define and bind a process, see Manage processes.
+> When you set or extend the validity period of a resource, or manually renew a resource, if you select **More duration**, you must specify the number of months for the subscription duration. Valid values range from 5 to 60.
 
 | Operation | Procedure |
 |---|---|
@@ -1913,10 +2018,9 @@ Use resource analysis to view insights for resource instances.
 in the **Actions** column and select **Resource Analysis**.
 5. On the **Comprehensive Resource Insights** page, view comprehensive insight data for
 your resources.
-**Bills and Costs**: Click **View Details** to go to the bill details page and view the
-detailed billing information for the instance.
-**Associated Resources**: If associated resources exist, click the resource ID in
-the list to go to the corresponding resource instance details page.
+
+> **Note:** **Bills and Costs**: Click **View Details** to go to the bill details page and view the detailed billing information for the instance.
+> **Associated Resources**: If associated resources exist, click the resource ID in the list to go to the corresponding resource instance details page.
 
 #### 5.1.2 Organization management
 
@@ -1942,7 +2046,12 @@ Before you create an organization, you need to plan an organizational structure 
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
 4. In the left-side Organization Structure pane of the **Organizations** page, select a parent
-organization and click **Create Organization** in the upper-right corner of the right-side page. If you select the root organization, the organization that you create is a level-1 organization. If you want to create a level-2 organization, you must select a level-1 organization. The same method applies to subordinate organizations. You can create at most five levels of organizations. An operations administrator can create level-1 to level-5 organizations. An organization administrator can create only subordinate organizations under the organization to which the organization administrator belongs.
+organization and click **Create Organization** in the upper-right corner of the right-side page.
+
+> **Note:** If you select the root organization, the organization that you create is a level-1 organization.
+> If you want to create a level-2 organization, you must select a level-1 organization. The same method applies to subordinate organizations. You can create at most five levels of organizations.
+> An operations administrator can create level-1 to level-5 organizations. An organization administrator can create only subordinate organizations under the organization to which the organization administrator belongs.
+
 5. In the **Add Organization** dialog box, configure the parameters that are described in the
 following table.
 
@@ -1954,7 +2063,8 @@ following table.
 
 6. Click **OK**.
 7. In the **Create Resource Set** dialog box, click **Cancel** or **Create Resource Set**.
-For more information about how to configure the parameters when you create a resource set in an organization, see Create a resource set.
+
+> **Note:** For more information about how to configure the parameters when you create a resource set in an organization, see Create a resource set.
 
 **Create multiple organizations at a time**
 
@@ -1968,9 +2078,8 @@ the file. The following figure shows an example of the information.
 5. In the Import Step, click **Upload Template** and select the template file that you filled. After
 the template file is verified, click **Next**.
 
-**Important**
+> **Important:** When the template file is uploaded, the system automatically checks the validity of parameter values. If invalid values exist, the organizations cannot be created. In this case, you must modify the template file and click **Re-upload**.
 
-When the template file is uploaded, the system automatically checks the validity of parameter values. If invalid values exist, the organizations cannot be created. In this case, you must modify the template file and click **Re-upload**.
 6. Confirm the organization information and click **OK**.
 7. Optional. Click **Task List** in the dialog box to view the organizations that you created.
 
@@ -2002,7 +2111,8 @@ organization that you want to manage and click its name.
 5. In the **Basic Information** section, view the basic information about the organization,
 including the following parameters: **Organization Name**, **Organization ID**, **Organization**
 **Level**, **Description**, **Third-party Authentication**, **Created By**, and **Created At**.
-The **Third-party Authentication** parameter is displayed only for level-1 organizations. If an identity provider (IdP) is associated with the organization, the IdP name is displayed.
+
+> **Note:** The **Third-party Authentication** parameter is displayed only for level-1 organizations. If an identity provider (IdP) is associated with the organization, the IdP name is displayed.
 
 ##### 5.1.2.4 Modify organization information
 
@@ -2068,10 +2178,14 @@ icon and select **Third-**
 6. In the **Third-party Authentication** dialog box, configure the **IdP Authentication Type**
 and **Associate IdP** parameters.
 **IdP Authentication Type**: **Local IdP** and **Global IdP** are supported.
-If the platform administrator has configured a global IdP, the IdP authentication type is set to **Global IdP** by default.
+
+> **Note:** If the platform administrator has configured a global IdP, the IdP authentication type is set to **Global IdP** by default.
+
 **Associate IdP**:
-If the **IdP Authentication Type** parameter is set to **Global IdP**, the name of the global IdP is displayed in the **Associate IdP** field by default. If the **IdP Authentication Type** parameter is set to **Local IdP**, select a local IdP from the **Associate IdP** drop-down list. To change the local IdP, click **Modify** and select another IdP from the **Associate**
-**IdP** drop-down list. You can also disassociate the local IdP.
+If the **IdP Authentication Type** parameter is set to **Global IdP**, the name of the global IdP is displayed in the **Associate IdP** field by default. If the **IdP Authentication Type** parameter is set to **Local IdP**, select a local IdP from the **Associate IdP** drop-down list.
+
+> **Note:** To change the local IdP, click **Modify** and select another IdP from the **Associate** **IdP** drop-down list. You can also disassociate the local IdP.
+
 7. Click **OK**.
 
 ##### 5.1.2.7 Specify and manage a proxy administrator for an organization
@@ -2120,7 +2234,14 @@ organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
 4. View the proxy administrator information in the list.
-Proxy Administrator: a proxy user of the organization. A proxy user is automatically created after a proxy administrator is specified for an organization. The user who is specified as the proxy administrator performs proxy operations as the proxy user. Proxy Status: the proxy status. A proxy administrator can be in the Activating, Disabled, or Expired state. If a proxy administrator is in the Disabled or Expired state, the corresponding proxy user cannot log on. Activating: The proxy is within the validity period, and the proxy administrator is not disabled. Disabled: The proxy administrator is disabled. Expired: The proxy period expires, and the proxy administrator cannot perform proxy operations. Owner: the user who is specified as the proxy administrator. After the user logs on, the user can switch to the proxy user in the user center. For more information, see Enable the proxy mode as a proxy administrator for a proxy user.
+
+> **Note:** Proxy Administrator: a proxy user of the organization. A proxy user is automatically created after a proxy administrator is specified for an organization. The user who is specified as the proxy administrator performs proxy operations as the proxy user.
+> Proxy Status: the proxy status. A proxy administrator can be in the Activating, Disabled, or Expired state. If a proxy administrator is in the Disabled or Expired state, the corresponding proxy user cannot log on.
+> Activating: The proxy is within the validity period, and the proxy administrator is not disabled.
+> Disabled: The proxy administrator is disabled.
+> Expired: The proxy period expires, and the proxy administrator cannot perform proxy operations.
+
+Owner: the user who is specified as the proxy administrator. After the user logs on, the user can switch to the proxy user in the user center. For more information, see Enable the proxy mode as a proxy administrator for a proxy user.
 5. Find the proxy administrator that you want to manage and click its name.
 6. On the User Details page, view the details of the proxy administrator.
 
@@ -2208,7 +2329,14 @@ the following table.
 **View resource sets and details**
 
 1. On the **Resource Sets** tab, view the resource sets in the current organization. You can
-search for a resource set by resource set name or tag above the resource set list. If you select the root organization, the resource sets of all organizations are displayed. The numbers in the **User** column of a resource set indicate the numbers of users and user groups that are authorized to access the resource set. You can move the pointer over a number to view the details. You can click the icon in the **Tag** column of a resource set to manage the tags of the resource set.
+search for a resource set by resource set name or tag above the resource set list.
+
+> **Note:** If you select the root organization, the resource sets of all organizations are displayed.
+> The numbers in the **User** column of a resource set indicate the numbers of users and user groups that are authorized to access the resource set. You can move the pointer over a number to view the details.
+> You can click the
+> icon in the **Tag** column of a resource set to manage the tags
+> of the resource set.
+
 2. Click the name of a resource set to go to the details page of the resource set. For more
 information, see View the resource set list and the details of a resource set.
 
@@ -2232,7 +2360,10 @@ users.
 **View users and user details**
 
 1. On the **Users** tab, view the users in the current organization. You can search for a user by
-username above the user list. If you select the root organization, the users of all organizations are displayed.
+username above the user list.
+
+> **Note:** If you select the root organization, the users of all organizations are displayed.
+
 2. Find the user that you want to view and click its name to go to the **User Details** page.
 
 | Section or tab | Description |
@@ -2259,7 +2390,10 @@ and the impacts after you disable the user. After you evaluate the impacts, sele
 
 **Important**
 
-When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey Logs**. After you disable a user, the user is forbidden from logging in to the Apsara Unimanager Management Console, the AccessKey pairs of the user are disabled, and the user login status becomes invalid. After an AccessKey pair is disabled, the services or applications that reference the AccessKey pair may not run as expected. In this case, enable the user to restore the services or applications.
+When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey Logs**.
+
+> After you disable a user, the user is forbidden from logging in to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are disabled, and the user login status becomes invalid. After an AccessKey pair is disabled, the services or applications that reference the AccessKey pair may not run as expected. In this case, enable the user to restore the services or applications.
+
 3. Click **Disable**. After the user is disabled, the user enters the **Disabled** state.
 
 **Enable a user**
@@ -2274,7 +2408,9 @@ You cannot enable proxy administrators on the Users tab. To enable a proxy admin
 1. On the **Users** tab, find the user that you want to enable and click **Enable** in the **Actions**
 column.
 2. In the message that appears, view the information about AccessKey pairs and click **OK**.
-After the user is enabled, the user enters the **Enabled** state. After a user is enabled, the associated AccessKey pairs are also enabled.
+After the user is enabled, the user enters the **Enabled** state.
+
+> **Note:** After a user is enabled, the associated AccessKey pairs are also enabled.
 
 **Delete a user**
 
@@ -2289,7 +2425,10 @@ and the impacts after you delete the user. After you evaluate the impacts, selec
 
 **Important**
 
-When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey Logs**. After you delete a user, the user is forbidden from logging in to the Apsara Unimanager Management Console, the AccessKey pairs of the user are deleted, and the user login status becomes invalid. The deleted user data cannot be restored. After an AccessKey pair is deleted, the services or applications that reference the AccessKey pair may not run as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
+When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey Logs**.
+
+> After you delete a user, the user is forbidden from logging in to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are deleted, and the user login status becomes invalid. The deleted user data cannot be restored. After an AccessKey pair is deleted, the services or applications that reference the AccessKey pair may not run as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
+
 3. Click **Delete**.
 
 ##### 5.1.2.10 Manage the user groups of an organization
@@ -2308,7 +2447,10 @@ organization that you want to manage and click its name.
 Role authorized parameters.
 8. Click **OK**.
 9. On the **User Groups** tab, view the user groups in the current organization. You can search
-for a user group by name in the search box above the user group list. If you select the root organization, the user groups of all organizations are displayed. The number in the **User** column of a user group indicates the number of users who are added to the user group. You can move the pointer over the number to view details. If a user group has no users, a hyphen (-) is displayed in the User column.
+for a user group by name in the search box above the user group list.
+
+> **Note:** If you select the root organization, the user groups of all organizations are displayed.
+> The number in the **User** column of a user group indicates the number of users who are added to the user group. You can move the pointer over the number to view details. If a user group has no users, a hyphen (-) is displayed in the User column.
 
 ##### 5.1.2.11 Manage multi-cloud organizations
 
@@ -2361,11 +2503,12 @@ that you want to bind.
 
 8. Click **Confirm**. The multi-cloud organization binding is complete.
 9. In the **Bind Multi-Cloud Organization** dialog box, click **Cancel** or **Bind Resource Set**.
-Click **Cancel**: Return to the multi-cloud organization management list. You can view the bound resource pools in the list. When the bound multi-cloud organization is of the Apsara Stack type, the
-**Apsara Stack organization name/Aliyun account name** column displays
-the organization name of the Apsara Stack. When the bound multi-cloud organization is of the public cloud type, the
-**Apsara Stack organization name/Aliyun account name** column displays
-the primary account of the public cloud. Click **Bind Resource Set**: Go to the **Resource Sets** page. Bind multi-cloud resource sets for resource sets under this organization.
+Click **Cancel**: Return to the multi-cloud organization management list. You can view the bound resource pools in the list.
+
+> **Note:** When the bound multi-cloud organization is of the Apsara Stack type, the **Apsara Stack organization name/Aliyun account name** column displays the organization name of the Apsara Stack.
+> When the bound multi-cloud organization is of the public cloud type, the **Apsara Stack organization name/Aliyun account name** column displays the primary account of the public cloud.
+
+Click **Bind Resource Set**: Go to the **Resource Sets** page. Bind multi-cloud resource sets for resource sets under this organization.
 
 **Unbind a multi-cloud organization**
 
@@ -2432,9 +2575,9 @@ This topic describes how to delete an organization.
 
 You cannot delete the root organization.
 
-**Important**
+> **Important:** After an organization is deleted, the data of the organization cannot be recovered. Exercise caution when you perform this operation.
+> Before you delete an organization, make sure that the organization does not have users, resource sets, or subordinate organizations.
 
-After an organization is deleted, the data of the organization cannot be recovered. Exercise caution when you perform this operation. Before you delete an organization, make sure that the organization does not have users, resource sets, or subordinate organizations.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2478,7 +2621,10 @@ This topic describes how to view resource sets and the details of a resource set
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
 4. On the Resource Sets page, view the created resource sets in the resource set list. You can
-quickly find a resource set by organization, tag, or resource set name above the resource set list. You can move the pointer over User or User Group in the User column of a resource set to view the users or user groups that have permissions on the resource set.
+quickly find a resource set by organization, tag, or resource set name above the resource set list.
+
+> **Note:** You can move the pointer over User or User Group in the User column of a resource set to view the users or user groups that have permissions on the resource set.
+
 5. Find the resource set that you want to view and click its name to go to the Resource Set
 Details page.
 
@@ -2506,10 +2652,8 @@ name above the resource set list.
 6. In the **Modify Resource Set** dialog box, enter a new name for the resource set and select
 a security level.
 
-**Important**
+> **Important:** The Secret Level Access and Security Level parameters are displayed only after the security level-based authorization feature is enabled by a platform administrator. To enable this feature, choose **Configurations** > **Security Policies** > **Security Level** **Based Access**.
 
-The Secret Level Access and Security Level parameters are displayed only after the security level-based authorization feature is enabled by a platform administrator. To enable this feature, choose **Configurations** > **Security Policies** > **Security Level**
-**Based Access**.
 7. Click **OK**.
 
 ##### 5.1.3.4 Manage tags of a resource set
@@ -2528,7 +2672,11 @@ name above the resource set list.
 icon in the **Tag** column.
 6. In the **Modify Tag** dialog box, modify tags of the resource set.
 **Add a tag**:
-a. Click **Add**. b. Enter a tag key and a tag value. The tag key can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs: or aliyun. The tag value can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs:.
+a. Click **Add**. b. Enter a tag key and a tag value.
+
+> **Note:** The tag key can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs: or aliyun.
+> The tag value can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs:.
+
 **Delete a tag**: Click the
 icon next to the tag.
 7. Click **OK**.
@@ -2549,9 +2697,13 @@ Authorize users or user groups to access a group of resources by granting them m
 4. On the **Resource Set Management** page, use the organization drop-down list above the
 list, apply tag filters, or enter the resource set name in the search box to quickly locate a resource set.
 5. On the **Members** tab, switch to the Central Cloud tab.
-The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
+> **Note:** The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
 6. Click **Member authorization** in the **Actions** column of the resource set.
-Alternatively, click the resource set name. On the **Resource Set Details** page, go to the **Members** tab and click **Member authorization**.
+
+> **Note:** Alternatively, click the resource set name. On the **Resource Set Details** page, go to the **Members** tab and click **Member authorization**.
+
 7. In the **Member authorization** dialog box, select a role type and then select users or user
 groups.
 
@@ -2573,7 +2725,11 @@ appear on the Members tab of the resource set details page.
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** list, switch to the Central Cloud tab to view members authorized for the
-resource set. Enter a user or user group name in the search box above the list to perform fuzzy search. The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed. The member list includes the following information: **Type**, **Authorized Subject**, **Use Role**,
+resource set. Enter a user or user group name in the search box above the list to perform fuzzy search.
+
+> **Note:** The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
+The member list includes the following information: **Type**, **Authorized Subject**, **Use Role**,
 **Permission Validity Period**, **Authorization Status**, and **Expired At**.
 **Type** includes user and user group.
 **Authorized Subject** indicates the username or user group name of the member.
@@ -2592,9 +2748,14 @@ the resource set. A hyphen (-) indicates permanent validity.
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** list, switch to the Central Cloud tab.
-The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
+> **Note:** The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
 4. Remove authorization.
-To remove a single member: Click **Remove Authorization** in the **Actions** column for the member. To remove multiple members: Select multiple users and user groups in the member list, then click **Remove Authorization** below the list. When selecting users and user groups to remove authorization, each selection is subject to quantity limits. Contact Alibaba Cloud technical support for specific configuration of these limits.
+To remove a single member: Click **Remove Authorization** in the **Actions** column for the member. To remove multiple members: Select multiple users and user groups in the member list, then click **Remove Authorization** below the list.
+
+> **Note:** When selecting users and user groups to remove authorization, each selection is subject to quantity limits. Contact Alibaba Cloud technical support for specific configuration of these limits.
+
 5. Click **Confirm**. After you remove authorization, the user or users in the user group can no
 longer access this resource set or use resources under this resource set.
 
@@ -2605,7 +2766,9 @@ longer access this resource set or use resources under this resource set.
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** list, switch to the Central Cloud tab.
-The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
+> **Note:** The Central Cloud and Access From Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud exists by default, and no tabs are displayed.
+
 4. Click **Permission Renewal** in the **Actions** column for the member.
 5. In the Permission Renewal dialog box, configure the authorization validity period.
 
@@ -2629,7 +2792,10 @@ The resource set has been bound to a resource set from Apsara Stack. The operati
 
 When you authorize a resource set to members from Apsara Stack, you can only authorize users. You cannot authorize user groups.
 1. On the **Resource Set Management** page, click **Member Authorization** in the **Actions**
-column of the resource set. You can also click the name of the resource set and then click **Member Authorization** on the **Members** tab of the **Resource Set Details** page.
+column of the resource set.
+
+> **Note:** You can also click the name of the resource set and then click **Member Authorization** on the **Members** tab of the **Resource Set Details** page.
+
 2. In the **Member Authorization** dialog box, select a role type and select users or user
 groups.
 
@@ -2650,7 +2816,9 @@ The resource set has been bound to a resource set from Apsara Stack. The operati
 1. On the **Resource Set Management** page, click the name of the resource set.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** tab, switch to the Apsara Stack tab and view the authorized members for
-the resource set. Enter user information in the text box above the list to perform a fuzzy search. In multi-cloud scenarios, the central cloud and connected Apsara Stack tabs appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+the resource set. Enter user information in the text box above the list to perform a fuzzy search.
+
+> **Note:** In multi-cloud scenarios, the central cloud and connected Apsara Stack tabs appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
 
 **Remove members from Apsara Stack authorized for the**
 
@@ -2662,7 +2830,9 @@ The resource set has been bound to a resource set from Apsara Stack. The operati
 1. On the **Resource Set Management** page, click the name of the resource set.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** tab, switch to the Apsara Stack tab.
-In multi-cloud scenarios, the central cloud and connected Apsara Stack tabs appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
+> **Note:** In multi-cloud scenarios, the central cloud and connected Apsara Stack tabs appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
 4. Click **Remove Authorization** in the **Actions** column.
 5. Click **Confirm**. After you remove the authorization, the user cannot access this resource set
 or use resources under this resource set.
@@ -2679,7 +2849,10 @@ The resource set is already bound to a resource group from the public cloud. The
 
 When authorizing members from the public cloud for a resource set, you can authorize only users, not user groups.
 1. On the **Resource Set Management** page, click **Member Authorization** in the **Actions**
-column of the target resource set. Alternatively, click the resource set name. On the **Resource Set Details** page, go to the **Members** tab and click **Member Authorization**.
+column of the target resource set.
+
+> **Note:** Alternatively, click the resource set name. On the **Resource Set Details** page, go to the **Members** tab and click **Member Authorization**.
+
 2. In the **Member Authorization** dialog box, select the role type and choose users or user
 groups.
 
@@ -2702,7 +2875,9 @@ The resource set is already bound to a resource group from the public cloud. The
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, go to the **Members** tab.
 3. On the **Members** tab, switch to the public cloud tab and view the authorized members for
-the resource set. Enter user information in the text box above the list to perform a fuzzy search. In multi-cloud scenarios, tabs for the central cloud and connected public clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+the resource set. Enter user information in the text box above the list to perform a fuzzy search.
+
+> **Note:** In multi-cloud scenarios, tabs for the central cloud and connected public clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
 
 **Remove public cloud members from a resource set**
 
@@ -2714,7 +2889,9 @@ The resource set is already bound to a resource group from the public cloud. The
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, go to the **Members** tab.
 3. On the **Members** tab, switch to the public cloud tab.
-In multi-cloud scenarios, tabs for the central cloud and connected public clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
+> **Note:** In multi-cloud scenarios, tabs for the central cloud and connected public clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
 4. Click **Remove Authorization** in the **Actions** column.
 5. Click **OK**. After you remove the authorization, users in this resource set can no longer
 access the resource set or use its resources.
@@ -2830,7 +3007,14 @@ A proxy administrator is specified for a resource set. For more information, see
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
 4. View the proxy administrator information in the list.
-Proxy Administrator: a proxy user of the resource set. A proxy user is automatically created after a proxy administrator is specified for a resource set. The user who is specified as the proxy administrator performs proxy operations as the proxy user. Proxy Status: the proxy status. A proxy administrator can be in the Activating, Disabled, or Expired state. If a proxy administrator is in the Disabled or Expired state, the corresponding proxy user cannot log in. Activating: The proxy is within the validity period, and the proxy administrator is not disabled. Disabled: The proxy administrator is disabled. Expired: The proxy period expires, and the proxy administrator cannot perform proxy operations. Owner: the user who is specified as the proxy administrator. After the user logs in, the user can switch to the proxy user in the user center. For more information, see Enable the proxy mode as a proxy administrator for a proxy user.
+
+> **Note:** Proxy Administrator: a proxy user of the resource set. A proxy user is automatically created after a proxy administrator is specified for a resource set. The user who is specified as the proxy administrator performs proxy operations as the proxy user.
+> Proxy Status: the proxy status. A proxy administrator can be in the Activating, Disabled, or Expired state. If a proxy administrator is in the Disabled or Expired state, the corresponding proxy user cannot log in.
+> Activating: The proxy is within the validity period, and the proxy administrator is not disabled.
+> Disabled: The proxy administrator is disabled.
+> Expired: The proxy period expires, and the proxy administrator cannot perform proxy operations.
+
+Owner: the user who is specified as the proxy administrator. After the user logs in, the user can switch to the proxy user in the user center. For more information, see Enable the proxy mode as a proxy administrator for a proxy user.
 5. Find the proxy administrator that you want to manage and click its name.
 6. On the **User Details** page, view the details of the proxy administrator.
 
@@ -2925,7 +3109,9 @@ manage.
 manage. If you select the name of a region, the organization is associated with the region. Then, you can create resources in this region. If you clear the name of a region, the organization is disassociated from the region. Then, you cannot create resources in this region.
 6. Click **Update Association**.
 7. If a multi-cloud organization is bound to a level-1 organization, you can also view the region
-of the secondary cloud on the corresponding tab as an operations administrator. Tabs of secondary clouds are displayed only in multi-cloud scenarios. You can only view region information, but cannot modify it.
+of the secondary cloud on the corresponding tab as an operations administrator.
+
+> **Note:** Tabs of secondary clouds are displayed only in multi-cloud scenarios. You can only view region information, but cannot modify it.
 
 #### 5.1.5 Change management
 
@@ -3024,13 +3210,20 @@ You are an operations administrator or organization administrator.
 5. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 6. Optional. Click the tab of the central cloud platform.
-The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 7. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 8. Find the resource instance that you want to view and click **View Resource Relations** in
-the Actions column. You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+the Actions column.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+
 9. In the **View Resource Relations** message, view the resource relationships.
-If a resource has a parent resource, the resource cannot be moved. If you still want to move the resource, we recommend that you move its parent resource. This way, the resource is automatically moved with its parent resource. A shared resource can be moved within the sharing scope of its parent resource.
+
+> **Note:** If a resource has a parent resource, the resource cannot be moved. If you still want to move the resource, we recommend that you move its parent resource. This way, the resource is automatically moved with its parent resource.
+> A shared resource can be moved within the sharing scope of its parent resource.
 
 **Resource without a parent resource**
 
@@ -3046,13 +3239,20 @@ A resource set is associated with a resource set of the managed Apsara Stack pla
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
-The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. Find the resource instance that you want to view and click **View Resource Relations** in
-the Actions column. You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+the Actions column.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+
 5. In the **View Resource Relations** message, view the resource relationships.
-If a resource has a parent resource, the resource cannot be moved. If you still want to move the resource, we recommend that you move its parent resource. This way, the resource is automatically moved with its parent resource. A shared resource can be moved within the sharing scope of its parent resource.
+
+> **Note:** If a resource has a parent resource, the resource cannot be moved. If you still want to move the resource, we recommend that you move its parent resource. This way, the resource is automatically moved with its parent resource.
+> A shared resource can be moved within the sharing scope of its parent resource.
 
 **Resource without a parent resource**
 
@@ -3068,13 +3268,19 @@ A resource set is associated with a resource group of the managed Alibaba Cloud 
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Alibaba Cloud platform.
-The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and managed cloud platforms are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. Find the resource instance that you want to view and click **View Resource Relations** in
-the Actions column. You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+the Actions column.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+
 5. In the **View Resource Relations** message, view the resource relationships.
-You cannot view the resource associations of the current Alibaba Cloud platform. Only the information about the selected resource instance is displayed.
+
+> **Note:** You cannot view the resource associations of the current Alibaba Cloud platform. Only the information about the selected resource instance is displayed.
 
 ##### 5.1.5.5 Change the ownership of resources
 
@@ -3094,11 +3300,15 @@ You are an operations administrator or organization administrator.
 5. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 6. Optional. Click the tab of the central cloud platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 7. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 8. In the resource instance list, perform the following operations based on your business
-requirements: You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+requirements:
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
 
 **Change the ownership of a single resource instance**
 
@@ -3119,11 +3329,16 @@ A resource set is associated with a resource set of the managed Apsara Stack pla
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. In the resource instance list, perform the following operations based on your business
-requirements: You can search for a resource instance by ID or name in the search boxes above the resource instance list. When you change the ownership of a resource in a managed Apsara Stack platform and select the destination organization and resource set, the names of the organizations and resource sets in the central cloud platform that manages the Apsara Stack platform are displayed.
+requirements:
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+> When you change the ownership of a resource in a managed Apsara Stack platform and select the destination organization and resource set, the names of the organizations and resource sets in the central cloud platform that manages the Apsara Stack platform are displayed.
 
 **Change the ownership of a single resource instance**
 
@@ -3144,11 +3359,16 @@ A resource set is associated with a resource group in the managed Alibaba Cloud 
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Alibaba Cloud platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. In the resource instance list, perform the following operations based on your business
-requirements: You can search for a resource instance by ID or name in the search boxes above the resource instance list. When you change the ownership of a resource instance in a managed Alibaba Cloud platform and select the destination organization and resource set, the names of the organizations and resource sets in the central cloud platform that manages the Alibaba Cloud platform are displayed.
+requirements:
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+> When you change the ownership of a resource instance in a managed Alibaba Cloud platform and select the destination organization and resource set, the names of the organizations and resource sets in the central cloud platform that manages the Alibaba Cloud platform are displayed.
 
 **Change the ownership of a single resource instance**
 
@@ -3177,12 +3397,17 @@ You are an operations administrator or organization administrator.
 5. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 6. Optional. Click the tab of the central cloud platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 7. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 8. In the resource instance list, find the resource instance that you want to manage and click
 **Change Sharing Scope** in the **Actions** column.
-You can search for a resource instance by ID or name in the search boxes above the resource instance list. The Shared scope column displays the sharing scope of a resource instance.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+> The Shared scope column displays the sharing scope of a resource instance.
+
 9. In the **Change Sharing Scope** dialog box, set the **Change sharing scope** parameter to
 **Current Organization and Subordinate Organizations** , **Current Resource Set**, or
 
@@ -3219,12 +3444,17 @@ A resource set is associated with a resource set of the managed Apsara Stack pla
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. In the resource instance list, find the resource instance that you want to manage and click
 **Change Sharing Scope** in the **Actions** column.
-You can search for a resource instance by ID or name in the search boxes above the resource instance list. The Shared scope column displays the sharing scope of a resource instance.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+> The Shared scope column displays the sharing scope of a resource instance.
+
 5. In the **Change Sharing Scope** dialog box, set the **Change sharing scope** parameter to
 **Current Organization and Subordinate Organizations** , **Current Resource Set**, or
 **Current Organization**.
@@ -3244,12 +3474,17 @@ A resource set is associated with a resource group of the managed Alibaba Cloud 
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Alibaba Cloud platform.
-The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
+> **Note:** The tabs of the central cloud platform and cloud platforms managed by the central cloud platform are displayed only in multi-cloud environments. In single-cloud environments, only the information about the central cloud platform is displayed.
+
 3. On the right side of the page, configure the **Product Type** and **Resource Type**
 parameters.
 4. In the resource instance list, find the resource instance that you want to manage and click
 **Change Sharing Scope** in the **Actions** column.
-You can search for a resource instance by ID or name in the search boxes above the resource instance list. The Shared scope column displays the sharing scope of a resource instance.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+> The Shared scope column displays the sharing scope of a resource instance.
+
 5. In the **Change Sharing Scope** dialog box, set the **Change sharing scope** parameter to
 **Current Organization and Subordinate Organizations** , **Current Resource Set**, or
 **Current Organization**.
@@ -3302,12 +3537,15 @@ Before you create a user, make sure that the organization and role are already c
 
 6. Click **OK**. The user is created.
 7. In the **Bind Resource Set** dialog box, click **Cancel** or **Bind Resource Set**.
-When you bind a resource set, the system navigates to the user details page and opens the **Add to Resource Set** dialog box. For more information about adding a user to a resource set, see Manage the resource sets to which users belong.
+
+> **Note:** When you bind a resource set, the system navigates to the user details page and opens the **Add to Resource Set** dialog box. For more information about adding a user to a resource set, see Manage the resource sets to which users belong.
 
 **Create users in batches**
 
 1. On the **System Users** tab, click **Batch Create Users**.
-To create users in batches, you must first export the user template, fill in the user information as required, and then import the completed template.
+
+> **Note:** To create users in batches, you must first export the user template, fill in the user information as required, and then import the completed template.
+
 2. In the **Batch Create Users** dialog box, click **User Creation Template**.
 3. In the downloaded template file, fill in the user information as required.
 
@@ -3333,7 +3571,10 @@ To create users in batches, you must first export the user template, fill in the
 | The password is sent to you by email | Enter Y or N. The default value is N. Note You must enable email notification. |
 
 4. After you complete and save the template file, click **Upload Template** in the **Import**
-wizard. After the upload completes, click **Next**. After you upload the template file, the system automatically validates the user information. If the file contains errors, the system cannot create the users. You must modify the template file locally and then click **Re-upload**.
+wizard. After the upload completes, click **Next**.
+
+> **Note:** After you upload the template file, the system automatically validates the user information. If the file contains errors, the system cannot create the users. You must modify the template file locally and then click **Re-upload**.
+
 5. In the **OK** wizard, preview and check the user information to import, and then click **OK**.
 6. (Optional) After the system creates the task, you can click **Task List** in the dialog box to go
 to the asynchronous task page and view the creation results.
@@ -3373,7 +3614,10 @@ You cannot edit the information of proxy administrator users. You cannot modify 
 5. Quickly find a user by using the drop-down list or advanced filter settings above the list.
 6. Click **Edit** in the **Actions** column of the target user.
 7. In the **Edit User** dialog box, modify the user information. For more information about the
-configuration items, see Create a user. When editing a user, you can configure the **Console Access** access mode only.
+configuration items, see Create a user.
+
+> **Note:** When editing a user, you can configure the **Console Access** access mode only.
+
 8. Click **OK**.
 
 ##### 5.2.1.4 Manage the roles of a user
@@ -3413,7 +3657,10 @@ The level-1 organization to which the user belongs is bound to an organization o
 
 Only one role of the managed Apsara Stack platform can be assigned to a user. When you assign a role of a managed Apsara Stack platform to a user that is not a level-1 organization administrator, you can select only a role whose management scope is Resource Sets. When you assign a role of a managed Apsara Stack platform to a level-1 organization administrator, you can select a role whose management scope is Resource Sets or the organization administrator role.
 1. On the **System Users** tab of the **Users** page, click Advanced Filter and select a level-1
-organization that is bound to the managed Apsara Stack platform from the **Organization** drop-down list to filter users in the level-1 organization. You can also use the **User Name** filter condition to search for users.
+organization that is bound to the managed Apsara Stack platform from the **Organization** drop-down list to filter users in the level-1 organization.
+
+> **Note:** You can also use the **User Name** filter condition to search for users.
+
 2. Find the user that you want to manage, click the
 icon in the **Actions** column, and then select **Role Authorization**.
 3. In the **Select Multi-Cloud Role** section of the **Role Authorization** dialog box, select the
@@ -3436,7 +3683,10 @@ The level-1 organization to which the user belongs is bound to the Alibaba Cloud
 
 Only one RAM role of the managed Alibaba Cloud platform can be assigned to a user.
 1. On the **System Users** tab of the **Users** page, click Advanced Filter. In the **Organization**
-drop-down list, select a level-1 organization that is bound to the managed Alibaba Cloud platform to filter users in the level-1 organization. You can also use the **User Name** filter condition to search for users.
+drop-down list, select a level-1 organization that is bound to the managed Alibaba Cloud platform to filter users in the level-1 organization.
+
+> **Note:** You can also use the **User Name** filter condition to search for users.
+
 2. Find the user that you want to manage, click the
 icon in the **Actions** column, and then select **Role Authorization**.
 3. In the **Select Multi-Cloud Role** section of the **Role Authorization** dialog box, select the
@@ -3483,7 +3733,10 @@ Only one role of the managed Apsara Stack platform can be assigned to a user. Wh
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
 4. On the **System Users** tab of the **Users** page, click Advanced Filter and select the level-1
-organization that is bound to a managed Apsara Stack platform from the **Organization** drop-down list to filter users in the level-1 organization. You can also use the **User Name** filter condition to search for users.
+organization that is bound to a managed Apsara Stack platform from the **Organization** drop-down list to filter users in the level-1 organization.
+
+> **Note:** You can also use the **User Name** filter condition to search for users.
+
 5. Find the user that you want to manage, click the
 icon in the **Actions** column, and then select **Edit Multi-Cloud Role**.
 6. In the **Edit Multi-Cloud Role** dialog box, select the role of the managed Apsara Stack
@@ -3506,7 +3759,10 @@ The level-1 organization to which the user belongs is bound to the Alibaba Cloud
 
 Only one RAM role of the managed Alibaba Cloud platform can be assigned to a user.
 1. On the **System Users** tab of the **Users** page, click Advanced Filter. In the **Organization**
-drop-down list, select the level-1 organization that is bound to a managed Alibaba Cloud platform to filter users in the level-1 organization. You can also use the **User Name** filter condition to search for users.
+drop-down list, select the level-1 organization that is bound to a managed Alibaba Cloud platform to filter users in the level-1 organization.
+
+> **Note:** You can also use the **User Name** filter condition to search for users.
+
 2. Find the user that you want to manage, click the
 icon in the **Actions** column, and then select **Edit Multi-Cloud Role**.
 3. In the **Edit Multi-Cloud Role** dialog box, select the role of the managed Alibaba Cloud
@@ -3558,9 +3814,13 @@ quickly find users.
 5. On the **System Users** page, click
 in the **Actions** column of a user and select **Resource**
 **Set Management**. The system displays the **Resource Sets** tab by default.
-You can also click the username to go to the **Resource Sets** tab.
+
+> **Note:** You can also click the username to go to the **Resource Sets** tab.
+
 6. Under the **Resource Sets** tab, switch to the Central Cloud tab.
-The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud exists by default, and no tabs are displayed.
+
+> **Note:** The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud exists by default, and no tabs are displayed.
+
 7. Click **Add to Resource Set** above the list.
 8. In the **Add to Resource Set** dialog box, select the role that the user will assume in the
 resource set. In the **Select Resource Set** list, select the resource sets to which you want to add the user.
@@ -3570,7 +3830,9 @@ sets appear in the resource set list.
 **Remove users from central cloud resource sets**
 
 1. Under the **Resource Sets** tab, switch to the Central Cloud tab.
-The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud exists by default, and no tabs are displayed.
+
+> **Note:** The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud exists by default, and no tabs are displayed.
+
 2. Above the resource set list, query resource sets by role.
 3. In the resource set list, click **Remove** in the **Actions** column.
 4. In the **Confirm** dialog box, click OK.
@@ -3583,14 +3845,16 @@ The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios.
 
 The user has been granted a connected cloud role. You must be an operations administrator (bound to the connected cloud operations administrator role) or a level-1 organization administrator (bound to the connected cloud organization administrator role).
 1. On the **Resource Set** tab, switch to the connected cloud tab.
-In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
+> **Note:** In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
 2. Click **Add to Resource Set** above the list.
 3. In the **Add to Resource Set** dialog box, select the resource sets to which you want to add
 the user.
-**Role for Joining Resource Set**: Displays the connected cloud resource pool
-and connected cloud role. You cannot modify this setting.
-**Select Resource Set**: Displays the names of central cloud resource sets that
-are bound to connected cloud resource sets. Enter a resource set name in the text box to quickly find a resource set.
+
+> **Note:** **Role for Joining Resource Set**: Displays the connected cloud resource pool and connected cloud role. You cannot modify this setting.
+> **Select Resource Set**: Displays the names of central cloud resource sets that are bound to connected cloud resource sets. Enter a resource set name in the text box to quickly find a resource set.
+
 4. Click **Confirm**.
 
 **Remove users from connected cloud Resource Sets**
@@ -3599,9 +3863,13 @@ are bound to connected cloud resource sets. Enter a resource set name in the tex
 
 You must be an operations administrator (bound to the connected cloud operations administrator role) or a level-1 organization administrator (bound to the connected cloud organization administrator role).
 1. On the **Resource Set** tab, switch to the connected cloud tab.
-In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
+> **Note:** In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
+
 2. In the list of resource sets, view the resource sets to which the user belongs.
-The resource set names are those of central cloud resource sets bound to connected cloud resource sets.
+
+> **Note:** The resource set names are those of central cloud resource sets bound to connected cloud resource sets.
+
 3. In the list of resource sets, click **Remove** in the **Actions** column.
 4. In the **Confirm** dialog box, click **Confirm**.
 
@@ -3613,14 +3881,16 @@ The resource set names are those of central cloud resource sets bound to connect
 
 The user has been granted a connected cloud Public Cloud role. You are an operations administrator (bound to the AdministratorAccess policy at the connected cloud Public Cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the connected cloud Public Cloud primary account).
 1. On the **Resource Set** tab, switch to the connected cloud Public Cloud tab.
-The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
+> **Note:** The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
 2. Click **Add to Resource Set** above the list.
 3. In the **Add to Resource Set** dialog box, select the resource sets to which you want to add
 the user.
-**Role for Joining Resource Set**: Displays the connected cloud Public Cloud
-resource pool and role. You cannot modify this setting.
-**Select Resource Set**: Displays the names of central cloud resource sets bound
-to connected cloud Public Cloud resource groups. Enter a resource set name in the text box to quickly find a resource set.
+
+> **Note:** **Role for Joining Resource Set**: Displays the connected cloud Public Cloud resource pool and role. You cannot modify this setting.
+> **Select Resource Set**: Displays the names of central cloud resource sets bound to connected cloud Public Cloud resource groups. Enter a resource set name in the text box to quickly find a resource set.
+
 4. Click **Confirm**.
 
 **Remove users from the connected cloud Public Cloud resource**
@@ -3631,9 +3901,13 @@ to connected cloud Public Cloud resource groups. Enter a resource set name in th
 
 You are an operations administrator (bound to the AdministratorAccess policy at the connected cloud Public Cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the connected cloud Public Cloud primary account).
 1. On the **Resource Sets** tab, switch to the connected cloud Public Cloud tab.
-The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
+> **Note:** The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
+
 2. In the list of resource sets, view the resource sets to which the user belongs.
-The resource set name is the name of the central cloud resource set bound to the connected cloud Public Cloud resource group.
+
+> **Note:** The resource set name is the name of the central cloud resource set bound to the connected cloud Public Cloud resource group.
+
 3. In the list of resource sets, click **Remove** in the **Actions** column.
 4. In the **Confirm Removal** dialog box, click **Confirm**.
 
@@ -3704,7 +3978,9 @@ user list.
 6. Find the user that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **MFA Settings**.
 7. In the **MFA Settings** dialog box, turn on or off MFA Settings and click **OK**.
-: MFA is enabled. : MFA is disabled.
+
+> **Note:** : MFA is enabled.
+> : MFA is disabled.
 
 | MFA Status | Description |
 |---|---|
@@ -3733,7 +4009,10 @@ user list.
 6. Find the user that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **View Initial Password**.
 7. In the **View Initial Password** message, view the initial password.
-You can also click the icon next to Password on the User Details page to view the initial password.
+
+> **Note:** You can also click the
+> icon next to Password on the User Details page to view the
+> initial password.
 
 ##### 5.2.1.11 Reset the password of a user
 
@@ -3784,9 +4063,8 @@ You can configure validity periods for accounts, including the validity period o
 
 **Usage notes**
 
-**Important**
+> **Important:** After the validity periods of an account end, issues may occur when the user logs in to the console or uses the AccessKey pair. Exercise caution when you configure validity periods for an account.
 
-After the validity periods of an account end, issues may occur when the user logs in to the console or uses the AccessKey pair. Exercise caution when you configure validity periods for an account.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3826,9 +4104,9 @@ A user is in the Enabled state.
 
 You cannot disable proxy administrators on the Users page. When you disable a proxy administrator, the corresponding proxy user is also disabled. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
 
-**Important**
+> **Important:** After you disable a user, the user is forbidden from logging on to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are disabled, and the user logon status becomes invalid.
+> After an AccessKey pair is disabled, the services or applications that reference the AccessKey pair may not run as expected. In this case, enable the user to restore the services or applications.
 
-After you disable a user, the user is forbidden from logging on to the Apsara Unimanager Management Console, the AccessKey pairs of the user are disabled, and the user logon status becomes invalid. After an AccessKey pair is disabled, the services or applications that reference the AccessKey pair may not run as expected. In this case, enable the user to restore the services or applications.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3865,7 +4143,8 @@ icon in the **Actions** column, and then select **Enable**.
 7. In the message that appears, click **OK**.
 When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** >
 **Permissions** > **AccessKey Logs**.
-After a user is enabled, the associated AccessKey pairs are also enabled.
+
+> After a user is enabled, the associated AccessKey pairs are also enabled.
 
 ##### 5.2.1.16 Delete a user
 
@@ -3875,9 +4154,9 @@ This topic describes how to delete a user.
 
 You cannot delete a proxy user on the Users page. To delete a proxy user, go to the details page of the corresponding organization or resource set and delete the proxy user on the Proxy Administrator tab. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
 
-**Important**
+> **Important:** After you delete a user, the user is forbidden from logging on to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are deleted, and the user logon status becomes invalid.
+> After you delete a user, the user data cannot be recovered. After an AccessKey pair is deleted, the services or applications that use the AccessKey pair may not work as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
 
-After you delete a user, the user is forbidden from logging on to the Apsara Unimanager Management Console, the AccessKey pairs of the user are deleted, and the user logon status becomes invalid. After you delete a user, the user data cannot be recovered. After an AccessKey pair is deleted, the services or applications that use the AccessKey pair may not work as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3975,7 +4254,9 @@ User groups are created.
 4. Search for a user group by using the search box or specifying advanced filter conditions
 above the user group list.
 5. View the user groups in the list.
-The User column displays the number of users added to a user group. You can click the number to view the added users. If the number of added users is zero, a hyphen (-) is displayed. The Resource Set column displays the resource sets to which a user group is added. If a user group is not added to any resource sets, a hyphen (-) is displayed.
+
+> **Note:** The User column displays the number of users added to a user group. You can click the number to view the added users. If the number of added users is zero, a hyphen (-) is displayed.
+> The Resource Set column displays the resource sets to which a user group is added. If a user group is not added to any resource sets, a hyphen (-) is displayed.
 
 ##### 5.2.2.3 Modify the name of a user group
 
@@ -4044,16 +4325,19 @@ above the user group list.
 icon in the
 **Actions** column, and then select **Remove User**.
 6. In the **Remove User** dialog box, select one or more users that you want to remove from
-the left-side section and click the icon to add the selected users to the right-side section. You can also select one or more users added to the right-side section and click the icon to remove the users from the right-side section.
+the left-side section and click the icon to add the selected users to the right-side section.
+
+> **Note:** You can also select one or more users added to the right-side section and click the
+> icon to remove the users from the right-side section.
+
 7. Click **OK**.
 
 ##### 5.2.2.7 Delete a user group
 
 You can delete a user group that you no longer need.
 
-**Important**
+> **Important:** When you delete a user group, the associated resources such as roles, users, and resource sets are automatically disassociated.
 
-When you delete a user group, the associated resources such as roles, users, and resource sets are automatically disassociated.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4077,7 +4361,9 @@ You are an operations administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Online User Management**.
 4. View a list of current online user sessions.
-You can search for online users by specifying filter conditions such as username, display name, and organization above the list.
+
+> **Note:** You can search for online users by specifying filter conditions such as username, display name, and organization above the list.
+
 5. Find the user that you want to manage and click the username to go to the User Details
 page. You can view the details of the user.
 
@@ -4116,15 +4402,25 @@ A preset role is a collection of preset permissions for specific operations. To 
 
 **Custom role**
 
-You can create a custom role to combine and set permission policies based on your business requirements. You can configure the sharing scope and permissions on resources, applications, and menus for the custom role, and configure custom permission policies to flexibly specify the services that can be accessed by the role, the operations that can be performed by the role, and the resources that can be managed by the role. Compared with preset roles, custom roles are more flexible and can be customized. Custom roles are commonly used to manage the permissions of users who log on to cloud service consoles. In addition, third-party independent software vendors (ISVs) can create custom roles when they require AccessKey pairs with limited permission scope to call cloud service APIs for application development.
+You can create a custom role to combine and set permission policies based on your business requirements. You can configure the sharing scope and permissions on resources, applications, and menus for the custom role, and configure custom permission policies to flexibly specify the services that can be accessed by the role, the operations that can be performed by the role, and the resources that can be managed by the role. Compared with preset roles, custom roles are more flexible and can be customized.
+
+> **Note:** Custom roles are commonly used to manage the permissions of users who log on to cloud service consoles. In addition, third-party independent software vendors (ISVs) can create custom roles when they require AccessKey pairs with limited permission scope to call cloud service APIs for application development.
 
 **RAM role-based authorization**
 
-RAM role-based authorization is the process of associating a RAM role with RAM users, other Apsara Stack tenant accounts, or Apsara Stack services. An authorized entity can directly assume a RAM role to obtain the collection of permissions that belong to the role without the need to grant permission policies to the entity. RAM role-based authorization can be divided into the role of Apsara Stack tenant accounts and the role of Apsara Stack services based on the types of trust entities. Role of Apsara Stack tenant accounts: the role that can be assumed by RAM users. RAM users who assume this type of role can belong to the own Apsara Stack tenant accounts or other Apsara Stack tenant accounts. The roles of this type are used for cross-account access or temporarily authorized access. Role of Apsara Stack services: the role that can be assumed by cloud services. The roles of this type are used for access across Apsara Stack services.
+RAM role-based authorization is the process of associating a RAM role with RAM users, other Apsara Stack tenant accounts, or Apsara Stack services. An authorized entity can directly assume a RAM role to obtain the collection of permissions that belong to the role without the need to grant permission policies to the entity.
+
+> **Note:** RAM role-based authorization can be divided into the role of Apsara Stack tenant accounts and the role of Apsara Stack services based on the types of trust entities.
+> Role of Apsara Stack tenant accounts: the role that can be assumed by RAM users. RAM users who assume this type of role can belong to the own Apsara Stack tenant accounts or other Apsara Stack tenant accounts. The roles of this type are used for cross-account access or temporarily authorized access.
+> Role of Apsara Stack services: the role that can be assumed by cloud services. The roles of this type are used for access across Apsara Stack services.
 
 **RAM-based authorization**
 
-Each RAM user is a user entity with a unique identity. You can assign custom policies to RAM users by using user groups. This way, the RAM users always have these permissions regardless of whether they assume a role. RAM-based authorization is performed based on RAM user groups other than RAM roles. RAM-based authorization is used to enhance the fine-grained permission control of custom roles that are created on a GUI. After you create a custom role, you can use RAM-based authorization to attach a RAM policy to RAM users if some permissions cannot be granted by using the custom role. RAM-based authorization must be used together with user groups.
+Each RAM user is a user entity with a unique identity. You can assign custom policies to RAM users by using user groups. This way, the RAM users always have these permissions regardless of whether they assume a role.
+
+> **Note:** RAM-based authorization is performed based on RAM user groups other than RAM roles.
+> RAM-based authorization is used to enhance the fine-grained permission control of custom roles that are created on a GUI. After you create a custom role, you can use RAM-based authorization to attach a RAM policy to RAM users if some permissions cannot be granted by using the custom role.
+> RAM-based authorization must be used together with user groups.
 
 ##### 5.3.1.2 RAM policies
 
@@ -4140,7 +4436,9 @@ The elements of statements include Effect, Action, Resource, Condition, and Prin
 
 **Effect (Required)**
 
-Specifies whether a statement result is an explicit allow or an explicit deny. Valid values: Allow and Deny. Precedence of Deny: Deny statements take precedence when a user is assigned multiple policies that contain Allow and Deny statements, and when a single policy contains both Allow and Deny statements.
+Specifies whether a statement result is an explicit allow or an explicit deny. Valid values: Allow and Deny.
+
+> **Note:** Precedence of Deny: Deny statements take precedence when a user is assigned multiple policies that contain Allow and Deny statements, and when a single policy contains both Allow and Deny statements.
 
 **Example**
 
@@ -4150,7 +4448,9 @@ Specifies whether a statement result is an explicit allow or an explicit deny. V
 
 **Action (Required)**
 
-The specific API operations involved in the statement. The Action element is in the following format: `<ram-code>:<action-name>` . `<ram-code>` : the product code. `<action-name>` : the API operation of the product involved in the policy. The values of the Action element are case-insensitive. However, to ensure consistency, we recommend that you follow the standard capitalization of the product code and API operation names.
+The specific API operations involved in the statement. The Action element is in the following format: `<ram-code>:<action-name>` . `<ram-code>` : the product code. `<action-name>` : the API operation of the product involved in the policy.
+
+> **Note:** The values of the Action element are case-insensitive. However, to ensure consistency, we recommend that you follow the standard capitalization of the product code and API operation names.
 
 **Example**
 
@@ -4161,7 +4461,9 @@ The specific API operations involved in the statement. The Action element is in 
   "rds:Describe*"
 ```
 
-`]` You can use the asterisk (*) as a wildcard character. For example, in the preceding example, `ecs:Describe*` indicates that all the API operations of Elastic Compute Service (ECS) whose names start with Describe are involved in the policy.
+`]`
+
+> **Note:** You can use the asterisk (*) as a wildcard character. For example, in the preceding example, `ecs:Describe*` indicates that all the API operations of Elastic Compute Service (ECS) whose names start with Describe are involved in the policy.
 
 **Resource (Required)**
 
@@ -4218,7 +4520,11 @@ Service-specific condition keys are in the following format: `<ram-code>:<condit
 
 **Principal**
 
-The entity that is allowed or denied to call the related API operations. This element is available only for resource-based policies. For example, in a trust policy attached to a RAM role, you can specify the resources that are allowed to assume the role in the Principle element. The Principal element is required in resource-based policies. You cannot specify the Principal element in identity-based policies. Identity-based policies are attached to RAM identities. The RAM identities to which identity-based policies are attached are the principals. You can specify multiple types of principals for the Principal element in a policy. You can also specify multiple principals of the same type for the Principal element in a policy. If you specify multiple types of principals, separate the types with commas (,). If you specify multiple principals of the same type, separate the principals with commas (,) and enclose the principals with brackets ([]). Multiple principals are associated with each other by the OR operator, meaning that the policy is attached to all principals in the policy.
+The entity that is allowed or denied to call the related API operations. This element is available only for resource-based policies. For example, in a trust policy attached to a RAM role, you can specify the resources that are allowed to assume the role in the Principle element. The Principal element is required in resource-based policies.
+
+> **Note:** You cannot specify the Principal element in identity-based policies. Identity-based policies are attached to RAM identities. The RAM identities to which identity-based policies are attached are the principals.
+
+You can specify multiple types of principals for the Principal element in a policy. You can also specify multiple principals of the same type for the Principal element in a policy. If you specify multiple types of principals, separate the types with commas (,). If you specify multiple principals of the same type, separate the principals with commas (,) and enclose the principals with brackets ([]). Multiple principals are associated with each other by the OR operator, meaning that the policy is attached to all principals in the policy.
 
 **Example**
 
@@ -4336,10 +4642,16 @@ Preset roles support viewing, authorization, disabling, activation, and replicat
 2. In the top navigation bar, select **Enterprise**.
 3. In the left-side navigation pane, select **Permissions****> Role Permission**.
 4. Optional: Switch to the Central Cloud Role tab.
-The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
+> **Note:** The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
 5. In the role list, view the following information for preset roles: **Role Name/ID**, **Role Type**,
 **Security Level**, **Role Description**, **Authorization Object**, **Sharing Scope**, and **Status**.
-At the top of the list, you can filter roles by selecting a role type or entering a role name for quick search. The numbers following users and user groups in the Authorization Object column indicate the count of authorized users and user groups. Click to navigate to the Authorized Personnel tab to view detailed lists. The Security Level column appears only when security policies enable Security Level-Based Access.
+
+> **Note:** At the top of the list, you can filter roles by selecting a role type or entering a role name for quick search.
+> The numbers following users and user groups in the Authorization Object column indicate the count of authorized users and user groups. Click to navigate to the Authorized Personnel tab to view detailed lists.
+> The Security Level column appears only when security policies enable Security Level-Based Access.
+
 6. Click the role name of a preset role or click **View** in the **Actions** column.
 7. On the preset role details page, view basic information, management permissions,
 application permissions, and authorized personnel information for the role.
@@ -4354,7 +4666,11 @@ application permissions, and authorized personnel information for the role.
 
 **Authorize users and user groups with preset roles**
 
-Method 1: i. Click **Authorize** in the **Actions** column for the preset role. ii. In the **Authorize** dialog box, on the **Users** and **User Groups** tabs, select the users and user groups to authorize. Above the lists on the Users and User Groups tabs, you can quickly find target users and user groups by selecting an organization and role, then entering a user or user group name. iii. Click **OK**. Method 2: i. Click the role name of the preset role or click **View** in the **Actions** column. ii. Switch to the **Authorized Personnel** tab. iii. Authorize users and user groups as needed.
+Method 1: i. Click **Authorize** in the **Actions** column for the preset role. ii. In the **Authorize** dialog box, on the **Users** and **User Groups** tabs, select the users and user groups to authorize.
+
+> **Note:** Above the lists on the Users and User Groups tabs, you can quickly find target users and user groups by selecting an organization and role, then entering a user or user group name.
+
+iii. Click **OK**. Method 2: i. Click the role name of the preset role or click **View** in the **Actions** column. ii. Switch to the **Authorized Personnel** tab. iii. Authorize users and user groups as needed.
 
 | Action | Description |
 |---|---|
@@ -4400,7 +4716,10 @@ permissions included in the role.
 
 1. Click **Copy** in the **Actions** column of the preset role.
 2. On the Create Custom Role page, follow the instructions to complete the configuration for
-Basic Configuration, Management Permission, Application Permission, and Menu Permission. Copying a role quickly creates a new role with identical permissions. You can adjust permissions as needed. If you make no changes, the copied role has the same sharing scope, management permission, application permission, and menu permission as the original role. You must define a new role name. It cannot be the same as the name of the role being copied.
+Basic Configuration, Management Permission, Application Permission, and Menu Permission.
+
+> **Note:** Copying a role quickly creates a new role with identical permissions. You can adjust permissions as needed. If you make no changes, the copied role has the same sharing scope, management permission, application permission, and menu permission as the original role.
+> You must define a new role name. It cannot be the same as the name of the role being copied.
 
 ##### 5.3.1.4 Manage custom roles
 
@@ -4412,7 +4731,9 @@ Custom roles support the following operations: create, view, edit, update permis
 2. In the top navigation bar, select **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permissions**.
 4. (Optional) Switch to the central cloud role tab.
-The multi-cloud scenario displays tabs for both central cloud and connected subordinate clouds. In a single-cloud scenario, only the central cloud exists by default, and no tabs are displayed.
+
+> **Note:** The multi-cloud scenario displays tabs for both central cloud and connected subordinate clouds. In a single-cloud scenario, only the central cloud exists by default, and no tabs are displayed.
+
 5. Above the role list, click **Create Custom Role,** to go to the **Create Custom Role** page.
 6. Configure **Basic Configurations** and click **Next**.
 
@@ -4435,28 +4756,34 @@ The multi-cloud scenario displays tabs for both central cloud and connected subo
 7. Configure **Management Permissions**. Select the management permissions that you want
 to authorize in the permission list, and then click **Next**. Management permissions define console-related operation permissions for the role, such as authorizing operations on organizations, users, and resource sets.
 
-**Important**
+> **Important:** If you selected Resource Sets in the basic configuration of the custom role, only read- only permissions take effect in this step. Write permissions do not take effect.
 
-If you selected Resource Sets in the basic configuration of the custom role, only readonly permissions take effect in this step. Write permissions do not take effect.
 8. Configure **Application Permissions**. Select the cloud service permissions that you want to
 authorize in the permission list, and then click **Next**. Application permissions define which operations a user can perform on specific cloud services. For example, if you only need to grant users the permission to view Elastic Compute Service (ECS) instances, select only the view instance permission under ECS.
 
-**Important**
+> **Important:** The system automatically selects dependent permissions. Removing dependencies may restrict operations. Proceed with caution.
+> Resource sharing permissions:
+> Resource sharing permissions do not affect normal role authorization. They supplement management permissions specifically for shared resource states.
+> When a shareable resource is shared to a target organization or resource set, and the target user's management scope does not cover that resource, management must occur via resource sharing permissions.
+> On the right side of each cloud service, click **Read/Write** or **Read-Only** to quickly authorize the role.
 
-The system automatically selects dependent permissions. Removing dependencies may restrict operations. Proceed with caution. Resource sharing permissions: Resource sharing permissions do not affect normal role authorization. They supplement management permissions specifically for shared resource states. When a shareable resource is shared to a target organization or resource set, and the target user's management scope does not cover that resource, management must occur via resource sharing permissions. On the right side of each cloud service, click **Read/Write** or **Read-Only** to quickly authorize the role.
 9. Configure **Menu Permissions**. Select the menu entries that you want to authorize from
 the list, and then click **Next** or **Create**. Menu permissions control which menu items a role can view, enabling entry hiding.
 
-**Important**
+> **Important:** For console users, if platform operation permissions and cloud service permissions are granted via management and application permissions, corresponding menu permissions must also be assigned to ensure users can access those entries.
+> If you enabled Custom Policy, click **Next** to configure the custom policy content. If you did not enable custom policies, click **Create** to complete the creation of the custom role.
 
-For console users, if platform operation permissions and cloud service permissions are granted via management and application permissions, corresponding menu permissions must also be assigned to ensure users can access those entries. If you enabled Custom Policy, click **Next** to configure the custom policy content. If you did not enable custom policies, click **Create** to complete the creation of the custom role.
 0. (Optional) Configure the **Custom Policy**. Define applied RAM actions, and then click
 **Create**.
 
 **Important**
 
-You can configure custom policies only after you enable Custom Policy in the Basic Configurations step. Custom policies precisely describe authorized resources and permitted operations by defining RAM Actions. RAM Actions include Allow and Deny statements: Allow permits operations, Deny rejects them. If both exist, Deny takes precedence. The RAM Action format is <ram-code>:<action-name>. Separate multiple actions with commas (,). <ram-code> represents the RAM code of the cloud service, which is typically the service code. <action-name> represents the name of the OpenAPI operation for the cloud service. For example, if you set `oss:ListBuckets,ecs:Describe*,rds:Describe*` in Allow, the role has the permission to list all Object Storage Service (OSS) buckets, call all ECS APIs starting with Describe, and call all ApsaraDB RDS APIs starting with Describe. Click **Preview** to view the added actions in the preview dialog box. In the **Preview** dialog box, click **Delete** in the **Operation** column to remove an added action. Click
-**Close** at the bottom of the **Preview** dialog box to close the preview.
+> You can configure custom policies only after you enable Custom Policy in the Basic Configurations step.
+
+Custom policies precisely describe authorized resources and permitted operations by defining RAM Actions. RAM Actions include Allow and Deny statements: Allow permits operations, Deny rejects them. If both exist, Deny takes precedence. The RAM Action format is <ram-code>:<action-name>. Separate multiple actions with commas (,). <ram-code> represents the RAM code of the cloud service, which is typically the service code. <action-name> represents the name of the OpenAPI operation for the cloud service. For example, if you set `oss:ListBuckets,ecs:Describe*,rds:Describe*` in Allow, the role has the permission to list all Object Storage Service (OSS) buckets, call all ECS APIs starting with Describe, and call all ApsaraDB RDS APIs starting with Describe.
+
+> **Note:** Click **Preview** to view the added actions in the preview dialog box. In the **Preview** dialog box, click **Delete** in the **Operation** column to remove an added action. Click **Close** at the bottom of the **Preview** dialog box to close the preview.
+
 1. After the role is created, click **Complete** in the **Create Custom Role** dialog box.
 Alternatively, click **Authorize Now** in the dialog box to go to the **Authorize Personnel** page and assign the role to users and user groups.
 
@@ -4464,7 +4791,10 @@ Alternatively, click **Authorize Now** in the dialog box to go to the **Authoriz
 
 1. In the role list, view **Role Name/ID**, **Role Type**, **Security Level**, **Role Description**,
 **Authorized Object**, **Applicable Organization**, **Sharing Scope**, and **Status**.
-Above the list, you can select a role type or enter a role name to quickly search for a role. The numbers following User and User Group in the Authorized Object column indicate the count of authorized users and user groups. Click a number to navigate to the Authorized Personnel tab to view detailed lists of authorized users and user groups.
+
+> **Note:** Above the list, you can select a role type or enter a role name to quickly search for a role.
+> The numbers following User and User Group in the Authorized Object column indicate the count of authorized users and user groups. Click a number to navigate to the Authorized Personnel tab to view detailed lists of authorized users and user groups.
+
 2. Click the role name or **View** in the **Actions** column.
 3. On the custom role details page, view the basic information, management permissions,
 application permissions, menu permissions, authorized users, and custom policies of the custom role.
@@ -4509,7 +4839,11 @@ custom policies of the role as needed.
 
 **Authorize users and user groups for a custom role**
 
-Method 1: i. Click **Authorize** in the **Actions** column of the custom role. ii. In the **Authorize** dialog box, select the users and user groups that you want to authorize on the **Users** and **User Groups** tabs. Above the list on the Users and User Groups tabs, you can select an organization and a role, and enter a keyword to quickly find the target users and user groups. iii. Click **OK**. Method 2: i. Click the name of the custom role or **View** in the **Actions** column. ii. Click the **Authorized Personnel** tab. iii. Authorize users and user groups as needed.
+Method 1: i. Click **Authorize** in the **Actions** column of the custom role. ii. In the **Authorize** dialog box, select the users and user groups that you want to authorize on the **Users** and **User Groups** tabs.
+
+> **Note:** Above the list on the Users and User Groups tabs, you can select an organization and a role, and enter a keyword to quickly find the target users and user groups.
+
+iii. Click **OK**. Method 2: i. Click the name of the custom role or **View** in the **Actions** column. ii. Click the **Authorized Personnel** tab. iii. Authorize users and user groups as needed.
 
 | Operation | Description |
 |---|---|
@@ -4533,9 +4867,10 @@ Method 1: i. Click **Authorize** in the **Actions** column of the custom role. i
 
 In some upgrade scenarios, due to product evolution, certain products require new permission points to be added in the new version. When a specific type of role needs multiple new authorizations added at once, you can use batch role authorization to improve efficiency for subsequent permission additions.
 
-**Important**
+> **Important:** Batch adding authorization to selected roles means supplementing permission points for roles without reducing or overwriting existing role permissions.
+> If the original role does not have the selected new permission points, the system adds them.
+> If the original role already has them, they remain unaffected.
 
-Batch adding authorization to selected roles means supplementing permission points for roles without reducing or overwriting existing role permissions. If the original role does not have the selected new permission points, the system adds them. If the original role already has them, they remain unaffected.
 1. On the **Role Permissions** page, select **Custom Role** from the **Role Type** drop-down list.
 2. Select multiple custom roles that require batch authorization.
 3. Click **Add Permissions** below the list, and then click **OK**.
@@ -4569,7 +4904,11 @@ previously had this role.
 1. Click
 in the **Actions** column of the custom role, and select **Copy**.
 2. On the Create Custom Role page, follow the instructions to configure the basic
-configurations, management permissions, application permissions, menu permissions, and custom policies. Copying a role quickly creates a new role with identical permissions. You can adjust permissions as needed. If you make no modifications, the copied role has the same sharing scope, management permissions, application permissions, menu permissions, and custom policies as the original role. The system displays custom policies only if the original role supports them. You must specify a new name for the role, and the name cannot be the same as the name of the original role.
+configurations, management permissions, application permissions, menu permissions, and custom policies.
+
+> **Note:** Copying a role quickly creates a new role with identical permissions. You can adjust permissions as needed. If you make no modifications, the copied role has the same sharing scope, management permissions, application permissions, menu permissions, and custom policies as the original role.
+> The system displays custom policies only if the original role supports them.
+> You must specify a new name for the role, and the name cannot be the same as the name of the original role.
 
 **Delete a custom role**
 
@@ -4590,7 +4929,9 @@ Resource Access Management (RAM) role authorization supports creating, viewing, 
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permissions**.
 4. (Optional) Switch to the Central Cloud Role tab.
-The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
+> **Note:** The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
 5. Click **Create Custom Role,** to go to the **Create Custom Role** page.
 6. On the **Create Custom Role** page, expand **Advanced Creation** at the bottom of the
 page, and click **Create RAM Role & Attach Policy** .
@@ -4606,19 +4947,29 @@ page, and click **Create RAM Role & Attach Policy** .
 | Sharing Scope | Specifies the visibility scope of this role. If an operations administrator creates a role and selects the root organization as the applicable organization, the sharing scope supports only Global. Global: The role is visible to all organizations. Current Organization: The role is visible only to the current organization. Shared within the Current Organization and Its Subordinate Organizations: The role is visible to the current organization and its subordinate organizations. |
 
 8. On the **Configure Custom Policy** page, select policies, and click **Next**.
-You can select up to five policies for each role.
+
+> **Note:** You can select up to five policies for each role.
+
 **View policy content:** Click **Policy Content** in the **Action** column to view the JSON-
 formatted policy content.
 **Create policy**: If no suitable policy exists, create a custom policy.
 a. Click **Create Policy** in the upper-right corner of the policy list. b. In the **Create Policy** dialog box, enter a policy name, select an applicable organization, specify the sharing scope, add remarks, enter the policy content, and select the sharing scope. c. Click **OK**.
 9. On the **Configure Trust Policy** page, select the **Trust Organization** and **Trust Cloud**
 **Service**, and click **Next**. The trust policy defines the entities that can assume the RAM role.
-You can specify level-1 organizations (Alibaba Cloud accounts) and cloud services to assume the RAM role. After you enable the OIDC feature, you can also select a trusted OIDC provider to assume the RAM role and configure restriction conditions.
+You can specify level-1 organizations (Alibaba Cloud accounts) and cloud services to assume the RAM role.
+
+> **Note:** After you enable the OIDC feature, you can also select a trusted OIDC provider to assume the RAM role and configure restriction conditions.
+
 **Trust Organization**: Specify one or more level-1 organizations (Alibaba Cloud accounts)
 to assume the RAM role.
 **Trust Cloud Service**: Specify one or more cloud services to assume the RAM role.
 **Trust Policy**: The system generates JSON-format policy content based on the selected
-trust organizations and trust cloud services. As shown in the preceding figure, the policy grants the asr.aliyuncs.com service and specific root users the permission to assume this role. Based on this policy, the system allows the asr.aliyuncs.com service or specific root users to assume the role. "Version": The policy version number. The value here is "1". "Statement": The permission statement list. This field defines one permission statement. "Action": The allowed action. The value here is "sts:AssumeRole", which allows the AssumeRole action. "Effect": Specifies whether to allow or deny the action. The value here is "Allow", which allows the action. "Principal": The entity allowed to assume the role. This can be a service (Service) or a RAM resource (RAM). "Service": The service allowed to assume the role. The value here is "asr.aliyuncs.com", which allows the asr.aliyuncs.com service to assume the role. "RAM": The RAM resource allowed to assume the role. The value here is "acs:ram::125279671240****:root", which allows all RAM users and RAM roles under the Alibaba Cloud account to assume the role. Alibaba Cloud account ARN syntax: `acs:ram::<account-id>:root` . This format represents the RAM users and RAM roles under the Alibaba Cloud account. RAM user ARN syntax: `acs:ram::<account-id>:user/<user-name>` . This format represents a RAM user under the Alibaba Cloud account. RAM role ARN syntax: `acs:ram::<account-id>:role/<role-name>` . This format represents a RAM role under the Alibaba Cloud account. <account-id>: the Alibaba Cloud account ID
+trust organizations and trust cloud services. As shown in the preceding figure, the policy grants the asr.aliyuncs.com service and specific root users the permission to assume this role. Based on this policy, the system allows the asr.aliyuncs.com service or specific root users to assume the role. "Version": The policy version number. The value here is "1". "Statement": The permission statement list. This field defines one permission statement. "Action": The allowed action. The value here is "sts:AssumeRole", which allows the AssumeRole action. "Effect": Specifies whether to allow or deny the action. The value here is "Allow", which allows the action. "Principal": The entity allowed to assume the role. This can be a service (Service) or a RAM resource (RAM). "Service": The service allowed to assume the role. The value here is "asr.aliyuncs.com", which allows the asr.aliyuncs.com service to assume the role. "RAM": The RAM resource allowed to assume the role. The value here is "acs:ram::125279671240****:root", which allows all RAM users and RAM roles under the Alibaba Cloud account to assume the role. Alibaba Cloud account ARN syntax: `acs:ram::<account-id>:root` . This format represents the RAM users and RAM roles under the Alibaba Cloud account.
+
+> RAM user ARN syntax: `acs:ram::<account-id>:user/<user-name>` . This format represents a RAM user under the Alibaba Cloud account.
+> RAM role ARN syntax: `acs:ram::<account-id>:role/<role-name>` . This format represents a RAM role under the Alibaba Cloud account.
+> <account-id>: the Alibaba Cloud account ID
+
 0. On the **Policy Preview** page, review the selected policies and trust policy content. After
 confirmation, click **Create** to complete the RAM role authorization.
 
@@ -4626,7 +4977,10 @@ confirmation, click **Create** to complete the RAM role authorization.
 
 1. In the role list, view the **Role Name/ID**, **Role Type**, **Role Description**, **Authorization**
 **Object**, **Sharing Scope**, and **Status** of RAM role authorizations.
-Above the list, you can select a role type or enter a role name to quickly find a role. The number next to the RAM role in the Authorization Object column indicates the number of RAM role instances created under this RAM role authorization. Click the number to go to the RAM Role tab and view the detailed RAM role instances.
+
+> **Note:** Above the list, you can select a role type or enter a role name to quickly find a role.
+> The number next to the RAM role in the Authorization Object column indicates the number of RAM role instances created under this RAM role authorization. Click the number to go to the RAM Role tab and view the detailed RAM role instances.
+
 2. Click the role name of the RAM role authorization or click **View** in the **Action** column.
 3. On the role details page, view the basic information, custom policies, trust policy, and RAM
 roles of this RAM role authorization.
@@ -4713,7 +5067,9 @@ Resource Access Management (RAM) authorization is similar to a RAM role. You can
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permissions**.
 4. (Optional) Switch to the Central Cloud Role tab.
-The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
+> **Note:** The multi-cloud role tabs for Central Cloud and connected subordinate clouds appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud is available by default, and no tabs are displayed.
+
 5. Click **Create Custom Role,** and go to the **Create Custom Role** page.
 6. On the **Create Custom Role** page, expand **Advanced Creation** at the bottom of the page
 and click **Create RAM Authorization**.
@@ -4742,7 +5098,10 @@ configure role authorization.
 
 1. In the role list, view the **Role Name/ID**, **Role Type**, **Role Description**, **Authorization**
 **Object**, **Applicable Organization**, **Sharing Scope**, and **Status** of the RAM authorization.
-Above the list, you can select a role type or enter a role name to quickly find a role. The numbers following users and user groups in the Authorization Object column indicate the number of users and user groups authorized for this role. Click to go to the Authorization Management tab to view detailed authorized users and user groups.
+
+> **Note:** Above the list, you can select a role type or enter a role name to quickly find a role.
+> The numbers following users and user groups in the Authorization Object column indicate the number of users and user groups authorized for this role. Click to go to the Authorization Management tab to view detailed authorized users and user groups.
+
 2. In the role list, click the role name of the RAM authorization or click **View** in the **Actions**
 column.
 3. On the RAM Authorization Details page, view the basic information, authorization
@@ -4765,7 +5124,11 @@ corner.
 
 **Authorize users and user groups**
 
-Method 1: i. In the role list, click **Authorize** in the **Actions** column of the RAM authorization. ii. In the **Authorize** dialog box, select the users and user groups that you want to authorize on the **Users** and **User Groups** tabs. Above the list on the Users and User Groups tabs, you can select an organization and a role, and enter a user or user group name to quickly find the target users or user groups. iii. Click **OK**. Method 2: i. In the role list, click the role name of the RAM authorization or click **View** in the **Actions** column. ii. Go to the **Permissions** tab. iii. Authorize users and user groups as needed.
+Method 1: i. In the role list, click **Authorize** in the **Actions** column of the RAM authorization. ii. In the **Authorize** dialog box, select the users and user groups that you want to authorize on the **Users** and **User Groups** tabs.
+
+> **Note:** Above the list on the Users and User Groups tabs, you can select an organization and a role, and enter a user or user group name to quickly find the target users or user groups.
+
+iii. Click **OK**. Method 2: i. In the role list, click the role name of the RAM authorization or click **View** in the **Actions** column. ii. Go to the **Permissions** tab. iii. Authorize users and user groups as needed.
 
 | Operation | Description |
 |---|---|
@@ -4822,7 +5185,9 @@ The platform administrator has connected the managed Apsara Stack under
 **Configurations** > **Native Hybrid Cloud** > **Multi-Cloud Management**.
 You have used the operations administrator to bind the organization of the managed Apsara Stack. You are an operations administrator (bound to the operations administrator role of the managed Apsara Stack) or a level-1 organization administrator (bound to the organization administrator role of the managed Apsara Stack).
 1. On the **Role Authorization** page, switch to the managed Apsara Stack role tab.
-The center cloud and connected managed multi-cloud role tabs appear only in multicloud scenarios. In single-cloud scenarios, only the center cloud is available by default, and no tabs are displayed.
+
+> **Note:** The center cloud and connected managed multi-cloud role tabs appear only in multi- cloud scenarios. In single-cloud scenarios, only the center cloud is available by default, and no tabs are displayed.
+
 2. On the managed Apsara Stack role tab, click **Create Custom Role**.
 3. On the **Role Authorization** page, complete the **Basic Configuration**, **Management**
 **Permission**, **Application Permissions**, and **Menu Permissions** for the custom role.
@@ -4843,9 +5208,13 @@ i. **Basic Configurations**: Set the basic information for the custom role, then
 
 ii. **Management Permission**: Select the required management permissions in the permission list, then click **Next step**. Management permissions define console-related operation permissions for the role. You can select permissions based on the resource set scope. iii. **Application Permissions**: Select the required cloud service permissions in the permission list, then click **Next**. Application permissions define which operations a user can perform on which cloud services. For example, if you need to grant only the permission to view ECS instances, select only the View Instance permission under Elastic Compute Service (ECS).
 
-**Important**
+> **Important:** The system automatically selects other dependent operation permissions. Removing dependent permissions may restrict operations. Proceed with caution.
+> Resource sharing permissions:
+> Resource sharing permissions do not affect normal role authorization. They supplement management permissions only when resources are in a shared state.
+> When a shareable resource is shared with a target organization or resource set, if the management scope of the target organization’s user does not cover the resource, the user can manage the resource only through resource sharing permissions.
+> On the right side of a cloud service, click **Read/Write** or **Read-only** to quickly authorize the role.
 
-The system automatically selects other dependent operation permissions. Removing dependent permissions may restrict operations. Proceed with caution. Resource sharing permissions: Resource sharing permissions do not affect normal role authorization. They supplement management permissions only when resources are in a shared state. When a shareable resource is shared with a target organization or resource set, if the management scope of the target organization’s user does not cover the resource, the user can manage the resource only through resource sharing permissions. On the right side of a cloud service, click **Read/Write** or **Read-only** to quickly authorize the role. iv. **Menu Permissions**: Select the required menu entries in the list, then click **Create**. Menu permissions control which menus the role can view, enabling menu entry hiding.
+iv. **Menu Permissions**: Select the required menu entries in the list, then click **Create**. Menu permissions control which menus the role can view, enabling menu entry hiding.
 4. The role is created successfully. Click **Complete**. You can view the role in the role list
 under the corresponding resource pool, or select it when authorizing a user with a multicloud role in User Management.
 
@@ -4858,9 +5227,12 @@ You are an operations administrator (bound to the operations administrator role 
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permission**.
 4. Switch to the managed Apsara Stack role tab.
-The center cloud and connected managed multi-cloud role tabs appear only in multicloud scenarios. In single-cloud scenarios, only the center cloud is available by default, and no tabs are displayed.
+
+> **Note:** The center cloud and connected managed multi-cloud role tabs appear only in multi- cloud scenarios. In single-cloud scenarios, only the center cloud is available by default, and no tabs are displayed.
+
 5. On the managed Apsara Stack role tab, view the list of roles for the managed Apsara Stack.
-After the managed Apsara Stack is connected, the role list displays all roles within the resource set management scope of the managed Apsara Stack.
+
+> **Note:** After the managed Apsara Stack is connected, the role list displays all roles within the resource set management scope of the managed Apsara Stack.
 
 **Managed public cloud**
 
@@ -4872,7 +5244,9 @@ The platform administrator has accessed the managed public cloud under **Configu
 **Native Hybrid Cloud** > **Multi-Cloud Management**.
 The operations administrator has already bound the managedpublic cloud. The operating user is either an operations administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level) or a level-1 organization administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level).
 1. On the **Role authorization** page, switch to the managed public cloud role tab.
-The center-cloud and connected managed multi-cloud role tabs appear only in multicloud scenarios. In single-cloud scenarios, only the center cloud exists by default, and no tabs appear.
+
+> **Note:** The center-cloud and connected managed multi-cloud role tabs appear only in multi- cloud scenarios. In single-cloud scenarios, only the center cloud exists by default, and no tabs appear.
+
 2. On the managed public cloud role tab, click **Create RAM Role**.
 3. In the **Create RAM Role** dialog box, enter basic information and policies for the RAM role.
 
@@ -4889,11 +5263,16 @@ The center-cloud and connected managed multi-cloud role tabs appear only in mult
 
 4. Click OK.
 5. Select menu and resource type permissions.
-When configuring menu and resource type permissions, you can view the permission policies selected in the basic information and policy section, including policy name, policy type, and description. Menu permissions: Configure entry permissions for product menus. Resource type permissions: Configure permissions to view resources on the resource retrieval page.
+
+> **Note:** When configuring menu and resource type permissions, you can view the permission policies selected in the basic information and policy section, including policy name, policy type, and description.
+> Menu permissions: Configure entry permissions for product menus.
+> Resource type permissions: Configure permissions to view resources on the resource retrieval page.
+
 6. Click **Confirm and Modify Role**.
 7. In the **Role Authorization** dialog box, click **Cancel** or **Associate Multi-Cloud Resource**
 **Set**.
-Binding a multi-cloud resource set navigates you to the current user details page, where you can bind a multi-cloud resource set to the user.
+
+> **Note:** Binding a multi-cloud resource set navigates you to the current user details page, where you can bind a multi-cloud resource set to the user.
 
 **View RAM roles for the managed public cloud**
 
@@ -4902,7 +5281,9 @@ Binding a multi-cloud resource set navigates you to the current user details pag
 The operating user is either an operations administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level) or a level-1 organization administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level).
 1. On the managed public cloud role tab, view the list of RAM roles. The list includes **Role**
 **Name**, **Authorization Object**, **Description**, and **Creation Time**.
-Enter a role name above the list to quickly find a role.
+
+> **Note:** Enter a role name above the list to quickly find a role.
+
 2. Click **View** in the **Actions** column of the RAM role.
 3. In the expanded **View RAM Roles** panel, view the policies bound to this RAM role.
 
@@ -4913,8 +5294,10 @@ Enter a role name above the list to quickly find a role.
 The authorization object of the RAM role is a user who does not have the operations administrator role. The operating user is either an operations administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level) or a level-1 organization administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level).
 1. On the managed public cloud role tab, click **Update** in the **Actions** column of the RAM role.
 2. In the **Edit RAM Role** dialog box, update the **Description** and **Permission Policy** of the
-RAM role. When you update a RAM role, you cannot modify the **Role Name**, **Organization**, or
-**Bind User**.
+RAM role.
+
+> **Note:** When you update a RAM role, you cannot modify the **Role Name**, **Organization**, or **Bind User**.
+
 3. Click **Confirm and Modify Role**.
 4. Update permissions for menus and resource types.
 5. Click **Confirm and Modify Role**.
@@ -5056,7 +5439,13 @@ permission to restart all ECS instances.
 `}` `]` `}`
 8. In the policy list, select the policy you created, and then click **Next Step**.
 9. In **Configure Trust Policy**, specify Xiao Zhuan (username: xiaozhuan) as the authorized
-user who can assume this role. i. First, select the trusted organization CompanyA. This authorizes all RAM users and RAM roles under this Alibaba Cloud account. The system automatically populates the ARN of the cloud account, such as `acs:ram::139900176770****:root` . Alibaba Cloud Account ARN syntax: `acs:ram::<account-id>:root` . This represents RAM users and RAM roles under the Alibaba Cloud account. RAM User ARN syntax: `acs:ram::<account-id>:user/<user-name>` . This represents a RAM user under the Alibaba Cloud account. RAM Role ARN syntax: `acs:ram::<account-id>:role/<role-name>` . This represents a RAM role under the Alibaba Cloud account. <account-id>: Represents the Alibaba Cloud account ID. ii. Since only Xiao Zhuan requires authorization, modify the ARN in the trust policy to
+user who can assume this role. i. First, select the trusted organization CompanyA. This authorizes all RAM users and RAM roles under this Alibaba Cloud account. The system automatically populates the ARN of the cloud account, such as `acs:ram::139900176770****:root` . Alibaba Cloud Account ARN syntax: `acs:ram::<account-id>:root` . This represents RAM users and RAM roles under the Alibaba Cloud account.
+
+> RAM User ARN syntax: `acs:ram::<account-id>:user/<user-name>` . This represents a RAM user under the Alibaba Cloud account.
+> RAM Role ARN syntax: `acs:ram::<account-id>:role/<role-name>` . This represents a RAM role under the Alibaba Cloud account.
+> <account-id>: Represents the Alibaba Cloud account ID.
+
+ii. Since only Xiao Zhuan requires authorization, modify the ARN in the trust policy to
 
 ```
  acs:ram::139900176770****:user/xiaozhuan .
@@ -5165,7 +5554,7 @@ instance or a specific topic or group in an ApsaraMQ instance on the Data Permis
 
 **Permissions page**
 
-You can grant data permissions on specific instances on the Data Permissions page.
+> **Note:** You can grant data permissions on specific instances on the Data Permissions page.
 
 **Grant data permissions on ApsaraMQ**
 
@@ -5180,11 +5569,14 @@ i. In the ApsaraMQ instance list, find the instance that you want to manage and 
 **Authorize** in the **Actions** column.
 ii. On the left side of the **Data Permissions** dialog box, select a user to whom you want to grant data permissions. You can also turn on **Batch Grant Permissions** in the upperright corner of the dialog box to grant permissions to multiple users at a time. iii. In the Instance Permission Settings section on the right side of the dialog box, select or deselect **Enabled** to grant or remove specific operation permissions on the instance. You can also select **Enable All** in the upper-right corner of the section to grant users all operation permissions on the instance. iv. Click **OK**. v. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
+
 6. Grant permissions on a topic or a group in an ApsaraMQ instance.
 i. In the ApsaraMQ instance list, find the ApsaraMQ instance that you want to manage and click the icon before the instance name to display the topics and groups in the instance. ii. Find the topic or group that you want to manage and click **Authorize** in the **Actions** column. iii. On the left side of the **Data Permissions** dialog box, select a user to whom you want to grant data permissions. You can also turn on **Batch Grant Permissions** in the upperright corner of the dialog box to grant permissions to multiple users at a time. iv. In the Instance Permission Settings section on the right side of the dialog box, select or deselect **Enabled** to grant or remove specific operation permissions on the topic or group. You can also select **Enable All** in the upper-right corner of the section to grant users all operation permissions on the topic or group. v. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
 
 **Grant data permissions on OSS**
 
@@ -5200,7 +5592,8 @@ deselect **Enabled** to grant or remove specific operation permissions on the in
 5. Click **OK**.
 6. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
 
 **Grant data permissions on SLS**
 
@@ -5215,7 +5608,8 @@ deselect **Enabled** to grant or remove specific operation permissions on the pr
 5. Click **OK**.
 6. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
 
 **Grant data permissions on DataHub**
 
@@ -5225,11 +5619,14 @@ project belongs. On the right side of the page, select **Streaming Data Processi
 2. Grant data permissions on a DataHub project.
 i. In the DataHub project list, find the project that you want to manage and click **Authorize** in the **Actions** column. ii. On the left side of the **Data Permissions** dialog box, select a user to whom you want to grant data permissions. You can also turn on **Batch Grant Permissions** in the upperright corner of the dialog box to grant permissions to multiple users at a time. iii. In the Instance Permission Settings section on the right side of the dialog box, select or deselect **Enabled** to grant or remove specific operation permissions on the project. You can also select **Enable All** in the upper-right corner of the section to grant users all operation permissions on the project. iv. Click **OK**. v. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
+
 3. Grant permissions on a topic in a DataHub project.
 i. In the DataHub project list, find the DataHub project that you want to manage and click the icon before the project name to display the topics in the project. ii. Find the topic that you want to manage and click **Authorize** in the **Actions** column. iii. On the left side of the **Data Permissions** dialog box, select a user to whom you want to grant data permissions. You can also turn on **Batch Grant Permissions** in the upperright corner of the dialog box to grant permissions to multiple users at a time. iv. In the Instance Permission Settings section on the right side of the dialog box, select or deselect **Enabled** to grant or remove specific operation permissions on the topic. You can also select **Enable All** in the upper-right corner of the section to grant users all operation permissions on the topic. v. Click **OK**. vi. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the project and does not represent only this authorization action.
 
 **Grant data permissions on ACK**
 
@@ -5237,7 +5634,8 @@ The information about data permissions is all information about data permissions
 
 **Console**
 
-You can grant operation permissions on an ACK cluster to users in the Apsara Unimanager Management Console.
+> **Note:** You can grant operation permissions on an ACK cluster to users in the Apsara Uni- manager Management Console.
+
 1. On the left side of the **Data Permissions** page, click a resource set to which an ACK
 cluster belongs. On the right side of the page, select **Container Service for Kubernetes** for the **Product Type** parameter.
 2. In the ACK cluster list, find the cluster that you want to manage and click **Authorize** in the
@@ -5249,11 +5647,13 @@ deselect **Enabled** to grant or remove specific operation permissions on the cl
 5. Click **OK**.
 6. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the cluster and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the cluster and does not represent only this authorization action.
 
 **Perform authorization in the ACK console**
 
-You can configure fine-grained role-based access control (RBAC) for Resource Access Management (RAM) users or RAM roles in the ACK console. This way, you can grant access or operation permissions on resources in clusters. For example, you can authorize RAM users or RAM roles to manage resources only in the specified namespace in a cluster.
+> **Note:** You can configure fine-grained role-based access control (RBAC) for Resource Access Management (RAM) users or RAM roles in the ACK console. This way, you can grant access or operation permissions on resources in clusters. For example, you can authorize RAM users or RAM roles to manage resources only in the specified namespace in a cluster.
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Computing** > **Container Service for**
 **Kubernetes**.
@@ -5285,7 +5685,8 @@ deselect **Enabled** to grant or remove specific operation permissions on the ke
 5. Click **OK**.
 6. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the key and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the key and does not represent only this authorization action.
 
 **Grant data permissions on Tablestore**
 
@@ -5300,7 +5701,8 @@ deselect **Enabled** to grant or remove specific operation permissions on the in
 5. Click **OK**.
 6. In the **View Data Authorization Information** dialog box, view the information in the
 **Authorization Information** and **Permission** sections.
-The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
+
+> **Note:** The information about data permissions is all information about data permissions of the instance and does not represent only this authorization action.
 
 **Grant permissions to a user by creating a policy**
 
@@ -5310,7 +5712,9 @@ On the right side of the page, find the user to which you want to grant permissi
 
 **View the policies of the user**
 
-a. Find the user and click **View Permissions** in the **Actions** column. b. In the **View Permissions** dialog box, view all the policies of the user. Select a policy in the **Policies** section to view the policy content. The policy shown in the preceding figure specifies a set of permissions on the resource asc:mq:MQ****. The policy allows the user to create a group on the ApsaraMQ instance. You can attach this policy to a user to allow the user to create a group on the ApsaraMQ instance.
+a. Find the user and click **View Permissions** in the **Actions** column. b. In the **View Permissions** dialog box, view all the policies of the user. Select a policy in the **Policies** section to view the policy content.
+
+> **Note:** The policy shown in the preceding figure specifies a set of permissions on the resource asc:mq:MQ****. The policy allows the user to create a group on the ApsaraMQ instance. You can attach this policy to a user to allow the user to create a group on the ApsaraMQ instance.
 
 **Modify a policy of the user**
 
@@ -5387,9 +5791,8 @@ You can associate API control policies with service boundaries to implement fine
 
 The Apsara Uni-manager Management Console allows you to control operations by organizations, time, and operation methods through setting service boundaries. You can also use service boundaries to trigger approval processes when cloud operations are performed. Service boundaries take effect on operations performed through all methods, including cloud accounts, RAM users, and STS tokens. Specially, they also take effect on operations performed on the console. This is because when users perform operations on the console, the system is calling API operations under the hood.
 
-**Important**
+> **Important:** API operations performed across cloud services (such as when Resource Orchestration Service calls an Elastic Compute Service operation to manage the resources) are also controlled by service boundaries. Therefore, inappropriate configurations may interrupt the normal usage of cloud services. You need to add the ARNs of relevant resources to the whitelist of the service boundaries and make sure that you are aware of the impact of the service boundaries before you enable them.
 
-API operations performed across cloud services (such as when Resource Orchestration Service calls an Elastic Compute Service operation to manage the resources) are also controlled by service boundaries. Therefore, inappropriate configurations may interrupt the normal usage of cloud services. You need to add the ARNs of relevant resources to the whitelist of the service boundaries and make sure that you are aware of the impact of the service boundaries before you enable them.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose
 **Permissions** > **Permission Boundary** > **Service Boundary**.
@@ -5442,7 +5845,9 @@ API control policies are associated with service boundaries to implement fine-gr
 
 **Supported services**
 
-The following table lists the cloud services and their API versions that are supported by API control policies. The services and API versions listed in the console prevail. We recommend that you refer to relevant API documentation to learn about the operations and their parameters.
+The following table lists the cloud services and their API versions that are supported by API control policies.
+
+> **Note:** The services and API versions listed in the console prevail. We recommend that you refer to relevant API documentation to learn about the operations and their parameters.
 
 | Service name | Service code | API version |
 |---|---|---|
@@ -5557,9 +5962,7 @@ on them.
 
 This topic describes how to view and export the logs of AccessKey pair calls to understand the usage of AccessKey pairs. This helps you enhance the security of AccessKey pairs.
 
-**Important**
-
-The AccessKey logs are for reference only. Data collection may miss records or experience delays. Do not use this data to disable AccessKeys.
+> **Important:** The AccessKey logs are for reference only. Data collection may miss records or experience delays. Do not use this data to disable AccessKeys.
 
 **Supported cloud services**
 
@@ -5589,7 +5992,8 @@ The AccessKey logs are for reference only. Data collection may miss records or e
 5. Eenter the AccessKey ID of the AccessKey pair that you want to query in the search box and
 click the icon. View the information about the AccessKey pair in the **Basic Information**
 **About AccessKey Pair** and **Accessed Services** sections.
-AccessKey pair logs are generated about one hour after an AccessKey pair is used. By default, AccessKey pair logs are stored for seven days. Proceed with caution when you change AccessKey pairs. To store the AccessKey pair logs for more than seven days, you need to use the log dump feature of SLS. For more information about how to configure the log dump feature, see Configure log storage settings.
+
+> **Note:** AccessKey pair logs are generated about one hour after an AccessKey pair is used. By default, AccessKey pair logs are stored for seven days. Proceed with caution when you change AccessKey pairs. To store the AccessKey pair logs for more than seven days, you need to use the log dump feature of SLS. For more information about how to configure the log dump feature, see Configure log storage settings.
 
 **Basic Information About AccessKey Pair**
 
@@ -5639,7 +6043,10 @@ a. Click **Report Export** above the list. b. In the **Report Export** dialog bo
 |   | Start/End Time | The time range of the call records. |
 |   | Username | The username. You can select multiple usernames if needed. |
 
-c. Click **Export Records** above the list to view the execution status of the task. In the **Export Records** panel, you can expand **Advanced Filter**, configure the **Task Name**, **Start/End Time**, and **Status**, and then click Search to quickly find the target record. When the state of the task changes to Successful, you can click **Download** in the Actions column to download the exported report to your computer.
+c. Click **Export Records** above the list to view the execution status of the task.
+
+> **Note:** In the **Export Records** panel, you can expand **Advanced Filter**, configure the **Task Name**, **Start/End Time**, and **Status**, and then click Search to quickly find the target record.
+> When the state of the task changes to Successful, you can click **Download** in the Actions column to download the exported report to your computer.
 
 ### 5.4 Operation audit
 
@@ -5663,15 +6070,19 @@ operation audit to quickly get started.
 **Unusual IP Address Events**: records events of access from unusual IP addresses. You
 can specify a time range to view the information about unusual IP address events within the time range.
 
-**Important**
-
-Before you use this feature, you must specify common IP addresses.
+> **Important:** Before you use this feature, you must specify common IP addresses.
 
 **Configure common IP addresses:**
 
 a. In the **Unusual IP Address Events** section, click **Common IP Settings**. b. In the **Common IP Settings** dialog box, specify common IP addresses. You can specify up to 20 common IP addresses.
 **Add IP addresses**: Click **Add IP Address**. In the IP address field, enter a
-common IP address. IPv4 and IPv6 addresses are supported. An example of IPv4 CIDR blocks: 192.168.1.0/24. If the subnet mask of a login IP address is 32 bits in length, only this IP address is allowed to log in. An example of IPv6 CIDR blocks: 2001:db8:1234:abcd::/64. The CIDR block cannot be duplicated.
+common IP address.
+
+> **Note:** IPv4 and IPv6 addresses are supported.
+> An example of IPv4 CIDR blocks: 192.168.1.0/24. If the subnet mask of a login IP address is 32 bits in length, only this IP address is allowed to log in.
+> An example of IPv6 CIDR blocks: 2001:db8:1234:abcd::/64.
+> The CIDR block cannot be duplicated.
+
 **Remove IP addresses**: Click **Delete** next to an IP address.
 **View Historical IP addresses**: Click **View Historical IP Addresses**. Then, the
 right-side **Historical IP Addresses** panel displays the historical IP addresses. The IP addresses are sorted in descending order of visits. You can enter an IP address into the search box above the list to search for an IP address. c. Click **OK**.
@@ -5691,8 +6102,10 @@ You are an operations administrator, an organization administrator, a resource s
 4. Click **Advanced Filter** and configure the following parameters: **Organization**, **Product**
 **Type**, **Resource Type**, **Event Type**, **Resource ID**, **Source IP**, **Event ID**, and **Start/End**
 **Time**. Then, click **Search** to search for operation logs that meet the specified filter
-conditions. Before you configure the **Resource Type** and **Event Type** parameters, configure the
-**Product Type** parameter.
+conditions.
+
+> **Note:** Before you configure the **Resource Type** and **Event Type** parameters, configure the **Product Type** parameter.
+
 5. View the operation log list.
 6. Find the operation log that you want to view and click **View** in the **Details** column.
 7. In the **Operation Details** panel, view the details of the operation log.
@@ -5809,19 +6222,31 @@ queries by system template.
 **Default query**: When you enter Advanced Query, the system defaults to the **Default**
 **Query** tab.
 **Query by custom template**: On the left side of the **Advanced Query** page, in the
-template repository, click your target custom template to expand its query tab. Custom templates are query templates saved via the **Save As** operation. You can edit or delete custom templates.
-**Edit template**: Hover over the target template
-, select **Edit**
-**Template**, enter the template name in the dialog box, and click
-**Confirm**.
-**Delete template**: Hover over the target template
-, select **Delete**
-**Template**, and click **Confirm**.
+template repository, click your target custom template to expand its query tab.
+
+> **Note:** Custom templates are query templates saved via the **Save As** operation.
+> You can edit or delete custom templates.
+> **Edit template**: Hover over the target template
+> , select **Edit**
+> **Template**, enter the template name in the dialog box, and click **Confirm**.
+> **Delete template**: Hover over the target template
+> , select **Delete**
+> **Template**, and click **Confirm**.
+
 **Query by system template:** On the left side of the **Advanced Query** page, in the
-template repository, click your target system template to expand its query tab. System templates are preset by the system and cannot be edited or deleted.
+template repository, click your target system template to expand its query tab.
+
+> **Note:** System templates are preset by the system and cannot be edited or deleted.
+
 5. Set filter conditions such as **Username**, **Organization**, **Product Type**, **Resource Type**,
 **Event Type**, **Operation Name**, **Resource ID**, **Source IP**, and **Event ID**.
-The organization condition is required. The event type automatically updates based on the selected product type and resource type. On the Default Query tab, select query conditions according to your needs. On the custom template query tab, the system automatically links the query conditions configured for that template. You can flexibly modify or add query conditions as needed. On the system template query tab, the system automatically links the preset query conditions of that template. You can flexibly modify or add query conditions and save them as a custom template.
+
+> **Note:** The organization condition is required.
+> The event type automatically updates based on the selected product type and resource type.
+> On the Default Query tab, select query conditions according to your needs.
+> On the custom template query tab, the system automatically links the query conditions configured for that template. You can flexibly modify or add query conditions as needed.
+> On the system template query tab, the system automatically links the preset query conditions of that template. You can flexibly modify or add query conditions and save them as a custom template.
+
 6. Select a time period as needed. You can choose **1 hour**, **12 hours**, **1 day**, **7 days**, **30**
 **days**, or a **custom** time range.
 7. Click **Run** to view target events in the list.
@@ -5867,15 +6292,13 @@ An event export task is created on the Advanced Query page. You are assigned one
 4. Optional. Click Advanced Filter and configure the following parameters: **Task Name**,
 **Creator**, **Status**, and **Time Range**. Then, click **Search**.
 5. View the information about Object Storage Service (OSS) delivery tasks in the task list.
-A task is in one of the following states:
-**In Progress**: The task is being executed.
-**Downloading**: The task is downloading data.
-**Completed**: The task is complete. You can click **Download Report** in the
-**Actions** column to download the operation log report from the OSS bucket to
-your computer.
-**Failed**: The task failed. You can click **Retry** in the **Actions** column to execute
-the task again.
-**Expired**: The task has expired. The default validity period is four days.
+
+> **Note:** A task is in one of the following states:
+> **In Progress**: The task is being executed.
+> **Downloading**: The task is downloading data.
+> **Completed**: The task is complete. You can click **Download Report** in the **Actions** column to download the operation log report from the OSS bucket to your computer.
+> **Failed**: The task failed. You can click **Retry** in the **Actions** column to execute the task again.
+> **Expired**: The task has expired. The default validity period is four days.
 
 #### 5.4.5 Audit notifications
 
@@ -6036,7 +6459,8 @@ You are assigned one of the following roles: Operations Administrator, Resource 
 
 **Verify the feature**
 
-In this example, the following operations are performed by the admin user.
+> **Note:** In this example, the following operations are performed by the admin user.
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the page, click the profile picture and select **User Information**.
 3. In the AccessKey Pair section, find an AccessKey pair and click **Delete** in the **Actions**
@@ -6103,7 +6527,9 @@ you want to manage and click **Resource Ownership** in the **Actions** column.
 parameters.
 6. Find the resource instance that you want to manage and click **Change Ownership** in the
 **Actions** column.
-You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+
+> **Note:** You can search for a resource instance by ID or name in the search boxes above the resource instance list.
+
 7. In the **Change Resource Set Ownership** dialog box, select the organization and resource
 set to which you want to move the resource instance.
 
@@ -6140,9 +6566,7 @@ The **Task Details** panel appears.
 column.
 2. In the **Delete** message, click **OK**.
 
-**Important**
-
-After a task is deleted, the information about the task cannot be queried. Exercise caution when you delete a task. The information about task deletion is recorded in an operation log.
+> **Important:** After a task is deleted, the information about the task cannot be queried. Exercise caution when you delete a task. The information about task deletion is recorded in an operation log.
 
 ## 6 Configurations
 
@@ -6168,7 +6592,10 @@ You can add a subitem of a group quota item without adding the group quota item.
 3. In the left-side navigation pane, select **Resource Pool Configuration**.
 4. Select the **Product Resources** tab.
 5. In the upper part of the page, select a resource pool, a region, and a zone.
-The resource pool drop-down list is displayed only in multi-cloud environments. If you select All Zones, you can manage quotas in the region. If you select the corresponding zone, you can manage quotas in the zone, and the Resource Pool Configuration page displays the services only in the zone.
+
+> **Note:** The resource pool drop-down list is displayed only in multi-cloud environments.
+> If you select All Zones, you can manage quotas in the region. If you select the corresponding zone, you can manage quotas in the zone, and the Resource Pool Configuration page displays the services only in the zone.
+
 6. (Optional) In the upper-right corner of the page, select **Only View Cloud Services That**
 **Trigger Alerts** to display only the cloud services that trigger alerts.
 7. Click the target cloud product to open the **Resource Pool Details** panel. Using Elastic
@@ -6176,8 +6603,9 @@ Compute Service (ECS) as an example, view configuration details displayed in the
 **Resources**.
 8. In the **Resource Pool Details** panel, click **Configure Quota Items** at the bottom.
 9. In the **Configure Quota Items** dialog box, add or remove quota items.
-When you configure quota items for a specific zone, you can use the **Synchronize**
-**Quota Items to Other Zones** switch to control quota items in other zones.
+
+> **Note:** When you configure quota items for a specific zone, you can use the **Synchronize** **Quota Items to Other Zones** switch to control quota items in other zones.
+
 **Add quota items**: In the **Available Quota Items** list on the left side, select the quota
 items that you want to add and click to add them to the **Added Quota Items** list on the right side.
 **Remove quota items**: In the **Added Quota Items** list on the right side, select the
@@ -6206,15 +6634,22 @@ Quota items are configured. The default operator is the platform administrator.
 
 When the physical inventory is unlimited, the logical inventory must not be less than the allocated inventory. When the physical inventory is limited, the default logical inventory must not be less than the used inventory and must not exceed the physical inventory.
 
-**Important**
+> **Important:** When the logical inventory falls below the used inventory, the system restricts resource creation, leading to resource creation failure.
+> If you need to set the logical inventory to a value greater than the physical inventory, contact technical support to disable logical inventory validation and remove the physical inventory limit.
 
-When the logical inventory falls below the used inventory, the system restricts resource creation, leading to resource creation failure. If you need to set the logical inventory to a value greater than the physical inventory, contact technical support to disable logical inventory validation and remove the physical inventory limit. When you configure the logical inventory of a group quota for the first time, it defaults to the sum of the logical inventory of all child items. After manual configuration, your specified value takes precedence. The sum of the logical inventory of all child items cannot exceed the logical inventory of the parent item. Child items of a group quota item may share the same resource pool. Therefore, the physical inventory of a group quota item may be less than the sum of the physical inventory of its child items. This is normal.
+When you configure the logical inventory of a group quota for the first time, it defaults to the sum of the logical inventory of all child items. After manual configuration, your specified value takes precedence. The sum of the logical inventory of all child items cannot exceed the logical inventory of the parent item.
+
+> **Note:** Child items of a group quota item may share the same resource pool. Therefore, the physical inventory of a group quota item may be less than the sum of the physical inventory of its child items. This is normal.
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Resource Pool Configuration**.
 4. Click the **Product Resources** tab.
 5. In the upper part of the page, select a resource pool, a region, and an availability zone.
-The resource pool is displayed only in multi-cloud scenarios. When you select **All Zones**, the system enforces quota management at the region level. When you select a specific availability zone, the system enforces quota management at the availability zone level, and displays only the services in that availability zone.
+
+> **Note:** The resource pool is displayed only in multi-cloud scenarios.
+> When you select **All Zones**, the system enforces quota management at the region level. When you select a specific availability zone, the system enforces quota management at the availability zone level, and displays only the services in that availability zone.
+
 6. (Optional) In the upper-right corner of the page, select **Only View Cloud Services That**
 **Trigger Alerts** to quickly filter cloud services that have triggered alerts.
 7. Click the target cloud service to open the **Resource Pool Details** panel. Using Elastic
@@ -6223,7 +6658,10 @@ Compute Service (ECS) as an example, view the **Resource Item**, **Logical Inven
 8. In the **Resource Pool Details** panel, click **Create Inventory** or **Modify Inventory** at the
 bottom of the page.
 9. Enter inventory quotas in the **Logical Inventory** column to limit the maximum usage of
-resources. If you do not specify a quota for a resource item, the system does not limit the resource consumption for the corresponding item.
+resources.
+
+> **Note:** If you do not specify a quota for a resource item, the system does not limit the resource consumption for the corresponding item.
+
 0. Click **Save**.
 
 ##### 6.1.1.3 Cancel quotas
@@ -6232,13 +6670,20 @@ The resource pool configuration feature allows you to cancel configured quotas.
 
 **Prerequisites**
 
-You have created an inventory. The default operator is the platform administrator. When the requested resource quantity plus the total provisioned resource quantity exceeds the physical inventory, you can cancel the quota to clear the quota data for the service. After you clear the quota data, the console no longer validates resources for the service during resource creation, which enables overselling. Canceling a quota resets the organization and logical inventory capacity data for the service to the unset status and disables quota validation. Proceed with caution.
+You have created an inventory. The default operator is the platform administrator.
+
+> **Note:** When the requested resource quantity plus the total provisioned resource quantity exceeds the physical inventory, you can cancel the quota to clear the quota data for the service. After you clear the quota data, the console no longer validates resources for the service during resource creation, which enables overselling.
+> Canceling a quota resets the organization and logical inventory capacity data for the service to the unset status and disables quota validation. Proceed with caution.
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Resource Pool Configuration**.
 4. Select the **Product Resources** tab.
 5. At the top of the page, select a resource pool, a region, and an availability zone.
-The resource pool option appears only in multi-cloud scenarios. When you select **All Zones**, the system manages quotas at the region level. When you select a specific availability zone, the system manages quotas at the availability zone level, and displays only the services in that availability zone.
+
+> **Note:** The resource pool option appears only in multi-cloud scenarios.
+> When you select **All Zones**, the system manages quotas at the region level. When you select a specific availability zone, the system manages quotas at the availability zone level, and displays only the services in that availability zone.
+
 6. (Optional) In the upper-right corner of the page, select **Only View Cloud Services That**
 **Trigger Alerts** to filter services that have triggered alerts.
 7. Click the target cloud service to open the **Resource Pool Details** panel. Using Elastic
@@ -6247,9 +6692,9 @@ Compute Service (ECS) as an example, check the **Resource Item**, **Logical Inve
 8. In the **Resource Pool Details** panel, click **Cancel Quota** at the bottom.
 9. In the **Cancel Quota** dialog box, select **I am aware of the risks and want to perform**
 **this operation**.
-When you cancel the quota for a specific availability zone, you can use the
-**Synchronize Quota Cancellation to Other Availability Zones** switch to control
-quotas in other availability zones.
+
+> **Note:** When you cancel the quota for a specific availability zone, you can use the **Synchronize Quota Cancellation to Other Availability Zones** switch to control quotas in other availability zones.
+
 0. Click **OK**.
 
 ##### 6.1.1.4 Configure physical inventory change notifications
@@ -6270,7 +6715,9 @@ Connected public cloud resource pools do not support physical inventory change n
 3. In the left-side navigation pane, select **Resource Pool Configuration**.
 4. Select the **Product Resources** tab.
 5. At the top of the page, select a resource pool.
-The system displays resource pools only in multi-cloud scenarios, and you can configure physical inventory change notifications only for the central cloud and secondary Apsara Stack.
+
+> **Note:** The system displays resource pools only in multi-cloud scenarios, and you can configure physical inventory change notifications only for the central cloud and secondary Apsara Stack.
+
 6. Click **Inventory Change Notification** in the upper-right corner of the page.
 7. In the **Inventory Change Notification** dialog box, select **Contact** and set **Notification**
 **Time**.
@@ -6284,7 +6731,10 @@ You can set token quotas for AI services on a monthly basis. The used quota will
 
 **Prerequisites**
 
-The default operator is the platform administrator. The current quota control mode is soft control. That is, when consumption exceeds the configured quota, the platform sends an alert notification but does not restrict further usage.
+The default operator is the platform administrator.
+
+> **Note:** The current quota control mode is soft control. That is, when consumption exceeds the configured quota, the platform sends an alert notification but does not restrict further usage.
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Resource Pool Configuration**.
@@ -6315,7 +6765,10 @@ When you integrate an Apsara Stack, the system currently supports only Apsara St
 3. In the left-side navigation pane, select **Native Hybrid Cloud** > **Multi-Cloud**
 **Management**.
 4. On the **Multi-Cloud Management** page, view information such as central cloud name,
-central cloud code, creation time, update time, number of integrated resource pools, and remaining integrable quantity. Total supported integration quantity equals the sum of integrated resource pools and remaining integrable quantity. The total supported integration quantity depends on the Multi-Cloud Management license of the current cloud.
+central cloud code, creation time, update time, number of integrated resource pools, and remaining integrable quantity.
+
+> **Note:** Total supported integration quantity equals the sum of integrated resource pools and remaining integrable quantity. The total supported integration quantity depends on the Multi-Cloud Management license of the current cloud.
+
 5. Hover over the central cloud name and click
 .
 6. Enter the central cloud name in the text box and click **Confirm**. The system successfully
@@ -6340,7 +6793,15 @@ configuration. i. Enter the basic configuration and account authorization inform
 
 The platform administrator user of the target Apsara Stack exports the cloud configuration file under **Configuration** > **Native Hybrid Cloud** > **Local**
 **Cloud Data** in the local cloud. For detailed operations, see Export local cloud
-data. You can obtain the AccessKey ID and AccessKey Secret of the platform administrator role account for the target Apsara Stack from personal information settings. ii. In the initialization data section, configure **Bind ******************************* for the central cloud, then click **Submit**. You can bind multiple operations administrator users. Only bound central cloud operations administrators can perform binding and unbinding operations across clouds. iii. In the update success dialog box, click **Confirm**.
+data.
+
+> You can obtain the AccessKey ID and AccessKey Secret of the platform administrator role account for the target Apsara Stack from personal information settings.
+
+ii. In the initialization data section, configure **Bind Operations Administrator User** for the central cloud, then click **Submit**.
+
+> **Note:** You can bind multiple operations administrator users. Only bound central cloud operations administrators can perform binding and unbinding operations across clouds.
+
+iii. In the update success dialog box, click **Confirm**.
 
 **Manage Apsara Stack**
 
@@ -6383,14 +6844,12 @@ ii. On the **Initialize Data** page, after you complete the data initialization 
 
 **Important**
 
-After you obtain the identity provider (IdP) metadata file, role name, and identity provider name from the central cloud, perform the following operations in the Alibaba Cloud console: a. Use the IdP metadata file and identity provider name to create a SAML identity provider on the page under the path **RAM Access Control** >
-**Integration Management** > **SSO Management** > **Role-based SSO** >
-**SAML** in the Alibaba Cloud public cloud console. For detailed operations, see
-the "Manage SAML Identity Providers" section in the Alibaba Cloud public cloud Access Control RAM User Guide. b. Use the role name and the newly created identity provider name to create a RAM role for the SAML identity provider on the page under the path **RAM**
-**Access Control** > **Identity Management** > **Roles** in the Alibaba Cloud
-public cloud console. Then, add authorization under the path **Permission**
-**Management** > **Authorization** to grant the AdministratorAccess policy at
-the account level to the role. For detailed operations, see the "Create a RAM Role with Identity Provider as Trusted Entity" and "Grant Permissions to a RAM Role" sections in the Alibaba Cloud public cloud Access Control RAM User Guide. After you complete the preceding operations in the Alibaba Cloud public cloud console, configure the binding of operations administrator users, managed regions, and cloud services supported by the resource pool.
+> After you obtain the identity provider (IdP) metadata file, role name, and identity provider name from the central cloud, perform the following operations in the Alibaba Cloud console:
+> a. Use the IdP metadata file and identity provider name to create a SAML
+> identity provider on the page under the path **RAM Access Control** > **Integration Management** > **SSO Management** > **Role-based SSO** > **SAML** in the Alibaba Cloud public cloud console. For detailed operations, see the "Manage SAML Identity Providers" section in the Alibaba Cloud public cloud Access Control RAM User Guide.
+> b. Use the role name and the newly created identity provider name to create a
+> RAM role for the SAML identity provider on the page under the path **RAM** **Access Control** > **Identity Management** > **Roles** in the Alibaba Cloud public cloud console. Then, add authorization under the path **Permission** **Management** > **Authorization** to grant the AdministratorAccess policy at the account level to the role. For detailed operations, see the "Create a RAM Role with Identity Provider as Trusted Entity" and "Grant Permissions to a RAM Role" sections in the Alibaba Cloud public cloud Access Control RAM User Guide.
+> After you complete the preceding operations in the Alibaba Cloud public cloud console, configure the binding of operations administrator users, managed regions, and cloud services supported by the resource pool.
 
 | Configuration item | Description |
 |---|---|
@@ -6469,9 +6928,9 @@ Strong control: The Apsara Uni-Manager Management Console hosts the creation pag
 
 **Product list for strong control, weak control, and SSO**
 
-**Important**
-
-For Anti-DDoS Pro on the public cloud, go to the Apsara Stack Security product page by using the top product menu and then enter the DDoS console to manage DDoS resources on the public cloud. Public cloud services not listed here are not supported. Apsara Stack services not listed here use SSO.
+> **Important:** For Anti-DDoS Pro on the public cloud, go to the Apsara Stack Security product page by using the top product menu and then enter the DDoS console to manage DDoS resources on the public cloud.
+> Public cloud services not listed here are not supported.
+> Apsara Stack services not listed here use SSO.
 
 | N o. | Product |   | Public Cloud | Apsara Stack (Enterprise Edition v3.18.6) | Apsara Stack (Enterprise Edition v3.18.3 and earlier) |
 |---|---|---|---|---|---|
@@ -6657,9 +7116,8 @@ The operating user is the platform administrator by default.
 
 **Important notes**
 
-**Important**
+> **Important:** For Internet-accessible sites, the system sets session control to single-session mode by default and forces logout after 23 hours and 55 minutes.
 
-For Internet-accessible sites, the system sets session control to single-session mode by default and forces logout after 23 hours and 55 minutes.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configuration**.
 3. On the **Security Policy** page, click the **Login Control** tab.
@@ -6686,9 +7144,8 @@ This topic describes how to configure security level-based authorization for a r
 
 **Usage notes**
 
-**Important**
-
-On the Security Level Based Access tab, you can enable security level-based authorization and configure security levels for resource sets and roles. If you enable security level-based authorization, you must configure security levels for resource sets and roles. When you add an account to a resource set, the security level of the role assumed by the account must be higher than or equal to the security level of the resource set. After you enable security level-based authorization, you cannot disable it in the console. If you want to disable security level-based authorization, contact technical support.
+> **Important:** On the Security Level Based Access tab, you can enable security level-based authorization and configure security levels for resource sets and roles. If you enable security level-based authorization, you must configure security levels for resource sets and roles. When you add an account to a resource set, the security level of the role assumed by the account must be higher than or equal to the security level of the resource set.
+> After you enable security level-based authorization, you cannot disable it in the console. If you want to disable security level-based authorization, contact technical support.
 
 **Prerequisites**
 
@@ -6717,11 +7174,13 @@ This topic describes the authentication modes. Authentication modes are classifi
 
 **Token mode**
 
-In token mode, Resource Access Management (RAM) and Security Token Service (STS) are required. Temporary STS tokens are issued to users and cloud services to assist in permission management. In token mode, all cloud services use STS tokens to authenticate users. Cloud services that do not support STS may be affected. For example, only operations administrators and level- 1 organization administrators can log on to the console of a cloud service. On the **Authentication Mode** page, you can view the cloud services that support the token mode. After you enable the token mode, authentication of northbound APIs may be affected. For example, if you use the AccessKey pair of a RAM user to call an API operation to add, delete, modify, or query specified resources in a specified organization and resource set, and the required RAM policies are not attached to the RAM user, an error may be returned.
+In token mode, Resource Access Management (RAM) and Security Token Service (STS) are required. Temporary STS tokens are issued to users and cloud services to assist in permission management. In token mode, all cloud services use STS tokens to authenticate users. Cloud services that do not support STS may be affected. For example, only operations administrators and level- 1 organization administrators can log on to the console of a cloud service.
 
-**Warning**
+> **Note:** On the **Authentication Mode** page, you can view the cloud services that support the token mode.
 
-Before you enable the token mode, we recommend that you contact Alibaba Cloud to evaluate the situation. If an error occurs when you call an API operation, disable the token mode.
+After you enable the token mode, authentication of northbound APIs may be affected. For example, if you use the AccessKey pair of a RAM user to call an API operation to add, delete, modify, or query specified resources in a specified organization and resource set, and the required RAM policies are not attached to the RAM user, an error may be returned.
+
+> **Warning:** Before you enable the token mode, we recommend that you contact Alibaba Cloud to evaluate the situation. If an error occurs when you call an API operation, disable the token mode.
 
 **Hybrid mode**
 
@@ -6740,9 +7199,8 @@ You have logged on to the Apsara Uni-manager Management Console as a platform ad
 4. Select **Token Mode** or **Hybrid** based on the scenario.
 If you select **Hybrid**, you can control the authentication model of a cloud service by selecting or clearing the cloud service. If you select a cloud service, Security Token Service (STS)-based authentication is enabled for the cloud service.
 
-**Important**
+> **Important:** After token-based authentication is enabled, the authentication mode of northbound API operations is affected. We recommend that you contact the Alibaba Cloud service team for evaluation before you enable token-based authentication. If an error occurs when an API operation is called, roll back and disable token-based authentication for the service.
 
-After token-based authentication is enabled, the authentication mode of northbound API operations is affected. We recommend that you contact the Alibaba Cloud service team for evaluation before you enable token-based authentication. If an error occurs when an API operation is called, roll back and disable token-based authentication for the service.
 5. In the lower part of the page, click **Save**.
 
 ### 6.5 Specification management
@@ -6952,15 +7410,19 @@ You have logged on to the Apsara Uni-manager Management Console as a platform ad
 
 **Create specifications**
 
-You can create specifications for the following cloud services: NAT Gateway, Server Load Balancer (SLB), IPv6 Gateway, ApsaraDB RDS, Tair (Redis OSS-compatible), PolarDB-X 1.0, PolarDB-X 2.0, ApsaraDB for MongoDB, and PolarDB. a. Click **Create Specifications**. b. In the Create Specifications dialog box, configure the parameters. For more information about the specification parameters, see Specifications. c. Click **OK**.
+> **Note:** You can create specifications for the following cloud services: NAT Gateway, Server Load Balancer (SLB), IPv6 Gateway, ApsaraDB RDS, Tair (Redis OSS-compatible), PolarDB-X 1.0, PolarDB-X 2.0, ApsaraDB for MongoDB, and PolarDB.
+
+a. Click **Create Specifications**. b. In the Create Specifications dialog box, configure the parameters. For more information about the specification parameters, see Specifications. c. Click **OK**.
 
 **Synchronize specifications**
 
-The specifications of cloud services are synchronized to the current system by calling API operations. You can manually synchronize the specifications of Elastic Compute Service (ECS). a. Click **Synchronize Specifications**. b. In the message that appears, click **OK**.
+> **Note:** The specifications of cloud services are synchronized to the current system by calling API operations. You can manually synchronize the specifications of Elastic Compute Service (ECS).
+
+a. Click **Synchronize Specifications**. b. In the message that appears, click **OK**.
 
 #### 6.5.3 Manage specifications
 
-You can enable or disable specifications of different cloud resources. This way, only enabled specifications can be configured when resources are created.
+> You can enable or disable specifications of different cloud resources. This way, only enabled specifications can be configured when resources are created.
 
 **Prerequisites**
 
@@ -6970,13 +7432,20 @@ You have logged on to the Apsara Uni-manager Management Console as a platform ad
 3. In the left-side navigation pane, click **Specifications**.
 i. On the Specifications page, configure the **Specification Synchronization Settings** parameter to specify the specification synchronization mechanism.
 
-**Important**
+> **Important:** New specifications may be released after cloud services are updated. You can configure the specification synchronization mechanism to make sure the specifications are up-to-date.
 
-New specifications may be released after cloud services are updated. You can configure the specification synchronization mechanism to make sure the specifications are up-to-date. a. Click **Edit**. Select **Maintain Current Specifications** or **Synchronize Specifications**.
+a. Click **Edit**. Select **Maintain Current Specifications** or **Synchronize Specifications**.
 **Maintain Current Specifications**: New specifications are not synchronized after
-version updates. Select this option if you want to retain the existing configurations after version updates.
+version updates.
+
+> **Note:** Select this option if you want to retain the existing configurations after version updates.
+
 **Synchronize Specifications**: New specifications are synchronized after version
-updates. We recommend that you select this option to make sure that specifications are up-to-date. b. Click **Save**. ii. Select a cloud service from the **Resource Specification Settings** drop-down list.
+updates.
+
+> **Note:** We recommend that you select this option to make sure that specifications are up-to-date.
+
+b. Click **Save**. ii. Select a cloud service from the **Resource Specification Settings** drop-down list.
 
 | Operation | Procedure |
 |---|---|
@@ -6999,9 +7468,7 @@ Company A uses ApsaraDB RDS to deploy and manage database instances. The company
 
 Company A analyzes the specific requirements of departments and applications and poses the following requirements on the specification: The vCPU performance must be high and content resources must be extensive to support large-scale database operations. The storage capacity and the maximum number of connections can be expanded based on business requirements. SSD storage is required. High-speed read and write performance and a low failure rate are required. Company A then plans specification configurations based on these requirements. Example: vCPU: 8 cores Memory: 16 GB Storage: 500 GB SSD Maximum number of connections: 1,000 Database engine: MySQL 8.0
 
-**Important**
-
-Before you create specifications, check with cloud service technical support to make sure that the specifications are available.
+> **Important:** Before you create specifications, check with cloud service technical support to make sure that the specifications are available.
 
 **Prerequisites**
 
@@ -7139,7 +7606,10 @@ The operating user defaults to the platform administrator.
 You can quickly find it by using the **Product** drop-down list and **dataId** above the list.
 5. Click **Required Settings** in the **Actions** column for the target form.
 6. In the **Required Settings** dialog box, select the fields you want to mark as required. For
-example, after selecting the **Description** field, it becomes mandatory during product creation. Fields without checkboxes do not support configuration.
+example, after selecting the **Description** field, it becomes mandatory during product creation.
+
+> **Note:** Fields without checkboxes do not support configuration.
+
 7. Click **Confirm**.
 
 **Configure hidden fields**
@@ -7147,7 +7617,10 @@ example, after selecting the **Description** field, it becomes mandatory during 
 1. Click
 in the **Actions** column for the target form, then select **Hidden Item Settings**.
 2. In the **Hidden Item Settings** dialog box, select the fields you want to hide. For example,
-after selecting **IPv6 CIDR Block**, users will not see this field on the creation page when creating a product. Fields without checkboxes do not support configuration.
+after selecting **IPv6 CIDR Block**, users will not see this field on the creation page when creating a product.
+
+> **Note:** Fields without checkboxes do not support configuration.
+
 3. Click **Confirm**.
 
 **Configure options**
@@ -7156,9 +7629,19 @@ after selecting **IPv6 CIDR Block**, users will not see this field on the creati
 in the **Actions** column for the target form, then select **Option Settings**.
 2. In the **Options** dialog box, select the field whose options you want to configure, then click
 **Next Step**. For example, select the **Sharing Scope** field.
-Fields without checkboxes do not support configuration.
+
+> **Note:** Fields without checkboxes do not support configuration.
+
 3. Set whether each option is **Hide**, and adjust the order of options.
-: Indicates that option hiding is enabled. The option remains invisible to users on the creation page. : Indicates that option hiding is disabled. The option appears visible to users on the creation page. Click to the right of **Option**, then select **Move Up** or **Move Down** to adjust the option order.
+
+> **Note:** : Indicates that option hiding is enabled. The option remains invisible to
+> users on the creation page.
+> : Indicates that option hiding is disabled. The option appears visible to users
+> on the creation page.
+> Click
+> to the right of **Option**, then select **Move Up** or **Move Down** to adjust
+> the option order.
+
 4. Click **OK**.
 
 #### 6.6.3 Redirection page configuration
@@ -7177,9 +7660,11 @@ To configure the authorization sequence: Click in the **Authorization Sequence**
 **Configuration** column, turn on or off the switch.
 indicates that the redirection page removal switch is turned on. When the switch is turned on, the redirection page does not appear when you enter the product console. The floating menu in the product console displays account switching options. You can switch accounts in the floating menu.
 
-**Important**
+> **Important:** When the redirection page removal switch is turned on, the system accesses the product based on the priority configured in the authorization sequence.
+> If the configured priority does not exist, the system uses the second configured priority by default.
+> If you set a default access mode in the account switching menu, the system ignores the priority configured in the authorization sequence.
 
-When the redirection page removal switch is turned on, the system accesses the product based on the priority configured in the authorization sequence. If the configured priority does not exist, the system uses the second configured priority by default. If you set a default access mode in the account switching menu, the system ignores the priority configured in the authorization sequence. indicates that the redirection page removal switch is turned off. When the switch is turned off, the redirection page appears before you enter the product console. You must select an organization, region, and access mode on the redirection page to proceed. The floating menu in the product console displays account switching options. You can switch accounts in the floating menu.
+indicates that the redirection page removal switch is turned off. When the switch is turned off, the redirection page appears before you enter the product console. You must select an organization, region, and access mode on the redirection page to proceed. The floating menu in the product console displays account switching options. You can switch accounts in the floating menu.
 
 ### 6.7 Configure the billing feature on the Billing Switch page
 
@@ -7208,7 +7693,22 @@ You are a platform administrator.
 | Refund Ratio | The refund ratio. The refund amount is calculated based on the refund policy for switching the billing method from subscription to pay-as-you-go, refund policy for unsubscribing from subscription instances, or refund policy for downgrading subscription instances. The usage duration is accurate to the day. The part that is less than one day is counted as one day. Refund amount = (Original order amount - Consumed amount) × Refund ratio Consumed amount = Average daily unit price × Usage duration Usage duration = Unsubscription initiation time - Order start time |
 | Per-second Billing | Specifies whether to enable per-second billing for cloud services. If you enable per-second billing for a cloud service, the resource usage data is collected at the second level and bills are generated based on the second-level metering data. Important By default, the per-second billing feature is disabled. If you enable the feature for a cloud service, bills are generated based on the second-level metering data. After the per-second billing feature is enabled for a cloud service, the feature cannot be disabled. Exercise caution when you enable this feature. |
 
-Monthly Billing Start Date: Billing starts at 00:00:00 on the selected day and ends at 00:00:00 on the same day in the following calendar month. If you set the start date to the 15th day of the month or a day before the 15th day, the billing cycle starts in the current month and ends in the following month. If you set the start date to a day after the 15th day of the month, the billing cycle starts in the previous month and ends in the current month. If you change the billing cycle, the change takes effect in the following month. Examples: If you set the start date to the 10th day of the month, the billing cycle for February starts at 00:00:00 on February 10 and ends at 00:00:00 on March 10. If you set the start date to the 18th day of the month, the billing cycle for February starts at 00:00:00 on January 18 and ends at 00:00:00 on February 18. If the date that you selected does not exist in a calendar month, the system uses the last day of the calendar month as the start date. For example, if you set the start date to the 31st day of the month, the system uses the last day of February and other 30-day months as the start date of the billing cycle. Examples: Billing cycle for January: 00:00:00 on December 31 to 00:00:00 on January 31 Billing cycle for February: 00:00:00 on January 31 to 00:00:00 on February 28 Billing cycle for March: 00:00:00 on February 28 to 00:00:00 on March 31 Billing cycle for April: 00:00:00 on March 31 to 00:00:00 on April 30 Billing cycle for May: 00:00:00 on April 30 to 00:00:00 on May 31 Price Inquiry Switch: After you enable price inquiry, you can view the fees that are generated when you create (activate) services, change the configurations of (scale out) services, release (delete) services, renew services, add services to Configure, Price, Quote (CPQ), or place orders. After you disable price inquiry, fees are not displayed. If you use resources that are billed on a monthly basis and you disable price inquiry, fees cannot be calculated when you unsubscribe from the resources or change the configurations of the resources. Fee Deduction Switch: After you enable fee deduction, fees are deducted from the budget based on the bill. After you disable fee deduction, no fee is deducted from the budget. If you enable price inquiry and disable fee deduction, only bills are generated and no fee is deducted from the budget. If you enable both price inquiry and fee deduction, fees are deducted from the budget. Fees are deducted only after the fee deduction switch is turned on. Historical fees are not deducted from the budget. If historical bills are regenerated, the historical fees are deducted.
+> **Note:** Monthly Billing Start Date:
+
+> Billing starts at 00:00:00 on the selected day and ends at 00:00:00 on the same day in the following calendar month. If you set the start date to the 15th day of the month or a day before the 15th day, the billing cycle starts in the current month and ends in the following month. If you set the start date to a day after the 15th day of the month, the billing cycle starts in the previous month and ends in the current month. If you change the billing cycle, the change takes effect in the following month.
+> Examples:
+> If you set the start date to the 10th day of the month, the billing cycle for February starts at 00:00:00 on February 10 and ends at 00:00:00 on March 10.
+> If you set the start date to the 18th day of the month, the billing cycle for February starts at 00:00:00 on January 18 and ends at 00:00:00 on February 18.
+> If the date that you selected does not exist in a calendar month, the system uses the last day of the calendar month as the start date. For example, if you set the start date to the 31st day of the month, the system uses the last day of February and other 30-day months as the start date of the billing cycle. Examples:
+> Billing cycle for January: 00:00:00 on December 31 to 00:00:00 on January 31
+> Billing cycle for February: 00:00:00 on January 31 to 00:00:00 on February 28
+> Billing cycle for March: 00:00:00 on February 28 to 00:00:00 on March 31
+> Billing cycle for April: 00:00:00 on March 31 to 00:00:00 on April 30
+> Billing cycle for May: 00:00:00 on April 30 to 00:00:00 on May 31
+> Price Inquiry Switch: After you enable price inquiry, you can view the fees that are generated when you create (activate) services, change the configurations of (scale out) services, release (delete) services, renew services, add services to Configure, Price, Quote (CPQ), or place orders. After you disable price inquiry, fees are not displayed. If you use resources that are billed on a monthly basis and you disable price inquiry, fees cannot be calculated when you unsubscribe from the resources or change the configurations of the resources.
+> Fee Deduction Switch: After you enable fee deduction, fees are deducted from the budget based on the bill. After you disable fee deduction, no fee is deducted from the budget.
+> If you enable price inquiry and disable fee deduction, only bills are generated and no fee is deducted from the budget. If you enable both price inquiry and fee deduction, fees are deducted from the budget. Fees are deducted only after the fee deduction switch is turned on. Historical fees are not deducted from the budget. If historical bills are regenerated, the historical fees are deducted.
+
 6. Click **Save**.
 7. Optional. In the lower part of the Billing Switch page, click **History** to view the historical
 modification records.
@@ -7221,13 +7721,18 @@ You can create announcements on the platform to inform users about events such a
 
 After an announcement is published, users can view the announcement in the Announcement section of the homepage.
 
-**Important**
+> **Important:** The announcements that a user can view vary based on the role of the user:
+> If the user assumes a global role, the user can view all published announcements.
+> If the user assumes a non-global role, the user can view the published announcements of the organization to which the user belongs and the published announcements of which the Visible for Organization parameter is set to All.
+> The announcements are displayed in descending order based on the publish time.
 
-The announcements that a user can view vary based on the role of the user: If the user assumes a global role, the user can view all published announcements. If the user assumes a non-global role, the user can view the published announcements of the organization to which the user belongs and the published announcements of which the Visible for Organization parameter is set to All. The announcements are displayed in descending order based on the publish time. The announcement management feature allows you to create, modify, view, edit, and delete announcements. Tenant isolation is also implemented to ensure that announcements are separately managed for each tenant.
+The announcement management feature allows you to create, modify, view, edit, and delete announcements. Tenant isolation is also implemented to ensure that announcements are separately managed for each tenant.
 
-**Important**
+> **Important:** When a platform administrator creates or edits an announcement, the platform administrator can set the Visible for Organization parameter to All or SystemDefaultOrganization. However, only All is a valid value. If the Visible for Organization parameter is set to SystemDefaultOrganization, an error is reported when the announcement is saved.
+> Global roles can view and manage announcements of all organizations.
+> Non-global roles can view only the announcements of the level-1 organization to which the current account belongs. If you create or edit an announcement by assuming a non-global role, you can select only All or the corresponding level-1 organization from the Visible for Organization drop-down list.
 
-When a platform administrator creates or edits an announcement, the platform administrator can set the Visible for Organization parameter to All or SystemDefaultOrganization. However, only All is a valid value. If the Visible for Organization parameter is set to SystemDefaultOrganization, an error is reported when the announcement is saved. Global roles can view and manage announcements of all organizations. Non-global roles can view only the announcements of the level-1 organization to which the current account belongs. If you create or edit an announcement by assuming a non-global role, you can select only All or the corresponding level-1 organization from the Visible for Organization drop-down list. You can limit the visibility of announcements to specified organizations. Announcement content supports rich text. You can adjust the content style and insert images or links based on your business requirements. Announcements are automatically published or unpublished based on the specified publish or unpublish time. You can delete an announcement if you no longer need it. After the announcement is deleted, it cannot be restored.
+You can limit the visibility of announcements to specified organizations. Announcement content supports rich text. You can adjust the content style and insert images or links based on your business requirements. Announcements are automatically published or unpublished based on the specified publish or unpublish time. You can delete an announcement if you no longer need it. After the announcement is deleted, it cannot be restored.
 
 **Prerequisites**
 
@@ -7253,7 +7758,9 @@ table.
 | Announcement content | Announcement content supports rich text. You can adjust the content style and insert images or links based on your business requirements. |
 
 6. Click **Create**.
-After an announcement is created and automatically published, the announcement is displayed in the Announcement section of the **homepage**. Only the users in the specified organizations can view the announcement. Automatic publishing and unpublishing of announcements may be delayed by 1 to 5 seconds.
+
+> **Note:** After an announcement is created and automatically published, the announcement is displayed in the Announcement section of the **homepage**. Only the users in the specified organizations can view the announcement.
+> Automatic publishing and unpublishing of announcements may be delayed by 1 to 5 seconds.
 
 **View the announcement list and details of an announcement**
 
@@ -7263,11 +7770,18 @@ to search for the announcement.
 2. View the information about the announcement displayed in the following columns:
 **Announcement Type**, **Announcement Name**, **Status**, **Visible Organization**, **Modified**
 **At**, **Created At**, **Published At**, and **Unpublished At**.
-Click the icon next to the **Status** column to filter announcements by status. Valid values of the Status column: **Pending**, **Published**, and **Unpublished**. Click the icon next to the **Modified At**, **Created At**, **Published At**, or
-**Unpublished At** column to sort announcements in ascending or descending
-order based on the corresponding time.
+
+> **Note:** Click the
+> icon next to the **Status** column to filter announcements by status.
+> Valid values of the Status column: **Pending**, **Published**, and **Unpublished**.
+> Click the
+> icon next to the **Modified At**, **Created At**, **Published At**, or
+> **Unpublished At** column to sort announcements in ascending or descending order based on the corresponding time.
+
 3. Click the name of the announcement to go to the announcement details page and view the
-announcement details. You can go to the details pages of only announcements in the **Published** state.
+announcement details.
+
+> **Note:** You can go to the details pages of only announcements in the **Published** state.
 
 **Modify an announcement**
 
@@ -7299,9 +7813,10 @@ You are a platform administrator.
 3. In the left-side navigation pane, click **Privacy Document**.
 4. On the **Privacy Document** page, click **Create Document**.
 5. On the **Create Document** page, select a document type and language, and enter the
-document title and content. The document types include **User Agreement**, **Privacy Policy**, and **Terms of**
-**Service**. You can create only one document of each type. If one document of a type
-already exists, you cannot select this document type.
+document title and content.
+
+> **Note:** The document types include **User Agreement**, **Privacy Policy**, and **Terms of** **Service**. You can create only one document of each type. If one document of a type already exists, you cannot select this document type.
+
 6. Click **Create**.
 
 #### 6.9.2 View a privacy document
@@ -7336,7 +7851,9 @@ To modify a published privacy document, you must unpublish it first.
 4. On the **Privacy Document** page, find the privacy document that you want to modify and
 click **Modify** in the **Actions** column.
 5. On the **Edit Document** page, update the content of the document in different languages.
-You cannot modify the type of a privacy document.
+
+> **Note:** You cannot modify the type of a privacy document.
+
 6. Click **Modify**.
 
 #### 6.9.4 Publish a privacy document
@@ -7437,9 +7954,10 @@ This topic describes how to configure a global identity provider (IdP).
 
 **Usage notes**
 
-**Important**
-
-The following section describes how to configure a global IdP, which is an enterprise system, when the Apsara Uni-manager Management Console serves as a service provider (SP). In one cloud with multiple regions scenarios, users from all regions must be authenticated by the global IdP. When a global IdP is configured for the cloud platform, users are authenticated by the global IdP after they click the button for authorized login on the login page of the platform. If a global IdP is configured for the cloud platform, you can no longer configure a local IdP. You must clear the global IdP before you configure a local IdP. If a local IdP is configured for the cloud platform, you can no longer configure a global IdP. You must clear the local IdP before you configure a global IdP.
+> **Important:** The following section describes how to configure a global IdP, which is an enterprise system, when the Apsara Uni-manager Management Console serves as a service provider (SP). In one cloud with multiple regions scenarios, users from all regions must be authenticated by the global IdP.
+> When a global IdP is configured for the cloud platform, users are authenticated by the global IdP after they click the button for authorized login on the login page of the platform.
+> If a global IdP is configured for the cloud platform, you can no longer configure a local IdP. You must clear the global IdP before you configure a local IdP.
+> If a local IdP is configured for the cloud platform, you can no longer configure a global IdP. You must clear the local IdP before you configure a global IdP.
 
 **Prerequisites**
 
@@ -7450,12 +7968,14 @@ You are a platform administrator.
 SSO tab appears.
 4. On the **Global IdP Settings** tab, click **Edit** and configure the parameters in the **Global**
 **IdP Settings**, **Obtain Verified User Information**, and **Global Authorization Redirect**
-sections. The Obtain Verified User Information section is displayed only if you set the Protocol Type parameter to OAuth 2.0. The parameters in the Obtain Verified User Information section are not required in OAuth 2.0. Configure the parameters based on your business requirements.
+sections.
+
+> **Note:** The Obtain Verified User Information section is displayed only if you set the Protocol Type parameter to OAuth 2.0.
+
+The parameters in the Obtain Verified User Information section are not required in OAuth 2.0. Configure the parameters based on your business requirements.
 5. After you complete the configurations, click **Save**.
 
-**Important**
-
-If you click **Restore Factory Settings**, the global IdP settings are cleared. Users are not authenticated by the global IdP when they log in to the platform. Exercise caution when you perform this operation.
+> **Important:** If you click **Restore Factory Settings**, the global IdP settings are cleared. Users are not authenticated by the global IdP when they log in to the platform. Exercise caution when you perform this operation.
 
 **Global IdP Settings**
 
@@ -7489,7 +8009,7 @@ If you click **Restore Factory Settings**, the global IdP settings are cleared. 
 
 **Obtain Verified User Information**
 
-The Obtain Verified User Information section is displayed only if you set the Protocol Type parameter to OAuth 2.0.
+> **Note:** The Obtain Verified User Information section is displayed only if you set the Protocol Type parameter to OAuth 2.0.
 
 **Request type: GET**
 
@@ -7555,9 +8075,12 @@ This topic describes how to configure a local identity provider (IdP).
 
 **Usage notes**
 
-**Important**
-
-If a local IdP is created and bound to a level-1 organization, the button for authentication is unavailable on the login page of the platform for the users of the level-1 organization and subordinate organizations. The users are navigated to the platform only after they log in from the local IdP. After you create a local IdP, you can bind the IdP to a level-1 organization to implement IdP authentication at the organization level. Each level-1 organization can be bound to only one IdP including a global IdP. If a global IdP is configured for the cloud platform, you can no longer configure a local IdP. You must clear the global IdP before you configure a local IdP. If a local IdP is configured for the cloud platform, you can no longer configure a global IdP. You must clear the local IdP before you configure a global IdP. If a level-1 organization is bound to a local IdP, you can still configure local IdPs for other level-1 organizations. Before you delete a local IdP, you must unbind the local IdP from bound organizations.
+> **Important:** If a local IdP is created and bound to a level-1 organization, the button for authentication is unavailable on the login page of the platform for the users of the level-1 organization and subordinate organizations. The users are navigated to the platform only after they log in from the local IdP.
+> After you create a local IdP, you can bind the IdP to a level-1 organization to implement IdP authentication at the organization level. Each level-1 organization can be bound to only one IdP including a global IdP.
+> If a global IdP is configured for the cloud platform, you can no longer configure a local IdP. You must clear the global IdP before you configure a local IdP.
+> If a local IdP is configured for the cloud platform, you can no longer configure a global IdP. You must clear the local IdP before you configure a global IdP.
+> If a level-1 organization is bound to a local IdP, you can still configure local IdPs for other level-1 organizations.
+> Before you delete a local IdP, you must unbind the local IdP from bound organizations.
 
 **Prerequisites**
 
@@ -7568,7 +8091,11 @@ You are a platform administrator.
 SSO tab appears by default.
 4. On the **Local IdP Settings** tab, click **Create Local IdP**.
 5. In the **Create Local IdP** dialog box, configure parameters in the IdP Settings and Obtain
-Verified User Information sections. The Obtain Verified User Information section appears only if you set the Protocol Type parameter to OAuth 2.0. The parameters in the Obtain Verified User Information section are not required in OAuth 2.0. Configure the parameters based on your business requirements.
+Verified User Information sections.
+
+> **Note:** The Obtain Verified User Information section appears only if you set the Protocol Type parameter to OAuth 2.0.
+
+The parameters in the Obtain Verified User Information section are not required in OAuth 2.0. Configure the parameters based on your business requirements.
 6. Click **OK**.
 7. Manage local IdPs.
 
@@ -7689,9 +8216,11 @@ This topic describes how to view and delete OpenID Connect (OIDC) identity provi
 
 **Usage notes**
 
-**Important**
-
-OIDC is an authentication protocol based on OAuth 2.0. Applications can use OIDC for authentication based on the relationship between external IdPs and Apsara Stack Resource Access Management (RAM). You can use the OIDC authentication feature to control API permissions on different pods that are deployed in a Container Service for Kubernetes (ACK) cluster. This enables fine-grained permission control on pods and reduces security risks. Only ACK supports the OIDC authentication feature. You can view OIDC IdPs created by ACK clusters in the OIDC IdP list. You cannot directly create an OIDC IdP. You must contact technical support to enable the OIDC authentication feature for ACK clusters. After ACK clusters create OIDC IdPs, the platform administrator can view and delete the OIDC IdPs on the OIDC Authentication tab. After an OIDC IdP is deleted, RAM roles that reference the OIDC IdP become unavailable. This may affect cloud service authentication and cause business risks. Exercise caution when you perform this operation.
+> **Important:** OIDC is an authentication protocol based on OAuth 2.0. Applications can use OIDC for authentication based on the relationship between external IdPs and Apsara Stack Resource Access Management (RAM).
+> You can use the OIDC authentication feature to control API permissions on different pods that are deployed in a Container Service for Kubernetes (ACK) cluster. This enables fine-grained permission control on pods and reduces security risks.
+> Only ACK supports the OIDC authentication feature. You can view OIDC IdPs created by ACK clusters in the OIDC IdP list. You cannot directly create an OIDC IdP. You must contact technical support to enable the OIDC authentication feature for ACK clusters.
+> After ACK clusters create OIDC IdPs, the platform administrator can view and delete the OIDC IdPs on the OIDC Authentication tab.
+> After an OIDC IdP is deleted, RAM roles that reference the OIDC IdP become unavailable. This may affect cloud service authentication and cause business risks. Exercise caution when you perform this operation.
 
 **Prerequisites**
 
@@ -7844,7 +8373,9 @@ select one or more organizations from the **Authorized Organization Name** drop-
 2. Find the RAM role that you want to manage and click **View Details** in the **Actions** column
 to go to the details page of the RAM role.
 3. On the **role details** page, view the details and policy of the RAM role.
-Click the **Role Details** tab to view the name, creation time, description, and trust policy of the RAM role. Click the **Role Policy** tab to view the policy information, including the policy name, policy type, default version, description, and time when the policy is attached to the RAM role. You can click **View Details** in the **Actions** column to view the policy details.
+Click the **Role Details** tab to view the name, creation time, description, and trust policy of the RAM role. Click the **Role Policy** tab to view the policy information, including the policy name, policy type, default version, description, and time when the policy is attached to the RAM role.
+
+> **Note:** You can click **View Details** in the **Actions** column to view the policy details.
 
 ### 6.14 Configure risky operation settings
 
@@ -7964,13 +8495,18 @@ You can configure a storage mode for the operation logs and AccessKey logs of cl
 
 **Background information**
 
-The log storage settings apply to the storage of operation logs and AccessKey logs of cloud services. By default, logs are stored in the underlying storage of Simple Log Service. If no Logstore exists in the sales cloud, logs are stored in the Logstore of the Apsara Infrastructure Management cluster. By default, logs are retained for seven days. The capacity required for log storage is calculated based on the following formula: 5,000,000 × Log retention period × Number of organizations/1,024/1,024/1,024. For example, if the number of organizations is 300 and the log retention period is 180 days, approximately 251.46 GB of capacity is required for log storage. 5,000,000 is the estimated amount of log data generated in one day, measured in bytes. The log data includes the data generated by using Apsara Stack consoles, calling API operations, and using developer tools. The storage capacity is measured in GB.
+The log storage settings apply to the storage of operation logs and AccessKey logs of cloud services. By default, logs are stored in the underlying storage of Simple Log Service. If no Logstore exists in the sales cloud, logs are stored in the Logstore of the Apsara Infrastructure Management cluster. By default, logs are retained for seven days. The capacity required for log storage is calculated based on the following formula: 5,000,000 × Log retention period × Number of organizations/1,024/1,024/1,024. For example, if the number of organizations is 300 and the log retention period is 180 days, approximately 251.46 GB of capacity is required for log storage.
+
+> **Note:** 5,000,000 is the estimated amount of log data generated in one day, measured in bytes. The log data includes the data generated by using Apsara Stack consoles, calling API operations, and using developer tools.
+> The storage capacity is measured in GB.
 
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as an operations administrator.
 1. Log on to the Apsara Uni-manager Management Console.
-We recommend that you log on to the Apsara Uni-manager Management Console as the preset operations administrator. This ensures the security of created Simple Log Service projects and Logstores and prevents accidental deletion.
+
+> **Note:** We recommend that you log on to the Apsara Uni-manager Management Console as the preset operations administrator. This ensures the security of created Simple Log Service projects and Logstores and prevents accidental deletion.
+
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Log Storage Settings**.
 4. In the lower-left part of the Log Storage Settings page, click **Edit**.
@@ -8067,7 +8603,9 @@ the following table.
 | Enable | Specifies whether to enable the event push configuration. |
 
 6. Click **OK**.
-You can click **Cancel** to discard the event push configuration. You can also click **Test** to test the connectivity of the event push configuration.
+
+> **Note:** You can click **Cancel** to discard the event push configuration. You can also click **Test** to test the connectivity of the event push configuration.
+
 7. Perform the following operations as needed.
 
 | Operation | Description |
@@ -8372,27 +8910,23 @@ My Application Forms: all application forms that you created To Be Approved: app
 | To Be Approved/Partici pated/Handled | Application Form No., Process Name, Scenario, Query Type, Applicant Organization/Applicant, Include Subordinate Organizations, and Submission Time. For Scenario, you can select Management Operations, Cloud Service Operations, Service Catalog, Service Boundary, or Custom. For Query Type, you can select Query by Applicant Organization or Query by Applicant. |
 | All Application Forms | Application Form No., Process Name, Scenario, Application Form Status, Query Type, Applicant Organization/Applicant, Include Subordinate Organizations, and Submission Time. For Scenario, you can select Management Operations, Cloud Service Operations, Service Catalog, Service Boundary, or Custom. For Query Type, you can select Query by Applicant Organization or Query by Applicant. |
 
-**Scenario**: includes **Management Operations**, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operations**: The system displays this option when you select
-**Management Operations** for **Scenario**.
-**Cloud Service Operations**: The system displays this option when you select
-**Cloud Service Operations** for **Scenario**.
-**Service Catalog**: The system displays this option when you select **Service**
-**Catalog** for **Scenario**.
-**Cloud Service**: The system displays this option when you select **Service**
-**Boundary** for **Scenario**.
-**Query Type**: includes **Query by Applicant Organization** and **Query by**
-**Applicant**.
-**Applicant Organization** and **Include Subordinate Organizations**: The
-system displays these options when you select **Query by Applicant**
-**Organization** for **Query Type**.
-**Applicant**: The system displays this option when you select **Query by**
-**Applicant** for **Query Type**.
-**Submission Time**: Set the submission time of the application form.
+> **Note:** **Scenario**: includes **Management Operations**, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operations**: The system displays this option when you select **Management Operations** for **Scenario**.
+> **Cloud Service Operations**: The system displays this option when you select **Cloud Service Operations** for **Scenario**.
+> **Service Catalog**: The system displays this option when you select **Service** **Catalog** for **Scenario**.
+> **Cloud Service**: The system displays this option when you select **Service** **Boundary** for **Scenario**.
+> **Query Type**: includes **Query by Applicant Organization** and **Query by** **Applicant**.
+> **Applicant Organization** and **Include Subordinate Organizations**: The system displays these options when you select **Query by Applicant** **Organization** for **Query Type**.
+> **Applicant**: The system displays this option when you select **Query by** **Applicant** for **Query Type**.
+> **Submission Time**: Set the submission time of the application form.
+
 6. View the application form list.
 7. Click the application No. to go to the **Details** page.
-The application form requirement details vary based on the scenario. For the Service Catalog scenario, approvers can modify the configuration. Click **Modify Configuration** in the Actions column to update the applicationform configuration. For more information, see Modify the configuration of an application form. Click **Detailed Parameters** in the **Actions** column to view the call parameter information in the **Detailed Parameters** panel. To view the application progress, click **View All** next to Approval Progress of Application Form.
+
+> **Note:** The application form requirement details vary based on the scenario.
+> For the Service Catalog scenario, approvers can modify the configuration. Click **Modify Configuration** in the Actions column to update the applicationform configuration. For more information, see Modify the configuration of an application form.
+> Click **Detailed Parameters** in the **Actions** column to view the call parameter information in the **Detailed Parameters** panel.
+> To view the application progress, click **View All** next to Approval Progress of Application Form.
 
 ##### 7.1.1.2 Withdraw an application form
 
@@ -8412,15 +8946,14 @@ You can withdraw only the application forms created by yourself.
 5. Expand **Advanced Filter**, specify the **Application Form No.**, **Process Name**, **Scenario**,
 **Management Operations**/**Cloud Service Operations**/**Service Catalog**/**Cloud Service**,
 **Application Form Status**, and **Submission Time** conditions, and then click **Search**.
-**Scenario**: Supports **Management Operations**, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operation**: Appears when you select **Management Operations**
-for **Scenario**.
-**Cloud Service Operations**: Appears when you select **Cloud Service**
-**Operations** for **Scenario**.
-**Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
-**Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
-**Submission Time**: Specifies the submission time of the application form.
+
+> **Note:** **Scenario**: Supports **Management Operations**, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operation**: Appears when you select **Management Operations** for **Scenario**.
+> **Cloud Service Operations**: Appears when you select **Cloud Service** **Operations** for **Scenario**.
+> **Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
+> **Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
+> **Submission Time**: Specifies the submission time of the application form.
+
 6. In the application form list, click **Withdraw** in the **Actions** column of the target application
 form.
 7. In the dialog box, click **OK**.
@@ -8442,20 +8975,17 @@ The workflow bound to this application form must allow approvers to modify confi
 **Management Operation**/**Cloud Product Operation**/**Service Catalog**/**Cloud Service**,
 **Query Type**, **Applicant Organization**/**Applicant**, **Include Subordinate Organizations**,
 and **Submission Time**, and then click **Search**.
-**Scenario**: includes **Management Operation**s, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operations**: appears when you select **Management**
-**Operations** for Scenario.
-**Cloud Service Operations**: appears when you select **Cloud Service**
-**Operations** for **Scenario**.
-**Service Catalog**: appears when you select **Service Catalog** for **Scenario**.
-**Cloud Service**: appears when you select **Service Boundary** for **Scenario**.
-**Query Type**: includes **Query by Applicant Organization** and **Query by**
-**Applicant**.
-**Applicant Organization** and **Include Subordinate Organizations**: appear
-when you select **Query by Applicant Organization** for **Query Type**.
-**Applicant**: appears when you select **Query by Applicant** for **Query Type**.
-**Submission Time**: specifies the submission time of the application form.
+
+> **Note:** **Scenario**: includes **Management Operation**s, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operations**: appears when you select **Management** **Operations** for Scenario.
+> **Cloud Service Operations**: appears when you select **Cloud Service** **Operations** for **Scenario**.
+> **Service Catalog**: appears when you select **Service Catalog** for **Scenario**.
+> **Cloud Service**: appears when you select **Service Boundary** for **Scenario**.
+> **Query Type**: includes **Query by Applicant Organization** and **Query by** **Applicant**.
+> **Applicant Organization** and **Include Subordinate Organizations**: appear when you select **Query by Applicant Organization** for **Query Type**.
+> **Applicant**: appears when you select **Query by Applicant** for **Query Type**.
+> **Submission Time**: specifies the submission time of the application form.
+
 6. In the application form list, click the No. of the application form.
 7. On the application form details page, click **Modify Configuration**.
 8. On the product console page, update the configuration.
@@ -8481,23 +9011,25 @@ The application form is in the **Pending Approving** status.
 **Scenario**, **Management Operation**s/**Cloud Service Operations**/**Service**
 **Catalog**/**Cloud Service**, **Query Type**, **Applicant Organization**/**Applicant**, **Include**
 **Subordinate Organizations**, and **Submission Time** conditions, and then click **Search**.
-**Scenario**: Supports **Management Operations**, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operations**: Appears when you set **Scenario** to **Management**
-**Operations**.
-**Cloud Service Operations**: Appears when you set **Scenario** to **Cloud Service**
-**Operations**.
-**Service Catalog**: Appears when you set **Scenario** to **Service Catalog**.
-**Cloud Service**: Appears when you set **Scenario** to **Service Boundary**.
-**Query Type**: Supports **Query by Applicant Organization** and **Query by**
-**Applicant**.
-**Applicant Organization** and **Include Subordinate Organizations**: Appear
-when you set **Query Type** to **Query by Applicant Organization**.
-**Applicant**: Appears when you set **Query Type** to **Query by Applicant**.
-**Submission Time**: Specifies the submission time of the application form.
+
+> **Note:** **Scenario**: Supports **Management Operations**, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operations**: Appears when you set **Scenario** to **Management** **Operations**.
+> **Cloud Service Operations**: Appears when you set **Scenario** to **Cloud Service** **Operations**.
+> **Service Catalog**: Appears when you set **Scenario** to **Service Catalog**.
+> **Cloud Service**: Appears when you set **Scenario** to **Service Boundary**.
+> **Query Type**: Supports **Query by Applicant Organization** and **Query by** **Applicant**.
+> **Applicant Organization** and **Include Subordinate Organizations**: Appear when you set **Query Type** to **Query by Applicant Organization**.
+> **Applicant**: Appears when you set **Query Type** to **Query by Applicant**.
+> **Submission Time**: Specifies the submission time of the application form.
+
 6. Approve a single application form or approve application forms in batches.
 **Approve a single application form**:
-a. In the application form list, click **Review** in the **Actions** column of the target application form. b. In the **Review** dialog box, select comments, enter a review description, and upload attachments. You can set the comments to **Approve** or **Reject**. Click **Approval Analysis** to open Apsara Copilot, which analyzes the application form and provides approval suggestions. The approval analysis feature appears only after an operations administrator enables the intelligent assistant in **Configurations** > **Apsara Copilot** > **Custom Configuration**. c. Click **OK**.
+a. In the application form list, click **Review** in the **Actions** column of the target application form. b. In the **Review** dialog box, select comments, enter a review description, and upload attachments.
+
+> **Note:** You can set the comments to **Approve** or **Reject**.
+> Click **Approval Analysis** to open Apsara Copilot, which analyzes the application form and provides approval suggestions. The approval analysis feature appears only after an operations administrator enables the intelligent assistant in **Configurations** > **Apsara Copilot** > **Custom Configuration**.
+
+c. Click **OK**.
 **Approve multiple application forms in batches**:
 a. In the application form list, select multiple application forms that require approval. b. Click **Batch Approve** below the list. c. In the **Batch Approve** dialog box, select comments, enter an approval description, and upload attachments. d. Click **OK**.
 
@@ -8516,20 +9048,17 @@ The application form is in the **Pending Approving** status.
 **Management Operations**/**Cloud Service Operation**s/**Service Catalog**/**Cloud Service**,
 **Query Type**, **Applicant Organization**/**Applicant**, **Include Subordinate Organizations**,
 and **Submission Time** conditions, and then click **Search**.
-**Scenario**: Supports **Management Operations**, **Cloud Service Operation**s,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operations**: Appears when you select **Management**
-**Operations** for **Scenario**.
-**Cloud Service Operations**: Appears when you select **Cloud Service**
-**Operations** for **Scenario**.
-**Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
-**Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
-**Query Type**: Supports **Query by Applicant Organization** and **Query by**
-**Applicant**.
-**Applicant Organization** and **Include Subordinate Organizations**: Appear
-when you select **Query by Applicant Organization** for **Query Type**.
-**Applicant**: Appears when you select **Query by Applicant** for **Query Type**.
-**Submission Time**: Specifies the submission time of the application form.
+
+> **Note:** **Scenario**: Supports **Management Operations**, **Cloud Service Operation**s, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operations**: Appears when you select **Management** **Operations** for **Scenario**.
+> **Cloud Service Operations**: Appears when you select **Cloud Service** **Operations** for **Scenario**.
+> **Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
+> **Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
+> **Query Type**: Supports **Query by Applicant Organization** and **Query by** **Applicant**.
+> **Applicant Organization** and **Include Subordinate Organizations**: Appear when you select **Query by Applicant Organization** for **Query Type**.
+> **Applicant**: Appears when you select **Query by Applicant** for **Query Type**.
+> **Submission Time**: Specifies the submission time of the application form.
+
 6. In the application form list, click the No. of the application form.
 7. On the **Details** page, click **Transfer** in the upper-right corner.
 8. In the **Transfer** dialog box, select a new owner and enter transfer comments.
@@ -8550,20 +9079,17 @@ The application form is in the **Pending Approving** status. The **Allow Adding 
 **Scenario**, **Management Operation**s/**Cloud Service Operations**/**Service**
 **Catalog**/**Cloud Service**, **Query Type**, **Applicant Organization**/**Applicant**, **Include**
 **Subordinate Organizations**, and **Submission Time** conditions, and then click **Search**.
-**Scenario**: Supports **Management Operations**, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operation**s: Appears when you select **Management**
-**Operations** for **Scenario**.
-**Cloud Service Operations**: Appears when you select **Cloud Service**
-**Operations** for **Scenario**.
-**Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
-**Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
-**Query Type**: Supports **Query by Applicant Organization** and **Query by**
-**Applicant**.
-**Applicant Organization** and **Include Subordinate Organizations**: Appear
-when you select **Query by Applicant Organization** for **Query Type**.
-**Applicant**: Appears when you select **Query by Applicant** for **Query Type**.
-**Submission Time**: Specifies the submission time of the application form.
+
+> **Note:** **Scenario**: Supports **Management Operations**, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operation**s: Appears when you select **Management** **Operations** for **Scenario**.
+> **Cloud Service Operations**: Appears when you select **Cloud Service** **Operations** for **Scenario**.
+> **Service Catalog**: Appears when you select **Service Catalog** for **Scenario**.
+> **Cloud Service**: Appears when you select **Service Boundary** for **Scenario**.
+> **Query Type**: Supports **Query by Applicant Organization** and **Query by** **Applicant**.
+> **Applicant Organization** and **Include Subordinate Organizations**: Appear when you select **Query by Applicant Organization** for **Query Type**.
+> **Applicant**: Appears when you select **Query by Applicant** for **Query Type**.
+> **Submission Time**: Specifies the submission time of the application form.
+
 6. In the application form list, click the application form No..
 7. On the **Details** page, click **Add Signature** in the upper-right corner.
 8. In the **Add Signature** dialog box, select the sigantory and enter the additional comments.
@@ -8583,15 +9109,14 @@ The application form is in the **Action Pending Execution** or **Action Failed**
 5. Expand **Advanced Filter**, specify the **Application Form No.**, **Process Name**, **Scenario**,
 **Management Operations**/**Cloud Service Operations**/**Service Catalog**/**Cloud Service**,
 **Application Form Status**, and **Submission Time** conditions, and then click **Search**.
-**Scenario**: Supports **Management Operations**, **Cloud Service Operations**,
-**Service Catalog**, **Service Boundary**, and **Custom**.
-**Management Operations**: Appears when you set **Scenario** to **Management**
-**Operations**.
-**Cloud Service Operations**: Appears when you set **Scenario** to **Cloud Service**
-**Operations**.
-**Service Catalog**: Appears when you set **Scenario** to **Service Catalog**.
-**Cloud Service**: Appears when you set **Scenario** to **Service Boundary**.
-**Submission Time**: Specifies the submission time of the application form.
+
+> **Note:** **Scenario**: Supports **Management Operations**, **Cloud Service Operations**, **Service Catalog**, **Service Boundary**, and **Custom**.
+> **Management Operations**: Appears when you set **Scenario** to **Management** **Operations**.
+> **Cloud Service Operations**: Appears when you set **Scenario** to **Cloud Service** **Operations**.
+> **Service Catalog**: Appears when you set **Scenario** to **Service Catalog**.
+> **Cloud Service**: Appears when you set **Scenario** to **Service Boundary**.
+> **Submission Time**: Specifies the submission time of the application form.
+
 6. In the application form list, click **Perform Action** in the **Actions** column.
 7. In the dialog box, click **OK**.
 
@@ -8609,7 +9134,8 @@ Export the application form list data to your local device for storage.
 in the upper-right corner of the application form list to create an export task. You can export data for a maximum period of one year.
 8. In the **The export task is created** dialog box, click **Stay on Current Page** or **Go to**
 **Report Download Page**.
-Click **Go to Report Download Page** to go to the **Report Download** page, where you can view and download the file.
+
+> **Note:** Click **Go to Report Download Page** to go to the **Report Download** page, where you can view and download the file.
 
 #### 7.1.2 Process management
 
@@ -8642,7 +9168,19 @@ i. Configure the parameters in the Basic Information step and click **Next**. Th
 | Select Initiator | The user or role that can initiate the process. Valid values:A ll Users and Specified Role. If you set the Applicable Personnel parameter to Select Organization and turn on Bind Sub-organization, all users or specified roles in the selected organization and its subordinate organizations can initiate the process. |
 | Select Role | The role that can initiate the process. This parameter is displayed only if the Select Initiator parameter is set to Specified Role. You can select one or more roles from the Select Role drop-down list. All users who assume the selected roles can initiate the process. |
 
-ii. Configure the process in the Process Configuration step and click **Submit**. By default, the Start and End nodes are preset when you create a process. You can add and configure approval nodes. a. Optional. Click the **Start** node. In the **Initiator Settings** panel, select or clear Allow Initiator to Add CC Recipient. Selected: allows the initiator to add carbon copy (CC) recipients. The initiator can select only available users as CC recipients. Cleared: does not allow the initiator to add CC recipients. b. Click the icon between the Start and End nodes. In the Add Objects dialog box, select **Add Approver**, **External Process Integration**, or **Conditional Branch** to add an Approved By node, an External Process Integration node, or condition nodes. You can move the pointer over the icon in the upper-right corner of an added approval node and click **Delete** to remove the node. If you select Conditional Branch, a custom condition node and a default condition node are added by default. You can click the icon below the custom condition node to add another condition node. You can add at most nine condition nodes at the same level. You do not need to configure the default condition node. If custom conditions are not met, the default conditions are met. c. Click an added node to configure the node. Approved By: For more information, see the Configure the Approved By node section of this topic. If the applicant and the approver of an approval node are the same user, the approver automatically approves the application. If multiple approvers are involved, the other approvers need to approve the applications. External Process Integration: For more information, see the Configure the External Process Integration node section of this topic. Condition nodes: For more information, see the Configure the condition nodes section of this topic. d. Optional. Click the **End** node. In the **End Node Settings** panel, specify the users who are notified of the end of the process. After the process ends, the approval results are automatically sent to the specified users. You can select one or more users from the **Specific Personnel** drop-down list. Users who are visible to the process creator are displayed.
+ii. Configure the process in the Process Configuration step and click **Submit**. By default, the Start and End nodes are preset when you create a process. You can add and configure approval nodes. a. Optional. Click the **Start** node. In the **Initiator Settings** panel, select or clear Allow Initiator to Add CC Recipient. Selected: allows the initiator to add carbon copy (CC) recipients.
+
+> **Note:** The initiator can select only available users as CC recipients.
+
+Cleared: does not allow the initiator to add CC recipients. b. Click the icon between the Start and End nodes. In the Add Objects dialog box, select **Add Approver**, **External Process Integration**, or **Conditional Branch** to add an Approved By node, an External Process Integration node, or condition nodes.
+
+> **Note:** You can move the pointer over the
+> icon in the upper-right corner of an
+> added approval node and click **Delete** to remove the node.
+> If you select Conditional Branch, a custom condition node and a default condition node are added by default. You can click the
+> icon below the
+
+custom condition node to add another condition node. You can add at most nine condition nodes at the same level. You do not need to configure the default condition node. If custom conditions are not met, the default conditions are met. c. Click an added node to configure the node. Approved By: For more information, see the Configure the Approved By node section of this topic. If the applicant and the approver of an approval node are the same user, the approver automatically approves the application. If multiple approvers are involved, the other approvers need to approve the applications. External Process Integration: For more information, see the Configure the External Process Integration node section of this topic. Condition nodes: For more information, see the Configure the condition nodes section of this topic. d. Optional. Click the **End** node. In the **End Node Settings** panel, specify the users who are notified of the end of the process. After the process ends, the approval results are automatically sent to the specified users. You can select one or more users from the **Specific Personnel** drop-down list. Users who are visible to the process creator are displayed.
 6. After the process is created, perform the following operations based on your business
 requirements.
 
@@ -8692,10 +9230,7 @@ The parameters to be included in requests from the Apsara Uni-manager Management
 For more information, see lines 35 to 37 in the Pseudocode for constructing request parameters section of this topic. Required data is passed by default. You do not need to add required data in the **Process**
 **Access Configuration** section. The following table describes the required data.
 
-**Important**
-
-If you add a parameter with the same name as a required parameter in the **Process**
-**Access Configuration** section, the added parameter does not take effect.
+> **Important:** If you add a parameter with the same name as a required parameter in the **Process** **Access Configuration** section, the added parameter does not take effect.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8843,13 +9378,17 @@ Before submission, you can select **No permissions are required for the initiato
 
 **Submit additional information for the workflow**
 
-After you bind a business scenario to a workflow, the workflow management system intercepts related operations. You must provide additional information to complete the submission and generate a workflow order. You can add CC recipients only if the workflow is configured to allow the initiator to add them. When adding CC recipients, you can select only users visible to the initiator.
+After you bind a business scenario to a workflow, the workflow management system intercepts related operations. You must provide additional information to complete the submission and generate a workflow order.
+
+> **Note:** You can add CC recipients only if the workflow is configured to allow the initiator to add them. When adding CC recipients, you can select only users visible to the initiator.
 
 #### 7.1.3 Quota management
 
 ##### 7.1.3.1 Products that support resource quotas
 
-Organization administrators and users can create resources within the quota limits of each product in their organization. When the quota for a product is exhausted, they cannot create additional resources for that product. To continue creating resources, they must first increase the product quota in the organization. If no quota is configured, the system does not limit resource creation. For disk, memory, and capacity quotas, the minimum calculation unit is **GB**. The system rounds decimal values to the nearest integer. For example, when calculating the quota, the system rounds 0.8 GB up to 1 GB and 0.2 GB down to 0 GB.
+Organization administrators and users can create resources within the quota limits of each product in their organization. When the quota for a product is exhausted, they cannot create additional resources for that product. To continue creating resources, they must first increase the product quota in the organization. If no quota is configured, the system does not limit resource creation.
+
+> **Note:** For disk, memory, and capacity quotas, the minimum calculation unit is **GB**. The system rounds decimal values to the nearest integer. For example, when calculating the quota, the system rounds 0.8 GB up to 1 GB and 0.2 GB down to 0 GB.
 
 ###### 7.1.3.1.1 Elastic computing
 
@@ -8875,15 +9414,23 @@ This topic describes the quotas that you can configure for Elastic Compute Servi
 
 **Calculation methods of quota usage**
 
-The usage of CPU cores, memory, GPUs, and disk capacity of a single ECS instance is calculated based on the following formulas: CPU core usage = instanceTypeId.cpu Memory usage = instanceTypeId.mem GPU usage = instanceTypeId.gpu Disk capacity usage= ∑ (System disks and attached disks) Instance type usage = Number of created instances of the instance type The usage of CPU cores, memory, and GPUs of a single ECS instance is obtained the information defined in the instance type. instanceTypeId.cpu indicates the number of CPU cores defined in the selected instance type. instanceTypeId.mem indicates the memory size defined in the selected instance type. instanceTypeId.gpu indicates the number of GPUs defined in the selected instance type. The disk capacity usage of an instance is calculated by accumulating the size of the system disks and the size of the attached disks. The usage of security groups, custom images, and ENIs is calculated based on the following formulas: Security group usage = Number of created security groups Custom image usage = Number of created custom images ENI usage = Number of created ENIs The usage of security groups, custom images, and ENIs is the number of created resource instances.
+The usage of CPU cores, memory, GPUs, and disk capacity of a single ECS instance is calculated based on the following formulas: CPU core usage = instanceTypeId.cpu Memory usage = instanceTypeId.mem GPU usage = instanceTypeId.gpu Disk capacity usage= ∑ (System disks and attached disks) Instance type usage = Number of created instances of the instance type
+
+> **Note:** The usage of CPU cores, memory, and GPUs of a single ECS instance is obtained the information defined in the instance type.
+> instanceTypeId.cpu indicates the number of CPU cores defined in the selected instance type.
+> instanceTypeId.mem indicates the memory size defined in the selected instance type.
+> instanceTypeId.gpu indicates the number of GPUs defined in the selected instance type.
+> The disk capacity usage of an instance is calculated by accumulating the size of the system disks and the size of the attached disks.
+
+The usage of security groups, custom images, and ENIs is calculated based on the following formulas: Security group usage = Number of created security groups Custom image usage = Number of created custom images ENI usage = Number of created ENIs
+
+> **Note:** The usage of security groups, custom images, and ENIs is the number of created resource instances.
 
 **Inventory source**
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-**Important**
-
-Some Elastic Block Storage (EBS) clusters can share disks of multiple types. When you configure logical inventories, make sure that the sum of the logical inventories of the disk quota items does not exceed the physical inventory. For example, if an IO15 cluster has a physical inventory of 1,000 GiB and can share premium performance disks and standard SSDs, the physical inventory of both premium performance disks and standard SSDs is increased by 1,000 GiB. When you configure logical inventories, you need to check whether disk sharing is enabled for the EBS cluster and make sure that logical inventories do not exceed 1,000 GiB.
+> **Important:** Some Elastic Block Storage (EBS) clusters can share disks of multiple types. When you configure logical inventories, make sure that the sum of the logical inventories of the disk quota items does not exceed the physical inventory. For example, if an IO15 cluster has a physical inventory of 1,000 GiB and can share premium performance disks and standard SSDs, the physical inventory of both premium performance disks and standard SSDs is increased by 1,000 GiB. When you configure logical inventories, you need to check whether disk sharing is enabled for the EBS cluster and make sure that logical inventories do not exceed 1,000 GiB.
 
 ###### 7.1.3.1.1.2 Auto Scaling
 
@@ -8900,7 +9447,9 @@ This topic describes the quotas that you can configure for Auto Scaling, the cal
 
 **Calculation methods of quota usage**
 
-Scaling Group (Units): the number of scaling groups that are created. Maximum Instances in Auto Scaling Group (Units): the maximum number of instances in a scaling group. The quota usage of scaling groups is calculated based on the number of resource instances.
+Scaling Group (Units): the number of scaling groups that are created. Maximum Instances in Auto Scaling Group (Units): the maximum number of instances in a scaling group.
+
+> **Note:** The quota usage of scaling groups is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -8918,7 +9467,9 @@ This topic describes the quotas that you can configure for Dedicated Host (DDH),
 
 **Calculation methods of quota usage**
 
-Quota usage of DDH = Number of dedicated hosts that are created The quota usage of DDH is calculated based on the number of resource instances.
+Quota usage of DDH = Number of dedicated hosts that are created
+
+> **Note:** The quota usage of DDH is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -8938,7 +9489,9 @@ This topic describes the quotas that you can configure for Bare-metal Management
 
 **Calculation methods of quota usage**
 
-Bare metal instance quota usage = Number of bare metal instances that are managed by In-band instance quota usage = Number of in-band instances that are created for BMS Out-of-band instance quota usage = Number of out-of-band instances that are created for The quota usage of BMS is calculated based on the number of resource instances.
+Bare metal instance quota usage = Number of bare metal instances that are managed by In-band instance quota usage = Number of in-band instances that are created for BMS Out-of-band instance quota usage = Number of out-of-band instances that are created for
+
+> **Note:** The quota usage of BMS is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -8957,7 +9510,10 @@ This topic describes the quotas that you can configure for Container Service for
 
 **Calculation method of quota usage**
 
-Cluster (Units): the number of created clusters. Cluster Nodes (Units): the total number of created cluster nodes. The quota usage of clusters is calculated based on the number of resource instances. The quota usage of cluster nodes is calculated based on the number of created nodes.
+Cluster (Units): the number of created clusters. Cluster Nodes (Units): the total number of created cluster nodes.
+
+> **Note:** The quota usage of clusters is calculated based on the number of resource instances.
+> The quota usage of cluster nodes is calculated based on the number of created nodes.
 
 **Inventory source**
 
@@ -8976,7 +9532,9 @@ This topic describes the quotas that you can configure for Container Registry St
 
 **Calculation methods of quota usage**
 
-Usage of Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Standard Edition Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for Container Registry Standard Edition The quota usage is calculated based on the number of resource instances.
+Usage of Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Standard Edition Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for Container Registry Standard Edition
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -8997,7 +9555,9 @@ This topic describes the quotas that you can configure for Container Registry Ad
 
 **Calculation methods of quota usage**
 
-Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of namespaces that are created for Container Registry Advanced Edition Usage of Apsara Stack Advanced Edition Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Advanced Edition The quota usage is calculated based on the number of resource instances.
+Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of namespaces that are created for Container Registry Advanced Edition Usage of Apsara Stack Advanced Edition Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Advanced Edition
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9031,15 +9591,22 @@ This topic describes the quotas that you can configure for Bare Metal Computing 
 
 **Calculation method of quota usage**
 
-The quota usage of a single cluster is calculated based on the following formulas: CPU core usage = Cluster.CpuCount = sum(Node.CpuCount) Memory usage = Cluster.MemCount = sum(Node.MemCount) Computing power usage = Cluster.FlopsCount = sum(Node.FlopsCount) GPU memory usage = Cluster.VideoMemCount = sum(Node.VideoMemCount) Cluster.CpuCount indicates the number of CPU cores of the selected cluster. Node.CpuCount indicates the number of CPU cores of a node in the selected cluster. Cluster.MemCount indicates the memory of the selected cluster. Node.MemCount indicates the memory of a node in the selected cluster. Cluster.FlopsCount indicates the computing power of the selected cluster. Node.FlopsCount indicates the computing power of a node in the selected cluster. Cluster.VideoMemCount indicates the GPU memory of the selected cluster. Node.VideoMemCount indicates the GPU memory of a node in the selected cluster.
+The quota usage of a single cluster is calculated based on the following formulas: CPU core usage = Cluster.CpuCount = sum(Node.CpuCount) Memory usage = Cluster.MemCount = sum(Node.MemCount) Computing power usage = Cluster.FlopsCount = sum(Node.FlopsCount) GPU memory usage = Cluster.VideoMemCount = sum(Node.VideoMemCount)
+
+> **Note:** Cluster.CpuCount indicates the number of CPU cores of the selected cluster.
+> Node.CpuCount indicates the number of CPU cores of a node in the selected cluster.
+> Cluster.MemCount indicates the memory of the selected cluster.
+> Node.MemCount indicates the memory of a node in the selected cluster.
+> Cluster.FlopsCount indicates the computing power of the selected cluster.
+> Node.FlopsCount indicates the computing power of a node in the selected cluster.
+> Cluster.VideoMemCount indicates the GPU memory of the selected cluster.
+> Node.VideoMemCount indicates the GPU memory of a node in the selected cluster.
 
 **Inventory source**
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-**Important**
-
-Bare metal clusters and container clusters share the physical inventory. When you configure logical inventories, make sure that the sum of the logical inventories of a quota item of the two types of clusters cannot be exceed the physical inventory. For example, if the physical CPU inventory of both bare metal clusters and container clusters is five cores, the sum of the logical CPU inventories of bare metal clusters and container clusters must be equal to or smaller than five cores.
+> **Important:** Bare metal clusters and container clusters share the physical inventory. When you configure logical inventories, make sure that the sum of the logical inventories of a quota item of the two types of clusters cannot be exceed the physical inventory. For example, if the physical CPU inventory of both bare metal clusters and container clusters is five cores, the sum of the logical CPU inventories of bare metal clusters and container clusters must be equal to or smaller than five cores.
 
 ###### 7.1.3.1.1.9 ACK One
 
@@ -9053,7 +9620,9 @@ This topic describes the quota that you can configure for Distributed Cloud Cont
 
 **Calculation method of quota usage**
 
-Fleet usage = Number of created fleet instances The quota usage is calculated based on the number of created fleet instances.
+Fleet usage = Number of created fleet instances
+
+> **Note:** The quota usage is calculated based on the number of created fleet instances.
 
 **Inventory source**
 
@@ -9074,7 +9643,10 @@ This topic describes the configurable quota items for File Storage NAS, how the 
 
 **How the system calculates quota usage**
 
-Usage of a single NAS instance = The usage of the selected NAS instance. The system obtains the pre-allocated space limit from the current instance’s capacity storage. This value becomes the capacity threshold for the current instance. The system measures the actual usage of a NAS instance under the NAS used capacity quota item.
+Usage of a single NAS instance = The usage of the selected NAS instance.
+
+> **Note:** The system obtains the pre-allocated space limit from the current instance’s capacity storage. This value becomes the capacity threshold for the current instance.
+> The system measures the actual usage of a NAS instance under the NAS used capacity quota item.
 
 **Inventory source**
 
@@ -9112,7 +9684,11 @@ This topic describes the quotas that you can configure for Object Storage Servic
 
 **Calculation methods of quota usage**
 
-Capacity quota of a single bucket = Capacity of the selected bucket The total capacity of a bucket is equal to the maximum capacity that can be preallocated to the bucket. The resource usage details of a bucket are included in the Bucket Usage quota. The total capacity of an OSS bucket whose capacity is unlimited is calculated as 0.
+Capacity quota of a single bucket = Capacity of the selected bucket
+
+> **Note:** The total capacity of a bucket is equal to the maximum capacity that can be pre- allocated to the bucket.
+> The resource usage details of a bucket are included in the Bucket Usage quota.
+> The total capacity of an OSS bucket whose capacity is unlimited is calculated as 0.
 
 **Inventory source**
 
@@ -9170,7 +9746,9 @@ This topic describes the quotas that you can configure for Elastic IP Address (E
 
 **Calculation method of quota usage**
 
-EIP bandwidth usage = Total bandwidth of EIPs EIP quota usage = Number of EIPs that are created The quota usage of EIP is calculated based on the number of resource instances.
+EIP bandwidth usage = Total bandwidth of EIPs EIP quota usage = Number of EIPs that are created
+
+> **Note:** The quota usage of EIP is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9194,7 +9772,9 @@ This topic describes the quotas that you can configure for Server Load Balancer 
 
 **Calculation method of quota usage**
 
-Usage of private IP addresses that are created in the classic network = Number of IP addresses that are created for SLB in the classic network Usage of private IP addresses that are created in a VPC = Number of IP addresses that are created for SLB in the VPC Public IP address usage = Number of public IP address that are created for SLB CA certificate usage = Number of CA certificate instances Server certificate usage = Number of server certificate instances Usage of connections = Maximum number of connections that are created for SLB SLB instance usage = Number of SLB instances that are created The quota usage of SLB is calculated based on the number of corresponding resource instances.
+Usage of private IP addresses that are created in the classic network = Number of IP addresses that are created for SLB in the classic network Usage of private IP addresses that are created in a VPC = Number of IP addresses that are created for SLB in the VPC Public IP address usage = Number of public IP address that are created for SLB CA certificate usage = Number of CA certificate instances Server certificate usage = Number of server certificate instances Usage of connections = Maximum number of connections that are created for SLB SLB instance usage = Number of SLB instances that are created
+
+> **Note:** The quota usage of SLB is calculated based on the number of corresponding resource instances.
 
 **Inventory source**
 
@@ -9212,7 +9792,9 @@ This topic describes the quotas that you can configure for high-availability vir
 
 **Calculation method of quota usage**
 
-HAVIP usage = Number of HAVIPs that are created The quota usage of HAVIP is calculated based on the number of HAVIPs that are created.
+HAVIP usage = Number of HAVIPs that are created
+
+> **Note:** The quota usage of HAVIP is calculated based on the number of HAVIPs that are created.
 
 **Inventory source**
 
@@ -9230,7 +9812,9 @@ This topic describes the quotas that you can configure for Virtual Private Cloud
 
 **Calculation methods of quota usage**
 
-Quota usage of VPC = Number of VPCs that are created The quota usage of VPC is calculated based on the number of resource instances.
+Quota usage of VPC = Number of VPCs that are created
+
+> **Note:** The quota usage of VPC is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9250,7 +9834,9 @@ This topic describes the quotas that you can configure for Express Connect, calc
 
 **Calculation methods of quota usage**
 
-Connection usage = Number of connected instances VBR-to-VPC connection usage = Number of VBR-to-VPC connections that are created VPC peering connection usage = Number of VPC peering connections that are created The quota usage of Express Connect is calculated based on the number of resource instances.
+Connection usage = Number of connected instances VBR-to-VPC connection usage = Number of VBR-to-VPC connections that are created VPC peering connection usage = Number of VPC peering connections that are created
+
+> **Note:** The quota usage of Express Connect is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9270,7 +9856,9 @@ This topic describes the quotas that you can configure for Cloud Enterprise Netw
 
 **Calculation method of quota usage**
 
-CEN instance usage = Number of CEN instances that are created The quota usage of CEN is calculated based on the number of resource instances.
+CEN instance usage = Number of CEN instances that are created
+
+> **Note:** The quota usage of CEN is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9288,7 +9876,9 @@ This topic describes the quotas that you can configure for NAT Gateway, calculat
 
 **Calculation method of quota usage**
 
-Quota usage of NAT Gateway = Number of NAT gateways that are created for NAT Gateway The quota usage of NAT Gateway is calculated based on the number of corresponding resource instances.
+Quota usage of NAT Gateway = Number of NAT gateways that are created for NAT Gateway
+
+> **Note:** The quota usage of NAT Gateway is calculated based on the number of corresponding resource instances.
 
 **Inventory source**
 
@@ -9310,7 +9900,9 @@ This topic describes the quotas that you can configure for VPN Gateway, calculat
 
 **Calculation method of quota usage**
 
-Instance usage = Number of VPN gateways that are created Bandwidth usage = Bandwidth of EIPs that are created for VPN Gateway SSL connection usage = Number of SSL-VPN connections that are created for VPN Gateway The quota usage of VPN gateways and SSL-VPN connections is calculated based on the number of resource instances.
+Instance usage = Number of VPN gateways that are created Bandwidth usage = Bandwidth of EIPs that are created for VPN Gateway SSL connection usage = Number of SSL-VPN connections that are created for VPN Gateway
+
+> **Note:** The quota usage of VPN gateways and SSL-VPN connections is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9329,7 +9921,9 @@ This topic describes the quotas that you can configure for Apsara Stack DNS (DNS
 
 **Calculation method of quota usage**
 
-Private line usage = Number of private lines that are created for DNS Private domain name usage = Number of private domain names that are created for DNS The quota usage of DNS is calculated based on the number of corresponding resource instances.
+Private line usage = Number of private lines that are created for DNS Private domain name usage = Number of private domain names that are created for DNS
+
+> **Note:** The quota usage of DNS is calculated based on the number of corresponding resource instances.
 
 **Inventory source**
 
@@ -9351,7 +9945,9 @@ This topic describes the quotas that you can configure for Application Load Bala
 
 **Calculation methods of quota usage**
 
-Public IP address usage = Number of public IP addresses that are created for ALB Private IP address usage = Number of private IP addresses that are created for ALB CA certificate usage = Number of CA certificates that are created for ALB Server certificate usage = Number of server certificates that are created for ALB ALB instance usage = Number of ALB instances that are created The quota usage of ALB is calculated based on the number of resource instances.
+Public IP address usage = Number of public IP addresses that are created for ALB Private IP address usage = Number of private IP addresses that are created for ALB CA certificate usage = Number of CA certificates that are created for ALB Server certificate usage = Number of server certificates that are created for ALB ALB instance usage = Number of ALB instances that are created
+
+> **Note:** The quota usage of ALB is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9375,15 +9971,32 @@ This topic describes the quotas that you can configure for AnalyticDB for Postgr
 
 **Integrated storage mode**
 
-CPU quota usage = cpuCore × DBInstanceGroupCount Memory quota usage = memory × DBInstanceGroupCount Disk quota usage = disk × DBInstanceGroupCount × Number of replicas The quota usage of AnalyticDB for PostgreSQL instances of the integrated storage mode is calculated based on the instance type, the number of compute nodes, and the number of replicas. cpuCore indicates the number of CPU cores of the selected instance type. DBInstanceGroupCount indicates the number of compute nodes. memory indicates the memory capacity of the selected instance type. disk indicates the disk size of the selected instance type. By default, the number of replicas is 2.
+CPU quota usage = cpuCore × DBInstanceGroupCount Memory quota usage = memory × DBInstanceGroupCount Disk quota usage = disk × DBInstanceGroupCount × Number of replicas
+
+> **Note:** The quota usage of AnalyticDB for PostgreSQL instances of the integrated storage mode is calculated based on the instance type, the number of compute nodes, and the number of replicas.
+> cpuCore indicates the number of CPU cores of the selected instance type.
+> DBInstanceGroupCount indicates the number of compute nodes.
+> memory indicates the memory capacity of the selected instance type.
+> disk indicates the disk size of the selected instance type.
+> By default, the number of replicas is 2.
 
 **Reserved storage mode**
 
-CPU quota usage = cpuCore × (SegNum + MasterNum + Number of replicas) Memory quota usage = memory × (SegNum + MasterNum + Number of replicas) Disk quota usage = disk × (SegNum × 2 + MasterNum + Number of replicas) The quota usage of AnalyticDB for PostgreSQL instances of the reserved storage mode is calculated based on the instance type, the number of compute nodes, the number of master nodes, and the number of replicas. The fixed ratio of CPU cores, memory capacity, and disk capacity of an instance is 1:8:80. cpuCore indicates the number of CPU cores of the selected instance type. memory indicates the memory capacity of the selected instance type. disk indicates the disk size of the selected instance type. SegNum indicates the number of compute nodes. MasterNum indicates the number of master nodes. By default, the number of replicas is 1.
+CPU quota usage = cpuCore × (SegNum + MasterNum + Number of replicas) Memory quota usage = memory × (SegNum + MasterNum + Number of replicas) Disk quota usage = disk × (SegNum × 2 + MasterNum + Number of replicas)
+
+> **Note:** The quota usage of AnalyticDB for PostgreSQL instances of the reserved storage mode is calculated based on the instance type, the number of compute nodes, the number of master nodes, and the number of replicas. The fixed ratio of CPU cores, memory capacity, and disk capacity of an instance is 1:8:80.
+> cpuCore indicates the number of CPU cores of the selected instance type.
+> memory indicates the memory capacity of the selected instance type.
+> disk indicates the disk size of the selected instance type.
+> SegNum indicates the number of compute nodes.
+> MasterNum indicates the number of master nodes.
+> By default, the number of replicas is 1.
 
 **Inventory source**
 
-The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. Shared AnalyticDB for PostgreSQL instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
+The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
+
+> **Note:** Shared AnalyticDB for PostgreSQL instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
 ###### 7.1.3.1.4.2 ApsaraDB for MongoDB
 
@@ -9401,15 +10014,40 @@ This topic describes the quotas that you can configure for ApsaraDB for MongoDB,
 
 **Replica set instance**
 
-CPU quota usage = DBInstanceClass.cpu × Number of primary and secondary nodes Memory quota usage = DBInstanceClass.mem × Number of primary and secondary nodes Disk quota usage = DBInstanceStorage × Number of primary and secondary nodes The quota usage is calculated based on the instance specifications and the number of primary and secondary nodes. DBInstanceClass.cpu: the number of CPU cores of the selected instance specifications. DBInstanceClass.mem: the memory capacity of the selected instance specifications. DBInstanceStorage: the storage capacity of the selected instance specifications. By default, the number of primary and secondary nodes is 3.
+CPU quota usage = DBInstanceClass.cpu × Number of primary and secondary nodes Memory quota usage = DBInstanceClass.mem × Number of primary and secondary nodes Disk quota usage = DBInstanceStorage × Number of primary and secondary nodes
+
+> **Note:** The quota usage is calculated based on the instance specifications and the number of primary and secondary nodes.
+> DBInstanceClass.cpu: the number of CPU cores of the selected instance specifications.
+> DBInstanceClass.mem: the memory capacity of the selected instance specifications.
+> DBInstanceStorage: the storage capacity of the selected instance specifications.
+> By default, the number of primary and secondary nodes is 3.
 
 **Sharded cluster instance**
 
-CPU quota usage = mongosSpec.cpu × mongosCount + shardSpec.cpu × shardCount × Number of replicas + configserverSpec.cpu × configserverCount × Number of replicas Memory quota usage = mongosSpec.mem × mongosCount + shardSpec.mem × shardCount × Number of replicas + configserverSpec.mem × configserverCount × Number of replicas Disk quota usage = shardStorage × shardCount × Number of replicas + configserverStorage × configserverCount × Number of replicas The quota usage of mongos nodes, shard nodes, and Configserver nodes is calculated. The quota usage of mongos nodes is calculated based on the node specifications and the number of mongos nodes. mongosSpec.cpu: the number of CPU cores of the selected mongos node specifications. mongosCount: the number of mongos nodes. The quota usage of shard nodes is calculated based on the node specifications, number of shard nodes, and number of replicas. shardSpec.cpu: the number of CPU cores of the selected shard node specifications. shardSpec.mem: the memory capacity of the selected shard node specifications. shardStorage: the storage capacity of the selected shard node specifications. shardCount: the number of shard nodes. By default, the number of replicas is 3. The quota usage of Configserver nodes is calculated based on the node specifications, number of Configserver nodes, and number of replicas. configserverSpec.cpu: the number of CPU cores of the selected Configserver node specifications. configserverSpec.mem: the memory capacity of the selected Configserver node specifications. configserverStorage: the storage capacity of the selected Configserver node specifications. configserverCount: the number of Configserver nodes. By default, the number of replicas is 3.
+CPU quota usage = mongosSpec.cpu × mongosCount + shardSpec.cpu × shardCount × Number of replicas + configserverSpec.cpu × configserverCount × Number of replicas Memory quota usage = mongosSpec.mem × mongosCount + shardSpec.mem × shardCount × Number of replicas + configserverSpec.mem × configserverCount × Number of replicas Disk quota usage = shardStorage × shardCount × Number of replicas + configserverStorage × configserverCount × Number of replicas
+
+> **Note:** The quota usage of mongos nodes, shard nodes, and Configserver nodes is calculated.
+> The quota usage of mongos nodes is calculated based on the node specifications and the number of mongos nodes.
+> mongosSpec.cpu: the number of CPU cores of the selected mongos node specifications.
+> mongosCount: the number of mongos nodes.
+> The quota usage of shard nodes is calculated based on the node specifications, number of shard nodes, and number of replicas.
+> shardSpec.cpu: the number of CPU cores of the selected shard node specifications.
+> shardSpec.mem: the memory capacity of the selected shard node specifications.
+> shardStorage: the storage capacity of the selected shard node specifications.
+> shardCount: the number of shard nodes.
+> By default, the number of replicas is 3.
+> The quota usage of Configserver nodes is calculated based on the node specifications, number of Configserver nodes, and number of replicas.
+> configserverSpec.cpu: the number of CPU cores of the selected Configserver node specifications.
+> configserverSpec.mem: the memory capacity of the selected Configserver node specifications.
+> configserverStorage: the storage capacity of the selected Configserver node specifications.
+> configserverCount: the number of Configserver nodes.
+> By default, the number of replicas is 3.
 
 **Inventory source**
 
-The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. Shared ApsaraDB for MongoDB instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
+The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
+
+> **Note:** Shared ApsaraDB for MongoDB instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
 ###### 7.1.3.1.4.3 PolarDB-X 2.0
 
@@ -9466,15 +10104,37 @@ ApsaraDB RDS supports the following database engines: MySQL, PostgreSQL, PolarDB
 
 **High-availability Edition**
 
-CPU quota usage = dbInstanceClass.cpu × Number of nodes Memory quota usage = dbInstanceClass.mem × Number of nodes Disk quota usage = DBInstanceStorage × Number of nodes The quota usage is calculated based on the instance specifications and the number of nodes. dbInstanceClass.cpu: the number of CPU cores of the selected instance specifications. dbInstanceClass.mem: the memory capacity of the selected instance specifications. DBInstanceStorage: the storage capacity of the selected instance specifications. By default, the number of nodes is 2.
+CPU quota usage = dbInstanceClass.cpu × Number of nodes Memory quota usage = dbInstanceClass.mem × Number of nodes Disk quota usage = DBInstanceStorage × Number of nodes
+
+> **Note:** The quota usage is calculated based on the instance specifications and the number of nodes.
+> dbInstanceClass.cpu: the number of CPU cores of the selected instance specifications.
+> dbInstanceClass.mem: the memory capacity of the selected instance specifications.
+> DBInstanceStorage: the storage capacity of the selected instance specifications.
+> By default, the number of nodes is 2.
 
 **Enterprise Edition**
 
-CPU quota usage = dbInstanceClass.cpu × Number of regular nodes + Fixed CPU overhead of replica nodes Memory quota usage = dbInstanceClass.mem × Number of regular nodes + Fixed memory overhead of replica nodes Disk quota usage = DBInstanceStorage × Number of regular nodes + Fixed storage overhead of replica nodes The CPU quota usage is calculated based on the instance specifications, the number of regular nodes, and the fixed resource overhead of replica nodes. dbInstanceClass.cpu: the number of CPU cores of the selected instance specifications. By default, the number of regular nodes is 2. The CPU overhead of replica nodes is fixed to 2 GiB. The memory quota usage is calculated based on the instance specifications, number of regular nodes, and fixed resource overhead of replica nodes. dbInstanceClass.mem: the memory capacity of the selected instance specifications. By default, the number of regular nodes is 2. The memory overhead of replica nodes is fixed to 4 GiB. The disk quota usage is calculated based on the instance specifications, number of regular nodes, and fixed resource overhead of replica nodes. DBInstanceStorage: the storage capacity of the selected instance specifications. By default, the number of regular nodes is 2. The storage overhead of replica nodes is fixed to 50 GiB.
+CPU quota usage = dbInstanceClass.cpu × Number of regular nodes + Fixed CPU overhead of replica nodes Memory quota usage = dbInstanceClass.mem × Number of regular nodes + Fixed memory overhead of replica nodes Disk quota usage = DBInstanceStorage × Number of regular nodes + Fixed storage overhead of replica nodes
+
+> **Note:** The CPU quota usage is calculated based on the instance specifications, the number of regular nodes, and the fixed resource overhead of replica nodes.
+> dbInstanceClass.cpu: the number of CPU cores of the selected instance specifications.
+> By default, the number of regular nodes is 2.
+> The CPU overhead of replica nodes is fixed to 2 GiB.
+> The memory quota usage is calculated based on the instance specifications, number of regular nodes, and fixed resource overhead of replica nodes.
+> dbInstanceClass.mem: the memory capacity of the selected instance specifications.
+> By default, the number of regular nodes is 2.
+> The memory overhead of replica nodes is fixed to 4 GiB.
+> The disk quota usage is calculated based on the instance specifications, number of regular nodes, and fixed resource overhead of replica nodes.
+> DBInstanceStorage: the storage capacity of the selected instance specifications.
+> By default, the number of regular nodes is 2.
+> The storage overhead of replica nodes is fixed to 50 GiB.
 
 **Inventory source**
 
-The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters that use local disks share the inventory. Shared ApsaraDB RDS instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
+The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
+
+> **Note:** ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters that use local disks share the inventory.
+> Shared ApsaraDB RDS instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
 ###### 7.1.3.1.4.5 Tair (Redis OSS-compatible)
 
@@ -9490,15 +10150,32 @@ This topic describes the quota that you can configure for Tair (Redis OSS-compat
 
 **Standard Edition (Master-replica)**
 
-Memory usage = instanceClass.mem × Number of replicas The preceding formula is used to calculate the memory usage of a standard instance. instanceClass.mem indicates the memory size that is defined in the instance type. The number of replicas is fixed to 2.
+Memory usage = instanceClass.mem × Number of replicas The preceding formula is used to calculate the memory usage of a standard instance.
+
+> instanceClass.mem indicates the memory size that is defined in the instance type.
+> The number of replicas is fixed to 2.
 
 **Cluster Edition**
 
-Memory usage = instanceClass.mem × Number of replicas + Proxy node overhead + CS node overhead The preceding formula is used to calculate the memory usage of a cluster instance. instanceClass.mem indicates the memory size that is defined in the instance type. The number of replicas is fixed to 2. You can calculate the corresponding proxy node overhead based on the number of proxy nodes. You can obtain the number of proxy nodes by checking the number before "proxy" in the InstanceClass field. For example, if an instance is of the redis.logic.sharding.8g.8db.0rodb.8proxy.default class, the number of proxy nodes of the instance is 8. The CS node overhead is fixed to 1 GiB.
+Memory usage = instanceClass.mem × Number of replicas + Proxy node overhead + CS node overhead
+
+> **Note:** The preceding formula is used to calculate the memory usage of a cluster instance.
+> instanceClass.mem indicates the memory size that is defined in the instance type.
+> The number of replicas is fixed to 2.
+> You can calculate the corresponding proxy node overhead based on the number of proxy nodes. You can obtain the number of proxy nodes by checking the number before "proxy" in the InstanceClass field. For example, if an instance is of the redis.logic.sharding.8g.8db.0rodb.8proxy.default class, the number of proxy nodes of the instance is 8.
+> The CS node overhead is fixed to 1 GiB.
 
 **Read/write Splitting**
 
-Memory usage = instanceClass.mem × (2 + Number of read-only nodes) + Proxy node overhead + CS node overhead The preceding formula is used to calculate the memory usage of a read/write splitting instance. instanceClass.mem indicates the memory size that is defined in the instance type. You can select one or three read-only nodes when you select a node type. You can calculate the corresponding proxy node overhead based on the number of proxy nodes. You can obtain the number of proxy nodes by checking the number before "proxy" in the InstanceClass field. For example, if an instance is of the redis.logic.sharding.8g.8db.0rodb.8proxy.default class, the number of proxy nodes of the instance is 8. The CS node overhead is fixed to 1 GiB. The following table describes the relationships between the number of proxy nodes and the proxy node overhead.
+Memory usage = instanceClass.mem × (2 + Number of read-only nodes) + Proxy node overhead + CS node overhead
+
+> **Note:** The preceding formula is used to calculate the memory usage of a read/write splitting instance.
+> instanceClass.mem indicates the memory size that is defined in the instance type.
+> You can select one or three read-only nodes when you select a node type.
+> You can calculate the corresponding proxy node overhead based on the number of proxy nodes. You can obtain the number of proxy nodes by checking the number before "proxy" in the InstanceClass field. For example, if an instance is of the redis.logic.sharding.8g.8db.0rodb.8proxy.default class, the number of proxy nodes of the instance is 8.
+> The CS node overhead is fixed to 1 GiB.
+
+The following table describes the relationships between the number of proxy nodes and the proxy node overhead.
 
 | Number of proxy nodes | Proxy node overhead |
 |---|---|
@@ -9524,7 +10201,9 @@ Memory usage = instanceClass.mem × (2 + Number of read-only nodes) + Proxy node
 
 **Inventory source**
 
-The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. The memory of a shared Tair (Redis OSS-compatible) instance can be shared. The shared Tair (Redis OSS-compatible) instance shares physical resources with other shared Tair (Redis OSS-compatible) instances without being limited by the physical inventory. Therefore, the physical inventory data of the memory size may not indicate the saleable memory size. The saleable memory size may be greater than the physical inventory.
+The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
+
+> **Note:** The memory of a shared Tair (Redis OSS-compatible) instance can be shared. The shared Tair (Redis OSS-compatible) instance shares physical resources with other shared Tair (Redis OSS-compatible) instances without being limited by the physical inventory. Therefore, the physical inventory data of the memory size may not indicate the saleable memory size. The saleable memory size may be greater than the physical inventory.
 
 ###### 7.1.3.1.4.6 PolarDB
 
@@ -9540,9 +10219,32 @@ This topic describes the quotas that you can configure for PolarDB, calculation 
 
 **Calculation methods of quota usage**
 
-CPU quota usage = DBNodeClass.cpu × DBNodeNum + CPU overhead of hot standby storage clusters + CPU overhead of PolarProxy Memory quota usage = DBNodeClass.mem × DBNodeNum + Memory overhead of hot standby storage clusters + Memory overhead of PolarProxy Disk quota usage = StorageSpace + Disk overhead of hot standby storage clusters DBNodeClass.cpu: the number of CPU cores defined in the selected node specifications. DBNodeNum: the number of selected nodes. If you select **1 Read/Write + 1**
-**Read-only**, the number of nodes is 2. If you select **1 Read/Write**, the number of
-nodes is 1. DBNodeClass.mem: the memory size defined in the selected node specifications. StorageSpace: the size of the selected storage space. CPU overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature. If the hot standby storage cluster feature is disabled, the CPU overhead of hot standby storage clusters is 0. If the hot standby storage cluster feature is enabled, the CPU overhead is equal to the number of CPU cores defined in the selected node specifications. CPU overhead of PolarProxy: You can enable or disable the PolarProxy feature. If the PolarProxy feature is disabled, the CPU overhead of PolarProxy is 0. If the PolarProxy feature is enabled, the CPU overhead is calculated based on the following formulas: MySQL and PostgreSQL: CPU overhead of PolarProxy = Number of CPU cores defined in the selected cluster specifications. Oracle: CPU overhead of PolarProxy = Number of CPU cores defined in the selected cluster specifications × 2. By default, two replicas are used. Memory overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature. If the hot standby storage cluster feature is disabled, the memory overhead of hot standby storage clusters is 0. If the hot standby storage cluster feature is enabled, the memory overhead is equal to the memory size defined in the selected node specifications. Memory overhead of PolarProxy: You can enable or disable the PolarProxy feature. If the PolarProxy feature is disabled, the memory overhead of PolarProxy is 0. If the PolarProxy feature is enabled, the memory overhead is calculated based on the following formulas: MySQL and PostgreSQL: Memory overhead of PolarProxy = 4 GiB. This is a fixed value. Oracle: Memory overhead of PolarProxy = Memory size defined in the selected cluster specifications × 2. By default, two replicas are used. Disk overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature. If the hot standby storage cluster feature is disabled, the disk overhead of hot standby storage clusters is 0. If the hot standby storage cluster feature is enabled, the disk overhead is equal to the size of the selected storage space.
+CPU quota usage = DBNodeClass.cpu × DBNodeNum + CPU overhead of hot standby storage clusters + CPU overhead of PolarProxy Memory quota usage = DBNodeClass.mem × DBNodeNum + Memory overhead of hot standby storage clusters + Memory overhead of PolarProxy Disk quota usage = StorageSpace + Disk overhead of hot standby storage clusters
+
+> **Note:** DBNodeClass.cpu: the number of CPU cores defined in the selected node specifications.
+> DBNodeNum: the number of selected nodes. If you select **1 Read/Write + 1** **Read-only**, the number of nodes is 2. If you select **1 Read/Write**, the number of nodes is 1.
+> DBNodeClass.mem: the memory size defined in the selected node specifications.
+> StorageSpace: the size of the selected storage space.
+> CPU overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature.
+> If the hot standby storage cluster feature is disabled, the CPU overhead of hot standby storage clusters is 0.
+> If the hot standby storage cluster feature is enabled, the CPU overhead is equal to the number of CPU cores defined in the selected node specifications.
+> CPU overhead of PolarProxy: You can enable or disable the PolarProxy feature.
+> If the PolarProxy feature is disabled, the CPU overhead of PolarProxy is 0.
+> If the PolarProxy feature is enabled, the CPU overhead is calculated based on the following formulas:
+> MySQL and PostgreSQL: CPU overhead of PolarProxy = Number of CPU cores defined in the selected cluster specifications.
+> Oracle: CPU overhead of PolarProxy = Number of CPU cores defined in the selected cluster specifications × 2. By default, two replicas are used.
+> Memory overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature.
+
+> If the hot standby storage cluster feature is disabled, the memory overhead of hot standby storage clusters is 0.
+> If the hot standby storage cluster feature is enabled, the memory overhead is equal to the memory size defined in the selected node specifications.
+> Memory overhead of PolarProxy: You can enable or disable the PolarProxy feature.
+> If the PolarProxy feature is disabled, the memory overhead of PolarProxy is 0.
+> If the PolarProxy feature is enabled, the memory overhead is calculated based on the following formulas:
+> MySQL and PostgreSQL: Memory overhead of PolarProxy = 4 GiB. This is a fixed value.
+> Oracle: Memory overhead of PolarProxy = Memory size defined in the selected cluster specifications × 2. By default, two replicas are used.
+> Disk overhead of hot standby storage clusters: You can enable or disable the hot standby storage cluster feature.
+> If the hot standby storage cluster feature is disabled, the disk overhead of hot standby storage clusters is 0.
+> If the hot standby storage cluster feature is enabled, the disk overhead is equal to the size of the selected storage space.
 
 **Inventory source**
 
@@ -9562,7 +10264,9 @@ This topic describes the quotas that you can configure for Data Transmission Ser
 
 **Calculation method of quota usage**
 
-Migration task usage = Number of migration tasks that are created for DTS Synchronization task usage = Number of synchronization tasks that are created for DTS Change tracking task usage = Number of change tracking tasks that are created for DTS The quota usage of DTS is calculated based on the number of corresponding resource instances.
+Migration task usage = Number of migration tasks that are created for DTS Synchronization task usage = Number of synchronization tasks that are created for DTS Change tracking task usage = Number of change tracking tasks that are created for DTS
+
+> **Note:** The quota usage of DTS is calculated based on the number of corresponding resource instances.
 
 **Inventory source**
 
@@ -9580,7 +10284,9 @@ This topic describes the quota that you can configure for Lindorm, the calculati
 
 **Calculation method of quota usage**
 
-Disk usage = (Number of replicas × Disk capacity × Number of disks × Capacity threshold)/3 The default capacity threshold is 0.9.
+Disk usage = (Number of replicas × Disk capacity × Number of disks × Capacity threshold)/3
+
+> **Note:** The default capacity threshold is 0.9.
 
 **Inventory source**
 
@@ -9601,7 +10307,10 @@ This topic describes the quotas that you can configure for MaxCompute, the calcu
 
 **Calculation methods of quota usage**
 
-CU quota usage = Number of CUs that are configured for the current instance Disk quota usage = Used disk capacity of the current instance The CU quota usage of the current instance is equal to the number of CUs that are configured for the current instance. The disk quota usage of the current instance is calculated based on the requested disk size.
+CU quota usage = Number of CUs that are configured for the current instance Disk quota usage = Used disk capacity of the current instance
+
+> **Note:** The CU quota usage of the current instance is equal to the number of CUs that are configured for the current instance.
+> The disk quota usage of the current instance is calculated based on the requested disk size.
 
 **Inventory source**
 
@@ -9621,7 +10330,21 @@ This topic describes the quotas that you can configure for Elasticsearch on Kube
 
 **Calculation methods of quota usage**
 
-Elasticsearch on Kubernetes includes the following types of nodes: data node, Kibana node, dedicated master node, and client node. The CPU and memory quota usage is calculated based on the number of nodes and specification-based overhead. The disk quota usage is calculated based on the number of nodes and the storage capacity of nodes. CPU or memory quota usage = nodeSpec.spec × nodeAmount + kibanaConfiguration.spec × kibanaConfiguration.amount + masterConfiguration.spec × masterConfiguration.amount + clientNodeConfiguration.spec × clientNodeConfiguration.amout Disk quota usage = nodeSpec.disk × nodeAmount + kibanaConfiguration.disk × kibanaConfiguration.amount + masterConfiguration.disk × masterConfiguration.amount + clientNodeConfiguration.disk × clientNodeConfiguration.amout The specifications of a node include the number of CPU cores and the memory size. The number of CPU cores is used to calculate the CPU quota usage and the memory size is used to calculate the memory quota usage. nodeSpec.spec: the selected data node specifications. nodeAmount: the number of data nodes. kibanaConfiguration.spec: the selected Kibana node specifications. kibanaConfiguration.amount: the number of Kibana nodes. masterConfiguration.spec: the selected dedicated master node specifications. masterConfiguration.amount: the number of dedicated master nodes. clientNodeConfiguration.spec: the selected client node specifications. clientNodeConfiguration.amout: the number of client nodes. nodeSpec.disk: the storage capacity of the selected data node specifications. kibanaConfiguration.disk: the storage capacity of the selected Kibana node specifications. masterConfiguration.disk: the storage capacity of the selected dedicated master node specifications. clientNodeConfiguration.disk: the storage capacity of the selected client node specifications.
+Elasticsearch on Kubernetes includes the following types of nodes: data node, Kibana node, dedicated master node, and client node. The CPU and memory quota usage is calculated based on the number of nodes and specification-based overhead. The disk quota usage is calculated based on the number of nodes and the storage capacity of nodes. CPU or memory quota usage = nodeSpec.spec × nodeAmount + kibanaConfiguration.spec × kibanaConfiguration.amount + masterConfiguration.spec × masterConfiguration.amount + clientNodeConfiguration.spec × clientNodeConfiguration.amout Disk quota usage = nodeSpec.disk × nodeAmount + kibanaConfiguration.disk × kibanaConfiguration.amount + masterConfiguration.disk × masterConfiguration.amount + clientNodeConfiguration.disk × clientNodeConfiguration.amout
+
+> **Note:** The specifications of a node include the number of CPU cores and the memory size. The number of CPU cores is used to calculate the CPU quota usage and the memory size is used to calculate the memory quota usage.
+> nodeSpec.spec: the selected data node specifications.
+> nodeAmount: the number of data nodes.
+> kibanaConfiguration.spec: the selected Kibana node specifications.
+> kibanaConfiguration.amount: the number of Kibana nodes.
+> masterConfiguration.spec: the selected dedicated master node specifications.
+> masterConfiguration.amount: the number of dedicated master nodes.
+> clientNodeConfiguration.spec: the selected client node specifications.
+> clientNodeConfiguration.amout: the number of client nodes.
+> nodeSpec.disk: the storage capacity of the selected data node specifications.
+> kibanaConfiguration.disk: the storage capacity of the selected Kibana node specifications.
+> masterConfiguration.disk: the storage capacity of the selected dedicated master node specifications.
+> clientNodeConfiguration.disk: the storage capacity of the selected client node specifications.
 
 **Inventory source**
 
@@ -9655,11 +10378,16 @@ This topic describes the quotas that you can configure for Platform for AI (PAI)
 
 **Quotas**
 
-You must configure the quota items based on the supported instance specifications. No default quota items are provided. The supported instance specifications are subject to those displayed in the Apsara Uni-manager Operations Console. If no instance specifications are available, no quota items are displayed.
+You must configure the quota items based on the supported instance specifications. No default quota items are provided.
+
+> **Note:** The supported instance specifications are subject to those displayed in the Apsara Uni-manager Operations Console.
+> If no instance specifications are available, no quota items are displayed.
 
 **Calculation method of quota usage**
 
-Compute node usage = Number of compute nodes in an instance The quota usage of PAI is calculated based on the compute node overhead.
+Compute node usage = Number of compute nodes in an instance
+
+> **Note:** The quota usage of PAI is calculated based on the compute node overhead.
 
 **Inventory source**
 
@@ -9679,7 +10407,9 @@ This topic describes the quotas that you can configure for Key Management Servic
 
 **Calculation method of quota usage**
 
-KMS quota usage = Number of KMS instances that are created The quota usage of KMS is calculated based on the number of instances of the corresponding resource.
+KMS quota usage = Number of KMS instances that are created
+
+> **Note:** The quota usage of KMS is calculated based on the number of instances of the corresponding resource.
 
 **Inventory source**
 
@@ -9704,7 +10434,7 @@ This topic describes the quotas that you can configure for ApsaraMQ for RocketMQ
 | ApsaraMQ for RocketMQ 4.0 Outbound Message TPS (Units) | The total number of RocketMQ 4.0 messages that can be sent. |
 | ApsaraMQ for RocketMQ 5.0 Outbound Message TPS (Units) | The total number of RocketMQ 5.0 messages that can be sent. |
 
-RocketMQ 4.0 refers to Message Queue, and RocketMQ 5.0 refers to ApsaraMQ for RocketMQ.
+> **Note:** RocketMQ 4.0 refers to Message Queue, and RocketMQ 5.0 refers to ApsaraMQ for RocketMQ.
 
 **Calculation method of quota usage**
 
@@ -9727,7 +10457,9 @@ This topic describes the quotas that you can configure for Enterprise Distribute
 
 **Calculation methods of quota usage**
 
-EDAS cluster quota usage = Number of EDAS clusters that are created EDAS application quota usage = Number of EDAS applications that are created The quota usage of EDAS is calculated based on the number of resource instances.
+EDAS cluster quota usage = Number of EDAS clusters that are created EDAS application quota usage = Number of EDAS applications that are created
+
+> **Note:** The quota usage of EDAS is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9766,7 +10498,9 @@ This topic describes the quota that you can configure for API Gateway, calculati
 
 **Calculation method of quota usage**
 
-Instance quota usage = Number of API gateways that are created The quota usage is calculated based on the number of resource instances.
+Instance quota usage = Number of API gateways that are created
+
+> **Note:** The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9786,7 +10520,9 @@ This topic describes the quotas that you can configure for Resource Orchestratio
 
 **Calculation methods of quota usage**
 
-Quota usage of ROS = Number of stacks that are created The quota usage of ROS is calculated based on the number of resource instances.
+Quota usage of ROS = Number of stacks that are created
+
+> **Note:** The quota usage of ROS is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9806,7 +10542,9 @@ This topic describes the quotas that you can configure for CloudOps Orchestratio
 
 **Calculation methods of quota usage**
 
-Quota usage of OOS = Number of custom templates that are created The quota usage of OOS is calculated based on the number of resource instances.
+Quota usage of OOS = Number of custom templates that are created
+
+> **Note:** The quota usage of OOS is calculated based on the number of resource instances.
 
 **Inventory source**
 
@@ -9935,9 +10673,8 @@ This topic describes the products that support AI service token quotas.
 
 In a multi-cloud scenario, operations managers can manage resource quotas for subordinate clouds from the central cloud.
 
-**Important**
-
-When you set quotas by resource pool in the central cloud console, you can only configure quotas for bound level-1 organizations in the subordinate cloud. After setting subordinate cloud quotas, the system updates them to the subordinate cloud. To manage resource set quotas for the subordinate cloud, you must configure them in the subordinate cloud console. When you set quotas in the subordinate cloud console, it includes quotas for managed level-1 organizations. After the subordinate cloud updates level-1 organization quotas, the central cloud displays them in real time.
+> **Important:** When you set quotas by resource pool in the central cloud console, you can only configure quotas for bound level-1 organizations in the subordinate cloud. After setting subordinate cloud quotas, the system updates them to the subordinate cloud. To manage resource set quotas for the subordinate cloud, you must configure them in the subordinate cloud console.
+> When you set quotas in the subordinate cloud console, it includes quotas for managed level-1 organizations. After the subordinate cloud updates level-1 organization quotas, the central cloud displays them in real time.
 
 **Cloud services with quota support in Apsara Stack**
 
@@ -9945,7 +10682,9 @@ When the subordinate cloud is Apsara Stack, the supported cloud services for quo
 
 **Cloud services with quota support in Alibaba Public Cloud**
 
-When the subordinate cloud is Alibaba Public Cloud, the supported cloud services for quota configuration are as follows. The quota usage for instance count is calculated based on the actual number of instances used. The quota usage for CPU, memory, disk, and other resources is calculated by summing the corresponding fields returned by the API.
+When the subordinate cloud is Alibaba Public Cloud, the supported cloud services for quota configuration are as follows.
+
+> **Note:** The quota usage for instance count is calculated based on the actual number of instances used. The quota usage for CPU, memory, disk, and other resources is calculated by summing the corresponding fields returned by the API.
 
 **Compute**
 
@@ -10096,9 +10835,15 @@ You must set the quota of the parent organization before setting the quota of a 
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. Click the **Product Resources** tab.
 5. Above the organization structure on the left side of the page, select a resource pool.
-The resource pool option appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool option appears only in multi-cloud scenarios.
+
 6. Above the product list on the right side, set the region and zone, and select Only View
-Cloud Services That Trigger Alerts. If you select All Zones, you can configure quotas at the region level. If you select a zone, you can configure quotas for the zone, and the console displays only cloud services in the current zone. If you select **View Only Cloud Services That Have Triggered Alerts** , only the cloud services that trigger alerts are displayed.
+Cloud Services That Trigger Alerts.
+
+> **Note:** If you select All Zones, you can configure quotas at the region level. If you select a zone, you can configure quotas for the zone, and the console displays only cloud services in the current zone.
+> If you select **View Only Cloud Services That Have Triggered Alerts** , only the cloud services that trigger alerts are displayed.
+
 7. In the left-side organization structure of the Quotas page, select the organization or
 resource set whose resources you want to manage.
 8. Click the target service (ECS in this example) to open the Quota Details panel. For more
@@ -10112,11 +10857,19 @@ To set a quota for the current organization, click **Apply for Quota**.
 item, the quota of the resource item is unlimited.
 **Existing Quota**: This column displays the existing quotas of resource items.
 **Quota Change**: This column displays the difference between the configured
-quota and the original quota. Click before a resource item to display the child resource items of the resource item. Use a quota template to set quotas quickly. Select a quota template from the **Quota Template** drop-down list, clear the original configurations, and then calculate and enter the configurations based on the template rules. If no resource items are specified in the quota template, the existing configurations are not overwritten. Click **Restore** next to **Quota Template** to restore the configurations before the quota template is applied.
+quota and the original quota.
 
-**Important**
+> Click
+> before a resource item to display the child resource items of the resource
+> item.
+> Use a quota template to set quotas quickly.
+> Select a quota template from the **Quota Template** drop-down list, clear the original configurations, and then calculate and enter the configurations based on the template rules. If no resource items are specified in the quota template, the existing configurations are not overwritten.
+> Click **Restore** next to **Quota Template** to restore the configurations before the quota template is applied.
 
-When you configure the quota of a resource item of a cloud service in an organization, if the organization has a parent organization other than the root organization, the quota that you can configure for the resource item in the organization is calculated based on the following formula: Quota that can be configured for the resource item in the organization = Quota configured for the resource item in the parent organization - Allocated quota of the resource item If you do not specify a quota for a resource item, no quota is configured for the resource item by default. The system does not limit the overhead of the corresponding resources in the current organization or resource set. The quotas of the parent organization to which the current organization or resource set belongs are used for verification and calculation.
+> **Important:** When you configure the quota of a resource item of a cloud service in an organization, if the organization has a parent organization other than the root organization, the quota that you can configure for the resource item in the organization is calculated based on the following formula:
+> Quota that can be configured for the resource item in the organization = Quota configured for the resource item in the parent organization - Allocated quota of the resource item
+> If you do not specify a quota for a resource item, no quota is configured for the resource item by default. The system does not limit the overhead of the corresponding resources in the current organization or resource set. The quotas of the parent organization to which the current organization or resource set belongs are used for verification and calculation.
+
 1. Click **Save**.
 2. In the message that appears, click **OK**.
 3. (Optional) If you apply for a quota for the current organization, you must submit the
@@ -10146,22 +10899,42 @@ You must set the quotas for a parent organization first before configuring quota
 3. In the left-side navigation pane, select **Quotas** > **Quotas**.
 4. Click the **Product Resources** tab.
 5. Above the organization hierarchy on the left, select a resource pool.
-The resource pool option appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool option appears only in multi-cloud scenarios.
+
 6. Above the product list on the right, set the region, available zone, and the option to only
-view cloud services that trigger alerts. If you select **All Zones**, the system applies quota management at the region level. If you select a specific available zone, the system applies quota management at the available zone level and displays only the products in that zone. Select **Only View Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+view cloud services that trigger alerts.
+
+> **Note:** If you select **All Zones**, the system applies quota management at the region level. If you select a specific available zone, the system applies quota management at the available zone level and displays only the products in that zone.
+> Select **Only View Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+
 7. In the organization hierarchy on the left, click the target organization or resource set.
 8. Set quotas in batches.
 To set quotas for a subordinate organization or resource set, click **Configure Quotas**. To set quotas for the current organization, click **Apply for Quotas in Batches**.
 9. In the **Configure Quotas**/**Apply for Quotas in Batches** panel, click **Add Service**.
 0. In the cloud service selector, select the cloud services that you want to add.
-After you add a cloud service, click next to the cloud service to switch to another cloud service. After you add a cloud service, click next to the cloud service to remove the added cloud service.
+
+> **Note:** After you add a cloud service, click
+> next to the cloud service to switch to
+> another cloud service.
+> After you add a cloud service, click
+> next to the cloud service to remove the
+> added cloud service.
+
 1. In the **Set Total Quota** column, enter a quota value to set the quota for each added cloud
 service.
 **Set Total Quota**: If left empty, the system does not set this item, which means
 the quota is unlimited.
 **Existing Quota**: Displays the current quota settings.
 **Quota Change**: Displays the specific adjustment between the new total quota
-and the original quota. Click before a resource item to expand its sub-resource items. Use a quota template to set quotas quickly. In the **Quota Template** drop-down list, select a quota template. The system clears existing configurations, calculates values based on the template rules, and fills in the new configurations If a resource item is not set in the quota template, the system retains the existing configuration for that item. Click **Restore** next to **Quota Template** to revert to the configuration before applying the quota template.
+and the original quota.
+
+> Click
+> before a resource item to expand its sub-resource items.
+> Use a quota template to set quotas quickly.
+> In the **Quota Template** drop-down list, select a quota template. The system clears existing configurations, calculates values based on the template rules, and fills in the new configurations If a resource item is not set in the quota template, the system retains the existing configuration for that item.
+> Click **Restore** next to **Quota Template** to revert to the configuration before applying the quota template.
+
 2. Click **OK**.
 3. In the **Do you want to save the content?** dialog box, click **OK**.
 4. (Optional) When applying for quotas for the current organization, you must also submit the
@@ -10191,9 +10964,15 @@ Operations administrators and resource auditors can view the quotas of all organ
 3. In the left-side navigation pane, select **Quotas** > **Quotas**.
 4. Click the **Product Resources** tab.
 5. Above the organization hierarchy on the left, select a resource pool.
-The resource pool option appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool option appears only in multi-cloud scenarios.
+
 6. Above the products on the right, set the region, availability zone, and the option to only
-view cloud services that trigger alerts. When you select **All Zones**, the system applies quota management at the region level. When you select a specific availability zone, the system applies quota management at the availability zone level and displays only the products in that zone. Select **Only View Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+view cloud services that trigger alerts.
+
+> **Note:** When you select **All Zones**, the system applies quota management at the region level. When you select a specific availability zone, the system applies quota management at the availability zone level and displays only the products in that zone.
+> Select **Only View Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+
 7. In the organization hierarchy on the left, click the target organization or resource set.
 8. Click the target product, such as Elastic Compute Service, to open the quota details panel
 and view the quota details of the cloud service for the organization or resource set.
@@ -10214,15 +10993,22 @@ Operations administrators can clear quotas for all organizations and resource se
 3. In the left-side navigation pane, select **Quotas** > **Quotas**.
 4. Click the **Product Resources** tab.
 5. Above the organization hierarchy on the left, select a resource pool.
-The resource pool option appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool option appears only in multi-cloud scenarios.
+
 6. Above the product list on the right, set the region, availability zone, and the option to view
-only cloud services that have triggered alerts. If you select **All Zones**, the system applies quota management at the region level. If you select a specific availability zone, the system applies quota management at the availability zone level and displays only the products in that availability zone. Select **View Only Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+only cloud services that have triggered alerts.
+
+> **Note:** If you select **All Zones**, the system applies quota management at the region level. If you select a specific availability zone, the system applies quota management at the availability zone level and displays only the products in that availability zone.
+> Select **View Only Cloud Services That Trigger Alerts** to quickly filter cloud services that have triggered alerts.
+
 7. In the organization hierarchy on the left, click the target organization or resource set.
 8. Click the target service, such as Elastic Compute Service (ECS), to open the quota details
 panel and view the quota details of the cloud service for the organization or resource set.
 9. In the quota details panel, click **Clear Quota** at the bottom.
-When clearing quotas for a specific availability zone, you can use the **Synchronously**
-**Clear Quotas in Other Zones** switch to control quotas in other availability zones.
+
+> **Note:** When clearing quotas for a specific availability zone, you can use the **Synchronously** **Clear Quotas in Other Zones** switch to control quotas in other availability zones.
+
 0. In the **Reset Quota** dialog box, click **OK**.
 
 ###### 7.1.3.3.1.9 Create a quota alert rule
@@ -10241,9 +11027,15 @@ An operations administrator can create alert rules for quotas of all organizatio
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. Click the **Product Resources** tab.
 5. Above the organization structure on the left side of the page, select a resource pool.
-The resource pool drop-down list appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool drop-down list appears only in multi-cloud scenarios.
+
 6. In the upper-right corner of the Quotas page, configure the region and zone, and select
-Only View Cloud Services That Trigger Alerts. If you select All Zones, you can configure resource quotas at the region level. If you select a zone, you can configure resource quotas for the zone, and the console displays only cloud services in the current zone. If you select **Only View Cloud Services That Trigger Alerts** , only the cloud services that trigger alerts are displayed.
+Only View Cloud Services That Trigger Alerts.
+
+> **Note:** If you select All Zones, you can configure resource quotas at the region level. If you select a zone, you can configure resource quotas for the zone, and the console displays only cloud services in the current zone.
+> If you select **Only View Cloud Services That Trigger Alerts** , only the cloud services that trigger alerts are displayed.
+
 7. In the organization structure on the left side, click the target organization or resource set.
 8. Click the target service (ECS in this example) to go to the quota details panel. View the
 quota details of the cloud service for the organization or resource set.
@@ -10283,9 +11075,15 @@ An operations administrator can configure quota templates in the root organizati
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
 4. Click the **Service Resources** tab.
 5. Above the organization structure on the left side of the page, select a resource pool.
-The resource pool drop-down list appears only in multi-cloud scenarios.
+
+> **Note:** The resource pool drop-down list appears only in multi-cloud scenarios.
+
 6. In the upper-right corner of the Quotas page, configure the region and zone, and select
-Only View Cloud Services That Trigger Alerts. If you select All Zones, you can configure resource quotas at the region level. If you select a zone, you can configure resource quotas for the zone, and the console displays only cloud services in the current zone. If you select **Only View Cloud Services That Trigger Alerts** , only the cloud services that trigger alerts are displayed.
+Only View Cloud Services That Trigger Alerts.
+
+> **Note:** If you select All Zones, you can configure resource quotas at the region level. If you select a zone, you can configure resource quotas for the zone, and the console displays only cloud services in the current zone.
+> If you select **Only View Cloud Services That Trigger Alerts** , only the cloud services that trigger alerts are displayed.
+
 7. In the left-side organization structure, click the root organization or a level-1 organization.
 8. In the upper-right corner of the **Quotas** page, click **Quota Template Settings**.
 9. In the **Quota Template Settings** panel, click **Create Template**.
@@ -10328,9 +11126,17 @@ You must set the quota of a parent organization before setting the quota of a su
 4. Click the **AI Service Token** tab.
 5. In the upper part of the page, select a region and a zone.
 6. Set the organization or resource set quota.
-i. In the organization structure on the left side, select an organization or a resource set. When an operations administrator selects the root organization, the system displays the quota information of all organizations. ii. Click **Set Quota** or **Modify Quota**. iii. In the **Total Quota** field, enter the quota value. iv. Click **Save**.
+i. In the organization structure on the left side, select an organization or a resource set.
+
+> **Note:** When an operations administrator selects the root organization, the system displays the quota information of all organizations.
+
+ii. Click **Set Quota** or **Modify Quota**. iii. In the **Total Quota** field, enter the quota value. iv. Click **Save**.
 7. Set service quotas and API key quotas.
-i. In the **Quota of Each Product** section, click a service card. ii. Click **Set Quota** or **Modify Quota**. iii. In the row that contains the quota below the product, set the product quota. iv. In the API Key Quota section, set quotas at the API key level. You can set API key quotas only when you select a resource set to configure quotas. v. Click **Save**.
+i. In the **Quota of Each Product** section, click a service card. ii. Click **Set Quota** or **Modify Quota**. iii. In the row that contains the quota below the product, set the product quota. iv. In the API Key Quota section, set quotas at the API key level.
+
+> **Note:** You can set API key quotas only when you select a resource set to configure quotas.
+
+v. Click **Save**.
 
 ##### 7.1.3.4 Quota alert management
 
@@ -10380,7 +11186,10 @@ Preset quota alert rules cannot be modified or deleted. Only one quota alert rul
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
 4. Optional. Click **Advanced Filter**, configure filter conditions such as **Alert Rule Name**,
 **Cloud Platform**, **Organization/Resource Set**, **Region**, and **Cloud Service**, and then
-click **Search**. The Cloud Platform parameter is displayed only in multi-cloud environments.
+click **Search**.
+
+> **Note:** The Cloud Platform parameter is displayed only in multi-cloud environments.
+
 5. Perform the operations that are described in the following table to manage quota alert
 rules.
 
@@ -10407,11 +11216,16 @@ A quota alert rule is created. For more information, see Quota alert management.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alert History**.
 4. Optional. Click **Advanced Filter**. Configure the **Alert Triggered At**, **Cloud Platform**,
 **Organization/Resource Set**, **Region**, **Cloud Service**, and **Alert Rule Name**
-parameters, and then click **Search** to filter quota alert rules. The Cloud Platform parameter is displayed only in multi-cloud environments.
+parameters, and then click **Search** to filter quota alert rules.
+
+> **Note:** The Cloud Platform parameter is displayed only in multi-cloud environments.
+
 5. In the alert list, view the information about alerts in the following columns: **Alert Rule**
 **Name**, **Organization/Resource Set**, **Region**, **Cloud Service**, **Specifications**, **Alert**
 **Type**, **Alert Threshold**, **Current Value**, and **Alert Triggered At**.
-The quota alert history is updated every two hours.
+
+> **Note:** The quota alert history is updated every two hours.
+
 6. Find the quota alert rule that you want to manage and click **Change Quota** in the **Actions**
 column.
 7. In the **Change Quota** dialog box, modify the allocated resource quota.
@@ -10425,15 +11239,17 @@ You can configure the specification quotas for an instance to restrict the speci
 
 You are an operations administrator.
 
-**Important**
+> **Important:** You can configure network specification quotas only for level-1 organizations.
+> The security quota threshold varies based on the specification and cloud service. The specified specification quota cannot be greater than the security quota threshold.
 
-You can configure network specification quotas only for level-1 organizations. The security quota threshold varies based on the specification and cloud service. The specified specification quota cannot be greater than the security quota threshold.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Network Specification Quota**.
 4. Optional. Configure the **Cloud Platform**, **Organization/Resource Set**, **Region**, **Cloud**
 **Service Name**, and **Specification Name** to filter specifications.
-The Cloud Platform parameter is displayed only in multi-cloud scenarios and supports only the secondary cloud of Enterprise Edition.
+
+> **Note:** The Cloud Platform parameter is displayed only in multi-cloud scenarios and supports only the secondary cloud of Enterprise Edition.
+
 5. Find the specification that you want to manage and click **Modify** in the **Actions** column.
 6. In the **Modify Specification Quota** dialog box, modify the specification quota.
 7. Click **OK**.
@@ -10459,20 +11275,36 @@ You can create at most 20 tags at a time and add the tags to resources. You can 
 3. In the left-side navigation pane, choose **Tags** > **Tag**.
 4. On the **Tag** page, click **Create or Select Tags and Add Them to Resources**.
 5. In the **Create or Select Tags and Add Them to Resources** dialog box, configure
-parameters in the following steps as prompted. i. **Create or Select Tags** Select an existing tag key or create a tag key, enter a tag value in the **Tag Value** field, and then click **Next**. In the Create or Select Tags step, you can create multiple tags at a time. You can click **Add** to create or select more tags. You can click the icon that corresponds to a tag to delete or remove the tag. ii. **Select a Resource** Select the organization and resource set to which the resources belong, region, and cloud services, and click **Next**. iii. **Confirmation Information** Confirm the information about the tags and resources and click **Confirm**.
+parameters in the following steps as prompted. i. **Create or Select Tags** Select an existing tag key or create a tag key, enter a tag value in the **Tag Value** field, and then click **Next**.
+
+> **Note:** In the Create or Select Tags step, you can create multiple tags at a time.
+> You can click **Add** to create or select more tags.
+> You can click the
+> icon that corresponds to a tag to delete or remove the tag.
+
+ii. **Select a Resource** Select the organization and resource set to which the resources belong, region, and cloud services, and click **Next**. iii. **Confirmation Information** Confirm the information about the tags and resources and click **Confirm**.
 
 **View resources to which tags are added**
 
 1. In the left-side **Tag Key** pane of the **Tag** page, find the tag key that you want to view.
 You can click the icon next to Tag Key to specify filter conditions in the **Filter**
 **Conditions** dialog box. The filter conditions include the organization and resource set to
-which resources belong, the region in which resources reside, and keyword. The number next to Tag Key indicates the total number of tag keys. In the tag key list, the number next to each tag key indicates the number of tag values that correspond to the tag key.
+which resources belong, the region in which resources reside, and keyword.
+
+> **Note:** The number next to Tag Key indicates the total number of tag keys.
+> In the tag key list, the number next to each tag key indicates the number of tag values that correspond to the tag key.
+
 2. Click the tag key that you want to view. In the right-side Tag Key section, view the tag
-values that correspond to the tag key and the cloud services to which the tag is added. In the right-side Tag Key section, you can click **Add Tag Value** to add one or more tag values to the tag key. In the tag value list, you can view the number of cloud services to which each tag is added.
+values that correspond to the tag key and the cloud services to which the tag is added.
+
+> **Note:** In the right-side Tag Key section, you can click **Add Tag Value** to add one or more tag values to the tag key.
+> In the tag value list, you can view the number of cloud services to which each tag is added.
+
 3. View the resources to which a tag is added.
-i. Find the tag value that you want to view and click the icon next to the tag value to view the cloud services to which the tag is added. ii. Find the cloud service resource type that you want to view and click the number next to it to view the resources to which the tag is added. Alternatively, click **View Resources** in the **Actions** column of the tag value. In the panel that appears, select a cloud service to view the resources to which the tag is added. You can select multiple resource instances and click **Unbind Current Tags** or **Bind**
-**Multiple Tags** below the resource instance list to unbind the current tags from or
-bind other tags to the resource instances at a time.
+i. Find the tag value that you want to view and click the icon next to the tag value to view the cloud services to which the tag is added. ii. Find the cloud service resource type that you want to view and click the number next to it to view the resources to which the tag is added. Alternatively, click **View Resources** in the **Actions** column of the tag value. In the panel that appears, select a cloud service to view the resources to which the tag is added.
+
+> **Note:** You can select multiple resource instances and click **Unbind Current Tags** or **Bind** **Multiple Tags** below the resource instance list to unbind the current tags from or bind other tags to the resource instances at a time.
+
 4. Optional. In the tag value list, find the tag value that you want to manage and click **Bind**
 **Resources** in the **Actions** column. In the panel that appears, select the resources to which
 you want to add the tag and click **Submit**.
@@ -10553,7 +11385,10 @@ The tag policy is in the **Paused** state. You are an operations administrator o
 4. On the Policy Library page, find the tag policy that you want to enable and click **Enable** in
 the **Actions** column.
 5. In the message that appears, click **OK**.
-After you enable a tag policy, the tag policy applies to resources within the specified scope. The tag configured in the tag policy is automatically added to new resources after they are created. The tag configured in the tag policy is automatically added to existing resources.
+
+> **Note:** After you enable a tag policy, the tag policy applies to resources within the specified scope.
+> The tag configured in the tag policy is automatically added to new resources after they are created.
+> The tag configured in the tag policy is automatically added to existing resources.
 
 ###### 7.1.4.2.5 Disable a tag policy
 
@@ -10606,18 +11441,21 @@ is 1.
 **Relevant Policies**: On the **Relevant Policies** tab, view the information about the tag
 policies that are associated with the effective policy in the following columns: **Policy ID**,
 **Policy Name**, **Binding Order**, and **Bound At**.
-You can find the tag policy that you want to view and click its ID or **Details** in the **Actions** column to go to the details page of the tag policy. You can find the tag policy that you want to modify and click **Modify** in the
-**Actions** column to go to the **Modify Tag Policy** page. On the Modify Tag
-Policy page, you can update the tag policy.
+
+> **Note:** You can find the tag policy that you want to view and click its ID or **Details** in the **Actions** column to go to the details page of the tag policy.
+> You can find the tag policy that you want to modify and click **Modify** in the **Actions** column to go to the **Modify Tag Policy** page. On the Modify Tag Policy page, you can update the tag policy.
+
 **Detection Results**: On the **Detection Results** tab, view the detection results and fix
 tags of non-compliant resources. You can view the detection results in the following sections: **Detected Resources**, **Compliant Resources**, **Non-compliant Resources**,
 **Inapplicable Resources**, and **Non-compliant Resources/Percentage**.
-**Compliant**: The specified tag keys are added to the resources and resource
-sets to which the resources belong.
+
+> **Note:** **Compliant**: The specified tag keys are added to the resources and resource sets to which the resources belong.
+
 **Non-compliant**: The specified tag keys are not added to the resources. Tags
 of non-compliant resources can be manually fixed. For more information, see Manage effective policies.
-**Inapplicable**: The specified tag keys are not added to the resource sets to
-which the resources belong. For example, the specified tags are removed from a resource set.
+
+> **Inapplicable**: The specified tag keys are not added to the resource sets to which the resources belong. For example, the specified tags are removed from a resource set.
+
 **Fix Records**: On the **Fix Records** tab, view the details of the automatic fix records.
 
 ###### 7.1.4.3.2 Manage effective policies
@@ -10969,9 +11807,10 @@ The operating user defaults to the Operations Administrator.
 select a cloud service resource.
 5. Click a resource card to enter its metering configuration details.
 6. Under **Metering Table**, on the **Published** or **Draft** tab, click **View** in the **Actions** column.
-The Published tab displays published metering tables. Preset metering tables are
-**Enabled** by default and appear under the **Published** tab.
-The Draft tab displays draft metering tables.
+
+> **Note:** The Published tab displays published metering tables. Preset metering tables are **Enabled** by default and appear under the **Published** tab.
+> The Draft tab displays draft metering tables.
+
 7. In the **Meter Details** panel, view the detailed information of this metering table.
 
 ###### 7.1.5.1.4 Enable a metering table
@@ -11010,9 +11849,8 @@ Only custom-type metering tables can be disabled.
 
 **Usage notes**
 
-**Important**
+> **Important:** After a metering table is disabled, if it is later enabled again, some metering data may be missing and cannot be replenished.
 
-After a metering table is disabled, if it is later enabled again, some metering data may be missing and cannot be replenished.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11145,10 +11983,13 @@ the **Resources** drop-down list.
 5. Click the card of the resource to go to the metering configuration details page.
 6. Click the **Metering Data Push** tab.
 7. View the details of metering data push in each metering cycle.
-The total number of abnormal metering cycles to be processed is displayed above the list. You can configure the **Status** and **Metering Cycle** parameters above the list to find metering data push records. For records in the **Uncompleted** state, you can click **View Details**,
-**Retry**, or **Cancel** in the Actions column.
-For records in the **Processing** state, no operation is supported. For records in the **Completed** or **Canceled** state, you can click **View**
-**Details** in the Actions column.
+
+> **Note:** The total number of abnormal metering cycles to be processed is displayed above the list.
+> You can configure the **Status** and **Metering Cycle** parameters above the list to find metering data push records.
+> For records in the **Uncompleted** state, you can click **View Details**, **Retry**, or **Cancel** in the Actions column.
+> For records in the **Processing** state, no operation is supported.
+> For records in the **Completed** or **Canceled** state, you can click **View** **Details** in the Actions column.
+
 8. Click **View Details** in the **Actions** column of a metering cycle to view the metering data
 push details.
 
@@ -11379,7 +12220,10 @@ second.
 5. On the **Hourly Details** or **Second-level Details** tab, click Advanced Filter, configure filter
 conditions such as **Cloud Platform**, **Organization**, **Resource Set**, **Resources**, **Metering**
 **Table**, **Region**, **Time: (UTC±HH:MM)**, and **Instance ID**, and then click **Search**.
-The Cloud Platform parameter is displayed in filter conditions and the metering details list only in multi-cloud environments. Based on the cloud platform that you select, the metering details list displays the resource usage statistics of cloud services in Apsara Stack Multi-Enterprise Cloud Edition and the Alibaba Cloud public cloud. The Metering Table parameter is displayed only on the Hourly Details tab.
+
+> **Note:** The Cloud Platform parameter is displayed in filter conditions and the metering details list only in multi-cloud environments. Based on the cloud platform that you select, the metering details list displays the resource usage statistics of cloud services in Apsara Stack Multi-Enterprise Cloud Edition and the Alibaba Cloud public cloud.
+> The Metering Table parameter is displayed only on the Hourly Details tab.
+
 6. View the details of resource usage statistics in the list.
 
 **Hourly Details**
@@ -11389,7 +12233,8 @@ The Cloud Platform parameter is displayed in filter conditions and the metering 
 7. Click the
 icon in the upper-right corner to export the resource usage statistics as an
 **.xlsx** file to your computer.
-You can view or export up to 1,000 entries of resource usage statistics in the console. If you want to view or export more resource usage statistics, you can call the MeteringQuery operation.
+
+> **Note:** You can view or export up to 1,000 entries of resource usage statistics in the console. If you want to view or export more resource usage statistics, you can call the MeteringQuery operation.
 
 #### 7.1.6 Product management
 
@@ -11434,9 +12279,14 @@ You can edit only the names of custom level 1 and level 2 categories. You cannot
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
 4. On the **Product Management** page, move the pointer over the product category name
-and click . Enter a category name in the search box above the product category structure to quickly find the category.
+and click .
+
+> **Note:** Enter a category name in the search box above the product category structure to quickly find the category.
+
 5. In the **Edit Category** dialog box, update the product category name.
-When you update the name of a level 1 or level 2 category, the parent category information appears and you cannot edit it.
+
+> **Note:** When you update the name of a level 1 or level 2 category, the parent category information appears and you cannot edit it.
+
 6. Click **Confirm**.
 
 ###### 7.1.6.1.3 Delete a product category
@@ -11454,7 +12304,11 @@ You cannot delete preset product categories. Top-level categories represent clou
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
 4. On the **Product Management** page, hover over the name of the custom product category
-and click . Enter a category name in the search box above the category tree to quickly locate the category. Before you delete a product category, delete its child categories first, then delete the parent category.
+and click .
+
+> **Note:** Enter a category name in the search box above the category tree to quickly locate the category.
+> Before you delete a product category, delete its child categories first, then delete the parent category.
+
 5. Click OK.
 
 ###### 7.1.6.1.4 Add a product
@@ -11499,9 +12353,13 @@ You cannot edit preset services.
 3. In the left-side navigation pane, select **Service Management** > **Service Management**.
 4. On the **Service Management** page, click a service category on the left.
 5. Under the selected category, click **Edit** in the **Actions** column for the target service.
-To quickly find a service, enter its name in the search box above the service list.
+
+> **Note:** To quickly find a service, enter its name in the search box above the service list.
+
 6. In the **Edit Product** dialog box, update the service configuration.
-You cannot modify the service provider or service code when updating the configuration.
+
+> **Note:** You cannot modify the service provider or service code when updating the configuration.
+
 7. Click **OK**.
 
 ###### 7.1.6.1.6 Publish a service
@@ -11597,7 +12455,9 @@ product.
 6. On the **Create Resource** page, follow the instructions to complete **Basic configuration**,
 **Attribute configuration**, **Specification configuration**, **Attribute constraints**,
 **Lifecycle configuration**, **Quota management**, and **Metering configuration** in
-sequence. Resource types that do not support resource lifecycle management only support basic configuration and metering configuration.
+sequence.
+
+> **Note:** Resource types that do not support resource lifecycle management only support basic configuration and metering configuration.
 
 **Basic configuration**
 
@@ -11686,8 +12546,9 @@ On the **Attribute Constraints** page, define dependencies between attribute fie
 1. On the **Attribute Constraints** page, click **Add Constraints**.
 2. In the **Add Constraints** panel, set **Constraint Name** and select an option for **Constraint**
 **Category**.
-**Constraint Category** supports **New Purchase** and **Configuration Change**. You can
-create only one constraint for each category.
+
+> **Note:** **Constraint Category** supports **New Purchase** and **Configuration Change**. You can create only one constraint for each category.
+
 3. Click **Confirm**.
 4. After you add a constraint, click **Add Condition** in the **Property Configuration** and
 **Event Configuration** sections of the constraint.
@@ -11768,7 +12629,13 @@ The quota management operations and horizontal capabilities for third-party prod
 | Metering fields | If the preset metering fields do not meet your requirements, you can clickA dd metering field to define custom metering fields. After you add metering fields, you can edit or delete them. |
 
 3. Click **OK**.
-After you configure the metering table: Click **View** in the Operation column to view the metering table details. Click **Configure** in the Operation column to update the metering fields. Click **Enable** in the Operation column to enable the metering table. To perform billing, go to the Rule Configuration Template page to create a billing rule template. You can then create billing rules.
+
+> **Note:** After you configure the metering table:
+> Click **View** in the Operation column to view the metering table details.
+> Click **Configure** in the Operation column to update the metering fields.
+> Click **Enable** in the Operation column to enable the metering table.
+
+To perform billing, go to the Rule Configuration Template page to create a billing rule template. You can then create billing rules.
 4. After you complete the metering configuration, click **Return to List**.
 
 ###### 7.1.6.1.11 Modify a resource type
@@ -11825,7 +12692,7 @@ The resource type is in **Published** status. The default user for this operatio
 
 **Important**
 
-A published product must have at least one published resource type. To unpublish the last resource type, unpublish the product directly.
+> A published product must have at least one published resource type. To unpublish the last resource type, unpublish the product directly.
 
 | Operatio n | Description |
 |---|---|
@@ -11903,7 +12770,9 @@ The integration solution includes Service Provider Interface (SPI) integration f
 
 **Interface specifications**
 
-Instance management is a core function of cloud service lifecycle management. It covers operations such as creating, querying, modifying, and deleting resources like ECS and RDS instances. To support unified management of instances by the Alibaba Cloud Apsara Unimanager Management Console, external clouds must provide standardized RESTful API interfaces to enable full lifecycle control over instances. The following table lists the specific operation types, request URLs, methods, and parameter descriptions. All interfaces require POST requests over HTTPS with Content-Type set to application/json; charset=utf-8.
+Instance management is a core function of cloud service lifecycle management. It covers operations such as creating, querying, modifying, and deleting resources like ECS and RDS instances. To support unified management of instances by the Alibaba Cloud Apsara Unimanager Management Console, external clouds must provide standardized RESTful API interfaces to enable full lifecycle control over instances. The following table lists the specific operation types, request URLs, methods, and parameter descriptions.
+
+> **Note:** All interfaces require POST requests over HTTPS with Content-Type set to application/json; charset=utf-8.
 
 **CreateInstance**
 
@@ -12565,7 +13434,10 @@ The built-in system service providers cannot be modified.
 3. In the left-side navigation pane, choose **Product Management** > **Service Provider**
 **Management**.
 4. On the **Service Provider Management** page, find the service provider that you want to
-modify and click **Edit** in the **Operation** column. You can specify the Service Provider Display Name and Source parameters above the service provider list to quickly find a service provider.
+modify and click **Edit** in the **Operation** column.
+
+> **Note:** You can specify the Service Provider Display Name and Source parameters above the service provider list to quickly find a service provider.
+
 5. In the **Edit Service Provider** dialog box, configure the parameters. The following table
 describes the parameters.
 
@@ -12594,7 +13466,10 @@ The built-in system service providers cannot be removed.
 3. In the left-side navigation pane, choose **Product Management** > **Service Provider**
 **Management**.
 4. On the **Service Provider Management** page, find the service provider that you want to
-remove and click **Delete** in the **Operation** column. You can specify the Service Provider Display Name and Source parameters above the service provider list to quickly find a service provider.
+remove and click **Delete** in the **Operation** column.
+
+> **Note:** You can specify the Service Provider Display Name and Source parameters above the service provider list to quickly find a service provider.
+
 5. In the message that appears, click **OK**.
 
 #### 7.1.7 Examples
@@ -12617,12 +13492,11 @@ resource set whose resources you want to manage.
 6. Click the **Elastic Compute Service** card to view the quota details.
 7. In the **Quota Details** panel, view the resource items, quotas, amount and percentage of
 allocated quotas, and amount and percentage of activated resources.
-**Quota**: If you do not specify a quota for a resource item, no quota is configured
-for the resource item. The system does not limit the usage of the corresponding resources.
-**Allocated Quota (Percentage/Allocated Amount)**: displays the quotas that
-are allocated to each resource item in the specified organization and its suborganizations. You can view the amount and percentage of allocated quotas.
-**Activated Resources (Percentage/Activated Amount)**: displays the
-resources that are activated in the specified organization and its suborganizations. You can view the amount and percentage of the activated resources.
+
+> **Note:** **Quota**: If you do not specify a quota for a resource item, no quota is configured for the resource item. The system does not limit the usage of the corresponding resources.
+> **Allocated Quota (Percentage/Allocated Amount)**: displays the quotas that are allocated to each resource item in the specified organization and its sub- organizations. You can view the amount and percentage of allocated quotas.
+> **Activated Resources (Percentage/Activated Amount)**: displays the resources that are activated in the specified organization and its sub- organizations. You can view the amount and percentage of the activated resources.
+
 8. In the lower part of the **Quota Details** panel, click **Create Quotas** or **Modify Quota**.
 9. In the **Quota** column of the **Memory Quota(GB)** field, enter the quota that you want to
 set. Example: 500.
@@ -12661,7 +13535,10 @@ You are an operations administrator.
 **Process Description**: Enter a description for the process. Example: The process is used
 for the baseservicetest organization.
 **Applicable Personnel**: Select **All Organizations** or **Select Organization**. Example:
-Select **Select Organization** and select baseservicetest from the **Select Organization** drop-down list. If you turn off **Bind Sub-organization**, the process cannot be associated with the sub-organizations of the selected organization. If you need to associate suborganizations with the process, turn on **Bind Sub-organization**.
+Select **Select Organization** and select baseservicetest from the **Select Organization** drop-down list.
+
+> **Note:** If you turn off **Bind Sub-organization**, the process cannot be associated with the sub-organizations of the selected organization. If you need to associate sub- organizations with the process, turn on **Bind Sub-organization**.
+
 **Select Initiator**: Select **All Users** or **Specified Role**. Example: Select **All Users**.
 6. In the **Process Configuration** step, configure the process nodes, including the start,
 approver, and end information. After the configuration is complete, click **Submit**.
@@ -12680,7 +13557,10 @@ Select or clear **Allow the approver to specify additional signatories** . Only 
 **Add CC Recipient**: You can select CC recipients from the **Specific Personnel** drop-
 down list. Example: Leave the **Specific Personnel** parameter empty.
 **End**: Click the **End** card. In the **End Node Settings** panel, you can specify the users who
-are notified of the end of the process. After the process ends, the approval results are automatically sent to the specified users. Example: Leave the **Specific Personnel** parameter empty. If you need to notify other users, select the users from the **Specific Personnel** dropdown list. The selected users must be visible to the process creator.
+are notified of the end of the process. After the process ends, the approval results are automatically sent to the specified users. Example: Leave the **Specific Personnel** parameter empty.
+
+> **Note:** If you need to notify other users, select the users from the **Specific Personnel** drop- down list. The selected users must be visible to the process creator.
+
 7. After the process is created, view the process in the process list.
 8. Click **Publish** in the **Operations** column of the process. After the process is published, the
 status of the process changes to **Published**. You can associate a process with a business scenario only when the process is in the **Published** state.
@@ -12730,7 +13610,9 @@ Create and publish a process.
 **Scenario**: For example, select **Cloud Service Operations**.
 **Cloud Service Operations**: For example, find and click **VPC** in the left-side pane. In the
 **Instance** section, select **Modify VPC**.
-If an operation is dimmed and cannot be selected, it means that the operation is associated with a process configured by the parent organization.
+
+> **Note:** If an operation is dimmed and cannot be selected, it means that the operation is associated with a process configured by the parent organization.
+
 6. After you submit the process association, the process association is displayed in the
 process list.
 
@@ -12758,7 +13640,9 @@ Create and publish a process.
 **Service Catalog**: For example, select Elastic Compute Service (ECS) and ECS instances.
 Find the provisioned basic services of ECS instances and select **Create** in the
 **Operations** column.
-If an operation is dimmed and cannot be selected, it means that the operation is associated with a process configured by the parent organization.
+
+> **Note:** If an operation is dimmed and cannot be selected, it means that the operation is associated with a process configured by the parent organization.
+
 6. After you submit the process association, the process association is displayed in the
 process list.
 
@@ -12791,11 +13675,16 @@ guide of VPC.
 **View services in the shopping cart**
 
 1. In the lower-right corner of the console, click the
-icon to show the floating menu and click the icon to go to the Shopping Cart page. After you add a service to the shopping cart on the service configuration page, you are automatically navigated to the Shopping Cart page. The number in the upper-right corner of the Shopping Cart icon indicates the number of services added to the shopping cart.
+icon to show the floating menu and click the icon to go to the Shopping Cart page.
+
+> **Note:** After you add a service to the shopping cart on the service configuration page, you are automatically navigated to the Shopping Cart page.
+> The number in the upper-right corner of the Shopping Cart icon indicates the number of services added to the shopping cart.
+
 2. On the Shopping Cart page, view the information about the cloud services that are added to
 the shopping cart in the following columns: **Service**, **Specifications**, **Billing Method**,
 **Quantity**, **Duration**, and **Fee**.
-Fees are displayed only after you enable price inquiry.
+
+> **Note:** Fees are displayed only after you enable price inquiry.
 
 **Remove one or more services from the shopping cart**
 
@@ -12825,10 +13714,15 @@ guide of the cloud service.
 The Configure, Price, Quote (CPQ) page displays the configuration information about services in a list by group. You can create multiple lists to manage resources in CPQ by group. You can also select and submit resources across groups. This topic describes how to create a list in CPQ.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, click **Create List**.
 4. In the **Create List** dialog box, enter a name for the list that you want to create.
-The list name must be unique under each Apsara Stack tenant account.
+
+> **Note:** The list name must be unique under each Apsara Stack tenant account.
+
 5. Click **OK**.
 
 ##### 7.2.1.2 Save a list
@@ -12840,10 +13734,16 @@ If you use the Save List feature, you save the default list as a custom list. Th
 Only the default list can be saved.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, click **Save List** on the right side of **Default List**.
 4. In the **Save List** dialog box, configure the **List Name** parameter.
-If the default list contains a service, the service is also saved to the custom list. After you save the default list as a custom list, the contents of the default list are cleared. The list name must be unique under each Apsara Stack tenant account.
+
+> **Note:** If the default list contains a service, the service is also saved to the custom list. After you save the default list as a custom list, the contents of the default list are cleared.
+> The list name must be unique under each Apsara Stack tenant account.
+
 5. Click **OK**.
 
 ##### 7.2.1.3 Export a list
@@ -12851,7 +13751,10 @@ If the default list contains a service, the service is also saved to the custom 
 If you use the Export List feature, you download the service information in the list to your computer for storage. This topic describes how to export a list from Configure, Price, Quote (CPQ).
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, click **Export List** above the list to download the configuration list file in
 the **.csv** format to your computer.
 
@@ -12864,7 +13767,10 @@ You can delete lists that are no longer needed from Configure, Price, Quote (CPQ
 You cannot delete the default list. You can delete only custom lists.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, click **Delete List** above the list.
 4. Click **OK**.
 
@@ -12873,24 +13779,35 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 You can add services to a list in Configure, Price, Quote (CPQ) by group. This topic describes how to add a service to CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, select a list and click **Add Service** above the list to go to the **Service**
 **Catalog** > **Activate** page.
-If the default list contains no services, you can click **Add Service** in the list section to add a service.
+
+> **Note:** If the default list contains no services, you can click **Add Service** in the list section to add a service.
+
 4. On the Activate page, find the service that you want to activate.
-You can quickly find a service by selecting a service in the Service Classification section, entering a service name in the search box, or selecting a cloud platform from the cloud platform selection box on the Activate page. The cloud platform selection box is displayed only in multi-cloud scenarios.
+
+> **Note:** You can quickly find a service by selecting a service in the Service Classification section, entering a service name in the search box, or selecting a cloud platform from the cloud platform selection box on the Activate page. The cloud platform selection box is displayed only in multi-cloud scenarios.
+
 5. Click **Activate Service** in the service card to go to the service activation page.
 6. Configure the required parameters by following the User Guide of the specific service, and
 click **Add configuration quotation**.
 7. On the **CPQ** page, view the service that you added.
-The custom fields that are added to the service are displayed in the **Description** column.
+
+> **Note:** The custom fields that are added to the service are displayed in the **Description** column.
 
 ##### 7.2.1.6 Remove a service from CPQ
 
 You can remove services from Configure, Price, Quote (CPQ). This topic describes how to remove a service from CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, find the service that you want to remove.
 4. Remove the service from the list.
 Remove a single service a. Click **Remove** in the **Actions** column of the service. b. Click **OK**. Remove multiple services at a time a. Select multiple services that you want to remove or select All in the lower part of the page, and then click **Batch Remove**. b. In the dialog box that appears, click **OK**.
@@ -12902,7 +13819,10 @@ Remove a single service a. Click **Remove** in the **Actions** column of the ser
 When any parameter of a service in Configure, Price, Quote (CPQ) needs to be updated, you can change the configurations of the service. This topic describes how to change the configurations of a service in CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, find the service whose configurations you want to change.
 4. Click **Change Specifications** in the **Actions** column of the service.
 5. On the activation page of the service, update the parameters by following the User Guide of
@@ -12914,7 +13834,10 @@ the specific service.
 The services that are to be submitted to Configure, Price, Quote (CPQ) can be submitted in groups either within a list or across lists. This topic describes how to submit a service application in CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
-icon to show the floating menu, and then click the icon to go to the CPQ page. The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+icon to show the floating menu, and then click the icon to go to the CPQ page.
+
+> **Note:** The number in brackets after CPQ indicates the number of services that have been added to CPQ.
+
 3. On the **CPQ** page, select the service that you want to submit.
 4. In the lower part of the page, click **Apply Now**.
 5. On the **Confirm Order** page, preview the order information and click **Create Now**.
@@ -12931,7 +13854,16 @@ The service activation page displays all available services and allows you to qu
 
 **Product**
 
-a. On the **Product** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. Select a resource pool from the drop-down list at the top of the page to filter services by resource pool. The resource pool drop-down list appears only in multi-cloud scenarios. c. Click **Activate Service** on the target service card to go to the resource creation page and create resources. a. On the **AI Services** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. c. Click the target service card to go to the service details page. d. On the service details page, click **Connect** in the upper-right corner to go to the product console. Then, refer to the product documentation to activate the service.
+a. On the **Product** tab, select the target category in the **Category** section. b. Find the target service on the right side.
+
+> **Note:** Enter a service name in the search box at the top of the page to quickly find the service.
+> Select a resource pool from the drop-down list at the top of the page to filter services by resource pool. The resource pool drop-down list appears only in multi-cloud scenarios.
+
+c. Click **Activate Service** on the target service card to go to the resource creation page and create resources. a. On the **AI Services** tab, select the target category in the **Category** section. b. Find the target service on the right side.
+
+> **Note:** Enter a service name in the search box at the top of the page to quickly find the service.
+
+c. Click the target service card to go to the service details page. d. On the service details page, click **Connect** in the upper-right corner to go to the product console. Then, refer to the product documentation to activate the service.
 
 ##### 7.2.2.2 Service management
 
@@ -12947,7 +13879,9 @@ The service management feature is used to manage and control specific specificat
 
 **integrate with the Service Catalog**
 
-This topic describes the services and resources that integrate with the Service Catalog in the Enterprise Edition. In multi-cloud scenarios, the products that you can integrate with the Service Catalog in the multi-Enterprise Edition include all products supported by the Service Catalog of the corresponding edition. To use a custom product, add it in Service Management and then create a new service based on the custom product.
+This topic describes the services and resources that integrate with the Service Catalog in the Enterprise Edition. In multi-cloud scenarios, the products that you can integrate with the Service Catalog in the multi-Enterprise Edition include all products supported by the Service Catalog of the corresponding edition.
+
+> **Note:** To use a custom product, add it in Service Management and then create a new service based on the custom product.
 
 **Elastic computing**
 
@@ -13069,8 +14003,9 @@ i. **Basic information**: Configure the users who can use the service and the ap
 |   | Authorized organizati on | When you set Authorization type to Specify organization, you must specify the authorized organization. |
 |   | Authorized User | When you set Authorization type to Specify user, you must specify the authorized user. Click Add user, select an organization and a username, and authorize the user. After you add the user, you can click Delete in the Actions column to remove the user from the authorized user list. |
 
-ii. **Form Field Settings**: Based on the original form of the product resource, you can add custom fields for different business scenarios. The fields that you add appear at the end of the original form by default. You do not need to configure this item when you set **Type** of the service to **Specify**
-**URL**.
+ii. **Form Field Settings**: Based on the original form of the product resource, you can add custom fields for different business scenarios. The fields that you add appear at the end of the original form by default.
+
+> **Note:** You do not need to configure this item when you set **Type** of the service to **Specify** **URL**.
 
 | Configuratio n item | Description |
 |---|---|
@@ -13078,17 +14013,20 @@ ii. **Form Field Settings**: Based on the original form of the product resource,
 | Form Design | Drag components from the left side to this area. After you drag a component to this area, you can adjust its display order, copy it, or delete it. |
 | Component configurati on | In the Form Design area, select a component and configure its settings. Click Preview the complete form at the top to preview the complete form, including the existing standard form and the custom form. |
 
-iii. **Form parameter configuration**: Configure the optional parameters and content for the service form fields. You do not need to configure this item when you set **Type** of the service to **Specify**
-**URL**.
+iii. **Form parameter configuration**: Configure the optional parameters and content for the service form fields.
+
+> **Note:** You do not need to configure this item when you set **Type** of the service to **Specify** **URL**.
 
 | Configuratio n item | Description |
 |---|---|
 | Specification pool | Add a specification pool: When you select multiple organization resource sets at the same time, switching between different organization resource sets requires multiple specification pools for differentiation. Click Add to add multiple specification pools. Move the pointer over the specification pool name and click to modify the specification pool name. You cannot modify the default specification pool. Move the pointer over the specification pool name and click to delete the specification pool. You cannot delete the default specification pool. Preview the complete form: Preview all configuration items that appear when you create the corresponding cloud service resource through the standard process. Note The service catalog at the upper level controls the specification configuration of the specification pool. If the parameter configurations at the lower level conflict with those at the upper level, the validation fails. |
 | Form field | Click Select attribute fields and select the fields that you want to specify in the expanded panel. The system generates a field specification configuration based on the selected fields. Configure the field specifications in the corresponding field area. Service management retrieves different field trees based on the selected service type. These field trees are relationship trees composed based on the dependencies among fields. All resources require detailed information about the organization and resource set when you activate, modify, or release them in the Apsara Uni-manager Management Console. Therefore, the Organization and Resource Set fields appear by default. |
 
-iv. **Pricing configuration**: Preview the pricing configuration. You do not need to configure this item when you set **Type** of the service to
-**Specify URL**.
-If billing information exists, click **View details** to go to the billing configuration details page.
+iv. **Pricing configuration**: Preview the pricing configuration.
+
+> **Note:** You do not need to configure this item when you set **Type** of the service to **Specify URL**.
+> If billing information exists, click **View details** to go to the billing configuration details page.
+
 5. Click **Submit** to create the service. The system displays the origin of all created services as
 Custom.
 
@@ -13105,14 +14043,21 @@ By default, operations administrators, resource auditors, organization administr
 4. On the **Product Service** tab, expand the advanced filter, set filter conditions such as
 **Service name**, **Service ID**, **Resource Pool**, **Product**, **Resources**, **Authorized**
 **organization**, **Authorized User**, and **Update Time**, and then click **Search**.
-Resource Pool: Select the resource pool to which the service belongs. This option appears only in multi-cloud scenarios.
+
+> **Note:** Resource Pool: Select the resource pool to which the service belongs. This option appears only in multi-cloud scenarios.
+
 5. View preset and custom services in the service list.
-Click to the right of the **Type** field in the list to filter services by **Service**,
-**Specify URL**, or **Custom Service**. **Custom services** refers to those created
-with the legacy custom configuration type and no longer supports management. To create a new custom service, go to the product management, add a custom product, and then create a service based on that custom product. Click to the right of the **Source** field in the list to filter services by **Custom** or
-**System preset**.
-Click to the right of the **Status** field in the list to filter services by **Put on**
-**shelves**, **Removed**, or **To be put on shelves** status.
+
+> **Note:** Click
+> to the right of the **Type** field in the list to filter services by **Service**,
+> **Specify URL**, or **Custom Service**. **Custom services** refers to those created with the legacy custom configuration type and no longer supports management. To create a new custom service, go to the product management, add a custom product, and then create a service based on that custom product.
+> Click
+> to the right of the **Source** field in the list to filter services by **Custom** or
+> **System preset**.
+> Click
+> to the right of the **Status** field in the list to filter services by **Put on**
+> **shelves**, **Removed**, or **To be put on shelves** status.
+
 6. Click a service ID to go to the service details page.
 
 | Item | Description |
@@ -13394,31 +14339,31 @@ Orders include orders for activation, configuration change, unsubscription, rene
 4. On the **Orders** page, click the **My Orders**, **Orders to Be Handled**, **To Be Claimed**, **All**
 **Orders**, or **Abnormal Orders** tab.
 5. Expand **Advanced Filter**, configure the filter conditions, and then click **Search**.
-**Resource Pool**: Filter orders by resource pool. This option is available only in
-multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filter orders by resource pool. This option is available only in multi-cloud scenarios.
+
 **Organization**: When you filter orders by organization, the system does not
 include order data from subordinate organizations.
-**Type**: You can select **Purchase**, **Change Configuration**, **Unsubscribe**,
-**Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
+> **Type**: You can select **Purchase**, **Change Configuration**, **Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
 **Billing Method**: You can select **Pay-as-you-go** or **Subscription**.
 **Resource Item**: Select a cloud product before you select a resource item.
 6. View the order list on the corresponding tab.
-Move the pointer over next to **Specification details** to view the detailed specification information.
-**Quantity**: the number of resources in the order
-**Duration**: For the pay-as-you-go billing method, charges are based on the actual
-usage, and this column displays a hyphen (-). For the subscription billing method, this column displays the actual duration of new purchases, renewals, or the remaining duration after configuration changes based on the order type. For the unsubscription, this column displays a hyphen (-).
-**Fees**: the fee information of the order. For the pay-as-you-go billing method, this
-column displays the unit price. For the subscription billing method, this column displays the total cost. If the resource does not support billing or the fee is zero, this column displays a hyphen (-).
-**Purchase**: the unit price or the total cost for the newly purchased
-resources
-**Renewal**: the total renewal cost for the resources
-**Change Configuration**: the unit price of the resources after the
-configuration change or the price difference for this configuration change. A positive price difference indicates an upgrade and represents the additional fee that you must pay. A negative price difference indicates a downgrade and represents the refund amount.
-**Unsubscribe**: the total refund amount upon the unsubscription
-**Switch to Pay-as-you-go**: the total refund amount when you change the
-billing method from subscription to pay-as-you-go
-**Switch to Subscription**: the additional fee that you must pay when you
-change the billing method from pay-as-you-go to subscription
+
+> **Note:** Move the pointer over
+> next to **Specification details** to view the detailed
+> specification information.
+> **Quantity**: the number of resources in the order
+> **Duration**: For the pay-as-you-go billing method, charges are based on the actual usage, and this column displays a hyphen (-). For the subscription billing method, this column displays the actual duration of new purchases, renewals, or the remaining duration after configuration changes based on the order type. For the unsubscription, this column displays a hyphen (-).
+> **Fees**: the fee information of the order. For the pay-as-you-go billing method, this column displays the unit price. For the subscription billing method, this column displays the total cost. If the resource does not support billing or the fee is zero, this column displays a hyphen (-).
+> **Purchase**: the unit price or the total cost for the newly purchased resources
+> **Renewal**: the total renewal cost for the resources
+> **Change Configuration**: the unit price of the resources after the configuration change or the price difference for this configuration change. A positive price difference indicates an upgrade and represents the additional fee that you must pay. A negative price difference indicates a downgrade and represents the refund amount.
+> **Unsubscribe**: the total refund amount upon the unsubscription
+> **Switch to Pay-as-you-go**: the total refund amount when you change the billing method from subscription to pay-as-you-go
+> **Switch to Subscription**: the additional fee that you must pay when you change the billing method from pay-as-you-go to subscription
+
 7. Click **Details** in the **Actions** column of an order, or click the order ID to go to the order
 details page.
 
@@ -13445,19 +14390,23 @@ The order type is **Purchase**.
 2. In the top menu bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Orders** > **Orders**.
 4. On the **Orders** page, click the **My Orders**, **Order to Be Handled**, or **All Orders** tab.
-**My Orders**: displays the orders that you created.
-**Orders to Be Handled**: displays the orders that need to be handled by you.
-**All Orders**: displays all orders within your permission scope.
+
+> **Note:** **My Orders**: displays the orders that you created.
+> **Orders to Be Handled**: displays the orders that need to be handled by you.
+> **All Orders**: displays all orders within your permission scope.
+
 5. Expand **Advanced Filter**, configure the filter conditions, such as **Order No.**,
 **Organization**, **Creation Time (UTC±HH:MM)**, **Created by**, **Resource Pool**, **Service**,
 **Product**, **Resource Item**, **Type**, **Instance ID**, **Instance Name**, **Billing Method**, and
 **Status**, and click **Search**.
-**Resource Pool**: Filter orders by resource pool. This condition is available only in
-multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filter orders by resource pool. This condition is available only in multi-cloud scenarios.
+
 **Organization**: If you filter orders by organization, the order data of subordinate
 organizations is excluded.
-**Type**: You can select**Purchase**,**Change Configuration**,**Unsubscribe**,
-**Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
+> **Type**: You can select**Purchase**,**Change Configuration**,**Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
 **Billing Method**: You can select **Pay-as-you-go** or **Subscription**.
 **Resource Item**: Select a cloud product before you select a resource item.
 6. On the order list, find the new purchase order that you want to reorder.
@@ -13477,19 +14426,23 @@ The order is in the **Rejected**, **Approving**, **Pending**, or **Processing Fa
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Orders** > **Orders**.
 4. On the **Orders** page, click the **My Orders** or **All Orders** tab.
-**My Orders**: Displays the orders that you created.
-**All Orders**: Displays all orders within your permission scope.
+
+> **Note:** **My Orders**: Displays the orders that you created.
+> **All Orders**: Displays all orders within your permission scope.
+
 5. Expand **Advanced Filter**, configure the **Order No.**, **Organization**, **Creation time**
 **(UTC±08:00)**, **Created by**, **Resource Pool**, **Service**, **Product**, **Resource Item**, **Type**,
 **Instance ID**, **Instance Name**, **Billing Method**, and **Status** conditions, and then click
 **Search**.
-**Resource Pool**: Filters orders by resource pool. This condition is available only
-in multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filters orders by resource pool. This condition is available only in multi-cloud scenarios.
+
 **Organization**: When you filter orders by organization, the results do not include
 order data from subordinate organizations.
-**Type**: Supports **Purchase**, **Change** **Configuration**, **Unsubscribe**, **Renew**,
-**Switch to Pay-as-you-go**, and **Switch to Subscription**.
-**Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
+> **Type**: Supports **Purchase**, **Change** **Configuration**, **Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, and **Switch to Subscription**.
+> **Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
 **Resource Item**: select a cloud product before you select a resource item.
 6. Find the target order in the order list, and cancel the order or cancel the execution of the
 resource operation as needed.
@@ -13516,12 +14469,14 @@ The order status is **Processing**.
 **(UTC±08:00)**, **Created by**, **Resource Pool**, **Service**, **Product**, **Resource Item**, **Type**,
 **Instance ID**, **Instance Name**, **Billing Method**, and **Status** conditions, and then click
 **Search**.
-**Resource Pool**: Filters orders by resource pool. This option appears only in
-multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filters orders by resource pool. This option appears only in multi-cloud scenarios.
+
 **Organization**: When you filter orders by organization, the results do not include
 order data from subordinate organizations.
-**Type**: Supports **Purchase**, **Change Configuration**, **Unsubscrbe**, **Renew**,
-**Switch to Pay-as-you-go**, and **Switch to Subscription**.
+
+> **Type**: Supports **Purchase**, **Change Configuration**, **Unsubscrbe**, **Renew**, **Switch to Pay-as-you-go**, and **Switch to Subscription**.
+
 **Billing Method**: Supports **Pay-as-you-go** and **Subscription**. Custom services
 support only the pay-as-you-go method, so the system delivers only pay-as-yougo services.
 **Resource Item**: Select a cloud service before you select a resource item.
@@ -13544,12 +14499,14 @@ You can export orders for subsequent data processing and analysis.
 configure filter conditions such as **Order No.**, **Organization**, **Creation**
 **time(UTC±HH:MM)**, **Created by**, **Cloud Platform**, **Service**, **Product**, **Resource Item**,
 **Type**, **Instance ID**, **Instance Name**, **Billing Method**, and **Status**, and then click **Search**.
-**Cloud Platform**: filters orders by cloud platform. This parameter is displayed
-only in multi-cloud environments.
+
+> **Note:** **Cloud Platform**: filters orders by cloud platform. This parameter is displayed only in multi-cloud environments.
+
 **Organization**: If you filter orders by organization, the order data of subordinate
 organizations is not included.
-**Type**: You can select **Purchase**, **Change Configuration**, **Unsubscribe**,
-**Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
+> **Type**: You can select **Purchase**, **Change Configuration**, **Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, or **Switch to Subscription**.
+
 **Billing Method**: The **Pay-as-you-go** and **Subscription** billing methods are
 supported.
 **Resource Item**: You must select a cloud service before you select a resource
@@ -13571,13 +14528,15 @@ The default operator is the operations administrator.
 **(UTC±08:00)**, **Created by**, **Resource Pool**, **Service**, **Product**, **Resource Item**, **Type**,
 **Instance ID**, **Instance Name**, **Billing Method**, and **Status** conditions, and then click
 **Search**.
-**Resource Pool**: Filters orders by resource pool. This condition appears only in
-multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filters orders by resource pool. This condition appears only in multi-cloud scenarios.
+
 **Organization**: When you filter orders by organization, the system does not
 include order data from subordinate organizations.
-**Type**: Supports **Purchase**, **Change Configuration**, **Unsubscribe**, **Renew**,
-**Switch to Pay-as-you-go**, and **Switch to Subscription**.
-**Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
+> **Type**: Supports **Purchase**, **Change Configuration**, **Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, and **Switch to Subscription**.
+> **Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
 **Resource Item**: Select a cloud service before you select a resource item.
 6. In the order list, click **Assign Order** in the **Actions** column. Alternatively, go to the **Order**
 **Details** page, click **More**, and then select **Assign Order**.
@@ -13595,13 +14554,15 @@ For manual delivery orders, users with the processing role of the corresponding 
 **(UTC±08:00)**, **Created by**, **Resource Pool**, **Service**, **Product**, **Resource Item**, **Type**,
 **Instance ID**, **Instance Name**, **Billing Method**, and **Status** conditions, and then click
 **Search**.
-**Resource Pool**: Filters orders by resource pool. This option appears only in
-multi-cloud scenarios.
+
+> **Note:** **Resource Pool**: Filters orders by resource pool. This option appears only in multi-cloud scenarios.
+
 **Organization**: When you filter orders by organization, the result does not
 include order data from subordinate organizations.
-**Type**: Supports **Purchase**, **Change** **Configuration**, **Unsubscribe**, **Renew**,
-**Switch to Pay-as-you-go**, and **Switch to Subscription**.
-**Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
+> **Type**: Supports **Purchase**, **Change** **Configuration**, **Unsubscribe**, **Renew**, **Switch to Pay-as-you-go**, and **Switch to Subscription**.
+> **Billing Method**: Supports **Pay-as-you-go** and **Subscription**.
+
 **Resource Item**: Select a cloud service before you select a resource item.
 6. In the order list, click **Claim** in the **Actions** column of the target order. Alternatively, go to
 the **Order Details** page, click **More**, and then select **Claim**.
@@ -13649,10 +14610,20 @@ Operations Administrator, Resource Auditor, Global Organization Security Adminis
 4. On the **Renewal** page, expand **Advanced Filter**, set conditions for **Instance ID**, **Instance**
 **Name**, **Organization**, **Resource Set**, **Resource Pool**, **Product**, **Resource**, and
 **Expiration time (UTC±HH:MM)**, then click **Search** to quickly locate resources.
-**Resource Pool**: Filter resources by resource pool. This option appears only in
-multi-cloud scenarios. Select an organization before selecting a resource set.
+
+> **Note:** **Resource Pool**: Filter resources by resource pool. This option appears only in multi-cloud scenarios.
+> Select an organization before selecting a resource set.
+
 5. View resource instances activated within the organization.
-Click next to **Expiration Time** to sort resources in ascending or descending order. Click an instance ID to navigate to the corresponding resource console and view instance details. Resources configured for **Manual Renewal** change status to **Expired** upon expiration and are billed on a pay-as-you-go basis. If you renew an expired resource, the system charges on a pay-as-you-go basis for the renewal day and switches to subscription billing from the next day. Automatic renewal takes effect the day after configuration. The system deducts the renewal fee at 08:00, nine days before resource expiration. If deduction fails, the system retries daily until successful or until one day before expiration. If a resource expires tomorrow, automatic renewal does not apply. You must manually renew it.
+
+> **Note:** Click
+> next to **Expiration Time** to sort resources in ascending or descending
+> order.
+> Click an instance ID to navigate to the corresponding resource console and view instance details.
+> Resources configured for **Manual Renewal** change status to **Expired** upon expiration and are billed on a pay-as-you-go basis. If you renew an expired resource, the system charges on a pay-as-you-go basis for the renewal day and switches to subscription billing from the next day.
+> Automatic renewal takes effect the day after configuration. The system deducts the renewal fee at 08:00, nine days before resource expiration.
+> If deduction fails, the system retries daily until successful or until one day before expiration.
+> If a resource expires tomorrow, automatic renewal does not apply. You must manually renew it.
 
 ###### 7.2.3.2.2 Set the renewal method
 
@@ -13675,7 +14646,13 @@ The permission scope for Operations Administrators, Resource Auditors, Global Or
 configured with manual renewal.
 5. In the **Automatic Renewal Management** dialog box, select a value for **Subscription**
 **Duration**.
-Valid values: **1 Month**, **2 Months**, **3 Months**, **4 Months**, and **More Durations**. If you select **More Durations**, you can customize the subscription duration by specifying a value from 5 to 60 in the **Subscription Duration (Months)** field. The automatic renewal setting takes effect the next day. The system deducts the quota at 08:00 nine days before the resource expires. If the deduction fails, the system retries daily until the deduction succeeds or one day before expiration. If the resource expires tomorrow, automatic renewal does not apply. You must manually renew the resource.
+
+> **Note:** Valid values: **1 Month**, **2 Months**, **3 Months**, **4 Months**, and **More Durations**.
+> If you select **More Durations**, you can customize the subscription duration by specifying a value from 5 to 60 in the **Subscription Duration (Months)** field.
+> The automatic renewal setting takes effect the next day. The system deducts the quota at 08:00 nine days before the resource expires.
+> If the deduction fails, the system retries daily until the deduction succeeds or one day before expiration.
+> If the resource expires tomorrow, automatic renewal does not apply. You must manually renew the resource.
+
 6. Click OK. After the setting is successful, the renewal method of the resource changes from
 **Manual Renewal** to **Automatic Renewal**.
 
@@ -13693,7 +14670,10 @@ the renewal method of the resource changes from **Automatic Renewal** to **Manua
 resource configured with automatic renewal.
 2. In the **Automatic Renewal Management** dialog box, select a value for **Subscription**
 **Duration**.
-Valid values: **1 Month**, **2 Months**, **3 Months**, **4 Months**, and **More Durations**. If you select **More Durations**, you can customize the subscription duration by specifying a value from 5 to 60 in the **Subscription Duration (Months)** field.
+
+> **Note:** Valid values: **1 Month**, **2 Months**, **3 Months**, **4 Months**, and **More Durations**.
+> If you select **More Durations**, you can customize the subscription duration by specifying a value from 5 to 60 in the **Subscription Duration (Months)** field.
+
 3. Click OK.
 
 ###### 7.2.3.2.3 Manual renewal
@@ -13712,13 +14692,12 @@ Users with the roles of Operations Administrator, Resource Auditor, Global Organ
 3. In the left-side navigation pane, select **Orders**> **Renewal**.
 4. On the **Renewal** page, click **Renew** in the **Actions** column for the target resource.
 5. In the **Manual Renewal** dialog box, select **Subscription Duration**.
-Available durations include **1 month**, **2 months**, **3 months**, **4 months**, and
-**More Durations**.
-If you select **More Durations**, you can customize the subscription duration in
-**Subscription Duration (Months)**. The valid range is 5 to 60 months.
-After successful manual renewal, the expiration date of the resource extends by the number of months you selected. When a resource renewed via **Manual Renewal** expires, its status changes to
-**Expired**, and billing switches to the Pay-As-You-Go method. If you renew an
-expired resource, the system charges on a Pay-As-You-Go basis for the day of renewal and switches to Subscription billing starting the next day.
+
+> **Note:** Available durations include **1 month**, **2 months**, **3 months**, **4 months**, and **More Durations**.
+> If you select **More Durations**, you can customize the subscription duration in **Subscription Duration (Months)**. The valid range is 5 to 60 months.
+> After successful manual renewal, the expiration date of the resource extends by the number of months you selected.
+> When a resource renewed via **Manual Renewal** expires, its status changes to **Expired**, and billing switches to the Pay-As-You-Go method. If you renew an expired resource, the system charges on a Pay-As-You-Go basis for the day of renewal and switches to Subscription billing starting the next day.
+
 6. Click **OK**.
 
 ###### 7.2.3.2.4 AI analysis of renewal resources
@@ -13757,10 +14736,13 @@ Operations Administrator, Resource Auditor, Global Organization Security Adminis
 4. Expand **Advanced filter**, set filters for **Instance ID**, **Instance name**, **Organization**,
 **Resource set**, **Resource pool**, **Service**, and **Resource item**, then click **Search** to locate
 resources quickly.
-**Resource pool**: Filter by resource pool. This option appears only in multi-cloud
-scenarios. Select an organization before selecting a resource set.
+
+> **Note:** **Resource pool**: Filter by resource pool. This option appears only in multi-cloud scenarios.
+> Select an organization before selecting a resource set.
+
 5. In the instance list, view information about instances eligible for billing method conversion.
-Click an instance ID to go to its details page and view detailed information.
+
+> **Note:** Click an instance ID to go to its details page and view detailed information.
 
 ###### 7.2.3.3.2 Switch from subscription to pay-as-you-go
 
@@ -13781,7 +14763,12 @@ The payment method of an instance can be changed only once within a calendar day
 4. Find the instance for which you want to change the billing method and click **Change to**
 **Pay-as-you-go** in the **Actions** column.
 5. In the **Change to Pay-as-you-go** dialog box, view the instance information and refund
-fees. Click the instance ID to go to the Instance Details page to view the instance details. Move the pointer over **View details** in the Change to Pay-as-you-go dialog box to view the billing details. Refundable fee = (Original order amount -Charged fee) × Refund percentage.
+fees.
+
+> **Note:** Click the instance ID to go to the Instance Details page to view the instance details.
+> Move the pointer over **View details** in the Change to Pay-as-you-go dialog box to view the billing details.
+> Refundable fee = (Original order amount -Charged fee) × Refund percentage.
+
 6. In the message that appears, click **OK**.
 
 ###### 7.2.3.3.3 Switch from Pay-As-You-Go to Subscription Billing
@@ -13802,7 +14789,12 @@ You can switch the billing method for the same instance only once per calendar d
 3. In the left-side navigation pane, select **Orders** > **Switch Billing Method**.
 4. Click **Change to Subscription** in the **Actions** column of the target instance.
 5. In the **Change to Subscription** dialog box, set the subscription duration and whether to
-enable auto-renewal. Click the instance ID to go to the instance details page and view detailed information about the instance. Available subscription durations are **1 month**, **2 months**, **3 months**, **4 months**, and **More Durations**. If you select **More Durations**, you can specify a custom duration in the **Subscription Duration (Months)** field. Valid values range from 5 to 60 months. Hover over **View Details** to expand the cost breakdown.
+enable auto-renewal.
+
+> **Note:** Click the instance ID to go to the instance details page and view detailed information about the instance.
+> Available subscription durations are **1 month**, **2 months**, **3 months**, **4 months**, and **More Durations**. If you select **More Durations**, you can specify a custom duration in the **Subscription Duration (Months)** field. Valid values range from 5 to 60 months.
+> Hover over **View Details** to expand the cost breakdown.
+
 6. Click **OK**.
 
 #### 7.2.4 Bill management
@@ -13830,20 +14822,22 @@ down list. If the selected accounting period has unprocessed issues, the bill da
 **Bill Overview of Resource Items**: displays the **number of activated resource**
 **items**, **number of resource items for which fees are charged in the selected**
 **month**, **total fees in the selected month** , and **total fees of the year**.
-Move the pointer over the number corresponding to **Resource Items that**
-**Incur Fees This Month** and view details.
-Click the amount corresponding to **Total Fees of This Month** to go to the
-**Overview of Monthly Bill** tab.
+
+> **Note:** Move the pointer over the number corresponding to **Resource Items that** **Incur Fees This Month** and view details.
+> Click the amount corresponding to **Total Fees of This Month** to go to the **Overview of Monthly Bill** tab.
+
 **Consumption Trend of Resource Items . Last 6 Months** : displays the consumption
 trend of each resource item in the selected month and the previous five months. Click **Top 5** or **Top 10** in the upper-right corner to display the top 5 or top 10 resource items for which the most fees are charged each month. Click the or icon to display the consumption trend of resource items in a column chart or a line chart.
 **Top 5 or Top 10 Consumption Distribution of Resource Items** : displays the fees
-and percentage of the fees that are charged for the top 5 or top 10 resource items in the selected month. You can click an amount in the **Fees** column to go to the **Overview of Monthly Bill** tab. On this tab, the accounting period and resource item are selected as the filter conditions by default.
+and percentage of the fees that are charged for the top 5 or top 10 resource items in the selected month.
+
+> **Note:** You can click an amount in the **Fees** column to go to the **Overview of Monthly Bill** tab. On this tab, the accounting period and resource item are selected as the filter conditions by default.
+
 **Consumption Details of All Resource Items** : displays the fees that are charged for all
-resource items in each organization in the selected month. In the upper-right corner of the section, you can select **Sort by Fee in**
-**Descending Order** or **Sort by Fee in Ascending Order** .
-You can click an amount in the **Fees** column to go to the **Overview of**
-**Monthly Bill** tab. On this tab, the accounting period, resource item, and
-organization are selected as the filter conditions by default.
+resource items in each organization in the selected month.
+
+> **Note:** In the upper-right corner of the section, you can select **Sort by Fee in** **Descending Order** or **Sort by Fee in Ascending Order** .
+> You can click an amount in the **Fees** column to go to the **Overview of** **Monthly Bill** tab. On this tab, the accounting period, resource item, and organization are selected as the filter conditions by default.
 
 ###### 7.2.4.1.2 View the monthly bill overview
 
@@ -13861,13 +14855,16 @@ The operations administrator and resource auditor have permissions on all organi
 3. In the left-side navigation pane, choose **Bills** > **Product Bill Overview**.
 4. Click the **Overview of Monthly Bill** tab.
 5. Specify the accounting period, resource item, and organization, and then click **Search**.
-After you select an organization, only the bills of the selected organization are displayed. The bills of its subordinate organizations are not displayed.
+
+> **Note:** After you select an organization, only the bills of the selected organization are displayed. The bills of its subordinate organizations are not displayed.
+
 6. View the monthly bill information in the **Accounting Period**, **Organization**, **Resource**
 **Item**, **Amount**, and **Billing Cycle** columns.
-If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page for troubleshooting. Click **View Details by Month** in the **Actions** column of a bill to go to the
-**Monthly Details** tab of the **Bill Details** page.
-Click **View Transaction Details** in the **Actions** column of a bill to go to the
-**Hourly Details** tab of the **Bill Details** page.
+
+> **Note:** If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page for troubleshooting.
+> Click **View Details by Month** in the **Actions** column of a bill to go to the **Monthly Details** tab of the **Bill Details** page.
+> Click **View Transaction Details** in the **Actions** column of a bill to go to the **Hourly Details** tab of the **Bill Details** page.
+
 **Billing Cycle**: Both the start time and end time are 00:00:00 on the
 corresponding dates.
 
@@ -13888,12 +14885,16 @@ The permission scope for Operations Administrators and Resource Auditors covers 
 to the **Product Bill Overview** page.
 4. Click the **Monthly Bill Overview** tab.
 5. After setting the billing period, resource item, and organization filters, click **Search**.
-When you select an organization, the bill includes only that organization’s data, not its subordinate organizations’ data.
+
+> **Note:** When you select an organization, the bill includes only that organization’s data, not its subordinate organizations’ data.
+
 6. Export all bills or export selected bills.
 
 **Export all bills**
 
-When you export all bills, the system creates a report export task. This task packages and downloads the monthly product summary bill, annual product summary bill, and monthly product detail overview together. After the task completes, you can go to the report download page to retrieve the files. a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
+> **Note:** When you export all bills, the system creates a report export task. This task packages and downloads the monthly product summary bill, annual product summary bill, and monthly product detail overview together. After the task completes, you can go to the report download page to retrieve the files.
+
+a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
 |---|---|---|
@@ -13913,7 +14914,9 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 **Export selected bills**
 
-When you export selected bills, the system exports only one **.csv** file containing the monthly product overview bill for the selected data range. a. In the list, select the bill details you want to export. b. Click **Export Selected Bills** above the list to export the selected data.
+> **Note:** When you export selected bills, the system exports only one **.csv** file containing the monthly product overview bill for the selected data range.
+
+a. In the list, select the bill details you want to export. b. Click **Export Selected Bills** above the list to export the selected data.
 
 ###### 7.2.4.1.4 Perform an AI-based analysis of cloud service bills
 
@@ -13936,7 +14939,12 @@ The operations administrator and resource auditor roles have the permissions to 
 4. On the **Bill Overview** tab, select an accounting period from the **Accounting Period** drop-
 down list. If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Pending Bill Issues** as an operations administrator or a resource auditor to go to the **Bill Audit** page for troubleshooting.
 5. Click **AI Diagnostics** in the upper-right corner to perform intelligent analysis on the
-overview data and generate a bill analysis report. The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag. The Trend Analysis and Forecast feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances. You can ask questions based on analysis results by using Apsara Copilot.
+overview data and generate a bill analysis report.
+
+> **Note:** The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag.
+> The Trend Analysis and Forecast feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances.
+
+You can ask questions based on analysis results by using Apsara Copilot.
 
 ##### 7.2.4.2 Overview of organization bills
 
@@ -13962,18 +14970,22 @@ down list. If unhandled issues exist in the selected accounting period, the bill
 **Overview of all organization bills in root** : displays the **number of organizations**,
 **number of organizations that incur fees in the selected month** , **total fees in the**
 **selected month**, and **total fees of the year**.
-If you access the Organization Bill Overview page as an organization administrator or organization resource auditor, you can view the bill overview of all subordinate organizations in the organization to which you belong. You can click the amount above **Total Fees of This Month** to go to the
-**Resource Collection monthly bill overview** tab.
+
+> **Note:** If you access the Organization Bill Overview page as an organization administrator or organization resource auditor, you can view the bill overview of all subordinate organizations in the organization to which you belong.
+> You can click the amount above **Total Fees of This Month** to go to the **Resource Collection monthly bill overview** tab.
+
 **Organization Consumption Trends in Last 6 Months** : displays the consumption
 trend of each organization in the selected month and the previous five months. Click **Top 5** or **Top 10** in the upper-right corner to display the top five or ten organizations that incur most fees each month. Click the or icon to display the consumption trend of organizations in a column chart or a line chart.
 **Top 5 or Top 10 Resource Set Consumption Distribution** : displays the fees incurred
-by the top five or top ten organizations in the selected month and corresponding percentages. You can click an amount in the **Fees** column to go to the **Resource Collection**
-**monthly bill overview** tab. By default, the selected month, the current resource
-set, and the organization to which the resource set belongs are specified as the filter conditions.
+by the top five or top ten organizations in the selected month and corresponding percentages.
+
+> **Note:** You can click an amount in the **Fees** column to go to the **Resource Collection** **monthly bill overview** tab. By default, the selected month, the current resource set, and the organization to which the resource set belongs are specified as the filter conditions.
+
 **Organization Consumption Details**: displays the fees incurred by all organizations in
-the selected month. In the upper-right corner of the section, you can select **Sort by Fee in**
-**Descending Order** or **Sort by Fee in Ascending Order** .
-You can click the amount in the **Fees** column of the corresponding organization to go to the **Resource Collection monthly bill overview** tab. By default, the selected month and organization are specified as the filter conditions.
+the selected month.
+
+> **Note:** In the upper-right corner of the section, you can select **Sort by Fee in** **Descending Order** or **Sort by Fee in Ascending Order** .
+> You can click the amount in the **Fees** column of the corresponding organization to go to the **Resource Collection monthly bill overview** tab. By default, the selected month and organization are specified as the filter conditions.
 
 ###### 7.2.4.2.2 View the monthly bill overview of an organization
 
@@ -14003,9 +15015,18 @@ down list and an organization from the **Organization** drop-down list, and then
 6. View the monthly bill information of the organization in columns such as **Organization**,
 **Accounting period**, **Amount (only for organization at this level)**, **Amount**
 **(including subordinate organizations)**, and **Billing cycle**.
-If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Go Now** above the bill list as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page. If you do not select an organization, the monthly bills of all organizations that you can manage are displayed by default. In the bill list, if an organization has subordinate organizations, you can click the icon next to the organization to view the monthly bills of the subordinate organizations. You can click the icon next to **Amount (including subordinate**
-**organizations)** to sort data by amount in ascending or descending order.
-To view the bill details of an organization by month, you can find the organization in the bill list and click **View Details by Month** in the **Operation** column to go to the **Monthly Details** tab of the **Bill Details** page. To view the transaction details of an organization, you can find the organization in the bill list and click **View Transaction Details** in the **Operation** column to go to the **Hourly Details** tab of the **Bill Details** page.
+
+> **Note:** If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Go Now** above the bill list as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page.
+
+If you do not select an organization, the monthly bills of all organizations that you can manage are displayed by default. In the bill list, if an organization has subordinate organizations, you can click the
+
+> icon next to the organization to view the monthly bills of the subordinate
+> organizations.
+> You can click the
+> icon next to **Amount (including subordinate**
+> **organizations)** to sort data by amount in ascending or descending order.
+> To view the bill details of an organization by month, you can find the organization in the bill list and click **View Details by Month** in the **Operation** column to go to the **Monthly Details** tab of the **Bill Details** page.
+> To view the transaction details of an organization, you can find the organization in the bill list and click **View Transaction Details** in the **Operation** column to go to the **Hourly Details** tab of the **Bill Details** page.
 
 ###### 7.2.4.2.3 View the monthly bill overview of a resource set
 
@@ -14030,7 +15051,10 @@ The operations administrator and resource auditor roles have the permissions to 
 down list, an organization from the **Organization** drop-down list, and a resource set from the **Resource Set** drop-down list, and then click **Search**. If you do not select an organization, the monthly bills of resource sets in all organizations that you can manage are displayed by default. If you select an organization, only the monthly bills of resource sets in the selected organization are displayed. The monthly bills of resource sets of the subordinate organizations are not included. You can select a resource set only after you select an organization.
 6. View the monthly bill information of the resource set in columns such as **Accounting**
 **Period**, **Organization Name**, **Resource Set Name**, **Amount**, and **Billing Cycle**.
-If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Go Now** above the bill list as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page. To view the bill details of a resource set by month, you can find the resource set in the bill list and click **View Details by Month** in the **Actions** column to go to the **Monthly Details** tab of the **Bill Details** page. To view the transaction details of a resource set, you can find the resource set in the bill list and click **View Transaction Details** in the **Actions** column to go to the **Hourly Details** tab of the **Bill Details** page.
+
+> **Note:** If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Go Now** above the bill list as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page.
+> To view the bill details of a resource set by month, you can find the resource set in the bill list and click **View Details by Month** in the **Actions** column to go to the **Monthly Details** tab of the **Bill Details** page.
+> To view the transaction details of a resource set, you can find the resource set in the bill list and click **View Transaction Details** in the **Actions** column to go to the **Hourly Details** tab of the **Bill Details** page.
 
 ###### 7.2.4.2.4 Settle monthly bills for organizations
 
@@ -14038,9 +15062,9 @@ After monthly bills are settled, the quotas of independent accounts and allocati
 
 **Usage notes**
 
-**Important**
-
-After the bills in an accounting period are settled, the bill amount is frozen and cannot be adjusted or regenerated. Be sure to confirm the bill information before settlement. If the billing rules, discount deductions, bill adjustments, and cost center rules for the accounting period are adjusted, the bill regeneration feature must be used to ensure that the configurations and rules are applied to historical bills. If you want to adjust the bill amount after the bills are settled, make supplements and corrections in the bills next month.
+> **Important:** After the bills in an accounting period are settled, the bill amount is frozen and cannot be adjusted or regenerated. Be sure to confirm the bill information before settlement.
+> If the billing rules, discount deductions, bill adjustments, and cost center rules for the accounting period are adjusted, the bill regeneration feature must be used to ensure that the configurations and rules are applied to historical bills.
+> If you want to adjust the bill amount after the bills are settled, make supplements and corrections in the bills next month.
 
 **Prerequisites**
 
@@ -14084,13 +15108,22 @@ By default, users with the Operations Administrator, Resource Auditor, Organizat
 to go to the **Organization Bill Overview** page.
 4. Click the **Organization Monthly Bill Overview** tab.
 5. Expand Advanced Filter, set the **accounting period** and **organization** filter conditions,
-then click **Search**. If you do not select an organization, the system displays all monthly bills within your permission scope by default. If a selected organization has subordinate organizations, click before the organization name to expand its subordinate organization monthly bills. If there are pending issues for the selected accounting period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go**
-**Now** at the top of the list to go to the **Bill Audit Issues** page.
+then click **Search**. If you do not select an organization, the system displays all monthly bills within your permission scope by default.
+
+> before the
+
+If a selected organization has subordinate organizations, click
+
+> organization name to expand its subordinate organization monthly bills.
+> If there are pending issues for the selected accounting period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go** **Now** at the top of the list to go to the **Bill Audit Issues** page.
+
 6. Export all bills or export selected bills.
 
 **Export all bills**
 
-When you export all bills, the system creates a report export task. The system packages and downloads the monthly organization summary bills, annual organization summary bills, and monthly overview organization details together. After the task is complete, you can go to the report download page to download the report. a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
+> **Note:** When you export all bills, the system creates a report export task. The system packages and downloads the monthly organization summary bills, annual organization summary bills, and monthly overview organization details together. After the task is complete, you can go to the report download page to download the report.
+
+a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
 |---|---|---|
@@ -14106,7 +15139,9 @@ c. Click **Confirm**. d. In the dialog box that appears, select **Go to Report D
 
 **Export selected bills**
 
-When you export selected bills, the system exports only one **.csv** file containing the organization monthly overview bill for the selected data range. a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
+> **Note:** When you export selected bills, the system exports only one **.csv** file containing the organization monthly overview bill for the selected data range.
+
+a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
 ###### 7.2.4.2.6 Export resource set monthly bills
 
@@ -14129,12 +15164,17 @@ and **Resource Set**, then click **Search**.
 **Organization**: If you do not select an organization, the system displays monthly
 bills for resource sets across all organizations within your permission scope. If you select an organization, the system displays only monthly bills for resource sets in the selected organization, excluding those in subordinate organizations.
 **Resource Set**: You can select a resource set only after selecting an
-organization. If the accounting period has pending issues, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issues** page.
+organization.
+
+> If the accounting period has pending issues, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issues** page.
+
 6. Export all bills or export selected bills.
 
 **Export all bills**
 
-When exporting all bills, you must create a report export task. The system packages and downloads the monthly summary bill, annual summary bill, and monthly detailed overview of resource sets together. After the task completes, you can go to the report download page to download the report. a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
+> **Note:** When exporting all bills, you must create a report export task. The system packages and downloads the monthly summary bill, annual summary bill, and monthly detailed overview of resource sets together. After the task completes, you can go to the report download page to download the report.
+
+a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
 |---|---|---|
@@ -14153,7 +15193,9 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 **Export selected bills**
 
-When exporting selected bills, the system exports only one **.csv**-formatted resource set monthly overview bill for the selected data range. a. Select the bills you want to export from the list. b. Click **Export Selected Bills** above the list to export the selected data.
+> **Note:** When exporting selected bills, the system exports only one **.csv**-formatted resource set monthly overview bill for the selected data range.
+
+a. Select the bills you want to export from the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
 ###### 7.2.4.2.7 Perform an AI-based analysis of organization bills
 
@@ -14176,7 +15218,12 @@ The operations administrator and resource auditor roles have the permissions to 
 4. On the **Bill Overview** tab, select an accounting period from the **Accounting Period** drop-
 down list. If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Pending Bill Issues** as an operations administrator or a resource auditor to go to the **Bill Audit** page for troubleshooting.
 5. Click **AI Diagnostics** in the upper-right corner to perform intelligent analysis on the
-overview data and generate a bill analysis report. The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag. The Trend Analysis and Prediction feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances. You can ask questions based on analysis results by using Apsara Copilot.
+overview data and generate a bill analysis report.
+
+> **Note:** The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag.
+> The Trend Analysis and Prediction feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances.
+
+You can ask questions based on analysis results by using Apsara Copilot.
 
 ##### 7.2.4.3 Bill overview of cost centers
 
@@ -14200,20 +15247,23 @@ By default, the operations administrator and resource auditor roles can view the
 4. On the **Bill overview** tab, select an accounting period from the **Accounting period** drop-
 down list. If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Bill problem pending** as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page.
 **All Overview of financial unit bills**: displays the number of cost centers, number of
-cost centers that incur fees in the selected month, total fees in the selected month, and total fees of the year. The number of cost centers includes the cost center that you have the permissions to manage and its subordinate cost centers. You can click the number above **Total expenses for this month** to go to the
-**Financial order lunar January bill overview** tab.
+cost centers that incur fees in the selected month, total fees in the selected month, and total fees of the year.
+
+> **Note:** The number of cost centers includes the cost center that you have the permissions to manage and its subordinate cost centers.
+> You can click the number above **Total expenses for this month** to go to the **Financial order lunar January bill overview** tab.
+
 **Financial unit consumption trend. Recent 6 months** : displays the consumption
 trend of each cost center in the selected month and the previous five months. Click **Top 5** or **Top 10** in the upper-right corner to display the top five or ten cost centers that incur most fees each month. Click the or icon to display the consumption trend of cost centers in a column chart or a line chart.
 **Top 5 or Top 10 Consumption distribution of financial units** : displays the fees
-incurred by the top five or top ten cost centers in the selected month and corresponding percentages. In the Top 5 or Top 10 Consumption distribution of financial units section, you can find a cost center and click the amount in the **Fees** column to go to the **Financial**
-**order lunar January bill overview** tab. By default, the selected month and cost
-center are specified as the filter conditions.
+incurred by the top five or top ten cost centers in the selected month and corresponding percentages.
+
+> **Note:** In the Top 5 or Top 10 Consumption distribution of financial units section, you can find a cost center and click the amount in the **Fees** column to go to the **Financial** **order lunar January bill overview** tab. By default, the selected month and cost center are specified as the filter conditions.
+
 **Financial unit consumption details**: displays the fees incurred by all cost centers in
-the selected month. In the upper-right corner of the section, you can select **Sort by cost from**
-**high to low** or **Sort by cost from low to high** .
-In the Financial unit consumption details section, you can find a cost center and click the amount in the Fees column to go to the **Financial order lunar**
-**January bill overview** tab. By default, the selected month and cost center are
-specified as the filter conditions.
+the selected month.
+
+> **Note:** In the upper-right corner of the section, you can select **Sort by cost from** **high to low** or **Sort by cost from low to high** .
+> In the Financial unit consumption details section, you can find a cost center and click the amount in the Fees column to go to the **Financial order lunar** **January bill overview** tab. By default, the selected month and cost center are specified as the filter conditions.
 
 ###### 7.2.4.3.2 View monthly bills of cost centers
 
@@ -14233,10 +15283,10 @@ The operations administrator and resource auditor have permissions on all cost c
 5. Click Advanced Filter, configure the **Account period** and **Financial unit** parameters, and
 then click **Search**.
 6. View monthly bills of the selected cost centers.
-If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** above the list as an operations administrator to go to the **Bill Audit Issues** page for troubleshooting. Click **View monthly details** in the **Actions** column of a bill to go to the
-**Monthly Details** tab of the **Bill Details** page.
-Click **View Details by Dawn** in the **Actions** column of a bill to go to the **Daily**
-**Details** tab of the **Bill Details** page.
+
+> **Note:** If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** above the list as an operations administrator to go to the **Bill Audit Issues** page for troubleshooting.
+> Click **View monthly details** in the **Actions** column of a bill to go to the **Monthly Details** tab of the **Bill Details** page.
+> Click **View Details by Dawn** in the **Actions** column of a bill to go to the **Daily** **Details** tab of the **Bill Details** page.
 
 ###### 7.2.4.3.3 Settle monthly bills for cost centers
 
@@ -14246,7 +15296,9 @@ After monthly bills are settled, the quotas of independent accounts and allocati
 
 **Important**
 
-After the bills in an accounting period are settled, the bill amount is frozen and cannot be adjusted or regenerated. Be sure to confirm the bill information before settlement. If the billing rules, discount deductions, bill adjustments, and cost center rules for the accounting period are adjusted, the bill regeneration feature must be used to ensure that the configurations and rules are applied to historical bills. If you want to adjust the bill amount after the bills are settled, make supplements and corrections in the bills next month.
+> After the bills in an accounting period are settled, the bill amount is frozen and cannot be adjusted or regenerated. Be sure to confirm the bill information before settlement.
+> If the billing rules, discount deductions, bill adjustments, and cost center rules for the accounting period are adjusted, the bill regeneration feature must be used to ensure that the configurations and rules are applied to historical bills.
+> If you want to adjust the bill amount after the bills are settled, make supplements and corrections in the bills next month.
 
 **Prerequisites**
 
@@ -14291,12 +15343,17 @@ The permission scope for operations administrators and resource auditors covers 
 **Unit Bill Overview** page.
 4. Click the **Cost Unit Monthly Bill Overview** tab.
 5. Expand advanced filters, set filter conditions for **Accounting Period** and **Cost Unit**, then
-click **Search**. If there are pending issues for the accounting period, bill data may be inaccurate. Operations administrators and resource auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
+click **Search**.
+
+> **Note:** If there are pending issues for the accounting period, bill data may be inaccurate. Operations administrators and resource auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
+
 6. Export all bills or export selected bills.
 
 **Export all bills**
 
-When exporting all bills, you must create a report export task. The system will package and download the monthly cost unit summary bill, annual cost unit summary bill, and monthly cost unit detailed overview together. After the task is complete, you can go to the report download page to download the report. a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
+> **Note:** When exporting all bills, you must create a report export task. The system will package and download the monthly cost unit summary bill, annual cost unit summary bill, and monthly cost unit detailed overview together. After the task is complete, you can go to the report download page to download the report.
+
+a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
 |---|---|---|
@@ -14312,7 +15369,9 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 **Export selected bills**
 
-When exporting selected bills, the system exports only one **.csv**-formatted cost unit monthly overview bill for the selected data range. a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
+> **Note:** When exporting selected bills, the system exports only one **.csv**-formatted cost unit monthly overview bill for the selected data range.
+
+a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
 ##### 7.2.4.4 Overview of public cloud bills
 
@@ -14328,9 +15387,11 @@ The multi-cloud management feature is enabled, and the Alibaba Cloud public clou
 
 **Usage notes**
 
-**Important**
+> **Important:** Public cloud subscription resources are not billed based on orders, but are billed based on the total list price on public cloud bills.
 
-Public cloud subscription resources are not billed based on orders, but are billed based on the total list price on public cloud bills. Newly purchased, configurations upgraded, renewed, and billing method changed from pay-as-you-go to subscription: Total list price × Price multiplier × Discount Unsubscribed, configurations downgraded, and billing method changed from subscription to pay-as-you-go: Total list price × Price multiplier × Discount × Refund ratio
+> Newly purchased, configurations upgraded, renewed, and billing method changed from pay-as-you-go to subscription: Total list price × Price multiplier × Discount
+> Unsubscribed, configurations downgraded, and billing method changed from subscription to pay-as-you-go: Total list price × Price multiplier × Discount × Refund ratio
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Overview of Public Cloud Billing** to go to
@@ -14349,10 +15410,13 @@ the current month and the previous five months in the selected accounting period
 selected accounting period.
 **Organization Ranking by Profit**: displays the profit information of all organizations in
 the current month of the selected accounting period.
-**Public Cloud Cost**: the payable amount of public cloud bills.
-**Resale Revenue**: the amount payable in cloud service bills.
-**Profit** = **Resale Revenue** - **Public Cloud Cost**.
-You can click the icon next to the Public Cloud Cost, Resale Revenue, or Profit field to sort data by amount in ascending or descending order.
+
+> **Note:** **Public Cloud Cost**: the payable amount of public cloud bills.
+> **Resale Revenue**: the amount payable in cloud service bills.
+> **Profit** = **Resale Revenue** - **Public Cloud Cost**.
+> You can click the
+> icon next to the Public Cloud Cost, Resale Revenue, or
+> Profit field to sort data by amount in ascending or descending order.
 
 ###### 7.2.4.4.2 View the monthly bills of public cloud services
 
@@ -14366,9 +15430,10 @@ The multi-cloud management feature is enabled, and the Alibaba Cloud public clou
 
 **Usage notes**
 
-**Important**
+> **Important:** Public cloud subscription resources are not billed based on orders, but are billed based on the total list price on public cloud bills.
+> Newly purchased, configurations upgraded, renewed, and billing method changed from pay-as-you-go to subscription: Total list price × Price multiplier × Discount
+> Unsubscribed, configurations downgraded, and billing method changed from subscription to pay-as-you-go: Total list price × Price multiplier × Discount × Refund ratio
 
-Public cloud subscription resources are not billed based on orders, but are billed based on the total list price on public cloud bills. Newly purchased, configurations upgraded, renewed, and billing method changed from pay-as-you-go to subscription: Total list price × Price multiplier × Discount Unsubscribed, configurations downgraded, and billing method changed from subscription to pay-as-you-go: Total list price × Price multiplier × Discount × Refund ratio
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Overview of Public Cloud Billing** to go to
@@ -14376,10 +15441,13 @@ the **Public Cloud Bill Overview** page.
 4. Click the **Monthly Product Bill Overview** tab.
 5. Configure the **Account Period** and **Resources** filter conditions to filter bills.
 6. View the monthly bills of public cloud services in the list.
-**Public Cloud Cost**: the payable amount of public cloud bills.
-**Resale Revenue**: the amount payable in cloud service bills.
-**Profit** = **Resale Revenue** - **Public Cloud Cost**.
-You can click the icon next to the Public Cloud Cost, Resale Revenue, or Profit field to sort data by amount in ascending or descending order.
+
+> **Note:** **Public Cloud Cost**: the payable amount of public cloud bills.
+> **Resale Revenue**: the amount payable in cloud service bills.
+> **Profit** = **Resale Revenue** - **Public Cloud Cost**.
+> You can click the
+> icon next to the Public Cloud Cost, Resale Revenue, or Profit
+> field to sort data by amount in ascending or descending order.
 
 ###### 7.2.4.4.3 Export monthly bills of public cloud services
 
@@ -14399,7 +15467,9 @@ the **Public Cloud Bill Overview** page.
 
 **Export all bills**
 
-To export all bills, you must create a report export task. The monthly cost center bill summary, annual cost center bill summary, and monthly cost center bill overview are packaged into a **.zip file** for download. After the task is complete, you can go to the Report Download page to download the report. a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the following parameters.
+> **Note:** To export all bills, you must create a report export task. The monthly cost center bill summary, annual cost center bill summary, and monthly cost center bill overview are packaged into a **.zip file** for download. After the task is complete, you can go to the Report Download page to download the report.
+
+a. Click **Export All Bills** above the list. b. In the **Create Report Export Task** dialog box, configure the following parameters.
 
 | Section and parameter |   | Description |
 |---|---|---|
@@ -14417,7 +15487,9 @@ c. Click **OK**. d. In the message that appears, click **Go to Download Report P
 
 **Export selected bills**
 
-When you export selected bills, only a monthly cost center bill overview of the selected data scope is exported as a **.csv** file. a. Select the bills that you want to export from the list. b. Click **Export Selected Bills** below the list to export the selected bills.
+> **Note:** When you export selected bills, only a monthly cost center bill overview of the selected data scope is exported as a **.csv** file.
+
+a. Select the bills that you want to export from the list. b. Click **Export Selected Bills** below the list to export the selected bills.
 
 ##### 7.2.4.5 Bill details
 
@@ -14441,27 +15513,28 @@ The permission scope for Operations Administrators and Resource Auditors covers 
 **Scope**, **Cost Center**, **Billing period (UTC±HH:MM)**, **Organization**, **Resource Set**,
 **Product**, **Resource item**, **Resource Pool**, **Region**, and **Instance ID**, and then click
 **Search**.
-**Data Scope**: Select **By Organization** or **By Cost Center**.
-**Billing period (UTC±HH:MM)**: Select the year and month to view. The billing
-period refers to the time zone of the service deployment location.
-**Cost Center**: This option is available only when you select **Data Scope** as **By**
-**Cost Center**.
-**Organization**: If you select **Data Scope** as **By Cost Center**, you must first
-select a cost center.
-**Resource Set**: If you select a resource set, you must first select an organization.
-**Product**: When you select a cloud product, you can enter its name in the text
-box to quickly find it.
-**Resource**: If you select a resource, you must first select a cloud product.
-**Resource Pool**: You can select only one resource pool. This option appears only
-in multi-cloud scenarios.
-**Region**: Select one or more regions from the drop-down list.
-**Instance ID**: Enter the instance ID to query.
+
+> **Note:** **Data Scope**: Select **By Organization** or **By Cost Center**.
+> **Billing period (UTC±HH:MM)**: Select the year and month to view. The billing period refers to the time zone of the service deployment location.
+> **Cost Center**: This option is available only when you select **Data Scope** as **By** **Cost Center**.
+> **Organization**: If you select **Data Scope** as **By Cost Center**, you must first select a cost center.
+> **Resource Set**: If you select a resource set, you must first select an organization.
+> **Product**: When you select a cloud product, you can enter its name in the text box to quickly find it.
+> **Resource**: If you select a resource, you must first select a cloud product.
+> **Resource Pool**: You can select only one resource pool. This option appears only in multi-cloud scenarios.
+> **Region**: Select one or more regions from the drop-down list.
+> **Instance ID**: Enter the instance ID to query.
+
 5. View the monthly bill details in the list.
-If there are pending issues for the billing period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
-**Tag**: Refers to tags configured for cloud resource instances.
-Consumption amount = Total consumption amount - Refund amount Amount payable = Consumption amount - Deduction amount - Discount amount
-        - Rounding amount - Coupon deduction amount
-Click above the list to customize list items. On the Global list items and Resource list items tabs, select items to display, and then drag them under Selected items to adjust their order.
+
+> **Note:** If there are pending issues for the billing period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
+> **Tag**: Refers to tags configured for cloud resource instances.
+> Consumption amount = Total consumption amount - Refund amount
+> Amount payable = Consumption amount - Deduction amount - Discount amount
+> - Rounding amount - Coupon deduction amount
+> Click
+> above the list to customize list items. On the Global list items and
+> Resource list items tabs, select items to display, and then drag them under Selected items to adjust their order.
 
 ###### 7.2.4.5.2 View daily details
 
@@ -14482,30 +15555,35 @@ The permission scope for Operations Administrators and Resource Auditors covers 
 **Start and end time (UTC±HH:MM)** , **Cost Center**, **Organization**, **Resource Set**,
 **Product**, **Resource**, **Resource Pool**, **Region**, **Instance ID**, **Bill Source**, **Tag**, and **Type**,
 then click **Search**.
-**Data Scope**: Select **By Organization** or **By Cost Center**.
-**Bill Data**: Select **Split Bill** or **Original Bill**.
-**Billing period (UTC±HH:MM)**: Select the year and month you want to view.
-The billing period refers to the server deployment location time and displays different time zones based on the deployment location.
-**Start and end time (UTC±HH:MM)** : Select the start and end times. Start and
-end times refer to the server deployment location time and display different time zones based on the deployment location.
-**Cost Center**: Available only when **Data Scope** is set to **By Cost Center**.
-**Organization**: When **Data Scope** is set to **By Cost Center**, select a cost center
-first.
-**Resource Set**: When selecting a resource set, select an organization first.
-**Product**: Select the cloud product you want to view.
-**Resource**: When selecting a resource item, select a cloud product first.
-**Resource Pool**: Select a resource pool. Single selection is supported. This option
-is displayed only in multi-cloud scenarios.
-**Region**: Select one or more regions from the drop-down list.
-**Instance ID**: Enter the instance ID you want to query.
-**Bill Source**: Select **System Generated**, **Manual Reconciliation**, or **External**
-**Import**.
-**Tag**: Select tags.
-**Type**: Select the bill type.
+
+> **Note:** **Data Scope**: Select **By Organization** or **By Cost Center**.
+> **Bill Data**: Select **Split Bill** or **Original Bill**.
+> **Billing period (UTC±HH:MM)**: Select the year and month you want to view. The billing period refers to the server deployment location time and displays different time zones based on the deployment location.
+> **Start and end time (UTC±HH:MM)** : Select the start and end times. Start and end times refer to the server deployment location time and display different time zones based on the deployment location.
+> **Cost Center**: Available only when **Data Scope** is set to **By Cost Center**.
+> **Organization**: When **Data Scope** is set to **By Cost Center**, select a cost center first.
+> **Resource Set**: When selecting a resource set, select an organization first.
+> **Product**: Select the cloud product you want to view.
+> **Resource**: When selecting a resource item, select a cloud product first.
+> **Resource Pool**: Select a resource pool. Single selection is supported. This option is displayed only in multi-cloud scenarios.
+> **Region**: Select one or more regions from the drop-down list.
+> **Instance ID**: Enter the instance ID you want to query.
+> **Bill Source**: Select **System Generated**, **Manual Reconciliation**, or **External** **Import**.
+> **Tag**: Select tags.
+> **Type**: Select the bill type.
+
 6. View daily detailed bills in the list.
-If there are pending issues for the billing period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
-**Tag**: Refers to tags set on cloud resource instances.
-Consumption amount is the fee generated by an instance according to billing rules. For refunds, the consumption amount is the actual refundable amount. When **Bill Data** is set to **Split Bill**, the detail list displays split ratio information. Click above the list to customize list items. On the Global List Items and Resource List Items tabs, select items to display, then drag and drop to adjust the order of selected items.
+
+> **Note:** If there are pending issues for the billing period, the bill data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to go to the **Bill Audit Issues** page.
+> **Tag**: Refers to tags set on cloud resource instances.
+
+Consumption amount is the fee generated by an instance according to billing rules. For refunds, the consumption amount is the actual refundable amount.
+
+> When **Bill Data** is set to **Split Bill**, the detail list displays split ratio information.
+> Click
+> above the list to customize list items. On the Global List Items and
+> Resource List Items tabs, select items to display, then drag and drop to adjust the order of selected items.
+
 7. For bills with Manual Reconciliation as the source, click **View Details** in the **Actions**
 column to view billing details for that instance. Reversal: Reduces the amount of an existing bill and appears as a red negative number. Supplement: Increases the amount of an existing bill and appears as a blue positive number.
 
@@ -14527,22 +15605,25 @@ The permission scope for Operations Administrator and Resource Auditor covers al
 5. Expand **Advanced filter**, set conditions for **Billing period (UTC±HH:MM)**, **Start and**
 **end time (UTC±HH:MM)**, **Organization**, **Resource Set**, **Product**, **Resource**, **Resource**
 **Pool**, **Region**, and **Instance ID**, then click **Search**.
-**Billing period (UTC±HH:MM)**: Select the year and month to view. The billing
-period refers to the server deployment location time and displays different time zones based on the deployment location.
-**Start and end time (UTC±HH:MM)** : Select the start and end times. Start and
-end times refer to the server deployment location time and display different time zones based on the deployment location.
+
+> **Note:** **Billing period (UTC±HH:MM)**: Select the year and month to view. The billing period refers to the server deployment location time and displays different time zones based on the deployment location.
+> **Start and end time (UTC±HH:MM)** : Select the start and end times. Start and end times refer to the server deployment location time and display different time zones based on the deployment location.
+
 **Organization**: Select the organization to view. This does not include bills from
 subordinate organizations.
-**Resource Set**: When selecting a resource set, first select an organization.
-**Product**: Select the cloud product to view.
-**Resource**: When selecting a resource, first select a cloud product.
-**Resource Pool**: Select a resource pool. Single selection is supported. This option
-appears only in multi-cloud scenarios.
-**Region**: Select one region from the drop-down list.
-**Instance ID**: Enter the instance ID to query.
+
+> **Resource Set**: When selecting a resource set, first select an organization.
+> **Product**: Select the cloud product to view.
+> **Resource**: When selecting a resource, first select a cloud product.
+> **Resource Pool**: Select a resource pool. Single selection is supported. This option appears only in multi-cloud scenarios.
+> **Region**: Select one region from the drop-down list.
+> **Instance ID**: Enter the instance ID to query.
+
 6. View the hourly billing details in the list.
-If there are pending issues for the billing period, the billing data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issues** page.
-**Tag**: Refers to tags set on cloud resource instances.
+
+> **Note:** If there are pending issues for the billing period, the billing data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issues** page.
+> **Tag**: Refers to tags set on cloud resource instances.
+
 The consumption amount is the fee generated by the instance according to the billing rules. For refund types, the consumption amount represents the actual refundable amount.
 7. Click **View Details** in the **Actions** column of a bill to view the billing details for that
 instance.
@@ -14567,28 +15648,30 @@ the **Billing Details** page.
 4. On the **Monthly Details** tab, expand **Advanced Filter**. Set filter conditions for **Data**
 **Scope**, **Cost Center**, **Billing period (UTC±HH:MM)**, **Organization**, **Resource Set**,
 **Service**, **Resource**, **Resource Pool**, **Region**, and **Instance ID**. Then, click **Search**.
-**Data Scope**: Select **By Organization** or **By Cost Center**.
-**Billing period (UTC±HH:MM)**: Select the year and month that you want to
-view. The billing period refers to the time zone of the service deployment location.
-**Cost Center**: This option is available only when **Data Scope** is set to **By Cost**
-**Center**.
-**Organization**: If **Data Scope** is set to **By Cost Center**, select a cost center
-first.
-**Resource Set**: To select a resource set, select an organization first.
-**Service**: When you select a cloud service, you can enter the service name in the
-search box to quickly find the service.
-**Resource**: To select a resource, select a cloud service first.
-**Resource Pool**: Select one or more resource pools. This option is displayed only
-in multi-cloud scenarios.
-**Region**: Select one or more regions from the drop-down list.
-**Instance ID**: Enter the instance ID that you want to query.
+
+> **Note:** **Data Scope**: Select **By Organization** or **By Cost Center**.
+> **Billing period (UTC±HH:MM)**: Select the year and month that you want to view. The billing period refers to the time zone of the service deployment location.
+> **Cost Center**: This option is available only when **Data Scope** is set to **By Cost** **Center**.
+> **Organization**: If **Data Scope** is set to **By Cost Center**, select a cost center first.
+> **Resource Set**: To select a resource set, select an organization first.
+> **Service**: When you select a cloud service, you can enter the service name in the search box to quickly find the service.
+> **Resource**: To select a resource, select a cloud service first.
+> **Resource Pool**: Select one or more resource pools. This option is displayed only in multi-cloud scenarios.
+> **Region**: Select one or more regions from the drop-down list.
+> **Instance ID**: Enter the instance ID that you want to query.
+
 5. (Optional) Click
-above the list to customize list items. On the Global List Items and Resource List Items tabs, select the items that you want to display. Then, drag the selected items on the Selected Items tab to adjust their order. When you export bills, the system exports bill reports based on the fields displayed in the bill list.
+above the list to customize list items. On the Global List Items and Resource List Items tabs, select the items that you want to display. Then, drag the selected items on the Selected Items tab to adjust their order.
+
+> **Note:** When you export bills, the system exports bill reports based on the fields displayed in the bill list.
+
 6. Export all details or export selected details.
 
 **Export all details**
 
-To export all details, you must create a report export task. After the task is complete, you can go to the report download page to download the report. a. Click **Export All Details** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
+> **Note:** To export all details, you must create a report export task. After the task is complete, you can go to the report download page to download the report.
+
+a. Click **Export All Details** above the list. b. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
 |---|---|---|
@@ -14609,7 +15692,9 @@ c. Click **OK**. d. In the message that appears, select **Go to Report Download 
 
 **Export selected details**
 
-When you export selected details, the system exports only one .csv file that contains the monthly details within the selected data range. a. Select the bill details that you want to export in the list. b. Click **Export Selected Details** above the list to export the selected data as a .csv file.
+> **Note:** When you export selected details, the system exports only one .csv file that contains the monthly details within the selected data range.
+
+a. Select the bill details that you want to export in the list. b. Click **Export Selected Details** above the list to export the selected data as a .csv file.
 
 ###### 7.2.4.5.5 Export daily detailed billing statement
 
@@ -14628,9 +15713,16 @@ The permission scope for Operations Administrators and Resource Auditors covers 
 **Details** page.
 4. Click the **By Day** tab.
 5. Click **Export Bill Details** above the list.
-If the billing period contains pending issues, the billing data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issue List** page.
-**Tag**: refers to tags configured on cloud resource instances.
-The consumption amount is the fee generated by the instance according to the billing rule. For refunds, the consumption amount equals the actual refundable amount. Click above the list to customize list items. On the Global List Items and Resource List Items tabs, select items to display and drag them to adjust their order under Selected Items. When exporting the bill, the system exports the corresponding report based on the displayed fields in the bill list.
+
+> **Note:** If the billing period contains pending issues, the billing data may be inaccurate. Operations Administrators and Resource Auditors can click **Go Now** above the list to navigate to the **Bill Audit Issue List** page.
+> **Tag**: refers to tags configured on cloud resource instances.
+
+The consumption amount is the fee generated by the instance according to the billing rule. For refunds, the consumption amount equals the actual refundable amount.
+
+> Click
+> above the list to customize list items. On the Global List Items and
+> Resource List Items tabs, select items to display and drag them to adjust their order under Selected Items. When exporting the bill, the system exports the corresponding report based on the displayed fields in the bill list.
+
 6. In the **Create Report Export Task** dialog box, configure the export settings.
 
 | Configuration item |   | Description |
@@ -14670,7 +15762,11 @@ The operations administrator and resource auditor have permissions on all organi
 3. In the left-side navigation pane, choose **Bills** > **Bill Details**.
 4. Click the **Hourly Details** tab.
 5. Click **Export Bill Details** above the list.
-If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page for troubleshooting. The **Label** column displays the tags that are set for cloud resource instances. The consumption amount is the expense incurred by an instance based on billing rules. The consumption amount of the refund type refers to the actual refundable amount.
+
+> **Note:** If the selected accounting period has unprocessed issues, the bill data displayed may be inaccurate. In this case, you can click **Go Now** as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page for troubleshooting.
+> The **Label** column displays the tags that are set for cloud resource instances.
+
+The consumption amount is the expense incurred by an instance based on billing rules. The consumption amount of the refund type refers to the actual refundable amount.
 6. In the **Create Report Export Task** dialog box, configure the following parameters.
 
 | Parameter | Description |
@@ -14720,9 +15816,10 @@ For accounting periods whose bills are settled, bill regeneration is not support
 6. Click **OK**.
 7. After bills are regenerated, click **Rebuild records** in the upper-right corner of the **Bill**
 **Details** page to view the detailed generation records.
-If a record displayed as Failed to generate exists on the **Bill Adjustment**, **Bill**
-**Split**, or **Cost Center** tab, contact the O&M engineers for troubleshooting.
-A failed record on the **Basic Bill** tab indicates that an audit issue exists. In this case, go to the Bill Audit Issues page for troubleshooting. If a record is not generated within 1 hour, you can click **Stop** in the Actions column of the record to stop the regeneration. After you stop the regeneration, you can resume it.
+
+> **Note:** If a record displayed as Failed to generate exists on the **Bill Adjustment**, **Bill** **Split**, or **Cost Center** tab, contact the O&M engineers for troubleshooting.
+> A failed record on the **Basic Bill** tab indicates that an audit issue exists. In this case, go to the Bill Audit Issues page for troubleshooting.
+> If a record is not generated within 1 hour, you can click **Stop** in the Actions column of the record to stop the regeneration. After you stop the regeneration, you can resume it.
 
 ###### 7.2.4.5.8 AI analysis of bill details
 
@@ -14865,7 +15962,9 @@ You are an operations administrator or resource auditor.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
 4. On the **Bill Split Management** page, view the created split rules.
-You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
+> **Note:** You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
 5. Click the name of the rule that you want to view. In the **Rule Details** dialog box, view the
 details of the rule.
 
@@ -14880,7 +15979,10 @@ The split rule is not deprecated. You are an operations administrator.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
 4. On the **Bill Split Management** page, find the rule that you want to modify and click **Edit**
-in the **Actions** column. You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+in the **Actions** column.
+
+> **Note:** You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
 5. In the **Modify Split Rule** dialog box, modify the rule configuration. For more information
 about the rule parameters, see Create a split rule.
 6. Click **OK**.
@@ -14897,7 +15999,9 @@ The split rule is not enabled. You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
 4. On the **Bill Split Management** page, find the rule that you want to enable and click
 **Enable** in the **Actions** column.
-You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
+> **Note:** You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
 5. Click **OK**.
 
 ###### 7.2.4.7.5 Discard a split rule
@@ -14912,7 +16016,9 @@ A split rule is enabled. You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
 4. On the **Bill Split Management** page, find the rule that you want to discard and click
 **Discard** in the **Actions** column.
-You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
+> **Note:** You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
 5. Click **OK**.
 
 ###### 7.2.4.7.6 Delete a split rule
@@ -14927,7 +16033,9 @@ A split rule is discarded. You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
 4. On the **Bill Split Management** page, find the rule that you want to delete and click
 **Delete** in the **Actions** column.
-You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
+> **Note:** You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
+
 5. Click **Delete**.
 
 ##### 7.2.4.8 Bill audit
@@ -14955,17 +16063,17 @@ You are an operations administrator or resource auditor.
 
 5. Click **Advanced Filter**, configure the **Billing Period**, **Bill Date**, **Issue Type**, **Status**,
 **Service**, **Resource Item**, and **Detected At** parameters, and then click **Search**.
-Valid values of the **Issue Type** parameter: **An error occurred in the bill**
-**generation system.** and **An error occurred in the business**
 
-**configurations.**
+> **Note:** Valid values of the **Issue Type** parameter: **An error occurred in the bill** **generation system.** and **An error occurred in the business** **configurations.**
+> Before you select a resource item, select a cloud service first.
 
-Before you select a resource item, select a cloud service first.
 6. View bill audit issues. The information is displayed in the following columns: **Issue ID**,
 **Detected At**, **Billing Date**, **Billing Period**, **Service**, **Resource Item**, **Issue Type**,
 **Status**, **Cause**, and **Suggestion**.
 7. Contact on-site O&M engineers to handle the issues based on the suggestions.
-Alternatively, click **View Details** in the **Actions** column of an issue. In the **Error Message** panel, view the details of the issue and the solution. In the Error Message panel of an issue, if "The price of the specifications is not specified." is displayed in the Issue column of the Details section, the specifications for which prices are not specified are displayed in the Content column. You can go to the Rule Settings page, find a billing configuration that is effective on the billing date, and then go to its details page. On the details page of the billing configuration, find the service that you want to manage and click Pricing Configuration in the Actions column. In the Price Settings step of the Pricing Configuration panel, set prices for the specifications.
+Alternatively, click **View Details** in the **Actions** column of an issue. In the **Error Message** panel, view the details of the issue and the solution.
+
+> **Note:** In the Error Message panel of an issue, if "The price of the specifications is not specified." is displayed in the Issue column of the Details section, the specifications for which prices are not specified are displayed in the Content column. You can go to the Rule Settings page, find a billing configuration that is effective on the billing date, and then go to its details page. On the details page of the billing configuration, find the service that you want to manage and click Pricing Configuration in the Actions column. In the Price Settings step of the Pricing Configuration panel, set prices for the specifications.
 
 ###### 7.2.4.8.2 Close a bill audit issue
 
@@ -14979,12 +16087,10 @@ The issue is in the Pending Review state. You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Bill Audit**.
 4. Click **Advanced Filter**, configure the **Billing Period**, **Bill Date**, **Issue Type**, **Status**,
 **Service**, **Resource Item**, and **Detected At** parameters, and then click **Search**.
-Valid values of the **Issue Type** parameter: **An error occurred in the bill**
-**generation system.** and **An error occurred in the business**
 
-**configurations.**
+> **Note:** Valid values of the **Issue Type** parameter: **An error occurred in the bill** **generation system.** and **An error occurred in the business** **configurations.**
+> Before you select a resource item, select a cloud service first.
 
-Before you select a resource item, select a cloud service first.
 5. View bill audit issues. The information is displayed in the following columns: **Issue ID**,
 **Detected At**, **Billing Date**, **Billing Period**, **Service**, **Resource Item**, **Issue Type**,
 **Status**, **Cause**, and **Suggestion**.
@@ -15022,7 +16128,11 @@ You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
 4. On the Cost Centers page, select the cost center that you want to manage in the **Financial**
 **unit settings** section. You can enter the name of a cost center in the search box to quickly
-find the cost center. To create a level-1 cost center, select the root node. To create a level-2 cost center, select a level-1 cost center. You can create up to five levels of cost centers by using the similar method.
+find the cost center.
+
+> **Note:** To create a level-1 cost center, select the root node.
+> To create a level-2 cost center, select a level-1 cost center. You can create up to five levels of cost centers by using the similar method.
+
 5. On the right side of the page, click **Create a sub-Financial unit**.
 6. In the **Create a financial unit** dialog box, specify the name and description of the cost
 center.
@@ -15039,7 +16149,13 @@ A cost center is created. You are an operations administrator or resource audito
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
 4. In the left-side **Financial unit settings** section, view the cost center tree.
-You can enter the name of a cost center in the search box to quickly find the cost center. You can click the icon to the left of a node to display its subordinate cost centers and click the icon to hide its subordinate cost centers.
+
+> **Note:** You can enter the name of a cost center in the search box to quickly find the cost center.
+> You can click the
+> icon to the left of a node to display its subordinate cost
+> centers and click the
+> icon to hide its subordinate cost centers.
+
 5. In the cost center tree, select the cost center that you want to manage and view the basic
 information about the cost center on the right side of the page. The basic information includes the cost center name, cost center ID, cost center level, description, creator, and creation time. For more information about the rules, see View allocation rules. For more information about the users, see View the authorized users of a cost center.
 
@@ -15128,9 +16244,24 @@ You are an operations administrator or resource auditor.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
 4. In the left-side **Financial rules** section, click **Overview** to view all allocation rules.
 5. In the left-side **Financial unit settings** section, select the cost center that you want to
-manage. You can enter the name of a cost center in the search box to quickly find the cost center. You can click the icon to the left of a node to display its subordinate cost centers and click the icon to hide its subordinate cost centers.
+manage.
+
+> **Note:** You can enter the name of a cost center in the search box to quickly find the cost center.
+> You can click the
+> icon to the left of a node to display its subordinate cost
+> centers and click the
+> icon to hide its subordinate cost centers.
+
 6. On the **Rule list** tab, view the allocation rules of the selected cost center. You can
-configure the **Rule effective date** and **Rule name** parameters to quickly find a specific rule. After you configure the **Rule effective date** parameter, the allocation rules whose effective period contains the specified date are displayed. You can click the icon next to the **Effective order** column to display the allocation rules in ascending or descending order based on the effective date. You can click the icon next to the **Update Time** column to view the allocation rules in ascending or descending order based on the update time.
+configure the **Rule effective date** and **Rule name** parameters to quickly find a specific rule.
+
+> **Note:** After you configure the **Rule effective date** parameter, the allocation rules whose effective period contains the specified date are displayed.
+> You can click the
+> icon next to the **Effective order** column to display the
+> allocation rules in ascending or descending order based on the effective date.
+> You can click the
+> icon next to the **Update Time** column to view the allocation
+> rules in ascending or descending order based on the update time.
 
 ###### 7.2.4.9.6 Modify an allocation rule
 
@@ -15178,7 +16309,10 @@ You are an operations administrator.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
 4. In the left-side **Financial unit settings** section, select the cost center that you want to
-manage. You can enter the name of a cost center in the search box to quickly find the cost center. If a user is authorized to access the root node, the user is authorized to access all cost centers.
+manage. You can enter the name of a cost center in the search box to quickly find the cost center.
+
+> **Note:** If a user is authorized to access the root node, the user is authorized to access all cost centers.
+
 5. On the right side of the Cost Centers page, click the **User list** tab.
 6. On the **User list** tab, click **Authorized User**.
 7. In the **Authorized User** dialog box, configure the parameters that are described in the
@@ -15289,7 +16423,12 @@ You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Cost Tag**.
 4. On the **Cost Tag** page, click **Add Tag**.
 5. In the **Add Tag** dialog box, select the tags that you want to add from the **Available Tags**
-list and click the icon to add the tags to the **Added Tags** list. The tags in the Available Tags list are from Tag Management. To remove a tag from the Added Tags list, select the tag in the Added Tags list and click the icon.
+list and click the icon to add the tags to the **Added Tags** list.
+
+> **Note:** The tags in the Available Tags list are from Tag Management.
+> To remove a tag from the Added Tags list, select the tag in the Added Tags list and click the
+> icon.
+
 6. Click **OK**.
 
 ###### 7.2.4.10.2 Delete cost tags
@@ -15298,9 +16437,7 @@ After you delete a cost tag, the cost tag no longer takes effect in bills, cost 
 
 **Usage notes**
 
-**Important**
-
-If you delete a cost tag, historical bills, cost centers, and cost data analysis are not affected.
+> **Important:** If you delete a cost tag, historical bills, cost centers, and cost data analysis are not affected.
 
 **Prerequisites**
 
@@ -15310,7 +16447,9 @@ You are an operations administrator.
 3. In the left-side navigation pane, choose **Bills** > **Cost Tag**.
 4. On the **Cost Tag** page, find the tag key that you want to delete and click **Delete** in the
 **Actions** column.
-You can specify a tag name in the Tag Key field above the list to filter tag keys.
+
+> **Note:** You can specify a tag name in the Tag Key field above the list to filter tag keys.
+
 5. Click **OK**.
 
 ##### 7.2.4.11 Import task management
@@ -15378,7 +16517,10 @@ You are an operations administrator or resource auditor. If you are assigned a c
 section.
 5. View independent accounts. You can filter or search for specific accounts by configuring the
 **Account name** and **Includes deleted accounts** parameters.
-An independent account is the master account of a level-1 organization or cost center. You can increase or reduce the budget for an independent account. An allocation account is used to control the quota of an organization or cost center. The quotas of allocation accounts are allocated from the independent account level by level. The account list displays only independent accounts. This helps you view the overall quota information about each level-1 organization or cost center.
+
+> **Note:** An independent account is the master account of a level-1 organization or cost center. You can increase or reduce the budget for an independent account.
+> An allocation account is used to control the quota of an organization or cost center. The quotas of allocation accounts are allocated from the independent account level by level.
+> The account list displays only independent accounts. This helps you view the overall quota information about each level-1 organization or cost center.
 
 ##### 7.2.5.3 View the income and expenditure details of all accounts
 
@@ -15395,24 +16537,22 @@ You are an operations administrator or a resource auditor. If you are assigned a
 4. On the **Budgets** page, click **Income and expenditure details** in the **Budget Overview**
 section in the left-side pane.
 5. In the upper part of the **Budget Account** section, select one or all cloud platforms.
-The cloud platform drop-down list is displayed only in multi-cloud environments and only if budgets are configured by organization. If you select **All**, you can view the income and expenditure details of accounts on all cloud platforms.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and only if budgets are configured by organization.
+> If you select **All**, you can view the income and expenditure details of accounts on all cloud platforms.
+
 6. View the income and expenditure details of accounts. In the **Advanced Filter** section
 above the list of income and expenditure details, configure filter conditions such as **Assign**
 **Accounts**, **Independent Account**, **Operator**, **Serial Number**, **Revenue and**
 **Expenditure Type**, **Flow Type**, **Account Period**, and **Billing Date** to filter data or
 search for specific data.
-**Flow Type**: You can select **Quota adjustment**, **Quota Allocation**, **Freeze**, **Freeze**
-**release**, or **Deduction**.
-**Quota adjustment**: You can increase or reduce the quota of an independent
-account.
-**Quota Allocation**: You can increase or reduce the quota of an allocation
-account.
-**Freeze**: The system suspends the available quota based on the cloud service bill
-on a daily basis, or suspends the available quota when the system regenerates a bill.
-**Freeze release**: The quota suspended in a month is released when the system
-generates the monthly bill.
-**Deduction**: When the system generates a monthly bill, the system deducts the
-bill amount from the available quota and adds the bill amount to the used quota.
+
+> **Note:** **Flow Type**: You can select **Quota adjustment**, **Quota Allocation**, **Freeze**, **Freeze** **release**, or **Deduction**.
+> **Quota adjustment**: You can increase or reduce the quota of an independent account.
+> **Quota Allocation**: You can increase or reduce the quota of an allocation account.
+> **Freeze**: The system suspends the available quota based on the cloud service bill on a daily basis, or suspends the available quota when the system regenerates a bill.
+> **Freeze release**: The quota suspended in a month is released when the system generates the monthly bill.
+> **Deduction**: When the system generates a monthly bill, the system deducts the bill amount from the available quota and adds the bill amount to the used quota.
 
 ##### 7.2.5.4 View account details of a node
 
@@ -15429,15 +16569,22 @@ An operations administrator can view all nodes. If budget accounts are configure
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. In the **Budget Account** section of the Budgets page, select a cloud platform or All from the
-cloud platform drop-down list. The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+cloud platform drop-down list.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+
 5. In the **Budget Account** section, select the node that you want to view.
-You can select **Show Deleted Accounts** to display the deleted nodes.
+
+> **Note:** You can select **Show Deleted Accounts** to display the deleted nodes.
+
 6. On the right side of the Budgets page, click the **Account details** tab.
 7. View the account details.
 
 **Independent account details**
 
-By default, independent accounts are enabled and cannot be disabled. An independent account is the master account of a level-1 organization or cost center. You can increase or reduce the quota of an independent account. In single-cloud environments, select a level-1 node to view the independent account details of the node. In multi-cloud environments, select **All** from the cloud platform drop-down list, select a level-1 node, and then view the independent account details of the node.
+> **Note:** By default, independent accounts are enabled and cannot be disabled.
+
+An independent account is the master account of a level-1 organization or cost center. You can increase or reduce the quota of an independent account. In single-cloud environments, select a level-1 node to view the independent account details of the node. In multi-cloud environments, select **All** from the cloud platform drop-down list, select a level-1 node, and then view the independent account details of the node.
 
 | Section | Description |
 |---|---|
@@ -15446,7 +16593,8 @@ By default, independent accounts are enabled and cannot be disabled. An independ
 
 **Allocation account details**
 
-In single-cloud environments, the accounts of the level-2 and lower nodes on a specific cloud platform are allocation accounts. In multi-cloud environments, if you select **All** from the cloud platform dropdown list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+> **Note:** In single-cloud environments, the accounts of the level-2 and lower nodes on a specific cloud platform are allocation accounts.
+> In multi-cloud environments, if you select **All** from the cloud platform drop- down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
 
 | Scenario | Description |
 |---|---|
@@ -15472,28 +16620,30 @@ An operations administrator can view all nodes. If budget accounts are configure
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. In the **Budget Account** section of the Budgets page, select a cloud platform from the cloud
-platform drop-down list. The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+platform drop-down list.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+
 5. In the **Budget Account** section, select the node that you want to view.
-You can select **Show Deleted Accounts** to display the deleted nodes. In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
+> **Note:** You can select **Show Deleted Accounts** to display the deleted nodes.
+> In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
 6. On the right side of the Budgets page, click the **Income and expenditure details** tab.
 7. Click Advanced Filter and configure the following parameters to filter or search for specific
 transaction details: **Operator**, **Serial Number**, **Revenue and Expenditure Type** , **Flow**
 **Type**, **Account Period(UTC+08:00)**, and **Billing Date(UTC+08:00)**.
 8. View the transaction details of the node.
-If the current node is a level-1 node, the transactions within the independent account of the node are displayed. In multi-cloud environments, if you select a cloud platform from the cloud platform drop-down list and select a level-1 node, the transactions within the allocation account of the node are displayed. If the current node is a level-2 or lower node, the transactions within the allocation account of the node are displayed. In multi-cloud environments, if you select a cloud platform from the cloud platform drop-down list and select a node, the transactions within the allocation account of the node are displayed. Valid values of the **Flow Type** parameter are **Quota adjustment**, **Quota**
-**Allocation**, **Freeze**, **Freeze release**, **Deduction**, and **Refund**.
-**Quota adjustment**: You can increase or reduce the quota of an
-independent account.
-**Quota Allocation**: You can increase or reduce the quota of an allocation
-account.
-**Freeze**: The system suspends the available quota based on the service bill
-on a daily basis, or suspends the available quota when the system regenerates a bill.
-**Freeze release**: The quota suspended in the month is released when the
-system generates the monthly bill.
-**Deduction**: When the system generates a monthly bill, the system
-deducts the bill amount from the available quota and adds the bill amount to the used quota.
-**Refund**: Refunds may be involved when users enable reversing
-reconciliation records, change the specifications of subscription resources, and unsubscribe from resources.
+
+> **Note:** If the current node is a level-1 node, the transactions within the independent account of the node are displayed. In multi-cloud environments, if you select a cloud platform from the cloud platform drop-down list and select a level-1 node, the transactions within the allocation account of the node are displayed.
+> If the current node is a level-2 or lower node, the transactions within the allocation account of the node are displayed. In multi-cloud environments, if you select a cloud platform from the cloud platform drop-down list and select a node, the transactions within the allocation account of the node are displayed.
+> Valid values of the **Flow Type** parameter are **Quota adjustment**, **Quota** **Allocation**, **Freeze**, **Freeze release**, **Deduction**, and **Refund**.
+> **Quota adjustment**: You can increase or reduce the quota of an independent account.
+> **Quota Allocation**: You can increase or reduce the quota of an allocation account.
+> **Freeze**: The system suspends the available quota based on the service bill on a daily basis, or suspends the available quota when the system regenerates a bill.
+> **Freeze release**: The quota suspended in the month is released when the system generates the monthly bill.
+> **Deduction**: When the system generates a monthly bill, the system deducts the bill amount from the available quota and adds the bill amount to the used quota.
+> **Refund**: Refunds may be involved when users enable reversing reconciliation records, change the specifications of subscription resources, and unsubscribe from resources.
 
 ##### 7.2.5.6 Enable quota allocation
 
@@ -15505,14 +16655,22 @@ You are an operations administrator or an organization administrator. If you are
 
 **Limits**
 
-By default, quota allocation is disabled for allocation accounts. If quota allocation is disabled for the allocation account of a node, the allocation account shares the budget quota of the parent node of the node. If you want to manage the budget quota of a subordinate node in a more finegrained manner, you can enable quota allocation for the node and allocate the available quota to the node. You can enable quota allocation only for allocation accounts. An operations administrator can enable quota allocation for all allocation accounts. Users can enable quota allocation for the subordinate nodes within their organization or their authorized cost center, and then allocate quotas to the subordinate nodes. Before you enable quota allocation for the allocation account of a node, you must enable quota allocation for the parent node of the node.
+> **Note:** By default, quota allocation is disabled for allocation accounts. If quota allocation is disabled for the allocation account of a node, the allocation account shares the budget quota of the parent node of the node.
+> If you want to manage the budget quota of a subordinate node in a more fine- grained manner, you can enable quota allocation for the node and allocate the available quota to the node.
+
+You can enable quota allocation only for allocation accounts. An operations administrator can enable quota allocation for all allocation accounts. Users can enable quota allocation for the subordinate nodes within their organization or their authorized cost center, and then allocate quotas to the subordinate nodes. Before you enable quota allocation for the allocation account of a node, you must enable quota allocation for the parent node of the node.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. In the **Budget Account** section of the Budgets page, select a cloud platform or All from the
-cloud platform drop-down list. The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+cloud platform drop-down list.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+
 5. In the **Budget Account** section, select the node to which the allocation account belongs.
-In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
+> **Note:** In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
 6. On the right-side section of the Budgets page, click the **Account details** tab.
 7. On the **Account details** tab, click **Enable** in the upper-right corner of the Assign accounts
 section.
@@ -15533,9 +16691,14 @@ An operations administrator can disable quota allocation for all allocation acco
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. In the **Budget Account** section of the Budgets page, select a cloud platform or All from the
-cloud platform drop-down list. The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+cloud platform drop-down list.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture.
+
 5. In the **Budget Account** section, select the node to which the allocation account belongs.
-In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
+> **Note:** In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
 6. On the right-side section of the Budgets page, click the **Account details** tab.
 7. On the **Account details** tab, click **Disable** in the upper-right corner of the Assign accounts
 section.
@@ -15556,7 +16719,11 @@ You can adjust quotas only for independent accounts.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. In the **Budget Account** section of the Budgets page, select All from the cloud platform
-drop-down list. The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture. In multi-cloud environments, if you want to adjust the quota for an independent account, select **All** from the cloud platform drop-down list. In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+drop-down list.
+
+> **Note:** The cloud platform drop-down list is displayed only in multi-cloud environments and when budget accounts are configured based on the organization architecture. In multi-cloud environments, if you want to adjust the quota for an independent account, select **All** from the cloud platform drop-down list.
+> In multi-cloud environments, if you select **All** from the cloud platform drop-down list, the accounts of the level-2 and lower nodes on the selected cloud platforms are allocation accounts. If you select a cloud platform from the cloud platform drop-down list, the accounts of all the nodes (including level-1 nodes) on the selected cloud platform are allocation accounts. In addition, the parent node of a node on the selected cloud platform is its corresponding same-level node found under the **All** selection. If this corresponding node is disabled, the system searches upwards for the next active parent. For example, Level-1 Node A (independent account) under the **All** selection is the parent node of Level-1 Node A (allocation account) on a specific cloud platform. Level-2 Node B (allocation account) under the **All** selection is the parent node of Level-2 Node B (allocation account) on a specific cloud platform.
+
 5. In the **Budget Account** section, select the level-1 node that you want to view.
 6. On the right side of the Budgets page, click the **Account details** tab.
 7. On the **Account details** tab, click **Adjustment quota** in the upper-right corner.
@@ -15585,9 +16752,13 @@ When you configure budgets by organization, you can allocate budget quotas only 
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
 4. On the Budgets page, select a cloud platform in the **Budget Account** section.
-You need to select a cloud platform only in multi-cloud environments and when budgets are configured by organization.
+
+> **Note:** You need to select a cloud platform only in multi-cloud environments and when budgets are configured by organization.
+
 5. In the **Budget Account** section, select the node to which the allocation account belongs.
-In multi-cloud environments, **all** nodes of level 2 and lower on the central cloud platform are allocation accounts, and all nodes of managed cloud platforms, including level-1 nodes, are allocation accounts. In addition, the parent nodes of the nodes on the managed cloud platforms refer to **all** nodes of the same level on the central cloud platform. If nodes of the same level on the central cloud platform are disabled, nodes of next higher level are used. For example, **all** level-1 nodes A (independent accounts) of the central cloud platform are the parent nodes of level-1 nodes A (allocation accounts) of the managed cloud platforms, and **all** level-2 nodes B (allocation accounts) of the central cloud platform are the parent nodes of level-2 nodes B (allocation accounts) of the managed cloud platforms.
+
+> **Note:** In multi-cloud environments, **all** nodes of level 2 and lower on the central cloud platform are allocation accounts, and all nodes of managed cloud platforms, including level-1 nodes, are allocation accounts. In addition, the parent nodes of the nodes on the managed cloud platforms refer to **all** nodes of the same level on the central cloud platform. If nodes of the same level on the central cloud platform are disabled, nodes of next higher level are used. For example, **all** level-1 nodes A (independent accounts) of the central cloud platform are the parent nodes of level-1 nodes A (allocation accounts) of the managed cloud platforms, and **all** level-2 nodes B (allocation accounts) of the central cloud platform are the parent nodes of level-2 nodes B (allocation accounts) of the managed cloud platforms.
+
 6. On the right-side section of the Budgets page, click the **Account details** tab.
 7. On the **Account details** tab, click **Allocation quota** in the upper-right corner.
 8. In the **Allocation quota** dialog box, configure the parameters to allocate quotas. The
@@ -15623,7 +16794,11 @@ You are an operations administrator or a resource auditor.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Public Cloud Account**.
 4. On the **Public Cloud Account** page, view the accounts of Alibaba Cloud platforms added
-to the central cloud platform. You can perform fuzzy search on the Public Cloud Account page. The Public Cloud Account page displays all enabled accounts of the added Alibaba Cloud platforms. An account card displays the name, status, and remaining quota of the account.
+to the central cloud platform.
+
+> **Note:** You can perform fuzzy search on the Public Cloud Account page.
+> The Public Cloud Account page displays all enabled accounts of the added Alibaba Cloud platforms. An account card displays the name, status, and remaining quota of the account.
+
 5. Click the card of the account that you want to view to go to the **Billing Account** page
 available to the account.
 
@@ -15817,7 +16992,11 @@ You can enable price inquiry as a platform administrator. To do so, you can perf
 icon to show the floating menu and click the icon to open the price calculator.
 3. On the **Pricing** page, click the **Price Calculator** tab.
 4. Select a cloud service from the left-side **Product List** and select configurations in the right-
-side section. Then, view the estimated fee and billing details. You can enter the name of a cloud service in the search box to quickly find the cloud service. In multi-cloud environments, you can select different cloud platforms from the cloud platform drop-down list on the right side to view the fee and billing details of cloud services on different cloud platforms.
+side section. Then, view the estimated fee and billing details.
+
+> **Note:** You can enter the name of a cloud service in the search box to quickly find the cloud service.
+> In multi-cloud environments, you can select different cloud platforms from the cloud platform drop-down list on the right side to view the fee and billing details of cloud services on different cloud platforms.
+
 5. Click **Add to List** in the lower part of the page.
 6. In the **Please choose to join the list** dialog box, select a list from the **List to be added**
 drop-down list.
@@ -15835,7 +17014,11 @@ You have enabled price inquiry as a platform administrator. To do so, you can pe
 icon to show the floating menu, and then click the icon to go to the Pricing page.
 3. On the **Pricing** page, click the **Optional list** tab.
 4. Select a saved list from the **Current list** drop-down list to view the configuration details of
-the list. Click the icon before a service name to show the billable items.
+the list.
+
+> **Note:** Click the
+> icon before a service name to show the billable items.
+
 5. Perform operations as needed.
 
 | Operation | Description |
@@ -15855,9 +17038,7 @@ The Service Pricing tab displays the pricing details of services and the pricing
 
 **Usage notes**
 
-**Important**
-
-The prices displayed on this page are for reference only. They are not updated in real time and are not associated with discounts. To query the actual prices, go to the buy page of the cloud service that you want to buy.
+> **Important:** The prices displayed on this page are for reference only. They are not updated in real time and are not associated with discounts. To query the actual prices, go to the buy page of the cloud service that you want to buy.
 
 **Prerequisites**
 
@@ -15867,7 +17048,10 @@ You enable price inquiry as a platform administrator. To do so, you can perform 
 icon to show the floating menu, and then click the icon to go to the Pricing page.
 3. On the **Pricing** page, click the **Service Pricing** tab.
 4. On the left side of the Service Pricing tab, select a cloud service from the **Product List**.
-Then, view the service pricing details in the right-side section. You can enter the name of a cloud service in the search box to quickly find the cloud service. In multi-cloud environments, you can select different cloud platforms from the cloud platform drop-down list on the right side to view the pricing details of cloud services on different cloud platforms.
+Then, view the service pricing details in the right-side section.
+
+> **Note:** You can enter the name of a cloud service in the search box to quickly find the cloud service.
+> In multi-cloud environments, you can select different cloud platforms from the cloud platform drop-down list on the right side to view the pricing details of cloud services on different cloud platforms.
 
 ##### 7.2.8.2 Billing configuration overview
 
@@ -15884,7 +17068,10 @@ Billing configurations are created.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rules**.
 4. On the **Rule Overview** page, view the validity period of each billing configuration in the
-Gantt chart. By default, billing configurations are displayed by month. The name of a billing configuration contains the validity period of the billing configuration.
+Gantt chart.
+
+> **Note:** By default, billing configurations are displayed by month. The name of a billing configuration contains the validity period of the billing configuration.
+
 **Change the time span of the Gantt chart** : Click **Day View** in the upper-right corner
 and select **Week View**, **Month View**, **Quarter View**, or **Year View** from the drop-down list.
 **Search for billing configurations**: In the navigation tree, enter a keyword in the
@@ -16135,7 +17322,13 @@ The platform administrator turns on the price inquiry switch in **Configuration*
 
 **Cost description**
 
-For cloud services that support the pay-as-you-go billing method, the system displays cost information during new purchase, configuration change (if supported), CPQ, and order processing. The displayed cost represents the unit price of the product. FFor cloud services that support the subscription billing method, the system displays cost information during new purchase, configuration change (if supported), unsubscription, renewal, CPQ, and order processing. The displayed cost represents the total amount payable for the product. Date calculation rules New purchase: The purchase day is not billed. If you activate and unsubscribe on the same day, no fee applies. For example, if you purchase a one-month subscription on January 1, 2024, the billing cycle runs from 00:00:00 on January 2, 2024 to 00:00:00 on February 2, 2024. Configuration change: On the day of the change, the system bills based on the previous specification. Starting the next day, the system bills based on the new specification. Renewal: The renewal period starts from the day after the instance expires. Unsubscription: The system bills for the day of unsubscription. Use the following formulas to calculate payable amounts during configuration change, unsubscription, and renewal: Payable amount for configuration change or unsubscription (monthly billing) = Unused fee - (Paid fee - Consumed fee) Consumed fee: the fee consumed by this instance during the past period Paid fee: The total fee already paid for this instance during the past period. This includes fees paid during initial purchase, each configuration change, and each renewal. Unused fee: The fee required for future usage. The future specification may be the new specification or the current specification. Payable amount for renewal (monthly billing) = Number of renewal months x Monthly unit price
+For cloud services that support the pay-as-you-go billing method, the system displays cost information during new purchase, configuration change (if supported), CPQ, and order processing. The displayed cost represents the unit price of the product. FFor cloud services that support the subscription billing method, the system displays cost information during new purchase, configuration change (if supported), unsubscription, renewal, CPQ, and order processing. The displayed cost represents the total amount payable for the product. Date calculation rules New purchase: The purchase day is not billed. If you activate and unsubscribe on the same day, no fee applies. For example, if you purchase a one-month subscription on January 1, 2024, the billing cycle runs from 00:00:00 on January 2, 2024 to 00:00:00 on February 2, 2024. Configuration change: On the day of the change, the system bills based on the previous specification. Starting the next day, the system bills based on the new specification. Renewal: The renewal period starts from the day after the instance expires. Unsubscription: The system bills for the day of unsubscription. Use the following formulas to calculate payable amounts during configuration change, unsubscription, and renewal: Payable amount for configuration change or unsubscription (monthly billing) = Unused fee - (Paid fee - Consumed fee)
+
+> **Note:** Consumed fee: the fee consumed by this instance during the past period
+> Paid fee: The total fee already paid for this instance during the past period. This includes fees paid during initial purchase, each configuration change, and each renewal.
+> Unused fee: The fee required for future usage. The future specification may be the new specification or the current specification.
+
+Payable amount for renewal (monthly billing) = Number of renewal months x Monthly unit price
 
 **Cloud services that support price inquiry in Enterprise Edition**
 
@@ -16245,7 +17438,20 @@ In multi-cloud scenarios, Enterprise Edition supports price inquiry for all clou
 
 **Fee display examples**
 
-Configuration cost: shows the unit price or payable amount for a resource item. If the resource has associated resources, their costs also appear. For example, when you purchase a new ECS instance, the system also displays the cost of its associated disks**.** ECS disk (EBS) cost: shows the unit price of the ECS disk resource item associated with the ECS instance. Cost details/View details: Move the pointer over this link to view the original and discounted prices for the resource item. If associated resources exist, their details also appear. For example, under ECS cost details, the system also displays cost details for the associated ECS disk (EBS) resource item. Original price: the sum of the original prices for all billable items Discounted price: the sum of the discounted prices for all billable items Discounted price = Total price × Discount rate The system automatically truncates any amount beyond the seventh decimal place and excludes it from the discounted price. Under the discounted price, the system displays each billable item and its corresponding discounted price. For example, in the Elasticsearch cost details, items such as "Pricing by primary node CPU", "Pricing by primary node memory", and "Pricing by data node CPU" represent billable items. Coupon: If a coupon is used for a resource, the system also displays the coupon amount. When you change the configuration of a service, a price difference may occur. For pay-as-you-go billing, the price difference represents the difference between the unit prices before and after the configuration change. For subscription billing, a positive number indicates the amount the user must pay to cover the difference, while a negative number indicates the amount to refund to the user. When you unsubscribe from a service, you may receive a refund. The system automatically truncates any amount beyond the third decimal place in the calculated refund. The used duration is calculated in full days, and any partial day counts as one full day.
+> **Note:** Configuration cost: shows the unit price or payable amount for a resource item.
+> If the resource has associated resources, their costs also appear. For example, when you purchase a new ECS instance, the system also displays the cost of its associated disks**.** ECS disk (EBS) cost: shows the unit price of the ECS disk resource item associated with the ECS instance.
+> Cost details/View details: Move the pointer over this link to view the original and discounted prices for the resource item. If associated resources exist, their details also appear. For example, under ECS cost details, the system also displays cost details for the associated ECS disk (EBS) resource item.
+> Original price: the sum of the original prices for all billable items
+> Discounted price: the sum of the discounted prices for all billable items
+> Discounted price = Total price × Discount rate
+> The system automatically truncates any amount beyond the seventh decimal place and excludes it from the discounted price.
+> Under the discounted price, the system displays each billable item and its corresponding discounted price.
+
+For example, in the Elasticsearch cost details, items such as "Pricing by primary node CPU", "Pricing by primary node memory", and "Pricing by data node CPU" represent billable items.
+
+> Coupon: If a coupon is used for a resource, the system also displays the coupon amount.
+
+When you change the configuration of a service, a price difference may occur. For pay-as-you-go billing, the price difference represents the difference between the unit prices before and after the configuration change. For subscription billing, a positive number indicates the amount the user must pay to cover the difference, while a negative number indicates the amount to refund to the user. When you unsubscribe from a service, you may receive a refund. The system automatically truncates any amount beyond the third decimal place in the calculated refund. The used duration is calculated in full days, and any partial day counts as one full day.
 
 **Purchase an ECS instance (pay-as-you-go)**
 
@@ -16261,11 +17467,14 @@ Configuration cost: shows the unit price or payable amount for a resource item. 
 
 **Unsubscribe from an ECS instance (subscription)**
 
-When you cancel a subscription, the configuration details show the refund amount for each monthly-billed instance.
+> **Note:** When you cancel a subscription, the configuration details show the refund amount for each monthly-billed instance.
 
 **CPQ cost display**
 
-At the bottom of the CPQ page, the system displays the total cost for all services. If all services use the subscription billing, the system displays the total monthly discounted cost. If all services use the pay-as-you-go billing, the system displays the total hourly discounted cost for all resources and their units. The unit display rule matches the rule used during new purchase quotation. If multiple billable items have different units, the system displays "/hour". If services use both the subscription and pay-as-you-go billing, the total at the bottom shows the subscription cost and the pay-as-you-go cost separately. The pay-as-you-go cost includes its unit, following the same display rule as new purchase quotation. If multiple billable items have different units, the system displays "/hour".
+> **Note:** At the bottom of the CPQ page, the system displays the total cost for all services.
+> If all services use the subscription billing, the system displays the total monthly discounted cost.
+> If all services use the pay-as-you-go billing, the system displays the total hourly discounted cost for all resources and their units. The unit display rule matches the rule used during new purchase quotation. If multiple billable items have different units, the system displays "/hour".
+> If services use both the subscription and pay-as-you-go billing, the total at the bottom shows the subscription cost and the pay-as-you-go cost separately. The pay-as-you-go cost includes its unit, following the same display rule as new purchase quotation. If multiple billable items have different units, the system displays "/hour".
 
 **Order list cost display**
 
@@ -16275,7 +17484,13 @@ For detailed information about the cost display in the order list and order deta
 
 **description**
 
-The billing switch supports usage-based pricing and cost rate. The cost rate applies to all integrated public cloud products. The usage-based pricing applies only to public cloud products that have metering data and billing rules. Usage-based pricing: The system prices resources based on billing rules and pricing factors from metering data. It calculates the resale amount for public cloud services by applying billing rules to public cloud metering data. Price multiplier pricing: The resale amount for public cloud services equals the cost amount on the public cloud bill multiplied by the price multiplier. When you set the pricing mode to usage-based pricing, the system cannot generate bills for cloud services that support only the cost rate. The following table lists the preset public cloud services and their pricing modes:
+The billing switch supports usage-based pricing and cost rate. The cost rate applies to all integrated public cloud products. The usage-based pricing applies only to public cloud products that have metering data and billing rules.
+
+> **Note:** Usage-based pricing: The system prices resources based on billing rules and pricing factors from metering data. It calculates the resale amount for public cloud services by applying billing rules to public cloud metering data.
+> Price multiplier pricing: The resale amount for public cloud services equals the cost amount on the public cloud bill multiplied by the price multiplier.
+> When you set the pricing mode to usage-based pricing, the system cannot generate bills for cloud services that support only the cost rate.
+
+The following table lists the preset public cloud services and their pricing modes:
 
 **Compute**
 
@@ -16446,7 +17661,17 @@ In the upper part of the page, view the basic information of the billing configu
 In the lower part of the page, view detailed billing configuration information, including
 **Product**, **Resource**, **Meter Name**, **Billing Cycle**, **Billing Method**, **Pricing Method**,
 **Billable Item Description**, **Pricing Configuration**, **Unit**, and more.
-Click in the product column to group and display items by product name, sorted according to the product order in the menu. The resource column displays new specifications: The rule may not have been saved. Prices may be pending configuration. The resource column displays inactive status: After the user site upgrades to a new version, the new version may add billing support for this product. This message appears after creating a third-party product rule template. To resolve issues with new specifications or inactive status: Update the price via **Pricing Configuration** or **Price Preview**, then save the rule.
+
+> **Note:** Click
+> in the product column to group and display items by product name,
+> sorted according to the product order in the menu.
+> The resource column displays new specifications:
+> The rule may not have been saved.
+> Prices may be pending configuration.
+> The resource column displays inactive status:
+> After the user site upgrades to a new version, the new version may add billing support for this product.
+> This message appears after creating a third-party product rule template.
+> To resolve issues with new specifications or inactive status: Update the price via **Pricing Configuration** or **Price Preview**, then save the rule.
 
 ###### 7.2.8.3.6 Modify the basic information about a billing configuration
 
@@ -16507,7 +17732,10 @@ i. In the **Billable Item Configuration** step, configure the billable items and
 | Price Type | The type of the unit price that you want to use for the pricing configuration. Valid values: Monthly Price, Daily Price, and Hourly Price. For more information, see the Price types section of this topic. |
 | Billing Item Management | You can modify existing billable items and create or delete billable items based on your business requirements. For more information, see the Billable item management section of this topic. |
 
-ii. In the **Price Settings** step, configure the prices of billable items and click **OK**. If you turn on **Display Only Unpriced Items** in the upper-right corner of the panel, the billable items for which you have not configured prices are automatically displayed. Click **AllHide** or **AllShow** in the upper-right corner to collapse or expand all priced and unpriced billable items.
+ii. In the **Price Settings** step, configure the prices of billable items and click **OK**.
+
+> **Note:** If you turn on **Display Only Unpriced Items** in the upper-right corner of the panel, the billable items for which you have not configured prices are automatically displayed.
+> Click **AllHide** or **AllShow** in the upper-right corner to collapse or expand all priced and unpriced billable items.
 
 **Billable item configurations**
 
@@ -16517,13 +17745,18 @@ You can set the Configure Filtering Condition parameter to **Exact Match** or **
 **Match**.
 **Exact Match**: All metering data is included in the billing and used for bill generation.
 **Conditional Match**: Only metering data that meets the specified filter conditions is
-included in the billing. The filter condition consists of the **Field** and **Value** parameters. If the value of a field in the metering data is the same as the specified value of the Value parameter, the metering data meets the filter condition. To add a filter condition, you can click **Add Filtering Condition**. You can add multiple filter conditions. You can click **Delete** in the **Actions** column of a filter condition to delete the filter condition. If you set the Configure Filtering Condition parameter to Conditional Match, at least one filter condition must be retained. If you select **And**, a bill is generated only if the metering data meets all the filter conditions that you specified. If you select **Or**, a bill is generated if the metering data meets at least one of the filter conditions.
+included in the billing. The filter condition consists of the **Field** and **Value** parameters. If the value of a field in the metering data is the same as the specified value of the Value parameter, the metering data meets the filter condition.
+
+> **Note:** To add a filter condition, you can click **Add Filtering Condition**. You can add multiple filter conditions.
+> You can click **Delete** in the **Actions** column of a filter condition to delete the filter condition. If you set the Configure Filtering Condition parameter to Conditional Match, at least one filter condition must be retained.
+
+If you select **And**, a bill is generated only if the metering data meets all the filter conditions that you specified. If you select **Or**, a bill is generated if the metering data meets at least one of the filter conditions.
 
 **Price types**
 
-**Important**
+> **Important:** If the decimal cannot be completely divided, the amount after the seventh decimal place is automatically rounded off and not included in the unit price. If the pay-as- you-go billing method is used, bills are generated based on the hourly price. We recommend that you set the price type to hourly price if the pay-as-you-go billing method is used.
 
-If the decimal cannot be completely divided, the amount after the seventh decimal place is automatically rounded off and not included in the unit price. If the pay-asyou-go billing method is used, bills are generated based on the hourly price. We recommend that you set the price type to hourly price if the pay-as-you-go billing method is used. 30 indicates the number of days in a calendar month. You need to replace it with the actual number of days in the current month based on the actual situation. You can select **Monthly Price**, **Daily Price**, or **Hourly Price** from the Price Type drop-down list. If you select **Monthly Price** as the price type, bills are generated for the billable item by month. You can use the following formulas to calculate the hourly price, daily price, and annual price: Hourly price = Monthly price/30/24 Daily price = Monthly price/30 Annual price = Monthly price × 12 If you select **Daily Price** as the price type, bills are generated for the billable item on a daily basis. You can use the following formulas to calculate the hourly price, monthly price, and annual price: Hourly price = Daily price/24 Monthly price = Daily price × 30 Annual price = Monthly price × 12 If you select **Hourly Price** as the price type, bills are generated for the billable item on an hourly basis. You can use the following formulas to calculate the daily price, monthly price, and annual price: Daily price = Hourly price × 24 Monthly price = Daily price × 30 Annual price = Monthly price × 12
+30 indicates the number of days in a calendar month. You need to replace it with the actual number of days in the current month based on the actual situation. You can select **Monthly Price**, **Daily Price**, or **Hourly Price** from the Price Type drop-down list. If you select **Monthly Price** as the price type, bills are generated for the billable item by month. You can use the following formulas to calculate the hourly price, daily price, and annual price: Hourly price = Monthly price/30/24 Daily price = Monthly price/30 Annual price = Monthly price × 12 If you select **Daily Price** as the price type, bills are generated for the billable item on a daily basis. You can use the following formulas to calculate the hourly price, monthly price, and annual price: Hourly price = Daily price/24 Monthly price = Daily price × 30 Annual price = Monthly price × 12 If you select **Hourly Price** as the price type, bills are generated for the billable item on an hourly basis. You can use the following formulas to calculate the daily price, monthly price, and annual price: Daily price = Hourly price × 24 Monthly price = Daily price × 30 Annual price = Monthly price × 12
 
 **Billable item management**
 
@@ -16588,7 +17821,8 @@ column.
 5. On the **Billing Configuration Detail** page, click **Add Rule**.
 6. In the **Pricing Configuration** panel, configure **Billable Item Configuration** and **Price**
 **Settings**. For more information about the parameters, see Manage pricing configurations.
-After the rule is added, you can enable the rule template in the rule template configuration. After the rule template is enabled, you can use the rule template in the billing rule configuration.
+
+> **Note:** After the rule is added, you can enable the rule template in the rule template configuration. After the rule template is enabled, you can use the rule template in the billing rule configuration.
 
 ###### 7.2.8.3.9 Configure multiple pricing configurations at a time
 
@@ -16608,9 +17842,10 @@ On the **Billing Rules** page, find the billing configuration that you want to m
 list to download the pricing template to your computer.
 6. In the pricing template, configure the unit prices of cloud services.
 
-**Important**
+> **Important:** The Primary pricing factor and Secondary pricing factor fields in the pricing template cannot be modified.
+> By default, the value of the Unit Price field in the pricing template is the price of one primary pricing factor. This field supports up to six decimal places. If an item is free of charge, set it to 0.
+> To change the pricing factors, you need to modify the corresponding billable items.
 
-The Primary pricing factor and Secondary pricing factor fields in the pricing template cannot be modified. By default, the value of the Unit Price field in the pricing template is the price of one primary pricing factor. This field supports up to six decimal places. If an item is free of charge, set it to 0. To change the pricing factors, you need to modify the corresponding billable items.
 7. Click **Batch Upload Pricing Configuration** above the service details list.
 8. In the **Upload files** dialog box, click the dotted rectangle and select the template file that
 you configured. Alternatively, drag the template file to the dotted rectangle.
@@ -16633,7 +17868,8 @@ On the **Billing Rules** page, find the billing configuration that you want to v
 drop-down list.
 6. Click **Pricing Preview** in the **Actions** column.
 7. In the Pricing Preview panel, view the pricing configurations.
-If billable items are priced based on specifications, the specifications are displayed in the Pricing Configuration column.
+
+> **Note:** If billable items are priced based on specifications, the specifications are displayed in the Pricing Configuration column.
 
 ###### 7.2.8.3.11 Enable a billing configuration
 
@@ -16675,7 +17911,11 @@ On the **Billing Rules** page, click the name of the target billing configuratio
 5. In the upper-right corner of the **Billing Configuration Detail** page, click
 next to
 **Enable Configuration**.
-To disable the last subscription billing configuration: If published subscription services exist, unpublish the services or change the billing method before you disable the configuration. If you disable the scubscription billing configuration while running subscription service instances exist, unexpired subscription resources automatically transitions to pay-as-you-go billing upon expiration.
+
+> **Note:** To disable the last subscription billing configuration:
+> If published subscription services exist, unpublish the services or change the billing method before you disable the configuration.
+> If you disable the scubscription billing configuration while running subscription service instances exist, unexpired subscription resources automatically transitions to pay-as-you-go billing upon expiration.
+
 6. In the **Disable configuration** dialog box, click **OK**.
 
 ###### 7.2.8.3.13 Export a price list
@@ -16691,7 +17931,10 @@ You are an operations administrator.
 4. Go to the **Billing Configuration Detail** page of a billing configuration.
 On the **Billing Rules** page, find the billing configuration for which you want to export a price list and click its name. On the **Billing Rules** page, find the billing configuration for which you want to export a price list and click **Edit** in the **Actions** column.
 5. On the **Billing Configuration Detail** page, click **Export Price List** above the service
-details list. The price list of a billing configuration is exported as an **XLS** file. The price list file contains the organization, export time, start and end time of the billing configuration, and pricing configurations of each service. The pricing configurations include the service type, service name, billing method, pricing method, billable item description, billing field, specifications, prices, counting method, counting field, unit, and conversion factor.
+details list.
+
+> **Note:** The price list of a billing configuration is exported as an **XLS** file.
+> The price list file contains the organization, export time, start and end time of the billing configuration, and pricing configurations of each service. The pricing configurations include the service type, service name, billing method, pricing method, billable item description, billing field, specifications, prices, counting method, counting field, unit, and conversion factor.
 
 ###### 7.2.8.3.14 Clone a billing configuration
 
@@ -16729,8 +17972,9 @@ You cannot delete preset billing configurations.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
 4. On the **Billing Rules** page, find the billing configuration that you want to delete and click
 **Delete** in the **Actions** column.
-Alternatively, you can click **Delete** in the upper-right corner of the **Billing**
-**Configuration Detail** page.
+
+> **Note:** Alternatively, you can click **Delete** in the upper-right corner of the **Billing** **Configuration Detail** page.
+
 5. In the message that appears, click **OK**.
 
 ###### 7.2.8.3.16 AI analysis of billing rules
@@ -16757,7 +18001,7 @@ You can manage discount rules for specified organizations or products.
 
 **Discount rule permissions in different states**
 
-Discount rules may be in the following states. Different operations can be performed in different states. In the following table, √ indicates that the operation is supported. × indicates that the operation is not supported.
+> **Note:** Discount rules may be in the following states. Different operations can be performed in different states. In the following table, √ indicates that the operation is supported. × indicates that the operation is not supported.
 
 | Status/Operation | Detai ls | Edit | Enab le | Disa ble | Dele te | Can cel | Request details |
 |---|---|---|---|---|---|---|---|
@@ -16796,7 +18040,11 @@ ii. **Discount Configuration**
 **Unified Discount**: By default, a unified discount is applied to all products. Enter a
 positive integer less than or equal to 1000 in the test box. Unit: %.
 **Specified Product**: The unified discount text box is not displayed. You must enter a
-positive integer less than or equal to 1000 (unit: %) next to each product. If a product is added to the cloud platform, the product is added to the discount rule with the 100% discount by default. iii. Click **Submit**.
+positive integer less than or equal to 1000 (unit: %) next to each product.
+
+> **Note:** If a product is added to the cloud platform, the product is added to the discount rule with the 100% discount by default.
+
+iii. Click **Submit**.
 
 **View discount rules**
 
@@ -16824,9 +18072,8 @@ information about the configuration items, see Create a discount rule.
 
 **Disable a discount rule**
 
-**Important**
+> **Important:** A discount rule will not be used in cost calculations after it is disabled.
 
-A discount rule will not be used in cost calculations after it is disabled.
 1. On the **Discount Management** page, find the discount rule and click **Enable** in the
 **Actions** column.
 2. In the message that appears, click **OK**.
@@ -16845,9 +18092,8 @@ in the **Actions** column, and select **Revoke**.
 
 **View the approval details of a discount rule**
 
-**Important**
+> **Important:** Only after approval is enabled, you can view the approval details of the discount rules in the Being Approved or Approval Rejected state. For more information about how to create an approval process and how to bind an approval process to an operation, see Process approval.
 
-Only after approval is enabled, you can view the approval details of the discount rules in the Being Approved or Approval Rejected state. For more information about how to create an approval process and how to bind an approval process to an operation, see Process approval.
 1. On the **Discount Management** page, find the discount rule, click
 in the **Actions** column, and select **Approval Details**.
 2. On the Approval Details page, view the approval details of the discount rule.
@@ -17026,7 +18272,10 @@ step. The following table describes the parameters.
 
 6. Click **Next**.
 7. In the Deduction Configuration step, click **Add Deduction Rule**.
-You can add multiple deduction rules. After a deduction rule is added, you can click **Edit** or **Delete** in the **Actions** column to modify or delete the deduction rule.
+
+> **Note:** You can add multiple deduction rules.
+> After a deduction rule is added, you can click **Edit** or **Delete** in the **Actions** column to modify or delete the deduction rule.
+
 8. In the **Add Deduction Rule** dialog box, configure the parameters that are described in the
 following table.
 
@@ -17054,10 +18303,16 @@ You are an operations administrator.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
 4. On the **Deductions** page, click **Advanced Filter**, configure the **Rule Name**, **Rule ID**,
 **Organization**, and **Resource Set** parameters, and then click **Search**.
-Before you select a resource set, select an organization first.
+
+> **Note:** Before you select a resource set, select an organization first.
+
 5. View the deduction rules. The information is displayed in the following columns: **Deduction**
 **Rule ID/Name**, **Description**, **Effective Scope**, **Effective Time**, **Status**, **Operated By**,
-and **Updated At**. You can click the icon next to the **Status** column to quickly filter rules by status.
+and **Updated At**.
+
+> **Note:** You can click the
+> icon next to the **Status** column to quickly filter rules by status.
+
 6. Click the name of a deduction rule to go to the deduction rule details page.
 
 ###### 7.2.8.5.3 Modify a deduction rule
@@ -17123,7 +18378,10 @@ You are assigned the operations administrator role.
 4. On the **Deductions** page, find the deduction rule that you want to clone, move the pointer
 over the icon in the **Actions** column, and then select **Clone**.
 5. In the **Clone Deduction Rule** dialog box, configure the parameters of the deduction rule.
-For more information, see Create a deduction rule. The name of each deduction rule must be unique. When you clone a deduction rule, you must specify a unique name for the new deduction rule.
+For more information, see Create a deduction rule.
+
+> **Note:** The name of each deduction rule must be unique. When you clone a deduction rule, you must specify a unique name for the new deduction rule.
+
 6. Click **Submit**.
 
 ###### 7.2.8.5.7 View the approval details of a deduction rule
@@ -17192,13 +18450,16 @@ You are an operations administrator.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters and
-click **Search** to filter billing rule templates. The following options are available in the **Status** drop-down list: **Not Configured**,
-**Configured**, **Delete Service**, and **Unpublish Service**.
+click **Search** to filter billing rule templates.
+
+> **Note:** The following options are available in the **Status** drop-down list: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the resource card that you require to go to the **Rule Template** page.
 6. On the **Billing Rule Template** tab, click **Create Rule**.
 7. Configure the parameters in the **Basic Information**, **Rule Settings**, and **Price Query**
 **Settings** steps as prompted.
-The Price Query Settings step is displayed only for third-party custom cloud services. After price query settings are configured for a cloud service, prices can be displayed on the activation, configuration change, purchase, and Configure, Price, Quote (CPQ) and pricing (price calculator, configuration list, and service pricing) pages of the service.
+
+> **Note:** The Price Query Settings step is displayed only for third-party custom cloud services. After price query settings are configured for a cloud service, prices can be displayed on the activation, configuration change, purchase, and Configure, Price, Quote (CPQ) and pricing (price calculator, configuration list, and service pricing) pages of the service.
 
 **Basic Information**
 
@@ -17381,8 +18642,10 @@ You are an operations administrator.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Specify **Cloud Services**, **Resource Item**, and **Status** and click **Search** to filter
-rule templates. The following options are available in the **Status** drop-down list: **Not Configured**,
-**Configured**, **Delete Service**, and **Unpublish Service**.
+rule templates.
+
+> **Note:** The following options are available in the **Status** drop-down list: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Click a resource card to go to the **Rule Template** page.
 6. On the **Billing Rule Template** tab, view the billing rule templates of the service.
 7. Find the billing rule template that you want to view, and click **Details** in the Actions
@@ -17404,7 +18667,10 @@ Preset billing rule templates cannot be modified.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters as filter
-conditions and click **Search**. Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+conditions and click **Search**.
+
+> **Note:** Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the card for the resource type that you want to manage to go to the **Rule**
 **Template** page.
 6. On the **Billing Rule Template** tab, find the template that you want to modify and click
@@ -17427,7 +18693,10 @@ You can enable only one custom billing rule template for the billing rule config
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters as filter
-conditions and click **Search**. Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+conditions and click **Search**.
+
+> **Note:** Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the card for the resource type that you want to manage to go to the **Rule**
 **Template** page.
 6. On the **Billing Rule Template** tab, find the template that you want to enable and click
@@ -17449,7 +18718,10 @@ Preset billing rule templates cannot be disabled.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters as filter
-conditions and click **Search**. Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+conditions and click **Search**.
+
+> **Note:** Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the card for the resource type that you want to manage to go to the **Rule**
 **Template** page.
 6. On the **Billing Rule Template** tab, find the template that you want to disable and click
@@ -17558,7 +18830,10 @@ Extension rules support Groovy expressions. The context variables of Groovy expr
 
 **Scenario 1: Unit conversion**
 
-A billing rule involves charges for the systemDisk field. The unit in the context is GB, but the billing rule requires charging based on the unit of MB. Therefore, the following expression is configured in the corresponding extension rule: `systemDisk * 1024` . Other unit conversions follow the same principle. To perform quantity operations, you must first confirm the field types in the context. Only integers can be used for quantity operations. If a field is not of an integer type, you must first convert the field type by using relevant Groovy syntax.
+A billing rule involves charges for the systemDisk field. The unit in the context is GB, but the billing rule requires charging based on the unit of MB. Therefore, the following expression is configured in the corresponding extension rule: `systemDisk * 1024` .
+
+> **Note:** Other unit conversions follow the same principle.
+> To perform quantity operations, you must first confirm the field types in the context. Only integers can be used for quantity operations. If a field is not of an integer type, you must first convert the field type by using relevant Groovy syntax.
 
 **Scenario 2: String processing**
 
@@ -18432,15 +19707,17 @@ By default, the operator is the operations administrator.
 3. In the left-side navigation pane, select **Service Pricing** > **Rule Template Management**.
 4. (Optional) Set the **Cloud Service**, **Resource Item**, and **Status** filter conditions, then click
 **Search**.
-**Status** includes **Not configured**, **Configured, Product deleted**, and **Unpublish**
-**Service**.
+
+> **Note:** **Status** includes **Not configured**, **Configured, Product deleted**, and **Unpublish** **Service**.
+
 5. Click a resource card to go to the **Rule Template** page.
 6. In the **Basic information** section, click **Edit**.
 7. On the **Edit Rule Template** page, update the billing origin.
-The billing origin supports **System Generated** and **External Import**.
-**System Generated**: The system generates billing data based on metering data.
-**External Import**: Obtain billing data through an API. If the billing origin is
-external import, the bill audit does not perform verification. Resources with external import do not generate billing data according to billing rules.
+
+> **Note:** The billing origin supports **System Generated** and **External Import**.
+> **System Generated**: The system generates billing data based on metering data.
+> **External Import**: Obtain billing data through an API. If the billing origin is external import, the bill audit does not perform verification. Resources with external import do not generate billing data according to billing rules.
+
 8. Click **OK**.
 
 ###### 7.2.8.6.2 Alibaba Cloud mapping configurations
@@ -18467,7 +19744,9 @@ Service Code: AA. Product Code: BB. Billable Item Code: CC. This is exact mappin
 
 **Source of fields for multiplier pricing mappings**
 
-Log in to the Alibaba Cloud Management Console. Go to the **Expenses and Costs** console and choose **Billing** > **Bill Details**. In the bill list, check the Product Code, Commodity Code, and Billable Item Code fields, which can be used for configuring multiplier pricing mappings. If you want to map all billable items of a specific Alibaba Cloud service to a resource type of Apsara Stack, obtain the value of the Product Code field from the bill details on Alibaba Cloud and specify it as the value of the Service Code field in the billing rule template of the resource type on Apsara Stack. In addition, set both the Product Code and Billable Item Code fields to an asterisk (*) on Apsara Stack. If the bills of an Alibaba Cloud service fail to be synchronized, go to the Bill Details page in the Alibaba Cloud Management Console, click **Back to Old Version** in the upper-right corner, and then obtain the value of the Product Code field for configuring multiplier pricing mappings.
+Log in to the Alibaba Cloud Management Console. Go to the **Expenses and Costs** console and choose **Billing** > **Bill Details**. In the bill list, check the Product Code, Commodity Code, and Billable Item Code fields, which can be used for configuring multiplier pricing mappings. If you want to map all billable items of a specific Alibaba Cloud service to a resource type of Apsara Stack, obtain the value of the Product Code field from the bill details on Alibaba Cloud and specify it as the value of the Service Code field in the billing rule template of the resource type on Apsara Stack. In addition, set both the Product Code and Billable Item Code fields to an asterisk (*) on Apsara Stack.
+
+> **Note:** If the bills of an Alibaba Cloud service fail to be synchronized, go to the Bill Details page in the Alibaba Cloud Management Console, click **Back to Old Version** in the upper-right corner, and then obtain the value of the Product Code field for configuring multiplier pricing mappings.
 
 ###### 7.2.8.6.2.2 Modify mappings
 
@@ -18484,7 +19763,10 @@ If a cloud service has preset Alibaba Cloud mapping configurations, you cannot m
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters as filter
-conditions and click **Search**. Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+conditions and click **Search**.
+
+> **Note:** Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the card for the resource type that you want to manage to go to the **Rule**
 **Template** page.
 6. On the **Public Cloud Mapping Configuration** tab, click **Modify Mapping**.
@@ -18499,9 +19781,13 @@ conditions and click **Search**. Valid values of the **Status** parameter: **Not
 
 Mapping configuration examples:
 
-**Important**
+> **Important:** Exact and fuzzy mapping rules are mutually exclusive.
+> If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using an exact mapping rule, no fuzzy mapping rules can be configured to map the billable items of this Alibaba Cloud service.
+> If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using a fuzzy mapping rule, no exact mapping rules can be configured to map the billable items of this Alibaba Cloud service.
+> The combination of Service Code, Product Code, and Billable Item Code in each exact mapping rule must be unique. If a combination of Service Code, Product Code, and Billable Item Code is configured as an exact mapping rule for a resource type of Apsara Stack, this combination cannot be configured as an exact mapping rule for another resource type of Apsara Stack.
+> When you configure exact mapping rules, make sure that all billable item codes that exist on the site are covered by the configured mappings.
 
-Exact and fuzzy mapping rules are mutually exclusive. If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using an exact mapping rule, no fuzzy mapping rules can be configured to map the billable items of this Alibaba Cloud service. If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using a fuzzy mapping rule, no exact mapping rules can be configured to map the billable items of this Alibaba Cloud service. The combination of Service Code, Product Code, and Billable Item Code in each exact mapping rule must be unique. If a combination of Service Code, Product Code, and Billable Item Code is configured as an exact mapping rule for a resource type of Apsara Stack, this combination cannot be configured as an exact mapping rule for another resource type of Apsara Stack. When you configure exact mapping rules, make sure that all billable item codes that exist on the site are covered by the configured mappings. To map all billable items of Alibaba Cloud Elastic Compute Service (ECS) to a resource type of Apsara Stack, enter ecs in the **Service Code** field, * in the **Product Code** field, and * in the **Billable Item Code** field. This is fuzzy mapping. To map the Size billable item of snapshots of Alibaba Cloud ECS to a resource type of Apsara Stack, enter ecs in the **Service Code** field, snapshot in the **Product Code** field, and Size in the **Billable Item Code** field.
+To map all billable items of Alibaba Cloud Elastic Compute Service (ECS) to a resource type of Apsara Stack, enter ecs in the **Service Code** field, * in the **Product Code** field, and * in the **Billable Item Code** field. This is fuzzy mapping. To map the Size billable item of snapshots of Alibaba Cloud ECS to a resource type of Apsara Stack, enter ecs in the **Service Code** field, snapshot in the **Product Code** field, and Size in the **Billable Item Code** field.
 
 ###### 7.2.8.6.2.3 View Alibaba Cloud mapping configurations
 
@@ -18520,7 +19806,10 @@ For third-party custom cloud services not hosted on Alibaba Cloud, the Public Cl
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
 4. Optional. Configure the **Cloud Services**, **Resource Item**, and **Status** parameters as filter
-conditions and click **Search**. Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+conditions and click **Search**.
+
+> **Note:** Valid values of the **Status** parameter: **Not Configured**, **Configured**, **Delete Service**, and **Unpublish Service**.
+
 5. Find and click the card for the resource type that you want to manage to go to the **Rule**
 **Template** page.
 6. On the **Public Cloud Mapping Configuration** tab, view the preset and custom Alibaba
@@ -18621,7 +19910,9 @@ The coupon status is **In progress**. The default user for this operation is the
 4. Click **Issue** in the **Actions** column.
 5. In the **Issue** dialog box, select **Issuing Organization** and **Issuance Quantity per**
 **Organization**.
-You can select only level-1 organizations. Multiple selections are supported.
+
+> **Note:** You can select only level-1 organizations. Multiple selections are supported.
+
 6. Click OK.
 
 ###### 7.2.9.1.6 Invalidate a coupon
@@ -18662,7 +19953,8 @@ The user performing this operation is, by default, an Operations Administrator.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
 4. Click **Issuance Records** in the **Actions** column of the target coupon.
 5. In the **Issuance Records** panel, view the issuance records for the coupon.
-If a coupon fails to issue, click **Reissue** to attempt issuing it again.
+
+> **Note:** If a coupon fails to issue, click **Reissue** to attempt issuing it again.
 
 ###### 7.2.9.1.9 Delete a coupon
 
@@ -18679,7 +19971,11 @@ The coupon status is **Invalid** or **Not Effective**. The default operator is t
 
 ###### 7.2.9.1.10 Coupon redemption rules
 
-This topic describes coupon redemption rules. Public Cloud Subscription Billing (Multiplier Pricing): The system redeems coupons based on bills. A coupon supports multiple uses. You can apply one coupon per order or bill. In CPQ, one coupon can associate with only one service configuration.
+This topic describes coupon redemption rules.
+
+> **Note:** Public Cloud Subscription Billing (Multiplier Pricing): The system redeems coupons based on bills.
+> A coupon supports multiple uses. You can apply one coupon per order or bill.
+> In CPQ, one coupon can associate with only one service configuration.
 
 **Apply at order confirmation**
 
@@ -18740,7 +20036,10 @@ Select a plan that suits you for subscription.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Token Plan Management** > **Token Plan**.
 4. On the **Token Plan** page, click **Subscribe** in the **Not Subscribed** section or the plan
-comparison section. When you click **Subscribe** in the **Not Subscribed** section, the system redirects you to the **Select Subscription Plan** page, which displays more plans.
+comparison section.
+
+> **Note:** When you click **Subscribe** in the **Not Subscribed** section, the system redirects you to the **Select Subscription Plan** page, which displays more plans.
+
 5. On the **Purchase Plan** page, configure the billing configuration and basic information.
 6. Click **Confirm Order**.
 
@@ -18784,7 +20083,9 @@ You have subscribed to a token plan.
 3. In the left-side navigation pane, select **Token Plan Management** > **Token Plan**.
 4. On the **Token Plan** page, click **Change** on the right side of the plan.
 5. On the **Select Subscription Plan** page, select a new plan.
-Upgrade: Takes effect immediately. Downgrade: Takes effect in the next billing cycle.
+
+> **Note:** Upgrade: Takes effect immediately.
+> Downgrade: Takes effect in the next billing cycle.
 
 ###### 7.2.10.1.5 Renew a token plan
 
@@ -18858,7 +20159,8 @@ The default operator is the operations administrator.
 4. Click
 on the right side of the **Unified Metering Standard Credit** card.
 5. In the dialog box, click **Confirm**.
-You cannot disable this feature after enabling it. The system converts the corresponding quotas to the credit standard for management.
+
+> **Note:** You cannot disable this feature after enabling it. The system converts the corresponding quotas to the credit standard for management.
 
 ###### 7.2.10.3.2 Edit Token Plan configuration
 
@@ -18874,7 +20176,15 @@ The default user role is Operations Administrator. You have enabled Unified Mete
 4. Click **Modify** on the right side of the **Unified Metering Standard by Credit** card.
 5. Complete **Credits Conversion Settings**, **Token Plan Configurations**, and **Price**
 **Management** in sequence.
-i. **Credits Conversion Settings**: Click **Configure** in the Actions column of a model, set the conversion coefficient, and click **Save**. If no conversion coefficient is configured for a new model, the system converts credits based on the following default ratios: Input Token: 1000 : 0.2 Output Token: 1000 : 1.2 Cache Token: 1000 : 0.02 After you update the conversion coefficient, the existing metering data remains unchanged. The new coefficient applies only to metering data generated after the update. ii. **Token Plan Configurations**: Configure the specifications and benefits for each version of the Token Plan.
+i. **Credits Conversion Settings**: Click **Configure** in the Actions column of a model, set the conversion coefficient, and click **Save**.
+
+> **Note:** If no conversion coefficient is configured for a new model, the system converts credits based on the following default ratios:
+> Input Token: 1000 : 0.2
+> Output Token: 1000 : 1.2
+> Cache Token: 1000 : 0.02
+> After you update the conversion coefficient, the existing metering data remains unchanged. The new coefficient applies only to metering data generated after the update.
+
+ii. **Token Plan Configurations**: Configure the specifications and benefits for each version of the Token Plan.
 
 | Action | Description |
 |---|---|
@@ -18917,7 +20227,11 @@ to the corresponding type of data table.
 | My Data Table | Displays tables saved as My Data Table. |
 
 5. Click the corresponding data table on the **Product**/**Organization**/**My Data Table** tab to
-view detailed information about the data table. Refresh: Click above the list to instantly update the data and information in the list. Full screen: Click above the list to enter full-screen mode. Filter: Click **Filter** above the list, add entries, and set filter conditions to quickly find the required data. You can also click after a field in the data table column to set filter conditions. The organization and resource set fields support multiple selections. Sort: Click **Sort** above the list, add entries, and set sorting conditions to arrange data in ascending or descending order. Only one field can be sorted at a time. You can also click after a sortable field in the data table column to sort directly by that field. Show/hide fields: Click **Field** above the list, select or clear fields to show or hide them and their data. Drag before a field to adjust the display order of fields. Scenario analysis: In the data table column, click after a field that supports scenario analysis, select a scenario, and you will be redirected to the custom chart page. You can then configure and update chart data statistics based on your business needs. For detailed descriptions of configuration items, see Create a card. Resource analysis: Hover over the serial number column and click the resource analysis icon to go to the resource panoramic insight page and view panoramic insight information about resources.
+view detailed information about the data table. Refresh: Click above the list to instantly update the data and information in the list. Full screen: Click above the list to enter full-screen mode. Filter: Click **Filter** above the list, add entries, and set filter conditions to quickly find the required data. You can also click after a field in the data table column to set filter conditions.
+
+> **Note:** The organization and resource set fields support multiple selections.
+
+Sort: Click **Sort** above the list, add entries, and set sorting conditions to arrange data in ascending or descending order. Only one field can be sorted at a time. You can also click after a sortable field in the data table column to sort directly by that field. Show/hide fields: Click **Field** above the list, select or clear fields to show or hide them and their data. Drag before a field to adjust the display order of fields. Scenario analysis: In the data table column, click after a field that supports scenario analysis, select a scenario, and you will be redirected to the custom chart page. You can then configure and update chart data statistics based on your business needs. For detailed descriptions of configuration items, see Create a card. Resource analysis: Hover over the serial number column and click the resource analysis icon to go to the resource panoramic insight page and view panoramic insight information about resources.
 
 ###### 7.3.1.1.2 Save data as a custom table
 
@@ -18932,7 +20246,12 @@ corresponding list of tables.
 7. Click **Save as My Data Table** in the upper-right corner.
 8. In the **Save as My Data Table** dialog box, enter a new table name.
 9. Click **Yes**. After you save a table as your custom table, the table with the new name is
-displayed on the My tab. You can move the pointer over the name of a custom table and click the icon to delete the custom table. You can also update a custom table. To do this, perform the following operations: On the Data Analysis page, click the My tab. Click the name of a table, configure the Filter, Sort, and Field settings, and then click **Update Data Table** to update the selected table.
+displayed on the My tab.
+
+> **Note:** You can move the pointer over the name of a custom table and click the
+> icon
+> to delete the custom table.
+> You can also update a custom table. To do this, perform the following operations: On the Data Analysis page, click the My tab. Click the name of a table, configure the Filter, Sort, and Field settings, and then click **Update Data Table** to update the selected table.
 
 ###### 7.3.1.1.3 Export the data of a single table
 
@@ -18949,13 +20268,18 @@ conditions is exported.
 
 **Export selected data**
 
-a. In the data list section, select the data that you want to export and click **Export Data** in the upper-right corner. b. In the **Export Data** dialog box, configure the **Export Scope** and **Task Name** parameters, and click **Yes**. You can select **All** or **Selected** for the Export Scope parameter based on your business requirements. If you select **All** for the Export Scope parameter, you are navigated to the
-**Report Download** page to view the report export task.
-If you select **Selected** for the Export Scope parameter, the exported data is directly saved to your local machine in the **.xlsx** format.
+a. In the data list section, select the data that you want to export and click **Export Data** in the upper-right corner. b. In the **Export Data** dialog box, configure the **Export Scope** and **Task Name** parameters, and click **Yes**.
+
+> **Note:** You can select **All** or **Selected** for the Export Scope parameter based on your business requirements.
+> If you select **All** for the Export Scope parameter, you are navigated to the **Report Download** page to view the report export task.
+> If you select **Selected** for the Export Scope parameter, the exported data is directly saved to your local machine in the **.xlsx** format.
 
 **Export all data**
 
-a. On the **Data Analysis** page, click **Export Data** above the data list. b. In the **Export Data** dialog box, configure the **Task Name** parameter, and click **Yes**. By default, **All** is selected for the **Export Scope** parameter. After the data is exported, you are navigated to the **Report Download** page to view the report export task.
+a. On the **Data Analysis** page, click **Export Data** above the data list. b. In the **Export Data** dialog box, configure the **Task Name** parameter, and click **Yes**.
+
+> **Note:** By default, **All** is selected for the **Export Scope** parameter.
+> After the data is exported, you are navigated to the **Report Download** page to view the report export task.
 
 ###### 7.3.1.1.4 Export the data of multiple tables
 
@@ -18970,7 +20294,10 @@ corresponding list of tables.
 7. Click **Export Multiple Tables** in the upper-right corner.
 8. In the **Export Multiple Tables** dialog box, configure the **Task Name**, **Report Type**, and
 **Reports** parameters.
-You can select multiple reports. When you download multiple reports, the following filter conditions are retained: organization, resource set, region, creation time, and tag. Other filter conditions do not take effect.
+
+> **Note:** You can select multiple reports.
+> When you download multiple reports, the following filter conditions are retained: organization, resource set, region, creation time, and tag. Other filter conditions do not take effect.
+
 9. Click **Yes**. After a report export task is created, a dialog box appears. In this dialog box, you
 can click **Go to Download Report Page** to view the report export task.
 
@@ -19084,7 +20411,9 @@ displayed on the card based on your business requirements.
 8. In the upper-right corner of the Card Configuration page, click **Save as My Card** or **Save**
 **to Dashboard**.
 9. In the **Save as My Card** or **Save to Dashboard** dialog box, specify the title and
-description of the card. After the card is saved as a custom card, click **Add Card** on the **Home** page of the console. On the **My Cards** tab of the Add Card panel, select the custom card to add it to the Home page of the console.
+description of the card.
+
+> **Note:** After the card is saved as a custom card, click **Add Card** on the **Home** page of the console. On the **My Cards** tab of the Add Card panel, select the custom card to add it to the Home page of the console.
 
 **Save as My Card**
 
@@ -19099,10 +20428,12 @@ description of the card. After the card is saved as a custom card, click **Add C
 You can click Data Filtering to configure filter conditions. This way, only data that meets the filter conditions is displayed.
 1. On the **Data Configuration** tab, click **Data Filtering**.
 2. In the **Set Filter Condition** dialog box, add entries and configure filter conditions.
-Each entry consists of a filter field, filter condition, and filter value. If the value of a filter field in data is the same as the specified filter value, the data meets the filter condition entry. You can add multiple entries. Multiple entries can be connected by using the
-**And** or **Or** operator.
-**And**: Data is displayed only if it meets all the filter conditions.
-**Or**: Data is displayed if it meets one of the filter conditions.
+
+> **Note:** Each entry consists of a filter field, filter condition, and filter value. If the value of a filter field in data is the same as the specified filter value, the data meets the filter condition entry.
+> You can add multiple entries. Multiple entries can be connected by using the **And** or **Or** operator.
+> **And**: Data is displayed only if it meets all the filter conditions.
+> **Or**: Data is displayed if it meets one of the filter conditions.
+
 3. Click **OK**.
 
 **Field details**
@@ -19286,8 +20617,8 @@ When you deploy Apsara Copilot, an operations administrator has enabled the disp
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **Intelligent Analysis**.
 4. In the **Intelligent Analysis** dialog box, select a domain.
-You can select **All**, **Cost Analysis Domain**, **Cloud Optimization Domain**, or
-**Resource Analysis Domain** as the domain scope for intelligent analysis.
+
+> **Note:** You can select **All**, **Cost Analysis Domain**, **Cloud Optimization Domain**, or **Resource Analysis Domain** as the domain scope for intelligent analysis.
 
 | Domain | Description |
 |---|---|
@@ -19299,15 +20630,27 @@ You can select **All**, **Cost Analysis Domain**, **Cloud Optimization Domain**,
 | Resource Analysis Domain | This domain contains cloud resource data and provides statistics on total instance counts and instance type distribution. It supports in-depth analysis of core metrics such as CPU load, memory usage, and disk usage by instance type to provide robust data support for resource inventory and efficiency evaluation. When you select Resource Analysis Domain as the query scope, you can select a resource data table at the top of the dialog box. The system then displays the key metrics and aggregation dimensions of the resource table for quick selection. |
 
 5. Enter your question in the dialog box and click
-. Intelligent analysis supports multiple models. You can switch between different models to ask questions. Enter "/" in the input box to add a slot, and then select the corresponding slot value based on the slot type. Intelligent analysis provides different types of recommended questions. You can trigger them with one click as needed. New conversation: Click in the upper-left corner to start a new conversation. Conversation history: Click in the upper-left corner to expand the conversation history. In the conversation history panel, click to pin the conversation history list.
+.
+
+> **Note:** Intelligent analysis supports multiple models. You can switch between different models to ask questions.
+> Enter "/" in the input box to add a slot, and then select the corresponding slot value based on the slot type.
+
+Intelligent analysis provides different types of recommended questions. You can trigger them with one click as needed.
+
+> New conversation: Click
+> in the upper-left corner to start a new conversation.
+> Conversation history: Click
+> in the upper-left corner to expand the conversation
+> history. In the conversation history panel, click
+> to pin the conversation history
+> list.
+
 6. After intelligent analysis provides an answer, perform the following operations.
 : Thumbs up to indicate that you approve of the answer. : Thumbs down to indicate that you disapprove of the answer. : Copy the answer content. : Export the generated answer to a PDF file.
 
 #### 7.3.2 Cloud resource optimization
 
-**Important**
-
-In the Cloud Resource Optimization module, you can configure settings, such as enabling the system to send you notifications about idle or bottleneck resources in the cloud regularly by using methods such as internal messages and emails.
+> **Important:** In the Cloud Resource Optimization module, you can configure settings, such as enabling the system to send you notifications about idle or bottleneck resources in the cloud regularly by using methods such as internal messages and emails.
 
 ##### 7.3.2.1 View health analysis data
 
@@ -19436,9 +20779,9 @@ The Organization tab displays the idle resource details of organizations. Specif
 **Resource Details** in the **Actions** column. On the **Idle Resource Details** page, view the
 details of all idle resources in the organization. Specify the **Resource Type**, **Statistical Date**, **Instance ID**, and **Instance Name** filter conditions to search for data. Find the resource whose details are to be viewed and click **Idle Resource Details** in the
 **Actions** column. On the details page of the resource, select a specification from the
-Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change**
-**Recommendation** section are recommended based on the resource status and
-system configurations. You can select specifications based on the actual environment.
+Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change** **Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 **View the idle resource analysis data of resource sets**
 
@@ -19462,9 +20805,9 @@ The Resource Set tab displays the idle resource details of resource sets. Specif
 **Resource Details** in the **Actions** column. On the **Idle Resource Details** page, view the
 details of all idle resources in the resource set. Specify the **Resource Type**, **Statistical Date**, **Instance ID**, and **Instance Name** filter conditions to search for data. Find the resource whose details are to be viewed and click **Idle Resource Details** in the
 **Actions** column. On the details page of the resource, select a specification from the
-Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change**
-**Recommendation** section are recommended based on the resource status and
-system configurations. You can select specifications based on the actual environment.
+Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change** **Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 **View the analysis data of idle resources**
 
@@ -19486,7 +20829,9 @@ The Idle Instance Change Trends section displays the idle instance change trends
 
 The Resource tab displays the details of idle resources. Specify the **Statistical Date**, **Organization**, **Resource Set**, and **Resource ID** filter conditions to search for data. Click the icon above the list. In the **Export Data** dialog box, select a date and click **OK** to export the list data as an **XLSX** file to your local device. Find the resource whose details are to be viewed and click **Idle Resource Details** in the
 **Actions** column. On the details page of the resource, select a specification from the
-Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
+Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 ##### 7.3.2.3 View bottleneck analysis data
 
@@ -19525,9 +20870,9 @@ The Organization tab displays the bottleneck analysis details of organizations. 
 **Details** in the **Actions** column. On the **Bottleneck Details** page, view the bottleneck
 details of all resources in the organization. Specify the **Resource Type**, **Statistical Date**, **Instance ID**, and **Instance Name** filter conditions to search for data. Find the resource whose bottleneck details are to be viewed and click **Bottleneck**
 **Details** in the **Actions** column. On the bottleneck details page of the resource, select a
-specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change**
-**Recommendation** section are recommended based on the resource status and
-system configurations. You can select specifications based on the actual environment.
+specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change** **Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 **View the bottleneck analysis data of resource sets**
 
@@ -19550,7 +20895,9 @@ The Bottleneck Instance Change Trends section displays the bottleneck instance c
 
 The Resource Set tab displays the bottleneck analysis details of resource sets. Specify the **Statistical Date**, **Organization**, and **Resource Set** filter conditions to search for data. Click the icon above the list. In the **Export Data** dialog box, select a date and click **OK** to export the list data as an **XLSX** file to your local device. Find the resource set whose bottleneck details are to be viewed and click **Bottleneck**
 **Details** in the **Actions** column. On the **Bottleneck Details** page, view the bottleneck
-details of all resources in the resource set. Specify the **Resource Type**, **Statistical Date**, **Instance ID**, and **Instance Name** filter conditions to search for data. Find the resource whose bottleneck details are to be viewed and click **Bottleneck Details** in the **Actions** column. On the bottleneck details page of the resource, select a specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
+details of all resources in the resource set. Specify the **Resource Type**, **Statistical Date**, **Instance ID**, and **Instance Name** filter conditions to search for data. Find the resource whose bottleneck details are to be viewed and click **Bottleneck Details** in the **Actions** column. On the bottleneck details page of the resource, select a specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 **View the bottleneck analysis data of resources**
 
@@ -19571,7 +20918,9 @@ The Bottleneck Instance Change Trends section displays the bottleneck instance c
 
 **Bottleneck analysis details**
 
-The Resource tab displays the bottleneck analysis details of resources. Specify the **Statistical Date**, **Organization**, **Resource Set**, and **Instance ID** filter conditions to search for data. Click the icon above the list. In the **Export Data** dialog box, select a date and click **OK** to export the list data as an **XLSX** file to your local device. Find the resource whose bottleneck details are to be viewed and click **Bottleneck Details** in the **Actions** column. On the bottleneck details page of the resource, select a specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
+The Resource tab displays the bottleneck analysis details of resources. Specify the **Statistical Date**, **Organization**, **Resource Set**, and **Instance ID** filter conditions to search for data. Click the icon above the list. In the **Export Data** dialog box, select a date and click **OK** to export the list data as an **XLSX** file to your local device. Find the resource whose bottleneck details are to be viewed and click **Bottleneck Details** in the **Actions** column. On the bottleneck details page of the resource, select a specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data.
+
+> **Note:** The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
 ##### 7.3.2.4 View security compliance analysis data
 
@@ -19608,11 +20957,17 @@ In the **Organization Security Score Distribution** section, you can view the di
 
 In the Organization Security Score Details section, you can view the details of the security scores of organizations. You can configure the following parameters to filter data: **Scoring**
 **Date**, **Organization**, **Security Score**, **Product Categories**, and **Cloud Services**.
-Select **Aggregate Sub-organizations** above the list to calculate the average security score of an organization and its subordinate organizations. Click the icon above the list to export and save the data to your local device.
+
+> **Note:** Select **Aggregate Sub-organizations** above the list to calculate the average security score of an organization and its subordinate organizations.
+> Click the
+> icon above the list to export and save the data to your local device.
+
 1. Optional. In the Organization Security Score Details section, find the organization whose
 scoring details are to be viewed and click **Scoring Details** in the **Actions** column. On the
 **Scoring Details Table** page, view the scoring details of all resources in the organization.
-Select **Show Sub-organization Resources** in the upper-right corner of the Scoring Details Table page to view the scoring details of the resources in subordinate organizations.
+
+> **Note:** Select **Show Sub-organization Resources** in the upper-right corner of the Scoring Details Table page to view the scoring details of the resources in subordinate organizations.
+
 2. Optional. On the **Scoring Details Table** page, find the resource whose scoring details are
 to be viewed and click **Scoring Details** in the **Actions** column. On the page that appears, view the scoring details of the resource.
 
@@ -19638,7 +20993,10 @@ In the **Resource Set Security Score Distribution** section, you can view the di
 In the Resource Set Security Score Details section, you can view the details of the security scores of resource sets. You can configure the following parameters to filter data: **Scoring**
 **Date**, **Organization**, **Resource Set**, **Security Score**, **Product Categories**, and **Cloud**
 **Services**.
-Click the icon above the list to export and save the data to your local device.
+
+> **Note:** Click the
+> icon above the list to export and save the data to your local device.
+
 1. Optional. In the Resource Set Security Score Details section, find the resource set whose
 scoring details are to be viewed and click **Scoring Details** in the **Actions** column. On the Scoring Details page, view the scoring details of all resources in the resource set.
 2. Optional. On the Scoring Details page, find the resource whose scoring details are to be
@@ -19666,7 +21024,10 @@ In the **Resource Security Score Distribution** section, you can view the distri
 In the Resource Security Score Details section, you can view the details of the security scores of resources. You can configure the following parameters to filter data: **Scoring Date**,
 **Resource Type**, **Instance ID**, **Instance Name**, **Organization**, **Resource Set**, **Region**, and
 **Security Score**.
-Click the icon above the list to export and save the data to your local device.
+
+> **Note:** Click the
+> icon above the list to export and save the data to your local device.
+
 1. In the Resource Security Score Details section, find the resource whose scoring details are
 to be viewed and click **Scoring Details** in the **Actions** column. On the page that appears, view the scoring details of the resource.
 
@@ -19680,7 +21041,9 @@ The default rule is built in the system and applies to all organizations by defa
 
 **Supported cloud services and rule details**
 
-By default, rule weights are evenly configured based on the number of displayed rules. Rules of undeployed services are not displayed. The system executes rules at 05:00 every day.
+> **Note:** By default, rule weights are evenly configured based on the number of displayed rules.
+> Rules of undeployed services are not displayed.
+> The system executes rules at 05:00 every day.
 
 **Computing**
 
@@ -19826,7 +21189,10 @@ You are assigned the operations administrator role.
 4. On the Resource Optimization Settings page, click **Create Policy**.
 5. On the **Create Rule** page, configure the parameters in the **Basic Information** and **Select**
 **Rule** steps.
-The system executes rules at 05:00 every day. i. Configure parameters in the Basic Information step.
+
+> **Note:** The system executes rules at 05:00 every day.
+
+i. Configure parameters in the Basic Information step.
 
 | Section and parameter |   | Description |
 |---|---|---|
@@ -19835,9 +21201,22 @@ The system executes rules at 05:00 every day. i. Configure parameters in the Bas
 | Applicable Scope | Organizati on | The organization to which the custom rule applies. You can select only one organization. If a rule is already applied to the selected organization, you cannot apply the custom rule to the organization. |
 |   | Region | The region to which the custom rule applies. If you do not select a region, the custom rule applies to all regions. |
 
-ii. Configure parameters in the Select Rule step. a. In the left-side section, click the name of a cloud resource to quickly locate its rules. b. In the right-side section, select one or more rules of the cloud resource. You can select **Default** from the Select a template drop-down list to select all rules of the Security & Compliance type. You can enter a keyword in the search box to search for a rule in fuzzy search mode. You can click **Select All** in the upper part of the right-side section to select all cloud resource rules. You can click **Clear** in the upper part of the right-side section to clear the selected rules. You can select **Show Selected Actions Only** in the upper part of the rightside section to display only the selected rules. c. Enter the weight of each rule in the **Weight** column. After rules are selected, the system automatically assigns equal weight to each rule. You can modify the weight of each rule based on your business requirements. d. Optional. Find a rule of the **Utilization** type and click **Rule Configuration** in the
+ii. Configure parameters in the Select Rule step. a. In the left-side section, click the name of a cloud resource to quickly locate its rules. b. In the right-side section, select one or more rules of the cloud resource.
+
+> **Note:** You can select **Default** from the Select a template drop-down list to select all rules of the Security & Compliance type.
+> You can enter a keyword in the search box to search for a rule in fuzzy search mode.
+> You can click **Select All** in the upper part of the right-side section to select all cloud resource rules.
+> You can click **Clear** in the upper part of the right-side section to clear the selected rules.
+> You can select **Show Selected Actions Only** in the upper part of the right- side section to display only the selected rules.
+
+c. Enter the weight of each rule in the **Weight** column.
+
+> **Note:** After rules are selected, the system automatically assigns equal weight to each rule. You can modify the weight of each rule based on your business requirements.
+
+d. Optional. Find a rule of the **Utilization** type and click **Rule Configuration** in the
 **Weight** column. In the Rule Configuration panel, modify the parameters of the rule.
-The rule parameters vary based on cloud resources.
+
+> **Note:** The rule parameters vary based on cloud resources.
 
 | Section and parameter |   | Description |
 |---|---|---|
@@ -19851,7 +21230,11 @@ The rule parameters vary based on cloud resources.
 | Recommen ded Solution | Recommende d Solution | The suggestions for fixing the resource optimization setting. The suggestions must be 0 to 300 characters in length. |
 
 6. View the custom rule. By default, a custom rule takes effect after it is created. On the
-Resource Optimization Settings page, you can view the created custom rule by configuring the **Status** and **Rule Name** parameters. You can select **Effective** or **Paused** from the Status drop-down list. In the Rule Name search box, you can enter a keyword to search for a rule in fuzzy search mode.
+Resource Optimization Settings page, you can view the created custom rule by configuring the **Status** and **Rule Name** parameters.
+
+> **Note:** You can select **Effective** or **Paused** from the Status drop-down list.
+> In the Rule Name search box, you can enter a keyword to search for a rule in fuzzy search mode.
+
 7. Perform other operations on the custom rule based on your business requirements. The
 following table describes the supported operations.
 
@@ -19895,7 +21278,10 @@ The following report types are currently supported: **Metering Report**, **Secon
 **Billing Report**, **Monthly Billing Report of Service**, **Monthly Billing Report of**
 **Resource Set**, **Monthly Billing Report of Organization**, and **Monthly Billing Report of**
 **Cost Unit**.
-For billing reports, the billing period and start/end times refer to the time zone of the server deployment location. The time zone varies based on the deployment location and follows this format: Billing Period (UTC±HH:MM), Start/End Time (UTC±HH:MM). For example: Billing Period (UTC+08:00), Start/End Time (UTC+08:00), Start/End Time (UTC+04:00). Billing reports support online download only. The **Email** delivery method appears only when you enable the email feature switch. To use this delivery method, ensure that an email gateway is configured in the Message Gateway.
+
+> **Note:** For billing reports, the billing period and start/end times refer to the time zone of the server deployment location. The time zone varies based on the deployment location and follows this format: Billing Period (UTC±HH:MM), Start/End Time (UTC±HH:MM). For example: Billing Period (UTC+08:00), Start/End Time (UTC+08:00), Start/End Time (UTC+04:00).
+> Billing reports support online download only.
+> The **Email** delivery method appears only when you enable the email feature switch. To use this delivery method, ensure that an email gateway is configured in the Message Gateway.
 
 **Metering Report**
 
@@ -20158,7 +21544,8 @@ information, see Report types.
 The following report types are supported: **Metering Report**, **Second-level Metering**
 **Report**, **Resource Report**, **Quota Report**, **Organization report**, **Resource set report**,
 **Access policy report**, **User report**, **User group report**, and **Role report**.
-The **Email** delivery method appears only when you enable the email sending feature. To use this delivery method, ensure that you have configured an email gateway in the message gateway.
+
+> **Note:** The **Email** delivery method appears only when you enable the email sending feature. To use this delivery method, ensure that you have configured an email gateway in the message gateway.
 
 **Metering Report**
 
@@ -20357,7 +21744,16 @@ You can configure up to 10 push rules for each of your role. The system generate
 5. Preview the report and click **Create**. The system sends reports to your email address based
 on the scheduled time that you specify.
 6. Optional. After you create a push rule of daily operations reports, you can manage the rule
-on the Daily Operations Report Delivery page. Click **Details** in the Actions column to view the details and push history of the rule. You can also modify the report content settings on the rule details page. On the rule details page, click **Edit** in the Rule Content section to modify the report content settings. On the rule details page, find the push task that you want to download in the Push History section and click **Download** in the Actions column to save the report pushed by the push task as an **.xlsx** file to your local machine. Click **Modify Attributes** in the Actions column to modify the configurations of the rule, such as the rule name, rule description, report name, push cycle, and scheduled time. You can modify the report content settings only on the rule details page. Click **Enabled** or **Disabled** in the Actions column to enable or disable the rule. If the rule is disabled, no push task is triggered. A disabled rule is still counted as one rule. If the number of rules created for a role reaches 10, you cannot create more rules for the role. Move the pointer over the More icon in the Actions column and select **Push History** to view the push tasks that were triggered by the rule. You can also download historical reports. Move the pointer over the More icon in the Actions column and select **Delete** to delete the push rule. If the number of existing push rules reaches the upper limit, you can delete the rules that you no longer need.
+on the Daily Operations Report Delivery page. Click **Details** in the Actions column to view the details and push history of the rule. You can also modify the report content settings on the rule details page.
+
+> **Note:** On the rule details page, click **Edit** in the Rule Content section to modify the report content settings.
+> On the rule details page, find the push task that you want to download in the Push History section and click **Download** in the Actions column to save the report pushed by the push task as an **.xlsx** file to your local machine.
+
+Click **Modify Attributes** in the Actions column to modify the configurations of the rule, such as the rule name, rule description, report name, push cycle, and scheduled time. You can modify the report content settings only on the rule details page. Click **Enabled** or **Disabled** in the Actions column to enable or disable the rule. If the rule is disabled, no push task is triggered.
+
+> **Note:** A disabled rule is still counted as one rule. If the number of rules created for a role reaches 10, you cannot create more rules for the role.
+
+Move the pointer over the More icon in the Actions column and select **Push History** to view the push tasks that were triggered by the rule. You can also download historical reports. Move the pointer over the More icon in the Actions column and select **Delete** to delete the push rule. If the number of existing push rules reaches the upper limit, you can delete the rules that you no longer need.
 
 ### 7.4 Portal management
 
@@ -20491,7 +21887,10 @@ You are an operations administrator.
 4. On the Sites page, find the site that you want to manage and click **Edit** in the Operation
 column. Alternatively, go to the site details page and click **Edit** in the upper-right corner.
 5. In the **Edit Site** dialog box, modify the site information such as basic information, theme
-color configurations, and brand configurations based on your business requirements. For more information about the parameters, see Create a site. When you modify a site, you can configure the Home Page parameter in the Basic Information section to select a page as the site homepage based on your business requirements. Before you select a page as the homepage, make sure that the page is created.
+color configurations, and brand configurations based on your business requirements. For more information about the parameters, see Create a site.
+
+> **Note:** When you modify a site, you can configure the Home Page parameter in the Basic Information section to select a page as the site homepage based on your business requirements. Before you select a page as the homepage, make sure that the page is created.
+
 6. Click **OK**.
 
 ##### 7.4.1.4 Configure a site navigation
@@ -20646,7 +22045,9 @@ This topic describes how users access a site. After you publish a site, you can 
  https://${sitekey}.operation.${internet.domain}/coms/protal/${token} .
 ```
 
-${sitekey}: The custom identifier that you set when creating the site. ${internet.domain}: The root domain of the tenant. /coms/portal/${token}: The path to the site homepage. You can view the specific path in the page list. When you disable the **URL Token** feature, the endpoint does not include ${token}.
+> **Note:** ${sitekey}: The custom identifier that you set when creating the site.
+> ${internet.domain}: The root domain of the tenant.
+> /coms/portal/${token}: The path to the site homepage. You can view the specific path in the page list. When you disable the **URL Token** feature, the endpoint does not include ${token}.
 
 #### 7.4.2 Page management
 
@@ -20660,7 +22061,7 @@ Pages are the important components of a site. Each page carries specific informa
 
 **Permissions on pages in different states**
 
-Pages may be in the states described in the following table. Different operations can be performed on pages in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
+> **Note:** Pages may be in the states described in the following table. Different operations can be performed on pages in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
 
 | State/Operation | Mod ify a pag e | Pre vie w a pag e | Buil d a pag e | Save a page (with updates) | Pub lish a pag e | Dele te a page | Revo ke the publ ishin g of a page | View the revie w detai ls of a page |
 |---|---|---|---|---|---|---|---|---|
@@ -20718,7 +22119,12 @@ You are an operations administrator.
 **Search**: **Page Name**, **Page Path**, **Site**, **Navigation**, **Page Description**, **Release Time**,
 and **Update Time**.
 5. In the page list, view the information about pages.
-You can click the icon next to the **Page Status** field to filter pages by status. You can click the icon next to the **Release Time** field to sort pages in ascending or descending order.
+
+> **Note:** You can click the
+> icon next to the **Page Status** field to filter pages by status.
+> You can click the
+> icon next to the **Release Time** field to sort pages in
+> ascending or descending order.
 
 ###### 7.4.2.1.3 Edit page
 
@@ -20753,7 +22159,11 @@ By default, the operating user is an operations administrator.
 5. On the **Page Building** page, add components and materials as needed to build the page.
 Left side: displays the outline, components, and versions. Outline: displays components that you have added to the page. You can manage these components, including moving, cloning, and deleting them. Components: supported component categories include Navigation, Card, Image and text, Display card, Display component, and Others. Add components to the page as needed. Versions: displays historical version information of the page. You can specify a time range to quickly find a version. You can view or restore a historical version as needed. Middle: displays components that you have added. After you select a component, you can move it up, move it down, clone it, or delete it. Right side: provides settings for the page and components. Page settings: include theme style, background color, background material, and footer display settings. Theme style: configure CSS style code for the page. Page styles take precedence over global site styles. If no style conflicts exist, both site and page styles take effect. Background color: enter a color code (such as #d0021b) in the input box or click the color picker to select a color. Background material: supports **Local Upload** or **Material Center**. Format requirements: JPG or PNG. Size requirements: width 3840 pixels, height customizable. Display footer: footer content is displayed based on the footer configuration of the associated site. If the site does not enable the footer, the footer cannot be displayed. Component settings: configuration items vary by component. You can perform personalized configurations as needed. After you select a target component in the middle section, the right section displays component-related configurations. You can configure the component as needed.
 6. After you complete page building, click **Save** in the upper-right corner.
-Click **Undo** or **Recovery** to quickly adjust the page during page building. Click **Preview** to preview the display effect of the page during page building. Click **Publish** to publish the built page. Click **View Page** to view the content displayed on the published page. This operation is available only for pages in the Published state.
+
+> **Note:** Click **Undo** or **Recovery** to quickly adjust the page during page building.
+> Click **Preview** to preview the display effect of the page during page building.
+> Click **Publish** to publish the built page.
+> Click **View Page** to view the content displayed on the published page. This operation is available only for pages in the Published state.
 
 ###### 7.4.2.1.5 Publish page
 
@@ -20897,9 +22307,14 @@ Upload the image and video materials required by the site to the material center
 5. In the **Upload Material** dialog box, enter the **Material Name**, select the **Material Type**
 (image or video), and then click **Upload Material** to add a file.
 
-**Important**
+> **Important:** Image format and size requirements:
+> The system supports gif, png, jpg, jpeg, and GIF formats.
+> The image size must not exceed 6 MB.
+> Video format, resolution, and size requirements:
+> The system supports common video formats. We recommend using mp4, mkv, or mov formats.
+> The resolution must be 360p (640 pixels × 360 pixels) or higher.
+> The video file size must not exceed 5 GB.
 
-Image format and size requirements: The system supports gif, png, jpg, jpeg, and GIF formats. The image size must not exceed 6 MB. Video format, resolution, and size requirements: The system supports common video formats. We recommend using mp4, mkv, or mov formats. The resolution must be 360p (640 pixels × 360 pixels) or higher. The video file size must not exceed 5 GB.
 6. Click OK.
 
 **Preview materials**
@@ -20914,9 +22329,8 @@ the material card and click **Preview** to preview the material.
 
 Update the name or content of an image or video when necessary.
 
-**Important**
+> **Important:** You cannot edit preset materials.
 
-You cannot edit preset materials.
 1. Hover over the material card and click **Edit**.
 2. In the **Edit material** dialog box, modify the material name or add a file.
 3. Click OK.
@@ -20925,9 +22339,9 @@ You cannot edit preset materials.
 
 Delete images, videos, and other resources when they are no longer needed.
 
-**Important**
+> **Important:** You cannot delete preset materials.
+> Before you delete a material, make sure that no page references it.
 
-You cannot delete preset materials. Before you delete a material, make sure that no page references it.
 1. Hover over the material card and click **Delete**.
 2. In the dialog box, click OK.
 
@@ -20949,7 +22363,9 @@ You are assigned the operations administrator role.
 3. In the left-side navigation pane, click **Component Management**.
 4. On the **Component Management** page, click **Add components**.
 5. In the **Add components** panel, configure the basic information about the component.
-You can click **Download component development kit** to download the component development kit to your computer. You can click **Custom Component Description** to view the description of the custom component.
+
+> **Note:** You can click **Download component development kit** to download the component development kit to your computer.
+> You can click **Custom Component Description** to view the description of the custom component.
 
 | Parameter | Description |
 |---|---|
@@ -20981,12 +22397,11 @@ You cannot configure preset components. You cannot configure custom components i
 4. On the **Component Management** page, enter a name in the search box or configure the
 following parameters to search for the component that you want to configure: **Grouping**,
 **Type**, **Status**, and **Classification**.
-Valid values of the **Type** parameter: **Navigation**, **Card**, **Graphic and text**,
-**Display Card**, **Display components**, and **Other**.
-Valid values of the **Status** parameter: **To be configured**, **Verifying**,
-**Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
-Valid values of the **Classification** parameter: **Preset components** and **Custom**
-**Components**.
+
+> **Note:** Valid values of the **Type** parameter: **Navigation**, **Card**, **Graphic and text**, **Display Card**, **Display components**, and **Other**.
+> Valid values of the **Status** parameter: **To be configured**, **Verifying**, **Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
+> Valid values of the **Classification** parameter: **Preset components** and **Custom** **Components**.
+
 5. Move the pointer over the component card and click **Configuration** in the upper-right
 corner of the component card.
 6. In the **Configure components** panel, following the instructions to complete the **Upload**
@@ -21021,16 +22436,16 @@ You can preview only components in the **Configured**, **Removed**, or **Put on 
 3. In the left-side navigation pane, click **Component Management**.
 4. On the **Component Management** page, enter a component name in the search box or
 specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Classification**, to search for a component.
-**Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and**
-**text**, **Display Card**, **Display components**, and **Other**.
-**Status**: Valid values of the parameter include **To be configured**, **Verifying**,
-**Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
-**Classification**: Valid values of the parameter include **Preset components** and
-**Custom Components**.
+
+> **Note:** **Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and** **text**, **Display Card**, **Display components**, and **Other**.
+> **Status**: Valid values of the parameter include **To be configured**, **Verifying**, **Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
+> **Classification**: Valid values of the parameter include **Preset components** and **Custom Components**.
+
 5. Move the pointer over the component card and click **Preview** in the upper-right corner of
 the component card.
 6. In the **Component preview** dialog box, preview the component.
-The component preview displays a static preview image of the component instead of a preview rendered in real time.
+
+> **Note:** The component preview displays a static preview image of the component instead of a preview rendered in real time.
 
 ##### 7.4.4.4 Modify a component
 
@@ -21048,12 +22463,11 @@ Preset components cannot be modified. Component keys cannot be modified.
 3. In the left-side navigation pane, click **Component Management**.
 4. On the **Component Management** page, enter a component name in the search box or
 specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Classification**, to search for a component.
-**Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and**
-**text**, **Display Card**, **Display components**, and **Other**.
-**Status**: Valid values of the parameter include **To be configured**, **Verifying**,
-**Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
-**Classification**: Valid values of the parameter include **Preset components** and
-**Custom Components**.
+
+> **Note:** **Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and** **text**, **Display Card**, **Display components**, and **Other**.
+> **Status**: Valid values of the parameter include **To be configured**, **Verifying**, **Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
+> **Classification**: Valid values of the parameter include **Preset components** and **Custom Components**.
+
 5. Move the pointer over the component card and click **Edit** in the upper-right corner of the
 component card.
 6. In the **Edit components** panel, modify the basic information about the component,
@@ -21076,12 +22490,11 @@ You can publish only components in the **Configured** or **Removed** state.
 3. In the left-side navigation pane, click **Component Management**.
 4. On the **Component Management** page, enter a component name in the search box or
 specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Classification**, to search for a component.
-**Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and**
-**text**, **Display Card**, **Display components**, and **Other**.
-**Status**: Valid values of the parameter include **To be configured**, **Verifying**,
-**Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
-**Classification**: Valid values of the parameter include **Preset components** and
-**Custom Components**.
+
+> **Note:** **Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and** **text**, **Display Card**, **Display components**, and **Other**.
+> **Status**: Valid values of the parameter include **To be configured**, **Verifying**, **Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
+> **Classification**: Valid values of the parameter include **Preset components** and **Custom Components**.
+
 5. Move the pointer over the component card and click **Shelf** in the upper-right corner of the
 component card.
 6. In the **Operation confirmation** message, click **OK**.
@@ -21102,12 +22515,11 @@ You can unpublish only components in the **Put on shelves** state.
 3. In the left-side navigation pane, click **Component Management**.
 4. On the **Component Management** page, enter a component name in the search box or
 specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Classification**, to search for a component.
-**Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and**
-**text**, **Display Card**, **Display components**, and **Other**.
-**Status**: Valid values of the parameter include **To be configured**, **Verifying**,
-**Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
-**Classification**: Valid values of the parameter include **Preset components** and
-**Custom Components**.
+
+> **Note:** **Type**: Valid values of the parameter include **Navigation**, **Card**, **Graphic and** **text**, **Display Card**, **Display components**, and **Other**.
+> **Status**: Valid values of the parameter include **To be configured**, **Verifying**, **Verification failed**, **Configured**, **Removed**, and **Put on shelves**.
+> **Classification**: Valid values of the parameter include **Preset components** and **Custom Components**.
+
 5. Move the pointer over the component card and click **Lower shelf** in the upper-right corner
 of the component card.
 6. In the **Operation confirmation** message, click **OK**.
@@ -21128,14 +22540,17 @@ Only components in the **Published** state support being added to a page.
 3. In the left-side navigation pane, select **Component Management**.
 4. On the **Component Management** page, use filters such as component name, **Group**,
 **Type**, **Status**, and **Category** to quickly locate your target component.
-**Type**: Includes **Navigation**, **Card**, **Graphic And Text**, **Display Card**, **Display**
-**Components**, and **Other**.
-**Status**: Includes **Pending Configuration**, **Verifying**, **Verification Failed**,
-**Configured**, **Unpublished**, and **Published**.
-**Category**: Includes **Preset components** and **Custom Components**.
+
+> **Note:** **Type**: Includes **Navigation**, **Card**, **Graphic And Text**, **Display Card**, **Display** **Components**, and **Other**.
+> **Status**: Includes **Pending Configuration**, **Verifying**, **Verification Failed**, **Configured**, **Unpublished**, and **Published**.
+> **Category**: Includes **Preset components** and **Custom Components**.
+
 5. Click **Add to Page** in the upper-right corner of the component card.
 6. In the **Add Page** dialog box, select the page where you want to insert the component.
-You can select up to 50 pages in batch. Pages in the following four states cannot be selected: Published (modification pending scheduled release), Pending scheduled release, Draft (approval pending for publication), and Published (modification approval pending). After you add the component, it will be inserted at the end of the page. You must publish the page before the component becomes visible externally.
+You can select up to 50 pages in batch. Pages in the following four states cannot be selected: Published (modification pending scheduled release), Pending scheduled release, Draft (approval pending for publication), and Published (modification approval pending).
+
+> After you add the component, it will be inserted at the end of the page. You must publish the page before the component becomes visible externally.
+
 7. Click **OK**.
 
 ##### 7.4.4.8 Customize a component
@@ -21246,15 +22661,20 @@ This topic describes the tool and configurations for building custom components.
 
 **Procedure of using a scaffolding tool**
 
-**Important**
+> **Important:** Node.js must be of V14.x or later.
 
-Node.js must be of V14.x or later. The project is built by using React. Do not change the major versions of react-dom and react in the scaffolding tool. You do not need to use a specific scaffolding kit for component compilation. However, make sure that the output JavaScript code complies with the Universal Module Definition (UMD) standard, and the configuration files and style files meet the platform requirements. The scaffolding tool uses react-app-rewired to build a component. For more information, view related component building materials.
+> The project is built by using React. Do not change the major versions of react-dom and react in the scaffolding tool.
+> You do not need to use a specific scaffolding kit for component compilation. However, make sure that the output JavaScript code complies with the Universal Module Definition (UMD) standard, and the configuration files and style files meet the platform requirements.
+> The scaffolding tool uses react-app-rewired to build a component. For more information, view related component building materials.
+
 1. After you add a component, in the message that appears, click **Download component**
 **development kit** to download the scaffolding tool.
-You can also download the scaffolding tool in the **Add components** or **Edit**
-**components** panel.
+
+> **Note:** You can also download the scaffolding tool in the **Add components** or **Edit** **components** panel.
+
 2. View the directories in the scaffolding tool.
-The actual files in the src/component directory shall prevail. The following sample code shows an example.
+
+> **Note:** The actual files in the src/component directory shall prevail. The following sample code shows an example.
 
 ```
 ├── README.md // The description file. ├── config-overrides.js // The component configuration file. ├── package-lock.json // The dependency lock file. ├── package.json // The dependency configuration file. ├── public │ └── index.html // The template file used for local development. ├── src │ ├── component │ │ ├── ExampleComponent.module.css // The detailed component style code in a .mo dule.css file. │ │ └── MyButton.tsx // The detailed component execution code in a .tsx file. │ ├── global.d.ts // The global description file. │ ├── index.dev.js // The main execution file in development mode. │ ├── index.js // The main execution file │ └── property.json // The configuration file of the component. └── tsconfig.json // The TypeScript configurations of the scaffolding tool.
@@ -21296,9 +22716,9 @@ ted the component.
 
 **Overview of custom component configurations**
 
-**Important**
+> **Important:** Make sure that the overall style is unified:
 
-Make sure that the overall style is unified: If you use the React technology stack based on Fusion Design to implement your business, see Fusion Design official documentation. If you use the React technology stack based on Cloud Charts to display charts, see Cloud Charts official documentation.
+If you use the React technology stack based on Fusion Design to implement your business, see Fusion Design official documentation. If you use the React technology stack based on Cloud Charts to display charts, see Cloud Charts official documentation.
 
 | UI element | Category | Parameter | Type | Description | Remarks |
 |---|---|---|---|---|---|
@@ -21334,7 +22754,7 @@ Make sure that the overall style is unified: If you use the React technology sta
 
 **Examples of custom component parameter configurations**
 
-The configurations are passed into a component by using the props parameter. The logic for handling parameters is implemented based on the component. The following section shows examples of key configurations. For more information about all the supported configurations, see the Overview of custom component configurations section of this topic.
+> **Note:** The configurations are passed into a component by using the props parameter. The logic for handling parameters is implemented based on the component. The following section shows examples of key configurations. For more information about all the supported configurations, see the Overview of custom component configurations section of this topic.
 
 **Input**
 
@@ -21807,7 +23227,9 @@ https://fusion.design/pc/component/select?themeid=2#Select.
 
 **Image resource selector**
 
-You can select images only from the material library. The input data is of the STRING type. Sample code: `{`
+> **Note:** You can select images only from the material library. The input data is of the STRING type.
+
+Sample code: `{`
 
 ```json
   "key": "DemoComponent",
@@ -21848,7 +23270,9 @@ You can select images only from the material library. The input data is of the S
 
 **Material resource selector**
 
-You can select an image or video from the material library. The input data is of the OBJECT type. Sample code: `{`
+> **Note:** You can select an image or video from the material library. The input data is of the OBJECT type.
+
+Sample code: `{`
 
 ```json
   "key": "DemoComponent",
@@ -21892,7 +23316,9 @@ specifies whether you can configure the settings for video playback.
 
 **Component selector**
 
-After you select another component on the current page, the ID of the corresponding parent component that is displayed on the preview or published page is passed. Sample code: `{`
+> **Note:** After you select another component on the current page, the ID of the corresponding parent component that is displayed on the preview or published page is passed.
+
+Sample code: `{`
 
 ```json
   "key": "DemoComponent",
@@ -21935,7 +23361,9 @@ https://fusion.design/pc/component/select?themeid=2#Select.
 
 **Grouping selector**
 
-A grouping selector is used to process dynamically changing data in lists. Grouping selectors can be nested. Sample code: `{`
+> **Note:** A grouping selector is used to process dynamically changing data in lists. Grouping selectors can be nested.
+
+Sample code: `{`
 
 ```json
   "key": "DemoComponent",
@@ -22321,7 +23749,10 @@ You are the ticket submitter or have the permissions to process tickets.
 4. On the Issues page, find the ticket that you want to manage and click its number or click
 **Details** in the Actions column.
 5. On the **Comment** tab of the **Process Ticket** section on the **Ticket details** page, enter
-comments and upload attachments. Supported file formats: PNG, JPG, TXT, RAR, DOC, XLS, ZIP, 7Z, and MP4. A single attachment cannot exceed 512 MB in size. A maximum of five attachments can be uploaded.
+comments and upload attachments.
+
+> **Note:** Supported file formats: PNG, JPG, TXT, RAR, DOC, XLS, ZIP, 7Z, and MP4. A single attachment cannot exceed 512 MB in size. A maximum of five attachments can be uploaded.
+
 6. Click **Comment**.
 
 ###### 7.5.1.1.4 Modify a ticket
@@ -22377,7 +23808,10 @@ You are the ticket submitter. Tickets are in the **Handling** or **Suspending** 
 4. On the **Created by Me** tab of the Issues page, find the ticket that you want to manage and
 click its number or click **Details** in the Actions column.
 5. In the **Process Ticket** section on the **Ticket details** page, click **Urge** in the upper-right
-corner. You can expedite a ticket only once per day. If you expedite a ticket multiple times, the system prompts that the operation is repeated. After you send a request to expedite a ticket, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket can be processed with higher priority.
+corner. You can expedite a ticket only once per day. If you expedite a ticket multiple times, the system prompts that the operation is repeated.
+
+> After you send a request to expedite a ticket, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket can be processed with higher priority.
+
 6. In the message that appears, click **OK**.
 
 ###### 7.5.1.1.7 Submit a withdrawn or pending feedback ticket
@@ -22395,7 +23829,12 @@ You are the ticket submitter. Tickets are in the **Withdrawn** or **Pending Feed
 4. On the **Created by Me** or **Pending Feedback** tab of the Issues page, find the ticket that
 you want to manage and click its number or click **Details** in the Actions column.
 5. In the **Process Ticket** section on the **Ticket details** page, click **Submit** in the upper-right
-corner. For more information about how to submit a newly created ticket, see Submit a ticket. After you resubmit a withdrawn ticket, no ticket processer is assigned to the ticket. In this case, the ticket is assigned based on service groups, service engineers, and assignment rules. After you resubmit a pending feedback ticket, the ticket is assigned to the original ticket processer, and the state of the ticket changes to Handling. The ticket processer receives the ticket along with a notification if notification is enabled on the message gateway. This way, the ticket can be processed in a timely manner.
+corner. For more information about how to submit a newly created ticket, see Submit a ticket.
+
+> **Note:** After you resubmit a withdrawn ticket, no ticket processer is assigned to the ticket. In this case, the ticket is assigned based on service groups, service engineers, and assignment rules.
+> After you resubmit a pending feedback ticket, the ticket is assigned to the original ticket processer, and the state of the ticket changes to Handling.
+> The ticket processer receives the ticket along with a notification if notification is enabled on the message gateway. This way, the ticket can be processed in a timely manner.
+
 6. In the message that appears, click **OK**.
 
 ###### 7.5.1.1.8 Return an in-progress ticket
@@ -22411,7 +23850,10 @@ You have the permissions to process tickets. Tickets are in the **Handling** sta
 4. On the **Pending Tasks** tab of the Issues page, find the ticket that you want to manage and
 click its number or click **Details** in the Actions column.
 5. On the **Return to Submitter** tab of the **Process Ticket** section on the **Ticket details**
-page, enter a comment for returning the ticket and upload attachments. After the ticket is returned to the ticket submitter, the ticket submitter receives a notification if notification is enabled on the message gateway. This way, the ticket submitter can add the required ticket information in a timely manner.
+page, enter a comment for returning the ticket and upload attachments.
+
+> **Note:** After the ticket is returned to the ticket submitter, the ticket submitter receives a notification if notification is enabled on the message gateway. This way, the ticket submitter can add the required ticket information in a timely manner.
+
 6. Click **Return to Submitter** in the lower-right corner.
 7. In the message that appears, click **OK**. After the ticket is returned to the ticket submitter,
 the state of the ticket changes to **Pending Feedback**.
@@ -22430,7 +23872,9 @@ You have the permissions to process tickets. Tickets are in the **Handling** sta
 
 **Transfer a ticket**
 
-a. On the Issues page, find the ticket that you want to transfer and click its number or click **Details** in the Actions column. b. On the Transfer tab of the **Process Ticket** section on the **Ticket details** page, specify a service group and an engineer, enter a comment, and then upload attachments. After the ticket is transferred, the engineer to whom the ticket is transferred receives a notification if notification is enabled on the message gateway. This way, the ticket can be processed in a timely manner.
+a. On the Issues page, find the ticket that you want to transfer and click its number or click **Details** in the Actions column. b. On the Transfer tab of the **Process Ticket** section on the **Ticket details** page, specify a service group and an engineer, enter a comment, and then upload attachments.
+
+> **Note:** After the ticket is transferred, the engineer to whom the ticket is transferred receives a notification if notification is enabled on the message gateway. This way, the ticket can be processed in a timely manner.
 
 | Paramete r | Description |
 |---|---|
@@ -22555,7 +23999,10 @@ You have the permissions to process tickets. Tickets are in the **Handling** sta
 4. On the Issues page, find the ticket that you want to close and click its number or click
 **Details** in the Actions column.
 5. On the **Close** tab of the **Process Ticket** section on the **Ticket details** page, enter a
-comment and upload attachments. After the ticket is closed, the ticket submitter receives a notification if notification is enabled on the message gateway. Then, the ticket submitter can verify the results.
+comment and upload attachments.
+
+> **Note:** After the ticket is closed, the ticket submitter receives a notification if notification is enabled on the message gateway. Then, the ticket submitter can verify the results.
+
 6. Click **Close** in the lower-right corner.
 7. In the message that appears, click **OK**. After the ticket is closed, the state of the ticket
 changes to **To Be Confirmed**.
@@ -22583,7 +24030,11 @@ a. On the **Confirm** tab of the **Process Ticket** section, enter a comment and
 
 **If the issue is not resolved**
 
-a. On the **Unhandled** tab of the **Process Ticket** section, enter a comment and upload attachments. After you confirm that the issue is not resolved, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket processer can process the ticket in a timely manner. b. Click **Unhandled** in the lower-right corner. c. In the message that appears, click **OK**. The state of the ticket changes to **Handling**, and the ticket is assigned to the original ticket processer for processing.
+a. On the **Unhandled** tab of the **Process Ticket** section, enter a comment and upload attachments.
+
+> **Note:** After you confirm that the issue is not resolved, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket processer can process the ticket in a timely manner.
+
+b. Click **Unhandled** in the lower-right corner. c. In the message that appears, click **OK**. The state of the ticket changes to **Handling**, and the ticket is assigned to the original ticket processer for processing.
 
 ###### 7.5.1.1.16 Evaluate a completed ticket
 
@@ -22598,7 +24049,10 @@ You are the ticket submitter. Tickets are in the **Completed** state.
 4. On the Issues page, find the ticket that you want to evaluate and click its number or click
 **Details** in the Actions column.
 5. On the **Evaluate** tab of the **Process Ticket** section on the **Ticket details** page, rate the
-ticket, enter your comment, and then upload attachments as needed. When you rate a ticket, select at least half a star and at most five stars.
+ticket, enter your comment, and then upload attachments as needed.
+
+> **Note:** When you rate a ticket, select at least half a star and at most five stars.
+
 6. Click **Evaluate** in the lower-right corner.
 7. In the message that appears, click **OK**.
 
@@ -22647,7 +24101,9 @@ You are granted the permissions to submit tickets.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Submit Issues**.
-You can also click **Create a Ticket** on the **Ticket List** page to submit a ticket.
+
+> **Note:** You can also click **Create a Ticket** on the **Ticket List** page to submit a ticket.
+
 4. On the **Create a Ticket** page, configure the parameters that are described in the following
 table.
 
@@ -22701,7 +24157,12 @@ The operator is, by default, an Operations Administrator.
 2. In the top navigation bar, select **Operation** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Service Group**.
 4. View the created service groups.
-At the top of the list, enter the service group name or description to quickly locate the target service group. Click in the Ticket Assignment Method column of the service group list to filter service groups by assignment method.
+
+> **Note:** At the top of the list, enter the service group name or description to quickly locate the target service group.
+> Click
+> in the Ticket Assignment Method column of the service group list to filter
+> service groups by assignment method.
+
 5. Click a service group name to expand the **Service Group Details** panel and view detailed
 information about the service group.
 
@@ -22795,8 +24256,12 @@ You are an operations administrator.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
 4. View the created issue types on the Issue Type page.
-You can enter the name and description of an issue type above the issue type list to quickly find the issue type. To filter issue types by status, click the icon in the Status column. The following preset issue types are supported: **Product usage**, **Business**
-**affected**, **Account permission issues**, and **Billing issues**.
+
+> **Note:** You can enter the name and description of an issue type above the issue type list to quickly find the issue type.
+> To filter issue types by status, click the
+> icon in the Status column.
+> The following preset issue types are supported: **Product usage**, **Business** **affected**, **Account permission issues**, and **Billing issues**.
+
 5. Find the issue type that you want to view and click its name to go to the details page of the
 issue type.
 
@@ -23266,9 +24731,13 @@ The operating user is the Operations Administrator by default.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Shift**
 **Management**.
 4. In the list, click **Copy** in the **Actions** column.
-Copying a shift allows you to quickly create a new shift with the same configuration as an existing one.
+
+> **Note:** Copying a shift allows you to quickly create a new shift with the same configuration as an existing one.
+
 5. In the **Copy Shift** dialog box, set the **Shift Name** and **Shift Abbreviation**.
-The shift name and shift abbreviation must be unique.
+
+> **Note:** The shift name and shift abbreviation must be unique.
+
 6. Click **OK**.
 
 ###### 7.5.1.7.2.5 Enable or disable a shift
@@ -23285,7 +24754,13 @@ The Operations Administrator is the default user for this operation.
 4. Click the toggle switch in the **Enable** column of the target shift in the list. Alternatively,
 click **Edit** in the **Actions** column of the target shift, then configure the setting in the
 **Modify Shift** dialog box.
-Shift enabling status in the list: Enabled shift : You can select an enabled shift during scheduling. Disabled shift : You cannot select a disabled shift during scheduling. Existing historical schedules remain unaffected and display normally.
+
+> **Note:** Shift enabling status in the list:
+> Enabled shift
+> : You can select an enabled shift during scheduling.
+> Disabled shift
+> : You cannot select a disabled shift during scheduling. Existing
+> historical schedules remain unaffected and display normally.
 
 #### 7.5.2 Document management
 
@@ -23303,7 +24778,7 @@ You cannot create document groups in, rename, move, or delete a preset document 
 
 **Permissions on directories in different states**
 
-Directories may be in the states described in the following table. Different operations can be performed on directories in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
+> **Note:** Directories may be in the states described in the following table. Different operations can be performed on directories in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
 
 | State/Operation | Delet e a direct ory | Rev oke the publ ishi ng, ena blin g, or disa blin g of a dire ctor y | View the review details of a directory | Ena ble a dire ctor y | Dis abl e a dire ctor y | Mov e a dire ctor y | Rename a directory |
 |---|---|---|---|---|---|---|---|
@@ -23315,7 +24790,7 @@ Directories may be in the states described in the following table. Different ope
 
 **Permissions on documents in different states**
 
-Documents may be in the states described in the following table. Different operations can be performed on documents in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
+> **Note:** Documents may be in the states described in the following table. Different operations can be performed on documents in different states. In the following table, ✓ indicates that the operation is supported, and × indicates that the operation is not supported.
 
 **States related to the editing and publishing of documents**
 
@@ -23361,7 +24836,11 @@ You are an operations administrator.
 4. In the Document Classification section, click the
 icon.
 5. In the **Create** dialog box, enter a name in the **Name** field.
-A document category consists of document groups and collections. When you create a document category, a document group and a document collection are created in the document category by default. By default, after a document category is created, it is displayed in the upper part of the Document Classification section. The default name of a document group is in the Default Group ({Document category name}) format. The default name of a document collection is in the Default Document Collection ({Document category name}) format.
+
+> **Note:** A document category consists of document groups and collections. When you create a document category, a document group and a document collection are created in the document category by default. By default, after a document category is created, it is displayed in the upper part of the Document Classification section.
+> The default name of a document group is in the Default Group ({Document category name}) format.
+> The default name of a document collection is in the Default Document Collection ({Document category name}) format.
+
 6. Click **OK**.
 
 ###### 7.5.2.1.2 Create a document group
@@ -23378,7 +24857,9 @@ You are an operations administrator.
 manage, move the pointer over the icon to the right of its name, and then select **Create**
 **a child**.
 5. In the dialog box that appears, enter a name in the **Name** field.
-You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document category to which the document group belongs.
+
+> **Note:** You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document category to which the document group belongs.
+
 6. Click **OK**.
 
 ###### 7.5.2.1.3 Create a document collection
@@ -23394,7 +24875,9 @@ You are an operations administrator.
 4. In the Document Classification section, find the document group that you want to manage,
 move the pointer over the icon to the right of its name, and then select **Create a child**.
 5. In the dialog box that appears, enter a name in the **Name** field.
-You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document group to which the document collection belongs.
+
+> **Note:** You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document group to which the document collection belongs.
+
 6. Click **OK**.
 
 ###### 7.5.2.1.4 Rename a document category, document group, or document collection
@@ -23435,9 +24918,9 @@ document collection that you want to move, move the pointer over the icon to the
 5. In the dialog box that appears, select the location at which you want the document
 category, document group, or document collection to be displayed.
 
-**Important**
+> **Important:** You can only move an object to another location at the same level. After you move the object, its subordinate objects are moved accordingly.
+> You can place an object before or after the specified object.
 
-You can only move an object to another location at the same level. After you move the object, its subordinate objects are moved accordingly. You can place an object before or after the specified object.
 6. Click **OK**.
 
 ###### 7.5.2.1.6 Copy a document group
@@ -23446,9 +24929,8 @@ This topic describes how to copy a document group.
 
 **Usage notes**
 
-**Important**
-
-You can only copy a document group to a location at the same level in a custom document category. If the document group that you want to copy contains documents that are being reviewed, the documents of the current version are directly copied, and the copied documents are pending publishing by default.
+> **Important:** You can only copy a document group to a location at the same level in a custom document category.
+> If the document group that you want to copy contains documents that are being reviewed, the documents of the current version are directly copied, and the copied documents are pending publishing by default.
 
 **Prerequisites**
 
@@ -23470,9 +24952,9 @@ This topic describes how to delete a document category, document group, or docum
 
 **Usage notes**
 
-**Important**
-
-After you delete a document category, the documents in the document category are also deleted. You cannot delete a document category that contains enabled documents. To delete such a document category, you must disable the documents in the document category first. You cannot delete a document category that contains documents that are being reviewed.
+> **Important:** After you delete a document category, the documents in the document category are also deleted.
+> You cannot delete a document category that contains enabled documents. To delete such a document category, you must disable the documents in the document category first.
+> You cannot delete a document category that contains documents that are being reviewed.
 
 **Prerequisites**
 
@@ -23523,7 +25005,10 @@ You are an operations administrator.
 manage.
 5. In the right-side document list section, click **Upload**.
 6. In the **Upload File** dialog box, click the upload section and select the file that you want to
-upload. Alternatively, drag the file that you want to upload to the upload section. You can upload only one file at a time. The file cannot exceed 50 MB in size and must be a DOC or DOCX file.
+upload. Alternatively, drag the file that you want to upload to the upload section.
+
+> **Note:** You can upload only one file at a time. The file cannot exceed 50 MB in size and must be a DOC or DOCX file.
+
 7. Click **Import**.
 
 ###### 7.5.2.1.10 Rename a document or directory
@@ -23762,9 +25247,7 @@ You can access documents on the Documentation page. On the Documentation page, a
 
 To go to the Documentation page, perform the following operations: Log in to the Apsara Unimanager Management Console. In the upper-right corner, click the icon. After you go to the Documentation page, you can enter a keyword in the search box to filter documents and filter documents by category.
 
-**Important**
-
-If all documents in a document category are **unpublished**, the document category is not displayed.
+> **Important:** If all documents in a document category are **unpublished**, the document category is not displayed.
 
 ## 8 Security
 
@@ -23822,7 +25305,9 @@ Multi-factor authentication (MFA) is an authentication method. In addition to us
 **Information** in the menu that appears.
 3. In the upper-right corner of the **MFA** section, click **Bind Virtual MFA Device**.
 4. On the **Bind Virtual MFA Device** page, bind an MFA device as prompted. After an MFA
-device is bound, the value of the MFA Status parameter changes to Enabled and the value of the Device Status changes to Bound. After a virtual MFA device is bound, you must enter a 6-digit MFA verification code in addition to your username and password before you can log on to the Apsara Unimanager Management Console.
+device is bound, the value of the MFA Status parameter changes to Enabled and the value of the Device Status changes to Bound.
+
+> **Note:** After a virtual MFA device is bound, you must enter a 6-digit MFA verification code in addition to your username and password before you can log on to the Apsara Uni- manager Management Console.
 
 **Disable a virtual MFA device**
 
@@ -23841,11 +25326,10 @@ Administrators, including the platform administrator, operations administrator, 
 5. Find the user for which you want to enable the MFA feature, move the pointer over the
 icon in the **Actions** column, and then click **MFA Settings**.
 6. In the MFA Settings dialog box, turn on **MFA Settings** and click **OK**.
-The MFA feature can be forcibly enabled for users, but cannot be forcibly disabled. Before the MFA feature is enabled, the MFA feature of the user is in the **Disabled**
-**and Unbound** state.
-After the MFA feature is enabled, the MFA feature of the user is in the **Enabled**
-**and Unbound** state. After the MFA feature is forcibly enabled for a user, the
-user must go to the Bind Virtual MFA Device page to bind a virtual MFA device before the user can log on to the Apsara Uni-manager Management Console.
+
+> **Note:** The MFA feature can be forcibly enabled for users, but cannot be forcibly disabled.
+> Before the MFA feature is enabled, the MFA feature of the user is in the **Disabled** **and Unbound** state.
+> After the MFA feature is enabled, the MFA feature of the user is in the **Enabled** **and Unbound** state. After the MFA feature is forcibly enabled for a user, the user must go to the Bind Virtual MFA Device page to bind a virtual MFA device before the user can log on to the Apsara Uni-manager Management Console.
 
 ## 9 To-do Center
 
@@ -23855,7 +25339,8 @@ The Pending Tasks center displays all pending items. You can handle each item ba
 .
 3. In the expanded **To-do Center** panel, click **More**.
 4. On the **To-do Center** page, handle pending items according to their categories.
-The Contracts tab aggregates all contracts that expire within 30 days or less.
+
+> **Note:** The Contracts tab aggregates all contracts that expire within 30 days or less.
 
 ## 10 Message center
 
@@ -23872,13 +25357,14 @@ corresponding business type.
 6. In the upper part of a tab, specify the start date and end date to quickly find messages
 within the specified time range.
 7. In the message list, click the message title and view the content of the message on the
-right side of the page. If the message is unread, the message is marked as read. The icon indicates that the message is unread. You can select an unread message and click **Mark as Read** to mark the selected message as read.
+right side of the page. If the message is unread, the message is marked as read. The icon indicates that the message is unread.
+
+> **Note:** You can select an unread message and click **Mark as Read** to mark the selected message as read.
+
 8. Select a message and click **Delete**.
 9. In the message that appears, click **Delete**.
 
-**Important**
-
-After you delete a message, the message cannot be restored. Proceed with caution.
+> **Important:** After you delete a message, the message cannot be restored. Proceed with caution.
 
 ### 10.2 Manage unread messages
 
@@ -23893,13 +25379,14 @@ the corresponding business type.
 6. In the upper part of a tab, specify the start date and end date to quickly find unread
 messages within the specified time range.
 7. In the message list, click the message title and view the content of the message on the
-right side of the page. The message is then marked as read. The icon indicates that the message is unread. You can select an unread message and click **Mark as Read** to mark the selected message as read.
+right side of the page. The message is then marked as read. The icon indicates that the message is unread.
+
+> **Note:** You can select an unread message and click **Mark as Read** to mark the selected message as read.
+
 8. Select a message and click **Delete**.
 9. In the message that appears, click **Delete**.
 
-**Important**
-
-After you delete a message, the message cannot be restored. Proceed with caution.
+> **Important:** After you delete a message, the message cannot be restored. Proceed with caution.
 
 ### 10.3 Manage read messages
 
@@ -23918,9 +25405,7 @@ right side of the page.
 8. Select a message and click **Delete**.
 9. In the message that appears, click **Delete**.
 
-**Important**
-
-After you delete a message, the message cannot be restored. Proceed with caution.
+> **Important:** After you delete a message, the message cannot be restored. Proceed with caution.
 
 ### 10.4 Query records
 
@@ -23937,9 +25422,12 @@ icon.
 5. On the **Query Records** page, click **Advanced Filter**, configure the **Username**, **Template**
 **Name**, **Template Type**, **Error Code**, and **Send At** parameters, and then click **Search**.
 6. View the message senders and message content that are displayed.
-Click **Preview** in the **Content** column of a record to view the message content in the **Content Preview** panel. Click the icon next to the **Sending Status** column and select **Sent**,
-**Preparing**, **Send failed**, or **Timeout** to filter records by status.
-If a record is in the **Send failed** or **Timeout** state, click **Retry** in the **Actions** column to send the message again.
+
+> **Note:** Click **Preview** in the **Content** column of a record to view the message content in the **Content Preview** panel.
+> Click the
+> icon next to the **Sending Status** column and select **Sent**,
+> **Preparing**, **Send failed**, or **Timeout** to filter records by status.
+> If a record is in the **Send failed** or **Timeout** state, click **Retry** in the **Actions** column to send the message again.
 
 ## 11 User center
 
@@ -23982,7 +25470,10 @@ You are assigned the proxy administrator role.
 2. In the upper-right corner of a page, click the profile picture to expand the User Center
 menu.
 3. In the **Proxy Status** section, select an organization or a resource set and click
-to enable the proxy mode. indicates that the proxy mode is enabled. If you have not previously managed the resources of the proxy user as a proxy administrator, you must reset the initial password of the proxy user account the first time you enable the proxy mode for the proxy user. a. In the dialog box that appears, click **Modify**. b. In the Reset Password dialog box, change the password and click **Confirm**. To obtain the initial password of a proxy user account, contact the administrator.
+to enable the proxy mode. indicates that the proxy mode is enabled. If you have not previously managed the resources of the proxy user as a proxy administrator, you must reset the initial password of the proxy user account the first time you enable the proxy mode for the proxy user. a. In the dialog box that appears, click **Modify**. b. In the Reset Password dialog box, change the password and click **Confirm**.
+
+> **Note:** To obtain the initial password of a proxy user account, contact the administrator.
+
 4. Check whether **Proxy Status** appears in the top navigation bar. If Proxy Status appears in
 the top navigation bar, the proxy mode is enabled.
 
@@ -24059,11 +25550,12 @@ debug in the search box to search for the API operation.
 7. Click the API operation, configure the parameters on the **Parameter** and **Request Header**
 tabs, and then click **Initiate Call**.
 
-**Important**
-
-OpenAPI Explorer obtains a temporary AccessKey pair of the current account by using the user login information. If you initiate a call, you may perform operations on resources online within the current account. Proceed with caution. You can click **Clear** to clear the configured parameters. On the **Debug Parameters** tab, you can view the information about the request parameters. On the **SDK Examples** tab, you can view SDK sample code on the Java, Python, and Go tabs. You can also click **Download Project**, **View Dependencies**, and
-**Copy** in the upper-right corner of the tab.
-On the **Call Result** tab, you can view the call result. On the **API Reference** tab, view the API reference.
+> **Important:** OpenAPI Explorer obtains a temporary AccessKey pair of the current account by using the user login information. If you initiate a call, you may perform operations on resources online within the current account. Proceed with caution.
+> You can click **Clear** to clear the configured parameters.
+> On the **Debug Parameters** tab, you can view the information about the request parameters.
+> On the **SDK Examples** tab, you can view SDK sample code on the Java, Python, and Go tabs. You can also click **Download Project**, **View Dependencies**, and **Copy** in the upper-right corner of the tab.
+> On the **Call Result** tab, you can view the call result.
+> On the **API Reference** tab, view the API reference.
 
 #### 12.2.3 API change history
 
@@ -24075,7 +25567,9 @@ This topic describes how to view the change history of API operations.
 top navigation bar.
 4. On the API Change Overview page, configure the **Service Category**, **Service Name**, and
 **Change Type** parameters and click **Search**.
-Fuzzy search is supported.
+
+> **Note:** Fuzzy search is supported.
+
 5. View the change history of API operations in the **Change Result** section.
 
 #### 12.2.4 Sample center
@@ -24105,9 +25599,8 @@ navigation bar.
 4. On the **Intelligent Diagnostics** page, enter an error message that contains the RequestId
 or ErrorCode parameter in the field.
 
-**Important**
+> **Important:** The RequestId parameter is used to query the diagnostics solutions of the service that you access. The ErrorCode parameter is used to query the diagnostics solutions of all services. If an error message contains both the RequestId and ErrorCode parameters, the RequestId parameter prevails.
 
-The RequestId parameter is used to query the diagnostics solutions of the service that you access. The ErrorCode parameter is used to query the diagnostics solutions of all services. If an error message contains both the RequestId and ErrorCode parameters, the RequestId parameter prevails.
 5. Click **Diagnose**.
 6. On the **Diagnostic Plan** tab, view the diagnostics information.
 
@@ -24177,8 +25670,10 @@ On the Shared Services tab, view the shared MCP services.
 1. On the **MCP Service** page, click the **Shared Services** tab.
 2. On the **Shared Services** tab, view the shared MCP services.
 3. Find the MCP service that you want to view and click **Details** in the **Actions** column to go
-to the **MCP Service Details** page. Click **View Configuration Methods** in the **Configuration Information** section to view the details of the configuration method. In the **APIs** section, find the API operation that you want to view and click
-**Details** in the **Actions** column to view the details of the API operation.
+to the **MCP Service Details** page.
+
+> **Note:** Click **View Configuration Methods** in the **Configuration Information** section to view the details of the configuration method.
+> In the **APIs** section, find the API operation that you want to view and click **Details** in the **Actions** column to view the details of the API operation.
 
 ### 12.3 Call Statistics
 
@@ -24196,7 +25691,10 @@ parameters to view the distribution of API errors based on the specified filter 
 **Call Statistics**: In the left-side navigation pane, click **Call Statistics**.
 Configure the **Service**, **API Version**, **API Name**, and **Called At** parameters to search for the call details of an API operation of a cloud service. The information is displayed in the following columns: **API Name**, **Service**, **Namespace**, **API Version**, **Calls/Times**,
 **Average Latency (ms)**, and **Success Rate**.
-The value of the **Called At** parameter must be within seven days. Click **Call Source Distribution** in the **Actions** column of an API operation to view the **AccessKey** ID and the source service of the API operation.
+The value of the **Called At** parameter must be within seven days.
+
+> Click **Call Source Distribution** in the **Actions** column of an API operation to view the **AccessKey** ID and the source service of the API operation.
+
 **Statistical Reports**: In the left-side navigation pane, click **Statistical Reports**.
 Create a statistical report task: On the Statistical Reports page, click **Create**
 **Statistical Report**. In the Create Task dialog box, configure the parameters described
@@ -24215,7 +25713,15 @@ View a statistical report task: The created statistical report tasks are display
 **Actions** column.
 b. The execution history of the statistical report task is displayed. Click **View Details** in the **Actions** column of a report to view the report details in the following sections:
 **Basic Information**, **Matching Info**, and **Time Distribution**.
-Start a statistical report task: Find the statistical report task that you want to start and click **Start** in the **Actions** column If the task changes to the **Running** state, the task is started. You can start tasks only in the **Canceled** state. Stop a statistical report task: Find the statistical report task that you want to stop and click **Stop** in the **Actions** column. If the task changes to the **Canceled** state, the task is stopped. You can stop tasks only in the **Running** state. Delete a statistical report task: Find the statistical report task that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
+Start a statistical report task: Find the statistical report task that you want to start and click **Start** in the **Actions** column If the task changes to the **Running** state, the task is started.
+
+> **Note:** You can start tasks only in the **Canceled** state.
+
+Stop a statistical report task: Find the statistical report task that you want to stop and click **Stop** in the **Actions** column. If the task changes to the **Canceled** state, the task is stopped.
+
+> **Note:** You can stop tasks only in the **Running** state.
+
+Delete a statistical report task: Find the statistical report task that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
 ### 12.4 Automation Service Desk
 
@@ -24268,6 +25774,7 @@ operations.
 
 1. In the left-side navigation pane of the **Automation Service Desk** page, choose **Template**
 > **Template Management**.
+
 2. On the Template Management page, click the **Parameter Set Management** tab.
 3. On the Parameter Set Management tab, click **Create Parameter Set**. In the Create
 Parameter Set panel, configure the parameters that are described in the following table.
@@ -24294,6 +25801,7 @@ operations.
 
 1. In the left-side navigation pane of the **Automation Service Desk** page, choose **Template**
 > **Template Center**.
+
 2. On the Template Center page, click the **Preset Template** or **Shared Template** tab to
 view preset or shared templates. View details of a template: Move the pointer over a template and click **View Details** to view the basic information and details of the template. The template description and template name are displayed in the Basic Information section. The Template Details tab displays the content of the template, including the directory structure and the details of each file. The time displayed in the upper-right corner of the page indicates the estimated amount of time to use the template to call cloud resources. The estimated amount of time is displayed only for preset templates.
 **Download code**: You can download the template code as a package to your computer
@@ -24349,14 +25857,20 @@ configure the parameters that are described in the following table.
 2. On the **Resource** tab on the left side of the **Terraform Explorer** page, configure the
 **Product** and **Resource Type** parameters.
 3. On the **Parameters** and **Configure** tabs, configure parameters based on the selected
-service and resource type. If you turn on Required, only the required parameters are displayed. You can click **Use Historical Parameters** to open the Historical Parameters dialog box and use the historical parameters.
+service and resource type.
+
+> **Note:** If you turn on Required, only the required parameters are displayed.
+> You can click **Use Historical Parameters** to open the Historical Parameters dialog box and use the historical parameters.
+
 4. Click **Debug**.
 5. On the right side of the Terraform Explorer page, click the **Debugging Task** tab to view the
 debugging code.
 6. On the **Debugging Task** tab, click **Preview** to view the preview details.
 7. Click the **Debugging History** tab to view historical debugging tasks.
-You can configure the **Product**, **Resource Type**, and **Task Name** filter conditions above the list to quickly find the task that you want to manage. You can find the task that you want to manage and click **Continue Debugging** in the **Actions** column to continue online debugging. To delete a debugging task, you can find the task and click **Delete Task** in the
-**Actions** column. In the Delete Task message, click **OK**.
+
+> **Note:** You can configure the **Product**, **Resource Type**, and **Task Name** filter conditions above the list to quickly find the task that you want to manage.
+> You can find the task that you want to manage and click **Continue Debugging** in the **Actions** column to continue online debugging.
+> To delete a debugging task, you can find the task and click **Delete Task** in the **Actions** column. In the Delete Task message, click **OK**.
 
 ### 12.5 Page integration
 
@@ -24414,8 +25928,9 @@ Configure the display style of integrated pages to manage the console applicatio
 Configure the page URLs of cloud service management pages opened in the Apsara Unimanager Management Console when they are integrated. To ensure that resource operation buttons (such as Create and Modify) on embedded cloud service management pages correctly redirect to the corresponding resource creation or modification pages in the integrating party's Management Console, you must configure the appropriate resource operation link addresses for these buttons. This achieves seamless integration between Management Console resource management operations and the integrating party's business.
 1. In the left-side categories **Apsara Stack** and **Alibaba Cloud Public Cloud**, find the target
 cloud service.
-**Alibaba Cloud Public Cloud** appears only when multi-cloud management is
-deployed.
+
+> **Note:** **Alibaba Cloud Public Cloud** appears only when multi-cloud management is deployed.
+
 2. In the product page list on the right, click **Edit** in the **Actions** column.
 3. In the **Edit** dialog box, modify the link URL based on your business requirements.
 You can change the link URL to a third-party operation link address. The domain name of the modified link address must match the root domain name of the embedded page, and the address must be an absolute URL.
@@ -24431,6 +25946,7 @@ Method 1: Click **Products** in the top menu bar and choose **Development Tools*
 **& SDK** > **Apsara Stack Skills Portal**.
 Method 2: Go to the OpenAPI Explorer. a. Click **Products** in the top menu bar and choose **Development Tools** > **APIs & SDK**
 > **OpenAPI Explorer**.
+
 b. On the OpenAPI Explorer page, click **Apsara Stack Skills Portal** in the top menu.
 3. View the information on the portal homepage.
 
@@ -24445,7 +25961,14 @@ rtal
 | Product Category | This section displays the number of skills by cloud product category. Click a card to go to the All Skills page and view the filtered results for the corresponding category. |
 
 4. Go to the **All Skills** page and browse skills.
-Click on a skill to add the skill to your favorites. Click on a skill to download the skill to your local device. In the upper-right corner of the page, you can sort and display skills by My Favorites, Most Downloaded, Most Favorited, or Default (Latest), and switch between card mode and list mode. rtal
+
+> **Note:** Click
+> on a skill to add the skill to your favorites.
+> Click
+> on a skill to download the skill to your local device.
+> In the upper-right corner of the page, you can sort and display skills by My Favorites, Most Downloaded, Most Favorited, or Default (Latest), and switch between card mode and list mode.
+
+rtal
 5. Click a skill name to go to the skill details page. View the information on the Skill
 Introduction tab and the Skill Files tab. ment
 
@@ -24466,7 +25989,9 @@ Edge entities are connected. For more information, see Configure edge entities.
 5. On the **EDGE list** page, view the information about the connected edge entity in the
 following columns: **Edge Entity ID/Name**, **Organization/Resource Set**, **Region**, **Edge**
 **Entity Type**, **Edge Entity Status**, and **Edge Entity Control**.
-You can click **Jump Edge Console** in the Edge Entity Console column to go to the console of an edge entity.
+
+> **Note:** You can click **Jump Edge Console** in the Edge Entity Console column to go to the console of an edge entity.
+
 6. Find an edge entity and click the ID of the edge entity to go to the **Edge Entity Overview**
 page.
 
@@ -24490,7 +26015,12 @@ On the **Overview** tab, view the CPU capacity, memory capacity, primary storage
 
 On the **Resource Information** tab, view the detailed resource information of the edge entity. You can configure the **Cloud Services**, **Resource Type**, **Creation Start and**
 **End Time**, **Resource Name**, and **Resource ID** parameters to filter resources.
-ment Click **Create Resource**. In the **Select Resource Type** dialog box, configure the **Organization**, **Resource Set Name**, **Edge Entity**, and **Cloud Services** parameters. Find a resource and click the resource ID. In the panel that appears, view the basic information of the resource, including the cloud platform, resource name, resource ID, region, organization, resource set, creation time, and state. Find a resource and click **Manage** in the **Actions** column to go to the cloud service resource management page of the edge site. You can manage the resource on the page. By default, cloud resource information is automatically updated every hour. Find a resource and click **Update** in the **Actions** column to manually update the information about the cloud resource in real time.
+ment
+
+> **Note:** Click **Create Resource**. In the **Select Resource Type** dialog box, configure the **Organization**, **Resource Set Name**, **Edge Entity**, and **Cloud Services** parameters.
+> Find a resource and click the resource ID. In the panel that appears, view the basic information of the resource, including the cloud platform, resource name, resource ID, region, organization, resource set, creation time, and state.
+> Find a resource and click **Manage** in the **Actions** column to go to the cloud service resource management page of the edge site. You can manage the resource on the page.
+> By default, cloud resource information is automatically updated every hour. Find a resource and click **Update** in the **Actions** column to manually update the information about the cloud resource in real time.
 
 ### 14.2 Manage resources
 
@@ -24521,7 +26051,10 @@ to filter resources.
 2. On the Resources page, view the information about resources in the following columns:
 **Resource ID/Name**, **Edge Entity Name**, **Cloud Services**, **Resource Type**, **Status**,
 **Organization/Resource Set**, and **Created At**.
-Find a resource and click **Manage** in the **Actions** column to go to the cloud service resource management page of the edge site. You can manage the resource on the page. Find a resource and click **Update** in the **Actions** column to manually update the information and state of the resource.
+
+> **Note:** Find a resource and click **Manage** in the **Actions** column to go to the cloud service resource management page of the edge site. You can manage the resource on the page.
+> Find a resource and click **Update** in the **Actions** column to manually update the information and state of the resource.
+
 3. Find a resource and click the resource ID. In the panel that appears, view the basic
 information of the resource, including the cloud platform, resource name, resource ID, region, organization, resource set, creation time, and state.
 
@@ -24542,7 +26075,10 @@ ment
 3. In the left-side navigation pane, click **Edge Entity Configuration**.
 4. On the **Edge Entity Configuration** page, click **Connect Edge Entity**.
 5. Configure the parameters in the following steps as prompted:
-If you have questions when you connect to an edge entity, contact Apsara Stack technical support. i. **Basic Information**: Select an edge entity type and configure information in the **Basic**
+
+> **Note:** If you have questions when you connect to an edge entity, contact Apsara Stack technical support.
+
+i. **Basic Information**: Select an edge entity type and configure information in the **Basic**
 **Configuration**, **Associated Organization Configuration**, and **Advanced Settings**
 sections for the edge entity.
 
@@ -24568,7 +26104,11 @@ JSON `{`
     "consoleEndpoint":"http://{ip3}:{port3}"
 ```
 
-`}` `}` ment endPoint: the IP address and port that are mapped to the Server Load Balancer (SLB) API in the configurations for virtual private cloud (VPC)-based reverse access. oidcAuthEndpoint: the IP address and port that are mapped to the API in the SLB configurations. consoleEndpoint: the IP address and port that are mapped to the portal in the SLB configurations.
+`}` `}` ment
+
+> **Note:** endPoint: the IP address and port that are mapped to the Server Load Balancer (SLB) API in the configurations for virtual private cloud (VPC)-based reverse access.
+> oidcAuthEndpoint: the IP address and port that are mapped to the API in the SLB configurations.
+> consoleEndpoint: the IP address and port that are mapped to the portal in the SLB configurations.
 
 **Configuration template for Alibaba Cloud SmartX**
 
@@ -24585,7 +26125,12 @@ JSON `{`
   "consoleEndpoint": "http://{ip2}:{port2}"
 ```
 
-`}` `}` endPoint: the IP address and port that are mapped to the SLB API in the configurations for VIP-based reverse access. consoleEndpoint: {ip2} indicates the IP address of the SLB instance. {port2} indicates the listener port of the SLB instance that is used to listen to the specified service. ii. **Account Authorization**: Enter the authorization credentials of the edge entity to grant permissions to the current account and synchronize the role of the account.
+`}` `}`
+
+> **Note:** endPoint: the IP address and port that are mapped to the SLB API in the configurations for VIP-based reverse access.
+> consoleEndpoint: {ip2} indicates the IP address of the SLB instance. {port2} indicates the listener port of the SLB instance that is used to listen to the specified service.
+
+ii. **Account Authorization**: Enter the authorization credentials of the edge entity to grant permissions to the current account and synchronize the role of the account.
 
 | Parameter | Description |
 |---|---|
@@ -24596,7 +26141,9 @@ ment
 
 **Obtain the authorization credentials of an Alibaba Cloud ZStack edge entity**
 
-a. Log on to the Alibaba Cloud ZStack console**.** b. On the ************************** tab, click ************************ in the leftside navigation pane. On the ************************ page, view the AccessKey ID and AccessKey secret. If no AccessKey pair is available, click ********************** to create an AccessKey pair.
+a. Log on to the Alibaba Cloud ZStack console**.** b. On the ************************** tab, click ************************ in the leftside navigation pane. On the ************************ page, view the AccessKey ID and AccessKey secret.
+
+> **Note:** If no AccessKey pair is available, click **Generate AccessKey** to create an AccessKey pair.
 
 **Obtain the authorization credentials of an Alibaba Cloud SmartX edge entity**
 
@@ -24606,7 +26153,14 @@ a. Log on to an Alibaba Cloud SmartX edge entity by using a URL in the following
 format: http://{IP address of the Alibaba Cloud SmartX edge entity}/api/alpha/proxy/cloudtower-alpha-ali-cmp-service/admin/get-access-key .
 ```
 
-{IP address of the Alibaba Cloud SmartX edge entity} indicates the IP address of the portal of the Alibaba Cloud SmartX console. Replace the value based on the actual situation. b. Enter the root account and password of the Cluster Manager role to obtain the AccessKey ID and AccessKey secret. access: the AccessKey ID of the edge entity. secret: the AccessKey secret of the edge entity. iii. ****************************: Complete federated logon settings for third-party cloud management.
+> **Note:** {IP address of the Alibaba Cloud SmartX edge entity} indicates the IP address of the portal of the Alibaba Cloud SmartX console. Replace the value based on the actual situation.
+
+b. Enter the root account and password of the Cluster Manager role to obtain the AccessKey ID and AccessKey secret.
+
+> **Note:** access: the AccessKey ID of the edge entity.
+> secret: the AccessKey secret of the edge entity.
+
+iii. **Federated Logon Settings**: Complete federated logon settings for third-party cloud management.
 
 **Federated logon settings for Alibaba Cloud ZStack**
 
@@ -24650,7 +26204,9 @@ format: https://{IP address of the Alibaba Cloud SmartX edge entity}/api/alpha/p
 
 1. On the **Edge Entity Configuration** page, find an edge entity and click **Continue** in the
 **Actions** column.
-If you do not complete the wizard for connecting to an edge entity, the last operation is automatically saved. You can resume the connection to the edge entity from the last operation.
+
+> **Note:** If you do not complete the wizard for connecting to an edge entity, the last operation is automatically saved. You can resume the connection to the edge entity from the last operation.
+
 2. In the edge entity connection wizard, resume the connection to the edge entity form the
 last operation.
 
@@ -24658,14 +26214,20 @@ last operation.
 
 1. On the **Edge Entity Configuration** page, find an edge entity and click **Synchronize**
 **Resources** in the **Actions** column.
-After you connect to an edge entity, the cloud resources of the edge entity are automatically synchronized every hour by default. You can click **Synchronize Resources** in the **Actions** column of an edge entity to manually synchronize the cloud resources of the edge entity in real time.
+
+> **Note:** After you connect to an edge entity, the cloud resources of the edge entity are automatically synchronized every hour by default.
+> You can click **Synchronize Resources** in the **Actions** column of an edge entity to manually synchronize the cloud resources of the edge entity in real time.
+
 2. In the **Synchronize Resources** message, click **OK**.
 
 **Modify the name of an edge entity**
 
 ment
 1. On the **Edge Entity Configuration** page, find an edge entity and click **Edit** in the **Actions**
-column. If the edge entity is in the **Succeeded** state, you can modify the name of the edge entity.
+column.
+
+> **Note:** If the edge entity is in the **Succeeded** state, you can modify the name of the edge entity.
+
 2. In the **Edit Edge Entities** dialog box, modify the name of the edge entity and click **OK**.
 
 **Grant permissions to an edge entity**
@@ -24681,7 +26243,10 @@ permissions and click **Grant Permissions** in the **Actions** column.
 
 ment You can delete an edge entity if you no longer need the edge entity.
 1. On the **Edge Entity Configuration** page, find the edge entity that you want to delete and
-click **Delete** in the **Actions** column. Make sure that the edge entity is no longer needed.
+click **Delete** in the **Actions** column.
+
+> **Note:** Make sure that the edge entity is no longer needed.
+
 2. In the **Confirmation** message, click **OK**.
 t
 
@@ -24705,7 +26270,10 @@ You are an operations administrator or an organization administrator.
 3. In the top navigation bar, select an organization, a resource set, and a region.
 4. On the **AI Stack Management** page, click **Access To The AI Stack**.
 5. On the **Access To The AI Stack** page, configure the parameters.
-If you have questions when you connect to the AI stack, contact Apsara Stack technical support. t i. **Basic Information**: Select an AI stack type and configure the parameters in the **Basic**
+
+> **Note:** If you have questions when you connect to the AI stack, contact Apsara Stack technical support.
+
+t i. **Basic Information**: Select an AI stack type and configure the parameters in the **Basic**
 **Configuration** and **Associated Organization Configuration** sections.
 
 | Parameter |   | Description |
@@ -24717,7 +26285,11 @@ If you have questions when you connect to the AI stack, contact Apsara Stack tec
 |   | Region | Select the region of the AI stack. |
 |   | Jump Link | Enter the URL that redirects to the AI stack. |
 
-t ii. **Federated Logon Settings**: Complete federated logon settings for third-party cloud management. Configure the AI stack to be an SP. Click **Download File** next to the Identity Provider (IdP) metadata file. After you obtain the information about the IdP of the Apsara Uni-manager Management Console, configure the IdP information in the AI stack.
+t ii. **Federated Logon Settings**: Complete federated logon settings for third-party cloud management.
+
+> **Note:** Configure the AI stack to be an SP.
+> Click **Download File** next to the Identity Provider (IdP) metadata file. After you obtain the information about the IdP of the Apsara Uni-manager Management Console, configure the IdP information in the AI stack.
+
 6. Click **Submission**.
 
 **View AI stacks**
@@ -24729,14 +26301,17 @@ You are an operations administrator, an organization administrator, a resource s
 **Name** and **AI Stack ID** filter conditions, and then click **Search** to search for the AI stack.
 2. View the information about the AI stack in the **AI Stack Name/ID**,
 **Organization/Resource Set**, **Region**, and **Type** columns.
-**Rename an AI stack**: Move the pointer over the AI stack name and click the
-icon. In the dialog box that appears, change the AI stack name and click **OK**.
-**Change AI stack type**: Move the pointer over the AI stack type, click the
-icon, select a new type, and then click **OK**. t
+
+> **Note:** **Rename an AI stack**: Move the pointer over the AI stack name and click the
+> icon. In the dialog box that appears, change the AI stack name and click **OK**.
+> **Change AI stack type**: Move the pointer over the AI stack type, click the
+> icon, select a new type, and then click **OK**.
+
+t
 
 **Continue with the configuration of an AI stack**
 
-If you do not complete the configuration of an AI stack, the last operation is automatically saved. You can continue with the configuration of the AI stack from the last operation.
+> **Note:** If you do not complete the configuration of an AI stack, the last operation is automatically saved. You can continue with the configuration of the AI stack from the last operation.
 
 **Prerequisites**
 
@@ -24786,7 +26361,11 @@ By default, the authorized users are Operations Administrators and Organization 
 3. In the top navigation bar, select an organization, a resource set, and a region.
 4. On the **PanguStor Management** page, click **Integrate PanguStor**.
 5. On the **Integrate PanguStor** page, follow the configuration wizard to complete all
-required settings. If you have questions during integration, contact Alibaba Cloud technical support for assistance. ent i. **Basic Information**: Configure **Basic Configuration** and **Associated Organization**
+required settings.
+
+> **Note:** If you have questions during integration, contact Alibaba Cloud technical support for assistance.
+
+ent i. **Basic Information**: Configure **Basic Configuration** and **Associated Organization**
 **Configuration** for PanguStor.
 
 | Configuration item |   | Description |
@@ -24797,7 +26376,11 @@ required settings. If you have questions during integration, contact Alibaba Clo
 |   | Region | Select the region in the central cloud to which PanguStor belongs. |
 |   | Jump link | Configure the URL to redirect to PanguStor. |
 
-ent ii. **Federated Login Settings**: Configure unified login with third-party cloud management platforms. In the integration configuration, enter the configuration details for PanguStor as the service provider (SP). Click **Download File** to download the identity provider (IdP) metadata file from the Apsara Uni-Manager Management Console. Then, configure this IdP information in PanguStor.
+ent ii. **Federated Login Settings**: Configure unified login with third-party cloud management platforms.
+
+> **Note:** In the integration configuration, enter the configuration details for PanguStor as the service provider (SP).
+> Click **Download File** to download the identity provider (IdP) metadata file from the Apsara Uni-Manager Management Console. Then, configure this IdP information in PanguStor.
+
 6. Click **Submit**.
 
 **View integrated PanguStor**
@@ -24809,11 +26392,16 @@ By default, authorized users are Operations Administrators, Organization Adminis
 **name** and **PanguStor ID** criteria, click **Search** to quickly locate your target PanguStor.
 2. In the list, view integrated PanguStor instances, including **PanguStor name/ID**,
 **Organization/Resource Set**, and **Region**.
-To rename a PanguStor: Hover over the PanguStor name and click . Update the PanguStor name in the text box, then click **Confirm**. ent
+
+> **Note:** To rename a PanguStor: Hover over the PanguStor name and click
+> . Update the
+> PanguStor name in the text box, then click **Confirm**.
+
+ent
 
 **Continue editing Integrate PanguStor**
 
-If you exit during the process of integrating PanguStor, the system automatically saves your last operation. You can resume and complete the unfinished operation by using the continue editing feature.
+> **Note:** If you exit during the process of integrating PanguStor, the system automatically saves your last operation. You can resume and complete the unfinished operation by using the continue editing feature.
 
 **Prerequisites**
 
@@ -25027,9 +26615,9 @@ Method 1 a. Enter the VM where the server role PopAliyunCom# is located. b. Acce
 grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/trace.log
 ```
 
-**Important**
+> **Important:** The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs.
 
-The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs. Method 2 a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and` `DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
+Method 2 a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and` `DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
 4. Based on the preceding logs, analyze which module consumes longer time.
 
 ### 17.5 Errors when Blink API operations are called
@@ -25158,6 +26746,7 @@ the Basic Information section of the sub-organization on the right side of the O
 Delete the users based on the error message.
 1. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose **Users**
 > **Users**.
+
 2. On the Users page, click the **System Users** tab. On the System Users tab, click Username
 and select Organization from the drop-down list. Then, enter an organization name in the Organization field to display users in the organization.
 3. Find the user that you want to delete, click the
@@ -25171,6 +26760,7 @@ select the check box before **I have known the risks and confirmed this delete**
 Delete the user groups based on the error message.
 1. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose **Users**
 > **User Groups**.
+
 2. On the User Groups page, click User Group Name and select Organization from the drop-
 down list. Enter an organization name in the Organization filed to display user groups in the organization.
 3. Find the user group that you want to delete, click the
@@ -25219,9 +26809,7 @@ organization to which the ECS instance belongs.
 8. In the **Change Resource Set** dialog box, select a resource set of an organization to which
 the disks belong from the **Change Resource Set To** drop-down list. Change the resource set of the ECS instance to that of the organization to which the disks belong, and then attach the disks to the ECS instance.
 
-**Important**
-
-You can change the resource set of a resource only in the same level-1 organization.
+> **Important:** You can change the resource set of a resource only in the same level-1 organization.
 
 ### 17.9 How do I view the AccessKey pairs of an organization and a user?
 
@@ -25233,7 +26821,10 @@ This topic describes how to view the AccessKey pairs of an organization and a us
 
 **View the AccessKey pairs of an organization**
 
-Up to two AccessKey pairs can be created for each level-1 organization. By default, only operations administrators and level-1 organization administrators have permissions to view the AccessKey pairs of organizations. An operations administrator can view the AccessKey pairs of all level-1 organizations. A level-1 organization administrator can view only the AccessKey pairs of the organization to which the level-1 organization administrator belongs.
+> **Note:** Up to two AccessKey pairs can be created for each level-1 organization. By default, only operations administrators and level-1 organization administrators have permissions to view the AccessKey pairs of organizations.
+> An operations administrator can view the AccessKey pairs of all level-1 organizations.
+> A level-1 organization administrator can view only the AccessKey pairs of the organization to which the level-1 organization administrator belongs.
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator or
 a level-1 organization administrator.
 2. In the top navigation bar, click **Enterprise**.
@@ -25349,7 +26940,9 @@ For resources such as virtual private clouds (VPCs) and ECS security groups that
 default.
 3. On the **Products** page, enter the service whose information you want to change and click
 **Search**.
-Currently, vpc and slb are supported. vpc is used in this example.
+
+> **Note:** Currently, vpc and slb are supported. vpc is used in this example.
+
 4. Find the desired service and click **Switch List** in the Actions column.
 5. Search for `strictOwnership` in the switch list and check whether the Current Value switch
 is turned on. If this switch is turned on, click **Change Switch Status** in the Actions column.

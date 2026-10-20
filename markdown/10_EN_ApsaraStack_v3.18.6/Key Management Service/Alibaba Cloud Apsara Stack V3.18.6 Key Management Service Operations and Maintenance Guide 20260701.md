@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 25
 source_pdf: "a94569db21cce893_Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Operations and Maintenance Guide 20260701."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Key%20Management%20Service%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Key Management Service Operations and Maintenance Guide
@@ -65,9 +65,22 @@ Cloud Shield Operations Center is an operations platform for Apsara Stack Securi
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: region-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 on to Cloud Shield Operations Ce nter
 5. In the top navigation bar, choose **Product Operation > Security O&M > Cloud Shield Operations Center**.
@@ -97,9 +110,7 @@ in the following table and click **OK**. KMS-managed HSMs
 
 Cloud Hardware Security Module-managed HSMs
 
-**Important**
-
-If you have already registered Key Management Service (KMS)-managed HSMs, the Cloud Hardware Security Module-managed HSMs tab is dimmed.
+> **Important:** If you have already registered Key Management Service (KMS)-managed HSMs, the Cloud Hardware Security Module-managed HSMs tab is dimmed.
 
 | Parameter | Description |
 |---|---|
@@ -109,9 +120,12 @@ If you have already registered Key Management Service (KMS)-managed HSMs, the Cl
 | HSM | The HSM that you want to register. |
 
 4. Initialize the HSM.
-i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS O&M**. ii. On the **Resources** tab, click **Initialize HSM**. In the **Initialize HSM** message, click **OK**. If the number of VSMs is smaller than 3, you cannot initialize the HSM. After the initialization request is submitted, the system generates an O&M task. You can choose **Cloud Services** > **KMS**
-**O&M** > **Tenant-side KMS O&M** in the left-side navigation pane to go to the Tenant-side KMS O&M page and view the
-status of the O&M task on the **Tasks** tab. After the HSM is initialized, health check tasks for the HSM are continuously added to the task list. You can use HSM-related features.
+i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS O&M**. ii. On the **Resources** tab, click **Initialize HSM**. In the **Initialize HSM** message, click **OK**.
+
+> **Note:** If the number of VSMs is smaller than 3, you cannot initialize the HSM.
+> After the initialization request is submitted, the system generates an O&M task. You can choose **Cloud Services** > **KMS** **O&M** > **Tenant-side KMS O&M** in the left-side navigation pane to go to the Tenant-side KMS O&M page and view the status of the O&M task on the **Tasks** tab.
+> After the HSM is initialized, health check tasks for the HSM are continuously added to the task list. You can use HSM-related features.
+
 5. Disable the HSM.
 i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS O&M**. ii. On the **Resources** tab, find the HSM that you want to disable and click **Bring Offline** in the **Actions** column. iii. Obtain the O&M code for this operation from Apsara Stack technical support as prompted, enter the O&M code in the field, and then click **OK**.
 
@@ -226,9 +240,14 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of region-id.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the URL. Then, press the Enter key.
-You can select a language from the drop-down list in the upper-right corner of the page.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 3. Enter your username and password.
-To obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console, contact the deployment personnel or administrators. Upon your first login to the Apsara Uni-manager Operations Console, you must change the your password as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+
+> **Note:** To obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console, contact the deployment personnel or administrators.
+
+Upon your first login to the Apsara Uni-manager Operations Console, you must change the your password as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
 ### 3.3 View the summary information about security audit
@@ -297,9 +316,14 @@ You can view the number of logs and specify whether to show logs by log type or 
 **with Authorized Role**.
 3. In the left-side navigation pane, choose **Operations > Security Audit**.
 4. On the **Log Sources** tab, click the **Log Types** tab to view the number of logs by audit object.
-You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each audit object. If you do not want to display the logs for an audit object, perform the following steps: i. Find the audit object and click **Hide** in the **Actions** column. ii. In the Note message, click **Confirm**. The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
+You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each audit object. If you do not want to display the logs for an audit object, perform the following steps: i. Find the audit object and click **Hide** in the **Actions** column. ii. In the Note message, click **Confirm**.
+
+> **Note:** The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
+
 5. Click the **Log Sources** tab and view the number of logs for each device instance.
-You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each device instance. If you do not want to display the logs for an audit object from a specific device instance, perform the following steps: i. Find the device instance and click **Hide** in the **Actions** column. ii. In the message that appears, click **OK**. The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
+You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each device instance. If you do not want to display the logs for an audit object from a specific device instance, perform the following steps: i. Find the device instance and click **Hide** in the **Actions** column. ii. In the message that appears, click **OK**.
+
+> **Note:** The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
 
 ### 3.7 Policy settings
 
@@ -331,7 +355,9 @@ The security audit module defines the default audit rule based on the string tha
 6. Create an audit rule.
 i. Click **New**. ii. In the dialog box that appears, configure the parameters. iii. Click **Add**. The system sends an alert email to the specified alert recipient after you create an audit rule. This applies if one string in an audit log of the specified audit type, audit object, or risk level matches the regular expression of the audit rule.
 7. Manage audit rules.
-You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column. You can delete only custom rules.
+You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column.
+
+> **Note:** You can delete only custom rules.
 
 #### 3.7.2 Configure alert recipients
 
@@ -409,11 +435,25 @@ analysis
 
 ### 4.1 Overview
 
-When the administrator needs to backtrack operations of Key Management Service (KMS), the administrator can perform a security audit. Security audits are long-term security management activities throughout the lifecycle of cloud services. The security audit feature of Apsara Stack Security can collect system security data, analyze weaknesses in system operations, and report audit events to administrators. The administrator can view and analyze the audit events to continuously improve the security and reliability of cloud services. KMS logs are collected to Log Service by using Logtail. You can analyze the logs in the Log Service console or by calling Log Service API operations. If you cannot analyze the logs in the Log Service console or by calling Log Service API operations, you must log on to the servers on which KMS is deployed and analyze the logs on each server.
+When the administrator needs to backtrack operations of Key Management Service (KMS), the administrator can perform a security audit. Security audits are long-term security management activities throughout the lifecycle of cloud services. The security audit feature of Apsara Stack Security can collect system security data, analyze weaknesses in system operations, and report audit events to administrators. The administrator can view and analyze the audit events to continuously improve the security and reliability of cloud services.
+
+> **Note:** KMS logs are collected to Log Service by using Logtail. You can analyze the logs in the Log Service console or by calling Log Service API operations. If you cannot analyze the logs in the Log Service console or by calling Log Service API operations, you must log on to the servers on which KMS is deployed and analyze the logs on each server.
 
 ### 4.2 View logs by using request IDs
 
-After you send a request to Key Management Service (KMS), KMS sends you a message that contains a request ID. This topic describes how to view logs by using request IDs. Request IDs can be used in the following scenarios: You can view the KMS audit logs in the /cloud/log/kms/KmsHost#/kms_host/audit.log file. You can view the audit log information of the current access based on the value of request_id. For log entries whose expected_code values are not 200, you can view error information in the debug logs based on the value of request_id. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine. If you need all details of a request, you can view detailed information in the trace logs. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine. You can associate a cryptographic API operation with the trace logs of HSA by using the value of request_id. Path to the on-premises logs: /cloud/log/kms/HSA#/hsa/trace.log The /cloud/log/kms/KmsHost#/kms_host/trace.log and audit.log files may be stored on different machines. You can retrieve log information based on other information. You can retrieve the information in the audit logs of KMS by using information other than request_id. If you need to associate the audit logs with other logs, you must use request_id.
+After you send a request to Key Management Service (KMS), KMS sends you a message that contains a request ID. This topic describes how to view logs by using request IDs. Request IDs can be used in the following scenarios: You can view the KMS audit logs in the /cloud/log/kms/KmsHost#/kms_host/audit.log file. You can view the audit log information of the current access based on the value of request_id. For log entries whose expected_code values are not 200, you can view error information in the debug logs based on the value of request_id. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log
+
+> **Note:** The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine.
+
+If you need all details of a request, you can view detailed information in the trace logs. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log
+
+> **Note:** The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine.
+
+You can associate a cryptographic API operation with the trace logs of HSA by using the value of request_id. Path to the on-premises logs: /cloud/log/kms/HSA#/hsa/trace.log
+
+> **Note:** The /cloud/log/kms/KmsHost#/kms_host/trace.log and audit.log files may be stored on different machines.
+
+You can retrieve log information based on other information. You can retrieve the information in the audit logs of KMS by using information other than request_id. If you need to associate the audit logs with other logs, you must use request_id.
 
 ### 4.3 Common KMS errors
 
@@ -450,7 +490,10 @@ The Apsara Uni-manager Operations Console allows you to verify role permissions 
 ```
 
 3. Set KmsEnableRwPermission to true to enable read/write permission verification.
-If you set KmsEnableRwPermission to false, read/write permission verification is disabled. You must enable read/write permission verification for all servers.
+
+> **Note:** If you set KmsEnableRwPermission to false, read/write permission verification is disabled.
+> You must enable read/write permission verification for all servers.
+
 4. Restart the AdminPortalBackend service to ensure that the configuration changes take effect.
 Method 1: Log on to the Apsara Infrastructure Management console and restart the AdminPortalBackend service. For more information, see Log on to the Apsara Infrastructure Management console. Method 2: Log on to the server and stop the admin_portal_backend process. The Apsara Infrastructure Management console automatically starts the process again. of KMS components
 
@@ -471,9 +514,14 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: ${region}.ops.console.intranet-domain-id.com. A browser is available. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. The first time you log on to the Apsara Uni-manager Operations Console, you must change the password of your username. of KMS components To ensure the security of your account, we recommend that you use a password that meets the minimum complexity requirements. The password must contain letters, digits, and special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator.
+
+The first time you log on to the Apsara Uni-manager Operations Console, you must change the password of your username. of KMS components To ensure the security of your account, we recommend that you use a password that meets the minimum complexity requirements. The password must contain letters, digits, and special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
 4. Click Log On to log on to the Apsara Uni-manager Operations Console.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products > Base/Platforms > Apsara**
 **Infrastructure Management**.
@@ -494,7 +542,9 @@ component. If the indicator for **KmsHost#** is green, the component is in the d
 5. Click **KmsHost#** to view and obtain the IP addresses of all servers on which the KMS_HOST component is deployed.
 6. Find a server and click **Terminal** in the Actions column to log on to the server.
 7. Run the `curl http://ip:5555/status.html` command and check whether **success** is returned.
-The IP address is the IP address of the server in Step 6. Use this method to verify all servers on which the KMS_HOST component is deployed.
+
+> **Note:** The IP address is the IP address of the server in Step 6.
+> Use this method to verify all servers on which the KMS_HOST component is deployed.
 
 **Troubleshooting**
 
@@ -529,7 +579,9 @@ component. If the indicator for **HSA#** is green, the component is in the desir
 6. Click **HSA#** to view and obtain the IP addresses of all servers on which the HSA component is deployed.
 7. Find a server and click **Terminal** in the Actions column to log on to the server.
 8. Run the `curl http://ip:5555/status.html` command and check whether **success** is returned.
-The IP address is the IP address of the server in Step 6. Use this method to verify all servers on which the HSA component is deployed.
+
+> **Note:** The IP address is the IP address of the server in Step 6.
+> Use this method to verify all servers on which the HSA component is deployed.
 
 **Troubleshooting**
 
@@ -539,7 +591,9 @@ If the HSA component abnormally exits after it starts, view debug logs in the de
 
 **Possible errors**
 
-of KMS components Error: `exit code 1` Troubleshooting: View debug logs in the debug.log file to identify the cause of the abnormal exit. This error can be caused by one of the following reasons: The etcd component does not start as expected. The etcd component starts as expected, but the corresponding data is invalid. During disaster recovery, synchronization errors in a secondary cluster may cause this error.
+of KMS components Error: `exit code 1` Troubleshooting: View debug logs in the debug.log file to identify the cause of the abnormal exit. This error can be caused by one of the following reasons: The etcd component does not start as expected. The etcd component starts as expected, but the corresponding data is invalid.
+
+> **Note:** During disaster recovery, synchronization errors in a secondary cluster may cause this error.
 
 ### 6.5 etcd
 
@@ -599,6 +653,4 @@ Check the value of `current idc master` in /cloud/log/kms/Rotator#/rotator/debug
 
 Abnormal network of the primary data center. The etcd of the primary data center is inaccessible. Abnormal etcd of the primary data center. The etcd of the primary data center is inaccessible. Abnormal etcd of the secondary data center. Data cannot be written into etcd. Incorrect etcd information of the primary data center. Data synchronization errors occur.
 
-**Important**
-
-Rotator exceptions of the secondary data center has a severe impact on KMS in the secondary data center. You must fix the exceptions in a timely manner.
+> **Important:** Rotator exceptions of the secondary data center has a severe impact on KMS in the secondary data center. You must fix the exceptions in a timely manner.

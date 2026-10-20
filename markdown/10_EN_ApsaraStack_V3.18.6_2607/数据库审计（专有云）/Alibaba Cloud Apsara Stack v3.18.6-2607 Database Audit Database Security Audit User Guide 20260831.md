@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 121
 source_pdf: "f906165d5564fab4_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit User Guide 20260831.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Database%20Security%20Audit%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit User Guide 20260831
@@ -170,17 +170,16 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
-**Note**
-
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
 ### 2.3 Upgrade instance specifications
 
@@ -274,9 +273,10 @@ icon in the upper-left corner to configure databases.
 icon in the upper-right corner of the
 **Database list** section to add a database instance.
 
-**Note**
+> **Note:** To add multiple database instances at a time, click the
+> icon on the Database page.
+> Download the database template file, enter database information in the file, and then upload the file.
 
-To add multiple database instances at a time, click the icon on the Database page. Download the database template file, enter database information in the file, and then upload the file.
 4. In the panel that appears, enter the information about the database instance to be audited
 and click the icon in the upper-left corner to save the configuration. Table 1. Database instance parameters
 
@@ -292,11 +292,9 @@ and click the icon in the upper-left corner to save the configuration. Table 1. 
 | Network Settings | The IP address and port number of the database instance. After you enter an IP address and a port number, click the icon in the Operation column to save the configuration. IP address Self-managed database on Elastic Compute Service (ECS): Enter the IP address of the database instance to be audited. ApsaraDB instance: Enter the URL connection string of the ApsaraDB instance to be audited. Port: Enter the port number of the database instance to be audited. You can click the icon to add multiple sets of IP addresses and port numbers. |
 |---|---|
 
-**Note**
+> **Note:** When you add an SQL Server database, you must enter the username and password of the account that has the required permissions, and then click **Authority Verification** to verify the permissions. A security administrator can also click **Download create** **user reference script** to create a specific user for Database Security Audit in the relevant database instance based on the reference script.
 
-When you add an SQL Server database, you must enter the username and password of the account that has the required permissions, and then click **Authority Verification** to verify the permissions. A security administrator can also click **Download create**
-**user reference script** to create a specific user for Database Security Audit in the
-relevant database instance based on the reference script. After the database instance is added, you can view a summary of the database instance in the database list of the **Overview / All** page.
+After the database instance is added, you can view a summary of the database instance in the database list of the **Overview / All** page.
 
 #### 3.3.3 Deploy an RMAgent
 
@@ -322,9 +320,8 @@ Agent程序需要部署到数据库或应用服务器上，用于获取访问数
 | 目标服务器 | 部署Agent服务器的信息，格式为： 目标IP,root密码,ssh端口 。 如果需要将Agent程序自动部署至多台服务器时，可以单击进行添加。 |
 |---|---|
 
-**Note**
+> **Note:** 添加的服务器也可以通过文件导入的方式添加，需先在文件导入页面下载模板编辑后导入。
 
-添加的服务器也可以通过文件导入的方式添加，需先在文件导入页面下载模板编辑后导入。
 4. 单击**确定**，即可将Agent程序自动部署到相应的服务器中。
 
 ##### 3.3.3.2 Manual deployment on Windows with separated application and database servers
@@ -752,9 +749,8 @@ This topic describes how to configure sensitive data masking.
 
 Database Security Audit provides the sensitive data masking feature, which masks the audited sensitive data of customers, such as social security numbers and bank card numbers, before displaying the data. When you configure a sensitive data masking rule, you need to specify the rule for matching the data that you want to mask and how the data is displayed after masking. Generally, the matching rules are written in regular expressions.
 
-**Note**
+> **Note:** The sensitive data masking feature affects the query and export efficiency.
 
-The sensitive data masking feature affects the query and export efficiency.
 1. In the left-side navigation pane, choose **Configuration > Sensitive Data Masking**. On
 the page that appears, click the icon in the upper-right corner to add a masking rule.
 2. In the dialog box that appears, configure the Name, Regular Expression Matching, Mask
@@ -860,11 +856,10 @@ You can manage the remote mirror agents (RMAgents) that are connected to your au
 **备份策略**：自动备份默认备份3天前的数据，即备份自当天起3天前的数据。例如，在12月17日，自动
 备份默认备份12月15日当天的审计日志数据。
 **上传服务器**：备份的审计日志，出于安全性和数据盘空间考虑支持选择自动上传到指定服务器。目前支
-持FTP、SFTP和NFS服务器。 设置FTP服务器时，FTP路径是FTP服务器下的已有目录，而不是FTP服务器在操作系
+持FTP、SFTP和NFS服务器。
 
-**Note**
+> **Note:** 设置FTP服务器时，FTP路径是FTP服务器下的已有目录，而不是FTP服务器在操作系统上的存储目录。
 
-统上的存储目录。
 4. 单击**保存**。
 
 ##### 4.8.2.2 手动备份与恢复
@@ -880,9 +875,9 @@ You can manage the remote mirror agents (RMAgents) that are connected to your au
 
 **后续步骤**
 
-备份成功后，在**系统配置信息备份****/****恢复**区域，单击**恢复**并选择备份文件后，单击**确认**。 该备份的系统配置数据会覆盖当前系统配置数据。
+备份成功后，在**系统配置信息备份****/****恢复**区域，单击**恢复**并选择备份文件后，单击**确认**。
 
-**Warning**
+> **Warning:** 该备份的系统配置数据会覆盖当前系统配置数据。
 
 ##### 4.8.2.3 查询备份清单
 
@@ -903,11 +898,9 @@ You can manage the remote mirror agents (RMAgents) that are connected to your au
 **已清理**：本系统中达到系统阈值被清理的数据。
 **处理中**：本系统当前正在进行清理或者恢复的数据。
 6. 单击**查询**或**刷新**，查看相应的备份记录。
-备份清单列表包含备份日期、数据状态、备份结果、FTP上传状态、空间占用等信息。 如果自动备份启用FTP设置，且备份已成功转存至FTP服务器，在操作栏中单击**恢复**，
+备份清单列表包含备份日期、数据状态、备份结果、FTP上传状态、空间占用等信息。
 
-**Note**
-
-可将该日志备份恢复至数据库审计系统硬盘。
+> **Note:** 如果自动备份启用FTP设置，且备份已成功转存至FTP服务器，在操作栏中单击**恢复**， 可将该日志备份恢复至数据库审计系统硬盘。
 
 #### 4.8.3 自动清理告警与数据
 

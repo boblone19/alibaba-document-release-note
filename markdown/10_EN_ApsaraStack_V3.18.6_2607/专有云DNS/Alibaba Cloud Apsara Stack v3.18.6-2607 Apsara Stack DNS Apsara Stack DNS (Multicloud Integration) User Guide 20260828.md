@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 19
 source_pdf: "7f21f4e70b77676e_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) U"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Multicloud%20Integration%29%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20260828
@@ -58,22 +58,25 @@ The URL of the console that is obtained from the deployment personnel. A support
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。 e DNS (Multicloud Integration) co nsole
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。 e DNS (Multicloud Integration) co nsole
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top menu bar, choose **Products > Network > Cross-cloud DNS**.
 
 ## 4 Cross-cloud shared domain names
@@ -116,7 +119,8 @@ note to, and click **Description** in the **Actions** column.
 
 **Delete a domain name**
 
-When you delete a scheduling domain, all its scheduling instances are also deleted. This action cannot be undone. Proceed with caution.
+> **Note:** When you delete a scheduling domain, all its scheduling instances are also deleted. This action cannot be undone. Proceed with caution.
+
 1. (Method 1) On the **Multicloud Domain Names** page, find the domain name that you want
 to delete and click **Delete** in the **Actions** column. (Method 2) On the **Multicloud Domain Names** page, select the check boxes for one or more domain names that you want to delete and click **Batch Delete** in the lower-left corner.
 2. In the confirmation dialog box, click **OK**.
@@ -223,7 +227,10 @@ Click **Advanced Filter** and enter filter conditions to find a specific line. C
 1. On the **Resolution Line** page, find the target line and click **Modify** in the **Actions** column.
 2. In the **Modify Line** dialog box, modify the **Line Name**, **IPv4 Address Range**, or **IPv6**
 **Address Range**, and then click **OK**.
-You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**. ines
+
+> **Note:** You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**.
+
+ines
 
 **Sort lines**
 

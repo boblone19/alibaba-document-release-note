@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 10
 source_pdf: "191797d53c1d1b89_Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 Product Introduction 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6scheduler-x/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20SchedulerX%202.0%20Product%20Introduction%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # SchedulerX 2.0 Product Introduction 20260701

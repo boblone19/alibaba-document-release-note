@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 49
 source_pdf: "ce5c5d8217237948_Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Alibaba%20Cloud%20DNS%20Alibaba%20Cloud%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide
@@ -132,22 +132,21 @@ You need to obtain the endpoint of the Apsara Uni-manager Management Console fro
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press Enter. Stack DNS console
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements. If you need to click Continue to access multiple times or cannot find the entry to the Apsara Uni-manager Management Console because of an expired browser certificate or HTTPS authentication enabled in the environment, you must install a certificate for normal access. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue to access multiple times or cannot find the entry to the Apsara Uni-manager Management Console because of an expired browser certificate or HTTPS authentication enabled in the environment, you must install a certificate for normal access. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Account Logon**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Networking > DNS within Cloud**.
 n names in Apsara Stack
 
@@ -832,9 +831,9 @@ about the **primary and secondary address pools**.
 parameter. The default value is **Automatic**. You can change the value to **Manual**. If you set the Address Pool Switchover Policy parameter to **Automatic**, the system automatically selects an available address pool. If you set the Address Pool Switchover Policy parameter to **Manual**, you must manually specify whether to use the **primary address pool** or
 **secondary address pool**.
 
-**Note**
+> **Note:** Whether an address pool is available is determined based on the number of normal addresses in the address pool and the minimum number of available addresses in an address pool that you specify when you configure the access policy. If the number of normal addresses in the address pool is less than the specified minimum number of available addresses in an address pool, the address pool is considered unavailable. You can perform a health check to obtain the number of normal addresses in the address pool.
 
-Whether an address pool is available is determined based on the number of normal addresses in the address pool and the minimum number of available addresses in an address pool that you specify when you configure the access policy. If the number of normal addresses in the address pool is less than the specified minimum number of available addresses in an address pool, the address pool is considered unavailable. You can perform a health check to obtain the number of normal addresses in the address pool. Processing logic for automatic switchover
+Processing logic for automatic switchover
 
 | State of the primary address pool | State of the secondary address pool | Compariso n between the numbers of normal addresses in the primary and secondary address pools | Effective address pool (list of available addresses) |
 |---|---|---|---|
@@ -914,9 +913,8 @@ The following tables describe the limits on address types of primary address poo
 
 ##### 6.1.3.2 Modify an access policy
 
-**Important**
+> **Important:** If you do not change the primary or secondary address pool when you modify an access policy, no primary/secondary switchover is triggered. If you change one of the address pools, the system applies the following processing rules:
 
-If you do not change the primary or secondary address pool when you modify an access policy, no primary/secondary switchover is triggered. If you change one of the address pools, the system applies the following processing rules:
 1. Manual switchover mode: If the secondary address pool is deleted, the system forcibly
 switches services to the primary address pool. If the secondary address pool is not deleted, the effective address pool does not change.
 2. Automatic switchover mode: The system determines the address pool that takes effect
@@ -944,7 +942,8 @@ On the Access Policy page, find the access policy that you want to delete and cl
 2. On the Scheduling Instance tab, find the scheduling instance that you want to delete and
 click **Delete** in the Actions column.
 3. In the message that appears, click **Delete**.
-Note: After you delete the instance, its configuration data is also deleted.
+> **Note:** After you delete the instance, its configuration data is also deleted.
+
 
 ### 6.2 Address pools
 
@@ -977,9 +976,8 @@ the **Addresses** section, and then click **OK**. The following table describes 
 
 #### 6.2.2 Modify an address pool
 
-**Important**
+> **Important:** After you modify an address pool, the health check results of all addresses in the address pool are reset to normal if health check is enabled. If the address pool has been associated with specific access policies and automatic switchover is enabled, a primary/secondary switchover may be triggered. Proceed with caution when you modify an address pool.
 
-After you modify an address pool, the health check results of all addresses in the address pool are reset to normal if health check is enabled. If the address pool has been associated with specific access policies and automatic switchover is enabled, a primary/secondary switchover may be triggered. Proceed with caution when you modify an address pool.
 1. Log on to the Apsara Stack DNS console.
 2. Click **Scheduling Instances** in the left-side navigation pane. On the Scheduling Instance
 page, click the **Address Pool** tab.

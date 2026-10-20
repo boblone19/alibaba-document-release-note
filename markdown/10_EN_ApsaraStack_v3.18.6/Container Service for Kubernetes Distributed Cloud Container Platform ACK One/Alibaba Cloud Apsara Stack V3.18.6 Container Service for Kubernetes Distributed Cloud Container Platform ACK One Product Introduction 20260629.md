@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 12
 source_pdf: "0c70f18814932f61_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Distributed Cloud Container Plat"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1ACK%20One/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Container Service for Kubernetes Distributed Cloud Container Platform ACK One Product Introduction 20260629

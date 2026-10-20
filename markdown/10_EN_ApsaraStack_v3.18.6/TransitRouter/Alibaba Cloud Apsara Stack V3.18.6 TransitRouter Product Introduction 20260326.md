@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 9
 source_pdf: "1e74078b88559243_Alibaba Cloud Apsara Stack V3.18.6 TransitRouter Product Introduction 20260326.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20TransitRouter%20Product%20Introduction%2020260326.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # TransitRouter Product Introduction 20260326

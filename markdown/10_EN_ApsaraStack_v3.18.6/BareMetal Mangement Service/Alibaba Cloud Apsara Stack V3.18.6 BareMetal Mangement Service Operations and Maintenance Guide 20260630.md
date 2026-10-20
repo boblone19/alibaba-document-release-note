@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 41
 source_pdf: "c9530fb28f73f1ac_Alibaba Cloud Apsara Stack V3.18.6 BareMetal Mangement Service Operations and Maintenance Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86BMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20BareMetal%20Mangement%20Service%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # BareMetal Mangement Service Operations and Maintenance Guide
@@ -121,16 +121,18 @@ This topic describes how to log in to the Apsara Uni-manager Operations Console 
 1. Enter the endpoint of the Apsara Uni-manager Operations Console into the address bar of
 the browser.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner of the login page to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner of the login page to switch to another language. Simplified Chinese and English are supported.
 2. Enter your username and password.
 
-**Note**
+> **Note:** You need to obtain the username and password that are used to log in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> If you log in to the Apsara Uni-manager Operations Console for the first time, you need to change the password for your username as prompted. To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
 
-You need to obtain the username and password that are used to log in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. If you log in to the Apsara Uni-manager Operations Console for the first time, you need to change the password for your username as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
 3. Click **Agree to Private Policy and Log On** to log in to the Apsara Uni-manager
 Operations Console.
 4. In the top navigation bar, choose **Product Operation > Computing > BMS Operations**
@@ -174,10 +176,8 @@ parameters.
 | Image Type | The image type. Valid values: Public Image and Custom Image. |
 | Public/Custom Image | The image that you want to use. |
 
-**Note**
+> **Note:** The **Image** section is displayed only when the **Management Type** parameter is set to **Bare Metal Management**.
 
-The **Image** section is displayed only when the **Management Type** parameter is set to
-**Bare Metal Management**.
 7. In the **Network** section, configure the network parameters. The following table describes
 the parameters.
 
@@ -203,9 +203,8 @@ the parameters.
 | Password | The password. The value must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include () ' ~ ! @ # $ % ^ & * - + = \| {} [] : ; ' <> , . ?. / _ |
 | Confirm Password | The password for confirmation. Enter the password again. |
 
-**Important**
+> **Important:** Remember your password. If you forget it, you can reset it in the BMS Operations Console. For more information, see Reset the password of an instance.
 
-Remember your password. If you forget it, you can reset it in the BMS Operations Console. For more information, see Reset the password of an instance.
 9. In the **Instance Name** section, configure the **Instance Name**, **Hostname**, and **Instance**
 **Description** as required.
 
@@ -309,9 +308,7 @@ i. The information displayed in the Basic Information section includes **Instanc
 ii. The information displayed in the Configuration Information section includes **Model**, **IDC**,
 **Equipment Model**, **CPU**, **OS**, **Network**, and **NIC**.
 
-**Note**
-
-The information displayed in the BMS Operations console prevails.
+> **Note:** The information displayed in the BMS Operations console prevails.
 
 ### 3.5 Release an instance
 
@@ -444,9 +441,8 @@ i. Method 1: Find the instance that you want to view and click **Operation Logs*
 **Actions** column.
 ii. Method 2: Find the instance that you want to view and click its status, such as Running or Creation failed, in the **Status** column.
 
-**Note**
+> **Note:** Method 1 allows you to view all operation logs of the instance. Method 2 allows you to view only the operation logs of the last task of the instance.
 
-Method 1 allows you to view all operation logs of the instance. Method 2 allows you to view only the operation logs of the last task of the instance.
 5. In the **Operation Logs** dialog box, view the operation information in the following
 columns: **Operation Type**, **Status**, **Operated At**, and **Description**.
 6. Click the plus (+) icon before a value in the **Operation Type** column to view the details of
@@ -725,9 +721,8 @@ Supported filter conditions include **Image Name** and **Image ID**.
 
 This topic describes how to delete a custom image. A custom image is uploaded. For more information, see Upload a custom image.
 
-**Important**
+> **Important:** When you delete an image, the source image file is also deleted. Proceed with caution.
 
-When you delete an image, the source image file is also deleted. Proceed with caution.
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
 By default, the **Custom Image** tab is displayed.
@@ -743,9 +738,8 @@ This topic describes how to view the details of a public image. Public images ar
 
 Public images in the tgz or qcow2 format are supported in Apsara Stack. By default, the platform provides some adapted public images. If no image is displayed on the Public Image tab or the status of the public images on the tab is not "Available", contact the developer. A public image that has been disabled is not displayed on the bare metal instance registration page. To use this image, you must first enable it on the Images page. Some public images are only used to ensure compatibility with migrated products of earlier versions. You cannot export these images.
 
-**Note**
+> **Note:** Public images cannot be deleted.
 
-Public images cannot be deleted.
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
 By default, the **Custom Image** tab is displayed.

@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 49
 source_pdf: "c3d117f917445b85_Alibaba Cloud Apsara Stack v3.18.6-2607 Time  Series and Spatial-Temporal  Database User Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%9A%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%20Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Time%20%20Series%20and%20Spatial-Temporal%20%20Database%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database User Guide 20260827
@@ -80,11 +80,19 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click **Login**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**. For more information about how to bind and enable MFA, see **Security Center** >
-**MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**.
+
+> **Note:** For more information about how to bind and enable MFA, see **Security Center** > **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+
 indorm
 5. In the top navigation bar, click **Products**, then click **ApsaraDB for Lindorm** in the
 **Database Services** section.
@@ -211,7 +219,9 @@ instance ID or click **Manage** in the **Actions** column.
 3. In the left-side navigation pane of the **Instance Details** page, click **Database**
 **Connection**.
 4. On the **Database Connection** page, select the engine that you want to manage to view
-the endpoint and port. You can also turn on the IPv6 switch on the right side of an endpoint to connect to a database by using an IPv6 address.
+the endpoint and port.
+
+> **Note:** You can also turn on the IPv6 switch on the right side of an endpoint to connect to a database by using an IPv6 address.
 
 ### 3.2 Activate a classic network endpoint
 
@@ -227,7 +237,9 @@ instance ID or click **View Instance Details** in the **Actions** column.
 3. In the left-side navigation pane, click **Database Connections**.
 4. Click the **Wide Table Engine** tab based on your business requirements.
 5. Click **Activate the classic network address**.
-The **Activate the classic network address** button appears only when the instance is in the **Running** state.
+
+> **Note:** The **Activate the classic network address** button appears only when the instance is in the **Running** state.
+
 6. In the **Activate the classic network address** message, click **OK**.
 
 ### 3.3 Release an instance
@@ -241,9 +253,7 @@ If you no longer need a Lindorm instance, you can release the instance. This top
 the **Actions** column.
 3. In the message that appears, click **OK**.
 
-**Warning**
-
-After an instance is released, all data in the instance is deleted. Exercise caution when you release an instance.
+> **Warning:** After an instance is released, all data in the instance is deleted. Exercise caution when you release an instance.
 
 ### 3.4 Version update
 
@@ -257,9 +267,13 @@ This topic describes how to upgrade a Lindorm instance and how to upgrade a Lind
 3. In the **Configurations** section of the **Instance Details** page, find the engine that you
 want to manage.
 4. Choose **Manage > Upgrade Minor Version**.
-The **Upgrade Minor Version** button appears only when a new version is available. The button does not appear when the current version is the latest.
+
+> **Note:** The **Upgrade Minor Version** button appears only when a new version is available. The button does not appear when the current version is the latest.
+
 5. In the **Upgrade Minor Version** dialog box, click **OK**.
-The system performs a rolling upgrade on a cluster to ensure that the Lindorm service is not interrupted during the upgrade. Before a region server restarts, the system moves all regions to other region servers to minimize the impact on your workloads. The upgrade may cause network jitter. However, the entire Lindorm cluster remains available. You can perform minor version upgrades based on your business requirements. The amount of time that is required to upgrade the minor version of a Lindorm cluster varies based on the size of the cluster and the number of regions in the cluster. A larger cluster requires more time to upgrade the minor version.
+
+> **Note:** The system performs a rolling upgrade on a cluster to ensure that the Lindorm service is not interrupted during the upgrade. Before a region server restarts, the system moves all regions to other region servers to minimize the impact on your workloads. The upgrade may cause network jitter. However, the entire Lindorm cluster remains available. You can perform minor version upgrades based on your business requirements.
+> The amount of time that is required to upgrade the minor version of a Lindorm cluster varies based on the size of the cluster and the number of regions in the cluster. A larger cluster requires more time to upgrade the minor version.
 
 **Upgrade an LTS instance**
 
@@ -267,7 +281,9 @@ The system performs a rolling upgrade on a cluster to ensure that the Lindorm se
 2.
 3. In the **LTS Node Information** section of the **Instance Details** page, choose **Manage >**
 **Upgrade Minor Version**.
-t The **Upgrade Minor Version** button appears only when a new version is available. The button does not appear when the current version is the latest.
+t
+
+> **Note:** The **Upgrade Minor Version** button appears only when a new version is available. The button does not appear when the current version is the latest.
 
 ### 3.5 Restart an engine
 
@@ -298,7 +314,9 @@ want to manage.
 4. Find the engine that you want to manage and choose **Manage > Change node**
 **configuration** on the right side.
 5. On the **Lindorm node change** page, specify **Number of engine nodes**.
-The number of nodes ranges from 2 to 20.
+
+> **Note:** The number of nodes ranges from 2 to 20.
+
 6. Click **Submit**.
 
 ## 4 LindormTable
@@ -342,14 +360,25 @@ You can use Lindorm to store a large number of transaction records in the financ
 
 **Lindorm**
 
-Real-time Data Sending Transaction Query Financial Users Real-time Data Sending Advertiser Historical Transactions
+Real-time Data Sending Transaction Query Financial Users
+
+> Real-time Data Sending
+
+Advertiser Historical Transactions
 
 | Data U | ploadin |
 |---|---|
 
 **Lindorm**
 
-Behavior Logs (Logon and Payment) Third-party Enterprise Data Risk Control & D Event Data Behavior Analysis Crawler-based Data Fetching Other Information
+> Behavior Logs (Logon and Payment)
+
+Third-party Enterprise Data Risk Control & D Event Data
+
+> Behavior Analysis
+> Crawler-based Data Fetching
+
+Other Information
 
 **Lindorm**
 
@@ -397,7 +426,13 @@ You can use Lindorm to store important data such as messages, comments, posts, a
 |   |   |   | Images, Docu | Images, Docu | mentation, and Sho | rt Videos |
 |   |   |   |   |   | OSS |   |
 
-Obtain feeds User Obtain ima CDN Servers
+> Obtain feeds
+
+User
+
+> Obtain ima
+
+CDN Servers
 
 **Benefits**
 
@@ -416,7 +451,9 @@ If you want to use LindormTable SQL client to connect to a Lindorm instance, you
 1. Log on to the Lindorm console.
 2. Click the ID of the instance that you want to manage to go to the **Instance Details** page.
 3. In the left-side navigation pane, click **Database Connections**. The **Wide Table Engine**
-tab appears by default. On this tab, view Lindorm wide table SQL address. Lindorm instances support access over Virtual Private Cloud (VPC) and over the classic network. The private endpoint of a Lindorm instance is used to connect to the instance over a VPC and can be obtained from the Lindorm console. The classic network endpoint of a Lindorm instance is used to connect to the instance over the classic network and can be obtained only after you apply for it.
+tab appears by default. On this tab, view Lindorm wide table SQL address.
+
+> **Note:** Lindorm instances support access over Virtual Private Cloud (VPC) and over the classic network. The private endpoint of a Lindorm instance is used to connect to the instance over a VPC and can be obtained from the Lindorm console. The classic network endpoint of a Lindorm instance is used to connect to the instance over the classic network and can be obtained only after you apply for it.
 
 ### 4.3 Cluster management
 
@@ -479,7 +516,8 @@ management system.
 3. In the **Cluster group** section, choose **More > Create group**.
 4. In the **Create Group** dialog box, specify **GroupName**.
 5. Click **OK**.
-By default, no region servers or tables are added to a group when a group is created. You must manually add region servers and tables to the group.
+
+> **Note:** By default, no region servers or tables are added to a group when a group is created. You must manually add region servers and tables to the group.
 
 **Delete a group**
 
@@ -497,7 +535,10 @@ By default, all region servers in a Lindorm cluster belong to the default group.
 3. Click **Move group**.
 4. In the **Move group of ldserver** dialog box, select **target group**.
 5. Click **OK**.
-If you add a table to a group that does not contain region servers, the region of the table becomes inaccessible because no region server is available for the region. We recommend that you add at least two region servers to each group. When a region server is down, the regions of the tables in the group can be distributed to the other region server. If your group contains only one region server and the region server is down, all tables in the group become inaccessible. When you remove a region server from a group, the regions that are being accessed on the region server are distributed to other region servers in the group.
+
+> **Note:** If you add a table to a group that does not contain region servers, the region of the table becomes inaccessible because no region server is available for the region.
+> We recommend that you add at least two region servers to each group. When a region server is down, the regions of the tables in the group can be distributed to the other region server. If your group contains only one region server and the region server is down, all tables in the group become inaccessible.
+> When you remove a region server from a group, the regions that are being accessed on the region server are distributed to other region servers in the group.
 
 **Specify a group for a namespace**
 
@@ -508,7 +549,9 @@ If no group is specified for a namespace, all tables in the namespace belong to 
 click **Bind group** in the **Operation** column.
 3. In the **Bind group** dialog box, specify **Target group**.
 4. Click **OK**.
-If you change the group that is specified for a namespace, the change does not apply to the existing tables in the namespace. After you specify a group for a namespace, all newly created tables in the namespace are added to the group. You can also move the tables in the namespace to another group.
+
+> **Note:** If you change the group that is specified for a namespace, the change does not apply to the existing tables in the namespace.
+> After you specify a group for a namespace, all newly created tables in the namespace are added to the group. You can also move the tables in the namespace to another group.
 
 **Move a table to a group**
 
@@ -538,7 +581,8 @@ Namespaces are logical groups for tables in Lindorm. You can use the same name f
 2. On the **Namespace Manager** page, find the namespace that you want to delete and click
 **Delete** in the **Operation** column.
 3. In the message that appears, click **OK**.
-Before you delete a namespace, you must delete all tables in the namespace. Otherwise, you fail to delete the namespace.
+
+> **Note:** Before you delete a namespace, you must delete all tables in the namespace. Otherwise, you fail to delete the namespace.
 
 **Specify a group for a namespace**
 
@@ -555,7 +599,9 @@ Lindorm supports user authentication. You need only to provide a username and pa
 2. On the **User Manager** page, click **Add user**.
 3. In the **Add user** dialog box, specify **Username** and **Password**.
 4. Click **OK**.
-After you create a user, the password of the user cannot be viewed in the system. If you forget the password, you must change the password. A newly created user does not have permissions to access resources. You need to go to the Access Control page and grant permissions to the user so that the user can access resources.
+
+> **Note:** After you create a user, the password of the user cannot be viewed in the system. If you forget the password, you must change the password.
+> A newly created user does not have permissions to access resources. You need to go to the Access Control page and grant permissions to the user so that the user can access resources.
 
 **Change the password of a user**
 
@@ -617,12 +663,15 @@ You can use the ACL Management module of the cluster management system to revoke
 2. In the **Global permission** section, click **revoke** in the **Action** column of the user whose
 permissions you want to revoke.
 3. In the **revoke privilege** dialog box, select the permissions that you want to revoke.
-The **revoke privileges** dialog box displays all permissions that the user has on the Global, Namespace, and Table levels.
+
+> **Note:** The **revoke privileges** dialog box displays all permissions that the user has on the Global, Namespace, and Table levels.
+
 4. Click **OK**.
 
 **Enable or disable the ACL feature**
 
-If you no longer need to use the ACL feature, you can disable the feature. After you disable the ACL feature, no username or password is needed for requests, including API requests, SQL requests, and non-Java requests. You can enable or disable the ACL feature without the need to restart the cluster. However, after you enable the ACL feature, if you reconnect your client to the cluster without providing your username and password, a user authentication error is returned. To pass user authentication in this scenario, reconnect your client to the cluster with your username and password.
+> **Note:** If you no longer need to use the ACL feature, you can disable the feature. After you disable the ACL feature, no username or password is needed for requests, including API requests, SQL requests, and non-Java requests. You can enable or disable the ACL feature without the need to restart the cluster. However, after you enable the ACL feature, if you reconnect your client to the cluster without providing your username and password, a user authentication error is returned. To pass user authentication in this scenario, reconnect your client to the cluster with your username and password.
+
 1. In the left-side navigation pane of the cluster management system, choose **Data Manager**
 **> ACL Management**.
 2. Turn on or turn off **ACL**.
@@ -651,7 +700,8 @@ SQL Executor.
 list.
 4. Enter an SQL statement in the SQL editor.
 5. Click **Execute**.
-You can use the following shortcut keys to execute the SQL statement: Windows: CTRL + ENTER macOS: COMMAND + RETURN
+
+> **Note:** You can use the following shortcut keys to execute the SQL statement: Windows: CTRL + ENTER macOS: COMMAND + RETURN
 
 **Obtain hexadecimal strings**
 
@@ -667,9 +717,7 @@ SQL Executor.
 
 ## 5 LindormTSDB
 
-**Important**
-
-Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you purchased LindormTSDB and migrated data to LindormTSDB by using TSDB before September 1, 2024, you can still use LindormTSDB as expected.
+> **Important:** Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you purchased LindormTSDB and migrated data to LindormTSDB by using TSDB before September 1, 2024, you can still use LindormTSDB as expected.
 
 ### 5.1 Overview
 
@@ -677,9 +725,7 @@ Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you p
 
 Lindorm provides a **high-performance, cost-efficient, stable, and reliable** online time series engine named LindormTSDB. LindormTSDB provides multiple capabilities such as efficient data reading and writing, storage based on a high compression ratio, and time series data aggregation.
 
-**Important**
-
-You can **no longer purchase LindormTSDB** from September 1, 2024. Users who have purchased LindormTSDB or who want to migrate TSDB data to LindormTSDB can still use LindormTSDB.
+> **Important:** You can **no longer purchase LindormTSDB** from September 1, 2024. Users who have purchased LindormTSDB or who want to migrate TSDB data to LindormTSDB can still use LindormTSDB.
 
 **Core features**
 
@@ -765,9 +811,7 @@ This topic compares the features provided by LindormTSDB and Time Series Databas
 
 This topic describes how to connect to LindormTSDB of Lindorm and provides references to help you use LindormTSDB.
 
-**Important**
-
-Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you purchased LindormTSDB and migrated data to LindormTSDB by using TSDB before September 1, 2024, you can still use LindormTSDB as expected.
+> **Important:** Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you purchased LindormTSDB and migrated data to LindormTSDB by using TSDB before September 1, 2024, you can still use LindormTSDB as expected.
 
 **Process**
 
@@ -803,9 +847,11 @@ In LindormTSDB, a database is a collection of time series tables. You can store 
 **Important**
 
 1. Timestamps of time series data can indicate event time or ingestion time:
-Event time: indicates the point in time when an event that corresponds to time series data occurs. For more information about the timestamps that indicate event time, see the description of timestamp in **Data models** of **Lindorm**
-**Developer Guide**.
-Ingestion time: indicates the point in time when time series data is written to a database. The preceding TTL is configured based on **event time**.
+
+> Event time: indicates the point in time when an event that corresponds to time series data occurs. For more information about the timestamps that indicate event time, see the description of timestamp in **Data models** of **Lindorm** **Developer Guide**.
+> Ingestion time: indicates the point in time when time series data is written to a database.
+> The preceding TTL is configured based on **event time**.
+
 2. If you configure a TTL for a database and the time interval between the point in time
 indicated by the timestamp of the data that you want to write and the current time is longer than the TTL, the data can be written to the database. However, the data cannot be retrieved during subsequent queries.
 
@@ -813,7 +859,10 @@ indicated by the timestamp of the data that you want to write and the current ti
 
 LindormTSDB allows you to perform the following operations on a database by executing SQL statements: Create a database You can create a database in LindormTSDB. For more information about the SQL syntax used to create a database, see the **CREATE DATABASE** topic of **SQL syntax reference** in
 **Lindorm Developer Guide**.
-By default, a user does not have permissions to access a database that is newly created. To perform operations on a new database, you must be granted corresponding permissions on the database. Delete a database You can delete a database in LindormTSDB. For more information about the SQL syntax used to delete a database, see the **DROP DATABASE** topic of **SQL syntax reference** in
+
+> **Note:** By default, a user does not have permissions to access a database that is newly created. To perform operations on a new database, you must be granted corresponding permissions on the database.
+
+Delete a database You can delete a database in LindormTSDB. For more information about the SQL syntax used to delete a database, see the **DROP DATABASE** topic of **SQL syntax reference** in
 **Lindorm Developer Guide**.
 Modify the attributes of a database You can modify the attributes of a database in LindormTSDB. For example, you can change the TTL of a database in LindormTSDB. For more information about the SQL syntax used to modify the attributes of a database, see the **ALTER DATABASE** topic of **SQL syntax**
 **reference** in **Lindorm Developer Guide**.
@@ -833,15 +882,14 @@ Lindorm provides a multilayer access control system to ensure the security of en
 
 By default, the user authentication and permission verification feature is **disabled** for LindormTSDB of a Lindorm instance. In this case, users can access LindormTSDB without user credentials regardless of the method that is used to access LindormTSDB. For an instance in the production environment, we recommend that you enable the user authentication and permission verification feature for LindormTSDB to improve security. You can use the following method to enable the feature by executing the ALTER SYSTEM statement: After you connect to LindormTSDB, execute the ALTER SYSTEM SET USER_AUTH=TRUE; statement to enable the user authentication and permission verification feature.
 
-**Important**
-
-After the user authentication and permission verification feature is enabled for LindormTSDB, user credentials are required for all subsequent requests. If you do not specify user credentials in a request, the request may fail the authentication. You must also specify user credentials when you execute the `ALTER SYSTEM` statement to enable the user authentication and permission verification feature. After the feature is enabled, some existing services may fail to be accessed. Therefore, we recommend that you carefully plan and fully evaluate the impacts before you enable the feature. After the user authentication and permission verification feature is enabled, you can execute the following ALTER SYSTEM statement to disable the feature: `ALTER`
+> **Important:** After the user authentication and permission verification feature is enabled for LindormTSDB, user credentials are required for all subsequent requests. If you do not specify user credentials in a request, the request may fail the authentication. You must also specify user credentials when you execute the `ALTER SYSTEM` statement to enable the user authentication and permission verification feature. After the feature is enabled, some existing services may fail to be accessed. Therefore, we recommend that you carefully plan and fully evaluate the impacts before you enable the feature.
+> After the user authentication and permission verification feature is enabled, you can execute the following ALTER SYSTEM statement to disable the feature: `ALTER`
 
 ```
 SYSTEM SET USER_AUTH=FALSE;
 ```
 
-To check whether the user authentication and permission verification feature is enabled for your instance, execute the following SHOW PARAMETER statement:
+> To check whether the user authentication and permission verification feature is enabled for your instance, execute the following SHOW PARAMETER statement:
 
 ```
  SHOW PARAMETER USER_AUTH;
@@ -872,11 +920,11 @@ Change the password of a user For more information, see the **ALTER USER** topic
 **Developer Guide**.
 View existing users For more information, see the **SHOW** topic of **SQL syntax reference** in **Lindorm**
 **Developer Guide**.
-After an instance is created, an initial user is created by default. The username and the password of the initial user are both root. You can log on to LindormTSDB as the initial user to create users that are required by other services and grant permissions to the users. To add other users after the user authentication and permission verification feature is enabled, you must log on as the root user.
 
-**Warning**
+> **Note:** After an instance is created, an initial user is created by default. The username and the password of the initial user are both root. You can log on to LindormTSDB as the initial user to create users that are required by other services and grant permissions to the users.
+> To add other users after the user authentication and permission verification feature is enabled, you must log on as the root user.
 
-We recommend that you change the password of the initial user immediately after the instance is created. Otherwise, security risks may occur.
+> **Warning:** We recommend that you change the password of the initial user immediately after the instance is created. Otherwise, security risks may occur.
 
 **Permission management**
 
@@ -901,13 +949,15 @@ You can grant and revoke permissions on all resources globally. If a user is gra
 
 You can grant and revoke permissions on a specified database. If a user is granted a specific type of permissions on a database, the user can perform the corresponding operations on all data objects in the database. For example, if a user is granted the READ permission on a database named DB1, the user can query data in all time series tables in the database. LindormTSDB allows you to execute the GRANT statement to grant permissions to a user and execute the REVOKE statement to revoke permissions from a user.
 
-**Important**
-
-To grant permissions to a user or revoke permissions from a user, you must have the ADMIN permission on all resources globally. The permissions on the GLOBAL scope take precedence over the permissions on the DATABASE scope. If you are granted the READ permission on the GLOBAL scope, you can query time series tables in all databases. If you are granted the READ permission on the Database scope, you can query time series tables only in the database. The SYSTEM permission can be granted or revoked only on the GLOBAL scope.
+> **Important:** To grant permissions to a user or revoke permissions from a user, you must have the ADMIN permission on all resources globally.
+> The permissions on the GLOBAL scope take precedence over the permissions on the DATABASE scope. If you are granted the READ permission on the GLOBAL scope, you can query time series tables in all databases. If you are granted the READ permission on the Database scope, you can query time series tables only in the database.
+> The SYSTEM permission can be granted or revoked only on the GLOBAL scope.
 
 **Permissions required to execute common SQL statements**
 
-The following table describes the permissions required to execute common SQL statements. In the following table, ○ indicates that the permission is required, and × indicates that the permission is not required.
+The following table describes the permissions required to execute common SQL statements.
+
+> **Note:** In the following table, ○ indicates that the permission is required, and × indicates that the permission is not required.
 
 | SQL statement | GLOBAL |   |   |   | DATABASE |   |   | Remarks |
 |---|---|---|---|---|---|---|---|---|
@@ -942,7 +992,12 @@ The following table describes the permissions required to execute common SQL sta
 For some applications that call OpenTSDB-compatible HTTP API operations to access LindormTSDB, when the user authentication and permission verification feature is enabled, you must include user credentials in the requests that are sent by calling the API operations. Method of specifying user credentials when calling OpenTSDB-compatible API operations to access LindormTSDB Include Base64-encoded user credentials in HTTP request headers. The method is similar to calling common API operations to send SQL requests. For more information, see the
 **Specify user credentials for authentication** section of the **Use the HTTP-based SQL**
 **API of LindormTSDB** topic in **Lindorm Developer Guide**.
-For applications that use TSDB SDKs, you can specify the username and password by calling the `basicAuth` method when you create a `TSDBConfig` object. Permissions required to call OpenTSDB-compatible API operations to access LindormTSDB To call OpenTSDB-compatible API operations, you must have permissions on the GLOBAL scope. The following table describes the permissions that are required to call each API operation. In the following table, ○ indicates that the permission is required, and × indicates that the permission is not required.
+
+> **Note:** For applications that use TSDB SDKs, you can specify the username and password by calling the `basicAuth` method when you create a `TSDBConfig` object.
+
+Permissions required to call OpenTSDB-compatible API operations to access LindormTSDB To call OpenTSDB-compatible API operations, you must have permissions on the GLOBAL scope. The following table describes the permissions that are required to call each API operation.
+
+> **Note:** In the following table, ○ indicates that the permission is required, and × indicates that the permission is not required.
 
 | API operation | GLOBAL WRITE | GLOBAL READ | GLOBAL ADMIN |
 |---|---|---|---|
@@ -962,9 +1017,8 @@ For applications that use TSDB SDKs, you can specify the username and password b
 
 The user information and permission data that are used in LindormTSDB can also be used in LindormTable. If LindormTable and LindormTSDB are both activated for your Lindorm instance, users that are created in LindormTSDB can also be used to access LindormTable. You can also view and manage users that are created in LindormTSDB in the cluster management system of LindormTable. The following figure shows the User Manager page of the cluster management system. Users that are created in LindormTable can also access LindormTSDB after the users are granted permissions on the specified LindormTSDB databases.
 
-**Important**
-
-Users that are created in LindormTable can be granted the TRASH permission. The TRASH permission does not take effect in LindormTSDB. If a namespace in LindormTable has the same name as a database in LindormTSDB and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTSDB by default. Similarly, if a namespace in LindormTSDB has the same name as a database in LindormTable and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTable by default.
+> **Important:** Users that are created in LindormTable can be granted the TRASH permission. The TRASH permission does not take effect in LindormTSDB.
+> If a namespace in LindormTable has the same name as a database in LindormTSDB and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTSDB by default. Similarly, if a namespace in LindormTSDB has the same name as a database in LindormTable and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTable by default.
 
 #### 5.3.3 Create a two-way synchronization task to implement disaster recovery
 
@@ -980,9 +1034,8 @@ When you create a business database in a disaster recovery instance, you must cr
 
 **Log on to the LTS web UI**
 
-**Important**
+> **Important:** After you purchase an LTS instance, the status of the instance is **Creating** in the console. You can log on to the LTS web UI only after the instance status becomes **Running**.
 
-After you purchase an LTS instance, the status of the instance is **Creating** in the console. You can log on to the LTS web UI only after the instance status becomes **Running**.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-left corner of the page that appears, select the organization to which the
 instance belongs.
@@ -995,7 +1048,9 @@ instance or **View Instance Details** in the **Actions** column.
 1. Check whether the default data source is created.
 The default data sources include **target_default** and **source_default**.
 2. Make sure that the source and destination databases are created. The database created in
-this example is test_db. Use the same DDL to create a database with the same name for the secondary instance. You can obtain the connection information about the secondary instance from the address in the target_default data source.
+this example is test_db. Use the same DDL to create a database with the same name for the secondary instance.
+
+> **Note:** You can obtain the connection information about the secondary instance from the address in the target_default data source.
 
 ```
 SQL endpoint: jdbc:lindorm:tsdb:url= + {address} SQL endpoint example: jdbc:lindorm:tsdb:url=http://ld-fvxqdumy3e6suhh91-zone2-tsd b-external.lindorm.cn-wulan-env82-d01.inter.env82.shuguang.com:8242"
@@ -1084,9 +1139,7 @@ management system.
 
 This topic describes how to grant a tenant organization the permissions to access Server Load Balancer (SLB) and helps you efficiently resolve related issues.
 
-**Important**
-
-If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
+> **Important:** If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
 
 **Procedure**
 

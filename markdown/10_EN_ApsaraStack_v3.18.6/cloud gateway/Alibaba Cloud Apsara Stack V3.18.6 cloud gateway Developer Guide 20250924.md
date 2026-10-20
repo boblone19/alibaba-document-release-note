@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 71
 source_pdf: "cd76afe2486c1bd3_Alibaba Cloud Apsara Stack V3.18.6 cloud gateway Developer Guide 20250924.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20gateway%20Developer%20Guide%2020250924.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # cloud gateway Developer Guide 20250924
@@ -106,11 +106,19 @@ Apsara Stack allows you to call API operations using either the Portable OpenAPI
 **Procedure**
 
 1. Obtain an AccessKey pair.
-Obtain the AccessKey parameter required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials. We recommend that you use the AccessKey pair of a personal account or STS AccessKey credentials to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey parameter required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials.
+
+> **Note:** We recommend that you use the AccessKey pair of a personal account or STS AccessKey credentials to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+
 2. Obtain a region ID.
 Obtain the RegionID parameter required for the call. For more information, see Obtain common header parameters.
 3. Obtain the organization ID and resource set ID.
-You need to obtain the organization ID through an API. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You need to obtain the resource set ID through an API. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Guide. When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This enables you to query resources in isolation. If you do not specify the organization ID `<x-acs-organizationid>` , the system obtains the organization to which the current user belongs by default. If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
+You need to obtain the organization ID through an API. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You need to obtain the resource set ID through an API. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Guide.
+
+> **Note:** When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This enables you to query resources in isolation.
+> If you do not specify the organization ID `<x-acs-organizationid>` , the system obtains the organization to which the current user belongs by default.
+> If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
+
 4. Obtain the API references.
 You need to review the developer guide of the target cloud service to understand the functions and usage of the API operations. For more information about the process and method to obtain the developer guide, see Instructions for using developer documentation.
 5. Obtain the endpoint of the cloud service.
@@ -131,7 +139,13 @@ Before you log on to the Apsara Uni-manager Management Console, you must obtain 
 1. In the address bar of your browser, enter the endpoint of the Apsara Uni-manager
 Management Console and press Enter.
 2. Enter the correct username and password.
-Obtain the username and password from an operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
+Obtain the username and password from an operations administrator.
+
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters:
+> Uppercase or lowercase letters (A to Z, a to z)
+> Digits (0 to 9)
+> Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
+
 3. Click **Account Logon**.
 4. If Multi-Factor Authentication (MFA) is enabled for your account, perform the following
 operations based on your scenario: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Account**
@@ -162,9 +176,7 @@ AccessKey pairs are assigned by Resource Access Management (RAM) or Security Tok
 
 An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey pairs can be assigned by RAM or STS: RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. STS: assigns an access credential that consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the headers for access control. Otherwise, an error that indicates insufficient permissions may occur. The following table describes the headers.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -182,7 +194,9 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. In the upper-right corner of the page, click the profile picture and then click **Personal**
 **Information**.
 3. In the **Alibaba Cloud AccessKey** section, you can view the AccessKey information of your
-personal account. The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
+personal account.
+
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
 
 **Obtain an AccessKey pair for organizations**
 
@@ -210,7 +224,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 **information**.
 iii. Click **View current role policy**. In the **Current selected role policy** dialog box, view the `RAM Role` .
 2. Obtain the STS AccessKey 3-tuple.
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the name of the current session. <yourRoleArn>: Replace it with your RAM role. <sts.aliyuns.com>: Replace it with the STS endpoint.
+
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with the name of the current session.
+> <yourRoleArn>: Replace it with your RAM role.
+> <sts.aliyuns.com>: Replace it with the STS endpoint.
 
 ```
 public static void main(String[] args) {
@@ -270,7 +292,16 @@ in the previous step
 
 `}`
 3. Call cloud service API operations by using the STS AccessKey 3-tuple. The following code
-uses the `DescribeZones` operation of ECS as an example. In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the STS AccessKey 3tuple. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID.
+uses the `DescribeZones` operation of ECS as an example.
+
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace it with your region ID.
+> <yourStsAccesskeyID>: Replace it with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret.
+> <yourStsToken>: Replace it with the security token of the STS AccessKey 3- tuple.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -399,7 +430,20 @@ To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
-Replace with your product-specific example Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Product>: Replace the parameter with the name of the current service. <Endpoint>: Replace the variable parameter with the endpoint of your service. <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the variable parameter with the maximum number of requests. <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use.
+Replace with your product-specific example Java
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace the variable with the actual region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret.
+> <Product>: Replace the parameter with the name of the current service.
+> <Endpoint>: Replace the variable parameter with the endpoint of your service.
+> <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace the variable parameter with the maximum number of requests.
+> <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use.
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -514,7 +558,9 @@ This topic describes how to install and call Product Name SDK for Java. Replace 
 
 **credentials**
 
-When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure identity verification credentials. Currently, Java SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To access Apsara Stack using your AccessKey pair, you must specify the AccessKey pair as credentials when initializing the client. Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure identity verification credentials. Currently, Java SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To access Apsara Stack using your AccessKey pair, you must specify the AccessKey pair as credentials when initializing the client.
+
+> **Note:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -523,11 +569,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace with your actual AccessKey Secret
 ```
 
-In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
 #### 3.2.3 Request connection configuration
 
-This topic describes how to configure HttpClientConfig. You can use the following code to configure HttpClientConfig. Select and configure parameters based on your business requirements. Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests for each server based on your business requirements. The value is in the INT format. <maxRequests>: Specify the maximum number of requests based on your business requirements. The value is in the INT format. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+This topic describes how to configure HttpClientConfig. You can use the following code to configure HttpClientConfig. Select and configure parameters based on your business requirements. Java
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests for each server based on your business requirements. The value is in the INT format.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The value is in the INT format.
+> <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```
 // Get the HttpClientConfig object HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore the certificate clientConfig.setIgnoreSSLCerts(true); // Optional. Specify the read timeout period. Unit: milliseconds clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify the connection timeout period. Unit: milliseconds clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests for each server. The value is in th e INT format clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The value is in the INT format clientConfig.setMaxRequests(<maxRequests>); // Optional. Specify the protocol type clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -645,7 +699,18 @@ To send a CommonRequest request, you must obtain the values of the following par
 
 **Example: Call an RPC API operation**
 
-The following code provides an example of how to call the API operation that queries the status list of instances (ECS uses the RPC style). In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+The following code provides an example of how to call the API operation that queries the status list of instances (ECS uses the RPC style).
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -731,7 +796,18 @@ If the request method is `POST` or `PUT` , and the ContentType value is `applica
 String requestBody = "{\"page_number\":\"1\",\"page_size\":\"5\",\"SecurityToken\", \ "\"}"; request.setHttpContent(requestBody.getBytes(), "utf-8", FormatType.JSON);
 ```
 
-The following code provides an example of how to call the API operation that queries the cluster list (CS uses the RESTful style). Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy. <yourSecurityToken>: Replace it with your security token.
+The following code provides an example of how to call the API operation that queries the cluster list (CS uses the RESTful style). Java
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+> <yourSecurityToken>: Replace it with your security token.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -874,7 +950,15 @@ To use ECS SDK for Python, perform the following steps:
 AccessKey ID, and AccessKey secret.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
-In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <ecs.aliyuns.com>: Replace the variable with the endpoint of the service. Python
+
+> **Note:** In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace the variable with the actual region ID.
+> <yourAccessKeyID>: Replace the variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with your AccessKey secret.
+> <ecs.aliyuns.com>: Replace the variable with the endpoint of the service.
+
+Python
 
 ```python
 #!/usr/bin/env python
@@ -896,7 +980,11 @@ response = clt.do_action_with_exception(request) print response
 
 #### 4.2.1 Install Python SDK
 
-This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python using pip. To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the core library of Apsara Stack SDK for Python and ECS SDK for Python. If you are using Python 2.x, run the following command to install the core library of Apsara Stack SDK:
+This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python using pip.
+
+> **Note:** To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the core library of Apsara Stack SDK for Python and ECS SDK for Python.
+
+If you are using Python 2.x, run the following command to install the core library of Apsara Stack SDK:
 
 ```
 pip install aliyun-python-sdk-core
@@ -928,9 +1016,7 @@ Python
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an authorized account for authentication. Currently, Python SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To access Apsara Stack using your AccessKey pair, you must specify the AccessKey pair as the credentials when initializing the client.
 
-**Important**
-
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -938,7 +1024,9 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 #### 4.2.3 Set HTTPS requests
 
-SDK for Python enables you to send API requests using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or configure a global default protocol. The default protocol of a service (HTTP/HTTPS) takes precedence over the global default protocol.
+SDK for Python enables you to send API requests using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or configure a global default protocol.
+
+> **Note:** The default protocol of a service (HTTP/HTTPS) takes precedence over the global default protocol.
 
 **Add OpenSSL dependency**
 
@@ -1037,7 +1125,20 @@ To send a CommonRequest request, you must obtain the values of the following par
 
 **Example: Call an RPC API operation**
 
-The following code provides an example of how to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain the status list of instances: Python In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. Python
+The following code provides an example of how to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain the status list of instances: Python
+
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+> <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
+
+Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1088,7 +1189,18 @@ If the request method is `POST` or `PUT` , and the ContentType value is `applica
 body = '{"page_number":"1",page_size"5":"SecurityToken","":"<yourSecurityToken>"}' request.set_content(body.encode('utf-8'))
 ```
 
-The following code provides an example of how to call the DescribeClusterV1 operation of Container Service (CS) to obtain the cluster list: In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <cs.aliyuncs.com>: Replace it with the endpoint of the service.
+The following code provides an example of how to call the DescribeClusterV1 operation of Container Service (CS) to obtain the cluster list:
+
+> **Note:** In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+> <cs.aliyuncs.com>: Replace it with the endpoint of the service.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1169,7 +1281,15 @@ The following sample code shows how to use Apsara Stack SDK for Go:
 1. Initialize a client instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
-In the following sample code, replace the parameters with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint. or SDK for Go
+
+> **Note:** In the following sample code, replace the parameters with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace the variable with the actual region ID.
+> <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret.
+> <Endpoint>: Replace the variable parameter with your endpoint.
+
+or SDK for Go
 
 ```java
 package main import (
@@ -1237,9 +1357,9 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. or SDK for Go Currently, Go SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when initializing the client.
 
-**Important**
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Alibaba Cloud account may be compromised.
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Alibaba Cloud account may be compromised. The following code demonstrates how to initialize an ecsClient instance using ECS as an example.
+The following code demonstrates how to initialize an ecsClient instance using ECS as an example.
 
 ```
 // Initialize an ecsClient instance ecsClient, err := ecs.NewClientWithAccessKey(
@@ -1248,7 +1368,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
         "<yourAccessKeySecret>")        // Replace with your actual AccessKey Secret
 ```
 
-In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
 #### 5.2.3 Initiate a call
 
@@ -1260,7 +1380,8 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 ```
 
 2. Create a client that includes all of the API operations for the product.
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
 
 ```
 ecsClient,err := <ecs>.NewClientWithAccessKey( //Replace with your actual product na
@@ -1311,9 +1432,7 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When any internal SDK call encounters an error that cannot be automatically handled, the SDK returns a `ClientError` . The following example uses ECS to demonstrate how you can identify and obtain error information from a `ClientError` :
 
-**Important**
-
-To use specific error structures, you need to import the error structure package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` . For more information, see:
+> **Important:** To use specific error structures, you need to import the error structure package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` . For more information, see:
 
 ```java
 package main import (
@@ -1325,7 +1444,7 @@ ame of the actual service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1343,9 +1462,7 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
 
 or SDK for Go When the server returns an error response, the SDK encapsulates this response into a `ServerError` . In this case, you can still obtain the original HTTP response from Response. The following example uses ECS to demonstrate how you can identify and obtain ServerError and error information from Response:
 
-**Important**
-
-To use specific error structures, you need to import the error structure package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` . For more information, see:
+> **Important:** To use specific error structures, you need to import the error structure package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` . For more information, see:
 
 ```java
 package main import (
@@ -1377,7 +1494,20 @@ If you need to call API operations of a cloud service that doesn't provide an SD
 
 **Example: Call an RPC API operation**
 
-The following code demonstrates how to use CommonRequest to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain a list of instance statuses (ECS uses the RPC style): or SDK for Go In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. or SDK for Go
+The following code demonstrates how to use CommonRequest to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain a list of instance statuses (ECS uses the RPC style): or SDK for Go
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+
+or SDK for Go
 
 ```java
 package main import (
@@ -1463,7 +1593,20 @@ or SDK for Go You must pass parameters using two methods depending on the reques
 body := "{\"page_number\":\"1\",page_size:\"5\"}" request.SetContent([]byte(body)) request.SetContentType("application/json")
 ```
 
-The following code demonstrates how to use CommonRequest to call the DescribeClusterV1 operation of CS to obtain a list of clusters (CS uses the RESTful style): In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <cs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. or SDK for Go
+The following code demonstrates how to use CommonRequest to call the DescribeClusterV1 operation of CS to obtain a list of clusters (CS uses the RESTful style):
+
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with your region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <cs.aliyuncs.com>: Replace it with the endpoint of the service.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+
+or SDK for Go
 
 ```java
 package main import (
@@ -1584,13 +1727,17 @@ http://Endpoint/?Action=xx&Parameters
 
 In the request,
 **Endpoint**: The endpoint of the VPC API is `vpc.example.com` .
-`example.com` is a custom domain name. You can obtain the endpoint in the Apsara Stack Operations console. For more information, see Obtain the endpoint of Asapi.
+
+> **Note:** `example.com` is a custom domain name. You can obtain the endpoint in the Apsara Stack Operations console. For more information, see Obtain the endpoint of Asapi.
+
 **Action**: the name of the operation being performed. For example, to query created VPC
 instances, you must set the Action parameter to DescribeVpcs.
 **Version**: the version of the API that you want to use. The current VPC API version is 2016-
 04-28.
 **Parameters**: the request parameters for the operation. Separate multiple parameters with
-ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all VPC API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the DescribeVpcs operation. The examples in this topic have been formatted for ease of reading.
+ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all VPC API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the DescribeVpcs operation.
+
+> **Note:** The examples in this topic have been formatted for ease of reading.
 
 ```
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
@@ -1824,7 +1971,7 @@ You can also obtain the `Product` and `Version` parameters required for the API 
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information, see Obtain a resource set ID. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information, see Obtain an instance ID. |
 
-When you call API operations of cloud services, you need to add the actual values of the **x-acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** parameters to the request header in your code. These parameters specify the instance ID (the instance ID does not exist when you create an instance or query instance lists), and the organization and resource set to which the instance belongs. If you do not specify the headers when you call an API operation, the system uses the organization and resource set at the root level by default.
+> **Note:** When you call API operations of cloud services, you need to add the actual values of the **x-acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** parameters to the request header in your code. These parameters specify the instance ID (the instance ID does not exist when you create an instance or query instance lists), and the organization and resource set to which the instance belongs. If you do not specify the headers when you call an API operation, the system uses the organization and resource set at the root level by default.
 
 **Common response parameters**
 

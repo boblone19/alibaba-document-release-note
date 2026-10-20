@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 32
 source_pdf: "43821e21b0d5f53d_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Operations "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Operations and Maintenance Guide
@@ -51,17 +51,22 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. O&M in Apsara Infrastructure Ma nagement
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 O&M in Apsara Infrastructure Ma nagement
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management**.
@@ -102,9 +107,9 @@ v. In the **Components** section, click **YundunSemawafApp#**. vi. In the Inform
 i. View system logs. Run the dmesg -T |tail -30 command to check for exception logs. ii. Check the system loads. Run the `free -h` command to check whether the memory usage is normal. Run the `df -h` command to check whether the disk usage is normal. Run the `uptime` command to check whether the average system load is normal. Run the `top` command to check whether the CPU usage is normal.
 3. Check the service status.
 
-**Note**
+> **Note:** In the WAF installation directory /home/safeline, perform the following operations.
 
-In the WAF installation directory /home/safeline, perform the following operations. i. Run the `cd /home/safeline` command to open the installation directory. ii. Check the minion service. a. Run the `systemctl status minion` command to check the execution time and the status of the minion service. b. Run the `tail -100 logs/minion/minion.log` command to check for exception logs. iii. Check the mgt-api service. a. Run the `docker logs --tail 50 mgt-api` command to check for exception logs. b. Run the `docker exec -it mgt-api supervisorctl status` command to check whether the service runs as expected and whether **uptime** is normal. c. Run the `tail -50 logs/management/gunicorn.log` command to check for exception logs. d. Run the `tail -50 logs/management/daphne.log` command to check for exception logs. e. Run the `tail -50 logs/management/scheduler.log` command to check for exception logs. f. Run the `tail -50 logs/management/dramatiq.log` command to check for exception logs. O&M in Apsara Infrastructure Ma nagement iv. Check the redis service. Run the `docker logs --tail 50 mgt-redis` command to check for exception logs. v. Check the detector service. a. Run the `docker logs --tail 50 detector-srv` command to check for exception logs. b. Run the `tail -50 logs/detector/snserver.log` command to check for exception logs. c. Run the curl 127.0.0.1:8001/stat | grep num command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the value of the **req_num_total** parameter is normal. The req_num_total parameter indicates the number of requests that are processed within the previous 5 seconds. vi. Check the tengine service. a. Run the `docker logs --tail 50 tengine` command to check for exception logs. b. Run the `tail -50 logs/nginx/error.log` command to check for exception logs. vii. Check the mario service. a. Run the `docker logs --tail 50 mario` command to check for exception logs. b. Run the `tail -50 logs/mario/mario.log` command to check for exception logs. c. Run the `curl 127.0.0.1:3335/api/v1/state` command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the **num_pending** parameter remains at a high value of nearly 10,000 or whether the value of the **num_processed_last_10s** parameter is normal. The num_processed_last_10s parameter indicates the number of requests that are processed within the previous 10 seconds.
+i. Run the `cd /home/safeline` command to open the installation directory. ii. Check the minion service. a. Run the `systemctl status minion` command to check the execution time and the status of the minion service. b. Run the `tail -100 logs/minion/minion.log` command to check for exception logs. iii. Check the mgt-api service. a. Run the `docker logs --tail 50 mgt-api` command to check for exception logs. b. Run the `docker exec -it mgt-api supervisorctl status` command to check whether the service runs as expected and whether **uptime** is normal. c. Run the `tail -50 logs/management/gunicorn.log` command to check for exception logs. d. Run the `tail -50 logs/management/daphne.log` command to check for exception logs. e. Run the `tail -50 logs/management/scheduler.log` command to check for exception logs. f. Run the `tail -50 logs/management/dramatiq.log` command to check for exception logs. O&M in Apsara Infrastructure Ma nagement iv. Check the redis service. Run the `docker logs --tail 50 mgt-redis` command to check for exception logs. v. Check the detector service. a. Run the `docker logs --tail 50 detector-srv` command to check for exception logs. b. Run the `tail -50 logs/detector/snserver.log` command to check for exception logs. c. Run the curl 127.0.0.1:8001/stat | grep num command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the value of the **req_num_total** parameter is normal. The req_num_total parameter indicates the number of requests that are processed within the previous 5 seconds. vi. Check the tengine service. a. Run the `docker logs --tail 50 tengine` command to check for exception logs. b. Run the `tail -50 logs/nginx/error.log` command to check for exception logs. vii. Check the mario service. a. Run the `docker logs --tail 50 mario` command to check for exception logs. b. Run the `tail -50 logs/mario/mario.log` command to check for exception logs. c. Run the `curl 127.0.0.1:3335/api/v1/state` command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the **num_pending** parameter remains at a high value of nearly 10,000 or whether the value of the **num_processed_last_10s** parameter is normal. The num_processed_last_10s parameter indicates the number of requests that are processed within the previous 10 seconds.
 
 ## 2 Physical machine-based WAF O&M in Cloud Shield Operations Center
 
@@ -128,16 +133,21 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Product Operation > Security O&M > Cloud Shield**
 **Operations Center**.
@@ -182,9 +192,8 @@ You can create global custom rules in Web Application Firewall (WAF) based on yo
 
 **Procedure**
 
-**Important**
+> **Important:** The global custom rules that you add take effect on all tenants. Proceed with caution.
 
-The global custom rules that you add take effect on all tenants. Proceed with caution.
 1. Log in to the Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > WAF Management > Global**
 **Rules**.
@@ -214,9 +223,7 @@ This topic describes the common metrics for Web Application Firewall (WAF).
 
 **Business metrics**
 
-**Note**
-
-The hyphen (-) in the following table indicates that the metric is unavailable in Cloud Shield Operations Center.
+> **Note:** The hyphen (-) in the following table indicates that the metric is unavailable in Cloud Shield Operations Center.
 
 | Metr ic | Metric definiti on | Data type | Uni t | Data dime nsio n | Coll ecti on inte rval | Script | Remarks | Wh eth er ava ilab le in Clo ud Sec urit y Op era tio ns Cen ter | Wh eth er an ale rt is trig ger ed |
 |---|---|---|---|---|---|---|---|---|---|

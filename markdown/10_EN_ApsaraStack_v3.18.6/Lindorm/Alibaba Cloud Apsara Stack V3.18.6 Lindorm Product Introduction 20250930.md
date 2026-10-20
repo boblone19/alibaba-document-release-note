@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 11
 source_pdf: "d45f23f065fcd737_Alibaba Cloud Apsara Stack V3.18.6 Lindorm Product Introduction 20250930.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Lindorm%20Product%20Introduction%2020250930.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Lindorm Product Introduction 20250930

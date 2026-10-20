@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 133
 source_pdf: "ae10e1172f80ac2c_Alibaba Cloud Apsara Stack V3.18.6 cloud migration hub User Guide 20251217.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20migration%20hub%20User%20Guide%2020251217.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # cloud migration hub User Guide 20251217
@@ -115,14 +115,11 @@ Make sure that the system time of the server is the same as the standard time of
 2. Specify the destination virtual private cloud (VPC), vSwitch, and server connection
 information based on your business requirements. If the server IP address is a public IP address, you must turn on the Survey over Internet switch. Make sure that the destination VPC can access the survey resources.
 
-**Note**
+> **Note:** Enable Monitoring: If monitoring is enabled, the source CPU and memory usage is monitored during online survey. The minimum monitoring duration is 1 hour.
 
-Enable Monitoring: If monitoring is enabled, the source CPU and memory usage is monitored during online survey. The minimum monitoring duration is 1 hour.
 3. Click**OK**and wait until the survey task is complete.
 
-**Note**
-
-If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
+> **Note:** If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
 
 **b. Confirm the survey and evaluation results**
 
@@ -247,9 +244,7 @@ If you deploy a Server Migration Connector on vCenter Server, the account used t
 ESXi connection information based on your business requirements. If the connection address is a public IP address, you must turn on the Survey over Internet switch. Make sure that the destination VPC can access the survey resources.
 3. Click**OK**and wait until the survey task is complete.
 
-**Note**
-
-If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step. If the CBT Status of the task is Off, incremental migration cannot be performed and only full migration can be used.
+> **Note:** If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step. If the CBT Status of the task is Off, incremental migration cannot be performed and only full migration can be used.
 
 **b. Confirm the survey and evaluation results**
 
@@ -384,9 +379,7 @@ After the ECS instance is created, run the `curl {YUM repository IP address}` co
 2. Select the ECS instance whose OS you want to replace.
 3. Click**OK**and wait until the survey task is complete.
 
-**Note**
-
-If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
+> **Note:** If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
 
 **b. Confirm the survey and evaluation results**
 
@@ -427,9 +420,7 @@ normal state. Then, click**Next**. In the message that appears, click OK.
 1. Click**Start All Drills**and wait until the test is complete.
 2. Click the report icon in the Test Status column to view the test report.
 
-**Note**
-
-The warning items in the test report do not affect the OS replacement, but may affect the applications. You need to determine whether the impacts are acceptable.
+> **Note:** The warning items in the test report do not affect the OS replacement, but may affect the applications. You need to determine whether the impacts are acceptable.
 
 **b. Confirm the migration test results**
 
@@ -495,14 +486,11 @@ Before you migrate a database, check whether the database meets the following re
 2. Specify the destination virtual private cloud (VPC), vSwitch, and database connection
 information based on your business requirements. If the connection address is a public IP address, you must turn on the Survey over Internet switch. Make sure that the destination VPC can access the survey resources.
 
-**Note**
+> **Note:** Enable Monitoring: If monitoring is enabled, the source CPU and memory usage is monitored during online survey. The minimum monitoring duration is 1 hour.
 
-Enable Monitoring: If monitoring is enabled, the source CPU and memory usage is monitored during online survey. The minimum monitoring duration is 1 hour.
 3. Click**OK**and wait until the survey task is complete.
 
-**Note**
-
-If No is displayed in the Can Migrate column for a survey resource, adjust the source resource according to the prompt and re-initiate the research. The non-migratory resource cannot be selected to enter the next step.
+> **Note:** If No is displayed in the Can Migrate column for a survey resource, adjust the source resource according to the prompt and re-initiate the research. The non-migratory resource cannot be selected to enter the next step.
 
 **b. Confirm the survey and evaluation results**
 
@@ -611,9 +599,8 @@ Before you perform a storage migration, ensure that the following conditions and
 2. Configure the parameters such as the migration plan name and migration type. Then, click
 **OK**.
 
-**Note**
+> **Note:** You need to select a migration type based on the source and destination types, such as migration from NAS to NAS, from NAS to OSS, and from OSS to OSS.
 
-You need to select a migration type based on the source and destination types, such as migration from NAS to NAS, from NAS to OSS, and from OSS to OSS.
 3. Click the migration plan name to go to the migration plan.
 
 **Step 2: Conduct a survey and evaluation**
@@ -625,9 +612,7 @@ You need to select a migration type based on the source and destination types, s
 connection information based on your business requirements. Make sure that the destination VPC can access the survey resources.
 3. Click**OK**and wait until the survey task is complete.
 
-**Note**
-
-If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
+> **Note:** If the survey results indicate that migration cannot be performed, adjust the source resources based on the prompt and re-initiate the survey. Non-migratable resources cannot be selected to proceed with the next step.
 
 **b. Confirm the survey and evaluation results**
 
@@ -818,13 +803,11 @@ OS replacement supports the following OSs:
 
 Each source server can be associated with only one unfinished migration task at a time.
 
-**Note**
+> **Note:** A migration task is unfinished if it is in the Ready, Running, Stopped, InError, or Expired state.
 
-A migration task is unfinished if it is in the Ready, Running, Stopped, InError, or Expired state. You must use Grand Unified Bootloader (GRUB) V2.02 or later for migration sources that run the Linux OS.
+You must use Grand Unified Bootloader (GRUB) V2.02 or later for migration sources that run the Linux OS.
 
-**Note**
-
-You must use GRUB V2.02 or later for earlier versions of Linux distributions such as CentOS 5, Red Hat Enterprise Linux 5, Debian 7, Amazon Linux, and Oracle Linux.
+> **Note:** You must use GRUB V2.02 or later for earlier versions of Linux distributions such as CentOS 5, Red Hat Enterprise Linux 5, Debian 7, Amazon Linux, and Oracle Linux.
 
 #### 5.1.2 Before you begin
 
@@ -896,10 +879,7 @@ Make sure that the system time of the server is the same as the standard time of
 
 **Step 1: Import the information about a migration source**
 
-**Note**
-
-**Migration source**: the initial environment or system where the information to be
-migrated resides. In this example, the migration source is the source server to be migrated.
+> **Note:** **Migration source**: the initial environment or system where the information to be migrated resides. In this example, the migration source is the source server to be migrated.
 
 **a. Import the information about the migration source offline by**
 
@@ -969,9 +949,8 @@ decompression tool installed on the server to decompress the SMC client package.
 4. In the SMC client folder that corresponds to the source server, run the SMC client.
 To run the Windows GUI version, double-click the go2aliyun_gui.exe file. To run the Windows CLI version, double-click the go2aliyun_client.exe file.
 
-**Note**
+> **Note:** When you run the program, you must click **OK** to confirm that you have the administrator permissions.
 
-When you run the program, you must click **OK** to confirm that you have the administrator permissions.
 5. Obtain an activation code.
 In the**Description**section of the SMC console, select the organization, resource set, and region to which the migration source belongs, click**Generate**, and then copy the generated activation code information.
 6. Follow on-screen instructions to enter the activation code.
@@ -1149,16 +1128,12 @@ c. If the time is inaccurate, you can run the **ntpdate** command to calibrate t
 #hwclock --systohc
 ```
 
-**Important**
-
-If the time is inaccurate, the information about the migration source fails to be imported.
+> **Important:** If the time is inaccurate, the information about the migration source fails to be imported.
 
 **Step 3: Import the VMware VMto be migrated**
 
-**Note**
+> **Note:** **Migration source**: the initial environment or system where the information to be migrated resides. In this example, the migration source is the VMware VM to be migrated.
 
-**Migration source**: the initial environment or system where the information to be
-migrated resides. In this example, the migration source is the VMware VM to be migrated.
 1. . Import the information about a migration source**
 1. Select the VMware VM to be migrated (migration source)
 Log in to the Server Migration Connector. (The default username is root and the default password is empty.)
@@ -1205,9 +1180,7 @@ Enter the chip architecture of the host where the VM to be migrated resides.
 
 Check whether the OS provided by the system is the actual OS of the current VM. If yes, enter y. If no, enter n. Then, enter the corresponding serial number of the OS in the OS list.
 
-**Important**
-
-The OS preset when a VM is created on vCenter Server may be incorrect. You must confirm the OS of the VM.
+> **Important:** The OS preset when a VM is created on vCenter Server may be incorrect. You must confirm the OS of the VM.
 
 ```
 Is [CentOS 7 (64-bit)]' truly the OS of VM (y or n)?n ------------------------------------------------------------------------ 0 CentOS 1 Ubuntu 2 SUSE 3 OpenSUSE 4 Debian 5 RedHat 6 Others Linux 7 Windows Server 2003 8 Windows Server 2008 9 Windows Server 2012 10 Windows Server 2016 11 Windows Server 2019 12 Windows Server 2022 ------------------------------------------------------------------------ Please choose the OS of VM:
@@ -1242,9 +1215,7 @@ chmod +x ./go2aliyun_client ./go2aliyun_client --jobtype=3
 
 If the Import Source Server [s-bp14zd35128xgjdbh****] Successfully! message is displayed, the information about the migration source is imported by using the SMC client. In the AMC console, view the value of the Migration Source Status column on the Vmwarevirtual Machine tab of the Migration Sources page. If the Migration Source Status column is Online, the information about the migration source is imported. If the migration source is in another state, the information about the migration source fails to be imported. Contact Apsara Stack Migration R&D for technical support.
 
-**Important**
-
-One Server Migration Connector supports the migration of up to 10 VMs. To support concurrent migration of more than 10 VMs, multiple Server Migration Connectors must be deployed. You need to import migration sources for each Server Migration Connector.
+> **Important:** One Server Migration Connector supports the migration of up to 10 VMs. To support concurrent migration of more than 10 VMs, multiple Server Migration Connectors must be deployed. You need to import migration sources for each Server Migration Connector.
 
 **Step 4: Create a migration task**
 
@@ -1290,9 +1261,8 @@ iii. Advanced configurations
 
 If you specify multiple VM IDs when you configure the VMware VM to be migrated, you can close the SMC client process after the current VMware VM is migrated, and then migrate another VMware VM.
 
-**Note**
+> **Note:** This step applies only to Server Migration Connectors in which the version of the agent is 2.0.0 or later. The following figure shows how to obtain the version.
 
-This step applies only to Server Migration Connectors in which the version of the agent is 2.0.0 or later. The following figure shows how to obtain the version.
 1. Log in to the Server Migration Connector.
 2. Press `Ctrl+C` to exit the current SMC client process that is running. Then, run the
 following command to terminate the SMC client process:
@@ -1371,10 +1341,8 @@ After the ECS instance is created, run the `curl {YUM repository IP address}` co
 
 **Step 1: Import the information about a migration source**
 
-**Note**
+> **Note:** **Migration source**: the initial environment in which the OS needs to be replaced. In this example, the migration source is the Apsara Stack ECS instance to be replaced.
 
-**Migration source**: the initial environment in which the OS needs to be replaced. In this
-example, the migration source is the Apsara Stack ECS instance to be replaced.
 1. On the **Migration Sources** page, click the **Alibaba Cloud ECS Server** tab, and then click
 **Import Migration Source**.
 2. Follow on-screen instructions to configure the Target Operating System Yum Source,

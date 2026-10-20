@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 239
 source_pdf: "ff0cabb4146c216a_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828
@@ -189,9 +189,7 @@ We recommend that you use the AccessKey pair of a personal account to call the A
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. |
 
-**Warning**
-
-The AccessKey pairs of personal accounts are under control of the Apsara Uni-manager Management Console permission system. AccessKey pairs of organization accounts have higher permissions. For security purposes, organization operations must be approved by administrators.
+> **Warning:** The AccessKey pairs of personal accounts are under control of the Apsara Uni-manager Management Console permission system. AccessKey pairs of organization accounts have higher permissions. For security purposes, organization operations must be approved by administrators.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -201,9 +199,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **Apsara Stack AccessKey Pair** section, view your AccessKey pair.
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs allow you to access Apsara Stack resources with full permissions for your account. You must keep your AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs allow you to access Apsara Stack resources with full permissions for your account. You must keep your AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -215,9 +211,7 @@ To obtain the AccessKey pair of an organization, perform the following operation
 5. In the Current Organization section, click **Obtain an accesskey**.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-**Note**
-
-An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
+> **Note:** An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
 ### 1.3 Obtain common header parameters
 
@@ -545,9 +539,10 @@ u must add the x-acs-security-token field to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: e API calls Java
+e API calls Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -691,9 +686,9 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Configuration methods**
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: e API calls
+e API calls
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -817,9 +812,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -895,9 +889,7 @@ We recommend that you use the AccessKey pair of a personal account to call the A
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. |
 
-**Warning**
-
-The AccessKey pairs of personal accounts are under control of the Apsara Uni-manager Management Console permission system. AccessKey pairs of organization accounts have higher permissions. For security purposes, organization operations must be approved by administrators.
+> **Warning:** The AccessKey pairs of personal accounts are under control of the Apsara Uni-manager Management Console permission system. AccessKey pairs of organization accounts have higher permissions. For security purposes, organization operations must be approved by administrators.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -907,9 +899,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **Apsara Stack AccessKey Pair** section, view your AccessKey pair.
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs allow you to access Apsara Stack resources with full permissions for your account. You must keep your AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs allow you to access Apsara Stack resources with full permissions for your account. You must keep your AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -921,9 +911,7 @@ To obtain the AccessKey pair of an organization, perform the following operation
 5. In the Current Organization section, click **Obtain an accesskey**.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-**Note**
-
-An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
+> **Note:** An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
 #### 3.3.2 Obtain an endpoint
 

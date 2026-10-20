@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 13
 source_pdf: "c355545591d071c4_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20MongoDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20MongoDB%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Introduction 20260828
@@ -48,21 +48,22 @@ The storage structure of MongoDB is different from that of conventional relation
 
 ApsaraDB for MongoDB provides the following instance architectures: Replica set instances An ApsaraDB for MongoDB replica set instance consists of a primary node, one or more secondary nodes, and a hidden node. Primary node: processes all read and write operations. Secondary node: synchronizes data from the primary node. If the primary node fails, a secondary node becomes the new primary node to ensure high availability. Hidden node: ensures high availability of the instance. If a secondary node fails, the hidden node becomes the secondary node.
 
-**Note**
+> **Note:** The hidden node is used only to ensure high availability. It is invisible to users.
 
-The hidden node is used only to ensure high availability. It is invisible to users. Sharded cluster instances An ApsaraDB for MongoDB sharded cluster instance consists of mongos, shard, and Configserver nodes. Mongos node: routes queries and write operations to the corresponding shard node. Shard node: stores database data. Configserver node: stores data of shard nodes.
+Sharded cluster instances An ApsaraDB for MongoDB sharded cluster instance consists of mongos, shard, and Configserver nodes. Mongos node: routes queries and write operations to the corresponding shard node. Shard node: stores database data. Configserver node: stores data of shard nodes.
 
 **Deployment suggestions**
 
 When you deploy an ApsaraDB for MongoDB instance, you can consider the following aspects: Regions and zones You can select a region and zone based on your location, the availability of Alibaba Cloud services, your application availability requirements, and whether internal network communication is required.
 
-**Note**
+> **Note:** A region is an Alibaba Cloud data center. A zone is a physical area within a region that has its own independent power supply and network.
 
-A region is an Alibaba Cloud data center. A zone is a physical area within a region that has its own independent power supply and network. For example, if your application is deployed on an Elastic Compute Service (ECS) instance and requires an ApsaraDB for MongoDB instance to serve as its database, you must select the same region and zone as the ECS instance when you create your ApsaraDB for MongoDB instance.
+For example, if your application is deployed on an Elastic Compute Service (ECS) instance and requires an ApsaraDB for MongoDB instance to serve as its database, you must select the same region and zone as the ECS instance when you create your ApsaraDB for MongoDB instance.
 
-**Note**
+> **Note:** An ECS instance and an ApsaraDB for MongoDB instance within the same zone can be connected by using an internal network with minimal network latency.
+> The region and zone determine the physical location of an ApsaraDB for MongoDB instance. You cannot change the region of an ApsaraDB for MongoDB instance after the instance is created.
 
-An ECS instance and an ApsaraDB for MongoDB instance within the same zone can be connected by using an internal network with minimal network latency. The region and zone determine the physical location of an ApsaraDB for MongoDB instance. You cannot change the region of an ApsaraDB for MongoDB instance after the instance is created. Network planning A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways within a VPC. We recommend that you select VPC for improved security. Security policies ApsaraDB for MongoDB provides comprehensive security measures to improve data security. You can ensure database security by means of zone-disaster recovery, audit logs, network isolation, whitelists, password authentication, SSL encryption, and Transparent Data Encryption (TDE).
+Network planning A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways within a VPC. We recommend that you select VPC for improved security. Security policies ApsaraDB for MongoDB provides comprehensive security measures to improve data security. You can ensure database security by means of zone-disaster recovery, audit logs, network isolation, whitelists, password authentication, SSL encryption, and Transparent Data Encryption (TDE).
 
 ### 1.2 Benefits
 

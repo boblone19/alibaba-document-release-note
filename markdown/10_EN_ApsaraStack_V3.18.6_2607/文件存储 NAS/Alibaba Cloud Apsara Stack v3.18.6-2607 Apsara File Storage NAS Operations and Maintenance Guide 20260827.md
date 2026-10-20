@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 14
 source_pdf: "b50c919a16a1c423_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operations and Maintenance Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operations and Maintenance Guide 20260827

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 127
 source_pdf: "6a2db6ff626c4c86_Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Key%20Management%20Service%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Key Management Service Developer Guide 20260701
@@ -107,11 +107,19 @@ Before you log on to the Apsara Uni-manager Management Console, the endpoint of 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press Enter.
 2. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
-operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**. For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
+operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 1.2 Obtain API information
@@ -148,7 +156,8 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 icon next to an organization name.
 5. Select **AccessKey** from the drop-down list.
 6. In the message that appears, obtain the AccessKey pair of the organization.
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
+
+> **Note:** An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -157,7 +166,8 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click User Information.
 3. In the AccessKey Pair section, view your AccessKey pair.
-The AccessKey pair provides full access to cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
+
+> **Note:** The AccessKey pair provides full access to cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
 
 ### 1.4 Obtain access credentials assigned by STS
 
@@ -176,7 +186,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 2. Obtain the access credential assigned by STS.
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the name of the current session. <yourRoleArn>: Replace this variable with the ARN of your RAM role. "sts.aliyuns.com": Replace this variable with the endpoint of STS.
+
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the name of the current session.
+> <yourRoleArn>: Replace this variable with the ARN of your RAM role.
+> "sts.aliyuns.com": Replace this variable with the endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -226,7 +244,16 @@ tep for the RAM role.
 ```
 
 3. Use the access credential assigned by STS to call an API operation of a cloud service. The
-following sample code provides an example on how to use the access credential assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS). Replace the sample code based on your cloud service. You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace this variable with your region ID. <yourStsAccesskeyID>: Replace this variable with your AccessKey ID. <yourStsAccessKeySecret>: Replace this variable with your AccessKey secret. <yourStsToken>. Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourRegionID>: Replace this variable with your organization ID.
+following sample code provides an example on how to use the access credential assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS). Replace the sample code based on your cloud service.
+
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourStsAccesskeyID>: Replace this variable with your AccessKey ID.
+> <yourStsAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourStsToken>. Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourRegionID>: Replace this variable with your organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -355,9 +382,7 @@ When you install KMS SDK for Java, you must add the following dependencies to th
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure authentication credentials. Key Management Service (KMS) SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you create a client. DK for Java
 
-**Warning**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Warning:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -366,11 +391,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace this variable with your AccessKey secret.
 ```
 
-In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
 
 #### 2.1.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. DK for Java
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
+
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+
+DK for Java
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -464,7 +499,19 @@ try {
 
 **operations**
 
-DK for Java If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext. In the following sample code, you should replace the variables with actual values and delete the angle brackets (<>) from the code. Variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID. <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number. <endpoint>: Replace this variable with the actual endpoint. <alias/Example>: Replace this variable with the actual alias or ID of the Customer Master Key (CMK).
+DK for Java If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext.
+
+> **Note:** In the following sample code, you should replace the variables with actual values and delete the angle brackets (<>) from the code.
+> Variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with the actual resource set ID.
+> <yourOrganizationID>: Replace this variable with the actual organization ID.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number.
+> <endpoint>: Replace this variable with the actual endpoint.
+> <alias/Example>: Replace this variable with the actual alias or ID of the Customer Master Key (CMK).
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -576,9 +623,7 @@ pip3 install aliyun-python-sdk-kms
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure authentication credentials. Key Management Service (KMS) SDK for Python supports authentication based on an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you create a client.
 
-**Warning**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Warning:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -586,7 +631,9 @@ from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, r
 
 #### 3.1.3 Set HTTPS requests
 
-DK for Python The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
+DK for Python The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
+
+> **Note:** The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
 
 **Add OpenSSL dependency**
 
@@ -671,7 +718,21 @@ except ServerException as e:
 
 **operations**
 
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext. DK for Python In the following sample code, replace the variables with actual values. Delete the angle brackets (<>) from the code. Variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID. <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number. <endpoint>: Replace this variable with the actual endpoint. <alias/Example>: Replace this variable with the actual alias or ID of the customer master key (CMK). DK for Python
+If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext. DK for Python
+
+> **Note:** In the following sample code, replace the variables with actual values. Delete the angle brackets (<>) from the code.
+> Variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with the actual resource set ID.
+> <yourOrganizationID>: Replace this variable with the actual organization ID.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number.
+> <endpoint>: Replace this variable with the actual endpoint.
+> <alias/Example>: Replace this variable with the actual alias or ID of the customer master key (CMK).
+
+DK for Python
 
 ```java
 #!/usr/bin/env python
@@ -728,9 +789,7 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Key Management Service (KMS) SDK for Go supports authentication by using an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you initialize a client instance.
 
-**Warning**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Warning:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 // Initialize a client instance. kmsClient, err := kms.NewClientWithAccessKey(
@@ -746,7 +805,7 @@ n ID.
 secret.
 ```
 
-In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
 
 #### 4.1.3 Call KMS SDK for Go
 
@@ -762,7 +821,9 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/kms
 ```
 
 2. Create a client instance that contains all the API operations of Key Management Service
-(KMS). You must replace the variables in the following code with the actual values. Delete the angle brackets (<>) before you submit the code.
+(KMS).
+
+> **Note:** You must replace the variables in the following code with the actual values. Delete the angle brackets (<>) before you submit the code.
 
 ```
 kmsClient,err := kms.NewClientWithAccessKey(
@@ -773,7 +834,8 @@ kmsClient.Domain = "<endpoint>" // Replace this variable with the Endpoint. kmsC
 ```
 
 3. Use `kms.CreateEncryptRequest` to create a request.
-You can replace Encrypt with the name of another API operation.
+
+> **Note:** You can replace Encrypt with the name of another API operation.
 
 ```
 request := kms.CreateEncryptRequest() request.KeyId = ""
@@ -812,9 +874,7 @@ When you send a request, if an error occurs on the client instance and cannot be
 |---|---|---|
 | response, err := kmsClient.Encrypt(request) if clientError, ok := err.(*errors.ClientError); ok{ // Obtain the error code. clientError.ErrorCode() // Obtain the error message. clientError.Message() // Obtain the original error. clientError.OriginError() } |   |   |
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -825,7 +885,7 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 **ServerError**
 
@@ -835,7 +895,9 @@ When the server returns an error message, the SDK wraps the message into the Ser
 |---|---|---|
 | response, err := kmsClient.Encrypt(request) if serverError, ok := err.(*errors.ServerError); ok{ // Obtain the error code. serverError.ErrorCode() // Obtain the error message. serverError.Message() // Obtain the original HTTP response. response.GetOriginHttpResponse() } |   |   |
 
-DK for Go When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+DK for Go
+
+> **Note:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -846,13 +908,27 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 #### 4.1.5 Use CommonRequest to call API operations
 
 **operations**
 
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext. You must replace the variables in the code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID. <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number. <endpoint>: Replace this variable with the endpoint. <alias/Example>: Replace this variable with the actual alias or ID of the customer master key (CMK). `k` `i` DK for Go
+If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operations. You can use CommonRequest to call all API operations. The following code provides an example on how to call the Encrypt operation of Key Management Service (KMS) to encrypt plaintext into ciphertext.
+
+> **Note:** You must replace the variables in the code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with the actual resource set ID.
+> <yourOrganizationID>: Replace this variable with the actual organization ID.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the actual proxy IP address and port number.
+> <endpoint>: Replace this variable with the endpoint.
+> <alias/Example>: Replace this variable with the actual alias or ID of the customer master key (CMK).
+
+`k` `i` DK for Go
 
 ```java
 package main import (
@@ -1027,7 +1103,11 @@ Signature = Base64( HMAC-SHA1( AccessKey Secret, UTF-8-Encoding-Of(StringToSign)
 **Step 1: Compose and encode a string-to-sign**
 
 1. Create a canonicalized query string by arranging the request parameters.
-i. Arrange the request parameters (including all common and operation-specific parameters except Signature) in alphabetical order. When you use the GET method to submit a request, these parameters constitute the parameter field of the request URL. These parameters are placed after the question mark (?) in the request URI and connected by ampersands (&). ii. Encode the names and values of the arranged request parameters in the request URL by using the UTF-8 character set. The following table describes the encoding rules.
+i. Arrange the request parameters (including all common and operation-specific parameters except Signature) in alphabetical order.
+
+> **Note:** When you use the GET method to submit a request, these parameters constitute the parameter field of the request URL. These parameters are placed after the question mark (?) in the request URI and connected by ampersands (&).
+
+ii. Encode the names and values of the arranged request parameters in the request URL by using the UTF-8 character set. The following table describes the encoding rules.
 
 | Character | Encoding rule |
 |---|---|
@@ -1056,10 +1136,13 @@ query string based on the URL encoding rules.
 **Step 2: Calculate the signature string**
 
 1. Calculate the HMAC value of the string-to-sign based on RFC 2104.
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) is used as the key for the HMAC calculation.
+
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) is used as the key for the HMAC calculation.
+
 2. Encode the HMAC value in Base64 to obtain the signature string.
 3. Add the signature string to the request as the **Signature** parameter.
-When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986.
+
+> **Note:** When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986.
 
 **Examples**
 
@@ -1469,7 +1552,9 @@ Creates a customer master key (CMK). A CMK can be symmetric or asymmetric. Symme
 | Asymmetric CMK | EC P256K _ | SECC elliptic curve secp256k1 | Not supported | Supported |
 | Asymmetric CMK | EC SM2 _ | 256-bit elliptic curves over the prime field that is defined in GB/T 32918 | Supported | Supported |
 
-The KeySpec parameter for a symmetric CMK consists of the standard key type prefixed with `Aliyun_` . The prefix indicates that the CMK uses a standard encryption algorithm. However, the cyphertext that is generated by using the CMK is not standard. An asymmetric CMK generates standard ciphertext or signatures. An RSA CMK supports either the ENCRYPT/DECRYPT or SIGN/VERIFY operation rather than both. SM4 and SM2 are block ciphers used in the Chinese National Standards. KMS supports SM4 and SM2 CMKs created in a Managed HSM that is deployed in a mainland China region.
+> **Note:** The KeySpec parameter for a symmetric CMK consists of the standard key type prefixed with `Aliyun_` . The prefix indicates that the CMK uses a standard encryption algorithm. However, the cyphertext that is generated by using the CMK is not standard. An asymmetric CMK generates standard ciphertext or signatures.
+> An RSA CMK supports either the ENCRYPT/DECRYPT or SIGN/VERIFY operation rather than both.
+> SM4 and SM2 are block ciphers used in the Chinese National Standards. KMS supports SM4 and SM2 CMKs created in a Managed HSM that is deployed in a mainland China region.
 
 **Request parameters**
 
@@ -1589,7 +1674,16 @@ For a list of error codes, visit the Common error codes.
 
 ###### 5.1.2.2.4 GetParametersForImport
 
-Obtains the parameters that you use to import key material for a customer master key (CMK). The returned parameters can be used to call the ImportKeyMaterial operation. You can import key material only for CMKs whose Origin parameter is EXTERNAL. The call returns the public key that is used to encrypt key material, the token that is used to import key material, and the expiration time of the token. The public key is encoded in Base64. The token is valid for 24 hours. The public key and token that are returned by the call can be used only for CMKs that are specified in this call. The public key and token that are returned by the same call must be used together. The algorithm that is used to encrypt key material must be the one that is specified in the call. The public key and token that are returned by each call must be unique. You must specify the type of public key and the encryption algorithm that are used to encrypt key material. The following table lists the types of public keys and encryption algorithms.
+Obtains the parameters that you use to import key material for a customer master key (CMK). The returned parameters can be used to call the ImportKeyMaterial operation.
+
+> **Note:** You can import key material only for CMKs whose Origin parameter is EXTERNAL.
+> The call returns the public key that is used to encrypt key material, the token that is used to import key material, and the expiration time of the token. The public key is encoded in Base64. The token is valid for 24 hours.
+> The public key and token that are returned by the call can be used only for CMKs that are specified in this call.
+> The public key and token that are returned by the same call must be used together.
+> The algorithm that is used to encrypt key material must be the one that is specified in the call.
+> The public key and token that are returned by each call must be unique.
+
+You must specify the type of public key and the encryption algorithm that are used to encrypt key material. The following table lists the types of public keys and encryption algorithms.
 
 | Public key type | Encryption algorithm | Description |
 |---|---|---|
@@ -1655,7 +1749,13 @@ For a list of error codes, visit the Common error codes.
 
 ###### 5.1.2.2.5 ImportKeyMaterial
 
-Imports key material. When you call the CreateKey operation to create a customer master key (CMK), you can set Origin to EXTERNAL to use external key material. You can call this operation to import key material for a CMK whose Origin is set to EXTERNAL. If you use a CMK whose type is Aliyun_AES_256, the key material that you import must be a 256-bit key. If you use a CMK whose type is Aliyun_SM4, the key material that you import must be a 128-bit key. You can set the expiration time of the key material. You can also set the expiration time to never expire. You can always reimport the same key material and reset the expiration time. After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material is imported again. The same key material can be imported to different CMKs. The data or data key that is encrypted by using one CMK cannot be decrypted by using another CMK.
+Imports key material. When you call the CreateKey operation to create a customer master key (CMK), you can set Origin to EXTERNAL to use external key material. You can call this operation to import key material for a CMK whose Origin is set to EXTERNAL.
+
+> **Note:** If you use a CMK whose type is Aliyun_AES_256, the key material that you import must be a 256-bit key. If you use a CMK whose type is Aliyun_SM4, the key material that you import must be a 128-bit key.
+> You can set the expiration time of the key material. You can also set the expiration time to never expire.
+> You can always reimport the same key material and reset the expiration time.
+> After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material is imported again.
+> The same key material can be imported to different CMKs. The data or data key that is encrypted by using one CMK cannot be decrypted by using another CMK.
 
 **Request parameters**
 
@@ -2373,7 +2473,10 @@ For a list of error codes, visit the Common error codes.
 
 ###### 5.1.2.2.17 GenerateDataKeyWithoutPlaintext
 
-Generates a random data key, which can be used to locally encrypt data. This operation creates a random data key, encrypts the data key by using a specific symmetric customer master key (CMK), and then returns the ciphertext data key. This operation serves the same purpose as the GenerateDataKey operation. The only difference is that this operation does not return the plaintext data key. The CMK that you specify in the request of this operation is used only to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key. This operation is suitable for the scenario where you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the Decrypt operation to decrypt the ciphertext data key. This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module of the system creates different partitions and generates different data keys for each partition. This module is not involved in data production and consumption after it completes the initialization of the control plane. This module is the key provider. When a module on the control plane produces and consumes data, the module obtains the ciphertext data key for each partition. After the module decrypts the ciphertext data key, the module uses the plaintext data key to encrypt or decrypt data and then deletes the plaintext data key from memory. In such a system, the key provider does not need to obtain the plaintext data key. It needs only to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They need only to have the permissions to call the Decrypt operation.
+Generates a random data key, which can be used to locally encrypt data. This operation creates a random data key, encrypts the data key by using a specific symmetric customer master key (CMK), and then returns the ciphertext data key. This operation serves the same purpose as the GenerateDataKey operation. The only difference is that this operation does not return the plaintext data key. The CMK that you specify in the request of this operation is used only to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
+
+> **Note:** This operation is suitable for the scenario where you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the Decrypt operation to decrypt the ciphertext data key.
+> This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module of the system creates different partitions and generates different data keys for each partition. This module is not involved in data production and consumption after it completes the initialization of the control plane. This module is the key provider. When a module on the control plane produces and consumes data, the module obtains the ciphertext data key for each partition. After the module decrypts the ciphertext data key, the module uses the plaintext data key to encrypt or decrypt data and then deletes the plaintext data key from memory. In such a system, the key provider does not need to obtain the plaintext data key. It needs only to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They need only to have the permissions to call the Decrypt operation.
 
 **Request parameters**
 
@@ -2485,7 +2588,10 @@ For a list of error codes, visit the Common error codes.
 
 ###### 5.1.2.2.19 CreateAlias
 
-Creates an alias for a customer master key (CMK). Each alias can represent only one CMK. The aliases of CMKs in the same region must be unique.
+Creates an alias for a customer master key (CMK).
+
+> **Note:** Each alias can represent only one CMK.
+> The aliases of CMKs in the same region must be unique.
 
 **Request parameters**
 
@@ -2876,7 +2982,11 @@ For a list of error codes, visit the Common error codes.
 
 ###### 5.1.2.2.25 CreateKeyVersion
 
-Creates a version for a customer master key (CMK). This operation is supported only for asymmetric CMKs. The CMKs must be enabled. The minimum interval at which a CMK version is created is seven days. If you call this operation within seven days after the last CMK version is created, the error code Rejected.UnsupportedOperation is returned. The creation date of the last CMK version is specified by the LastRotationDate parameter. Each user can hold up to 50 asymmetric CMK versions in each region.
+Creates a version for a customer master key (CMK).
+
+> **Note:** This operation is supported only for asymmetric CMKs. The CMKs must be enabled.
+> The minimum interval at which a CMK version is created is seven days. If you call this operation within seven days after the last CMK version is created, the error code Rejected.UnsupportedOperation is returned. The creation date of the last CMK version is specified by the LastRotationDate parameter.
+> Each user can hold up to 50 asymmetric CMK versions in each region.
 
 **Request parameters**
 
@@ -3301,7 +3411,7 @@ Signs data by using asymmetric keys. This operation is supported only for asymme
 |---|---|---|
 | EC SM2 _ | SM2DSA | SM2 elliptic curve public key encryption algorithm |
 
-When you calculate the SM2 signature based on GB/T 32918, the Digest parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T 32918.
+> **Note:** When you calculate the SM2 signature based on GB/T 32918, the Digest parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T 32918.
 
 **Request parameters**
 
@@ -3371,7 +3481,7 @@ Verifies signatures by using asymmetric keys. This operation is supported only f
 |---|---|---|
 | EC SM2 _ | SM2DSA | SM2 elliptic curve public key encryption algorithm |
 
-When you calculate the SM2 signature based on GB/T 32918, the Digest parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T 32918.
+> **Note:** When you calculate the SM2 signature based on GB/T 32918, the Digest parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T 32918.
 
 **Request parameters**
 

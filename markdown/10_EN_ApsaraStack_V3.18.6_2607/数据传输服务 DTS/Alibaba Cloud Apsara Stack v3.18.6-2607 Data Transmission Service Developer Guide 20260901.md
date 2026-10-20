@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 572
 source_pdf: "e86046d619ddf910_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901
@@ -187,7 +187,13 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar of your
 browser and press the Enter key.
 2. Enter your username and password.
-You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator.
+
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform operations based
 on your logon scenario: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the six-digit MFA verification code and click **Authenticate**.
@@ -223,9 +229,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign access credentials: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call API operations in Apsara Stack services and perform operations in the Apsara Uni-manager Management Console. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -240,7 +244,8 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. Click the avatar in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
-The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair strictly confidential.
+
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair strictly confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -270,7 +275,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the avatar in 
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 2. Obtain the access credential assigned by STS.
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the name of the current session. <yourRoleArn>: Replace this variable with your RAM role. <sts.aliyuns.com>: Replace this variable with the STS endpoint.
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the name of the current session.
+> <yourRoleArn>: Replace this variable with your RAM role.
+> <sts.aliyuns.com>: Replace this variable with the STS endpoint.
 
 ```xml
 public static void main(String[] args) {
@@ -331,7 +344,16 @@ tep for the RAM role.
 
 `}`
 3. Use the access credentials assigned by STS to call an operation of a service. The following
-sample code provides an example on how to use the access credentials assigned by STS to call the `DescribeZones` operation in Elastic Compute Service (ECS): Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with your AccessKey ID. <yourStsAccessKeySecret>: Replace this variable with your AccessKey secret. <yourStsToken>. Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID.
+sample code provides an example on how to use the access credentials assigned by STS to call the `DescribeZones` operation in Elastic Compute Service (ECS):
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourStsAccesskeyID>: Replace this variable with your AccessKey ID.
+> <yourStsAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourStsToken>. Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -462,7 +484,21 @@ To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <Product>: Replace this variable with the name of the service. <Endpoint>: Replace this variable with the endpoint of the service. <readTimeout>: Replace this variable with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace this variable with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace this variable with the maximum number of requests that are supported by each host. <maxRequests>: Replace this variable with the maximum number of requests. <http://192.168.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use. Java
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <Product>: Replace this variable with the name of the service.
+> <Endpoint>: Replace this variable with the endpoint of the service.
+> <readTimeout>: Replace this variable with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace this variable with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace this variable with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace this variable with the maximum number of requests.
+> <http://192.168.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
+
+Java
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dts.model.v20180801.*; public class CreateMigrationJob {
@@ -511,7 +547,9 @@ This topic describes how to install and use the Data Transmission Service (DTS) 
 
 #### 2.2.2 Configure authentication credentials
 
-When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
+
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -520,11 +558,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace this variable with your AccessKey secret.
 ```
 
-Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
+> **Note:** Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
 
 #### 2.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Java Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Java
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify a maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify a protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure a proxy based on your business requirements. Sample code: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -641,7 +687,18 @@ For example, if you want to call the CreateMigrationJob operation, specify `requ
 
 **Example: Call an RPC API operation**
 
-Java Data Transmission Service (DTS) uses the remote procedure call (RPC) framework. The following sample code shows how to call the CreateMigrationJob operation: Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
+Java Data Transmission Service (DTS) uses the remote procedure call (RPC) framework. The following sample code shows how to call the CreateMigrationJob operation:
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -772,7 +829,10 @@ To use DTS SDK for Python, perform the following steps:
 an AccessKey ID, and an AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the request and handle the response or exceptions.
-Replace the variables enclosed in angle brackets (<>) in the following sample code with the actual values. Delete the angle brackets (<>) from the final code. Python
+
+> **Note:** Replace the variables enclosed in angle brackets (<>) in the following sample code with the actual values. Delete the angle brackets (<>) from the final code.
+
+Python
 
 ```python
 #!/usr/bin/env python
@@ -789,7 +849,11 @@ print(str(response, encoding='utf-8'))
 
 #### 3.2.1 Install Apsara Stack SDK for Python
 
-This topic describes how to install and call the Data Transmission Service (DTS) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip. To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use the DTS SDK for Python, you must install the core library of Apsara Stack SDK for Python and the DTS SDK for Python. If you use Python 2.x, run the following command to install the core library:
+This topic describes how to install and call the Data Transmission Service (DTS) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip.
+
+> **Note:** To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use the DTS SDK for Python, you must install the core library of Apsara Stack SDK for Python and the DTS SDK for Python.
+
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -817,9 +881,7 @@ pip3 install aliyun-python-sdk-dts
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara SDK for Python supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
-**Important**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -827,7 +889,9 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 #### 3.2.3 Configure HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default protocol (HTTP or HTTPS) of a service takes precedence over the global default protocol.
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
+
+> **Note:** The default protocol (HTTP or HTTPS) of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -924,7 +988,20 @@ To initiate a CommonRequest request, you must obtain the values of the following
 
 **Example: Call an RPC-style API operation**
 
-The following sample code provides an example on how to call the CreateMigrationJob operation of DTS to purchase a data migration instance: Python Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. Variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <dts.aliyuncs.com>: Replace this variable with the endpoint of the service. Python
+The following sample code provides an example on how to call the CreateMigrationJob operation of DTS to purchase a data migration instance: Python
+
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> Variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with your instance ID.
+> <dts.aliyuncs.com>: Replace this variable with the endpoint of the service.
+
+Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -987,7 +1064,15 @@ To use Apsara Stack SDK for Go, perform the following steps:
 1. Initialize a client instance.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and process the response or exception.
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <Endpoint>: Replace this variable with your endpoint. Go
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <Endpoint>: Replace this variable with your endpoint.
+
+Go
 
 ```java
 package main import (
@@ -1040,9 +1125,9 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara SDK for Go supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Go
 
-**Important**
+> **Important:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised. The following code uses Data Transmission Service (DTS) as an example to show how to initialize a client instance.
+The following code uses Data Transmission Service (DTS) as an example to show how to initialize a client instance.
 
 ```
 // Initialize a client instance. Client, err := ecs.NewClientWithAccessKey(
@@ -1057,7 +1142,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 secret.
 ```
 
-Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
+> **Note:** Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
 
 #### 4.2.3 Initiate a request
 
@@ -1069,7 +1154,8 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/dts
 ```
 
 2. Create a client that contains all DTS APIs.
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
 
 ```
 Client,err := <dts>. NewClientWithAccessKey( // Replace this variable with the actual service name.
@@ -1124,9 +1210,7 @@ response,err := Client.CreateMigrationJob(request) if err != nil {
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` response. The following sample code shows how to obtain the `ClientError` response returned by the Data Transmission Service (DTS) SDK:
 
-**Important**
-
-When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1155,9 +1239,7 @@ response, err := Client.CreateMigrationJob(request) if clientError, ok := err.(*
 
 Go When the server returns an error message, the SDK wraps the message into the `ServerError` error response and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following sample code shows how to obtain the ServerError response and error massage in the response returned by the DTS SDK:
 
-**Important**
-
-When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1168,7 +1250,7 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := Client.CreateMigrationJob(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1190,7 +1272,20 @@ If you want to call an API operation without an SDK or if the request and respon
 
 **Examples**
 
-The following sample code shows how to call the CreateMigrationJob operation in Data Transmission Service (DTS): Go Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <ecs.aliyuncs.com>: Replace this variable with the endpoint of the service. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with the instance ID. Go
+The following sample code shows how to call the CreateMigrationJob operation in Data Transmission Service (DTS): Go
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <ecs.aliyuncs.com>: Replace this variable with the endpoint of the service.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with the instance ID.
+
+Go
 
 ```java
 package main import (
@@ -1305,7 +1400,11 @@ JSON format `{`
     /* Returned result data */
 ```
 
-`}` Sample error responses If an error occurs on your request, the system returns an HTTP status code 4xx or 5xx. The returned response body contains the specific error code and error message. The response body also contains the RequestId parameter that indicates the globally unique request ID and the HostId parameter that indicates the ID of the site that you requested to access. You can troubleshoot an error based on the error code. For more information, see Error codes. If you cannot identify the cause of the error, you can contact the Alibaba Cloud customer service team and provide the returned HostId and RequestId for technical support. XML format
+`}` Sample error responses If an error occurs on your request, the system returns an HTTP status code 4xx or 5xx. The returned response body contains the specific error code and error message. The response body also contains the RequestId parameter that indicates the globally unique request ID and the HostId parameter that indicates the ID of the site that you requested to access.
+
+> **Note:** You can troubleshoot an error based on the error code. For more information, see Error codes. If you cannot identify the cause of the error, you can contact the Alibaba Cloud customer service team and provide the returned HostId and RequestId for technical support.
+
+XML format
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <Error>
@@ -6002,7 +6101,9 @@ Sample success responses `XML` format
 
 #### 5.4.10 ResetDtsJob
 
-Reconfigures a data synchronization or change tracking task. If you clear the configurations of a data synchronization or change tracking task, Data Transmission Service (DTS) deletes the task. Then, DTS creates another task. You must call the ConfigureDtsJob operation to configure the new task.
+Reconfigures a data synchronization or change tracking task.
+
+> **Note:** If you clear the configurations of a data synchronization or change tracking task, Data Transmission Service (DTS) deletes the task. Then, DTS creates another task. You must call the ConfigureDtsJob operation to configure the new task.
 
 **Request parameters**
 
@@ -7073,7 +7174,11 @@ You can call the API operations of Data Transmission Service (DTS) to configure 
 
 **Object definitions**
 
-The value of an object-related parameter is a JSON string. This section describes objectrelated parameters. You can configure the italic content in the following sample code based on your business requirements. If the objects consist of multiple databases, refer to the following parameter description to define these objects: `{`
+The value of an object-related parameter is a JSON string. This section describes objectrelated parameters.
+
+> **Note:** You can configure the italic content in the following sample code based on your business requirements.
+
+If the objects consist of multiple databases, refer to the following parameter description to define these objects: `{`
 
 ```json
     "The name of Source Database 1.": {
@@ -7426,7 +7531,11 @@ ConfigureDtsJob DescribeDtsJobDetail
 
 **Settings of the Reserve parameter**
 
-The value of the Reserve parameter is a JSON string. You can specify the Reserve parameter in the following scenarios: If you specify a numeric value, you must enclose the value in double quotation marks (" "). You can use the **Reserve** parameter to specify the processing mode of conflicting tables for a data migration or data synchronization task.
+The value of the Reserve parameter is a JSON string. You can specify the Reserve parameter in the following scenarios:
+
+> **Note:** If you specify a numeric value, you must enclose the value in double quotation marks (" ").
+
+You can use the **Reserve** parameter to specify the processing mode of conflicting tables for a data migration or data synchronization task.
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -7524,7 +7633,11 @@ When you call the ConfigureDtsJob operation to configure a migration or synchron
 
 ##### 5.5.1.1 CreateMigrationJob
 
-Purchases a data migration instance. This operation is of the old version. We recommend that you call the new API operation. After you purchase a data migration instance, you must call the ConfigureMigrationJob operation to configure a data migration task.
+Purchases a data migration instance.
+
+> **Note:** This operation is of the old version. We recommend that you call the new API operation.
+
+After you purchase a data migration instance, you must call the ConfigureMigrationJob operation to configure a data migration task.
 
 **Request parameters**
 
@@ -7674,7 +7787,9 @@ Sample success responses `XML` format
 
 ##### 5.5.1.3 StartMigrationJob
 
-Starts a data migration task. To call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
+Starts a data migration task.
+
+> **Note:** To call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
 
 **Request parameters**
 
@@ -7773,7 +7888,10 @@ Sample success responses `XML` format
 
 ##### 5.5.1.5 SuspendMigrationJob
 
-Pauses a data migration task. If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you cannot call the StartMigrationJob operation to restart the task. If you select incremental data migration as the migration type for a pay-as-you-go instance, you are charged even when the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database and continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data migration consumes resources such as the bandwidth of the source database.
+Pauses a data migration task.
+
+> **Note:** If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you cannot call the StartMigrationJob operation to restart the task.
+> If you select incremental data migration as the migration type for a pay-as-you-go instance, you are charged even when the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database and continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data migration consumes resources such as the bandwidth of the source database.
 
 **Request parameters**
 
@@ -8691,7 +8809,9 @@ Sample success responses `XML` format
 
 ##### 5.5.1.9 StopMigrationJob
 
-Stops a data migration task that is in the Migrating state. After you call this operation to stop a data migration task, the state of the task changes to Finished and you cannot restart the task by calling the StartMigrationJob operation.
+Stops a data migration task that is in the Migrating state.
+
+> **Note:** After you call this operation to stop a data migration task, the state of the task changes to Finished and you cannot restart the task by calling the StartMigrationJob operation.
 
 **Request parameters**
 
@@ -8742,7 +8862,9 @@ Sample success responses `XML` format
 
 ##### 5.5.1.10 DeleteMigrationJob
 
-Releases a data migration instance. After a data migration instance is released, it cannot be recovered.
+Releases a data migration instance.
+
+> **Note:** After a data migration instance is released, it cannot be recovered.
 
 **Request parameters**
 
@@ -8862,7 +8984,10 @@ Sample success responses `XML` format
 
 ##### 5.5.2.2 ConfigureSynchronizationJob
 
-Configures a data synchronization task. Before you call this operation, you must call the CreateSynchronizationJob operation to create a data synchronization instance. After you call this operation to configure a data synchronization task, the task automatically starts and the precheck is performed. You do not need to call the StartSynchronizationJob operation to start the task. A data synchronization task may fail to be started due to precheck failures. In this case, call the DescribeSynchronizationJobStatus operation to query the state of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the StartSynchronizationJob operation to restart the data synchronization task.
+Configures a data synchronization task. Before you call this operation, you must call the CreateSynchronizationJob operation to create a data synchronization instance.
+
+> **Note:** After you call this operation to configure a data synchronization task, the task automatically starts and the precheck is performed. You do not need to call the StartSynchronizationJob operation to start the task.
+> A data synchronization task may fail to be started due to precheck failures. In this case, call the DescribeSynchronizationJobStatus operation to query the state of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the StartSynchronizationJob operation to restart the data synchronization task.
 
 **Request parameters**
 
@@ -9003,7 +9128,11 @@ Sample success responses `XML` format
 
 ##### 5.5.2.4 SuspendSynchronizationJob
 
-Pauses a data synchronization task. When you call this operation, the data synchronization task must be in the Synchronizing state. We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again. If the billing method is pay-as-you-go, you are charged even if the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database but continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, the paused data synchronization task still consumes resources such as the bandwidth of the source database.
+Pauses a data synchronization task.
+
+> **Note:** When you call this operation, the data synchronization task must be in the Synchronizing state.
+> We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+> If the billing method is pay-as-you-go, you are charged even if the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database but continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, the paused data synchronization task still consumes resources such as the bandwidth of the source database.
 
 **Request parameters**
 
@@ -9054,7 +9183,9 @@ Sample success responses `XML` format
 
 ##### 5.5.2.5 ResetSynchronizationJob
 
-Clears the configurations of a data synchronization task. If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob** operation to reconfigure the task.
+Clears the configurations of a data synchronization task.
+
+> **Note:** If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob** operation to reconfigure the task.
 
 **Request parameters**
 
@@ -9105,7 +9236,9 @@ Sample success responses `XML` format
 
 ##### 5.5.2.6 ModifySynchronizationObject
 
-Modifies the objects to be synchronized. To call this operation, the data synchronization task must be in the NotStarted or Synchronizing state.
+Modifies the objects to be synchronized.
+
+> **Note:** To call this operation, the data synchronization task must be in the NotStarted or Synchronizing state.
 
 **Request parameters**
 
@@ -9455,11 +9588,10 @@ Sample success responses `XML` format
 
 ##### 5.5.2.8 SwitchSynchronizationEndpoint
 
-After a primary/secondary switchover is performed on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). Then, DTS restarts the data synchronization task from the breakpoint. If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings. If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation. For two-way synchronization tasks, if a primary/secondary switchover is performed on the source or destination database, you must call this operation twice to update the connection settings. For example, if a primary/secondary switchover is performed on the destination database in the forward direction, you must call this operation twice. For the first call, set the **SynchronizationDirection** parameter to **Forward** and the
-**Endpoint.Type** parameter to **Destination** and configure the connection
-settings. For the second call, set the **SynchronizationDirection** parameter to
-**Reverse** and the **Endpoint.Type** parameter to **Source** and configure the
-connection settings.
+After a primary/secondary switchover is performed on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). Then, DTS restarts the data synchronization task from the breakpoint. If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings. If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
+
+> **Note:** For two-way synchronization tasks, if a primary/secondary switchover is performed on the source or destination database, you must call this operation twice to update the connection settings.
+> For example, if a primary/secondary switchover is performed on the destination database in the forward direction, you must call this operation twice. For the first call, set the **SynchronizationDirection** parameter to **Forward** and the **Endpoint.Type** parameter to **Destination** and configure the connection settings. For the second call, set the **SynchronizationDirection** parameter to **Reverse** and the **Endpoint.Type** parameter to **Source** and configure the connection settings.
 
 **Request parameters**
 
@@ -10837,7 +10969,9 @@ eta
 
 ##### 5.5.2.16 DeleteSynchronizationJob
 
-Releases a data synchronization instance. After a data synchronization instance is released, it cannot be recovered.
+Releases a data synchronization instance.
+
+> **Note:** After a data synchronization instance is released, it cannot be recovered.
 
 **Request parameters**
 
@@ -11077,7 +11211,10 @@ Sample success responses `XML` format
 
 ##### 5.5.3.4 ModifySubscriptionObject
 
-Modifies the objects for a change tracking task. To call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state. If you call this operation to modify the objects of a change tracking task that is in the Normal state, Data Transmission Service (DTS) automatically calls StartSubscriptionInstance to restart the change tracking instance. If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically restart the change tracking instance. You must call the StartSubscriptionInstance operation.
+Modifies the objects for a change tracking task. To call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state.
+
+> **Note:** If you call this operation to modify the objects of a change tracking task that is in the Normal state, Data Transmission Service (DTS) automatically calls StartSubscriptionInstance to restart the change tracking instance.
+> If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically restart the change tracking instance. You must call the StartSubscriptionInstance operation.
 
 **Request parameters**
 
@@ -11289,9 +11426,10 @@ Sample success responses `XML` format
 
 ###### 5.5.3.5.3 ModifyConsumerGroupPassword
 
-Modifies the password of a consumer group. This operation is applicable only to the new version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the new version of the change tracking feature is used if you specify the
-**SubscriptionInstanceNetworkType** parameter. Otherwise, the old version of the
-change tracking feature is used. When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+Modifies the password of a consumer group.
+
+> **Note:** This operation is applicable only to the new version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the new version of the change tracking feature is used if you specify the **SubscriptionInstanceNetworkType** parameter. Otherwise, the old version of the change tracking feature is used.
+> When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
 
 **Request parameters**
 
@@ -11395,9 +11533,11 @@ Sample success responses `XML` format
 
 ###### 5.5.3.5.5 ModifyConsumptionTimestamp
 
-Modifies the consumption checkpoint of a change tracking instance. This operation is applicable only to the old version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the old version of the change tracking feature is used if you do not specify the
-**SubscriptionInstanceNetworkType** parameter. Otherwise, the new version of
-the change tracking feature is used. If you use the new version, you must set the consumption checkpoint on the change tracking client. When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
+Modifies the consumption checkpoint of a change tracking instance.
+
+> **Note:** This operation is applicable only to the old version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the old version of the change tracking feature is used if you do not specify the **SubscriptionInstanceNetworkType** parameter. Otherwise, the new version of the change tracking feature is used.
+> If you use the new version, you must set the consumption checkpoint on the change tracking client.
+> When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
 
 **Request parameters**
 
@@ -11809,7 +11949,9 @@ Sample success responses `XML` format
 
 ##### 5.5.3.8 DeleteSubscriptionInstance
 
-Releases a change tracking instance. After a change tracking instance is released, it cannot be recovered.
+Releases a change tracking instance.
+
+> **Note:** After a change tracking instance is released, it cannot be recovered.
 
 **Request parameters**
 
@@ -11861,10 +12003,9 @@ Sample success responses `XML` format
 
 ##### 5.5.4.1 DescribeDTSIP
 
-Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **source or destination instance** is an **on-premises self-managed database**, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks to the firewall security settings of the source or destination instance. If the **source or destination database** is an **ApsaraDB instance** (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance) or a **self-managed**
-**database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set**
-**Whitelist and Next** in the DTS console, DTS automatically adds the CIDR blocks of DTS
-servers to the security settings of the source or destination instance.
+Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **source or destination instance** is an **on-premises self-managed database**, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks to the firewall security settings of the source or destination instance.
+
+> **Note:** If the **source or destination database** is an **ApsaraDB instance** (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance) or a **self-managed** **database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set** **Whitelist and Next** in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 
 **Request parameters**
 
@@ -12688,7 +12829,9 @@ Sample success responses `XML` format
 
 ##### 5.5.7.3 UntagResources
 
-Removes tags from one or more data migration, data synchronization, or change tracking instances. If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+Removes tags from one or more data migration, data synchronization, or change tracking instances.
+
+> **Note:** If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 
 **Request parameters**
 

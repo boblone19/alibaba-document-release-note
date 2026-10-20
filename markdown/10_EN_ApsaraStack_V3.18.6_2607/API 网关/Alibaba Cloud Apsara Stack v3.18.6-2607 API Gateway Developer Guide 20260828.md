@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 367
 source_pdf: "84d5a4914866c714_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828
@@ -204,9 +204,7 @@ An AccessKey supports two authorization patterns: Resource Access Management (RA
 
 An AccessKey uses an AccessKey ID and an AccessKey secret for symmetric encryption to authenticate the identity of a request sender. The AccessKey ID identifies the user, and the AccessKey secret is a string used to create an encrypted signature. The two authorization patterns for an AccessKey are: RAM authorization, which grants an AccessKey ID and an AccessKey secret to a third-party requester. STS authorization, which grants an AccessKey ID, an AccessKey secret, and a security token to a third-party requester. For more information, see Obtain an STS AccessKey. The Apsara Uni-manager Management Console provides individual AccessKeys and organization AccessKeys. Only operations administrators and primary organization administrators can obtain organization AccessKeys. You can use an individual account AccessKey to call the APIs of the Apsara Uni-manager Management Console and related cloud products. If you use an individual account AccessKey, you must add the following restrictive parameters to the header. Otherwise, a permission error may occur:
 
-**Warning**
-
-An individual account AccessKey is a restricted AccessKey managed by the permission system of the Apsara Uni-manager Management Console, whereas an organization AccessKey has broader permissions. Therefore, administrators must confirm the security of operations that use an organization AccessKey.
+> **Warning:** An individual account AccessKey is a restricted AccessKey managed by the permission system of the Apsara Uni-manager Management Console, whereas an organization AccessKey has broader permissions. Therefore, administrators must confirm the security of operations that use an organization AccessKey.
 
 | Parameter | Description |
 |---|---|
@@ -223,9 +221,7 @@ To obtain an AccessKey for an individual account, perform the following steps:
 **Information**.
 3. In the **AccessKey** section, view the AccessKey information for your individual account.
 
-**Note**
-
-The AccessKey ID and AccessKey secret are the keys to access your cloud resources and grant full permissions to your account. Keep them confidential.
+> **Note:** The AccessKey ID and AccessKey secret are the keys to access your cloud resources and grant full permissions to your account. Keep them confidential.
 
 **Obtain an organization AccessKey**
 
@@ -768,9 +764,7 @@ All APIs use a JSON-formatted request body. The basic structure is as follows: `
 
 `}`
 
-**Note**
-
-Most APIs require the gwInstanceId parameter to specify the gateway instance for the operation.
+> **Note:** Most APIs require the gwInstanceId parameter to specify the gateway instance for the operation.
 
 **Unified response format**
 
@@ -4369,9 +4363,7 @@ Delete the specified route.
 
 Enable or disable a route.
 
-**Note**
-
-This API applies only to the SCG engine. The Higress engine does not support this API.
+> **Note:** This API applies only to the SCG engine. The Higress engine does not support this API.
 
 **Request information**
 
@@ -6886,9 +6878,7 @@ configuration module instead.)
 
 Create a plugin configuration for a route.
 
-**Important**
-
-This applies only to the SCG engine.
+> **Important:** This applies only to the SCG engine.
 
 **Request information**
 
@@ -6915,9 +6905,7 @@ This applies only to the SCG engine.
 
 Query the list of plugins under a route.
 
-**Important**
-
-This API call applies only to the SCG engine.
+> **Important:** This API call applies only to the SCG engine.
 
 **Request information**
 
@@ -6942,9 +6930,7 @@ This API call applies only to the SCG engine.
 
 Modify the plugin configuration of a route.
 
-**Important**
-
-This applies only to the SCG engine.
+> **Important:** This applies only to the SCG engine.
 
 **Request information**
 
@@ -6969,9 +6955,7 @@ This applies only to the SCG engine.
 
 Enable or disable the route plugin.
 
-**Important**
-
-This feature applies only to the SCG engine.
+> **Important:** This feature applies only to the SCG engine.
 
 **Request information**
 
@@ -6996,9 +6980,7 @@ This feature applies only to the SCG engine.
 
 Delete the plugin configuration of a route.
 
-**Important**
-
-This feature applies only to the SCG engine.
+> **Important:** This feature applies only to the SCG engine.
 
 **Request information**
 

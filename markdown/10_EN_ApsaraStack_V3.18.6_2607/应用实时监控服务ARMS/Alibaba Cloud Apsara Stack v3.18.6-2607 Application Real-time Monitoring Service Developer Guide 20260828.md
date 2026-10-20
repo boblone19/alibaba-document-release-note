@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 110
 source_pdf: "43f5666ab5c24ba1_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1ARMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Real-time%20Monitoring%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 20260828
@@ -76,9 +76,7 @@ This chapter describes the parameters, interfaces, and response codes related to
 
 This topic describes the specific meaning of API request fields for ARMS dataset query.
 
-**Note**
-
-List[String] indicates the string returned after the toString() method is called on a List.
+> **Note:** List[String] indicates the string returned after the toString() method is called on a List.
 
 | Field name | Field type | Description | Required | Note |
 |---|---|---|---|---|
@@ -313,14 +311,14 @@ You need to obtain the endpoint of the Apsara Uni-manager Management Console fro
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global IdP is configured in third-party authentication. You can customize the name of the Authorized Login button based on your requirements.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password for the Apsara Uni-manager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change your account password as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Account Logon**.
 4. If your account has multi-factor authentication (MFA) enabled, perform the corresponding
 operations in the following scenarios:
@@ -345,9 +343,8 @@ For more information about how to bind and enable MFA, see Manage multi-factor a
 2. On the Forgot Password page, enter your **Account Name**, **Email Address**, and verification
 code, and then click **Confirm**.
 
-**Note**
-
-You can use the username of your account and the email address that was used to create the account. A password reset link will be sent to your email. You can enter a new password after accessing the link.
+> **Note:** You can use the username of your account and the email address that was used to create the account.
+> A password reset link will be sent to your email. You can enter a new password after accessing the link.
 
 ### 5.2 Obtain AccessKey pairs of an organization
 
@@ -371,9 +368,7 @@ organization that you want to manage. On the page that appears, click **Manage**
 5. In the dialog box that appears, obtain the AccessKey ID and AccessKey secret of the
 organization.
 
-**Note**
-
-You must use the AccessKey pair of an organization that is enabled when you call this operation. If the AccessKey pair is disabled, you cannot call API operations.
+> **Note:** You must use the AccessKey pair of an organization that is enabled when you call this operation. If the AccessKey pair is disabled, you cannot call API operations.
 
 ### 5.3 Application Monitoring
 
@@ -1266,9 +1261,7 @@ Queries a metric.
 
 **Application monitoring metrics that can be queried**
 
-**Note**
-
-request parameters **Filters** must add `pid` and `regionId` conditions. If you know the specific query conditions, you should pass the values into the **Filters** parameters to limit the range of query results. If you do not know the specific query conditions, you can pass the dimensions in the following table to the **Dimensions** parameter to obtain a list of all possible values of the dimension.
+> **Note:** request parameters **Filters** must add `pid` and `regionId` conditions. If you know the specific query conditions, you should pass the values into the **Filters** parameters to limit the range of query results. If you do not know the specific query conditions, you can pass the dimensions in the following table to the **Dimensions** parameter to obtain a list of all possible values of the dimension.
 
 | Metric | Description | Dimension | Measure |
 |---|---|---|---|

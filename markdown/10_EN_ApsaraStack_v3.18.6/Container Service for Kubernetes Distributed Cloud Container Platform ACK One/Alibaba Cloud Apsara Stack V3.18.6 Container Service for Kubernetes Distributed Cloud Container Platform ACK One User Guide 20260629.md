@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 22
 source_pdf: "311a87a16f4549a7_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Distributed Cloud Container Plat"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1ACK%20One/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Container Service for Kubernetes Distributed Cloud Container Platform ACK One User Guide 20260629
@@ -53,9 +53,17 @@ This topic describes how to log in to the ACK One console.
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineer. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. o the ACK One console You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. o the ACK One console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -68,8 +76,10 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Computing > Container Service >**
 **Distributed Cloud Container Platform ACK One** to go to the **ACK One** console.
 zation management
@@ -189,9 +199,9 @@ down list.
 4. Find the RAM user that you want to authorize in the list and click **Authorization**
 **Management** in the **Action** column.
 5. In the dialog box that appears, specify **RAM Role Authorization** and click **OK**.
-You can select **Operations Administrator** or **Developer** for **RAM Role**
-**Authorization**.
-You can click **Revoke Authorization** in the **Action** column to revoke the authorization.
+
+> **Note:** You can select **Operations Administrator** or **Developer** for **RAM Role** **Authorization**.
+> You can click **Revoke Authorization** in the **Action** column to revoke the authorization.
 
 ## 4 Fleets
 
@@ -245,9 +255,8 @@ The following figure shows the network architecture that is used by Distributed 
 
 A Fleet instance serves as an ingress to the clusters that are associated with the Fleet instance. We recommend that you select a region that is close to most of the associated clusters. In the preceding figure, two associated clusters are deployed in Region 1 and one associated cluster is deployed in Region 2. In this scenario, you can deploy the Fleet instance in Region 1.
 
-**Important**
-
-You can create more than one Fleet instance for multi-cluster management based on various factors, such as the business type, nearest region, test environment, and production environment. Each associated cluster can be managed by only one Fleet instance.
+> **Important:** You can create more than one Fleet instance for multi-cluster management based on various factors, such as the business type, nearest region, test environment, and production environment.
+> Each associated cluster can be managed by only one Fleet instance.
 
 **How to select a VPC**
 
@@ -261,7 +270,9 @@ connect the VPCs to ensure that the API servers of the Fleet instance and associ
 
 **Important**
 
-Make sure that the security groups of the Fleet instance and the associated clusters accept connection requests from each other. When you specify the VPC of a Fleet instance, we recommend that you select the VPC in which most of the associated clusters reside. This way, the Fleet instance is automatically connected to the associated clusters by using VPC private connections. For example, ACK Cluster 1 and ACK Cluster 2 are deployed in VPC 1, and ACK Cluster 3 is deployed in VPC 2. In this scenario, you can deploy the Fleet instance in VPC 1.
+> Make sure that the security groups of the Fleet instance and the associated clusters accept connection requests from each other.
+
+When you specify the VPC of a Fleet instance, we recommend that you select the VPC in which most of the associated clusters reside. This way, the Fleet instance is automatically connected to the associated clusters by using VPC private connections. For example, ACK Cluster 1 and ACK Cluster 2 are deployed in VPC 1, and ACK Cluster 3 is deployed in VPC 2. In this scenario, you can deploy the Fleet instance in VPC 1.
 
 **How to select a vSwitch**
 
@@ -304,8 +315,18 @@ This topic describes how to view the details of a Fleet instance. After a Fleet 
 2. In the left-side navigation pane, click **Fleet List**.
 3. Optional. On the **Fleet List** page, specify the **Fleet ID** parameter to search for fleets.
 4. On the Fleet List page, find the Fleet instance that you want to manage and click the Fleet
-instance ID or click **Details** in the **Action** column. On the **Fleet Information** page, click **Delete** or **Refresh** in the upper-right corner to delete the Fleet instance or refresh the fleet instance information. On the **Basic Information** tab, you can view the name, ID, status, region, creation time, API Server endpoints, and other network information of the Fleet instance. You can turn on or off Deletion Protection for the Fleet instance. After you turn on Deletion Protection, you cannot delete the Fleet instance. On the **Connect to Fleet** tab, you can view the content of the kubeconfig files for internal access and external access. The kubeconfig files store the configurations for connecting kubectl to the Fleet instance over the Internet and internal network. On the **Fleet Logs** tab, you can view the logs of the Fleet instance. On the **Fleet List** page, click **View Logs** in the **Action** column to go to the **Fleet**
-**Logs** tab.
+instance ID or click **Details** in the **Action** column.
+
+> **Note:** On the **Fleet Information** page, click **Delete** or **Refresh** in the upper-right corner to delete the Fleet instance or refresh the fleet instance information.
+
+On the **Basic Information** tab, you can view the name, ID, status, region, creation time, API Server endpoints, and other network information of the Fleet instance.
+
+> **Note:** You can turn on or off Deletion Protection for the Fleet instance. After you turn on Deletion Protection, you cannot delete the Fleet instance.
+
+On the **Connect to Fleet** tab, you can view the content of the kubeconfig files for internal access and external access. The kubeconfig files store the configurations for connecting kubectl to the Fleet instance over the Internet and internal network. On the **Fleet Logs** tab, you can view the logs of the Fleet instance.
+
+> **Note:** On the **Fleet List** page, click **View Logs** in the **Action** column to go to the **Fleet** **Logs** tab.
+
 On the **Associate Cluster** tab, associate clusters with the Fleet instance. For more information, see Manage associated clusters.
 
 #### 4.1.5 Delete a Fleet instance
@@ -345,14 +366,12 @@ Wait a period of time (less than 5 minutes). On the **Associate Cluster** page, 
 **Association Status** of the cluster displays **Associated successfully**, the cluster is
 associated with the Fleet instance. Click **Details** in the **Actions** column to go to the **Basic**
 **Information** page of the cluster.
-After the cluster is associated, you need to manually refresh the Fleet management page to view the updated list of associated clusters. The following list describes the states of an associated cluster:
-**Processing**: The request for associating the cluster is submitted to the Fleet
-instance.
-**Associating**: The Fleet instance has received the association request and the
-cluster is being associated with the Fleet instance.
-**Associated successfully**: The cluster is associated with the Fleet instance.
-**Failed to associate**: The system failed to associate the cluster with the Fleet
-instance.
+
+> **Note:** After the cluster is associated, you need to manually refresh the Fleet management page to view the updated list of associated clusters. The following list describes the states of an associated cluster:
+> **Processing**: The request for associating the cluster is submitted to the Fleet instance.
+> **Associating**: The Fleet instance has received the association request and the cluster is being associated with the Fleet instance.
+> **Associated successfully**: The cluster is associated with the Fleet instance.
+> **Failed to associate**: The system failed to associate the cluster with the Fleet instance.
 
 #### 4.2.2 Disassociate clusters from a Fleet instance
 
@@ -367,7 +386,8 @@ instance ID or click **Details** in the **Action** column.
 5. Disassociate clusters
 Disassociate a single cluster: On the **Associate Cluster** tab, find the cluster that you want to disassociate from the Fleet instance and click **Disassociate** in the **Actions** column. Disassociate multiple clusters at a time: On the **Associate Cluster** tab, select multiple associated clusters and click **Batch Disassociate** below the list.
 6. In the message that appears, click **OK**.
-Wait a period of time and refresh the **Associate Cluster** tab. If the clusters are removed from the list of associated clusters, the clusters are disassociated.
+
+> **Note:** Wait a period of time and refresh the **Associate Cluster** tab. If the clusters are removed from the list of associated clusters, the clusters are disassociated.
 
 ### 4.3 Manage namespaces
 
@@ -465,7 +485,9 @@ This topic describes how to view the information about multi-cluster application
 to filter applications.
 6. In the multi-cluster application list, you can view **Tag Name**, **Type**, **Deployment State**,
 **Application**, **Namespace**, and **Creation Time** of multi-cluster applications.
-Click a number in the **Application** column to view the application summary information about the multi-cluster application. Click **View YAML** in the **Action** column to view the YAML information of the multi-cluster application (ArgoCD ApplicationSet resource).
+
+> **Note:** Click a number in the **Application** column to view the application summary information about the multi-cluster application.
+> Click **View YAML** in the **Action** column to view the YAML information of the multi-cluster application (ArgoCD ApplicationSet resource).
 
 #### 4.4.3 Modify the configuration of a multi-cluster application
 
@@ -479,7 +501,8 @@ This topic describes how to modify the configuration of a multi-cluster applicat
 5. On the **Multi-Cluster Application** page, find the application that you want to manage and
 click **Edit** in the **Action** column.
 6. On the **Edit Multi-Cluster Application** page, modify the configuration and click **OK**.
-You cannot modify the name of a multi-cluster application.
+
+> **Note:** You cannot modify the name of a multi-cluster application.
 
 #### 4.4.4 Delete a multi-cluster application
 

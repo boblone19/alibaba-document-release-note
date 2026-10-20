@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 358
 source_pdf: "92dba37387dcf114_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AI Gateway User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/AI%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20AI%20Gateway%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # OpenTrek AI Gateway User Guide 20260629
@@ -190,14 +190,15 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key. rt
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -212,16 +213,14 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 Enter the 6-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
-For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Product > Middleware > Application Integration > API**
 **Gateway** to navigate to the **API Gateway 2.0** console.
 
-**Note**
+> **Note:** AI Gateway and API Gateway share the same console.
 
-AI Gateway and API Gateway share the same console. rt
+rt
 
 ### 2.2 Use Model API to proxy AI traffic
 
@@ -247,9 +246,7 @@ You have created a Kubernetes cluster in Container Service for Kubernetes.
 4. In the **Import Kubernetes cluster** panel, configure the parameters shown in the following
 figure and click **OK**.
 
-**Note**
-
-For more information about parameter configurations, see Import a cluster.
+> **Note:** For more information about parameter configurations, see Import a cluster.
 
 **Step 2: Create a gateway instance**
 
@@ -276,9 +273,7 @@ and click **Create**.
 **Endpoint**: Enter the endpoint of the LLM that you want to use.
 **API Key**: Enter the API key of the LLM that you want to use.
 
-**Note**
-
-For more information about parameter configurations, see Create an AI service.
+> **Note:** For more information about parameter configurations, see Create an AI service.
 
 **Step 4: Create a Model API**
 
@@ -290,9 +285,9 @@ Generation.
 and click **OK**.
 **Service name**: Select the AI service that you just created.
 
-**Note**
+> **Note:** For more information about parameter configurations, see Create a model API.
 
-For more information about parameter configurations, see Create a model API. rt
+rt
 
 **Step 5: Debug the Model API**
 
@@ -305,9 +300,7 @@ click **Send Request**.
 **Model**: Enter the LLM that you want to use, for example, `qwen3.6-plus` .
 **Prompt**: Enter "Hello".
 
-**Note**
-
-For more information about parameter configurations, see Debug a model API.
+> **Note:** For more information about parameter configurations, see Debug a model API.
 
 ### 2.3 MCP management
 
@@ -378,9 +371,7 @@ service or **Details** in the **Actions** column, and then click the **Consumer 
 5. On the **Consumer Authentication** tab, turn on the **Enabled Status** switch for
 **Configuration Information**.
 
-**Important**
-
-After you enable consumer authentication, the service cannot be accessed if no authorization relationship is configured.
+> **Important:** After you enable consumer authentication, the service cannot be accessed if no authorization relationship is configured.
 
 | Configuration Item | Description |
 |---|---|
@@ -389,15 +380,13 @@ After you enable consumer authentication, the service cannot be accessed if no a
 
 6. In the **Consumers** area, click **Grant Authorization**, select a consumer, and click **Add**.
 
-**Note**
-
-If no consumers exist, you must first create one before you can grant authorization. For more information, see Create a consumer.
+> **Note:** If no consumers exist, you must first create one before you can grant authorization. For more information, see Create a consumer.
 
 **Debug an MCP service with MCP Inspector**
 
-**Note**
+> **Note:** You can start MCP Inspector locally to debug MCP services.
 
-You can start MCP Inspector locally to debug MCP services. MCP Inspector is a debugging tool provided by the MCP community. You can use it to debug the entire flow of an MCP service.
+MCP Inspector is a debugging tool provided by the MCP community. You can use it to debug the entire flow of an MCP service.
 1. Install the Node.js environment.
 2. Run the following command to start MCP Inspector: `npx @modelcontextprotocol/inspector`
 
@@ -447,9 +436,8 @@ kubeconfig information of a self-managed Kubernetes cluster.
 
 **Import a cluster**
 
-**Note**
+> **Note:** The system currently supports only Kubernetes clusters.
 
-The system currently supports only Kubernetes clusters.
 1. Log in to the AI Gateway console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, click **Import Kubernetes Cluster**.
@@ -515,9 +503,8 @@ You have imported a Kubernetes cluster. For more information, see Import a clust
 5. On the **Create API Gateway Instance** page, review the AI Gateway configuration details
 and click **Submit**.
 
-**Note**
+> **Note:** It may take 1 to 5 minutes to create the gateway instance. Please wait patiently.
 
-It may take 1 to 5 minutes to create the gateway instance. Please wait patiently.
 6. Return to the **Gateway** page. If the created gateway information is correct and the
 **instance status** is **Running**, the gateway is created successfully.
 
@@ -551,9 +538,8 @@ This topic describes how to modify the name of a gateway instance.
 
 **Procedure**
 
-**Note**
+> **Note:** You can only modify the instance name.
 
-You can only modify the instance name.
 1. Log in to the AI Gateway console.
 2. In the left-side navigation pane, click **AI Gateway**.
 3. On the **Gateway Instance** page, click
@@ -748,9 +734,8 @@ or click **Details** in the **Operation** column.
 6. In the **Select the use case** dialog box, click **Create** in the lower-right corner of the **Text**
 **generation** card.
 
-**Note**
+> **Note:** Currently, only **text generation** is supported.
 
-Currently, only **text generation** is supported.
 7. In the **Create a model API** panel, configure the following parameters and click **Confirm**.
 
 | Parameter | Description |
@@ -830,9 +815,7 @@ in the **Operation** column. Then, click the **Consumer Authentication** tab.
 5. On the **Consumer Authentication** tab, click the switch next to **Enable request**
 **authentication** to enable request authentication.
 
-**Important**
-
-After you enable consumer authentication, if no authorization relationship is configured, you cannot access the current API.
+> **Important:** After you enable consumer authentication, if no authorization relationship is configured, you cannot access the current API.
 
 | Configuration item | Description |
 |---|---|
@@ -844,9 +827,8 @@ After you enable consumer authentication, if no authorization relationship is co
 6. In the **Consumer Certification List** section, click **Authorization**, select consumers, and
 then click **Confirm**.
 
-**Note**
-
-If no consumers exist, create one first. For more information, see Create a consumer. Then, authorize the consumer. In the **Consumer Certification List** table, click **Remove** in the **Operation** column, or select the target consumers and click **Batch remove** to revoke consumer authorization for the model API.
+> **Note:** If no consumers exist, create one first. For more information, see Create a consumer. Then, authorize the consumer.
+> In the **Consumer Certification List** table, click **Remove** in the **Operation** column, or select the target consumers and click **Batch remove** to revoke consumer authorization for the model API.
 
 **Debug a model API**
 
@@ -858,9 +840,8 @@ or click **Details** in the **Operation** column.
 5. In the model API list, click **Debugging** in the **Operation** column of the target model API.
 6. In the **AI model debugging** panel, configure the parameters and click **Send Request**.
 
-**Note**
-
-Click **Fill in historical parameters** to quickly reproduce the previous configuration. Click **Reset** to restore default values.
+> **Note:** Click **Fill in historical parameters** to quickly reproduce the previous configuration.
+> Click **Reset** to restore default values.
 
 | Parameter | Description |
 |---|---|
@@ -878,9 +859,7 @@ Click **Fill in historical parameters** to quickly reproduce the previous config
 
 7. In the **Model return** section, view the generated result.
 
-**Note**
-
-By default, the system retains context across multiple calls. Click **Empty memory** to clear it.
+> **Note:** By default, the system retains context across multiple calls. Click **Empty memory** to clear it.
 
 #### 3.3.3 Configure model API policies
 
@@ -926,9 +905,7 @@ column, then click the **Policy Configuration** tab.
 7. In the **Timeout setting** section, configure the relevant parameters, then click **Save**
 **configuration**.
 
-**Note**
-
-After you configure and enable the timeout policy, verify whether the service timeout rule takes effect based on your actual business needs.
+> **Note:** After you configure and enable the timeout policy, verify whether the service timeout rule takes effect based on your actual business needs.
 
 | Parameter | Description |
 |---|---|
@@ -982,9 +959,9 @@ limiting scope → Rate limiting value + rate limiting unit. Parameter name: Req
 **By client IP**: Rate limiting based on the client IP address. Supports individual IPs and IP
 segments.
 
-**Note**
+> **Note:** When **By client IP** is selected, you do not need to select a matching rule or rate limiting scope. The system handles this automatically.
 
-When **By client IP** is selected, you do not need to select a matching rule or rate limiting scope. The system handles this automatically. Form fields: Judgment condition (**By client IP**) → IP address → Rate limiting category → Rate limiting scope → Rate limiting value + rate limiting unit.
+Form fields: Judgment condition (**By client IP**) → IP address → Rate limiting category → Rate limiting scope → Rate limiting value + rate limiting unit.
 
 | example, | 192.168.1.1 |   |
 |---|---|---|
@@ -1012,9 +989,7 @@ The system supports the following four matching rules for judgment conditions of
 |---|---|
 | `^(gold |   |
 
-**Note**
-
-If you configure multiple rules, triggering any single rule results in blocking. Rate limiting by client IP and by model uses fixed matching methods. You do not need to manually select a matching rule.
+> **Note:** If you configure multiple rules, triggering any single rule results in blocking. Rate limiting by client IP and by model uses fixed matching methods. You do not need to manually select a matching rule.
 
 **Rate limiting categories and rate limiting modes**
 
@@ -1038,9 +1013,7 @@ Rate limiting policies support the following rate limiting scopes (time windows)
 | Every day | The maximum number of tokens allowed for consumption per day. | The maximum number of requests allowed per day. | — |
 | (No time window) | — | — | The maximum number of requests allowed for simultaneous processing. |
 
-**Note**
-
-Concurrency rate limiting does not require a rate limiting scope (time window). You only need to set the maximum concurrency value. The valid range for the rate limiting value is from 1 to 2,147,483,647.
+> **Note:** Concurrency rate limiting does not require a rate limiting scope (time window). You only need to set the maximum concurrency value. The valid range for the rate limiting value is from 1 to 2,147,483,647.
 
 **Configure AI content safety**
 
@@ -1146,9 +1119,7 @@ or click **Details** in the **Operation** column.
 5. In the AI service list, click **Editor** in the **Operation** column of the target AI service.
 6. On the **AI Editing Service** page, modify the parameters and click **Save**.
 
-**Note**
-
-You cannot change the name of the AI service.
+> **Note:** You cannot change the name of the AI service.
 
 **Delete AI services**
 
@@ -1167,9 +1138,8 @@ A route is the primary method by which a gateway exposes its access capabilities
 
 **Create a route**
 
-**Note**
+> **Note:** After you configure the route, the system supports both HTTP and WebSocket access.
 
-After you configure the route, the system supports both HTTP and WebSocket access.
 1. Log in to the AI Gateway console.
 2. In the left-side navigation pane, click **AI Gateway**.
 3. On the **Gateway instance** page, find the instance that you want to manage and click its ID
@@ -1202,9 +1172,9 @@ view information about **route details**, **plugin configuration**, **policy con
 On the **Route details** tab, you can view the detailed information about the route, including **basic information**, **associated services**, and **associated domain names**. Click the **Plugin configuration** tab to manage plugins bound to the current route. Click
 **Add plugin** to bind a plugin to the route. For more information, see Create a plugin.
 
-**Note**
+> **Note:** On the route list page, you can also click **Plugin configuration** in the **Actions** column to go directly to the **Plugin configuration** tab.
 
-On the route list page, you can also click **Plugin configuration** in the **Actions** column to go directly to the **Plugin configuration** tab. Click the **Policy configuration** tab to configure policy rewriting, header modification, timeout settings, and degradation. For more information, see Policy configuration. Click the **Usage guide** tab to view the **configuration information**, **parameter**
+Click the **Policy configuration** tab to configure policy rewriting, header modification, timeout settings, and degradation. For more information, see Policy configuration. Click the **Usage guide** tab to view the **configuration information**, **parameter**
 **settings**, and **usage examples** of the route.
 **Configuration information**: includes **domain name**, **model selection**, **consumer**,
 and **external access address**. The system allows you to modify the **domain name**,
@@ -1245,9 +1215,8 @@ or click **Details** in the **Operation** column.
 5. In the route list, click **Debug** in the **Actions** column of the target route.
 6. In the **AI model debugging** panel, configure the parameters and click **Send request**.
 
-**Note**
-
-Click **Fill in historical parameters** to quickly reproduce the previous configuration. Click **Reset** to quickly restore default values.
+> **Note:** Click **Fill in historical parameters** to quickly reproduce the previous configuration.
+> Click **Reset** to quickly restore default values.
 
 | Parameter | Description |
 |---|---|
@@ -1263,10 +1232,7 @@ Click **Fill in historical parameters** to quickly reproduce the previous config
 
 7. In the **Model response** section, view the generated result.
 
-**Note**
-
-By default, the system retains context across multiple calls. You can click **Clear**
-**memory** to clear the context.
+> **Note:** By default, the system retains context across multiple calls. You can click **Clear** **memory** to clear the context.
 
 ### 3.6 Policy configuration
 
@@ -1313,9 +1279,7 @@ If the original request path is `/app/test` but the path forwarded to the backen
 
 Rewrite: The rewrite pattern is an exact rewrite, and the path is `/foo/bar` .
 
-**Important**
-
-An exact rewrite requires the routing match pattern to be an exact match or a regular expression match. Exact rewrite is not supported for prefix matches.
+> **Important:** An exact rewrite requires the routing match pattern to be an exact match or a regular expression match. Exact rewrite is not supported for prefix matches.
 
 **Prefix rewrite**
 
@@ -1329,9 +1293,7 @@ If the original request path is `/app/test` but the path forwarded to the backen
 
 If the original request path is `/v1/test` but the path forwarded to the backend service must be `/v2/test` , the recommended configuration is as follows: Routing match condition: The match pattern is a prefix match, and the path is `/v1` . Rewrite: The rewrite pattern is a prefix rewrite, and the path is `/v2` .
 
-**Important**
-
-A prefix rewrite requires the routing match pattern to be a prefix match. Exact matches or regular expression matches do not support prefix rewrite. Because a prefix match pattern matches all requests with the specified path prefix, confirm that all these requests must be rewritten when you configure the prefix rewrite. If not, use an exact rewrite.
+> **Important:** A prefix rewrite requires the routing match pattern to be a prefix match. Exact matches or regular expression matches do not support prefix rewrite. Because a prefix match pattern matches all requests with the specified path prefix, confirm that all these requests must be rewritten when you configure the prefix rewrite. If not, use an exact rewrite.
 
 **Host domain rewrite**
 
@@ -1397,9 +1359,7 @@ name to go to the **Routing Details** page.
 7. On the **Policy Configuration** tab, click **Timeout**.
 8. In the **Timeout** area, configure the parameters, and then click **Save**.
 
-**Note**
-
-After you configure and enable the timeout policy, verify that the timeout rule takes effect.
+> **Note:** After you configure and enable the timeout policy, verify that the timeout rule takes effect.
 
 | Parameter | Description |
 |---|---|
@@ -1425,9 +1385,9 @@ name to go to the **Routing Details** page.
 7. On the **Policy Configuration** tab, click **Degradation**.
 8. In the **Degradation** section, configure the parameters and click **Save**.
 
-**Important**
-
-A degradation service should be simple, stable, and respond quickly. Verify the degradation logic in a staging environment before publishing to the production environment. Degradation is used only to ensure availability and should not affect core business logic.
+> **Important:** A degradation service should be simple, stable, and respond quickly.
+> Verify the degradation logic in a staging environment before publishing to the production environment.
+> Degradation is used only to ensure availability and should not affect core business logic.
 
 | Parameter | Description |
 |---|---|
@@ -1453,9 +1413,7 @@ or click **Details** in the **Operation** column.
 5. On the **Service List** page, select the **Service** tab, then click **Create Service**.
 6. On the **Create Service** page, configure the following parameters, then click **Submission**.
 
-**Note**
-
-The AI Gateway does not modify your request. When the request is forwarded to the backend domain name service, the system does not rewrite the Host header to the domain name you configured.
+> **Note:** The AI Gateway does not modify your request. When the request is forwarded to the backend domain name service, the system does not rewrite the Host header to the domain name you configured.
 
 | Configuration item | Description |
 |---|---|
@@ -1509,18 +1467,14 @@ In the **Basic Information** section, view the service **name**, **origin type**
 **type**.
 In the **Node List** section, view the primary **hostname/IP** and **port**. In the **Associated Routes** section, view the **route name** and **route path**. Click the **Plugin Configuration** tab to manage plugins bound to the current service. Click **Add Plugin** to bind a plugin to the service. For more information, see Create a plugin.
 
-**Note**
-
-On the service list page, you can also click **Plugin Configuration** in the **Actions** column to jump directly to the **Plugin Configuration** tab.
+> **Note:** On the service list page, you can also click **Plugin Configuration** in the **Actions** column to jump directly to the **Plugin Configuration** tab.
 
 **Edit a service**
 
 1. On the **Services** tab, click **Edit** in the **Actions** column for the service you want to modify.
 2. In the **Edit Service** panel, update the service parameters and click **Submit**.
 
-**Note**
-
-You can edit static IP services and DNS services that you created yourself. You cannot edit other service types, such as Kubernetes services.
+> **Note:** You can edit static IP services and DNS services that you created yourself. You cannot edit other service types, such as Kubernetes services.
 
 **Delete a service**
 
@@ -1577,18 +1531,15 @@ or click **Details** in the **Operation** column.
 1. In the list, find the origin that you want to modify and click **Edit** in the **Actions** column.
 2. Modify the relevant parameters and click **OK** to complete the modification.
 
-**Note**
-
-The configuration of an origin may change over time. The platform provides the feature to modify origins so that you can adjust their parameters. To ensure the stability of downstream services, the system rejects edit requests if the origin has associated downstream services.
+> **Note:** The configuration of an origin may change over time. The platform provides the feature to modify origins so that you can adjust their parameters.
+> To ensure the stability of downstream services, the system rejects edit requests if the origin has associated downstream services.
 
 **Delete an origin**
 
 1. On the **Origin** tab, click **Delete** in the **Actions** column for the target origin.
 2. In the dialog box that appears, click **OK**.
 
-**Note**
-
-To ensure the stability of downstream services, the system rejects delete requests if the origin has associated downstream services.
+> **Note:** To ensure the stability of downstream services, the system rejects delete requests if the origin has associated downstream services.
 
 ### 3.8 Consumer management
 
@@ -1655,9 +1606,9 @@ Method 2: Find the consumer that you want to manage and click its name. On the
 6. On the **Consumer Authorization** tab, you can authorize the consumer to use routes,
 Model Context Protocol (MCP) services, and model APIs. Route authorization: On the **Routing** tab, click **Authorization**, select one or more routes from the **Routing** drop-down list, and then click **Determine**.
 
-**Note**
+> **Note:** If no route is available, create one. For more information, see Route management.
 
-If no route is available, create one. For more information, see Route management. MCP service authorization: On the **MCP Service** tab, click **Authorization**, select one or more MCP services from the **MCP Service** drop-down list, and then click **Determine**.
+MCP service authorization: On the **MCP Service** tab, click **Authorization**, select one or more MCP services from the **MCP Service** drop-down list, and then click **Determine**.
 
 **Note**
 
@@ -1783,9 +1734,7 @@ service or **Details** in the **Actions** column, and then click the **Consumer 
 5. On the **Consumer Authentication** tab, turn on the **Enabled Status** switch for
 **Configuration Information**.
 
-**Important**
-
-After you enable consumer authentication, the service cannot be accessed if no authorization relationship is configured.
+> **Important:** After you enable consumer authentication, the service cannot be accessed if no authorization relationship is configured.
 
 | Configuration Item | Description |
 |---|---|
@@ -1794,15 +1743,13 @@ After you enable consumer authentication, the service cannot be accessed if no a
 
 6. In the **Consumers** area, click **Grant Authorization**, select a consumer, and click **Add**.
 
-**Note**
-
-If no consumers exist, you must first create one before you can grant authorization. For more information, see Create a consumer.
+> **Note:** If no consumers exist, you must first create one before you can grant authorization. For more information, see Create a consumer.
 
 **Debug an MCP service with MCP Inspector**
 
-**Note**
+> **Note:** You can start MCP Inspector locally to debug MCP services.
 
-You can start MCP Inspector locally to debug MCP services. MCP Inspector is a debugging tool provided by the MCP community. You can use it to debug the entire flow of an MCP service.
+MCP Inspector is a debugging tool provided by the MCP community. You can use it to debug the entire flow of an MCP service.
 1. Install the Node.js environment.
 2. Run the following command to start MCP Inspector: `npx @modelcontextprotocol/inspector`
 
@@ -1858,9 +1805,10 @@ AI ai-proxy ai-quota ai-security-guard ai-statistics ai-token-ratelimit ai-load-
 or click **Details** in the **Operation** column.
 4. Go to the plugin creation page.
 
-**Note**
+> **Note:** The system provides five entry points for creating plugins, each suitable for different scenarios. You can choose any one as needed.
+> Plugins created via the main entry point apply to the current instance.
+> Plugins created via quick entry points apply to the current service, route, domain name, or MCP service.
 
-The system provides five entry points for creating plugins, each suitable for different scenarios. You can choose any one as needed. Plugins created via the main entry point apply to the current instance. Plugins created via quick entry points apply to the current service, route, domain name, or MCP service.
 **Main entry point**: Use this entry point to create a plugin for the current instance.
 a. In the left-side navigation pane, select **Plugin**, then click **Create Plugin**. b. On the **Create Plugin** page, select the corresponding plugin.
 **Quick entry point 1**: Use this entry point to create a plugin for a specific route or a
@@ -1875,9 +1823,7 @@ a combination of domain objects that include this MCP service. a. In the left-si
 c. Click the **Plugin Configuration** tab, then click **AddPlugin** to go to the **Create Plugin** page and select the corresponding plugin for creation.
 5. After configuring the relevant information based on the selected plugin, click **OK**.
 
-**Note**
-
-The following procedure takes creating a CORS plugin as an example. The procedures for other plugins are similar.
+> **Note:** The following procedure takes creating a CORS plugin as an example. The procedures for other plugins are similar.
 
 | Parameter | Description |
 |---|---|
@@ -1927,15 +1873,12 @@ or click **Details** in the **Operation** column.
 After adding a custom plug-in, you can **modify** or **delete** it. Modify a plug-in i. Click on the plug-in card and select **Modify**. ii. In the **Edit Custom Plug-In** panel, edit the plug-in’s basic information, **configuration**
 **example**, and **plug-in documentation**. Click **Save** when finished.
 
-**Note**
+> **Note:** **Configuration example** must use YAML format.
+> **Plug-in documentation** must use Markdown format.
 
-**Configuration example** must use YAML format.
-**Plug-in documentation** must use Markdown format.
 Delete a plug-in i. Click on the plug-in card and select **Delete**. ii. In the dialog box that appears, click **OK**.
 
-**Note**
-
-After you delete a plug-in, objects configured with this plug-in are automatically unbound.
+> **Note:** After you delete a plug-in, objects configured with this plug-in are automatically unbound.
 
 #### 3.10.3 Manage plug-ins
 
@@ -1999,9 +1942,9 @@ column.
 
 The `AI proxy` plugin implements AI proxy features based on the OpenAI API contract. It currently supports AI service providers (SPs), such as OpenAI, Azure OpenAI, Moonshot, and Qwen.
 
-**Important**
+> **Important:** If the URI of the request ends with `/v1/chat/completions` , it is a text generation scenario. The plugin parses the request body using the OpenAI text generation protocol and then transforms it into the protocol of the target Large Language Model (LLM) provider.
 
-If the URI of the request ends with `/v1/chat/completions` , it is a text generation scenario. The plugin parses the request body using the OpenAI text generation protocol and then transforms it into the protocol of the target Large Language Model (LLM) provider. If the URI of the request ends with `/v1/embeddings` , it is a text embedding scenario. The plugin parses the request body using the OpenAI text embedding protocol and then transforms it into the protocol of the target LLM provider.
+> If the URI of the request ends with `/v1/embeddings` , it is a text embedding scenario. The plugin parses the request body using the OpenAI text embedding protocol and then transforms it into the protocol of the target LLM provider.
 
 **Runtime properties**
 
@@ -2144,9 +2087,7 @@ The `type` for Azure OpenAI is `azure` . Its specific configuration fields are a
 |---|---|---|---|
 |   | l |   |   |
 
-**Important**
-
-Azure OpenAI supports only one API token.
+> **Important:** Azure OpenAI supports only one API token.
 
 **Moonshot**
 
@@ -4460,9 +4401,8 @@ DNS-type service. For more information, see Create a service.
 2. You need a route that is configured for the LLM API. For more information, see Create a
 route.
 
-**Note**
+> **Note:** LLM API: A route whose upstream service is an LLM service is a route for the LLM API.
 
-LLM API: A route whose upstream service is an LLM service is a route for the LLM API.
 3. Click **Plugin configuration** in the **Actions** column of the target route to go to the
 configured plugin list. Then, click **Add plugin** to go to the **Create plugin** page where you can view the list of configurable plugins.
 4. Click **ai-security-guard** to go to the **Create plugin: ai-security-guard** page.
@@ -4557,9 +4497,7 @@ spec:
 
 **regulations**
 
-**Note**
-
-All subsequent scenarios also support access_key and rrsa. The configuration method is the same. This document does not provide examples for rrsa.
+> **Note:** All subsequent scenarios also support access_key and rrsa. The configuration method is the same. This document does not provide examples for rrsa.
 
 ```bash
 serviceName: yundun-green-service.dns servicePort: 80 serviceHost: "greenprivate-biz.cn-*****-*****-d01.inter.env38.shuguang.com" credentialType: "oidc_role_arn" rrsaInfoServiceName: "rrsa-info-server.higress-system.svc.cluster.local" rrsaInfoServicePort: 18080 checkRequest: true
@@ -6043,9 +5981,8 @@ Execution phase: `Default phase` . Execution priority: `400` .
 |   | dashvector.serviceHost |
 |---|---|
 
-**Note**
-
-After the plugin is enabled, when you use the Tracing Analysis feature, the document `id` retrieved by `rag` is added to the `attribute` of the `span` for troubleshooting.
+> **Note:** After the plugin is enabled, when you use the Tracing Analysis feature, the document
+> `id` retrieved by `rag` is added to the `attribute` of the `span` for troubleshooting.
 
 **Example**
 
@@ -6273,9 +6210,7 @@ searchFrom:
  count: 10
 ```
 
-**Important**
-
-High concurrency may cause rate limiting. Adjust the concurrency level as needed.
+> **Important:** High concurrency may cause rate limiting. Adjust the concurrency level as needed.
 
 **Elasticsearch configuration (for connecting to a private**
 
@@ -6573,9 +6508,9 @@ long","frequency_penalty":0,"max_tokens":800,"stream":false,"messages":[
 
 After the request is filled:
 
-**Note**
+> **Note:** Because this is the request for the first conversation round, no history is filled. The request remains unchanged.
 
-Because this is the request for the first conversation round, no history is filled. The request remains unchanged. First-round response: `{`
+First-round response: `{`
 
 ```json
  "id": "02f4c621-820e-97d4-a905-1e3d0d8f59c6",
@@ -6636,9 +6571,7 @@ long","frequency_penalty":0,"max_tokens":800,"stream":false,"messages":[
 
 After the request is completed:
 
-**Note**
-
-This is a second-round request. The conversation history from the previous round is automatically populated.
+> **Note:** This is a second-round request. The conversation history from the previous round is automatically populated.
 
 ```bash
  curl 'http://example.com/api/openai/v1/chat/completions?fill_history_cnt=3' \
@@ -6769,9 +6702,7 @@ Plugin execution phase: `Default Phase` . Plugin execution priority: `150` .
 |   |   |   |   |   |   |   |   | filename="respo |   |   |
 |   |   |   |   |   |   |   |   | nse.json" |   |   |
 
-**Note**
-
-For performance reasons, the maximum supported JSON Schema depth is 6 by default. If a JSON Schema exceeds this depth, it is not used for validation. The plugin only checks if the returned response is in a valid JSON format.
+> **Note:** For performance reasons, the maximum supported JSON Schema depth is 6 by default. If a JSON Schema exceeds this depth, it is not used for validation. The plugin only checks if the returned response is in a valid JSON format.
 
 **Request and response parameters**
 
@@ -7329,9 +7260,9 @@ The plugin extracts the model parameter from the request and sets it as the valu
 
 **Extract the provider field from the model parameter for routing**
 
-**Important**
+> **Important:** In this pattern, you must specify the provider in the `model` parameter using a `/` as a separator.
 
-In this pattern, you must specify the provider in the `model` parameter using a `/` as a separator. Use the following configuration:
+Use the following configuration:
 
 ```
 addProviderHeader: x-higress-llm-provider
@@ -7447,9 +7378,10 @@ allow:
 - consumer2
 ```
 
-**Note**
+> **Note:** In this example, `route-a` and `route-b` are the route names that you enter when you create gateway routes. When a request matches these routes, callers with the name `consumer1` are granted access. All other callers are denied access.
+> In this example, `*.example.com` and `test.com` are used to match the domain name of the request. When a domain name matches, callers with the name `consumer2` are granted access. All other callers are denied access.
 
-In this example, `route-a` and `route-b` are the route names that you enter when you create gateway routes. When a request matches these routes, callers with the name `consumer1` are granted access. All other callers are denied access. In this example, `*.example.com` and `test.com` are used to match the domain name of the request. When a domain name matches, callers with the name `consumer2` are granted access. All other callers are denied access. Based on this configuration, the following requests are allowed:
+Based on this configuration, the following requests are allowed:
 
 **Assume that a request matches the route-a route and the API key is set in a URL**
 
@@ -7537,9 +7469,10 @@ The following table describes the fields for each subkey in `consumers` .
 | clock skew s _ _ econds | number | Optional. | 60 | The allowed clock skew in seconds when verifying the `exp` and `iat` fields of the JWT. |
 | keep token _ | bool | Optional. | true | Specifies whether to keep the JWT when forwarding the request to the backend. |
 
-**Note**
+> **Note:** The default values are used only when `from_headers` , `from_params` , and
+> `from_cookies` are not configured.
 
-The default values are used only when `from_headers` , `from_params` , and `from_cookies` are not configured. The following table describes the configuration fields for each item in `from_headers` .
+The following table describes the configuration fields for each item in `from_headers` .
 
 | Name | Data type | Requirement | Defaul t value | Description |
 |---|---|---|---|---|
@@ -7572,9 +7505,8 @@ The following table describes the configuration fields for each item in `remote_
 |---|---|---|---|---|
 | allow | array of string | Optional. Cannot be configured at the instance level. | - | Can be configured only on fine- grained rules such as routes or domain names. For requests that meet the matching conditions, configure the allowed consumers to implement fine-grained access control. |
 
-**Important**
-
-Authorization and authentication configurations cannot exist in the same rule. For requests that pass authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
+> **Important:** Authorization and authentication configurations cannot exist in the same rule.
+> For requests that pass authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
 
 **Configuration examples**
 
@@ -7582,9 +7514,7 @@ Authorization and authentication configurations cannot exist in the same rule. F
 
 The following configuration enables JWT Auth authentication and authorization for specific gateway routes or domain names.
 
-**Note**
-
-If a JWT can match multiple JWKS, the first matching consumer in the configuration order is used.
+> **Note:** If a JWT can match multiple JWKS, the first matching consumer in the configuration order is used.
 
 **Plugin configuration**
 
@@ -7657,9 +7587,9 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-In this example, `route-a` and `route-b` are the names of the gateway routes. If a request matches either of these routes, access is granted to callers with the `name` `consumer1` , and denied to all other callers. This example uses `*.example.com` and `test.com` to match the domain name of a request. If the domain name matches, callers with the `name` `consumer2` are allowed access, while all other callers are denied access.
+> **Note:** In this example, `route-a` and `route-b` are the names of the gateway routes. If a request matches either of these routes, access is granted to callers with the
+> `name` `consumer1` , and denied to all other callers.
+> This example uses `*.example.com` and `test.com` to match the domain name of a request. If the domain name matches, callers with the `name` `consumer2` are allowed access, while all other callers are denied access.
 
 **Request examples**
 
@@ -7865,9 +7795,8 @@ The following table describes the fields for each item in `consumers` .
 |---|---|---|---|---|
 | allow | array of string | Optional (not for instance-level configuration). | - | Can only be configured on fine- grained rules such as routes or domain names. For requests that meet the matching conditions, configure the allowed consumers to implement fine-grained access control. |
 
-**Important**
-
-Authorization and authentication configurations cannot be used in the same rule. If a request passes authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
+> **Important:** Authorization and authentication configurations cannot be used in the same rule.
+> If a request passes authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
 
 **Configuration examples**
 
@@ -7875,9 +7804,10 @@ Authorization and authentication configurations cannot be used in the same rule.
 
 The following configuration enables Basic Auth authentication and authorization for specific gateway routes or domain names.
 
-**Note**
+> **Note:** Use a colon (:) to separate the username and password in the credential information.
+> The `credential` field cannot have duplicate values.
 
-Use a colon (:) to separate the username and password in the credential information. The `credential` field cannot have duplicate values. Configure the plugin at the instance level as follows:
+Configure the plugin at the instance level as follows:
 
 ```
 global_auth: false consumers:
@@ -7901,9 +7831,11 @@ allow:
 - consumer2
 ```
 
-**Note**
+> **Note:** `route-a` and `route-b` in this example are the route names that you specified when you created the gateway routes. If a request matches these routes, only callers with the `name` `consumer1` are allowed access. All other callers are denied access.
+> `*.example.com` and `test.com` in this example are used to match the domain name of a request. If a domain name matches, only callers with the `name`
+> `consumer2` are allowed access. All other callers are denied access.
 
-`route-a` and `route-b` in this example are the route names that you specified when you created the gateway routes. If a request matches these routes, only callers with the `name` `consumer1` are allowed access. All other callers are denied access. `*.example.com` and `test.com` in this example are used to match the domain name of a request. If a domain name matches, only callers with the `name` `consumer2` are allowed access. All other callers are denied access. Based on this configuration, the following requests are allowed: You are prompted for a username and password.
+Based on this configuration, the following requests are allowed: You are prompted for a username and password.
 
 ```bash
 # Assume the following request matches the route-a route
@@ -7913,9 +7845,9 @@ curl -u admin:123456 http://xxx.hello.com/test
 st be Base64-encoded. curl -H 'Authorization: Basic YWRtaW46MTIzNDU2' http://xxx.hello.com/test
 ```
 
-**Note**
+> **Note:** After successful authentication and authorization, an `X-Mse-Consumer` field is added to the request header. In this example, the value of this field is `consumer1` , which is the name of the caller.
 
-After successful authentication and authorization, an `X-Mse-Consumer` field is added to the request header. In this example, the value of this field is `consumer1` , which is the name of the caller. The following requests are denied: The request does not include a username or password. A 401 error is returned.
+The following requests are denied: The request does not include a username or password. A 401 error is returned.
 
 ```bash
 curl http://xxx.hello.com/test
@@ -8097,9 +8029,7 @@ GET /oauth2/sign_out HTTP/1.1 X-Auth-Request-Redirect: https://my-oidc-provider.
 
 The redirection URL can include the `post_logout_redirect_uri` parameter to specify the page to which the OIDC Provider redirects the user after the user logs off, such as the logoff page of the backend service. If this parameter is not included, the user is redirected to the default logoff page of the OIDC Provider. For more information, see the Auth0 and Keycloak examples below.
 
-**Note**
-
-If the OIDC Provider supports session management and discovery, the sign_out_page must be the `end_session_endpoint` that is obtained from the metadata.
+> **Note:** If the OIDC Provider supports session management and discovery, the sign_out_page must be the `end_session_endpoint` that is obtained from the metadata.
 
 **OIDC service with HTTPS protocol**
 
@@ -8115,9 +8045,7 @@ If the OIDC Provider uses the HTTPS protocol, see Configure the backend service 
 
 Log on to the Auth0 developer website. Register a test web app.
 
-**Important**
-
-You must configure items such as Allowed Callback URLs, Allowed Logout URLs, and Allowed Web Origins. Otherwise, the OIDC Provider considers the redirection URL or logoff URL of the user invalid.
+> **Important:** You must configure items such as Allowed Callback URLs, Allowed Logout URLs, and Allowed Web Origins. Otherwise, the OIDC Provider considers the redirection URL or logoff URL of the user invalid.
 
 **Step 2: Configure the service source in the AI Gateway**
 
@@ -8156,9 +8084,7 @@ redirect_url: 'http://foo.bar.com/oauth2/callback' oidc_issuer_url: 'https://dev
  match_rule_type: 'prefix'
 ```
 
-**Important**
-
-You must configure the service source first. This is because the Wasm plugin needs to access the configured service to obtain the openid-configuration during initialization.
+> **Important:** You must configure the service source first. This is because the Wasm plugin needs to access the configured service to obtain the openid-configuration during initialization.
 
 **Test the results**
 
@@ -8182,9 +8108,7 @@ http://foo.bar.com/oauth2/sign_out?rd=https%3A%2F%2Fdevo43xb1mz7ya7ach4.us.auth0
 http://foo.bar.com/oauth2/sign_out?rd=https%3A%2F%2Fdevo43xb1mz7ya7ach4.us.auth0.com%2Foidc%2Flogout%3Fpost_logout_redirect_uri%3Dhttp% A%2F%2Ffoo.bar.com%2Ffoo
 ```
 
-**Important**
-
-The URI for the `post_logout_redirect_uri` redirection must be configured in the Allowed URLs of the OIDC Provider to work as expected.
+> **Important:** The URI for the `post_logout_redirect_uri` redirection must be configured in the Allowed URLs of the OIDC Provider to work as expected.
 
 **Keycloak configuration example**
 
@@ -8194,9 +8118,7 @@ The URI for the `post_logout_redirect_uri` redirection must be configured in the
 
 https://www.keycloak.org/getting-started/getting-started-docker
 
-**Important**
-
-You must configure items such as Valid redirect URIs, Valid post logout URIs, and Web origins. Otherwise, the OIDC Provider considers the redirection URL or logoff URL of the user invalid.
+> **Important:** You must configure items such as Valid redirect URIs, Valid post logout URIs, and Web origins. Otherwise, the OIDC Provider considers the redirection URL or logoff URL of the user invalid.
 
 **Step 2: Configure the service source in the AI Gateway**
 
@@ -8402,9 +8324,8 @@ The following table describes the fields for each item in the `consumers` array.
 |---|---|---|---|---|
 | allow | array of string | Optional configuration (non- instance-level) | - | This parameter can only be configured in fine-grained rules, such as routes or domain names. For requests that match the conditions, configure the allowed consumers to implement fine-grained access control. |
 
-**Important**
-
-Authorization and authentication configurations cannot exist in the same rule. For requests that pass both authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
+> **Important:** Authorization and authentication configurations cannot exist in the same rule.
+> For requests that pass both authentication and authorization, an `X-Mse-Consumer` field is added to the request header to identify the caller's name.
 
 **Configuration examples**
 
@@ -8412,9 +8333,9 @@ Authorization and authentication configurations cannot exist in the same rule. F
 
 The following configuration enables HMAC authentication and authorization for specific gateway routes or domain names.
 
-**Important**
+> **Important:** The value of the `key` field must be unique.
 
-The value of the `key` field must be unique. Configure the plugin at the instance level as follows:
+Configure the plugin at the instance level as follows:
 
 ```
 global_auth: false consumers:
@@ -8440,9 +8361,8 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-The `route-a` and `route-b` specified in this example are the route names that you entered when you created the gateway routes. When a request matches these routes, callers with the `name` `consumer-1` are allowed access. Other callers are denied access. The `*.example.com` and `test.com` specified in this example are used to match the domain name of the request. When a domain name match is found, callers with the `name` `consumer-2` are allowed access. Other callers are denied access.
+> **Note:** The `route-a` and `route-b` specified in this example are the route names that you entered when you created the gateway routes. When a request matches these routes, callers with the `name` `consumer-1` are allowed access. Other callers are denied access.
+> The `*.example.com` and `test.com` specified in this example are used to match the domain name of the request. When a domain name match is found, callers with the `name` `consumer-2` are allowed access. Other callers are denied access.
 
 **Enable at the gateway instance level**
 
@@ -8499,9 +8419,9 @@ If a header has an empty value, use `HeaderKey:` + `\n` for the signature. The k
 Path + "?" + Key1 + "=" + Value1 + "&" + Key2 + "=" + Value2 + ... "&" + KeyN + "=" + ValueN
 ```
 
-**Note**
-
-The key-value pairs for query and form parameters are sorted alphabetically by key and then concatenated as shown above. If there are no query or form parameters, use only the path. Do not add a `?`. If a query or form contains an array parameter (parameters with the same key but different values), use the first value for the signature calculation.
+> **Note:** The key-value pairs for query and form parameters are sorted alphabetically by key and then concatenated as shown above.
+> If there are no query or form parameters, use only the path. Do not add a `?`.
+> If a query or form contains an array parameter (parameters with the same key but different values), use the first value for the signature calculation.
 
 **String-to-sign extraction example**
 
@@ -8573,9 +8493,7 @@ X-Ca-Error-Message: Server StringToSign:`GET#application/json##application/json#
 | 413 | Request Body Too Large. | The request body exceeds the size limit of 32 MB. |
 | 413 | Payload Too Large. | The request body exceeds the global `DownstreamConnectionBufferLimits` configuration. You can increase this value on the parameter settings page. |
 
-**Note**
-
-Increase the `DownstreamConnectionBufferLimits` value with caution. A higher value for this parameter significantly increases the memory usage of the gateway.
+> **Note:** Increase the `DownstreamConnectionBufferLimits` value with caution. A higher value for this parameter significantly increases the memory usage of the gateway.
 
 ##### 3.10.5.6 External authentication
 
@@ -9057,9 +8975,7 @@ The following table describes the configuration fields for each item in `consume
 | allow | array of string | Optional non- instance-level configuration | - | Can only be configured on fine- grained rules such as routes or domain names. For requests that meet the matching conditions, configure the allowed consumers to implement fine-grained access control. |
 |---|---|---|---|---|
 
-**Important**
-
-Authentication and authorization cannot be configured in the same rule.
+> **Important:** Authentication and authorization cannot be configured in the same rule.
 
 **Configuration examples**
 
@@ -9111,9 +9027,8 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-In this example, `route-a` and `route-b` are the names of the gateway routes. If a request matches these routes, callers whose `name` is `consumer1` are granted access. All other callers are denied access. In this example, `*.example.com` and `test.com` are used to match the domain name of a request. If a match is found, callers whose `name` is `consumer2` are granted access. All other callers are denied access.
+> **Note:** In this example, `route-a` and `route-b` are the names of the gateway routes. If a request matches these routes, callers whose `name` is `consumer1` are granted access. All other callers are denied access.
+> In this example, `*.example.com` and `test.com` are used to match the domain name of a request. If a match is found, callers whose `name` is `consumer2` are granted access. All other callers are denied access.
 
 **Enable at the gateway instance level**
 
@@ -10250,9 +10165,7 @@ The following table describes the configuration fields for each item in `conditi
 | operator | string | - | Yes | The operator. Supported values are equal , not equal , _ prefix , in , not in , _ regex , and percentage . |
 | value | array of string | - | Yes | The value of the condition. You can configure multiple values only when the operator is in or not in . _ |
 
-**Note**
-
-When the operator is regex, the regular expression engine used is RE2. For more information, see the official RE2 documentation.
+> **Note:** When the operator is regex, the regular expression engine used is RE2. For more information, see the official RE2 documentation.
 
 **Weight group configuration**
 
@@ -10278,9 +10191,7 @@ The following table describes the configuration fields for each item in `weightG
 | regex | Regular expression match. Matches according to regular expression rules. |
 | percentage | Percentage match. The condition is met if hash(get(key)) % 100 < value is true. |
 
-**Important**
-
-The percentage operator and the weight parameter have different functions. The percentage operator evaluates each request to determine if it meets a specific percentage condition. The weight parameter statically allocates a random proportion of the total traffic.
+> **Important:** The percentage operator and the weight parameter have different functions. The percentage operator evaluates each request to determine if it meets a specific percentage condition. The weight parameter statically allocates a random proportion of the total traffic.
 
 **Configuration examples**
 
@@ -10352,9 +10263,7 @@ Plugin execution phase: `Authentication` . Plugin execution priority: `220` .
 | enable swagger _ | bool | Optional | false | Specifies whether to enable validation against a Swagger document. |
 | enable oas3 _ | bool | Optional | false | Specifies whether to enable validation against an OAS3 document. |
 
-**Important**
-
-The validation rules are the same for the header and the body.
+> **Important:** The validation rules are the same for the header and the body.
 
 **Configuration examples**
 
@@ -10570,7 +10479,8 @@ The following table describes the configuration fields for each item in `headers
 | number |   |
 | string |   |
 
-Note: The `request transformer` supports transformations on request headers, query parameters, and the request body (application/json, application/x-www-form-urlencoded, and multipart/form-data). The `response transformer` supports transformations on response headers and the response body (application/json). The plugin supports bidirectional transforms. A single plugin can transform both the request and the response. The transform operations are executed in the order specified in the configuration file. For example, remove → rename → replace → add → append → map → dedupe, or dedupe → map → append → add → replace → rename → remove. When transforming headers, the `key` is case-insensitive. For `rename` and `map` operations, the `value` is also case-insensitive because it functions as a key. In contrast, for queries and body parameters, both the `key` and `value` fields are case-sensitive. `value_type` is valid only for request and response bodies with a content-type of application/json.
+> **Note:** The `request transformer` supports transformations on request headers, query parameters, and the request body (application/json, application/x-www-form-urlencoded, and multipart/form-data). The `response transformer` supports transformations on response headers and the response body (application/json). The plugin supports bidirectional transforms. A single plugin can transform both the request and the response. The transform operations are executed in the order specified in the configuration file. For example, remove → rename → replace → add → append → map → dedupe, or dedupe → map → append → add → replace → rename → remove. When transforming headers, the `key` is case-insensitive. For `rename` and `map` operations, the `value` is also case-insensitive because it functions as a key. In contrast, for queries and body parameters, both the `key` and `value` fields are case-sensitive. `value_type` is valid only for request and response bodies with a content-type of application/json.
+
 
 | host pattern _ |   |
 |---|---|
@@ -11029,9 +10939,7 @@ $ curl -v console.higress.io/get
 2. When you use \. to escape the `.` in a key, it treats the period as a literal character
 instead of a nesting operator, as shown below:
 
-**Note**
-
-When the string is enclosed in double quotation marks, you must use \\. to escape the period.
+> **Note:** When the string is enclosed in double quotation marks, you must use \\. to escape the period.
 
 ```bash
 respRules:
@@ -11156,9 +11064,9 @@ $ curl -v -X POST console.higress.io/post \ -H 'Content-Type: application/json' 
 
 You can use `array.#` to traverse an array:
 
-**Note**
+> **Note:** This operation is currently supported only for replace operations. Using this syntax with other transform operations may lead to unpredictable results.
 
-This operation is currently supported only for replace operations. Using this syntax with other transform operations may lead to unpredictable results. `{`
+`{`
 
 ```json
  "users": [
@@ -11381,9 +11289,7 @@ The `appInfo` field in the cookie contains JSON data. The `userId` field within 
 
 **Rewrite configuration**
 
-**Note**
-
-This configuration is typically used in CDN deployment scenarios.
+> **Note:** This configuration is typically used in CDN deployment scenarios.
 
 ```
 grayKey: userid rules:
@@ -11870,9 +11776,7 @@ AI Gateway lets you manage protocols, certificates, and routing configurations f
 
 Complete the ICP filing for the domain name.
 
-**Note**
-
-Domain names used in mainland China must have an ICP filing with Alibaba Cloud or have their ICP filing transferred to Alibaba Cloud. ICP filing is not required for domain names used outside China.
+> **Note:** Domain names used in mainland China must have an ICP filing with Alibaba Cloud or have their ICP filing transferred to Alibaba Cloud. ICP filing is not required for domain names used outside China.
 
 **Procedure**
 
@@ -11924,10 +11828,7 @@ page. You can view the domain name's **Basic Information**, **Routing Informatio
 **Routing Information**: Click a routing or service name to view its details.
 Click the **Plugin Configuration** tab to manage the plugins that are bound to the domain name. Click **Add Plugin** to bind a plugin to the domain name. For more information, see Create a plugin.
 
-**Note**
-
-On the Domain Management page, you can also click **Plugin Configuration** in the
-**Actions** column to go directly to the **Plugin Configuration** tab.
+> **Note:** On the Domain Management page, you can also click **Plugin Configuration** in the **Actions** column to go directly to the **Plugin Configuration** tab.
 
 **Modify a domain name**
 
@@ -11972,9 +11873,8 @@ or click **Details** in the **Operation** column.
 5. On the **Model Monitoring** page, specify **Time range**, **Query granularity**, **Instance ID**,
 **API**, **Model**, **Consumer**, **Routing**, and **Service** and click **Query**.
 
-**Note**
+> **Note:** You can also click **Reset** to clear the filter conditions.
 
-You can also click **Reset** to clear the filter conditions.
 6. The model charts are displayed in the lower part of the page.
 **PV:** the total number of requests (page views) received within the specified time period.
 **UV:** the number of unique visitors, which indicates the total number of requests sent by
@@ -12026,9 +11926,8 @@ or click **Details** in the **Operation** column.
 5. On the **MCP Monitoring** page, specify the **Time range**, **Query granularity**, **Instance ID**,
 **Consumer**, **Service**, **MCP Server**, and **MCP Tool** filter conditions and click **Query**.
 
-**Note**
+> **Note:** You can also click **Reset** to clear the filter conditions.
 
-You can also click **Reset** to clear the filter conditions.
 6. The MCP charts are displayed in the lower part of the page.
 **PV:** the total number of requests (page views) received within the specified time period.
 **UV:** the number of unique visitors, which indicates the total number of requests sent by
@@ -12086,18 +11985,16 @@ or click **Details** in the **Operation** column.
 
 **Modify a proxy server**
 
-**Note**
+> **Note:** You cannot modify the **name** or **type** of a proxy server.
 
-You cannot modify the **name** or **type** of a proxy server.
 1. On the **Proxy Server** page, click **Edit** in the **Operation** column of the target proxy server.
 2. In the **Edit Proxy Server** panel, modify **Server Address**, **Server Port**, and **Connection**
 **timeout duration**, and click **Save**.
 
 **Delete a proxy server**
 
-**Important**
+> **Important:** Before you delete a proxy server, make sure that the proxy server is not referenced by other services.
 
-Before you delete a proxy server, make sure that the proxy server is not referenced by other services.
 1. On the **Proxy Server** page, click **Delete** in the **Operation** column of the target proxy
 server.
 2. In the message that appears, click **OK**.

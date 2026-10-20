@@ -5,7 +5,7 @@ doc_version: "20260310"
 pdf_pages: 46
 source_pdf: "ba1f5a2b1306a751_Alibaba Cloud Apsara Stack V3.18.6 Express Connect Operations and Maintenance Guide 20260310.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Express%20Connect%20Operations%20and%20Maintenance%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Express Connect Operations and Maintenance Guide
@@ -39,9 +39,16 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+ager Operations Console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ## 2 Leased line management
@@ -113,7 +120,9 @@ your business requirements and click **OK**.
 
 **Delete a DCI Express Connect circuit**
 
-After you delete a DCI Express Connect circuit, it cannot be recovered. Proceed with caution. Find the DCI Express Connect circuit that you want to delete, and click
+> **Note:** After you delete a DCI Express Connect circuit, it cannot be recovered. Proceed with caution.
+
+Find the DCI Express Connect circuit that you want to delete, and click
 
 **> Delete**
 
@@ -136,7 +145,10 @@ configure the parameters and click **OK**. For more information about the parame
 **Modify a leased line**: Find the leased line that you want to modify and click **Modify** in
 the **Actions** column. In the dialog box that appears, modify the parameter settings based on your business requirements and click **OK**.
 **Delete a leased line**: Find the leased line that you want to delete, move the pointer
-over the icon in the **Actions** column, and then select **Delete**. In the message that appears, click **Delete**. After you delete a leased line, it cannot be recovered. Proceed with caution.
+over the icon in the **Actions** column, and then select **Delete**. In the message that appears, click **Delete**.
+
+> **Note:** After you delete a leased line, it cannot be recovered. Proceed with caution.
+
 **Perform quick diagnostics**: Find the leased line that you want to manage, move the
 pointer over the icon in the **Actions** column, and then select **Quick Diagnostics**. The **Network Instance Diagnostics Results** page appears. For more information, see Network instance diagnosis. On the **Monitoring & Alerting** tab, view the monitoring and alerting information of leased lines. Click **Details** in the **Alert Details** column of an alert to view its details.
 
@@ -482,8 +494,8 @@ manage and click **Change Specifications** in the **Actions** column.
 
 **Modify the attributes of a router interface**
 
-This operation is supported only for a router interface whose **Local Router Interface**
-**Status** is **Active**, **Inactive**, or **Idle**.
+> **Note:** This operation is supported only for a router interface whose **Local Router Interface** **Status** is **Active**, **Inactive**, or **Idle**.
+
 1. On the **Router Interface Management** page, find the router interface that you want to
 manage and click **Modify Attributes** in the **Actions** column.
 2. In the **Modify Attributes** dialog box, modify the attributes and click **OK**.
@@ -502,22 +514,25 @@ manage and click **Modify Attributes** in the **Actions** column.
 
 **Set the router interface to Active or Inactive**
 
-You can set a router interface to **Inactive** only if **Local Router Interface Status** of the router interface is **Active**. You can set a router interface to **Active** only if **Local Router Interface Status** of the router interface is **Inactive**.
+> **Note:** You can set a router interface to **Inactive** only if **Local Router Interface Status** of the router interface is **Active**.
+> You can set a router interface to **Active** only if **Local Router Interface Status** of the router interface is **Inactive**.
+
 1. On the **Router Interface Management** page, find the router interface that you want to
 manage and click **Set to Active** or **Set to Inactive** in the **Actions** column.
 2. In the message that appears, click **OK**.
 
 **Initiate a connection on a router interface**
 
-This operation is supported for a router interface whose **Local Router Interface Status** is **Idle** and **Role** is **InitiatingSide** (an acceptor cannot initiate a connection).
+> **Note:** This operation is supported for a router interface whose **Local Router Interface Status** is **Idle** and **Role** is **InitiatingSide** (an acceptor cannot initiate a connection).
+
 1. On the **Router Interface Management** page, find the router interface that you want to
 manage and click **Initiate Connection** in the **Actions** column.
 2. In the message that appears, click **OK**.
 
 **Delete a router interface**
 
-This operation is supported only for a router interface whose **Local Router Interface**
-**Status** is **Inactive**.
+> **Note:** This operation is supported only for a router interface whose **Local Router Interface** **Status** is **Inactive**.
+
 1. On the **Router Interface Management** page, find the router interface that you want to
 manage and click **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
@@ -558,7 +573,8 @@ ii. In the dialog box that appears, configure the following parameters and click
 | Next Hops | The next hop list. Next Hop ID: The next hop interface ID for the route entry. Weight: The weight. Note This parameter is required if you set ECMP to Yes. Click Add Entry to add multiple next hops. Click the icon in the Actions column of a next hop to delete the next hop. |
 |---|---|
 
-You can obtain **Next Hop ID** from **VLAN Interface ID** on the **VBR Management** page.
+> **Note:** You can obtain **Next Hop ID** from **VLAN Interface ID** on the **VBR Management** page.
+
 6. Manage route entries.
 i. Find the route table that you want to manage and click **Manage Route Entries** in the
 **Actions** column.

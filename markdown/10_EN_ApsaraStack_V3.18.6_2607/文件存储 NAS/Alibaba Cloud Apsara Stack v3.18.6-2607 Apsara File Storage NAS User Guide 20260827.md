@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 68
 source_pdf: "a46a15d3aee9df1f_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Guide 20260827
@@ -67,9 +67,7 @@ Each file or folder can be opened up to 8,192 times in parallel across compute n
 
 NAS supports the NFSv3 and NFSv4 protocols. NFSv4.0 does not support the following attributes: FATTR4_MIMETYPE, FATTR4_QUOTA_AVAIL_HARD, FATTR4_QUOTA_AVAIL_SOFT, FATTR4_QUOTA_USED, FATTR4_TIME_BACKUP, and FATTR4_TIME_CREATE. If one of the preceding attributes is applied to a file system, an NFS4ERR_ATTRNOTSUPP error appears on the client on which the file system is mounted. NFSv4.1 does not support the following attributes: FATTR4_DIR_NOTIF_DELAY, FATTR4_DIR_NOTIF_DELAY, FATTR4_DACL, FATTR4_SACL, FATTR4_CHANGE_POLICY, FATTR4_FS_STATUS, FATTR4_LAYOUT_HINT, FATTR4_LAYOUT_TYPES, FATTR4_LAYOUT_ALIGNMENT, FATTR4_FS_LOCATIONS_INFO, FATTR4_MDSTHRESHOLD, FATTR4_RETENTION_GET, FATTR4_RETENTION_SET, FATTR4_RETENTEVT_GET, FATTR4_RETENTEVT_SET, FATTR4_RETENTION_HOLD, FATTR4_MODE_SET_MASKED, and FATTR4_FS_CHARSET_CAP. If one of the preceding attributes is applied to a file system, an NFS4ERR_ATTRNOTSUPP error appears on the client on which the file system is mounted. NFSv4 does not support the following operations: OP_DELEGPURGE, OP_DELEGRETURN, and NFS4_OP_OPENATTR. If one of the preceding operations is applied to a file system, an NFS4ERR_ATTRNOTSUPP error appears on the client on which the file system is mounted. NFSv4 does not support delegations. UID and GID On Linux, mappings between UIDs or GIDs and usernames or group names are defined in configuration files. For NFSv3 file systems, if the mapping between an ID and a name is defined in a configuration file, the name is displayed. If no mapping can be found for a UID or GID, the UID or GID is displayed. For NFSv4 file systems, if the version of a Linux kernel is earlier than 3.0, the usernames and group names are displayed as nobody for all files. If the kernel version is later than 3.0, the rule used by NFSv3 file systems applies to display files.
 
-**Important**
-
-If the Linux kernel version is earlier than 3.0, we recommend that you do not run the change owner or chgrp command for files or directories in an NFSv4 file system. Otherwise, the UID and GID of the file or directory are changed to nobody.
+> **Important:** If the Linux kernel version is earlier than 3.0, we recommend that you do not run the change owner or chgrp command for files or directories in an NFSv4 file system. Otherwise, the UID and GID of the file or directory are changed to nobody.
 
 **Limits on the SMB protocol**
 
@@ -96,17 +94,17 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**. For more information about how to bind and enable MFA, see **Security Center** >
-**MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**.
+
+> **Note:** For more information about how to bind and enable MFA, see **Security Center** > **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+
 5. In the top navigation bar, click **Products**. In the **Storage** section, click **File Storage NAS**.
 
 ### 3.2 Create a file system
@@ -222,13 +220,13 @@ In File Storage NAS (NAS), you must use a mount point to mount file systems to c
 
 Make sure that you have completed the following operations: Create a file system. Create a permission group and add rules. You have created a Virtual Private Cloud (VPC) in the same region as the NAS file system, and an Elastic Compute Service (ECS) instance in that VPC.
 
-**Important**
-
-To use IPv6, select VPC as the network type and configure IPv6 endpoint authorization when you create a permission group and rules; assign an IPv6 CIDR block when you create a VPC; and enable IPv6 private network when you create an ECS instance.
+> **Important:** To use IPv6, select VPC as the network type and configure IPv6 endpoint authorization when you create a permission group and rules; assign an IPv6 CIDR block when you create a VPC; and enable IPv6 private network when you create an ECS instance.
 
 **Background Information**
 
-A mount point is an access endpoint for a file system instance within a VPC or classic network. Each mount point corresponds to a domain name. NAS supports two types of mount points: VPC and Classic Network. The same mount point can be mounted simultaneously by multiple compute nodes (ECS instances or containers) for shared access.
+A mount point is an access endpoint for a file system instance within a VPC or classic network. Each mount point corresponds to a domain name. NAS supports two types of mount points: VPC and Classic Network.
+
+> **Note:** The same mount point can be mounted simultaneously by multiple compute nodes (ECS instances or containers) for shared access.
 
 **Procedure**
 
@@ -239,11 +237,15 @@ A mount point is an access endpoint for a file system instance within a VPC or c
 5. In the **Mount Target** section, click **Add Mount Target**.
 6. In the **Add Mount Target** dialog box, configure the parameters.
 **Mount Target Type**: Includes **VPC** and **Classic Network**.
-Classic Network-type mount points can be accessed only by ECS instances under the same Alibaba Cloud account. If you want to add a VPC-type mount point, configure the following parameters.
 
-**Important**
+> **Note:** Classic Network-type mount points can be accessed only by ECS instances under the same Alibaba Cloud account.
 
-To use IPv6, turn on the **Enable IPv6** switch, and then select a VPC that supports IPv6, its associated vSwitch, and a permission group authorized for IPv6 endpoint access. A VPC labeled **Dual-Stack** in the VPC list indicates that IPv4/IPv6 dual-stack is enabled for the VPC. An ECS instance must have IPv6 private network enabled before accessing NAS over IPv6.
+If you want to add a VPC-type mount point, configure the following parameters.
+
+> **Important:** To use IPv6, turn on the **Enable IPv6** switch, and then select a VPC that supports IPv6, its associated vSwitch, and a permission group authorized for IPv6 endpoint access.
+> A VPC labeled **Dual-Stack** in the VPC list indicates that IPv4/IPv6 dual-stack is enabled for the VPC.
+
+> An ECS instance must have IPv6 private network enabled before accessing NAS over IPv6.
 
 | Parameter | Description |
 |---|---|
@@ -357,7 +359,11 @@ The syntax of the command is net use <the letter of a local drive> \\<the domain
 of a mount target>\myshare .
 ```
 
-Letter of the destination drive: the letter of the drive on which you want to mount an SMB file system. Replace the value of the parameter with the letter of an actual destination drive. The letter of the destination drive must be different from the existing drive letters. The domain name of the mount target: When you create a mount target for a file system, the domain name of the mount target is automatically generated. You can replace the domain name based on your business requirements. To obtain the mount target of the file system, perform the following steps: Log on to the NAS console, find the file system that you want to manage, and then click **Manage** to go to the Details page. myshare: the name of the shared SMB directory. You cannot change the name.
+Letter of the destination drive: the letter of the drive on which you want to mount an SMB file system. Replace the value of the parameter with the letter of an actual destination drive.
+
+> **Note:** The letter of the destination drive must be different from the existing drive letters.
+
+The domain name of the mount target: When you create a mount target for a file system, the domain name of the mount target is automatically generated. You can replace the domain name based on your business requirements. To obtain the mount target of the file system, perform the following steps: Log on to the NAS console, find the file system that you want to manage, and then click **Manage** to go to the Details page. myshare: the name of the shared SMB directory. You cannot change the name.
 3. Run the `net use` command to check the mount result.
 If the output that is similar to the following information appears, the mount is successful.
 4. After the SMB file system is mounted, you can read data from and write data to the NAS file
@@ -402,9 +408,9 @@ The number of mount targets is 0. For more information about how to view the num
 2. Choose **NAS > File System List**.
 3. Find the file system that you want to manage, and click **Manage**.
 
-**Important**
+> **Important:** Before you can delete a file system, you must remove all mount targets from the file system.
+> Proceed with caution when you delete a file system. After a file system is deleted, the data on the file system cannot be restored. Make sure that all data is backed up.
 
-Before you can delete a file system, you must remove all mount targets from the file system. Proceed with caution when you delete a file system. After a file system is deleted, the data on the file system cannot be restored. Make sure that all data is backed up.
 4. In the **Delete File System** dialog box, click **OK** to complete the deletion.
 
 ### 4.3 Scale up a file system
@@ -415,9 +421,7 @@ If the used space of an File Storage NAS file system reaches the specified capac
 
 Create a file system.
 
-**Important**
-
-A file system can be scaled up but cannot be scaled down. . A Capacity NAS file system can be scaled out to up to 10 PiB.
+> **Important:** A file system can be scaled up but cannot be scaled down. . A Capacity NAS file system can be scaled out to up to 10 PiB.
 
 **Procedure**
 
@@ -483,9 +487,8 @@ A file system is unmounted from the compute node such as an ECS instance and ACK
 4. In the left-side navigation pane, click **Mounting Targets**.
 5. Find the mount target that you want to delete and click **Delete**.
 
-**Important**
+> **Important:** Proceed with caution when you delete a mount target. After you delete a mount target, you cannot restore the mount target.
 
-Proceed with caution when you delete a mount target. After you delete a mount target, you cannot restore the mount target.
 6. In the Delete Permission Group message, click **OK**.
 
 ### 5.4 Modify the permission group of a mount target
@@ -535,7 +538,9 @@ A permission group is created. For more information, see Create a permission gro
 1. Log on to the File Storage NAS console.
 2. Choose **NAS > Permission Group**.
 3. Find the target permission group and click **Delete**.
-Permission groups in use cannot be deleted. Before you can delete a permission group, you must remove the permission group from the linked mount target.
+
+> **Note:** Permission groups in use cannot be deleted. Before you can delete a permission group, you must remove the permission group from the linked mount target.
+
 4. In the Delete Permission Group dialog box, click **OK**.
 
 ### 6.3 Manage permission group rules
@@ -574,9 +579,8 @@ A Network File System (NFS) file system of the NAS Capacity type is mounted on a
 | Applicable scope | Directory quotas for all users: the maximum storage space for files that all users can create in a directory of a file system. Directory quotas for a specific user or user group: the maximum storage space for files that a user or user group can create in a directory of a file system. |
 | Quota level | Statistical quotas: If you create a statistical quota for a file system, NAS calculates only the usage of storage space in the file system. You can query and view statistical data. Restrictive quotas: If the used storage space for a specified directory in a file system exceeds the quota, you cannot create files or directories, or append data to the files or directories. |
 
-**Important**
-
-To prevent potential security risks, we recommend that you evaluate and test restrictive quotas before you create the restrictive quotas for core business-related directories. NAS performs asynchronous calculation for quotas at the backend. Therefore, the operation to enable or disable a restrictive quota at the backend requires 5 to 15 minutes to take effect.
+> **Important:** To prevent potential security risks, we recommend that you evaluate and test restrictive quotas before you create the restrictive quotas for core business-related directories.
+> NAS performs asynchronous calculation for quotas at the backend. Therefore, the operation to enable or disable a restrictive quota at the backend requires 5 to 15 minutes to take effect.
 
 **Limits**
 
@@ -592,9 +596,10 @@ navigation pane of the page that appears, click **Quota Management**.
 5. In the **Create Directory Quota** dialog box, enter the directory in the **Directory Path**
 field.
 
-**Important**
+> **Important:** The value of the **Directory Path** field of a quota is the absolute path of the directory in the NFS file system, instead of the local path on the compute node.
+> The directory path cannot contain Chinese characters.
 
-The value of the **Directory Path** field of a quota is the absolute path of the directory in the NFS file system, instead of the local path on the compute node. The directory path cannot contain Chinese characters. For example, a NAS file system is mounted at the `/mnt` directory. The root directory is
+For example, a NAS file system is mounted at the `/mnt` directory. The root directory is
 
 | / | , and the N |
 |---|---|
@@ -605,7 +610,10 @@ After the quota is created, the quota is automatically initialized and is in the
 
 **Assign a directory quota to a user**
 
-For a statistical quota, you can view the size and number of files that are used by a user or user group in a directory. For a restrictive quota, you can limit the size and number of files that a user or user group can create in a directory. Only NFS file systems support directory quotas for a specific user or user group. Only one type of quota can be configured for each user type.
+For a statistical quota, you can view the size and number of files that are used by a user or user group in a directory. For a restrictive quota, you can limit the size and number of files that a user or user group can create in a directory.
+
+> **Note:** Only NFS file systems support directory quotas for a specific user or user group.
+> Only one type of quota can be configured for each user type.
 
 **Procedure**
 
@@ -623,11 +631,17 @@ On the **Quota Management** page, find the directory path and click **Manage Quo
 
 **Delete a directory quota that is assigned to a user**
 
-In the list of quotas, find the quota that you want to delete and click **Delete** in the Actions column. When you delete a directory from a file system, NAS also deletes all the directory quotas and user quotas configured for the directory.
+In the list of quotas, find the quota that you want to delete and click **Delete** in the Actions column.
+
+> **Note:** When you delete a directory from a file system, NAS also deletes all the directory quotas and user quotas configured for the directory.
 
 **Modify a directory quota that is assigned to a user**
 
-In the list of quotas, find the quota that you want to modify, and click **Edit** in the Actions column. You can modify the quota type, capacity limit, and file limit of the quota. The Capacity Limit and File Limit parameters are available only for restrictive quotas. You must modify at least one of the two parameters. spaces
+In the list of quotas, find the quota that you want to modify, and click **Edit** in the Actions column. You can modify the quota type, capacity limit, and file limit of the quota.
+
+> **Note:** The Capacity Limit and File Limit parameters are available only for restrictive quotas. You must modify at least one of the two parameters.
+
+spaces
 
 ## 8 Manage unified namespaces
 
@@ -645,15 +659,39 @@ A unified namespace has the following limits: You can add a maximum of 1,000 fil
 
 **Basic features of unified namespace**
 
-Create a unified namespace and create a mount target for the unified namespace. i. Log on to the NAS console. ii. In the left-side navigation pane, choose **Unified Namespace > Unified Namespaces**. iii. On the **Unified Namespaces** page, click **Create Namespace**. Then, create a namespace and a mount target for the namespace as prompted. spaces If you create mount targets in virtual private clouds (VPCs) for unified namespaces in different regions, we recommend that you use different CIDR blocks. This way, the CIDR blocks can be identified when you mount unified namespaces across regions. For example, you can use `192.168.0.0/16` for Region 1 and `172.16.0.0/16` for Region 2. For more information, see Step 1: Create a VPC in the Cross-domain mount orchestration section. Add a file system to the unified namespace. After you create the unified namespace, you can add a file system and specify a mapping name for the file system. The mapping name is the name of the virtual directory for the file system. Remove the file system from the unified namespace. You can remove the existing file system from the unified namespace. The file system is not deleted but removed from the file system list of the namespace. Change the mapping name of the file system. You can change the mapping name of the file system in the unified namespace. If a symbolic or hard link exists between a file system and another file system, a connection failure may occur when you modify the mapping name of the file system. View the details of the unified namespace. The details of the namespace are divided into three sections: Properties Mount target list You can create or delete mount targets. File system list You can add or remove file systems. spaces
+Create a unified namespace and create a mount target for the unified namespace. i. Log on to the NAS console. ii. In the left-side navigation pane, choose **Unified Namespace > Unified Namespaces**. iii. On the **Unified Namespaces** page, click **Create Namespace**. Then, create a namespace and a mount target for the namespace as prompted. spaces
+
+> **Note:** If you create mount targets in virtual private clouds (VPCs) for unified namespaces in different regions, we recommend that you use different CIDR blocks. This way, the CIDR blocks can be identified when you mount unified namespaces across regions. For example, you can use `192.168.0.0/16` for Region 1 and
+
+`172.16.0.0/16` for Region 2. For more information, see Step 1: Create a VPC in the Cross-domain mount orchestration section. Add a file system to the unified namespace. After you create the unified namespace, you can add a file system and specify a mapping name for the file system.
+
+> **Note:** The mapping name is the name of the virtual directory for the file system.
+
+Remove the file system from the unified namespace. You can remove the existing file system from the unified namespace.
+
+> **Note:** The file system is not deleted but removed from the file system list of the namespace.
+
+Change the mapping name of the file system. You can change the mapping name of the file system in the unified namespace.
+
+> **Note:** If a symbolic or hard link exists between a file system and another file system, a connection failure may occur when you modify the mapping name of the file system.
+
+View the details of the unified namespace. The details of the namespace are divided into three sections: Properties Mount target list
+
+> **Note:** You can create or delete mount targets.
+
+File system list
+
+> **Note:** You can add or remove file systems.
+
+spaces
 
 **Cross-domain mount orchestration**
 
 In traditional solutions, you can add a file system to a namespace only if the file system and namespace reside in the same region. To add file systems to namespaces across multiple regions, NAS provides the cross-domain mount orchestration feature. To use this feature, perform the following operations: Create a unified namespace and a mount target for the namespace. Map the unified namespace to the local directory tree of a client by using the cross-domain mount orchestration feature. After the orchestration is complete, specify the root directory to generate an automatic mount script.
 
-**Important**
+> **Important:** The specified mount target and mapping path cannot be modified after the map is created. You can remove the map. However, if you create the map again, the specified mount target can only be attached to the original mapping path.
 
-The specified mount target and mapping path cannot be modified after the map is created. You can remove the map. However, if you create the map again, the specified mount target can only be attached to the original mapping path. To mount the namespace on a client, you can run the automatic mount script on the client. This allows the client to access file systems across regions. The format of the local path on the client for each unified namespace is `<Specified root directory>/<Mapping path of the`
+To mount the namespace on a client, you can run the automatic mount script on the client. This allows the client to access file systems across regions. The format of the local path on the client for each unified namespace is `<Specified root directory>/<Mapping path of the`
 
 ```
 namespace> .
@@ -663,13 +701,23 @@ To enable a cross-domain mount orchestration for different VPCs that reside in d
 1. Create two VPCs.
 i. Log on to the NAS console. ii. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**. spaces iii. On the **Create VPC** page, create two VPCs. One VPC is for Region 1 and the other VPC is for Region 2. Create a VPC named skvpc1 `192.168.1.0/24` for Region 1. Create a VPC named skvpc2 `192.168.2.0/24` for Region 2.
 2. Configure an Express Connect circuit across regions.
-Configure two Express Connect circuits between the VPCs of the two regions. Configure one Express Connect circuit in Region 1 to connect skvpc1 to skvpc2. spaces i. Configure a route table for skvpc1. Add the CIDR block `192.168.2.0/24` of skvpc2 to the route table of skvpc1. a. In the left-side navigation pane, click **Route Tables**. b. On the **Route Tables** page, find the instance ID of skvpc1 and click **Management** in the Actions column. c. On the **Routing entry list** tab, click **Add route entry**. In the dialog box that appears, configure the parameters. Click **Create VPC-to-VPC Connection** to configure an Express Connect circuit between skvpc1 and skvpc2. Specify the CIDR block of skvpc2 for **Destination CIDR Block**. Select **Router Interface (VPC Direction)** from the **Next hop type** dropdown list. The first time you configure an Express Connect circuit across regions, no VPCs are available. spaces ii. Create a VPC-to-VPC connection a. Click Create VPC interconnection to go to the **Create Peering Connection** page. On the page that appears, specify the source VPC ID, destination VPC ID, and bandwidth based on your business requirements. Click **Submit**. b. After the VPC-to-VPC connection is created, click **Back to Console** to go to the VPC-to- VPC page. If the initiator and acceptor are in the Activated state, the connection from skvpc1 to skvpc2 is established. Establish the other connection from skvpc2 to skvpc1 in Region 2. iii. View the VPC-to-VPC connection. Go to the **Add Route Entry** page. The VPC-to-VPC connection that you created appears in the VPC list. Configure the other Express Connect circuit in Region 2 to connect skvpc2 to skvpc2. spaces Perform the preceding procedure. In the Add Route Entry panel, select the VPC-to-VPC connection from the VPC list and click **OK**. The route entry is added to skvpc2 in Region 2. You can select the VPC-to-VPC connection that you created from the VPC list. `vpc-ew2xxxx` is the ID of skvpc1.
+Configure two Express Connect circuits between the VPCs of the two regions. Configure one Express Connect circuit in Region 1 to connect skvpc1 to skvpc2. spaces i. Configure a route table for skvpc1. Add the CIDR block `192.168.2.0/24` of skvpc2 to the route table of skvpc1. a. In the left-side navigation pane, click **Route Tables**. b. On the **Route Tables** page, find the instance ID of skvpc1 and click **Management** in the Actions column. c. On the **Routing entry list** tab, click **Add route entry**. In the dialog box that appears, configure the parameters. Click **Create VPC-to-VPC Connection** to configure an Express Connect circuit between skvpc1 and skvpc2.
+
+> **Note:** Specify the CIDR block of skvpc2 for **Destination CIDR Block**.
+> Select **Router Interface (VPC Direction)** from the **Next hop type** drop- down list.
+> The first time you configure an Express Connect circuit across regions, no VPCs are available.
+
+spaces ii. Create a VPC-to-VPC connection a. Click Create VPC interconnection to go to the **Create Peering Connection** page. On the page that appears, specify the source VPC ID, destination VPC ID, and bandwidth based on your business requirements. Click **Submit**. b. After the VPC-to-VPC connection is created, click **Back to Console** to go to the VPC-to- VPC page. If the initiator and acceptor are in the Activated state, the connection from skvpc1 to skvpc2 is established. Establish the other connection from skvpc2 to skvpc1 in Region 2. iii. View the VPC-to-VPC connection. Go to the **Add Route Entry** page. The VPC-to-VPC connection that you created appears in the VPC list. Configure the other Express Connect circuit in Region 2 to connect skvpc2 to skvpc2. spaces Perform the preceding procedure. In the Add Route Entry panel, select the VPC-to-VPC connection from the VPC list and click **OK**. The route entry is added to skvpc2 in Region 2. You can select the VPC-to-VPC connection that you created from the VPC list. `vpc-ew2xxxx` is the ID of skvpc1.
 3. Add a rule to a permission group.
 i. In the top navigation bar, choose **Products > Storage > Apsara File Storage NAS**. ii. In the left-side navigation pane, choose **Permission Group**. On the Permission Group page, find the permission group to which you want to add a rule, or create a permission group. Then, click **Add Rule**. iii. Click **Add Rule**. In the dialog box that appears, specify an authorized address and read and write permissions. In the following figure, the IP segment of skvpc1 is added.
 4. Creates a mount target.
 In Region 2, you can create a mount target that resides in skvpc2 for the specified unified namespace. In Region 1, you can create a mount target that resides in skvpc1 for the specified unified namespace.
 5. Create an Elastic Compute Service (ECS) instance.
-For example, if you select skvpc2 when you create an ECS instance, you can mount file systems on the ECS instance without the need to establish a VPC connection. The following figure shows an example. spaces In most cases, each ECS instance uses an independent VPC. You do not need to establish connections between VPCs that are used by mount targets of namespaces in two different regions. However, you must establish connections between the VPC that is used by mount targets of the namespace and the VPC that is used by the ECS instance. nt
+For example, if you select skvpc2 when you create an ECS instance, you can mount file systems on the ECS instance without the need to establish a VPC connection. The following figure shows an example. spaces
+
+> **Note:** In most cases, each ECS instance uses an independent VPC. You do not need to establish connections between VPCs that are used by mount targets of namespaces in two different regions. However, you must establish connections between the VPC that is used by mount targets of the namespace and the VPC that is used by the ECS instance.
+
+nt
 
 ## 9 Lifecycle management
 
@@ -696,18 +744,32 @@ In Apsara Stack, the lifecycle management feature allows you to dump cold data f
 1. Authorize NAS by using RAM.
 To use the lifecycle management feature, you must grant access permissions on OSS to NAS. This way, NAS can read data from and write data to the specified OSS bucket. nt
 
-**Important**
+> **Important:** If you want to create a RAM role, you must specify an organization to which the OSS bucket belongs. In this example, an organization named nas-test is specified.
+> You need to grant permissions to NAS only once for an organization.
 
-If you want to create a RAM role, you must specify an organization to which the OSS bucket belongs. In this example, an organization named nas-test is specified. You need to grant permissions to NAS only once for an organization. i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigation bar, click **Configurations**. iii. On the **Service-linked Roles** page, click **Create Service-linked Role** to create a RAM role and grant access permissions on OSS to the role. iv. View the authorization status of nas-test in the role list to verify that AliyunNASTieringRole is in the list.
+i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigation bar, click **Configurations**. iii. On the **Service-linked Roles** page, click **Create Service-linked Role** to create a RAM role and grant access permissions on OSS to the role. iv. View the authorization status of nas-test in the role list to verify that AliyunNASTieringRole is in the list.
 2. Create an OSS bucket.
-You can use an existing OSS bucket or create an OSS bucket. If you have multiple NAS file systems, you can configure an OSS bucket for each file system. If you use an existing OSS bucket, the following requirements must be met: The OSS bucket is in the first cluster of the region. The domain name of the first cluster starts with oss-, and the domain names of the other clusters start with oss xxxx-. The OSS bucket and the file system belong to the same organization. nt In the top navigation bar, choose **Products > Object Storage Service**. In the left-side navigation pane, click **Buckets**. On the Buckets page, click **Create Bucket**. In the Create Bucket panel, configure the parameters. In this example, an OSS bucket named nastiering is created. The OSS bucket is used to store cold data. Before you create an OSS bucket, the following requirements must be met:
-**Storage Class** is set to **Standard**, and the first cluster in the region is selected
-for the OSS cluster. The domain name of the first cluster starts with oss-, and the domain names of the other clusters start with ossxxxx-. The OSS bucket and the file system belong to the same organization.
+You can use an existing OSS bucket or create an OSS bucket. If you have multiple NAS file systems, you can configure an OSS bucket for each file system.
+
+> **Note:** If you use an existing OSS bucket, the following requirements must be met:
+> The OSS bucket is in the first cluster of the region. The domain name of the first cluster starts with oss-, and the domain names of the other clusters start with oss xxxx-.
+> The OSS bucket and the file system belong to the same organization.
+
+nt In the top navigation bar, choose **Products > Object Storage Service**. In the left-side navigation pane, click **Buckets**. On the Buckets page, click **Create Bucket**. In the Create Bucket panel, configure the parameters. In this example, an OSS bucket named nastiering is created. The OSS bucket is used to store cold data.
+
+> **Note:** Before you create an OSS bucket, the following requirements must be met:
+> **Storage Class** is set to **Standard**, and the first cluster in the region is selected for the OSS cluster. The domain name of the first cluster starts with oss-, and the domain names of the other clusters start with ossxxxx-.
+> The OSS bucket and the file system belong to the same organization.
 
 **Get started**
 
 1. Create a lifecycle policy.
-i. In the top navigation bar, choose **Products > Apsara File Storage NAS**. ii. In the left-side navigation pane, click **Lifecycle Management**. nt iii. On the **Lifecycle Management** page, click **Create Policy** and configure the parameters. After you create a lifecycle policy for a directory in the file system, NAS dumps the cold data that meets the rule of the policy to the OSS bucket. When you create a lifecycle policy, you must configure the following parameters: Policy Name: the name of the policy. The name must be unique within different policies. File System: the file system for which the lifecycle policy is configured. Directory Path: the directory path on the file system. The path must start with a forward slash (/). You can enter a forward slash (/) to indicate the root directory. If you select **Recursive Subdirectory**, all subdirectories in the directory are traversed. Management Rule: You can select a pre-configured rule to dump files that are not accessed for more than 14, 30, 60, or 90 days. OSS Bucket: the OSS bucket to which cold data is dumped. Cold data in a file system can be dumped to only one OSS bucket. Only the OSS buckets of the organization to which the file system belongs are displayed in the OSS Bucket list. nt
+i. In the top navigation bar, choose **Products > Apsara File Storage NAS**. ii. In the left-side navigation pane, click **Lifecycle Management**. nt iii. On the **Lifecycle Management** page, click **Create Policy** and configure the parameters. After you create a lifecycle policy for a directory in the file system, NAS dumps the cold data that meets the rule of the policy to the OSS bucket. When you create a lifecycle policy, you must configure the following parameters: Policy Name: the name of the policy. The name must be unique within different policies. File System: the file system for which the lifecycle policy is configured. Directory Path: the directory path on the file system. The path must start with a forward slash (/). You can enter a forward slash (/) to indicate the root directory. If you select **Recursive Subdirectory**, all subdirectories in the directory are traversed. Management Rule: You can select a pre-configured rule to dump files that are not accessed for more than 14, 30, 60, or 90 days. OSS Bucket: the OSS bucket to which cold data is dumped.
+
+> **Note:** Cold data in a file system can be dumped to only one OSS bucket.
+> Only the OSS buckets of the organization to which the file system belongs are displayed in the OSS Bucket list.
+
+nt
 2. View the lifecycle policy.
 On the **Lifecycle Management** page, you can view the lifecycle policy that you have created. You can also filter lifecycle policies by file system ID.
 3. Modify the lifecycle policy.
@@ -850,7 +912,13 @@ Sample command output:
 A::OWNER@:rwaDxtTcCy A::GROUP@:rwaDxtcy A::EVERYONE@:rwaDxtcy A:fdi:1000:rwx
 ```
 
-We recommend that you grant the least permissions to the EVERYONE principal. Before you run one of the preceding commands, we recommend that you run the `umask 777` command. This command ensures that no access to a file or directory is granted when the file or directory is created. For more information about umask and the default mode, see Why doesn't umask change execute permissions on files? When Linux calls functions to create files or directories, the predefined umask is used as a request parameter. You can obtain the final ACL for a child object from the overlap of the inherited ACL (parent to child) and the umask, as specified in the RFC 7530 standard. When you modify the group bits of a umask based on the standard, the permissions included in an ACL for each group must be less than or equal to the permissions defined in the group bits. However, this results in an invalid inheritance for groups. For example, if you want the subfile to inherit Group A:RWX but the predefined umask GROUPS:R is used as a request parameter, the ACE included in the ACL of Group A is then changed to Group A: R. In actual business scenarios, we recommend that you modify umasks only for ACLs that include the following principals: OWNER, GROUP, and EVERYONE. This prevents potential issues and ensures that the semantics are clear. To remove permissions from a group, we recommend that you remove the ACE that is associated with the group. You must manage the mappings between usernames or group names and user IDs (UIDs) or group IDs (GIDs) across multiple independent instances. File Storage NAS NFS uses IP security groups instead of usernames to authenticate users. When you configure NFSv4 ACLs, UIDs or GIDs that are included in ACEs are stored in Linux. When you print an ACL for an object in a shell, Linux automatically loads the /etc/passwd file and converts UIDs or GIDs into usernames or group names. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. You must make sure that each username is mapped to its corresponding UID, and each group name is mapped to its corresponding GID. You can print NFSv4 ACL by using extended attributes. Run the following commands:
+> **Note:** We recommend that you grant the least permissions to the EVERYONE principal. Before you run one of the preceding commands, we recommend that you run the
+
+`umask 777` command. This command ensures that no access to a file or directory is granted when the file or directory is created. For more information about umask and the default mode, see Why doesn't umask change execute permissions on files?
+
+> When Linux calls functions to create files or directories, the predefined umask is used as a request parameter. You can obtain the final ACL for a child object from the overlap of the inherited ACL (parent to child) and the umask, as specified in the RFC 7530 standard. When you modify the group bits of a umask based on the standard, the permissions included in an ACL for each group must be less than or equal to the permissions defined in the group bits. However, this results in an invalid inheritance for groups. For example, if you want the subfile to inherit Group A:RWX but the predefined umask GROUPS:R is used as a request parameter, the ACE included in the ACL of Group A is then changed to Group A: R. In actual business scenarios, we recommend that you modify umasks only for ACLs that include the following principals: OWNER, GROUP, and EVERYONE. This prevents potential issues and ensures that the semantics are clear. To remove permissions from a group, we recommend that you remove the ACE that is associated with the group.
+
+You must manage the mappings between usernames or group names and user IDs (UIDs) or group IDs (GIDs) across multiple independent instances. File Storage NAS NFS uses IP security groups instead of usernames to authenticate users. When you configure NFSv4 ACLs, UIDs or GIDs that are included in ACEs are stored in Linux. When you print an ACL for an object in a shell, Linux automatically loads the /etc/passwd file and converts UIDs or GIDs into usernames or group names. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. You must make sure that each username is mapped to its corresponding UID, and each group name is mapped to its corresponding GID. You can print NFSv4 ACL by using extended attributes. Run the following commands:
 
 ```
 getfattr -n system.nfs4_acl file
@@ -869,7 +937,11 @@ You can use tools such as cp to migrate NFSv4 ACLs. NAS allows you to migrate NF
 |---|---|---|
 | file2. The | cp -ar dir1 dir2 | com |
 
-copies file1 to file2. NFSv4 ACLs may fail to be migrated if the version of the rsync tool is earlier than 3.1.2. Example 1: Migrate the ACL of a file. a. Run the `nfs4_getfacl file1` command to view the ACL permissions of the file1 file.
+copies file1 to file2.
+
+> **Note:** NFSv4 ACLs may fail to be migrated if the version of the rsync tool is earlier than 3.1.2.
+
+Example 1: Migrate the ACL of a file. a. Run the `nfs4_getfacl file1` command to view the ACL permissions of the file1 file.
 
 ```bash
 # file: file1
@@ -915,7 +987,14 @@ If you add the execute permissions to an ACE that includes the GROUP principal, 
 -rwxrwxrw-. 1 root root 0 May 3 2019 file
 ```
 
-In the interactions between ACLs and umasks, the EVERYONE principal is equivalent to the other class. When you modify the other class, the change also applies to the EVERYONE principal. This operation has a slight impact on the semantics of permissions. For example, the current umask is 177. After you run the `chmod o+r` command, all users that include the file owner and group members have the read permissions. This is because the read permissions are added to the ACE that includes the EVERYONE principal. If no change is applied to the default umask, the owner and group classes still do not have the read permissions after you run the chmod o+r command. If no change is applied to NFSv4 ACLs, the semantics of the other class of the file mode remain unchanged. If you modify an NFSv4 ACL, the semantics of the other class change to the semantics of the EVERYONE principal and the latest semantics remain unchanged. We recommend that you do not use umasks together with NFSv4 ACLs. Interactions between NFSv4 ACLs and POSIX ACLs are supported. You can mount NFSv3 file systems that have NFSv4 ACLs. These NFSv4 ACLs are then converted to POSIX ACLs. You can also mount NFSv4 file systems that have POSIX ACLs. These POSIX ACLs are then converted to NFSv4 ACLs. hat grant the read and write acce ss The semantics of POSIX ACLs are different from the semantics of NFSv4 ACLs. For example, the inheritance rules that apply to POSIX ACLs do not differentiate files or directories. NFSv4 ACLs have more permissions than POSIX ACLs. POSIX ACLs have only read, write, and execute permissions. To prevent potential issues, we recommend that you use either NFSv4 ACLs or POSIX ACLs. If you configure an NFSv4 ACL for the dir0 directory, the following permissions are required. Run the following commands:
+> **Note:** In the interactions between ACLs and umasks, the EVERYONE principal is equivalent to the other class. When you modify the other class, the change also applies to the EVERYONE principal. This operation has a slight impact on the semantics of permissions. For example, the current umask is 177. After you run the `chmod o+r` command, all users that include the file owner and group members have the read permissions. This is because the read permissions are added to the ACE that includes the EVERYONE principal. If no change is applied to the default umask, the owner and group classes still do not have the read permissions after you run the chmod o+r command.
+> If no change is applied to NFSv4 ACLs, the semantics of the other class of the file mode remain unchanged. If you modify an NFSv4 ACL, the semantics of the other class change to the semantics of the EVERYONE principal and the latest semantics remain unchanged. We recommend that you do not use umasks together with NFSv4 ACLs.
+
+Interactions between NFSv4 ACLs and POSIX ACLs are supported. You can mount NFSv3 file systems that have NFSv4 ACLs. These NFSv4 ACLs are then converted to POSIX ACLs. You can also mount NFSv4 file systems that have POSIX ACLs. These POSIX ACLs are then converted to NFSv4 ACLs. hat grant the read and write acce ss
+
+> **Note:** The semantics of POSIX ACLs are different from the semantics of NFSv4 ACLs. For example, the inheritance rules that apply to POSIX ACLs do not differentiate files or directories. NFSv4 ACLs have more permissions than POSIX ACLs. POSIX ACLs have only read, write, and execute permissions. To prevent potential issues, we recommend that you use either NFSv4 ACLs or POSIX ACLs.
+
+If you configure an NFSv4 ACL for the dir0 directory, the following permissions are required. Run the following commands:
 
 ```python
 sudo nfs4_getfacl dir0
@@ -963,11 +1042,17 @@ Sample command output:
 user::--group::--group:players:r-x group:adminis:rwx mask::rwx other::---
 ```
 
-The number of NFSv4 ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs. We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions.
+The number of NFSv4 ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs.
+
+> **Note:** We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions.
 
 **Features of NAS POSIX ACLs**
 
-Permissions that are specified for users of the other class apply to everyone. Everyone includes the owner, groups, and users that are related to each ACE. The other class is equal to the EVERYONE principal of an NFSv4 ACL. We recommend that you grant the least permissions to users of the other class. For example, the following ACL is configured for the myfile file. Although the ACE contains a user named alice who does not have the write permissions, the write permissions propagate to the ACE because the permissions are specified for users of the other class.
+Permissions that are specified for users of the other class apply to everyone. Everyone includes the owner, groups, and users that are related to each ACE. The other class is equal to the EVERYONE principal of an NFSv4 ACL.
+
+> **Note:** We recommend that you grant the least permissions to users of the other class.
+
+For example, the following ACL is configured for the myfile file. Although the ACE contains a user named alice who does not have the write permissions, the write permissions propagate to the ACE because the permissions are specified for users of the other class.
 
 ```bash
 # file: myfile
@@ -976,7 +1061,11 @@ Permissions that are specified for users of the other class apply to everyone. E
 user::rwuser:alice:r-group::r-mask::r-other::rw-
 ```
 
-hat grant the read and write acce ss Permissions that are configured by ACLs are not changed after you run the `chmod` command. We recommend that you do not modify the umask of a file to which a POSIX ACL is applied. You can configure permissions for the file by modifying the POSIX ACL. i. For example, an ACE that grants the players group the read and write permissions on the myfile file.
+hat grant the read and write acce ss Permissions that are configured by ACLs are not changed after you run the `chmod` command.
+
+> **Note:** We recommend that you do not modify the umask of a file to which a POSIX ACL is applied. You can configure permissions for the file by modifying the POSIX ACL.
+
+i. For example, an ACE that grants the players group the read and write permissions on the myfile file.
 
 ```bash
 # file: myfile
@@ -1012,7 +1101,11 @@ hat grant the read and write acce ss If you grant the execute permissions to the
 user::rwuser:player:r-x group::r-x mask::r-x other::r--
 ```
 
-If you configure inheritable NFSv4 ACLs for directories that reside in NFSv3 file systems, these settings may not conform to the POSIX ACL standard. Inheritance rules that apply to files are different from inheritance rules that apply to directories in NFSv4 ACLs. The same inheritance rules apply to both files and directories in POSIX ACLs. To prevent potential issues, we recommend that you apply either NFS4 ACLs or POSIX ACLs to an NFS file system. The umask value cannot be modified. The umask of a POSIX ACL is generated by the permissions or operations of all users and groups. The umask has no practical meaning and cannot be changed. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. File Storage NAS NFS uses IP security groups instead of usernames to authenticate users. When you configure POSIX ACLs, UIDs or GIDs that are included in ACEs are stored in Linux. When you print an ACL for an object in a shell, Linux automatically loads the /etc/passwd file and converts UIDs or GIDs to actual usernames or group names. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. You must make sure that each username is mapped to its corresponding UID, and each group name is mapped to its corresponding GID. You can print POSIX ACL by using extended attributes. Run the following commands:
+If you configure inheritable NFSv4 ACLs for directories that reside in NFSv3 file systems, these settings may not conform to the POSIX ACL standard. Inheritance rules that apply to files are different from inheritance rules that apply to directories in NFSv4 ACLs. The same inheritance rules apply to both files and directories in POSIX ACLs.
+
+> **Note:** To prevent potential issues, we recommend that you apply either NFS4 ACLs or POSIX ACLs to an NFS file system.
+
+The umask value cannot be modified. The umask of a POSIX ACL is generated by the permissions or operations of all users and groups. The umask has no practical meaning and cannot be changed. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. File Storage NAS NFS uses IP security groups instead of usernames to authenticate users. When you configure POSIX ACLs, UIDs or GIDs that are included in ACEs are stored in Linux. When you print an ACL for an object in a shell, Linux automatically loads the /etc/passwd file and converts UIDs or GIDs to actual usernames or group names. You must manage the mappings between usernames or group names and UIDs or GIDs across multiple instances. You must make sure that each username is mapped to its corresponding UID, and each group name is mapped to its corresponding GID. You can print POSIX ACL by using extended attributes. Run the following commands:
 
 ```
 getfattr -n system.posix_acl_access file
@@ -1031,7 +1124,11 @@ You can use tools such as cp to migrate POSIX ACLs. NAS allows you to migrate PO
 |---|---|---|
 | file2. The | cp -ar dir1 dir2 | com |
 
-copies file1 to file2. hat grant the read and write acce ss POSIX ACLs may fail to be migrated if the version of the rsync tool is earlier than 3.1.2. Example 1: Migrate the ACL permissions of the file. a. Run the `getfacl file1` command to view the ACL permissions of the file1 file.
+copies file1 to file2. hat grant the read and write acce ss
+
+> **Note:** POSIX ACLs may fail to be migrated if the version of the rsync tool is earlier than 3.1.2.
+
+Example 1: Migrate the ACL permissions of the file. a. Run the `getfacl file1` command to view the ACL permissions of the file1 file.
 
 ```
 user::--user:player:r-x group::--mask::r-x other::--x
@@ -1044,11 +1141,17 @@ b. Run the `cp --preserve=xattr file1 file2` command to copy the ACL of the file
 user::--user:player:r-x group::--mask::r-x other::--x
 ```
 
-b. Run the `cp -ar dir1 dir2` command to copy the ACL of the dir1 directory to the dir2 directory. The number of POSIX ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs. We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions.
+b. Run the `cp -ar dir1 dir2` command to copy the ACL of the dir1 directory to the dir2 directory. The number of POSIX ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs.
+
+> **Note:** We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions.
 
 **FAQ**
 
-Why are deny ACEs not supported? The position of an ACE that resides in an ACL is important. The sequence for ACEs that reside in an NFSv4 ACL is random. A deny ACE may be placed in any position of an NFSv4 ACL. For example, an ACL contains two ACEs: A::Alice:r and D::Alice:r. The position of the ACEs determines whether the user named Alice has the write permissions. When you configure an ACL, you must consider the position of each ACE. The number of ACEs in an ACL has a sharp increase. hat grant the read and write acce ss The ACEs in an ACL may be difficult to combine and deduplicate because it is not mandatory to sequence ACEs. The number of ACEs may increase up to tens or hundreds over a long period of time. To manage the final permissions that are produced by these ACEs, you need to check each ACE. The check process is strenuous and time-consuming. The interactions between the umask and ACLs become more complex after deny ACEs are applied. This is because deny features do not exist in the umask. If deny ACEs are available, you may need to add several ACEs to an ACL when the umask is changed. For example, if you change the umask to -rw-rw-rw, you need to add the following ACEs to the ACL. You must add the ACEs in sequence at the beginning of the ACL.
+Why are deny ACEs not supported? The position of an ACE that resides in an ACL is important. The sequence for ACEs that reside in an NFSv4 ACL is random. A deny ACE may be placed in any position of an NFSv4 ACL. For example, an ACL contains two ACEs: A::Alice:r and D::Alice:r. The position of the ACEs determines whether the user named Alice has the write permissions.
+
+> **Note:** When you configure an ACL, you must consider the position of each ACE.
+
+The number of ACEs in an ACL has a sharp increase. hat grant the read and write acce ss The ACEs in an ACL may be difficult to combine and deduplicate because it is not mandatory to sequence ACEs. The number of ACEs may increase up to tens or hundreds over a long period of time. To manage the final permissions that are produced by these ACEs, you need to check each ACE. The check process is strenuous and time-consuming. The interactions between the umask and ACLs become more complex after deny ACEs are applied. This is because deny features do not exist in the umask. If deny ACEs are available, you may need to add several ACEs to an ACL when the umask is changed. For example, if you change the umask to -rw-rw-rw, you need to add the following ACEs to the ACL. You must add the ACEs in sequence at the beginning of the ACL.
 
 ```
 A::OWNER@:rw D::OWNER@:x A::GROUP@:rw D::GROUP@:x A::EVERYONE@:rw D::EVERYONE@:x

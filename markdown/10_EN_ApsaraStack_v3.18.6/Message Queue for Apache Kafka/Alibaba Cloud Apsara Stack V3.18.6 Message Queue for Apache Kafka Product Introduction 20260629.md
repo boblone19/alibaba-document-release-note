@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 17
 source_pdf: "efa742ad46a1a5ae_Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97Kafka%E7%89%88%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Message%20Queue%20for%20Apache%20Kafka%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Message Queue for Apache Kafka Product Introduction 20260629
@@ -38,9 +38,11 @@ Kafka ecosystem, which lets you migrate your services to the cloud without modif
 
 **O&M and monitoring features**
 
-HouseKeeping (health inspection component): The HouseKeeping component performs runtime inspections of the core links in ApsaraMQ for Kafka. It runs a full diagnostic scan on the cluster every minute and sends an alert if an unhealthy status is detected. The component also generates a daily inspection report that allows Alibaba Cloud O&M engineers to monitor the health of the ApsaraMQ for Kafka system. If an unhealthy cluster is detected during an inspection, the risks are displayed on the
-**Instance Risks** tab of the **Instance Details** page.
-Business monitoring and alerting: You can set monitoring and alerts for message accumulation in each Consumer Group to help you promptly identify issues. OpenAPI: ApsaraMQ for Kafka provides a comprehensive set of management OpenAPI operations that allow you to implement various resource management and O&M features.
+HouseKeeping (health inspection component): The HouseKeeping component performs runtime inspections of the core links in ApsaraMQ for Kafka. It runs a full diagnostic scan on the cluster every minute and sends an alert if an unhealthy status is detected. The component also generates a daily inspection report that allows Alibaba Cloud O&M engineers to monitor the health of the ApsaraMQ for Kafka system.
+
+> **Note:** If an unhealthy cluster is detected during an inspection, the risks are displayed on the **Instance Risks** tab of the **Instance Details** page.
+> Business monitoring and alerting: You can set monitoring and alerts for message accumulation in each Consumer Group to help you promptly identify issues.
+> OpenAPI: ApsaraMQ for Kafka provides a comprehensive set of management OpenAPI operations that allow you to implement various resource management and O&M features.
 
 **Reliability**
 

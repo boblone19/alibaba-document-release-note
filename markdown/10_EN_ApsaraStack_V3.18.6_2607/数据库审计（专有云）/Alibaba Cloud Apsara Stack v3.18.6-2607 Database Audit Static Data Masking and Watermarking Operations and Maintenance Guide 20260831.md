@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 22
 source_pdf: "cb77d9a052f059e3_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking Operatio"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Static%20Data%20Masking%20and%20Watermarking%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking Operations and Maintenance Guide 20260831
@@ -53,9 +53,7 @@ This manual guides O&M personnel to perform preventive maintenance on the Apsara
 
 O&M personnel must have IT industry skills, including computer network knowledge, computer operation knowledge, and problem analysis and troubleshooting capabilities. O&M personnel must undergo pre-job training to acquire the necessary knowledge of the Alibaba Cloud system, including but not limited to system principles, networking, feature usage, and maintenance tools.
 
-**Important**
-
-During maintenance operations, O&M personnel must abide by operation regulations to ensure personal safety and system safety. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
+> **Important:** During maintenance operations, O&M personnel must abide by operation regulations to ensure personal safety and system safety. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
 
 ## 2 Routine Inspections
 
@@ -76,17 +74,16 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
-**Note**
-
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
 ### 2.2 View the status of an instance
 
@@ -274,9 +271,7 @@ curl -k 'https://127.0.0.1:443/user/getSystemStatus.action'
 4. If the process is not started, you must use logs to troubleshoot the cause of the startup
 failure (such as configuration errors, missing dependencies, and insufficient permissions).
 
-**Warning**
-
-To view log details, you must log on to the ECS instance corresponding to the cloudnative product in advance. Before you perform this operation, make sure that you have the logon permission on the corresponding instance and record the operation to avoid affecting other business operations.
+> **Warning:** To view log details, you must log on to the ECS instance corresponding to the cloud- native product in advance. Before you perform this operation, make sure that you have the logon permission on the corresponding instance and record the operation to avoid affecting other business operations.
 
 ### 6.2 faq-about-data-sources
 

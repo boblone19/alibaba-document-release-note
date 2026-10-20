@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 8
 source_pdf: "1a365df91fa5a9f2_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Product Introduction 20260831

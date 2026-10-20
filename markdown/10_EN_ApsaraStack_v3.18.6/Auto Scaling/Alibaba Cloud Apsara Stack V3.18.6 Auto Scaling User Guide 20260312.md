@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 74
 source_pdf: "9e20bd70e4cf0e16_Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling User Guide 20260312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Auto%20Scaling%20User%20Guide%2020260312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Auto Scaling User Guide 20260312
@@ -159,9 +159,9 @@ Automatic scale-out i. Check the health status and boundary conditions of the sc
 
 Manually add instances i. Check the health status and boundary conditions of the scaling group, and check the status and type of ECS instances. ii. Assign the activity ID and execute the scaling activity. iii. Add the ECS instances. iv. Modify Total Capacity. v. Add the ECS instances to the whitelist of the associated ApsaraDB RDS instance. vi. Associate the ECS instances with an SLB instance and set the weight to the SLB weight value that is specified in the active scaling configuration.
 
-**Note**
+> **Note:** If you want to manually add an instance to a scaling group, the instance type of the instance must be the same as that specified in the active scaling configuration of the scaling group. Therefore, you must set the weight to the SLB weight value that is specified in the active scaling configuration.
 
-If you want to manually add an instance to a scaling group, the instance type of the instance must be the same as that specified in the active scaling configuration of the scaling group. Therefore, you must set the weight to the SLB weight value that is specified in the active scaling configuration. vii. The cooldown period starts after the scaling activity is complete. Manually remove instances i. Check the health status and boundary conditions of the scaling group. ii. Assign the activity ID and execute the scaling activity. iii. SLB stops forwarding traffic to ECS instances. iv. Remove the ECS instances from SLB after 60 seconds. v. Remove the ECS instances from the whitelist of the associated ApsaraDB RDS instance. vi. Modify Total Capacity. vii. Remove the ECS instances from the scaling group. viii. After the scaling activity is complete, the cooldown period starts.
+vii. The cooldown period starts after the scaling activity is complete. Manually remove instances i. Check the health status and boundary conditions of the scaling group. ii. Assign the activity ID and execute the scaling activity. iii. SLB stops forwarding traffic to ECS instances. iv. Remove the ECS instances from SLB after 60 seconds. v. Remove the ECS instances from the whitelist of the associated ApsaraDB RDS instance. vi. Modify Total Capacity. vii. Remove the ECS instances from the scaling group. viii. After the scaling activity is complete, the cooldown period starts.
 
 ### 2.6 Remove unhealthy ECS instances
 
@@ -173,9 +173,7 @@ Before you use ESS, you must understand information about the removal of unhealt
 
 Before you use Auto Scaling, we recommend that you learn about how to roll back instances when a scaling activity fails. If a portion of Elastic Compute Service (ECS) instances fails to be added to a scaling group during a scale-out, Auto Scaling deems the entire scale-out operation unsuccessful. Auto Scaling prioritizes maintaining the integrity of individual instance transactions over ensuring success at the scaling activity level. Therefore, Auto Scaling supports only instance rollback. For example, when Auto Scaling creates 20 ECS instances but only successfully adds 19 ECS instances to a scaling group, only the ECS instance that fails to be added is rolled back.
 
-**Important**
-
-If, following the completion of a rollback operation, the total number of ECS instances in a scaling group fails to meet the necessary quota, the scaling group may lack the adequate computing power or Auto Scaling might struggle to maintain the metric value at the desired target. In such a scenario, you may resort to employing alternative methods to augment the quantity of ECS instances, thereby ensuring that the scaling group aligns with your business requirements. For more information, see the **ECS instance rollback** topic in the **Overview** chapter of Auto Scaling User Guide.
+> **Important:** If, following the completion of a rollback operation, the total number of ECS instances in a scaling group fails to meet the necessary quota, the scaling group may lack the adequate computing power or Auto Scaling might struggle to maintain the metric value at the desired target. In such a scenario, you may resort to employing alternative methods to augment the quantity of ECS instances, thereby ensuring that the scaling group aligns with your business requirements. For more information, see the **ECS instance rollback** topic in the **Overview** chapter of Auto Scaling User Guide.
 
 ### 2.8 Instance lifecycle management
 
@@ -244,33 +242,31 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter your username and password.
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
 the following scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -289,9 +285,9 @@ A scaling group is a group of Elastic Compute Service (ECS) instances that can b
 
 A virtual private cloud (VPC) and a vSwitch are created. For information about how to create a VPC, see the **Create a VPC** topic of Virtual Private Cloud User Guide. For information about how to create a vSwitch, see the **Create a vSwitch** topic of Virtual Private Cloud Use r Guide. If you want to attach a server load balancer (SLB) instance to a scaling group, make sure that the following requirements are met: You have one or more SLB instances in the **Running** state. For more information about how to create SLB instances, see the **Create an SLB instance** topic of Server Load Bala ncer User Guide. The SLB instance and the scaling group belong to the same organization, resource set, and region. If the network type of the SLB instance and the scaling group is VPC, the SLB instance and the scaling group use the same VPC.
 
-**Important**
+> **Important:** If the SLB instance and the scaling group use different VPCs, the attachment will fail.
 
-If the SLB instance and the scaling group use different VPCs, the attachment will fail. If the network type of the SLB instance is classic network, and that of the scaling group is VPC and one backend server of the SLB instance uses a VPC, the scaling group and the backend server use the same VPC. At least one listener is configured for the SLB instance. For more information, see the
+If the network type of the SLB instance is classic network, and that of the scaling group is VPC and one backend server of the SLB instance uses a VPC, the scaling group and the backend server use the same VPC. At least one listener is configured for the SLB instance. For more information, see the
 **Listener overview** topic of Server Load Balancer User Guide.
 The health check feature is enabled for the SLB instance. For more information, see the
 **Configure health checks** topic of Server Load Balancer User Guide.
@@ -499,9 +495,9 @@ A scaling group is a group of Elastic Compute Service (ECS) instances that can b
 
 A virtual private cloud (VPC) and a vSwitch are created. For information about how to create a VPC, see the **Create a VPC** topic of Virtual Private Cloud User Guide. For information about how to create a vSwitch, see the **Create a vSwitch** topic of Virtual Private Cloud User Guide. If you want to attach a server load balancer (SLB) instance to a scaling group, make sure that the following requirements are met: You have one or more SLB instances in the **Running** state. For more information about how to create SLB instances, see the **Create an SLB instance** topic of Server Load Bala ncer User Guide. The SLB instance and scaling group must belong to the same organization, resource set, and region. The SLB instance and scaling group must share the same VPC if both are VPC-type.
 
-**Important**
+> **Important:** If their VPCs differ, the attachment will fail.
 
-If their VPCs differ, the attachment will fail. If the SLB instance uses the classic network, but the scaling group is in a VPC, then any backend server in the SLB instance that uses a VPC must belong to the same VPC as the scaling group. At least one listener is configured for the SLB instance. For more information, see the
+If the SLB instance uses the classic network, but the scaling group is in a VPC, then any backend server in the SLB instance that uses a VPC must belong to the same VPC as the scaling group. At least one listener is configured for the SLB instance. For more information, see the
 **Listener overview** topic of Server Load Balancer User Guide.
 The health check feature is enabled for the SLB instance. For more information, see the
 **Configure health checks** topic of Server Load Balancer User Guide.
@@ -559,9 +555,9 @@ You can enable or disable the Expected Number of Instances feature in the follow
 **Expected Number of Instances** parameter to enable the Expected Number of Instances
 feature. For more information, see Create scaling groups.
 
-**Note**
+> **Note:** After you enable the Expected Number of Instances feature for a scaling group, you can subsequently modify the expected number of instances based on your business requirements.
 
-After you enable the Expected Number of Instances feature for a scaling group, you can subsequently modify the expected number of instances based on your business requirements. You can call an API operation to disable the Expected Number of Instances feature for a scaling group.
+You can call an API operation to disable the Expected Number of Instances feature for a scaling group.
 
 **Concepts**
 
@@ -706,21 +702,15 @@ applying these filters one by one, you can quickly identify the specific scaling
 | Notification Settings | Provides information about the event notifications in the scaling group. You can create, edit, or delete event notification rules based on your needs. |
 | Operation Logs | Provides information about operation logs in the scaling group, such as the operation name, operator, operation time, and operation source IP address. |
 
-**Note**
-
-On the **Scaling Groups** page, you can refresh, delete, disable, or enable a scaling group. You can also refresh, delete, disable, or enable a scaling group on the scaling group details page. On the **Scaling Groups** page, you can click the link in the **Scaling Group**
-**Configuration** column of a scaling group to view the effective scaling
-configuration of the scaling group. You can also go to the **Instance**
-**Configuration Sources** tab of the scaling group details page to view the
-effective scaling configuration.
+> **Note:** On the **Scaling Groups** page, you can refresh, delete, disable, or enable a scaling group. You can also refresh, delete, disable, or enable a scaling group on the scaling group details page.
+> On the **Scaling Groups** page, you can click the link in the **Scaling Group** **Configuration** column of a scaling group to view the effective scaling configuration of the scaling group. You can also go to the **Instance** **Configuration Sources** tab of the scaling group details page to view the effective scaling configuration.
 
 ### 4.5 Edit scaling groups
 
 If your current scaling group's properties no longer meet your needs, you can update them— such as adjusting the maximum or minimum number of instances—without creating a new scaling group.
 
-**Note**
+> **Note:** After you adjust the minimum or maximum instance limits for a scaling group, Auto Scaling automatically adds or removes instances to keep the total within the specified range.
 
-After you adjust the minimum or maximum instance limits for a scaling group, Auto Scaling automatically adds or removes instances to keep the total within the specified range.
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -729,10 +719,8 @@ After you adjust the minimum or maximum instance limits for a scaling group, Aut
 You cannot modify the **Organization/Resource Set** or **VPC ID** parameters. However, you can adjust the following: **Region**, **Maximum Instances**, **Minimum Instances**, **Scaling**
 **Group Configuration**, and others. For more information, see Create scaling groups.
 
-**Note**
+> **Note:** If no scaling configuration exists, create one before modifying the **Select a scaling** **configuration** parameter. Click **Add Scaling Configuration** to proceed.
 
-If no scaling configuration exists, create one before modifying the **Select a scaling**
-**configuration** parameter. Click **Add Scaling Configuration** to proceed.
 6. Click **OK**.
 After editing a scaling group, you can view its updated properties. For example, the new scaling configuration appears in the **Scaling Group Configuration** column.
 
@@ -800,9 +788,7 @@ in the scaling group. Unit: seconds.
 **Adding**: the number of instances that are being added to the scaling group.
 **Removing**: the number of instances that are being removed from the scaling group.
 
-**Note**
-
-The **Stopped**, **Pending Add**, and **Pending Remove** states are unavailable.
+> **Note:** The **Stopped**, **Pending Add**, and **Pending Remove** states are unavailable.
 
 ### 5.2 Manually add instances to a scaling group
 
@@ -961,9 +947,8 @@ s
 
 You can define a scaling configuration to specify the instance template for automatic scaling. When a scale-out is triggered in the scaling group, Auto Scaling uses the scaling configuration as the template to scale out instances. This simplifies instance creation and management and improves the success rate of scale-outs. This topic describes how to create a scaling configuration.
 
-**Important**
+> **Important:** You can create only a limited number of scaling configurations for each scaling group. For more information, see the **Limits** topic of the **Notes** chapter in Auto Scaling User Guide.
 
-You can create only a limited number of scaling configurations for each scaling group. For more information, see the **Limits** topic of the **Notes** chapter in Auto Scaling User Guide.
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, click **Scaling groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1223,9 +1208,8 @@ If your business workloads have specific patterns, you can create scheduled task
 
 A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. You can specify a time window for a scheduled task to repeatedly run at the specified point in time. This enhances the adaptability of the scheduled task and effectively addresses the demands of your business. If multiple scheduled tasks need to be complete within one minute, Auto Scaling will execute the most recent scheduled task.
 
-**Note**
+> **Note:** Before you create a scheduled task, make sure that a scaling group and scaling rule are created. For more information, see Create scaling groups and Create a scaling rule.
 
-Before you create a scheduled task, make sure that a scaling group and scaling rule are created. For more information, see Create scaling groups and Create a scaling rule.
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose **Event-driven Tasks > Timed tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.

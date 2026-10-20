@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 457
 source_pdf: "c47e6c942d0c1cc2_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Network%20Detection%20and%20Response%20Developer%20Guide%2020260702.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Network Detection and Response Developer Guide 20260702
@@ -241,16 +241,16 @@ Make prep Make the ca
 1. Obtain the required AccessKey.
 For more information, see Get an AccessKey or Get an STS AccessKey.
 
-**Note**
+> **Note:** You can use a personal AccessKey or an STS AccessKey to call the APIs of Apsara Uni- manager Management Console and other cloud products.
 
-You can use a personal AccessKey or an STS AccessKey to call the APIs of Apsara Unimanager Management Console and other cloud products.
 2. Obtain the RegionID.
 3. Obtain the organization ID and resource group ID.
 You can obtain the organization ID by calling an API. For more information, see the GetOrga nizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You can obtain the resource group ID by calling an API. For more information, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Gui de.
 
-**Note**
+> **Note:** When you call an API, add the organization ID `<x-acs-organizationid>` and the resource group ID `<x-acs-resourcegroupid>` to the header parameters. This specifies the organization and resource group for the resource and allows for isolated queries of instance resources.
+> If you omit the organization ID `<x-acs-organizationid>` , the current user's organization is used by default.
+> If you omit the resource group ID `<x-acs-resourcegroupid>` , the value is empty by default. If you specify a resource group ID, you must also specify an organization ID.
 
-When you call an API, add the organization ID `<x-acs-organizationid>` and the resource group ID `<x-acs-resourcegroupid>` to the header parameters. This specifies the organization and resource group for the resource and allows for isolated queries of instance resources. If you omit the organization ID `<x-acs-organizationid>` , the current user's organization is used by default. If you omit the resource group ID `<x-acs-resourcegroupid>` , the value is empty by default. If you specify a resource group ID, you must also specify an organization ID.
 4. Obtain the relevant API reference document.
 Review the developer guide for the target cloud product to understand its features and usage. For more information about how to obtain and use the developer guide, see Developer documentation instructions.
 5. Obtain the cloud product Endpoint.
@@ -298,16 +298,17 @@ manager Management Console and press Enter.
 2. Enter the correct username and password.
 Obtain the username and password to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password. Follow the prompts to change the password. To improve security, the password must be 10 to 32 characters long and contain characters from at least two of the following types:
+> Uppercase or lowercase letters (A–Z, a–z)
+> Digits (0–9)
+> Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password. Follow the prompts to change the password. To improve security, the password must be 10 to 32 characters long and contain characters from at least two of the following types: Uppercase or lowercase letters (A–Z, a–z) Digits (0–9) Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform one of the
 following operations: First logon after an administrator forces MFA: a. On the page for attaching a virtual MFA device, follow the on-screen instructions to attach the MFA device. b. Re-enter your username and password as described in Step 2, and then click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled and attached MFA: Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **"Attach and enable a virtual MFA device"** topic in the **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **"Attach and enable a virtual MFA device"** topic in the **Apsara Uni-manager Management Console User Guide** .
 5. In the menu bar at the top of the page, choose **Products > Application Services >**
 **Developer Portal**.
 
@@ -319,9 +320,7 @@ An AccessKey supports two authorization modes: Resource Access Management (RAM) 
 
 An AccessKey consists of an AccessKey ID and an AccessKey secret. It uses symmetric encryption to authenticate the identity of a request sender. The AccessKey ID identifies the user, and the AccessKey secret is a string that the user uses to create an encrypted signature. The two authorization modes for an AccessKey are as follows: RAM authorization: Provides an AccessKey ID and an AccessKey secret to a third-party requester. STS authorization: Provides an AccessKey ID, an AccessKey secret, and a security token to a third-party requester. For more information, see Obtain an STS AccessKey. Apsara Uni-manager Management Console provides two types of AccessKeys: personal and organization. Only operations administrators and primary organization administrators can obtain organization AccessKeys. You can use a personal account AccessKey to call the APIs of Apsara Uni-manager Management Console and other cloud products. If you use a personal account AccessKey, you must add the required restrictive parameters to the header to prevent permission errors.
 
-**Warning**
-
-A personal account AccessKey has restricted permissions and is managed by the Apsara Uni-manager Management Console permission system. In contrast, an organization AccessKey has broader permissions. Administrators must ensure the security of any operation that uses an organization AccessKey.
+> **Warning:** A personal account AccessKey has restricted permissions and is managed by the Apsara Uni-manager Management Console permission system. In contrast, an organization AccessKey has broader permissions. Administrators must ensure the security of any operation that uses an organization AccessKey.
 
 | Parameter | Description |
 |---|---|
@@ -339,9 +338,7 @@ Follow these steps to obtain a personal account AccessKey:
 3. In the **Alibaba Cloud AccessKey** section, view the AccessKey information for your
 personal account.
 
-**Note**
-
-Your AccessKey ID and AccessKey secret are the credentials used to access your cloud resources. These credentials grant full permissions to your account. Keep them secure.
+> **Note:** Your AccessKey ID and AccessKey secret are the credentials used to access your cloud resources. These credentials grant full permissions to your account. Keep them secure.
 
 **Obtain an organization AccessKey**
 
@@ -372,9 +369,15 @@ Apsara Stack STS allows you to manage temporary credentials for your Apsara Stac
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
 
-**Note**
-
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the ARN of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS.
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with your current session name.
+> In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace it with the ARN of your RAM role.
+> "sts.aliyuns.com": Replace it with the actual endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -437,9 +440,14 @@ e that is obtained in the preceding step.
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
 following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your AccessKey ID. <yourStsAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourStsAccesskeyID>: Replace it with your AccessKey ID.
+> <yourStsAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS.
+> <yourResourceGroupID>: Replace it with the actual resource set ID.
+> <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -534,13 +542,13 @@ You must sign all API requests to ensure security. Alibaba Cloud uses the reques
 
 1. Create a canonicalized query string by arranging the request parameters.
 
-**Important**
+> **Important:** The request parameters include operation-specific parameters and all common request parameters except Signature.
 
-The request parameters include operation-specific parameters and all common request parameters except Signature. i. Sort the request parameters. Sort the request parameters (including all common and operation-specific parameters except **Signature**) in alphabetical order.
+i. Sort the request parameters. Sort the request parameters (including all common and operation-specific parameters except **Signature**) in alphabetical order.
 
-**Note**
+> **Note:** If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?).
 
-If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?). sts ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and their values with equal signs (=). iv. Sort the parameters in the order specified in the Sort parameters step and connect them with ampersands (&) to produce a canonicalized query string.
+sts ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and their values with equal signs (=). iv. Sort the parameters in the order specified in the Sort parameters step and connect them with ampersands (&) to produce a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string.
 
 ```
@@ -549,9 +557,8 @@ StringToSign=HTTPMethod + "&" + percentEncode("/") + "&" + percentEncode(Canonic
 
 3. Calculate the HMAC value of the string-to-sign based on RFC 2104.
 
-**Note**
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand (&) (ASCII:38) is appended is used as the key for HMAC calculation.
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand (&) (ASCII:38) is appended is used as the key for HMAC calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 
 ```
@@ -715,9 +722,9 @@ variable.
 
 This document describes how to install and call the Python SDK. The Apsara Stack Python SDK supports Python 2.6.x, 2.7.x, and 3.x or later. You can use pip to install the SDK.
 
-**Note**
+> **Note:** All product SDKs require the Alibaba Cloud Python SDK core library.
 
-All product SDKs require the Alibaba Cloud Python SDK core library. For Python 2.x, run the following command to install the Alibaba Cloud Python SDK core library:
+For Python 2.x, run the following command to install the Alibaba Cloud Python SDK core library:
 
 ```
 pip install aliyun-python-sdk-core

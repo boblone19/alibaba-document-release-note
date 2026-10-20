@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 66
 source_pdf: "fc65f6bc642b42ad_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260310
@@ -97,22 +97,25 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Stack DNS console
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top menu bar, choose **Products > Network > Alibaba Cloud DNS**.
 
 ## 4 DNS within cloud
@@ -170,7 +173,8 @@ On the **Global Internal Domain Name** page, you can view a list of your added d
 
 **Modify a domain name**
 
-Only secondary domain names can be modified. Primary domain names cannot be modified.
+> **Note:** Only secondary domain names can be modified. Primary domain names cannot be modified.
+
 1. On the **Global Internal Domain Name** page, find the domain name that you want to
 modify and click **Modify** in the **Actions** column.
 2. In the **Modify Global Internal Domain Name** dialog box, modify the parameters and
@@ -202,9 +206,8 @@ You can configure parsing settings in the Apsara Uni-manager Management Console.
 
 **Add a DNS record**
 
-**Important**
+> **Important:** You can add DNS records only for primary domain names. You cannot add DNS records for secondary domain names. The DNS data for a secondary domain name is synchronized from the DNS server of the primary domain name.
 
-You can add DNS records only for primary domain names. You cannot add DNS records for secondary domain names. The DNS data for a secondary domain name is synchronized from the DNS server of the primary domain name.
 1. Log on to the DNS console.
 2. In the navigation pane on the left, choose **Intra-cloud Domain Name Service > Intra-**
 **cloud Global Domain Name**.
@@ -291,7 +294,7 @@ based on the following information, and then click **OK**.
 
 **More operations**
 
-Global forwarding domain names forwarded to ops cannot be modified or deleted. You can modify, add remarks to, and delete user-defined domain names.
+> **Note:** Global forwarding domain names forwarded to ops cannot be modified or deleted. You can modify, add remarks to, and delete user-defined domain names.
 
 **View the domain name list**
 
@@ -330,7 +333,8 @@ You can enable or disable default forwarding in the Apsara Uni-manager Managemen
 
 **Procedure**
 
-If you disable default forwarding, DNS requests for external domain names are not sent to the forwarding server.
+> **Note:** If you disable default forwarding, DNS requests for external domain names are not sent to the forwarding server.
+
 1. Log on to the DNS console.
 2. In the navigation pane on the left, choose **Intra-cloud Domain Name Service > Intra-**
 **cloud Global Domain Name**.
@@ -351,7 +355,9 @@ If you disable default forwarding, DNS requests for external domain names are no
 
 ##### 4.1.4.1 Overview
 
-Recursive access control list (ACL) policies are used to specify whether to recursively send DNS requests to the Internet. Recursive resolution defined in such ACL policies takes precedence over global recursive resolution.
+Recursive access control list (ACL) policies are used to specify whether to recursively send DNS requests to the Internet.
+
+> **Note:** Recursive resolution defined in such ACL policies takes precedence over global recursive resolution.
 
 ##### 4.1.4.2 Recursive ACL policy
 
@@ -392,7 +398,9 @@ Only system administrators have permission to manage the recursion configuration
 
 **Procedure**
 
-Enabling recursive resolution lets you perform recursive queries, such as resolving domain names on the Internet. Disabling recursive resolution blocks recursive queries, such as resolving domain names on the Internet.
+> **Note:** Enabling recursive resolution lets you perform recursive queries, such as resolving domain names on the Internet.
+> Disabling recursive resolution blocks recursive queries, such as resolving domain names on the Internet.
+
 1. Log on to the DNS console.
 2. In the navigation pane on the left, choose **Intra-cloud Domain Name Service > Intra-**
 **cloud Global Domain Name**.
@@ -451,13 +459,16 @@ In the Apsara Uni-manager Management Console, you can add global lines.
 
 After you add a global line, you can perform the following operations on the **Global Lines** page. Query global lines Use the **Advanced Filter** to perform a fuzzy search by **Line Name** or **IP**. Click the icon in the upper-right corner of the list to show or hide columns, or drag columns to reorder them. Modify a global line Find the line that you want to modify and click **Modify** in the **Actions** column. Change the
 **Line Name**, **IPv4 Address Range**, or **IPv6 Address Range**, and then click **OK**.
-You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**. Sorting global lines In the line that you want to reorder, click **Sort** in the **Actions** column. Then, select a
+
+> **Note:** You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**.
+
+Sorting global lines In the line that you want to reorder, click **Sort** in the **Actions** column. Then, select a
 **Sorting Behavior** and click **OK**.
 Delete a global line
 
-**Important**
+> **Important:** Before you can delete a line, you must dissociate it from all scheduling instances and global line parsing configurations.
 
-Before you can delete a line, you must dissociate it from all scheduling instances and global line parsing configurations. To delete a single line: Find the line and click **Delete** in the **Actions** column. Then, click
+To delete a single line: Find the line and click **Delete** in the **Actions** column. Then, click
 **OK**.
 To delete multiple lines in a batch: Select the checkboxes of the lines that you want to delete. Click **Batch Delete** in the lower-left corner of the page. Then, click **OK**. Find the line and click **Operation Logs** in the **Actions** column. For more information, see View operation logs.
 
@@ -861,7 +872,8 @@ On the **Private Line** page, you can view the details of the private lines in t
 **Actions** column.
 2. In the dialog box that appears, modify **Line Name**, **IPv4 Address Range**, and **IPv6**
 **Address Range**, and click **OK**.
-You must specify either **IPv4 Address Range** or **IPv6 Address Range**.
+
+> **Note:** You must specify either **IPv4 Address Range** or **IPv6 Address Range**.
 
 **Sort lines**
 
@@ -871,7 +883,8 @@ You must specify either **IPv4 Address Range** or **IPv6 Address Range**.
 
 **Delete a line**
 
-Before you delete a line, you must dissociate it from all scheduling instances.
+> **Note:** Before you delete a line, you must dissociate it from all scheduling instances.
+
 1. (Method 1) On the **Private Lines** page, find the target line, and click **Delete** in the
 **Actions** column.
 (Method 2) On the **Private Lines** page, select the target lines, and click **Batch Delete** in the lower-left corner.
@@ -937,7 +950,8 @@ You can create, delete, modify, and query access policies for scheduling instanc
 
 **processing logic)**
 
-Whether an address pool is available is determined based on the number of normal addresses in the address pool and the minimum number of available addresses in the address pool that you specify when you configure the access policy. If the number of normal addresses in the address pool is less than the specified minimum number of available addresses in the address pool, the address pool is considered unavailable. You can perform a health check to obtain the number of normal addresses in the address pool. Healthy addresses include intelligently returned healthy addresses and all alwaysonline addresses, regardless of their health check status. Healthy addresses do not include intelligently returned abnormal addresses or any always-offline addresses, regardless of their health check status.
+> **Note:** Whether an address pool is available is determined based on the number of normal addresses in the address pool and the minimum number of available addresses in the address pool that you specify when you configure the access policy. If the number of normal addresses in the address pool is less than the specified minimum number of available addresses in the address pool, the address pool is considered unavailable. You can perform a health check to obtain the number of normal addresses in the address pool.
+> Healthy addresses include intelligently returned healthy addresses and all always- online addresses, regardless of their health check status. Healthy addresses do not include intelligently returned abnormal addresses or any always-offline addresses, regardless of their health check status.
 
 | Primary address pool status | Secondar y address pool status | Sub-condition (comparison of healthy address counts) | Active address pool (list of available addresses) |
 |---|---|---|---|
@@ -1038,9 +1052,15 @@ Query access policies Use **Advanced Filter** and enter a **Policy Name** to per
 **pool** information.
 Click an address pool name to view the details of the **primary/secondary address pool**. Edit an access policy
 
-**Important**
+> **Important:** You can modify an access policy to return different address pools based on the DNS request source.
+> When you edit an access policy, no primary/secondary failover is triggered if you do not change the associated primary or secondary address pools. If you re-associate either the primary or secondary address pool, the following rules apply:
 
-You can modify an access policy to return different address pools based on the DNS request source. When you edit an access policy, no primary/secondary failover is triggered if you do not change the associated primary or secondary address pools. If you re-associate either the primary or secondary address pool, the following rules apply: i. In manual switchover mode, if the secondary address pool is deleted, the system forces a switchover to the primary address pool. If the secondary address pool is not deleted, the currently active address pool remains unchanged. ii. In automatic switchover mode, the system reselects the active address pool based on the availability of the modified address pools. Proceed with caution. Find the target access policy, click **Edit** in the **Actions** column, modify the parameters in the dialog box that appears as described in Create an access policy, and then click **OK**. Delete an access policy Find the target access policy, click **Delete** in the **Actions** column, and then click **OK**.
+> i. In manual switchover mode, if the secondary address pool is deleted, the system
+> forces a switchover to the primary address pool. If the secondary address pool is not deleted, the currently active address pool remains unchanged.
+> ii. In automatic switchover mode, the system reselects the active address pool based on
+> the availability of the modified address pools. Proceed with caution.
+
+Find the target access policy, click **Edit** in the **Actions** column, modify the parameters in the dialog box that appears as described in Create an access policy, and then click **OK**. Delete an access policy Find the target access policy, click **Delete** in the **Actions** column, and then click **OK**.
 
 ### 6.2 Address pool
 
@@ -1084,9 +1104,8 @@ On the **Address Pools** page, you can view a list of the address pools that you
 
 **Modify an address pool**
 
-**Important**
+> **Important:** After you modify an address pool for which health checks are enabled, the health check status of all addresses is reset to Normal. If the address pool is associated with an access policy that uses automatic switchover, a primary/secondary failover may be triggered. Proceed with caution.
 
-After you modify an address pool for which health checks are enabled, the health check status of all addresses is reset to Normal. If the address pool is associated with an access policy that uses automatic switchover, a primary/secondary failover may be triggered. Proceed with caution.
 1. On the **Address Pools** page, find the address pool that you want to modify and click
 **Modify** in the **Actions** column.
 2. On the **Modify Address Pool** page, change the **Address Pool Name** and **Address List**,
@@ -1220,7 +1239,10 @@ You can view the operation logs for your Alibaba Cloud DNS instances. These logs
 3. On the instance list page, find the target instance and click **Operation Log** in the **Actions**
 column.
 4. On the **Operation Log** page, view the operation logs.
-The default log retention period is 720 days. To change this period, an administrator must adjust the settings in Configuration > Log Storage Configuration. If you extend the log retention period, historical log data is not backfilled.
+
+> **Note:** The default log retention period is 720 days. To change this period, an administrator must adjust the settings in Configuration > Log Storage Configuration.
+> If you extend the log retention period, historical log data is not backfilled.
+
 5. **Optional:** Filter the operation records using filter conditions such as **Action** and **Operator**.
 The supported filter conditions are listed in the following table.
 

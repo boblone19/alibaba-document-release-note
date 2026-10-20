@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 20
 source_pdf: "a3584514e01046cd_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System User "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System User Guide 20260902
@@ -42,18 +42,29 @@ ApsaraStack Parallel File System (APFS) is a cloud-defined, distributed parallel
 
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -132,7 +143,8 @@ Before you delete an APFS file system, the file system is unmounted from the mou
 the pointer over the **File System ID/Name** column, and click the icon.
 2. In the dialog box that appears, enter a new description.
 3. Then, click **OK**.
-The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
+
+> **Note:** The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
 
 ### 3.2 Scale up an APFS file system
 
@@ -143,7 +155,10 @@ Create an APFS file system.
 2. On the APFS page, find the file system that you want to scale up and click **Scale Up** in the
 Actions column.
 3. On the File system expansion page, specify a value for the **New Total Capacity (TiB)**
-parameter. The new total capacity cannot be less than the current total capacity and cannot exceed the maximum total capacity of the cluster.
+parameter.
+
+> **Note:** The new total capacity cannot be less than the current total capacity and cannot exceed the maximum total capacity of the cluster.
+
 4. Click **Confirm Order** to complete the scale-up.
 
 ### 3.3 Resource monitoring

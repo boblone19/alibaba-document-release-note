@@ -5,7 +5,7 @@ doc_version: "20260911"
 pdf_pages: 51
 source_pdf: "0502fa7254d8ca78_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Guide 20260911.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20User%20Guide%2020260911.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Guide 20260911
@@ -88,9 +88,15 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-You need to obtain the username and password from an operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
+> **Note:** You need to obtain the username and password from an operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -103,7 +109,9 @@ a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Enter
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to bind and enable MFA, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see Manage MFA.
 
 **What to do next**
 
@@ -111,7 +119,10 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the logon password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**.
+
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ## 3 云防火墙
 
@@ -173,9 +184,17 @@ On the **Internal Firewall** tab, you can view custom policy groups and security
 3. In the left-side navigation pane, click **Access Control**.
 4. On the **Access Control** page, click the **Internal Firewall** tab.
 5. **Optional:**Specify search conditions and click **Search** to search for the required policy
-group. If you want to view all policy groups, skip this step. The required policy group appears in the policy group list.
+group.
+
+> **Note:** If you want to view all policy groups, skip this step.
+
+The required policy group appears in the policy group list.
 6. Find the required policy group and configure an access control policy in this group.
-i. In the **Actions** column, click **Configure Policy**. ii. On the **Policies** page, click **Create Policy**. If you want to modify or delete an access control policy, you can perform the following steps: Click the **Inbound** or **Outbound** tab, find the policy, and then click **Modify** or **Delete** in the Actions column. iii. In the **Create Policy** dialog box, configure the parameters.
+i. In the **Actions** column, click **Configure Policy**. ii. On the **Policies** page, click **Create Policy**.
+
+> **Note:** If you want to modify or delete an access control policy, you can perform the following steps: Click the **Inbound** or **Outbound** tab, find the policy, and then click **Modify** or **Delete** in the Actions column.
+
+iii. In the **Create Policy** dialog box, configure the parameters.
 
 | Paramete r | Description |
 |---|---|
@@ -474,7 +493,8 @@ All traffic that passes through Cloud Firewall is recorded on the Log Audit page
 4. On the **Event Logs** tab of the page that appears, click **Internet Firewall**, **VPC-VPC**
 **Firewall**, or **IDC-VPC Firewall**.
 5. Specify the search conditions and click **Search**.
-If you want to view all event logs, skip this step.
+
+> **Note:** If you want to view all event logs, skip this step.
 
 | Search condition | Description |
 |---|---|
@@ -495,7 +515,8 @@ All traffic that passes through Cloud Firewall is recorded on the Log Audit page
 3. In the left-side navigation pane, click **Traffic Log**.
 4.
 5. Specify the search condition and click **Search**.
-If you want to view all traffic logs, skip this step.
+
+> **Note:** If you want to view all traffic logs, skip this step.
 
 | Search condition | Description |
 |---|---|
@@ -530,9 +551,15 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-You need to obtain the username and password from an operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
+> **Note:** You need to obtain the username and password from an operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -545,7 +572,9 @@ a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Enter
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to bind and enable MFA, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see Manage MFA.
 
 **What to do next**
 
@@ -553,7 +582,10 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the logon password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**.
+
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ### 4.2 规则运营
 
@@ -605,7 +637,10 @@ thresholds for traffic redirection. i. Find the rule whose thresholds you want t
 **Solution** column.
 ii. In the **Modify Threshold** dialog box, specify custom thresholds and click **OK**. iii. **Optional.** Click **Automatic DDoS Traffic Redirection and Scrubbing**. In the **Enable**
 **Automatic Redirection** message, click **OK**.
-By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on custom thresholds. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on custom thresholds. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
+
+> **Note:** By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off.
+
+If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on custom thresholds. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on custom thresholds. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
 #### 4.2.3 Manage Server Guard rules
 
@@ -629,9 +664,8 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
-**Important**
+> **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
-WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -734,7 +768,11 @@ a. In the **Traffic Forwarding Configuration - Service CIDR Block** section, cli
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can also click the icon to manually refresh the check frequency for the CIDR block. b. In the**Connectivity Check**section, click**Add**. Configure the parameters and click **OK**.
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+
+> icon to manually refresh the check frequency for the CIDR block.
+
+also click the b. In the**Connectivity Check**section, click**Add**. Configure the parameters and click **OK**.
 
 | Parameter | Description |
 |---|---|
@@ -757,9 +795,8 @@ Click the **CCFW** tab to view the following information: Cloud Firewall Taskflo
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
-**Important**
+> **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
-All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -804,9 +841,14 @@ Cloud Security Operations Center is an operations platform for Apsara Stack Secu
 The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the URL. Then, press the Enter key.
-You can select a language from the drop-down list in the upper-right corner of the page.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 3. Enter your username and password.
-To obtain the username and password that are used to log on to the Apsara Unimanager Operations Console, contact the deployment personnel or administrators. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+
+> **Note:** To obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console, contact the deployment personnel or administrators.
+
+If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 4. Click **Log On**.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Apsara Stack Security**.
@@ -843,7 +885,7 @@ and silent threshold for important command auditing, and then click **Save And A
 
 **Important**
 
-After you modify these rules, the brute-force attack detection rules for all host assets are affected, including tenant-side hosts and platform-side physical machines. The attack analysis results in Server Guard are also affected. Modify the rules with caution.
+> After you modify these rules, the brute-force attack detection rules for all host assets are affected, including tenant-side hosts and platform-side physical machines. The attack analysis results in Server Guard are also affected. Modify the rules with caution.
 
 | Configuration item | Description |
 |---|---|
@@ -897,8 +939,10 @@ The upgrade center supports automatic import and manual import of update package
 
 If your Apsara Stack environment is inaccessible over the Internet, you can manually import update packages to update feature libraries or the version of Apsara Stack Security. a. Set Upgrade Package Import to **Offline Manual Import** and click **Generate Upgrade**
 **Identifier**. Then, download update packages. For more information, see Download
-update packages. b. Click Import Upgrade Package and drag the downloaded update packages to the dotted box. You can also click the icon to upload the update packages. Before you upload the update packages, click the link in the **Manually Import**
-**offline upgrade packages**dialog box and trust the certificate.
+update packages. b. Click Import Upgrade Package and drag the downloaded update packages to the dotted box. You can also click the icon to upload the update packages.
+
+> **Note:** Before you upload the update packages, click the link in the **Manually Import** **offline upgrade packages**dialog box and trust the certificate.
+
 After you import the update packages, you can view the update packages on the Feature Library Upgrade page and Version Upgrade page and perform updates.
 
 **Automatic import**

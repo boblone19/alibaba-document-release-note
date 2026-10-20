@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 158
 source_pdf: "d51fbfeb3e3ce88d_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Ed"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB%20PG%E6%9C%AC%E5%9C%B0%E7%9B%98/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary_Secondary%20Edition%29%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Developer Guide 20260630
@@ -533,9 +533,7 @@ Queries the attributes of instances.
 
 DBInstanceAttribute parameters
 
-**Note**
-
-You can call the DescribeDBInstanceHAConfig operation to query the information about the primary and secondary instances.
+> **Note:** You can call the DescribeDBInstanceHAConfig operation to query the information about the primary and secondary instances.
 
 **Examples**
 
@@ -876,9 +874,7 @@ This operation returns only common response parameters. For more information abo
 
 Switches the network type of an instance between virtual private cloud (VPC) and classic network.
 
-**Note**
-
-Only the classic network instances whose ConnectionMode is Safety can have their network type switched to VPC.
+> **Note:** Only the classic network instances whose ConnectionMode is Safety can have their network type switched to VPC.
 
 | Parameter | T y p e | Requi red | Description |
 |---|---|---|---|
@@ -1039,9 +1035,7 @@ NodeInfo parameters
 
 Migrates an instance from one zone to another. For example, if Instance 1 resides in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
-**Note**
-
-In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
+> **Note:** In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1336,9 +1330,7 @@ For more information, see Common response parameters.
 
 Creates a database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance.
 
-**Note**
-
-This operation is not supported for PolarDB. You can create databases in PolarDB instances by executing a CREATE DATABASE statement.
+> **Note:** This operation is not supported for PolarDB. You can create databases in PolarDB instances by executing a CREATE DATABASE statement.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1374,9 +1366,7 @@ JSON format
 
 Deletes a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
 
-**Note**
-
-This operation is not supported for PolarDB. You can delete databases from PolarDB instances by executing a DROP DATABASE statement.
+> **Note:** This operation is not supported for PolarDB. You can delete databases from PolarDB instances by executing a DROP DATABASE statement.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1898,9 +1888,9 @@ Queries the backup sets of an instance. Only backup sets in the Success state ca
 
 #### 1.6.4 CreateTempDBInstance
 
-**Note**
+> **Note:** Creates a temporary instance from a backup set or a point in time within the last seven days. After the temporary instance is created, its accounts and databases inherit the data from the backup set.
 
-Creates a temporary instance from a backup set or a point in time within the last seven days. After the temporary instance is created, its accounts and databases inherit the data from the backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
+Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -2568,9 +2558,7 @@ You can call this operation to query the disk space usage of an instance. When t
 
 Queries the performance metrics of an instance over a period of time based on the performance parameters. The output format depends on the length of the query time range: If the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. If the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. If the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
 
-**Note**
-
-If the instance space usage key is MySQL_SpaceUsage, performance metric data can be queried only when the query time range is less than or equal to one day.
+> **Note:** If the instance space usage key is MySQL_SpaceUsage, performance metric data can be queried only when the query time range is less than or equal to one day.
 
 | Paramet er | Type | Requir ed | Description |
 |---|---|---|---|
@@ -3404,9 +3392,7 @@ In RAM, you can authorize a RAM user to call the following operations on PolarDB
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
 | DescribeOptimizeAdviceOnMissPK | DescribeOptimizeAdviceOnExcessIndex |
 
-**Note**
-
-All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
+> **Note:** All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
 
 **RAM authentication rules of API operations**
 
@@ -3954,9 +3940,7 @@ icon on the right of the organization to be added.
 5. Choose **AccessKey** from the shortcut menu.
 6. In the AccessKey dialog box that appears, view the AccessKey pair of the organization.
 
-**Note**
-
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
+> **Note:** An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -3967,6 +3951,4 @@ and click **User Information**.
 3. In the **Apsara Stack AccessKey Pair** section of the User Information page, view your
 AccessKey pair.
 
-**Note**
-
-The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.

@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 13
 source_pdf: "8e669f6b971b1fd2_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Management Center Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Management%20Center%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Management Center Operations and Maintenance Guide
@@ -43,16 +43,21 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. ucture Management console
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management**.
@@ -70,6 +75,7 @@ The basic inspection of Security Operations Center (SOC) checks whether a servic
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Platform Operation > Apsara Infrastructure Management
 > Resource Management to log in to the Apsara Infrastructure Management console.
+
 3. In the left-side navigation pane, choose Resource Management > **Product & Cluster**
 **O&M**.
 4. On the Product & Cluster O&M page, enter sas-securityoperationscentercluster in the
@@ -162,9 +168,8 @@ If SocApp of Security Operations Center (SOC) fails, perform the following steps
 kubectl get pod -n sas | grep soc
 ```
 
-**Important**
+> **Important:** In the return result, a string in the [yundun-soc-Digit] format is the name of a SocApp pod, such as yundun-soc-0 or yundun-soc-1. If the suffix of a string is not a digit, the string is not the name of a SocApp pod.
 
-In the return result, a string in the [yundun-soc-Digit] format is the name of a SocApp pod, such as yundun-soc-0 or yundun-soc-1. If the suffix of a string is not a digit, the string is not the name of a SocApp pod.
 3. Run the following command to access the SocApp container:
 
 ```bash
@@ -205,9 +210,8 @@ If SiemApp of Security Operations Center (SOC) fails, perform the following step
 kubectl get pod -n sas | grep siem
 ```
 
-**Important**
+> **Important:** In the return result, a string in the [yundun-siem-Digit] format is the name of a SiemApp pod, such as yundun-siem-0 or yundun-siem-1. If the suffix of a string is not a digit, the string is not the name of a SiemApp pod.
 
-In the return result, a string in the [yundun-siem-Digit] format is the name of a SiemApp pod, such as yundun-siem-0 or yundun-siem-1. If the suffix of a string is not a digit, the string is not the name of a SiemApp pod.
 3. Run the following command to access the SiemApp container:
 
 ```bash

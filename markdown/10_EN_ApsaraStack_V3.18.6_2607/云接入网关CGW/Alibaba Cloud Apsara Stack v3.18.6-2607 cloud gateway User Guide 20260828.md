@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 26
 source_pdf: "8d0327434eeac477_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828
@@ -81,11 +81,8 @@ Open Network Service Platform (ONSP) automatically deploys virtual network devic
 To view the services and service providers supported by ONSP, go to the Apsara Stack official website. At the bottom of the page, find **Partners >****System Integration/Compatibility >**
 **Network Devices,** device type is **Software** type.
 
-**Important**
-
-**Standard service provider**: Hillstone.
-**Non-standard service providers**: Alibaba Cloud does not guarantee the high
-performance or reliability of services provided by non-standard service providers, and supports the utilization of these services only in scenarios documented in test reports.
+> **Important:** **Standard service provider**: Hillstone.
+> **Non-standard service providers**: Alibaba Cloud does not guarantee the high performance or reliability of services provided by non-standard service providers, and supports the utilization of these services only in scenarios documented in test reports.
 
 **Console operations**
 
@@ -111,7 +108,9 @@ Service metadata: Service metadata includes the original image file, configurati
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
 1. Obtain the image from Apsara Stack Image Center.
-Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
+
+> **Note:** Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
+
 2. Upload the image to the `/home/admin/onp_openapi/images` directory on the machine where
 the onp-openapi service is deployed.
 3. Call the CreateImage API operation to create an image. For more information, see
@@ -127,6 +126,7 @@ Log on to Hybrid Cloud Application Center and open the Open Network Service Cons
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
 > **Hybrid Cloud Application Center (AHM)**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **My Plugins**.
 4. Click the **onsp** application card to go to the **Plugin Details** page.
 5. In the **Access Entry** section on the right side of the page, click **Open Network Service**
@@ -137,7 +137,9 @@ Log on to Hybrid Cloud Application Center and open the Open Network Service Cons
 In the Open Network Service Console, import the configurations of the open network service.
 1. In the **Open Network Service Console**, click **App Store** in the left-side navigation pane.
 2. Click **Import Application**, select the service configuration file, and upload it.
-To obtain the configuration file of the open network service, contact Alibaba Cloud technical support.
+
+> **Note:** To obtain the configuration file of the open network service, contact Alibaba Cloud technical support.
+
 3. After the configuration file is imported, click the service card to go to the **Application**
 **Details** page of the open network service.
 
@@ -163,29 +165,36 @@ cluster.
 
 2. Click **Deploy**.
 3. After the cluster is deployed, click **My Applications** in the left-side navigation pane to view
-the created application. You can click the icon on the right of the application card and select **Change**
-**Application Name** to change the name of the application.
+the created application.
+
+> **Note:** You can click the icon on the right of the application card and select **Change**
+> **Application Name** to change the name of the application.
+
 4. Optional. Click the name of the application to go to the **Application Details** page.
 
 **Create a secondary cluster**
 
 Click **Create Redundant Cluster** in the upper-right corner of the application details page to create a secondary cluster for disaster recovery. To configure parameters for the secondary cluster, you can refer to the parameter description of the primary cluster in the preceding table.
 
-**Important**
-
-The secondary cluster must be deployed in a zone different from that of the primary cluster. In this case, if a network error occurs in the primary cluster, network traffic is automatically switched to the secondary cluster.
+> **Important:** The secondary cluster must be deployed in a zone different from that of the primary cluster. In this case, if a network error occurs in the primary cluster, network traffic is automatically switched to the secondary cluster.
 
 **View cluster information**
 
 In the left area of the cluster tab, you can view the cluster's **Basic Information**,
 **Cluster Details**, **ONSP Endpoint**, and more.
-In the **Basic Information** section, you can view the basic information of the cluster including the cluster ID, cluster name, zone ID, CIDR block, CIDR block name, and description. You can click the icon on the right of the cluster name to modify the cluster name. In the **Cluster Details** section, you can perform the following operations: **Delete**
+In the **Basic Information** section, you can view the basic information of the cluster including the cluster ID, cluster name, zone ID, CIDR block, CIDR block name, and description.
+
+> **Note:** You can click the icon on the right of the cluster name to modify the
+> cluster name.
+
+In the **Cluster Details** section, you can perform the following operations: **Delete**
 **Cluster**, **Scale Out Cluster**, log on to instances by using Virtual Network Console
 (VNC), obtain the VNC password, view the details of instances in the cluster, and delete instances from the cluster.
 
-**Warning**
+> **Warning:** Deleting a service cluster may result in service disruptions. Proceed with caution.
+> You must delete all routing entries that point to the service cluster before you can delete the cluster.
 
-Deleting a service cluster may result in service disruptions. Proceed with caution. You must delete all routing entries that point to the service cluster before you can delete the cluster. In the **ONSP Endpoint** section, you can **Create Endpoint**, view endpoint details, delete endpoints, and view endpoint logs. On the right of the cluster details tab, you can view the name, **Basic Information**,
+In the **ONSP Endpoint** section, you can **Create Endpoint**, view endpoint details, delete endpoints, and view endpoint logs. On the right of the cluster details tab, you can view the name, **Basic Information**,
 **Operation Logs**, and **Scaling Logs** of the application.
 
 **View routing policies**
@@ -193,9 +202,10 @@ Deleting a service cluster may result in service disruptions. Proceed with cauti
 In the **Cluster Basic Information** section of the **Routing Policy** tab, you can view the cluster information including the **Cluster Name**, **Cluster ID**, **Zone ID**, **Bypass**
 **Status**, and **Progress**.
 
-**Warning**
+> **Warning:** After routes are configured for the VPC, if an error occurs in a network element, you can click Bypass to withdraw all routes to the destination cluster, and then directly forward traffic to the destination cluster by using Express Connect circuits. After the network element is recovered, you can click **Restore** to restore all routes that are withdrawn.
+> The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations.
 
-After routes are configured for the VPC, if an error occurs in a network element, you can click Bypass to withdraw all routes to the destination cluster, and then directly forward traffic to the destination cluster by using Express Connect circuits. After the network element is recovered, you can click **Restore** to restore all routes that are withdrawn. The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations. In the **Route Details** section of the **Routing Policy** tab, you can add, modify, or delete routes. For more information, see Configure routes for business VPCs. On the **Service Monitoring** tab, you can view the instance status and network traffic that flows through the elastic network interfaces (ENIs) associated with the service port. For more information, see View service monitoring data.
+In the **Route Details** section of the **Routing Policy** tab, you can add, modify, or delete routes. For more information, see Configure routes for business VPCs. On the **Service Monitoring** tab, you can view the instance status and network traffic that flows through the elastic network interfaces (ENIs) associated with the service port. For more information, see View service monitoring data.
 
 **View sharing settings**
 
@@ -203,7 +213,9 @@ On the **Sharing Settings** tab, you can enable the sharing feature to allow spe
 
 **Activate the cluster**
 
-After a service cluster is deployed, you must activate the cluster before you can use it. Contact technical support of the service provider and provide information about the deployed network service and the ECS instance that is used. Then, a license file will be issued to you. Go to the network service page to activate the service cluster using the license file.
+> **Note:** After a service cluster is deployed, you must activate the cluster before you can use it.
+
+Contact technical support of the service provider and provide information about the deployed network service and the ECS instance that is used. Then, a license file will be issued to you. Go to the network service page to activate the service cluster using the license file.
 
 #### 3.2.4 Application overview
 
@@ -253,7 +265,8 @@ in VPC User Guide.
 2. Log on to the VPC console to create a vSwitch in which you want to deploy Elastic Compute
 Service (ECS) instances. For more information, see "Manage vSwitches" in VPC User Guide.
 3. Create additional vSwitches based on your business requirements.
-If you use a virtual load balancer (VLB) in your network, you need to create an additional virtual IP address (VIP) and an additional vSwitch in the VPC to reserve an IP address for external load balancing services.
+
+> **Note:** If you use a virtual load balancer (VLB) in your network, you need to create an additional virtual IP address (VIP) and an additional vSwitch in the VPC to reserve an IP address for external load balancing services.
 
 **Create an endpoint**
 
@@ -278,9 +291,8 @@ routing in the **ONSP Endpoint** section, and record the **Endpoint ID**, **Endp
 7. Optional. When the endpoint is changed or no longer needed, click **Delete** in the **Actions**
 column to delete the target endpoint.
 
-**Warning**
-
-Before you delete the endpoint, make sure that the routes that point to the ENI are deleted. Removing an endpoint may result in network interruptions. Make sure that no network traffic is forwarded to the endpoint. Proceed with caution.
+> **Warning:** Before you delete the endpoint, make sure that the routes that point to the ENI are deleted.
+> Removing an endpoint may result in network interruptions. Make sure that no network traffic is forwarded to the endpoint. Proceed with caution.
 
 **Check the result**
 
@@ -290,7 +302,9 @@ To view the details of the ENI, choose **Network & Security** > **ENIs**.
 
 **Important**
 
-The ENI is created by the system. We recommend that you do not modify the ENI. To view the details of the security group or modify the security group rule, choose **Network**
+> The ENI is created by the system. We recommend that you do not modify the ENI.
+
+To view the details of the security group or modify the security group rule, choose **Network**
 **& Security** > **Security Groups**.
 A security group is automatically created for the ENI. By default, all inbound and outbound traffic is allowed.
 
@@ -298,7 +312,10 @@ A security group is automatically created for the ENI. By default, all inbound a
 
 After the ENI is created, you need to configure a route that points to the ENI for the VPC based on your routing plan. Then, network traffic can be routed to the open network service cluster.
 1. Determine the destination CIDR block.
-In VLB scenarios, VIPs need to be divided into two CIDR blocks. One of the CIDR blocks is the destination CIDR block. In virtual firewall scenarios, you need to specify a destination CIDR block based on your needs. For example, you need to specify the CIDR block of the peer VPC for VPC-to-VPC protection. For VPC-to-data center protection, you need to specify the CIDR block of the data center.
+
+> **Note:** In VLB scenarios, VIPs need to be divided into two CIDR blocks. One of the CIDR blocks is the destination CIDR block.
+> In virtual firewall scenarios, you need to specify a destination CIDR block based on your needs. For example, you need to specify the CIDR block of the peer VPC for VPC-to-VPC protection. For VPC-to-data center protection, you need to specify the CIDR block of the data center.
+
 2. Query the ID of the next hop ENI.
 On the **Application Details** page, find the ID of the endpoint based on the VPC and vSwitch information.
 3. On the **Routing Policy** tab, click **Add Route**.
@@ -322,9 +339,7 @@ and then click **Submit**.
 **Restore**: Click **Restore** in the **Cluster Basic Information** section, enter the **Captcha**,
 and then click **Submit**.
 
-**Warning**
-
-The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations.
+> **Warning:** The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations.
 
 **Configure a cluster network**
 
@@ -337,7 +352,9 @@ network access method.
 **Address** column to log on to the ECS instance.
 Configure a port and a route that points to the CIDR block of the VPC by using the
 **Endpoint ID**, **Endpoint IP**, and **VLAN ID** that you recorded in Step 6.
-If you have any questions during the configuration, contact technical support of the service provider.
+
+> **Note:** If you have any questions during the configuration, contact technical support of the service provider.
+
 4. Go to the portal of the open network service and probe the gateway IP address to test the
 network connectivity.
 
@@ -424,7 +441,10 @@ You cannot delete a host group that is in use. Before you delete a host group, r
 2. In the left-side navigation pane, click **Dedicated Host Groups**.
 3. On the **Dedicated Host Groups** page, click **Create Group**.
 4. In the **Create Host Group** dialog box, enter the **Host Group Name** and **Description**, and
-select the **Region**, **Zone**, and **Host Instance Type**. You can contact Alibaba Cloud technical support to confirm the host specifications.
+select the **Region**, **Zone**, and **Host Instance Type**.
+
+> **Note:** You can contact Alibaba Cloud technical support to confirm the host specifications.
+
 5. Click **Confirm**. The host group is created.
 
 **View host group details**
@@ -468,9 +488,8 @@ You can migrate resources and update the instance types of Elastic Compute Servi
 
 If the personnel of your enterprise or your business requirements change, you can migrate all applications created by a user and the related resources to another user.
 
-**Warning**
+> **Warning:** Resource migration involves high risks. You must contact Alibaba Cloud technical support before you perform this operation.
 
-Resource migration involves high risks. You must contact Alibaba Cloud technical support before you perform this operation.
 1. Open the Open Network Service Platform console.
 2. Click **System Management** in the left-side navigation pane.
 3. On the **System Management** page, click **Migrate Resource**.
@@ -488,4 +507,6 @@ You can update the instance types of all ECS instances in the system. This allow
 2. Click **System Management** in the left-side navigation pane.
 3. On the **System Management** page, click **Update Instance Type**.
 4. In the **Update Instance Type** dialog box, configure the **Authorization Code** parameter
-and click **Submit**. To obtain the authorization code for updating ECS instance types, contact Alibaba Cloud technical support.
+and click **Submit**.
+
+> **Note:** To obtain the authorization code for updating ECS instance types, contact Alibaba Cloud technical support.

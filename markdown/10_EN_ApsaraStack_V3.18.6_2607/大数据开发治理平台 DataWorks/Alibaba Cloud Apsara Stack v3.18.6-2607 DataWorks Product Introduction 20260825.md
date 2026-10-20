@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 36
 source_pdf: "1cb9b5c4346f4a23_Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0%20DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataWorks%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 20260825
@@ -48,9 +48,9 @@ DataWorks has developed and accumulated hundreds of core capabilities for more t
 
 DataWorks Data Integration is a stable, efficient, and scalable data synchronization service. It can be used to migrate and synchronize data among a wide range of heterogeneous data sources that reside in complex network environments in a fast and stable manner. Data Integration supports batch synchronization, real-time synchronization, and full or incremental synchronization that combines batch and real-time synchronization. Data Integration supports the following features: You can configure a scheduling cycle for a batch synchronization node. You can synchronize data among nearly 50 types of heterogeneous data sources, such as relational databases, data warehouses, NoSQL databases, file storage systems, and message queues. Data Integration provides synchronization plug-ins that can be used to connect to the servers of data sources and collect data. Data Integration supports data transmission in complex network environments. For example, it can transmit data across local private networks or virtual private clouds (VPCs).
 
-**Note**
+> **Note:** Data Integration uses specific protocols to accelerate the transmission of large amounts of data over a long distance. This way, the stability and efficiency of the data transmission are ensured.
 
-Data Integration uses specific protocols to accelerate the transmission of large amounts of data over a long distance. This way, the stability and efficiency of the data transmission are ensured. Data Integration implements accurate throttling on channels, record streams, and byte streams. Data Integration also supports fault tolerance and allows you to rerun specific or all threads, processes, and jobs. Data Integration uses the network interface controller (NIC) on each server and adopts a distributed architecture to transmit gigabytes or terabytes of data within a short period of time. Data Integration supports conversion between different data types and accurately identifies, filters, collects, and displays dirty data to facilitate inbound data control. In addition, Data Integration provides statistics such as data volume, data throughput, and job duration and detects dirty data in each job.
+Data Integration implements accurate throttling on channels, record streams, and byte streams. Data Integration also supports fault tolerance and allows you to rerun specific or all threads, processes, and jobs. Data Integration uses the network interface controller (NIC) on each server and adopts a distributed architecture to transmit gigabytes or terabytes of data within a short period of time. Data Integration supports conversion between different data types and accurately identifies, filters, collects, and displays dirty data to facilitate inbound data control. In addition, Data Integration provides statistics such as data volume, data throughput, and job duration and detects dirty data in each job.
 
 **Data Modeling**
 

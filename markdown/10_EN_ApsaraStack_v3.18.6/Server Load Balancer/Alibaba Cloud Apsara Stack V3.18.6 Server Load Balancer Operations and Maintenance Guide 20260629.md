@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 41
 source_pdf: "e75b5155f68b6eec_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Operations and Maintenance Guide 20260629.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Server Load Balancer Operations and Maintenance Guide
@@ -39,9 +39,16 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+ager Operations Console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ## 2 Network services
@@ -62,7 +69,9 @@ After you add tags to Server Load Balancer (SLB) clusters, you can easily find t
 4. On the **SLB Cluster Management** page, select a zone and click **Search** to view
 information about the desired cluster.
 5. Click **Edit Tag** in the **Actions** column of the desired cluster. In the dialog box that appears,
-modify the tag keys and click **OK**. You cannot modify the tags of the default cluster.
+modify the tag keys and click **OK**.
+
+> **Note:** You cannot modify the tags of the default cluster.
 
 #### 2.1.2 SLB management
 
@@ -93,9 +102,19 @@ The **Node Information** section displays the following information: **IP**, **W
 **Status**, **Local CIDR Block**, **ENIs**, **LVS Group ID**, **Proxy Check Type**, **Site ID**,
 **Maximum Active Connections**, **Maximum Inactive Connections**, **Inbound BPS**
 **Limit**, **Outbound BPS Limit**, **Inbound PPS Limit**, and **Outbound PPS Limit**.
-In the **Usage Data** section, specify **Start and End Time** to view the usage data of the node within the specified time range. For more information about the definitions of the metrics, see the Node and instance usage metrics section of this topic. The interval between the start time and end time must not exceed 12 hours. You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. In the **Cluster Resource Usage** section, specify a time range to view the usage data of the cluster within the specified time range. You can click the **Core Metrics** or **All**
+In the **Usage Data** section, specify **Start and End Time** to view the usage data of the node within the specified time range. For more information about the definitions of the metrics, see the Node and instance usage metrics section of this topic.
+
+> **Note:** The interval between the start time and end time must not exceed 12 hours.
+> You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+In the **Cluster Resource Usage** section, specify a time range to view the usage data of the cluster within the specified time range. You can click the **Core Metrics** or **All**
 **indicators** tab to view the corresponding information. For more information about the
-definitions of the metrics, see Cluster usage metrics. The interval between the start time and end time must not exceed 12 hours. You can click **Last 1 Hour**, **Last 3 Hours**, **Last 6 Hours**, or **Last 12 Hours** to query the usage data within the specified time range. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+definitions of the metrics, see Cluster usage metrics.
+
+> **Note:** The interval between the start time and end time must not exceed 12 hours.
+> You can click **Last 1 Hour**, **Last 3 Hours**, **Last 6 Hours**, or **Last 12 Hours** to query the usage data within the specified time range.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
 
 **SLB instances**
 
@@ -116,7 +135,26 @@ Click **Advanced Filter** and filter SLB instances by **IP Address Version**, **
 5. Click **Details** in the **Actions** column of an SLB instance to go to the **SLB Instance Details**
 page. On this page, you can view **Instance Information**, **Server Group Information**, and **Usage Data**. In the **Instance Information** section, view the basic information about the SLB instance, which can be used by O&M engineers to troubleshoot faults and confirm the ownership of the device. You can click **Modify** next to the **Throttling Rule** parameter to modify the throttling rule of the SLB instance. The throttling parameters vary depending on the status of the **SLB**
 **instance switch**. For more information, see the **Switch list (switch management)**
-section of the **Product console configuration management** topic below **UniConsole** in **Apsara Uni-manager Operations Console User Guide** and view the switch list in the **networkops** console. When the SLB instance switch is **turned on**, you can modify the following throttling parameters. When the SLB instance switch is **turned off**, you can modify only the bandwidth parameter. The maximum values of the throttling parameters are as follows: vip_qps: 50000 QPS. Bandwidth: 15 Gbit/s. The actual value is in bytes and rounded up. vip_cps: 100000 CPS. vip_max_conn_limit: 1000000 CPS. In the **Server Group Information** section, view the server group information of the SLB instance, including **Server Group** and **Listener Name**. To view the weight modification details, click **View Details** in the **Actions** column of the desired server group. Modify weights a. Click **Modify Weight** in the **Actions** column of a server group. In the panel that appears, change the values in the **Weight** column and click **OK**. b. In the message that appears, confirm the information and click **OK**. After maintenance or emergency repair is performed, we recommend that you restore the weight settings. When you perform zone-disaster recovery across two data centers, the system restores the default weight settings. The restored weight settings take effect after your confirmation. If an SLB instance is enabled by a tenant, you can go to the Apsara Unimanager Management Console to modify the weight settings of the SLB instance. In the **Usage Data** section, specify **Start/End Time** and **Node** to view the usage data of the SLB instance within the specified time range. For more information about the definitions of the metrics, see the Node and instance usage metrics section of this topic. The interval between the start time and end time must not exceed 12 hours. You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. Click **Details** in the upper-right corner of the resource usage chart to view the details of the resource usage of backend servers.
+section of the **Product console configuration management** topic below **UniConsole** in **Apsara Uni-manager Operations Console User Guide** and view the switch list in the **networkops** console. When the SLB instance switch is **turned on**, you can modify the following throttling parameters. When the SLB instance switch is **turned off**, you can modify only the bandwidth parameter.
+
+> **Note:** The maximum values of the throttling parameters are as follows:
+> vip_qps: 50000 QPS.
+> Bandwidth: 15 Gbit/s. The actual value is in bytes and rounded up.
+> vip_cps: 100000 CPS.
+> vip_max_conn_limit: 1000000 CPS.
+
+In the **Server Group Information** section, view the server group information of the SLB instance, including **Server Group** and **Listener Name**. To view the weight modification details, click **View Details** in the **Actions** column of the desired server group. Modify weights a. Click **Modify Weight** in the **Actions** column of a server group. In the panel that appears, change the values in the **Weight** column and click **OK**. b. In the message that appears, confirm the information and click **OK**.
+
+> **Note:** After maintenance or emergency repair is performed, we recommend that you restore the weight settings. When you perform zone-disaster recovery across two data centers, the system restores the default weight settings. The restored weight settings take effect after your confirmation.
+> If an SLB instance is enabled by a tenant, you can go to the Apsara Uni- manager Management Console to modify the weight settings of the SLB instance.
+
+In the **Usage Data** section, specify **Start/End Time** and **Node** to view the usage data of the SLB instance within the specified time range. For more information about the definitions of the metrics, see the Node and instance usage metrics section of this topic.
+
+> **Note:** The interval between the start time and end time must not exceed 12 hours.
+> You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+Click **Details** in the upper-right corner of the resource usage chart to view the details of the resource usage of backend servers.
 
 **Cluster usage metrics**
 
@@ -194,7 +232,13 @@ On the Proxy Cluster tab, you can view the node status, usage data, and cluster 
 you want to view from the **Cluster** drop-down list. Then, view the cluster information in the
 **Node Information** and **Cluster Aggregation Monitoring** sections.
 5. View information in the **Node Information** section.
-View node information in the node list, including **Node**, **Cluster**, and **Item**. Find the node whose details you want to view and click **Details** in the **Operation** column. On the **SLB Proxy Node Details** page, specify **Start and End Time** and view the metrics of the node in the **Usage Data** section. The interval between the start time and end time must not exceed 12 hours. You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. The following table describes the metrics.
+View node information in the node list, including **Node**, **Cluster**, and **Item**. Find the node whose details you want to view and click **Details** in the **Operation** column. On the **SLB Proxy Node Details** page, specify **Start and End Time** and view the metrics of the node in the **Usage Data** section.
+
+> **Note:** The interval between the start time and end time must not exceed 12 hours.
+> You can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to query the usage data within the selected time range.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+The following table describes the metrics.
 
 | Category | Metric | Description |
 |---|---|---|
@@ -275,7 +319,12 @@ View node information in the node list, including **Node**, **Cluster**, and **I
 |   | retran | The retransmission rate of segments. The value is calculated based on the re-transmitted segments and the total segments. |
 
 6. In the **Cluster Aggregation Monitoring** section, specify **Start and End Time** and view
-the cluster aggregation metrics on the **Core Metrics** and **All Metrics** tabs. The interval between the start time and end time must not exceed 12 hours. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. The following table describes the metrics.
+the cluster aggregation metrics on the **Core Metrics** and **All Metrics** tabs.
+
+> **Note:** The interval between the start time and end time must not exceed 12 hours.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+The following table describes the metrics.
 
 | Tab | Metric | Description |
 |---|---|---|
@@ -365,9 +414,13 @@ On the ALB Proxy Cluster tab, you can view the node status, usage data, and aggr
 drop-down list. Then, view the cluster information in the **Node Information** and **Cluster**
 **Aggregation Monitoring** sections.
 5. View the cluster information in the **Node Information** section.
-View node information in the node list, including the **Node**, **Cluster**, and **Item** columns. Find the node whose details you want to view and click **Details** in the **Actions** column. On the ALB Proxy Node Details page, specify the start time and end time, and view the metrics of the node in the Usage Data section. By default, the data within the last hour is displayed. The interval between the start time and end time cannot exceed 12 hours. After you click the Start and End Time field, you can click **Last5Minutes**,
-**Last30Minutes**, **Last1Hour**, or **Last6Hours** to view the usage data within
-the selected time range. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. The following table describes the metrics.
+View node information in the node list, including the **Node**, **Cluster**, and **Item** columns. Find the node whose details you want to view and click **Details** in the **Actions** column. On the ALB Proxy Node Details page, specify the start time and end time, and view the metrics of the node in the Usage Data section. By default, the data within the last hour is displayed.
+
+> **Note:** The interval between the start time and end time cannot exceed 12 hours.
+> After you click the Start and End Time field, you can click **Last5Minutes**, **Last30Minutes**, **Last1Hour**, or **Last6Hours** to view the usage data within the selected time range.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+The following table describes the metrics.
 
 | Category | Metric | Description |
 |---|---|---|
@@ -426,7 +479,12 @@ the selected time range. You can move the pointer over a point in time in a char
 |   | tcp stats time wait _ _ _ | The number of TCP connections in the TIME WAIT state. _ |
 
 6. In the **Cluster Aggregation Monitoring** section, specify the start time and end time, and
-view the aggregate metrics of the cluster on the **Core Metrics** and **All Metrics** tabs. By default, the data within the last hour is displayed. The interval between the start time and end time cannot exceed 12 hours. You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time. The following table describes the metrics.
+view the aggregate metrics of the cluster on the **Core Metrics** and **All Metrics** tabs. By default, the data within the last hour is displayed.
+
+> **Note:** The interval between the start time and end time cannot exceed 12 hours.
+> You can move the pointer over a point in time in a chart to view the values of all metrics at the point in time.
+
+The following table describes the metrics.
 
 | Tab | Metric | Description |
 |---|---|---|
@@ -540,7 +598,8 @@ This topic describes how to manage the lifecycle of cloud service instances, inc
 
 **Create an instance**
 
-1. Log on to the Apsara Uni-manager Operations Console.
+## 1 Log on to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **Cloud Instance**
@@ -613,7 +672,10 @@ Existing resources have not been imported.
 1. In the upper part of the Cloud Instance Management page, click **Existing Resource**
 **Management**.
 2. After the page is refreshed, if cloud service instances whose IDs do not start with noe
-appear, the existing resources are imported as expected. After all resources are successfully processed, Existing Resource Management is dimmed and you cannot click it to import existing resources. If an instance whose tunnel type is **InvalidResource** appears, the instance is an abnormal resource on the original platform due to reasons such as interrupted creation or invalid resource. After the instance is imported, you can only view or delete the instance but cannot manage the instance. For example, you cannot modify the RS or listener configurations.
+appear, the existing resources are imported as expected.
+
+> **Note:** After all resources are successfully processed, Existing Resource Management is dimmed and you cannot click it to import existing resources.
+> If an instance whose tunnel type is **InvalidResource** appears, the instance is an abnormal resource on the original platform due to reasons such as interrupted creation or invalid resource. After the instance is imported, you can only view or delete the instance but cannot manage the instance. For example, you cannot modify the RS or listener configurations.
 
 **What to do next**
 

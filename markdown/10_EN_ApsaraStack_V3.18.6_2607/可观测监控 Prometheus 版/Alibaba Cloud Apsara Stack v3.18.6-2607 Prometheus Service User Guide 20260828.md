@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 80
 source_pdf: "32a00e80064fc6bc_Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Prometheus%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service User Guide 20260828
@@ -127,38 +127,76 @@ Managed Service for Prometheus is compatible with the clients and query language
 |   | ta |   |
 | 1. Register by calling | a t | cluPstreor he API |
 
-Cover Major Grafana
+> Cover Major Grafana
 
 | Import Dashboa | Import Dashboa | rd Template |
 |---|---|---|
 
-Dashboards Deployment Import Alert Template Micro Front-end Fast Node Dashboard Loading MySQL Grafana Micro Front-end Rendering Pod POP API for Data Sources select ... Reduced Dashboard http download Maintenance Cost
+> Dashboards
+
+Deployment
+
+> Import Alert Template
+> Micro Front-end Fast
+
+Node
+
+> Dashboard Loading
+> MySQL
+> Grafana Micro Front-end Rendering
+> POP API for Data
+
+Pod
+
+> Sources
+> select
+
+...
+
+> Reduced Dashboard
+> http download
+> Maintenance Cost
 
 **ACK**
 
-**Grafarms**
+> **Grafarms**
 
 **Observation**
 
 **Perspective**
 
-Gateway Victoria write Metrics 2.Push Metrics Data insert Kafka ACS Cluster
+Gateway
+
+> Victoria Metrics
+> write
+
+2.Push Metrics Data
+
+> insert
+> Kafka
+
+ACS Cluster
 
 |   | ull |
 |---|---|
 | Prometheus Agent HELM |   |
 
-Jlog New VictoriaMetrics Features/Components Automatically install the Component Feature Prometheus agent during Update cluster creation Image and Helm templates
+Jlog New VictoriaMetrics Features/Components
 
-**Legend**
+> Automatically install the Prometheus agent during
+
+Component Feature Update
+
+> cluster creation Image and Helm templates
+> **Legend**
 
 are managed by ACK
 
+> **Prometheus 2.0 Components**
+
 **ACK on Customer VPC**
 
-**Prometheus 2.0 Components**
-
-**onTiangongVPC**
+> **on****Tiangong****VPC**
 
 Managed Service for Prometheus is compatible with three mainstream collection rules: the open source prometheus.yaml configuration file, ServiceMonitor, and the default collection rule named Annotation. ServiceMonitor is suitable for the monitoring of custom Kubernetes clusters. Compared with the open source Prometheus, Managed Service for Prometheus allows you to update collection rules by modifying the prometheus.yaml configuration file. You do not need to write multiple lines of code in the Deployment file. You need only to add the following three annotations.
 
@@ -239,14 +277,15 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -261,10 +300,8 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 Enter the 6-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
-For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Middleware > Cloud-native**
 **Observability > Prometheus V2.0** to log in to the Prometheus V2.0 console.
 6. In the top navigation bar, select an organization and a region.
@@ -305,16 +342,19 @@ The URL, username, and password of the Apsara Uni-manager Operations Console are
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 3. Enter the correct username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log in to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
 
-Obtain the username and password that are used to log in to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 5. In the top menu bar of the Apsara Uni-manager Operations Console, click **Platform**
 **Operation**.
@@ -368,9 +408,8 @@ Managed Service for Prometheus provides the Remote Write feature. You can use th
 **instance**.
 4. In the dialog box that appears, enter an instance name in Step 1 and click Save.
 
-**Note**
+> **Note:** After you click **Save**, if an error is thrown, the specified instance name already exists. Enter another name.
 
-After you click **Save**, if an error is thrown, the specified instance name already exists. Enter another name.
 5. After the Prometheus instance is created, the system displays the Remote Write URL.
 6. You can read the usage notes of the URL and then use the URL to store the monitoring data
 of Managed Service for Prometheus to remote databases.
@@ -748,7 +787,15 @@ icon to select a cluster display mode above the list. ervice for Prometheus
 
 **Note**
 
-The Cluster List page displays the names, key metrics, environment, and tags of clusters that are monitored by Managed Service for Prometheus. You can add tags to the clusters. Add a tag to one cluster: Click the icon in the Label column of a cluster, select or enter a tag, and then click **OK**. Add a tag to multiple clusters: Select the clusters to which you want to add the tag and click **Add Tags**, select or enter a tag, and then click **OK**. The Cluster List page in **Honeycomb** mode displays the CPU and memory usage of pods in all clusters. You can filter the statistics by cluster name, workload, or namespace.
+The Cluster List page displays the names, key metrics, environment, and tags of clusters that are monitored by Managed Service for Prometheus. You can add tags to the clusters.
+
+> icon in the Label column of a cluster, select
+
+Add a tag to one cluster: Click the
+
+> or enter a tag, and then click **OK**.
+
+Add a tag to multiple clusters: Select the clusters to which you want to add the tag and click **Add Tags**, select or enter a tag, and then click **OK**. The Cluster List page in **Honeycomb** mode displays the CPU and memory usage of pods in all clusters. You can filter the statistics by cluster name, workload, or namespace.
 4. On the **Cluster List** page, click the name of a cluster to go to the cluster details page. On
 the details page, you can view metrics in different dashboards on the **Core Component**
 **Monitoring**, **Node Monitoring**, **Application Monitoring**, **Network Monitoring**, **GPU**
@@ -866,9 +913,9 @@ You have connected to **Prometheus Monitoring**. For more information, see Prome
 3. On the **Self-developed Dashboards** page, click
 to open the chart creation page.
 
-**Note**
+> **Note:** On the **Dashboard** page, you can use Prometheus Query Language (PromQL) to create time series charts for cluster metrics. You can customize the style of the charts, arrange them using drag-and-drop, and perform operations such as grouping, refreshing, filtering, sharing, importing, and exporting.
 
-On the **Dashboard** page, you can use Prometheus Query Language (PromQL) to create time series charts for cluster metrics. You can customize the style of the charts, arrange them using drag-and-drop, and perform operations such as grouping, refreshing, filtering, sharing, importing, and exporting. ervice for Prometheus
+ervice for Prometheus
 
 **Other operations**
 
@@ -1192,9 +1239,10 @@ contact and click **OK**
 **Group** dialog box, specify the parameters related to DingTalk notifications, WeChat
 notifications, or webhook, and click **OK**.
 
-**Note**
+> **Note:** You must specify at least one of the following notification methods: phone number, email, and DingTalk chatbot. Each phone number or email address can be bound to only one contact.
+> You can add up to 100 contacts.
 
-You must specify at least one of the following notification methods: phone number, email, and DingTalk chatbot. Each phone number or email address can be bound to only one contact. You can add up to 100 contacts. For more information about how to obtain the webhook URL of a DingTalk chatbot, see Obtain the webhook URL of a DingTalk chatbot.
+For more information about how to obtain the webhook URL of a DingTalk chatbot, see Obtain the webhook URL of a DingTalk chatbot.
 
 **What to do next**
 
@@ -1216,19 +1264,15 @@ chatbot, and then click the **Group Settings** icon in the upper-right corner.
 icon in the **Add Robot** section. Then, click
 **Custom**.
 
-**Note**
+> **Note:** For the first time you add a DingTalk chatbot, you can directly select **Custom** in the **ChatBot** dialog box.
 
-For the first time you add a DingTalk chatbot, you can directly select **Custom** in the
-**ChatBot** dialog box.
 5. In the **Robot details** dialog box, click **Add**.
 6. In the **Add Robot** dialog box, edit the profile picture, enter a chatbot name, and then
 select at least one of the options in the **Security Settings** section. Read the DingTalk Custom Robot Service Terms of Service and select **I have read and accepted DingTalk**
 **Custom Robot Service Terms of Service**. Then, click **Finished**.
 
-**Important**
+> **Important:** You must select **Custom Keywords** in the **Security Settings** section, and set at least **Alarm** and **Dispatch** as keywords. Otherwise, you cannot receive alert notifications.
 
-You must select **Custom Keywords** in the **Security Settings** section, and set at least
-**Alarm** and **Dispatch** as keywords. Otherwise, you cannot receive alert notifications.
 7. In the **Add Robot** dialog box, copy the webhook URL that the system generates for the
 chatbot and click **Finished**.
 
@@ -1489,15 +1533,12 @@ This topic describes how to use Managed Service for Prometheus to monitor persis
 1. Log in to the Container Service for Kubernetes (ACK) console.
 i. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key. ii. On the login page, enter your username and password. You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address. iii. Click **Log In**. iv. In the top navigation bar, choose **Products > Computing > Container Service for**
+iii. Click **Log In**. iv. In the top navigation bar, choose **Products > Computing > Container Service for**
 **Kubernetes**.
 v. On the **Container Service** page, click the switch account icon on the floating button, select an organization and region, and then click **Access With Authorized Role** or
 **Access As Administrator** to access the ACK console.
@@ -1587,9 +1628,9 @@ The dashboard displays the following metrics: CPU metrics such as CPU Cores, CPU
 
 **Basic Grafana operations**
 
-**Note**
+> **Note:** This section describes only basic Grafana operations. For more information about advanced operations, see Grafana documentation.
 
-This section describes only basic Grafana operations. For more information about advanced operations, see Grafana documentation. You can perform the following basic operations on Grafana dashboards.
+You can perform the following basic operations on Grafana dashboards.
 
 **Set the time range and refresh frequency**
 
@@ -1623,15 +1664,11 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. In the top navigation bar, click **Enterprise**.
 5. In the left-side navigation pane, choose **Permissions > Role Permissions**. Then, click
@@ -1656,9 +1693,8 @@ If none of the listed policies meets your requirements, you can click **Create P
 **Service** parameters and click **Next**.
 A trust policy is used to define the entities that can assume this RAM role. For example, you can specify level-1 organizations (tenant accounts) and Apsara Stack services to assume this RAM role.
 
-**Note**
+> **Note:** If you enable the Open ID Connect (OIDC) feature, you can also authorize an OIDC provider to assume the RAM role and configure the Limits parameter.
 
-If you enable the Open ID Connect (OIDC) feature, you can also authorize an OIDC provider to assume the RAM role and configure the Limits parameter.
 **Trust Organization**: Specify one or more level-1 organizations (tenant accounts) to
 assume this RAM role.
 **Trust Cloud Service**: Specify one or more Apsara Stack services to assume this RAM
@@ -1688,15 +1724,12 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address. ent
+ent
 3. Click **Log In**.
 4. In the top menu bar, click **Enterprise**.
 5. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1754,9 +1787,9 @@ ent
 | Notify User by Email | After this option is selected, the Apsara Uni-manager Management Console informs the alert contact by email whenever an alert is generated. Note You must configure an email server if you enable notification by email. For more information, contact the on-site O&M engineers. |
 | Notify User by DingTalk | After this option is selected, the Apsara Uni-manager Management Console informs the alert contact by DingTalk message whenever an alert is generated. |
 
-**Note**
+> **Note:** Keep the AccessKey pair and initial password of the user confidential.
 
-Keep the AccessKey pair and initial password of the user confidential. ent
+ent
 
 **Add the user to the user group**
 

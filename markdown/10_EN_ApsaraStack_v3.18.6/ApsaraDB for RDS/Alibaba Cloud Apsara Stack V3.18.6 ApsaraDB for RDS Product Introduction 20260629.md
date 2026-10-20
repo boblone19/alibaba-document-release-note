@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 38
 source_pdf: "00d8702ce2fe009b_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for RDS Product Introduction 20260629
@@ -72,13 +72,11 @@ The high-availability (HA) service uses the Detection, Repair, and Notice module
 
 ApsaraDB RDS provides Data Transmission Service (DTS) to help you migrate databases. DTS provides three migration methods: schema migration, full migration, and incremental migration. Schema migration DTS migrates the schema definitions of migration objects to the destination instance. Tables, views, triggers, stored procedures, and stored functions can be migrated in this mode. Full migration DTS migrates all data of migration objects from the source database to the destination instance.
 
-**Important**
+> **Important:** For data consistency purposes, non-transaction tables that do not have primary keys are locked during a full migration. You cannot write data to locked tables. The lock duration is determined by the data volume in the tables. The tables are unlocked only after they are fully migrated.
 
-For data consistency purposes, non-transaction tables that do not have primary keys are locked during a full migration. You cannot write data to locked tables. The lock duration is determined by the data volume in the tables. The tables are unlocked only after they are fully migrated. Incremental migration DTS synchronizes data changes made in the migration process to the destination instance.
+Incremental migration DTS synchronizes data changes made in the migration process to the destination instance.
 
-**Important**
-
-If a DDL operation is performed when data is migrated, schema changes are not synchronized to the destination instance.
+> **Important:** If a DDL operation is performed when data is migrated, schema changes are not synchronized to the destination instance.
 
 **Dedicated instance family**
 
@@ -88,9 +86,7 @@ The dedicated instance family of ApsaraDB RDS is more stable than other instance
 
 Easier maintenance by using a unified endpoint If you do not enable the read/write splitting feature, you must add the endpoints of the primary and read-only instances to your application. This way, your database system routes write requests to the primary instance and read requests to the read-only instances. If you enable the read/write splitting feature, you can use a dedicated proxy endpoint to implement read/write splitting. After your application is connected to this endpoint, your database system routes read and write requests to the primary and read-only instances based on the read weights of these instances. This reduces maintenance costs. You can also create read-only instances to improve the read capability of your database system. You do not need to modify the configuration data on your application. Higher performance and lower maintenance costs by using a native link You can build your own proxy layer on the cloud to implement read/write splitting. In this case, data must be parsed and forwarded by multiple components before the data reaches your database system. As a result, response latencies increase. The read/write splitting feature is embedded in the ApsaraDB RDS ecosystem to reduce response latencies, increase processing speeds, and reduce maintenance costs. Ideal in a variety of use scenarios based on configurable read weights and thresholds You can specify the read weights of the primary and read-only instances. You can also specify the latency threshold for data replication to the read-only instances. High availability based on instance-level health checks The read/write splitting feature automatically checks the health status of the primary and read-only instances. If a read-only instance unexpectedly breaks down or its data replication latency exceeds the specified threshold, ApsaraDB RDS stops routing read requests to the instance. ApsaraDB RDS redirects read requests that are destined for the faulty read-only instance to healthy instances in your database system. This ensures service availability in the event of faults on individual read-only instances. After the faulty read-only instance is recovered, ApsaraDB RDS resumes routing read requests to the instance.
 
-**Note**
-
-To avoid single points of failure (SPOFs), we recommend that you create at least two read-only instances.
+> **Note:** To avoid single points of failure (SPOFs), we recommend that you create at least two read-only instances.
 
 **Data security**
 
@@ -144,9 +140,9 @@ ApsaraDB RDS implements DDoS attack prevention, access control, system security,
 
 **DDoS attack prevention**
 
-**Note**
+> **Note:** You must activate Apsara Stack security services to use this feature.
 
-You must activate Apsara Stack security services to use this feature. When you access an ApsaraDB RDS instance from the Internet, the instance is vulnerable to DDoS attacks. When a DDoS attack is detected, the ApsaraDB RDS security system first scrubs the inbound traffic. If traffic scrubbing is not sufficient or if the blackhole triggering threshold is reached, blackhole filtering is triggered.
+When you access an ApsaraDB RDS instance from the Internet, the instance is vulnerable to DDoS attacks. When a DDoS attack is detected, the ApsaraDB RDS security system first scrubs the inbound traffic. If traffic scrubbing is not sufficient or if the blackhole triggering threshold is reached, blackhole filtering is triggered.
 
 **Access control**
 
@@ -268,9 +264,7 @@ The maximum IOPS of an ApsaraDB RDS instance that uses local SSDs varies based o
 min{1800 + 30 × Storage capacity, 25000}
 ```
 
-**Note**
-
-If the throughput of an RDS instance reaches the upper limit, the IOPS of the instance also decreases.
+> **Note:** If the throughput of an RDS instance reaches the upper limit, the IOPS of the instance also decreases.
 
 **ApsaraDB RDS for MySQL (High-availability Edition with local**
 

@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 29
 source_pdf: "675b01ca28260cab_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Operations and Mainte"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Database%20Security%20Audit%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Operations and Maintenance Guide 20260831
@@ -61,17 +61,16 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
-**Note**
-
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
 ### 1.2 View service alerts
 
@@ -119,9 +118,9 @@ manage and click **Details** in the **Actions** column to log in to Database Sec
 5. On the **RMAgent Organizer** tab, perform the following checks:
 i. Check whether RMAgent deployed on the ECS instance that you want to manage is displayed. If not, RMAgent is not connected to Database Security Audit. Log in to the ECS instance where RMAgent is deployed. Check the following items: a. Check whether the RMAgent process is started. In Windows, open Task Manager to check the status of the RMAgent process. In Linux, run the ps -ef|grep rmagent command to check the status of the RMAgent process. b. Check whether the server IP address configured in the RMAgent configuration file rmagent.ini is the IP address of Database Security Audit. a. Send PING messages to check whether Database Security Audit is accessible from the ECS instance where RMAgent is deployed. b. Run the `nc -nvv` command or telnet commands to check whether port 9266 of Database Security Audit is accessible from the ECS instance where RMAgent is deployed. If not, check whether port 9266 is restricted in firewall configurations. If one of the preceding check items fails, RMAgent is not connected to Database Security Audit after it is deployed. In this case, resolve the issue by referring to Solution 1. ii. Check whether RMAgent deployed on the ECS instance that you want to manage works properly. RMAgent may be in one of the following abnormal states: Abnormal: The ECS instance where RMAgent is deployed breaks down, or RMAgent stops running after it is started. Suspended: The CPU utilization or memory usage of the ECS instance where RMAgent is deployed exceeds the specified threshold, or the CPU utilization or memory usage of RMAgent exceeds the specified threshold. Version mismatch: The version of RMAgent does not match the version of Database Security Audit. If RMAgent is in one of the preceding states, resolve the issue by referring to Solution 2. iii. If the application or test client is deployed on the same ECS instance as the database server, traffic is redirected by using the local loopback interface. If you are not sure whether traffic is on the same ECS instance, you can run one of the following commands. In this example, port 9207 or 1433 is used. Replace the port number with the actual one. In Linux, run the netstat -nap|grep 9207 command. In Windows, run the netstat -nao|findstr 1433 commend.
 
-**Note**
+> **Note:** If the application and database are deployed on the same ECS instance and need to use the loopback interface for interaction, RMAgent must support the loopback interface. If the `loopback` parameter is not set to 1 or no comments are added, RMAgent does not support the loopback interface. In this case, resolve the issue by referring to Solution 3.
 
-If the application and database are deployed on the same ECS instance and need to use the loopback interface for interaction, RMAgent must support the loopback interface. If the `loopback` parameter is not set to 1 or no comments are added, RMAgent does not support the loopback interface. In this case, resolve the issue by referring to Solution 3. iv. On the Windows ECS instance, open Control Panel and check whether Npcap is installed. Npcap can be used to capture loopback traffic. If Npcap is not installed, the issue occurs. In this case, resolve the issue by referring to Solution 4. v. If Meet the rule audit is selected as Audit Options but no SQL rules are configured, no rules can be triggered. In the left-side navigation pane of the Database Security Audit console, choose **Maintenance** > **Engine Management** to check the Audit Options parameter. As shown in the preceding figure, **Meet the rule audit** is selected as Audit Options. In this case, resolve the issue by referring to Solution 5.
+iv. On the Windows ECS instance, open Control Panel and check whether Npcap is installed. Npcap can be used to capture loopback traffic. If Npcap is not installed, the issue occurs. In this case, resolve the issue by referring to Solution 4. v. If Meet the rule audit is selected as Audit Options but no SQL rules are configured, no rules can be triggered. In the left-side navigation pane of the Database Security Audit console, choose **Maintenance** > **Engine Management** to check the Audit Options parameter. As shown in the preceding figure, **Meet the rule audit** is selected as Audit Options. In this case, resolve the issue by referring to Solution 5.
 
 **Solution**
 

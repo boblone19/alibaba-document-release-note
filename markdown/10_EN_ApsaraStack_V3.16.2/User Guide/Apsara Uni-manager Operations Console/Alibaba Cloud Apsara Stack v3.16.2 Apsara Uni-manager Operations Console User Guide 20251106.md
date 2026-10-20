@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 419
 source_pdf: "1490bccfe115225c_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console User Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Operations%20Console%20User%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console User Guide
@@ -566,7 +566,9 @@ Before you perform O&M operations in the Apsara Uni-manager Operations Console, 
 2. Create a role that has the necessary O&M permissions. For more information, see Role
 management.
 3. Create an operations account and assign the created role to the account. For more
-information, see User management. For a more fine-grained permissions division of the operations role, you can, as a system administrator, create a basic role as specified in **OAM**, grant specific permissions to the role, and then assign the role to the corresponding operations account.
+information, see User management.
+
+> **Note:** For a more fine-grained permissions division of the operations role, you can, as a system administrator, create a basic role as specified in **OAM**, grant specific permissions to the role, and then assign the role to the corresponding operations account.
 
 ### 2.2 Log on to the Apsara Uni-manager Operations Console
 
@@ -579,9 +581,15 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
 1. Open your Chrome browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+Press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 3. Enter your username and password.
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. For security reasons, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains the following special characters: ! @ # $ % The password must be 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
+
+When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. For security reasons, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains the following special characters: ! @ # $ % The password must be 10 to 20 characters in length.
 4. Click **Log On**.
 
 ### 2.3 Apsara Uni-manager Operations Console homepage
@@ -640,7 +648,13 @@ You can view alert statistics by region and service. You can also view alerts of
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Alerts > Alert Overview**.
 3. View alert details in each section.
-The Alert Overview page consists of five sections to provide alert statistics and analysis from different perspectives. The **Alerts for Regions** section shows the number of alerts by level for each region. The following figure shows an example for one region. Different colors indicate different levels from P1 to P4. The more the alerts of a level, the larger the corresponding color takes up the ring chart. The following figure shows an example for multiple regions. Bright dots indicate that there are alerts in the regions. M The colors of the dots indicate different levels of the alerts. The darker the color, the higher the level. A larger dot indicates more alerts in the region. On the right of the map, the total number of regions that have alerts, the total number of P1 alerts, and the top five abnormal regions are displayed. The **Alert Source** section shows the status of each alert source. Orange indicates that the alert source is abnormal. Blue indicates that the alert source is normal. The **Alert Trend** section shows the number of alerts by day. The bar chart shows changes in the numbers of alerts on different days. Colors on each bar represent the alert levels. The darker the color, the higher the alert level. A larger area of each bar indicates more alerts of the corresponding levels. When you move the pointer over a bar, the system displays the numbers of alerts of all levels for the day. The line charts shows the trends of the numbers of alerts of different levels. M The **Real-time Distribution of Alerts** section shows the alerts and alert levels of different products in real time. The darker the color, the higher the alert level. A larger color block indicates more alerts. When you move the pointer over a color block, the system displays the alert level and quantity. The **P1 Alert Statistics** section shows the cloud platforms that have P1 alerts. Each tab is a product category. Click a tab to view the products that have P1 alerts under the category.
+The Alert Overview page consists of five sections to provide alert statistics and analysis from different perspectives. The **Alerts for Regions** section shows the number of alerts by level for each region. The following figure shows an example for one region. Different colors indicate different levels from P1 to P4. The more the alerts of a level, the larger the corresponding color takes up the ring chart. The following figure shows an example for multiple regions. Bright dots indicate that there are alerts in the regions. M The colors of the dots indicate different levels of the alerts. The darker the color, the higher the level. A larger dot indicates more alerts in the region. On the right of the map, the total number of regions that have alerts, the total number of P1 alerts, and the top five abnormal regions are displayed. The **Alert Source** section shows the status of each alert source.
+
+> **Note:** Orange indicates that the alert source is abnormal. Blue indicates that the alert source is normal.
+
+The **Alert Trend** section shows the number of alerts by day. The bar chart shows changes in the numbers of alerts on different days. Colors on each bar represent the alert levels. The darker the color, the higher the alert level. A larger area of each bar indicates more alerts of the corresponding levels. When you move the pointer over a bar, the system displays the numbers of alerts of all levels for the day. The line charts shows the trends of the numbers of alerts of different levels. M The **Real-time Distribution of Alerts** section shows the alerts and alert levels of different products in real time. The darker the color, the higher the alert level. A larger color block indicates more alerts. When you move the pointer over a color block, the system displays the alert level and quantity. The **P1 Alert Statistics** section shows the cloud platforms that have P1 alerts.
+
+> **Note:** Each tab is a product category. Click a tab to view the products that have P1 alerts under the category.
 
 #### 3.1.2 Alert list
 
@@ -657,7 +671,10 @@ In the upper-right corner of the page, click the icon to set the information ite
 4. In the upper-left corner of the page, enter a keyword and click the
 icon to perform a fuzzy search. The keyword can be part of an alert ID or a field in the Details in the Resource With Alerts column. You can also click **Advanced Search** to filter alert data by alert ID, alert source, product, alert status, alert level, and time range.
 5. View the details of alerts, including the alert IDs, alert resources, alert levels, alert
-information, products, alert statuses, last generation time and duration, numbers of alerts, and alert sources. Move the pointer over Details in the **Resource With Alerts** column. The details of an alert are displayed.
+information, products, alert statuses, last generation time and duration, numbers of alerts, and alert sources.
+
+> **Note:** Move the pointer over Details in the **Resource With Alerts** column. The details of an alert are displayed.
+
 6. (Optional)In the upper-left corner of the page, click **Export Report**. The alerts are exported
 to your computer in XLSX format automatically.
 7. Click the ID of an alert or click **Details** in the **Operation** column to view the details of the
@@ -759,7 +776,10 @@ For Ant Financial Service products deployed on the PaaS platform, you can upload
 the service.
 4. (Optional) Click **Reset** to clear the search conditions.
 5. Download Alert Templates.
-M For Ant Financial Service products deployed on the PaaS platform, use the simple_template.json template.
+M
+
+> **Note:** For Ant Financial Service products deployed on the PaaS platform, use the simple_template.json template.
+
 6. Click **Import** in the Actions column corresponding to an entry. In the **Import Template**
 dialog box, click **Upload and Parse File**. Select the template and click **Open**. After the template is uploaded, click **OK**.
 
@@ -803,7 +823,10 @@ M
 6. Click **OK**.
 To modify or delete a channel, click **Modify** or **Delete** in the **Actions** column corresponding to the channel.
 7. (Optional)The newly added channel is displayed in the list. Click **Test** in the **Actions**
-column to test the connectivity of the push channel. For an ANS push channel, you must enter the email address or DingTalk account to which the alerts are pushed after you click **Test** in the Actions column.
+column to test the connectivity of the push channel.
+
+> **Note:** For an ANS push channel, you must enter the email address or DingTalk account to which the alerts are pushed after you click **Test** in the Actions column.
+
 8. After you configure the push channel and turn on Push Switch, you can click the **Push** tab
 to view the push records.
 
@@ -865,7 +888,9 @@ You have obtained permissions on the alert blocking menu.
 3. In the left-side navigation pane, click **Alert Blocking**.
 M
 4. Find the alert blocking rule that you want to manage, and click **Edit** in the **Operation**
-column. In the dialog box that appears, modify the parameters and click **OK**. You can enable or disable the alert blocking rule by turning on or off the switch in the **Status** column.
+column. In the dialog box that appears, modify the parameters and click **OK**.
+
+> **Note:** You can enable or disable the alert blocking rule by turning on or off the switch in the **Status** column.
 
 ###### 3.1.3.4.4 Delete an alert blocking rule
 
@@ -890,7 +915,9 @@ You have obtained the permission to view blocked alerts. You have created at lea
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Alerts > Alert Settings**.
 3. In the left-side navigation pane, click **Blocked Alerts**.
-The Blocked Alerts page displays alert IDs, resources with alerts, alert levels, alert information, owning resources, alert occurrence time, sources, and associated blocking rules.
+
+> **Note:** The Blocked Alerts page displays alert IDs, resources with alerts, alert levels, alert information, owning resources, alert occurrence time, sources, and associated blocking rules.
+
 4. You can enter a keyword, such as an alert ID, source, or owning resource, to search for
 alerts. Fuzzy search is supported.
 5. (Optional)Click **Advanced Search**, specify more filter conditions, and then click **Search**.
@@ -911,9 +938,7 @@ This operation allows you to implement incremental configuration without suspend
 3. Click **Import Alert Package**. In the dialog box that appears, import a package. Then wait
 for the result. The system shows a message indicating whether the import succeeds or fails.
 
-**Important**
-
-The system supports TAR packages that are no larger than 200 MB in size. The system verifies the data of the package. Therefore, the alert package must be prepared and generated by Alibaba Cloud O&M engineers.
+> **Important:** The system supports TAR packages that are no larger than 200 MB in size. The system verifies the data of the package. Therefore, the alert package must be prepared and generated by Alibaba Cloud O&M engineers.
 
 ### 3.2 Inspection management
 
@@ -961,7 +986,11 @@ The inspection dashboard displays recent inspection tasks, data overview, distri
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Inspections > Inspection Dashboard**.
 3. In the upper part of the page, view:
-The execution status of the inspection task, the numbers of issues, and the inspection capability (the numbers of inspection scenarios and items). The rankings of inspection items and sub-items by the numbers of errors and warnings. You can move the pointer over a row to view the numbers of errors and warnings for the corresponding item or sub-item. You can select an inspection scenario from the drop-down list to view the trend charts of the numbers of errors, warnings, and inspection items of the scenario
+The execution status of the inspection task, the numbers of issues, and the inspection capability (the numbers of inspection scenarios and items). The rankings of inspection items and sub-items by the numbers of errors and warnings.
+
+> **Note:** You can move the pointer over a row to view the numbers of errors and warnings for the corresponding item or sub-item.
+
+You can select an inspection scenario from the drop-down list to view the trend charts of the numbers of errors, warnings, and inspection items of the scenario
 4. In the middle of the page, view the inspection task records and issue details for the past
 seven days. i. Click the number in the **Inspection item results** column to view the details of the inspection item. ii. (Optional)Move the pointer over **Analysis** in the **Actions** column to view the details of the inspection result.
 5. In the **Latest inspection report** section, view the latest inspection results.
@@ -981,10 +1010,17 @@ and result recommendations of the inspection.
 4. In the **Overview of inspection results** section, you can view the overall pass rate, total
 number of inspection items, numbers of passed items, warnings, and errors, and details of a specific scenario.
 5. In the **Inspection Result Details** section, you can view the details of each inspection
-item. You can use the filter feature to search for specific inspection items. Move the pointer over **Details** in the **Inspection parameters** and **Inspection**
-**content** columns to view the details.
+item.
+
+> **Note:** You can use the filter feature to search for specific inspection items.
+> Move the pointer over **Details** in the **Inspection parameters** and **Inspection** **content** columns to view the details.
+
 6. Click the number in the **Inspection results** column to view the details of the inspection
-task. Move the pointer over **Analyze** in the **Actions** column to view the details of the inspection result. M
+task.
+
+> **Note:** Move the pointer over **Analyze** in the **Actions** column to view the details of the inspection result.
+
+M
 
 #### 3.2.4 Inspection scenario configuration
 
@@ -1018,7 +1054,8 @@ You can modify the configurations of an inspection scenario based on your busine
 3. In the row of the scenario that you want to manage, click **Details** in the **Operation**
 column.
 4. In the dialog box that appears, modify the parameters and click **Submit**.
-You can modify only schedule-related parameters for a preset scenarios. You can modify all parameters for a custom scenario.
+
+> **Note:** You can modify only schedule-related parameters for a preset scenarios. You can modify all parameters for a custom scenario.
 
 ##### 3.2.4.4 Delete an inspection scenario
 
@@ -1026,7 +1063,8 @@ You can delete an inspection scenario that you no longer need.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Inspections > Inspection Scenarios**.
 3. In the row of the scenario that you want to manage, click **Delete** in the **Operation** column.
-Preset inspection scenarios cannot be deleted.
+
+> **Note:** Preset inspection scenarios cannot be deleted.
 
 #### 3.2.5 Query inspection records
 
@@ -1090,7 +1128,9 @@ You can view all resources in the product dimension, including the details of pr
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Products**.
 3. View the total numbers of products, clusters, services, server roles, and their statuses in
-the upper part of the page. In the **Architecture** section, click a product category on the left to view the final states of the products. The red dot next to a category indicates that some products have not reached the final state in this category.
+the upper part of the page. In the **Architecture** section, click a product category on the left to view the final states of the products.
+
+> **Note:** The red dot next to a category indicates that some products have not reached the final state in this category.
 
 ##### 3.3.1.2 View the resources of a product
 
@@ -1102,7 +1142,9 @@ M to which it belongs.
 4. Click a cluster to view its details, the services that are deployed on the cluster, and the role
 groups.
 5. Click a service to view its details and the service roles.
-You can also click the **Role groups** tab and click a role group to view information about the role group.
+
+> **Note:** You can also click the **Role groups** tab and click a role group to view information about the role group.
+
 6. Click a service role to view its details and the virtual machines that it resides.
 7. Click a virtual machine to view its details and the service roles that are deployed on the
 virtual machine.
@@ -1115,7 +1157,9 @@ You can restart a service role (SR) based on your business requirements.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Products**.
 3. Click a product. On the Cloud Product Details page, click a cluster. On the cluster details
-page, click a service. (You can also expand the left-side tree to find a service.) On the service details page, find an SR and click **Restart SR** in the **Operation** column. In the message that appears, click **OK**. M You can also restart an SR on the **Role groups** tab of the cluster details page or on the VM details page.
+page, click a service. (You can also expand the left-side tree to find a service.) On the service details page, find an SR and click **Restart SR** in the **Operation** column. In the message that appears, click **OK**. M
+
+> **Note:** You can also restart an SR on the **Role groups** tab of the cluster details page or on the VM details page.
 
 ##### 3.3.1.4 Perform security O&M on a VM
 
@@ -1127,7 +1171,11 @@ expand the left-side structure tree to find the service role that you want to us
 4. Perform the following steps:
 i. After you log on to the VM, enter Linux commands in the command-line interface (CLI) to perform O&M operations. ii. Click **Upload File**. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file to be uploaded and click **Open**. Then click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **File Download**. The **File Download** dialog box appears. Set **File Directory** and
 **File Name** and then click **Download** to download the file to the configured directory. If
-you do not set the directory, the file is downloaded to the download folder of the local browser by default. You cannot upload a folder. The maximum size of an uploaded file is 200 MB. If the file to be uploaded is larger than 200 MB, use the `split` and `cat` commands to split and merge the file.
+you do not set the directory, the file is downloaded to the download folder of the local browser by default.
+
+> **Note:** You cannot upload a folder.
+> The maximum size of an uploaded file is 200 MB.
+> If the file to be uploaded is larger than 200 MB, use the `split` and `cat` commands to split and merge the file.
 
 #### 3.3.2 Data centers
 
@@ -1164,8 +1212,9 @@ where the service role is deployed.
 You can restart a server based on your business requirements.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Data Centers**.
-You can also restart a server in the server details dialog box on the
-**Products** page.
+
+> **Note:** You can also restart a server in the server details dialog box on the **Products** page.
+
 3. Expand the tree on the left and click the server that you want to manage.
 4. In the upper-right corner of the page, click **Restart**. In the message that appears, click **OK**.
 
@@ -1183,25 +1232,38 @@ the **Operation** column. In the message that appears, click **OK**.
 M You can log on to a virtual machine (VM) remotely to perform O&M operations.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Data Centers**.
-You can also access the security O&M feature from a server details page. Choose General > Resources > **Products** and select a server to go to the server details page.
+
+> **Note:** You can also access the security O&M feature from a server details page. Choose General > Resources > **Products** and select a server to go to the server details page.
+
 3. Expand the tree on the left and click the server that you want to manage.
 4. In the upper-right corner of the page, click **Security O&M**.
-If you want to perform O&M operations on the server of a service role, click the service role in the lower part of the page. In the dialog box that appears, find the server that you want to manage and click **Security O&M** in the **Operation** column.
+
+> **Note:** If you want to perform O&M operations on the server of a service role, click the service role in the lower part of the page. In the dialog box that appears, find the server that you want to manage and click **Security O&M** in the **Operation** column.
+
 5. Perform the following steps:
 i. After you log on to the VM, enter Linux commands in the command-line interface (CLI) to perform O&M operations. ii. Click **Upload File** in the CLI window. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file to be uploaded and click **Open**. Click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **Download File**. The **Download File** dialog box appears. Set **File Directory** and
 **File Name** and then click **Download** to download the file to the configured directory. If
-you do not set the directory, the file is downloaded to the download folder of the local browser by default. You cannot upload a folder. The maximum size of an uploaded file is 200 MB. If the file to be uploaded is larger than 200 MB, use the `split` and `cat` commands to split and merge the file.
+you do not set the directory, the file is downloaded to the download folder of the local browser by default.
+
+> **Note:** You cannot upload a folder.
+> The maximum size of an uploaded file is 200 MB.
+> If the file to be uploaded is larger than 200 MB, use the `split` and `cat` commands to split and merge the file.
 
 ##### 3.3.2.7 Monitor a server
 
 You can view the monitoring information of physical machines, and view and fix alerts.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Data Centers**.
-You can also access the machine monitoring feature from a server details page. Choose General > Resources > **Products** and select a server to go to the server details page.
+
+> **Note:** You can also access the machine monitoring feature from a server details page. Choose General > Resources > **Products** and select a server to go to the server details page.
+
 3. Expand the tree on the left and click the server that you want to view.
 M
 4. In the upper-right corner of the page, click **Machine Monitoring**.
-The **Monitoring Information** tab is displayed by default. Select a metric from the dropdown list in the upper-right corner of the chart, set a time range, and then click the icon. You can view the monitoring charts of CPU usage, system load, disk usage, memory usage, host traffic, and disk I/O. Move the pointer over the monitoring chart. The metric value at the corresponding point in time appears.
+The **Monitoring Information** tab is displayed by default. Select a metric from the dropdown list in the upper-right corner of the chart, set a time range, and then click the icon. You can view the monitoring charts of CPU usage, system load, disk usage, memory usage, host traffic, and disk I/O.
+
+> **Note:** Move the pointer over the monitoring chart. The metric value at the corresponding point in time appears.
+
 5. Click the **Alert information** tab to view, handle, or delete alerts.
 View: Set a time range and click **Search** to view the alerts of service hosts. Handle: Find the alert that you want to handle, and click **Repair** in the **Operation** column. The status of the alert changes to **Handled**. Delete: Find the alert that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**.
 
@@ -1210,13 +1272,22 @@ View: Set a time range and click **Search** to view the alerts of service hosts.
 You can use the system brain feature to diagnose the operating system of a server to discover risks before they cause impact. You can also use the feature to collect error information to help you troubleshoot.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Data Centers**.
-Alternatively, you can choose General > Resources > **Products**, expand the tree on the left, click a service role, and click System brain in the Operation column or click a machine name and click System brain in the Server details dialog box that appears.
+
+> **Note:** Alternatively, you can choose General > Resources > **Products**, expand the tree on the left, click a service role, and click System brain in the Operation column or click a machine name and click System brain in the Server details dialog box that appears.
+
 3. Expand the tree on the left and click the server that you want to diagnose.
 4. In the upper-right corner of the page, click **System brain**.
 5. **Optional:**Click **Update Diagnostic tools** to install the latest diagnostic tool.
-Updating the diagnostic tool terminates ongoing tasks. If the current tool is the latest, the version number does not change after the update.
+
+> **Note:** Updating the diagnostic tool terminates ongoing tasks. If the current tool is the latest, the version number does not change after the update.
+
 6. Select an operation from the drop-down list. The system displays the diagnosis results and
-details accordingly. If no diagnostic information is displayed, click **Implementation**. If you select **System Log collection**, you must click the icon to download the diagnosis details.
+details accordingly.
+
+> **Note:** If no diagnostic information is displayed, click **Implementation**.
+> If you select **System Log collection**, you must click the
+> icon to download the
+> diagnosis details.
 
 #### 3.3.3 Network
 
@@ -1232,9 +1303,11 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Network**.
 3. Select **Reference topology** from the **Topology type** drop-down list. The reference
-topology is displayed. The **Alert refresh** switch is turned on by default if **Topology type** is set to **Reference**
-**topology**. You can turn this switch off or on again based on your business
-requirements. If the switch is turned on, the statuses of devices and links are updated when an alert is generated. If the switch is turned off, the statuses of devices and links are not updated when an alert is generated.
+topology is displayed.
+
+> **Note:** The **Alert refresh** switch is turned on by default if **Topology type** is set to **Reference** **topology**. You can turn this switch off or on again based on your business requirements.
+> If the switch is turned on, the statuses of devices and links are updated when an alert is generated.
+> If the switch is turned off, the statuses of devices and links are not updated when an alert is generated.
 
 ##### 3.3.3.2 View the real-time topology
 
@@ -1246,7 +1319,9 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Network**.
 3. Select **Real-time topology** from the **Topology type** drop-down list. The real-time
-topology is displayed. If **Topology type** is set to **Real-time topology**, the **Alert refresh** feature is unavailable.
+topology is displayed.
+
+> **Note:** If **Topology type** is set to **Real-time topology**, the **Alert refresh** feature is unavailable.
 
 #### 3.3.4 Resource tags
 
@@ -1259,7 +1334,10 @@ You can add nodes to favorites. The added nodes are displayed on the **Resource 
 2. In the top navigation bar, choose **General > Resources > Products**.
 3. In the **Architecture** section, click the icon of the product that you want to manage.
 4. In the left-side structure tree, click the star next to the node that you want to add to
-favorites. You can expand the tree for lower-level nodes. You can also add nodes to favorites in the same way on the **Data Centers** page.
+favorites. You can expand the tree for lower-level nodes.
+
+> **Note:** You can also add nodes to favorites in the same way on the **Data Centers** page.
+
 5. View the added nodes on the **Resource Tags** page. You can click a node to view its details.
 
 ##### 3.3.4.2 View resource tags
@@ -1276,10 +1354,15 @@ You can bind tags to resources based on your business requirements.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Resource Tags**.
 3. Click **Bind tags**. In the wizard that appears, select one or more tags and click **Next**.
-You can add or delete tags based on your business requirements: Add a tag: click **Add Tags**. In the dialog box that appears, enter a tag value and click **OK**. Delete a tag: Find the tag that you want to delete, and click **Delete** in the
-**Operation** column. In the message that appears, click **OK**.
+
+> **Note:** You can add or delete tags based on your business requirements:
+> Add a tag: click **Add Tags**. In the dialog box that appears, enter a tag value and click **OK**.
+> Delete a tag: Find the tag that you want to delete, and click **Delete** in the **Operation** column. In the message that appears, click **OK**.
+
 4. Select the resources to which you want to bind tags and click **Next**.
-You can select resources from the product view or data center view. You can select multiple resources, but the resources must be at the same level.
+
+> **Note:** You can select resources from the product view or data center view. You can select multiple resources, but the resources must be at the same level.
+
 5. In the message that appears, click **Completed**.
 
 ##### 3.3.4.4 Unbind tags from resources
@@ -1303,8 +1386,9 @@ You can export resource tags based on your business requirements.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Resources > Resource Tags**.
 3. Click **Export**. In the dialog box that appears, click **Download**. All resource tags displayed
-on the page are downloaded. If you do not want to export all the resource tags, select the resource tags that you want to export, and click **Export**. In the dialog box that appears, click
-**Download**.
+on the page are downloaded.
+
+> **Note:** If you do not want to export all the resource tags, select the resource tags that you want to export, and click **Export**. In the dialog box that appears, click **Download**.
 
 ### 3.4 Capacity management
 
@@ -1322,7 +1406,12 @@ You can view ECS capacity to learn the resource usage and availability of ECS in
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > ECS Capacity**.
 3. Select a date in the upper part of the page and view the ECS capacity.
-You can click the icon in the upper-right corner of the page to specify a zone and configure thresholds. The **CPU Inventory Details (Cores)** and **Memory Inventory Details (TB)** sections show the usage and availability of CPU (core) and memory (TB) resources of all ECS instance families for the last five days. The **ECS Inventory Details** section shows the capacity details of a specified ECS instance type on the specified date on multiple pages by **Zone**, **Instance Type**, and
+
+> **Note:** You can click the
+> icon in the upper-right corner of the page to specify a
+> zone and configure thresholds.
+
+The **CPU Inventory Details (Cores)** and **Memory Inventory Details (TB)** sections show the usage and availability of CPU (core) and memory (TB) resources of all ECS instance families for the last five days. The **ECS Inventory Details** section shows the capacity details of a specified ECS instance type on the specified date on multiple pages by **Zone**, **Instance Type**, and
 **Date**, as well as the CPU and memory configurations corresponding to each instance of
 this type.
 4. (Optional)Query data by specifying the **Zone**, **Instance Type**, and **Date** in the **ECS**
@@ -1334,13 +1423,23 @@ your computer. M
 You can view SLB capacity to learn the resource usage and availability of SLB instances and perform O&M operations accordingly.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > SLB Capacity**.
-You can click the icon in the upper-right corner to configure thresholds.
+
+> **Note:** You can click the
+> icon in the upper-right corner to configure thresholds.
+
 3. Select a cluster from the **Cluster** drop-down list in the upper-left corner and click **Query** to
-view the SLB capacity data of the cluster. The clusters that have **slbCluster** in their names are default clusters. The clusters that have **slbExtraCluster** in their names are expanded clusters.
+view the SLB capacity data of the cluster.
+
+> **Note:** The clusters that have **slbCluster** in their names are default clusters.
+> The clusters that have **slbExtraCluster** in their names are expanded clusters.
+
 4. View the SLB capacity.
-The Internal VIP Usage and Public VIP Usage sections show the amount and percentage of internal and public VIP capacities that are being used. The NIC traffic section shows the inbound and outbound NIC traffic. By default, both inbound traffic and outbound traffic are displayed. You can click the icon for inbound traffic or outbound traffic in the upper-left corner of the **NIC traffic** section to view the traffic data of a specific direction.
-**_ifin**: inbound traffic (KByte/s).
-**_ifout**: outbound traffic (KByte/s).
+The Internal VIP Usage and Public VIP Usage sections show the amount and percentage of internal and public VIP capacities that are being used. The NIC traffic section shows the inbound and outbound NIC traffic.
+
+> **Note:** By default, both inbound traffic and outbound traffic are displayed. You can click the icon for inbound traffic or outbound traffic in the upper-left corner of the **NIC traffic** section to view the traffic data of a specific direction.
+> **_ifin**: inbound traffic (KByte/s).
+> **_ifout**: outbound traffic (KByte/s).
+
 In the **SLB Inventory Details** section, you can query SLB capacity by **Type** and **Date** on multiple pages.
 5. (Optional)In the upper-right corner of the **SLB Inventory Details** section, click **Export**. In
 the dialog box that appears, click **Download** to export the data.
@@ -1351,7 +1450,13 @@ You can view the Relational Database Service (RDS) inventory to query the usage 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity**.
 3. View the RDS inventory on the page that appears.
-M You can click the icon in the upper-right corner to configure thresholds for each engine. The **RDS Inventory** section shows the inventories of different types of RDS instances within the last five days. Different colors indicate different types of RDS instances. The **RDS Inventory Details** section shows the RDS inventory details by **Engine** and
+M
+
+> **Note:** You can click the
+> icon in the upper-right corner to configure thresholds
+> for each engine.
+
+The **RDS Inventory** section shows the inventories of different types of RDS instances within the last five days. Different colors indicate different types of RDS instances. The **RDS Inventory Details** section shows the RDS inventory details by **Engine** and
 **Date** on multiple pages.
 
 #### 3.4.5 View OSS capacity
@@ -1359,7 +1464,11 @@ M You can click the icon in the upper-right corner to configure thresholds for e
 You can view the Object Storage Service (OSS) capacity to learn more about the usage and availability of OSS resources and perform O&M operations more efficiently.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > OSS Capacity**.
-You can click the icon in the upper-right corner to configure the thresholds.
+
+> **Note:** You can click the
+> icon in the upper-right corner to configure the
+> thresholds.
+
 3. View the OSS capacity.
 The **Historical Available Inventory (TB)** section shows the availability of OSS resources over the last five days. The **Used Inventory (TB)** section shows the amount and percentage of OSS resources that are being used. The **OSS Bucket Inventory Details** section shows the OSS capacity details on multiple pages by **Date**.
 
@@ -1368,7 +1477,11 @@ The **Historical Available Inventory (TB)** section shows the availability of OS
 By viewing the Tablestore capacity, you can query the usage and availability of Tablestore resources to perform O&M operations efficiently.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > Tablestore Capacity**.
-You can click the icon in the upper-right corner and configure the global quota.
+
+> **Note:** You can click the
+> icon in the upper-right corner and configure the global
+> quota.
+
 3. View the Tablestore capacity.
 The **Historical Available Inventory (TB)** section shows the Tablestore capacity availability in the last five days. The **Used Inventory (TB)** section shows the amount and percentage of Tablestore capacity that are being used. You can query Tablestore capacity details on multiple pages by **Date**. M
 
@@ -1377,7 +1490,11 @@ The **Historical Available Inventory (TB)** section shows the Tablestore capacit
 By viewing the Log Service capacity, you can query the usage and availability of Log Service resources to perform O&M operations efficiently.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > Log Service Capacity**.
-You can click the icon in the upper-right corner of the page to configure the capacity thresholds and global quota.
+
+> **Note:** You can click the
+> icon in the upper-right corner of the page to configure
+> the capacity thresholds and global quota.
+
 3. On the **SLS-Inner** tab, view the Log Service capacity details.
 The **Historical Inventory Records (TB)** section shows the available and total Log Service capacity for the last five days. The **Quota Details (GB)** section shows the amount and percentage of Log Service capacity that are being used. The **Log Service Inventory Details** section shows the Log Service capacity details on multiple pages by **Date**.
 4. Click the **PublicBasicCluster-XXX** tab to view details about the Log Service capacity for
@@ -1389,7 +1506,8 @@ By viewing the Elastic Block Storage (EBS) capacity, you can query the usage and
 
 **Context**
 
-EBS is the Apsara Distributed File System storage provided for ECS by the base, and ECS IO clusters are used for Apsara Distributed File System storage. Therefore, you can view the EBS capacity in ECS IO clusters.
+> **Note:** EBS is the Apsara Distributed File System storage provided for ECS by the base, and ECS IO clusters are used for Apsara Distributed File System storage. Therefore, you can view the EBS capacity in ECS IO clusters.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Capacity > EBS Capacity**.
 3. If multiple ECS IO clusters exist in the environment, click the tab of each ECS IO cluster to
@@ -1477,7 +1595,10 @@ executed, you can directly click **Save**. i. After you click **Save** or **Test
 **high-risk commands. Do you want to continue?** message appears, check whether
 the script content is correct. Correct: Click **OK**. Incorrect: Modify the script and test again. ii. After you click **Test**, click **Host Resources** or **Docker Resources** in the **Script Test** dialog box, select one or more host resources or Docker resources, and then click
 **Execute**.
-The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow. iii. In the **Test Results** dialog box, view the test result of the script. Click **OK** to exit the dialog box and click **Save** to save the script. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
+
+> **Note:** The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+
+iii. In the **Test Results** dialog box, view the test result of the script. Click **OK** to exit the dialog box and click **Save** to save the script. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
 
 ###### 3.5.1.3.2 Import a script
 
@@ -1488,7 +1609,9 @@ You can import an on-premises script to the script library.
 3. In the left-side navigation pane, click **Script Library**.
 4. Click **Import Script**.
 5. In the **Upload Script File** dialog box, click **Click Here to Upload** to upload an on-
-premises script to the script library. Only JSON files that are not larger than 500 KB in size can be uploaded.
+premises script to the script library.
+
+> **Note:** Only JSON files that are not larger than 500 KB in size can be uploaded.
 
 ###### 3.5.1.3.3 View scripts
 
@@ -1516,7 +1639,10 @@ confirm that the script can be executed, you can directly click **Save**. i. Aft
 **high-risk commands. Do you want to continue?** message appears, check whether
 the content of the script is correct. Correct: Click **OK**. Incorrect: Modify the script and test again. ii. After you click **Test**, click **Host Resources** or **Docker Resources** in the **Script Test** dialog box, select one or more host resources or Docker resources, and then click
 **Execute**.
-The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow. iii. In the **Test Results** dialog box, view the test result of the script. Click **OK** to exit the dialog box and click **Save** to save the script. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
+
+> **Note:** The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+
+iii. In the **Test Results** dialog box, view the test result of the script. Click **OK** to exit the dialog box and click **Save** to save the script. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
 
 ###### 3.5.1.3.5 Export a script
 
@@ -1526,7 +1652,11 @@ You can export a script to your on-premises machine.
 **Service**.
 3. In the left-side navigation pane, click **Script Library**.
 4. Select one or more scripts that you want to export and click **Export Script** to export the
-scripts to your on-premises machine. If you export multiple scripts at a time, the content of the scripts is stored in a single JSON file. M
+scripts to your on-premises machine.
+
+> **Note:** If you export multiple scripts at a time, the content of the scripts is stored in a single JSON file.
+
+M
 
 ###### 3.5.1.3.6 Delete a script
 
@@ -1549,14 +1679,19 @@ You can upload software to the software repository.
 
 **Background information**
 
-When an O&M job is executed in an on-site environment, software is downloaded from the software repository and deployed on the host or Docker container. You must upload the software to the software repository before you can use it in subsequent jobs. Delete software that is no longer needed to free up storage space.
+When an O&M job is executed in an on-site environment, software is downloaded from the software repository and deployed on the host or Docker container. You must upload the software to the software repository before you can use it in subsequent jobs.
+
+> **Note:** Delete software that is no longer needed to free up storage space.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Changes > Operation Orchestration**
 **Service**.
 3. In the left-side navigation pane, click **Software Repository**.
 4. Click **Upload Software**.
 5. In the **Upload Software** dialog box, enter a software name in the **Software Name** field
-and click **Click Here to Upload** to upload an on-premises file. If you do not enter a software name, the software name is the same as the file name. The file that you want to upload cannot exceed 500 MB in size.
+and click **Click Here to Upload** to upload an on-premises file. If you do not enter a software name, the software name is the same as the file name.
+
+> **Note:** The file that you want to upload cannot exceed 500 MB in size.
 
 ###### 3.5.1.4.2 View software
 
@@ -1676,7 +1811,9 @@ You can import an existing process.
 3. In the left-side navigation pane, click **Process Orchestration**.
 4. Click **Import Process**.
 5. In the **Upload Process** dialog box, click **Click Here to Upload** to upload an existing
-process. Only JSON files that are not larger than 500 KB in size can be uploaded.
+process.
+
+> **Note:** Only JSON files that are not larger than 500 KB in size can be uploaded.
 
 ###### 3.5.1.5.3 View processes
 
@@ -1700,7 +1837,9 @@ You can export a process to your on-premises machine.
 **Service**.
 3. In the left-side navigation pane, click **Process Orchestration**.
 4. Select one or more processes that you want to export and click **Export Process** to export
-the processes to your on-premises machine. If you export multiple processes at a time, the content of the processes is stored in a single JSON file.
+the processes to your on-premises machine.
+
+> **Note:** If you export multiple processes at a time, the content of the processes is stored in a single JSON file.
 
 ###### 3.5.1.5.5 Modify a process
 
@@ -1786,7 +1925,10 @@ You can import existing O&M jobs.
 3. In the left-side navigation pane, click **O&M Jobs**.
 4. Click **Import O&M Job**.
 5. In the **Upload O&M Job** dialog box, click **Click Here to Upload** to upload an existing O&M
-Job. M Only JSON files that are not larger than 500 KB in size can be uploaded. An imported O&M job cannot be directly executed. You must select a host before you can execute the job.
+Job. M
+
+> **Note:** Only JSON files that are not larger than 500 KB in size can be uploaded.
+> An imported O&M job cannot be directly executed. You must select a host before you can execute the job.
 
 ###### 3.5.1.6.3 View O&M jobs
 
@@ -1797,7 +1939,10 @@ You can view existing O&M jobs.
 3. In the left-side navigation pane, click **O&M Jobs**.
 4. In the **O&M Job Name** field, enter the name of the O&M job that you want to view and click
 **Search**.
-Fuzzy search is supported. You can view information of the O&M job that meets the filter conditions, including the job name, O&M scenario, description, execution method, modification time, execution history, latest execution time, latest execution status, update user, and whether the job is set to default.
+
+> **Note:** Fuzzy search is supported.
+
+You can view information of the O&M job that meets the filter conditions, including the job name, O&M scenario, description, execution method, modification time, execution history, latest execution time, latest execution status, update user, and whether the job is set to default.
 5. **Optional:**In the upper-left corner of the page, click the
 icon to refresh the O&M job list.
 
@@ -1809,7 +1954,9 @@ You can export an existing O&M job to your on-premises machine.
 **Service**.
 3. In the left-side navigation pane, click **O&M Jobs**.
 4. Select one or more O&M jobs that you want to export and click **Export O&M Job** to export
-the O&M jobs to your on-premises machine. If you export multiple O&M jobs at a time, the content of the jobs is stored in a single JSON file.
+the O&M jobs to your on-premises machine.
+
+> **Note:** If you export multiple O&M jobs at a time, the content of the jobs is stored in a single JSON file.
 
 ###### 3.5.1.6.5 Modify an O&M job
 
@@ -1858,8 +2005,13 @@ You can query an O&M job to view the job name, start time, end time, execution m
 3. In the left-side navigation pane, click **Execution History**. By default, all execution history
 information is displayed.
 4. Enter a job name in the **O&M Job Name** field, select a start date and end date, and then
-click **Search**. The corresponding O&M jobs are displayed, and you can view the job name, start time, end time, execution method, execution result, and job information of these O&M jobs. When you create an O&M job, you have two **execution methods** to choose from. Manual: The O&M job must be manually executed. Scheduled: The O&M job is executed at the specified time.
-**Job Information**: indicates the cause of an O&M job failure.
+click **Search**. The corresponding O&M jobs are displayed, and you can view the job name, start time, end time, execution method, execution result, and job information of these O&M jobs.
+
+> **Note:** When you create an O&M job, you have two **execution methods** to choose from.
+> Manual: The O&M job must be manually executed.
+> Scheduled: The O&M job is executed at the specified time.
+> **Job Information**: indicates the cause of an O&M job failure.
+
 5. Find the destination O&M job and click **View** in the **Details** column. The **Execution**
 **History Report** page appears. You can view the execution history of the O&M job for
 different hosts.
@@ -1899,7 +2051,8 @@ The following requirements must be met before you can proceed with execution of 
 3. In the left-side navigation pane, click **Execution History**.
 4. Find the destination O&M job and click **Proceed** in the **Details** column.
 5. In the dialog box that appears, click **OK**.
-If there are no subsequent batches to be executed, a prompt message is displayed.
+
+> **Note:** If there are no subsequent batches to be executed, a prompt message is displayed.
 
 ##### 3.5.1.8 Review jobs
 
@@ -1992,7 +2145,8 @@ By default, the **Rules** page appears.
 M servers: Click **Export** to export all cleanup rules. In the upper part of the page, select a product, service, and server role, and click
 **Search**. In the search result, select the cleanup rules that you want to export and click
 **Export**.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
 
 ##### 3.5.2.3 Modify a log cleanup rule
 
@@ -2003,10 +2157,15 @@ By default, the **Rules** page appears.
 3. Click the **Containers** or **Physical Machines** tab.
 4. **Optional:**In the upper part of the tab, select a product, service, and server role, and click
 **Search** to search for cleanup rules that meet the filter conditions.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 5. Find the cleanup rule that you want to modify and click **Modify** in the **Actions** column.
 6. In the panel that appears, modify the maximum disk usage and specify whether to
-automatically clean up logs that match the cleanup rule. The maximum disk usage range specified by a rule is [0%,100%], and the value before the percent sign (%) must be an integer. We recommend that you set the maximum disk usage to 75%.
+automatically clean up logs that match the cleanup rule.
+
+> **Note:** The maximum disk usage range specified by a rule is [0%,100%], and the value before the percent sign (%) must be an integer. We recommend that you set the maximum disk usage to 75%.
+
 7. Click **OK**.
 
 ##### 3.5.2.4 Delete a log cleanup rule
@@ -2018,10 +2177,14 @@ By default, the **Rules** page appears.
 3. Click the **Containers** or **Physical Machines** tab.
 4. **Optional:**In the upper part of the tab, select a product, service, and server role, and click
 **Search** to search for cleanup rules that meet the filter conditions.
-M By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+M
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 5. Find the cleanup rule that you want to delete and click **Delete** in the **Actions** column.
 6. In the dialog box that appears, click **OK**.
-The execution plan corresponding to a cleanup rule is not deleted when you delete the rule. At 02:00 every day, the system cleans up existing execution plans and generates new execution plans based on the current cleanup rules.
+
+> **Note:** The execution plan corresponding to a cleanup rule is not deleted when you delete the rule. At 02:00 every day, the system cleans up existing execution plans and generates new execution plans based on the current cleanup rules.
 
 ##### 3.5.2.5 Obtain the usage information of containers or physical servers
 
@@ -2036,7 +2199,13 @@ You can query the disk usage information of containers or physical servers.
 3. In the left-side navigation pane, click **Plans**.
 4. Click the **Containers** or **Physical Machines** tab.
 5. Perform the following operations to obtain the disk usage information of a container or
-physical server: In the upper part of the tab, select a product, service, and server role, and click **Search**. In the search results, find the container or physical server for which you want to query disk usage information. Click **Query Usage** in the **Actions** column to obtain the disk usage information of the container or physical server. By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists. Select multiple containers or physical servers and click **Batch Query Usage** to obtain the disk usage information of these containers or physical servers. The operation used to obtain the usage information is asynchronous. You must refresh the page to view the results. If the current disk usage is higher than the specified maximum disk usage, the value is displayed in red.
+physical server: In the upper part of the tab, select a product, service, and server role, and click **Search**. In the search results, find the container or physical server for which you want to query disk usage information. Click **Query Usage** in the **Actions** column to obtain the disk usage information of the container or physical server.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+Select multiple containers or physical servers and click **Batch Query Usage** to obtain the disk usage information of these containers or physical servers.
+
+> **Note:** The operation used to obtain the usage information is asynchronous. You must refresh the page to view the results. If the current disk usage is higher than the specified maximum disk usage, the value is displayed in red.
 
 **Method 2**
 
@@ -2047,11 +2216,15 @@ By default, the **Rules** page appears.
 4. **Optional:**In the upper part of the tab, select a product, service, and server role, and click
 M
 **Search**.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 5. In the search results, select the cleanup rule of the container or physical server for which
 you want to obtain the disk usage information and click **Execution Plans** in the **Actions** column. The **Execution Plans** page appears.
 6. Perform the following operations to obtain the disk usage information of a container or
-physical server: Find the container or physical server for which you want to query disk usage information. Click **Query Usage** in the **Actions** column to obtain the disk usage information of the container or physical server. Select multiple containers or physical servers and click **Batch Query Usage** to obtain the disk usage information of these containers or physical servers. The operation used to obtain the usage information is asynchronous. You must refresh the page to view the results. If the current disk usage is higher than the specified maximum disk usage, the value is displayed in red.
+physical server: Find the container or physical server for which you want to query disk usage information. Click **Query Usage** in the **Actions** column to obtain the disk usage information of the container or physical server. Select multiple containers or physical servers and click **Batch Query Usage** to obtain the disk usage information of these containers or physical servers.
+
+> **Note:** The operation used to obtain the usage information is asynchronous. You must refresh the page to view the results. If the current disk usage is higher than the specified maximum disk usage, the value is displayed in red.
 
 ##### 3.5.2.6 Clean up the logs of containers or physical servers
 
@@ -2068,7 +2241,14 @@ You can clean up the logs of containers or physical servers in a timely manner b
 5. Perform the following operations to clean up logs of containers or physical servers:
 In the upper part of the tab, select a product, service, and server role, and click **Search**. In the search results, find the destination container or physical server and click **Execute**
 **Clearance** in the **Actions** column.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists. Select multiple containers or physical servers and click **Batch Clear** in the upper part of the tab to clean up the logs of these containers or physical servers at a time. The log cleanup operation is asynchronous, and you must view the log cleanup results on the **Records** page. M
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+Select multiple containers or physical servers and click **Batch Clear** in the upper part of the tab to clean up the logs of these containers or physical servers at a time.
+
+> **Note:** The log cleanup operation is asynchronous, and you must view the log cleanup results on the **Records** page.
+
+M
 
 **Method 2**
 
@@ -2078,13 +2258,17 @@ By default, the **Rules** page appears.
 3. Click the **Containers** or **Physical Machines** tab.
 4. **Optional:**In the upper part of the tab, select a product, service, and server role, and click
 **Search**.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 5. Find the destination cleanup rule and click **Execution Plans** in the **Actions** column. The
 **Execution Plans** page appears.
 6. Perform the following operations to clean up logs of containers or physical servers:
 Find the destination container or physical server and click **Execute Clearance** in the
 **Actions** column to clean up the logs of the single container or physical server.
-Select multiple containers or physical servers and click **Batch Clear** in the upper part of the tab to clean up the logs of these containers or physical servers at a time. The log cleanup operation is asynchronous, and you must view the log cleanup results on the **Records** page.
+Select multiple containers or physical servers and click **Batch Clear** in the upper part of the tab to clean up the logs of these containers or physical servers at a time.
+
+> **Note:** The log cleanup operation is asynchronous, and you must view the log cleanup results on the **Records** page.
 
 ##### 3.5.2.7 Configure automatic cleanups for container or physical server logs
 
@@ -2100,7 +2284,11 @@ At 02:00 every day, the system cleans up existing execution plans and generates 
 By default, the **Rules** page appears.
 3. Click the **Containers** or **Physical Machines** tab.
 4. Perform the following operations to configure automatic cleanups for container or physical
-server logs that meet the specified cleanup rules: In the upper part of the tab, select a product, service, and server role, and click **Search**. In the search results, find the cleanup rule with which you want to set automatic log cleanups and turn on **Automatic Deletion**. The system cleans up the container or physical server logs that meet the cleanup rule. M By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists. If you want to disable the automatic log cleanup feature, turn off **Automatic Deletion**. Select multiple cleanup rules and click **Enable Automatic Clearance** in the upper part of the tab. The system cleans up the container or physical server logs that meet the selected cleanup rules. If you want to disable the automatic log cleanup feature, click **Disable Automatic**
+server logs that meet the specified cleanup rules: In the upper part of the tab, select a product, service, and server role, and click **Search**. In the search results, find the cleanup rule with which you want to set automatic log cleanups and turn on **Automatic Deletion**. The system cleans up the container or physical server logs that meet the cleanup rule. M
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+If you want to disable the automatic log cleanup feature, turn off **Automatic Deletion**. Select multiple cleanup rules and click **Enable Automatic Clearance** in the upper part of the tab. The system cleans up the container or physical server logs that meet the selected cleanup rules. If you want to disable the automatic log cleanup feature, click **Disable Automatic**
 **Clearance**.
 
 ##### 3.5.2.8 View cleanup records
@@ -2118,7 +2306,9 @@ When you perform operations on the **Records** page, take note of the following 
 3. In the left-side navigation pane, click **Records**.
 4. **Optional:**In the upper part of the page, select a product, service, and server role, and click
 **Search**.
-By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 5. Find the destination cleanup record and click **View Details** in the **Details** column to view
 the detailed cleanup information.
 
@@ -2130,7 +2320,10 @@ the detailed cleanup information.
 4. Click the **Containers** or **Physical Machines** tab.
 5. **Optional:**In the upper part of the tab, select a product, service, and server role, and click
 **Search**.
-M By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+M
+
+> **Note:** By default, the **product**, **service**, and **server role** fields on the page do not have options in their drop-down lists. When you specify these fields for the first time, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system shows all available options in the drop-down lists.
+
 6. Find the destination execution plan and click **Cleanup Records** in the **Actions** column.
 The **Records** page appears.
 7. Find the destination cleanup record and click **View Details** in the **Details** column to view
@@ -2153,11 +2346,21 @@ You can log on to the virtual machine, host, or container where a server role is
 2. In the top navigation bar, choose **GeneralChangesSecurity O&M**.
 By default, the **Fast Arrival** > **Server Role Logon** page appears.
 3. Select a server role from the **Server Role** drop-down list.
-The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a server role from the fuzzy search results. M
+
+> **Note:** The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a server role from the fuzzy search results.
+
+M
 4. In the **Host** column, find a host and click Log On to log on to the virtual machine or host
-where the server role is deployed. If two links appear in the **Host** column, the first one is used to log on to the virtual machine and the second one is used to log on to the host of the virtual machine. i. After you log on to the virtual machine or host where a server role is deployed, enter Linux commands in the CLI window to perform related operations. ii. Click **Upload File** in the CLI window. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file that you want to upload and click **Open**. Click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **Download File**. The **Download File** dialog box appears. Set **File Name** and **File**
+where the server role is deployed.
+
+> **Note:** If two links appear in the **Host** column, the first one is used to log on to the virtual machine and the second one is used to log on to the host of the virtual machine.
+
+i. After you log on to the virtual machine or host where a server role is deployed, enter Linux commands in the CLI window to perform related operations. ii. Click **Upload File** in the CLI window. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file that you want to upload and click **Open**. Click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **Download File**. The **Download File** dialog box appears. Set **File Name** and **File**
 **Directory** and then click **Download** to download the file to the default download
-directory of your browser. The file that you want to upload or download cannot exceed 200 MB in size.
+directory of your browser.
+
+> **Note:** The file that you want to upload or download cannot exceed 200 MB in size.
+
 5. In the **Docker** column, you can click the relevant links to log on to and restart the
 container, or view logs and inspection reports of the container.
 
@@ -2171,11 +2374,16 @@ You can log on to the virtual machine where a server role group is deployed and 
 By default, the **Fast Arrival** > **Server Role Logon** page appears.
 3. Click the **Server Role Group Logon** tab.
 4. Select a server role group of a product from the **Server Role Group** drop-down list. The
-server roles included in the group are displayed in the lower part of the page. M The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a server role group from the fuzzy search results.
+server roles included in the group are displayed in the lower part of the page. M
+
+> **Note:** The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a server role group from the fuzzy search results.
+
 5. Find a server role and click **Log On** in the **Machine** column to log on to the virtual machine
 where the server role is deployed. i. After you log on to the virtual machine where a server role is deployed, enter Linux commands in the CLI window to perform related operations. ii. Click **Upload File** in the CLI window. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file that you want to upload and click **Open**. Click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **Download File**. The **Download File** dialog box appears. Set **File Name** and **File**
 **Directory** and then click **Download** to download the file to the default download
-directory of your browser. The file that you want to upload or download cannot exceed 200 MB in size.
+directory of your browser.
+
+> **Note:** The file that you want to upload or download cannot exceed 200 MB in size.
 
 ###### 3.5.3.1.3 Query environment metadata
 
@@ -2185,7 +2393,12 @@ You can view the metadata of a service registered in Apsara Infrastructure Manag
 By default, the **Fast Arrival** > **Server Role Logon** page appears.
 3. Click the **Environment Metadata Query** tab.
 4. Select a service from the **Service** drop-down list. The metadata of the service registered in
-Apsara Infrastructure Management is displayed in the lower part of the page. The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a service from the fuzzy search results. You can also enter a keyword in the box above the displayed metadata to filter metadata. M
+Apsara Infrastructure Management is displayed in the lower part of the page.
+
+> **Note:** The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a service from the fuzzy search results.
+> You can also enter a keyword in the box above the displayed metadata to filter metadata.
+
+M
 
 ###### 3.5.3.1.4 Query OOB information
 
@@ -2205,7 +2418,10 @@ You can view the configuration files of all services deployed in a cluster.
 By default, the **Fast Arrival** > **Server Role Logon** page appears.
 3. Click the **Cluster Configuration Query** tab.
 4. Select a cluster of a product from the **Cluster Name** drop-down list. The configuration files
-of all services deployed in the cluster are displayed in the lower part of the page. The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a cluster from the fuzzy search results.
+of all services deployed in the cluster are displayed in the lower part of the page.
+
+> **Note:** The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a cluster from the fuzzy search results.
+
 5. Click a configuration file on the left to view its details on the right.
 
 ###### 3.5.3.1.6 Log on to a metadatabase
@@ -2216,11 +2432,15 @@ You can log on to a metadatabase used by a server role of a service and upload o
 By default, the **Fast Arrival** > **Server Role Logon** page appears.
 3. Click the **Metadatabase Logon** tab.
 4. Select a service from the **Service** drop-down list.
-The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a service from the fuzzy search results.
+
+> **Note:** The drop-down list also supports fuzzy search. You can move the pointer to and click the drop-down list, enter a keyword, and select a service from the fuzzy search results.
+
 5. The metadatabases used by all server roles of the service are displayed in the lower part of
 M the page. Find a database and click **Writable Logon** in the **Actions** column. i. After you log on to the metadatabase, enter SQL statements in the CLI window to perform related operations. ii. Click **Upload File** in the CLI window. The **Upload File** dialog box appears. You can upload a file in one of the following ways: Click the dotted box. In the dialog box that appears, select the file that you want to upload and click **Open**. Click **Upload** in the **Upload File** dialog box. Drag the file to the dotted box and then click **Upload**. iii. Click **Download File**. The **Download File** dialog box appears. Set **File Name** and **File**
 **Directory** and then click **Download** to download the file to the default download
-directory of your browser. The file that you want to upload or download cannot exceed 200 MB in size.
+directory of your browser.
+
+> **Note:** The file that you want to upload or download cannot exceed 200 MB in size.
 
 ##### 3.5.3.2 Audit
 
@@ -2234,15 +2454,22 @@ You can view the command records of the security O&M feature.
 3. In the left-side navigation pane, click **Audit**.
 By default, the **Command Records** tab appears.
 4. Enter a command in the **Command** field, select a time range, and then click **Search** to
-search for the command record. M The system will audit the command that you enter and give one of the following audit results based on operational risks:
-**pass**: The audit is successful.
-**fail**: The audit fails.
-**multiVerify**: A further verification is required.
-**codeVerify**: Authorization is required for use.
+search for the command record. M
+
+> **Note:** The system will audit the command that you enter and give one of the following audit results based on operational risks:
+> **pass**: The audit is successful.
+> **fail**: The audit fails.
+> **multiVerify**: A further verification is required.
+> **codeVerify**: Authorization is required for use.
+
 5. (Optional)
 Click **Advanced** in the upper-right corner. The **Machine**, **Service**, **Server Role**, and
 **Operated By** fields appear. Enter values in the fields and click **Search** to further filter
-command records. Click **Reset** to clear the values that you enter. Click **Collapse** to hide the preceding fields. The preceding fields support fuzzy search.
+command records.
+
+> **Note:** Click **Reset** to clear the values that you enter.
+> Click **Collapse** to hide the preceding fields.
+> The preceding fields support fuzzy search.
 
 ###### 3.5.3.2.2 View file upload and download records
 
@@ -2274,7 +2501,11 @@ the command records.
 7. In the video playback window, click the
 icon to play the command video.
 8. (Optional)
-Click **Advanced** in the upper-right corner. The **Machine**, **Service**, and **Server Role** fields appear. Enter values in the fields and click **Search** to further filter command records. Click **Reset** to clear the values that you enter. Click **Collapse** to hide the preceding fields. The preceding fields support fuzzy search.
+Click **Advanced** in the upper-right corner. The **Machine**, **Service**, and **Server Role** fields appear. Enter values in the fields and click **Search** to further filter command records.
+
+> **Note:** Click **Reset** to clear the values that you enter.
+> Click **Collapse** to hide the preceding fields.
+> The preceding fields support fuzzy search.
 
 ##### 3.5.3.3 Rules
 
@@ -2290,7 +2521,10 @@ You can view the information of the command blocking rules that you create or im
 its blocking rules.
 5. **Optional:**Click **Advanced** in the upper-right corner. The **Target Parameter**, **Service**,
 **Server Role**, **Verification Rule**, and **Status** fields appear. Enter values in the fields and
-click **Search** to further filter blocking rules. Click **Reset** to clear the values that you enter. Click **Collapse** to hide the preceding fields.
+click **Search** to further filter blocking rules.
+
+> **Note:** Click **Reset** to clear the values that you enter.
+> Click **Collapse** to hide the preceding fields.
 
 ###### 3.5.3.3.2 Create a rule
 
@@ -2323,7 +2557,11 @@ You can batch import command blocking rules.
 2. In the top navigation bar, choose **General > Changes > Security O&M**.
 3. In the left-side navigation pane, click **Rules**.
 4. In the upper-left corner, click **Import Rules**. Select the command blocking rule file and
-then click **Open** to import the file. The file that you want to import must be in the .xlsx format. You can first export the template and then enter information in the template. M
+then click **Open** to import the file.
+
+> **Note:** The file that you want to import must be in the .xlsx format. You can first export the template and then enter information in the template.
+
+M
 
 ###### 3.5.3.3.4 Batch export rules
 
@@ -2361,7 +2599,11 @@ When a project is connected to Apsara Stack Online, you can configure the IP add
 4. In the **Configure Worker** section, enter the IP address and port number of the worker, and
 then click **Save**.
 5. In the **Configure Simplified O&M Whitelist** section, enter the allowed IP addresses in
-M Apsara Stack Online and click **Save**. Separate multiple IP addresses with commas (,). The following figure shows the remote O&M process.
+M Apsara Stack Online and click **Save**.
+
+> **Note:** Separate multiple IP addresses with commas (,).
+
+The following figure shows the remote O&M process.
 
 ### 3.6 Archives
 
@@ -2384,7 +2626,8 @@ table and click **OK**. M
 | Retry Times | The number of retries after an error occurs. Typically, set this parameter to 3. | 3 |
 
 5. To add more archived items, repeatedly perform the preceding steps.
-You can click **Modify** or **Delete** in the **Actions** column to modify or delete an archived item of a product.
+
+> **Note:** You can click **Modify** or **Delete** in the **Actions** column to modify or delete an archived item of a product.
 
 **Result**
 
@@ -2405,7 +2648,9 @@ An archived item is the smallest unit for archiving. You can archive the metadat
 2. In the top navigation bar, choose **GeneralArchivesArchive Settings**.
 In the left side of the page, the current archived items that you can configure are displayed in a hierarchical tree-like structure. The root node is a product list and shows the products whose data can be archived in the system. Only the metadata of Apsara Distributed File System and OPS DNS can be archived.
 3. Click an archived item of a product on the left and then configure the parameters on the
-right. M If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the archive information of ecs pangu.
+right. M
+
+> **Note:** If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the archive information of ecs pangu.
 
 | Parameter | Description |
 |---|---|
@@ -2440,7 +2685,10 @@ You can configure the archive server for the storage of archive files.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **GeneralArchivesArchiving Server Settings**.
 3. Configure the archive server information.
-If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the backup server information of ecs pangu. The following table describes the parameters.
+
+> **Note:** If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the backup server information of ecs pangu.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -2460,7 +2708,11 @@ To ensure the availability of services, you must archive the data of different s
 
 ##### 3.6.5.1 Prepare
 
-This topic describes how to prepare for an archive. Before an archive, take note of the following points: A buffer server is required as the archive server. If no buffer server is available, select a physical server that has a large disk capacity and good network performance. Otherwise, the security of the archive data cannot be ensured. Offline archive files cannot be stored on objects to be archived. If no extra physical servers are available and if disk capacity is insufficient in the on-site environment, the system is unable to perform offline archive. In this case, you must add physical servers or increase disk capacity before the offline archive. A transfer server is required to store one-time archive data and archive scripts of each product. No other requirements are needed for transfer servers. The network of the archive server must be connected with that of the Docker container where the offline archive service is located. This ensures that archive containers in the clusters of the Apsara Uni-manager Operations Console can log on to the transfer server and archive server by using SSH key pairs, without the need for you to provide the username and password.
+This topic describes how to prepare for an archive. Before an archive, take note of the following points: A buffer server is required as the archive server. If no buffer server is available, select a physical server that has a large disk capacity and good network performance. Otherwise, the security of the archive data cannot be ensured.
+
+> **Note:** Offline archive files cannot be stored on objects to be archived. If no extra physical servers are available and if disk capacity is insufficient in the on-site environment, the system is unable to perform offline archive. In this case, you must add physical servers or increase disk capacity before the offline archive.
+
+A transfer server is required to store one-time archive data and archive scripts of each product. No other requirements are needed for transfer servers. The network of the archive server must be connected with that of the Docker container where the offline archive service is located. This ensures that archive containers in the clusters of the Apsara Uni-manager Operations Console can log on to the transfer server and archive server by using SSH key pairs, without the need for you to provide the username and password.
 
 ##### 3.6.5.2 Collect the Apsara Distributed File System information of each product
 
@@ -2474,7 +2726,9 @@ M In this topic, product names are customized as oss, ecs, ads, and ots, and the
 1. Log on to the Apsara Infrastructure Management console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Base/Platforms > Apsara**
 **Infrastructure Management**.
-In this topic, operations are performed in the new Apsara Infrastructure Management console.
+
+> **Note:** In this topic, operations are performed in the new Apsara Infrastructure Management console.
+
 2. In the left-side navigation pane, choose **Operations > Service Operations**.
 3. Enter **pangu** in the **Service** field to search for the Apsara Distributed File System service.
 4. Click **Operations** in the **Actions** column corresponding to pangu to go to the service
@@ -2495,7 +2749,9 @@ each product. The recorded results are similar to those in the following table.
 | ads-A-xx | 10.10.10.3 | ads |
 | otsv3 p-A-xx _ | 10.10.10.4 | ots |
 
-You can customize the product name. Make sure that the product name is unique and recognizable. M
+> **Note:** You can customize the product name. Make sure that the product name is unique and recognizable.
+
+M
 
 ##### 3.6.5.3 Configure the archive server
 
@@ -2503,7 +2759,10 @@ You can configure the archive server in the Apsara Uni-manager Operations consol
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Archives > Archiving Server Settings**.
 3. Configure the archive server information.
-If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the archive server information of ecs pangu. The following table describes the parameters.
+
+> **Note:** If the #FTPMaster server is deployed in the cluster of the service, the system will automatically fill in the archive server information of ecs pangu.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -2569,7 +2828,9 @@ After you configure an archived item, you can check whether the archived item fu
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General > Archives > Archive Details**.
 3. On the **Archive Details** page, enter a product and archived item, select the start date and
-end date, and then click **Search**. If the status of an archived item is **Complete**, the archived item functions normally. When an archive task is complete, you must check whether the MD5 values of the offline archive service and the archive server are consistent with each other. If yes, the archive was successful.
+end date, and then click **Search**. If the status of an archived item is **Complete**, the archived item functions normally.
+
+> **Note:** When an archive task is complete, you must check whether the MD5 values of the offline archive service and the archive server are consistent with each other. If yes, the archive was successful.
 
 ## 4 Product operations
 
@@ -2587,14 +2848,22 @@ You can query the core metrics of products in IaaS O&M, obtain up-to-date inform
 **Console**.
 By default, the **Computing Overview** page is displayed.
 3. In the product diagnostics section, view the test score displayed on the dashboard. The
-score is calculated based on 12 check items. You can also view the number of items that are in the Normal, Risk, and Abnormal states. If the score is 100, the dashboard is displayed in green. If the score is lower than 100, the dashboard is displayed in red. In the upper-right corner of the section, click **Check Now**. In the **Service Check** dialog box that appears, view the test score, the status of each check item, and error details.
+score is calculated based on 12 check items. You can also view the number of items that are in the Normal, Risk, and Abnormal states.
+
+> **Note:** If the score is 100, the dashboard is displayed in green. If the score is lower than 100, the dashboard is displayed in red.
+
+In the upper-right corner of the section, click **Check Now**. In the **Service Check** dialog box that appears, view the test score, the status of each check item, and error details.
 4. In the **Unhandled Alerts Today** section, view the statistics of alerts at all risk levels.
 In the upper-right corner of the section, click **View Details**. You are redirected to the
 **Alerts**page. **>**
 5. In the **One-click Search** section, enter an instance ID, a disk ID, an image ID, an ENI ID, a
 security group ID, the private or public IP address of an ECS instance, or the IP address of a physical server to search for relevant information and click the displayed information to go the corresponding page.
 6. In the **Inventory usage** section, view the inventory usage of vCPUs, memory, and EIPs.
-You can also view the number of used resources, available resources, and total resources. By default, the metric statistics of all clusters are displayed. You can select a cluster from the drop down list in the upper-right corner of this section to display only the statistics of the selected cluster. The following table describes the metrics.
+You can also view the number of used resources, available resources, and total resources.
+
+> **Note:** By default, the metric statistics of all clusters are displayed. You can select a cluster from the drop down list in the upper-right corner of this section to display only the statistics of the selected cluster.
+
+The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -2624,7 +2893,13 @@ icon to query the cluster.
 6. **Optional:**Select items to display in the cluster list and customize the columns.
 i. In the upper-right corner of the cluster list, click the icon. ii. Select items that you want to display in the cluster list. iii. Move the pointer over an item and click the icon to adjust the position where the item is displayed.
 7. View the following information about the cluster: region, type, status, zone, the number of
-servers, instance type, and sales form. Sales forms: exclusive: exclusive instance share: shared instance bare_metal: ECS bare metal instance cpu_credit: T5 instance
+servers, instance type, and sales form.
+
+> **Note:** Sales forms:
+> exclusive: exclusive instance
+> share: shared instance
+> bare_metal: ECS bare metal instance
+> cpu_credit: T5 instance
 
 ###### 4.1.1.2.2 Connect to cluster AG
 
@@ -2651,7 +2926,11 @@ You can view the following information about clusters: servers, ECS instances, s
 4. Find the cluster that you want to view and click the cluster name in the **Cluster Name**
 column. By default, the **Overview** tab of the **Computing Cluster Details** page is displayed.
 5. View the details of physical machines and ECS instances in the cluster.
-In the **Cluster Information** section, view the following information about the cluster: the region in which the cluster is deployed, cluster type, whether the cluster uses only ECS resources, zone, cluster ID, cluster specification, cluster status, network type, physical network, disk type, and sales form. In the upper-right corner of this section, click **Connect to Cluster AG** to log on to the Admin Gateway and perform O&M operations on the cluster. For more information, see Connect to cluster AG. In the **Server Resources** section, view the number of compute servers, the number of CPUs, and the available memory. In the **ECS Instances** section, view the total number of instances, the number of running instances, and the number of abnormal instances. In the **NC State Distribution** section, view the distribution of physical servers in different states. Move the pointer over the figure. The number of servers in each state is displayed. The following table describes the server states.
+In the **Cluster Information** section, view the following information about the cluster: the region in which the cluster is deployed, cluster type, whether the cluster uses only ECS resources, zone, cluster ID, cluster specification, cluster status, network type, physical network, disk type, and sales form. In the upper-right corner of this section, click **Connect to Cluster AG** to log on to the Admin Gateway and perform O&M operations on the cluster. For more information, see Connect to cluster AG. In the **Server Resources** section, view the number of compute servers, the number of CPUs, and the available memory. In the **ECS Instances** section, view the total number of instances, the number of running instances, and the number of abnormal instances. In the **NC State Distribution** section, view the distribution of physical servers in different states.
+
+> **Note:** Move the pointer over the figure. The number of servers in each state is displayed.
+
+The following table describes the server states.
 
 | State | Description |
 |---|---|
@@ -2729,7 +3008,10 @@ View the server information You can view the following information about computi
 By default, the **Overview** tab of the **Computing Cluster Details** page is displayed.
 5. In the upper-left corner of the page, click the **Computing Servers** tab.
 6. View the physical servers deployed on the cluster.
-i. **Optional:**Change the items displayed on the physical server list. a. In the upper-right corner of the page, click the icon. b. In the **Custom list item display** dialog box, select the items that you want to display in the server list. c. Click **OK**. ii. View the following information about the servers: hostname, IP address, server ID, server type, vCPU (cores), memory, server state, instances, data center, rack, and serial number. For more information about the server states, see Cluster overview.
+i. **Optional:**Change the items displayed on the physical server list. a. In the upper-right corner of the page, click the icon. b. In the **Custom list item display** dialog box, select the items that you want to display in the server list. c. Click **OK**. ii. View the following information about the servers: hostname, IP address, server ID, server type, vCPU (cores), memory, server state, instances, data center, rack, and serial number.
+
+> **Note:** For more information about the server states, see Cluster overview.
+
 7. **Optional:**View O&M details of a computing server.
 i. Find the server that you want to view and click the server name in the **Hostname** column. ii. View the information about the server on the **Computing Server O&M** page that appears. For more information, see Server O&M details. Manage the server status You can lock, unlock, and activate the computing servers in a computing cluster to manage the status of the servers. For more information, see Server O&M > Machines.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -2769,7 +3051,10 @@ number and click the icon to query the target server. Alternatively, you can cli
 6. **Optional:**Select items that you want to display in the server list.
 i. In the upper-right corner of the instance list, click the icon. ii. In the **Custom list item display** dialog box, select the items that you want to display in the server list. iii. Click **OK**.
 7. In the server list, view the following information about servers: hostname, IP address,
-model, vCPU (cores), memory, architecture, status, cluster, data center, rack, serial number, and region. For more information about the server states, see Cluster overview.
+model, vCPU (cores), memory, architecture, status, cluster, data center, rack, serial number, and region.
+
+> **Note:** For more information about the server states, see Cluster overview.
+
 8. **Optional:**View O&M details of a physical server.
 i. Find the server you want to view and click the name in the **Hostname** column. ii. On the **Computing Server O&M** page, view the server information. For more information, see Server O&M details.
 
@@ -2808,8 +3093,9 @@ You can view the server diagnostics on the **End-to-end diagnostics & demarcatio
 3. In the left-side navigation pane, click **ECS O&M**.
 In the **Machines** tab, view details of all physical servers.
 4. Find the server that you want to diagnose and click **Diagnose** in the **Operation** column.
-In the upper-left corner of the page, you can enter the IP address, hostname, or serial number to query the target server. Alternatively, you can click
-**Advanced Search** to query the target server.
+
+> **Note:** In the upper-left corner of the page, you can enter the IP address, hostname, or serial number to query the target server. Alternatively, you can click **Advanced Search** to query the target server.
+
 5. On the **End-to-end diagnostics & demarcation** page, view the server diagnostics.
 
 ###### 4.1.1.3.1.4 View audit logs
@@ -2902,7 +3188,10 @@ After a migration task is triggered in the Apsara Uni-manager Operations Console
 On the **Machines** tab, view details of all physical servers.
 4. Click the **Machine Migration Task** tab to view details of migration tasks.
 5. View the following information about migration tasks: task ID, source physical machine, the
-number of instances, destination physical machine, task status, migration progress, start time, and initiator. If a migration task fails, we recommend that you click **Machine Migration** again. If a migration task fails multiple times, we recommend that you perform the migration based on the KB solution or contact the Alibaba Cloud team TAM or L2.
+number of instances, destination physical machine, task status, migration progress, start time, and initiator.
+
+> **Note:** If a migration task fails, we recommend that you click **Machine Migration** again. If a migration task fails multiple times, we recommend that you perform the migration based on the KB solution or contact the Alibaba Cloud team TAM or L2.
+
 6. **Optional:**View the migration details of all instances in a migration task.
 i. On the Machine Migration Task tab, find the target migration task and click the task ID in the **Task ID** column. Alternatively, click the number displayed in the **Instances** column to view the migration details of all instances in the migration task. ii. In the **Migrated Instance Details** panel, view the migration status, destination physical machine, migration type, and number of retries of all instances.
 7. **Optional:**View the O&M details of the source physical machine.
@@ -2921,7 +3210,10 @@ You can view the list of ECS instances and the physical server and cluster to wh
 2. In the top navigation bar, choose **Products > Computing > Compute Operations**
 **Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**. In the upper-right
-corner of the ECS instance page that appears, view the number of ECS instances that are running, stopped, being created, or being released. The number of ECS instances displayed in the upper-right corner of the page may be different from that displayed in the ECS instance list due to workflow errors. The number displayed in the upper-right corner of the page prevails.
+corner of the ECS instance page that appears, view the number of ECS instances that are running, stopped, being created, or being released.
+
+> **Note:** The number of ECS instances displayed in the upper-right corner of the page may be different from that displayed in the ECS instance list due to workflow errors. The number displayed in the upper-right corner of the page prevails.
+
 4. **Optional:**Enter the instance ID, private IP address, or public IP address in the search box to
 query a specific instance. Alternatively, click **Advanced Search**, specify Status, AliUid, or VPC to query a specific instance. You can also select **All in ECS Project** in the upper-right corner of the instance list to filter instances.
 5. **Optional:**Change the columns that are displayed on the instance list.
@@ -2998,7 +3290,10 @@ You can migrate instances and configure the migration parameters. Cold migration
 4. Find the instance that you want to migrate and choose **Migrate > Migrate Instance** in
 the **Operation** column.
 5. In the **Migrate Instance** dialog box that appears, set the parameters.
-The system automatically selects a migration type based on the instance status. You can configure the parameters for the cold migration or hot migration. Cold migration indicates that the instance is in the Pending, Shutted, or StartFailure states when the migration task is created, and hot migration indicates that the instance is in the Running state when the migration task is created. The following table describes the parameters.
+
+> **Note:** The system automatically selects a migration type based on the instance status. You can configure the parameters for the cold migration or hot migration. Cold migration indicates that the instance is in the Pending, Shutted, or StartFailure states when the migration task is created, and hot migration indicates that the instance is in the Running state when the migration task is created.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -3114,7 +3409,11 @@ You can view the following information about disks: basic information, ECS insta
 4. In the upper part of the page, specify the disk information and click **Search** to query the
 target disk. In the upper-right corner of the page, select **Tiangong Resources Only** to filter disks.
 5. View the following information about the disk: disk ID and name, disk type, capacity, ECS
-instances attached to the disk, mount point, the cluster on which the disk is deployed, disk status, storage type, Houyi disk ID, AliUID, and the time when the disk was created. Supported disk types: system disk and data disk Supported storage types: local disk, local SSD, basic disk, standard SSD, preconfigured SSD, ultra disk, enhanced SSD, premium performance disk, and standard performance disk
+instances attached to the disk, mount point, the cluster on which the disk is deployed, disk status, storage type, Houyi disk ID, AliUID, and the time when the disk was created.
+
+> **Note:** Supported disk types: system disk and data disk
+> Supported storage types: local disk, local SSD, basic disk, standard SSD, preconfigured SSD, ultra disk, enhanced SSD, premium performance disk, and standard performance disk
+
 6. Find the disk that you want to view and click the disk ID in the **Disk ID/Name** column to
 view the disk information on the **Details** page that appears. For more information, see View disk details.
 7. Find the instance that you want to view and click the instance ID in the **ECS Instance**
@@ -3226,9 +3525,14 @@ You can view and delete snapshots, view operation audit logs, and create images.
 By default, the **Snapshots** tab is displayed.
 4. Select an AliUID from the **AliUid** drop down list, specify the **Snapshot ID**, **Disk ID**, and
 **Instance ID** fields based on your needs, and click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. View the following information about the snapshots: snapshot ID and name, snapshot ID in
-server controller, snapshot type, disk ID and type, snapshot creation progress, region, creation time, and modification time. The supported snapshot types include system snapshot, user snapshot, scheduled snapshot, and snapshot copy.
+server controller, snapshot type, disk ID and type, snapshot creation progress, region, creation time, and modification time.
+
+> **Note:** The supported snapshot types include system snapshot, user snapshot, scheduled snapshot, and snapshot copy.
+
 6. Find the disk you want to view and click the disk ID in the **Disk ID/Type** column. Then, view
 the information displayed on the **Details** page. For more information, see View disk details. Delete snapshots You can delete snapshots that are no longer used.
 
@@ -3242,7 +3546,9 @@ If a snapshot has been used to create custom images, you must delete those custo
 By default, the **Snapshots** tab is displayed.
 4. Select an AliUID from the **AliUid** drop-down list, specify the **Snapshot ID**, **Disk ID**, and
 **Instance ID** fields based on your needs, and click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. Find the snapshot that you want to delete and click **Delete** in the **Operation** column.
 6. In the dialog box that appears, enter a reason and click **OK**.
 You can view audit logs of snapshots in the Compute Operations Console.
@@ -3253,7 +3559,9 @@ You can view audit logs of snapshots in the Compute Operations Console.
 By default, the **Snapshots** tab is displayed.
 4. Select an AliUID from the **AliUid** drop-down list, specify the **Snapshot ID**, **Disk ID**, and
 **Instance ID** fields based on your needs, and click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. Find the snapshot for which you want to view the audit logs and click **Audit Operations** in
 the **Operation** column.
 6. In the **Audit Operations** panel that appears, view the operations in the Apsara Uni-
@@ -3269,7 +3577,9 @@ The progress of the snapshot is 100%. The disk of the snapshot is a system disk.
 By default, the **Snapshots** tab is displayed.
 4. Select an AliUID from the **AliUid** drop-down list, specify the **Snapshot ID**, **Disk ID**, and
 **Instance ID** fields based on your needs, and click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. Find the snapshot for which you want to create an image and click **Create Image** in the
 **Operation** column.
 6. In the **Create Image** dialog box, configure the parameters.
@@ -3315,7 +3625,9 @@ You can view the basic information about ENIs in the Compute Operations Console.
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the page, select an AliUID from the **AliUid** drop down list, fill in the **ENI**
 **ID**, **VPC**, **Instance ID**, and **Private IP Address** fields, and then click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. View the information about the ENIs.
 6. **Optional:**Find the ENI you want to view and click the ENI ID in the **ENI ID** column to view
 the ENI information on the **ENI Details** page that appears. For more information, see View ENI details.
@@ -3331,7 +3643,9 @@ You can view the basic information, business information, and VPort information 
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the page, select an AliUID from the **AliUid** drop down list, fill in the **ENI**
 **ID**, **VPC**, **Instance ID**, and **Private IP Address** fields, and then click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. Find the ENI you want to view and click the ENI ID in the **ENI ID** column.
 6. On the **ENI Details** page, view the basic information, business information, and VPort
 information of ENIs.
@@ -3347,7 +3661,9 @@ You can view the operations in the Apsara Uni-manager Operations Console, POP AP
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the page, select an AliUID from the **AliUid** drop down list, fill in the **ENI**
 **ID**, **VPC**, **Instance ID**, and **Private IP Address** fields, and then click **Search**.
-Only AliUid is required.
+
+> **Note:** Only AliUid is required.
+
 5. Find the ENI for which you want to view the audit logs and click **Audit Operations** in the
 **Operation** column.
 6. In the **Audit Operations** panel that appears, view the operations in the Apsara Uni-
@@ -3471,7 +3787,8 @@ The following table describes how the parameters are calculated for a custom ins
 |   | 32<x<=64 | 32~352 | min(5+(x- 32)/8, 10) | min(80+ (x-32)/0.8, 120) | 4 | 8 |
 
 6. Enter the operation reason and click **OK**.
-The creation does not take effect immediately. You need to wait until the system synchronizes the operation.
+
+> **Note:** The creation does not take effect immediately. You need to wait until the system synchronizes the operation.
 
 ###### 4.1.1.4.7.3 Modify instance specifications
 
@@ -3485,7 +3802,8 @@ You can modify only the custom instance specifications.
 5. In the **Modify Custom Instance Type** dialog box, set the parameters. For more
 information, see Add an instance specification.
 6. Enter the operation reason and click **OK**.
-The modifications on the custom instance specification does not take effect immediately. You need to wait until the system synchronizes the operation.
+
+> **Note:** The modifications on the custom instance specification does not take effect immediately. You need to wait until the system synchronizes the operation.
 
 ###### 4.1.1.4.7.4 Delete an instance specification
 
@@ -3497,7 +3815,8 @@ You can delete custom instance specifications.
 4. Find the custom instance specification that you want to delete and click **Delete** in the
 **Operation** column.
 5. In the dialog box that appears, enter the reason and click **Delete**.
-The deletion does not take effect immediately. You need to wait until the system synchronizes the operation.
+
+> **Note:** The deletion does not take effect immediately. You need to wait until the system synchronizes the operation.
 
 ###### 4.1.1.4.7.5 View audit logs
 
@@ -3572,7 +3891,11 @@ You can query the ECS instance inventory in the Compute Operations Console. This
 **Console**.
 3. In the left-side navigation pane, click **Compute Capacity Analytics**.
 4. On the page that appears, view the information displayed in each section. The following
-image provides an example. In the **Usage** section, view the total and used resources including vCPU, memory, GPU, and local disk usage. In the **vCPU/Memory Usage Trend** section, specify a time range in the upper right corner to view the usage trends of vCPU and memory in the specified period of time. Move the pointer over a data point on a line chart to view the resource usage details on a specific day. In the **Inventory** section, select a cluster from the drop-down list in the upper left corner, enter an instance family in the search box, and click the icon to view the inventory information.
+image provides an example. In the **Usage** section, view the total and used resources including vCPU, memory, GPU, and local disk usage. In the **vCPU/Memory Usage Trend** section, specify a time range in the upper right corner to view the usage trends of vCPU and memory in the specified period of time.
+
+> **Note:** Move the pointer over a data point on a line chart to view the resource usage details on a specific day.
+
+In the **Inventory** section, select a cluster from the drop-down list in the upper left corner, enter an instance family in the search box, and click the icon to view the inventory information.
 
 ### 4.2 Network operations
 
@@ -3618,9 +3941,18 @@ When you diagnose an SLB instance, you can enter the SLB instance ID or virtual 
 **Diagnosis**.
 The **Network instance diagnosis** page appears.
 3. Select **SLB** as the diagnosis type from the drop-down list, enter the SLB instance ID or VIP,
-and click **Diagnose now**. The diagnosis result page appears. In the field at the top of the diagnosis result page, the ID of the diagnosed instance is displayed. You can also enter the ID of another instance and click **Diagnose** to perform another diagnosis.
+and click **Diagnose now**. The diagnosis result page appears.
+
+> **Note:** In the field at the top of the diagnosis result page, the ID of the diagnosed instance is displayed. You can also enter the ID of another instance and click **Diagnose** to perform another diagnosis.
+
 4. On the diagnosis result page, view the instance details, instance topology, and diagnostic
-details: Instance topology In the topology example shown in the preceding figure, the first column displays the SLB instance, the second column displays the listener instances that correspond to the SLB instance, and the third column displays the backend servers that correspond to the listener instances. If the backend servers are of the ECS type or the machine type of Apsara Infrastructure Management, click **realServer** in the topology. A panel appears to show the server details. After you select the topology, you can drag the topology and change the position of the topology. The diagnosis details include the name and description of each diagnostic item, diagnosis results, and detailed diagnosis information returned by the system.
+details: Instance topology
+
+> **Note:** In the topology example shown in the preceding figure, the first column displays the SLB instance, the second column displays the listener instances that correspond to the SLB instance, and the third column displays the backend servers that correspond to the listener instances.
+> If the backend servers are of the ECS type or the machine type of Apsara Infrastructure Management, click **realServer** in the topology. A panel appears to show the server details.
+> After you select the topology, you can drag the topology and change the position of the topology.
+
+The diagnosis details include the name and description of each diagnostic item, diagnosis results, and detailed diagnosis information returned by the system.
 
 ###### 4.2.1.1.3 Diagnose DNS instances
 
@@ -3638,10 +3970,18 @@ DNS instance diagnostics are valid only for domain names. After a diagnostic tas
 **Diagnosis**.
 By default, the **Network instance diagnosis** page appears.
 3. Select **DNS** as the diagnosis type from the drop-down list, enter the DNS domain name,
-and click **Diagnose now**. The diagnosis result page appears. In the field at the top of the Diagnostic Results page, the ID of the currently diagnosed instance is displayed. You can also enter the ID of another instance and click
-**Diagnose** to perform another diagnosis.
+and click **Diagnose now**. The diagnosis result page appears.
+
+> **Note:** In the field at the top of the Diagnostic Results page, the ID of the currently diagnosed instance is displayed. You can also enter the ID of another instance and click **Diagnose** to perform another diagnosis.
+
 4. On the diagnosis result page, view the instance topology, and diagnostic details:
-Instance topology In the topology shown in the preceding figure, the first column displays the domain name of the DNS instance, the second column displays the HTTPS proxy that corresponds to the DNS instance domain name resolution, the third column displays the SLB instance, the fourth column displays the listener instance that corresponds to the SLB instance, and the fifth column displays the backend servers that corresponds to the listener instance. If the backend server is of the ECS type or the machine type of Apsara Infrastructure Management, click **realServer** in the topology. A panel appears to show the server details. After you select the topology, you can drag the topology and change the position of the entire topology. The diagnosis details include the name and description of each diagnostic item, diagnosis results, and detailed diagnosis information returned by the system.
+Instance topology
+
+> **Note:** In the topology shown in the preceding figure, the first column displays the domain name of the DNS instance, the second column displays the HTTPS proxy that corresponds to the DNS instance domain name resolution, the third column displays the SLB instance, the fourth column displays the listener instance that corresponds to the SLB instance, and the fifth column displays the backend servers that corresponds to the listener instance.
+> If the backend server is of the ECS type or the machine type of Apsara Infrastructure Management, click **realServer** in the topology. A panel appears to show the server details.
+> After you select the topology, you can drag the topology and change the position of the entire topology.
+
+The diagnosis details include the name and description of each diagnostic item, diagnosis results, and detailed diagnosis information returned by the system.
 
 ##### 4.2.1.2 Intelligent path analysis
 
@@ -3698,7 +4038,14 @@ click **Analysis**.
 | Destination VpcId | Required. The ID of the VPC in which the destination node resides. | vpc-**fczvaczv |
 | Timeout period | Optional. When the total time of packet capture in the analysis task exceeds this period, the packet capture stops. Unit: minutes. | 5 |
 
-If you turn off **Physical link analysis**, the analysis time is shortened. However, the packet capture data of the physical devices is not contained. In the **Path Analysis** section, the status timeline of the analysis task is displayed, and the estimated time required for each phase is displayed. The topology of the path is displayed at the bottom of the timeline. After the analysis is complete, the analysis result is displayed. For path nodes of the ECS type or NC type, you can click the blue link in the topology to open the details page. After you select the topology, you can drag the topology and change the location of the topology. In the **Diagnostic Details** section, the details of the task are displayed. In the **Analysis of Each Packet** section, if the analysis task is successfully executed, the analysis details of the packets captured by the task are displayed. You can view the analysis details of packets one by one.
+> **Note:** If you turn off **Physical link analysis**, the analysis time is shortened. However, the packet capture data of the physical devices is not contained.
+
+In the **Path Analysis** section, the status timeline of the analysis task is displayed, and the estimated time required for each phase is displayed. The topology of the path is displayed at the bottom of the timeline. After the analysis is complete, the analysis result is displayed.
+
+> **Note:** For path nodes of the ECS type or NC type, you can click the blue link in the topology to open the details page.
+> After you select the topology, you can drag the topology and change the location of the topology.
+
+In the **Diagnostic Details** section, the details of the task are displayed. In the **Analysis of Each Packet** section, if the analysis task is successfully executed, the analysis details of the packets captured by the task are displayed. You can view the analysis details of packets one by one.
 
 ###### 4.2.1.2.3 Terminate an analysis task
 
@@ -3733,7 +4080,9 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 **Rules**.
 By default, the created monitoring rules are displayed on the page.
 4. Click the name of a monitoring rule. On the details page, you can view the details of the
-monitoring rule, including the configuration information and associated alert template. To modify a monitoring rule, click **Modify Rule** in the upper-right corner.
+monitoring rule, including the configuration information and associated alert template.
+
+> **Note:** To modify a monitoring rule, click **Modify Rule** in the upper-right corner.
 
 ###### 4.2.1.3.2 Create a monitoring rule
 
@@ -3752,7 +4101,9 @@ In this version, you can only configure monitoring rules for port monitoring ite
 3. In the left-side navigation pane, choose **Network Alert Management > Monitoring**
 **Rules**.
 4. Click **Create a monitoring rule** to go to the rule creation page. Follow the procedure to
-complete all configurations. i. Configure basic information. Configure the basic information of the monitoring rule as prompted. After you select a metric category, the supplementary fields appear. After you specify all the parameters, click **Next**. ii. Associate an alert template. On the page, select the alert template to associate with the metric and click **Next**. iii. Confirm the settings. On the page, check whether the parameters are configured as expected: If the parameters are not configured as expected, click **Previous**. If the parameters are configured as expected, click **Create** to create the monitoring rule. After you create the monitoring rule, the rule is in the Enabled state by default.
+complete all configurations. i. Configure basic information. Configure the basic information of the monitoring rule as prompted. After you select a metric category, the supplementary fields appear. After you specify all the parameters, click **Next**. ii. Associate an alert template. On the page, select the alert template to associate with the metric and click **Next**. iii. Confirm the settings. On the page, check whether the parameters are configured as expected: If the parameters are not configured as expected, click **Previous**. If the parameters are configured as expected, click **Create** to create the monitoring rule.
+
+> **Note:** After you create the monitoring rule, the rule is in the Enabled state by default.
 
 ###### 4.2.1.3.3 Edit a monitoring rule
 
@@ -3850,7 +4201,10 @@ The current version only supports the creation of the alert templates for the mo
 3. In the left-side navigation pane, choose **Network Alert Management > Alert**
 **Templates**.
 4. Click **Create alert template**. In the dialog box that appears, configure the parameters and
-click **OK**. For some parameters, you can click the explanation icon on the right side of the parameter to view the detailed explanation of the parameter. By default, the newly created alert template is enabled.
+click **OK**.
+
+> **Note:** For some parameters, you can click the explanation icon on the right side of the parameter to view the detailed explanation of the parameter.
+> By default, the newly created alert template is enabled.
 
 ###### 4.2.1.4.3 Edit an alert template
 
@@ -3949,7 +4303,14 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 The **Dashboard** page appears.
 3. Click the **Network Topology** tab.
 4. On the **Network Topology** tab, view the physical network topology of a physical data
-center. You can select **Standard Topology** or **Dynamic Topology** from the **Current Topology** drop-down list. If an offset exists between the dynamic topology and the standard topology, a message appears when you go to the **Network Topology** tab in the upper-right corner of the tab and disappears after a few seconds. You can click **Update Topology** to update the standard topology. The colors of connections between network devices indicate the connectivity between the network devices: Green: The connection works normally. Red: The connection has an error. Grey: The connection is inactive. If you select **Standard Topology** from the **Current Topology** drop-down list, the **Alerts**
+center. You can select **Standard Topology** or **Dynamic Topology** from the **Current Topology** drop-down list. If an offset exists between the dynamic topology and the standard topology, a message appears when you go to the **Network Topology** tab in the upper-right corner of the tab and disappears after a few seconds. You can click **Update Topology** to update the standard topology.
+
+> **Note:** The colors of connections between network devices indicate the connectivity between the network devices:
+> Green: The connection works normally.
+> Red: The connection has an error.
+> Grey: The connection is inactive.
+
+If you select **Standard Topology** from the **Current Topology** drop-down list, the **Alerts**
 **Refreshed** switch is turned on. You can turn off **Alerts Refreshed** to stop receiving new
 alerts that are triggered for the devices or the connection statuses within the topology. If you select **Dynamic Topology** from the **Current Topology** drop-down list, **Alerts**
 **Refreshed** is turned off.
@@ -4003,9 +4364,8 @@ list in the upper part of the page, select a start time and an end time, and the
 
 **Delete a view**
 
-**Important**
+> **Important:** If you delete a view, all subviews of the view are also deleted. Proceed with caution.
 
-If you delete a view, all subviews of the view are also deleted. Proceed with caution.
 1. Click the **Customize View** tab.
 2. Select the view that you want to delete from the drop-down list in the upper part of the
 page, select a start time and an end time, and then click **Search**.
@@ -4033,7 +4393,11 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 3. In the left-side navigation pane, click **Network Element Management**.
 4. On the **Device Management** tab, click the **Network Monitoring** tab.
 5. In the upper part of the tab, select an IDC and perform the following operations:
-ViewthebasicinformationpingstatusandSNMPstatusofApsaraStackphysical View the basic information, ping status, and SNMP status of Apsara Stack physical network devices. You can also click **Export** to export network device information to your computer. If a device has a business connectivity or gateway connectivity problem, the value in the Ping Status or SNMP Status column turns from green to red. The O&M personnel must troubleshoot the problem. In the upper-right corner of the tab, enter the device name or IP address in the search box to search for the monitoring information of a specific device. View the port information, CPU utilization, memory usage, aggregation port information, and alert information of a device. a. Click a device name, or click **Details** in the **Details** column corresponding to a device. b. On the **Port** tab, view the ports, port operation status, and link information of the device. a. On the **Ports** tab, select the port that you want to view and click **See** in the **Details** column. b. Select a time range on the right and click to view the traffic in the selected time range. You can select a time range in the **Quick query** section to view the traffic in the specified time range. c. On the **CPU usage** tab, view all the CPU utilization information of the device. d. On the **Memory usage** tab, view all the memory usage information of the device. e. On the **Aggregation Port Management** tab, view the information of all aggregation ports of the device. You can click **View** in the **Operation** column corresponding to a port to view the usage of the aggregation port. f. On the **Alert information** tab, view the alert information of the device. During routine O&M, you must closely monitor the alert list of the device. If no data is displayed on the **Alert information** tab, the device is operating normally. If alert events occur, unrecovered alert events are displayed in the list. You must handle these exceptions in a timely manner. When exceptions are handled, their corresponding alerts are cleared from the list.
+ViewthebasicinformationpingstatusandSNMPstatusofApsaraStackphysical View the basic information, ping status, and SNMP status of Apsara Stack physical network devices.
+
+> **Note:** You can also click **Export** to export network device information to your computer.
+
+If a device has a business connectivity or gateway connectivity problem, the value in the Ping Status or SNMP Status column turns from green to red. The O&M personnel must troubleshoot the problem. In the upper-right corner of the tab, enter the device name or IP address in the search box to search for the monitoring information of a specific device. View the port information, CPU utilization, memory usage, aggregation port information, and alert information of a device. a. Click a device name, or click **Details** in the **Details** column corresponding to a device. b. On the **Port** tab, view the ports, port operation status, and link information of the device. a. On the **Ports** tab, select the port that you want to view and click **See** in the **Details** column. b. Select a time range on the right and click to view the traffic in the selected time range. You can select a time range in the **Quick query** section to view the traffic in the specified time range. c. On the **CPU usage** tab, view all the CPU utilization information of the device. d. On the **Memory usage** tab, view all the memory usage information of the device. e. On the **Aggregation Port Management** tab, view the information of all aggregation ports of the device. You can click **View** in the **Operation** column corresponding to a port to view the usage of the aggregation port. f. On the **Alert information** tab, view the alert information of the device. During routine O&M, you must closely monitor the alert list of the device. If no data is displayed on the **Alert information** tab, the device is operating normally. If alert events occur, unrecovered alert events are displayed in the list. You must handle these exceptions in a timely manner. When exceptions are handled, their corresponding alerts are cleared from the list.
 
 ###### 4.2.2.2.1.2 View logs
 
@@ -4106,7 +4470,8 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 4. On the **Device Management** tab, click the **Collection settings** tab.
 5. In the **OOB CIDR block management** section, click **Refresh** on the right.
 6. In the list, view the CIDR block information of your managed devices.
-You can search for the information of a specific CIDR block by entering keywords in the search box.
+
+> **Note:** You can search for the information of a specific CIDR block by entering keywords in the search box.
 
 ###### 4.2.2.2.2 Modify the device password
 
@@ -4119,7 +4484,10 @@ You can modify the passwords of physical network devices.
 5. **Optional:**Enter the name of the device for which you want to modify the password in the
 search box of the **Current network equipment** section and click **Query**. To search for another device, you can click **Reset** to reset the previous search conditions.
 6. Select one or more devices and click **Add to implementation**.
-The selected devices are displayed in the **Implementation equipment** section on the right. To remove a device from the **Implementation equipment** section, choose **Management > Delete** in the **Operation** column corresponding to the device. You can also click **Empty** in the upper-right corner to remove all the devices from the Implementation equipment section.
+The selected devices are displayed in the **Implementation equipment** section on the right.
+
+> **Note:** To remove a device from the **Implementation equipment** section, choose **Management > Delete** in the **Operation** column corresponding to the device. You can also click **Empty** in the upper-right corner to remove all the devices from the Implementation equipment section.
+
 7. The system verifies the old password before you can modify the passwords. Enter **User**
 **name** and **Old password** in the lower-right corner and click **Verification**.
 You must verify the old passwords for all the devices in the **Implementation equipment** section.
@@ -4154,7 +4522,9 @@ After you add SLB cluster tags, you can easily select clusters in the tenant con
 3. In the left-side navigation pane, click **SLB Cluster Management**.
 4. Select a cluster and click **Search** to view the cluster information.
 5. Find the cluster and click **Edit Tag** in the **Actions** column. In the dialog box that appears,
-modify the tag name and click **OK**. The default cluster tag **default** cannot be modified.
+modify the tag name and click **OK**.
+
+> **Note:** The default cluster tag **default** cannot be modified.
 
 ##### 4.2.2.4 SLB management
 
@@ -4177,7 +4547,11 @@ Information of all the device nodes in the cluster is displayed.
 5. Find the desired device node and click **Details** in the **Details** column.
 6. In the **Node Information** section, view the basic information of the node.
 7. In the **Water level data** section, view the water level chart of the cluster. Select the start
-time, month, day, hour, minute, and second, and click **Query** to view the water level chart of the instance over a period of time. The range between the start time and end time must not exceed 12 hours. You can also click **5MIN**, **30MIN**, **1H**, or **6H** in the upper-left corner to query the usage data within the corresponding time range. Move the pointer over a point in time to display the values of all metrics for that point in time.
+time, month, day, hour, minute, and second, and click **Query** to view the water level chart of the instance over a period of time.
+
+> **Note:** The range between the start time and end time must not exceed 12 hours.
+> You can also click **5MIN**, **30MIN**, **1H**, or **6H** in the upper-left corner to query the usage data within the corresponding time range.
+> Move the pointer over a point in time to display the values of all metrics for that point in time.
 
 | Metric | Description | Example |
 |---|---|---|
@@ -4215,9 +4589,16 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 5. Select the cluster where the instance that you want to view is located from the Cluster
 drop-down list. Enter the ID or VIP address of the instance that you want to query in the field and click **Query**.
 6. In the **Node Information** section, you can view the basic information of the SLB instance,
-which can be used by O&M engineers to troubleshoot faults and confirm the ownership of the device. Move the pointer over **View** to view the throttling rules of the SLB instance.
+which can be used by O&M engineers to troubleshoot faults and confirm the ownership of the device.
+
+> **Note:** Move the pointer over **View** to view the throttling rules of the SLB instance.
+
 7. In the **Water level data** section, view the running water level chart of the cluster. Select
-the start time, month, day, hour, minute, and second, and click **Query** to view the running water level chart of the instance over a period of time. The range between the start time and end time must not exceed 12 hours. You can also click **5MIN**, **30MIN**, **1H**, or **6H** in the upper-left corner to query the usage data within the corresponding time range. Move the pointer over a point in time to display the values of all metrics for that point in time.
+the start time, month, day, hour, minute, and second, and click **Query** to view the running water level chart of the instance over a period of time.
+
+> **Note:** The range between the start time and end time must not exceed 12 hours.
+> You can also click **5MIN**, **30MIN**, **1H**, or **6H** in the upper-left corner to query the usage data within the corresponding time range.
+> Move the pointer over a point in time to display the values of all metrics for that point in time.
 
 | Metric | Description | Required value |
 |---|---|---|
@@ -4255,7 +4636,11 @@ The **Cluster monitoring** page appears.
 4. Select the cluster that you want to view and click **Query** to view the cluster node
 information.
 5. Find the desired node and click **Details** in the **Actions** column to view the metrics of the
-node. You can select a time range in the **Quick query** section to view the water level during the specified time range. You can also select the start time and end time, and click **Query** to view the water level data in the specified time range. The following table describes the metrics.
+node.
+
+> **Note:** You can select a time range in the **Quick query** section to view the water level during the specified time range. You can also select the start time and end time, and click **Query** to view the water level data in the specified time range.
+
+The following table describes the metrics.
 
 **slb_proxy_cpu**
 
@@ -4497,9 +4882,9 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 **Console**.
 3. In the left-side navigation pane, click **CGW Management**.
 4. Select the cluster that you want to view from the drop-down list and click **Query**.
-The system shows the basic information and usage information of aggregated traffic of all device nodes within the selected cluster. By default, the usage information of the last one hour is displayed. You can also select **3 Hours**, **6 Hours**, or
-**1 Day** as the time range, or customize the time range to search for the usage
-information.
+
+> **Note:** The system shows the basic information and usage information of aggregated traffic of all device nodes within the selected cluster. By default, the usage information of the last one hour is displayed. You can also select **3 Hours**, **6 Hours**, or **1 Day** as the time range, or customize the time range to search for the usage information.
+
 5. Find a device node and click **View** in the **Details** column. On the page that appears, view
 the traffic usage information of the device node. The following table describes the parameters.
 
@@ -4526,7 +4911,11 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 **Console**.
 3. In the left-side navigation pane, click **CGW Management**.
 4. Click the **Instance monitoring** tab. Select a cluster from the drop-down list, enter the
-instance ID (tunnel ID), and click **Query**. You can view the usage charts of the instance. By default, the usage information of the last one hour is displayed. You can also select **5MIN** (5 minutes), **30MIN** (30 minutes), **1H** (1 hour), and **6H** (6 hours) as the time range to search for the usage information. The following table describes the metrics.
+instance ID (tunnel ID), and click **Query**. You can view the usage charts of the instance.
+
+> **Note:** By default, the usage information of the last one hour is displayed. You can also select **5MIN** (5 minutes), **30MIN** (30 minutes), **1H** (1 hour), and **6H** (6 hours) as the time range to search for the usage information.
+
+The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -4553,9 +4942,8 @@ If the cloud firewall is deployed in your environment, you can use the firewall 
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
 
-**Important**
+> **Important:** Confirm with the administrator that the cloud firewall is deployed in your environment. Otherwise, you cannot use this feature to perform bypass isolation and restoration.
 
-Confirm with the administrator that the cloud firewall is deployed in your environment. Otherwise, you cannot use this feature to perform bypass isolation and restoration.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -4662,10 +5050,14 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 **Console**.
 3. In the left-side navigation pane, click **Alert Settings**.
 4. In the upper-right corner, enter a keyword in the search box and click .
-You can click **Export tables** in the upper-right corner of the list to export the trap information to your computer.
+
+> **Note:** You can click **Export tables** in the upper-right corner of the list to export the trap information to your computer.
+
 5. **Optional:**Filter the search results by trap name, trap type, or OID.
 6. Move the pointer over **Details** in the **Operation** column of a trap to view detailed
-information about the trap. If a trap is no longer needed, you can click **Delete** in the **Operation** column.
+information about the trap.
+
+> **Note:** If a trap is no longer needed, you can click **Delete** in the **Operation** column.
 
 ##### 4.2.2.12 Check IP address conflicts
 
@@ -4793,7 +5185,10 @@ and click **Next**.
 7. In the **Select Inspection Template** step, select an existing template from the drop-down
 list or click **Create Temporary Inspection Template**. To create a temporary inspection template, click **Create Temporary Inspection**
 **Template**. In the dialog box that appears, select the inspection items that you want to
-associate with the temporary inspection template and click **OK**. Some inspection items are provisioned by manufacturers. You must select proper inspection templates or inspection items based on devices.
+associate with the temporary inspection template and click **OK**.
+
+> **Note:** Some inspection items are provisioned by manufacturers. You must select proper inspection templates or inspection items based on devices.
+
 8. Click **Next**.
 9. In the **Inspection Task Preview** step, confirm the inspection task information and click
 **Next**.
@@ -4863,7 +5258,9 @@ For a one-time task, you can modify the inspection name, inspection type, inspec
 
 You can start a suspended task or suspend a running task based on your business requirements.
 1. In the task list, find a task and click **Start** or **Suspend** in the **Actions** column.
-After a one-time task is executed, it automatically enters the **Suspended** state. You can click **Start** to execute it again.
+
+> **Note:** After a one-time task is executed, it automatically enters the **Suspended** state. You can click **Start** to execute it again.
+
 2. In the message that appears, click **OK**.
 
 **Delete a task**
@@ -4922,7 +5319,8 @@ to go to the management page of the inspection item. For other operations that c
 **> Network management and operations > Network automation > Configure**
 
 **templates** in **Apsara Stack Enterprise Operations and Maintenance Guide** .
-Generally, no other operations are required for inspection items.
+
+> **Note:** Generally, no other operations are required for inspection items.
 
 ###### 4.2.2.18.3 Modify a template
 
@@ -4947,9 +5345,8 @@ You can delete inspection templates that are no longer needed for routine O&M.
 4. In the template list, find the template that you want to delete and click **Delete** in the
 **Actions** column.
 
-**Important**
+> **Important:** When you delete a template, its associated inspection tasks and records are also deleted. Exercise caution when you delete templates.
 
-When you delete a template, its associated inspection tasks and records are also deleted. Exercise caution when you delete templates.
 5. In the message that appears, click **OK**.
 
 ###### 4.2.2.18.5 View inspection items
@@ -4967,7 +5364,8 @@ to the management page of the inspection item. For other operations that can be 
 **> Network management and operations > Network automation > Configure**
 
 **templates** in **Apsara Stack Enterprise Operations and Maintenance Guide** .
-Generally, no other operations are required for inspection items.
+
+> **Note:** Generally, no other operations are required for inspection items.
 
 ##### 4.2.2.19 Hybrid cloud networks
 
@@ -5012,9 +5410,7 @@ Click **Create Dynamic VIP** above the dynamic VIP list. In the Create Dynamic V
 
 Update a dynamic VIP. If the basic properties of a dynamic VIP are inconsistent with those of a template VIP, or if an operation on the dynamic VIP fails, **Abnormal** is displayed in the **Status** column that corresponds to the dynamic VIP. When the system detects an exception in the dynamic VIP status, the system automatically checks and deletes DNS records associated with the abnormal dynamic VIP to reduce the impact on your business. The O&M personnel must check whether the abnormal dynamic VIP status is caused by resource changes during product upgrades or scaling and perform the following operations accordingly: If the abnormal dynamic VIP status is caused by resource changes during product upgrades or scaling, click **Update** in the Actions column. The system queries the template VIP parameters by calling Apsara Infrastructure Management API operations and combines these parameters with the variable properties of the dynamic VIP to update the dynamic VIP. If the abnormal dynamic VIP status is not caused by resource changes during product upgrades or scaling, submit a ticket to contact Apsara Stack technical support. Find the dynamic VIP that you want to delete and click **Delete** in the Actions column. In the message that appears, click **OK**.
 
-**Important**
-
-Risks may arise if you delete dynamic VIPs. Proceed with caution. Before you delete a dynamic VIP, make sure that the VIP does not have sessions and that DNS records can no longer be resolved to the dynamic VIP.
+> **Important:** Risks may arise if you delete dynamic VIPs. Proceed with caution. Before you delete a dynamic VIP, make sure that the VIP does not have sessions and that DNS records can no longer be resolved to the dynamic VIP.
 
 ###### 4.2.2.19.1.2 Dynamic DNS
 
@@ -5024,9 +5420,8 @@ Dynamic DNS works with the dynamic VIP feature. It allows you to implement horiz
 
 Dynamic DNS is applicable to scenarios such as multi-cloud geo-disaster recovery and hybrid clouds. The following features are supported: Adds domain names for zones corresponding to ops-dns intranet-domain and internetdomain. By default, ops-dns returns the resolution records in rotation mode. Adds the forwarding records of a tenant DNS to forward domain name resolution requests in a specified zone to external DNS servers such as DNS servers in Apsara Stack, heterogeneous clouds, and Alibaba Cloud.
 
-**Warning**
+> **Warning:** Before you resolve DNS domain names in the Apsara Infrastructure Management console, make sure that the parameters of the dynamic VIPs and the static VIP are exactly the same, and VIP listening on access is normal. Otherwise, network exceptions may occur.
 
-Before you resolve DNS domain names in the Apsara Infrastructure Management console, make sure that the parameters of the dynamic VIPs and the static VIP are exactly the same, and VIP listening on access is normal. Otherwise, network exceptions may occur.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5057,9 +5452,7 @@ Click **Update** in the Actions column. In the dialog box that appears, modify t
 **Cloud ID** and **DnsRecord** parameters. Then, click **OK**.
 Find the DNS record that you want to delete and click **Delete** in the Actions column. In the message that appears, click **OK**.
 
-**Warning**
-
-Risks may arise if you delete DNS records. Proceed with caution. Before you delete a DNS record, make sure that an alternate DNS record is available for the domain name or that no other clients have access to this domain name.
+> **Warning:** Risks may arise if you delete DNS records. Proceed with caution. Before you delete a DNS record, make sure that an alternate DNS record is available for the domain name or that no other clients have access to this domain name.
 
 ###### 4.2.2.19.2 Cross-cloud access
 
@@ -5077,9 +5470,11 @@ Cross-cloud access is applicable to the following scenarios: Connection between 
 **Console**.
 3. In the left-side navigation pane, choose **Hybrid Cloud Network > Cross-cloud Access**.
 4. In the left-side navigation pane, click **Cross-cloud Access**. On the **Cross-cloud Access**
-page, view the information about access matrix. i. Enter a product name in the **Product Name** search box and click **Search**. The access matrix is displayed in the lower part of the page. ii. Click **Details** in the Actions column corresponding to an access matrix to view the details of the access matrix. If the cloud instance has multiple product clusters deployed or manages multiple lower-level cloud instances, each of the **SourceResourceValue** and
-**TargetResourceValue** parameters has multiple values. You must configure the
-network based on the source to the destination full mash. iii. **Optional:**Click **Reset** to clear the search conditions.
+page, view the information about access matrix. i. Enter a product name in the **Product Name** search box and click **Search**. The access matrix is displayed in the lower part of the page. ii. Click **Details** in the Actions column corresponding to an access matrix to view the details of the access matrix.
+
+> **Note:** If the cloud instance has multiple product clusters deployed or manages multiple lower-level cloud instances, each of the **SourceResourceValue** and **TargetResourceValue** parameters has multiple values. You must configure the network based on the source to the destination full mash.
+
+iii. **Optional:**Click **Reset** to clear the search conditions.
 5. Click **Refresh**. Apsara Infrastructure Management API is called to query the VIP, DNS, and
 SR resource values to refresh the **SourceResourceValue** and **TargetResourceValue** values.
 6. Click **Export** to download the access matrix to your computer.
@@ -5095,10 +5490,13 @@ You can view information of access gateway instances, such as the access gateway
 3. In the left-side navigation pane, click **Network Service Provider**.
 4. Click the **Instance management** tab.
 5. Enter the region ID in the upper-left corner.
-To view the instances in other regions, click **Reset** in the upper-right corner and enter the ID of another region.
+
+> **Note:** To view the instances in other regions, click **Reset** in the upper-right corner and enter the ID of another region.
+
 6. Click **Display Device List** to view the list of access gateway devices in the current
-environment. If new devices are added, click **Scan New Devices** and then click **Display**
-**Device List**.
+environment.
+
+> **Note:** If new devices are added, click **Scan New Devices** and then click **Display** **Device List**.
 
 | Parameter | Description |
 |---|---|
@@ -5126,7 +5524,9 @@ and time range, and click Search to search for the operation logs that meet the 
 | The name of the CCN instance. | The name of the access gateway to query. |
 | Created | The time range of the API operation to query. |
 
-To modify the filter conditions, click **Reset** in the upper-right corner of the tab and configure the filters again. The following table describes the fields in the query result.
+> **Note:** To modify the filter conditions, click **Reset** in the upper-right corner of the tab and configure the filters again.
+
+The following table describes the fields in the query result.
 
 | Parameter | Description |
 |---|---|
@@ -5170,7 +5570,8 @@ access gateway name, and time range, and click Search to search for the bare met
 | Created | The time range within which the bare metal instance is allocated to the VPC. |
 |---|---|
 
-To modify the filter conditions, click **Reset** in the upper-right corner of the tab and configure the filters again.
+> **Note:** To modify the filter conditions, click **Reset** in the upper-right corner of the tab and configure the filters again.
+
 6. Find a bare metal instance in the search result and click **View Details** in the **Details**
 column to view the details of the bare metal instance.
 
@@ -5188,9 +5589,8 @@ The correct HSW device name and the ID of the region where the device is located
 
 This feature only checks the initialization status of the HSW vSwitch and whether the initialization configuration is successful. No operation is performed on the bare metal instance.
 
-**Warning**
+> **Warning:** This operation is only used for emergency situations. Therefore, perform this operation under the guidance of Alibaba Cloud technical personnel. Otherwise, normal business operations will be affected.
 
-This operation is only used for emergency situations. Therefore, perform this operation under the guidance of Alibaba Cloud technical personnel. Otherwise, normal business operations will be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5206,7 +5606,8 @@ corner.
 | The region ID. | The ID of the region in the current environment. |
 | HSW name | The name of the vSwitch to be checked in instance management. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you specify the parameters, click **Next** and click **Check** to check the initial
 configuration of the vSwitch.
 
@@ -5234,7 +5635,8 @@ You can use this operation to locate the exception and scan the HSW device after
 | The region ID. | The ID of the region in the current environment. |
 | Bare Metal name | The name of the bare metal instance that was applied for or released in a VPC. It uniquely identifies the bare metal instance within a region. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you specify the parameters, click **Next** and click **Check**.
 
 ###### 4.2.2.20.4.3 Display information about bare metal network gateways
@@ -5265,7 +5667,8 @@ This operation is used only in emergency situations where the bare metal network
 | AK | The AccessKey ID of the organization to which the VPC belongs, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console. |
 | SK | The AccessKey secret of the organization to which the VPC belongs, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. After you configure the parameters, click **Next** and click **Check** to check the bare metal
 gateway information.
 
@@ -5277,9 +5680,9 @@ In O&M emergency scenarios, you can use this feature to add the physical port of
 
 **Prerequisites**
 
-**Important**
+> **Important:** This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected.
 
-This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected. Before you use this feature, take note of the following items: Typically, you cannot use this feature to apply for a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to activate the bare metal network. This feature can only be used to connect the bare metal instance to the access gateway port but cannot be used to perform operations on the bare metal instance. To configure the network port IP address and routing information of the bare metal instance, contact the corresponding product team for guidance.
+Before you use this feature, take note of the following items: Typically, you cannot use this feature to apply for a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to activate the bare metal network. This feature can only be used to connect the bare metal instance to the access gateway port but cannot be used to perform operations on the bare metal instance. To configure the network port IP address and routing information of the bare metal instance, contact the corresponding product team for guidance.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5298,7 +5701,8 @@ tab.
 | AK and SK | The AccessKey ID and AccessKey secret of the organization, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console based on the organization to which the VPC belongs. |
 | Bare Metal name | The name of the bare metal instance. In this case, enter the serial number of the bare metal instance. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can search for the bare metal instance based on the bare metal instance name on the **Bare-Metal Networks** tab. If the bare metal instance is displayed, it is added to the VPC.
@@ -5315,9 +5719,8 @@ Before you use this feature, take note of the following items: Typically, you ca
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected.
 
-This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5334,7 +5737,8 @@ tab.
 |---|---|
 | Bare Metal name | The name of the bare metal instance that you want to release. Enter the serial number of the bare metal instance. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can search for the bare metal instance based on the bare metal instance name on the **Bare-Metal Networks** tab. If the bare metal instance is not displayed, it is released.
@@ -5349,9 +5753,8 @@ Before you use this feature, take note of the following items: Typically, you ca
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected.
 
-This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations will be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5368,7 +5771,8 @@ This operation is only for emergency situations and must be performed under the 
 | Destination CIDR block | The destination CIDR block to which the VPC points, which can be obtained from the VPC console. For more information about how to obtain the routing destination CIDR block, see VPC User Guide. |
 | AK and SK | The organization AccessKey ID and AccessKey secret, which can be obtained from the Organizations page of the Apsara Uni- manager Management Console based on the organization to which the VPC belongs. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can log on to the VPC console and view the route table entry of the specified destination CIDR block. If the route table entry is not displayed, it is deleted.
@@ -5381,9 +5785,8 @@ In O&M emergency scenarios, you can use this feature to delete the default route
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5400,7 +5803,8 @@ This operation is used only in emergency situations and must be performed under 
 | Destination CIDR block | Set the value to 0.0.0.0/0. |
 | AK and SK | The organization AccessKey ID and AccessKey secret, which can be obtained on the Organizations page of the Apsara Uni- manager Management Console based on the organization to which the VBR belongs. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can choose **Products > Product List** in the leftside navigation pane and click **Apsara Network Intelligence**. On the homepage of Apsara Network Intelligence, enter the VBR route table ID and search for the VBR route table. If the route table entry 0.0.0.0/0 does not exist in the VBR route table, the route table entry is deleted.
@@ -5411,9 +5815,8 @@ In O&M emergency scenarios, you can use this feature to delete a VPC router inte
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5430,7 +5833,8 @@ This operation is used only in emergency situations and must be performed under 
 |---|---|
 | AK and SK | The AccessKey ID and AccessKey secret of the organization to which the VPC belongs, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can choose **Products > Networking** in the leftside navigation pane and click **Apsara Network Intelligence**. On the homepage of Apsara Network Intelligence, enter the VPC router interface ID to search for the router interface. If no search result appears, the router interface is deleted.
@@ -5441,9 +5845,8 @@ In O&M emergency scenarios, you can use this feature to delete a VBR router inte
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5460,7 +5863,8 @@ This operation is used only in emergency situations and must be performed under 
 |---|---|
 | AK and SK | The AccessKey ID and AccessKey secret of the organization to which the VPC belongs, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console. |
 
-If the specified values are incorrect, click **Reset** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Reset** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can choose **Products > Networking** in the leftside navigation pane and click **Apsara Network Intelligence**. On the homepage of Apsara Network Intelligence, enter the VBR router interface ID to search for the router interface. If no search result appears, the router interface is deleted.
@@ -5471,9 +5875,8 @@ In O&M emergency scenarios, you can use this feature to delete a VBR.
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5488,7 +5891,8 @@ This operation is used only in emergency situations and must be performed under 
 | VBR ID | The ID of the VBR to be deleted. On theO peration History tab, specify the bare metal instance name and creation time to search for the operation logs and find an operation log whose API operations is add. Click Details and the VBR ID in the details is the value of this parameter. |
 | AK and SK | The organization AccessKey ID and AccessKey secret, which can be obtained on the Organizations page of the Apsara Uni- manager Management Console based on the organization to which the VBR belongs. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can choose **Products > Product List** in the leftside navigation pane and click **Apsara Network Intelligence**. On the homepage of Apsara Network Intelligence, enter the VBR ID to search for the VBR. If no search result appears, the VBR is deleted.
@@ -5499,9 +5903,8 @@ In O&M emergency scenarios, you can use this feature to delete a physical connec
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5517,7 +5920,8 @@ the tab.
 | Physical line ID | The ID of the physical connection to be deleted. On the Operation History tab, specify the bare metal instance name and creation time to search for the operation logs and find an operation log whose API Operation is add. Click Details and the Physical line ID in the details is the value of this parameter. |
 | AK and SK | The organization AccessKey ID and AccessKey secret, which can be obtained on the Organizations page of the Apsara Uni- manager Management Console based on the organization to which the VBR belongs. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, you can choose **Products > Product List** in the leftside navigation pane and click **Apsara Network Intelligence**. On the homepage of Apsara Network Intelligence, enter the physical connection ID to search for the physical connection. If no search result appears, the physical connection is deleted.
@@ -5528,9 +5932,8 @@ In O&M emergency scenarios, you can use this feature to delete all resources, in
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5556,7 +5959,8 @@ This operation is used only in emergency situations and must be performed under 
 | Physical line ID | The ID of the physical connection to be deleted. On the Operation History tab, specify the bare metal instance name and creation time to search for the operation logs and find an operation log whose API operations is Add. Click Details. The Physical line ID in the details is the value of this parameter. |
 | Trunk ID | You do not need to configure this parameter. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, use the methods provided in Delete a VPC route table entry, Delete a VBR route table entry, Delete a VPC router interface, Delete a VBR router interface, Delete a VBR, and Delete a physical connection to check whether the VPC route table entries, VBR route table entries, VPC router interfaces, VBR router interfaces, VBRs, and physical connections are deleted.
@@ -5588,9 +5992,8 @@ In O&M emergency scenarios, you can use this feature to modify the physical conn
 
 **Background information**
 
-**Warning**
+> **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 
-This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, your business may be affected.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5608,7 +6011,8 @@ This operation is used only in emergency situations and must be performed under 
 |---|---|
 | AK and SK | The AccessKey ID and AccessKey secret of the organization to which the VPC belongs, which can be obtained from the Organizations page of the Apsara Uni-manager Management Console. |
 
-If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+> **Note:** If the specified values are incorrect, click **Re-enter** in the lower part of the tab and configure the parameters again.
+
 7. Click **Next**.
 8. Check the information. If the information is correct, click **Confirm**.
 The system begins to push the configurations. After the configurations are pushed, the Result: Successful message appears. After the configurations are pushed, check whether the physical connection bandwidth is modified. For more information, see View the leased line bandwidth.
@@ -5649,7 +6053,8 @@ You can view trunk usage to obtain up-to-date information about the usage of har
 6. Specify the trunk ID and access gateway name, select a trunk state, and then click **Search**.
 The Trunk Status options include Idle, Used, Creating, and Deleting. Set **Trunk ID** to the last integer of the **Port** value that is obtained from the **Bare-Metal**
 **Networks** tab. For example, if the port number is 10GE1/0/40, set **Trunk ID** to 40.
-To modify the filter conditions, click **Clear** in the upper-right corner and set the filter conditions again.
+
+> **Note:** To modify the filter conditions, click **Clear** in the upper-right corner and set the filter conditions again.
 
 ##### 4.2.2.21 Network security and protection
 
@@ -5953,13 +6358,16 @@ SRS provides security isolation capabilities for the hybrid cloud platform inste
 
 **Prerequisites**
 
-**Warning**
+> **Warning:** Before you enable SRS security isolation, check the following requirements are met. If one of the requirements is not met, your business may be impacted after you enable SRS security isolation. We recommend that you enable the DEBUG mode before you enable SRS security isolation.
 
-Before you enable SRS security isolation, check the following requirements are met. If one of the requirements is not met, your business may be impacted after you enable SRS security isolation. We recommend that you enable the DEBUG mode before you enable SRS security isolation. SRS has reached the desired state. All products have reached the desired state. The upstream products have been deployed and have reached the desired state. Skyline (baseServiceAll): centralized deployment in multiple regions. Networkbase (baseServiceAll): unitized deployment in multiple regions. Metadatasync (baseServiceAll): centralized deployment in multiple regions. SRS runs dependencies stably. Otherwise, stability risks may occur. Version requirements: The version of Apsara Stack Enterprise Edition for all products must be the same as that of the Apsara Infrastructure Management console. In multi-region scenarios, the version of all regions must be the same as that of the Apsara Infrastructure Management console. In the zone-disaster recovery scenario, Apsara Stack Enterprise Edition and the SRS version must be consistent in the primary and secondary data centers. Networkbase cannot collect IP addresses of some network devices (ISW, DSW, or LSW) of V3.13.0 or earlier versions. Make sure that Networkbase can collect IP addresses of your network devices (ISW, DSW, or LSW). SRS runs dependencies normally. Otherwise, SRS features may be partially or completely unavailable, but no stability risks will occur. The upstream products and services, including Apsara Uni-manager Operations console, Apsara Infrastructure Management console, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The OSs of the master and client run normally. The version of AliOS7U is 4.19 and the version of the Linux kernel is 3.10. The kernel module slb-kernel-modules or kernel-modules-ctk is installed. For scenarios where existing sites are upgraded to the current version, you must enable SRS security isolation after the evaluation by an architect of Apsara Uni-manager Management console, because the networks of existing sites may involve various nonstandard scenarios. You must disable SRS security isolation before you perform any O&M operations that involve changes of IP addresses or service deployment patterns, including but not limited to upgrade, scale-out, and migration. After the changes are complete, you need to confirm that SRS has obtained the latest isolation configuration data of products from Apsara Infrastructure Management.
+SRS has reached the desired state. All products have reached the desired state. The upstream products have been deployed and have reached the desired state. Skyline (baseServiceAll): centralized deployment in multiple regions. Networkbase (baseServiceAll): unitized deployment in multiple regions. Metadatasync (baseServiceAll): centralized deployment in multiple regions. SRS runs dependencies stably. Otherwise, stability risks may occur. Version requirements: The version of Apsara Stack Enterprise Edition for all products must be the same as that of the Apsara Infrastructure Management console. In multi-region scenarios, the version of all regions must be the same as that of the Apsara Infrastructure Management console. In the zone-disaster recovery scenario, Apsara Stack Enterprise Edition and the SRS version must be consistent in the primary and secondary data centers. Networkbase cannot collect IP addresses of some network devices (ISW, DSW, or LSW) of V3.13.0 or earlier versions. Make sure that Networkbase can collect IP addresses of your network devices (ISW, DSW, or LSW). SRS runs dependencies normally. Otherwise, SRS features may be partially or completely unavailable, but no stability risks will occur. The upstream products and services, including Apsara Uni-manager Operations console, Apsara Infrastructure Management console, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The OSs of the master and client run normally. The version of AliOS7U is 4.19 and the version of the Linux kernel is 3.10. The kernel module slb-kernel-modules or kernel-modules-ctk is installed. For scenarios where existing sites are upgraded to the current version, you must enable SRS security isolation after the evaluation by an architect of Apsara Uni-manager Management console, because the networks of existing sites may involve various nonstandard scenarios. You must disable SRS security isolation before you perform any O&M operations that involve changes of IP addresses or service deployment patterns, including but not limited to upgrade, scale-out, and migration. After the changes are complete, you need to confirm that SRS has obtained the latest isolation configuration data of products from Apsara Infrastructure Management.
 
 **Background information**
 
-SRS sets security rules for the service ports on the cloud platform, and manages the internal VIPs. After SRS security isolation is enabled, if traffic exceptions occur, disable SRS security isolation at the earliest opportunity. Traffic exceptions include but are not limited to: A service port or management domain VIP on the cloud platform cannot be accessed but can be pinged. Disable SRS security isolation and troubleshoot issues. The **Packet Loss Dashboard** tab of SRS displays a large number of lost packets with valid IP addresses in the cloud. Disable SRS security isolation and troubleshoot issues. The issues of tenant-side access to cloud products, for example, through public VIPs, business domain VIPs, and operation domain VIPs, are not related to SRS.
+SRS sets security rules for the service ports on the cloud platform, and manages the internal VIPs. After SRS security isolation is enabled, if traffic exceptions occur, disable SRS security isolation at the earliest opportunity. Traffic exceptions include but are not limited to: A service port or management domain VIP on the cloud platform cannot be accessed but can be pinged. Disable SRS security isolation and troubleshoot issues. The **Packet Loss Dashboard** tab of SRS displays a large number of lost packets with valid IP addresses in the cloud. Disable SRS security isolation and troubleshoot issues.
+
+> **Note:** The issues of tenant-side access to cloud products, for example, through public VIPs, business domain VIPs, and operation domain VIPs, are not related to SRS.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -5973,9 +6381,9 @@ appears.
 5. Set **Change Status TO** to **Enable**, and click **Submit**. In the dialog box that appears, click
 **OK**.
 
-**Warning**
+> **Warning:** Strict conditions are required for enabling SRS security isolation. For more information, see **Prerequisites**. Contact Alibaba Cloud O&M engineers for evaluation before you enable SRS security isolation. Otherwise, the business traffic may be interrupted.
 
-Strict conditions are required for enabling SRS security isolation. For more information, see **Prerequisites**. Contact Alibaba Cloud O&M engineers for evaluation before you enable SRS security isolation. Otherwise, the business traffic may be interrupted. Disable SRS security isolation You must disable SRS security isolation before you perform any operations that involve changes of IP addresses and service deployment forms.
+Disable SRS security isolation You must disable SRS security isolation before you perform any operations that involve changes of IP addresses and service deployment forms.
 
 **Prerequisites**
 
@@ -5996,9 +6404,14 @@ The **Configuration Management** tab appears.
 **Change Status TO** drop-down list and click **Submit**. In the message that appears, click
 **OK**.
 
-**Warning**
+> **Warning:** After SRS security isolation is disabled, the cloud service ports that are originally protected by SRS may be detected and scanned by devices outside the cloud.
+> By default, SRS security isolation is disabled. You can change it to Enable or DEBUG Mode. We recommend that you do not frequently change SRS isolation status. You can change SRS security isolation status 10 minutes after you change it.
+> SRS uses the unit deployment method. To disable SRS for the entire cloud instance, you must disable SRS for each region.
+> You can disable SRS in the following ways:
+> General scenarios: Disable SRS for the current region.
+> Multi-region scenarios: Disable SRS for the current region, SRS for the central region, and SRS for the associated regions. Then, wait for a maximum of 10 minutes for the disabling operation to complete. Then, start O&M tasks.
 
-After SRS security isolation is disabled, the cloud service ports that are originally protected by SRS may be detected and scanned by devices outside the cloud. By default, SRS security isolation is disabled. You can change it to Enable or DEBUG Mode. We recommend that you do not frequently change SRS isolation status. You can change SRS security isolation status 10 minutes after you change it. SRS uses the unit deployment method. To disable SRS for the entire cloud instance, you must disable SRS for each region. You can disable SRS in the following ways: General scenarios: Disable SRS for the current region. Multi-region scenarios: Disable SRS for the current region, SRS for the central region, and SRS for the associated regions. Then, wait for a maximum of 10 minutes for the disabling operation to complete. Then, start O&M tasks. Enable the DEBUG mode DEBUG mode is equivalent to the half-enabled state. The involved traffic is recorded, but not actually isolated. If you want to test the isolated traffic, you can enable the DEBUG mode.
+Enable the DEBUG mode DEBUG mode is equivalent to the half-enabled state. The involved traffic is recorded, but not actually isolated. If you want to test the isolated traffic, you can enable the DEBUG mode.
 
 **Prerequisites**
 
@@ -6012,9 +6425,9 @@ The **Configuration Management** tab appears.
 4. In the **SRS Security Isolation Status Configuration** section, select **DEBUG Mode** from
 the **Change Status TO** drop-down list and click **Submit**. In the message that appears, click **OK**.
 
-**Warning**
+> **Warning:** You can change the status from DEBUG Mode to close. You can change the status from DEBUG Mode to Enable only if no packet loss occurs or the packet loss is within the expected range. We recommend that you do not frequently change the SRS security isolation status. You can change the SRS security isolation status again 10 minutes after you change it.
 
-You can change the status from DEBUG Mode to close. You can change the status from DEBUG Mode to Enable only if no packet loss occurs or the packet loss is within the expected range. We recommend that you do not frequently change the SRS security isolation status. You can change the SRS security isolation status again 10 minutes after you change it. Configure disconnection hold In the scenario where the network of the general region and the central region is disconnected, SRS cannot obtain the latest rules from the central region and will delete security rules. If you want SRS to continue to provide security protection, you can enable the disconnection hold feature to distribute rules from each region to SRS.
+Configure disconnection hold In the scenario where the network of the general region and the central region is disconnected, SRS cannot obtain the latest rules from the central region and will delete security rules. If you want SRS to continue to provide security protection, you can enable the disconnection hold feature to distribute rules from each region to SRS.
 
 **Prerequisites**
 
@@ -6032,9 +6445,9 @@ The **Configuration Management** tab appears.
 4. In the **Whether Enable SRS Disconnection Hold** section, turn on or off the **Status**
 switch.
 
-**Important**
+> **Important:** By default, the disconnection hold feature is disabled. In this case, if the network of the general region and the central region is disconnected, the rules cannot be synchronized to SRS. As a result, the timestamp expires and all rules are cleared.
 
-By default, the disconnection hold feature is disabled. In this case, if the network of the general region and the central region is disconnected, the rules cannot be synchronized to SRS. As a result, the timestamp expires and all rules are cleared. Configure an SRS IP whitelist SRS only trusts internal IP addresses. After SRS is enabled, public IP addresses cannot access the services on the cloud that are connected to SRS over the classic network of the base for security isolation. You can add the public IP addresses allowed to access the services to an SRS IP whitelist.
+Configure an SRS IP whitelist SRS only trusts internal IP addresses. After SRS is enabled, public IP addresses cannot access the services on the cloud that are connected to SRS over the classic network of the base for security isolation. You can add the public IP addresses allowed to access the services to an SRS IP whitelist.
 
 **Prerequisites**
 
@@ -6056,9 +6469,8 @@ SRS has reached the desired state. All products have reached the desired state.
 
 SRS does not further detect IP addresses in the blacklist to prevent the occupation of platform resources. IP addresses in the blacklist are not recorded in the packet loss logs or displayed in the alert dashboard.
 
-**Important**
+> **Important:** If an IP address exists in both the blacklist and the whitelist, the blacklist rule take effect, and the whitelist rule is ignored.
 
-If an IP address exists in both the blacklist and the whitelist, the blacklist rule take effect, and the whitelist rule is ignored.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
@@ -6067,9 +6479,9 @@ If an IP address exists in both the blacklist and the whitelist, the blacklist r
 The **Configuration Management** tab appears.
 4. In the **SRS IP Address Blacklist Configuration** section, add or delete an SRS IP blacklist.
 
-**Warning**
+> **Warning:** IP addresses added to the IP blacklist cannot access any products or services in the cloud. Proceed with caution.
 
-IP addresses added to the IP blacklist cannot access any products or services in the cloud. Proceed with caution. Add an SRS IP blacklist: Click **Add**. In the dialog box that appears, enter one or more IP addresses. Separate multiple IP addresses with commas (,). Click **OK**. Delete an SRS IP blacklist: Click **Expand**. In the **Actions** column, click **Delete**. In the message that appears, click **OK**. Add isolation-free products If you do not want a product that is connected to SRS for security isolation to be protected by SRS, you can add an isolation-free product.
+Add an SRS IP blacklist: Click **Add**. In the dialog box that appears, enter one or more IP addresses. Separate multiple IP addresses with commas (,). Click **OK**. Delete an SRS IP blacklist: Click **Expand**. In the **Actions** column, click **Delete**. In the message that appears, click **OK**. Add isolation-free products If you do not want a product that is connected to SRS for security isolation to be protected by SRS, you can add an isolation-free product.
 
 **Prerequisites**
 
@@ -6123,9 +6535,20 @@ SRS has reached the desired state. All products have reached the desired state.
 The **Configuration Management** tab appears.
 4. Click the **Data Management** tab.
 5. In the **SRS VIPS Information** section, view all managed VIP information. You can also
-enter the SR information and click **Search** to view the VIP information of a specified SR. Do not include the number sign (#) in the SR information.
+enter the SR information and click **Search** to view the VIP information of a specified SR.
+
+> **Note:** Do not include the number sign (#) in the SR information.
+
 6. Find the VIP information that you want to modify and click **Modify** in the **Actions** column.
-In the dialog box that appears, select the desired forwarding mode and click **OK**. After the forwarding mode is modified, wait for about 5 minutes, and click the icon in the upper-right corner to view the refreshed VIP information in the list. If there are a great number of VIPs to be refreshed, it takes a longer period of time. Currently, the VIP forwarding mode supports only NAT, including FNAT and DNAT. The VIP forwarding mode that you set is used as the default forwarding mode. The NAT mode is forcibly switched to FNAT instead of the specified mode in the following scenarios: The SRS isolation is disabled or in the debug mode. The physical machine that corresponds to the VIP does not have a CTK module or the CTK module version is incorrect. An internal problem occurs in SRS, causing the timestamp to expire. If the NAT mode of all VIPs are switched to FNAT and SRS isolation is enabled, contact Alibaba Cloud technical support. Refresh SRS isolation settings If SRS isolation settings are not distributed because the server cache is not updated, you can use this feature to refresh the cache.
+In the dialog box that appears, select the desired forwarding mode and click **OK**. After the forwarding mode is modified, wait for about 5 minutes, and click the icon in the upper-right corner to view the refreshed VIP information in the list. If there are a great number of VIPs to be refreshed, it takes a longer period of time.
+
+> **Note:** Currently, the VIP forwarding mode supports only NAT, including FNAT and DNAT. The VIP forwarding mode that you set is used as the default forwarding mode. The NAT mode is forcibly switched to FNAT instead of the specified mode in the following scenarios:
+> The SRS isolation is disabled or in the debug mode.
+> The physical machine that corresponds to the VIP does not have a CTK module or the CTK module version is incorrect.
+> An internal problem occurs in SRS, causing the timestamp to expire.
+> If the NAT mode of all VIPs are switched to FNAT and SRS isolation is enabled, contact Alibaba Cloud technical support.
+
+Refresh SRS isolation settings If SRS isolation settings are not distributed because the server cache is not updated, you can use this feature to refresh the cache.
 
 **Prerequisites**
 
@@ -6179,11 +6602,16 @@ SRS has reached the desired state. All products have reached the desired state.
 **Management > Isolation Configuration Management**.
 The **Dynamic Allow Settings** tab appears.
 
-**Warning**
+> **Warning:** Adding dynamic allow settings is a high-risk operation. You must carefully evaluate the impacts. Do not perform the operation unless necessary.
 
-Adding dynamic allow settings is a high-risk operation. You must carefully evaluate the impacts. Do not perform the operation unless necessary.
 4. Click **Add Dynamic Allow Settings**. In the dialog box that appears, set the parameters
-and click **OK**. To add multiple SR configurations, click **Add**, set the parameters, and click **OK**. You can click **Delete** to delete a dynamic allow configuration for the product. If the new product name and SR are the same as those in an existing configuration, the existing configuration is overwritten. If the product name and SR are the same as those in the configuration where the Remarks is "ASRDR Rule, DO NOT delete!", the configuration is not overwritten. The configuration applies to products required by Apsara Stack Resilience for Disaster Recovery. The following table describes the parameters.
+and click **OK**. To add multiple SR configurations, click **Add**, set the parameters, and click **OK**.
+
+> **Note:** You can click **Delete** to delete a dynamic allow configuration for the product.
+> If the new product name and SR are the same as those in an existing configuration, the existing configuration is overwritten.
+> If the product name and SR are the same as those in the configuration where the Remarks is "ASRDR Rule, DO NOT delete!", the configuration is not overwritten. The configuration applies to products required by Apsara Stack Resilience for Disaster Recovery.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -6209,9 +6637,9 @@ SRS has reached the desired state. All products have reached the desired state.
 **Management > Isolation Configuration Management**.
 The **Dynamic Allow Settings** tab appears.
 
-**Warning**
+> **Warning:** Deleting dynamic allow settings is a high-risk operation. You must carefully evaluate the impacts. Do not perform the operation unless necessary.
+> Do not delete the rules where the Remarks is "ASRDR Rule, DO NOT delete!", which apply to products required by Apsara Stack Resilience for Disaster Recovery. If the rules are deleted, some features of Apsara Stack Resilience for Disaster Recovery may be unavailable.
 
-Deleting dynamic allow settings is a high-risk operation. You must carefully evaluate the impacts. Do not perform the operation unless necessary. Do not delete the rules where the Remarks is "ASRDR Rule, DO NOT delete!", which apply to products required by Apsara Stack Resilience for Disaster Recovery. If the rules are deleted, some features of Apsara Stack Resilience for Disaster Recovery may be unavailable.
 4. Find the dynamic allow rule that you want to delete and click **Delete** in the **Actions**
 column. In the message that appears, click **OK**. View the baseline allow rules You can view the baseline allow rules of each product in SRS, namely, the allow rules initially defined for each product that SRS obtained from Apsara Infrastructure Management.
 
@@ -6242,7 +6670,10 @@ SRS has reached the desired state. All products have reached the desired state.
 **Management > Client Status**.
 The **Clients** tab appears.
 4. View the status of SRS clients.
-You can enter Hostname, and select **Only Packet Loss Host** to filter client information. The following table describes the parameters.
+
+> **Note:** You can enter Hostname, and select **Only Packet Loss Host** to filter client information.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -6269,7 +6700,9 @@ SRS has reached the desired state. All products have reached the desired state.
 By default, the **Clients** tab appears.
 4. Click the **Packet Loss Dashboard** tab.
 5. View information about the packet loss host, project, service, and SR.
-You can also enter the SR information in the search box and click **Search** to view the packet loss information of the SR. Do not include the number sign (#) in the SR information.
+You can also enter the SR information in the search box and click **Search** to view the packet loss information of the SR.
+
+> **Note:** Do not include the number sign (#) in the SR information.
 
 ###### 4.2.2.21.3 Donghuangzhong
 
@@ -6288,9 +6721,9 @@ By default, the host network isolation feature is disabled, and the Kubernetes c
 3. In the left-side navigation pane, choose **Network Security & Protection >**
 **Donghuangzhong > Donghuangzhong Settings**.
 
-**Warning**
+> **Warning:** Enabling host network isolation is a high-risk operation. After the feature is enabled, the host network of Kubernetes nodes managed by the PaaS is isolated from outside the cloud platform and only port 22 is open for outside the cloud platform. Therefore, ports opened by some hosts may be inaccessible from outside the cloud platform.
+> You can use the debugging log feature of the node to analyze the network traffic of accesses to the host from outside the cloud platform, and determine whether to enable the host network isolation feature.
 
-Enabling host network isolation is a high-risk operation. After the feature is enabled, the host network of Kubernetes nodes managed by the PaaS is isolated from outside the cloud platform and only port 22 is open for outside the cloud platform. Therefore, ports opened by some hosts may be inaccessible from outside the cloud platform. You can use the debugging log feature of the node to analyze the network traffic of accesses to the host from outside the cloud platform, and determine whether to enable the host network isolation feature.
 4. Turn on or off **Host Network isolation** in the upper-left corner. In the dialog box that
 appears, click **OK** to enable or disable the host network isolation feature. Whitelist CIDR block configuration By default, the network in the cloud platform is isolated from outside the cloud platform. If you want to allow CIDR blocks outside the cloud platform, you can add the CIDR blocks to the whitelist.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -6319,7 +6752,10 @@ You can view the requests of hosts outside the cloud platform accessing to the h
 4. Turn on or off**Observation mode**.
 Enable: Turn on **Observation mode** in the upper-left corner. In the dialog box that appears, click **OK**. You can view the previous and subsequent requests of hosts outside the cloud platform accessing to the host network in the cloud platform. Disable: Turn off **Observation mode** in the upper-left corner. In the dialog box that appears, click **OK**. You cannot view subsequent requests of hosts outside the cloud platform accessing to the host network in the cloud platform.
 5. Use one of the following methods to view requests of hosts outside the cloud platform
-accessing to the host network in the cloud platform: Specify a start time and an end time, and click **Search**. Click **Advanced**, enter more filter conditions, and then click **Search**. The list displays aggregated requests of hosts outside the cloud platform accessing to the host network in the cloud platform. If you want to view the unaggregated data, see **Unaggregated Details**.
+accessing to the host network in the cloud platform: Specify a start time and an end time, and click **Search**. Click **Advanced**, enter more filter conditions, and then click **Search**.
+
+> **Note:** The list displays aggregated requests of hosts outside the cloud platform accessing to the host network in the cloud platform. If you want to view the unaggregated data, see **Unaggregated Details**.
+
 6. Find the request and click **Unaggregated Details** in the **Operation** column. In the dialog
 box that appears, view the unaggregated requests of hosts outside the cloud platform accessing to the host network in the cloud platform.
 
@@ -6378,11 +6814,25 @@ You can view the following types of physical network topologies: Standard topolo
 2. In the top navigation bar, choose **Products > Networking > Network Operations**
 **Console**.
 3. In the left-side navigation pane, choose **Hybrid Cloud Resources > Physical Topology**.
-On the **Physical Topologies** page, view the physical topologies. i. Select the required options from the **Topology Type** and **Data Center** drop-down lists and click **Search** to view the physical topologies. Action icons: : proceeds with the next step. : goes back to the previous step. : zooms in. : zooms out. : scales in proportion to the original aspect ratio. : scales to fit canvas. ii. Click a node in the physical topology graph and the network device information of the node appears on the right side of the page. iii. **Optional:**Click **Reset** to clear the search conditions.
+On the **Physical Topologies** page, view the physical topologies. i. Select the required options from the **Topology Type** and **Data Center** drop-down lists and click **Search** to view the physical topologies.
+
+> **Note:** Action icons:
+> : proceeds with the next step.
+> : goes back to the previous step.
+> : zooms in.
+> : zooms out.
+> : scales in proportion to the original aspect ratio.
+> : scales to fit canvas.
+
+ii. Click a node in the physical topology graph and the network device information of the node appears on the right side of the page. iii. **Optional:**Click **Reset** to clear the search conditions.
 4. On the **Physical Topologies** page, click **Custom Link**. In the Custom Link dialog box,
 configure the parameters and click **OK** to set the link.
 5. On the **Physical Topologies** page, click **Port Monitoring** to view the status of the ports.
-i. On the Port Monitoring page, configure the parameters and click **Search** to view the port status trend chart. You can select multiple options for **Monitoring Metric** at a time. The following table describes the parameters.
+i. On the Port Monitoring page, configure the parameters and click **Search** to view the port status trend chart.
+
+> **Note:** You can select multiple options for **Monitoring Metric** at a time.
+
+The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -6409,7 +6859,14 @@ You can manage Apsara Stack data centers and user-managed data centers as well a
 **Management**. On the **Network Element Management** page, view the details of the
 network element devices. i. Enter a keyword in the **Device Name/Management IP Address** search box and click
 **Search** to view the information about the network element device.
-The current Apsara Stack version supports status monitoring only for network elements in the Apsara Stack data center. ii. Find the desired device and click **View** in the **Details** column. iii. On the **Network element details** page, enter a port name in the **Port Name** search box and click **Search** to view the port information. iv. Find the port that you want to view and click **View** in the **Actions** column. The current Apsara Stack version supports management and monitoring only for network element ports in the Apsara Stack data center. v. **Optional:**Go back to the **Network Element Management** page and click **Reset** to clear the filter conditions.
+
+> **Note:** The current Apsara Stack version supports status monitoring only for network elements in the Apsara Stack data center.
+
+ii. Find the desired device and click **View** in the **Details** column. iii. On the **Network element details** page, enter a port name in the **Port Name** search box and click **Search** to view the port information. iv. Find the port that you want to view and click **View** in the **Actions** column.
+
+> **Note:** The current Apsara Stack version supports management and monitoring only for network element ports in the Apsara Stack data center.
+
+v. **Optional:**Go back to the **Network Element Management** page and click **Reset** to clear the filter conditions.
 4. Click **Add Data Center**. In the Add Data Center dialog box, configure the parameters and
 click **OK** to add a data center.
 
@@ -6532,8 +6989,10 @@ The Clusters module allows you to view the overview information, alert monitorin
 **System**.
 3. In the left-side navigation pane, click **Clusters**.
 4. Select the cluster that you want to view from the **Cluster Name** drop-down list. The
-following information is displayed: All the enabled clusters in the current environment are displayed in the
-**Cluster Name** drop-down list.
+following information is displayed:
+
+> **Note:** All the enabled clusters in the current environment are displayed in the **Cluster Name** drop-down list.
+
 This section shows the storage space, device information, and health information of the specified cluster. In the **Health** column, values that are greater than 0 are displayed in red.
 
 **Alarm Monitor**
@@ -6546,7 +7005,9 @@ This section shows the replica information of the specified cluster.
 
 **Run Chart of Clusters**
 
-This section shows the charts of historical usage, predicted usage, file number, chunk server number, and disk number for the specified cluster. Predicted disk usage shows the run chart for the next seven days. The disk usage can be predicted only when the data of historical disk usage exist. Therefore, some clusters may not have the data of predicted disk usage.
+This section shows the charts of historical usage, predicted usage, file number, chunk server number, and disk number for the specified cluster. Predicted disk usage shows the run chart for the next seven days.
+
+> **Note:** The disk usage can be predicted only when the data of historical disk usage exist. Therefore, some clusters may not have the data of predicted disk usage.
 
 **Rack Information**
 
@@ -6563,8 +7024,9 @@ The Nodes module allows you to view the information about master and chunk serve
 3. In the left-side navigation pane, click **Nodes**.
 On the page that appears, the data of the first cluster in the **Cluster Name** drop-down list is displayed, including the information about master and chunk servers.
 4. Select the name of the cluster that you want to view from the **Cluster Name** drop-down
-list. The following information is displayed: All the enabled clusters in the current environment are displayed in the
-**Cluster Name** drop-down list.
+list. The following information is displayed:
+
+> **Note:** All the enabled clusters in the current environment are displayed in the **Cluster Name** drop-down list.
 
 **Master Info**
 
@@ -6611,7 +7073,8 @@ The following table describes the parameters.
 | Disk | Warn Threshold (Abnormal Disk Quantity) | When the number of abnormal disks is greater than or equal to this value, a warning alert is triggered and the health heatmap of the cluster is displayed in yellow. The default threshold for the number of abnormal disks is 1. |
 |   | Error Threshold (Abnormal Disk Ratio) | When the ratio of abnormal disks to all disks is greater than this value, an error alert is triggered and the health heatmap of the cluster is displayed in red. The default threshold for the ratio of abnormal disks to all disks is 10%. |
 
-To reset the configurations, you can click **Cancel** to cancel the current configurations.
+> **Note:** To reset the configurations, you can click **Cancel** to cancel the current configurations.
+
 6. Click **Save**.
 
 #### 4.3.6 Load information
@@ -6856,9 +7319,17 @@ The Device Operations module allows you to view disk information in Elastic Bloc
 On the page that appears, the information of the first cluster in the **Cluster Name** dropdown list is displayed.
 4. Select a cluster from the **Cluster Name** drop-down list.
 5. You can perform the following operations:
-View the device list You can view the total number of devices, the total logical space of devices, and information about each device in the cluster, including the device ID, status, logical capacity, number of segments, mode, and flags. You can filter device information by device ID and status. Check global segments In the upper-right corner of the **Device List** section, click **Global Check Segment**. You can view all the segments in the selected cluster and their indexes and status. Check disk status In the upper-right corner of the **Device List** section, click **Check Cloud Disk Status**. You can view the number of invalid disks in the selected cluster. Query device information In the device list, find the device whose information you want to query and click **Query**
+View the device list You can view the total number of devices, the total logical space of devices, and information about each device in the cluster, including the device ID, status, logical capacity, number of segments, mode, and flags.
+
+> **Note:** You can filter device information by device ID and status.
+
+Check global segments In the upper-right corner of the **Device List** section, click **Global Check Segment**. You can view all the segments in the selected cluster and their indexes and status. Check disk status In the upper-right corner of the **Device List** section, click **Check Cloud Disk Status**. You can view the number of invalid disks in the selected cluster. Query device information In the device list, find the device whose information you want to query and click **Query**
 **Device Information** in the **Actions** column. In the dialog box that appears, view the
-disk information such as the disk ID, status, and capacity. Delete a device In the device list, find the device that you want to delete and click **Delete** in the **Actions** column. After you delete the device, its status becomes **DELETING**, and the device is unavailable. You are not allowed to perform operations such as enabling the device or modifying the configurations. Restore a device In the device list, find a deleted device that is in the **DELETING** state and click **Restore** in the **Actions** column. In the message that appears, click **OK** to restore the deleted device to its normal state. After you restore the device, it becomes available. You can perform operations such as enabling the device and modifying the configurations. Enable a device In the device list, find the device that you want to enable and choose **More > Turn On** in the **Actions** column. In the dialog box that appears, configure the required parameters and click **Submit**. You can perform read and write operations on a disk only after the disk is enabled. The following table describes the parameters for enabling a device.
+disk information such as the disk ID, status, and capacity. Delete a device In the device list, find the device that you want to delete and click **Delete** in the **Actions** column. After you delete the device, its status becomes **DELETING**, and the device is unavailable. You are not allowed to perform operations such as enabling the device or modifying the configurations. Restore a device In the device list, find a deleted device that is in the **DELETING** state and click **Restore** in the **Actions** column. In the message that appears, click **OK** to restore the deleted device to its normal state. After you restore the device, it becomes available. You can perform operations such as enabling the device and modifying the configurations. Enable a device In the device list, find the device that you want to enable and choose **More > Turn On** in the **Actions** column. In the dialog box that appears, configure the required parameters and click **Submit**.
+
+> **Note:** You can perform read and write operations on a disk only after the disk is enabled.
+
+The following table describes the parameters for enabling a device.
 
 | Parameter | Description |
 |---|---|
@@ -6868,9 +7339,9 @@ disk information such as the disk ID, status, and capacity. Delete a device In t
 
 Disable a device
 
-**Important**
+> **Important:** After a disk is disabled, data can no longer be read from or written to the disk. Proceed with caution.
 
-After a disk is disabled, data can no longer be read from or written to the disk. Proceed with caution. In the device list, find the device that you want to disable and choose **More > Turn Off** in the **Actions** column. In the dialog box that appears, configure the parameters and click **Submit**. The following table describes the parameters for disabling a device.
+In the device list, find the device that you want to disable and choose **More > Turn Off** in the **Actions** column. In the dialog box that appears, configure the parameters and click **Submit**. The following table describes the parameters for disabling a device.
 
 | Parameter | Description |
 |---|---|
@@ -6985,7 +7456,10 @@ The Product Settings module allows you to view the sales status of a cluster, co
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Products > Storage > EBS**.
 3. In the left-side navigation pane, click **Product Settings**.
-By default, the system shows the data of each cluster in the current environment, including the cluster name, oversold ratio, and sales status. An oversold ratio is the ratio of the marketable capacity of a storage device to the physical capacity. For example, if the physical storage capacity of a storage device is 1 TB and marketabe capacity is 2.5 TB, then the oversold ratio is 2.5.
+By default, the system shows the data of each cluster in the current environment, including the cluster name, oversold ratio, and sales status.
+
+> **Note:** An oversold ratio is the ratio of the marketable capacity of a storage device to the physical capacity. For example, if the physical storage capacity of a storage device is 1 TB and marketabe capacity is 2.5 TB, then the oversold ratio is 2.5.
+
 4. Perform the following operations:
 Select a cluster, enter a number in the **Adjust Setting Oversell Ratio** field, and then click **Confirm** to set the oversold ratio of the cluster. Select a cluster and turn on or off **Adjustment of sales status** to enable or disable the cluster for sale.
 
@@ -7096,9 +7570,15 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 The URL of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: region-id.ops.asconsole.intranet-domain-id. A supported browser. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+Press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 3. Enter your username and password.
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. The first time you log on to the Apsara Uni-manager Operations Console, follow the prompt to change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
+
+The first time you log on to the Apsara Uni-manager Operations Console, follow the prompt to change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 5. In the top navigation bar, choose **Products** > **Base/Platforms** > **Apsara Infrastructure**
 **Management**.
@@ -7207,7 +7687,15 @@ On the Cluster Details page, click the **Cluster Configuration** tab. The follow
 | tag.conf | The file that stores the tags used to calculate tag expressions when configurations are rendered. |
 
 3. On the **Cluster Configuration** tab, move the pointer over a folder, click the
-icon next to the folder name, and then select **Add File** to add a configuration file. You can also click **Create File** below the search box to add a file or folder to the directory. i. In the **Create File** dialog box, enter a file or folder name and click **OK**. After you enter a folder name and click **OK**, the folder is added. ii. Enter configuration file information into the **Cluster File** text editor. Click **Preview and**
+icon next to the folder name, and then select **Add File** to add a configuration file.
+
+> **Note:** You can also click **Create File** below the search box to add a file or folder to the directory.
+
+i. In the **Create File** dialog box, enter a file or folder name and click **OK**.
+
+> **Note:** After you enter a folder name and click **OK**, the folder is added.
+
+ii. Enter configuration file information into the **Cluster File** text editor. Click **Preview and**
 **Submit**.
 iii. In the **Confirm and Submit** dialog box, enter **Description** and click **Submit**. The configuration file is added. Click the **Operation Logs** tab to view related records.
 
@@ -7351,9 +7839,10 @@ i. On the **Machine Repair** page, click **Add SR for Preprocessing**. ii. In th
 4. Perform approval steps.
 i. In the **Components** section, view the status of server roles. When the server roles are all in the **Successful** state, click **Enter Approval Phase** at the lower part of the page. In the **Confirmation** message, click **OK**. Server role approval can be automatic approval or manual approval. When server roles are in the normal state, the system starts automatic approval. All server roles are automatically updated to the **Successful** state. You can initiate manual approval only when service roles are abnormal and remain in the **Pending** state for a long period.
 
-**Warning**
+> **Warning:** Manual approval may cause data loss. If you can ensure that all data is migrated, manual approval is allowed.
+> If some data needs to be manually migrated and processed, complete these steps before manual approval to prevent data loss.
 
-Manual approval may cause data loss. If you can ensure that all data is migrated, manual approval is allowed. If some data needs to be manually migrated and processed, complete these steps before manual approval to prevent data loss. Manual approval procedure: Click **Manual Approval** in the **Actions** column corresponding to the server role. In the **Approve** dialog box, select **Approved** and click
+Manual approval procedure: Click **Manual Approval** in the **Actions** column corresponding to the server role. In the **Approve** dialog box, select **Approved** and click
 **OK**. After manual approval is complete, all server roles are updated to the **Successful**
 state. ii. In the **Server Roles for Approval** section, view the role status. When all roles are in the
 **done** state, click **Enter Repair Phase** at the lower part of the page.
@@ -7361,7 +7850,11 @@ iii. In the **Machine Information** section, view machine information.
 5. Shut down the machine and perform the repair. After the repair is complete, restart the
 machine and check whether the machine is normal. If yes, proceed to the next step. If no, contact technical support engineers.
 6. Go to the **Machine Repair** page of the machine, and click Complete Repair or Complete
-Repair and Clone depending on whether you want to clear remaining data. We recommend that you select **Complete Repair and Clone** to clear remaining data after the machine repair is complete. If you want to clear remaining data, click **Complete Repair and Clone**. In the
+Repair and Clone depending on whether you want to clear remaining data.
+
+> **Note:** We recommend that you select **Complete Repair and Clone** to clear remaining data after the machine repair is complete.
+
+If you want to clear remaining data, click **Complete Repair and Clone**. In the
 **Confirmation** dialog box, enter
 `Clone` and click **OK**. If not, click **Complete Repair**. In the **Confirmation** dialog box, click **OK**. Then, you are redirected to the **Machine Details** page. When the status of the machine changes to **Normal**, the services are deployed and the machine becomes normal.
 
@@ -7536,9 +8029,9 @@ workspace, click **Go**.
 4. In the **Confirm Operation** message, enter
 `SHUTDOWN` and click **Confirm**.
 
-**Warning**
+> **Warning:** The data center shutdown operation shuts down all services and machines and thus cause business interruption.
+> Backend services must communicate with the frontend shutdown page during the data center shutdown process. Do not close the shutdown page until the shutdown is complete.
 
-The data center shutdown operation shuts down all services and machines and thus cause business interruption. Backend services must communicate with the frontend shutdown page during the data center shutdown process. Do not close the shutdown page until the shutdown is complete.
 5. View the data center shutdown progress and the statuses of clusters, machines, and server
 roles. It takes a long time to shut down all clusters and machines within an environment. You can view the shutdown progress on the **IDC Shutdown** page. The following statuses are available for clusters, machines, and server roles:
 **normal**: A cluster, machine, or server role is running normally.
@@ -7547,8 +8040,10 @@ roles. It takes a long time to shut down all clusters and machines within an env
 **timeoutShutdown**: The shutdown of a cluster, machine, or server role timed out.
 **nearShutdown**: A cluster, machine, or server role is about to be shut down.
 **error**: An error occurred while a cluster, machine, or server role is being shut down.
-You can perform the following operations: View the data center shutdown progress: In the upper part of the **IDC Shutdown** page, view the data center shutdown progress. View the cluster status: In the **Cluster List** section, view the status of each cluster, the total number of machines within each cluster, and the number of machines in each state. View the machine status: In the **Cluster List** section, click a state corresponding to a cluster. In the **Machine List** section, view all machines in the corresponding state within the cluster, the total number of server roles on each machine, and the number of server roles in each state. View the server role status: In the **Machine List** section, click a state corresponding to a machine. In the **SR List--xxx** message, view all server roles in the corresponding state on the machine. In the left-side navigation pane, click **Go**. On the **All Reports** page, enter the entire or part of **Machine Power On or Off Statuses of Clusters** in the **Fuzzy Search** search box. In the search results, click **Machine Power On or Off Statuses of**
-**Clusters** to view the status of each server role.
+You can perform the following operations: View the data center shutdown progress: In the upper part of the **IDC Shutdown** page, view the data center shutdown progress. View the cluster status: In the **Cluster List** section, view the status of each cluster, the total number of machines within each cluster, and the number of machines in each state. View the machine status: In the **Cluster List** section, click a state corresponding to a cluster. In the **Machine List** section, view all machines in the corresponding state within the cluster, the total number of server roles on each machine, and the number of server roles in each state. View the server role status: In the **Machine List** section, click a state corresponding to a machine. In the **SR List--xxx** message, view all server roles in the corresponding state on the machine.
+
+> **Note:** In the left-side navigation pane, click **Go**. On the **All Reports** page, enter the entire or part of **Machine Power On or Off Statuses of Clusters** in the **Fuzzy Search** search box. In the search results, click **Machine Power On or Off Statuses of** **Clusters** to view the status of each server role.
+
 Filter clusters or machines: In the **Cluster List** or **Machine List** section, click the filter icon in the **Status** column and select a state to filter all clusters or machines in the corresponding state. Refresh data: Click **Refresh** in the upper-right corner to refresh data. If all clusters in the **Cluster List** section are displayed in the **shutdown** state, the data center shutdown operation succeeds. After the base cluster is shut down, the OPS1 server is also shut down. Then, the Apsara Infrastructure Management console is inaccessible.
 6. After all base machines are shut down and inaccessible, go to the data center and confirm
 that all machines are powered off.
@@ -8170,9 +8665,15 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 5. In the top navigation bar, choose **Products** > **Base/Platforms** > **Apsara Infrastructure**
 **Management**.
@@ -9246,7 +9747,9 @@ collection services in Prometheus.
 |---|---|
 |   | to view the collection services in Prometheus. |
 
-If a collection service is displayed in red, the service is abnormal and its metrics cannot be collected. You must troubleshoot the service. pliance
+> **Note:** If a collection service is displayed in red, the service is abnormal and its metrics cannot be collected. You must troubleshoot the service.
+
+pliance
 
 ## 5 Security compliance
 
@@ -9261,7 +9764,9 @@ The Operation Logs page allows you to view all the records of backend API calls,
 2. In the top navigation bar, click **Security & Compliance**.
 3. In the left-side navigation pane, click **Operation Log Audit**.
 4. On the **Operation Logs** page, perform the following operations:
-In the upper part of the page, enter a username and select a time range. Click **Search** to view related logs in the list below. Delete logs Select the logs that you want to delete and click **Batch Delete**. In the message that appears, click **OK**. Export logs Select the logs that you want to export and click the icon. If you do not select logs, when you click the icon, all displayed logs are exported. If the number of logs to be exported is greater than 10,000, only the first 10,000 logs are exported.
+In the upper part of the page, enter a username and select a time range. Click **Search** to view related logs in the list below. Delete logs Select the logs that you want to delete and click **Batch Delete**. In the message that appears, click **OK**. Export logs Select the logs that you want to export and click the icon. If you do not select logs, when you click the icon, all displayed logs are exported.
+
+> **Note:** If the number of logs to be exported is greater than 10,000, only the first 10,000 logs are exported.
 
 ### 5.2 Server password management
 
@@ -9314,9 +9819,12 @@ The Create AccessKey ID Rotation Task feature implements the rotation update of 
 3. In the left-side navigation pane, choose **Passwords & Encryption > AccessKey Pairs**.
 4. In the upper-left corner of the page, click **Create AccessKey ID Rotation Task**. The
 **Create AccessKey ID Rotation Task** page appears.
-During the creation of the AccessKey ID rotation task, the **Task Records** section on the right side of the page records every step that you perform. You can click **Previous** to return to the previous step. You can click **Back** to return to the AccessKey Management page. On the
-**Historical Tasks** page, you can view the details of the unfinished AccessKey ID
-rotation task. For more information, see View historical tasks. The procedure to create an AccessKey ID rotation task consists of four steps: create an AccessKey ID, enable an application, disable the old AccessKey ID, and complete the task. The following table describes the steps.
+
+> **Note:** During the creation of the AccessKey ID rotation task, the **Task Records** section on the right side of the page records every step that you perform.
+> You can click **Previous** to return to the previous step.
+> You can click **Back** to return to the AccessKey Management page. On the **Historical Tasks** page, you can view the details of the unfinished AccessKey ID rotation task. For more information, see View historical tasks.
+
+The procedure to create an AccessKey ID rotation task consists of four steps: create an AccessKey ID, enable an application, disable the old AccessKey ID, and complete the task. The following table describes the steps.
 
 | No. | Step | Operation |
 |---|---|---|
@@ -9339,7 +9847,10 @@ The Historical Tasks feature allows you to view the operation logs of historical
 3. In the left-side navigation pane, choose **Passwords & Encryption > AccessKey Pairs**.
 4. In the upper-left corner of the page, click **History Tasks**.
 5. In the historical task list, view the task ID, initiator, initiation time, duration, as well as
-status and stage of task creation. You can select a start date and an end date in the upper-left corner of the page, and click **Search** to view the historical tasks within the specified time range.
+status and stage of task creation.
+
+> **Note:** You can select a start date and an end date in the upper-left corner of the page, and click **Search** to view the historical tasks within the specified time range.
+
 6. **Optional:** Find the task and click **Details** in the **Actions** column to go to the **Create**
 **AccessKey Rotation ID Task** page. You can continue to create a rotation task. For more
 information, see Create AccessKey ID rotation tasks.
@@ -9371,9 +9882,8 @@ pliance
 3. In the left-side navigation pane, choose **Passwords & Encryption > Platform**
 **Encryption > Disk Encryption for Metadatabase (SM4)**.
 
-**Warning**
+> **Warning:** To avoid temporary inaccessibility to the Apsara Uni-manager Operations Console and Apsara Uni-manager management Console, unavailability of UMMAK, AAS, and RAM services, and interruption of the management business, we recommend that you enable transparent data encrytpion (TDE) during the maintenance window. This feature cannot be disabled after it is enabled.
 
-To avoid temporary inaccessibility to the Apsara Uni-manager Operations Console and Apsara Uni-manager management Console, unavailability of UMMAK, AAS, and RAM services, and interruption of the management business, we recommend that you enable transparent data encrytpion (TDE) during the maintenance window. This feature cannot be disabled after it is enabled.
 4. If the information of the application that you want to manage is not shown, click the name
 of the application.
 5. Find the application and turn on the switch in the **Actions** column. In the dialog box that
@@ -9417,13 +9927,14 @@ This topic describes how to enable or disable transmission encryption for the me
 **Encryption > Transmission Encryption for Metadatabase and Platform Access** .
 pliance
 
-**Warning**
+> **Warning:** Transmission encryption for metadatabase and platform access includes the Secure Sockets Layer (SSL)-based encryption for metadata access and HTTPS-based encryption for Apsara Uni-manager Operations Console and Apsara Uni- manager Management Console access. If you switch between enabling and disabling encryption, your access to UMMAK, RAM, OAM, and AAS services is unavailable, and your access to the Apsara Uni-manager Operations Console, Apsara Uni-manager Management Console, IDaaS, and POP is interrupted. Proceed with caution.
 
-includes the Secure Sockets Layer (SSL)-based encryption for metadata access and HTTPS-based encryption for Apsara Uni-manager Operations Console and Apsara Unimanager Management Console access. If you switch between enabling and disabling encryption, your access to UMMAK, RAM, OAM, and AAS services is unavailable, and your access to the Apsara Uni-manager Operations Console, Apsara Uni-manager Management Console, IDaaS, and POP is interrupted. Proceed with caution.
 4. In the upper-left corner of the page, turn on or turn off **Enable or disable transmission**
 **encryption with one click**. In the message that appears, click **OK**.
 5. In the upper-right corner of the page, click **View tasks**. In the panel that appears, view the
-progress of enabling or disabling transmission encryption. You can turn on or off **Automatic Update** based on your business requirements.
+progress of enabling or disabling transmission encryption.
+
+> **Note:** You can turn on or off **Automatic Update** based on your business requirements.
 
 ##### 5.4.2.2 Enable or disable transmission encryption for a single application
 
@@ -9437,9 +9948,8 @@ This topic describes how to enable or disable transmission encryption for a sing
 4. If the information of the application for which you want to enable or disable transmission
 encryption is not shown, click the name of the application.
 
-**Warning**
+> **Warning:** Transmission encryption for metadatabase and platform access includes the Secure Sockets Layer (SSL)-based encryption for metadata access and HTTPS-based encryption for Apsara Uni-manager Operations Console and Apsara Uni- manager Management Console access. If you switch between enabling and disabling encryption, your access to UMMAK, RAM, OAM, and AAS services is unavailable, and your access to the Apsara Uni-manager Operations Console, Apsara Uni-manager Management Console, IDaaS, and POP is interrupted. Proceed with caution.
 
-includes the Secure Sockets Layer (SSL)-based encryption for metadata access and HTTPS-based encryption for Apsara Uni-manager Operations Console and Apsara Unimanager Management Console access. If you switch between enabling and disabling encryption, your access to UMMAK, RAM, OAM, and AAS services is unavailable, and your access to the Apsara Uni-manager Operations Console, Apsara Uni-manager Management Console, IDaaS, and POP is interrupted. Proceed with caution.
 5. Find the application and turn on or turn off the switch in the **Actions** column. In the dialog
 box that appears, click **OK**.
 
@@ -9466,15 +9976,16 @@ After you enable transmission encryption for metadatabase and platform access, y
 3. In the left-side navigation pane, choose **Passwords & Encryption > Platform**
 **Encryption > Transmission Encryption for Metadatabase and Platform Access** .
 4. Find the application whose certificate you want to view and click **Certificate** on the right of
-the application name. On the page that appears, you can view the details about the certificate. The certificate can be in one of the following statuses: **Normal**, **About to**
-**Expire**, **Expired**, **Initializing**, and **Not used**.
-**Normal**: The certificate is used as expected.
-**About to expire**: The certificate will expire in 15 days or less.
-**Expired**: The certificate has expired.
-**Initializing**: The code of the Apsara Uni-manager Operations Console is being
-initialized or an error occurred when the code is being initialized. When the deployment of the Apsara Uni-manager Operations Console reaches the desired state, the status of the certificate becomes Not used or Normal.
-**Not used**: For some applications, you must pull the certificate during
-initialization. After the certificate is pulled, the status of the certificate is Normal. For some applications, you must pull the certificate after you enable encryption. The status of the certificate is Not used because the certificate is not pulled before encryption is enabled. pliance i. On the **SR certificate** tab, view the certificate details of the service role (SR) that uses SSL to access the database. ii. Click the **Database certificate** tab to view the details about the database certificate.
+the application name. On the page that appears, you can view the details about the certificate.
+
+> **Note:** The certificate can be in one of the following statuses: **Normal**, **About to** **Expire**, **Expired**, **Initializing**, and **Not used**.
+> **Normal**: The certificate is used as expected.
+> **About to expire**: The certificate will expire in 15 days or less.
+> **Expired**: The certificate has expired.
+> **Initializing**: The code of the Apsara Uni-manager Operations Console is being initialized or an error occurred when the code is being initialized. When the deployment of the Apsara Uni-manager Operations Console reaches the desired state, the status of the certificate becomes Not used or Normal.
+> **Not used**: For some applications, you must pull the certificate during initialization. After the certificate is pulled, the status of the certificate is Normal. For some applications, you must pull the certificate after you enable encryption. The status of the certificate is Not used because the certificate is not pulled before encryption is enabled.
+
+pliance i. On the **SR certificate** tab, view the certificate details of the service role (SR) that uses SSL to access the database. ii. Click the **Database certificate** tab to view the details about the database certificate.
 
 ##### 5.4.2.5 Renew a certificate
 
@@ -9486,9 +9997,8 @@ If the status of a certificate is Expired or About to expire, you can renew the 
 4. Find the application whose certificate you want to renew and click **Certificate** on the right
 of the application name. On the page that appears, view the details about the certificate.
 
-**Warning**
+> **Warning:** If you renew a service role (SR) certificate, the service is expected to be interrupted for 30 minutes. Therefore, we recommend that you renew the certificate during the maintenance window.
 
-If you renew a service role (SR) certificate, the service is expected to be interrupted for 30 minutes. Therefore, we recommend that you renew the certificate during the maintenance window.
 5. On the **SR certificate** or **Database certificate** tab, click **Update certificate** in the
 **Certificate operations** column. In the dialog box that appears, click **OK**. After the
 certificate is updated, the message **Updated** appears. ngs
@@ -9520,8 +10030,22 @@ Before you create a user, make sure that the following requirements are met: A d
 2. In the top navigation bar, click **System Settings**.
 In the left-side navigation pane, click **User Permissions > Users**. By default, the **Users** tab appears.
 3. On the **Users** tab, perform the following operations:
-Query a user ngs To query a user in the Apsara Uni-manager Operations Console, you must have the security officer role or system administrator role. In the upper part of the page, set **Username** and click Search to view the information about the user in the list. You can also click Advanced, configure **Role** and **Department**, and then click **Search** to view the information about the user in the list. (Optional) Click **Reset** to clear the filter conditions. Add a user To add a user in the Apsara Uni-manager Operations Console, you must have the security officer role. Click **Add** in the upper part of the page. On the **Add User** panel, specify parameters such as **Username** and **Password**, and click **OK**. The added user is displayed in the user list. Modify a user To modify a user in the Apsara Uni-manager Operations Console, you must have the security officer role. In the user list, find the user that you want to modify and click **Modify** in the **Actions** column. On the **Modify User** panel, modify the parameters and click **OK**. Delete a user In the user list, find the user that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**. Deleted users are displayed on the **Recycle Bin** tab. To restore a deleted user, click the **Recycle Bin** tab. Find the user that you want to restore and click **Recover** in the
-**Actions** column. In the message that appears, click **OK**.
+Query a user ngs
+
+> **Note:** To query a user in the Apsara Uni-manager Operations Console, you must have the security officer role or system administrator role.
+
+In the upper part of the page, set **Username** and click Search to view the information about the user in the list. You can also click Advanced, configure **Role** and **Department**, and then click **Search** to view the information about the user in the list. (Optional) Click **Reset** to clear the filter conditions. Add a user
+
+> **Note:** To add a user in the Apsara Uni-manager Operations Console, you must have the security officer role.
+
+Click **Add** in the upper part of the page. On the **Add User** panel, specify parameters such as **Username** and **Password**, and click **OK**. The added user is displayed in the user list. Modify a user
+
+> **Note:** To modify a user in the Apsara Uni-manager Operations Console, you must have the security officer role.
+
+In the user list, find the user that you want to modify and click **Modify** in the **Actions** column. On the **Modify User** panel, modify the parameters and click **OK**. Delete a user In the user list, find the user that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
+
+> **Note:** Deleted users are displayed on the **Recycle Bin** tab. To restore a deleted user, click the **Recycle Bin** tab. Find the user that you want to restore and click **Recover** in the **Actions** column. In the message that appears, click **OK**.
+
 Attach a logon policy In the user list, select the user to which you want to attach a logon policy and click
 **Modify Logon Policy** in the lower part of the page. In the dialog box that appears,
 select the logon policy to attach and click **OK**. Query the personal information of the current user Move the pointer over the profile picture in the upper-right corner of the page and click
@@ -9542,7 +10066,10 @@ This topic describes how to create a user group.
 3. In the left-side navigation pane, choose **User Permissions > User Groups**.
 4. In the upper part of the page, click **Add**.
 5. In the **Add User Group** dialog box, enter a user group name, and select a department and
-roles. You can add multiple roles to a user group.
+roles.
+
+> **Note:** You can add multiple roles to a user group.
+
 6. Click **OK**.
 
 ##### 6.2.2.2 Edit a user group
@@ -9633,14 +10160,26 @@ A role is a collection of access permissions. You can assign different roles to 
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **User Permissions > Roles**.
 4. On the **Role Management** page, perform the following operations:
-Query a role To query a role in the Apsara Uni-manager Operations Console, you must have the security officer role or system administrator role. ngs In the upper-left corner of the page, enter a role name in the **Role** search box and click
+Query a role
+
+> **Note:** To query a role in the Apsara Uni-manager Operations Console, you must have the security officer role or system administrator role.
+
+ngs In the upper-left corner of the page, enter a role name in the **Role** search box and click
 **Search** to view the role information in the list. You can move the pointer over the
 **Permission Details** column to view the basic information about the role.
-Only users who have the security officer role of the Apsara Uni-manager Operations Console can add a role in the console. You can bind the added role to a user and use the user to log on to the Aspara Uni-manager Operations Console. In this way, you can control access permissions of the user on specific menus. a. In the upper-left corner of the page, click **Add**. b. In the **Add Role** panel, configure the parameters. In the **Role Name** field, enter the name of the role that you want to add. In the **Role Description** field, enter a brief description of the new role. Select roles from the **Base Role** drop-down list to specify the basic roles of the OAM system for underlying authentication. In the **Menu** section, select the menus that are accessible to the role. c. Click **OK**. Modify a role Only users who have the security officer role of the Apsara Uni-manager Operations Console can modify a role in the console. a. Find the role that you want to modify and click **Edit** in the **Actions** column. b. In the **Edit Role** panel, update the parameters. Delete a role
 
-**Important**
+> **Note:** Only users who have the security officer role of the Apsara Uni-manager Operations Console can add a role in the console.
+> You can bind the added role to a user and use the user to log on to the Aspara Uni-manager Operations Console. In this way, you can control access permissions of the user on specific menus.
 
-Before you delete a role, make sure that the role is not bound to a user. Otherwise, the role cannot be deleted. a. Find the role that you want to delete and click **Delete** in the **Actions** column. b. In the dialog box that appears, click **OK**.
+a. In the upper-left corner of the page, click **Add**. b. In the **Add Role** panel, configure the parameters. In the **Role Name** field, enter the name of the role that you want to add. In the **Role Description** field, enter a brief description of the new role. Select roles from the **Base Role** drop-down list to specify the basic roles of the OAM system for underlying authentication. In the **Menu** section, select the menus that are accessible to the role. c. Click **OK**. Modify a role
+
+> **Note:** Only users who have the security officer role of the Apsara Uni-manager Operations Console can modify a role in the console.
+
+a. Find the role that you want to modify and click **Edit** in the **Actions** column. b. In the **Edit Role** panel, update the parameters. Delete a role
+
+> **Important:** Before you delete a role, make sure that the role is not bound to a user. Otherwise, the role cannot be deleted.
+
+a. Find the role that you want to delete and click **Delete** in the **Actions** column. b. In the dialog box that appears, click **OK**.
 
 #### 6.2.4 Department management
 
@@ -9660,9 +10199,9 @@ Add a department In the catalog tree on the left, select the department to which
 **Modify Department**. In the **Modify Department** dialog box, set Department Name,
 and click **OK**. Delete a department
 
-**Important**
+> **Important:** Before you delete a department, make sure that no users exist in the department. Otherwise, the department cannot be deleted.
 
-Before you delete a department, make sure that no users exist in the department. Otherwise, the department cannot be deleted. In the catalog tree on the left, select the department that you want to delete and click
+In the catalog tree on the left, select the department that you want to delete and click
 **Delete Department**. In the message that appears, click **OK**.
 Add a user to a department In the catalog tree on the left, select the department to which you want to add a user, click **Create User**. In the **Add User** dialog box, configure Username, Password, Confirm Password, Logon Policy, Role, and optional parameters such as Display Name, Logon Policy, Role, Department, Mobile Number, and Email Addresses. Click **OK**. After a user is added, you can choose **User Permissions** > **Users** in the left-side navigation pane to view the information about the user. Add a user group to a department In the catalog tree on the left, select the department to which you want to add a user group, click **Add User Group**. In the **Add User Group** dialog box, enter a user group name and select a role. Click **OK**. After a user group is added, you can choose **User Permissions** > User Groups to view the information about the user group.
 
@@ -9696,7 +10235,11 @@ The Apsara Uni-manager Operations Console supports only Google two-factor authen
 4. On the Two-factor Authentication page, perform the following operations:
 Google two-factor authentication a. Set **Current Authentication Method** to **Google Two-factor Authentication**. b. In the upper-right corner of the page, click **Add User**. In the Add User dialog box, enter a username and click OK. The added user is displayed in the user list. c. Find the username for which you want to enable Google two-factor authentication and click **Add Key** in the **Actions** column. When the **The operation is successful** message appears, the **Show Key** button appears in the **Actions** column. Click **Show**
 **Key**. The key is displayed in plaintext in the Key column.
-d. Enter the key in the Google Authenticator app on your mobile phone. The app generates a verification code for your logon based on the time and key. While twofactor authentication is enabled, you are required to enter the verification code on your app whenever you log on to the system. The Google Authenticator app and server generate the verification code by using public algorithms based on the time and key. They can work offline without connecting to the Internet or Google server. Therefore, you must keep your key confidential. e. To disable two-factor authentication, click **Delete Key** in the **Actions** column. No authentication Set **Current Authentication Method** to **No Authentication**. Two-factor authentication is then disabled and all two-factor authentication methods become invalid. ngs
+d. Enter the key in the Google Authenticator app on your mobile phone. The app generates a verification code for your logon based on the time and key. While twofactor authentication is enabled, you are required to enter the verification code on your app whenever you log on to the system.
+
+> **Note:** The Google Authenticator app and server generate the verification code by using public algorithms based on the time and key. They can work offline without connecting to the Internet or Google server. Therefore, you must keep your key confidential.
+
+e. To disable two-factor authentication, click **Delete Key** in the **Actions** column. No authentication Set **Current Authentication Method** to **No Authentication**. Two-factor authentication is then disabled and all two-factor authentication methods become invalid. ngs
 
 #### 6.2.7 Logon policies
 
@@ -9713,13 +10256,13 @@ Query a policy In the upper-left corner of the page, enter a policy name in the 
 **Modify Policy** panel, modify the parameters and click **OK**.
 Delete a policy Find the policy that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** A logon policy that is bound to a user cannot be deleted. You must unbind the policy before you delete it.
 
-A logon policy that is bound to a user cannot be deleted. You must unbind the policy before you delete it. Disable a policy Find the policy that you want to disable and click **Disable** in the **Actions** column. In the message that appears, click **OK**.
+Disable a policy Find the policy that you want to disable and click **Disable** in the **Actions** column. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** After a policy is disabled, users who are bound to the policy cannot log on to the Aspara Uni-manager Operations Console.
 
-After a policy is disabled, users who are bound to the policy cannot log on to the Aspara Uni-manager Operations Console. Enable a policy Find the policy that you want to enable and click **Enable** in the **Actions** column. In the message that appears, click **OK**.
+Enable a policy Find the policy that you want to enable and click **Enable** in the **Actions** column. In the message that appears, click **OK**.
 
 #### 6.2.8 Logon settings
 
@@ -9745,7 +10288,9 @@ the Apsara Uni-manager Operations Console from multiple terminals at the same ti
 to the Apsara Uni-manager Operations Console or the console redirected from the Apsara Uni-manager Operations Console from multiple terminals.
 5. Click **Save**.
 6. Click the **Account Validity Period** tab and set **Account Validity (Days)**.
-When your account expires, you must use the system administrator account to unlock it.
+
+> **Note:** When your account expires, you must use the system administrator account to unlock it.
+
 7. Click **Save**.
 
 #### 6.2.9 Personal information
@@ -9834,7 +10379,9 @@ ngs
 | Menu Type | The type of the menu. When you create a submenu, you do not need to configure this parameter. |
 | Current Order | The order of the submenu under the selected menu. You cannot configure the order in the panel. You can modify the configuration on the Menus page after you create the submenu. |
 
-iii. Click **OK**. After you add a submenu, you can view it under the corresponding parent menu in the menu list and in the left-side navigation pane. We recommend that you create a menu hierarchy of no more than five levels.
+iii. Click **OK**. After you add a submenu, you can view it under the corresponding parent menu in the menu list and in the left-side navigation pane.
+
+> **Note:** We recommend that you create a menu hierarchy of no more than five levels.
 
 ##### 6.3.1.3 Hide a menu
 
@@ -9842,9 +10389,8 @@ This topic describes how to hide a menu.
 
 **Prerequisites**
 
-**Important**
+> **Important:** Only custom menus and submenus can be hidden. After a menu or submenu is hidden, cascading menus beneath the menu or submenu are also hidden.
 
-Only custom menus and submenus can be hidden. After a menu or submenu is hidden, cascading menus beneath the menu or submenu are also hidden.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Platform Settings > Menus**.
@@ -9858,9 +10404,8 @@ After you add a menu or submenu, you can modify its configurations and sorting. 
 
 **Prerequisites**
 
-**Important**
+> **Important:** Only custom menus and submenus can be modified. Built-in menus and submenus can only be sorted.
 
-Only custom menus and submenus can be modified. Built-in menus and submenus can only be sorted.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Platform Settings > Menus**.
@@ -9875,9 +10420,8 @@ This topic describes how to delete a menu or submenu that you no longer need.
 
 **Prerequisites**
 
-**Important**
+> **Important:** Only custom menus and submenus can be deleted.
 
-Only custom menus and submenus can be deleted.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Platform Settings > Menus**.
@@ -9904,7 +10448,10 @@ If you are not granted the administrator permissions, a message appears indicati
 **Information**.
 The **Authorization Details** tab appears.
 4. Perform the following operations to view the authorization information.
-For formal authorization, you must enter the authorization code to view the authorization information. You can obtain the authorization code from the authorization letter appended to the project contract or by contacting the business manager (CBM) of your project. On the **Authorization Details** tab, view the authorization information. In the **Basic Information** section, you can view the authorization information in the current Apsara Stack environment, including the authorization version, authorization type, customer ID, cloud instance ID, customer UID, cloud platform version, customer name, and authorization creation time. You can select an authorization status from the **Select authorization status** dropdown list and click **Query** to view the authorization details. The following table describes the basic authorization information.
+
+> **Note:** For formal authorization, you must enter the authorization code to view the authorization information. You can obtain the authorization code from the authorization letter appended to the project contract or by contacting the business manager (CBM) of your project.
+
+On the **Authorization Details** tab, view the authorization information. In the **Basic Information** section, you can view the authorization information in the current Apsara Stack environment, including the authorization version, authorization type, customer ID, cloud instance ID, customer UID, cloud platform version, customer name, and authorization creation time. You can select an authorization status from the **Select authorization status** dropdown list and click **Query** to view the authorization details. The following table describes the basic authorization information.
 
 | Item | Description |
 |---|---|
@@ -9950,7 +10497,11 @@ This section describes how to set a threshold to trigger alerts. When a threshol
 **Information**.
 The **Authorization Details** tab appears.
 4. In the upper-left corner of the page, click the **Authorization Specifications Details** tab
-to set the thresholds for Apsara Stack services at the data center level and region level. Threshold: the percentage (%) between the current number of authorized specifications and the maximum number of authorized specifications. Set a threshold in the **Apsara Stack Product Authorization Specifications Details**
+to set the thresholds for Apsara Stack services at the data center level and region level.
+
+> **Note:** Threshold: the percentage (%) between the current number of authorized specifications and the maximum number of authorized specifications.
+
+Set a threshold in the **Apsara Stack Product Authorization Specifications Details**
 **(Data Center)** section.
 a. To set the threshold for a single product, select the product for which you want to set the threshold, and click **Threshold settings** in the **Threshold settings** column. To set the thresholds for multiple products, select the products for which you want to set ngs thresholds. In the upper-right corner of the section, click **Configure batch thresholds**
 **at the data center level**.
@@ -9976,7 +10527,10 @@ The OpsAPI has reached the desired state.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **APIs > Namespace Management**.
 4. View the information about services that are currently registered on OpsAPI Gateway.
-Alternatively, enter a namespace name in the **namespace** field and click **Search** to view the information about the service. Click **Clear** to clear the search conditions.
+Alternatively, enter a namespace name in the **namespace** field and click **Search** to view the information about the service.
+
+> **Note:** Click **Clear** to clear the search conditions.
+
 5. Find the namespace that you want to manage and click **Details** in the **Operation** column.
 In the dialog box that appears, view the name and description of the namespace.
 6. Find the namespace that you want to manage and click **Manage APIs** in the **Operation**
@@ -9994,7 +10548,9 @@ OpsAPI has reached the desired state.
 ngs
 3. In the left-side navigation pane, choose **APIs > Namespace Management**.
 4. Find the namespace that you want to delete and click **Delete** in the **Operation** column. In
-the dialog box that appears, click **OK**. The Delete operation takes effect only on the page and does not affect the actual running of the API for the product.
+the dialog box that appears, click **OK**.
+
+> **Note:** The Delete operation takes effect only on the page and does not affect the actual running of the API for the product.
 
 #### 6.4.2 API management
 
@@ -10011,7 +10567,10 @@ OpsAPI has reached the desired state.
 4. View the API information of a product that is registered with OpsAPI Gateway. You can also
 enter an API name in the **API name** field, select a namespace and state from the **Belongs**
 **namespace** and **State** drop-down lists, and click **Search** to view the information about the
-API. Click **Clear** to clear the search conditions.
+API.
+
+> **Note:** Click **Clear** to clear the search conditions.
+
 5. Find the API that you want to view and click **Preview** in the **Operation** column. In the
 dialog box that appears, view the basic information, service information, and parameters of the API.
 
@@ -10026,7 +10585,10 @@ The OpsAPI has reached the desired state.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **APIs > API Management**.
 4. Find the API that you want to unpublish and click **Offline** in the **Operation** column. In the
-message that appears, click **OK**. The offline API operation takes effect only on the page and does not affect the actual running of the API for the service.
+message that appears, click **OK**.
+
+> **Note:** The offline API operation takes effect only on the page and does not affect the actual running of the API for the service.
+
 5. Find the offline API that you want to re-publish and click **Re-launch** in the **Operation**
 column.
 
@@ -10047,10 +10609,17 @@ that, a subset is generated and is shown below the API column. The subset is in 
 icon on the left of the API name. In the **Operation** column of the subset, click
 **Configuration**. In the dialog box that appears, configure the basic information and click
 **Next**.
-API name: the API code that is used to register the service with OpsAPI gateway. Fuzzy query is supported. API belongs namespace: the name of the service. Maximum QPS: the maximum number of queries per second.
+
+> **Note:** API name: the API code that is used to register the service with OpsAPI gateway. Fuzzy query is supported.
+> API belongs namespace: the name of the service.
+> Maximum QPS: the maximum number of queries per second.
+
 6. In the dialog box that appears, configure the parameters and click **Next**.
 7. In the dialog box that appears, configure the parameters and click **Submitted**.
-You can specify whether to transparently pass input and output API parameters. You can also add, edit, and delete input and output API parameters. ngs Add: Click **New**. In the dialog box that appears, set the parameters and click **OK**. Edit: In the **Operation** column, click **Editing**. In the dialog box that appears, modify the parameters and click **OK**. Delete: In the **Operation** column, click **Delete**. In the message that appears, click **OK**. After the parameters are configured and submitted, the state of the subset changes to **Debugging**. Only the subset in the **Debugging** state can be published. If only the save operation is performed after the parameters are configured, the subset is in the **Configuring** state and cannot be published.
+You can specify whether to transparently pass input and output API parameters. You can also add, edit, and delete input and output API parameters. ngs Add: Click **New**. In the dialog box that appears, set the parameters and click **OK**. Edit: In the **Operation** column, click **Editing**. In the dialog box that appears, modify the parameters and click **OK**. Delete: In the **Operation** column, click **Delete**. In the message that appears, click **OK**.
+
+> **Note:** After the parameters are configured and submitted, the state of the subset changes to **Debugging**. Only the subset in the **Debugging** state can be published. If only the save operation is performed after the parameters are configured, the subset is in the **Configuring** state and cannot be published.
+
 8. In the **Operation** column of the subset, click **Online**. The original API data is overwritten by
 the subset. The version number of the original API is increased by 1. The subset information is no longer displayed on the page.
 
@@ -10065,7 +10634,9 @@ OpsAPI has reached the desired state.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **APIs > API Management**.
 4. Find the API that you want to delete and click **Delete** in the **Operation** column. In the
-message that appears, click **OK**. The Delete API operation takes effect only on the page and does not affect the actual running of the API for the service.
+message that appears, click **OK**.
+
+> **Note:** The Delete API operation takes effect only on the page and does not affect the actual running of the API for the service.
 
 ### 6.5 Region Management
 

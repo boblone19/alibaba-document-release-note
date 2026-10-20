@@ -5,7 +5,7 @@ doc_version: "20220713"
 pdf_pages: 545
 source_pdf: "d2a7be7ab2c1dd01_Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Service User Guide 20220713.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20Resource%20Orchestration%20Service%20User%20Guide%2020220713.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Service User Guide

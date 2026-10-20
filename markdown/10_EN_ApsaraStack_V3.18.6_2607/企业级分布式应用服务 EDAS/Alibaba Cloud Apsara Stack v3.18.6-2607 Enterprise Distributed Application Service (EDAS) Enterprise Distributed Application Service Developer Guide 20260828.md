@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 201
 source_pdf: "2d6d4da51556a5ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Developer Guide 20260828
@@ -164,16 +164,12 @@ You can obtain a product endpoint from the Apsara Uni-manager Operations Console
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Product O&M > Cloud Platform O&M > Apsara Infrastructure Management**.
 
-**Note**
+> **Note:** The preceding menu path is for version 3.16.2. For later versions, the menu path is **Platform O&M > Apsara** **Infrastructure Management**.
 
-The preceding menu path is for version 3.16.2. For later versions, the menu path is **Platform O&M > Apsara**
-**Infrastructure Management**.
 3. In the menu bar, choose **O&M > Machine O&M** to open the **Machine O&M** page.
 
-**Note**
+> **Note:** The preceding menu path is for version 3.16.2. For later versions, the menu path is **Resource Management >** **Machine Management**.
 
-The preceding menu path is for version 3.16.2. For later versions, the menu path is **Resource Management >**
-**Machine Management**.
 4. Select a machine and then click **Terminal** to log on to the machine.
 5. Run the command **curl -l "http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?**
 **c.sr.service_registration"** to obtain JSON data.
@@ -195,9 +191,7 @@ Follow these steps:
 icon, and then choose **User Center > Department Management**.
 3. Select a department and click **Create AccessKey** to obtain an AccessKey pair of this department.
 
-**Note**
-
-The AccessKey pair is automatically allocated to a level-1 department. The sub-departments use the same AccessKey pair as their level-1 department.
+> **Note:** The AccessKey pair is automatically allocated to a level-1 department. The sub-departments use the same AccessKey pair as their level-1 department.
 
 **Obtain an AccessKey pair of a personal account**
 
@@ -4586,9 +4580,7 @@ Successful response examples
 
 Deploys an application to an ECS cluster.
 
-**Note**
-
-To deploy an application to a Container Service for Kubernetes (K8s) cluster that is imported into EDAS, call the DeployK8sApplication operation.
+> **Note:** To deploy an application to a Container Service for Kubernetes (K8s) cluster that is imported into EDAS, call the DeployK8sApplication operation.
 
 **Request headers**
 
@@ -4787,9 +4779,7 @@ Response example
 
 You can call the InsertApplication operation to create an application in an ECS cluster.
 
-**Note**
-
-To create an application in a Kubernetes cluster, call the InsertK8sApplication operation.
+> **Note:** To create an application in a Kubernetes cluster, call the InsertK8sApplication operation.
 
 **Request header**
 
@@ -7400,9 +7390,7 @@ This topic describes how to install and use the Enterprise Distributed Applicati
 
 When you use an Apsara Stack software development kit (SDK) to access Apsara Stack services, you must provide credentials from an authorized account for authentication. If you use an AccessKey pair as access credentials, set the credentials when you initialize the client.
 
-**Important**
-
-Do not leak code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+> **Important:** Do not leak code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -7609,17 +7597,15 @@ Install from source code i. You can download and decompress the SDK package from
 >>> import sys >>> sys.path.append('/Users/michael/my_py_scripts')
 ```
 
-**Note**
+> **Note:** This change is temporary and only applies to the current runtime session.
 
-This change is temporary and only applies to the current runtime session. erence You can set the PYTHONPATH environment variable to include the directory where you decompressed the SDK package. The content of this environment variable is automatically added to the module search path. You can set the PYTHONPATH environment variable in the same way that you set the Path environment variable. You can place the decompressed SDK package in your project. You can then use the SDK in the project.
+erence You can set the PYTHONPATH environment variable to include the directory where you decompressed the SDK package. The content of this environment variable is automatically added to the module search path. You can set the PYTHONPATH environment variable in the same way that you set the Path environment variable. You can place the decompressed SDK package in your project. You can then use the SDK in the project.
 
 ##### 2.2.2.2 Set authentication credentials
 
 When you use an Alibaba Cloud software development kit (SDK) to access Apsara Stack services, you must provide an authorized account for identity verification. The Python SDK uses an AccessKey for identity verification. For more information, see . To use an AccessKey as an access credential, set the credential during client initialization.
 
-**Important**
-
-Ensure that code containing your AccessKey is not leaked. For example, do not commit it to a public GitHub project. Otherwise, the security of your account will be compromised.
+> **Important:** Ensure that code containing your AccessKey is not leaked. For example, do not commit it to a public GitHub project. Otherwise, the security of your account will be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -7659,9 +7645,7 @@ response = clt.do_action_with_exception(request) print response
 
 The EDAS Python SDK allows you to initiate API requests over HTTP and HTTPS. When using the EDAS Python SDK, you can specify a protocol, either HTTP or HTTPS, for specific requests, or set a global protocol for all requests.
 
-**Note**
-
-If you specify a protocol for a service, the specified protocol takes precedence.
+> **Note:** If you specify a protocol for a service, the specified protocol takes precedence.
 
 **Add OpenSSL support**
 

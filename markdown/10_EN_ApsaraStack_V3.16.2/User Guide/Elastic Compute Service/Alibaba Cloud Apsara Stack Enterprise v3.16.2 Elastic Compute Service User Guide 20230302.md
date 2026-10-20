@@ -5,7 +5,7 @@ doc_version: "20230302"
 pdf_pages: 203
 source_pdf: "7cfdebb273c7c59f_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service User Guide 20230302.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230221/1/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20Compute%20Service%20User%20Guide%2020230302.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service User Guide 20230302
@@ -228,7 +228,11 @@ Consider the following suggestions to make more efficient use of ECS: ECS instan
 
 ### 2.3 Limits
 
-Before using ECS instances, you must be familiar with the limits of instance families. General limits Windows operating systems support a maximum of 64 vCPUs in instance specifications. ECS instances do not support the installation of virtualization software and secondary virtualization. Sound card applications are not supported. Only GPU instances support virtual sound cards. External hardware devices, such as hardware dongles, USB flash drives, external hard disks, and bank U keys, cannot be directly connected to ECS instances. ECS does not support multicast protocols. If multicasting services are required, we recommend that you use unicast instead. Instance family ga1 To create a ga1 instance, you must use one of the following images pre-installed with drivers: Ubuntu 16.04 with an AMD GPU driver pre-installed Windows Server 2016 English version with an AMD GPU driver pre-installed Windows Server 2008 R2 English version with an AMD GPU driver pre-installed Note: A ga1 instance uses an optimized driver provided by Alibaba Cloud and AMD. The driver is installed in images provided by Alibaba Cloud and is currently unavailable for download. If the GPU driver malfunctions due to improper removal of related components, you need to replace the system disk to restore GPU related functions. Not e This operation causes data loss. If the driver malfunctions because an improper image is selected, you need to replace the system disk to reselect an image with an AMD GPU driver pre-installed. For Windows Server 2008 or earlier, you cannot connect to the VNC after the GPU driver takes effect. The VNC is irresponsive with a black screen or stuck at the splash screen. You can use other methods such as Remote Desktop Protocol (RDP) to access the system. RDP does not support DirectX, OpenGL, or other related applications. You need to install the VNC and a client, or use other supported protocols such as PCOIP and XenDesktop HDX 3D. Instance families gn4, gn5i, and gn5 Bandwidth: If you use an image of Windows Server 2008 R2 for a gn4 instance, you cannot use the Connect to VNC function in the ECS console to connect to the instance after the installed GPU driver takes effect. You need to set the bandwidth to a non-zero value or attach an Elastic IP address to the created instance. Image: If an NVIDIA GPU driver is not required, you can select any image, and then Install the CUDA and GPU drivers for a Linux instance or Install the CUDA and GPU drivers for a Windows instance.
+Before using ECS instances, you must be familiar with the limits of instance families. General limits Windows operating systems support a maximum of 64 vCPUs in instance specifications. ECS instances do not support the installation of virtualization software and secondary virtualization. Sound card applications are not supported. Only GPU instances support virtual sound cards. External hardware devices, such as hardware dongles, USB flash drives, external hard disks, and bank U keys, cannot be directly connected to ECS instances. ECS does not support multicast protocols. If multicasting services are required, we recommend that you use unicast instead. Instance family ga1 To create a ga1 instance, you must use one of the following images pre-installed with drivers: Ubuntu 16.04 with an AMD GPU driver pre-installed Windows Server 2016 English version with an AMD GPU driver pre-installed Windows Server 2008 R2 English version with an AMD GPU driver pre-installed Note: A ga1 instance uses an optimized driver provided by Alibaba Cloud and AMD. The driver is installed in images provided by Alibaba Cloud and is currently unavailable for download. If the GPU driver malfunctions due to improper removal of related components, you need to replace the system disk to restore GPU related functions.
+
+> Not e This operation causes data loss.
+
+If the driver malfunctions because an improper image is selected, you need to replace the system disk to reselect an image with an AMD GPU driver pre-installed. For Windows Server 2008 or earlier, you cannot connect to the VNC after the GPU driver takes effect. The VNC is irresponsive with a black screen or stuck at the splash screen. You can use other methods such as Remote Desktop Protocol (RDP) to access the system. RDP does not support DirectX, OpenGL, or other related applications. You need to install the VNC and a client, or use other supported protocols such as PCOIP and XenDesktop HDX 3D. Instance families gn4, gn5i, and gn5 Bandwidth: If you use an image of Windows Server 2008 R2 for a gn4 instance, you cannot use the Connect to VNC function in the ECS console to connect to the instance after the installed GPU driver takes effect. You need to set the bandwidth to a non-zero value or attach an Elastic IP address to the created instance. Image: If an NVIDIA GPU driver is not required, you can select any image, and then Install the CUDA and GPU drivers for a Linux instance or Install the CUDA and GPU drivers for a Windows instance.
 
 ### 2.4 Notice for Windows users
 
@@ -258,7 +262,13 @@ This topic describes how to log on to the ECS console. Prerequisites The URL of 
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click Login.
 4. In the top navigation bar, choose Product s > Elast ic Comput ing > Elast ic Comput e Service.
 
@@ -450,7 +460,11 @@ column.
 5. Enter the VNC password and click OK.
 After you are logged on to the VNC management terminal, a logon page similar to the following one appears.
 6. Enter your username and password.
-Fo a Linux instance, enter the username root and the logon password. Not e Passwords in Linux are not displayed as you type. Press the Enter key after you enter the password. For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the VNC page and select the corresponding key combination from the dropdown list. Enter the username and password as prompted, and click the Log On icon such as .
+Fo a Linux instance, enter the username root and the logon password.
+
+> Not e Passwords in Linux are not displayed as you type. Press the Enter key after you enter the password.
+
+For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the VNC page and select the corresponding key combination from the dropdown list. Enter the username and password as prompted, and click the Log On icon such as .
 
 ## 4 Instances
 
@@ -631,7 +645,11 @@ column.
 5. Enter the VNC password and click OK.
 After you are logged on to the VNC management terminal, a logon page similar to the following one appears.
 6. Enter your username and password.
-Fo a Linux instance, enter the username root and the logon password. Not e Passwords in Linux are not displayed as you type. Press the Enter key after you enter the password. For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the VNC page and select the corresponding key combination from the dropdown list. Enter the username and password as prompted, and click the Log On icon such as .
+Fo a Linux instance, enter the username root and the logon password.
+
+> Not e Passwords in Linux are not displayed as you type. Press the Enter key after you enter the password.
+
+For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the VNC page and select the corresponding key combination from the dropdown list. Enter the username and password as prompted, and click the Log On icon such as .
 
 ### 4.4 Manage instance status
 
@@ -739,7 +757,9 @@ If you use Virtual Network Console (VNC) to connect to an Elastic Compute Servic
 to go to the Instance Details page: On the Instances page, click the instance ID in the Inst ance ID/Name column. On the Instances page, click Manage in the Act ions column. On the Instances page, choose More > Show Det ails in the Act ions column.
 5. Click Change VNC Password.
 6. Enter and confirm the new password, and click OK.
-The password must be 8 to 14 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The supported special characters include ! / | \@~`#$%^*()_-+={[}]:;,.? . Not e If your instance is a non-I/O optimized instance, you must restart the instance in the ECS console for the new password to take effect.
+The password must be 8 to 14 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The supported special characters include ! / | \@~`#$%^*()_-+={[}]:;,.? .
+
+> Not e If your instance is a non-I/O optimized instance, you must restart the instance in the ECS console for the new password to take effect.
 
 #### 4.5.5 Enable and disable release protection for instances
 
@@ -780,7 +800,15 @@ ECS allows you to run the instance customization script upon startup and import 
 |---|---|
 | Windows Server 2016 64-bit Windows Server 2012 64-bit Windows Server 2008 64-bit | CentOS Ubuntu SUSE Linux Enterprise OpenSUSE Debian Aliyun Linux |
 
-When you configure instance data customization scripts, you must enter custom data based on the type of operating system and script. Not e Only English characters are allowed. If your data is Base64 encoded, select Ent er Base64 Encoded Inf ormat ion. Not e The size of the customization script cannot exceed 16 KB before the data is Base64 encoded. For Linux instances, the script format must meet the requirements described in Types of Linux instance customization scripts. For Windows instances, the script can only start with `[bat]` or `[powershell]` . After starting an instance, run a command to view the following information: Execution result of the instance customization script Data imported to instances Console: You can modify the custom instance data in the console. Whether the modified instance customization script needs to be re-executed depends on the script type. For example, if the `bootc` `md` script in Cloud Config is modified for Linux instances, the script is automatically executed each time instances are restarted. OpenAPI: You can also use OpenAPI to customize instance data. For more information, see Creat eInst ance and Modif yInst anceAt t ribut e in ECS Developer Guide . Linux instance data customization scripts Linux instance data customization scripts provided by Alibaba Cloud are designed based on the cloudinit architecture. They are used to automatically configure parameters of Linux instances. Customization script types are compatible with the cloud-init. Description of Linux instance data customization scripts Linux instance customization scripts are executed after instances are started and before `/etc/init` is executed. Linux instance customization scripts can only be executed with root permissions by default. Types of Linux instance customization scripts User-Dat a Script Description: A script, such as shell script, is used to customize data. Format: The first line must include #! , such as #! /bin/sh . Limit: The script size (including the first line) cannot exceed 16 KB before the data is Base64 encoded. Frequency: The script is executed only when instances are started for the first time. Example:
+When you configure instance data customization scripts, you must enter custom data based on the type of operating system and script.
+
+> Not e Only English characters are allowed.
+
+If your data is Base64 encoded, select Ent er Base64 Encoded Inf ormat ion.
+
+> Not e The size of the customization script cannot exceed 16 KB before the data is Base64 encoded.
+
+For Linux instances, the script format must meet the requirements described in Types of Linux instance customization scripts. For Windows instances, the script can only start with `[bat]` or `[powershell]` . After starting an instance, run a command to view the following information: Execution result of the instance customization script Data imported to instances Console: You can modify the custom instance data in the console. Whether the modified instance customization script needs to be re-executed depends on the script type. For example, if the `bootc` `md` script in Cloud Config is modified for Linux instances, the script is automatically executed each time instances are restarted. OpenAPI: You can also use OpenAPI to customize instance data. For more information, see Creat eInst ance and Modif yInst anceAt t ribut e in ECS Developer Guide . Linux instance data customization scripts Linux instance data customization scripts provided by Alibaba Cloud are designed based on the cloudinit architecture. They are used to automatically configure parameters of Linux instances. Customization script types are compatible with the cloud-init. Description of Linux instance data customization scripts Linux instance customization scripts are executed after instances are started and before `/etc/init` is executed. Linux instance customization scripts can only be executed with root permissions by default. Types of Linux instance customization scripts User-Dat a Script Description: A script, such as shell script, is used to customize data. Format: The first line must include #! , such as #! /bin/sh . Limit: The script size (including the first line) cannot exceed 16 KB before the data is Base64 encoded. Frequency: The script is executed only when instances are started for the first time. Example:
 
 ```
 #! /bin/sh
@@ -835,7 +863,10 @@ When you put Elastic Compute Service (ECS) instances into the recycle bin, the i
 
 #### 4.6.2 Restore an instance
 
-When you place Elastic Compute Service (ECS) instances into the recycle bin, the instances enter a retention period. During the retention period, you can restore the instance anytime based on your business requirements. Context When instances are restored from the recycle bin, computing resources (vCPUs and memory) are automatically re-assigned to the instances. If these instances require elastic IP addresses (EIPs), you must manually associate EIPs with the instances. For more information, see the "Associate an EIP with an ECS instance" topic in the EIP User Guide. Not e When you delete instances to the recycle bin, their computing resources are automatically reclaimed. Your attempt to restore instances from the recycle bin may fail due to insufficient quotas or computing resources. Before you restore instances, make sure that your quotas and computing resources are sufficient.
+When you place Elastic Compute Service (ECS) instances into the recycle bin, the instances enter a retention period. During the retention period, you can restore the instance anytime based on your business requirements. Context When instances are restored from the recycle bin, computing resources (vCPUs and memory) are automatically re-assigned to the instances. If these instances require elastic IP addresses (EIPs), you must manually associate EIPs with the instances. For more information, see the "Associate an EIP with an ECS instance" topic in the EIP User Guide.
+
+> Not e When you delete instances to the recycle bin, their computing resources are automatically reclaimed. Your attempt to restore instances from the recycle bin may fail due to insufficient quotas or computing resources. Before you restore instances, make sure that your quotas and computing resources are sufficient.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Recycle Bin.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -857,7 +888,10 @@ You can use one of the following methods to permanently delete instances: To del
 
 #### 4.7.1 Change the instance type of an instance
 
-You can change the instance types of instances to suit your business needs. This eliminates the need to create new instances. Hot configuration change You can perform a hot configuration change on an instance that is not in the Stopped state to change its instance type. Not e Only specific instance types support hot configuration changes. The instance types that support hot configuration changes are displayed in the Elastic Compute Service (ECS) console.
+You can change the instance types of instances to suit your business needs. This eliminates the need to create new instances. Hot configuration change You can perform a hot configuration change on an instance that is not in the Stopped state to change its instance type.
+
+> Not e Only specific instance types support hot configuration changes. The instance types that support hot configuration changes are displayed in the Elastic Compute Service (ECS) console.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -877,7 +911,11 @@ type to take effect. For more information, see Start an instance or the "StartIn
 
 #### 4.7.2 Perform a hot configuration change on an instance to change the instance type
 
-instance to change the instance type If the instance type of your Elastic Compute Service (ECS) instance does not suit application requirements, you can change it (including vCPUs, memory, and internal bandwidth). This topic describes how to perform a hot configuration change on an instance to change its instance type. Prerequisites The instance supports hot configuration changes and Support Hot Conf igurat ion Changes was selected when the instance was created in the ECS console. For more information, see Create an instance. Not e Instance types that support hot configuration changes are displayed in the ECS console. Context Compared with the instance type change feature, the hot configuration change feature can be used to change instance types without stopping the instances. When you perform a hot configuration change on an instance to change the instance type, the following limits apply: Windows instances do not support hot configuration changes. When you specify a new instance type for the instance, the vCPU, memory, and internal bandwidth specifications of the instance are changed together. These specifications cannot be separately changed. You must wait at least 10 minutes between two consecutive hot configuration changes to the instance type of a single instance. You can perform a maximum of five consecutive hot configuration changes to the instance type of an instance. After the instance is restarted, stopped, or started, the change times are cleared and recalculated. If a hot configuration change on the instance fails, hot configuration changes cannot be performed on the instance.
+instance to change the instance type If the instance type of your Elastic Compute Service (ECS) instance does not suit application requirements, you can change it (including vCPUs, memory, and internal bandwidth). This topic describes how to perform a hot configuration change on an instance to change its instance type. Prerequisites The instance supports hot configuration changes and Support Hot Conf igurat ion Changes was selected when the instance was created in the ECS console. For more information, see Create an instance.
+
+> Not e Instance types that support hot configuration changes are displayed in the ECS console.
+
+Context Compared with the instance type change feature, the hot configuration change feature can be used to change instance types without stopping the instances. When you perform a hot configuration change on an instance to change the instance type, the following limits apply: Windows instances do not support hot configuration changes. When you specify a new instance type for the instance, the vCPU, memory, and internal bandwidth specifications of the instance are changed together. These specifications cannot be separately changed. You must wait at least 10 minutes between two consecutive hot configuration changes to the instance type of a single instance. You can perform a maximum of five consecutive hot configuration changes to the instance type of an instance. After the instance is restarted, stopped, or started, the change times are cleared and recalculated. If a hot configuration change on the instance fails, hot configuration changes cannot be performed on the instance.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -928,7 +966,10 @@ Compared with IPv4 addresses, IPv6 addresses are more sufficient and allow more 
 4. Find the instance to which you want to assign an IPv6 address and choose More > Manage
 Secondary Privat e IPv6 Addresses in the Act ions column.
 5. In the Manage Secondary Privat e IPv6 Addresses dialog box, click Open Now next to the IPv6
-Addresses field. Not e Specific instance families do not support IPv6.
+Addresses field.
+
+> Not e Specific instance families do not support IPv6.
+
 6. On the vSwitch page, check whether IPv6 is enabled for the vSwitch.
 If IPv6 is not enabled for the vSwitch, click Enable IPv6 CIDR Block in the IPv6 CIDR Block column corresponding to the vSwitch.
 7. In the Manage Secondary Privat e IPv6 Addresses dialogue box, click OK.
@@ -966,7 +1007,14 @@ command. If the output displays the details of the GPU driver, the driver is run
 
 ### 5.1 Overview
 
-This topic describes the categories of disks and operations that can be performed on disks. Categories of disks Disks are block-level storage devices provided by Apsara Stack for Elastic Compute Service (ECS) instances. Disks can be classified based on their performance or purposes. Perf ormance-based classif icat ion Disks can be classified into ultra disks, shared ultra disks, standard SSDs, shared SSDs, standard performance disks, and premium performance disks based on their performance. Ultra disks and shared ultra disks are ideal for medium I/O load scenarios and deliver up to 5,000 random IOPS. Standard SSDs and shared SSDs are ideal for I/O-intensive scenarios and deliver up to 25,000 random IOPS. Standard performance disks and premium performance disks are ideal for online transaction processing (OLTP) databases and NoSQL databases and deliver up to 25,000 random IOPS. Import ant Different Cloud Defined Storage (CDS)-Elastic Block Storage (EBS) clusters support different disk categories. New CDS-EBS clusters support premium performance disks and standard performance disks. CDS-EBS clusters that were created in Apsara Stack V3.15.0 and earlier support ultra disks, standard SSDs, premium performance disks, and standard performance disks. Existing EBS clusters continue to provide shared ultra disks and shared SSDs. The following table compares the performance of different disk categories.
+This topic describes the categories of disks and operations that can be performed on disks. Categories of disks Disks are block-level storage devices provided by Apsara Stack for Elastic Compute Service (ECS) instances. Disks can be classified based on their performance or purposes. Perf ormance-based classif icat ion Disks can be classified into ultra disks, shared ultra disks, standard SSDs, shared SSDs, standard performance disks, and premium performance disks based on their performance. Ultra disks and shared ultra disks are ideal for medium I/O load scenarios and deliver up to 5,000 random IOPS. Standard SSDs and shared SSDs are ideal for I/O-intensive scenarios and deliver up to 25,000 random IOPS. Standard performance disks and premium performance disks are ideal for online transaction processing (OLTP) databases and NoSQL databases and deliver up to 25,000 random IOPS.
+
+> Import ant Different Cloud Defined Storage (CDS)-Elastic Block Storage (EBS) clusters support different disk categories.
+> New CDS-EBS clusters support premium performance disks and standard performance disks.
+> CDS-EBS clusters that were created in Apsara Stack V3.15.0 and earlier support ultra disks, standard SSDs, premium performance disks, and standard performance disks.
+> Existing EBS clusters continue to provide shared ultra disks and shared SSDs.
+
+The following table compares the performance of different disk categories.
 
 | Category | Standard SSD and shared SSD | Ultra disk and shared ultra disk | Standard performance disk | Premium performance disk |
 |---|---|---|---|---|
@@ -1256,11 +1304,17 @@ Non-Volatile Memory Express (NVMe) is a host controller interface protocol used 
 | Image | The image must contain the NVMe driver. The NVMe driver is installed in the following public images. Not e Only some public Linux images support the NVMe driver. CentOS 7: CentOS 7.6 and later CentOS 8: CentOS 8.0 and later |
 | Disk | Disk category: premium performance disk Creation method: Create premium performance disks when you create instances that support NVMe. When you create disks, select premium performance disks as the disk category and enable the multi-attach feature. |
 
-Related operations You can perform the following operations on premium performance disks that support NVMe: Create premium performance disks when you create ECS instances that support NVMe. In this case, the created premium performance disks support NVMe. For more information, see Create an instance by using the wizard. Enable the multi-attach feature when you separately create premium performance disks. For more information, see Enable the multi-attach feature. Format premium performance disks and create file systems. For more information, see Format a data disk for a Linux instance. Import ant The preceding operations are applicable only to premium performance disks that are created together with instances but not to premium performance disks for which the multi-attach feature is enabled.
+Related operations You can perform the following operations on premium performance disks that support NVMe: Create premium performance disks when you create ECS instances that support NVMe. In this case, the created premium performance disks support NVMe. For more information, see Create an instance by using the wizard. Enable the multi-attach feature when you separately create premium performance disks. For more information, see Enable the multi-attach feature. Format premium performance disks and create file systems. For more information, see Format a data disk for a Linux instance.
+
+> Import ant The preceding operations are applicable only to premium performance disks that are created together with instances but not to premium performance disks for which the multi-attach feature is enabled.
 
 #### 5.10.2 Enable the multi-attach feature
 
-When you create a premium performance disk, you can enable the multi-attach feature for the disk. After multi-attach is enabled for a premium performance disk, the disk can be attached to up to 16 Elastic Compute Service (ECS) instances that support the Non-Volatile Memory Express (NVMe) protocol within the same zone to allow concurrent read and write access from the instances. Benefits This feature is suitable for high-availability databases and distributed database clusters that each consist of one write node and multiple read-only nodes. This feature provides the following benefits: Usage of NVMe commands: NVMe commands can be used to manage permissions of ECS instances on premium performance disks. This helps improve service availability without compromising data durability. For more information about NVMe commands, see NVM Express Base Specification. Cross-instance data sharing: This feature enables data sharing across multiple ECS instances to reduce storage costs and improve service flexibility. Disaster recovery: This feature allows quick scheduling of services to normal ECS instances to ensure service continuity in single-point-of-failure (SPOF) scenarios. Limits The following limits apply to the multi-attach feature: The following list provides instance families that support this feature. ecs.ebmg7s-se-x25-c1m8 ecs.ebmg7m-se-x25-c1m8 ecs.ebmg7x-se-x25-c1m8 ecs.ebmg7s-se-numaoff-x25-c1m8 ecs.ebmg7m-se-numaoff-x25-c1m8 ecs.ebmg7x-se-numaoff-x25-c1m8 ecs.g7x-se-x25 Data disks are supported but system disks are not supported. The multi-attach feature can be enabled only when you create premium performance disks. This feature cannot be enabled or disabled after premium performance disks are created. After the multi-attach feature is enabled for a premium performance disk, we recommend that you use cluster file systems such as Oracle Cluster File System version 2 (OCFS2), Global File System 2 (GFS2), Veritas Cluster File System (Veritas CFS), Oracle Automatic Storage Management Cluster File System (Oracle ACFS), and Databricks File System (DBFS) on the disk. Warning When a premium performance disk for which the multi-attach feature is enabled is attached to multiple ECS instances, data cannot be synchronized among the instances and data inconsistency may occur if file systems such as EXT2, EXT3, EXT4, XFS, and New Technology File System (NTFS) are used. The performance of premium performance disks is limited. When a premium performance disk is attached to multiple ECS instances, the total performance of the disk on all instances cannot exceed the maximum performance that can be provided by the disk. The following table describes the limits that apply to the features provided by premium performance disks for which the multi-attach feature is enabled.
+When you create a premium performance disk, you can enable the multi-attach feature for the disk. After multi-attach is enabled for a premium performance disk, the disk can be attached to up to 16 Elastic Compute Service (ECS) instances that support the Non-Volatile Memory Express (NVMe) protocol within the same zone to allow concurrent read and write access from the instances. Benefits This feature is suitable for high-availability databases and distributed database clusters that each consist of one write node and multiple read-only nodes. This feature provides the following benefits: Usage of NVMe commands: NVMe commands can be used to manage permissions of ECS instances on premium performance disks. This helps improve service availability without compromising data durability. For more information about NVMe commands, see NVM Express Base Specification. Cross-instance data sharing: This feature enables data sharing across multiple ECS instances to reduce storage costs and improve service flexibility. Disaster recovery: This feature allows quick scheduling of services to normal ECS instances to ensure service continuity in single-point-of-failure (SPOF) scenarios. Limits The following limits apply to the multi-attach feature: The following list provides instance families that support this feature. ecs.ebmg7s-se-x25-c1m8 ecs.ebmg7m-se-x25-c1m8 ecs.ebmg7x-se-x25-c1m8 ecs.ebmg7s-se-numaoff-x25-c1m8 ecs.ebmg7m-se-numaoff-x25-c1m8 ecs.ebmg7x-se-numaoff-x25-c1m8 ecs.g7x-se-x25 Data disks are supported but system disks are not supported. The multi-attach feature can be enabled only when you create premium performance disks. This feature cannot be enabled or disabled after premium performance disks are created. After the multi-attach feature is enabled for a premium performance disk, we recommend that you use cluster file systems such as Oracle Cluster File System version 2 (OCFS2), Global File System 2 (GFS2), Veritas Cluster File System (Veritas CFS), Oracle Automatic Storage Management Cluster File System (Oracle ACFS), and Databricks File System (DBFS) on the disk.
+
+> **Warning:** When a premium performance disk for which the multi-attach feature is enabled is attached to multiple ECS instances, data cannot be synchronized among the instances and data inconsistency may occur if file systems such as EXT2, EXT3, EXT4, XFS, and New Technology File System (NTFS) are used.
+
+The performance of premium performance disks is limited. When a premium performance disk is attached to multiple ECS instances, the total performance of the disk on all instances cannot exceed the maximum performance that can be provided by the disk. The following table describes the limits that apply to the features provided by premium performance disks for which the multi-attach feature is enabled.
 
 | Feature | Limits |
 |---|---|
@@ -1308,7 +1362,8 @@ you create.
 |---|---|---|---|
 |   | Use Snapshot | No | Select whether to create the disk from a snapshot. If you select Yes, you must specify a snapshot. In this case, the size of the created disk may be affected by the snapshot size. If the disk size that you specify is greater than the snapshot size, the disk is created with the size that you specify. If the disk size that you specify is smaller than the snapshot size, the disk is created with the snapshot size. |
 
-Not e For more information about how to create disks, see Create a disk.
+> Not e For more information about how to create disks, see Create a disk.
+
 6. Confirm the configurations and click Submit .
 7. In the message that appears, click OK.
 After the disk is created, you can go to the Disks page to view the created disk. The state of the disk is Available, and Enabled is displayed in the Multi-attach column. Step 2: Attach the premium performance disk to multiple instances that support the NVMe protocol Before you attach the premium performance disk to instances, make sure that the following requirements are met: The premium performance disk and the instances reside in the same zone. The instance families and images of the instances comply with the NVMe protocol. For more information, see Limits.
@@ -1318,13 +1373,21 @@ In the left-side navigation pane, choose Inst ances & Images > Inst ances. On th
 3. Use the instance ID to search for the premium performance disk that you want to attach to the
 instance. Then, click the icon in the Act ions column corresponding to the disk, and select At t ach.
 4. In the At t ach dialog box, select an instance ID from the Inst ance drop-down list and click OK.
-You must select the instance ID that you obtained in Step 1 from the Inst ance drop-down list. Not e You can attach the premium performance disk to only a single instance each time you perform the preceding steps. To attach the premium performance disk to multiple instances, repeat the preceding steps. You can go to the Disks page to view the state of the premium performance disk. The state of the disk is displayed as Running on this page. You can click the name of the premium performance disk to go to the disk detail panel. In the At t achment Inf ormat ion section of this panel, you can view information about the premium performance disk that is attached to a single instance or multiple instances. What to do next After the premium performance disk is attached to multiple instances, we recommend that you create cluster file systems based on your business requirements. Common cluster file systems include OCFS2, GFS2, Veritas CFS, Oracle ACFS, and DBFS. Warning When a premium performance disk for which the multi-attach feature is enabled is attached to multiple ECS instances, data cannot be synchronized among the instances and data inconsistency may occur if file systems such as EXT2, EXT3, EXT4, XFS, and New Technology File System (NTFS) are used.
+You must select the instance ID that you obtained in Step 1 from the Inst ance drop-down list.
+
+> Not e You can attach the premium performance disk to only a single instance each time you perform the preceding steps. To attach the premium performance disk to multiple instances, repeat the preceding steps.
+
+You can go to the Disks page to view the state of the premium performance disk. The state of the disk is displayed as Running on this page. You can click the name of the premium performance disk to go to the disk detail panel. In the At t achment Inf ormat ion section of this panel, you can view information about the premium performance disk that is attached to a single instance or multiple instances. What to do next After the premium performance disk is attached to multiple instances, we recommend that you create cluster file systems based on your business requirements. Common cluster file systems include OCFS2, GFS2, Veritas CFS, Oracle ACFS, and DBFS.
+
+> **Warning:** When a premium performance disk for which the multi-attach feature is enabled is attached to multiple ECS instances, data cannot be synchronized among the instances and data inconsistency may occur if file systems such as EXT2, EXT3, EXT4, XFS, and New Technology File System (NTFS) are used.
 
 ### 5.11 Encrypt a disk
 
 #### 5.11.1 Overview
 
-Disk encryption is a simple and secure method provided by Elastic Compute Service (ECS) to encrypt new disks. Disk encryption eliminates the need to create or maintain your own key management infrastructure, to modify existing applications and maintenance procedures, and to perform additional encryption operations. Disk encryption does not have negative impacts on your business. The following types of data can be encrypted in disk encryption operations: Data stored on disks. Data transmitted between disks and instances. Data within instance operating systems is not encrypted. All snapshots created from encrypted disks. These snapshots are encrypted snapshots. Data transmitted from instances to disks is encrypted on the hosts where the instances reside. Ultra disks, standard SSDs, premium performance disks, and standard performance disks can be encrypted by using disk encryption. Not e By default, shared SSDs and shared ultra disks cannot be encrypted by using disk encryption. To create and encrypt shared SSDs or shared ultra disks, submit a ticket.
+Disk encryption is a simple and secure method provided by Elastic Compute Service (ECS) to encrypt new disks. Disk encryption eliminates the need to create or maintain your own key management infrastructure, to modify existing applications and maintenance procedures, and to perform additional encryption operations. Disk encryption does not have negative impacts on your business. The following types of data can be encrypted in disk encryption operations: Data stored on disks. Data transmitted between disks and instances. Data within instance operating systems is not encrypted. All snapshots created from encrypted disks. These snapshots are encrypted snapshots. Data transmitted from instances to disks is encrypted on the hosts where the instances reside. Ultra disks, standard SSDs, premium performance disks, and standard performance disks can be encrypted by using disk encryption.
+
+> Not e By default, shared SSDs and shared ultra disks cannot be encrypted by using disk encryption. To create and encrypt shared SSDs or shared ultra disks, submit a ticket.
 
 #### 5.11.2 Encrypt a system disk
 
@@ -1370,7 +1433,11 @@ Result After the instance is created, you can click its ID to go to the Inst anc
 
 #### 5.11.3 Encrypt a data disk
 
-In scenarios that require data security and regulatory compliance, you can encrypt disks to secure your data stored on the disks. After a data disk is created, its encryption state cannot be changed. If you want to encrypt a data disk, enable encryption for the disk when you create it. Context Determine the number and sizes of data disks that you need before you create them. Take note of the following limits: Not e System disks cannot be created separately. The maximum number of data disks that can be attached to a single instance varies based on the instance type. A single premium performance disk that has the multi-attach feature enabled can be attached to up to 16 ECS instances at the same time. Each ultra disk, shared ultra disk, standard SSD, shared SSD, premium performance disk, or standard performance disk can be up to 32 TiB in size. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. A snapshot can back up data only of a single disk. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across disks. If you use LVM to create a logical volume across multiple existing disks, data discrepancy may occur when you restore disks from snapshots.
+In scenarios that require data security and regulatory compliance, you can encrypt disks to secure your data stored on the disks. After a data disk is created, its encryption state cannot be changed. If you want to encrypt a data disk, enable encryption for the disk when you create it. Context Determine the number and sizes of data disks that you need before you create them. Take note of the following limits:
+
+> Not e System disks cannot be created separately.
+
+The maximum number of data disks that can be attached to a single instance varies based on the instance type. A single premium performance disk that has the multi-attach feature enabled can be attached to up to 16 ECS instances at the same time. Each ultra disk, shared ultra disk, standard SSD, shared SSD, premium performance disk, or standard performance disk can be up to 32 TiB in size. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. A snapshot can back up data only of a single disk. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across disks. If you use LVM to create a logical volume across multiple existing disks, data discrepancy may occur when you restore disks from snapshots.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1399,7 +1466,9 @@ When a data disk is attached to an Elastic Compute Service (ECS) instance, you c
 # /dev/vdb1 /InitTest ext3 defaults 0 0
 ```
 
-Not e In this example, /dev/vdb1 is a partition and /InitTest is a mount point. You can modify the command based on your business requirements. v. Press the `Esc` key to exit the edit mode, and enter :wq to save the file and exit. Context The state of a data disk after it is re-initialized varies based on its original state when it was created and the operating system that the instance runs: The data disk is restored to the initial state when it was created: The data disk becomes an empty disk if it was originally an empty disk. The data disk stores the data recorded in the source snapshot if the data disk was created from a snapshot. For a Windows instance, after you re-initialize a data disk, the data disk is ready for use without the need for additional operations regardless of its original state. For a Linux instance: If a data disk was created from a snapshot, the data disk stores only the data recorded in the source snapshot after the data disk is re-initialized. You do not need to re-mount the partitions, but all the data generated after the disk was created is lost. If a data disk was created as an empty disk, all the data and file systems on the disk are lost after the data disk is re-initialized. You must reformat and partition the disk, and then re-mount the partitions.
+> Not e In this example, /dev/vdb1 is a partition and /InitTest is a mount point. You can modify the command based on your business requirements.
+
+v. Press the `Esc` key to exit the edit mode, and enter :wq to save the file and exit. Context The state of a data disk after it is re-initialized varies based on its original state when it was created and the operating system that the instance runs: The data disk is restored to the initial state when it was created: The data disk becomes an empty disk if it was originally an empty disk. The data disk stores the data recorded in the source snapshot if the data disk was created from a snapshot. For a Windows instance, after you re-initialize a data disk, the data disk is ready for use without the need for additional operations regardless of its original state. For a Linux instance: If a data disk was created from a snapshot, the data disk stores only the data recorded in the source snapshot after the data disk is re-initialized. You do not need to re-mount the partitions, but all the data generated after the disk was created is lost. If a data disk was created as an empty disk, all the data and file systems on the disk are lost after the data disk is re-initialized. You must reformat and partition the disk, and then re-mount the partitions.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1409,7 +1478,15 @@ What's next For a Linux instance, if the data disk was created as an empty disk,
 
 ### 5.13 Detach a data disk
 
-You can detach data disks but cannot detach system disks. Prerequisites Before you can detach a data disk from a Windows instance, you must bring the data disk offline by using Disk Management. Not e To avoid data loss and ensure data integrity, we recommend that you stop read and write operations on the disk before you detach it. Before you can detach a data disk from a Linux instance, you must connect to the instance and unmount all partitions on the disk. Not e If you have added an entry in the /etc/fstab file for the disk partitions to be automatically mounted on instance startup, you must delete the entry from the /etc/fstab file before you detach the disk. Otherwise, you are unable to connect to the instance after the instance is restarted. The data disk that you want to detach is in the Running state.
+You can detach data disks but cannot detach system disks. Prerequisites Before you can detach a data disk from a Windows instance, you must bring the data disk offline by using Disk Management.
+
+> Not e To avoid data loss and ensure data integrity, we recommend that you stop read and write operations on the disk before you detach it.
+
+Before you can detach a data disk from a Linux instance, you must connect to the instance and unmount all partitions on the disk.
+
+> Not e If you have added an entry in the /etc/fstab file for the disk partitions to be automatically mounted on instance startup, you must delete the entry from the /etc/fstab file before you detach the disk. Otherwise, you are unable to connect to the instance after the instance is restarted.
+
+The data disk that you want to detach is in the Running state.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1429,7 +1506,11 @@ You can release data disks that are no longer needed. Released disks cannot be r
 
 ### 6.1 Overview
 
-An image is a template for running environments within Elastic Compute Service (ECS) instances. An image includes an operating system and pre-installed applications. An image works as a copy that stores data from one or more disks. An image may store data from a system disk or from both system and data disks. You can use an image to create an ECS instance or replace the system disk of an ECS instance. Image types ECS images are classified into public images, custom images, and shared custom images based on image sources. Not e Image types and image versions are displayed in the ECS console. Public images Public images provided by Alibaba Cloud in Apsara Stack support the following Windows Server operating systems and mainstream Linux operating systems. The following table describes two types of public images provided by Alibaba Cloud.
+An image is a template for running environments within Elastic Compute Service (ECS) instances. An image includes an operating system and pre-installed applications. An image works as a copy that stores data from one or more disks. An image may store data from a system disk or from both system and data disks. You can use an image to create an ECS instance or replace the system disk of an ECS instance. Image types ECS images are classified into public images, custom images, and shared custom images based on image sources.
+
+> Not e Image types and image versions are displayed in the ECS console.
+
+Public images Public images provided by Alibaba Cloud in Apsara Stack support the following Windows Server operating systems and mainstream Linux operating systems. The following table describes two types of public images provided by Alibaba Cloud.
 
 | Type | Description | Technical support |
 |---|---|---|
@@ -1502,7 +1583,11 @@ the Act ions column.
 | Descript ion | Enter a description for the custom image. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 
 6. Click OK.
-Create a custom image from an instance You can create a custom image from an instance to replicate the data of all disks of the instance, including the system disk and data disks. Not e To avoid data security risks, we recommend that you delete sensitive data from an instance before you use the instance to create a custom image. When you create a custom image from an instance, a snapshot is automatically generated for each disk on the instance, and all the snapshots constitute a complete custom image.
+Create a custom image from an instance You can create a custom image from an instance to replicate the data of all disks of the instance, including the system disk and data disks.
+
+> Not e To avoid data security risks, we recommend that you delete sensitive data from an instance before you use the instance to create a custom image.
+
+When you create a custom image from an instance, a snapshot is automatically generated for each disk on the instance, and all the snapshots constitute a complete custom image.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1566,7 +1651,9 @@ You can share a created custom image to the organizations that you manage. Then,
 3. In the top navigation bar, select an organization, a resource set, and a region.
 4. Find the image that you want to share and click Share Image in the Act ions column.
 5. In the Share Image dialog box, select a department from the Depart ment drop-down list.
-Not e If no department list is available due to lack of permissions, you can enter the name of a level-1 organization in the Department field to share the image.
+
+> Not e If no department list is available due to lack of permissions, you can enter the name of a level-1 organization in the Department field to share the image.
+
 6. Click OK.
 
 ### 6.7 Encrypt a custom image
@@ -1643,7 +1730,11 @@ Windows images When you import Windows images, take note of the following limits
 
 #### 6.8.2 Convert the image file format
 
-You can only import image files in the RAW, VHD, and qcow2 formats to ECS. If you want to import images in other formats, you must convert the image into a supported format. This topic describes how to convert the image format in Windows and Linux. Context You can use the qemu-img tool to convert an image from VMDK, VDI, VHDX, qcow1, or QED to RAW, VHD, or qcow2, or implement conversion between RAW, VHD, and qcow2. Not e We recommend that you use the qcow2 format if your application environment supports this format. Windows
+You can only import image files in the RAW, VHD, and qcow2 formats to ECS. If you want to import images in other formats, you must convert the image into a supported format. This topic describes how to convert the image format in Windows and Linux. Context You can use the qemu-img tool to convert an image from VMDK, VDI, VHDX, qcow1, or QED to RAW, VHD, or qcow2, or implement conversion between RAW, VHD, and qcow2.
+
+> Not e We recommend that you use the qcow2 format if your application environment supports this format.
+
+Windows
 1. Download qemu.
 Visit QEMU Binaries for Windows (64 bit) to download the qemu tool. Select a qemu version based on your operating system.
 2. Install qemu.
@@ -1663,7 +1754,10 @@ image file format. The parameters are described as follows: The `-f` parameter i
 
 #### 6.8.3 Import an image
 
-After you upload a local image to an Object Storage Service (OSS) bucket, you can import the image as a custom image to Elastic Compute Service (ECS). Prerequisites An image is made. It meets the limits and requirements for image import and is in the RAW, VHD, or QCOW2 format. For more information, see Limits on importing custom images and Convert the image file format. You are authorized to import images. For more information, see the "RAM" chapter in Apsara Uni-man ager Management Console User Guide. A local image is uploaded to a bucket by using the OSS console or by calling an OSS API operation. For more information, see the "Upload objects" topic in OSS User Guide or the "PutObject" topic in OS S Developer Guide. Not e Make sure that the bucket resides in the region to which you want to import the image as a custom image.
+After you upload a local image to an Object Storage Service (OSS) bucket, you can import the image as a custom image to Elastic Compute Service (ECS). Prerequisites An image is made. It meets the limits and requirements for image import and is in the RAW, VHD, or QCOW2 format. For more information, see Limits on importing custom images and Convert the image file format. You are authorized to import images. For more information, see the "RAM" chapter in Apsara Uni-man ager Management Console User Guide. A local image is uploaded to a bucket by using the OSS console or by calling an OSS API operation. For more information, see the "Upload objects" topic in OSS User Guide or the "PutObject" topic in OS S Developer Guide.
+
+> Not e Make sure that the bucket resides in the region to which you want to import the image as a custom image.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Images.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1726,11 +1820,17 @@ To delete a single custom image, find the image and click Delet e Image in the A
 
 ### 7.1 Overview
 
-A snapshot is a copy of data on a disk at the point in time when the snapshot is created. Scenarios You can use snapshots in scenarios such as environment replication and disaster recovery: You may want to use the data of a disk as the source data for write operations or save data to a different disk. In this case, you can create a snapshot for a disk and then create another disk from the snapshot. The new disk contains the basic data of the original disk. Issues such as application errors or malicious read operations and write operations may occur on disks that store data. As a result, these disks require additional protection mechanisms. You can create snapshots at regular intervals to restore data to a previous point in time when data errors occur. How snapshots work Snapshots are created incrementally. This way, only the changed data between two snapshots is copied, as shown in Snapshots. In this example, Snapshot 1, Snapshot 2, and Snapshot 3 are the first, second, and third snapshots of a disk. When a snapshot is created, the file system checks each block of data stored on the disk, and only copies the blocks of data that are different from those on the previous snapshots. The following section describes the changes between snapshots in the preceding figure: All data on the disk is copied to Snapshot 1 because it is the first disk snapshot. The changed blocks B1 and C1 are copied to Snapshot 2. Blocks A and D are referenced from Snapshot 1. The changed block B2 is copied to Snapshot 3. Blocks A and D are referenced from Snapshot 1, and block C1 is referenced from Snapshot 2. When you want to restore the disk to the state of Snapshot 3, blocks A, B2, C1, and D are copied to the disk. This way, the disk is restored to the state of Snapshot 3. If Snapshot 2 is deleted, block B1 in the snapshot is deleted, but block C1 is retained because it is referenced by other snapshots. When you roll back a disk to Snapshot 3, block C1 is restored. Not e Snapshots are stored in Object Storage Service (OSS), but are hidden from users. Snapshots do not occupy storage space in OSS buckets. Snapshots can be managed only in the ECS console or by using API operations.
+A snapshot is a copy of data on a disk at the point in time when the snapshot is created. Scenarios You can use snapshots in scenarios such as environment replication and disaster recovery: You may want to use the data of a disk as the source data for write operations or save data to a different disk. In this case, you can create a snapshot for a disk and then create another disk from the snapshot. The new disk contains the basic data of the original disk. Issues such as application errors or malicious read operations and write operations may occur on disks that store data. As a result, these disks require additional protection mechanisms. You can create snapshots at regular intervals to restore data to a previous point in time when data errors occur. How snapshots work Snapshots are created incrementally. This way, only the changed data between two snapshots is copied, as shown in Snapshots. In this example, Snapshot 1, Snapshot 2, and Snapshot 3 are the first, second, and third snapshots of a disk. When a snapshot is created, the file system checks each block of data stored on the disk, and only copies the blocks of data that are different from those on the previous snapshots. The following section describes the changes between snapshots in the preceding figure: All data on the disk is copied to Snapshot 1 because it is the first disk snapshot. The changed blocks B1 and C1 are copied to Snapshot 2. Blocks A and D are referenced from Snapshot 1. The changed block B2 is copied to Snapshot 3. Blocks A and D are referenced from Snapshot 1, and block C1 is referenced from Snapshot 2. When you want to restore the disk to the state of Snapshot 3, blocks A, B2, C1, and D are copied to the disk. This way, the disk is restored to the state of Snapshot 3. If Snapshot 2 is deleted, block B1 in the snapshot is deleted, but block C1 is retained because it is referenced by other snapshots. When you roll back a disk to Snapshot 3, block C1 is restored.
+
+> Not e Snapshots are stored in Object Storage Service (OSS), but are hidden from users. Snapshots do not occupy storage space in OSS buckets. Snapshots can be managed only in the ECS console or by using API operations.
 
 ### 7.2 Create a snapshot
 
-You can manually create snapshots for disks to back up disk data. Prerequisites The associated instance of the disk for which you want to create a snapshot is in the Running or St opped state. The disk is in the Running state. Context Up to 64 snapshots can be retained for each disk. Snapshots can be used in the following scenarios: Roll back data on disks For more information, see Restore a disk. For more information, see Create a custom image from a snapshot. Data disk snapshots cannot be used to create custom images. Create a data disk from a data disk snapshot To create a data disk from a snapshot, set Use Snapshot to Yes and then specify a snapshot on the Create Disk page. For more information, see Create a disk. The created disk size is determined by the size of the specified snapshot and cannot be changed. When you re-initialize a data disk created from a snapshot, the disk is restored to the state of the snapshot. When you create a snapshot, take note of the following items: For each disk, the first snapshot is a full snapshot and subsequent snapshots are incremental snapshots. It takes longer to create the first snapshot. The amount of time it takes to create an incremental snapshot depends on the volume of data that has been changed since the last snapshot. The more data that has changed, the longer it takes. Not e If you want to use a snapshot immediately after it is created, you can enable the instant access feature. We recommend that you create snapshots during off-peak hours.
+You can manually create snapshots for disks to back up disk data. Prerequisites The associated instance of the disk for which you want to create a snapshot is in the Running or St opped state. The disk is in the Running state. Context Up to 64 snapshots can be retained for each disk. Snapshots can be used in the following scenarios: Roll back data on disks For more information, see Restore a disk. For more information, see Create a custom image from a snapshot. Data disk snapshots cannot be used to create custom images. Create a data disk from a data disk snapshot To create a data disk from a snapshot, set Use Snapshot to Yes and then specify a snapshot on the Create Disk page. For more information, see Create a disk. The created disk size is determined by the size of the specified snapshot and cannot be changed. When you re-initialize a data disk created from a snapshot, the disk is restored to the state of the snapshot. When you create a snapshot, take note of the following items: For each disk, the first snapshot is a full snapshot and subsequent snapshots are incremental snapshots. It takes longer to create the first snapshot. The amount of time it takes to create an incremental snapshot depends on the volume of data that has been changed since the last snapshot. The more data that has changed, the longer it takes.
+
+> Not e If you want to use a snapshot immediately after it is created, you can enable the instant access feature.
+
+We recommend that you create snapshots during off-peak hours.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1846,7 +1946,11 @@ What's next After the snapshot-consistent group is created, you can use it to ro
 
 ### 8.2 Roll back disks by using a snapshot-consistent group
 
-snapshot-consistent group After a snapshot-consistent group is created, you can use it to roll back one or more disks in the event of system failures or data errors caused by accidental operations. Prerequisites Before you use a snapshot-consistent group to roll back disks on an Elastic Compute Service (ECS) instance, make sure that the following requirements are met: A snapshot-consistent group is created based on the disks. For more information, see Create a snapshot-consistent group. Import ant The rollback operation cannot be reversed. If data changes were made to the disk from the time the snapshot-consistent group was created until the disk is rolled back, all these data changes are lost. To prevent data loss caused by accidental operations, we recommend that you create a snapshot-consistent group to back up disk data before you roll back disks. The instance to which the disks to be rolled back are attached is in the St opped state. For more information, see Stop an instance. The disks that correspond to the snapshots contained in the snapshot-consistent group have not been released or detached or do not have snapshots being created. The operating system of the instance has not been replaced since the snapshot-consistent group was created. The snapshots of the disks have not been deleted from the snapshot-consistent group. If the snapshot of a disk has been deleted from the snapshot-consistent group, the disk cannot be rolled back by using the snapshot-consistent group. The snapshot-consistent group can be used to roll back only other disks whose snapshots are contained in the group.
+snapshot-consistent group After a snapshot-consistent group is created, you can use it to roll back one or more disks in the event of system failures or data errors caused by accidental operations. Prerequisites Before you use a snapshot-consistent group to roll back disks on an Elastic Compute Service (ECS) instance, make sure that the following requirements are met: A snapshot-consistent group is created based on the disks. For more information, see Create a snapshot-consistent group.
+
+> Import ant The rollback operation cannot be reversed. If data changes were made to the disk from the time the snapshot-consistent group was created until the disk is rolled back, all these data changes are lost. To prevent data loss caused by accidental operations, we recommend that you create a snapshot-consistent group to back up disk data before you roll back disks.
+
+The instance to which the disks to be rolled back are attached is in the St opped state. For more information, see Stop an instance. The disks that correspond to the snapshots contained in the snapshot-consistent group have not been released or detached or do not have snapshots being created. The operating system of the instance has not been replaced since the snapshot-consistent group was created. The snapshots of the disks have not been deleted from the snapshot-consistent group. If the snapshot of a disk has been deleted from the snapshot-consistent group, the disk cannot be rolled back by using the snapshot-consistent group. The snapshot-consistent group can be used to roll back only other disks whose snapshots are contained in the group.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2135,7 +2239,10 @@ To delete a single rule, find the rule and click Delet e in the Act ions column.
 
 ### 11.1 Attach an instance RAM role to an ECS instance
 
-an ECS instance This topic describes how to attach an instance RAM role to an Elastic Compute Service (ECS) instance. Prerequisites An instance RAM role is created. For more information, see Create an instance RAM role in Apsara Unimanager Management Console User Guide. The ECS instance to which you want to attach a RAM role is located in a virtual private cloud (VPC). Not e An instance RAM role can be attached to a single instance at a time.
+an ECS instance This topic describes how to attach an instance RAM role to an Elastic Compute Service (ECS) instance. Prerequisites An instance RAM role is created. For more information, see Create an instance RAM role in Apsara Unimanager Management Console User Guide. The ECS instance to which you want to attach a RAM role is located in a virtual private cloud (VPC).
+
+> Not e An instance RAM role can be attached to a single instance at a time.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2282,13 +2389,20 @@ You can run the `route -n` command to check route information. If no routes are 
 ip address show
 ```
 
-Sample command outputs: The following command output shows that the IP address of the eth0 primary ENI is recognized but the IP address of the eth1 secondary ENI is not recognized. You can perform operations described in this topic to configure the secondary ENI. es The following command output shows that the IP addresses of both the eth0 primary ENI and the eth1 secondary ENI are recognized. You do not need to configure the secondary ENI. Not e In the preceding command outputs, `00:16:3e:16:**:**` is the MAC address of the primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI. Obtain the information of an ENI You can obtain the information of an ENI from instance metadata, by using the ECS console, or by calling an API operation. Obtain the information of an ENI from instance metadata. Obtain the MAC addresses of the ENIs that are bound to an instance.
+Sample command outputs: The following command output shows that the IP address of the eth0 primary ENI is recognized but the IP address of the eth1 secondary ENI is not recognized. You can perform operations described in this topic to configure the secondary ENI. es The following command output shows that the IP addresses of both the eth0 primary ENI and the eth1 secondary ENI are recognized. You do not need to configure the secondary ENI.
+
+> Not e In the preceding command outputs, `00:16:3e:16:**:**` is the MAC address of the
+> primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI.
+
+Obtain the information of an ENI You can obtain the information of an ENI from instance metadata, by using the ECS console, or by calling an API operation. Obtain the information of an ENI from instance metadata. Obtain the MAC addresses of the ENIs that are bound to an instance.
 
 ```bash
 curl http://100.100.100.200/latest/meta-data/network/interfaces/macs/
 ```
 
-Not e The MAC addresses of ENIs are required to obtain their primary private IP addresses, subnet masks, and gateway addresses. Obtain the primary private IP address of the specified ENI.
+> Not e The MAC addresses of ENIs are required to obtain their primary private IP addresses, subnet masks, and gateway addresses.
+
+Obtain the primary private IP address of the specified ENI.
 
 ```bash
 curl http://100.100.100.200/latest/meta-data/network/interfaces/macs/00:16:3e:19:**:**/ primary-ip-address
@@ -2306,7 +2420,12 @@ es Obtain the gateway address of the specified ENI.
 curl http://100.100.100.200/latest/meta-data/network/interfaces/macs/00:16:3e:19:**:**/ gateway
 ```
 
-The following figure shows sample command outputs. In the command outputs, `00:16:3e:16:**:**` is the MAC address of the primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI. Not e After you run the `ip address show` command, you can determine which is the primary ENI and which is the secondary ENI based on the order in which the MAC addresses are displayed in the command output. Obtain the information of an ENI by using the ECS console. i. Log on to the ECS console. ii. In the left-side navigation pane, choose Net work & Securit y > ENIs. iii. On the ENI page, find the ENI whose information you want to query and view its primary private IP address and MAC address in the Private IP Address and ENI Type/MAC Address columns. The following figure shows an example of the ENI page in the ECS console. Obtain the information of an ENI by using an Alibaba Cloud SDK to call the DescribeNetworkInterfaces operation.
+The following figure shows sample command outputs. In the command outputs, `00:16:3e:16:**:**` is the MAC address of the primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI.
+
+> Not e After you run the `ip address show` command, you can determine which is the
+> primary ENI and which is the secondary ENI based on the order in which the MAC addresses are displayed in the command output.
+
+Obtain the information of an ENI by using the ECS console. i. Log on to the ECS console. ii. In the left-side navigation pane, choose Net work & Securit y > ENIs. iii. On the ENI page, find the ENI whose information you want to query and view its primary private IP address and MAC address in the Private IP Address and ENI Type/MAC Address columns. The following figure shows an example of the ENI page in the ECS console. Obtain the information of an ENI by using an Alibaba Cloud SDK to call the DescribeNetworkInterfaces operation.
 
 ```
 aliyun ecs DescribeNetworkInterfaces \ --output cols=MacAddress,PrivateIpAddress rows=NetworkInterfaceSets.NetworkInterfaceSet[]
@@ -2318,7 +2437,16 @@ aliyun ecs DescribeNetworkInterfaces \ --output cols=MacAddress,PrivateIpAddress
 --RegionId 'cn-qingdao-****-d01' \ --InstanceId 'i-bp1a5gj0bzhwz7q****'
 ```
 
-The following figure shows the sample response. In the response, `00:16:3e:16:**:**` is the MAC address of the primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI. Not e After you run the `ip address show` command, you can determine which is the primary ENI and which is the secondary ENI based on the order in which the MAC addresses are displayed in the command output. es Configure a secondary ENI for an instance that runs an Alibaba Cloud Linux 2, CentOS 6, or CentOS 7 operating system and uses the network-scripts network service If your instance runs an Alibaba Cloud Linux 2, CentOS 6, or CentOS 7 operating system and uses the network-scripts network service, you can use the multi-nic-util tool to have the ENIs of the instance automatically configured or you can manually configure the ENIs by modifying their configuration files. Use the multi-nic-util tool to have a secondary ENI automatically configured. Not e If you want to use the multi-nic-util tool to have secondary ENIs automatically configured for CentOS instances, note that the multi-nic-util tool is supported only on some versions of CentOS images. If your instance uses a CentOS 6 image, make sure that the image version is CentOS 6.8 or later. If your instance uses a CentOS 7 image, make sure that the image version is CentOS 7.3 or later. If the multi-nic-util tool is not supported on the image version that your instance uses, manually configure secondary ENIs by modifying their configuration files. i. Download and install the multi-nic-util tool.
+The following figure shows the sample response. In the response, `00:16:3e:16:**:**` is the MAC address of the primary ENI and `00:16:3e:0f:**:**` is the MAC address of the secondary ENI.
+
+> Not e After you run the `ip address show` command, you can determine which is the
+> primary ENI and which is the secondary ENI based on the order in which the MAC addresses are displayed in the command output.
+
+es Configure a secondary ENI for an instance that runs an Alibaba Cloud Linux 2, CentOS 6, or CentOS 7 operating system and uses the network-scripts network service If your instance runs an Alibaba Cloud Linux 2, CentOS 6, or CentOS 7 operating system and uses the network-scripts network service, you can use the multi-nic-util tool to have the ENIs of the instance automatically configured or you can manually configure the ENIs by modifying their configuration files. Use the multi-nic-util tool to have a secondary ENI automatically configured.
+
+> Not e If you want to use the multi-nic-util tool to have secondary ENIs automatically configured for CentOS instances, note that the multi-nic-util tool is supported only on some versions of CentOS images. If your instance uses a CentOS 6 image, make sure that the image version is CentOS 6.8 or later. If your instance uses a CentOS 7 image, make sure that the image version is CentOS 7.3 or later. If the multi-nic-util tool is not supported on the image version that your instance uses, manually configure secondary ENIs by modifying their configuration files.
+
+i. Download and install the multi-nic-util tool.
 
 ```
 wget https://image-offline.oss-cn-hangzhou.aliyuncs.com/multi-nic-util/multi-nic-util-0 .6.tgz && \ tar -zxvf multi-nic-util-0.6.tgz && \ cd multi-nic-util-0.6 && \ bash install.sh
@@ -2354,7 +2482,13 @@ For CentOS 7 or later and Alibaba Cloud Linux 2, run the following command:
 systemctl restart network
 ```
 
-Not e After you configure the secondary ENI, you can configure routes for the ENI. For more information, see Configure routes for a secondary ENI of an instance that runs an Alibaba Cloud Linux 2 or CentOS 7 operating system. If you want to create custom images from the instance whose ENIs are configured, you must first run the /et c/eni_ut ils/eni-cleanup command to remove network configurations from /etc/udev/rules.d/70-persistent-net.rules and /etc/sysconfig/network-scripts/. Configure a secondary ENI for an instance that runs an Alibaba Cloud Linux 2 operating system and uses the systemd-networkd network service If your instance runs an Alibaba Cloud Linux 2 operating system and uses the systemd-networkd network service, you must manually configure a secondary ENI by modifying the configuration file of the ENI.
+> Not e
+
+After you configure the secondary ENI, you can configure routes for the ENI. For more information, see Configure routes for a secondary ENI of an instance that runs an Alibaba Cloud Linux 2 or CentOS 7 operating system.
+
+> If you want to create custom images from the instance whose ENIs are configured, you must first run the /et c/eni_ut ils/eni-cleanup command to remove network configurations from /etc/udev/rules.d/70-persistent-net.rules and /etc/sysconfig/network-scripts/.
+
+Configure a secondary ENI for an instance that runs an Alibaba Cloud Linux 2 operating system and uses the systemd-networkd network service If your instance runs an Alibaba Cloud Linux 2 operating system and uses the systemd-networkd network service, you must manually configure a secondary ENI by modifying the configuration file of the ENI.
 1. Open the configuration file of the secondary ENI.
 
 ```
@@ -2374,7 +2508,11 @@ Assign a static IP address to the secondary ENI.
 [Match] Name=eth1 # Specify the ENI that you want to configure. [Network] Address=192.168.**.*2/24 # Specify the static IP address and subnet mask to be assigned
 ```
 
-`.` Not e In the preceding example, `192.168.**.*2` is the primary private IP address and the `/24` subnet mask is `255.255.255.0` .
+`.`
+
+> Not e In the preceding example, `192.168.**.*2` is the primary private IP address and
+> the `/24` subnet mask is `255.255.255.0` .
+
 3. Restart the network service.
 
 ```bash
@@ -2393,7 +2531,9 @@ ii. Add the information of the secondary ENI to the configuration file. Then, sa
 auto eth0 iface eth0 inet dhcp auto eth1 # Specify the ENI that you want to configure. iface eth1 inet dhcp
 ```
 
-Not e The eth0 primary ENI is configured in the same configuration file as the eth1 secondary ENI. You must also add the information of the primary ENI to the configuration file. iii. Restart the network service. For versions earlier than Ubuntu 16.04, such as Ubuntu 14.04, run the following command:
+> Not e The eth0 primary ENI is configured in the same configuration file as the eth1 secondary ENI. You must also add the information of the primary ENI to the configuration file.
+
+iii. Restart the network service. For versions earlier than Ubuntu 16.04, such as Ubuntu 14.04, run the following command:
 
 ```
 service networking restart
@@ -2411,7 +2551,15 @@ The configurations of the secondary ENI take effect regardless of whether the fo
 vi /etc/netplan/eth1-netcfg.yaml
 ```
 
-ii. Add the information of the secondary ENI to the configuration file. Then, save and close the configuration file. Not e When you modify the configuration file, take note of the following items: The configuration file is in the `YAML` format. You must follow the `YAML` syntax rules when you configure the file. Tabs cannot be used for indentation in `YAML` files. Use spaces instead. We recommend that you copy information from the default /etc/netplan/99-netcfg.ya ml configuration file to prevent format issues. The following section provides an example of the ENI information to add to the configuration file:
+ii. Add the information of the secondary ENI to the configuration file. Then, save and close the configuration file.
+
+> Not e When you modify the configuration file, take note of the following items:
+> The configuration file is in the `YAML` format. You must follow the `YAML` syntax
+> rules when you configure the file.
+> Tabs cannot be used for indentation in `YAML` files. Use spaces instead.
+> We recommend that you copy information from the default /etc/netplan/99-netcfg.ya ml configuration file to prevent format issues.
+
+The following section provides an example of the ENI information to add to the configuration file:
 
 ```
 network:
@@ -2658,7 +2806,11 @@ You can delete a secondary elastic network interface (ENI) that is no longer nee
 
 ### 13.1 Overview
 
-Key pairs are a secure and convenient authentication method provided by Alibaba Cloud for Elastic Compute Service (ECS) instance logons. A key pair consists of a public key and a private key. Only Linux instances support logon based on key pairs. Introduction A key pair consists of a pair of public and private keys that are generated based on an encryption algorithm. By default, 2048-bit RSA key pairs are used. Before you log on to a Linux instance by using a key pair, you must first create the key pair. You can specify a key pair when you create an instance, or bind a key pair to an instance after the instance is created. Then, you can use the private key to connect to the instance. Benefits Key-based authentication has the following advantages over username and password-based authentication: Security: Key pairs provide higher security and reliability for logons. Key pairs are more secure than general user passwords against brute-force attacks. Private keys cannot be deduced even if the public keys are maliciously acquired. Ease of use: If you configure a public key on a Linux instance, you can use the corresponding private key to run SSH commands or other tools for passwordless logon to the instance. You can log on to a large number of Linux instances at the same time. If you want to manage multiple Linux instances, we recommend that you use this method. Limits Key pairs have the following limits: If you use a key pair to log on to a Linux instance, the password logon method is disabled for higher security. Key pairs apply only to Linux instances. Currently, only RSA 2048-bit key pairs can be created in the ECS console. Only a single key pair can be bound to each Linux instance in the ECS console. If you bind a key pair to an instance to which another key pair is already bound, the new key pair replaces the original one. If you want to use multiple key pairs to log on to a Linux instance, you must manually modify the ~/.ssh /authorized_keys file from within the instance to add multiple key pairs. If you bind a key pair to or unbind a key pair from an instance in the Running ( `Running` ) state, you must restart the instance for the operation to take effect. This enhances data security. Creation methods You can use one of the following methods to create a key pair: Create a key pair in the ECS console. By default, the key pair is generated in the RSA 2048-bit format. For more information, see Create a key pair. Import ant If you create a key pair in the ECS console, you must download and securely lock away the private key. After the key pair is bound to an instance, you cannot log on to the instance if you do not have the private key. Create a key pair by using a key pair generator and then import the key pair to the ECS console. The imported key pair must support one of the following encryption methods: rsa dsa ssh-rsa ssh-dss ecdsa ssh-rsa-cert-v00@openssh.com ssh-dss-cert-v00@openssh.com ssh-rsa-cert-v01@openssh.com ssh-dss-cert-v01@openssh.com ecdsa-sha2-nistp256-cert-v01@openssh.com ecdsa-sha2-nistp384-cert-v01@openssh.com ecdsa-sha2-nistp521-cert-v01@openssh.com
+Key pairs are a secure and convenient authentication method provided by Alibaba Cloud for Elastic Compute Service (ECS) instance logons. A key pair consists of a public key and a private key. Only Linux instances support logon based on key pairs. Introduction A key pair consists of a pair of public and private keys that are generated based on an encryption algorithm. By default, 2048-bit RSA key pairs are used. Before you log on to a Linux instance by using a key pair, you must first create the key pair. You can specify a key pair when you create an instance, or bind a key pair to an instance after the instance is created. Then, you can use the private key to connect to the instance. Benefits Key-based authentication has the following advantages over username and password-based authentication: Security: Key pairs provide higher security and reliability for logons. Key pairs are more secure than general user passwords against brute-force attacks. Private keys cannot be deduced even if the public keys are maliciously acquired. Ease of use: If you configure a public key on a Linux instance, you can use the corresponding private key to run SSH commands or other tools for passwordless logon to the instance. You can log on to a large number of Linux instances at the same time. If you want to manage multiple Linux instances, we recommend that you use this method. Limits Key pairs have the following limits: If you use a key pair to log on to a Linux instance, the password logon method is disabled for higher security. Key pairs apply only to Linux instances. Currently, only RSA 2048-bit key pairs can be created in the ECS console. Only a single key pair can be bound to each Linux instance in the ECS console. If you bind a key pair to an instance to which another key pair is already bound, the new key pair replaces the original one. If you want to use multiple key pairs to log on to a Linux instance, you must manually modify the ~/.ssh /authorized_keys file from within the instance to add multiple key pairs. If you bind a key pair to or unbind a key pair from an instance in the Running ( `Running` ) state, you must restart the instance for the operation to take effect. This enhances data security. Creation methods You can use one of the following methods to create a key pair: Create a key pair in the ECS console. By default, the key pair is generated in the RSA 2048-bit format. For more information, see Create a key pair.
+
+> Import ant If you create a key pair in the ECS console, you must download and securely lock away the private key. After the key pair is bound to an instance, you cannot log on to the instance if you do not have the private key.
+
+Create a key pair by using a key pair generator and then import the key pair to the ECS console. The imported key pair must support one of the following encryption methods: rsa dsa ssh-rsa ssh-dss ecdsa ssh-rsa-cert-v00@openssh.com ssh-dss-cert-v00@openssh.com ssh-rsa-cert-v01@openssh.com ssh-dss-cert-v01@openssh.com ecdsa-sha2-nistp256-cert-v01@openssh.com ecdsa-sha2-nistp384-cert-v01@openssh.com ecdsa-sha2-nistp521-cert-v01@openssh.com
 
 ### 13.2 Create a key pair
 
@@ -2683,7 +2835,11 @@ This topic describes how to create a key pair in the Apsara Uni-manager Manageme
 |   | Creation Mode | Yes | Select a method of creating the key pair. We recommend that you select Aut o-creat e. Then, you must securely store the private key in a timely manner and ensure its confidentiality. Aut o-creat e: The system creates a key pair for you. The private key is automatically downloaded after the key pair is created. The private key can be downloaded only once. You must securely store the private key file and ensure its confidentiality. Import : You can enter a Base64-encoded public key in the Public Key field. |
 
 5. Click Creat e.
-Result After the key pair is created, your browser downloads the private key file to your computer. Import ant Private key files are downloaded to your computer only when Auto-create is selected. Private key files are not saved in the ECS console and cannot be recovered if they are lost. Make sure that you securely store your private key files to ensure their confidentiality. What's next Before you can use a created key pair to log on to an instance, you must bind the key pair to the instance. For more information, see Bind a key pair to an instance.
+Result After the key pair is created, your browser downloads the private key file to your computer.
+
+> Import ant Private key files are downloaded to your computer only when Auto-create is selected. Private key files are not saved in the ECS console and cannot be recovered if they are lost. Make sure that you securely store your private key files to ensure their confidentiality.
+
+What's next Before you can use a created key pair to log on to an instance, you must bind the key pair to the instance. For more information, see Bind a key pair to an instance.
 
 ### 13.3 Bind a key pair to an instance
 
@@ -2709,13 +2865,19 @@ This topic describes how to unbind an SSH key pair in the Elastic Compute Servic
 which you want to unbind the key pair. Then, the instance is moved to the right-hand column.
 6. Click OK.
 7. If the selected ECS instance is in the Running (Running) state, perform the following operations to
-restart the instance to make the binding operation take effect: i. In the left-side navigation pane, choose Inst ances & Images > Inst ances. ii. Find the instance that you want to restart and choose Inst ance St at us > Rest art Inst ance in the Act ions column. iii. In the message that appears, click Rest art Inst ance. What's next After the SSH key pair is unbound, you must reset the password of the instance before you log on to the instance as the root user. For more information, see Change the logon password of an instance. Not e If you have reset the password before you unbind the key pair, you can log on by using the new password after you unbind the key pair.
+restart the instance to make the binding operation take effect: i. In the left-side navigation pane, choose Inst ances & Images > Inst ances. ii. Find the instance that you want to restart and choose Inst ance St at us > Rest art Inst ance in the Act ions column. iii. In the message that appears, click Rest art Inst ance. What's next After the SSH key pair is unbound, you must reset the password of the instance before you log on to the instance as the root user. For more information, see Change the logon password of an instance.
+
+> Not e If you have reset the password before you unbind the key pair, you can log on by using the new password after you unbind the key pair.
 
 ## 14 Deployment sets
 
 ### 14.1 Overview
 
-Deployment Set is a service provided by Elastic Compute Service (ECS) that allows you to view the physical topology of hosts, racks, and vSwitches. You can select deployment policies based on your business requirements to improve the reliability and performance of your business. Benefits When you use multiple ECS instances within the same zone, you may have the following requirements on business reliability or performance: High business reliability To prevent the impacts caused by the failure of physical hosts, racks, or vSwitches, you want to distribute identical application instances across different physical hosts, racks, or vSwitches. High network performance In scenarios that involve frequent network interactions between instances, you want to associate the instances with the same vSwitch to achieve low-latency and high-bandwidth communication between the instances. Deployment granularities and policies Deployment Granularit y Host : The minimum granularity for scheduling is a physical server. Not e When you create a deployment set, Deployment Granularit y is set to Host by default. Rack: The minimum granularity for scheduling is a rack. Net work Swit ch: The minimum granularity for scheduling is a vSwitch. Deployment policy Loose Aggregat ion St rict Aggregat ion Loose Dispersion St rict Dispersion Loose Aggregat ion and St rict Aggregat ion are intended for higher performance, while Loose Dispersion and St rict Dispersion are intended for higher availability. The following Granularities and policies table describes the deployment policies and use scenarios corresponding to each deployment granularity. Granularities and policies
+Deployment Set is a service provided by Elastic Compute Service (ECS) that allows you to view the physical topology of hosts, racks, and vSwitches. You can select deployment policies based on your business requirements to improve the reliability and performance of your business. Benefits When you use multiple ECS instances within the same zone, you may have the following requirements on business reliability or performance: High business reliability To prevent the impacts caused by the failure of physical hosts, racks, or vSwitches, you want to distribute identical application instances across different physical hosts, racks, or vSwitches. High network performance In scenarios that involve frequent network interactions between instances, you want to associate the instances with the same vSwitch to achieve low-latency and high-bandwidth communication between the instances. Deployment granularities and policies Deployment Granularit y Host : The minimum granularity for scheduling is a physical server.
+
+> Not e When you create a deployment set, Deployment Granularit y is set to Host by default.
+
+Rack: The minimum granularity for scheduling is a rack. Net work Swit ch: The minimum granularity for scheduling is a vSwitch. Deployment policy Loose Aggregat ion St rict Aggregat ion Loose Dispersion St rict Dispersion Loose Aggregat ion and St rict Aggregat ion are intended for higher performance, while Loose Dispersion and St rict Dispersion are intended for higher availability. The following Granularities and policies table describes the deployment policies and use scenarios corresponding to each deployment granularity. Granularities and policies
 
 | Deployment granularity | Deployment policy | Use Scenario |
 |---|---|---|
@@ -2733,7 +2895,9 @@ Deployment Set is a service provided by Elastic Compute Service (ECS) that allow
 |   | Strict aggregation | Big data and databases |
 |   | Loose aggregation | Game customers |
 
-Example The following figure shows a typical scenario where business reliability is improved by using deployment sets. Three ECS instances of a tenant are distributed on three different physical hosts, which are distributed on at least two different racks. Not e For more information about the deployment set APIs, see Deployment sets in ECS Developer Guide.
+Example The following figure shows a typical scenario where business reliability is improved by using deployment sets. Three ECS instances of a tenant are distributed on three different physical hosts, which are distributed on at least two different racks.
+
+> Not e For more information about the deployment set APIs, see Deployment sets in ECS Developer Guide.
 
 ### 14.2 Create a deployment set
 
@@ -2901,7 +3065,15 @@ After the instance is reclaimed, St opped - Pending Release is displayed in the 
 
 ### 16.1 Overview
 
-Cloud Assistant is a native automated operations and maintenance (O&M) tool developed for Elastic Compute Service (ECS). It allows you to batch maintain ECS instances and batch run commands on and send files to ECS instances in a password-free, logon-free manner without the use of jump servers. These commands can consist of shell, PowerShell, or batch scripts. Typically, you can use Cloud Assistant to install and uninstall software, start and stop services, distribute configuration files, and run commonly used commands (scripts). Features After ECS instances that have the Cloud Assistant client installed enter the Running ( `Running` ) state, you can use Cloud Assistant to perform the following operations on the instances by using the ECS console or by calling API operations: Run batch and PowerShell scripts on Windows instances, or run shell, Python, and Perl scripts on Linux instances. Upload files to the instances. Run the same command on multiple instances. The execution state and results of one instance do not affect other instances. Configure custom parameters in Cloud Assistant commands to adapt to different scenarios. Not e Cloud Assistant does not proactively initiate any operations. You have full control over all Cloud Assistant operations. Use scenarios Cloud Assistant can help you perform deployment and O&M tasks on ECS instances. The following list provides some examples: Uploading and running automated O&M scripts Running scripts that are already uploaded to instances Managing software lifecycle Deploying code or applications Polling processes Installing service-related patches or security updates Obtaining files from Object Storage Service (OSS) or YUM repositories to update applications on ECS Changing hostnames or user logon passwords Limits Recurring Cloud Assistant tasks can be configured only by calling API operations. The interval at which a command is run cannot be less than 10 seconds. The size of a command cannot exceed 16 KB. This includes the total size of the Base64-encoded batch, PowerShell, or shell scripts together with the Base64-encoded custom parameters. The size of a file to be uploaded cannot exceed 32 KB after Base64 encoding. Each command can contain a maximum of 20 custom parameters. Cloud Assistant commands can be run only on instances that use the following operating systems: Alibaba Cloud Linux CentOS 7, CentOS 8, and later Not e CentOS 8 has reached its end of life (EOL) and is no longer maintained by the Linux community. We recommend that you migrate to Anolis or Alibaba Cloud Linux. Debian 9 OpenSUSE SUSE Linux Enterprise Server (SLES) 11, SLES 12, and SLES 15 and later Ubuntu 14, Ubuntu 16, and Ubuntu 18 and later Windows Server 2012, Windows Server 2016, and Windows Server 2019 and later Terms The following table describes relevant terms in Cloud Assistant.
+Cloud Assistant is a native automated operations and maintenance (O&M) tool developed for Elastic Compute Service (ECS). It allows you to batch maintain ECS instances and batch run commands on and send files to ECS instances in a password-free, logon-free manner without the use of jump servers. These commands can consist of shell, PowerShell, or batch scripts. Typically, you can use Cloud Assistant to install and uninstall software, start and stop services, distribute configuration files, and run commonly used commands (scripts). Features After ECS instances that have the Cloud Assistant client installed enter the Running ( `Running` ) state, you can use Cloud Assistant to perform the following operations on the instances by using the ECS console or by calling API operations: Run batch and PowerShell scripts on Windows instances, or run shell, Python, and Perl scripts on Linux instances. Upload files to the instances. Run the same command on multiple instances. The execution state and results of one instance do not affect other instances. Configure custom parameters in Cloud Assistant commands to adapt to different scenarios.
+
+> Not e Cloud Assistant does not proactively initiate any operations. You have full control over all Cloud Assistant operations.
+
+Use scenarios Cloud Assistant can help you perform deployment and O&M tasks on ECS instances. The following list provides some examples: Uploading and running automated O&M scripts Running scripts that are already uploaded to instances Managing software lifecycle Deploying code or applications Polling processes Installing service-related patches or security updates Obtaining files from Object Storage Service (OSS) or YUM repositories to update applications on ECS Changing hostnames or user logon passwords Limits Recurring Cloud Assistant tasks can be configured only by calling API operations. The interval at which a command is run cannot be less than 10 seconds. The size of a command cannot exceed 16 KB. This includes the total size of the Base64-encoded batch, PowerShell, or shell scripts together with the Base64-encoded custom parameters. The size of a file to be uploaded cannot exceed 32 KB after Base64 encoding. Each command can contain a maximum of 20 custom parameters. Cloud Assistant commands can be run only on instances that use the following operating systems: Alibaba Cloud Linux CentOS 7, CentOS 8, and later
+
+> Not e CentOS 8 has reached its end of life (EOL) and is no longer maintained by the Linux community. We recommend that you migrate to Anolis or Alibaba Cloud Linux.
+
+Debian 9 OpenSUSE SUSE Linux Enterprise Server (SLES) 11, SLES 12, and SLES 15 and later Ubuntu 14, Ubuntu 16, and Ubuntu 18 and later Windows Server 2012, Windows Server 2016, and Windows Server 2019 and later Terms The following table describes relevant terms in Cloud Assistant.
 
 | Term | Description |
 |---|---|
@@ -2981,7 +3153,8 @@ You can download the installation file for a specific version of the Cloud Assis
 https://aliyun-client-assist.oss-accelerate.aliyuncs.com/windows/aliyun_agent_{version} _setup.exe
 ```
 
-Not e {version} indicates the version number of the Cloud Assistant client.
+> Not e {version} indicates the version number of the Cloud Assistant client.
+
 3. Double-click the installation file and install the client as instructed.
 The default installation path is C:\ProgramData\aliyun\assist\ for Windows instances. Install the client on Linux instances by using the RPM package This method is applicable to operating systems such as Alibaba Cloud Linux, CentOS, openSUSE, and SUSE Linux.
 1. Connect to an ECS instance as the administrator.
@@ -2992,7 +3165,8 @@ For more information, see Instance connecting overview.
 wget "https://aliyun-client-assist.oss-accelerate.aliyuncs.com/linux/aliyun_assist_latest .rpm"
 ```
 
-Not e {version} indicates the version number of the Cloud Assistant client.
+> Not e {version} indicates the version number of the Cloud Assistant client.
+
 3. Install the Cloud Assistant client.
 In this example, the latest version of the Cloud Assistant client is installed.
 
@@ -3000,7 +3174,9 @@ In this example, the latest version of the Cloud Assistant client is installed.
 rpm -ivh --force aliyun_assist_latest.rpm
 ```
 
-Not e The default installation path is /usr/local/share/aliyun-assist/ for Linux instances. Install the client on Linux instances by using the Debian package This method is applicable to operating systems such as Debian and Ubuntu.
+> Not e The default installation path is /usr/local/share/aliyun-assist/ for Linux instances.
+
+Install the client on Linux instances by using the Debian package This method is applicable to operating systems such as Debian and Ubuntu.
 1. Connect to an ECS instance as the administrator.
 For more information, see Instance connecting overview.
 2. Download the Debian package for a specific version of the Cloud Assistant client from one of the
@@ -3016,7 +3192,8 @@ Public URL for a specified version:
 wget "https://aliyun-client-assist.oss-accelerate.aliyuncs.com/linux/aliyun_assist_{ver sion}.deb"
 ```
 
-Not e {version} indicates the version number of the Cloud Assistant client.
+> Not e {version} indicates the version number of the Cloud Assistant client.
+
 3. If an earlier version of the Cloud Assistant client is installed on the instance, uninstall the earlier
 version.
 
@@ -3031,7 +3208,9 @@ In this example, the latest version of the Cloud Assistant client is installed.
 dpkg -i aliyun_assist_latest.deb
 ```
 
-Not e The default installation path is /usr/local/share/aliyun-assist/ for Linux instances. Install the client on Linux instances by using source code
+> Not e The default installation path is /usr/local/share/aliyun-assist/ for Linux instances.
+
+Install the client on Linux instances by using source code
 1. Connect to an ECS instance as the administrator.
 For more information, see Instance connecting overview.
 2. Install necessary software such as Git and Go.
@@ -3084,14 +3263,18 @@ instances within the current region.
 Assistant This topic describes how to configure Domain Name System (DNS) resolution for Cloud Assistant. During the configuration procedure, you must obtain the IP addresses that correspond to the Cloud Assistant endpoints and then modify the hosts file. Context When you use features such as Cloud Assistant on an Elastic Compute Service (ECS) instance, the instance must have access to the endpoints required to perform actions that you specify, such as running a Cloud Assistant command. The default DNS Nameserver is installed on each ECS instance to resolve domain names. You can run the cat /et c/resolv.conf command to view the DNS Nameserver settings. Example command output: If you modify the configuration file to override the default DNS Nameserver settings, domain names may fail to resolve or resolve slowly when you use features such as Cloud Assistant. This may cause the features to be unavailable. For example, Cloud Assistant commands cannot be run. In this case, you can perform the following procedure to configure DNS resolution for Cloud Assistant.
 1. Connect to an ECS instance. For more information, see Instance connecting overview.
 2. Obtain the IP addresses that correspond to the Cloud Assistant endpoints.
-The following Cloud Assistant endpoints are available: Endpoint used to run Cloud Assistant commands, in the format of <region-id>`.axt.aliyun.com` Endpoint used to obtain the Cloud Assistant plug-in and update packages, in the format of `aliy` `un-client-assist-`<region-id>`.oss-`<region-id>`-internal.aliyuncs.com` Not e Replace <region-id> with a region ID.
+The following Cloud Assistant endpoints are available: Endpoint used to run Cloud Assistant commands, in the format of <region-id>`.axt.aliyun.com` Endpoint used to obtain the Cloud Assistant plug-in and update packages, in the format of `aliy` `un-client-assist-`<region-id>`.oss-`<region-id>`-internal.aliyuncs.com`
+
+> Not e Replace <region-id> with a region ID.
+
 3. Modify the hosts file.
 
 ```
 echo "100.100.XX.XX <region-id>.axt.aliyun.com" >> /etc/hosts && \ echo "100.118.XX.XX aliyun-client-assist-<region-id>.oss-<region-id>-internal.aliyuncs.co m" >> /etc/hosts
 ```
 
-Not e Replace `100.100.XX.XX` and `100.118.XX.XX` with the IP addresses that you obtained in the previous step.
+> Not e Replace `100.100.XX.XX` and `100.118.XX.XX` with the IP addresses that you obtained in the previous step.
+
 4. Check whether the hosts file is modified.
 
 ```
@@ -3102,13 +3285,19 @@ If the hosts file is modified, the command output includes the Cloud Assistant e
 
 #### 16.2.3 Start or stop the Cloud Assistant client
 
-The Cloud Assistant client is an agent that runs Cloud Assistant commands on Elastic Compute Service (ECS) instances. This topic describes how to start or stop the Cloud Assistant client. Start or stop the Cloud Assistant client on a Windows instance To start or stop the Cloud Assistant client on a Windows instance, perform the following steps. Warning Aliyun Assist Service is the process of the Cloud Assistant client. If you stop Aliyun Assist Service, the Cloud Assistant client stops. This may cause an exception on the instance, and the instance cannot be stopped by using the ECS console. Proceed with caution when you stop the Cloud Assistant client.
+The Cloud Assistant client is an agent that runs Cloud Assistant commands on Elastic Compute Service (ECS) instances. This topic describes how to start or stop the Cloud Assistant client. Start or stop the Cloud Assistant client on a Windows instance To start or stop the Cloud Assistant client on a Windows instance, perform the following steps.
+
+> **Warning:** Aliyun Assist Service is the process of the Cloud Assistant client. If you stop Aliyun Assist Service, the Cloud Assistant client stops. This may cause an exception on the instance, and the instance cannot be stopped by using the ECS console. Proceed with caution when you stop the Cloud Assistant client.
+
 1. Connect to the Windows instance. For more information, see Connect to a Windows instance by using
 RDC.
 2. Click Start and choose Windows Administ rat ive T ools > Comput er Management .
 3. Choose Comput er Management (Local) > Services and Applicat ions > Services.
 4. Find Aliyun Assist Service and click St op t he service or Rest art t he service.
-Uninstall the Cloud Assistant daemon process from a Linux instance The Cloud Assistant daemon process is used to monitor the resource consumption of the Cloud Assistant client, report the running status of the client, and restart the client when the client fails. Before you stop the Cloud Assistant client, you must first uninstall the Cloud Assistant daemon process. Not e The Cloud Assistant daemon process is available only for Linux instances.
+Uninstall the Cloud Assistant daemon process from a Linux instance The Cloud Assistant daemon process is used to monitor the resource consumption of the Cloud Assistant client, report the running status of the client, and restart the client when the client fails. Before you stop the Cloud Assistant client, you must first uninstall the Cloud Assistant daemon process.
+
+> Not e The Cloud Assistant daemon process is available only for Linux instances.
+
 1. Connect to the Linux instance. For more information, see Connect to a Linux instance by using SSH
 commands in Linux or Mac OS X or Connect to a Linux-based instance by using remote connection tools in Windows.
 2. Stop the Cloud Assistant daemon process.
@@ -3117,7 +3306,8 @@ commands in Linux or Mac OS X or Connect to a Linux-based instance by using remo
 /usr/local/share/assist-daemon/assist_daemon --stop
 ```
 
-Not e In the preceding command, /usr/local/share/assist-daemon/assist_daemon specifies the default path of the Cloud Assistant daemon process.
+> Not e In the preceding command, /usr/local/share/assist-daemon/assist_daemon specifies the default path of the Cloud Assistant daemon process.
+
 3. Uninstall the Cloud Assistant daemon process.
 
 ```
@@ -3130,7 +3320,11 @@ Not e In the preceding command, /usr/local/share/assist-daemon/assist_daemon spe
 rm -rf /usr/local/share/assist-daemon
 ```
 
-Start or stop the Cloud Assistant client on a Linux instance Not e Before you stop the Cloud Assistant client, you must first uninstall the Cloud Assistant daemon process. For more information, see the Uninstall the Cloud Assistant daemon process from a Linux instance section. To start or stop the Cloud Assistant client on a Linux instance, perform the following steps:
+Start or stop the Cloud Assistant client on a Linux instance
+
+> Not e Before you stop the Cloud Assistant client, you must first uninstall the Cloud Assistant daemon process. For more information, see the Uninstall the Cloud Assistant daemon process from a Linux instance section.
+
+To start or stop the Cloud Assistant client on a Linux instance, perform the following steps:
 1. Connect to the Linux instance. For more information, see Connect to a Linux instance by using SSH
 commands in Linux or Mac OS X or Connect to a Linux-based instance by using remote connection tools in Windows.
 2. Run the following commands based on the initialization process of the Linux instance.
@@ -3210,14 +3404,25 @@ Restart the Cloud Assistant client.
 
 #### 16.3.1 Create a command
 
-You can use Cloud Assistant commands to perform routine tasks on Elastic Compute Service (ECS) instances. These tasks include running automated O&M scripts, polling processes, resetting user passwords, installing or uninstalling software, updating applications, and installing patches. The commands can be batch or PowerShell commands for Windows instances, and shell commands for Linux instances. You can specify custom parameters as variables in Cloud Assistant commands. Prerequisites The instances on which to run a command are in the Running (Running) state. You can retain up to 100 Cloud Assistant commands within an Alibaba Cloud region. This quota may increase based on your ECS usage. If you click Run when you create a command in the Create Command page, the command does not count against your command quota. Not e You can also call the DescribeAccountAttributes operation with AttributeName.N set to max-axt-command-count to query the maximum number of Cloud Assistant commands that you can retain within a region. You can run Cloud Assistant commands up to 5,000 times per day within each region. This quota may increase based on your ECS usage. Not e You can also call the DescribeAccountAttributes operation with the AttributeName.N parameter set to max-axt-invocation-daily to query the maximum number of times that you can run Cloud Assistant commands per day within each region. Context When you use the immediate execution feature, take note of the following items: Only operations administrators, organization administrators, and resource set administrators can create commands. The size of the command after Base64 encoding cannot exceed 16 KB. Up to 20 custom parameters can be specified in a single Cloud Assistant command. You can call an API operation to run a command on up to 50 instances each time. When you create a command, make sure that the syntax, logic, or algorithm associated with the command are correct. For example, assume that you have created the /backup directory ( `mkdir /backup` ) on an instance. You can run the following shell commands to archive a file in this directory:
+You can use Cloud Assistant commands to perform routine tasks on Elastic Compute Service (ECS) instances. These tasks include running automated O&M scripts, polling processes, resetting user passwords, installing or uninstalling software, updating applications, and installing patches. The commands can be batch or PowerShell commands for Windows instances, and shell commands for Linux instances. You can specify custom parameters as variables in Cloud Assistant commands. Prerequisites The instances on which to run a command are in the Running (Running) state. You can retain up to 100 Cloud Assistant commands within an Alibaba Cloud region. This quota may increase based on your ECS usage. If you click Run when you create a command in the Create Command page, the command does not count against your command quota.
+
+> Not e You can also call the DescribeAccountAttributes operation with AttributeName.N set to max-axt-command-count to query the maximum number of Cloud Assistant commands that you can retain within a region.
+
+You can run Cloud Assistant commands up to 5,000 times per day within each region. This quota may increase based on your ECS usage.
+
+> Not e You can also call the DescribeAccountAttributes operation with the AttributeName.N parameter set to max-axt-invocation-daily to query the maximum number of times that you can run Cloud Assistant commands per day within each region.
+
+Context When you use the immediate execution feature, take note of the following items: Only operations administrators, organization administrators, and resource set administrators can create commands. The size of the command after Base64 encoding cannot exceed 16 KB. Up to 20 custom parameters can be specified in a single Cloud Assistant command. You can call an API operation to run a command on up to 50 instances each time. When you create a command, make sure that the syntax, logic, or algorithm associated with the command are correct. For example, assume that you have created the /backup directory ( `mkdir /backup` ) on an instance. You can run the following shell commands to archive a file in this directory:
 
 ```
 #!/bin/bash
 OF=/backup/my-backup-$(date +%Y%m%d).tgz tar -cf $OF {{file}}
 ```
 
-Not e In the preceding example, `{{file}}` is a custom parameter. When you run the commands, you can set this custom parameter to the name of the file to be archived. Example: / app/usrcredential. Custom parameters can be used in scenarios that require dynamic values and values that are shared across multiple commands. We recommend that you specify custom parameters for sensitive data or data that changes with the environment, such as AccessKey pairs, instance IDs, authorization codes, time parameters, and critical system files. Procedure in the ECS console
+> Not e In the preceding example, `{{file}}` is a custom parameter. When you run the
+> commands, you can set this custom parameter to the name of the file to be archived. Example: / app/usrcredential. Custom parameters can be used in scenarios that require dynamic values and values that are shared across multiple commands. We recommend that you specify custom parameters for sensitive data or data that changes with the environment, such as AccessKey pairs, instance IDs, authorization codes, time parameters, and critical system files.
+
+Procedure in the ECS console
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Maint enance & Monit oring > Cloud Assist ant .
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3252,7 +3457,7 @@ Procedure by using the CLI Sample request: Call the RunCommand operation to crea
 aliyun ecs RunCommand --RegionId 'cn-qingdao-****-d01' \ --Name 'update' --Username 'root' --Type 'RunShellScript' \ --CommandContent 'eXVtIC15IHVwZGF0ZQ==' \ --Timeout '60' --RepeatMode 'Once' --ContentEncoding 'Base64' \ --InstanceId.1 'i-bp12e0ib2ztibede****'
 ```
 
-Not e Values enclosed in single quotation marks ('') are example values of the parameters. Configure the parameters based on actual conditions.
+> Not e Values enclosed in single quotation marks ('') are example values of the parameters. Configure the parameters based on actual conditions.
 
 | Parameter | Example | Description |
 |---|---|---|
@@ -3284,7 +3489,15 @@ For more information, see the CreateCommand topic in the ECS Developer Guide. Sa
 
 #### 16.3.2 Run a command
 
-After you create a Cloud Assistant command, you can run it on one or more Elastic Compute Service (ECS) instances. The execution status and results of the command on multiple instances do not affect each other. Prerequisites Before you run a Cloud Assistant command on ECS instances, make sure that the instances meet the following requirements: The instances are in the Running ( `Running` ) state. The Cloud Assistant client is installed on the instances. For more information, see Install the Cloud Assistant client. Import ant Only operations administrators, organization administrators, and resource set administrators can run Cloud Assistant commands. Context You can call an API operation to run a command on up to 50 instances. If you select more than 50 instances to run a command in the ECS console, the system runs the command on the instances in batches. You can run Cloud Assistant commands up to 5,000 times per day within each region. This quota may increase based on your ECS usage. Not e You can also call the DescribeAccountAttributes operation with the At t ribut eName.N parameter set to max-axt-invocation-daily to query the maximum number of times that you can run Cloud Assistant commands per day within each region. Run Cloud Assistant commands by using the ECS console
+After you create a Cloud Assistant command, you can run it on one or more Elastic Compute Service (ECS) instances. The execution status and results of the command on multiple instances do not affect each other. Prerequisites Before you run a Cloud Assistant command on ECS instances, make sure that the instances meet the following requirements: The instances are in the Running ( `Running` ) state. The Cloud Assistant client is installed on the instances. For more information, see Install the Cloud Assistant client.
+
+> Import ant Only operations administrators, organization administrators, and resource set administrators can run Cloud Assistant commands.
+
+Context You can call an API operation to run a command on up to 50 instances. If you select more than 50 instances to run a command in the ECS console, the system runs the command on the instances in batches. You can run Cloud Assistant commands up to 5,000 times per day within each region. This quota may increase based on your ECS usage.
+
+> Not e You can also call the DescribeAccountAttributes operation with the At t ribut eName.N parameter set to max-axt-invocation-daily to query the maximum number of times that you can run Cloud Assistant commands per day within each region.
+
+Run Cloud Assistant commands by using the ECS console
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Maint enance & Monit oring > Cloud Assist ant .
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3320,7 +3533,9 @@ not in the Running ( `Running` ) state, call the StartInstance operation to star
 aliyun ecs StartInstance --InstanceId 'i-bp1f4f6o8lv0wqof****'
 ```
 
-Not e Values enclosed in single quotation marks ('') are example values of the parameters. You must configure the parameters based on actual conditions. For more information, see or the "StartInstance" topic in ECS Developer Guide.
+> Not e Values enclosed in single quotation marks ('') are example values of the parameters. You must configure the parameters based on actual conditions.
+
+For more information, see or the "StartInstance" topic in ECS Developer Guide.
 2. (Optional)Call the DescribeCloudAssistantStatus operation to check whether the Cloud Assistant
 client is installed on the instances.
 
@@ -3348,7 +3563,10 @@ For more information, see the InvokeCommand topic in the ECS Developer Guide.
 
 #### 16.3.3 Upload files to ECS instances
 
-This topic describes how to use the Cloud Assistant client to upload files such as configuration files and scripts to Elastic Compute Service (ECS) instances. Prerequisites The ECS instances to which you want to upload a file are in the Running (Running) state. The Cloud Assistant client is installed on the instance. For more information, see Install the Cloud Assistant client. You can call an API operation to send a file to up to 50 instances at a time. The file that you want to upload cannot exceed 32 KB in size after it is encoded in Base64. Context You can use the Cloud Assistant client to upload files that cannot exceed 32 KB in size. If you want to upload files that are larger than 32 KB in size or if you want to download files from ECS instances, we recommend that you use the FileZilla tool over the SSH File Transfer Protocol (SFTP) and port 22. Import ant Only operations administrators, organization administrators, and resource set administrators can upload files to ECS instances.
+This topic describes how to use the Cloud Assistant client to upload files such as configuration files and scripts to Elastic Compute Service (ECS) instances. Prerequisites The ECS instances to which you want to upload a file are in the Running (Running) state. The Cloud Assistant client is installed on the instance. For more information, see Install the Cloud Assistant client. You can call an API operation to send a file to up to 50 instances at a time. The file that you want to upload cannot exceed 32 KB in size after it is encoded in Base64. Context You can use the Cloud Assistant client to upload files that cannot exceed 32 KB in size. If you want to upload files that are larger than 32 KB in size or if you want to download files from ECS instances, we recommend that you use the FileZilla tool over the SSH File Transfer Protocol (SFTP) and port 22.
+
+> Import ant Only operations administrators, organization administrators, and resource set administrators can upload files to ECS instances.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Maint enance & Monit oring > Cloud Assist ant .
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3391,7 +3609,10 @@ You can perform the following operations in the Actions column corresponding to 
 
 #### 16.3.4 Clone a command
 
-You can clone an existing Cloud Assistant command to create another command. You can retain all the information of the original command (cloned command), or you can modify information such as the name, description, type, content, execution path, or timeout period in the new command (command clone). Import ant Only operations administrators, organization administrators, and resource set administrators can clone commands.
+You can clone an existing Cloud Assistant command to create another command. You can retain all the information of the original command (cloned command), or you can modify information such as the name, description, type, content, execution path, or timeout period in the new command (command clone).
+
+> Import ant Only operations administrators, organization administrators, and resource set administrators can clone commands.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Maint enance & Monit oring > Cloud Assist ant .
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3418,7 +3639,10 @@ You can clone an existing Cloud Assistant command to create another command. You
 
 #### 16.3.5 Delete a command
 
-The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed. Import ant Only operations administrators, organization administrators, and resource set administrators can delete commands.
+The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
+
+> Import ant Only operations administrators, organization administrators, and resource set administrators can delete commands.
+
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Maint enance & Monit oring > Cloud Assist ant .
 3. In the top navigation bar, select an organization, a resource set, and a region.

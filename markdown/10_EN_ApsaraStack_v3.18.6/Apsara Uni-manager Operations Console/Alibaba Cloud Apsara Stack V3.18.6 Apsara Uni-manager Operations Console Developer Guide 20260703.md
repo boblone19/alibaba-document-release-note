@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 580
 source_pdf: "f96b05bd0b0dd405_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Developer Guide 20260703.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Uni-manager Operations Console Developer Guide 20260703
@@ -221,10 +221,8 @@ d and unavailable APIs
 
 Some APIs provided by the Apsara Uni-manager Operations Console of versions earlier than 3.18.1 are not supported or not recommended for use. This topic describes the APIs that are not supported or not recommended for use.
 
-**Note**
-
-**Unrecommended** APIs are still described in the API reference, and alternative APIs
-are provided. In general, unrecommended APIs will no longer be supported in later versions of the Apsara Uni-manager Operations Console. Most **unsupported** APIs do not have alternative APIs and are not described in the API reference. Only a small number of unsupported APIs have alternative APIs with similar functions.
+> **Note:** **Unrecommended** APIs are still described in the API reference, and alternative APIs are provided. In general, unrecommended APIs will no longer be supported in later versions of the Apsara Uni-manager Operations Console.
+> Most **unsupported** APIs do not have alternative APIs and are not described in the API reference. Only a small number of unsupported APIs have alternative APIs with similar functions.
 
 | API | Availability | Alternative API |
 |---|---|---|
@@ -282,14 +280,13 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 3. Enter the username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ### 4.2 Obtain a region ID
@@ -500,15 +497,13 @@ You must obtain an AccessKey pair before you call API operations of the Apsara U
 4. In the *************section, you can view the AccessKey ID and AccessKey secret of the RAM
 user.
 
-**Note**
+> **Note:** The AccessKey secret of **an Apsara Stack tenant account** cannot be displayed or used. Only the AccessKey secret of **a RAM user** can be displayed and used.
 
-The AccessKey secret of **an Apsara Stack tenant account** cannot be displayed or used. Only the AccessKey secret of **a RAM user** can be displayed and used. Only users who are assigned specific roles can use their AccessKey pairs to call specific API operations. For more information about the roles authorized to call specific API operations, see Obtain the permissions required to call API operations.
+Only users who are assigned specific roles can use their AccessKey pairs to call specific API operations. For more information about the roles authorized to call specific API operations, see Obtain the permissions required to call API operations.
 5. If no AccessKey pairs of RAM users are available, click **Create Accesskey** to obtain an
 AccessKey pair.
 
-**Note**
-
-You can create up to two AccessKey pairs for RAM users per account. The Create Accesskey button is automatically disabled after two AccessKey pairs are already created.
+> **Note:** You can create up to two AccessKey pairs for RAM users per account. The Create Accesskey button is automatically disabled after two AccessKey pairs are already created.
 
 ### 4.5 Obtain the service domain name
 
@@ -1443,9 +1438,8 @@ state is Failed!",
 
 This topic provides supplementary details on the request and response parameters of the `GetIncidentAlertList` operation.
 
-**Note**
-
-Multiple key-value pairs may be returned for $.data.objectList[*].dimensions[*]. The following table describes the key-value pair that matches each alert item. N/A indicates any key-value pair. For more information about the alert ID and alert information, see Alarm Reference in the Maintenance ASO section on the Help and Open Platform page. You can find the page by clicking the Help documentation icon in the upper-right corner of the Apsara Uni-manager Operations Console.
+> **Note:** Multiple key-value pairs may be returned for $.data.objectList[*].dimensions[*]. The following table describes the key-value pair that matches each alert item. N/A indicates any key-value pair.
+> For more information about the alert ID and alert information, see Alarm Reference in the Maintenance ASO section on the Help and Open Platform page. You can find the page by clicking the Help documentation icon in the upper-right corner of the Apsara Uni-manager Operations Console.
 
 | Alert item | Code parameter value | Value of $.data.objectList[*].di mensions[*].key | Value of $. data.objectList[*].dime nsions[*].value |
 |---|---|---|---|
@@ -10051,7 +10045,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 **Additional information**
 
-Note: This operation checks for roles granted to a user, including roles granted directly by a role administrator and roles granted through a user group.
+> **Note:** This operation checks for roles granted to a user, including roles granted directly by a role administrator and roles granted through a user group.
+
 
 ##### 7.1.6.4 RevokeRoleFromUser
 

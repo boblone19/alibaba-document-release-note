@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 179
 source_pdf: "dfb0e86f940f5d0f_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260831."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260831
@@ -110,9 +110,15 @@ se the SDK for Java
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables:
+> <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
 
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use. se the SDK for Java
+se the SDK for Java
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify a maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify a protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure a proxy based on your business requirements. Sample code: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -168,9 +174,7 @@ try {
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default protocol (HTTP or HTTPS) of a service takes precedence over the global default protocol.
+> **Note:** The default protocol (HTTP or HTTPS) of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -268,11 +272,11 @@ http://Endpoint/?Action=xx&Parameters
 
 **Endpoint**: the regional endpoint for the PolarDB-X API. For more information, see
 Endpoint.
-**Action**: the name of the API operation to call, such as DescribeTables, which can
-be called to query data tables of a created distributed relational database.
-**Version**: the API version. Always set it to 2020-02-02.
-**Parameters**: operation-specific parameters, separated by ampersand (&).
-Request parameters consist of common request parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information, see Common parameters.
+
+> **Action**: the name of the API operation to call, such as DescribeTables, which can be called to query data tables of a created distributed relational database.
+> **Version**: the API version. Always set it to 2020-02-02.
+> **Parameters**: operation-specific parameters, separated by ampersand (&).
+> Request parameters consist of common request parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information, see Common parameters.
 
 **Request parameters**
 

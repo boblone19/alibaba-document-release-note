@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 126
 source_pdf: "2e5651216b3dfe30_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB%20MySQL%E6%9C%AC%E5%9C%B0%E7%9B%98/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20MySQL%20%28Primary_Secondary%20Edition%29%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Developer Guide 20260630
@@ -337,13 +337,13 @@ ApsaraDB for RDS authenticates each access request. Therefore, a request must co
 1. Use request parameters to construct a canonicalized query string.
 i. Sort all of the request parameters in alphabetical order. The request parameters include all common and operation-specific parameters except Signature.
 
-**Note**
+> **Note:** If you use the GET method to send a request, the request parameters are included as part of the request URI. The request parameters in the URI are placed after a question mark (?) and separated by ampersands (&).
 
-If you use the GET method to send a request, the request parameters are included as part of the request URI. The request parameters in the URI are placed after a question mark (?) and separated by ampersands (&). ii. Encode the name and value of each request parameter. Parameter names and values must be encoded into a URL based on the UTF-8 character set. The following rules apply in the URL encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+).
+ii. Encode the name and value of each request parameter. Parameter names and values must be encoded into a URL based on the UTF-8 character set. The following rules apply in the URL encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+).
 
-**Note**
+> **Note:** Most libraries that support URL encoding, such as java.net.URLEncoder, comply with the Multipurpose Internet Mail Extensions (MIME) encoding rules of application/x-www-form-urlencoded.
 
-Most libraries that support URL encoding, such as java.net.URLEncoder, comply with the Multipurpose Internet Mail Extensions (MIME) encoding rules of application/x-www-form-urlencoded. If this encoding method is used, replace the plus signs (+) in the encoded strings with %20, the asterisks (*) with %2A, and %7E with a tilde (~) to conform to the encoding rules. iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the equal sign-connected strings by their parameter names in alphabetical order and connect them with ampersands (&).
+If this encoding method is used, replace the plus signs (+) in the encoded strings with %20, the asterisks (*) with %2A, and %7E with a tilde (~) to conform to the encoding rules. iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the equal sign-connected strings by their parameter names in alphabetical order and connect them with ampersands (&).
 2. Create a string-to-sign from the encoded canonicalized query string based on the following
 rules:
 
@@ -354,15 +354,14 @@ StringToSign= HTTPMethod + "&" + percentEncode("/") + "&" + percentEncode(Canoni
 HTTPMethod: specifies the HTTP method used to make the request, such as GET. percentEncode("/"): specifies the encoded value for the forward slash (/) based on the URL encoding rules described in 1.b. The value is %2F. percentEncode(CanonicalizedQueryString): specifies the string encoded from the canonicalized query string constructed in Step 1 based on the URL encoding rules described in 1.b.
 3. Calculate the HMAC value of the string-to-sign by using the AccessKey secret as the key.
 
-**Note**
+> **Note:** An ampersand (&) is added to the end of the key (ASCII: 38). The hashing algorithm used is SHA-1.
 
-An ampersand (&) is added to the end of the key (ASCII: 38). The hashing algorithm used is SHA-1.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the Signature parameter.
 
-**Note**
+> **Note:** When the signature string is submitted to the RDS server as the final request parameter value, the string must be URL-encoded like other parameters based on rules defined in RFC 3986.
 
-When the signature string is submitted to the RDS server as the final request parameter value, the string must be URL-encoded like other parameters based on rules defined in RFC 3986. The following code is the request URL without a signature for the DescribeDBInstances operation:
+The following code is the request URL without a signature for the DescribeDBInstances operation:
 
 ```
 http://rds.example.com/?TimeStamp=2013-06- 01T10:33:56Z&Format=XML&AccessKeyId=testid&Action=DescribeDBInstances&SignatureMethod=H C-SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2014-08- 15&SignatureVersion=1.0
@@ -530,9 +529,7 @@ You can call this operation to query attributes of an instance.
 
 DBInstanceAttribute parameters
 
-**Note**
-
-You can call the DescribeDBInstanceHAConfig operation to query information of the primary and secondary instances.
+> **Note:** You can call the DescribeDBInstanceHAConfig operation to query information of the primary and secondary instances.
 
 **Sample requests**
 
@@ -831,9 +828,7 @@ This operation returns only common response parameters. For more information, se
 
 You can call this operation to switch the network type of an RDS instance between VPC and classic network.
 
-**Note**
-
-Only the classic network instances with the ConnectionMode set to Safe can have their network type switched to VPC.
+> **Note:** Only the classic network instances with the ConnectionMode set to Safe can have their network type switched to VPC.
 
 | Parameter | T y p e | Requi red | Description |
 |---|---|---|---|
@@ -974,9 +969,7 @@ NodeInfo parameters
 
 You can call this operation to migrate an instance from one zone to another. For example, if instance 1 is located in the Hangzhou Zone A zone of the China (Hangzhou) region, you can call this operation to migrate the instance to the Hangzhou Zone B zone of the China (Hangzhou) region.
 
-**Note**
-
-In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
+> **Note:** In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1221,9 +1214,7 @@ This operation returns only common response parameters. For more information, se
 
 You can call this operation to create a new database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance.
 
-**Note**
-
-This operation is not supported on PolarDB. You can create databases in PolarDB instances by executing CREATE DATABASE statements.
+> **Note:** This operation is not supported on PolarDB. You can create databases in PolarDB instances by executing CREATE DATABASE statements.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1245,9 +1236,7 @@ https://rds.example.com/?Action=CreateDatabase &CharacterSetName=gbk &DBName=tes
 
 You can call this operation to delete a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
 
-**Note**
-
-This operation is not supported on PolarDB. You can delete databases from PolarDB instances by executing DROP DATABASE statements.
+> **Note:** This operation is not supported on PolarDB. You can delete databases from PolarDB instances by executing DROP DATABASE statements.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1269,9 +1258,7 @@ https://rds.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=rds-
 
 You can call this operation to query the databases of a specified instance or information of a specified database. If the request parameters are entered incorrectly, an error prompt is returned, and the returned data is empty.
 
-**Note**
-
-This operation is not supported on PolarDB.
+> **Note:** This operation is not supported on PolarDB.
 
 | Parame ter | Type | Requ ired | Description |
 |---|---|---|---|
@@ -1330,9 +1317,7 @@ https://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rds-xxxxx &<Comm
 
 You can call this operation to modify the description of a database to facilitate user records. For example, you can modify the description of a database to Database A for Alibaba Cloud testing environment.
 
-**Note**
-
-This operation is not supported on PolarDB.
+> **Note:** This operation is not supported on PolarDB.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1658,9 +1643,9 @@ You can call this operation to search for a set of instance backups. The set of 
 
 #### 1.6.4 CreateTempDBInstance
 
-**Note**
+> **Note:** You can create a temporary instance based on a backup set or a point in time within the past seven days. When a temporary instance is created, accounts and databases inherit the backup set data.
 
-You can create a temporary instance based on a backup set or a point in time within the past seven days. When a temporary instance is created, accounts and databases inherit the backup set data. You can call this operation to create a temporary instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success.
+You can call this operation to create a temporary instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1809,9 +1794,7 @@ You can call this operation to query the disk space usage of an instance. When t
 
 You can call this operation to query the performance metrics of an instance over a specified period of time based on the performance parameters. There are three output formats based on different query time ranges: When the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. When the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. When the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
 
-**Note**
-
-When the instance space usage key is MySQL_SpaceUsage or SQLServer_SpaceUsage, performance metrics can be queried only when the time range is less than or equal to one day.
+> **Note:** When the instance space usage key is MySQL_SpaceUsage or SQLServer_SpaceUsage, performance metrics can be queried only when the time range is less than or equal to one day.
 
 | Paramet er | Type | Requir ed | Description |
 |---|---|---|---|
@@ -2560,9 +2543,7 @@ In RAM, the following operations can be authorized to an RDS resource.
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
 | DescribeOptimizeAdviceOnMissPK | DescribeOptimizeAdviceOnExcessIndex |
 
-**Note**
-
-All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
+> **Note:** All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
 
 **RAM authentication rules of API operations**
 
@@ -3068,9 +3049,7 @@ icon on the right of the organization to be added.
 5. Choose **AccessKey** from the shortcut menu.
 6. In the AccessKey dialog box that appears, view the AccessKey pair of the organization.
 
-**Note**
-
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
+> **Note:** An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -3081,6 +3060,4 @@ and click **User Information**.
 3. In the **Apsara Stack AccessKey Pair** section of the User Information page, view your
 AccessKey pair.
 
-**Note**
-
-The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.

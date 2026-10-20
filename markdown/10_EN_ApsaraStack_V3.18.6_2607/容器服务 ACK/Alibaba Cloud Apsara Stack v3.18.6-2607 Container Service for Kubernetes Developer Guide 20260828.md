@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 185
 source_pdf: "b6812a23b5cab52a_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Developer Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Developer Guide 20260828
@@ -121,17 +121,17 @@ browser and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password from an administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log on**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Re-enter the username and password as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
@@ -152,15 +152,11 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. In the top navigation bar, choose **Products > Application Services > OpenAPl**
 **Explorer**.
@@ -177,9 +173,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -196,9 +190,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -227,9 +219,13 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer ove
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, you can obtain information about the `RAM role` that is assigned to the current user.
 2. Obtain an STS AccessKey 3-tuple.
 
-**Note**
-
-You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourRoleSessionName>: Replace the field with the actual session name. <yourRoleArn>: Replace the field with the Alibaba Cloud Resource Name (ARN) of the RAM role that is assigned to the current user. <sts.aliyuns.com>: Replace the field with the actual endpoint of STS.
+> **Note:** You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code.
+> <yourRegionID>: Replace the field with the actual region ID.
+> <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user.
+> <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user.
+> <yourRoleSessionName>: Replace the field with the actual session name.
+> <yourRoleArn>: Replace the field with the Alibaba Cloud Resource Name (ARN) of the RAM role that is assigned to the current user.
+> <sts.aliyuns.com>: Replace the field with the actual endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -282,9 +278,13 @@ step.
 3. Use the STS AccessKey 3-tuple to call the `DescribeUserQuota` operation of Container
 Service. The following code provides an example:
 
-**Note**
-
-You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourStsToken>: Replace the field with the STS token of the STS AccessKey 3tuple. <yourResourceGroupID>: Replace the field with the actual resource set ID. <yourOrganizationID>: Replace the field with the actual organization ID.
+> **Note:** You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code.
+> <yourRegionID>: Replace the field with the actual region ID.
+> <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user.
+> <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user.
+> <yourStsToken>: Replace the field with the STS token of the STS AccessKey 3- tuple.
+> <yourResourceGroupID>: Replace the field with the actual resource set ID.
+> <yourOrganizationID>: Replace the field with the actual organization ID.
 
 ```java
 public class DescribeUserQuota {
@@ -397,9 +397,9 @@ on the Parameter tab.
 
 When you call API operations in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use the SDK of the corresponding cloud service. This topic describes how to obtain Apsara Stack SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
 ### 1.2 Examples of using Container Service SDK for Java
 
@@ -632,9 +632,9 @@ common Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-re
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-**Important**
-
-By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
+> **Important:** By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting:
+> Java
 
 ### 1.3 Examples of using Container Service SDK for Python
 
@@ -826,9 +826,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send an HTTPS request, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send an HTTPS request, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1107,9 +1106,7 @@ Default value: `false` .
 
 **Settings**
 
-**Important**
-
-By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
+> **Important:** By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
 
 ```
 // If you configure HTTPSInsecure for the request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of HTTPSIn secure for the request.
@@ -1121,9 +1118,10 @@ If you do not configure HTTPSInsecure for the request, the HTTPSInsecure setting
 // If you configure HTTPSInsecure for the client, the setting takes effect on all reque sts that are initiated by the client. client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true for t he client. isInsecure := client.GetHTTPSInsecure() // Query the setting of HTTPSInsec ure for the client.
 ```
 
-**Important**
+> **Important:** By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting:
 
-By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
@@ -1281,9 +1279,7 @@ name:TaoBao,Alipay .
 5. Separate all headers and content with delimiters ( \n ) to form the final canonicalized
 headers.
 
-**Note**
-
-`CanonicalizedResource` must follow this format: `CanonicalizedResource` specifies the URIs of the requested resources. You must sort sub-resources in alphabetical order and combine them with the `&` delimiter to form a string. In the following example, the string that follows the question mark ( ? ) indicates CanonicalizedResource.
+> **Note:** `CanonicalizedResource` must follow this format: `CanonicalizedResource` specifies the URIs of the requested resources. You must sort sub-resources in alphabetical order and combine them with the `&` delimiter to form a string. In the following example, the string that follows the question mark ( ? ) indicates CanonicalizedResource.
 
 ```
 http://cs.aliyuncs.com/clusters?name=my-clusters&resource=new
@@ -1309,9 +1305,7 @@ POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept
 
 Calculate the values of `Content-Length` and `Content-MD5` . `Content-Length` specifies the length of the content body.
 
-**Note**
-
-The body cannot start with a space or line feed.
+> **Note:** The body cannot start with a space or line feed.
 
 ```
 body: {"password": "Just$****","instance_type": "ecs.m2.medium","name": "my-test-cluste r-9708****","size": 1,"network_mode": "vpc","data_disk_category": "cloud","data_disk_size": 10,"ecs_image_id": "m-253ll****"} Content-Length: 210
@@ -1344,9 +1338,7 @@ x-acs-region-id:cn-beijing x-acs-signature-method:HMAC-SHA1 x-acs-signature-nonc
 
 Calculate `CanonicalizedResource` In this example, the length of the `CanonicalizedResource` field value is 27 bytes.
 
-**Note**
-
-A line feed \n exists at the end of the first line.
+> **Note:** A line feed \n exists at the end of the first line.
 
 ```
 /clusters? param1=value1&param2=value2

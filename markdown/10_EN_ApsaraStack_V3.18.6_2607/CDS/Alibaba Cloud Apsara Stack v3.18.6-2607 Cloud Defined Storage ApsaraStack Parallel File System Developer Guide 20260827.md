@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 58
 source_pdf: "76d8da31bd2d60ac_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Devel"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Developer Guide 20260827
@@ -83,9 +83,7 @@ Make pre Make API c
 
 You can use the Portable OpenAPI Proxy (POP) gateway or Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. As of Apsara Stack Enterprise V3.16.0, the POP gateway is used by default to ensure that user experience is the same as that in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
-**Note**
-
-You can still call API operations using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise.
+> **Note:** You can still call API operations using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise.
 
 **Flowchart**
 
@@ -101,17 +99,17 @@ Make pre Make API c
 1. Obtain the access credential.
 Obtain the AccessKey pair that is required to call an API operation. For more information, see Obtain access credentials assigned by RAM or Obtain access credentials assigned by STS.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
 
-We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
 2. Obtain the region ID.
 Obtain the required RegionID parameter. For more information, see Obtain RegionID and Endpoint information.
 3. Obtain the organization ID and resource set ID.
 You must call an API operation to obtain an organization ID. For more information, see GetO rganizationList in Apsara Uni-manager Management Console Developer Guide. You must call an API operation to obtain a resource set ID. For more information, see ListRe sourceGroup in Apsara Uni-manager Management Console Developer Guide.
 
-**Note**
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set.
+> If you do not specify the `<x-acs-organizationid>` header, the organization to which the current user belongs is used by default.
+> If you do not specify the `<x-acs-resourcegroupid>` header, this header is left empty by default. If you specify a resource set ID, you must also specify an organization ID.
 
-When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` header, the organization to which the current user belongs is used by default. If you do not specify the `<x-acs-resourcegroupid>` header, this header is left empty by default. If you specify a resource set ID, you must also specify an organization ID.
 4. You can refer to the API reference document.
 Obtain the developer guide of the Apsara Stack service that you want to use. You can learn the features of API operations and how to call the API operations.
 5. Obtain the endpoint of the Apsara Stack service.
@@ -128,9 +126,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt a signature. AccessKey credentials can be assigned by RAM or STS: RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. STS: assigns an access credential that consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain access credentials assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of a personal account to call the API operations provided by the Apsara Uni-manager Management Console and Apsara Stack services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -149,9 +145,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must store the AccessKey pair in a secure location.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must store the AccessKey pair in a secure location.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -182,9 +176,14 @@ Apsara Stack STS allows you to manage temporary access credentials for your Apsa
 iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM Role` .
 2. Obtain the access credential assigned by STS.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the name of the current session. <yourRoleArn>: Replace this variable with the ARN of your RAM role. <sts.aliyuns.com>: Replace this variable with the STS endpoint.
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the name of the current session.
+> <yourRoleArn>: Replace this variable with the ARN of your RAM role.
+> <sts.aliyuns.com>: Replace this variable with the STS endpoint.
 
 ```xml
 public static void main(String[] args) {
@@ -246,9 +245,7 @@ eceding step.
 `}`
 3. Use the access credential assigned by STS to call an operation of a service.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
 
 ### 3.3 Obtain the information about region ID and endpoint
 
@@ -362,9 +359,8 @@ d the SecurityToken field.
 
 `}` `}` `}`
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting:
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting:
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
@@ -417,9 +413,7 @@ This topic describes how to install and use Apsara Stack SDK for Java. Apsara St
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
-**Note**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -428,17 +422,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace this variable with your AccessKey secret.
 ```
 
-**Note**
-
-Replace the variables in the preceding sample code with actual values. Remove the angle brackets (<>) from the final code.
+> **Note:** Replace the variables in the preceding sample code with actual values. Remove the angle brackets (<>) from the final code.
 
 #### 4.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ck SDK for Java
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // Optional. Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The supported data type is INTEGER
@@ -487,9 +483,17 @@ You must obtain the value of the `Action` parameter and specify the API operatio
 
 The following sample code provides an example on how to call the DescribeFileSystems operation in ApsaraStack Parallel File System (APFS) to obtain the file system information.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <Endpoint>: Replace this variable with the endpoint of the current service. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <Endpoint>: Replace this variable with the endpoint of the current service.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; importcomaliyuncsIAcsClient;
@@ -654,9 +658,7 @@ This topic describes how to install and use Apsara Stack SDK for Python.
 
 ck SDK for Python Alibaba Cloud Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, and 3.x and later. You can install the Apsara Stack SDK for Python by using pip.
 
-**Note**
-
-To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
+> **Note:** To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
 
 **Install the core library of Apsara Stack SDK for Python**
 
@@ -676,9 +678,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Python supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
-**Note**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret, region_id)
@@ -688,9 +688,7 @@ from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol. ck SDK for Python
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -742,9 +740,18 @@ You must obtain the value of the `Action` parameter and specify the API operatio
 
 The following sample code provides an example on how to call the DescribeFileSystems operation in APFS to obtain the file system information.
 
-**Note**
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with your instance ID.
+> <Endpoint>: Replace this variable with the endpoint of the current service.
 
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service. ck SDK for Python
+ck SDK for Python
 
 ```python
 #!/usr/bin/env python
@@ -852,9 +859,8 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 ck SDK for Go When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Go supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
-**Note**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised. Replace the variables in the sample code with actual values. Remove the angle brackets (<>) from the final code.
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> Replace the variables in the sample code with actual values. Remove the angle brackets (<>) from the final code.
 
 **Initialize a client instance**
 
@@ -889,9 +895,18 @@ You must obtain the value of the `Action` parameter and specify the API operatio
 
 The following sample code provides an example on how to call the DescribeDisks operation to query the information about cloud disks.
 
-**Note**
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourSecurityToken>: Replace this variable with your security token.
+> <yourResourceGroupID>: Replace this variable with your resource set ID.
+> <yourOrganizationID>: Replace this variable with your organization ID.
+> <yourInstanceID>: Replace this variable with your instance ID.
+> <Endpoint>: Replace this variable with the endpoint of the current service.
 
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service. ck SDK for Go
+ck SDK for Go
 
 ```java
 package main import (
@@ -985,9 +1000,7 @@ response,err := ecsClient.DescribeDisks(request) if err != nil {
 
 After you send a request, if an error occurs on the SDK side and cannot be automatically handled, the SDK returns a `ClientError` . The following sample code shows how to identify and obtain the error message in a `ClientError` returned by ECS SDK for Go.
 
-**Note**
-
-If you use a specific error struct, you must add the error package github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors by using the following code:
+> **Note:** If you use a specific error struct, you must add the error package github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors by using the following code:
 
 ```java
 package main import (
@@ -1017,9 +1030,8 @@ response, err := ecsClient.DescribeDisks(request) if clientError, ok := err.(*er
 
 ck SDK for Go If the server returns an error response, the SDK wraps the response into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the error response. The following sample code shows how to determine and obtain the error message in a `ServerError` and `Response` returned by ECS SDK for Go:
 
-**Note**
-
-If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Note:** If you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 import (
@@ -1031,7 +1043,7 @@ ame of the actual service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := ecsClient.DescribeDisks(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1126,11 +1138,7 @@ Common request parameters must be included in all ApsaraStack Parallel File Syst
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information, see the Obtain a resource set ID section of the Obtain the values of common request headers topic. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For more information, see the Obtain an instance ID section of the Obtain the values of common request headers topic. |
 
-**Note**
-
-When you call API operations of Apsara Stack services, you must include the values of the
-**x-acs-instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** parameters in
-the request header to specify the ID of the instance and the IDs of the organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, the root organization and root resource set are used if the values of the preceding parameters are not included in the request header when you call API operations.
+> **Note:** When you call API operations of Apsara Stack services, you must include the values of the **x-acs-instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** parameters in the request header to specify the ID of the instance and the IDs of the organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, the root organization and root resource set are used if the values of the preceding parameters are not included in the request header when you call API operations.
 
 **Common response parameters**
 

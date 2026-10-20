@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 21
 source_pdf: "da51bb6f6325576c_Alibaba Cloud Apsara Stack V3.18.6 Apsara AIOps User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%BB%B4%E5%B0%8F%E6%99%BA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20AIOps%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara AIOps User Guide 20260701
@@ -37,15 +37,22 @@ The endpoint, username, and password of the Apsara Uni-manager O&M console are o
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations console and press
 the Enter key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 to Apsara AIOps
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password must be 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password must be 10 to 20 characters in length.
+
 4. Click **Agree and Log On**.
 5. You can use one of the following methods to enter Apsara AIOps:
 Method 1: In the top navigation bar, choose **Platform Operation > Management and**
@@ -58,13 +65,14 @@ This article introduces the use of intelligent dialogue, which supports users to
 
 **Procedure**
 
-1. Log on to Apsara AIOps.
+## 1 Log on to Apsara AIOps.
+
 2. In the **Apsara AIOps** dialog box, enter a question and click
 .
 
-**Note**
+> **Note:** Move the left mouse button to the content on the console page and click the AI search displayed to automatically trigger the Q&A capability for the selected content.
 
-Move the left mouse button to the content on the console page and click the AI search displayed to automatically trigger the Q&A capability for the selected content. ent dialogue New conversation: Click the top of the dialog box to open a new conversation. Historical Conversations: Click at the top of the dialog box to view historical conversations within the last seven days. Window Full Screen: Click above the dialog box to display the dialog box in full screen. After full screen, you can switch the operation intelligence in the left navigation bar. ent dialogue Close the dialog box: Click at the top of the dialog box to close the Apsara AIOps dialog box. Switch smart body: Click in the upper left corner of the dialog box to switch to the operation smart body.
+ent dialogue New conversation: Click the top of the dialog box to open a new conversation. Historical Conversations: Click at the top of the dialog box to view historical conversations within the last seven days. Window Full Screen: Click above the dialog box to display the dialog box in full screen. After full screen, you can switch the operation intelligence in the left navigation bar. ent dialogue Close the dialog box: Click at the top of the dialog box to close the Apsara AIOps dialog box. Switch smart body: Click in the upper left corner of the dialog box to switch to the operation smart body.
 3. After Apsara AIOps returns the Q&A content, you can perform the following operations:
 : Approved. A Like indicates approval. : I don't agree with it. A little step indicates that I don't approve of the answer. : Copy. You can copy the content of the response. : regenerates an answer. You can regenerate an answer. At the same time, relevant operations or introductions are generated according to the questions asked, and multi-round conversations are supported during the Q&A process.
 
@@ -90,7 +98,6 @@ This article describes the operations related to the O&M agent.
 
 **Procedure**
 
-1. Log on to Apsara AIOps.
 2. In the **Apsara AIOps** dialog box, click
 Switch to O&M Intelligence. You can also click and switch to the operations intelligence in the left navigation bar of the fullscreen interface.
 3. The following features are supported under the operations intelligence.
@@ -130,9 +137,7 @@ clusters, services, and service roles) Example: What services are available in t
 6. **Function entry** (such as the "Operation Orchestration" menu link)
 : Operation Orchestration function entry, menu: Resource Management
 
-**Note**
-
-When you ask a question, if you can, include the resource identifier (such as the IP address, ID, and name), the target type (such as ECS, cluster, and service role), or your query intent (such as feature query and dependency query). This significantly improves the query accuracy.
+> **Note:** When you ask a question, if you can, include the resource identifier (such as the IP address, ID, and name), the target type (such as ECS, cluster, and service role), or your query intent (such as feature query and dependency query). This significantly improves the query accuracy.
 
 | Scenarios | Result Description |
 |---|---|

@@ -5,7 +5,7 @@ doc_version: "20240305"
 pdf_pages: 53
 source_pdf: "045726f0a24eabff_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Developer Guide 20240305.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Migration%20Center%20Developer%20Guide%2020240305.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Developer Guide
@@ -96,9 +96,11 @@ Migration Center console and press the ENTER key.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Cloud Migration Center console from an administrator.
 
-**Note**
+> **Note:** When you log on to the Cloud Migration Center console for the first time, you must change the password as prompted. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-When you log on to the Cloud Migration Center console for the first time, you must change the password as prompted. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log on**.
 4. In the left-side navigation pane, choose **Migration Tool Center > Server Migration**
 **Center**.

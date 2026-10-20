@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 258
 source_pdf: "c2a0dfafc99eaf5f_Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%20AnalyticDB%20PostgreSQL%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # AnalyticDB for PostgreSQL User Guide 20260630
@@ -186,15 +186,11 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -209,10 +205,8 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 Enter the 6-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
-For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, click **Products** and choose **Database Services > AnalyticDB**
 **for PostgreSQL**.
 
@@ -293,19 +287,17 @@ c. Click **OK**.
 a. Click **Edit** in the Operation column. b. In the Edit a whitelist Group panel, add or remove IP addresses or CIDR blocks in the
 **Whitelist within a group** section.
 
-**Note**
+> **Note:** You cannot modify the **Group name**.
 
-You cannot modify the **Group name**. c. Click **OK**.
+c. Click **OK**.
 
 **Delete a whitelist group**
 
-**Note**
+> **Note:** The default whitelist group cannot be deleted.
 
-The default whitelist group cannot be deleted. a. Find the whitelist group that you want to delete and click **Delete** in the Operation column. b. In the **Delete a whitelist Group** message, click **OK**.
+a. Find the whitelist group that you want to delete and click **Delete** in the Operation column. b. In the **Delete a whitelist Group** message, click **OK**.
 
-**Note**
-
-We recommend that you maintain your whitelists on a regular basis to ensure the security of AnalyticDB for PostgreSQL.
+> **Note:** We recommend that you maintain your whitelists on a regular basis to ensure the security of AnalyticDB for PostgreSQL.
 
 ### 3.4 Create a database account
 
@@ -315,9 +307,7 @@ This topic describes how to create a database account for an AnalyticDB for Post
 
 AnalyticDB for PostgreSQL provides the following types of database accounts: Privileged account: an account that has all permissions on all databases. The first account created for an instance in the console is a privileged account. Standard accounts: accounts that have all permissions only on their authorized databases.
 
-**Note**
-
-Permissions include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER.
+> **Note:** Permissions include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER.
 
 **Precautions**
 
@@ -336,11 +326,7 @@ Before you use databases in an AnalyticDB for PostgreSQL instance, you must crea
 
 6. Click **OK**.
 
-**Important**
-
-After the account is created, you can click **Reset Password** in the
-**Actions** column to modify the account password. To ensure data security, we
-recommend that you change your password on a regular basis and do not use passwords that you have used before.
+> **Important:** After the account is created, you can click **Reset Password** in the **Actions** column to modify the account password. To ensure data security, we recommend that you change your password on a regular basis and do not use passwords that you have used before.
 
 **Execute SQL statements to create accounts**
 
@@ -372,9 +358,7 @@ CREATE role test1 WITH LOGIN ENCRYPTED PASSWORD '111111';
 
 The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL.
 
-**Note**
-
-Apsara Stack is an isolated environment. You must deploy software installation packages to the internal environment.
+> **Note:** Apsara Stack is an isolated environment. You must deploy software installation packages to the internal environment.
 
 **Graphical client tools**
 
@@ -423,9 +407,8 @@ Greenplum Database and AnalyticDB for PostgreSQL are both developed based on Pos
 
 AnalyticDB for PostgreSQL provides psql, a binary program of Red Hat. For more information about the download link, see Obtain client tools. The Greenplum official website provides an easy-to-install installation package that includes JDBC, ODBC, and libpq. For more information, see Greenplum official documentation.
 
-**Note**
-
-Apsara Stack is an isolated environment. To access Apsara Stack, you must prepare the necessary software installation packages in advance. By default, AnalyticDB for PostgreSQL instances can be accessed only by clients that are deployed on Elastic Compute Service (ECS) instances within the same region and zone.
+> **Note:** Apsara Stack is an isolated environment. To access Apsara Stack, you must prepare the necessary software installation packages in advance.
+> By default, AnalyticDB for PostgreSQL instances can be accessed only by clients that are deployed on Elastic Compute Service (ECS) instances within the same region and zone.
 
 **DMS**
 
@@ -650,9 +633,8 @@ Pivotal Greenplum official documentation PostgreSQL psqlODBC Compiling psqlODBC 
 
 If you forget the password of your database account in the AnalyticDB for PostgreSQL console, you can reset the password.
 
-**Note**
+> **Note:** To ensure data security, we recommend that you change your password on a regular basis.
 
-To ensure data security, we recommend that you change your password on a regular basis.
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, click **Account Management**.
@@ -699,9 +681,8 @@ instance.
 4. In the connection information section, turn on or off the switch in the **IPv6 Enabled**
 column.
 
-**Important**
+> **Important:** After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 
-After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 5. Click **OK**.
 
 ### 4.3 Change the specifications of an instance
@@ -718,9 +699,7 @@ This topic describes how to change specifications for an instance in storage inc
 3. Select new values for **Compute Group Specifications** and **Compute Groups**.
 4. Click **Submit**.
 
-**Warning**
-
-When the specifications of an instance are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
+> **Warning:** When the specifications of an instance are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
 **Reserved storage mode**
 
@@ -731,18 +710,16 @@ Change the specifications of the coordinator node:
 3. Select a new value for **Master Nodes**.
 4. Click **Submit**.
 
-**Warning**
+> **Warning:** When the specifications of coordinator nodes are being changed, DDL operations may be blocked. Perform the specification change operation during an appropriate period of time.
 
-When the specifications of coordinator nodes are being changed, DDL operations may be blocked. Perform the specification change operation during an appropriate period of time. Change the specifications of compute nodes:
+Change the specifications of compute nodes:
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click **Change Compute Node**
 **Specifications** in the **Actions** column.
 3. Select new values for **Compute Group Specifications** and **Compute Nodes**.
 4. Click **Submit**.
 
-**Warning**
-
-When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
+> **Warning:** When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
 ### 4.4 Restart an instance
 
@@ -756,9 +733,7 @@ The restart process takes about 3 to 30 minutes. During the restart period, the 
 3. In the upper-right corner of the page, click **Restart Instance**.
 4. In the **Restart Instance** message, click **OK**.
 
-**Warning**
-
-The database service may be interrupted when you restart an instance. Proceed with caution.
+> **Warning:** The database service may be interrupted when you restart an instance. Proceed with caution.
 
 ### 4.5 Release an instance
 
@@ -771,9 +746,7 @@ This topic describes how to manually release an AnalyticDB for PostgreSQL instan
 3. In the upper-right corner of the page, click **Instance Management** > **Release Instance**.
 4. On the **Release Instance** page, click **Release**.
 
-**Warning**
-
-After an instance is released, all of its data is deleted. Back up your data before you release an instance.
+> **Warning:** After an instance is released, all of its data is deleted. Back up your data before you release an instance.
 
 ### 4.6 Configure SQL audit
 
@@ -790,9 +763,7 @@ If you have enabled SQL audit, skip this step.
 6. On the **SQL Audit** tab, query SQL information based on conditions such as the time range,
 database, user, and keyword.
 
-**Note**
-
-You can click **Disable SQL Audit** to disable the SQL audit feature.
+> **Note:** You can click **Disable SQL Audit** to disable the SQL audit feature.
 
 **Reserved storage mode**
 
@@ -802,9 +773,8 @@ You can click **Disable SQL Audit** to disable the SQL audit feature.
 4. On the **SQL Audit** page, query SQL information based on conditions such as the database,
 execution duration, time range, database user, source IP address, execution status, operation category, operation type, and statement.
 
-**Note**
-
-You can click the icon to export SQL information from the current page.
+> **Note:** You can click the
+> icon to export SQL information from the current page.
 
 ### 4.7 SSL encryption
 
@@ -823,9 +793,7 @@ SSL encryption is supported only for instances in **reserved storage mode**.
 5. On the **SSL** tab, turn on **SSL Encryption**.
 6. In the **Enable SSL Encryption** message, click **OK**.
 
-**Note**
-
-If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+> **Note:** If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
 **Update the validity of an SSL certificate**
 
@@ -836,9 +804,7 @@ If you modify the status of SSL encryption, your instance restarts. We recommend
 5. On the **SSL** tab, click **Update Validity** to the right of **SSL Encryption**.
 6. In the **Update SSL Certificate Validity** message, click **OK**.
 
-**Note**
-
-If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+> **Note:** If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
 **Disable SSL encryption**
 
@@ -849,9 +815,7 @@ If you modify the status of SSL encryption, your instance restarts. We recommend
 5. On the **SSL** tab, turn off **SSL Encryption**.
 6. In the **Disable SSL Encryption** message, click **OK**.
 
-**Note**
-
-If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+> **Note:** If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
 ### 4.8 Update the minor engine version
 
@@ -870,9 +834,8 @@ When you update the minor engine version of an instance, the instance restarts a
 3. In the upper-right corner of the **Basic Information** page, click **Upgrade Minor Version**.
 4. In the **Upgrade Minor Version** message, click **OK**.
 
-**Note**
+> **Note:** Minor version updates take 3 to 15 minutes to complete. When an instance is being updated, it is unavailable. We recommend that you prepare in advance before you update the instance. After the update is complete, the instance enters the Running state and you can access the instance databases.
 
-Minor version updates take 3 to 15 minutes to complete. When an instance is being updated, it is unavailable. We recommend that you prepare in advance before you update the instance. After the update is complete, the instance enters the Running state and you can access the instance databases.
 5. After you complete the preceding steps, check the state of the instance. If the update is
 complete, the instance enters the **Running** state. Otherwise, the instance remains in the
 **Upgrading version** state.
@@ -893,17 +856,15 @@ You can bind a maximum of 20 tags to each instance, and the tag keys must be uni
 3. Find the instance to which you want to add tags and click the icon in the **Tags** column.
 4. In the **Edit Tag** dialog box, set **Tag Key** and **Tag Value** and click **OK**.
 
-**Note**
-
-If you want to add multiple tags, repeat this step.
+> **Note:** If you want to add multiple tags, repeat this step.
 
 **Delete a tag**
 
 You can delete the tags of an instance if the instance is modified or no longer needs the tags.
 
-**Note**
+> **Note:** You can unbind a maximum of 20 tags at a time.
+> If a tag is unbound from an instance, the tag is deleted.
 
-You can unbind a maximum of 20 tags at a time. If a tag is unbound from an instance, the tag is deleted.
 1. Log on to the AnalyticDB for PostgreSQL console.
 2. Find the instance from which you want to unbind tags and click the icon in the **Tags**
 column.
@@ -922,9 +883,8 @@ appears.
 4. In this case, you can perform the following operations:
 Modify a single parameter i. In the **Modifiable Parameters** section, find the parameter that you want to modify and click in the **Parameter Value** column. ii. Enter a value based on the value range that appears. iii. Click **OK**. iv. In the upper-right corner of the page, click **Submit**.
 
-**Note**
-
-If you need to restart the instance for the modified parameters to take effect, the system prompts you whether to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application is configured to reconnect to the instance. If you want to cancel the modification, click **Cancel**.
+> **Note:** If you need to restart the instance for the modified parameters to take effect, the system prompts you whether to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application is configured to reconnect to the instance.
+> If you want to cancel the modification, click **Cancel**.
 
 **View parameter modification records**
 
@@ -947,15 +907,17 @@ AnalyticDB for PostgreSQL allows you to import data from or export data to Objec
 INSERT INTO <Destination table> SELECT * FROM <External table>
 ```
 
-**Note**
-
-The data import performance depends on the OSS performance and resources of AnalyticDB for PostgreSQL instances, such as CPU, I/O, memory, and network resources. To ensure the best import performance, we recommend that you use column store and compression when you create a table. For example, you can
+> **Note:** The data import performance depends on the OSS performance and resources of AnalyticDB for PostgreSQL instances, such as CPU, I/O, memory, and network resources. To ensure the best import performance, we recommend that you use column store and compression when you create a table. For example, you can
 
 |   | WITH (APPENDONLY=true, ORIENTATION=column, |
 |---|---|
 | COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOCKSIZE=1048576) |   |
 
-see CREATE TABLE. To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region. Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
+see CREATE TABLE.
+
+> To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region.
+
+Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
 
 ```
 INSERT INTO <External table> SELECT * FROM <Source table>
@@ -963,9 +925,7 @@ INSERT INTO <External table> SELECT * FROM <Source table>
 
 Create OSS external tables
 
-**Note**
-
-The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters.
+> **Note:** The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters.
 
 ```
 CREATE [READABLE] EXTERNAL TABLE tablename ( columnname datatype [, ...] | LIKE othertable ) LOCATION ('ossprotocol') FORMAT 'TEXT'
@@ -1174,9 +1134,7 @@ Table 5. The following table describes the default control characters for TEXT a
 | ESCAPE | N/A | Same as QUOTE |
 | NULL | Backslash plus N (\N) | Empty string without quotation marks |
 
-**Note**
-
-All control characters must be single-byte characters.
+> **Note:** All control characters must be single-byte characters.
 
 **SDK troubleshooting**
 
@@ -1208,9 +1166,7 @@ mysql2pgsql connects to both the source MySQL database and the destination Analy
 1. Modify the my.cfg configuration file to configure the connection information of source and
 destination databases. i. Modify the connection information of the source MySQL database.
 
-**Note**
-
-You must have the read permissions on all user tables.
+> **Note:** You must have the read permissions on all user tables.
 
 ```
 [src.mysql] host = "192.168.1.1" port = "3306" user = "test" password = "test" db = "test" encodingdir = "share" encoding = "utf8"
@@ -1218,9 +1174,7 @@ You must have the read permissions on all user tables.
 
 ii. Modify the connection information of the destination PostgreSQL, PPAS, or AnalyticDB for PostgreSQL database.
 
-**Note**
-
-You must have the write permissions on the destination table.
+> **Note:** You must have the write permissions on the destination table.
 
 ```
 [desc.pgsql] connect_string = "host=192.168.1.2 dbname=test port=3432 user=test password=pgsql"
@@ -1294,9 +1248,7 @@ pgsql2pgsql supports the following features: Full migration across PostgreSQL, P
 1. Modify the my.cfg configuration file to configure the connection information of source and
 destination databases. i. Modify the connection information of the source PostgreSQL database.
 
-**Note**
-
-In the connection information of the source PostgreSQL database, we recommend that you set the user to the owner of the source database.
+> **Note:** In the connection information of the source PostgreSQL database, we recommend that you set the user to the owner of the source database.
 
 ```
 [src.pgsql] connect_string = "host=192.168.0.1 dbname=test port=3432 user=test password=pgsql"
@@ -1310,17 +1262,18 @@ ii. Modify the connection information of the self-managed PostgreSQL database.
 
 iii. Modify the connection information of the destination PostgreSQL database.
 
-**Note**
-
-You must have the write permissions on the destination table.
+> **Note:** You must have the write permissions on the destination table.
 
 ```
 [desc.pgsql] connect_string = "host=192.168.0.2 dbname=test port=3432 user=test3 password=pgsql"
 ```
 
-**Note**
+> **Note:** If you want to synchronize incremental data, you must have the permissions to create replication slots in the source database.
+> PostgreSQL 9.4 and later support logic flow replication. Therefore, source databases of these versions support incremental data migration. A kernel supports logic flow replication only after you configure the following parameters:
+> wal_level = logical
+> max_wal_senders = 6
+> max_replication_slots = 6
 
-If you want to synchronize incremental data, you must have the permissions to create replication slots in the source database. PostgreSQL 9.4 and later support logic flow replication. Therefore, source databases of these versions support incremental data migration. A kernel supports logic flow replication only after you configure the following parameters: wal_level = logical max_wal_senders = 6 max_replication_slots = 6
 2. Use pgsql2pgsql to perform full database migration.
 
 ```
@@ -1513,9 +1466,7 @@ Execute the following statements to create an extension:
 CREATE EXTENSION <extension name>; CREATE SCHEMA <schema name>; CREATE EXTENSION IF NOT EXISTS <extension name> WITH SCHEMA <schema name>;
 ```
 
-**Note**
-
-Before you create a MADlib extension, you must create a plpythonu extension.
+> **Note:** Before you create a MADlib extension, you must create a plpythonu extension.
 
 ```
 CREATE EXTENSION plpythonu; CREATE EXTENSION madlib;
@@ -1529,9 +1480,7 @@ Execute the following statements to delete an extension.
 DROP EXTENSION <extension name>; DROP EXTENSION IF EXISTS <extension name> CASCADE;
 ```
 
-**Note**
-
-If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
+> **Note:** If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
 
 ### 5.7 Manage users and permissions
 
@@ -1571,9 +1520,9 @@ GRANT SELECT ON TABLE t1 TO normal_user1; REVOKE UPDATE ON TABLE t1 FROM normal_
 
 AnalyticDB for PostgreSQL provides real-time materialized views. Compared with non-realtime materialized views, real-time materialized views can implement automatic refresh in response to data changes without the need to execute REFRESH statements. A real-time materialized view can be automatically updated with changes made to its base tables. Real-time materialized views of AnalyticDB for PostgreSQL support only statementlevel automatic refresh. When an INSERT, COPY, UPDATE, or DELETE statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure strong data consistency.
 
-**Note**
+> **Note:** In this mode, the write performance of base tables may be reduced. We recommend that you do not create more than five real-time materialized views on the same base table.
 
-In this mode, the write performance of base tables may be reduced. We recommend that you do not create more than five real-time materialized views on the same base table. For more information about materialized views, see CREATE MATERIALIZED VIEW.
+For more information about materialized views, see CREATE MATERIALIZED VIEW.
 
 **Statement-level refresh**
 
@@ -2226,9 +2175,9 @@ The following information is returned:
 (1 row)
 ```
 
-**Note**
+> **Note:** JSON data cannot be used as the distribution key and does not support JSON aggregate functions.
 
-JSON data cannot be used as the distribution key and does not support JSON aggregate functions. The following example demonstrates how to use Python to access the database:
+The following example demonstrates how to use Python to access the database:
 
 ```java
 #! /bin/env python
@@ -2509,9 +2458,8 @@ AnalyticDB for PostgreSQL.
 create library example language java from 'oss://oss-cn-hangzhou.aliyuncs.com filepat h=analytics.jar id=xxx key=yyy bucket=zzz';
 ```
 
-**Note**
+> **Note:** You can only use the filepath variable in the CREATE LIBRARY statement to import files one at a time. The CREATE LIBRARY statement also supports byte streams to import files without the need to use OSS. For more information, see Use the CREATE LIBRARY statement.
 
-You can only use the filepath variable in the CREATE LIBRARY statement to import files one at a time. The CREATE LIBRARY statement also supports byte streams to import files without the need to use OSS. For more information, see Use the CREATE LIBRARY statement.
 7. In AnalyticDB for PostgreSQL, execute the following statements to create and use the UDF:
 
 ```
@@ -2820,9 +2768,7 @@ If you want to improve performance, speed up data import, or reduce costs for ta
 with (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOCKSIZ E=1048576, OIDS=false)
 ```
 
-**Note**
-
-AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
+> **Note:** AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
 
 ### 6.4 Add a field to a column-oriented table and set the default value
 
@@ -3135,9 +3081,7 @@ An AnalyticDB for PostgreSQL instance in elastic storage mode is created. The mi
 
 Vector search engine optimization consumes large amounts of memory resources of your instance and significantly decreases the concurrency of queries. Make sure that you have learned the impact before you enable vector search engine optimization.
 
-**Warning**
-
-After you enable or disable vector search engine optimization, your instance restarts. During the restart, your instance is unavailable. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
+> **Warning:** After you enable or disable vector search engine optimization, your instance restarts. During the restart, your instance is unavailable. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
 
 **Procedure**
 
@@ -4281,9 +4225,9 @@ ALTER TABLE chunks ALTER COLUMN feature SET STORAGE PLAIN;
 -- Create a vector index based on the Euclidean distance. CREATE INDEX idx_chunks_feature_l2 ON chunks USING ann(feature) WITH (dim=1536, dista ncemeasure=l2, hnsw_m=64, pq_enable=1); -- Create a vector index based on the inner product distance. CREATE INDEX idx_chunks_feature_ip ON chunks USING ann(feature) WITH (dim=1536, dista ncemeasure=ip, hnsw_m=64, pq_enable=1); -- Create a vector index based on the cosine similarity. CREATE INDEX idx_chunks_feature_cosine ON chunks USING ann(feature) WITH (dim=1536, d istancemeasure=cosine, hnsw_m=64, pq_enable=1);
 ```
 
-**Note**
-
-You can create multiple vector columns in each vector table and multiple vector indexes on each vector column. To avoid invalid indexes, you must create vector indexes based on your business requirements. The vector search methods must match the vector indexes that are created by using the corresponding distance measurements. For example, the `<->` operator works with the vector index created by using the Euclidean distance, the `<#>` operator works with the vector index created by using the inner product distance, and the `<=>` operator works with the vector index created by using the cosine similarity. If the operators do not work with the corresponding vector indexes, the vector search method is downgraded to exact search (bruteforce search). Use the `ANN` access method that is provided by the FastANN vector search extension. If you enable the **vector search engine optimization** feature for an AnalyticDB for PostgreSQL instance, the FastANN vector search extension is automatically created in the AnalyticDB for PostgreSQL instance.
+> **Note:** You can create multiple vector columns in each vector table and multiple vector indexes on each vector column. To avoid invalid indexes, you must create vector indexes based on your business requirements.
+> The vector search methods must match the vector indexes that are created by using the corresponding distance measurements. For example, the `<->` operator works with the vector index created by using the Euclidean distance, the `<#>` operator works with the vector index created by using the inner product distance, and the `<=>` operator works with the vector index created by using the cosine similarity. If the operators do not work with the corresponding vector indexes, the vector search method is downgraded to exact search (brute- force search).
+> Use the `ANN` access method that is provided by the FastANN vector search extension. If you enable the **vector search engine optimization** feature for an AnalyticDB for PostgreSQL instance, the FastANN vector search extension is automatically created in the AnalyticDB for PostgreSQL instance.
 
 |   | You must specify an operator class or define a default operator class |
 |---|---|
@@ -4301,11 +4245,9 @@ CREATE INDEX ON chunks(intime);
 
 You can create vector indexes in one of the following modes: Streaming mode Create an empty table and then create a vector index for the table. This way, the streaming index is created in real time when you import vector data. This mode is suitable for realtime vector search scenarios. However, you cannot quickly import vector data in this mode. Asynchronous mode Create an empty table, import vector data to the table, and then create a vector index for the imported vector data. This mode is suitable for scenarios in which you want to import large amounts of vector data.
 
-**Note**
+> **Note:** AnalyticDB for PostgreSQL allows you to concurrently create vector indexes in asynchronous mode. You can use the Grand Unified Configuration (GUC) parameter **fastann.build_parallel_processes** to specify the number of concurrent index creation processes.
 
-AnalyticDB for PostgreSQL allows you to concurrently create vector indexes in asynchronous mode. You can use the Grand Unified Configuration (GUC) parameter
-**fastann.build_parallel_processes** to specify the number of concurrent index creation
-processes. For example, you can create an index in asynchronous mode by using Data Management (DMS). Sample code:
+For example, you can create an index in asynchronous mode by using Data Management (DMS). Sample code:
 
 ```
 -- For example, an AnalyticDB for PostgreSQL instance whose compute node specifications are 8 cores and 32 GB memory is used. -- To prevent timeout errors, set the statement_timeout and idle_in_transaction_session_timeout parameters to 0. -- Set the fastann.build_parallel_processes parameter to 8 to ensure that the CPU resou rces of compute nodes are fully utilized. The value of the fastann.build_parallel_processes parameter must be the same as the number of CPU cores in the compute node specifications. -- In DMS, you must specify values for parameters in the same line as the index creatio n statement. SET statement_timeout = 0;SET idle_in_transaction_session_timeout = 0;SET fastann.build_parallel_processes = 8;CREATE INDEX ON chunks USING ann(feature) WITH (dim=1536, distancemeasure=cosine, hnsw_m=64, pq_enable=1);
@@ -4317,9 +4259,7 @@ You can create an index in asynchronous mode by using the psql tool. Sample code
 -- For example, an AnalyticDB for PostgreSQL instance whose compute node specifications are 8 cores and 32 GB memory is used. -- Step 1: Store the following content in the create_index.sql file: SET statement_timeout = 0; SET idle_in_transaction_session_timeout = 0; SET fastann.build_parallel_processes = 8; CREATE INDEX ON chunks USING ann(feature) WITH (dim=1536, distancemeasure=cosine, hnsw_ m=64, pq_enable=1); -- Step 2: Run the following command to create an index in parallel: psql -h gp-xxxx-master.gpdb.rds.aliyuncs.com -p 5432 -d dbname -U username -f create_in dex.sql
 ```
 
-**Important**
-
-If other services are running on the AnalyticDB for PostgreSQL instance, you cannot set the number of concurrent index creation processes to the number of CPU cores in the compute node specifications.
+> **Important:** If other services are running on the AnalyticDB for PostgreSQL instance, you cannot set the number of concurrent index creation processes to the number of CPU cores in the compute node specifications.
 
 **References**
 
@@ -4359,9 +4299,9 @@ Supported vector functions
 |   | negative inner p _ _ roduct distance _ | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors based on the inner product distance in descending order. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 |   | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors based on the cosine similarity in descending order. Valid values of the cosine distance: 0 to 2. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-**Important**
+> **Important:** Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector functions: vector_add, vector_sub, vector_mul, vector_div, vector_sum, vector_min, vector_max, vector_avg, vector_norm, and vector_angle. For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance.
 
-Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector functions: vector_add, vector_sub, vector_mul, vector_div, vector_sum, vector_min, vector_max, vector_avg, vector_norm, and vector_angle. For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. Examples of vector functions:
+Examples of vector functions:
 
 ```
 -- Euclidean distance SELECT l2_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Inner product distance SELECT inner_product_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Cosine similarity SELECT cosine_similarity(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Dot product distance SELECT dp_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Hamming distance SELECT hm_distance(array[1,0,1,0]::int[], array[0,1,0,1]::int[]); -- Sum of two vector arrays SELECT vector_add(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Difference between two vector arrays SELECT vector_sub(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Product of two vector arrays SELECT vector_mul(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Quotient of two vector arrays SELECT vector_div(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Sum of all elements in a vector array SELECT vector_sum(array[1,1,1,1]::real[]); -- Minimum value among all elements in a vector array SELECT vector_min(array[1,1,1,1]::real[]); -- Maximum value among all elements in a vector array SELECT vector_max(array[1,1,1,1]::real[]); -- Average value of all elements in a vector array SELECT vector_avg(array[1,1,1,1]::real[]); -- Norm of a vector array SELECT vector_norm(array[1,1,1,1]::real[]); -- Angle between two vector arrays SELECT vector_angle(array[1,1,1,1]::real[], array[2,2,2,2]::real[]);
@@ -4381,9 +4321,9 @@ Supported vector operators
 | * | Calculates the product of two vectors. | None | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 | / | Calculates the quotient of two vectors. | None | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-**Important**
+> **Important:** Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector operators: `+` , `-` , `*` , and `/` . For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance.
 
-Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector operators: `+` , `-` , `*` , and `/` . For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. Examples of vector operators:
+Examples of vector operators:
 
 ```
 -- Euclidean distance SELECT array[1,1,1,1]::real[] <-> array[2,2,2,2]::real[] AS score; -- Inner product distance SELECT array[1,1,1,1]::real[] <#> array[2,2,2,2]::real[] AS score; -- Cosine distance SELECT array[1,1,1,1]::real[] <=> array[2,2,2,2]::real[] AS score; -- Sum of two vectors SELECT array[1,1,1,1]::real[] + array[2,2,2,2]::real[] AS value; -- Difference between two vectors SELECT array[1,1,1,1]::real[] - array[2,2,2,2]::real[] AS value; -- Product of two vectors SELECT array[1,1,1,1]::real[] * array[2,2,2,2]::real[] AS value; -- Quotient of two vectors SELECT array[1,1,1,1]::real[] / array[2,2,2,2]::real[] AS value;
@@ -4449,9 +4389,9 @@ The approximate index search method uses HNSW indexes to search data. This metho
 
 You can perform approximate index search based on the Euclidean distance, inner product distance, or cosine similarity.
 
-**Note**
+> **Note:** Only AnalyticDB for PostgreSQL instances of V6.3.10.18 or later support approximate index search based on the inner product distance or cosine similarity. Make sure that the minor version of your AnalyticDB for PostgreSQL instance is V6.3.10.18 or later. For information about how to view and update the minor version, see Update the minor engine version.
 
-Only AnalyticDB for PostgreSQL instances of V6.3.10.18 or later support approximate index search based on the inner product distance or cosine similarity. Make sure that the minor version of your AnalyticDB for PostgreSQL instance is V6.3.10.18 or later. For information about how to view and update the minor version, see Update the minor engine version. Euclidean distance
+Euclidean distance
 
 ```
 SELECT ID, l2_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) as score FRO M <TABLE_NAME> ORDER BY <VECTOR_COLUMN_NAME> <-> array[1,2,3...N]::float4[] LIMIT <TO PK>;
@@ -4469,9 +4409,10 @@ Cosine similarity
 SELECT ID, cosine_similarity(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) as sco re FROM <TABLE_NAME> ORDER BY <VECTOR_COLUMN_NAME> <=> array[1,2,3...N]::float4[] LIM IT <TOPK>;
 ```
 
-**Note**
-
-The parameter descriptions in approximate index search are the same as those in exact search. If no indexes are created or no parameters are configured for the FastANN vector search engine, the approximate index search is downgraded to exact search. When you use a vector index, you must specify or omit **ASC** in the **ORDER BY** clause. To sort vectors by distance in descending order, or to sort the results of vector index search by using another column, specify the vector index search as a subquery and add an **ORDER BY** clause to the parent query. When you use a vector index, you must specify an operator such as `<->` , `<#>` , or `<=>` in the ORDER BY clause. In addition, the `<->` , `<#>` , or `<=>` operator must work with a vector index that is created by using the corresponding distance measurement. This way, you can use the vector index to accelerate queries. For information about the supported operators and how to use the operators, see Create a vector index.
+> **Note:** The parameter descriptions in approximate index search are the same as those in exact search.
+> If no indexes are created or no parameters are configured for the FastANN vector search engine, the approximate index search is downgraded to exact search.
+> When you use a vector index, you must specify or omit **ASC** in the **ORDER BY** clause. To sort vectors by distance in descending order, or to sort the results of vector index search by using another column, specify the vector index search as a subquery and add an **ORDER BY** clause to the parent query.
+> When you use a vector index, you must specify an operator such as `<->` , `<#>` , or `<=>` in the ORDER BY clause. In addition, the `<->` , `<#>` , or `<=>` operator must work with a vector index that is created by using the corresponding distance measurement. This way, you can use the vector index to accelerate queries. For information about the supported operators and how to use the operators, see Create a vector index.
 
 **Examples**
 
@@ -4575,7 +4516,9 @@ You can configure the preceding parameters for sessions.
 
 **vector storage**
 
-Vector workloads store high-dimensional arrays for every image, audio file, or text embedding processed. At scale, those arrays consume substantial disk space. AnalyticDB for PostgreSQL provides the FLOAT2 data type to store vector columns at half the space of FLOAT4, with minimal impact on search accuracy. Normalize vectors to the range [0, 1] before running vector search. Values outside the FLOAT2 range (-65519.99 to 65519.99) are stored as `Infinity` or `-Infinity` , which produces inaccurate distances.
+Vector workloads store high-dimensional arrays for every image, audio file, or text embedding processed. At scale, those arrays consume substantial disk space. AnalyticDB for PostgreSQL provides the FLOAT2 data type to store vector columns at half the space of FLOAT4, with minimal impact on search accuracy.
+
+> Normalize vectors to the range [0, 1] before running vector search. Values outside the FLOAT2 range (-65519.99 to 65519.99) are stored as `Infinity` or `-Infinity` , which produces inaccurate distances.
 
 **How FLOAT2 works**
 
@@ -4812,9 +4755,7 @@ Create a sparse vector table named svector_test.
 ) DISTRIBUTED BY (id); -- Set the storage mode of the sparse vector column to PLAIN. ALTER TABLE <svector_test> ALTER COLUMN sparse_features SET storage plain;
 ```
 
-**Note**
-
-PLAIN mode: PostgreSQL uses The Oversized-Attribute Storage Technique (TOAST) to store large objects, large field values, or data that cannot be contained within a regular data page. TOAST facilitates efficient storage and access to data. If you set the storage mode of a column to PLAIN, data in the column is not compressed or broken up. Data is stored within a single row and not moved to a TOAST table. In most cases, the PLAIN storage mode is used to process small field values to prevent additional overheads caused by TOAST. You can also use the PLAIN storage mode to process data types that support efficient storage, such as integers and small text fields.
+> **Note:** PLAIN mode: PostgreSQL uses The Oversized-Attribute Storage Technique (TOAST) to store large objects, large field values, or data that cannot be contained within a regular data page. TOAST facilitates efficient storage and access to data. If you set the storage mode of a column to PLAIN, data in the column is not compressed or broken up. Data is stored within a single row and not moved to a TOAST table. In most cases, the PLAIN storage mode is used to process small field values to prevent additional overheads caused by TOAST. You can also use the PLAIN storage mode to process data types that support efficient storage, such as integers and small text fields.
 
 **Create a sparse vector index**
 
@@ -4925,9 +4866,7 @@ SELECT id, sparse_features, '{"indices":[2,60,50], "values":[2,0.01, 0.02]}' <#>
 (3 ROWS)
 ```
 
-**Note**
-
-You can use the fastann.sparse_hnsw_max_scan_points and fastann.sparse_hnsw_ef_search parameters to modify the recall rate of sparse vector search. For more information, see the "Appendixes" section of this topic.
+> **Note:** You can use the fastann.sparse_hnsw_max_scan_points and fastann.sparse_hnsw_ef_search parameters to modify the recall rate of sparse vector search. For more information, see the "Appendixes" section of this topic.
 
 **Use dense and sparse vectors to perform hybrid search**
 
@@ -4974,9 +4913,7 @@ Sample statements for performing dense vector search, sparse vector search, and 
 |---|---|---|---|
 | fastann.sparse hnsw e _ _ f search _ | The size of search candidate sets when you use HNSW indexes to perform sparse vector search. You can use this parameter to test the recall rate. | 400 | [10, 10000] |
 
-**Note**
-
-You can configure the preceding parameters for sessions.
+> **Note:** You can configure the preceding parameters for sessions.
 
 **Supported vector functions for sparse vectors**
 
@@ -5930,9 +5867,9 @@ nohup python run.py --algorithm adbpg --dataset <Dataset> --runs 1 --timeout 990
 > annbenchmark_deep.log 2>&1 &
 ```
 
-**Note**
+> **Note:** Replace the value of the dataset parameter with the actual test dataset.
 
-Replace the value of the dataset parameter with the actual test dataset. After the test is complete, run the following command to query the recall rate test result:
+After the test is complete, run the following command to query the recall rate test result:
 
 ```
 python plot.py --dataset <Dataset> --recompute
@@ -7221,9 +7158,8 @@ Vector retrieval is also called nearest neighbor search (NNS). It finds and retu
 
 In this example, the following tools are used: Programming language: Python 3.8. Deep learning framework: Pytorch. Dataset: CIFAR100. The dataset consists of 100 categories, each containing 600 images. Network: pre-trained SqueezeNet. SqueezeNet is lightweight and produces feature vectors of 1,000 dimensions.
 
-**Note**
+> **Note:** We recommend that you use Jupyter Notebook to run the following code.
 
-We recommend that you use Jupyter Notebook to run the following code.
 1. Create a Python environment.
 
 ```bash
@@ -7334,9 +7270,9 @@ The feature vectors of an image are displayed in the following format:
 1. Create a table and then create a vector index in the table. In this example, the psycopg2cffi
 library of Python is used to connect to the vector database.
 
-**Important**
+> **Important:** If you want to enable the vector feature for your database,
 
-If you want to enable the vector feature for your database, 提交工单 submit a ticket.
+提交工单 submit a ticket.
 
 ```java
 import os import psycopg2cffi
@@ -7447,9 +7383,7 @@ results = query_analyticdb("image_search", "image_vector", query_vector)
 The following figure shows the image whose ID is 4999.
 4. Display the images corresponding to the query results.
 
-**Note**
-
-AnalyticDB for PostgreSQL vector databases provide the ANN search feature to accelerate the query.
+> **Note:** AnalyticDB for PostgreSQL vector databases provide the ANN search feature to accelerate the query.
 
 ```python
 # Obtain the image IDs from the query results in the previous step.
@@ -7466,7 +7400,9 @@ The following figures show the returned images.
 
 **retrieval system**
 
-AnalyticDB for PostgreSQL's vector database lets you build a text semantic retrieval system that finds documents by meaning rather than exact keyword matches. This tutorial walks through a complete example: vectorizing a 10,000-entry text corpus, indexing it in AnalyticDB for PostgreSQL, and running semantic similarity queries against it. By the end, you will have: Vectorized a real-world text corpus using a sentence embedding model Stored vectors and created an approximate nearest neighbor (ANN) index in AnalyticDB for PostgreSQL Queried the database to retrieve the most semantically similar texts This tutorial creates a table ( `public.articles` ) and an index in your database. Clean-up code is provided at the end to drop them when you are done.
+AnalyticDB for PostgreSQL's vector database lets you build a text semantic retrieval system that finds documents by meaning rather than exact keyword matches. This tutorial walks through a complete example: vectorizing a 10,000-entry text corpus, indexing it in AnalyticDB for PostgreSQL, and running semantic similarity queries against it. By the end, you will have: Vectorized a real-world text corpus using a sentence embedding model Stored vectors and created an approximate nearest neighbor (ANN) index in AnalyticDB for PostgreSQL Queried the database to retrieve the most semantically similar texts
+
+> This tutorial creates a table ( `public.articles` ) and an index in your database. Clean-up code is provided at the end to drop them when you are done.
 
 **How it works**
 
@@ -7497,7 +7433,7 @@ conda activate adbpg_text_env
 pip install psycopg2==2.9.3 pip install wget==3.2 pip install pandas==1.2.4 pip install datasets==2.12.0 sentence-transformers==2.2.2 pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
 ```
 
-On macOS, if you see `Error: pg_config executable not found` when installing psycopg2, install PostgreSQL client libraries first:
+> On macOS, if you see `Error: pg_config executable not found` when installing psycopg2, install PostgreSQL client libraries first:
 
 ```
 brew install postgresql pip install psycopg2==2.9.3
@@ -7888,9 +7824,7 @@ Displays the performance and load information about the instance in the **Coordi
 **(%)** charts.
 4. **Optional.** Select a **time range** to view the corresponding metrics.
 
-**Note**
-
-The interval between the start time and the end time cannot exceed seven days.
+> **Note:** The interval between the start time and the end time cannot exceed seven days.
 
 #### 9.1.2 View node monitoring information
 
@@ -7920,9 +7854,7 @@ Displays the status information about compute nodes in the **CPU Utilization (%)
 4. **Optional.** Select a **time range** to view the metrics.
 You can set Time Range to Recent 1 Hour, Recent 6 Hours, Recent 1 Day, Recent 7 Days, or a custom time range.
 
-**Note**
-
-The interval between the start time and the end time of the custom time range cannot exceed seven days.
+> **Note:** The interval between the start time and the end time of the custom time range cannot exceed seven days.
 
 ### 9.2 Monitoring and alerting
 
@@ -8005,9 +7937,7 @@ The **O&M Assistant** page consists of three tabs: **Data Bloat**, **Data Skew**
 
 **Data Bloat tab**
 
-**Note**
-
-The Data Bloat tab lists tables that are larger than 1 GB in size.
+> **Note:** The Data Bloat tab lists tables that are larger than 1 GB in size.
 
 | Parameter | Description |
 |---|---|
@@ -8025,9 +7955,7 @@ The Data Bloat tab lists tables that are larger than 1 GB in size.
 
 **Data Skew tab**
 
-**Note**
-
-The Data Skew tab lists tables that are larger than 1 GB in size.
+> **Note:** The Data Skew tab lists tables that are larger than 1 GB in size.
 
 | Parameter | Description |
 |---|---|
@@ -8044,9 +7972,7 @@ The Data Skew tab lists tables that are larger than 1 GB in size.
 
 **Index Statistics tab**
 
-**Note**
-
-The Index Statistics tab displays indexes that are larger than 100 MB in size.
+> **Note:** The Index Statistics tab displays indexes that are larger than 100 MB in size.
 
 | Parameter | Description |
 |---|---|
@@ -8169,17 +8095,15 @@ The lock diagnostics list displays the following information:
 query and the blocking query, showing their respective **Process ID**, **Username**, and
 **Query Statement**.
 
-**Note**
-
-SQL statements in the **Resource Wait** state are not supported by this diagnostic tool.
+> **Note:** SQL statements in the **Resource Wait** state are not supported by this diagnostic tool.
 
 **Optimization method**
 
 If your query does not return results for an extended period of time and the Lock Diagnostics tab shows that the query is in the lock wait state, you have two options: either wait for the system to automatically execute your query after the preceding queries are complete, or manually cancel or terminate the blocking queries. Use the following method to cancel or terminate a blocking query.
 
-**Note**
+> **Note:** Only a privileged account that has superuser permissions can cancel or terminate queries.
 
-Only a privileged account that has superuser permissions can cancel or terminate queries. Cancel a query Use this method only when the session that contains the query is actively running. The database will perform a clean rollback of the transaction, which may take some time.
+Cancel a query Use this method only when the session that contains the query is actively running. The database will perform a clean rollback of the transaction, which may take some time.
 
 ```
 SELECT pg_cancel_backend(<Process_ID>);
@@ -8469,9 +8393,9 @@ Table 4. Resource queue parameters
 
 Tips for configuring resource queues: We recommend that you create a resource queue for each user. The default resource queue of AnalyticDB for PostgreSQL is pg_default. If no queue is created, all users are assigned to pg_default. This operation is not recommended. We recommend that you create a resource queue for each user. Typically, a database user corresponds to a business operation. Different database users may correspond to different business operations or users, such as business users, analysts, developers, and DBAs. We recommend that you do not use superusers to execute queries. Queries initiated by superusers are limited only by the preceding parameters and not by the resource queue. If you want to use resource queues to limit the use of resources, we recommend that you do not use superusers to execute queries. ACTIVE_STATEMENTS indicates the SQL statements that can be concurrently executed within a resource queue. When the cost of a query is lower than the minimum cost specified by min_cost, the query can be executed without being queued. You can specify the MEMORY_LIMIT parameter to set the allowed maximum memory usage of all the SQL statements in a resource queue. The statement_mem parameter has a higher priority that can break through the limit of resource queues.
 
-**Note**
+> **Note:** The memory of all resource queues cannot exceed gp_vmem_protect_limit.
 
-The memory of all resource queues cannot exceed gp_vmem_protect_limit. You can distinguish different business operations by configuring the priorities of resource queues. For example, you can give report-related business operations a top priority while giving common business operations and analysis lower priorities. In this case, you can create three resource queues that have the max, high, and medium priorities, respectively. If the number of resources requested at different periods of time varies, you can run the crontab command to periodically adjust the limits of resource queues based on usage patterns. For example, you can give the queue of analysis a higher priority in the day and the queue of report-related business operations a higher priority at night. AnalyticDB for PostgreSQL does not allow you to configure resource limits by period of time. Therefore, you can only externally deploy tasks by using the ALTER RESOURCE QUEUE statement. You can use the view provided by gp_toolkit to view the resource usage of the resource queues.
+You can distinguish different business operations by configuring the priorities of resource queues. For example, you can give report-related business operations a top priority while giving common business operations and analysis lower priorities. In this case, you can create three resource queues that have the max, high, and medium priorities, respectively. If the number of resources requested at different periods of time varies, you can run the crontab command to periodically adjust the limits of resource queues based on usage patterns. For example, you can give the queue of analysis a higher priority in the day and the queue of report-related business operations a higher priority at night. AnalyticDB for PostgreSQL does not allow you to configure resource limits by period of time. Therefore, you can only externally deploy tasks by using the ALTER RESOURCE QUEUE statement. You can use the view provided by gp_toolkit to view the resource usage of the resource queues.
 
 ```
 gp_toolkit.gp_resq_activity gp_toolkit.gp_resq_activity_by_queue gp_toolkit.gp_resq_priority_backend gp_toolkit.gp_resq_priority_statement gp_toolkit.gp_resq_role gp_toolkit.gp_resqueue_status
@@ -8485,9 +8409,7 @@ gp_toolkit.gp_resq_activity gp_toolkit.gp_resq_activity_by_queue gp_toolkit.gp_r
 
 This topic describes how to grant a tenant organization the permissions to access Server Load Balancer (SLB) and helps you efficiently resolve related issues.
 
-**Important**
-
-If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
+> **Important:** If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
 
 **Procedure**
 

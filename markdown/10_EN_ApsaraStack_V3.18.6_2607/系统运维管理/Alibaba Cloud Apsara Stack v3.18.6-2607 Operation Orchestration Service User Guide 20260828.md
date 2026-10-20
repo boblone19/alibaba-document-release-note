@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 59
 source_pdf: "ee84c750e3205063_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828
@@ -47,32 +47,31 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
 nsole
 
-**Note**
+> **Note:** Obtain the username and password from an operations administrator.
+> If this is the first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password from an operations administrator. If this is the first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Select **I have read and agree to the product service agreement, privacy**
 **agreement, and user agreement**.
 
 **Note**
 
-The link text displayed on the logon page is the document title. You can click the link text to view the details of the agreement. The **Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only when you publish a service. If none of the three types of protocols is published, you do not need to perform this operation.
+The link text displayed on the logon page is the document title. You can click the link text to view the details of the agreement.
+
+> The **Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only when you publish a service. If none of the three types of protocols is published, you do not need to perform this operation.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** "Authorized Logon" is displayed only when the global IdP setting for third-party authentication is enabled, and the display name can be customized. The default display name is "Authorized Logon".
 
-"Authorized Logon" is displayed only when the global IdP setting for third-party authentication is enabled, and the display name can be customized. The default display name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
 
-**Note**
-
-In Internet scenarios, multi-factor authentication is forcibly enabled on the logon portal by default.
+> **Note:** In Internet scenarios, multi-factor authentication is forcibly enabled on the logon portal by default.
 
 **First logon after MFA is enabled**
 
@@ -93,9 +92,8 @@ nsole
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, enter the verification code, and then click **Confirm**.
 
-**Note**
-
-Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ## 2 Welcome page
 
@@ -1365,9 +1363,7 @@ Escapes a string.
 
 String: the string to be escaped. ShellType: the type of the Shell.
 
-**Note**
-
-Set the ShellType parameter to PowerShell.
+> **Note:** Set the ShellType parameter to PowerShell.
 
 **Return value**
 
@@ -2289,7 +2285,8 @@ This topic describes how to create a custom task template.
 
 **Procedure**
 
-1. Log on to the OOS console.
+## 1 Log on to the OOS console.
+
 2. In the left-side navigation pane, click **Custom Template**.
 3. On the **Custom Template** page, click **Create Template**.
 4. In the **Basic Information** section, specify the parameters, including **Template Name**,
@@ -2308,7 +2305,6 @@ This topic describes how to create and execute a task by using a template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Create Execution** in the **Actions** column.
 4. In the **Basic Information** section, specify the parameters including **Execution**
@@ -2341,7 +2337,6 @@ This topic describes how to view a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. In the template list, you can view the information about templates including the following
 parameters: Template Name, Template Description, Latest Version, Format, Created At, Updated At, Updated By, and Actions.
@@ -2354,7 +2349,6 @@ This topic describes how to update a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Update** in the **Actions** column.
 4. After you modify the template, click **Update Template**.
@@ -2365,7 +2359,6 @@ This topic describes how to delete a custom template.
 
 **Procedure**
 
-1. Log on to the OOS console.
 2. In the left-side navigation pane, click **Custom Template**.
 3. Find the template and click **Delete** in the **Actions** column.
 4. In the **Delete Template** message, click OK.

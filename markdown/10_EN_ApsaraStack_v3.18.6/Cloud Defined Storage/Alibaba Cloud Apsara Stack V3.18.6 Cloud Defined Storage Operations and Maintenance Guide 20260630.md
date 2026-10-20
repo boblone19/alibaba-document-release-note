@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 327
 source_pdf: "2484b553e6842414_Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Operations and Maintenance Guide 20260630.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Defined%20Storage%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Defined Storage Operations and Maintenance Guide
@@ -277,16 +277,30 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. ager Operations Console You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. ager Operations Console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 
 ## 2 Feature overview
 
-CDS Ops is a unified operations and maintenance (O&M) platform for CDS products. It supports daily O&M for storage clusters and the services that run on them, including the object storage service, log storage service, and block storage service. This topic describes the features of CDS Ops. If you encounter any issues, contact Alibaba Cloud technical support.
+CDS Ops is a unified operations and maintenance (O&M) platform for CDS products. It supports daily O&M for storage clusters and the services that run on them, including the object storage service, log storage service, and block storage service. This topic describes the features of CDS Ops.
+
+> **Note:** If you encounter any issues, contact Alibaba Cloud technical support.
 
 **Product overview**
 
@@ -294,7 +308,9 @@ On the overview page, you can view capacity levels, current alarms, used capacit
 
 **Storage management**
 
-You can manage capacity levels, clusters, and other information for services such as the block storage service, object storage service, and log storage service. The following tables provide detailed descriptions. Your actual environment may differ.
+You can manage capacity levels, clusters, and other information for services such as the block storage service, object storage service, and log storage service. The following tables provide detailed descriptions.
+
+> **Note:** Your actual environment may differ.
 
 **Block storage clusters (CDS-EBS)**
 
@@ -426,7 +442,9 @@ A role is a collection of access permissions. You can assign different roles to 
 **Add a user**
 
 You can add a user and assign a role for CDS-OPS to the user to control the permissions of the user on CDS-OPS.
-1. Log on to the Apsara Uni-manager Operations Console.
+
+## 1 Log on to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, choose **More > User Authorities**.
 3. In the left-side navigation pane, click **User Management**.
 4. On the **Users** tab of the **Users** page, click **Add**.
@@ -456,7 +474,6 @@ Hybrid Disaster Recovery (HDR)-OPS is a centralized O&M management tool for HDR.
 **Create a role**
 
 A role for HDR-OPS is used to grant permissions on HDR-OPS to a user. To create a role for HDR-OPS, perform the following steps:
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **User Authorities**.
 3. In the left-side navigation pane, click **Role Management**.
 4. On the **Roles** page, click **Create Role**.
@@ -474,7 +491,6 @@ iv. In the **Menu Permissions** step, choose **ASO Menu > Product Operation > St
 **Add a user**
 
 After you create a user and assign the role for HDR-OPS to the user, the user can log on to the Apsara Uni-manager Operations Console and use HDR-OPS.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **User Authorities**.
 3. In the left-side navigation pane, click **User Management**.
 4. On the **Users** tab of the **Users** page, click **Add**.
@@ -507,7 +523,9 @@ Cluster management enables you to view, monitor, configure, manage, and maintain
 
 **Supported cluster types**
 
-The following table lists the cluster types supported by CDS Ops. The deployed services and supported cluster types vary depending on the cluster.
+The following table lists the cluster types supported by CDS Ops.
+
+> **Note:** The deployed services and supported cluster types vary depending on the cluster.
 
 | Cluster type | Description |
 |---|---|
@@ -567,7 +585,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Overview** tab, view the overall information about the cluster.
 You can view the physical capacity usage, number and status of BlockMaster nodes, number and status of BlockServer nodes, number of disks, and number of snapshots. The following table describes the metrics.
 
@@ -608,7 +628,9 @@ On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the 
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Capacity** tab, view the capacity information about the cluster.
 
 | Section or tab | Description |
@@ -629,10 +651,17 @@ You can view the real-time and historical monitoring data of an Elastic Block St
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **Cluster**.
 5. On the **Cluster** tab, view the real-time monitoring data. You can also specify a time range
-and view the historical monitoring data of the cluster. Real-time monitoring data includes the average read latency, average write latency, average read throughput, average write throughput, average read I/O size, average write I/O size, average read IOPS, average write IOPS, total read throughput, total write throughput, point in time, and the trend chart of historical average write latency in the last 10 minutes. The unit of real-time monitoring data displayed in the console shall prevail. In the trend chart of historical average write latency in the last 10 minutes, the red area indicates that the values exceed the alert thresholds. Pay attention to the red area. Historical monitoring data includes the read and write latency, total IOPS, and total throughput of the cluster. The following table describes the metrics.
+and view the historical monitoring data of the cluster. Real-time monitoring data includes the average read latency, average write latency, average read throughput, average write throughput, average read I/O size, average write I/O size, average read IOPS, average write IOPS, total read throughput, total write throughput, point in time, and the trend chart of historical average write latency in the last 10 minutes.
+
+> **Note:** The unit of real-time monitoring data displayed in the console shall prevail.
+> In the trend chart of historical average write latency in the last 10 minutes, the red area indicates that the values exceed the alert thresholds. Pay attention to the red area.
+
+Historical monitoring data includes the read and write latency, total IOPS, and total throughput of the cluster. The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -651,10 +680,17 @@ You can view the real-time monitoring data and historical monitoring data of a B
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **BlockServer**.
 5. On the **BlockServer** tab, view the real-time monitoring data. You can also specify a NC and
-a time range to view the historical monitoring data of the BlockServer node. Real-time monitoring data includes the average read latency, average write latency, average read throughput, average write throughput, average read I/O size, average write I/O size, average read IOPS, average write IOPS, total read throughput, total write throughput, point in time, and the trend chart of historical average write latency in the last 10 minutes. The unit of real-time monitoring data displayed in the console shall prevail. In the trend chart of historical average write latency in the last 10 minutes, the red area indicates that the values exceed the alert thresholds. Pay attention to the red area. Historical monitoring data includes the average latency, read/write IOPS, and data throughput. The following table describes the metrics.
+a time range to view the historical monitoring data of the BlockServer node. Real-time monitoring data includes the average read latency, average write latency, average read throughput, average write throughput, average read I/O size, average write I/O size, average read IOPS, average write IOPS, total read throughput, total write throughput, point in time, and the trend chart of historical average write latency in the last 10 minutes.
+
+> **Note:** The unit of real-time monitoring data displayed in the console shall prevail.
+> In the trend chart of historical average write latency in the last 10 minutes, the red area indicates that the values exceed the alert thresholds. Pay attention to the red area.
+
+Historical monitoring data includes the average latency, read/write IOPS, and data throughput. The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -686,11 +722,16 @@ After you modify the EC configurations for a cluster, the configurations take ef
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configuration** tab, click **EC Configurations**.
 5. In the EC Configuration section of the **EC Configurations** tab, modify the **Configuration**
 **Type** parameter to specify an EC type based on your business requirements.
-The EC types supported by the cluster are displayed in the drop-down list. After you select a configuration type, the value of the Replicas parameter is displayed, which is calculated based on the selected configuration type. Some clusters do not support the Configuration Type parameter. The actual page prevails.
+The EC types supported by the cluster are displayed in the drop-down list. After you select a configuration type, the value of the Replicas parameter is displayed, which is calculated based on the selected configuration type.
+
+> **Note:** Some clusters do not support the Configuration Type parameter. The actual page prevails.
+
 6. Click **Save**.
 
 **View the distribution of EC configurations for the disks in a**
@@ -705,9 +746,9 @@ After you modify the EC configurations of the cluster, the existing disks are au
 
 Typically, the number of folded chunks in a cluster is 0. If the number of available servers drops below N + M because some servers are faulty or enter the sub-healthy state, partial chunks in the cluster are folded. You can view the number of folded chunks within a specific time period to measure the volume of folded data.
 
-**Important**
+> **Important:** Only lite clusters support data folding.
 
-Only lite clusters support data folding. Data folding in a cluster may be caused by server-related hardware faults. We recommend that you check and handle the relevant alerts at the earliest opportunity. For more information, see Handle alerts.
+Data folding in a cluster may be caused by server-related hardware faults. We recommend that you check and handle the relevant alerts at the earliest opportunity. For more information, see Handle alerts.
 1. On the **Configuration** tab, click **EC Configurations**.
 2. In the **Number Of Folded Chunks** section of the **EC Configurations** tab, select a time
 range to view the number of folded chunks within the selected time range.
@@ -723,7 +764,9 @@ O&M engineers can determine whether the segments are evenly distributed by check
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **Rebalance**.
 5. On the **Rebalance** tab, view the basic information and configurations of the block
 rebalance feature. Basic Information: This section displays the average number of segments on each BlockServer node and the variance in the number of segments on all BlockServer nodes. Configurations of block rebalance: You can enable or disable the block rebalance feature in this section. By default, this feature is enabled.
@@ -732,24 +775,26 @@ rebalance feature. Basic Information: This section displays the average number o
 
 You can view and configure the replica traffic control, cluster recycle bin, and quotas based on your business requirements.
 
-**Important**
+> **Important:** If you modify cluster information, system exceptions may occur. Proceed with caution.
 
-If you modify cluster information, system exceptions may occur. Proceed with caution. Configure replica traffic control You can configure the maximum and minimum replication speeds based on your business requirements to control the rate of data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to occupy a large amount of resources, you can decrease the maximum and minimum replication speeds.
+Configure replica traffic control You can configure the maximum and minimum replication speeds based on your business requirements to control the rate of data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to occupy a large amount of resources, you can decrease the maximum and minimum replication speeds.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **Pangu Configuration**.
 5. On the **Pangu Configuration** tab, click the **Replica Traffic Control** tab to view the traffic
 control information and modify the replication speed as required.
 6. Modify the replication speeds based on your business requirements.
 i. Find a replica traffic control rule and click **Edit** in the **Actions** column. ii. In the **Modify Configuration** dialog box, modify the maximum or minimum replication speed. This way, you can set an upper or lower limit on the speed at which data is read from the source server or written to the destination server. The valid values of the maximum or minimum replication speed range from 1 to 100000, measured in MB/s.
 
-**Important**
+> **Important:** We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set.
 
-We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set. The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
+The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
 
 **Configure cluster recycle bin**
 
@@ -783,7 +828,11 @@ iii. Click **OK**.
 
 1. On the **Configure** tab, click **Pangu Configuration**.
 2. On the **Pangu Configuration** tab, click the **Quotas and QoS** tab to view the basic
-information, quotas, and quality of service (QoS) settings of the cluster. The basic information and QoS settings are displayed only for hybrid clusters of CDS- OSS and CDS-EBS. If the cluster is a CDS-EBS cluster, only the quota of the Elastic Block Storage (EBS) service is displayed. Basic Information: In this section, you can view the cluster type, QoS feature status, hard disk drive (HDD) VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the proportions of different services on HDDs and SSDs.
+information, quotas, and quality of service (QoS) settings of the cluster.
+
+> **Note:** The basic information and QoS settings are displayed only for hybrid clusters of CDS- OSS and CDS-EBS. If the cluster is a CDS-EBS cluster, only the quota of the Elastic Block Storage (EBS) service is displayed.
+
+Basic Information: In this section, you can view the cluster type, QoS feature status, hard disk drive (HDD) VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the proportions of different services on HDDs and SSDs.
 
 ##### 5.2.2.5 Manage services
 
@@ -794,7 +843,9 @@ BlockMaster is a type of management node that can be used to perform multiple op
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Primary Server BlockMaster**.
 5. On the **Primary Server BlockMaster** tab, view the details of BlockMaster nodes. You can
 also perform operations on the BlockMaster nodes based on your business requirements. The following table describes the operations that you can perform.
@@ -815,7 +866,9 @@ BlockServer nodes use the Index Map data structure to maintain the relationship 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Storage Service BlockServer**.
 5. On the **Storage Service BlockServer** tab, view the information about BlockServer nodes
 and obtain the server version information as required. You can use one of the following methods to obtain the server version information: Method 1: Click **Obtain Version Information** in the **Actions** column of the server. In the **Obtain Version Information** dialog box, view the server version information. Method 2: Click **Obtain Version Information**. In the **Obtain Version Information** dialog box, view the server version information.
@@ -827,7 +880,9 @@ You can view the information about snapshot servers, such as the service address
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Snapshot Server**.
 5. On the **Snapshot Server** tab, view the following information about the snapshot server:
 service address (Service Location), status, task load (Load), number of upload tasks (Upload), number of replication tasks (Copy), and number of download tasks (LazyLoad).
@@ -842,7 +897,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Pangu**.
 5. On the **Pangu** page, click the **Meta Server** tab to view the information about meta servers
 and perform operations on the meta servers based on your business requirements. The following table describes the operations that you can perform.
@@ -902,7 +959,9 @@ On the Host tab of a cluster, you can view the information about the hosts in th
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Host** tab, view information in the host list and perform operations on the hosts
 based on your business requirements. The following table describes the operations that you can perform on the hosts.
 
@@ -981,7 +1040,10 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Compute Node**.
 By default, the system displays the compute nodes that are added to ECS clusters.
 3. On the **Compute Node** page, view the information about compute nodes.
-The information about a compute node includes the compute node name, compute cluster name, IP address, zone, and TDC status. TDC is responsible for bridging the backend storage and frontend components such as the virtual RAM block device (VRBD) and carrying block storage I/O. TDC also provides extensive CLI operations, such as creating and destructing disks, and creating and rolling back snapshots. If the TDC status of a compute node is abnormal, the use of disks and snapshots may be affected. To resolve the issue, contact Apsara Stack technical support.
+The information about a compute node includes the compute node name, compute cluster name, IP address, zone, and TDC status.
+
+> **Note:** TDC is responsible for bridging the backend storage and frontend components such as the virtual RAM block device (VRBD) and carrying block storage I/O. TDC also provides extensive CLI operations, such as creating and destructing disks, and creating and rolling back snapshots. If the TDC status of a compute node is abnormal, the use of disks and snapshots may be affected. To resolve the issue, contact Apsara Stack technical support.
+
 4. View the information about ECS instances on compute nodes as needed.
 i. Find a compute node and click **View ECS** in the **Actions** column. ii. On the **ECS Instances** page, view the information about ECS instances on the compute node and disks associated with the ECS instances.
 
@@ -1032,9 +1094,7 @@ i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigatio
 3. On the **Cloud Disks** page, search for the desired disks.
 Search by cluster and storage set: Set **Search Type** to **Cluster and Storage Set** and select a cluster, storage set, or storage set partition. Search by disk information: Set **Search Type** to **Disk**, specify a disk device, disk frontend ID, disk ID, or disk name, and select an option from the drop-down list. You can enter multiple keywords at a time. Separate the keywords with commas (,). You can also enter one keyword and press the Enter key to proceed to enter the next one. You can query up to 20 disks at a time. After the required disks are returned, you can view the disk information and perform operations on the disks as needed. The following table describes the operations that you can perform.
 
-**Important**
-
-Most O&M operations are available only for users who have the Cloud Defined Storage (CDS) support or CDS developer permissions.
+> **Important:** Most O&M operations are available only for users who have the Cloud Defined Storage (CDS) support or CDS developer permissions.
 
 | Operation | Description |
 |---|---|
@@ -1048,21 +1108,23 @@ Most O&M operations are available only for users who have the Cloud Defined Stor
 2. On the **Disk Details** page, view the attributes and monitoring data of the disk.
 View disk attributes In the **Attributes** section, view the information about the disk, such as the disk device (device key), device ID, disk frontend ID, and disk ID. View second-level monitoring data
 
-**Important**
+> **Important:** You can view the second-level monitoring data only within the previous hour.
 
-You can view the second-level monitoring data only within the previous hour. On the **Near Real-time Monitoring** tab, specify a time range to view the second-level monitoring data of the disk, such as the read and write latency, throughput, read and write IOPS, I/O queue depth, and I/O block size. Move the pointer over a trend chart to view the data at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image. View minute-level monitoring data
+On the **Near Real-time Monitoring** tab, specify a time range to view the second-level monitoring data of the disk, such as the read and write latency, throughput, read and write IOPS, I/O queue depth, and I/O block size. Move the pointer over a trend chart to view the data at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image. View minute-level monitoring data
 
-**Important**
+> **Important:** You can view the minute-level monitoring data only within the previous hour.
 
-You can view the minute-level monitoring data only within the previous hour. On the **Minute-level Monitoring** tab, specify a time range to view the minute-level monitoring data of the disk, such as the read/write latency, throughput, and read/write IOPS. Move the pointer over a trend chart to view the data at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image. View segmented latency
+On the **Minute-level Monitoring** tab, specify a time range to view the minute-level monitoring data of the disk, such as the read/write latency, throughput, and read/write IOPS. Move the pointer over a trend chart to view the data at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image. View segmented latency
 
-**Important**
+> **Important:** You can view the latency data only within the previous hour.
 
-You can view the latency data only within the previous hour. If an exception occurs on a disk, you can view the segmented latency of I/O operations in different modules within a specific time range. This helps you find the faulty module. On the **Segmented Latency** tab, specify a time range, a request type, a latency range, and a data source. Then, you can view the latency of all I/O operations that meet the filter conditions within the specified time range.
+If an exception occurs on a disk, you can view the segmented latency of I/O operations in different modules within a specific time range. This helps you find the faulty module. On the **Segmented Latency** tab, specify a time range, a request type, a latency range, and a data source. Then, you can view the latency of all I/O operations that meet the filter conditions within the specified time range.
 
-**Important**
+> **Important:** I/O data is sampled based on the predefined ratio, which does not cover all I/O data. Therefore, partial I/O data is unavailable. The system can analyze abnormal I/O data or sampled I/O data.
+> Abnormal I/O data: requests whose end-to-end latency exceeds the specified threshold in milliseconds.
+> Sampled I/O data: requests sampled based on a fixed ratio.
 
-I/O data is sampled based on the predefined ratio, which does not cover all I/O data. Therefore, partial I/O data is unavailable. The system can analyze abnormal I/O data or sampled I/O data. Abnormal I/O data: requests whose end-to-end latency exceeds the specified threshold in milliseconds. Sampled I/O data: requests sampled based on a fixed ratio. Find the I/O operation that you want to view, click the Plus sign (+) on the left side of the value in the Duration (us) column, and then view the latency of the I/O operation in different modules. Move the pointer over a module name to view the module details.
+Find the I/O operation that you want to view, click the Plus sign (+) on the left side of the value in the Duration (us) column, and then view the latency of the I/O operation in different modules. Move the pointer over a module name to view the module details.
 
 #### 5.2.6 Create hot migration jobs to migrate cloud disks
 
@@ -1256,7 +1318,8 @@ In the machine list, you can view hosts in a cluster and the host details. This 
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
 **Details** in the **Actions** column.
 4. Click the **Machines** tab in the lower part of the page, and search for and view machines.
-The information may vary based on the cluster type. The information displayed in the console shall prevail.
+
+> **Note:** The information may vary based on the cluster type. The information displayed in the console shall prevail.
 
 | Operation | Description |
 |---|---|
@@ -1313,7 +1376,13 @@ This feature is supported only by CDS-EBS clusters. O&M engineers can view the p
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
 **Details** in the **Actions** column.
 4. Click the **Performance Dashboard** tab in the lower part of the page to view the
-performance data of the cluster or NCs as needed. Move the pointer over a trend chart to view the value at a specific point in time. In the upper-right corner of the monitoring chart, click the or icon to zoom in or zoom out the chart. Click the icon to restore the chart to its default settings.
+performance data of the cluster or NCs as needed.
+
+> **Note:** Move the pointer over a trend chart to view the value at a specific point in time. In the upper-right corner of the monitoring chart, click the
+> or
+> icon to zoom in or zoom out
+> the chart. Click the
+> icon to restore the chart to its default settings.
 
 **View cluster performance data**
 
@@ -1348,7 +1417,10 @@ After the EC mode is enabled for a cluster, you cannot disable this mode for the
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
 **Details** in the **Actions** column.
 4. On the cluster details page, click the **Configuration** tab and select a configuration type in
-the **EC Configuration** section. All EC configurations supported by the cluster are displayed in the configuration type list. Select EC configurations based on your business requirements. After you select an EC type, the system obtains the number of data blocks and the number of parity blocks for this configuration. Some clusters do not support the Configuration Type parameter. The actual page shall prevail.
+the **EC Configuration** section. All EC configurations supported by the cluster are displayed in the configuration type list. Select EC configurations based on your business requirements. After you select an EC type, the system obtains the number of data blocks and the number of parity blocks for this configuration.
+
+> **Note:** Some clusters do not support the Configuration Type parameter. The actual page shall prevail.
+
 5. Click **Save**.
 
 ###### 5.2.9.3.6 Configure a cluster sales policy
@@ -1379,9 +1451,9 @@ section, and then enter a new value in the **Oversold Ratio** field. A value of 
 
 **Enable and disable cluster sales**
 
-**Important**
+> **Important:** After you disable sales for a cluster, new disks are no longer scheduled to the cluster, but the availability of existing disks in the cluster is not affected. If you want to disable the sales configuration, evaluate the business impact first. Proceed with caution.
 
-After you disable sales for a cluster, new disks are no longer scheduled to the cluster, but the availability of existing disks in the cluster is not affected. If you want to disable the sales configuration, evaluate the business impact first. Proceed with caution. By default, CDS-EBS clusters are available for purchase. In scenarios of vulnerability fixing, control resource shortage, or architecture upgrade, you can disable sales to minimize the impact and ensure service stability.
+By default, CDS-EBS clusters are available for purchase. In scenarios of vulnerability fixing, control resource shortage, or architecture upgrade, you can disable sales to minimize the impact and ensure service stability.
 1. In the **Sales Configuration** section of the **Configuration** tab, turn off **Sales Switch**.
 2. Click **Save**. In the message that appears, click **OK**.
 After the O&M operations are completed, turn on **Sales Switch** to allow purchases of the cluster. Then, new disks can be automatically scheduled to the cluster.
@@ -1547,9 +1619,12 @@ The system collects SLA metrics every minute. Metrics may be displayed with a la
 3. On the SLA Monitoring page, you can view the heartbeat check results of SLA system links
 collected every minute. You can also view the details of real-time SLA exceptions. Typically, the heartbeat check results within the previous 5 minutes are displayed. The system automatically updates the heartbeat check results and the details of real-time SLA exceptions every minute. This allows O&M engineers to view the status of the SLA system links promptly during system updates.
 
-**Important**
+> **Important:** If the SLA system links encounter exceptions, the heartbeat check stops. In this case, the system displays the heartbeat check results of the SLA system links before the exceptions occur.
+> If no new heartbeat check result is displayed for more than 2 minutes, you must troubleshoot the issue. Make sure that the SLA metric collection link is healthy and the clock of the server on which the service is running is not lagging behind.
 
-If the SLA system links encounter exceptions, the heartbeat check stops. In this case, the system displays the heartbeat check results of the SLA system links before the exceptions occur. If no new heartbeat check result is displayed for more than 2 minutes, you must troubleshoot the issue. Make sure that the SLA metric collection link is healthy and the clock of the server on which the service is running is not lagging behind. If exceptions occur in the SLA system links, the exceptions that are identified during the current heartbeat check are displayed in the **Details of Real-time SLA Exceptions** section. The following table describes the parameters for SLA exceptions. The Details of Real-time SLA Exceptions section displays the exceptions that are identified during the last heartbeat check. If no SLA exception is identified during the next heartbeat check, no exception information is displayed in the section. You can also view historical SLA exceptions.
+If exceptions occur in the SLA system links, the exceptions that are identified during the current heartbeat check are displayed in the **Details of Real-time SLA Exceptions** section. The following table describes the parameters for SLA exceptions.
+
+> **Note:** The Details of Real-time SLA Exceptions section displays the exceptions that are identified during the last heartbeat check. If no SLA exception is identified during the next heartbeat check, no exception information is displayed in the section. You can also view historical SLA exceptions.
 
 | Parameter | Description |
 |---|---|
@@ -1572,9 +1647,8 @@ By default, historical SLA exceptions within the previous hour are displayed. Yo
 
 You can query logs of a specified time range based on the module, NC, and log path. You can quickly locate issues by analyzing the logs of a module where an exception occurs.
 
-**Warning**
+> **Warning:** You must be granted the required permissions before you can collect and export user logs. You must follow the principle of least privilege (PoLP) and collect only the logs of the services that are related to specific issues.
 
-You must be granted the required permissions before you can collect and export user logs. You must follow the principle of least privilege (PoLP) and collect only the logs of the services that are related to specific issues.
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Diagnostics Emergency > Log Query**.
 3. On the Log Query page, specify the module, NC, log path, and time range, and then click
@@ -1624,7 +1698,9 @@ To facilitate routine O&M operations, the HaiTu console provides common software
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Diagnostics Emergency > Software O&M**.
 3. On the **Service Quality Software Operations List** page, select a software O&M method
-based on your business requirements. The parameters vary with the workflow. The parameters in the console shall prevail.
+based on your business requirements.
+
+> **Note:** The parameters vary with the workflow. The parameters in the console shall prevail.
 
 **Run a single workflow**
 
@@ -1635,9 +1711,9 @@ i. Find the workflow that you want to run and click **Execute**, or choose
 **workflow** in the **Operation** column.
 ii. In the Execute Workflow dialog box, enter the change ticket number and set the workflow parameters.
 
-**Important**
+> **Important:** In testing or emergency mode, you can select **Test/Emergency** to ignore the change ticket and proceed directly.
 
-In testing or emergency mode, you can select **Test/Emergency** to ignore the change ticket and proceed directly. iii. Click **Start executing**.
+iii. Click **Start executing**.
 
 **Run multiple workflows at the same time**
 
@@ -1712,7 +1788,10 @@ You can classify EBS clusters based on dimensions such as the business type, and
 1. Create a storage set in the EBS console or Elastic Compute Service (ECS) console. For
 information about how to create a storage set, see the "Create a storage set" topic in the EBS document in **CDS User Guide**.
 2. In the HaiTu console, associate the EBS cluster with the partition of the storage set. For
-more information, see the Modify partition clusters section of this topic. You can also use the storage cluster features of CDS Ops to perform this operation.
+more information, see the Modify partition clusters section of this topic.
+
+> **Note:** You can also use the storage cluster features of CDS Ops to perform this operation.
+
 3. Select the storage set and partition with which the EBS cluster is associated when you
 create a disk by using the storage set in the ECS console.
 
@@ -1723,9 +1802,9 @@ create a disk by using the storage set in the ECS console.
 3. On the **Storage Set** page, select a cluster name or enter a storage set ID to view the ID,
 alert status, region, partition, and clusters of the storage set. If **Abnormal** is displayed in the **Alert Status** column of a storage set, alerts are triggered by the storage set. You can perform the following operations to troubleshoot the issues and clear the alerts:
 
-**Important**
+> **Important:** The system can generate only capacity alerts for storage sets.
 
-The system can generate only capacity alerts for storage sets. If the storage set contains a partition that is not associated with a cluster, click **Modify**
+If the storage set contains a partition that is not associated with a cluster, click **Modify**
 **Cluster** in the **Actions** column to associate the partition with a cluster.
 After you associate the partition with a cluster, wait for a period of time. If the partition is associated with the cluster, **Normal** is displayed in the **Alert Status** column of the storage set. If the partition fails to be associated with the cluster or the disk capacity of the cluster is insufficient, **Abnormal** remains in the **Alert Status** column of the storage set. If all the partitions of the storage set are associated with clusters, but the percentage of used capacity of all the clusters in at least one partition reaches the alert threshold, scale up the clusters based on your business requirements.
 
@@ -1733,9 +1812,8 @@ After you associate the partition with a cluster, wait for a period of time. If 
 
 By default, the partitions of a storage set are not associated with clusters. You can perform the following operations to associate the partitions of a storage set with clusters:
 
-**Important**
+> **Important:** A cluster can be associated with the partitions of different storage sets. However, a cluster can be associated with only one partition within a storage set.
 
-A cluster can be associated with the partitions of different storage sets. However, a cluster can be associated with only one partition within a storage set.
 1. On the **Storage Set** page, find the storage set that you want to manage and click **Modify**
 **Cluster** in the **Actions** column.
 2. In the **Edit Partitioned Cluster** dialog box, add clusters to or remove clusters from the
@@ -1744,8 +1822,10 @@ partitions, and click **OK**.
 
 **View monitoring data of partition capacity**
 
-You can view the status, used physical capacity, total physical capacity, percentage of used physical capacity, and capacity alert threshold of partitions in a storage set. If the percentage of used capacity of all clusters associated with a partition reaches the alert threshold, the value in the **Status** column of the partition changes from **Sufficient**
-**Capacity** to **Insufficient Capacity**.
+You can view the status, used physical capacity, total physical capacity, percentage of used physical capacity, and capacity alert threshold of partitions in a storage set.
+
+> **Note:** If the percentage of used capacity of all clusters associated with a partition reaches the alert threshold, the value in the **Status** column of the partition changes from **Sufficient** **Capacity** to **Insufficient Capacity**.
+
 1. On the **Storage Set** page, find the storage set that you want to manage and click
 **Capacity Monitoring** in the **Actions** column.
 2. In the **Partition Capacity Monitoring** dialog box, view the capacity monitoring data of
@@ -1794,9 +1874,9 @@ i. Select **O&M Platform** from the **Data Source** drop-down list, configure th
 Select a migration type based on the type of the source cluster to which the disk to be migrated belongs and the type of the destination cluster to which you want to migrate the disk. **1 to 1** specifies that data is migrated from the source EBS 1.0 cluster to the destination EBS 1.0 cluster. **1 to 2** specifies that data is migrated from the source EBS 1.0 cluster to the destination CDS-EBS cluster. **2 to 2** specifies that data is migrated from the source CDS-EBS cluster to the destination CDS-EBS cluster. ii. Select the disks of the same I/O type and click **Next**.
 5. Configure the basic information.
 
-**Important**
+> **Important:** Make sure that the selected migration type is correct. To export the information about the disks to your on-premises machine, click **Export as CSV** next to **Disks**.
 
-Make sure that the selected migration type is correct. To export the information about the disks to your on-premises machine, click **Export as CSV** next to **Disks**. i. Enter a task name and select the destination zone. The system automatically selects a cluster in the destination zone for disk migration. ii. Configure the advanced options of automatic migration as needed.
+i. Enter a task name and select the destination zone. The system automatically selects a cluster in the destination zone for disk migration. ii. Configure the advanced options of automatic migration as needed.
 
 | Parameter | Description |
 |---|---|
@@ -2215,11 +2295,18 @@ iv. In the **Basic Information** step, configure the Role Name and Description p
 
 `}` `]` `}` viii. In the **Add Policy** dialog box, select the created policy and click **OK**. In the message that appears, click **OK**. ix. Click **OK**. In the **Create RAM Role** dialog box, click **Complete**.
 3. Create a user and a user group.
-i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**. Set the Role authorized parameter to the RAM role that you created in the preceding step. iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**. You cannot set the Role parameter to the RAM role that you created in the preceding step. v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**.
 
-**Important**
+> **Note:** Set the Role authorized parameter to the RAM role that you created in the preceding step.
 
-Save or send the AccessKey pair information to the corresponding user as soon as possible.
+iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**.
+
+> **Note:** You cannot set the Role parameter to the RAM role that you created in the preceding step.
+
+v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+
+> **Important:** Save or send the AccessKey pair information to the corresponding user as soon as possible.
+
 4. Record the UID.
 i. In the left-side navigation pane, choose **Resources** > **Organizations**. ii. In the Organization Structure section, click the organization to which the created user belongs, click the User tab, and then click the name of the created user. On the page that appears, save the UID of the user.
 
@@ -2231,15 +2318,16 @@ Create users in the Apsara Uni-manager Management Console for the source and des
 1. Create an O&M account.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **More** > **User Authorities**. iii. On the **User Management** page, click the **Users** tab and then click **Add**. iv. In the **Add User** dialog box, configure the Username, Password, Confirm Password, Logon Policy, Role, and Department parameters, and turn on **Allowed to Create**
 **AccessKey ID**.
-Select System Admin as the role. v. Click **OK**.
+
+> **Note:** Select System Admin as the role.
+
+v. Click **OK**.
 2. Create an AccessKey pair for the O&M account.
 i. Log in to the console with the O&M account. ii. In the upper-right corner of the page, click the profile picture and click **User**
 **Information**.
 iii. In the **AccessKey** section, click **Create AccessKey**. iv. In the **Create AccessKey** dialog box, copy and save the AccessKey pair and click **Close**.
 
-**Important**
-
-Save or send the AccessKey pair information to the corresponding user as soon as possible.
+> **Important:** Save or send the AccessKey pair information to the corresponding user as soon as possible.
 
 **Obtain the endpoints of the source and destination clouds**
 
@@ -2410,7 +2498,9 @@ To manage existing clusters, Cloud Defined Storage (CDS)-OPS displays EBS cluste
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Overview** tab, view the overall information about the cluster.
 You can view the physical capacity usage, used physical capacity, total physical capacity, number and status of primary servers, number and status of storage servers, number of disks, and number of snapshots. The following table describes the metrics.
 
@@ -2440,7 +2530,9 @@ On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Capacity** tab, view the inventory capacity usage and physical capacity usage of the
 cluster.
 
@@ -2460,7 +2552,9 @@ You can view the historical monitoring data of an Elastic Block Storage (EBS) cl
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **Cluster**.
 5. On the **Cluster** tab, specify a time range and view the historical monitoring data of the
 cluster. Historical monitoring data includes the read and write latency, total IOPS, and total throughput of the cluster. The following table describes the metrics.
@@ -2484,7 +2578,9 @@ You can view the historical monitoring data of a RiverServer node, such as the a
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **RiverServer**.
 5. On the **RiverServer** tab, specify a node controller (NC) and a time range to view the
 historical monitoring data of the RiverServer node. Historical monitoring data includes the average latency, read/write IOPS, and data throughput. The following table describes the metrics.
@@ -2508,7 +2604,9 @@ A RiverCluster node is a management node of a storage service. This node manages
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Primary Server RiverCluster**.
 5. On the **Primary Server RiverCluster** tab, view the information about RiverCluster nodes.
 
@@ -2521,7 +2619,9 @@ This topic describes how to view the information about a RiverServer node, such 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Storage Server RiverServer**.
 5. On the **Storage Server RiverServer** tab, view the information about RiverServer nodes.
 
@@ -2533,7 +2633,9 @@ i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Pangu**.
 5. On the **Pangu** tab, click **Meta Server**. On this tab, view the information about meta
 servers and perform operations on the meta servers based on your business requirements. The following table describes the operations that you can perform. Find the meta server that you want to manage and click **Build Information** in the **Actions** column to view the build information of the meta server. The version information can be used to help you locate issues. Manage chunk servers Chunk servers are used for read and write operations in clusters. You can view the information of a chunk server, set the state of the chunk server, add the chunk server to or remove the chunk server from the blacklist, obtain the build information of the chunk server, and view and manage the disks of the chunk server.
@@ -2573,7 +2675,9 @@ i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Host** tab, view information in the host list and perform operations on the hosts
 based on your business requirements. The following table describes the operations that you can perform on the hosts.
 
@@ -2650,9 +2754,14 @@ On the Overview tab, you can view the cluster information including the physical
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Overview** tab, view the overall information about the cluster.
-You can also choose **More O&M Capabilities** > **Object Storage Service O&M** in the upper-right corner of the Cluster O&M page to go to the OSS O&M console. On the Overview tab, view the cluster information including the physical capacity usage, number of buckets, number of objects, and cluster monitoring information on the current day. The following table describes the metrics.
+
+> **Note:** You can also choose **More O&M Capabilities** > **Object Storage Service O&M** in the upper-right corner of the Cluster O&M page to go to the OSS O&M console.
+
+On the Overview tab, view the cluster information including the physical capacity usage, number of buckets, number of objects, and cluster monitoring information on the current day. The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -2671,7 +2780,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. Click the **Bucket Rankings** tab and specify a time range to view the ranking lists of
 buckets in the cluster. Click a bucket name in a ranking list. On the Bucket Details page, view the bucket information, such as the bucket attributes and monitoring data.
 
@@ -2682,7 +2793,9 @@ You can view the logical capacity usage, physical capacity usage, distribution o
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. Click the **Capacity** tab to view the capacity information about the cluster.
 
 | Capacity information | Description |
@@ -2704,7 +2817,9 @@ You can view the monitoring data of an Object Storage Service (OSS) cluster with
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **Monitoring**.
 5. On the **Monitoring** tab, specify a time range or select a time range to view the monitoring
 data of the cluster. You can view the following monitoring metrics: SLA: the service level agreement that is provided by OSS. The SLA of OSS is calculated based on the following formula: `Number of requests for which a non-5XX status code is`
@@ -2713,9 +2828,9 @@ data of the cluster. You can view the following monitoring metrics: SLA: the ser
 returned per 10 seconds or 1 hour/Number of valid requests × 100% .
 ```
 
-**Important**
+> **Important:** Requests for which the HTTP 503 error is returned are not included in the calculation because HTTP 503 errors are commonly caused by invalid request parameters.
 
-Requests for which the HTTP 503 error is returned are not included in the calculation because HTTP 503 errors are commonly caused by invalid request parameters. HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and 3XX status codes and the percentage of the requests for which these codes are returned. Storage: the storage statistics of OSS buckets in the cluster. QPS: the numbers of different types of API requests. Bandwidth Statistics: the traffic statistics of OSS buckets in the cluster. Latency: the average latency and maximum latency of different types of API requests. Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
+HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and 3XX status codes and the percentage of the requests for which these codes are returned. Storage: the storage statistics of OSS buckets in the cluster. QPS: the numbers of different types of API requests. Bandwidth Statistics: the traffic statistics of OSS buckets in the cluster. Latency: the average latency and maximum latency of different types of API requests. Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
 ###### 5.4.2.3.2 Check the health status of a cluster
 
@@ -2724,7 +2839,9 @@ Key-value (KV) engine is a KV storage layer to store KV pairs. This helps you ma
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **Health Check**.
 5. On the **Health Check** tab, click **Analysis**.
 After the health status of the cluster is checked, you can view the information about the check, such as check items, check components, check results, and failure causes.
@@ -2740,7 +2857,9 @@ Background tasks can be manually or automatically run. By default, the system au
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Monitor** tab, click **Background Tasks**.
 5. On the **Background Tasks** tab, select a date.
 The system displays the background tasks that are run on the selected date. You can find a task and click **View Details** in the **Actions** column to view the details of the task.
@@ -2756,7 +2875,9 @@ You can modify the configurations of key-value (KV) Server nodes, such as monito
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **KV Configurations**.
 5. On the **KV Configurations** tab, click the KV Server or KM Master tab to modify the KV
 configurations. KV configurations are asynchronously modified with a specific latency. You can view the status of a configuration on the Tasks page. Modify the configurations of KV Server nodes On the **KV Server** tab, find a configuration item and click **Edit** in the **Actions** column. The following configuration items are available: Capacity for KV Monitoring Data (byte), Memfile Cell Dump Threshold, KV Reclaimed Bandwidth (MB), and Maximum Capacity of Log Data per Recycle (MB). Enable or disable automatic partition splitting for KM Master nodes On the **KM Master** tab, find the Automatic Partition Split configuration item and click
@@ -2771,9 +2892,7 @@ By default, clusters use erasure coding (EC) to ensure the reliability and consi
 
 In EC mode, the N+M configuration varies based on the minimum number of servers that are required to deploy a cluster for disaster recovery. In non-disaster recovery or zone-disaster recovery scenarios, N+2M servers are required to deploy a single cluster. In three-zone disaster recovery mode, only six data chunks and six parity chunks are supported for EC. In this case, the minimum number of servers in the three-zone cluster is 21, and a single zone contains at least 7 nodes. The EC folding feature enables a single server to store multiple data fragments. Compared with the basic EC mode, the EC folding mode enables data storage with fewer servers but reduces data security. In EC folding mode, up to M folded chunks can be stored on one server. If this server fails, all M chunks may be lost. In this case, if more than one servers fail, data loss occurs. In non-disaster recovery or two-zone disaster recovery scenarios, at least N+M servers are required to store N+M chunks. If more than one servers fail after chunks are folded, data loss occurs. To improve data security, we recommend that you use N+2M servers.
 
-**Important**
-
-The EC folding feature is not supported for a cluster deployed across three zones.
+> **Important:** The EC folding feature is not supported for a cluster deployed across three zones.
 
 **Usage notes**
 
@@ -2782,7 +2901,9 @@ You cannot modify EC configurations when O&M operations are being performed on s
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configuration** tab, click **EC Configurations**.
 5. On the **EC Configurations** tab, select an EC type based on the number of servers.
 The EC types supported by the cluster are displayed in the drop-down list. After you select an EC type, the value of the Replicas parameter is displayed, which is calculated based on the selected EC type.
@@ -2808,18 +2929,18 @@ If you want to automatically run background tasks at a specific point in time, s
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **Task Configuration**.
 5. On the **Task Configuration** tab, click the LifeCycle or GC tab to configure a scheduled
 time for lifecycle tasks or GC tasks. After you configure a scheduled time for background tasks, the system automatically runs a background task at the specified point in time. Background tasks are asynchronously configured with a specific latency. You can view the status of a configuration on the Tasks page. Configure a scheduled time for lifecycle tasks On the **LifeCycle** tab, find LifeCycle and click **Edit** in the **Actions** column. In the Modify Lifecycle Configurations dialog box, specify a time to run lifecycle tasks on a daily basis.
 
-**Important**
+> **Important:** The time is displayed in UTC. Take note of the differences between the UTC time and the standard time of your region.
 
-The time is displayed in UTC. Take note of the differences between the UTC time and the standard time of your region. Configure a scheduled time for GC tasks On the **GC** tab, find GC and click **Edit** in the **Actions** column. In the Modify GC Configurations dialog box, specify a time to run GC tasks on a daily basis.
+Configure a scheduled time for GC tasks On the **GC** tab, find GC and click **Edit** in the **Actions** column. In the Modify GC Configurations dialog box, specify a time to run GC tasks on a daily basis.
 
-**Important**
-
-The time is displayed based on the standard time of your region.
+> **Important:** The time is displayed based on the standard time of your region.
 
 ###### 5.4.2.4.4 Configure a global flag
 
@@ -2828,7 +2949,9 @@ You can configure the settings of each service in a cluster based on your busine
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **GlobalFlag Management**.
 5. On the **GlobalFlag Management** tab, query or configure global flags by using one of the
 following methods: On the **Lite Edition** tab, query or configure a global flag based on the global flag name. Query a global flag based on the global flag name Select a global flag name from the Flag Name drop-down list. The configurations of the global flag on different servers are displayed in the right-side table, such as the service type, flag value, and server IP address. Select a global flag name from the Flag Name drop-down list and configure the Flag parameter. Then, click **Submit** to change the value of the global flag. On the **Professional Edition** tab, configure the parameters that are described in the following table and click **Submit**.
@@ -2850,16 +2973,18 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configuration** tab, click **Pangu Configuration**.
 5. On the **Replica Traffic Control** tab of the **Pangu Configuration** tab, view the traffic
 control information and modify the replication speeds based on your business requirements.
 6. Modify the replication speeds based on your business requirements.
 i. Find a replica traffic control rule and click **Edit** in the **Actions** column. ii. In the **Modify Configuration** dialog box, modify the maximum or minimum replication speed. This way, you can set an upper or lower limit on the speed at which data is read from the source server or written to the destination server. The valid values of the maximum or minimum replication speed range from 1 to 100000, measured in MB/s.
 
-**Important**
+> **Important:** We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set.
 
-We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set. The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
+The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
 
 **Configure cluster recycle bin settings**
 
@@ -2892,7 +3017,11 @@ iii. Click **OK**.
 
 1. On the **Configure** tab, click **Pangu Configuration**.
 2. On the **Pangu Configuration** tab, click the **Quotas and QoS** tab to view the basic
-information, quotas, and QoS of the cluster. The basic information and QoS are displayed only for CDS clusters with the hybrid deployment of Elastic Block Storage (EBS) and Object Storage Service (OSS). For CDS- OSS clusters, only the quota of the OSS service is displayed. Basic Information: In this section, you can view the cluster type, QoS feature status, HDD VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the VIOPS proportions of different services on HDDs and SSDs.
+information, quotas, and QoS of the cluster.
+
+> **Note:** The basic information and QoS are displayed only for CDS clusters with the hybrid deployment of Elastic Block Storage (EBS) and Object Storage Service (OSS). For CDS- OSS clusters, only the quota of the OSS service is displayed.
+
+Basic Information: In this section, you can view the cluster type, QoS feature status, HDD VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the VIOPS proportions of different services on HDDs and SSDs.
 
 ###### 5.4.2.4.6 Configure QoS settings
 
@@ -2910,15 +3039,17 @@ based on the value of the oss_QosGlobalEnable parameter of oss_service. i. If th
 2. Specify preset flag values for hosts and turn on the switch for configuring QoS settings.
 i. Specify flag values for the oss_QosGlobalMaxSendFlowTotal (write throughput), oss_QosGlobalMaxRecvFlowTotal (read throughput), and oss_QosGlobalMaxTotalQpsTotal (read/write QPS) parameters of oss_service.
 
-**Important**
+> **Important:** Hosts of different models have different preset values for QoS settings. Contact Apsara Stack technical support to obtain the corresponding preset values.
 
-Hosts of different models have different preset values for QoS settings. Contact Apsara Stack technical support to obtain the corresponding preset values. ii. Set the oss_QosGlobalEnable parameter of oss_service to true.
+ii. Set the oss_QosGlobalEnable parameter of oss_service to true.
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configuration** tab, click **Single machine QoS configuration** in the left-side
 navigation pane.
 5. On the **Single machine QoS configuration** tab, view the QoS settings, such as the write
@@ -2933,9 +3064,9 @@ throughput and read throughput.
 6. Modify QoS settings as needed.
 i. Find the parameter that you want to modify and click **Edit** in the **Actions** column. ii. In the dialog box that appears, specify a value. The difference between the specified value and the initial value of the read/write throughput cannot exceed 50 MB/s. The difference between the specified value and the initial value of the read/write QPS cannot exceed 500 queries/s. A value of -1 specifies no limit.
 
-**Important**
+> **Important:** If the difference between the specified value and the initial value exceeds the aforesaid limit, you can initiate the configuration task by selecting the check box for forced execution.
 
-If the difference between the specified value and the initial value exceeds the aforesaid limit, you can initiate the configuration task by selecting the check box for forced execution. iii. Click **OK**.
+iii. Click **OK**.
 
 ##### 5.4.2.5 Manage services
 
@@ -2947,7 +3078,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **KV Service**.
 5. On the **KV Service** tab, click the KVMaster, KVServer, KMMaster, or KMServer tab to
 manage KV services. Manage KV Master nodes On the **KVMaster** tab, view the server information about KV Master nodes and perform operations based on your business requirements.
@@ -2989,14 +3122,15 @@ Manage KM Server nodes On the **KMServer** tab, view the server information abou
 
 After you analyze an error and determine that the error occurs in an access-layer service, you can restart the access-layer service, such as a service of TEngine, OssServer, or OssImageServer, to troubleshoot the error.
 
-**Warning**
+> **Warning:** Do not restart services on frontend servers. If you need help, contact Apsara Stack technical support.
 
-Do not restart services on frontend servers. If you need help, contact Apsara Stack technical support.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Front-end Service**.
 5. On the **Front-end Service** tab, click the TEngine, OssServer, or OssImageServer tab to
 manage the corresponding access-layer services. Manage TEngine On the **TEngine** tab, you can view the servers of TEngine and restart a service based on your business requirements. Find a server and click **Restart** in the **Actions** column to restart a service of TEngine. Manage OssServer On the **OssServer** tab, you can view the servers of OssServer and perform operations based on your business requirements.
@@ -3018,7 +3152,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Pangu**.
 5. On the **Pangu** page, click the **Meta Server** tab to view the information about meta servers
 and perform operations on the meta servers based on your business requirements. The following table describes the operations that you can perform.
@@ -3080,7 +3216,9 @@ On the Host tab of a cluster, you can view the information about hosts in the cl
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Host** tab, view information in the host list and perform operations on the hosts
 based on your business requirements. The following table describes the operations that you can perform on the hosts.
 
@@ -3361,21 +3499,32 @@ iv. In the **Basic Information** step, configure the Role Name and Description p
 
 `]` `}` `]` `}` viii. In the **Add Policy** dialog box, select the created policy and click **OK**. In the message that appears, click **OK**. ix. Click **OK**. In the **Create RAM Role** dialog box, click **Complete**.
 3. Create a user and a user group.
-i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**. Set the Role authorized parameter to the RAM role that you created in the preceding step. iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**. You cannot set the Role parameter to the RAM role that you created in the preceding step. v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**.
 
-**Important**
+> **Note:** Set the Role authorized parameter to the RAM role that you created in the preceding step.
 
-Save the AccessKey pair immediately or send it to the corresponding user. The information of the AccessKey pair cannot be obtained after the message is closed.
+iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**.
+
+> **Note:** You cannot set the Role parameter to the RAM role that you created in the preceding step.
+
+v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+
+> **Important:** Save the AccessKey pair immediately or send it to the corresponding user. The information of the AccessKey pair cannot be obtained after the message is closed.
+
 4. Record the UID.
 i. In the left-side navigation pane, choose **Resources** > **Organizations**. ii. In the Organization Structure section, click the organization to which the created user belongs, click the User tab, and then click the name of the created user. On the page that appears, save the UID of the user.
 
 **Add the proxy user to the OCM list in the destination cloud**
 
-**Important**
+> **Important:** All modifications on the OCM list take effect 30 minutes later.
 
-All modifications on the OCM list take effect 30 minutes later. In the Apsara Uni-manager Operations Console of the destination cloud, log on to the OSS O&M console and then add the proxy user to the OCM list.
+In the Apsara Uni-manager Operations Console of the destination cloud, log on to the OSS O&M console and then add the proxy user to the OCM list.
 1. Log on to the OSS O&M console.
-i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**. iii. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**. iv. In the **Clusters** section of the **Cluster O&M** page, click the cluster name. You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page. v. In the upper-right corner of the **Cluster Details** page, choose **More O&M Capabilities**
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**. iii. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**. iv. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+v. In the upper-right corner of the **Cluster Details** page, choose **More O&M Capabilities**
 **> Object Storage Service O&M**.
 2. In the left-side navigation pane of the OSS O&M console, choose **Service O&M - OSS >**
 **OCM List Management**.
@@ -3401,7 +3550,11 @@ bucket.
 section.
 4. Click **Settings**.
 5. On the **Syntax** tab, click **Edit** and enter a policy.
-Sample policy: Set Principal to the UID of the proxy user. Replace `bucket-name` with the actual bucket name. `{`
+Sample policy:
+
+> **Note:** Set Principal to the UID of the proxy user. Replace `bucket-name` with the actual bucket name.
+
+`{`
 
 ```json
   "Version": "1",
@@ -3458,7 +3611,10 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **Cross-cloud Synchronization Process Configuration**.
 3. On the **Cross-cloud Synchronization Configuration** page, click **Create**.
 4. In the **Create Cross-Cloud Synchronization Task** dialog box, set the Destination Cloud
-Name, Destination Cloud Region/Location, Destination Cloud Domain Name, Proxy Account AccessKey ID, and Proxy Account AccessKey parameters. On the **Cross-cloud Synchronization Configuration** page of the destination cloud, you can click **View Parameters of the Current Cloud** to obtain the parameters of the cloud.
+Name, Destination Cloud Region/Location, Destination Cloud Domain Name, Proxy Account AccessKey ID, and Proxy Account AccessKey parameters.
+
+> **Note:** On the **Cross-cloud Synchronization Configuration** page of the destination cloud, you can click **View Parameters of the Current Cloud** to obtain the parameters of the cloud.
+
 5. Click **Submit**.
 After you configure the cross-cloud synchronization process, you can view the synchronization process information, such as the destination cloud name and destination cloud region/location, and manage the cross-cloud synchronization process.
 
@@ -3524,7 +3680,11 @@ On the O&M History tab, you can view the history of different types of O&M tasks
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > O&M Robot**.
 3. Click the **O&M History** tab, select an O&M task type and specify a time range.
-After you query an O&M task, you can view the name, batch sequence number, status, start time, and end time of the O&M task. The values in the **Status** column indicate the status of the O&M task. Valid values: SCHEDULABLE, RUNNING, PAUSED, HUMAN_PROCESSING, COMPLETED, FAILED, TIMEOUT, and TERMINATED. SCHEDULABLE indicates the O&M task is not running. RUNNING indicates the O&M task is running. PAUSED indicates the O&M task is paused. HUMAN_PROCESSING indicates the O&M task is paused and waiting to be processed. COMPLETED indicates the O&M task is complete. FAILED indicates the O&M task is failed. TIMEOUT indicates the O&M task times out. TERMINATED indicates the O&M task is terminated. You can click the plus icon before an O&M task to view the running information about the O&M task, such as the workflow ID, O&M result, and trigger type.
+After you query an O&M task, you can view the name, batch sequence number, status, start time, and end time of the O&M task.
+
+> **Note:** The values in the **Status** column indicate the status of the O&M task. Valid values: SCHEDULABLE, RUNNING, PAUSED, HUMAN_PROCESSING, COMPLETED, FAILED, TIMEOUT, and TERMINATED. SCHEDULABLE indicates the O&M task is not running. RUNNING indicates the O&M task is running. PAUSED indicates the O&M task is paused. HUMAN_PROCESSING indicates the O&M task is paused and waiting to be processed. COMPLETED indicates the O&M task is complete. FAILED indicates the O&M task is failed. TIMEOUT indicates the O&M task times out. TERMINATED indicates the O&M task is terminated.
+
+You can click the plus icon before an O&M task to view the running information about the O&M task, such as the workflow ID, O&M result, and trigger type.
 
 #### 5.4.6 OSS O&M console
 
@@ -3649,17 +3809,15 @@ from the drop-down list, and then enter the Apsara Stack tenant account, UID, or
 
 In the **User Basic Information** section, you can modify the status of users and the maximum number of buckets that can be created. You can also view the change history of user status. Click **Modify user status**. You can modify the status of the current user as prompted.
 
-**Warning**
+> **Warning:** Security risks may arise if you modify user status. We recommend that you do not modify user status if unnecessary.
 
-Security risks may arise if you modify user status. We recommend that you do not modify user status if unnecessary. Click **Modify the number of buckets that can be created** . You can modify the maximum number of buckets that the current user can create. Valid values: 0 to 10000. Click **View user status change history**. You can view the change history of user status.
+Click **Modify the number of buckets that can be created** . You can modify the maximum number of buckets that the current user can create. Valid values: 0 to 10000. Click **View user status change history**. You can view the change history of user status.
 
 **Bucket list information**
 
 In the **Bucket list information** section, you can manage your buckets. Click **View Details** in the Actions column that corresponds to the required bucket. You can view the basic information about the bucket Click **Manage** in the Actions column that corresponds to the required bucket. You can modify the status and the ACL of the bucket. Click **Delete** in the Actions column that corresponds to the required bucket. You can delete the bucket.
 
-**Warning**
-
-If you delete a bucket, the bucket and all objects in the bucket are deleted. Deleted buckets and objects cannot be recovered. Exercise caution when you delete a bucket.
+> **Warning:** If you delete a bucket, the bucket and all objects in the bucket are deleted. Deleted buckets and objects cannot be recovered. Exercise caution when you delete a bucket.
 
 ###### 5.4.6.3.3 Disassociate a bucket from a VPC
 
@@ -3793,7 +3951,9 @@ Resource usage ranked by clusters helps O&M engineers monitor and identify high-
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Cluster Monitoring > Resource**
 **Usage Ranking**.
-By default, the information about all clusters is displayed. You can select a cluster and click **View** to view the information about the specified cluster.
+
+> **Note:** By default, the information about all clusters is displayed. You can select a cluster and click **View** to view the information about the specified cluster.
+
 3. On the **Resource Usage Ranking** tab, select **Report** or **Trend** from the **Display Method**
 drop-down list. Select a number from the **TOP** drop-down list. Select metrics from the
 **Metric** drop-down list and select a time range from the Time Range drop-down list.
@@ -3877,9 +4037,8 @@ In the list of disks, the types, IDs, total capacity, and used storage space of 
 
 By default, the system assigns a domain name and a virtual IP address (VIP) to each cluster. O&M administrators can use the domain name management feature to view the domain name and VIP of each cluster. When access to a cluster fails, the O&M administrators can locate the cause based on the domain name resolution information.
 
-**Important**
+> **Important:** The VIP of an Object Storage Service (OSS) cluster dynamically changes and may compromise access security. Therefore, do not directly use the VIP to access OSS.
 
-The VIP of an Object Storage Service (OSS) cluster dynamically changes and may compromise access security. Therefore, do not directly use the VIP to access OSS.
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Network Management >**
 **Domain Name Management**.
@@ -3911,9 +4070,7 @@ By default, the system assigns and bounds a virtual IP address (VIP) to the clus
 
 The cluster and bucket migration management module allows O&M administrators to migrate bucket data from a cluster of Object Storage Service (OSS) 1.0 to a CDS-OSS cluster when you need to phase out the cluster of OSS 1.0.
 
-**Warning**
-
-Cluster and bucket migration is a high-risk operation. We recommend that you perform this operation under the guidance of the Alibaba Cloud technical support.
+> **Warning:** Cluster and bucket migration is a high-risk operation. We recommend that you perform this operation under the guidance of the Alibaba Cloud technical support.
 
 **Background information**
 
@@ -3937,16 +4094,17 @@ Alibaba Cloud technical support for assistance.
 
 Only when the cluster of OSS 1.0 is the primary cluster, the clusters of OSS 1.0 and CDS-OSS reside in the same region, both clusters meet the requirements for bucket migration, and only one region is involved, you can enable the migration mode.
 
-**Important**
+> **Important:** You cannot enable the migration mode for heterogeneous clusters (one cluster uses the x86 architecture and the other cluster uses the ARM architecture), cross-region migration, or disaster recovery across three data centers in two regions.
 
-You cannot enable the migration mode for heterogeneous clusters (one cluster uses the x86 architecture and the other cluster uses the ARM architecture), cross-region migration, or disaster recovery across three data centers in two regions.
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Cluster/Bucket Migration**
 **Management**.
 3. On the **Cluster/Bucket Migration Management** tab, click **Enable Migration Mode** in
 the **Actions** column.
 4. In the **Migration Management Configurations** dialog box, specify the destination
-cluster, default cluster to create buckets, and ticket ID, and click **OK**. After you submit the workflows for enabling the migration mode, the Status column of the current cluster shows **Enabling**. Only after the workflow for enabling the migration mode is completed for both the source and destination clusters, the Status column of the current cluster shows **Enabled**. Click **View Cluster Status** in the **Actions** column of the cluster to view the status of the workflow for enabling the migration mode.
+cluster, default cluster to create buckets, and ticket ID, and click **OK**. After you submit the workflows for enabling the migration mode, the Status column of the current cluster shows **Enabling**. Only after the workflow for enabling the migration mode is completed for both the source and destination clusters, the Status column of the current cluster shows **Enabled**.
+
+> **Note:** Click **View Cluster Status** in the **Actions** column of the cluster to view the status of the workflow for enabling the migration mode.
 
 **Step 2: Migrate data**
 
@@ -3957,24 +4115,28 @@ On the **Cluster/Bucket Migration Management** tab, migrate buckets or migrate a
 1. Click **Migrate Bucket** in the **Actions** column.
 2. In the **Migrate Bucket** dialog box, select the buckets that you want to migrate and click
 **OK**.
-Fuzzy match is supported. You cannot select buckets that are being migrated, failed to be migrated, or have been migrated. In the dialog box, the migration status of the buckets is displayed for your reference.
+
+> **Note:** Fuzzy match is supported.
+> You cannot select buckets that are being migrated, failed to be migrated, or have been migrated. In the dialog box, the migration status of the buckets is displayed for your reference.
 
 **Migrate a cluster**
 
-**Important**
+> **Important:** If you migrate a cluster, all buckets in the cluster are migrated to the destination cluster. Proceed with caution.
 
-If you migrate a cluster, all buckets in the cluster are migrated to the destination cluster. Proceed with caution.
 1. Click **Migrate Cluster** in the **Actions** column of the desired cluster.
 2. In the **Migrate Cluster** dialog box, select the buckets that you want to exclude and click
 **OK**.
-By default, when you migrate a cluster, all buckets in the cluster are migrated. You can specify the buckets that you do not want to migrate in the dialog box that appears.
+
+> **Note:** By default, when you migrate a cluster, all buckets in the cluster are migrated. You can specify the buckets that you do not want to migrate in the dialog box that appears.
 
 **Step 3: Manage the migration progress**
 
 1. On the **Cluster/Bucket Migration Management** tab, click **Migration Progress**
 **Management** in the **Actions** column.
 2. On the **Migration Progress Management** tab, view the migration progress of each
-bucket and perform operations based on your business requirements. You can filter data by batch ID, bucket name, and migration status.
+bucket and perform operations based on your business requirements.
+
+> **Note:** You can filter data by batch ID, bucket name, and migration status.
 
 | Operation | Description |
 |---|---|
@@ -4134,9 +4296,8 @@ following table, and then click **Submit**. On the **Batch Workflow Submission**
 
 You can restart key services, such as TEngine, OssServer, and ImageServer on the Object Storage Service (OSS) server to ensure the stability and availability of OSS.
 
-**Warning**
+> **Warning:** Security risks may arise if you restart OSS services. Proceed with caution.
 
-Security risks may arise if you restart OSS services. Proceed with caution.
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane of the OSS O&M console, choose **Service O&M - OSS >**
 **OSS Service Restart**.
@@ -4240,19 +4401,26 @@ iv. In the **Basic Information** step, configure the Role Name and Description p
 
 `]` `}` `]` `}` viii. In the **Add Policy** dialog box, select the created policy and click **OK**. In the message that appears, click **OK**. ix. Click **OK**. In the **Create RAM Role** dialog box, click **Complete**.
 3. Create a user and a user group.
-i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**. Set the Role authorized parameter to the RAM role that you created in the preceding step. iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**. You cannot set the Role parameter to the RAM role that you created in the preceding step. v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+i. In the left-side navigation pane, choose **Users** > **User Groups**. ii. On the User Groups page, click **Create User Group**. In the Create User Group dialog box, configure the User Group Name, Organization, and Role authorized parameters, and click **OK**.
 
-**Important**
+> **Note:** Set the Role authorized parameter to the RAM role that you created in the preceding step.
 
-Save the AccessKey pair immediately or send it to the corresponding user. The information of the AccessKey pair cannot be obtained after the message is closed.
+iii. In the left-side navigation pane, choose **Users** > **Users**. iv. On the System Users tab of the Users page, click **Create User**. In the Create User dialog box, configure the parameters, including the User Name, Display Name, Role, Organization, Logon Policy, Phone, and Email parameters, and click **OK**.
+
+> **Note:** You cannot set the Role parameter to the RAM role that you created in the preceding step.
+
+v. In the **AccessKey Information** message, copy and save the AccessKey pair of the user, and then click **Close**.
+
+> **Important:** Save the AccessKey pair immediately or send it to the corresponding user. The information of the AccessKey pair cannot be obtained after the message is closed.
+
 4. Record the UID.
 i. In the left-side navigation pane, choose **Resources** > **Organizations**. ii. In the Organization Structure section, click the organization to which the created user belongs, click the User tab, and then click the name of the created user. On the page that appears, save the UID of the user.
 
 **Add the proxy user to the OCM list in the destination cloud**
 
-**Important**
+> **Important:** All modifications on the OCM list take effect 30 minutes later.
 
-All modifications on the OCM list take effect 30 minutes later. In the Apsara Uni-manager Operations Console of the destination cloud, log in to the OSS O&M console and then add the proxy user to the OCM list.
+In the Apsara Uni-manager Operations Console of the destination cloud, log in to the OSS O&M console and then add the proxy user to the OCM list.
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > OCM List Management**.
 3. On the **Special User** tab of the **OCM List Management** page, click **Add**.
@@ -4277,7 +4445,11 @@ bucket.
 section.
 4. Click **Settings**.
 5. On the **Syntax** tab, click **Edit** and enter a policy.
-Sample policy: Set Principal to the UID of the proxy user. Replace `bucket-name` with the actual bucket name. `{`
+Sample policy:
+
+> **Note:** Set Principal to the UID of the proxy user. Replace `bucket-name` with the actual bucket name.
+
+`{`
 
 ```json
   "Version": "1",
@@ -4336,7 +4508,9 @@ Log in to the Apsara Uni-manager Operations Console of the source cloud and go t
 **Management > Cross-Cloud Synchronization**.
 3. On the **Cross-cloud Synchronization Management** page, click **Create**.
 4. In the **Create Cross-cloud Synchronization Task** dialog box, specify the parameters for
-the destination cloud. On the **Cross-cloud Synchronization Management** page of the destination cloud, you can click **View Parameters of the Current Cloud** to obtain the parameters of the cloud.
+the destination cloud.
+
+> **Note:** On the **Cross-cloud Synchronization Management** page of the destination cloud, you can click **View Parameters of the Current Cloud** to obtain the parameters of the cloud.
 
 | Parameter | Description |
 |---|---|
@@ -4605,7 +4779,9 @@ i. Modify the content of the KM configuration file. ii. Click **Refresh** and to
 
 View the scheduling history of KM masters within a specified period of time.
 1. On the **KM Scheduling History** tab, select a cluster and a time range.
-The time range is unlimited. The time range selected in the console shall prevail.
+
+> **Note:** The time range is unlimited. The time range selected in the console shall prevail.
+
 2. Click **Query**.
 In the list, you can view the start time, application, type, result, and reason of a single scheduling task.
 
@@ -4753,19 +4929,26 @@ By analyzing internal errors (5XX), O&M personnel can discover server exceptions
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Log Monitoring > 5XX Error Analysis**.
 3. On the **Total** tab, select a time range.
-You can query data by 5 minutes, 15 minutes, 30 minutes, 1 hour, today, this week, or a specified date.
+
+> **Note:** You can query data by 5 minutes, 15 minutes, 30 minutes, 1 hour, today, this week, or a specified date.
+
 4. View statistics.
 
-**Important**
+> **Important:** Because the total number of 5XX may be large, OSS can only sample some requests for analysis.
 
-Because the total number of 5XX may be large, OSS can only sample some requests for analysis. 5XX Error Statistics: The system counts internal errors by region and by the final application in which the errors occurred. Percentages of errors for each application: In the **Percentage of Errors in Each**
+5XX Error Statistics: The system counts internal errors by region and by the final application in which the errors occurred. Percentages of errors for each application: In the **Percentage of Errors in Each**
 **Application** section, you can view the total number of 5XX errors for each cluster in the
-region and the errors for different applications in the cluster. After you select a time range on the **Request Flow Details** tab, you can view the error percentage of each application.
+region and the errors for different applications in the cluster.
+
+> **Note:** After you select a time range on the **Request Flow Details** tab, you can view the error percentage of each application.
 
 **Analyze application request errors**
 
 1. On the **Total** or **Request Flow Details** tab, click the number of specified applications in
-the **Percentage of Errors in Each Application** list. You can also select a feature in the **Actions** column.
+the **Percentage of Errors in Each Application** list.
+
+> **Note:** You can also select a feature in the **Actions** column.
+
 2. On the **Error Analysis** page, set the search type, search conditions, and time range, and
 click **Search**. The search type can be frontend cluster, backend cluster, bucket, IP address, or UID.
 3. Analyze application errors as needed.
@@ -4776,7 +4959,9 @@ In the upper part of the page, you can view the trend of the total number of 5XX
 
 **Analyze different application error log**
 
-Different applications display different error log information or operation, please refer to the actual. On the corresponding application tab, you can view information such as application error log analysis, request error list, bucket error list, and vSwitch error list, and perform corresponding operations as needed.
+> **Note:** Different applications display different error log information or operation, please refer to the actual.
+
+On the corresponding application tab, you can view information such as application error log analysis, request error list, bucket error list, and vSwitch error list, and perform corresponding operations as needed.
 
 | Features | Description |
 |---|---|
@@ -4803,7 +4988,8 @@ The system can query backend logs by request ID, cluster (5XX), bucket, UID, app
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Log Monitoring > Backend Log Query**.
 3. On the **Query Logs** page, select a query method as needed.
-You can click **Parse Access Log** in the upper-right corner to parse the logs.
+
+> **Note:** You can click **Parse Access Log** in the upper-right corner to parse the logs.
 
 **Query logs by request ID**
 
@@ -4818,7 +5004,11 @@ i. Set the search condition to **Search by request ID** and enter a request ID. 
 
 **Query logs by cluster**
 
-i. Select **Search By cluster (5xx only)** and select a region, cluster, and time range. If you select All Regions, requests from all clusters in all regions are displayed. If you select Specified Region and All Clusters, requests from all clusters in the specified region are displayed. ii. Click **View** to view the request logs of the cluster within the specified time range. In the list, click a request ID to query backend logs. Click a bucket name to view the basic information of the bucket.
+i. Select **Search By cluster (5xx only)** and select a region, cluster, and time range.
+
+> **Note:** If you select All Regions, requests from all clusters in all regions are displayed. If you select Specified Region and All Clusters, requests from all clusters in the specified region are displayed.
+
+ii. Click **View** to view the request logs of the cluster within the specified time range. In the list, click a request ID to query backend logs. Click a bucket name to view the basic information of the bucket.
 
 **Query logs by bucket**
 
@@ -4830,9 +5020,9 @@ i. Select **Search by user** as the search condition and set UserID, Request Met
 
 **Query logs by application category**
 
-**Important**
+> **Important:** You can view only the logs of 5XX errors.
 
-You can view only the logs of 5XX errors. i. Select **Search by application category (5xx Only)** and set Region, Cluster, Application, or Time Range. ii. Click **View** to view the request logs of the selected application within the specified time range. In the list, click a request ID to query backend logs. Click a bucket name to view basic information of the bucket.
+i. Select **Search by application category (5xx Only)** and set Region, Cluster, Application, or Time Range. ii. Click **View** to view the request logs of the selected application within the specified time range. In the list, click a request ID to query backend logs. Click a bucket name to view basic information of the bucket.
 
 **Custom query logs**
 
@@ -4926,7 +5116,9 @@ After you configure a silence rule, the system does not send alert notifications
 
 **Manage alert rules**
 
-After you add an alert rule, you can view the details of the alert rule on the **Alert Rules** tab. You can also use the alert rule to add or delete an alert rule. By default, the system filters out silence rules. If you turn off **Filter Silent Rules**, the silence rules are displayed.
+After you add an alert rule, you can view the details of the alert rule on the **Alert Rules** tab. You can also use the alert rule to add or delete an alert rule.
+
+> **Note:** By default, the system filters out silence rules. If you turn off **Filter Silent Rules**, the silence rules are displayed.
 
 | Operation | Description |
 |---|---|
@@ -4949,7 +5141,10 @@ After you add a silence rule, you can customize the interval start time, silence
 **Edit alert item information**
 
 1. On the **Alerts** page, find the alert that you want to modify and click **Edit** in the **Actions**
-column. You can also click **Alert Rule** in the **Actions** column of an alert item and click **Edit** on the details page of the alert item.
+column.
+
+> **Note:** You can also click **Alert Rule** in the **Actions** column of an alert item and click **Edit** on the details page of the alert item.
+
 2. In the **Edit** panel, configure the parameters.
 
 | Parameters | Description |
@@ -4972,9 +5167,10 @@ column. You can also click **Alert Rule** in the **Actions** column of an alert 
 
 **Copy an alert item**
 
-**Important**
+> **Important:** You cannot delete an alert item that is created by copying the alert item. Exercise caution when you perform this operation.
+> By default, no alarm rules are configured for the copied alarm items. Configure alarm rules for alarm items as needed.
 
-You cannot delete an alert item that is created by copying the alert item. Exercise caution when you perform this operation. By default, no alarm rules are configured for the copied alarm items. Configure alarm rules for alarm items as needed. Quickly create an alarm item based on the existing alarm configuration.
+Quickly create an alarm item based on the existing alarm configuration.
 1. On the **Alerts** page, find the alert item that you want to copy and click **Copy** in the
 **Actions** column.
 2. In the **Copy alarm items** panel, set the name, attribute, description, owner, and
@@ -5007,9 +5203,8 @@ In the monitoring task list, you can view the monitoring task information and pe
 
 **Edit a monitoring task**
 
-**Important**
+> **Important:** You can edit or delete only the tasks that are in the Disabled state.
 
-You can edit or delete only the tasks that are in the Disabled state.
 1. On the inspection tasks page, find the inspection task and click **Edit** in the **Actions** column.
 2. In the **Edit** dialog box, modify the task parameters.
 
@@ -5054,8 +5249,10 @@ You can edit or delete only the tasks that are in the Disabled state.
 
 1. On the inspection tasks page, click the name of a task in the **Task Name** column.
 2. On the **Task Results** tab, view all inspection records of the monitoring task within the last
-day. To view only abnormal tasks, turn off **Show All Tasks** to turn on **Display Exception**
-**Task**.
+day.
+
+> **Note:** To view only abnormal tasks, turn off **Show All Tasks** to turn on **Display Exception** **Task**.
+
 In the task result list, you can view the task execution information and perform corresponding operations as needed.
 
 | Operation | Description |
@@ -5095,7 +5292,9 @@ The one-click inspection feature helps O&M personnel run routine checks. You can
 4. On the **One-click Inspection** page, select an inspection task type.
 This feature offers two modes: **routine light-duty inspection** and **in-depth inspection**. Choose the one that best fits your business scenario.
 5. Click **trigger inspection**.
-After you trigger the inspection, view the inspection records and perform any necessary actions in the **inspection record** section. Click **refresh** to update the inspection records, or click **load more** to load additional records.
+After you trigger the inspection, view the inspection records and perform any necessary actions in the **inspection record** section.
+
+> **Note:** Click **refresh** to update the inspection records, or click **load more** to load additional records.
 
 | Actions | Description |
 |---|---|
@@ -5120,9 +5319,7 @@ You can turn on or off the **Show Multiple Workflows** switch and the **Contains
 4. Click **Search**.
 After you search for a workflow, you can view the details of the existing workflow and perform the corresponding operations as needed.
 
-**Important**
-
-The workflow cannot be deleted.
+> **Important:** The workflow cannot be deleted.
 
 | Operation | Description |
 |---|---|
@@ -5142,7 +5339,11 @@ By viewing the task details of all workflows, creating new tasks, and browsing t
 
 **Create flow task**
 
-i. On the **Create Task** tab, select a workflow name and configure the workflow parameters. Different types of workflows have different parameters. Please refer to the actual interface. ii. Configure the execution parameters as described in the following table
+i. On the **Create Task** tab, select a workflow name and configure the workflow parameters.
+
+> **Note:** Different types of workflows have different parameters. Please refer to the actual interface.
+
+ii. Configure the execution parameters as described in the following table
 
 | Parameters | Description |
 |---|---|
@@ -5155,13 +5356,17 @@ iii. Click **Submit**. iv. In the **Workflow submission parameter confirmation**
 **Published Tasks** tab. Click **Generate submit link** to obtain the task link and paste it to
 the clipboard. Click **Maintain workflow definition** to create a workflow.
 
-**Important**
-
-In general, we recommend that you do not manually create a workflow. If you have operation requirements, contact Alibaba Cloud technical support for evaluation and confirmation, and then a professional can perform relevant operations.
+> **Important:** In general, we recommend that you do not manually create a workflow. If you have operation requirements, contact Alibaba Cloud technical support for evaluation and confirmation, and then a professional can perform relevant operations.
 
 **View my published tasks**
 
-On the **Published Tasks** tab, set query conditions based on the cluster or operator and click **Query**. In the task list, click the icon in the **Task Type** or **Task Completion Status** column to filter workflow instances. After you search for a task, you can view the information about all published tasks and perform the corresponding operations as needed.
+On the **Published Tasks** tab, set query conditions based on the cluster or operator and click **Query**.
+
+> **Note:** In the task list, click the icon
+> in the **Task Type** or **Task Completion Status** column
+> to filter workflow instances.
+
+After you search for a task, you can view the information about all published tasks and perform the corresponding operations as needed.
 
 | Operation | Description |
 |---|---|
@@ -5207,7 +5412,9 @@ With the batch workflow submission feature, O&M personnel can submit the same wo
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Workflow >**
 **Batch Workflow Submission**.
-The new operation page is displayed by default. We recommend that you use the new version. If you want to use the previous version, turn on **Enable legacy**. There are some differences between the previous version and the new version. Please refer to the actual interface.
+
+> **Note:** The new operation page is displayed by default. We recommend that you use the new version. If you want to use the previous version, turn on **Enable legacy**. There are some differences between the previous version and the new version. Please refer to the actual interface.
+
 3. Configure workflow parameters.
 i. In the **Parameter entry** step of the **Batch Workflow Submission** page, specify the workflow name, cluster, and other parameters based on the workflow type. ii. Click **Generate Task Group**.
 4. Configure advanced parameters.
@@ -5253,9 +5460,14 @@ By viewing the list of workflow instances, O&M personnel can manage workflow ins
 **Instances**.
 3. Select **Workflow Instance ID** or **Operated By**, enter the search criteria, and then click
 **Query**.
-In the workflow instance list, click the icon in the **Task Type** or **Task Completion**
-**Status** column to further filter workflow instances.
-After the workflow instance is queried, you can view the workflow instance ID, task type, completion status, start time, and execution status in the workflow instance list. Click the ID of a workflow to view its workflow details and perform operations as needed. Different types of workflows display different information and specific steps. Please refer to the actual interface.
+
+> **Note:** In the workflow instance list, click the
+> icon in the **Task Type** or **Task Completion**
+> **Status** column to further filter workflow instances.
+
+After the workflow instance is queried, you can view the workflow instance ID, task type, completion status, start time, and execution status in the workflow instance list. Click the ID of a workflow to view its workflow details and perform operations as needed.
+
+> **Note:** Different types of workflows display different information and specific steps. Please refer to the actual interface.
 
 | Operation | Description |
 |---|---|
@@ -5279,7 +5491,9 @@ A workflow definition outlines the activity steps and execution flow for various
 2. In the left-side navigation pane, choose **Chi Ji Background Management > Workflow >**
 **Workflow Definition**.
 3. On the **Workflow List [Definition]** page, view the activity steps for each workflow
-category. For workflows with many steps, click **More** at the end of the list to view all steps.
+category.
+
+> **Note:** For workflows with many steps, click **More** at the end of the list to view all steps.
 
 ###### 5.4.6.10.2 White-screen Commands
 
@@ -5338,7 +5552,10 @@ By querying audit logs, O&M personnel can track and control platform operations,
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Audit Logs**.
 3. On the **Operation Logs** page, turn on or off the switch in the upper-right corner to switch
-between Red Logs and POP Logs. POP logs are generated when other products or services use POP to call the operation. The logs are generated when the operation is performed in the console.
+between Red Logs and POP Logs.
+
+> **Note:** POP logs are generated when other products or services use POP to call the operation. The logs are generated when the operation is performed in the console.
+
 4. Select a time range. You can select the check box next to **Add filter criteria** and set filter
 conditions. The system supports filtering logs by operator, IP address, operation log, or operation name.
 5. Click **Query**.
@@ -5385,7 +5602,9 @@ On the Overview tab, you can view the top 10 Logstores with the highest traffic 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Overview** tab, view the top 10 Logstores with the highest traffic in the cluster.
 
 ##### 5.5.2.2 View capacity information
@@ -5395,7 +5614,9 @@ On the Capacity tab, you can view the logical capacity usage, physical capacity 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. Click the **Capacity** tab to view the capacity information about the cluster.
 
 | Capacity information | Description |
@@ -5424,34 +5645,41 @@ You cannot modify EC configurations when O&M operations are performed on hosts i
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **EC Configuration**.
 5. On the **EC Configuration** tab, modify the **Configuration Type** parameter to specify an EC
-type based on your business requirements. The EC types supported by the cluster are all displayed in the drop-down list. After you select an EC type, the system automatically calculates the value of the Replicas parameter based on the selected EC type. Some clusters do not support the Configuration Type parameter. The actual configurations prevail.
+type based on your business requirements. The EC types supported by the cluster are all displayed in the drop-down list. After you select an EC type, the system automatically calculates the value of the Replicas parameter based on the selected EC type.
+
+> **Note:** Some clusters do not support the Configuration Type parameter. The actual configurations prevail.
+
 6. Click **Save**.
 
 ###### 5.5.2.3.2 Configure Apsara Distributed File System
 
 You can view and configure the replica traffic control, cluster recycle bin, and quotas based on your business requirements.
 
-**Important**
+> **Important:** If you modify cluster information, system exceptions may occur. Proceed with caution.
 
-If you modify cluster information, system exceptions may occur. Proceed with caution. View replica traffic control settings You can configure the maximum and minimum replication speeds based on your business requirements to control the rate of data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to occupy a large amount of resources, you can decrease the maximum and minimum replication speeds.
+View replica traffic control settings You can configure the maximum and minimum replication speeds based on your business requirements to control the rate of data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to occupy a large amount of resources, you can decrease the maximum and minimum replication speeds.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Configure** tab, click **Pangu Configuration**.
 5. On the **Replica Traffic Control** tab of the **Pangu Configuration** tab, view the traffic
 control information and modify the replication speeds based on your business requirements.
 6. Modify the replication speeds based on your business requirements.
 i. Find a replica traffic control rule and click **Edit** in the **Actions** column. ii. In the **Modify Configuration** dialog box, modify the maximum or minimum replication speed. This way, you can set an upper or lower limit on the speed at which data is read from the source server or written to the destination server. The valid values of the maximum or minimum replication speed range from 1 to 100000, measured in MB/s.
 
-**Important**
+> **Important:** We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set.
 
-We recommend that you set the maximum or minimum read speed and the maximum or minimum write speed to the same value. Otherwise, data is replicated based on the smaller speed value that you set. The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
+The read and write speed settings affect the performance of servers. Proceed with caution. iii. Click **OK**.
 
 **View cluster recycle bin configurations**
 
@@ -5493,7 +5721,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Service** tab, click **Pangu**.
 5. On the **Pangu** page, click the **Meta Server** tab to view the information about meta servers
 and perform operations on the meta servers based on your business requirements. The following table describes the operations that you can perform.
@@ -5551,7 +5781,9 @@ On the Host tab of a cluster, you can view the information about the hosts in th
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
-You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
+> **Note:** You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
+
 4. On the **Host** tab, view information in the host list and perform operations on the hosts
 based on your business requirements. The following table describes the operations that you can perform on the hosts.
 
@@ -5657,7 +5889,9 @@ After the metrics of the resource are added to the custom dashboard, you can vie
 
 **storage metrics**
 
-You can view the monitoring data of the storage metrics of Elastic Block Storage (EBS) and Object Storage Service (OSS) to check the resource usage and operation status of the storage services. The displayed tabs may vary with different clusters.
+You can view the monitoring data of the storage metrics of Elastic Block Storage (EBS) and Object Storage Service (OSS) to check the resource usage and operation status of the storage services.
+
+> **Note:** The displayed tabs may vary with different clusters.
 
 **View EBS storage metrics**
 
@@ -5699,15 +5933,19 @@ Move the pointer over a trend chart to view the value at a specific point in tim
 
 If an exception occurs in a module of a cluster, you can view the service metrics of the module to troubleshoot and identify issues.
 
-**Important**
+> **Important:** This feature is applicable only to Cloud Defined Storage-Object Storage Service (OSS) clusters and CDS-Elastic Block Storage (EBS) clusters.
 
-This feature is applicable only to Cloud Defined Storage-Object Storage Service (OSS) clusters and CDS-Elastic Block Storage (EBS) clusters.
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Service Monitoring**.
 3. View the monitoring data of different services.
-The displayed tabs may vary based on the cluster type. View the monitoring data of Apsara Distributed File System On the **Pangu** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_MS_CPUUsage, which measures the CPU utilization of the master process, PG_CS_CPUUsage, which measures the CPU utilization of the chunkserver process, PG_CS_DiskCapacity, which measures the disk usage of the chunkserver process, and PG_CS_ReadWriteThroughput, which measures the throughput of read and write operations other than replication for the chunkserver process. View the monitoring data of OSS On the **OSS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include KV Add Latency, KV Query Latency, KV Read Amplication, and KV Write Amplication. View the monitoring data of EBS On the **EBS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_BM_MigrationMediumUsage, which measures the cluster usage, PG_BS_IoLatency, which measures the latency of BlockServer during each task, PG_BS_Throughput, which measures the read and write traffic processed by BlockServer per second, and PG_BS_Iops, which measures the number of I/O operations processed by BlockServer per second. You can find a chart and click **Actions** in the upper-right corner to download the data or save the data as an image.
+
+> **Note:** The displayed tabs may vary based on the cluster type.
+
+View the monitoring data of Apsara Distributed File System On the **Pangu** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_MS_CPUUsage, which measures the CPU utilization of the master process, PG_CS_CPUUsage, which measures the CPU utilization of the chunkserver process, PG_CS_DiskCapacity, which measures the disk usage of the chunkserver process, and PG_CS_ReadWriteThroughput, which measures the throughput of read and write operations other than replication for the chunkserver process. View the monitoring data of OSS On the **OSS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include KV Add Latency, KV Query Latency, KV Read Amplication, and KV Write Amplication. View the monitoring data of EBS On the **EBS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_BM_MigrationMediumUsage, which measures the cluster usage, PG_BS_IoLatency, which measures the latency of BlockServer during each task, PG_BS_Throughput, which measures the read and write traffic processed by BlockServer per second, and PG_BS_Iops, which measures the number of I/O operations processed by BlockServer per second.
+
+> **Note:** You can find a chart and click **Actions** in the upper-right corner to download the data or save the data as an image.
 
 ## 7 Event Alerts
 
@@ -5813,9 +6051,13 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **SLA Monitoring** page, view the check results of SLA system links. The heartbeat
 check is performed every minute. You can also view the details of real-time SLA exceptions. In normal cases, the heartbeat check results in the previous 5 minutes are displayed. The system automatically refreshes the heartbeat status and the details of real-time SLA exceptions every minute. This allows you to obtain the status of SLA system links at the earliest opportunity during system updates.
 
-**Important**
+> **Important:** If exceptions occur in SLA system links, the heartbeat check stops. In this case, the system displays the check results of SLA system links before the exceptions occur.
 
-If exceptions occur in SLA system links, the heartbeat check stops. In this case, the system displays the check results of SLA system links before the exceptions occur. If no new heartbeat check results are displayed for more than 2 minutes, you must troubleshoot the issue. Make sure that the SLA metric query link is normal and that the clock of the server on which the service is running is not lagging behind. If exceptions occur in SLA system links, the exceptions that are detected by the current check are displayed in the **Details of Real-time SLA Exceptions** section. The following table describes the parameters of SLA exceptions. The Details of Real-time SLA Exceptions section displays the exceptions that are detected in the last check. If no SLA exceptions are detected in the next check, the Details of Real-time SLA Exceptions section refreshes, and no exceptions are displayed. You can also view historical SLA exceptions.
+> If no new heartbeat check results are displayed for more than 2 minutes, you must troubleshoot the issue. Make sure that the SLA metric query link is normal and that the clock of the server on which the service is running is not lagging behind.
+
+If exceptions occur in SLA system links, the exceptions that are detected by the current check are displayed in the **Details of Real-time SLA Exceptions** section. The following table describes the parameters of SLA exceptions.
+
+> **Note:** The Details of Real-time SLA Exceptions section displays the exceptions that are detected in the last check. If no SLA exceptions are detected in the next check, the Details of Real-time SLA Exceptions section refreshes, and no exceptions are displayed. You can also view historical SLA exceptions.
 
 | Parameter | Description |
 |---|---|
@@ -5868,7 +6110,6 @@ If you need to increase the number of physical hosts in a cluster to properly al
 **Prerequisites**
 
 The hosts used for the scale-up exist in the clusters of the buffer project. You can perform the following steps to check whether hosts are available in the clusters.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resource Management**.
 3. On the **Product & Cluster O&M** page, enter **buffer** in the **Product | Cluster** field.
@@ -5902,9 +6143,9 @@ If you need to decrease the number of physical hosts in a cluster to properly al
 
 Before you initiate a CDS Cluster Scale Down workflow, take note of the following items: The cluster scale-down process reduces the capacity and service capabilities of the cluster. Proceed with caution. The amount of time that is required for the cluster scale-down process is positively correlated with the cluster usage. In a data center, a workflow can remove only one node at a time. After the node is removed, make sure that the cluster contains at least the required number of nodes.
 
-**Important**
+> **Important:** The minimum number of nodes required varies based on the storage service. The value displayed on the GUI prevails.
 
-The minimum number of nodes required varies based on the storage service. The value displayed on the GUI prevails. To scale down a Cloud Defined Storage-Object Storage Service (CDS-OSS) three-zone cluster, you must undeploy the same number of physical hosts from each of the three data centers in the cluster. Make sure that no less than seven physical hosts are maintained in each data center after the scale-down process is complete.
+To scale down a Cloud Defined Storage-Object Storage Service (CDS-OSS) three-zone cluster, you must undeploy the same number of physical hosts from each of the three data centers in the cluster. Make sure that no less than seven physical hosts are maintained in each data center after the scale-down process is complete.
 1. Log on to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
@@ -5987,15 +6228,13 @@ Cluster Three-zone Change workflow and click **Initiate** in the **Actions** col
 4. In the **Initiating Workflow [CDSOSSZRS Cluster Three-zone Change]** panel, select
 the desired cluster. Then, select one destination zone and hosts in the zone, and select another destination zone and hosts in the zone.
 
-**Important**
+> **Important:** Make sure that the number of hosts selected in the destination zones is equal to the number of hosts in the cluster.
 
-Make sure that the number of hosts selected in the destination zones is equal to the number of hosts in the cluster. When you select up-scalable hosts, **Same Machine Model** is turned on by default to filter hosts. Only the hosts of the same model as the hosts in the selected cluster are displayed. We recommend that you select such hosts to ensure the overall performance and stability of the cluster.
+When you select up-scalable hosts, **Same Machine Model** is turned on by default to filter hosts. Only the hosts of the same model as the hosts in the selected cluster are displayed. We recommend that you select such hosts to ensure the overall performance and stability of the cluster.
 5. Click **Confirm**.
 In the message that appears, click **Confirm**. The system then starts to run the workflow.
 
-**Important**
-
-It takes a long period of time to run the workflow. If an issue occurs during the process, contact Apsara Stack technical support to troubleshoot the issue.
+> **Important:** It takes a long period of time to run the workflow. If an issue occurs during the process, contact Apsara Stack technical support to troubleshoot the issue.
 
 **What to do next**
 
@@ -6042,7 +6281,9 @@ After the workflow is complete, check whether the deployment mode of the cluster
 
 #### 9.2.1 Maintain corrupted disks
 
-When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a chunk server is corrupted, you can view the information about the corrupted disk in real time and initiate a disk replacement process and disk hot maintenance after the data of the corrupted disk is backed up. After the disk hot maintenance is complete, you can view the maintenance record in the maintenance history. Tablestore clusters, Cloud Parallel File Storage (CPFS) clusters, Elastic Block Storage (EBS)-1.0 clusters, and Object Storage Service (OSS)-1.0 clusters do not support the disk maintenance feature.
+When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a chunk server is corrupted, you can view the information about the corrupted disk in real time and initiate a disk replacement process and disk hot maintenance after the data of the corrupted disk is backed up. After the disk hot maintenance is complete, you can view the maintenance record in the maintenance history.
+
+> **Note:** Tablestore clusters, Cloud Parallel File Storage (CPFS) clusters, Elastic Block Storage (EBS)-1.0 clusters, and Object Storage Service (OSS)-1.0 clusters do not support the disk maintenance feature.
 
 **Usage notes**
 
@@ -6057,12 +6298,24 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the Disk Maintenance page, click the Corrupted Disks tab. On the **Corrupted Disks** tab,
 view and maintain corrupted disks. You can view information about the corrupted disks in the following columns: Cluster, Chunk Server, Disk ID, Disk Type, Device Name, Status, Backup Status, and Process Status. When a disk is corrupted, the cluster automatically backs up the data of the disk. If the value of the **Backup Status** column of the disk is **Backup Completed**, the data of the disk is backed up.
 
-**Warning**
+> **Warning:** To prevent data loss, make sure that the data stored on a corrupted disk is backed up before you replace the disk.
 
-To prevent data loss, make sure that the data stored on a corrupted disk is backed up before you replace the disk. i. Optional. Assist on-site maintenance personnel in locating the disk by turning on and off the disk light. a. Click **Replace Disk** in the **Actions** column of the corrupted disk. You can also click **Locate Disk** in the **Actions** column of the corrupted disk. b. In the **Locate Disk** dialog box, click **On** next to **Disk Light Status**. After the disk light is turned on, you can click **Off** to turn off the light. If the light fails to be turned on or the device does not support lighting, manually locate the corrupted disk. For more information about how to manually locate a disk, see Locate the physical location of a corrupted disk. c. After you locate the disk, select the **I have confirmed the location of the damaged**
+i. Optional. Assist on-site maintenance personnel in locating the disk by turning on and off the disk light. a. Click **Replace Disk** in the **Actions** column of the corrupted disk.
+
+> **Note:** You can also click **Locate Disk** in the **Actions** column of the corrupted disk.
+
+b. In the **Locate Disk** dialog box, click **On** next to **Disk Light Status**. After the disk light is turned on, you can click **Off** to turn off the light.
+
+> **Note:** If the light fails to be turned on or the device does not support lighting, manually locate the corrupted disk. For more information about how to manually locate a disk, see Locate the physical location of a corrupted disk.
+
+c. After you locate the disk, select the **I have confirmed the location of the damaged**
 **disk and understand the risk of disk replacement** check box and click **Initiate**
 **Process**.
-ii. The system automatically performs a pre-check and unmounts the corrupted disk. iii. Manually replace the disk: Locate the corrupted disk based on the corrupted disk location and replace the disk. Then, click **Execute New Disk Identification**. If the new disk is not recognized, the system returns a warning message. The warning message does not interrupt subsequent steps. If the disk is in a RAID architecture, the system obtains the location of the disk. You can locate the corrupted disk by turning on and off the disk light. If the disk does not have a RAID controller, you can locate the disk based on the corrupted disk locating process. You can verify whether the disk is correctly replaced by using the serial number. iv. Manually initialize the new disk: Make sure that the device name of the new disk is correct, and click **Execute Initialize**. By default, the system uses the drive letter adopted by the disk. A drive letter is automatically assigned even if no new disk is recognized. If the drive letter cannot be retrieved before the disk replacement is initiated, you need to manually enter and confirm a drive letter. v. The system automatically mounts the new disk, publishes the new disk, and verifies the result of the disk replacement. After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab.
+ii. The system automatically performs a pre-check and unmounts the corrupted disk. iii. Manually replace the disk: Locate the corrupted disk based on the corrupted disk location and replace the disk. Then, click **Execute New Disk Identification**.
+
+> **Note:** If the new disk is not recognized, the system returns a warning message. The warning message does not interrupt subsequent steps.
+
+If the disk is in a RAID architecture, the system obtains the location of the disk. You can locate the corrupted disk by turning on and off the disk light. If the disk does not have a RAID controller, you can locate the disk based on the corrupted disk locating process. You can verify whether the disk is correctly replaced by using the serial number. iv. Manually initialize the new disk: Make sure that the device name of the new disk is correct, and click **Execute Initialize**. By default, the system uses the drive letter adopted by the disk. A drive letter is automatically assigned even if no new disk is recognized. If the drive letter cannot be retrieved before the disk replacement is initiated, you need to manually enter and confirm a drive letter. v. The system automatically mounts the new disk, publishes the new disk, and verifies the result of the disk replacement. After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab.
 
 **Replace a data disk mounted in USSOS mode**
 
@@ -6073,18 +6326,21 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the Disk Maintenance page, click the Corrupted Disks tab. On the **Corrupted Disks** tab,
 view and maintain corrupted disks. You can view information about the corrupted disks in the following columns: Chunk Server, Chunk Server IP Address, Disk ID, Disk Type, Status, Backup Status, and Process Status. When a disk is corrupted, the cluster automatically backs up the data of the disk. If the value of the **Backup Status** column of the disk is **Backup Completed**, the data of the disk is backed up.
 
-**Warning**
+> **Warning:** To prevent data loss, make sure that the data stored on a corrupted disk is backed up before you replace the disk.
 
-To prevent data loss, make sure that the data stored on a corrupted disk is backed up before you replace the disk. i. Initiate a disk replacement process. a. Click **Replace Disk** in the **Actions** column of the corrupted disk. b. In the **Initiating [Disk Replacement] procedure** dialog box, select the **I have**
+i. Initiate a disk replacement process. a. Click **Replace Disk** in the **Actions** column of the corrupted disk. b. In the **Initiating [Disk Replacement] procedure** dialog box, select the **I have**
 
 **confirmed the location of the damaged disk and understand the risk of disk**
 
 **replacement** check box and click **Initiate Process**.
-Disks mounted in USSOS mode cannot be located by turning on the disk light. Locate the disk to be replaced based on the disk location or the disk light status. c. ii. The system automatically performs an environment check, performs a backup check, and unmounts the corrupted disk. iii. Manually replace the disk: Locate the corrupted disk based on the corrupted disk location or the disk light status, replace the disk, and click **Execute Verify**.
 
-**Important**
+> **Note:** Disks mounted in USSOS mode cannot be located by turning on the disk light. Locate the disk to be replaced based on the disk location or the disk light status.
 
-Make sure that the corrupted disk information matches the information about the disk whose disk light is off. If the disk is in a RAID architecture, the system obtains the location of the disk. You can locate the corrupted disk by turning on and off the disk light. If the disk does not have a RAID controller, you can locate the disk based on the corrupted disk locating process. You can verify whether the disk is correctly replaced by using the serial number. iv. The system automatically switches the new disk to the user mode, initializes the new disk, publishes the new disk, and verifies the result of the disk replacement. After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab.
+c. ii. The system automatically performs an environment check, performs a backup check, and unmounts the corrupted disk. iii. Manually replace the disk: Locate the corrupted disk based on the corrupted disk location or the disk light status, replace the disk, and click **Execute Verify**.
+
+> **Important:** Make sure that the corrupted disk information matches the information about the disk whose disk light is off.
+
+If the disk is in a RAID architecture, the system obtains the location of the disk. You can locate the corrupted disk by turning on and off the disk light. If the disk does not have a RAID controller, you can locate the disk based on the corrupted disk locating process. You can verify whether the disk is correctly replaced by using the serial number. iv. The system automatically switches the new disk to the user mode, initializes the new disk, publishes the new disk, and verifies the result of the disk replacement. After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab.
 
 **Related operations**
 
@@ -6143,9 +6399,9 @@ After you identify abnormal services or modules based on an issue, you can manua
 
 **Usage notes**
 
-**Warning**
+> **Warning:** The operations on user logs must be authorized by a user, such as collecting or exporting log data. You must follow the principle of least privilege and collect only the logs of the services that are related to the issue to be handled.
 
-The operations on user logs must be authorized by a user, such as collecting or exporting log data. You must follow the principle of least privilege and collect only the logs of the services that are related to the issue to be handled. Logs are asynchronously collected with a specific latency. You can view the progress of a log collection task on the Tasks page. For more information, see View tasks. Newly collected logs overwrite previously collected logs.
+Logs are asynchronously collected with a specific latency. You can view the progress of a log collection task on the Tasks page. For more information, see View tasks. Newly collected logs overwrite previously collected logs.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Collection**.
@@ -6168,7 +6424,9 @@ Logs are not permanently stored. The system automatically clears logs on a regul
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Search**.
 3. On the **Log Search** page, configure the Type, Project, Storage, and Select Date
-parameters. You can also specify a search condition. Valid values of the Type parameter are MANAGEMENT, OSS, SLS, and CHIJI. The actual logs that can be queried prevail.
+parameters. You can also specify a search condition. Valid values of the Type parameter are MANAGEMENT, OSS, SLS, and CHIJI.
+
+> **Note:** The actual logs that can be queried prevail.
 
 | and an analytic statement in the |   |
 |---|---|
@@ -6189,7 +6447,9 @@ statement|Analytic statement format. Example: * | SELECT status, count(*) AS PV 
 | Analytic statement | An analytic statement is used to aggregate or analyze all log data or the log data that meets the specified search conditions in a Logstore. |
 
 4. Click **Query**.
-The system displays the log data that meets the conditions. Different types of logs have different formats. The actual log formats prevail.
+The system displays the log data that meets the conditions.
+
+> **Note:** Different types of logs have different formats. The actual log formats prevail.
 
 ## 10 System Management
 
@@ -6218,7 +6478,16 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 2. In the left-side navigation pane, choose **CDS-System Management > Tasks**.
 The system automatically obtains and displays the tasks of the previous day.
 3. On the **Tasks** page, select a time range to view the information about the tasks within the
-specified time range and perform operations based on your business requirements. View task information In the task list, you can view the information about tasks, including the name, description, status, update time, and creation time of each task. The value in the **Status** column of a task indicates the state of the task. Valid values: PROCESSING: The task is running. COMPLETED: The task is complete. FAILED: The task failed. CLEANING: The task failed and is being cleaned up. FAILED_CLEANUP_FAIL: The task failed and the cleanup also failed. Contact O&M engineers to handle the issue. Go to the page on which a task is triggered Find the task that you want to manage and click **Redirect** in the **Execution Location** column to go to the page on which the asynchronous task is triggered. View run logs If a task has exceptions, you can find the task and click **Execution Logs** in the **Actions** column to view the run logs that can help you identify the cause. View details Find the task that you want to manage and click **Details** in the **Actions** column to view the details of the task.
+specified time range and perform operations based on your business requirements. View task information In the task list, you can view the information about tasks, including the name, description, status, update time, and creation time of each task.
+
+> **Note:** The value in the **Status** column of a task indicates the state of the task. Valid values:
+> PROCESSING: The task is running.
+> COMPLETED: The task is complete.
+> FAILED: The task failed.
+> CLEANING: The task failed and is being cleaned up.
+> FAILED_CLEANUP_FAIL: The task failed and the cleanup also failed. Contact O&M engineers to handle the issue.
+
+Go to the page on which a task is triggered Find the task that you want to manage and click **Redirect** in the **Execution Location** column to go to the page on which the asynchronous task is triggered. View run logs If a task has exceptions, you can find the task and click **Execution Logs** in the **Actions** column to view the run logs that can help you identify the cause. View details Find the task that you want to manage and click **Details** in the **Actions** column to view the details of the task.
 
 ### 10.3 Query audit logs
 
@@ -6228,7 +6497,10 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 2. In the left-side navigation pane, choose **CDS-System Management > ActionTrail**.
 Each time you go to the **ActionTrail** page, the system automatically queries your operations in the audit logs.
 3. On the **ActionTrail** page, select a time range and specify filter conditions.
-You can filter the logs by user, operation, object, and object attributes. After you find a log record, you can view the user, operation, object, and object attributes of the log record. Click the plus icon in front of a log record to view the detailed request and response information about the log record.
+
+> **Note:** You can filter the logs by user, operation, object, and object attributes.
+
+After you find a log record, you can view the user, operation, object, and object attributes of the log record. Click the plus icon in front of a log record to view the detailed request and response information about the log record.
 
 ### 10.4 System Cleanup
 
@@ -6259,9 +6531,9 @@ Modify service quotas and auto trigger thresholds Find the service that you want
 
 Delete the log cleanup configurations
 
-**Important**
+> **Important:** You can delete the log cleanup configurations of a service only after the service is stopped.
 
-You can delete the log cleanup configurations of a service only after the service is stopped. Find the service that you want to delete and click **Delete** in the **Actions** column. In the
+Find the service that you want to delete and click **Delete** in the **Actions** column. In the
 **Confirm Deletion** message, click **OK**.
 If the log cleanup configurations of a service are deleted but the service is still running, the log cleanup configurations are displayed again when the service generates logs. If the service is stopped and does not generate logs, the log cleanup configurations are no longer displayed.
 
@@ -6318,7 +6590,11 @@ A CSG instance is created and configured. For more information, see the "Quick s
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > Storage Gateway Service**.
 3. On the **Storage Gateway Service** page, click the **Overview** tab. You can perform the
-following operations: View the gateway information You can view the information about all gateways in the current system, such as the ID, name, version, service IP address, Elastic Compute Service (ECS) instance ID, type, and status. Collect and download the gateway logs You can collect the logs of gateways only in the **Running** state. Click **Collect the logs** in the **Operation** column of the gateway whose logs you want to collect. You can collect the Object Storage Service (OSS) access logs that are generated by a Network File System (NFS) share or a Server Message Block (SMB) share, and the logs that are generated by sharing operations. After the logs are collected, wait for a period of time and click **Refresh** to refresh the gateway information. Click **Download log** in the **Operation** column to download the logs.
+following operations: View the gateway information You can view the information about all gateways in the current system, such as the ID, name, version, service IP address, Elastic Compute Service (ECS) instance ID, type, and status. Collect and download the gateway logs
+
+> **Note:** You can collect the logs of gateways only in the **Running** state.
+
+Click **Collect the logs** in the **Operation** column of the gateway whose logs you want to collect. You can collect the Object Storage Service (OSS) access logs that are generated by a Network File System (NFS) share or a Server Message Block (SMB) share, and the logs that are generated by sharing operations. After the logs are collected, wait for a period of time and click **Refresh** to refresh the gateway information. Click **Download log** in the **Operation** column to download the logs.
 
 ### 11.2 Use HDR-OPS
 
@@ -6404,7 +6680,11 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 
 **View current alerts**
 
-On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time. After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner. On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
+On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time.
+
+> **Note:** After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner.
+
+On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
 
 #### 11.2.4 View inspection tasks
 
@@ -6413,7 +6693,9 @@ Inspection tasks are created to check the virtual private cloud (VPC) availabili
 i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
 3. On the **Inspection list** tab, specify the site pair ID, Alibaba Cloud account ID, and time
-range to search for inspection tasks that meet the specified conditions. Click the name of the desired inspection task. On the **Inspection details** page, view the execution details of the inspection task, such as the basic information and the inspection results of each inspection item. If the status of an inspection item is abnormal, handle the exception based on the fixing suggestions.
+range to search for inspection tasks that meet the specified conditions. Click the name of the desired inspection task. On the **Inspection details** page, view the execution details of the inspection task, such as the basic information and the inspection results of each inspection item.
+
+> **Note:** If the status of an inspection item is abnormal, handle the exception based on the fixing suggestions.
 
 #### 11.2.5 Manage O&M tasks
 
@@ -6481,7 +6763,11 @@ To ensure security, create an account for an HDR user in the Apsara Uni-manager 
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
 3. Click the **List of Cloud Sites** tab. On the List of Cloud Sites tab, edit cloud sites.
-Before you establish a disaster recovery relationship between clouds, you must configure HDR information on the cloud where the production site is located and the cloud where the disaster recovery site is located, such as the cloud name, HDR API address, AccessKey pair of the HDR user, and AccessKey pair for Ops O&M. i. Find the desired could site and click **Edit** in the ************* column. ii. In the **Edit a cloud site** dialog box, modify the cloud site information. To ensure security, the AccessKey pairs are not displayed when you modify a cloud site. To change an AccessKey pair, you must enter the complete AccessKey ID and AccessKey secret. iii. Click **OK**. If **Link status** of the cloud site is *************, the configuration is correct.
+Before you establish a disaster recovery relationship between clouds, you must configure HDR information on the cloud where the production site is located and the cloud where the disaster recovery site is located, such as the cloud name, HDR API address, AccessKey pair of the HDR user, and AccessKey pair for Ops O&M. i. Find the desired could site and click **Edit** in the **Operation** column. ii. In the **Edit a cloud site** dialog box, modify the cloud site information.
+
+> **Note:** To ensure security, the AccessKey pairs are not displayed when you modify a cloud site. To change an AccessKey pair, you must enter the complete AccessKey ID and AccessKey secret.
+
+iii. Click **OK**. If **Link status** of the cloud site is **Connected**, the configuration is correct.
 4. Add a cloud site.
 After the HDR information of the current cloud and the destination cloud is configured, you need to add the HDR information of the other side to the current cloud or the destination cloud. i. Click **Create a cloud site**. ii. In the **Create a cloud site** dialog box, configure the following parameters: Cloud ID, Cloud name, HDR API address, HDR User AccessKey ID, HDR User AccessKey Secret, Ops O & M AccessKey ID, Ops O & M AccessKey Secret, Cloud Region list, and Http proxy. iii. Click **OK**. If **Link Status** of the new cloud site is *************, the configuration is correct. If cross-cloud disaster recovery is no longer required, you can delete the HDR configuration of other clouds. Click **Delete** in the ************* column of the cloud site.
 

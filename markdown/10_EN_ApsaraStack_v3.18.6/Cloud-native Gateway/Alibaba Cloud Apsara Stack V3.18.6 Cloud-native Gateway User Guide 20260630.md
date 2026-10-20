@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 188
 source_pdf: "706a9f687bf21f13_Alibaba Cloud Apsara Stack V3.18.6 Cloud-native Gateway User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud-native%20Gateway%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud-native Gateway User Guide 20260630
@@ -107,14 +107,15 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -129,16 +130,12 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 Enter the 6-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
-For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Middleware > Application Integration >**
 **API Gateway** to go to the **API Gateway 2.0** console.
 
-**Note**
-
-Cloud-native Gateway shares the same console entry with API Gateway.
+> **Note:** Cloud-native Gateway shares the same console entry with API Gateway.
 
 ### 2.2 Route management
 
@@ -183,9 +180,9 @@ On the **Routing Details** tab, you can view the details of the route in the **B
 **information**, **Associated Services**, and **Associated Domain Name** sections.
 On the **Plugin configuration** tab, you can manage the plug-ins that are bound to the current route. Click **AddPlugin** to bind a plug-in to the route. For more information, see Create a plug-in.
 
-**Note**
+> **Note:** On the route list page, you can click **Policy Configuration** in the **Operation** column to go to the **Policy Configuration** tab.
 
-On the route list page, you can click **Policy Configuration** in the **Operation** column to go to the **Policy Configuration** tab. On the **Policy Configuration** tab, you can configure policy rewrite, header modification, timeout, and degradation. For more information, see Policy configuration.
+On the **Policy Configuration** tab, you can configure policy rewrite, header modification, timeout, and degradation. For more information, see Policy configuration.
 
 **Modify a route**
 
@@ -238,9 +235,7 @@ Cluster Name/ID column or click **Details** in the **Actions** column.
 **network service** option and click **OK**.
 **Create public network service**: Create an Internet service.
 
-**Note**
-
-If **Installed** is displayed in the card, the component is successfully installed.
+> **Note:** If **Installed** is displayed in the card, the component is successfully installed.
 
 #### 3.1.2 View the details of a Cloud-native Gateway instance
 
@@ -280,9 +275,8 @@ This topic describes how to modify the name of a Cloud-native Gateway instance.
 
 **Procedure**
 
-**Note**
+> **Note:** Only the name of a Cloud-native Gateway instance can be modified.
 
-Only the name of a Cloud-native Gateway instance can be modified.
 1. Log in to the Cloud-native Gateway console.
 2. In the left navigation pane, go to **Cloud Native Gateway > instance list**.
 3. On the **Gateway instance** page, find the instance that you want to manage, click the
@@ -476,9 +470,9 @@ On the **Routing Details** tab, you can view the details of the route in the **B
 **information**, **Associated Services**, and **Associated Domain Name** sections.
 On the **Plugin configuration** tab, you can manage the plug-ins that are bound to the current route. Click **AddPlugin** to bind a plug-in to the route. For more information, see Create a plug-in.
 
-**Note**
+> **Note:** On the route list page, you can click **Policy Configuration** in the **Operation** column to go to the **Policy Configuration** tab.
 
-On the route list page, you can click **Policy Configuration** in the **Operation** column to go to the **Policy Configuration** tab. On the **Policy Configuration** tab, you can configure policy rewrite, header modification, timeout, and degradation. For more information, see Policy configuration.
+On the **Policy Configuration** tab, you can configure policy rewrite, header modification, timeout, and degradation. For more information, see Policy configuration.
 
 **Modify a route**
 
@@ -548,9 +542,7 @@ If the path in a request is `/app/test` and you want the path to be rewritten as
 
 Rewrite policy: Set the rewrite method to Exact Rewrite, and set the path to `/foo/bar` .
 
-**Important**
-
-If you want the rewrite method to be Exact Rewrite, the matching method must be Exact Match or Regex Match. The matching method cannot be Prefix Match.
+> **Important:** If you want the rewrite method to be Exact Rewrite, the matching method must be Exact Match or Regex Match. The matching method cannot be Prefix Match.
 
 **Prefix rewrite**
 
@@ -564,9 +556,7 @@ If the path in a request is `/app/test` and you want the path to be rewritten as
 
 If the path in a request is `/v1/test` and you want the path to be rewritten as `/v2/test` , we recommend that you configure the following policy: Route matching condition: Set the matching method to Prefix Match, and the path to `/v1` . Rewrite policy: Set the rewrite method to Prefix Rewrite, and set the path to `/v2` .
 
-**Important**
-
-If you want to use the prefix rewrite method, the matching type of the route must be Prefix Match. The matching type of the route cannot be Exact Match or Regex Match. If the matching type of a route is set to Prefix Match, all requests with paths that contain the specified prefix are matched and rewritten. Before you set the rewrite type of the rewrite policy to Prefix Rewrite, you must confirm whether all requests need to be rewritten. If not all requests need to be rewritten, we recommend that you set the rewrite type to Exact Rewrite.
+> **Important:** If you want to use the prefix rewrite method, the matching type of the route must be Prefix Match. The matching type of the route cannot be Exact Match or Regex Match. If the matching type of a route is set to Prefix Match, all requests with paths that contain the specified prefix are matched and rewritten. Before you set the rewrite type of the rewrite policy to Prefix Rewrite, you must confirm whether all requests need to be rewritten. If not all requests need to be rewritten, we recommend that you set the rewrite type to Exact Rewrite.
 
 **Host rewrite**
 
@@ -635,9 +625,7 @@ name to go to the **Routing details** page.
 7. On the **Policy Configuration** tab, click the **Timeout** tab.
 8. In the **Timeout** section, configure the parameters and click **Save**.
 
-**Note**
-
-After the timeout policy is created and enabled, you can check whether the timeout policy takes effect based on your business requirements.
+> **Note:** After the timeout policy is created and enabled, you can check whether the timeout policy takes effect based on your business requirements.
 
 | Parameter | Description |
 |---|---|
@@ -663,9 +651,9 @@ name to go to the **Routing details** page.
 7. On the **Policy Configuration** tab, click the **Downgrade** tab.
 8. In the **Downgrade** section, configure the parameters and click **Save**.
 
-**Important**
-
-A degraded service should be simple, stable, and capable of responding quickly. We recommend that you verify the degradation logic in the test environment before you deploy it to the production environment. Degradation should not affect the core business logic and is used only to ensure availability.
+> **Important:** A degraded service should be simple, stable, and capable of responding quickly.
+> We recommend that you verify the degradation logic in the test environment before you deploy it to the production environment.
+> Degradation should not affect the core business logic and is used only to ensure availability.
 
 | Parameter | Description |
 |---|---|
@@ -692,9 +680,7 @@ To allow a gateway to obtain service endpoints, you must add an existing service
 6. On the **Create Service** page, configure the following parameters and then click
 **Submission**.
 
-**Note**
-
-When the cloud-native gateway forwards a request to a backend service that uses a specified domain name, the gateway does not rewrite the host domain name as the specified domain name.
+> **Note:** When the cloud-native gateway forwards a request to a backend service that uses a specified domain name, the gateway does not rewrite the host domain name as the specified domain name.
 
 | Parameter | Description |
 |---|---|
@@ -738,9 +724,9 @@ In the **Basic information** section, you can view the **Name**, **Source Type**
 **Protocol Type** settings of the service.
 In the **Node List** section, you can view **Host name/IP** and **Port**. On the **Plugin configuration** tab, you can manage the plug-ins that are bound to the service. You can click **AddPlugin** to bind a plug-in to the service. For more information, see Create a plug-in.
 
-**Note**
+> **Note:** In the service list, you can click **Plugin configuration** in the **Operation** column to go to the **Plugin configuration** tab.
 
-In the service list, you can click **Plugin configuration** in the **Operation** column to go to the **Plugin configuration** tab. On the **Associated Routing** tab, you can view the routes associated with the service.
+On the **Associated Routing** tab, you can view the routes associated with the service.
 
 **Modify a service**
 
@@ -753,9 +739,7 @@ In the service list, you can click **Plugin configuration** in the **Operation**
 column.
 6. In the **Edit Service** panel, modify the relevant parameters and click **Submission**.
 
-**Note**
-
-You can modify the static IP addresses and Domain Name System (DNS) services that you created. Services of other types cannot be modified, such as Kubernetes services.
+> **Note:** You can modify the static IP addresses and Domain Name System (DNS) services that you created. Services of other types cannot be modified, such as Kubernetes services.
 
 **Delete services**
 
@@ -835,9 +819,7 @@ Method 2: Find the consumer that you want to manage and click its name. On the
 6. On the **Consumer Authorization** tab, click **Associated Routing**, select the route on
 which you want the consumer to have access permissions, and then click **Determine**. You can select multiple routes.
 
-**Note**
-
-If no route is available, create one. For more information, see Route management.
+> **Note:** If no route is available, create one. For more information, see Route management.
 
 **Revoke authorization**
 
@@ -907,9 +889,10 @@ Throttling requet-validation
 **Operation** column of the gateway.
 4. Go to the entry point for creating a plug-in.
 
-**Note**
+> **Note:** The system provides four entry points for creating plug-ins and their applicable scenarios. You can select one based on your requirements.
+> Plug-ins created through the main entry point apply to the current instance.
+> Plug-ins created through the quick entry point apply to the current service, route, or domain name.
 
-The system provides four entry points for creating plug-ins and their applicable scenarios. You can select one based on your requirements. Plug-ins created through the main entry point apply to the current instance. Plug-ins created through the quick entry point apply to the current service, route, or domain name.
 **Main entry point**: If you want to create a plug-in for the current instance, we
 recommend that you use this entry point. a. In the left-side navigation pane, click **Plugin Management**. Then, click **Create**
 **Policy**.
@@ -927,9 +910,7 @@ of domain objects that contain the domain name, we recommend that you use this e
 5. Click **Create a plugin** below the desired card, configure the parameters based on the
 selected plug-in, and then click **Determine**.
 
-**Note**
-
-The following example shows how to create a cors plug-in. The procedure for other plug-ins is similar.
+> **Note:** The following example shows how to create a cors plug-in. The procedure for other plug-ins is similar.
 
 | Parameter | Description |
 |---|---|
@@ -1069,9 +1050,10 @@ allow:
 - consumer2
 ```
 
-**Note**
+> **Note:** In this example, the route-a and route-b routes are those specified when the gateway routes are created. If a client request matches one of the two routes, the caller whose name is consumer1 is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> In this example, the *.example.com and test.com domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose name is consumer2 is allowed to access the gateway. Other callers are not allowed to access the gateway.
 
-In this example, the route-a and route-b routes are those specified when the gateway routes are created. If a client request matches one of the two routes, the caller whose name is consumer1 is allowed to access the gateway. Other callers are not allowed to access the gateway. In this example, the *.example.com and test.com domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose name is consumer2 is allowed to access the gateway. Other callers are not allowed to access the gateway. The preceding configurations allow access from the following requests:
+The preceding configurations allow access from the following requests:
 
 **Assume that the following request matches the route-a route. In this case, provide**
 
@@ -1158,9 +1140,10 @@ The following table describes the fields in the `consumers` field.
 | clock skew s _ _ econds | number | No | 60 | The clock skew allowed when the exp and iat fields in the JWT are verified. Unit: seconds. |
 | keep token _ | bool | No | true | Specifies whether to retain the JWT in the request when the request is forwarded to the backend service. |
 
-**Note**
+> **Note:** The default value is used only if none of `from_headers` , `from_params` , and
+> `from_cookies` are configured.
 
-The default value is used only if none of `from_headers` , `from_params` , and `from_cookies` are configured. The following table describes the fields in the `from_headers` field.
+The following table describes the fields in the `from_headers` field.
 
 | Field | Data type | Required | Defaul t value | Description |
 |---|---|---|---|---|
@@ -1195,9 +1178,8 @@ The following table describes the fields in the `remote_jwks` field.
 |---|---|---|---|---|
 | allow | array of string | No (Required for non-instance-level configurations) | - | You can configure this field only at a fine granularity such as route or domain name. For requests that meet the matching conditions, you can configure consumers that are allowed for access. This implements fine-grained permission control. |
 
-**Important**
-
-The authorization configuration and authentication configuration cannot coexist in a rule. For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
+> **Important:** The authorization configuration and authentication configuration cannot coexist in a rule.
+> For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
 
 **Configuration examples**
 
@@ -1205,9 +1187,7 @@ The authorization configuration and authentication configuration cannot coexist 
 
 This section provides an example on how to enable JWT authentication and authorization for specific routes or domain names of a gateway.
 
-**Note**
-
-If a JWT matches multiple JWKSs, the first matched consumer is hit based on the configuration order.
+> **Note:** If a JWT matches multiple JWKSs, the first matched consumer is hit based on the configuration order.
 
 **Plug-in configurations**
 
@@ -1280,9 +1260,8 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway. In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> **Note:** In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
 
 **Sample requests**
 
@@ -1486,9 +1465,8 @@ The following table describes the fields in `consumers` .
 | allow | array of string | No (Required for non-instance-level configurations) | - | You can configure this field only at a fine granularity such as route or domain name. For requests that meet the matching conditions, you can configure consumers that are allowed for access. This implements fine-grained permission control. |
 |---|---|---|---|---|
 
-**Important**
-
-The authorization configuration and authentication configuration cannot coexist in a rule. For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
+> **Important:** The authorization configuration and authentication configuration cannot coexist in a rule.
+> For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
 
 **Configuration examples**
 
@@ -1496,9 +1474,10 @@ The authorization configuration and authentication configuration cannot coexist 
 
 This section provides an example on how to enable basic authentication and authorization for specific routes or domain names of a gateway.
 
-**Note**
+> **Note:** The username and password in the credential information are separated by a colon (:).
+> The `credential` field must be unique.
 
-The username and password in the credential information are separated by a colon (:). The `credential` field must be unique. Apply the following plug-in configurations at the instance level:
+Apply the following plug-in configurations at the instance level:
 
 ```
 global_auth: false consumers:
@@ -1522,9 +1501,10 @@ allow:
 - consumer2
 ```
 
-**Note**
+> **Note:** In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
 
-In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway. In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway. The preceding configurations allow access from the following requests: The username and password are specified in the request.
+The preceding configurations allow access from the following requests: The username and password are specified in the request.
 
 ```bash
 # In this example, route-a in the request is matched.
@@ -1534,9 +1514,9 @@ curl -u admin:123456 http://xxx.hello.com/test
 e and password are base64-encoded. curl -H 'Authorization: Basic YWRtaW46MTIzNDU2' http://xxx.hello.com/test
 ```
 
-**Note**
+> **Note:** After the authentication is passed, the `X-Mse-Consumer` field is added to headers of requests to identify the caller. In this example, the value of this field is `consumer1` .
 
-After the authentication is passed, the `X-Mse-Consumer` field is added to headers of requests to identify the caller. In this example, the value of this field is `consumer1` . The preceding configurations deny access from the following requests: The username and password are not specified in the request, and the HTTP 401 status code is returned.
+The preceding configurations deny access from the following requests: The username and password are not specified in the request, and the HTTP 401 status code is returned.
 
 ```bash
 curl http://xxx.hello.com/test
@@ -1721,9 +1701,7 @@ GET /oauth2/sign_out HTTP/1.1 X-Auth-Request-Redirect: https://my-oidc-provider.
 
 The redirect URL may include the `post_logout_redirect_uri` parameter, which specifies the page to which the user will be redirected after logging out from the OIDC Provider, such as the logout page of a backend service. If this parameter is not included, the user will be redirected to the logout page of the OIDC Provider by default. For more information, see the following examples of auth0 and keycloak.
 
-**Note**
-
-If the OIDC Provider supports session management and discovery, the sign_out_page should be the `end_session_endpoint` obtained from the metadata.
+> **Note:** If the OIDC Provider supports session management and discovery, the sign_out_page should be the `end_session_endpoint` obtained from the metadata.
 
 **HTTPS for OIDC**
 
@@ -1739,9 +1717,7 @@ If the OIDC provider uses HTTPS, see the description of Configure Backend Servic
 
 Log in to the Okta Developer website Developer Auth0 site. Register a test web application.
 
-**Important**
-
-You must configure settings, such as Allowed Callback URLs, Allowed Logout URLs, and Allowed Web Origins. Otherwise, the OIDC Provider considers the redirect URL for login or the logout URL as invalid.
+> **Important:** You must configure settings, such as Allowed Callback URLs, Allowed Logout URLs, and Allowed Web Origins. Otherwise, the OIDC Provider considers the redirect URL for login or the logout URL as invalid.
 
 **Step 2: Configure a service source in the cloud-native gateway**
 
@@ -1780,9 +1756,7 @@ redirect_url: 'http://foo.bar.com/oauth2/callback' oidc_issuer_url: 'https://dev
  match_rule_type: 'prefix'
 ```
 
-**Important**
-
-You must configure the service source first. The Wasm plug-in needs to access the configured service to obtain the openid-configuration during initialization.
+> **Important:** You must configure the service source first. The Wasm plug-in needs to access the configured service to obtain the openid-configuration during initialization.
 
 **Test the results**
 
@@ -1810,9 +1784,7 @@ http://foo.bar.com/oauth2/sign_out?rd=https%3A%2F%2Fdevo43xb1mz7ya7ach4.us.auth0
 http://foo.bar.com/oauth2/sign_out?rd=https%3A%2F%2Fdevo43xb1mz7ya7ach4.us.auth0.com%2Foidc%2Flogout%3Fpost_logout_redirect_uri%3Dhttp% A%2F%2Ffoo.bar.com%2Ffoo
 ```
 
-**Important**
-
-The URI specified in post_logout_redirect_uri must be pre-configured in the Allowed URLs of the OIDC Provider to enable successful redirection.
+> **Important:** The URI specified in post_logout_redirect_uri must be pre-configured in the Allowed URLs of the OIDC Provider to enable successful redirection.
 
 **Keycloak configuration example**
 
@@ -1822,9 +1794,7 @@ The URI specified in post_logout_redirect_uri must be pre-configured in the Allo
 
 https://www.keycloak.org/getting-started/getting-started-docker
 
-**Important**
-
-You must configure settings, such as Valid redirect URIs, Valid post logout URIs, and Web origins. Otherwise, the OIDC Provider considers the redirect URL for login or the logout URL as invalid.
+> **Important:** You must configure settings, such as Valid redirect URIs, Valid post logout URIs, and Web origins. Otherwise, the OIDC Provider considers the redirect URL for login or the logout URL as invalid.
 
 **Step 2: Configure a service source in the cloud-native gateway**
 
@@ -2035,9 +2005,8 @@ The following table describes the fields in `consumers` .
 |---|---|---|---|---|
 | allow | array of string | No (Required for non-instance-level configurations) | - | You can only configure this field at a fine granularity such as route or domain name. For requests that meet the matching conditions, you can configure consumers that are allowed for access. This implements fine-grained permission control. |
 
-**Important**
-
-The authorization configuration and authentication configuration cannot coexist in a rule. For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
+> **Important:** The authorization configuration and authentication configuration cannot coexist in a rule.
+> For authenticated requests, the `X-Mse-Consumer` field is added to the request header to identify the names of the callers.
 
 **Configuration examples**
 
@@ -2045,9 +2014,9 @@ The authorization configuration and authentication configuration cannot coexist 
 
 This section provides an example on how to enable authentication based on the hmac-auth plug-in for specific routes or domain names of the gateway.
 
-**Important**
+> **Important:** The `key` field must be unique.
 
-The `key` field must be unique. Apply the following plug-in configurations at the instance level:
+Apply the following plug-in configurations at the instance level:
 
 ```
 global_auth: false consumers:
@@ -2073,9 +2042,8 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway. In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> **Note:** In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
 
 **Enable authentication for gateways**
 
@@ -2132,9 +2100,9 @@ If the value of a header is empty, use HeaderKey + ":" + "\n" for the signature.
 Path + "?" + Key1 + "=" + Value1 + "&" + Key2 + "=" + Value2 + ... "&" + KeyN + "=" + ValueN
 ```
 
-**Note**
-
-Keys of query and form parameters are first sorted in alphabetical order and then concatenated by using the preceding method. If the query and form parameters are left empty, you can use path parameters without the need to add signature information. If some query and form parameters are array parameters with the same key but different values, the first value is used for signature calculation.
+> **Note:** Keys of query and form parameters are first sorted in alphabetical order and then concatenated by using the preceding method.
+> If the query and form parameters are left empty, you can use path parameters without the need to add signature information.
+> If some query and form parameters are array parameters with the same key but different values, the first value is used for signature calculation.
 
 **Example of extracting a signature string**
 
@@ -2203,7 +2171,7 @@ X-Ca-Error-Message: Server StringToSign:`GET#application/json##application/json#
 
 **Note**
 
-Note: If you increase the value of `DownstreamConnectionBufferLimits` , the gateway memory usage significantly increases. Exercise caution when you perform this operation.
+> **Note:** If you increase the value of `DownstreamConnectionBufferLimits` , the gateway memory usage significantly increases. Exercise caution when you perform this operation.
 
 ##### 3.6.3.6 ext-auth
 
@@ -2640,9 +2608,9 @@ The following table describes the fields in `consumers` .
 | client id _ | string | Yes | - | The ID of the OAuth 2.0 client. |
 | client secret _ | string | Yes | - | The secret of the OAuth 2.0 client. |
 
-**Important**
-
-For a route for which the preceding configurations are enabled, if the path suffix and `auth_path` are matched, the system does not forward the route information to the destination service, but uses the route to generate a token. If the `global_credentials` field is set to false, you must make sure that the route with the plug-in enabled does not use exact match. If another route exists and uses prefix match, an unexpected issue may occur. For an authenticated request, an `X-Mse-Consumer` field is added to the request header to identify the name of the caller.
+> **Important:** For a route for which the preceding configurations are enabled, if the path suffix and `auth_path` are matched, the system does not forward the route information to the destination service, but uses the route to generate a token.
+> If the `global_credentials` field is set to false, you must make sure that the route with the plug-in enabled does not use exact match. If another route exists and uses prefix match, an unexpected issue may occur.
+> For an authenticated request, an `X-Mse-Consumer` field is added to the request header to identify the name of the caller.
 
 **(Optional) Authorization configuration**
 
@@ -2650,9 +2618,7 @@ For a route for which the preceding configurations are enabled, if the path suff
 |---|---|---|---|---|
 | allow | array of string | No (Required for non-instance-level configurations) | - | You can only configure this field at a fine granularity such as route or domain name. For requests that meet the matching conditions, you can configure consumers that are allowed for access. This implements fine-grained permission control. |
 
-**Important**
-
-The authorization configuration and authentication configuration cannot coexist in a rule.
+> **Important:** The authorization configuration and authentication configuration cannot coexist in a rule.
 
 **Configuration examples**
 
@@ -2704,9 +2670,8 @@ allow:
 - consumer2
 ```
 
-**Note**
-
-In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway. In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> **Note:** In this example, the `route-a` and `route-b` routes are those specified when the gateway routes are created. If a client request matches one of the routes, the caller whose `name` is `consumer1` is allowed to access the gateway. Other callers are not allowed to access the gateway.
+> In this example, the `*.example.com` and `test.com` domain names are used to match domain names in requests. If a client request matches one of the domain names, the caller whose `name` is `consumer2` is allowed to access the gateway. Other callers are not allowed to access the gateway.
 
 **Enable authentication at the gateway level**
 
@@ -3896,9 +3861,7 @@ The following table describes the fields in the `weightGroups` field.
 |   | value |
 |---|---|
 
-**Important**
-
-If you use the percentage operator, the system determines whether a request meets specified percentage conditions. If you use the weight field, the system distributes traffic in a static and random manner.
+> **Important:** If you use the percentage operator, the system determines whether a request meets specified percentage conditions. If you use the weight field, the system distributes traffic in a static and random manner.
 
 **Configuration examples**
 
@@ -3978,9 +3941,7 @@ Plug-in execution stage: `Authentication` . Plug-in execution priority: `220` .
 | enable swagger _ | bool | No | false | Specifies whether to enable validation on Swagger documentation. |
 | enable oas3 _ | bool | No | false | Specifies whether to enable validation on OpenAPI 3.0 (OAS3) documentation. |
 
-**Important**
-
-The validation rules are the same for headers and bodies.
+> **Important:** The validation rules are the same for headers and bodies.
 
 **Configuration examples**
 
@@ -4187,7 +4148,8 @@ The following table describes the fields in `headers` , `querys` , and `body` .
 | host pattern _ | string | No | - |   | The hostname matching rule for the request. This field takes effect when the operate field is set to replace , add , or append . |   |   |
 | path pattern _ | string | No | - |   | The path matching rule for the request. This field takes effect when the operate field is set to replace , add , or append . |   |   |
 
-Note: `request transformer` supports the following transformation objects: request headers, request query parameters, and request body (application/json, application/x-www-formurlencoded, and multipart/form-data). `response transformer` supports the following transformation objects: response headers and response body (application/json). The transformer plug-in supports bidirectional transformation. That is, a single plug-in can transform both requests and responses. The execution sequence of transformation operations follows the sequence defined in the configuration file, such as remove > rename > replace > add > append > map > dedupe or dedupe > map > append > add > replace > rename > remove. When the transformation object is headers, `key` is case-insensitive. When the transformation object is headers and the operation is `rename` or `map` , `value` is also case-insensitive (because the value field serves as the key-like identifier in these cases). When the transformation object is querys or body, both `key` and `value` are casesensitive. `value_type` takes effect only for request/response bodies whose content-type is application/json.
+> **Note:** `request transformer` supports the following transformation objects: request headers, request query parameters, and request body (application/json, application/x-www-formurlencoded, and multipart/form-data). `response transformer` supports the following transformation objects: response headers and response body (application/json). The transformer plug-in supports bidirectional transformation. That is, a single plug-in can transform both requests and responses. The execution sequence of transformation operations follows the sequence defined in the configuration file, such as remove > rename > replace > add > append > map > dedupe or dedupe > map > append > add > replace > rename > remove. When the transformation object is headers, `key` is case-insensitive. When the transformation object is headers and the operation is `rename` or `map` , `value` is also case-insensitive (because the value field serves as the key-like identifier in these cases). When the transformation object is querys or body, both `key` and `value` are casesensitive. `value_type` takes effect only for request/response bodies whose content-type is application/json.
+
 
 | host pattern _ |   |
 |---|---|
@@ -4647,9 +4609,7 @@ $ curl -v console.higress.io/get
 2. When the dot ( `.` ) in key is escaped with \. , it indicates a non-nesting structure, as
 shown in the following code:
 
-**Note**
-
-When a string is enclosed in double quotation marks, use \\. to escape the dot.
+> **Note:** When a string is enclosed in double quotation marks, use \\. to escape the dot.
 
 ```bash
 respRules:
@@ -4774,9 +4734,9 @@ $ curl -v -X POST console.higress.io/post \ -H 'Content-Type: application/json' 
 
 You can use `array.#` to traverse array elements:
 
-**Note**
+> **Note:** This operation is currently supported only in replace operations. Do not use it in other transformations, as it may lead to unpredictable results.
 
-This operation is currently supported only in replace operations. Do not use it in other transformations, as it may lead to unpredictable results. `{`
+`{`
 
 ```json
  "users": [
@@ -4995,9 +4955,7 @@ The cookie contains `appInfo` data in the JSON format, in which `userId` is cont
 
 **Configure rewrite configurations**
 
-**Note**
-
-These configurations are generally used in CDN scenarios.
+> **Note:** These configurations are generally used in CDN scenarios.
 
 ```
 grayKey: userid rules:
@@ -5583,9 +5541,7 @@ Cloud-native Gateway supports multi-domain name management that allows you to ma
 
 An Internet Content Provider (ICP) number is obtained for the domain name.
 
-**Note**
-
-If you want to associate independent domain names with Cloud-native Gateway instances in a region in the Chinese mainland, you must apply for ICP numbers in the Alibaba Cloud ICP Filing system or add Alibaba Cloud as a service provider to the ICP filing information of the domain names. If you want to associate independent domain names with Cloudnative Gateway instances in a region outside the Chinese mainland, ICP numbers are not required.
+> **Note:** If you want to associate independent domain names with Cloud-native Gateway instances in a region in the Chinese mainland, you must apply for ICP numbers in the Alibaba Cloud ICP Filing system or add Alibaba Cloud as a service provider to the ICP filing information of the domain names. If you want to associate independent domain names with Cloud- native Gateway instances in a region outside the Chinese mainland, ICP numbers are not required.
 
 **Procedure**
 
@@ -5639,10 +5595,8 @@ manage and click its name to go to the **Domain Name Details** page. On the Doma
 **Agreement**.
 On the **Plugin configuration** tab, you can manage the plug-ins that are bound to the current domain name. You can click **AddPlugin** to bind a plug-in to the domain name. For more information, see Create a plug-in.
 
-**Note**
+> **Note:** On the domain name list page, you can click **Plugin Configuration** in the **Operation** column to go to the **Plugin configuration** tab.
 
-On the domain name list page, you can click **Plugin Configuration** in the
-**Operation** column to go to the **Plugin configuration** tab.
 On the **Associated Routing** tab, you can view the information about the routes that are associated with the current domain name. You can click the name of a route or service to go to the details page of the route or service.
 
 **Modify a domain name**
@@ -5716,13 +5670,15 @@ Nginx Ingress migration is a one-stop automated migration tool provided by the c
 5. Under **Compatibility evaluation**, click **Start evaluation**. After the evaluation succeeds,
 click **Next step: Configure migration rules**.
 
-**Note**
+> **Note:** If the evaluation fails, click **Re-evaluation**.
+> The evaluation results mainly fall into two categories:
+> **There are no blocking issues**: The migration can proceed. This category includes the following three types:
+> Fully compatible: natively supported by Higress and can be used directly.
+> Partially compatible: The handling strategy is "migrate with risks", meaning it will not be considered a blocking issue. The behavior is as follows: The annotations are retained as is in the Higress Ingress. The parts that API Gateway can recognize will take effect, whereas unsupported parts (such as the AJP protocol or the ewma algorithm) will become invalid. Users need to assess whether this is acceptable based on the `solution` and `risk` fields in the evaluation report.
+> **There are blocking issues**: These issues must be resolved before you proceed with the migration. Blocking issues include the following two types:
+> INCOMPATIBLE: explicitly marked as unsupported by Higress in the compatibility database.
+> UNKNOWN: No record is found for the annotation in the compatibility database, making it impossible to determine the compatibility. Manual evaluation is required.
 
-If the evaluation fails, click **Re-evaluation**. The evaluation results mainly fall into two categories:
-**There are no blocking issues**: The migration can proceed. This category
-includes the following three types: Fully compatible: natively supported by Higress and can be used directly. Partially compatible: The handling strategy is "migrate with risks", meaning it will not be considered a blocking issue. The behavior is as follows: The annotations are retained as is in the Higress Ingress. The parts that API Gateway can recognize will take effect, whereas unsupported parts (such as the AJP protocol or the ewma algorithm) will become invalid. Users need to assess whether this is acceptable based on the `solution` and `risk` fields in the evaluation report.
-**There are blocking issues**: These issues must be resolved before you
-proceed with the migration. Blocking issues include the following two types: INCOMPATIBLE: explicitly marked as unsupported by Higress in the compatibility database. UNKNOWN: No record is found for the annotation in the compatibility database, making it impossible to determine the compatibility. Manual evaluation is required.
 6. In **Migration rule configuration**, configure the following parameters and click **Perform**
 **migration**.
 

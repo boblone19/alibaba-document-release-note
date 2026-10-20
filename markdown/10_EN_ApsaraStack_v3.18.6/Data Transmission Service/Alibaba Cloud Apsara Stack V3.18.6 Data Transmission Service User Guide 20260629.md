@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 680
 source_pdf: "32d900ad652cbb32_Alibaba Cloud Apsara Stack V3.18.6 Data Transmission Service User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Data%20Transmission%20Service%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Data Transmission Service User Guide 20260629
@@ -170,18 +170,28 @@ This topic describes how to log on to the Data Transmission Service (DTS) consol
 
 **Prerequisites**
 
-The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. Google Chrome is used. You cannot log on to the DTS console by using Microsoft Edge in Internet Explorer mode.
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. Google Chrome is used.
+
+> **Note:** You cannot log on to the DTS console by using Microsoft Edge in Internet Explorer mode.
 
 **Procedure**
 
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
-operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**. For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
+
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+
 5. In the top navigation bar, choose **Products > Database Management Tools > Data**
 **Transmission Service**.
 6. On the page that appears, select an **organization** and a **region**, and click **Access as**
@@ -301,7 +311,8 @@ Before you configure a task to migrate data, you must create a data migration in
 | Destination Region | The region in which the destination database resides. Note You cannot change the value of this parameter after you purchase the data migration instance. Exercise caution when you configure this parameter. |
 | Quantity | The number of data migration instances that you want to create at a time. |
 
-In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+> **Note:** In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+
 5. Click **Create**.
 6. In the message that appears, click **OK**.
 
@@ -378,7 +389,11 @@ This topic describes how to migrate data from a self-managed MySQL database to a
 
 **Prerequisites**
 
-The engine version of the self-managed MySQL database is 5.1, 5.5, 5.6, 5.7, or 8.0. To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. The available storage space of the destination ApsaraDB RDS for MySQL instance is larger than the total size of the data in the self-managed MySQL database.
+The engine version of the self-managed MySQL database is 5.1, 5.5, 5.6, 5.7, or 8.0.
+
+> **Note:** To ensure compatibility, the version of the destination database must be the same as or later than that of the source database.
+
+The available storage space of the destination ApsaraDB RDS for MySQL instance is larger than the total size of the data in the self-managed MySQL database.
 
 **Limits**
 
@@ -394,7 +409,16 @@ The engine version of the self-managed MySQL database is 5.1, 5.5, 5.6, 5.7, or 
 
 **Migration types**
 
-Schema migration DTS migrates the schemas of the required objects to the destination instance. DTS supports schema migration for the following types of objects: table, view, trigger, stored procedure, and function. During schema migration, DTS changes the value of the SECURITY attribute in views, stored procedures, and functions from DEFINER to INVOKER. DTS does not migrate user information. Before a user can call views, stored procedures, and functions of the destination database, you must grant the read/write permissions to the user. Full data migration DTS migrates historical data of the required objects from the user-created MySQL database to the destination database in the ApsaraDB RDS for MySQL instance. During full data migration, concurrent INSERT operations cause fragmentation in the tables of the destination instance. After full data migration is complete, the tablespace of the destination instance is larger than that of the source database. Incremental data migration After full data migration is complete, DTS retrieves binary log files from the user-created MySQL database. Then, DTS synchronizes incremental data from the user-created MySQL database to the destination ApsaraDB RDS for MySQL instance. Incremental data migration allows you to ensure service continuity when you migrate data from a user-created MySQL database to Alibaba Cloud.
+Schema migration DTS migrates the schemas of the required objects to the destination instance. DTS supports schema migration for the following types of objects: table, view, trigger, stored procedure, and function.
+
+> **Note:** During schema migration, DTS changes the value of the SECURITY attribute in views, stored procedures, and functions from DEFINER to INVOKER.
+> DTS does not migrate user information. Before a user can call views, stored procedures, and functions of the destination database, you must grant the read/write permissions to the user.
+
+Full data migration DTS migrates historical data of the required objects from the user-created MySQL database to the destination database in the ApsaraDB RDS for MySQL instance.
+
+> **Note:** During full data migration, concurrent INSERT operations cause fragmentation in the tables of the destination instance. After full data migration is complete, the tablespace of the destination instance is larger than that of the source database.
+
+Incremental data migration After full data migration is complete, DTS retrieves binary log files from the user-created MySQL database. Then, DTS synchronizes incremental data from the user-created MySQL database to the destination ApsaraDB RDS for MySQL instance. Incremental data migration allows you to ensure service continuity when you migrate data from a user-created MySQL database to Alibaba Cloud.
 
 **SQL operations that can be synchronized during incremental**
 
@@ -437,7 +461,9 @@ Schema migration DTS migrates the schemas of the required objects to the destina
 5. If a whitelist is configured for your self-managed MySQL database, add the CIDR blocks of
 DTS servers that are displayed in the dialog box to the whitelist. Then, click **Test**
 **Connectivity and Proceed**.
-If no whitelist is configured for your self-managed MySQL database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed MySQL database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types.
 
 | Parame ter | Description |
@@ -461,11 +487,12 @@ If no whitelist is configured for your self-managed MySQL database, ignore the w
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.2 Migrate data from a self-managed MySQL database to a self-managed Kafka cluster
 
@@ -531,8 +558,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed MySQL database or self-managed Kafka
-cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed MySQL database or self-managed Kafka cluster. After the whitelist is configured, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for your self-managed MySQL database or self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity**
-**and Proceed**.
+cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed MySQL database or self-managed Kafka cluster. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for your self-managed MySQL database or self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity** **and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -559,11 +588,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.3 Migrate data from an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster
 
@@ -594,7 +624,9 @@ DML operations: INSERT, UPDATE, and DELETE
 **Procedur**
 
 1. Create a data migration instance.
-When you create the data migration instance, select **MySQL** as the source database type and **PolarDB for MySQL** as the destination database type.
+
+> **Note:** When you create the data migration instance, select **MySQL** as the source database type and **PolarDB for MySQL** as the destination database type.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -624,7 +656,9 @@ When you create the data migration instance, select **MySQL** as the source data
 5. If an IP address whitelist is configured for your local disk-based PolarDB for MySQL cluster,
 you must add the CIDR blocks of DTS servers to the whitelist. Then, click **Test**
 **Connectivity and Proceed**.
-If no whitelist is configured for your local disk-based PolarDB for MySQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your local disk-based PolarDB for MySQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types.
 
 | Parame ter | Description |
@@ -649,11 +683,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.4 Migrate data from an ApsaraDB RDS for MySQL instance to a PolarDB-X 1.0 instance
 
@@ -743,11 +778,12 @@ parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.5 Migrate data from an ApsaraDB RDS for MySQL instance to a PolarDB-X 2.0 instance
 
@@ -783,7 +819,9 @@ The destination PolarDB-X 2.0 instance that is compatible with MySQL 5.7 is crea
 **Procedure**
 
 1. Create a data migration task.
-When you create the data migration task, select **MySQL** as the **source database type** and **PolarDB-X 2.0** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **MySQL** as the **source database type** and **PolarDB-X 2.0** as the **destination database type**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -837,11 +875,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.6 Migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Oracle database
 
@@ -905,7 +944,10 @@ parameters.
 
 5. In the lower part of the page, click **Test Connectivity and Proceed**.
 6. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 7. Select the objects to be migrated and the migration type.
 
 | Parame ter | Description |
@@ -922,11 +964,12 @@ DTS servers that are displayed in the dialog box to the whitelist. After the whi
 
 8. In the lower part of the page, click **Next: Save Task Settings and Precheck** .
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.7 Migrating data from a PolarDB for MySQL source
 
@@ -959,8 +1002,9 @@ A PolarDB for MySQL cluster that has a larger storage space than the total size 
 **Procedure**
 
 1. Create a data migration task.
-When you create the data migration task, select **PolarDB for MySQL** as the **source**
-**database type** and **destination database type**.
+
+> **Note:** When you create the data migration task, select **PolarDB for MySQL** as the **source** **database type** and **destination database type**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -1019,11 +1063,12 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ##### 3.4.7.2 Migrate data from PolarDB for MySQL to RDS for MySQL
 
@@ -1037,7 +1082,8 @@ A source PolarDB for MySQL instance is created. A destination RDS for MySQL inst
 
 **Notes**
 
-During schema migration, DTS migrates foreign keys from the source database to the destination database. During full and incremental migration, DTS temporarily disables constraint checks and foreign key cascade operations at the session level. If cascade update or delete operations occur in the source database while the task is running, data inconsistency may occur.
+> **Note:** During schema migration, DTS migrates foreign keys from the source database to the destination database.
+> During full and incremental migration, DTS temporarily disables constraint checks and foreign key cascade operations at the session level. If cascade update or delete operations occur in the source database while the task is running, data inconsistency may occur.
 
 | Type | Description |
 |---|---|
@@ -1058,7 +1104,13 @@ Schema migration DTS migrates the schema definitions of the migration objects fr
 |---|---|
 | select statement _ |   |
 
-DTS does not modify the `routine_body` of stored procedures, the `routine_body` of During schema migration, DTS converts the DEFINER to INVOKER for the migrated views, stored procedures, and functions. This changes the value of SQL SECURITY to INVOKER. DTS also sets the DEFINER to the destination database account used for the migration task. The security authentication method and definer of the source database are not modified. Because DTS does not migrate USER information, you must grant read and write permissions to the user who calls the views, stored procedures, and functions in the destination database. Full data migration DTS migrates all historical data of the migration objects from the source database to the destination database. Incremental data migration After full data migration, DTS migrates incremental data updates from the source database to the destination database. Incremental data migration lets you migrate data without stopping your applications.
+> **Note:** DTS does not modify the `routine_body` of stored procedures, the `routine_body` of
+
+During schema migration, DTS converts the DEFINER to INVOKER for the migrated views, stored procedures, and functions. This changes the value of SQL SECURITY to INVOKER. DTS also sets the DEFINER to the destination database account used for the migration task.
+
+> **Note:** The security authentication method and definer of the source database are not modified.
+
+Because DTS does not migrate USER information, you must grant read and write permissions to the user who calls the views, stored procedures, and functions in the destination database. Full data migration DTS migrates all historical data of the migration objects from the source database to the destination database. Incremental data migration After full data migration, DTS migrates incremental data updates from the source database to the destination database. Incremental data migration lets you migrate data without stopping your applications.
 
 **SQL operations supported for incremental migration**
 
@@ -1070,7 +1122,9 @@ DTS does not modify the `routine_body` of stored procedures, the `routine_body` 
 **Procedure**
 
 1. Create a data migration instance.
-When you create the instance, set **Source Database Type** to **PolarDB for MySQL** and **Destination Database Type** to **MySQL**.
+
+> **Note:** When you create the instance, set **Source Database Type** to **PolarDB for MySQL** and **Destination Database Type** to **MySQL**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -1104,7 +1158,9 @@ click **Configure Task** in the Actions column.
 |   | Connection Method | Select Unencrypted Connection or SSL Secure Connection based on your database configuration. If you set this parameter to SSL Secure Connection, you must enable the SSL encryption feature for the RDS instance in advance. |
 
 4. After completing the configuration, click **Test Connection And Proceed**.
-If a whitelist is configured for your self-managed MySQL destination database, add the DTS server IP addresses to the whitelist. The IP addresses are displayed in the dialog box. After you configure the whitelist, click **Test Connection And Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed MySQL destination database, add the DTS server IP addresses to the whitelist. The IP addresses are displayed in the dialog box. After you configure the whitelist, click **Test Connection And Proceed**.
+
 5. Configure the task objects.
 
 | Configuration | Description |
@@ -1130,11 +1186,13 @@ If a whitelist is configured for your self-managed MySQL destination database, a
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. After the **Precheck** is successful, click **Back To List**.
-If the data migration instance does not include an incremental migration task, the instance automatically stops. After the instance stops, its **Running Status** changes to **Completed**. If the data migration instance includes an incremental migration task, the instance does not automatically stop. The **Running Status** of the instance remains **Running** while the incremental migration task is in progress.
+
+> **Note:** If the data migration instance does not include an incremental migration task, the instance automatically stops. After the instance stops, its **Running Status** changes to **Completed**.
+> If the data migration instance includes an incremental migration task, the instance does not automatically stop. The **Running Status** of the instance remains **Running** while the incremental migration task is in progress.
 
 ##### 3.4.7.3 Migrate data from PolarDB for MySQL to a self-managed Kafka cluster
 
@@ -1171,8 +1229,9 @@ Full migration DTS migrates all historical data from the migration objects in th
 **Procedure**
 
 1. Create a data migration instance.
-When creating an instance, set **Source Database Type** to **PolarDB for MySQL** and
-**Destination Database Type** to **Kafka**.
+
+> **Note:** When creating an instance, set **Source Database Type** to **PolarDB for MySQL** and **Destination Database Type** to **Kafka**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -1205,8 +1264,11 @@ When creating an instance, set **Source Database Type** to **PolarDB for MySQL**
 |   | Use Kafka Schema Registry | Kafka Schema Registry is a metadata service layer that provides a RESTful interface to store and retrieve Avro schemas. No: Do not use Kafka Schema Registry. Yes: Use Kafka Schema Registry. You must enter the URL or IP address registered for the Avro schema in Kafka Schema Registry. |
 
 4. After you complete the configuration, click **Test Connection And Proceed** at the bottom
-of the page. If a whitelist is configured for your self-managed Kafka cluster, add the IP addresses of the DTS servers to it. The IP addresses are displayed in the dialog box. After you add the IP addresses, click **Test Connection And Proceed**. If your self-managed Kafka cluster has no whitelist, click **Test Connection And**
-**Proceed**.
+of the page.
+
+> **Note:** If a whitelist is configured for your self-managed Kafka cluster, add the IP addresses of the DTS servers to it. The IP addresses are displayed in the dialog box. After you add the IP addresses, click **Test Connection And Proceed**.
+> If your self-managed Kafka cluster has no whitelist, click **Test Connection And** **Proceed**.
+
 5. Configure the migration policy and objects.
 
 | Configu ration | Description |
@@ -1232,11 +1294,12 @@ of the page. If a whitelist is configured for your self-managed Kafka cluster, a
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.8 Migrate data from a self-managed SQL Server database to an ApsaraDB RDS for SQL Server instance
 
@@ -1248,7 +1311,13 @@ This topic describes how to migrate incremental data from a self-managed SQL Ser
 
 **Prerequisites**
 
-The version of the self-managed SQL Server database is 2005, 2008, 2008 R2, 2012, 2014, 2016, or 2017. DTS does not support SQL Server clusters or SQL Server Always On availability groups (AOAGs). If the version of the source database is SQL Server 2005, incremental data migration is not supported. To ensure compatibility, the version of the destination Redis instance must be the same as or later than that of the source Redis instance. The tables to be migrated from the self-managed SQL Server database have primary keys or UNIQUE NOT NULL indexes.
+The version of the self-managed SQL Server database is 2005, 2008, 2008 R2, 2012, 2014, 2016, or 2017.
+
+> **Note:** DTS does not support SQL Server clusters or SQL Server Always On availability groups (AOAGs).
+> If the version of the source database is SQL Server 2005, incremental data migration is not supported.
+> To ensure compatibility, the version of the destination Redis instance must be the same as or later than that of the source Redis instance.
+
+The tables to be migrated from the self-managed SQL Server database have primary keys or UNIQUE NOT NULL indexes.
 
 **Usage notes**
 
@@ -1268,7 +1337,15 @@ Schema migration DTS migrates the schemas of the required objects from the sourc
 
 **SQL operations that can be incrementally migrated**
 
-INSERT, UPDATE, and DELETE If an UPDATE operation updates only the large fields, DTS does not migrate the operation. CREATE TABLE If a CREATE TABLE statement contains partitioning clauses, subpartitioning clauses, or functions, DTS does not migrate the operation. ALTER TABLE, including only ADD COLUMN, DROP COLUMN, and RENAME COLUMN DROP TABLE RENAME TABLE, TRUNCATE TABLE, and CREATE INDEX
+INSERT, UPDATE, and DELETE
+
+> **Note:** If an UPDATE operation updates only the large fields, DTS does not migrate the operation.
+
+CREATE TABLE
+
+> **Note:** If a CREATE TABLE statement contains partitioning clauses, subpartitioning clauses, or functions, DTS does not migrate the operation.
+
+ALTER TABLE, including only ADD COLUMN, DROP COLUMN, and RENAME COLUMN DROP TABLE RENAME TABLE, TRUNCATE TABLE, and CREATE INDEX
 
 **Data migration process**
 
@@ -1278,11 +1355,15 @@ plan guides.
 2. Perform full data migration.
 3. Migrate the schemas of SQL stored procedures, SQL functions, triggers, and foreign keys.
 4. Perform incremental data migration.
-During incremental data migration, we recommend that you do not perform DDL operations on the objects to be migrated. Otherwise, the objects may fail to be migrated.
+
+> **Note:** During incremental data migration, we recommend that you do not perform DDL operations on the objects to be migrated. Otherwise, the objects may fail to be migrated.
 
 **Before you begin**
 
-To perform incremental data migration, configure log settings on the self-managed SQL Server database. Skip this step if you do not need to perform incremental data migration.
+To perform incremental data migration, configure log settings on the self-managed SQL Server database.
+
+> **Note:** Skip this step if you do not need to perform incremental data migration.
+
 1. Run the following command in the user-created SQL Server database to change the
 recovery mode to full mode:
 
@@ -1368,7 +1449,10 @@ BACKUP LOG mytestdata TO DISK='D:\backup\dblog.bak' WITH init;
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed SQL Server database, add the CIDR blocks
-of DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed SQL Server database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+of DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed SQL Server database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1394,11 +1478,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.9 Migrate data from an ApsaraDB RDS for SQL Server database to an ApsaraDB RDS for MySQL database
 
@@ -1493,11 +1578,12 @@ the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.10 Migrate data between self-managed Oracle databases
 
@@ -1507,7 +1593,11 @@ This topic describes how to migrate data between self-managed Oracle databases b
 
 **Prerequisites**
 
-A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the source Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the source Oracle database. For more information, see Supplemental Logging. The source Oracle database is running in ARCHIVELOG mode. Archived log files are accessible and a suitable retention period is set for archived log files. For more information, see Managing Archived Redo Log Files. The available storage space of the destination Oracle database is larger than the total size of the data in the source Oracle database.
+A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the source Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c.
+
+> **Note:** To ensure compatibility, the version of the destination database must be the same as or later than that of the source database.
+
+Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the source Oracle database. For more information, see Supplemental Logging. The source Oracle database is running in ARCHIVELOG mode. Archived log files are accessible and a suitable retention period is set for archived log files. For more information, see Managing Archived Redo Log Files. The available storage space of the destination Oracle database is larger than the total size of the data in the source Oracle database.
 
 **Usage notes**
 
@@ -1535,7 +1625,7 @@ A license is purchased for your extension plan of DTS Advanced Edition. The lice
 | Source Oracle database | Owner permissions on schemas | Owner permissions on schemas | DBA |
 | Destination Oracle database | Owner permissions on schemas | Owner permissions on schemas | Owner permissions on schemas |
 
-For more information about how to create an Oracle database account and grant the required permissions to the account, see CREATE USER and GRANT.
+> **Note:** For more information about how to create an Oracle database account and grant the required permissions to the account, see CREATE USER and GRANT.
 
 **Procedure**
 
@@ -1576,7 +1666,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1602,11 +1695,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.11 Migrate data from a self-managed Oracle database to an ApsaraDB RDS for MySQL instance
 
@@ -1642,7 +1736,11 @@ Schema migration DTS supports schema migration for tables and indexes. DTS does 
 
 **migration**
 
-INSERT, DELETE, and UPDATE CREATE TABLE If a CREATE TABLE statement creates a table that contains functions, DTS does not migrate the statement. ALTER TABLE, ADD COLUMN, DROP COLUMN, RENAME COLUMN, and ADD INDEX DROP TABLE RENAME TABLE, TRUNCATE TABLE, and CREATE INDEX
+INSERT, DELETE, and UPDATE CREATE TABLE
+
+> **Note:** If a CREATE TABLE statement creates a table that contains functions, DTS does not migrate the statement.
+
+ALTER TABLE, ADD COLUMN, DROP COLUMN, RENAME COLUMN, and ADD INDEX DROP TABLE RENAME TABLE, TRUNCATE TABLE, and CREATE INDEX
 
 **Data type mappings**
 
@@ -1680,7 +1778,10 @@ For more information, see Data type mappings between heterogeneous databases.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1707,11 +1808,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.12 Migrate data from a self-managed Oracle database to a PolarDB for PostgreSQL (Compatible with Oracle) cluster
 
@@ -1781,7 +1883,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1804,11 +1909,12 @@ parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.13 Migrate data from a self-managed Oracle database to a PolarDB-X 1.0 instance
 
@@ -1833,12 +1939,17 @@ A license is purchased for your extension plan of DTS Advanced Edition. The lice
 
 **Migration types**
 
-Full data migration DTS migrates the historical data of objects from the source Oracle database to the destination database. Incremental data migration After full data migration is complete, DTS retrieves redo log files from the source Oracle database. Then, DTS migrates incremental data from the source Oracle database to the destination database. The following SQL operations can be migrated during incremental data migration: INSERT, DELETE, and UPDATE operations. DDL operations cannot be migrated during incremental data migration.
+Full data migration DTS migrates the historical data of objects from the source Oracle database to the destination database. Incremental data migration After full data migration is complete, DTS retrieves redo log files from the source Oracle database. Then, DTS migrates incremental data from the source Oracle database to the destination database.
+
+> **Note:** The following SQL operations can be migrated during incremental data migration: INSERT, DELETE, and UPDATE operations. DDL operations cannot be migrated during incremental data migration.
 
 **Procedure**
 
 1. Create databases and tables in the destination PolarDB-X 1.0 instance based on the
-schemas of the source tables. The data types of Oracle and PolarDB-X 1.0 do not have one-to-one correspondence. You must create the corresponding data types in the destination instance. For more information, see Data type mappings between heterogeneous databases.
+schemas of the source tables.
+
+> **Note:** The data types of Oracle and PolarDB-X 1.0 do not have one-to-one correspondence. You must create the corresponding data types in the destination instance. For more information, see Data type mappings between heterogeneous databases.
+
 2. Create a data migration instance.
 3. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
@@ -1870,7 +1981,10 @@ parameters.
 
 5. In the lower part of the page, click **Test Connectivity and Proceed**.
 6. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 7. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1894,11 +2008,12 @@ describes the parameters.
 
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.14 Migrate data from a self-managed Oracle database to an AnalyticDB for PostgreSQL instance
 
@@ -1969,7 +2084,10 @@ A license is purchased for your extension plan of DTS Advanced Edition. The lice
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -1993,11 +2111,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.15 Migrate data from a self-managed Oracle database to a self-managed PostgreSQL database
 
@@ -2064,7 +2183,10 @@ A license is purchased for your extension plan of DTS Advanced Edition. The lice
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle and self-managed PostgreSQL
-databases, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your self-managed Oracle and PostgreSQL databases, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+databases, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your self-managed Oracle and PostgreSQL databases, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -2087,11 +2209,12 @@ parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.16 Migrate data between ApsaraDB RDS for PostgreSQL instances
 
@@ -2101,7 +2224,11 @@ This topic describes how to migrate data between ApsaraDB RDS for PostgreSQL ins
 
 **Prerequisites**
 
-The source and destination ApsaraDB RDS for PostgreSQL instances are created. To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. If the version of the destination database is earlier than that of the source database, database compatibility issues may occur. The available storage space of the destination ApsaraDB RDS for PostgreSQL instance is larger than the total size of the data in the source ApsaraDB RDS for PostgreSQL instance.
+The source and destination ApsaraDB RDS for PostgreSQL instances are created.
+
+> **Note:** To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. If the version of the destination database is earlier than that of the source database, database compatibility issues may occur.
+
+The available storage space of the destination ApsaraDB RDS for PostgreSQL instance is larger than the total size of the data in the source ApsaraDB RDS for PostgreSQL instance.
 
 **Limits**
 
@@ -2154,9 +2281,7 @@ The following table describes how DTS migrates the schemas and data of the sourc
 
 If you want to perform incremental data migration, you must perform the following steps: Log on to the ApsaraDB RDS console. Click the ID of the source ApsaraDB RDS for PostgreSQL instance. In the left-side navigation pane, click **Parameters**. Find the **wal_level** parameter and change the value of the parameter to logical.
 
-**Warning**
-
-After you modify the `wal_level` parameter, you must restart the instance to apply the modification. We recommend that you evaluate the impact on your business and modify the parameter during off-peak hours.
+> **Warning:** After you modify the `wal_level` parameter, you must restart the instance to apply the modification. We recommend that you evaluate the impact on your business and modify the parameter during off-peak hours.
 
 **Procedure**
 
@@ -2214,11 +2339,12 @@ parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.17 Migrate data from an ApsaraDB RDS for PostgreSQL instance to an ApsaraDB RDS for MySQL instance
 
@@ -2265,9 +2391,7 @@ source database. Therefore, you must query the maximum value of the
 
 If you want to perform incremental data migration, you must perform the following steps: Log on to the ApsaraDB RDS console. Click the ID of the source ApsaraDB RDS for PostgreSQL instance. In the left-side navigation pane, click **Parameters**. Find the **wal_level** parameter and change the value of the parameter to logical.
 
-**Warning**
-
-After you change the value of the `wal_level` parameter, you must restart the instance to apply the change. We recommend that you evaluate the impact on your business and change the parameter settings during off-peak hours.
+> **Warning:** After you change the value of the `wal_level` parameter, you must restart the instance to apply the change. We recommend that you evaluate the impact on your business and change the parameter settings during off-peak hours.
 
 **Procedure**
 
@@ -2327,11 +2451,12 @@ parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.18 Migrate data from an ApsaraDB RDS for PostgreSQL instance to a PolarDB for PostgreSQL cluster
 
@@ -2370,8 +2495,9 @@ the source database before you switch your workloads to the destination
 
 database. Then, you must specify the queried maximum value as the starting value of the sequences in the destination database.
 1. Create a data migration task.
-When you create the data migration task, select **PostgreSQL** as the **source database**
-**type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **PostgreSQL** as the **source database** **type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -2405,7 +2531,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. **Optional**: If a whitelist is configured for the self-managed PostgreSQL database, add the
-CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the database. Then, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the database. Then, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types.
 
 | Parame ter | Description |
@@ -2428,11 +2557,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.19 Migrate data between PolarDB for PostgreSQL clusters
 
@@ -2461,7 +2591,9 @@ A destination PolarDB for PostgreSQL cluster is created. The available storage s
 **Procedure**
 
 1. Create a data migration task.
-When you create the data migration instance, set both the **source database type** and the **destination database type** to **PolarDB for PostgreSQL**.
+
+> **Note:** When you create the data migration instance, set both the **source database type** and the **destination database type** to **PolarDB for PostgreSQL**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -2496,7 +2628,9 @@ parameters.
 5. If an IP address whitelist is configured for your PolarDB for PostgreSQL cluster, you must
 add the CIDR blocks of DTS servers to the whitelist of the cluster. Then, click **Test**
 **Connectivity and Proceed**.
-If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -2519,11 +2653,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.20 Migrate data between PolarDB for PostgreSQL (Compatible with Oracle) clusters
 
@@ -2610,11 +2745,12 @@ The tables that you want to migrate from the source PolarDB for PostgreSQL (Comp
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.21 Migrate data from a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed Oracle database
 
@@ -2695,11 +2831,12 @@ A self-managed Oracle database is created, and the schema of the Oracle database
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.22 Migrate data from a PolarDB for PostgreSQL cluster that is compatible with Oracle to a self-managed Kafka cluster
 
@@ -2781,11 +2918,12 @@ The tables that you want to migrate from the source PolarDB for PostgreSQL (Comp
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.23 Migrate data from a self-managed Db2 for LUW database to a PolarDB for MySQL instance
 
@@ -2825,8 +2963,9 @@ You have created a source Db2 for LUW database and a destination PolarDB for MyS
 **Procedure**
 
 1. Create a data migration instance.
-When you create the instance, set **Source Database Type** to **DB2 LUW** and
-**Destination Database Type** to **PolarDB for MySQL**.
+
+> **Note:** When you create the instance, set **Source Database Type** to **DB2 LUW** and **Destination Database Type** to **PolarDB for MySQL**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -2855,10 +2994,11 @@ When you create the instance, set **Source Database Type** to **DB2 LUW** and
 |   | Connection Method | Select a method as needed. |
 
 4. After you complete the configurations, click **Test Connection And Proceed** at the bottom
-of the page. If your self-managed Db2 for LUW database uses a whitelist, add the IP addresses of the DTS servers to the database whitelist. The IP addresses are displayed in the dialog box that appears. After you add the IP addresses, click **Test**
-**Connection And Proceed**.
-If your self-managed Db2 for LUW database does not require a whitelist, click
-**Test Connection And Proceed**.
+of the page.
+
+> **Note:** If your self-managed Db2 for LUW database uses a whitelist, add the IP addresses of the DTS servers to the database whitelist. The IP addresses are displayed in the dialog box that appears. After you add the IP addresses, click **Test** **Connection And Proceed**.
+> If your self-managed Db2 for LUW database does not require a whitelist, click **Test Connection And Proceed**.
+
 5. Configure the task objects.
 
 | Configu ration | Description |
@@ -2882,11 +3022,12 @@ If your self-managed Db2 for LUW database does not require a whitelist, click
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.24 Migrate data from a self-managed Db2 for LUW database to a PolarDB for PostgreSQL instance
 
@@ -2923,8 +3064,9 @@ Create an account and grant permissions The Db2 for LUW account must have the DB
 **Procedure**
 
 1. Create a data migration instance.
-When you create the instance, set **Source Database Type** to **DB2 LUW** and
-**Destination Database Type** to **PolarDB for PostgreSQL**.
+
+> **Note:** When you create the instance, set **Source Database Type** to **DB2 LUW** and **Destination Database Type** to **PolarDB for PostgreSQL**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -2955,10 +3097,11 @@ When you create the instance, set **Source Database Type** to **DB2 LUW** and
 |   | Connection Method | Select a method as needed. |
 
 4. After you complete the configuration, click **Test Connection And Proceed** at the bottom
-of the page. If your self-managed Db2 for LUW database uses a whitelist, add the DTS server IP addresses from the dialog box to the whitelist. Then, click **Test Connection**
-**And Proceed**.
-If your self-managed Db2 for LUW database does not require a whitelist, click
-**Test Connection And Proceed**.
+of the page.
+
+> **Note:** If your self-managed Db2 for LUW database uses a whitelist, add the DTS server IP addresses from the dialog box to the whitelist. Then, click **Test Connection** **And Proceed**.
+> If your self-managed Db2 for LUW database does not require a whitelist, click **Test Connection And Proceed**.
+
 5. Configure the task objects.
 
 | Configu ration | Description |
@@ -2981,11 +3124,12 @@ If your self-managed Db2 for LUW database does not require a whitelist, click
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.25 Migrate data between self-managed Redis databases
 
@@ -3019,7 +3163,10 @@ APPEND BITOP, BLPOP, BRPOP, and BRPOPLPUSH DECR, DECRBY, and DEL EVAL, EVALSHA, 
 
 **Before you begin**
 
-To ensure that incremental data migration tasks run as expected, we recommend that you remove the limit on the replication output buffer for the source database. In this topic, a server that runs on Linux is used in the example. If you perform only full data migration, skip the following steps.
+To ensure that incremental data migration tasks run as expected, we recommend that you remove the limit on the replication output buffer for the source database. In this topic, a server that runs on Linux is used in the example.
+
+> **Note:** If you perform only full data migration, skip the following steps.
+
 1. Use the redis-cli program to connect to the source database.
 You can use the redis-cli program after you install the Redis client. For more information, see Redis community official website.
 
@@ -3027,7 +3174,11 @@ You can use the redis-cli program after you install the Redis client. For more i
 redis-cli -h <host> -p <port> -a <password>
 ```
 
-<host>: the endpoint that is used to connect to the source database. You can use 127.0.0.1 in this example. <port>: the service port number of the source database. The default port number is 6379. <password>: the password of the source database. Example:
+> **Note:** <host>: the endpoint that is used to connect to the source database. You can use 127.0.0.1 in this example.
+> <port>: the service port number of the source database. The default port number is 6379.
+> <password>: the password of the source database.
+
+Example:
 
 ```
 redis-cli -h 127.0.0.1 -p 6379 -a Test123456
@@ -3069,7 +3220,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for the self-managed Redis database, you must manually add the
-CIDR blocks of DTS servers to the whitelist of the database. After you configure the whitelist, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed Redis database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+CIDR blocks of DTS servers to the whitelist of the database. After you configure the whitelist, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for the self-managed Redis database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be migrated and the migration types.
 
 | Parame ter | Description |
@@ -3090,11 +3244,12 @@ CIDR blocks of DTS servers to the whitelist of the database. After you configure
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.26 Migrate data from an ApsaraDB for MongoDB instance to a self-managed Kafka cluster
 
@@ -3131,8 +3286,9 @@ The destination Kafka cluster is created and the Kafka version is 0.10 to 2.7. A
 **Procedure**
 
 1. Create a data migration task.
-When you create the data migration task, select **MongoDB** as the **source database**
-**type** and **Kafka** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **MongoDB** as the **source database** **type** and **Kafka** as the **destination database type**.
+
 2. On the Data Migration page, find the data migration task that you created and click
 **Configure Task**.
 3. Configure the source and destination databases.
@@ -3170,7 +3326,10 @@ When you create the data migration task, select **MongoDB** as the **source data
 |   | Use Kafka Schema Registry | Specifies whether to use Kafka Schema Registry. Kafka Schema Registry provides a serving layer for your metadata. It provides a RESTful API to store and retrieve your Avro schemas. Valid values: No: does not use Kafka Schema Registry. Yes: uses Kafka Schema Registry. In this case, you must enter the URL or IP address that is registered in Kafka Schema Registry for your Avro schemas. |
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
-If a whitelist is configured for your self-managed Kafka cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed Kafka cluster. Then, click **Text Connectivity and Proceed**. If you do not need to configure a whitelist for your self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed Kafka cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed Kafka cluster. Then, click **Text Connectivity and Proceed**.
+> If you do not need to configure a whitelist for your self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 5. Select the migration policy and the objects to be migrated. The following table describes
 the parameters.
 
@@ -3197,11 +3356,12 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, a precheck is performed. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, a precheck is performed. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.27 Migrate data from a MaxCompute project to a MySQL database
 
@@ -3211,7 +3371,13 @@ This topic describes how to migrate data from a MaxCompute project to a MySQL da
 
 **Usage notes**
 
-During a full data migration, DTS consumes read and write resources on the source and destination databases, increasing their load. If your databases have poor performance, low specifications, or high workloads (for example, if the source database has many slow SQL queries or tables without primary keys, or if deadlocks occur in the destination database), the increased load can strain your databases or even cause service interruptions. Perform the data migration during off-peak hours, such as when the CPU utilization of both databases is below 30%. DTS automatically creates a database in the destination ApsaraDB RDS for MySQL instance. However, if the name of the source database is invalid, you must manually create a database in the destination instance before you configure the data migration task. For more information about ApsaraDB RDS for MySQL instances and how to create a database in an ApsaraDB RDS for MySQL instance, see the "Create a database" topic in the documentation of ApsaraDB RDS for MySQL. To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during full data migration. If a data migration task fails, DTS automatically resumes the task. Before you switch your workloads to the destination instance, stop or release the data migration task. Otherwise, the data in the source database overwrites the data in the destination instance after the task is resumed. MaxCompute does not support the PRIMARY KEY constraint. If network errors occur, DTS retries the data migration task. In this case, duplicate data records may be migrated to the destination tables that do not have primary keys. DTS cannot migrate incremental data from a MaxCompute project to an ApsaraDB RDS for MySQL instance. To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during data migration.
+During a full data migration, DTS consumes read and write resources on the source and destination databases, increasing their load. If your databases have poor performance, low specifications, or high workloads (for example, if the source database has many slow SQL queries or tables without primary keys, or if deadlocks occur in the destination database), the increased load can strain your databases or even cause service interruptions. Perform the data migration during off-peak hours, such as when the CPU utilization of both databases is below 30%. DTS automatically creates a database in the destination ApsaraDB RDS for MySQL instance. However, if the name of the source database is invalid, you must manually create a database in the destination instance before you configure the data migration task.
+
+> **Note:** For more information about ApsaraDB RDS for MySQL instances and how to create a database in an ApsaraDB RDS for MySQL instance, see the "Create a database" topic in the documentation of ApsaraDB RDS for MySQL.
+
+To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during full data migration. If a data migration task fails, DTS automatically resumes the task. Before you switch your workloads to the destination instance, stop or release the data migration task. Otherwise, the data in the source database overwrites the data in the destination instance after the task is resumed. MaxCompute does not support the PRIMARY KEY constraint. If network errors occur, DTS retries the data migration task. In this case, duplicate data records may be migrated to the destination tables that do not have primary keys. DTS cannot migrate incremental data from a MaxCompute project to an ApsaraDB RDS for MySQL instance.
+
+> **Note:** To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during data migration.
 
 **Migration types**
 
@@ -3271,11 +3437,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.28 Migrate data from OceanBase (MySQL mode) to PolarDB for MySQL
 
@@ -3291,11 +3458,19 @@ The source database is a self-managed OceanBase database. DTS supports only Comm
 
 **Source database limitations**
 
-Bandwidth requirements: The server that hosts the source database must have sufficient outbound bandwidth. Otherwise, the data migration speed is affected. The tables to be migrated must have a primary key or a UNIQUE constraint, and the fields in the constraint must be unique. Otherwise, duplicate data may appear in the destination database. If you migrate data at the table level and need to edit objects, such as mapping table and column names, a single data migration task can support a maximum of 1,000 tables. If you exceed this limit, an error is reported when you submit the task. In this case, you must split the tables into multiple data migration tasks or configure a task to migrate the entire database. Source database operation limits: During schema migration and full data migration, do not perform DDL operations on the databases or tables. Otherwise, the data migration task will fail. If you perform only full data migration, do not write new data to the source instance. Otherwise, data inconsistency between the source and destination databases may occur. To ensure real-time data consistency, select Schema Migration, Full Data Migration, and Incremental Data Migration. Data of the GEOMETRY type supports only full migration, not incremental migration. If the data to be migrated contains invisible columns, data may be lost because DTS cannot obtain data from these columns. If the source database is a self-managed OceanBase database: To migrate incremental data, you must first perform the following steps: Install oblogproxy (incremental log proxy service) on the server where your OceanBase database is deployed and configure the system tenant. For more information, see Install and deploy oblogproxy. Install, deploy, and enable the binary logging (binlog) service for the OceanBase database. For more information, see Overview of the binlog service.
+Bandwidth requirements: The server that hosts the source database must have sufficient outbound bandwidth. Otherwise, the data migration speed is affected. The tables to be migrated must have a primary key or a UNIQUE constraint, and the fields in the constraint must be unique. Otherwise, duplicate data may appear in the destination database. If you migrate data at the table level and need to edit objects, such as mapping table and column names, a single data migration task can support a maximum of 1,000 tables. If you exceed this limit, an error is reported when you submit the task. In this case, you must split the tables into multiple data migration tasks or configure a task to migrate the entire database. Source database operation limits: During schema migration and full data migration, do not perform DDL operations on the databases or tables. Otherwise, the data migration task will fail. If you perform only full data migration, do not write new data to the source instance. Otherwise, data inconsistency between the source and destination databases may occur. To ensure real-time data consistency, select Schema Migration, Full Data Migration, and Incremental Data Migration. Data of the GEOMETRY type supports only full migration, not incremental migration. If the data to be migrated contains invisible columns, data may be lost because DTS cannot obtain data from these columns. If the source database is a self-managed OceanBase database:
+
+> **Note:** To migrate incremental data, you must first perform the following steps:
+> Install oblogproxy (incremental log proxy service) on the server where your OceanBase database is deployed and configure the system tenant. For more information, see Install and deploy oblogproxy.
+> Install, deploy, and enable the binary logging (binlog) service for the OceanBase database. For more information, see Overview of the binlog service.
 
 **Other limitations**
 
-You cannot convert data of the DATETIME type to VARCHAR. You cannot adjust the speed of full data migration. If a database name does not comply with the naming conventions of PolarDB for MySQL, you must create a database with a compliant name in the PolarDB for MySQL instance before you configure the data migration task. Then, you can use the object name mapping feature. If the data to be migrated contains content that requires four bytes for storage, such as emojis, the destination database and its tables must use the utf8mb4 charset. If you use DTS for schema migration, you must set the `character_set_server` parameter at the instance level to utf8mb4 for the destination database. Before you migrate data, evaluate the performance of the source and destination databases. We recommend that you migrate data during off-peak hours. This is because full data migration consumes read and write resources on the source and destination databases, which may increase the database load. Full data migration involves concurrent INSERT operations, which can cause table fragmentation in the destination database. After full data migration is complete, the storage space used by the tables in the destination database is larger than that in the source instance. Confirm whether the migration precision for columns of the FLOAT or DOUBLE data type meets your business requirements. DTS reads the values of these columns using `ROUND(COLUMN,PRECISION)` . If the precision is not explicitly defined, DTS migrates FLOAT data with a precision of 38 digits and DOUBLE data with a precision of 308 digits. DTS attempts to resume a failed data migration task within seven days. Before you switch your business to the destination instance, you must end or release the task. You can also run the `revoke` command to revoke the write permissions of the database account that DTS uses to access the destination instance. This prevents the source data from overwriting the data in the destination instance after the task is automatically resumed. MySQL database column names are case-insensitive. When DTS migrates data to a destination PolarDB for MySQL instance, it writes data from columns whose names differ only in case to the same column. This may produce unexpected results.
+You cannot convert data of the DATETIME type to VARCHAR. You cannot adjust the speed of full data migration. If a database name does not comply with the naming conventions of PolarDB for MySQL, you must create a database with a compliant name in the PolarDB for MySQL instance before you configure the data migration task. Then, you can use the object name mapping feature. If the data to be migrated contains content that requires four bytes for storage, such as emojis, the destination database and its tables must use the utf8mb4 charset.
+
+> **Note:** If you use DTS for schema migration, you must set the `character_set_server` parameter at the instance level to utf8mb4 for the destination database.
+
+Before you migrate data, evaluate the performance of the source and destination databases. We recommend that you migrate data during off-peak hours. This is because full data migration consumes read and write resources on the source and destination databases, which may increase the database load. Full data migration involves concurrent INSERT operations, which can cause table fragmentation in the destination database. After full data migration is complete, the storage space used by the tables in the destination database is larger than that in the source instance. Confirm whether the migration precision for columns of the FLOAT or DOUBLE data type meets your business requirements. DTS reads the values of these columns using `ROUND(COLUMN,PRECISION)` . If the precision is not explicitly defined, DTS migrates FLOAT data with a precision of 38 digits and DOUBLE data with a precision of 308 digits. DTS attempts to resume a failed data migration task within seven days. Before you switch your business to the destination instance, you must end or release the task. You can also run the `revoke` command to revoke the write permissions of the database account that DTS uses to access the destination instance. This prevents the source data from overwriting the data in the destination instance after the task is automatically resumed. MySQL database column names are case-insensitive. When DTS migrates data to a destination PolarDB for MySQL instance, it writes data from columns whose names differ only in case to the same column. This may produce unexpected results.
 
 **Supported incremental migration SQL operations**
 
@@ -3317,7 +3492,9 @@ You cannot convert data of the DATETIME type to VARCHAR. You cannot adjust the s
 **Procedure**
 
 1. Create a data migration instance.
-When you create the instance, set **Source Database Type** to **OceanBase (MySQL)** and **Destination Database Type** to **PolarDB for MySQL**.
+
+> **Note:** When you create the instance, set **Source Database Type** to **OceanBase (MySQL)** and **Destination Database Type** to **PolarDB for MySQL**.
+
 2. On the Data Migration page, find the data migration instance that you created, and click
 **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -3347,8 +3524,11 @@ When you create the instance, set **Source Database Type** to **OceanBase (MySQL
 |   | Connection Method | Select a value based on the actual connection method of your database. |
 
 4. After you complete the configurations, click **Test Connection And Proceed** at the bottom
-of the page. If a whitelist is configured for your self-managed OceanBase database, add the CIDR blocks of the DTS servers that are displayed in the dialog box to the whitelist of the self-managed OceanBase database. After you add the CIDR blocks, click **Test Connection And Proceed**. If no whitelist is configured for your self-managed OceanBase database, click
-**Test Connection And Proceed**.
+of the page.
+
+> **Note:** If a whitelist is configured for your self-managed OceanBase database, add the CIDR blocks of the DTS servers that are displayed in the dialog box to the whitelist of the self-managed OceanBase database. After you add the CIDR blocks, click **Test Connection And Proceed**.
+> If no whitelist is configured for your self-managed OceanBase database, click **Test Connection And Proceed**.
+
 5. Configure the task objects.
 
 | Configu ration | Description |
@@ -3372,11 +3552,12 @@ of the page. If a whitelist is configured for your self-managed OceanBase databa
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 #### 3.4.29 Migrate data from a PolarDB-X 2.0 instance
 
@@ -3479,11 +3660,12 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ##### 3.4.29.2 Migrate data from a PolarDB-X 2.0 instance to a MySQL instance
 
@@ -3561,7 +3743,9 @@ parameters.
 5. If a whitelist is configured for your MySQL instance, add the CIDR blocks of DTS servers that
 are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test**
 **Connectivity and Proceed**.
-If no whitelist is configured for your MySQL instance, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your MySQL instance, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Configure the objects to be synchronized and advanced settings. The following table
 describes the parameters.
 
@@ -3591,11 +3775,12 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ##### 3.4.29.3 Migrate data from a PolarDB-X V2.0 instance to an ApsaraMQ for Kafka instance
 
@@ -3705,11 +3890,12 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ##### 3.4.29.4 Migrate data from a PolarDB-X 2.0 instance to an AnalyticDB for PostgreSQL instance
 
@@ -3801,16 +3987,18 @@ describes the parameters.
 | Whether to delete SQL operations on heartbeat tables of forward and reverse tasks | Choose whether DTS writes heartbeat SQL information to the source database while the instance is running. Yes: Does not write heartbeat SQL information to the source database. The DTS instance may display latency. No: Writes heartbeat SQL information to the source database. This may interfere with source database operations like physical backups and cloning. |
 
 7. **Optional.** Click **Next: Configure Database and Table Fields** . Configure the tables that
-you want to migrate to the destination AnalyticDB for PostgreSQL instance. If you select **Schema Synchronization**, you must specify the **type**, **primary key**
-**column**, and **distribution key** information for the tables that you want to migrate to
-the AnalyticDB for PostgreSQL instance.
+you want to migrate to the destination AnalyticDB for PostgreSQL instance.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key** **column**, and **distribution key** information for the tables that you want to migrate to the AnalyticDB for PostgreSQL instance.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ### 3.5 Manage data migration tasks
 
@@ -3927,7 +4115,9 @@ Before you migrate the accounts of the source database, make sure that the sourc
 
 1. In the **Advanced Settings** step, set **Whether to Migrate Accounts** to **Yes**.
 2. Select the accounts that you want to migrate based on your business requirements.
-The account name is in the `<username>@<host>` format. The `<host>` variable specifies the host that can be logged on to by using the specified account.
+
+> **Note:** The account name is in the `<username>@<host>` format. The `<host>` variable specifies the host that can be logged on to by using the specified account.
+
 3. Complete the subsequent configurations based on the instructions in Configure data
 migration tasks.
 
@@ -3949,18 +4139,23 @@ Data Transmission Service (DTS) provides the object name mapping feature. You ca
 
 You can use the object name mapping feature only when you configure parameters in the
 **Configure Objects and Advanced Settings** step for configuring a data migration task.
-We recommend that you do not use the object name mapping feature after a DTS task is started. Otherwise, the task may fail.
+
+> **Note:** We recommend that you do not use the object name mapping feature after a DTS task is started. Otherwise, the task may fail.
 
 **Map the name of a single object**
 
 1. In the **Configure Objects and Advanced Settings** step, move a database or table to the
 **Selected Objects** section and right-click the database or table.
 2. In the dialog box that appears, set the object name that you want to use in the destination
-instance. If the source and destination databases are self-managed MySQL databases, ApsaraDB RDS for MySQL instances, or PolarDB for MySQL instances, you can select the DDL and DML statements that you want to synchronize or migrate. If you select different statements for database name mapping and table name mapping, the statements that are selected for table name mapping prevail. Database name or schema mapping In the **Edit Schema** dialog box, set the database name that you want to use in the destination instance. Table name mapping In the **Edit Table Name** dialog box, set the table name that you want to use in the destination instance. Column name mapping In the **Edit Table Name** dialog box, set the column names that you want to use in the destination instance. You can clear the columns that do not need to be migrated.
+instance.
 
-**Important**
+> **Note:** If the source and destination databases are self-managed MySQL databases, ApsaraDB RDS for MySQL instances, or PolarDB for MySQL instances, you can select the DDL and DML statements that you want to synchronize or migrate.
+> If you select different statements for database name mapping and table name mapping, the statements that are selected for table name mapping prevail.
 
-To clear the columns that do not need to be migrated, you must clear **Synchronize All Tables**.
+Database name or schema mapping In the **Edit Schema** dialog box, set the database name that you want to use in the destination instance. Table name mapping In the **Edit Table Name** dialog box, set the table name that you want to use in the destination instance. Column name mapping In the **Edit Table Name** dialog box, set the column names that you want to use in the destination instance. You can clear the columns that do not need to be migrated.
+
+> **Important:** To clear the columns that do not need to be migrated, you must clear **Synchronize All Tables**.
+
 3. Click **OK**.
 4. Configure other parameters that are required for the data migration task.
 
@@ -3974,7 +4169,11 @@ your business requirements. i. Select the type of batch edit. In this example, *
 **Edit Renamed Object Name**: edits the names of databases, tables, and columns
 based on their renamed names.
 **Edit Original Name**: edits the names of databases, tables, and columns based on
-their original names. iii. Select the objects whose names you want to edit. iv. Set the names of databases and tables by using one of the following three rules. Then, click **Add Rule**. Add Prefix and Suffix: Enter a prefix and suffix next to the **Add Prefix and Suffix** field. Change All Names: Select **Change All Names** from the **Select Rule** drop-down list and enter the new name. Shorten All Names: Select **Shorten All Names** from the **Select Rule** drop-down list and enter the keyword that you want to remove from object names. In the Batch Edit dialog box, you can specify conditions to filter data. For more information, see Specify an SQL condition to filter data. v. Click **OK**.
+their original names. iii. Select the objects whose names you want to edit. iv. Set the names of databases and tables by using one of the following three rules. Then, click **Add Rule**. Add Prefix and Suffix: Enter a prefix and suffix next to the **Add Prefix and Suffix** field. Change All Names: Select **Change All Names** from the **Select Rule** drop-down list and enter the new name. Shorten All Names: Select **Shorten All Names** from the **Select Rule** drop-down list and enter the keyword that you want to remove from object names.
+
+> **Note:** In the Batch Edit dialog box, you can specify conditions to filter data. For more information, see Specify an SQL condition to filter data.
+
+v. Click **OK**.
 4. Configure other parameters that are required for the DTS task.
 
 #### 3.5.5 Specify an SQL condition to filter data
@@ -4021,7 +4220,11 @@ Data Transmission Service (DTS) supports data migration between heterogeneous da
 1. Log on to the DTS console.
 2. In the left-side navigation pane, click **Data Migration**.
 3. Use one of the following methods to troubleshoot the failed task:
-Method 1 a. Find the task and click **View Cause and Rectify**. b. Troubleshoot the issue based on the cause that is displayed in the View Cause and Rectify message. For example, you can troubleshoot an issue by modifying the schema syntax. c. Click **Start Task**. Method 2 a. Click the instance ID or task name. b. In the left-side navigation pane, choose **Migration Details > Schema Migration**. c. On the **Schema Migration** page, find the object that causes the migration failure and click **Rectify** in the Status column. d. Troubleshoot the issue based on the cause that is displayed in the **Rectify** dialog box. For example, you can troubleshoot an issue by modifying the schema syntax. e. Click **Rectify**. If the failure persists, the **Rectify** dialog box does not close and shows the failure cause. You must continue troubleshooting based on the failure cause until the troubleshooting is successful. If the troubleshooting is successful, the **Schema Migration** page appears and the status of the object changes to **Finished**.
+Method 1 a. Find the task and click **View Cause and Rectify**. b. Troubleshoot the issue based on the cause that is displayed in the View Cause and Rectify message. For example, you can troubleshoot an issue by modifying the schema syntax. c. Click **Start Task**. Method 2 a. Click the instance ID or task name. b. In the left-side navigation pane, choose **Migration Details > Schema Migration**. c. On the **Schema Migration** page, find the object that causes the migration failure and click **Rectify** in the Status column. d. Troubleshoot the issue based on the cause that is displayed in the **Rectify** dialog box. For example, you can troubleshoot an issue by modifying the schema syntax. e. Click **Rectify**.
+
+> **Note:** If the failure persists, the **Rectify** dialog box does not close and shows the failure cause. You must continue troubleshooting based on the failure cause until the troubleshooting is successful.
+> If the troubleshooting is successful, the **Schema Migration** page appears and the status of the object changes to **Finished**.
+
 4. If no objects are in the Failed state, DTS proceeds with the data migration task, for
 example, entering the full data migration process.
 
@@ -4030,7 +4233,11 @@ example, entering the full data migration process.
 1. Log on to the DTS console.
 2. In the left-side navigation pane, click **Data Migration**.
 3. Find the task and click **View Cause and Rectify**.
-DTS allows you to troubleshoot a task that fails during full data migration due to the following reasons. If a task fails during full data migration due to other reasons, DTS provides only the **Ignore** option. The object that causes the failure is not migrated to the destination database. The connection to the source or destination database failed or timed out. Troubleshoot the issue, make sure that the connection is successful, and then restart the task. The storage space of the destination instance is insufficient or the instance is locked. Upgrade the specifications of the destination instance or clear the log space, and then restart the task. MyISAM tables in the source database are corrupted. Troubleshoot the issue in the source database, and restart the task.
+DTS allows you to troubleshoot a task that fails during full data migration due to the following reasons.
+
+> **Note:** If a task fails during full data migration due to other reasons, DTS provides only the **Ignore** option. The object that causes the failure is not migrated to the destination database.
+
+The connection to the source or destination database failed or timed out. Troubleshoot the issue, make sure that the connection is successful, and then restart the task. The storage space of the destination instance is insufficient or the instance is locked. Upgrade the specifications of the destination instance or clear the log space, and then restart the task. MyISAM tables in the source database are corrupted. Troubleshoot the issue in the source database, and restart the task.
 4. In the dialog box that appears, troubleshoot the issue based on the failure cause.
 5. Click **Start Task**.
 
@@ -4067,7 +4274,9 @@ DTS allows you to store data into a Kafka cluster in the following formats: DTS 
 **DTS Avro**
 
 **DTS Avro** is the default data format. By default, data that is migrated or synchronized to a
-Kafka cluster by using DTS is stored in the DTS Avro format. You must parse the data based on the schema definition of DTS Avro. For more information, visit GitHub. In the DTS Avro format, the DDL statements are of the STRING type.
+Kafka cluster by using DTS is stored in the DTS Avro format. You must parse the data based on the schema definition of DTS Avro. For more information, visit GitHub.
+
+> **Note:** In the DTS Avro format, the DDL statements are of the STRING type.
 
 **Shareplex Json**
 
@@ -4183,7 +4392,10 @@ Table 2. Parameters related to the Canal JSON format
 | ts | The time when the operation is written to the destination database. The value is a 13-bit UNIX timestamp. Unit: milliseconds. Note You can use a search engine to obtain a UNIX timestamp converter. |
 | type | The operation type. Valid values: DELETE, UPDATE, and INSERT. |
 
-Examples of data updated For change tracking instances that are created before March 20, 2022, after the `DELETE` statements of the source table are synchronized, the value of `old` is data and the value of `data` is NULL. To keep consistent with the open source community, the value of `data` is data and the value of `old` is NULL for change tracking instances that are created or restarted as of March 20, 2022.
+Examples of data updated
+
+> **Note:** For change tracking instances that are created before March 20, 2022, after the `DELETE` statements of the source table are synchronized, the value of `old` is data and the value of `data` is NULL. To keep consistent with the open source community, the value of
+> `data` is data and the value of `old` is NULL for change tracking instances that are created or restarted as of March 20, 2022.
 
 **Change tracking instances that are created before March 20, 2022**
 
@@ -4319,9 +4531,7 @@ Data Transmission Service (DTS) uses the hashCode() method in Java to calculate 
 
 In the **Configure Objects and Advanced Settings** step of a task creation wizard, you can specify the policy for migrating data to Kafka partitions.
 
-**Warning**
-
-After a data migration task is started, do not change the number of partitions in the destination topic. Otherwise, data migration fails.
+> **Warning:** After a data migration task is started, do not change the number of partitions in the destination topic. Otherwise, data migration fails.
 
 **Policies**
 
@@ -4363,13 +4573,14 @@ If the ETL script that you configure contains the operation to add a column, you
 1. Create a migration task based on your business requirements and proceed to the
 **Advanced Settings** step.
 2. Set the **Configure ETL** parameter to **Yes**. In the code editor, enter data processing
-statements based on the DSL syntax. For more information, see the DSL syntax section in this topic. If you want to drop entries whose values of the id column are greater than
+statements based on the DSL syntax. For more information, see the DSL syntax section in this topic.
+
+> **Note:** If you want to drop entries whose values of the id column are greater than whether an entry is greater than a specific value. `id` is a variable. This way, entries whose values of the id column are greater than three are filtered out.
 
 |   | script:e if(op gt(`id`, 3), e drop()) _ _ _ |
 |---|---|
 | op gt _ |   |
 
-whether an entry is greater than a specific value. `id` is a variable. This way, entries whose values of the id column are greater than three are filtered out.
 3. Click **Next: Precheck and Start Task** and complete the subsequent steps.
 
 **Overview of DSL**
@@ -4400,7 +4611,9 @@ e_if(op_and(
       e_set(dts_sync_time,__COMMIT_TIMESTAMP__))
 ```
 
-To perform the preceding operations, you must add the dts_sync_time column to the corresponding tables in the destination database before the data migration task is started. Audit data changes Record the type and time of the data changes in tables: 1. Record the data change type in the operation_type column of the destination database. 2. Record the time when data is changed in the updated column of the destination database.
+> **Note:** To perform the preceding operations, you must add the dts_sync_time column to the corresponding tables in the destination database before the data migration task is started.
+
+Audit data changes Record the type and time of the data changes in tables: 1. Record the data change type in the operation_type column of the destination database. 2. Record the time when data is changed in the updated column of the destination database.
 
 ```
 e_compose(
@@ -4412,7 +4625,9 @@ e_compose(
     e_set(__OPERATION__,__OP_INSERT__)
 ```
 
-`)` You must add the operation_type and updated columns to the tables in the destination database before the data migration task is started.
+`)`
+
+> **Note:** You must add the operation_type and updated columns to the tables in the destination database before the data migration task is started.
 
 **DSL syntax**
 
@@ -4619,7 +4834,9 @@ Heterogeneous databases support different data types. During schema migration, D
 
 **self-managed MySQL database**
 
-The following table describes the data type mappings between MySQL and heterogeneous databases. The source instance can be a PolarDB for MySQL cluster, an ApsaraDB RDS for MySQL instance, or a self-managed MySQL database. The destination instance can be an AnalyticDB for MySQL cluster or an AnalyticDB for PostgreSQL instance. If the value range of the data to be migrated from the source instance exceeds the range supported by DTS, the accuracy of the data migrated to the destination instance decreases.
+The following table describes the data type mappings between MySQL and heterogeneous databases. The source instance can be a PolarDB for MySQL cluster, an ApsaraDB RDS for MySQL instance, or a self-managed MySQL database. The destination instance can be an AnalyticDB for MySQL cluster or an AnalyticDB for PostgreSQL instance.
+
+> **Note:** If the value range of the data to be migrated from the source instance exceeds the range supported by DTS, the accuracy of the data migrated to the destination instance decreases.
 
 | Type | Data type of the source instance | Value range | Data type of a Message Queue for Apache Kafka instance or a self- managed Kafka cluster |
 |---|---|---|---|
@@ -4678,7 +4895,9 @@ The following table describes the data type mappings between MySQL and heterogen
 
 **Migrate data from an Oracle database**
 
-The following table describes the data type mappings between a self-managed Oracle database and heterogeneous databases. The destination instance can be a self-managed MySQL database, a PolarDB for MySQL cluster, an AnalyticDB for MySQL cluster, an AnalyticDB for PostgreSQL instance, or a PolarDB for Oracle cluster. If the value range of the data to be migrated from the source instance exceeds the range supported by DTS, the accuracy of the data migrated to the destination instance decreases.
+The following table describes the data type mappings between a self-managed Oracle database and heterogeneous databases. The destination instance can be a self-managed MySQL database, a PolarDB for MySQL cluster, an AnalyticDB for MySQL cluster, an AnalyticDB for PostgreSQL instance, or a PolarDB for Oracle cluster.
+
+> **Note:** If the value range of the data to be migrated from the source instance exceeds the range supported by DTS, the accuracy of the data migrated to the destination instance decreases.
 
 | Type | Data type of Oracle | Value range | Data type of MySQL or PolarDB-X | Data type of AnalyticDB for PostgreSQL | Data type of PolarDB for Oracle |
 |---|---|---|---|---|---|
@@ -4714,7 +4933,13 @@ The following table describes the data type mappings between a self-managed Orac
 | ROWID | ROWID | 64 characters | Not supported | OID | VARCHAR |
 | Spatial | Customizatio n required | Not supported |   |   |   |
 
-Destination instance: MySQL or PolarDB-X If a field of the CHAR data type in the source database is greater than 255 bytes in length, DTS converts this field to the VARCHAR(n) data type in the destination database. MySQL does not support the following Oracle data types: BFILE, INTERVAL YEAR TO MONTH, and INTERVAL DAY TO SECOND. Therefore, DTS does not convert these data types during schema migration. If a table to be migrated contains these data types, schema migration fails. You must make sure that the columns of these data types are excluded from the objects to be migrated. The TIMESTAMP data type of MySQL databases does not contain the time zone information. However, the TIMESTAMP WITH TIME ZONE and TIMESTAMP WITH LOCAL TIME ZONE data types in Oracle databases provide the time zone information. Therefore, DTS converts the values of the latter two data types to UTC time in the destination database. Destination instance: AnalyticDB for PostgreSQL If an Oracle data type is not supported by AnalyticDB for PostgreSQL, DTS converts the data type to BYTEA. If the conversion fails, DTS sets the field value to NULL.
+> **Note:** Destination instance: MySQL or PolarDB-X
+> If a field of the CHAR data type in the source database is greater than 255 bytes in length, DTS converts this field to the VARCHAR(n) data type in the destination database.
+> MySQL does not support the following Oracle data types: BFILE, INTERVAL YEAR TO MONTH, and INTERVAL DAY TO SECOND. Therefore, DTS does not convert these data types during schema migration.
+> If a table to be migrated contains these data types, schema migration fails. You must make sure that the columns of these data types are excluded from the objects to be migrated.
+> The TIMESTAMP data type of MySQL databases does not contain the time zone information. However, the TIMESTAMP WITH TIME ZONE and TIMESTAMP WITH LOCAL TIME ZONE data types in Oracle databases provide the time zone information. Therefore, DTS converts the values of the latter two data types to UTC time in the destination database.
+> Destination instance: AnalyticDB for PostgreSQL
+> If an Oracle data type is not supported by AnalyticDB for PostgreSQL, DTS converts the data type to BYTEA. If the conversion fails, DTS sets the field value to NULL.
 
 ### 3.8 Create an account for a self-managed MySQL database and configure binary logging
 
@@ -4746,7 +4971,11 @@ in the self-managed MySQL database:
 CREATE USER 'username'@'host' IDENTIFIED BY 'password';
 ```
 
-username: the account to be created. host: the host from which the account can be used to log on to the database. If you set this parameter to a percent sign (%), the account can be used to log on to the database from all hosts. password: the password of the account. For example, you can execute the following statement to create an account named dtsmigration. The password is Dts123456. The account is allowed to log on to the database from all hosts.
+> **Note:** username: the account to be created.
+> host: the host from which the account can be used to log on to the database. If you set this parameter to a percent sign (%), the account can be used to log on to the database from all hosts.
+> password: the password of the account.
+
+For example, you can execute the following statement to create an account named dtsmigration. The password is Dts123456. The account is allowed to log on to the database from all hosts.
 
 ```
 CREATE USER 'dtsmigration'@'%' IDENTIFIED BY 'Dts123456';
@@ -4765,7 +4994,14 @@ Execute the following statement to grant the account the permissions to create d
 GRANT CREATE ON *.* TO 'username'@'host' WITH GRANT OPTION;
 ```
 
-privileges: the operation permissions to be granted to the account, such as SELECT, INSERT, and UPDATE. To grant all permissions to the account, set this parameter to ALL. databasename: the name of the self-managed MySQL database. To grant the operation permissions of all databases to the account, set this parameter to an asterisk (*). tablename: the name of the table whose data you want to migrate. To grant the operation permissions of all tables to the account, set this parameter to an asterisk (*). username: the account to which you want to grant permissions. host: the host from which the account is allowed to log on to the database. If you set this parameter to a percent sign (%), the account is allowed to log on to the database from all hosts. WITH GRANT OPTION: grants the account the permission to run the GRANT command. This parameter is optional. For example, you can execute the following statement to grant all permissions on databases and tables to the dtsmigration account, and allow the account to log on to the database from all hosts.
+> **Note:** privileges: the operation permissions to be granted to the account, such as SELECT, INSERT, and UPDATE. To grant all permissions to the account, set this parameter to ALL.
+> databasename: the name of the self-managed MySQL database. To grant the operation permissions of all databases to the account, set this parameter to an asterisk (*).
+> tablename: the name of the table whose data you want to migrate. To grant the operation permissions of all tables to the account, set this parameter to an asterisk (*).
+> username: the account to which you want to grant permissions.
+> host: the host from which the account is allowed to log on to the database. If you set this parameter to a percent sign (%), the account is allowed to log on to the database from all hosts.
+> WITH GRANT OPTION: grants the account the permission to run the GRANT command. This parameter is optional.
+
+For example, you can execute the following statement to grant all permissions on databases and tables to the dtsmigration account, and allow the account to log on to the database from all hosts.
 
 ```
 GRANT ALL ON *.* TO 'dtsmigration'@'%';
@@ -4784,13 +5020,17 @@ b. Run the following commands to restart the MySQL process:
 /etc/init.d/mysqld restart
 ```
 
-You can run other commands or use other methods to restart MySQL. For Windows systems, perform the following steps: a. Run the following commands to modify the parameters in the my.cnf configuration file:
+> **Note:** You can run other commands or use other methods to restart MySQL.
+
+For Windows systems, perform the following steps: a. Run the following commands to modify the parameters in the my.cnf configuration file:
 
 ```
 log_bin=mysql_bin binlog_format=row server_id=2 # Set this parameter to an integer greater than 1. binlog_row_image=full # You must set this parameter if the version of the self-ma naged MySQL database is later than 5.6.
 ```
 
-b. Restart the MySQL service. You can restart the MySQL service by using the Windows service manager or by running the following commands:
+b. Restart the MySQL service.
+
+> **Note:** You can restart the MySQL service by using the Windows service manager or by running the following commands:
 
 ```
 net stop mysql net start mysql
@@ -4804,9 +5044,8 @@ net stop mysql net start mysql
 
 This topic describes how to enable logging and grant fine-grained permissions to an Oracle database account.
 
-**Important**
+> **Important:** If you need to migrate incremental data from an Oracle database but the database administrator (DBA) permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 
-If you need to migrate incremental data from an Oracle database but the database administrator (DBA) permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 1. Enable archive logging and supplemental logging.
 
 | Log type | Procedure |
@@ -4915,13 +5154,15 @@ i. Search for the RAM role that you created, and then click the name of the RAM 
 4. Click the level-1 organization to which the database instance belongs.
 5. Click **Management Accesskey** on the right side of the page.
 6. To the right of the **UID** in the **Management AccessKey** dialog box, check the Apsara
-Stack account of the database instance. You need to specify the ID of this Apsara Stack account when you configure crossaccount tasks.
+Stack account of the database instance.
+
+> **Note:** You need to specify the ID of this Apsara Stack account when you configure cross- account tasks.
 
 **Complete permission policy**
 
-Each `{ "Action": [****], "Resource": "*", "Effect": "Allow"}` represents a complete policy content for a specific database type. You can copy the relevant policy content into
-**Policy Content** of the RAM role based on your business requirements. If you have any
-questions when you configure permission policies, contact Apsara Stack technical support. `{` `"V` `i` `"`
+> **Note:** Each `{ "Action": [****], "Resource": "*", "Effect": "Allow"}` represents a complete policy content for a specific database type. You can copy the relevant policy content into **Policy Content** of the RAM role based on your business requirements. If you have any questions when you configure permission policies, contact Apsara Stack technical support.
+
+`{` `"V` `i` `"`
 
 ```
 "1"
@@ -5382,7 +5623,8 @@ Before you configure a task to track data changes, you must create a change trac
 | Source Region | The region in which the source database resides. Note You cannot change the value of this parameter after you purchase the change tracking instance. Exercise caution when you configure this parameter. |
 | Quantity | The number of change tracking instances that you want to create at a time. |
 
-In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+> **Note:** In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+
 5. Click **Create**.
 6. In the message that appears, click **OK**.
 
@@ -5451,9 +5693,9 @@ Actions column.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 Wait until the change tracking task is started. You can add consumer groups and consume the tracked data only after the task is in the **Normal** state.
 
@@ -5520,9 +5762,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 Wait until the change tracking task is started. You can add consumer groups and consume the tracked data only after the task is in the **Normal** state.
 
@@ -5540,7 +5782,9 @@ A PolarDB-X 2.0 instance and a database have been created.
 
 **Source database limits**
 
-The tables that you want to track must have primary keys or UNIQUE constraints to ensure that each row can be uniquely identified. Otherwise, duplicate data may be tracked. If you track objects at the table level, a single change tracking task supports a maximum of 500 tables. If you exceed this limit, an error is reported after you submit the task. In this case, you can split the tables into multiple change tracking tasks or configure a task to track the entire database. Binary logs: Binary logging must be enabled, and the **binlog_row_image** parameter in the storage layer must be set to **full**. Otherwise, the precheck fails, and the change tracking task cannot be started. DTS requires that local binary logs in the source database are retained for more than 24 hours. Otherwise, the DTS task may fail because DTS cannot retrieve the binary logs. In extreme cases, this can cause data inconsistency or data loss. The DTS Service-Level Agreement (SLA) does not cover issues caused by a binary log retention period that is shorter than the required period. If the source instance is a read-only instance or a temporary instance, ensure that the instance has logs that record transactions. PolarDB-X 2.0 Enterprise Edition read-only instances are not currently supported as the source database.
+The tables that you want to track must have primary keys or UNIQUE constraints to ensure that each row can be uniquely identified. Otherwise, duplicate data may be tracked. If you track objects at the table level, a single change tracking task supports a maximum of 500 tables. If you exceed this limit, an error is reported after you submit the task. In this case, you can split the tables into multiple change tracking tasks or configure a task to track the entire database. Binary logs: Binary logging must be enabled, and the **binlog_row_image** parameter in the storage layer must be set to **full**. Otherwise, the precheck fails, and the change tracking task cannot be started. DTS requires that local binary logs in the source database are retained for more than 24 hours. Otherwise, the DTS task may fail because DTS cannot retrieve the binary logs. In extreme cases, this can cause data inconsistency or data loss. The DTS Service-Level Agreement (SLA) does not cover issues caused by a binary log retention period that is shorter than the required period. If the source instance is a read-only instance or a temporary instance, ensure that the instance has logs that record transactions.
+
+> **Note:** PolarDB-X 2.0 Enterprise Edition read-only instances are not currently supported as the source database.
 
 **Other limits**
 
@@ -5594,9 +5838,9 @@ Actions column.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 Wait until the change tracking task is started. You can add consumer groups and consume the tracked data only after the task is in the **Normal** state.
 
@@ -5642,7 +5886,10 @@ Actions column.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the data change types and objects.
 
 | Parame ter | Description |
@@ -5664,9 +5911,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
 Wait until the change tracking task is started. You can add consumer groups and consume the tracked data only after the task is in the **Normal** state.
 
@@ -5688,9 +5935,8 @@ Add the objects for change tracking In the **Source Objects** section, select on
 5. In the lower part of the page, click **Next: Advanced Settings**.
 6. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
-
-Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
+> **Important:** Before you can start the change tracking task, a precheck is performed. You can start the change tracking task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
 #### 4.4.2 Add consumer groups
 
@@ -5740,11 +5986,18 @@ click the task ID.
 
 **Modify the password**
 
-i. On the **Consume Data** page, find the consumer group that you want to manage and click **Change Password** in the **Actions** column. ii. In the **Add Consumer Group** dialog box, enter a new password and confirm the password. The password must contain at least two of the following character types: uppercase letters, lowercase letters, and digits. The password must be 8 to 32 characters in length. iii. Click **OK**.
+i. On the **Consume Data** page, find the consumer group that you want to manage and click **Change Password** in the **Actions** column. ii. In the **Add Consumer Group** dialog box, enter a new password and confirm the password.
+
+> **Note:** The password must contain at least two of the following character types: uppercase letters, lowercase letters, and digits.
+> The password must be 8 to 32 characters in length.
+
+iii. Click **OK**.
 
 **Delete a consumer group**
 
-After a consumer group is deleted, the data in the group is cleared and cannot be recovered. Proceed with caution. i. On the **Consume Data** page, find the consumer group that you want to delete and click
+> **Note:** After a consumer group is deleted, the data in the group is cleared and cannot be recovered. Proceed with caution.
+
+i. On the **Consume Data** page, find the consumer group that you want to delete and click
 **Delete** in the **Actions** column.
 ii. In the message that appears, click **OK**.
 
@@ -5800,7 +6053,7 @@ The `void notify(List<ClusterMessage> arg0)` method specifies the consumption mo
 
 **Methods of the ClusterMessage class**
 
-Each ClusterMessage object stores the data record of a transaction. Each data record in the transaction is stored by using a Record object.
+> **Note:** Each ClusterMessage object stores the data record of a transaction. Each data record in the transaction is stored by using a Record object.
 
 | Method | Description |
 |---|---|
@@ -6187,7 +6440,15 @@ A change tracking instance is created. For more information, see Track data chan
 
 **Precautions**
 
-If you enable auto commit when you use the change tracking feature, some data may be committed before it is consumed. This results in data loss. We recommend that you manually commit data. If data fails to be committed due to a fault, you can restart the client to continue consuming data from the last recorded consumer offset. However, duplicate data may be generated during this period. You must manually filter out the duplicate data. Data is serialized and stored in the Avro format. For more information, see Record.avsc. If the client that you use is not a Kafka client, you must parse the tracked data based on the Avro schema. Regarding the `offsetFotTimes` interface, the search unit of DTS is seconds, and the search unit of native Kafka is milliseconds.
+If you enable auto commit when you use the change tracking feature, some data may be committed before it is consumed. This results in data loss. We recommend that you manually commit data.
+
+> **Note:** If data fails to be committed due to a fault, you can restart the client to continue consuming data from the last recorded consumer offset. However, duplicate data may be generated during this period. You must manually filter out the duplicate data.
+
+Data is serialized and stored in the Avro format. For more information, see Record.avsc.
+
+> **Note:** If the client that you use is not a Kafka client, you must parse the tracked data based on the Avro schema.
+
+Regarding the `offsetFotTimes` interface, the search unit of DTS is seconds, and the search unit of native Kafka is milliseconds.
 
 **Download and run the demo code of the Kafka client**
 
@@ -6231,7 +6492,8 @@ client, and double-click the file. The file name is NotifyDemo.java.
 | USE CONFIG CHE _ _ CKPOINT NAME _ | Specifies whether to force the client to consume data from the specified consumption checkpoint. Default value: true. You can set this parameter to true to prevent the data that is received but not processed from being lost. | N/A |
 
 7. In the top navigation bar of IntelliJ IDEA, choose **Run > Run** to run the client.
-When you run IntelliJ IDEA for the first time, it loads and installs the relevant dependency.
+
+> **Note:** When you run IntelliJ IDEA for the first time, it loads and installs the relevant dependency.
 
 **Execution result**
 
@@ -6427,7 +6689,8 @@ Before you configure a task to synchronize data, you must create a data synchron
 | Synchronization Topology | The synchronization topology of the data synchronization instance. For more information about the supported synchronization topologies, see Supported databases, initial synchronization types, and synchronization topologies. |
 | Quantity | The number of data synchronization instances that you want to create at a time. |
 
-In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+> **Note:** In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
+
 5. Click **Purchase Instance**.
 6. In the message that appears, click **OK**.
 
@@ -6567,7 +6830,9 @@ DTS supports one-way synchronization and two-way synchronization. For more infor
 **Procedure**
 
 1. Create a data synchronization task.
-When you create a data synchronization task, select **MySQL** as the source and destination database types and **One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create a data synchronization task, select **MySQL** as the source and destination database types and **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task**.
 3. Configure the source and destination databases
@@ -6624,9 +6889,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** displays 100% and then click **Back**.
 
 #### 5.5.2 Synchronize data from an ApsaraDB RDS for MySQL instance to a MaxCompute project
@@ -6690,7 +6955,9 @@ For a DELETE operation, the column values that follow an incremental log entry a
 
 This section describes how to configure a data synchronization task to synchronize data from an ApsaraDB RDS for MySQL instance to a MaxCompute project in real time.
 1. Create a data synchronization instance.
-When you create a data synchronization task, set the **Source Database Type** parameter to **MySQL**, the **Destination Database type** parameter to **MaxCompute**, and the **Synchronization Topology** parameter to **One-way Synchronization**.
+
+> **Note:** When you create a data synchronization task, set the **Source Database Type** parameter to **MySQL**, the **Destination Database type** parameter to **MaxCompute**, and the **Synchronization Topology** parameter to **One-way Synchronization**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -6746,9 +7013,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Save Task Settings and Precheck** .
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
 
 **Merge a full baseline table and an incremental data table**
@@ -6819,7 +7086,9 @@ The tables that you want to synchronize from the ApsaraDB RDS for MySQL instance
 
 **SQL operations that can be synchronized**
 
-DDL operations: CREATE TABLE, DROP TABLE, RENAME TABLE, TRUNCATE TABLE, ADD COLUMN, and DROP COLUMN DML operations: INSERT, UPDATE, and DELETE We recommend that you do not change the data type of fields in the source table during data synchronization. Otherwise, DTS generates an error message and stops the data synchronization task.
+DDL operations: CREATE TABLE, DROP TABLE, RENAME TABLE, TRUNCATE TABLE, ADD COLUMN, and DROP COLUMN DML operations: INSERT, UPDATE, and DELETE
+
+> **Note:** We recommend that you do not change the data type of fields in the source table during data synchronization. Otherwise, DTS generates an error message and stops the data synchronization task.
 
 **Data type mappings**
 
@@ -6873,8 +7142,9 @@ The data types of ApsaraDB RDS for MySQL and AnalyticDB for MySQL do not have on
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create a data synchronization instance, select **MySQL** as the source database type, **AnalyticDB MySQL 3.0** as the destination database type, and
-**One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create a data synchronization instance, select **MySQL** as the source database type, **AnalyticDB MySQL 3.0** as the destination database type, and **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -6927,14 +7197,15 @@ click **Configure Task** in the Actions column.
 | Configure ETL | Specifies whether to configure the extract, transform, and load (ETL) feature. Yes: configures the ETL feature. You can enter data processing statements in the code editor. For more information, see Configure ETL in a data synchronization task. No: does not configure the ETL feature. |
 
 7. **Optional:**Click **Next: Configure Database and Table Fields** and specify a type for the
-tables that you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**,
-**primary key column**, and **distribution key** for the tables that you want to
-synchronize to the destination AnalyticDB for MySQL cluster.
+tables that you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key column**, and **distribution key** for the tables that you want to synchronize to the destination AnalyticDB for MySQL cluster.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.4 Synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for PostgreSQL instance
@@ -6980,8 +7251,9 @@ You must create a database, schema, or table in the destination AnalyticDB for P
 **Configure a data synchronization task**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **MySQL** as the source database type, **AnalyticDB for PostgreSQL** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization task, select **MySQL** as the source database type, **AnalyticDB for PostgreSQL** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination instances.
@@ -7035,14 +7307,15 @@ describes the parameters.
 |---|---|
 
 7. **(Optional)** Click **Next: Configure Database and Table Fields** . Configure the tables that
-you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**, **primary key**
-**column**, and **distribution key** information for the tables that you want to migrate to
-the AnalyticDB for PostgreSQL instance.
+you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key** **column**, and **distribution key** information for the tables that you want to migrate to the AnalyticDB for PostgreSQL instance.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.5 Synchronize data from an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster
@@ -7075,8 +7348,9 @@ DML operations: INSERT, UPDATE, and DELETE
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **MySQL** as the source database type, **PolarDB for MySQL** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization instance, select **MySQL** as the source database type, **PolarDB for MySQL** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases
@@ -7111,7 +7385,9 @@ click **Configure Task** in the Actions column.
 5. If an IP address whitelist is configured for your local disk-based PolarDB for MySQL cluster,
 you must add the CIDR blocks of DTS servers to the whitelist. Then, click **Test**
 **Connectivity and Proceed**.
-If no whitelist is configured for your local disk-based PolarDB for MySQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your local disk-based PolarDB for MySQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the synchronization policy and the objects to be synchronized.
 
 | Parameter | Description |
@@ -7136,9 +7412,9 @@ If no whitelist is configured for your local disk-based PolarDB for MySQL cluste
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.6 Synchronize data from an ApsaraDB RDS for MySQL instance to a PolarDB-X 2.0 instance
@@ -7177,8 +7453,9 @@ The destination PolarDB-X 2.0 instance that is compatible with MySQL 5.7 is crea
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **MySQL** as the **source**
-**database type** and **PolarDB-X 2.0** as the **destination database type**.
+
+> **Note:** When you create the data synchronization instance, select **MySQL** as the **source** **database type** and **PolarDB-X 2.0** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases
@@ -7229,9 +7506,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.7 Synchronize data from a PolarDB for MySQL source
@@ -7269,9 +7546,9 @@ The destination PolarDB for MySQL Primary/Standby Edition cluster is created. Th
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **PolarDB for MySQL** as the
-**source database type**, **PolarDB for MySQL** as the **destination database type**,
-and **One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization instance, select **PolarDB for MySQL** as the **source database type**, **PolarDB for MySQL** as the **destination database type**, and **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -7300,7 +7577,10 @@ click **Configure Task** in the Actions column.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If IP address whitelists are configured for your source and destination PolarDB for MySQL
-clusters, you must add the CIDR blocks of DTS servers to the whitelists of the clusters. Then, click **Test Connectivity and Proceed**. If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+clusters, you must add the CIDR blocks of DTS servers to the whitelists of the clusters. Then, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Configure the synchronization policy and the objects to be synchronized. The following
 table describes the parameters.
 
@@ -7328,9 +7608,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 ##### 5.5.7.2 Synchronize data from a PolarDB for MySQL cluster to an ApsaraDB RDS for MySQL instance
@@ -7347,7 +7627,8 @@ The source PolarDB for MySQL cluster is created. The available storage capacity 
 
 **Usage notes**
 
-During schema synchronization, DTS synchronizes foreign keys from the source database to the destination database. During full synchronization and incremental synchronization, DTS temporarily disables checking of foreign key constraints and foreign key cascade operations at the session level. If you perform the cascade update and delete operations on the source database during data synchronization, data inconsistency may occur.
+> **Note:** During schema synchronization, DTS synchronizes foreign keys from the source database to the destination database.
+> During full synchronization and incremental synchronization, DTS temporarily disables checking of foreign key constraints and foreign key cascade operations at the session level. If you perform the cascade update and delete operations on the source database during data synchronization, data inconsistency may occur.
 
 | Category | Description |
 |---|---|
@@ -7375,8 +7656,9 @@ During schema synchronization, DTS synchronizes foreign keys from the source dat
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization task, select **PolarDB for MySQL** as the
-**source database type** and **MySQL** as the **destination database type**.
+
+> **Note:** When you create the data synchronization task, select **PolarDB for MySQL** as the **source database type** and **MySQL** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination database. The following table describes the
@@ -7409,8 +7691,9 @@ parameters.
 |   | Encryption | Specifies whether to encrypt the connection to the destination database. Select Non-encrypted or SSL-encrypted based on your business requirements. If you select SSL-encrypted, you must enable SSL encryption for the ApsaraDB RDS instance before you configure the data synchronization task. |
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
-If a whitelist is configured for your self-managed MySQL database, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist. Then, click **Text**
-**Connectivity and Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed MySQL database, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist. Then, click **Text** **Connectivity and Proceed**.
+
 5. Configure objects for the task.
 
 | Parameter | Description |
@@ -7438,9 +7721,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 ##### 5.5.7.3 Synchronize data from a PolarDB for MySQL cluster to a PolarDB-X V2.0 instance
@@ -7470,8 +7753,9 @@ The destination PolarDB-X V2.0 instance that is compatible with MySQL 5.7 is cre
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **PolarDB for MySQL** as the
-**source database type** and **PolarDB-X 2.0** as the **destination database type**.
+
+> **Note:** When you create the data synchronization instance, select **PolarDB for MySQL** as the **source database type** and **PolarDB-X 2.0** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases
@@ -7522,9 +7806,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 ##### 5.5.7.4 Synchronize data from a PolarDB for MySQL cluster to a self-managed Kafka cluster
@@ -7558,8 +7842,9 @@ The destination Kafka cluster is created and the Kafka version is 0.10 to 2.7. A
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data migration task, select **PolarDB for MySQL** as the **source**
-**database type** and **Kafka** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **PolarDB for MySQL** as the **source** **database type** and **Kafka** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -7597,7 +7882,10 @@ parameters.
 |---|---|---|
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
-If a whitelist is configured for your self-managed Kafka cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed Kafka cluster. Then, click **Text Connectivity and Proceed**. If you do not need to configure a whitelist for your self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed Kafka cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed Kafka cluster. Then, click **Text Connectivity and Proceed**.
+> If you do not need to configure a whitelist for your self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 5. Configure the synchronization policy and the objects to be synchronized. The following
 table describes the parameters.
 
@@ -7627,9 +7915,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.8 Synchronize data between ApsaraDB RDS for PostgreSQL instances
@@ -7640,7 +7928,11 @@ This topic describes how to synchronize data between ApsaraDB RDS for PostgreSQL
 
 **Prerequisites**
 
-The source and destination ApsaraDB RDS for PostgreSQL instances are created. To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. Otherwise, compatibility issues may occur. The available storage space of the destination ApsaraDB RDS for PostgreSQL instance is larger than the total size of the data in the source ApsaraDB RDS for PostgreSQL instance.
+The source and destination ApsaraDB RDS for PostgreSQL instances are created.
+
+> **Note:** To ensure compatibility, the version of the destination database must be the same as or later than that of the source database. Otherwise, compatibility issues may occur.
+
+The available storage space of the destination ApsaraDB RDS for PostgreSQL instance is larger than the total size of the data in the source ApsaraDB RDS for PostgreSQL instance.
 
 **Limits**
 
@@ -7684,14 +7976,14 @@ Before you synchronize data from an ApsaraDB RDS for PostgreSQL instance, you mu
 **Parameters**. Find the **wal_level** parameter and change the value of this parameter to
 logical.
 
-**Warning**
-
-After you change the value of the `wal_level` parameter, you must restart the instance to apply the change. We recommend that you evaluate the impact on your business and modify the parameter during off-peak hours.
+> **Warning:** After you change the value of the `wal_level` parameter, you must restart the instance to apply the change. We recommend that you evaluate the impact on your business and modify the parameter during off-peak hours.
 
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **PostgreSQL** as the source and destination database types and select **One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization instance, select **PostgreSQL** as the source and destination database types and select **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -7744,9 +8036,9 @@ parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.9 Synchronize data from an ApsaraDB RDS for PostgreSQL instance to a PolarDB for PostgreSQL cluster
@@ -7778,8 +8070,9 @@ The destination PolarDB for PostgreSQL cluster is created. The available storage
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **PostgreSQL** as the **source**
-**database type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
+> **Note:** When you create the data synchronization instance, select **PostgreSQL** as the **source** **database type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -7811,7 +8104,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. **Optional**: If a whitelist is configured for the self-managed PostgreSQL database, add the
-CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the database. Then, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the database. Then, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be synchronized and the synchronization types. The following table
 describes the parameters.
 
@@ -7836,9 +8132,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.10 Synchronize data from a self-managed PostgreSQL database to an AnalyticDB for PostgreSQL instance
@@ -7881,8 +8177,9 @@ DTS does not synchronize the schemas of the objects to be synchronized from the 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization instance, select **PostgreSQL** as the source database type, **AnalyticDB for PostgreSQL** as the destination database type, and
-**One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization instance, select **PostgreSQL** as the source database type, **AnalyticDB for PostgreSQL** as the destination database type, and **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination instances.
@@ -7910,7 +8207,10 @@ click **Configure Task** in the Actions column.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for the self-managed PostgreSQL database, add the CIDR blocks
-of DTS servers that are displayed in the dialog box to the whitelist of the database. After the whitelist is configured, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+of DTS servers that are displayed in the dialog box to the whitelist of the database. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for the self-managed PostgreSQL database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 6. Configure the synchronization policy and the objects to be synchronized. The following
 table describes the parameters.
 
@@ -7936,14 +8236,15 @@ describes the parameters.
 | Configure ETL | The extract, transform, and load (ETL) feature cannot be enabled for this data synchronization task. Select No. |
 
 8. **Optional:**Click **Next: Configure Database and Table Fields** to specify a type for the
-tables that you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**,
-**primary key column**, and **distribution key** information for the tables that you want
-to synchronize to the AnalyticDB for PostgreSQL instance.
+tables that you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key column**, and **distribution key** information for the tables that you want to synchronize to the AnalyticDB for PostgreSQL instance.
+
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.11 Synchronize data between PolarDB for PostgreSQL clusters
@@ -7973,8 +8274,9 @@ A destination PolarDB for PostgreSQL cluster is created. The available storage s
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization instance, set both the **source database**
-**type** and the **destination database type** to **PolarDB for PostgreSQL**.
+
+> **Note:** When you create the data synchronization instance, set both the **source database** **type** and the **destination database type** to **PolarDB for PostgreSQL**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8031,9 +8333,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.12 Synchronize data from an ApsaraDB RDS for SQL Server database to a DataHub instance
@@ -8059,7 +8361,9 @@ DataHub is activated and a project is created to receive the data to be synchron
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **SQLServer** as the source database type and **DataHub** as the destination database type.
+
+> **Note:** When you create the data synchronization instance, select **SQLServer** as the source database type and **DataHub** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8109,9 +8413,9 @@ parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.13 Synchronize data between PolarDB-X 1.0 instances
@@ -8157,8 +8461,9 @@ INSERT, UPDATE, and DELETE
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **PolarDB-X 1.0** as the source database type, **PolarDB-X 1.0** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 1.0** as the source database type, **PolarDB-X 1.0** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8208,9 +8513,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.14 Synchronize data from a PolarDB-X 1.0 instance to an AnalyticDB for MySQL V3.0 cluster
@@ -8223,9 +8528,7 @@ This topic describes how to synchronize data from a PolarDB-X 1.0 instance to an
 
 **Limits**
 
-**Warning**
-
-For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
+> **Warning:** For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
 
 | Category | Description |
 |---|---|
@@ -8295,7 +8598,9 @@ The data types of ApsaraDB RDS for MySQL and AnalyticDB for MySQL do not have on
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create a data synchronization instance, select **PolarDB-X 1.0** as the source database type, **AnalyticDB MySQL 3.0** as the destination database type, and **One-way Synchronization** as the synchronization topology.
+
+> **Note:** When you create a data synchronization instance, select **PolarDB-X 1.0** as the source database type, **AnalyticDB MySQL 3.0** as the destination database type, and **One-way Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases.
@@ -8347,14 +8652,15 @@ click **Configure Task** in the Actions column.
 | Configure ETL | Specifies whether to configure the extract, transform, and load (ETL) feature. Yes: configures the ETL feature. You can enter data processing statements in the code editor. For more information, see Configure ETL in a data synchronization task. No: does not configure the ETL feature. |
 
 7. **Optional:**Click **Next: Configure Database and Table Fields** and specify a type for the
-tables that you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**,
-**primary key column**, and **distribution key** for the tables that you want to
-synchronize to the destination AnalyticDB for MySQL cluster.
+tables that you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key column**, and **distribution key** for the tables that you want to synchronize to the destination AnalyticDB for MySQL cluster.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.15 Synchronize data from a PolarDB-X 1.0 instance to a DataHub project
@@ -8369,9 +8675,7 @@ A DataHub project is created to receive the synchronized data.
 
 **Usage notes**
 
-**Warning**
-
-For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
+> **Warning:** For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
 
 | Category | Description |
 |---|---|
@@ -8391,8 +8695,9 @@ INSERT, UPDATE, and DELETE
 **Procedure**
 
 1. Create a data synchronization task.
-When you create a data synchronization task, select **PolarDB-X 1.0** as the source database type, **DataHub** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create a data synchronization task, select **PolarDB-X 1.0** as the source database type, **DataHub** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8442,9 +8747,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.16 Synchronize data from a PolarDB-X 1.0 instance to a self-managed Kafka cluster
@@ -8459,9 +8764,7 @@ The destination Kafka cluster is created and the Kafka version is 0.10 to 2.7. A
 
 **Limits**
 
-**Warning**
-
-For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
+> **Warning:** For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X 1.0 instance, see Precautions and limits for synchronizing data between PolarDB-X instances.
 
 | Category | Description |
 |---|---|
@@ -8486,8 +8789,10 @@ During data synchronization, do not use tools such as pt-online-schema-change IN
 
 Data inconsistency between the source and destination databases may occur if data from other sources is written to the destination database during data
 1. Create a data synchronization instance.
-synchronization. When you create the data synchronization instance, select **PolarDB-X 1.0** as the
-**source database type** and **Kafka** as the **destination database type**.
+synchronization.
+
+> **Note:** When you create the data synchronization instance, select **PolarDB-X 1.0** as the **source database type** and **Kafka** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8519,8 +8824,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed MySQL database or self-managed Kafka
-cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed MySQL database or self-managed Kafka cluster. After the whitelist is configured, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for your self-managed MySQL database or self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity**
-**and Proceed**.
+cluster, add the CIDR blocks of DTS servers that are displayed in the dialog box to the whitelist of the self-managed MySQL database or self-managed Kafka cluster. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for your self-managed MySQL database or self-managed Kafka cluster, ignore the preceding settings and click **Test Connectivity** **and Proceed**.
+
 6. Select the synchronization policy and the objects to be synchronized.
 
 | Parameter | Description |
@@ -8546,9 +8853,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.17 Synchronize data from a self-managed Db2 for LUW database to an AnalyticDB for PostgreSQL instance
@@ -8586,7 +8893,9 @@ Create database accounts and grant permissions to the accounts. Self-managed Db2
 **Procedure**
 
 1. Create a data synchronization task.
-When you create a data synchronization instance, select **DB2 for LUW** as the source database type and **AnalyticDB PostgreSQL** as the destination database type.
+
+> **Note:** When you create a data synchronization instance, select **DB2 for LUW** as the source database type and **AnalyticDB PostgreSQL** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination instances.
@@ -8619,7 +8928,10 @@ click **Configure Task** in the Actions column.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Db2 for LUW database, you must add the
-CIDR blocks of DTS servers to the whitelist of the database. After the whitelist is configured, click **Test Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+CIDR blocks of DTS servers to the whitelist of the database. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+
 6. Configure the synchronization policy and the objects to be synchronized. The following
 table describes the parameters.
 
@@ -8645,14 +8957,15 @@ describes the parameters.
 | Configure ETL | Specifies whether to configure the extract, transform, and load (ETL) feature. Valid values: Yes: enables the ETL feature. You can enter data processing statements in the code editor. For more information, see Configure ETL in a data synchronization task. No: disables the ETL feature. |
 
 8. **Optional:**Click **Next: Configure Database and Table Fields** to specify a type for the
-tables that you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**,
-**primary key column**, and **distribution key** information for the tables that you want
-to synchronize to the AnalyticDB for PostgreSQL instance.
+tables that you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key column**, and **distribution key** information for the tables that you want to synchronize to the AnalyticDB for PostgreSQL instance.
+
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.18 Synchronize data from a self-managed Db2 for LUW database to a PolarDB for MySQL cluster
@@ -8690,8 +9003,9 @@ Create database accounts and grant permissions to the accounts. The account of t
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data migration task, select **DB2 LUW** as the **source database**
-**type** and **PolarDB for MySQL** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **DB2 LUW** as the **source database** **type** and **PolarDB for MySQL** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination database. The following table describes the
@@ -8722,7 +9036,10 @@ parameters.
 |   | Encryption | Specifies whether to encrypt the connection to the destination database. Configure this parameter based on your business requirements. |
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
-If a whitelist is configured for your self-managed Db2 for LUW database, you must click the DTS server IP address displayed in the pop-up message to add it to the whitelist of the database. Then, click **Text Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed Db2 for LUW database, you must click the DTS server IP address displayed in the pop-up message to add it to the whitelist of the database. Then, click **Text Connectivity and Proceed**.
+> If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+
 5. Configure objects for the task.
 
 | Parameter | Description |
@@ -8747,9 +9064,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.19 Synchronize data from a self-managed Db2 for LUW database to a PolarDB for PostgreSQL cluster
@@ -8789,8 +9106,9 @@ Create database accounts and grant permissions to the accounts. The account of t
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization task, select **DB2 for LUW** as the **source**
-**database type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
+> **Note:** When you create the data synchronization task, select **DB2 for LUW** as the **source** **database type** and **PolarDB for PostgreSQL** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination databases.
@@ -8821,7 +9139,10 @@ click **Configure Task** in the Actions column.
 |   | Encryption | Specifies whether to encrypt the connection to the destination database. Configure this parameter based on your business requirements. |
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
-If a whitelist is configured for your self-managed Db2 for LUW database, you must click the DTS server IP address displayed in the pop-up message to add it to the whitelist of the database. Then, click **Text Connectivity and Proceed**. If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+
+> **Note:** If a whitelist is configured for your self-managed Db2 for LUW database, you must click the DTS server IP address displayed in the pop-up message to add it to the whitelist of the database. Then, click **Text Connectivity and Proceed**.
+> If you do not need to configure a whitelist for the self-managed Db2 for LUW database, click **Test Connectivity and Proceed**.
+
 5. Configure objects for the task.
 
 | Parameter | Description |
@@ -8845,9 +9166,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.20 Synchronize data from a self-managed Oracle database to a DataHub project
@@ -8894,9 +9215,8 @@ INSERT, UPDATE, and DELETE
 
 **database account**
 
-**Important**
+> **Important:** If you need to synchronize data from an Oracle database but the DBA permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 
-If you need to synchronize data from an Oracle database but the DBA permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 1. Enable archive logging and supplemental logging.
 
 | Log type | Procedure |
@@ -8942,12 +9262,14 @@ Oracle 12c to 19c (non-tenant mode)
 count. create user rdsdt_dtsacct IDENTIFIED BY rdsdt_dtsacct; grant create session to rdsdt_dtsacct; grant connect to rdsdt_dtsacct; grant resource to rdsdt_dtsacct; grant select on V_$LOGMNR_LOGS to rdsdt_dtsacct; grant select on all_objects to rdsdt_dtsacct; grant select on all_tab_cols to rdsdt_dtsacct; grant select on dba_registry to rdsdt_dtsacct; grant select any table to rdsdt_dtsacct; grant select any transaction to rdsdt_dtsacct; -- v$log privileges grant select on v_$log to rdsdt_dtsacct; -- v$logfile privileges grant select on v_$logfile to rdsdt_dtsacct; -- v$archived_log privileges grant select on v_$archived_log to rdsdt_dtsacct; -- v$parameter privileges grant select on v_$parameter to rdsdt_dtsacct; -- v$database privileges grant select on v_$database to rdsdt_dtsacct; -- v$active_instances privileges grant select on v_$active_instances to rdsdt_dtsacct; -- v$instance privileges grant select on v_$instance to rdsdt_dtsacct; -- v$logmnr_contents privileges grant select on v_$logmnr_contents to rdsdt_dtsacct; grant select on sys.USER$ to rdsdt_dtsacct; grant select on SYS.OBJ$ to rdsdt_dtsacct; grant select on SYS.COL$ to rdsdt_dtsacct; grant select on SYS.IND$ to rdsdt_dtsacct; grant select on SYS.ICOL$ to rdsdt_dtsacct; grant select on SYS.CDEF$ to rdsdt_dtsacct; grant select on SYS.CCOL$ to rdsdt_dtsacct; grant select on SYS.TABPART$ to rdsdt_dtsacct; grant select on SYS.TABSUBPART$ to rdsdt_dtsacct; grant select on SYS.TABCOMPART$ to rdsdt_dtsacct; grant LOGMINING TO rdsdt_dtsacct; grant EXECUTE_CATALOG_ROLE to rdsdt_dtsacct; grant execute on sys.dbms_logmnr to rdsdt_dtsacct;
 ```
 
-To create a global account that starts with C## for a multitenant CDB$ROOT in Oracle 12c to 19c (tenant mode), you must contact the O&M engineers to modify some parameters.
+> **Note:** To create a global account that starts with C## for a multitenant CDB$ROOT in Oracle 12c to 19c (tenant mode), you must contact the O&M engineers to modify some parameters.
 
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **Oracle** as the source database type and **DataHub** as the destination database type.
+
+> **Note:** When you create the data synchronization instance, select **Oracle** as the source database type and **DataHub** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -8973,7 +9295,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Configure the synchronization policy and the objects to be synchronized. The following
 table describes the parameters.
 
@@ -9000,14 +9325,18 @@ table describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 **Schema of a DataHub topic**
 
-When DTS synchronizes incremental data to a DataHub topic, DTS adds additional columns to store metadata. The following figure shows the schema of a DataHub topic. In this example, `id` , `name` , and `address` are data fields. DTS adds the `dts_` prefix to data fields because the naming rules of the previous version for additional columns are used. The following table describes the additional columns in the DataHub topic.
+When DTS synchronizes incremental data to a DataHub topic, DTS adds additional columns to store metadata. The following figure shows the schema of a DataHub topic.
+
+> **Note:** In this example, `id` , `name` , and `address` are data fields. DTS adds the `dts_` prefix to data fields because the naming rules of the previous version for additional columns are used.
+
+The following table describes the additional columns in the DataHub topic.
 
 |   |   | Previous additional column name |   |   | New additional column name |   |   | Data type | Description |
 |---|---|---|---|---|---|---|---|---|---|
@@ -9088,9 +9417,8 @@ The engine version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c
 
 **database account**
 
-**Important**
+> **Important:** If you need to synchronize data from an Oracle database but the DBA permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 
-If you need to synchronize data from an Oracle database but the DBA permissions cannot be granted to the database account, you can enable archive logging and supplemental logging, and grant fine-grained permissions to the account.
 1. Enable archive logging and supplemental logging.
 
 | Log type | Procedure |
@@ -9136,13 +9464,15 @@ Oracle 12c to 19c (non-tenant mode)
 count. create user rdsdt_dtsacct IDENTIFIED BY rdsdt_dtsacct; grant create session to rdsdt_dtsacct; grant connect to rdsdt_dtsacct; grant resource to rdsdt_dtsacct; grant select on V_$LOGMNR_LOGS to rdsdt_dtsacct; grant select on all_objects to rdsdt_dtsacct; grant select on all_tab_cols to rdsdt_dtsacct; grant select on dba_registry to rdsdt_dtsacct; grant select any table to rdsdt_dtsacct; grant select any transaction to rdsdt_dtsacct; -- v$log privileges grant select on v_$log to rdsdt_dtsacct; -- v$logfile privileges grant select on v_$logfile to rdsdt_dtsacct; -- v$archived_log privileges grant select on v_$archived_log to rdsdt_dtsacct; -- v$parameter privileges grant select on v_$parameter to rdsdt_dtsacct; -- v$database privileges grant select on v_$database to rdsdt_dtsacct; -- v$active_instances privileges grant select on v_$active_instances to rdsdt_dtsacct; -- v$instance privileges grant select on v_$instance to rdsdt_dtsacct; -- v$logmnr_contents privileges grant select on v_$logmnr_contents to rdsdt_dtsacct; grant select on sys.USER$ to rdsdt_dtsacct; grant select on SYS.OBJ$ to rdsdt_dtsacct; grant select on SYS.COL$ to rdsdt_dtsacct; grant select on SYS.IND$ to rdsdt_dtsacct; grant select on SYS.ICOL$ to rdsdt_dtsacct; grant select on SYS.CDEF$ to rdsdt_dtsacct; grant select on SYS.CCOL$ to rdsdt_dtsacct; grant select on SYS.TABPART$ to rdsdt_dtsacct; grant select on SYS.TABSUBPART$ to rdsdt_dtsacct; grant select on SYS.TABCOMPART$ to rdsdt_dtsacct; grant LOGMINING TO rdsdt_dtsacct; grant EXECUTE_CATALOG_ROLE to rdsdt_dtsacct; grant execute on sys.dbms_logmnr to rdsdt_dtsacct;
 ```
 
-To create a global account that starts with C## for a multi-tenant CDB$ROOT in Oracle 12c to 19c (tenant mode), you must contact the O&M engineers to modify some parameters.
+> **Note:** To create a global account that starts with C## for a multi-tenant CDB$ROOT in Oracle 12c to 19c (tenant mode), you must contact the O&M engineers to modify some parameters.
 
 **Configure a data synchronization task**
 
 This section describes how to configure a data synchronization task to synchronize data from a self-managed Oracle database to a MaxCompute project in real time.
 1. Create a data synchronization instance.
-When you create the data synchronization instance, select **Oracle** as the source database type and **MaxCompute** as the destination database type.
+
+> **Note:** When you create the data synchronization instance, select **Oracle** as the source database type and **MaxCompute** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -9170,7 +9500,10 @@ parameters.
 
 4. In the lower part of the page, click **Test Connectivity and Proceed**.
 5. If a whitelist is configured for your self-managed Oracle database, add the CIDR blocks of
-DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**. If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+DTS servers that are displayed in the dialog box to the whitelist. After the whitelist is configured, click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your Oracle database, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Click **OK** to grant permissions to your MaxCompute account.
 7. Select the synchronization policy and the objects to be synchronized. The following table
 describes the parameters.
@@ -9200,9 +9533,9 @@ describes the parameters.
 
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.22 Synchronize data from a PolarDB for PostgreSQL (Compatible with Oracle) cluster to an AnalyticDB for MySQL 3.0 cluster
@@ -9228,12 +9561,16 @@ The tables to be migrated in the source PolarDB for PostgreSQL (Compatible with 
 
 **SQL operations that support data synchronization**
 
-INSERT, UPDATE, and DELETE When you write data to an AnalyticDB for MySQL 3.0 cluster, the UPDATE statement is automatically converted to the REPLACE INTO statement.
+INSERT, UPDATE, and DELETE
+
+> **Note:** When you write data to an AnalyticDB for MySQL 3.0 cluster, the UPDATE statement is automatically converted to the REPLACE INTO statement.
 
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization task, select **PolarDB for Oracle** as the source database type, and **AnalyticDB for MySQL 3.0** as the destination database type.
+
+> **Note:** When you create the data synchronization task, select **PolarDB for Oracle** as the source database type, and **AnalyticDB for MySQL 3.0** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination instances.
@@ -9289,14 +9626,15 @@ describes the parameters.
 | Configure ETL | The extract, transform, and load (ETL) feature cannot be enabled for this data migration task. Select No. |
 
 7. **(Optional)** Click **Next: Configure Database and Table Fields** . Configure the tables that
-you want to synchronize to the destination database. If you select **Schema Synchronization**, you must specify the **type**, **primary key**
-**column**, and **distribution key** for the tables that you want to synchronize to the
-destination AnalyticDB for MySQL cluster.
+you want to synchronize to the destination database.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key** **column**, and **distribution key** for the tables that you want to synchronize to the destination AnalyticDB for MySQL cluster.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.23 Synchronize data between Tair (Redis OSS-compatible) instances
@@ -9333,13 +9671,16 @@ The available storage space of the destination Tair (Redis OSS-compatible) insta
 | Tair (Redis OSS- compatible) Enhanced Edition | APPEND BITOP, BLPOP, BRPOP, and BRPOPLPUSH DECR, DECRBY, and DEL EVAL, EVALSHA, EXEC, EXPIRE, and EXPIREAT GEOADD and GETSET HDEL, HINCRBY, HINCRBYFLOAT, HMSET, HSET, and HSETNX INCR, INCRBY, and INCRBYFLOAT LINSERT, LPOP, LPUSH, LPUSHX, LREM, LSET, and LTRIM MOVE, MSET, MSETNX, and MULTI PERSIST, PEXPIRE, PEXPIREAT, PFADD, PFMERGE, and PSETEX RENAME, RENAMENX, RPOP, RPOPLPUSH, RPUSH, and RPUSHX SADD, SDIFFSTORE, SELECT, SET, SETBIT, SETEX, SETNX, SETRANGE, SINTERSTORE, SMOVE, SPOP, SREM, and SUNIONSTORE UNLINK, ZADD, ZINCRBY, ZINTERSTORE, ZREM, ZREMRANGEBYLEX, ZUNIONSTORE, ZREMRANGEBYRANK, and ZREMRANGEBYSCORE |
 |---|---|
 
-The `PUBLISH` command is not synchronized. For Lua scripts invoked with `EVAL` or `EVALSHA` , DTS cannot guarantee that the scripts are successfully executed on the destination during incremental data synchronization. This is because the destination does not explicitly return an execution result. For List data types, DTS does not clear existing data on the destination when retransmitting data with `sync` or `psync` . This may result in duplicate data.
+> **Note:** The `PUBLISH` command is not synchronized.
+> For Lua scripts invoked with `EVAL` or `EVALSHA` , DTS cannot guarantee that the scripts are successfully executed on the destination during incremental data synchronization. This is because the destination does not explicitly return an execution result.
+> For List data types, DTS does not clear existing data on the destination when retransmitting data with `sync` or `psync` . This may result in duplicate data.
 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create a data synchronization task, select **Tair/Redis** as the source database type, **Redis** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create a data synchronization task, select **Tair/Redis** as the source database type, **Redis** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task**.
 3. Configure the source and the destination database. The following table describes the
@@ -9397,9 +9738,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100% and then click **Back**.
 
 #### 5.5.24 Synchronize data from a self-managed MongoDB database to an ApsaraDB for MongoDB instance
@@ -9437,7 +9778,10 @@ The version of the source MongoDB database is 3.0, 3.2, 3.4, 3.6, 4.0, or 4.2.
 
 **Preparation for a standalone MongoDB instance**
 
-If you need to synchronize incremental data from a standalone MongoDB instance, you must enable the oplog feature. A standalone MongoDB instance contains only a primary node. When you enable the oplog feature, the MongoDB service is restarted. We recommend that you perform this operation during off-peak hours.
+If you need to synchronize incremental data from a standalone MongoDB instance, you must enable the oplog feature. A standalone MongoDB instance contains only a primary node.
+
+> **Note:** When you enable the oplog feature, the MongoDB service is restarted. We recommend that you perform this operation during off-peak hours.
+
 1. Use Mongo Shell to connect to the source database.
 2. Run the following commands to shut down the MongoDB service:
 
@@ -9452,7 +9796,10 @@ set:
 mongod --port 27017 --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log - -replSet rs0 --bind_ip 0.0.0.0 --auth --fork
 ```
 
-The database path used by the preceding command is /var/lib/mongodb. The log file path is /var/log/mongodb/mongod.log. Specify the actual paths used by your business. The command uses `0.0.0.0` as the IP address associated with the MongoDB database. This allows you to access the database by using a random IP address. After the synchronization is complete, run the `kill` command to end the process. Then, start the MongoDB service by using the original configuration file. The command enables authentication. You can access the MongoDB database only after you pass the authentication.
+> **Note:** The database path used by the preceding command is /var/lib/mongodb. The log file path is /var/log/mongodb/mongod.log. Specify the actual paths used by your business.
+> The command uses `0.0.0.0` as the IP address associated with the MongoDB database. This allows you to access the database by using a random IP address. After the synchronization is complete, run the `kill` command to end the process. Then, start the MongoDB service by using the original configuration file.
+> The command enables authentication. You can access the MongoDB database only after you pass the authentication.
+
 4. Use Mongo Shell to connect to the source database again.
 5. Run the following commands to initialize the replica set:
 
@@ -9461,13 +9808,16 @@ use admin rs.initiate()
 ```
 
 6. Wait until the role of the current node changes to primary, which indicates that oplog is
-enabled. You can run the `rs.printReplicationInfo()` command to view the status of the oplog feature.
+enabled.
+
+> **Note:** You can run the `rs.printReplicationInfo()` command to view the status of the oplog feature.
 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization instance, select **MongoDB** as the source database type, **MongoDB** as the destination database type, and **One-way**
-**Synchronization** as the synchronization topology.
+
+> **Note:** When you create the data synchronization instance, select **MongoDB** as the source database type, **MongoDB** as the destination database type, and **One-way** **Synchronization** as the synchronization topology.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -9503,7 +9853,9 @@ parameters.
 5. If a whitelist is configured for your self-managed MongoDB database, add the CIDR blocks of
 DTS servers that are displayed in the dialog box to the whitelist of the self-managed MongoDB database. After the whitelist is configured, click **Test Connectivity and**
 **Proceed**.
-If you do not need to configure a whitelist for your self-managed MongoDB database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If you do not need to configure a whitelist for your self-managed MongoDB database, ignore the preceding settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be synchronized and the synchronization types. The following table
 describes the parameters.
 
@@ -9530,9 +9882,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100% and then click **Back**.
 
 #### 5.5.25 Synchronize data between ApsaraDB for MongoDB instances
@@ -9564,7 +9916,10 @@ This topic describes how to synchronize data between ApsaraDB for MongoDB instan
 
 **Preparation for a standalone MongoDB database**
 
-If you need to migrate incremental data from a standalone MongoDB database, you must enable the operation logging feature. A standalone MongoDB database contains only a primary node. If you do not need to perform incremental data migration, skip the following steps. When you enable the operation logging feature, the MongoDB service is restarted. We recommend that you perform this operation during off-peak hours.
+If you need to migrate incremental data from a standalone MongoDB database, you must enable the operation logging feature. A standalone MongoDB database contains only a primary node. If you do not need to perform incremental data migration, skip the following steps.
+
+> **Note:** When you enable the operation logging feature, the MongoDB service is restarted. We recommend that you perform this operation during off-peak hours.
+
 1. Use Mongo Shell to connect to the source database.
 2. Run the following commands to shut down the MongoDB service:
 
@@ -9579,7 +9934,10 @@ set:
 mongod --port 27017 --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log - -replSet rs0 --bind_ip 0.0.0.0 --auth --fork
 ```
 
-The database path used by the preceding command is /var/lib/mongodb. The log file path is /var/log/mongodb/mongod.log. You must specify the paths based on your business requirements. The command uses `0.0.0.0` as the associated IP address of the MongoDB service. This allows you to access the database by using a random IP address. After the migration is complete, run the `kill` command to end the process, and start the MongoDB service by using the original configuration file. The command enables authentication. You can access the database only after you pass the authentication.
+> **Note:** The database path used by the preceding command is /var/lib/mongodb. The log file path is /var/log/mongodb/mongod.log. You must specify the paths based on your business requirements.
+> The command uses `0.0.0.0` as the associated IP address of the MongoDB service. This allows you to access the database by using a random IP address. After the migration is complete, run the `kill` command to end the process, and start the MongoDB service by using the original configuration file.
+> The command enables authentication. You can access the database only after you pass the authentication.
+
 4. Use Mongo Shell to connect to the source database again.
 5. Run the following commands to initialize the replica set:
 
@@ -9588,12 +9946,16 @@ use admin rs.initiate()
 ```
 
 6. Wait until the role of the current node changes to primary. This indicates that the operation
-logging feature is enabled. You can run the `rs.printReplicationInfo()` command to view the status of the operation logging feature.
+logging feature is enabled.
+
+> **Note:** You can run the `rs.printReplicationInfo()` command to view the status of the operation logging feature.
 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization instance, set the Source Database Type parameter to **MongoDB**, the Destination Database Type parameter to **MongoDB**, and the Synchronization Topology parameter to **One-way Synchronization**.
+
+> **Note:** When you create the data synchronization instance, set the Source Database Type parameter to **MongoDB**, the Destination Database Type parameter to **MongoDB**, and the Synchronization Topology parameter to **One-way Synchronization**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task**.
 3. Configure the source and destination databases. The following table describes the
@@ -9651,9 +10013,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100% and then click **Back**.
 
 #### 5.5.26 Synchronize data from an ApsaraDB for MongoDB instance to a self-managed Kafka cluster
@@ -9689,8 +10051,9 @@ The destination Kafka cluster is created and the Kafka version is 0.10 to 2.7. A
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data migration task, select **MongoDB** as the **source database**
-**type** and **Kafka** as the **destination database type**.
+
+> **Note:** When you create the data migration task, select **MongoDB** as the **source database** **type** and **Kafka** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task**.
 3. Configure the source and destination databases. The following table describes the
@@ -9754,9 +10117,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** reaches 100% and then click **Back**.
 
 #### 5.5.27 Configure two-way data synchronization between ApsaraDB RDS for MySQL instances
@@ -9771,7 +10134,10 @@ DTS supports two-way real-time data synchronization between RDS instances on any
 
 ##### 5.5.27.2 Supported synchronization statements
 
-Two-way synchronization between ApsaraDB RDS for MySQL instances supports all DML updates (including INSERT, UPDATE, and DELETE) and the following DDL updates: ALTER TABLE, ALTER VIEW, ALTER FUNCTION, and ALTER PROCEDURE CREATE DATABASE, CREATE SCHEMA, CREATE INDEX, CREATE TABLE, CREATE PROCEDURE, CREATE FUNCTION, CREATE TRIGGER, CREATE VIEW, and CREATE EVENT DROP FUNCTION, DROP EVENT, DROP INDEX, DROP PROCEDURE, DROP TABLE, DROP TRIGGER, and DROP VIEW RENAME TABLE and TRUNCATE TABLE To ensure the stability of a two-way synchronization channel, you can synchronize DDL updates on the same table in only one direction. For example, for two-way synchronization, you must enable DDL synchronization in either the **A-to-B** or **B-to-A** direction. If DDL synchronization is configured in one direction, it is not supported in the reverse direction. You can only perform DML synchronization.
+Two-way synchronization between ApsaraDB RDS for MySQL instances supports all DML updates (including INSERT, UPDATE, and DELETE) and the following DDL updates: ALTER TABLE, ALTER VIEW, ALTER FUNCTION, and ALTER PROCEDURE CREATE DATABASE, CREATE SCHEMA, CREATE INDEX, CREATE TABLE, CREATE PROCEDURE, CREATE FUNCTION, CREATE TRIGGER, CREATE VIEW, and CREATE EVENT DROP FUNCTION, DROP EVENT, DROP INDEX, DROP PROCEDURE, DROP TABLE, DROP TRIGGER, and DROP VIEW RENAME TABLE and TRUNCATE TABLE
+
+> **Note:** To ensure the stability of a two-way synchronization channel, you can synchronize DDL updates on the same table in only one direction.
+> For example, for two-way synchronization, you must enable DDL synchronization in either the **A-to-B** or **B-to-A** direction. If DDL synchronization is configured in one direction, it is not supported in the reverse direction. You can only perform DML synchronization.
 
 ##### 5.5.27.3 Detect and resolve conflicts
 
@@ -9846,7 +10212,9 @@ configure parameters to create a data synchronization instance.
 4. After you configure the parameters, click **Purchase Instance**. In the message that
 appears, click **OK**. After you create a data synchronization instance, go back to the Data Synchronization page. The new data synchronization instance is in the Not Configured state and contains two data synchronization tasks. You can configure data synchronization tasks in the forward and reverse directions.
 5. Find the data synchronization task in the forward direction and click **Configure Task**.
-When you configure the data synchronization task in the forward direction, the data synchronization task in the reverse direction cannot be configured.
+
+> **Note:** When you configure the data synchronization task in the forward direction, the data synchronization task in the reverse direction cannot be configured.
+
 6. Configure the source and destination databases.
 
 | Category | Parameter | Description |
@@ -9874,7 +10242,10 @@ When you configure the data synchronization task in the forward direction, the d
 |   | Encryption | Specifies whether to encrypt the connection to the destination database. Select Non-encrypted or SSL-encrypted based on your business requirements. In this example, Non-encrypted is selected. |
 
 7. In the lower part of the page, click **Test Connectivity and Proceed**.
-DTS automatically adds the CIDR blocks of DTS servers in the source or destination region to the whitelist of the source or destination instance. After data synchronization is complete, we recommend that you remove the CIDR blocks of DTS servers from the whitelists.
+
+> **Note:** DTS automatically adds the CIDR blocks of DTS servers in the source or destination region to the whitelist of the source or destination instance.
+> After data synchronization is complete, we recommend that you remove the CIDR blocks of DTS servers from the whitelists.
+
 8. Select the processing mode of conflicting tables and the objects to be synchronized.
 
 | Parameter | Description |
@@ -9904,9 +10275,8 @@ DTS automatically adds the CIDR blocks of DTS servers in the source or destinati
 2. After the data synchronization task in the forward direction is initialized, you can configure
 the data synchronization task in the reverse direction. For more information about how to configure the task, see the preceding Steps 6 to 11.
 
-**Important**
+> **Important:** The source instance in the reverse direction corresponds to the destination instance in the forward direction. The destination instance in the reverse direction corresponds to the source instance in the forward direction. You must also make sure that the parameter settings such as the database name, account, and password are consistent.
 
-The source instance in the reverse direction corresponds to the destination instance in the forward direction. The destination instance in the reverse direction corresponds to the source instance in the forward direction. You must also make sure that the parameter settings such as the database name, account, and password are consistent.
 3. Wait until the two data synchronization tasks enter the **Running** state.
 
 #### 5.5.28 Synchronize data from a PolarDB-X 2.0 instance to a PolarDB-X 1.0 instance
@@ -9917,7 +10287,9 @@ This topic describes how to use Data Transmission Service (DTS) to synchronize d
 
 **Prerequisites**
 
-The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. A destination PolarDB-X 1.0 that has a larger storage space than the total size of the data to be synchronized from the source PolarDB-X 2.0 instance is created. Databases and tables are created in the destination PolarDB-X 1.0 instance to receive data. We recommend that you keep the names of the destination databases and tables the same as those of the source databases and tables on the PolarDB-X 2.0 instance. Otherwise, you must map the names of the databases, tables, and columns added to the **Selected Objects** list when you configure the synchronization task.
+The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. A destination PolarDB-X 1.0 that has a larger storage space than the total size of the data to be synchronized from the source PolarDB-X 2.0 instance is created. Databases and tables are created in the destination PolarDB-X 1.0 instance to receive data.
+
+> **Note:** We recommend that you keep the names of the destination databases and tables the same as those of the source databases and tables on the PolarDB-X 2.0 instance. Otherwise, you must map the names of the databases, tables, and columns added to the **Selected Objects** list when you configure the synchronization task.
 
 **Limits**
 
@@ -9945,8 +10317,9 @@ The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. A de
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **PolarDB-X 2.0** as the **source**
-**database type** and **PolarDB-X 1.0** as the **destination database type**.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 2.0** as the **source** **database type** and **PolarDB-X 1.0** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination database.
@@ -9997,9 +10370,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.29 Synchronize data between PolarDB-X 2.0 instances
@@ -10037,7 +10410,9 @@ The source and destination PolarDB-X 2.0 instances are created and compatible wi
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **PolarDB-X 2.0** as the source and destination database types.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 2.0** as the source and destination database types.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination database. The following table describes the
@@ -10090,9 +10465,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.30 Synchronize data from a PolarDB-X 2.0 instance to an ApsaraDB RDS for MySQL instance
@@ -10134,7 +10509,9 @@ The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. The 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization instance, select **PolarDB-X 2.0** as the source database type and **MySQL** as the destination database type.
+
+> **Note:** When you create the data synchronization instance, select **PolarDB-X 2.0** as the source database type and **MySQL** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -10190,9 +10567,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.31 Synchronize data from a PolarDB-X 2.0 instance to a PolarDB for MySQL cluster
@@ -10235,8 +10612,9 @@ The destination PolarDB for MySQL Primary/Standby Edition cluster is created. Th
 **Procedure**
 
 1. Create a data synchronization instance.
-When you create the data synchronization task, select **PolarDB-X 2.0** as the **source**
-**database type** and **PolarDB for MySQL** as the **destination database type**.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 2.0** as the **source** **database type** and **PolarDB for MySQL** as the **destination database type**.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and the destination database.
@@ -10294,9 +10672,9 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.32 Synchronize data from a PolarDB-X 2.0 instance to an AnalyticDB for PostgreSQL instance
@@ -10332,7 +10710,9 @@ The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. The 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **PolarDB-X 2.0** as the source database type and **AnalyticDB for PostgreSQL** as the destination database type.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 2.0** as the source database type and **AnalyticDB for PostgreSQL** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -10386,14 +10766,15 @@ describes the parameters.
 | Whether to delete SQL operations on heartbeat tables of forward and reverse tasks | Specifies whether to write SQL operations on heartbeat tables to the source database while the DTS instance is running. Yes: does not write SQL operations on heartbeat tables. In this case, a latency of the DTS instance may be displayed. No: writes SQL operations on heartbeat tables. In this case, specific features such as physical backup and cloning of the source database may be affected. |
 
 7. **Optional.** Click **Next: Configure Database and Table Fields** . Configure the tables that
-you want to synchronize to the destination AnalyticDB for PostgreSQL instance. If you select **Schema Synchronization**, you must specify the **type**, **primary key**
-**column**, and **distribution key** information for the tables that you want to synchronize
-to the AnalyticDB for PostgreSQL instance.
+you want to synchronize to the destination AnalyticDB for PostgreSQL instance.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key** **column**, and **distribution key** information for the tables that you want to synchronize to the AnalyticDB for PostgreSQL instance.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 #### 5.5.33 Synchronize data from a PolarDB-X 2.0 instance to an AnalyticDB for MySQL V3.0 cluster
@@ -10429,7 +10810,9 @@ The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. The 
 **Procedure**
 
 1. Create a data synchronization task.
-When you create the data synchronization task, select **PolarDB-X 2.0** as the source database type and **AnalyticDB for MySQL V3.0** as the destination database type.
+
+> **Note:** When you create the data synchronization task, select **PolarDB-X 2.0** as the source database type and **AnalyticDB for MySQL V3.0** as the destination database type.
+
 2. On the Data Synchronization page, find the data synchronization task that you created and
 click **Configure Task** in the Actions column.
 3. Configure the source and destination databases. The following table describes the
@@ -10486,14 +10869,15 @@ describes the parameters.
 | Whether to delete SQL operations on heartbeat tables of forward and reverse tasks | Specifies whether to write SQL operations on heartbeat tables to the source database while the DTS instance is running. Yes: does not write SQL operations on heartbeat tables. In this case, a latency of the DTS instance may be displayed. No: writes SQL operations on heartbeat tables. In this case, specific features such as physical backup and cloning of the source database may be affected. |
 
 7. **Optional.** Click **Next: Configure Database and Table Fields** . Configure the tables that
-you want to synchronize to the destination AnalyticDB for MySQL V3.0 cluster. If you select **Schema Synchronization**, you must specify the **type**, **primary key**
-**column**, and **distribution key** information for the tables that you want to synchronize
-to the AnalyticDB for MySQL V3.0 cluster.
+you want to synchronize to the destination AnalyticDB for MySQL V3.0 cluster.
+
+> **Note:** If you select **Schema Synchronization**, you must specify the **type**, **primary key** **column**, and **distribution key** information for the tables that you want to synchronize to the AnalyticDB for MySQL V3.0 cluster.
+
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, a precheck is performed. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until the success rate becomes 100%. Then, click **Back**.
 
 ### 5.6 Manage data synchronization instances
@@ -10538,19 +10922,25 @@ By default, after an object (such as a database or table) is synchronized from t
 
 **Usage notes**
 
-You can rename an object only in the **Configure Objects and Advanced Settings** step when you configure a data synchronization task. We recommend that you do not rename objects after the data synchronization task is started. Otherwise, the task may fail.
+You can rename an object only in the **Configure Objects and Advanced Settings** step when you configure a data synchronization task.
+
+> **Note:** We recommend that you do not rename objects after the data synchronization task is started. Otherwise, the task may fail.
 
 **Procedure**
 
-The images in the following example are used for reference only. The actual interface may vary based on the configurations of your instance.
+> **Note:** The images in the following example are used for reference only. The actual interface may vary based on the configurations of your instance.
+
 1. In the **Configure Objects and Advanced Settings** step, move a database or table that
-you want to manage to the **Selected Objects** section, and then right-click the database or table. If the source and destination databases are self-managed MySQL databases, ApsaraDB RDS for MySQL databases, or PolarDB for MySQL databases, you can specify the DDL and DML statements that you want to synchronize when you perform database name mapping or table name mapping. If you select different statements for database name mapping and table name mapping, the statements that are selected for table name mapping prevail.
+you want to manage to the **Selected Objects** section, and then right-click the database or table.
+
+> **Note:** If the source and destination databases are self-managed MySQL databases, ApsaraDB RDS for MySQL databases, or PolarDB for MySQL databases, you can specify the DDL and DML statements that you want to synchronize when you perform database name mapping or table name mapping.
+> If you select different statements for database name mapping and table name mapping, the statements that are selected for table name mapping prevail.
+
 2. In the dialog box that appears, specify a name for the object in the destination instance.
 Database name or schema mapping In the **Edit Schema** dialog box, set the database name that you want to use in the destination instance. Table name mapping In the **Edit Table Name** dialog box, set the table name that you want to use in the destination instance. Column name mapping In the **Edit Table Name** dialog box, set the column names that you want to use in the destination instance. You can clear the columns that do not need to be synchronized.
 
-**Important**
+> **Important:** To clear the columns that do not need to be migrated, you must clear **Synchronize All Tables**.
 
-To clear the columns that do not need to be migrated, you must clear **Synchronize All Tables**.
 3. Click **OK**.
 4. Configure other parameters that are required for the data synchronization task as
 prompted.
@@ -10608,15 +10998,19 @@ The time when DTS synchronizes data of new objects depends on whether schema syn
 2. In the left-side navigation pane, click **Data Synchronization**.
 3. On the page that appears, find the instance that you want to manage and click **Reselect**
 **Objects** in the Actions column.
-For instances that failed to run, choose
-> **Reselect Objects**.
+
+> **Note:** For instances that failed to run, choose
+> > **Reselect Objects**.
+
 4. In the **Available** section, click the object that you want to add, and click the
 icon to move the object to the **Selected** section.
 5. Click **Next: Advanced Settings**.
 6. Click **Next: Precheck and Start Task** to perform the precheck.
 After the task passes the precheck, the objects are added to the data synchronization task.
 7. You can click **Changed. Return** to view the initial synchronization progress of the new
-objects. When the data synchronization task is in the **Running** state, the objects to be synchronized are modified and the instance is running as expected.
+objects.
+
+> **Note:** When the data synchronization task is in the **Running** state, the objects to be synchronized are modified and the instance is running as expected.
 
 #### 5.6.5 Remove an object from a data synchronization task
 
@@ -10634,15 +11028,19 @@ You can modify the objects only when a data synchronization task is in the incre
 2. In the left-side navigation pane, click **Data Synchronization**.
 3. On the page that appears, find the instance that you want to manage and click **Reselect**
 **Objects** in the Actions column.
-For instances that failed to run, choose
-> **Reselect Objects**.
+
+> **Note:** For instances that failed to run, choose
+> > **Reselect Objects**.
+
 4. In the **Selected Objects** section, click the object that you want to remove, and click the
 icon to move the object to the **Source Objects** section.
 5. Click **Next: Advanced Settings**.
 6. Click **Next: Precheck and Start Task** to perform the precheck.
 After the task passes the precheck, the objects are removed from the data synchronization task.
 7. You can click **Changed. Return** to view the initial synchronization progress of the new
-objects. When the data synchronization task is in the **Running** state, the objects to be synchronized are modified and the instance is running as expected.
+objects.
+
+> **Note:** When the data synchronization task is in the **Running** state, the objects to be synchronized are modified and the instance is running as expected.
 
 #### 5.6.6 Specify the capitalization of object names in the destination instance
 
@@ -10761,7 +11159,10 @@ If the ETL script that you configure contains the operation to add a column, you
 1. Create a data synchronization task based on your business requirements. Configure the
 task and go to the **Advanced Settings** step.
 2. Set the **Configure ETL** parameter to **Yes**. In the code editor, enter data processing
-statements based on the DSL syntax. If you want to drop entries whose values of the id column are greater than 3 by using DSL, you can use the script:e_if(op_gt(`id`, 3), e_drop()) statement. In this statement, `op_gt` is an expression function used to determine whether an entry is greater than a specific value. `id` is a variable. This way, entries whose values of the id column are greater than 3 are filtered out.
+statements based on the DSL syntax.
+
+> **Note:** If you want to drop entries whose values of the id column are greater than 3 by using DSL, you can use the script:e_if(op_gt(`id`, 3), e_drop()) statement. In this statement, `op_gt` is an expression function used to determine whether an entry is greater than a specific value. `id` is a variable. This way, entries whose values of the id column are greater than 3 are filtered out.
+
 3. Click **Next: Precheck and Start Task** and complete the subsequent steps.
 
 **Overview of DSL**
@@ -10792,7 +11193,9 @@ e_if(op_and(
       e_set(dts_sync_time,__COMMIT_TIMESTAMP__))
 ```
 
-To perform the preceding operations, you must add the dts_sync_time column to the corresponding tables in the destination database before the data synchronization task is started. Audit data changes Record the type and time of the data changes in tables: 1. Record the data change type in the operation_type column of the destination database. 2. Record the time when data is changed in the updated column of the destination database.
+> **Note:** To perform the preceding operations, you must add the dts_sync_time column to the corresponding tables in the destination database before the data synchronization task is started.
+
+Audit data changes Record the type and time of the data changes in tables: 1. Record the data change type in the operation_type column of the destination database. 2. Record the time when data is changed in the updated column of the destination database.
 
 ```
 e_compose(
@@ -10804,7 +11207,9 @@ e_compose(
     e_set(__OPERATION__,__OP_INSERT__)
 ```
 
-`)` You must add the operation_type and updated columns to the tables in the destination database before the data synchronization task is started.
+`)`
+
+> **Note:** You must add the operation_type and updated columns to the tables in the destination database before the data synchronization task is started.
 
 **DSL syntax**
 
@@ -10918,7 +11323,11 @@ Limits on the business design Limits on the database architecture Limits on O&M 
 
 **Limits on the business design**
 
-All tables must have primary keys. Otherwise, data inconsistency may occur in data synchronization because the destination database may contain duplicate data records. We recommend that you do not use the global secondary indexes (GSIs) of PolarDB-X because they are updated asynchronously. If you use GSIs, Data Transmission Service (DTS) can ensure only the eventual consistency of data. The databases that you want to synchronize cannot be deployed in mixed mode. The mixed mode refers to a mode in which both the unit mode and the copy mode are used. In unit mode, users perform read and write operations in their respective unit nodes. Two-way synchronization is implemented between the databases in each unit node and those in the central node. In copy mode, users write data to the databases in the central node. The data is then synchronized to the databases in each unit node. If you configure two-way synchronization between PolarDB-X instances and use underlying MySQL databases, fields of the FLOAT or DOUBLE type are not supported in business tables. If the business tables have fields of the FLOAT or DOUBLE type, convert the field type to DECIMAL. If you configure one-way synchronization between PolarDB-X instances, fields of the FLOAT or DOUBLE type are supported in business tables. DTS does not allow you to synchronize objects such as stored procedures, triggers, functions, views, and events in data synchronization between PolarDB-X instances. DTS does not support initial schema synchronization between PolarDB-X instances. You must manually create objects such as databases and tables in the destination database. Make sure that the available storage capacities in PolarDB-X instances are sufficient for business expansion.
+All tables must have primary keys. Otherwise, data inconsistency may occur in data synchronization because the destination database may contain duplicate data records. We recommend that you do not use the global secondary indexes (GSIs) of PolarDB-X because they are updated asynchronously. If you use GSIs, Data Transmission Service (DTS) can ensure only the eventual consistency of data. The databases that you want to synchronize cannot be deployed in mixed mode. The mixed mode refers to a mode in which both the unit mode and the copy mode are used.
+
+> **Note:** In unit mode, users perform read and write operations in their respective unit nodes. Two-way synchronization is implemented between the databases in each unit node and those in the central node. In copy mode, users write data to the databases in the central node. The data is then synchronized to the databases in each unit node.
+
+If you configure two-way synchronization between PolarDB-X instances and use underlying MySQL databases, fields of the FLOAT or DOUBLE type are not supported in business tables. If the business tables have fields of the FLOAT or DOUBLE type, convert the field type to DECIMAL. If you configure one-way synchronization between PolarDB-X instances, fields of the FLOAT or DOUBLE type are supported in business tables. DTS does not allow you to synchronize objects such as stored procedures, triggers, functions, views, and events in data synchronization between PolarDB-X instances. DTS does not support initial schema synchronization between PolarDB-X instances. You must manually create objects such as databases and tables in the destination database. Make sure that the available storage capacities in PolarDB-X instances are sufficient for business expansion.
 
 **Limits on the database architecture**
 

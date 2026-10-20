@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 178
 source_pdf: "70c8f5427401b671_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Developer Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20NFV%20Cloud%20Firewall%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Developer Guide 20260828
@@ -175,9 +175,8 @@ Obtain the product name, API name, and API version required for actual calls. Fo
 2. Obtain an AccessKey or Security Token Service (STS) AccessKey pair. For more information,
 see Obtain an AccessKey pair and Obtain an STS AccessKey pair.
 
-**Note**
+> **Note:** We recommend that you use a personal or an STS AccessKey pair to call the APIs of Apsara Uni-Manager Management Console and cloud products.
 
-We recommend that you use a personal or an STS AccessKey pair to call the APIs of Apsara Uni-Manager Management Console and cloud products.
 3. Obtain the values of common request headers.
 Obtain parameters, such as the regionID, organization ID, and resource set ID, required for API calls. For more information, see Get common header parameters. You must obtain the organization ID through API calls. For more information, see the "GetOrganizationList" section in the Apsara Uni-manager Management Console Develope r Guide. You must obtain the resource set ID through API calls. For more information, see the "ListResourceGroup" section in the Apsara Uni-manager Management Console Developer Guide.
 
@@ -233,9 +232,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
 | Parameter | Description |
 |---|---|
@@ -252,9 +249,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -283,9 +278,16 @@ Apsara Stack STS allows you to manage temporary access credentials for your Apsa
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your RAM role.
 2. Obtain the access credentials assigned by STS.
 
-**Note**
-
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the actual session name. This name is user-defined and is usually set to the identity of the user who calls the API, for example, username. In the operations performed by the same RAM role, the actual operator can be distinguished according to different `RoleSessionName` to implement user-level access audit. The name must be 2 to 64 characters in length, and can contain letters, digits, periods (.), at(@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with your actual RAM role. "sts.aliyuns.com" : Replace it with the actual STS endpoint.
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the actual session name.
+> This name is user-defined and is usually set to the identity of the user who calls the API, for example, username. In the operations performed by the same RAM role, the actual operator can be distinguished according to different
+> `RoleSessionName` to implement user-level access audit. The name must be 2 to 64 characters in length, and can contain letters, digits, periods (.), at(@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace it with your actual RAM role.
+> "sts.aliyuns.com" : Replace it with the actual STS endpoint.
 
 ```xml
 public static void main(String[] args) {
@@ -348,9 +350,14 @@ am Role ARN obtained in the previous step.
 3. Use the access credentials assigned by STS to call an API operation of a service. The
 following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS. <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS. <yourStsToken>: Replace this variable with the security token assigned by STS. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID.
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS.
+> <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS.
+> <yourStsToken>: Replace this variable with the security token assigned by STS.
+> <yourResourceGroupID>: Replace this variable with the actual resource set ID.
+> <yourOrganizationID>: Replace this variable with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -705,9 +712,10 @@ CommonResponseresponse=clientgetCommonResponse(request);
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)

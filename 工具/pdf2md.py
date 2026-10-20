@@ -55,6 +55,18 @@ def _grey_ratio(spans, col):
     return tot and grey / tot
 
 
+def _quote_blank(md):
+    """引用块（提示框）后面必须隔一个空行，否则 CommonMark 的 lazy continuation 会把下一段吸进引用里。"""
+    out, ls = [], md.split("\n")
+    for i, l in enumerate(ls):
+        out.append(l)
+        if l.startswith("> ") and i + 1 < len(ls):
+            nx = ls[i + 1]
+            if nx.strip() and not nx.startswith((">", "#", "|", "```", " ", "\t")):  # 列表项也隔开：不同渲染器对紧邻 "- " 的处理不一致
+                out.append("")
+    return "\n".join(out)
+
+
 def note_blocks(md):
     """把 "… sentence. Note: follow-up" 里的提示块改成 Markdown 引用块 `> **Note:** follow-up`。
 
@@ -94,6 +106,7 @@ def note_blocks(md):
         for h in head:
             out += [h, ""]
         out += note
+        out.append("")            # 引用块后必须留空行，否则下一段会被当成引用续行吃掉
     return "\n".join(out)
 BULLET = re.compile(r"^\s*[•·●○‣◦\-\u2013]\s+")
 NUMITEM = re.compile(r"^\s*\(?(\d{1,2})[.)]\s+")
@@ -574,10 +587,11 @@ class Manual:
                     nk = blocks[j][2] if j < nbl else None
                     if nk and nk[0] == "note" and not nk[1] and blocks[j][0] - bottom <= 26:
                         items.append((blocks[j][0], blocks[j][1], "N", (lab, nk[2])))
+                        i2 = j + 1                      # 正文格已并入提示框
                     else:                               # 没配上正文：标签行退回普通文本，绝不吞字
                         for k in range(i2, j):
                             plain(blocks[k][1], blocks[k][3])
-                    i2 = j + 1
+                        i2 = j                          # 第 j 格留待下一轮按它自己的类型处理
                     continue
                 if kind[0] == "note":
                     items.append((y0, seq, "N", (kind[1], kind[2])))

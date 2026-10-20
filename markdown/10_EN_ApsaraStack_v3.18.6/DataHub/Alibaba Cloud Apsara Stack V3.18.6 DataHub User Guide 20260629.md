@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 167
 source_pdf: "0935ce3b31f3d545_Alibaba Cloud Apsara Stack V3.18.6 DataHub User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataHub%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # DataHub User Guide 20260629
@@ -139,11 +139,23 @@ Before you log in to the DataHub console, make sure that the following requireme
 1. In the address bar of the browser, enter the URL of the Apsara Uni-manager Management
 Console and press the Enter key.
 2. On the login page, enter your username and password.
-You need to obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types: Letters Digits Special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You need to obtain the username and password from an operations administrator.
+
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types:
+> Letters
+> Digits
+> Special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log In** to go to the Apsara Uni-manager Management Console.
 4. In the top navigation bar, choose **Products > Big Data Computing > DataHub** to go to
-the DataHub console. You can click icons in the upper-right corner of the page to use the following features: : switches between English, simplified Chinese, and traditional Chinese. or : switches between light mode and dark mode. : displays message notifications. You can click **More** to go to **Message**
-**Center** to view all messages.
+the DataHub console.
+
+> You can click icons in the upper-right corner of the page to use the following features:
+> : switches between English, simplified Chinese, and traditional Chinese.
+> or
+> : switches between light mode and dark mode.
+> : displays message notifications. You can click **More** to go to **Message**
+> **Center** to view all messages.
 
 #### 4.2.2 View information on the Overview page
 
@@ -238,7 +250,8 @@ You can select **Create Directly** or **Import MaxCompute Tables** to create the
 | Description | The description of the topic. The description can be 3 to 1,024 characters in length. |
 
 **Method 2**: **Import MaxCompute Tables**
-Before you perform the following steps, make sure that you have created a MaxCompute project and a destination table, and you have obtained the corresponding AccessKey ID and AccessKey secret.
+
+> Before you perform the following steps, make sure that you have created a MaxCompute project and a destination table, and you have obtained the corresponding AccessKey ID and AccessKey secret.
 
 | Parameter | Description |
 |---|---|
@@ -268,9 +281,7 @@ Refresh the **Topic List** tab to view the created topic. You can also perform t
 **View**: Click **View** in the Actions column of a topic to view its details.
 **Delete**: Click **Delete** in the Actions column of a topic to delete the topic.
 
-**Important**
-
-Before you delete a topic, you must check whether the topic is added to a group. If the topic is added to a group, you must remove it from the group before you can delete the topic.
+> **Important:** Before you delete a topic, you must check whether the topic is added to a group. If the topic is added to a group, you must remove it from the group before you can delete the topic.
 
 #### 4.2.5 Create a group
 
@@ -334,7 +345,9 @@ click **Sample**. DataHub collects records that are written to the shard after t
 
 ### 5.1 Overview
 
-DataHub integrates Resource Access Management (RAM) to allow you to manage the permissions of Apsara Stack tenant accounts and RAM users in a fine-grained manner. Based on the least privilege principle, the security of data transmission can be greatly improved. DataHub uses RAM to manage resource access permissions. Only RAM users that are granted the required permissions can access resources in DataHub. An Apsara Stack tenant account has full permissions on the resources within the account. By default, a RAM user has no permissions on resources. You must grant permissions to the RAM user. The following topics describe how DataHub manages resource access permissions based on RAM. An Apsara Stack tenant account corresponds to a level-1 organization and requires no authorization. A RAM user corresponds to a specific user and must be granted permissions by an Apsara Stack tenant account.
+DataHub integrates Resource Access Management (RAM) to allow you to manage the permissions of Apsara Stack tenant accounts and RAM users in a fine-grained manner. Based on the least privilege principle, the security of data transmission can be greatly improved. DataHub uses RAM to manage resource access permissions. Only RAM users that are granted the required permissions can access resources in DataHub. An Apsara Stack tenant account has full permissions on the resources within the account. By default, a RAM user has no permissions on resources. You must grant permissions to the RAM user. The following topics describe how DataHub manages resource access permissions based on RAM.
+
+> An Apsara Stack tenant account corresponds to a level-1 organization and requires no authorization. A RAM user corresponds to a specific user and must be granted permissions by an Apsara Stack tenant account.
 
 ### 5.2 DataHub resources
 
@@ -506,9 +519,7 @@ gem install fluent-plugin-DataHub
 
 We recommend that you change the gem source to https://gems.ruby-china.com. Install the plug-in by using an installation package The plug-in must be installed in Linux. Before you install the plug-in, install Ruby. For users who have not installed Fluentd, a full installation package for installing both Fluentd and the DataHub plug-in for Fluentd is provided. For users who have installed Fluentd, an installation package for the DataHub plug-in for Fluentd is provided. Complete installation: If you have not installed Fluentd, download the full installation package fluentd-with-datahub-0.12.25.tar.gz for installing both Fluentd and the DataHub plug-in for Fluentd. Run the following command to install the plug-in.
 
-**Important**
-
-Fluentd 0.12.25 is provided in the full installation package.
+> **Important:** Fluentd 0.12.25 is provided in the full installation package.
 
 ```bash
 $ tar -xzvf fluentd-with-datahub-0.12.25.tar.gz $ cd fluentd-with-datahub $ sudo sh install.sh
@@ -630,7 +641,9 @@ This guide explains how to use the Logstash plugin to collect and upload log dat
 
 **Logstash collection tool**
 
-To expand data collection in DataHub, Alibaba Cloud Real-time Compute provides DataHub Output and Input plugins for Logstash. These plugins allow you to connect to over 30 data sources supported by the open-source community, including files, syslog, Redis, Log4j, and Apache or Nginx logs. Logstash also supports features like the filter plugin for custom data processing. This guide uses log collection as an example to show you how to quickly collect and send log data to DataHub. The DataHub Output and Input plugins for Logstash are open source under the Apache License 2.0.
+To expand data collection in DataHub, Alibaba Cloud Real-time Compute provides DataHub Output and Input plugins for Logstash. These plugins allow you to connect to over 30 data sources supported by the open-source community, including files, syslog, Redis, Log4j, and Apache or Nginx logs. Logstash also supports features like the filter plugin for custom data processing. This guide uses log collection as an example to show you how to quickly collect and send log data to DataHub.
+
+> The DataHub Output and Input plugins for Logstash are open source under the Apache License 2.0.
 
 **Installation**
 
@@ -1815,7 +1828,10 @@ Oracle 11g is installed on the source. The current plugin version supports only 
 
 **Procedure**
 
-This section describes how to install and configure OGG and its related components. The installation of the Oracle database is not covered. Important: A professional with operations and maintenance experience should configure the Oracle and OGG parameters. The following example provides a runnable sample configuration. This process requires the following installation packages: OGG DataHub OGG plugin
+This section describes how to install and configure OGG and its related components. The installation of the Oracle database is not covered.
+
+> **Important:** A professional with operations and maintenance experience should configure the Oracle and OGG parameters. The following example provides a runnable sample configuration. This process requires the following installation packages: OGG DataHub OGG plugin
+
 
 **OGG source configuration**
 
@@ -1914,7 +1930,9 @@ Use GGSCI to configure the Extract process. You can use any name for the process
 EXTRACT dhext SETENV (NLS_LANG="AMERICAN_AMERICA.AL32UTF8") DBOPTIONS ALLOWUNUSEDCOLUMN USERID ogg_test, PASSWORD ogg_test REPORTCOUNT EVERY 1 MINUTES, RATE NUMFILES 5000 DISCARDFILE ./dirrpt/ext_test.dsc, APPEND, MEGABYTES 100 DISCARDROLLOVER AT 2:00 WARNLONGTRANS 2h, CHECKINTERVAL 3m EXTTRAIL ./dirdat/st, MEGABYTES 200 DDL & INCLUDE MAPPED OBJTYPE 'table' & INCLUDE MAPPED OBJTYPE 'index' & INCLUDE MAPPED OBJTYPE 'SEQUENCE' & EXCLUDE OPTYPE COMMENT DDLOPTIONS NOCROSSRENAME REPORT TABLE OGG_TEST.*,tokens (TKN-ROWID=@GETENV('RECORD','rowid')); SEQUENCE OGG_TEST.*; GETUPDATEBEFORES
 ```
 
-The line TABLE OGG_TEST.*, tokens (TKN-ROWID=@GETENV('RECORD','rowid')); is used to capture the `rowid` from the source table. If you do not need to capture the `rowid` , you can change this line to `TABLE OGG_TEST.*` . Add and start the Extract process:
+> The line TABLE OGG_TEST.*, tokens (TKN-ROWID=@GETENV('RECORD','rowid')); is used to capture the `rowid` from the source table. If you do not need to capture the `rowid` , you can change this line to `TABLE OGG_TEST.*` .
+
+Add and start the Extract process:
 
 ```bash
 # Add the Extract process
@@ -1927,7 +1945,10 @@ start dhext
 
 After the Extract process starts, it captures database changes, which you can view in the files in the `ggate/dirdat` directory.
 5. . Generate definition file**
-This step is not required for OGG versions 12.2.x and later. In GGSCI on the source, create a parameter file for the definition generator by running `edit` `params defgen` . Add the following content:
+
+> This step is not required for OGG versions 12.2.x and later.
+
+In GGSCI on the source, create a parameter file for the definition generator by running `edit` `params defgen` . Add the following content:
 
 ```
 DEFSFILE ./dirdef/ogg_test.def USERID ogg_test, PASSWORD ogg_test table OGG_TEST.*;
@@ -2236,7 +2257,11 @@ Run the following command to install OGG:
 runInstaller -silent -responseFile {YOUR_OGG_INSTALL_FILE_PATH}/response/oggcore.rsp
 ```
 
-In this example, OGG is installed in the /home/oracle/u01/ggate directory, and the installation logs are stored in the /home/oracle/u01/ggate/cfgtoollogs/oui directory. The OGG installation is complete when the following message appears in the silentInstall{time}.log file: The installation of Oracle GoldenGate Core was successful. Run the /home/oracle/u01/ggate/ggsci command and enter `CREATE SUBDIRS` as prompted to create OGG directories whose names start with dir. OGG is installed in the source database.
+In this example, OGG is installed in the /home/oracle/u01/ggate directory, and the installation logs are stored in the /home/oracle/u01/ggate/cfgtoollogs/oui directory. The OGG installation is complete when the following message appears in the silentInstall{time}.log file:
+
+> The installation of Oracle GoldenGate Core was successful.
+
+Run the /home/oracle/u01/ggate/ggsci command and enter `CREATE SUBDIRS` as prompted to create OGG directories whose names start with dir. OGG is installed in the source database.
 3. . Configure the Manager process in the source database**
 The following part describes how to configure the Manager process in the source database by using Oracle GoldenGate Software Command Interface (GGSCI). You can run the `edit params` `mgr` command to configure the Manager process. The following code shows the configurations:
 
@@ -2872,7 +2897,8 @@ goldengate.userexit.timestamp=utc goldengate.userexit.writers=javawriter javawri
 gg.classpath=/xxx/lib/kafka/libs/* javawriter.bootoptions=-Xmx512m -Xms32m -Djava.class.path=ggjava/ggjava.jar -Djava.secu rity.auth.login.config=dirprm/kafka_client_producer_jaas.conf
 ```
 
-Note: Do not set the `gg.handler.kafkahandler.SchemaTopicName` parameter. This parameter requires the Kafka Consumer protocol, which DataHub does not support. The `java.security.auth.login.config` parameter is required. OGG for Big Data fails to start if this parameter is missing.
+> **Note:** Do not set the `gg.handler.kafkahandler.SchemaTopicName` parameter. This parameter requires the Kafka Consumer protocol, which DataHub does not support. The `java.security.auth.login.config` parameter is required. OGG for Big Data fails to start if this parameter is missing.
+
 3. . Configure the Manager process**
 Run the `edit params mgr` command to open the Manager process configuration.
 
@@ -3134,9 +3160,9 @@ The data synchronization feature of DataHub allows you to add data sources or da
 
 **Supported Apsara Stack services**
 
-**Important**
-
-When you create a DataConnector to synchronize data from DataHub to MaxCompute, a batch is synchronized every 5 minutes or when the data volume reaches 64 MB. When you create a DataConnector to synchronize data from DataHub to Tablestore, OSS, Elasticsearch, or Hologres, a batch is synchronized every 20 seconds or when the data volume reaches 4 MB. When you create a DataConnector to synchronize data from DataHub to ApsaraDB for MySQL, ApsaraDB RDS, or AnalyticDB for MySQL V3.0, a batch is synchronized every 20 seconds or when the data volume reaches 512 KB.
+> **Important:** When you create a DataConnector to synchronize data from DataHub to MaxCompute, a batch is synchronized every 5 minutes or when the data volume reaches 64 MB.
+> When you create a DataConnector to synchronize data from DataHub to Tablestore, OSS, Elasticsearch, or Hologres, a batch is synchronized every 20 seconds or when the data volume reaches 4 MB.
+> When you create a DataConnector to synchronize data from DataHub to ApsaraDB for MySQL, ApsaraDB RDS, or AnalyticDB for MySQL V3.0, a batch is synchronized every 20 seconds or when the data volume reaches 512 KB.
 
 | Destination service | Supported data type of topics | Timeliness | Support for VPC |
 |---|---|---|---|
@@ -3303,9 +3329,8 @@ The partition to which data is written is determined based on the time when data
 During the test, a DataHub SDK is used to write multiple records. The time when the data is written to DataHub is `2021-03-04 14:02:45` . The following figure shows the records.
 3. Create a DataConnector.
 
-**Important**
+> **Important:** The partition configurations must be the same as those of the MaxCompute table.
 
-The partition configurations must be the same as those of the MaxCompute table.
 4. Verify the synchronized data.
 You can view the synchronization information of the DataConnector in the DataHub console, such as DoneTime. Query data in the MaxCompute table. The following figure shows the query result. In SYSTEM_TIME mode, DataHub synchronizes data to the corresponding partition based on the time when data was written to DataHub.
 
@@ -3338,7 +3363,7 @@ DataHub synchronizes data based on the mappings between the data types of fields
 | BOOLEAN | BOOLEAN |
 | TIMESTAMP | TIMESTAMPTZ |
 
-The `TINYINT` , `SMALLINT` , `INTEGER` , and `FLOAT` data types in DataHub are supported by Hologres V2.0 and later.
+> The `TINYINT` , `SMALLINT` , `INTEGER` , and `FLOAT` data types in DataHub are supported by Hologres V2.0 and later.
 
 **Create a DataConnector**
 
@@ -3352,7 +3377,8 @@ the topic details page.
 in the upper-right corner.
 6. In the **Create Connector** panel, click **Hologres**. Then, configure the parameters and click
 **Create**.
-You can synchronize data to partitioned tables in Hologres. If you specify a partitioned table when you create a DataConnector, data is automatically synchronized to the partitions based on the partition key.
+
+> You can synchronize data to partitioned tables in Hologres. If you specify a partitioned table when you create a DataConnector, data is automatically synchronized to the partitions based on the partition key.
 
 | Parameter | Description |
 |---|---|
@@ -3370,7 +3396,9 @@ You can synchronize data to partitioned tables in Hologres. If you specify a par
 | Start Time | The time when DataHub starts to synchronize data to Hologres. |
 | Timestamp Unit | The unit of time that is used to synchronize data from Hologres. The Timestamp Unit parameter specifies the unit in which the data of the TIMESTAMP type is converted and written to the fields of the DATETIME type in Hologres. |
 
-The `dts` and `dts_old` synchronization modes are applicable to scenarios in which data is synchronized to DataHub by using Data Transmission Service (DTS) and then synchronized from DataHub to Hologres. For more information about the new and original additional columns, see Synchronize data from DataHub.
+> The `dts` and `dts_old` synchronization modes are applicable to scenarios in which data is synchronized to DataHub by using Data Transmission Service (DTS) and then synchronized from DataHub to Hologres.
+
+For more information about the new and original additional columns, see Synchronize data from DataHub.
 7. Click the **Synchronization Task** tab to view the status of data synchronization from
 DataHub to Hologres.
 8. View the data that is synchronized to Hologres in real time.
@@ -3493,9 +3521,8 @@ Example 2: Create indexes based on a field To create indexes based on the `col1`
 
 value in the col1 field is `BBB` exist, the two records are written to different indexes. The former is written to `test_AAA` and the latter is written to `test_BBB` .
 
-**Important**
+> **Important:** When the number of indexes in an Elasticsearch cluster increases, the data write slows down. Excessive indexes may cause timeout errors when DataHub writes data to Elasticsearch. Therefore, when you use dynamic indexes, you must prevent excessive indexes.
 
-When the number of indexes in an Elasticsearch cluster increases, the data write slows down. Excessive indexes may cause timeout errors when DataHub writes data to Elasticsearch. Therefore, when you use dynamic indexes, you must prevent excessive indexes.
 **User and Password:** the username and password that are used to access Elasticsearch.
 **Type Fields:** The types that are generated during data synchronization from DataHub to
 Elasticsearch vary with the version of Elasticsearch clusters. In a cluster of Elasticsearch V5.X, you can create multiple types in one index. However, in a cluster of Elasticsearch V6.X, you can create only one type in one index. Therefore, the way in which DataHub synchronizes data to Elasticsearch varies. The Type Fields parameter is required. When you create a DataConnector to synchronize data from DataHub to a cluster of Elasticsearch V5.X, the value of the field that you select is used as the type of a record. If multiple fields are selected, the values of the fields are concatenated by using vertical bars (|) and then used as the type of a record. The fields that you select from the Type Fields drop-down list cannot be null. When you create a DataConnector to synchronize data from DataHub to a cluster of Elasticsearch V6.X, the name of the field that you select is used as the type of a record. If multiple fields are selected, the names of the fields are concatenated by using vertical bars (|) and then used as the type of a record. The cluster of Elasticsearch V6.X supports custom values as the type of a record. Example:
@@ -3514,9 +3541,9 @@ DataHub Schema : f1 string, f2 string, f3 string, f4 string Data: ["test1","test
 | f1,ff | The type failed to be created. | f1\|ff |
 | f4 | The type is created but the data failed to be synchronized. Dirty data occurs. | The type is created and the data is synchronized. |
 
-**Important**
+> **Important:** The type name cannot be customized when you create a DataConnector to synchronize data to a cluster of Elasticsearch V6.X in the DataHub console. If you want to customize the type name, you can use DataHub SDKs to create a DataConnector.
+> Default types are used in a cluster of Elasticsearch V7.X. Therefore, you do not need to set the Type Fields parameter when you create a DataConnector to synchronize data to a cluster of Elasticsearch V7.X.
 
-The type name cannot be customized when you create a DataConnector to synchronize data to a cluster of Elasticsearch V6.X in the DataHub console. If you want to customize the type name, you can use DataHub SDKs to create a DataConnector. Default types are used in a cluster of Elasticsearch V7.X. Therefore, you do not need to set the Type Fields parameter when you create a DataConnector to synchronize data to a cluster of Elasticsearch V7.X.
 **ID Fields:** You can generate IDs for the data written to Elasticsearch based on the data
 written to DataHub. You can also select no ID fields. In this case, Elasticsearch generates a unique ID for each record. When you create a DataConnector to synchronize data from DataHub to Elasticsearch, the value of the field that you select is used as the ID of a record. If multiple fields are selected, the values of the fields are concatenated by using vertical bars (|) and then used as the ID of a record. The fields that you select from the ID Fields drop-down list cannot be null. Example:
 
@@ -3701,9 +3728,9 @@ Elasticsearch documentation.
 By default, Elasticsearch can automatically create an index. Therefore, you can skip this step. If you do not allow Elasticsearch to automatically create an index, you must manually create an index. For more information about how to create an index, see Elasticsearch documentation.
 2. Create a DataHub topic.
 
-**Important**
+> **Important:** DataHub allows you to synchronize data from only topics of the TUPLE type to Elasticsearch.
 
-DataHub allows you to synchronize data from only topics of the TUPLE type to Elasticsearch. For more information, see Create a topic. After the topic is created, view the topic.
+For more information, see Create a topic. After the topic is created, view the topic.
 3. Create a DataConnector to synchronize data to Elasticsearch.
 In this example, f1 and f2 are used as the type fields, f3 and f4 as the ID fields, and all fields as the fields to be imported.
 4. Write data to the DataHub topic.
@@ -4205,9 +4232,11 @@ rsorType.OLDEST).getCursor();
             System.exit(-1);
 ```
 
-`}` `}` `}` If you start an application for the first time, the application consumes data from the earliest record. When the application is running, you can refresh the Subscription List tab in the DataHub console. If you reset the consumption offset by clicking Reset in the DataHub console during the consumption, your application automatically detects the change of the consumption offset and consumes data from the specified consumption offset. When the application catches **OffsetResetedException**, the application calls the
-**getSubscriptionOffset** operation to query the latest consumption offset from the
-server. Then, the application can consume data from the latest consumption offset. A shard in a subscription cannot be consumed by multiple threads or processes at the same time. Otherwise, the consumption offset submitted by a thread is overwritten by that submitted by another thread and the server cannot determine the thread to which the saved consumption offset belongs. In this case, the server reports **OffsetSessionChangedException**. We recommend that you exit the subscription session to check whether data is repeatedly consumed if this exception is detected.
+`}` `}` `}`
+
+> If you start an application for the first time, the application consumes data from the earliest record. When the application is running, you can refresh the Subscription List tab in the DataHub console.
+> If you reset the consumption offset by clicking Reset in the DataHub console during the consumption, your application automatically detects the change of the consumption offset and consumes data from the specified consumption offset. When the application catches **OffsetResetedException**, the application calls the **getSubscriptionOffset** operation to query the latest consumption offset from the server. Then, the application can consume data from the latest consumption offset.
+> A shard in a subscription cannot be consumed by multiple threads or processes at the same time. Otherwise, the consumption offset submitted by a thread is overwritten by that submitted by another thread and the server cannot determine the thread to which the saved consumption offset belongs. In this case, the server reports **OffsetSessionChangedException**. We recommend that you exit the subscription session to check whether data is repeatedly consumed if this exception is detected.
 
 ### 9.3 Reset a consumption offset
 
@@ -4274,7 +4303,11 @@ The offset-based data consumption feature allows you to save consumption offsets
 
 **Collaborative consumption**
 
-The collaborative consumption feature automatically allocates shards when multiple consumers consume a topic at the same time. This feature simplifies the data processing of clients. Manual shard allocation is difficult because multiple consumers may reside on different machines. If multiple consumers that subscribe to the same topic are in the same consumer group, a shard can be allocated to only one consumer in the consumer group. Example: Assume that A, B, and C are three consumer instances and the topic has 10 shards.
+The collaborative consumption feature automatically allocates shards when multiple consumers consume a topic at the same time. This feature simplifies the data processing of clients.
+
+> Manual shard allocation is difficult because multiple consumers may reside on different machines. If multiple consumers that subscribe to the same topic are in the same consumer group, a shard can be allocated to only one consumer in the consumer group.
+
+Example: Assume that A, B, and C are three consumer instances and the topic has 10 shards.
 1. When the consumer instance A is started at first, 10 shards are allocated to it.
 2. When the other two consumer instances are started, the shards are reallocated in the
 following way: four to A, three to B, and three to C. ption

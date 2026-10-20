@@ -5,7 +5,7 @@ doc_version: "20221227"
 pdf_pages: 374
 source_pdf: "99eed7f6ef79632f_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Developer Guide 20221227.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20221228/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Object%20Storage%20Service%20Developer%20Guide%2020221227.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Developer Guide 20221227
@@ -313,13 +313,23 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 
 ## 1 Usage notes
 
-Before using an OSS API to implement a specific function, developers need to understand the two methods that are used to call OSS API operations and choose the appropriate method according to the actual situation. Import ant If you encounter problems during use, contact Alibaba Cloud technical support. OSS API operations can be called by using ASAPI or OSS SDKs. Select an appropriate calling method based on your actual scenarios. If you want to perform operations on OSS buckets in a resource set of a specified organization, such as creating buckets, use ASAPI SDKs to call the corresponding OSS API operation. For more information, see related topics in ASAPI Developer Guide of OSS Developer Guide. If you want to perform operations on objects (such as object upload) in a bucket without the resource set and organization specified, you can use an OSS SDK to call the specific operation. For more information, see related topics in SDK Reference of OSS Developer Guide. Import ant To perform operations on objects in a bucket, you must have the required permissions.
+Before using an OSS API to implement a specific function, developers need to understand the two methods that are used to call OSS API operations and choose the appropriate method according to the actual situation.
+
+> Import ant If you encounter problems during use, contact Alibaba Cloud technical support.
+
+OSS API operations can be called by using ASAPI or OSS SDKs. Select an appropriate calling method based on your actual scenarios. If you want to perform operations on OSS buckets in a resource set of a specified organization, such as creating buckets, use ASAPI SDKs to call the corresponding OSS API operation. For more information, see related topics in ASAPI Developer Guide of OSS Developer Guide. If you want to perform operations on objects (such as object upload) in a bucket without the resource set and organization specified, you can use an OSS SDK to call the specific operation. For more information, see related topics in SDK Reference of OSS Developer Guide.
+
+> Import ant To perform operations on objects in a bucket, you must have the required permissions.
 
 ## 2 API reference
 
 ### 2.1 Overview
 
-Apsara Stack Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service. It enables you to store a large amount of data in the cloud. You can upload data to and download data from OSS anytime, anywhere, and on any Internet device by calling the simple RESTful APIs. OSS enables you to develop a variety of services that are capable of processing large amounts of data. These services include multimedia sharing websites, online storage, and personal and corporate data backups. Not e Before you call these operations, ensure that you understand the OSS service instructions and usage agreements. Instructions OSS API reference provides request syntax, parameters, sample requests, and sample responses for operations. To implement secondary development, use SDK packages. For more information about how to install and use SDK, see OSS SDK reference. Terms
+Apsara Stack Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service. It enables you to store a large amount of data in the cloud. You can upload data to and download data from OSS anytime, anywhere, and on any Internet device by calling the simple RESTful APIs. OSS enables you to develop a variety of services that are capable of processing large amounts of data. These services include multimedia sharing websites, online storage, and personal and corporate data backups.
+
+> Not e Before you call these operations, ensure that you understand the OSS service instructions and usage agreements.
+
+Instructions OSS API reference provides request syntax, parameters, sample requests, and sample responses for operations. To implement secondary development, use SDK packages. For more information about how to install and use SDK, see OSS SDK reference. Terms
 
 | Term | Description |
 |---|---|
@@ -332,7 +342,11 @@ Apsara Stack Object Storage Service (OSS) is a secure, cost-effective, and highl
 
 #### 2.2.1 Authenticate users by using signatures
 
-OSS uses an AccessKey pair, which includes an AccessKey ID and an AccessKey secret to implement symmetric encryption and verify the identity of a requester. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Not e For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. AccessKey pairs can be categorized based on the account types. AccessKey pair of an Alibaba Cloud account: The AccessKey pair of an Alibaba Cloud account has full permissions on its resources. AccessKey pair of a RAM user: A RAM user is created and authorized by an Alibaba Cloud account. The AccessKey pair of a RAM user has limited permissions on specified resources. AccessKey pair of an STS temporary access credential: A temporary access credential is generated by an Alibaba Cloud account or a RAM user. The AccessKey pair of a temporary credential has limited permissions on specified resources within the validity period of the credential. An STS temporary access credential becomes invalid after its validity period is exceeded. Before you send a request to OSS as an individual user, you must generate a signature string in the specified format for the request and use your AccessKey secret to encrypt the signature string and generate a verification code. After OSS receives the request, OSS finds the AccessKey secret based on your AccessKey ID, and uses the AccessKey secret to decrypt the signature string and verification code. Then, OSS calculates a verification code and compares it against the decrypted verification code. If the two verification codes are the same, OSS determines that the request is valid. Otherwise, OSS rejects the request and returns HTTP status code 403.
+OSS uses an AccessKey pair, which includes an AccessKey ID and an AccessKey secret to implement symmetric encryption and verify the identity of a requester. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential.
+
+> Not e For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair.
+
+AccessKey pairs can be categorized based on the account types. AccessKey pair of an Alibaba Cloud account: The AccessKey pair of an Alibaba Cloud account has full permissions on its resources. AccessKey pair of a RAM user: A RAM user is created and authorized by an Alibaba Cloud account. The AccessKey pair of a RAM user has limited permissions on specified resources. AccessKey pair of an STS temporary access credential: A temporary access credential is generated by an Alibaba Cloud account or a RAM user. The AccessKey pair of a temporary credential has limited permissions on specified resources within the validity period of the credential. An STS temporary access credential becomes invalid after its validity period is exceeded. Before you send a request to OSS as an individual user, you must generate a signature string in the specified format for the request and use your AccessKey secret to encrypt the signature string and generate a verification code. After OSS receives the request, OSS finds the AccessKey secret based on your AccessKey ID, and uses the AccessKey secret to decrypt the signature string and verification code. Then, OSS calculates a verification code and compares it against the decrypted verification code. If the two verification codes are the same, OSS determines that the request is valid. Otherwise, OSS rejects the request and returns HTTP status code 403.
 
 #### 2.2.2 Add signatures to the Authorization header
 
@@ -390,7 +404,16 @@ mark ( ? ) and subresource string are added to the end of the CanonicalizedResou
 | jectName? acl&uploadId=UploadId |   |   |
 
 4. If query strings (also called HTTP request parameters) are specified in the request, sort these query strings and request values in alphabetical order. Separate each
-pair of parameters and values with the ampersand ( `&` ) delimiter. Add the concatenated content to CanonicalizedResource as parameters. In this case, CanonicalizedResource is in the format of /BucketName/ObjectName? acl&response-content-type=ContentType&uploadId=UploadId . Not e Subresources supported by OSS include but are not limited to: acl, uploads, location, cors, logging, website, referer, lifecycle, delete, append, tagging, objectMeta, uploadId, partNumber, security-token, position, img, style, styleName, replication, replicationProgress, replicationLocation, cname, bucketInfo, comp, qos, live, status, vod, startTime, endTime, symlink, x-oss-process, response-content-type, response-content-language, response-expires, responsecache-control, response-content-disposition, and response-content-encoding. Three types of subresources are available: Resource identifiers such as acl, append, uploadId, and symlink subresources Subresources that specify the response header fields. Example: `response-***` . Methods to process objects. Example: `x-oss-process` . Rules to calculate signatures for the Authorization header
+pair of parameters and values with the ampersand ( `&` ) delimiter. Add the concatenated content to CanonicalizedResource as parameters. In this case, CanonicalizedResource is in the format of /BucketName/ObjectName? acl&response-content-type=ContentType&uploadId=UploadId .
+
+> Not e
+> Subresources supported by OSS include but are not limited to: acl, uploads, location, cors, logging, website, referer, lifecycle, delete, append, tagging, objectMeta, uploadId, partNumber, security-token, position, img, style, styleName, replication, replicationProgress, replicationLocation, cname, bucketInfo, comp, qos, live, status, vod, startTime, endTime, symlink, x-oss-process, response-content-type, response-content-language, response-expires, response- cache-control, response-content-disposition, and response-content-encoding.
+> Three types of subresources are available:
+> Resource identifiers such as acl, append, uploadId, and symlink subresources
+> Subresources that specify the response header fields. Example: `response-***` .
+> Methods to process objects. Example: `x-oss-process` .
+
+Rules to calculate signatures for the Authorization header
 1. A signature string must be in the UTF-8 format. A signature string that contains Chinese characters must be encoded in UTF-8. The encoded signature string is used
 together with AccessKeySecret to calculate the final signature.
 2. The HMAC-SHA1 method defined in RFC 2104 is used to calculate the final signature. In this method, the Key is `AccessKeySecret` .
@@ -774,7 +797,11 @@ HTTP/1.1 400 Bad Request x-oss-request-id: 5***9 Date: Fri, 24 Feb 2012 03:55:00
 
 #### 2.5.3 PutBucketLogging
 
-Bucket owners can enable logging for their buckets. When this feature is enabled, OSS automatically records detailed information about the requests to this bucket, and follows the user-specified rules to write access logs as an object to the user-specified bucket on an hourly basis. Import ant OSS provides logging for bucket owners to understand and analyze access to buckets. OSS does not guarantee that the bucket access logs contain all access records. The source bucket to which an object belongs and the destination bucket where the processed object is stored must belong to the same user. To disable logging for a bucket, you need only to send a request that contains an empty BucketLoggingStatus element. For more information about the specific method, see the following sample request. All PutBucketLogging requests must include signatures. Anonymous access is not supported. When the source bucket is deleted, the corresponding logging rules are also deleted. OSS generates bucket access log objects on an hourly basis. However, requests in the previous hour may be recorded in the log object generated for the subsequent hour. In the naming conventions for log objects generated by the OSS, UniqueString is just a UUID that OSS generates to uniquely identify the object. Each time OSS generates a bucket access log object, OSS performs a PUT operation and records the storage space that the object uses. However, OSS does not record the traffic generated by the PUT operation. After log objects are generated, you can perform operations on these objects as common objects. OSS ignores all query string parameters whose values contain the x- prefix. However, these parameters are recorded in access log objects. To identify a special request from a large number of access logs, you can add a query string parameter whose value contains the x- prefix to the URL of the request. Example
+Bucket owners can enable logging for their buckets. When this feature is enabled, OSS automatically records detailed information about the requests to this bucket, and follows the user-specified rules to write access logs as an object to the user-specified bucket on an hourly basis.
+
+> Import ant OSS provides logging for bucket owners to understand and analyze access to buckets. OSS does not guarantee that the bucket access logs contain all access records.
+
+The source bucket to which an object belongs and the destination bucket where the processed object is stored must belong to the same user. To disable logging for a bucket, you need only to send a request that contains an empty BucketLoggingStatus element. For more information about the specific method, see the following sample request. All PutBucketLogging requests must include signatures. Anonymous access is not supported. When the source bucket is deleted, the corresponding logging rules are also deleted. OSS generates bucket access log objects on an hourly basis. However, requests in the previous hour may be recorded in the log object generated for the subsequent hour. In the naming conventions for log objects generated by the OSS, UniqueString is just a UUID that OSS generates to uniquely identify the object. Each time OSS generates a bucket access log object, OSS performs a PUT operation and records the storage space that the object uses. However, OSS does not record the traffic generated by the PUT operation. After log objects are generated, you can perform operations on these objects as common objects. OSS ignores all query string parameters whose values contain the x- prefix. However, these parameters are recorded in access log objects. To identify a special request from a large number of access logs, you can add a query string parameter whose value contains the x- prefix to the URL of the request. Example
 
 | http://oss-example.regionid.example.com/aliyun-logo.png |   |
 |---|---|
@@ -2369,7 +2396,9 @@ You can call this operation to upload an object to a specific bucket by using HT
 POST / HTTP/1.1 Host: BucketName.regionid.example.com User-Agent: browser_data Content-Length: ContentLength Content-Type: multipart/form-data; boundary=9431149156168 --9431149156168 Content-Disposition: form-data; name="key" key --9431149156168 Content-Disposition: form-data; name="success_action_redirect" success_redirect --9431149156168 Content-Disposition: form-data; name="Content-Disposition" attachment;filename=oss_download.jpg --9431149156168 Content-Disposition: form-data; name="x-oss-meta-uuid" myuuid --9431149156168 Content-Disposition: form-data; name="x-oss-meta-tag" mytag --9431149156168 Content-Disposition: form-data; name="OSSAccessKeyId" access-key-id --9431149156168 Content-Disposition: form-data; name="policy" encoded_policy --9431149156168 Content-Disposition: form-data; name="Signature" signature --9431149156168 Content-Disposition: form-data; name="file"; filename="MyFilename.jpg" Content-Type: image/jpeg file_content --9431149156168 Content-Disposition: form-data; name="submit" Upload to OSS --9431149156168--
 ```
 
-Request headers Not e The message body of a PostObject request is encoded in the multipart/form-data format. In PostObject operations, parameters are passed as form fields in the request message body, whereas parameters are passed as HTTP request headers in PutObject operations.
+Request headers
+
+> Not e The message body of a PostObject request is encoded in the multipart/form-data format. In PostObject operations, parameters are passed as form fields in the request message body, whereas parameters are passed as HTTP request headers in PutObject operations.
 
 | Header | Type | Required | Example | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -2468,7 +2497,11 @@ with the policy form field value.
 
 #### 2.6.12 Callback
 
-To enable OSS to return callback information of an object to an application server after the object is uploaded to OSS, you need only to include a callback parameter in the upload request that is sent to OSS. This topic describes how to implement upload callback in detail. Not e Operations that support callbacks include PutObject, PostObject, and CompleteMultipartUpload. Step 1: Create parameters Callback parameter A callback parameter is a Base64-encoded string (field) in the JSON format. To create a callback parameter, you must specify the URL (callbackUrl) of the server to which the callback information is sent and the content (callbackBody) of the callback information. The following table describes the JSON fields that are included in a callback parameter.
+To enable OSS to return callback information of an object to an application server after the object is uploaded to OSS, you need only to include a callback parameter in the upload request that is sent to OSS. This topic describes how to implement upload callback in detail.
+
+> Not e Operations that support callbacks include PutObject, PostObject, and CompleteMultipartUpload.
+
+Step 1: Create parameters Callback parameter A callback parameter is a Base64-encoded string (field) in the JSON format. To create a callback parameter, you must specify the URL (callbackUrl) of the server to which the callback information is sent and the content (callbackBody) of the callback information. The following table describes the JSON fields that are included in a callback parameter.
 
 | Field | Description | Required |
 |---|---|---|
@@ -2505,7 +2538,13 @@ The following table lists the system parameters you can configure for callbackBo
 | imageInfo.width | The width of the image. |
 | imageInfo.format | The format of the image. Examples: JPG and PNG. |
 
-Not e This parameter applies only to image objects. If the object is not an image, the values of imageInfo.height, imageInfo.width, and imageInfo.format are null. Create custom parameters by using callback-var You can configure custom parameters by using the callback-var parameter. Custom parameters are key-value pairs in map. You can add the required parameters to the map. When a POST callback request is initiated, OSS adds these custom parameters and the system parameters described in the preceding section to the body of the POST request. This method allows these parameters to be obtained by the requester. You can create a custom parameter the way you create a callback parameter, which must be passed in the JSON format. The JSON string is a map that consists of keyvalue pairs of all custom parameters. Not e The key of a custom parameter must start with x: and be lowercase letters. Otherwise, OSS returns an error. Assume that you must configure two custom parameters x:var1 and x:var2. The value of x:var1 is value1. The value of x:var2 is value2. Created JSON string: `{`
+> Not e This parameter applies only to image objects. If the object is not an image, the values of imageInfo.height, imageInfo.width, and imageInfo.format are null.
+
+Create custom parameters by using callback-var You can configure custom parameters by using the callback-var parameter. Custom parameters are key-value pairs in map. You can add the required parameters to the map. When a POST callback request is initiated, OSS adds these custom parameters and the system parameters described in the preceding section to the body of the POST request. This method allows these parameters to be obtained by the requester. You can create a custom parameter the way you create a callback parameter, which must be passed in the JSON format. The JSON string is a map that consists of keyvalue pairs of all custom parameters.
+
+> Not e The key of a custom parameter must start with x: and be lowercase letters. Otherwise, OSS returns an error.
+
+Assume that you must configure two custom parameters x:var1 and x:var2. The value of x:var1 is value1. The value of x:var2 is value2. Created JSON string: `{`
 
 ```
 "x:var1":"value1", "x:var2":"value2"
@@ -2515,7 +2554,11 @@ Not e This parameter applies only to image objects. If the object is not an imag
 |---|---|---|
 |   | {"x:var1":"value1","x:var2":"v |   |
 
-Step 2: Create a callback request After you create the callback and callback-var parameters, you must add the parameters to the callback request that is sent to OSS. You can use the following methods to add parameters: Add the parameters to a URL. Add the parameters to the header. Add the parameters to the form fields in the body of a POST request. Not e You can use only this method to specify callback parameters when you upload objects by using POST requests. You can use only one of the preceding three methods. If you use more than one method, OSS returns the InvalidArgument error code. To add the parameters to a request that is sent to OSS, you must use Base64 to encode the JSON string created in the preceding section, and then add the parameters: To add the parameters to a URL, add `callback=[CallBack]` or `callback-var=[CallBackVar]` to the request as a URL parameter. When the signature for the CanonicalizedResource field is calculated, callback or callback-var is used as a subresource. To add the parameters to the header, add `x-oss-callback=[CallBack]` or `x-oss-callback-var=[CallBackVar]` to the request as a header. When the signature for the CanonicalizedOSSHeaders field is calculated, include x-oss-callback-var and x-oss-callback. Examples:
+Step 2: Create a callback request After you create the callback and callback-var parameters, you must add the parameters to the callback request that is sent to OSS. You can use the following methods to add parameters: Add the parameters to a URL. Add the parameters to the header. Add the parameters to the form fields in the body of a POST request.
+
+> Not e You can use only this method to specify callback parameters when you upload objects by using POST requests.
+
+You can use only one of the preceding three methods. If you use more than one method, OSS returns the InvalidArgument error code. To add the parameters to a request that is sent to OSS, you must use Base64 to encode the JSON string created in the preceding section, and then add the parameters: To add the parameters to a URL, add `callback=[CallBack]` or `callback-var=[CallBackVar]` to the request as a URL parameter. When the signature for the CanonicalizedResource field is calculated, callback or callback-var is used as a subresource. To add the parameters to the header, add `x-oss-callback=[CallBack]` or `x-oss-callback-var=[CallBackVar]` to the request as a header. When the signature for the CanonicalizedOSSHeaders field is calculated, include x-oss-callback-var and x-oss-callback. Examples:
 
 ```
 PUT /test.txt HTTP/1.1 Host: callback-test.oss-test.aliyun-inc.com Accept-Encoding: identity Content-Length: 5 x-oss-callback-var: eyJ4Om15X3ZhciI6ImZvci1jYWxsYmFjay10ZXN0In0= User-Agent: aliyun-sdk-python/0.4.0 (Linux/2.6.32-220.23.2.ali1089.el5.x86_64/x86_64;2.5.4) x-oss-callback: eyJjYWxsYmFja1VybCI6IjEyMS40My4xMTMuODoyMzQ1Ni9pbmRleC5odG1sIiwgICJjYWxsYmFja0JvZHkiOiJidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0 mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbm ZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0mbXlfdmFyPSR7eDpteV92YXJ9In0= Host: callback-test.oss-test.aliyun-inc.com Expect: 100-Continue Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: text/plain Authorization: OSS mlepou3zr4u7b14:5a74vhd4UXpmyuudV14Kaen5**** Test
@@ -2562,7 +2605,9 @@ Step 4: (Optional) Sign the callback request If the callback parameter is config
 authorization = base64_encode(rsa_sign(private_key, url_decode(path) + query_string + '\n' + body, md5))
 ```
 
-Not e In the preceding code, private_key is a private key known only by OSS, path is the resource path included in the callback request, query_string is the query string, and body is the message body specified in the callback request. A callback request is signed in the following steps: i. Obtain the callback string to sign, which consists of the resource path that is obtained by decoding the URL, the original query string, a carriage return, and the callback message body. ii. Sign the callback string by using the RSA encryption algorithm. Use the private key to encrypt the signature string. The hash function used for the signature is MD5. iii. Use Base64 to encode the signed result to obtain the final signature and add the signature to the Authorization header in the callback request. Examples:
+> Not e In the preceding code, private_key is a private key known only by OSS, path is the resource path included in the callback request, query_string is the query string, and body is the message body specified in the callback request.
+
+A callback request is signed in the following steps: i. Obtain the callback string to sign, which consists of the resource path that is obtained by decoding the URL, the original query string, a carriage return, and the callback message body. ii. Sign the callback string by using the RSA encryption algorithm. Use the private key to encrypt the signature string. The hash function used for the signature is MD5. iii. Use Base64 to encode the signed result to obtain the final signature and add the signature to the Authorization header in the callback request. Examples:
 
 ```
 POST /index.php? id=1&index=2 HTTP/1.0 Host: 121.43.113.8 Connection: close Content-Length: 18 authorization: kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2t**** Content-Type: application/x-www-form-urlencoded User-Agent: http-client/0.0.1 x-oss-pub-key-url: aHR0cDovL2dvc3NwdWJsaWMuYWxpY2RuLmNvbS9jYWxsYmFja19wdWJfa2V5X3YxLnBlbQ== bucket=yonghu-test
@@ -2587,7 +2632,7 @@ public_key = urlopen(base64_decode(x-oss-pub-key-url header value))
 | http://gosspub |   |
 |---|---|
 
-Not e To ensure that the public key is issued by OSS, you must verify whether the value of the `x-oss-pub-key-url` header starts with `http://gosspub`
+> Not e To ensure that the public key is issued by OSS, you must verify whether the value of the `x-oss-pub-key-url` header starts with `http://gosspub`
 
 ```
 lic.alicdn.com/ or https://gosspublic.alicdn.com/ .
@@ -2707,13 +2752,17 @@ The code for the server in other programming languages: Java: Download link: Jav
 HTTP/1.0 200 OK Server: BaseHTTP/0.3 Python/2.7.6 Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: application/json Content-Length: 9 {"a":"b"}
 ```
 
-Not e The response returned by the application server to OSS must contain the Content-Length header. The size of the response body cannot exceed 1 MB. Step 6: Return the upload result OSS returns the information that is returned by the application server to the user. An example of the returned response:
+> Not e The response returned by the application server to OSS must contain the Content-Length header. The size of the response body cannot exceed 1 MB.
+
+Step 6: Return the upload result OSS returns the information that is returned by the application server to the user. An example of the returned response:
 
 ```json
 HTTP/1.1 200 OK Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: application/json Content-Length: 9 Connection: keep-alive ETag: "D8E8FCA2DC0F896FD7CB4CB0031BA249" Server: AliyunOSS x-oss-bucket-version: 1442231779 x-oss-request-id: 55F6BF87207FB30F2640C548 {"a":"b"}
 ```
 
-Not e The body of responses to some requests such as CompleteMultipartUpload contains content such as information in the XML format. If you use the upload callback feature, the original body content such as `{"a":"b"}` is overwritten. Exercise caution when you implement upload callback. If the upload callback fails, HTTP status code 203 and error code CallbackFailed are returned. This response indicates that the object is uploaded to OSS, but the callback fails. A callback failure only indicates that OSS does not receive the expected callback response. It does not indicate that the application server does not receive a callback request. For example, a callback failure occurs if the response returned by the application server is not in the JSON format.
+> Not e
+> The body of responses to some requests such as CompleteMultipartUpload contains content such as information in the XML format. If you use the upload callback feature, the original body content such as `{"a":"b"}` is overwritten. Exercise caution when you implement upload callback.
+> If the upload callback fails, HTTP status code 203 and error code CallbackFailed are returned. This response indicates that the object is uploaded to OSS, but the callback fails. A callback failure only indicates that OSS does not receive the expected callback response. It does not indicate that the application server does not receive a callback request. For example, a callback failure occurs if the response returned by the application server is not in the JSON format.
 
 #### 2.6.13 PutObjectTagging
 
@@ -3462,7 +3511,9 @@ HTTP/1.1 405 Method Not Allowed Server: AliyunOSS Date: Thu, 11 Aug 2016 03:53:4
 </Error>
 ```
 
-Not e If the accessed resource is /bucket/, ResourceType must be set to Bucket. If the accessed resource is /bucket/object, ResourceType must be set to Object. Operations supported by OSS but not supported by parameters If parameters not supported by OSS are added to the request for the object supported by OSS (for example, the If-Modified-Since parameter is added to the PUT operation request), OSS returns 400 Bad Request. Sample error requests
+> Not e If the accessed resource is /bucket/, ResourceType must be set to Bucket. If the accessed resource is /bucket/object, ResourceType must be set to Object.
+
+Operations supported by OSS but not supported by parameters If parameters not supported by OSS are added to the request for the object supported by OSS (for example, the If-Modified-Since parameter is added to the PUT operation request), OSS returns 400 Bad Request. Sample error requests
 
 ```
 PUT /abc.zip HTTP/1.1 Host: bucketname.regionid.example.com Accept: */* Date: Thu, 11 Aug 2016 01:44:50 GMT If-Modified-Since: Thu, 11 Aug 2016 01:43:51 GMT Content-Length: 363
@@ -3498,7 +3549,9 @@ then click Search.
 
 #### 3.1.2 Obtain an AccessKey pair
 
-AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
+
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -3511,7 +3564,11 @@ Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, click the profile picture and then click User Inf ormat ion.
 3. In the AccessKey Pair section, view the AccessKey pair of your account.
-uide Not e The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
+uide
+
+> Not e The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+
+Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Resources > Organizat ions.
@@ -3547,7 +3604,16 @@ This topic describes how to use Security Token Service (STS) to call API operati
 1. Obtain the `RAM role` .
 i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer over the profile picture in the upper-right corner of the page and click Personal Inf ormat ion. uide iii. Click View Current Role Policy. In the View Policies of Current Role dialog box, view the ARN of your `RAM role` .
 2. Obtain the STS AccessKey pair.
-Not e In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with your current session name. <yourRoleArn>: Replace this variable with the ARN of your RAM role. "sts.aliyuns.com": Replace this variable with the endpoint of STS.
+
+> Not e
+> In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with your current session name.
+> <yourRoleArn>: Replace this variable with the ARN of your RAM role.
+> "sts.aliyuns.com": Replace this variable with the endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -3651,15 +3717,22 @@ import com.alibaba.fastjson.JSONObject; import com.alibaba.fastjson.serializer.S
 
 #### 3.2.1 ASAPI overview
 
-This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). uide The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
+This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). uide The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide.
+
+> Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
 #### 3.2.2 Obtain the endpoint of ASAPI
 
 This topic describes how to obtain the endpoint of Apsara Stack API (ASAPI) in the Apsara Uni-manager Operations Console. Procedure
 1. In the address bar, enter the URL region-id.aso.intranet-domain-id.com and press the Enter key.
-Not e You can select a language from the drop-down list in the upper-right corner of the page.
+
+> Not e You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-Not e Obtain the username and password for logging on to the ASO console from the deployment personnel or an administrator. When you log on to the ASO console for the first time, you must change the password of your username as prompted. uide To enhance security, a password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). It must be 10 to 20 characters in length.
+
+> Not e Obtain the username and password for logging on to the ASO console from the deployment personnel or an administrator.
+
+When you log on to the ASO console for the first time, you must change the password of your username as prompted. uide To enhance security, a password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). It must be 10 to 20 characters in length.
 3. Click Log On to go to the ASO console.
 4. In the left-
 side navigation pane, choose Product Management >Product List >Apsara Inf rast ruct ure Management Frameworkto go to the Apsara Infrastructure Managem
@@ -3699,12 +3772,12 @@ uide
 | Timestamp | String | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2018-01- 01T12:00:00Z. |
 | Format | String | Yes | The format of the response parameters. Set the value to JSON. |
 
-Not e
+> Not e
 
 | SignatureVersion , | SignatureNonce , | Timestamp |
 |---|---|---|
 
-SDK. You do not need to specify these parameters.
+> SDK. You do not need to specify these parameters.
 
 #### 3.2.5 SDK description
 
@@ -3751,7 +3824,8 @@ uide
 </dependencies>
 ```
 
-Not e Replace `1.0.6.4-RELEASE` with the actual version of Apsara Stack SDK for Java.
+> Not e Replace `1.0.6.4-RELEASE` with the actual version of Apsara Stack SDK for Java.
+
 6. On the right side of IntelliJ IDEA, view the information in the Maven section.
 If the information in the following figure appears, the dependencies are added. Use OSS SDK for Java Currently, you can use ASAPI to call OSS APIs by using OneRouter. The following sample code provides an example on how to call OSS API operations: uide
 
@@ -3787,7 +3861,10 @@ pip install aliyun-python-sdk-asapi-2.4.7-py2.tar.gz
 pip3 install aliyun-python-sdk-asapi-2.4.7-py3.tar.gz
 ```
 
-Not e Replace `2.4.7` with the actual version of Apsara Stack SDK for Python. Call examples You can use the GET or POST method to call API operations provided by ASAPI.
+> Not e
+> Replace `2.4.7` with the actual version of Apsara Stack SDK for Python.
+
+Call examples You can use the GET or POST method to call API operations provided by ASAPI.
 
 ```bash
 # 1. Add dependencies.
@@ -3972,7 +4049,14 @@ https://public.asapi.aliyuns.com/asapi/v3?Action=DoOpenApi&Product=OneRouter&Ver
 
 #### 3.3.3 Request signatures
 
-This topic describes how to sign HTTP API requests. Alibaba Cloud uses the request signature to verify the identity of the requester. Specifically, Alibaba Cloud uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain Apsara Stack SDKs. Step 1: Construct a canonicalized query string
+This topic describes how to sign HTTP API requests. Alibaba Cloud uses the request signature to verify the identity of the requester. Specifically, Alibaba Cloud uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester.
+
+> Not e
+> An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console.
+> The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location.
+> ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain Apsara Stack SDKs.
+
+Step 1: Construct a canonicalized query string
 
 | Sort the request parameters in alphabetical order, including all common and operation-specific parameters except for | Signature | . |
 |---|---|---|
@@ -4009,7 +4093,9 @@ StringToSign=
 |---|---|---|
 | String signature = Base64.getEncoder().encodeToString(signData); |   |   |
 
-Not e When you calculate the signature, the key value that is specified by RFC 2104 is your `AccessKey secret` plus an ampersand (&), which has an ASCII value of 38. For more information, see Obtain an AccessKey pair.
+> Not e
+> When you calculate the signature, the key value that is specified by RFC 2104 is your `AccessKey secret` plus an ampersand (&), which has an ASCII value of 38. For more information, see Obtain an AccessKey pair.
+
 3. Encode the `Signature` parameter based on RFC 3986 and add the parameter to the canonicalized query string.
 Example 1: Concat enat e paramet ers The following example shows how to call the `PutBucket` operation to create a bucket. In this example, the value of AccessKeyID is `testid` and the value of AccessKeySecret is `testsecret` .
 1. Construct a canonicalized query string.
@@ -4350,7 +4436,11 @@ Query the ACL of a bucket The following code provides an example on how to query
 
 ##### 4.1.5.5 Delete buckets
 
-A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket. Not e Before you delete a bucket, you must delete all objects and parts generated by multipart upload in the bucket. The following code provides an example on how to delete a bucket:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket.
+
+> Not e Before you delete a bucket, you must delete all objects and parts generated by multipart upload in the bucket.
+
+The following code provides an example on how to delete a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete the bucket. ossClient.deleteBucket("<yourBucketName>"); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4491,7 +4581,11 @@ This topic describes a variety of methods OSS SDK for Java provides to upload ob
 
 ##### 4.1.6.2 Simple upload
 
-Simple upload allows you to use the PutObject operation to upload a single object to OSS. This topic describes how to perform simple upload by using OSS SDK for Java. Simple upload includes stream upload and file upload. Stream upload uses InputStream as the source object. File upload uses a local file as the source object. Not e For the complete code used to perform simple upload, visit GitHub. Stream upload Use ossClient.putObject to upload a data stream to OSS. Upload a string The following code provides an example on how to upload a string:
+Simple upload allows you to use the PutObject operation to upload a single object to OSS. This topic describes how to perform simple upload by using OSS SDK for Java. Simple upload includes stream upload and file upload. Stream upload uses InputStream as the source object. File upload uses a local file as the source object.
+
+> Not e For the complete code used to perform simple upload, visit GitHub.
+
+Stream upload Use ossClient.putObject to upload a data stream to OSS. Upload a string The following code provides an example on how to upload a string:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a PutObjectRequest object. String content = "Hello OSS"; // <yourObjectName> indicates the complete path of the object you want to upload to OSS. The path must include the extension of the object name. Ex ample: abc/efg/123.jpg. PutObjectRequest putObjectRequest = new PutObjectRequest("<yourBucketName>", "<yourObjectName>", new ByteArrayInputStream(content.getBytes())); // Upload the string. ossClient.putObject(putObjectRequest); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4712,7 +4806,13 @@ OSS allows you to use multipart upload to split an object into several parts and
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
-Call the ossClient.uploadPart method to upload the parts. Not e Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part. OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user. OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+Call the ossClient.uploadPart method to upload the parts.
+
+> Not e
+> Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part.
+> OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user.
+> OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+
 3. Complete the multipart upload task.
 After all parts are uploaded, call the ossClient.completeMultipartUpload method to combine these parts into a complete object. The following code provides an example on how to perform multipart upload:
 
@@ -5482,7 +5582,11 @@ public class SelectObjectSample {
 
 ##### 4.1.8.7 Delete objects
 
-This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects.
+
+> **Warning:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
+
+Delete a single object The following code provides an example on how to delete a single object:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete the object. To delete a folder, set ObjectName to the folder name. If the folder is not empty, you must delete all objects in the folder be fore you can delete the folder. ossClient.deleteObject(bucketName, objectName); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -5558,7 +5662,12 @@ The following table describes the parameters for CopyObjectRequest.
 | etag | The unique tag of the object. | String getETag() |
 | lastModified | The last modified time of the object. | Date getLastModified() |
 
-Not e This operation has the following limits: You must have read and write permissions on the source object. You cannot copy an object from a region to another region. The size of the object you want to copy cannot exceed 1 GB. The following methods can be used to copy small objects. Simple copy The following code provides an example on how to perform simple copy:
+> Not e This operation has the following limits:
+> You must have read and write permissions on the source object.
+> You cannot copy an object from a region to another region.
+> The size of the object you want to copy cannot exceed 1 GB.
+
+The following methods can be used to copy small objects. Simple copy The following code provides an example on how to perform simple copy:
 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Copy the object. CopyObjectResult result = ossClient.copyObject(sourceBucketName, sourceObjectName, destinationBucketName, destinationObjectName); System.out.println("ETag: " + result.getETag() + " LastModified: " + result.getLastModified()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -5723,7 +5832,17 @@ The following code provides an example on how to generate a signed URL to access
     System.out.println(signedUrl);
 ```
 
-Not e You can set Create Style, HTTPS, and Cascading Processing for authorized access. Use code in the following format to specify the expiration time: Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 14:20:00 GMT"); . Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs. Not e For the complete IMG code, visit GitHub. You can use OSS SDKs to process image objects by configuring Create Style, HTTPS, and Cascading Processing. Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
+> Not e
+> You can set Create Style, HTTPS, and Cascading Processing for authorized access.
+> Use code in the following format to specify the expiration time: Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 14:20:00 GMT"); .
+
+Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs.
+
+> Not e
+> For the complete IMG code, visit GitHub.
+> You can use OSS SDKs to process image objects by configuring Create Style, HTTPS, and Cascading Processing.
+
+Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
 
 ```
     String endpoint = "<Your OSS endpoint. Example: http://oss-cn-hangzhou.aliyuncs.com>";
@@ -6064,7 +6183,11 @@ This topic describes the sample code of OSS SDK for Python in various use cases.
 
 #### 4.2.2 Installation
 
-This topic describes how to install OSS SDK for Python. Preparation The version of OSS SDK for Python in this topic is compatible with Python 2.6, 2.7, 3.3, 3.4, 3.5, and 3.6. Install the environment For more information about how to install an appropriate version of Python, visit python. Check the Python version Run the `python -V` command to check Python version. In Windows, if a message is displayed, indicating that it is not an internal or external command, edit the environment variable `Path` . Add the installation path of Python and pip. The installation path of pip is the Scripts directory under the installation path of Python. Not e You may need to restart your computer to ensure that the environment variables take effect. Download OSS SDK for Python Download from GitHub Download previous versions For more information, see API Reference. Install python-devel OSS SDK for Python uses the crcmod library to calculate the value of CRC. The crcmod library depends on the Python.h file. If the Python.h file is missing, SDK installation is not affected but the installation of crcmod extensions in C fails. Therefore, the efficiency of operations such as object upload and download is low. Install pythondevel if it does not exist. When you install Python in Windows or Mac OS X systems, the Python.h file is installed together with Python. Therefore, you do not need to install python-devel. When you install Python in CentOS, RHEL, or Fedora systems, run the following command to install python-devel:
+This topic describes how to install OSS SDK for Python. Preparation The version of OSS SDK for Python in this topic is compatible with Python 2.6, 2.7, 3.3, 3.4, 3.5, and 3.6. Install the environment For more information about how to install an appropriate version of Python, visit python. Check the Python version Run the `python -V` command to check Python version. In Windows, if a message is displayed, indicating that it is not an internal or external command, edit the environment variable `Path` . Add the installation path of Python and pip. The installation path of pip is the Scripts directory under the installation path of Python.
+
+> Not e You may need to restart your computer to ensure that the environment variables take effect.
+
+Download OSS SDK for Python Download from GitHub Download previous versions For more information, see API Reference. Install python-devel OSS SDK for Python uses the crcmod library to calculate the value of CRC. The crcmod library depends on the Python.h file. If the Python.h file is missing, SDK installation is not affected but the installation of crcmod extensions in C fails. Therefore, the efficiency of operations such as object upload and download is low. Install pythondevel if it does not exist. When you install Python in Windows or Mac OS X systems, the Python.h file is installed together with Python. Therefore, you do not need to install python-devel. When you install Python in CentOS, RHEL, or Fedora systems, run the following command to install python-devel:
 
 ```bash
 yum install python-devel
@@ -6082,7 +6205,9 @@ Install OSS SDK for Python Use pip Run the following command:
 pip install oss2
 ```
 
-Not e If pip is not installed in your environment, visit the official pip website to install pip. Use the source code Click here to visit GitHub and download the OSS SDK for Python package of an appropriate version. Decompress the package. Check whether the setup.py file exists in the directory and then run the following command:
+> Not e If pip is not installed in your environment, visit the official pip website to install pip.
+
+Use the source code Click here to visit GitHub and download the OSS SDK for Python package of an appropriate version. Decompress the package. Check whether the setup.py file exists in the directory and then run the following command:
 
 ```
 python setup.py install
@@ -6223,7 +6348,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 endpoint = 'https://oss-cn-hangzhou.aliyuncs.com' bucket = oss2.Bucket(auth, endpoint, '<yourBucketName>', enable_crc=False)
 ```
 
-Warning We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object uploads and downloads.
+> **Warning:** We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object uploads and downloads.
 
 #### 4.2.5 Buckets
 
@@ -6555,7 +6680,9 @@ You can use simple upload to upload the following types of data: strings, bytes,
 | Local files | Local files are uploaded as file objects. File objects must be opened in binary mode such as the rb mode. |
 | Network streams | Network streams are uploaded as iterable objects by using chunked encoding. |
 
-Not e If you upload an object with the same name as that of an accessible existing object, the existing object is overwritten by the uploaded object and 200 OK is returned. Upload strings The following code provides an example on how to upload a string to an OSS object:
+> Not e If you upload an object with the same name as that of an accessible existing object, the existing object is overwritten by the uploaded object and 200 OK is returned.
+
+Upload strings The following code provides an example on how to upload a string to an OSS object:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6683,7 +6810,9 @@ specify the number of concurrent upload threads, ensure that oss2.defaults.conne
     num_threads=4)
 ```
 
-Not e Multiple threads are used in resumable upload. Therefore, you do not need to encapsulate multiple upload threads when you call the resumable upload method. Otherwise, data may be transferred repeatedly. We recommend that you increase the part size when network conditions are good, and decrease the part size when network conditions are poor.
+> Not e
+> Multiple threads are used in resumable upload. Therefore, you do not need to encapsulate multiple upload threads when you call the resumable upload method. Otherwise, data may be transferred repeatedly.
+> We recommend that you increase the part size when network conditions are good, and decrease the part size when network conditions are poor.
 
 ##### 4.2.6.5 Multipart upload
 
@@ -6691,7 +6820,13 @@ OSS allows you to use multipart upload to split an object into several parts and
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
-Call the ossClient.uploadPart method to upload the parts. Not e Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part. OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user. OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+Call the ossClient.uploadPart method to upload the parts.
+
+> Not e
+> Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part.
+> OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user.
+> OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+
 3. Complete the multipart upload task.
 After all parts are uploaded, call the ossClient.completeMultipartUpload method to combine these parts into a complete object. The following code provides an example on how to perform multipart upload:
 
@@ -6982,7 +7117,7 @@ al to the oss2.defaults.multiget_part_size value. oss2.resumable_download(bucket
   num_threads=3)
 ```
 
-Not e Do not use multiple programs or threads to call the method simultaneously to download the same object to a same destination file. This is because one piece of checkpoint information overwrites another on the local disk, or one temporary file name conflicts with another.
+> Not e Do not use multiple programs or threads to call the method simultaneously to download the same object to a same destination file. This is because one piece of checkpoint information overwrites another on the local disk, or one temporary file name conflicts with another.
 
 ##### 4.2.7.6 Use progress bars
 
@@ -7270,7 +7405,11 @@ def select_object(self, key, sql,
 |   | ossobject |
 |---|---|
 
-Returned results of select_object: A SelectObjectResult object is returned. You can use the read() function or the __iter__ method to obtain all results. Not e If you call the read() function to read all results when there are multiple results to return, excess memory resources are used and you have to wait for a long time. We recommend that you use the __iter__ method (foreach chunk in result) to obtain results and process each chunk in the results. The __iter__ method reduces memory usage and enables the client to process each chunk request processed by the OSS server in a timely manner. This way, the client does not need to wait until all results are returned. select_object_to_file
+Returned results of select_object: A SelectObjectResult object is returned. You can use the read() function or the __iter__ method to obtain all results.
+
+> Not e If you call the read() function to read all results when there are multiple results to return, excess memory resources are used and you have to wait for a long time. We recommend that you use the __iter__ method (foreach chunk in result) to obtain results and process each chunk in the results. The __iter__ method reduces memory usage and enables the client to process each chunk request processed by the OSS server in a timely manner. This way, the client does not need to wait until all results are returned.
+
+select_object_to_file
 
 ```python
 def select_object_to_file(self, key, filename, sql,
@@ -7300,7 +7439,11 @@ Returned results of create_select_object_meta: A GetSelectObjectMetaResult objec
 
 ##### 4.2.8.7 Delete objects
 
-This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects.
+
+> **Warning:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
+
+Delete a single object The following code provides an example on how to delete a single object:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -7538,7 +7681,11 @@ bucket.put_object_from_file(key, 'example.jpg')
 style = 'image/resize,m_fixed,w_100,h_100/rotate,90' url = bucket.sign_url('GET', key, 10 * 60, params={'x-oss-process': style}) print(url)
 ```
 
-Not e You can configure Create Style, HTTPS, and Cascading Processing for authorized access. The validity period of sign_url is set in seconds. Access by using SDKs
+> Not e
+> You can configure Create Style, HTTPS, and Cascading Processing for authorized access.
+> The validity period of sign_url is set in seconds.
+
+Access by using SDKs
 
 | You can use | OSS SDKs | to access and process image objects of any ACLs. |
 |---|---|---|
@@ -7571,7 +7718,9 @@ bucket.delete_object(key)
 os.remove(new_pic)
 ```
 
-Not e `get_object` also supports the IMG feature. Custom styles
+> Not e `get_object` also supports the IMG feature.
+
+Custom styles
 
 ```java
 # -*- coding: utf-8 -*-
@@ -7590,7 +7739,9 @@ bucket.delete_object(key)
 os.remove(new_pic)
 ```
 
-Not e `get_object` also supports the IMG feature. Cascading processing
+> Not e `get_object` also supports the IMG feature.
+
+Cascading processing
 
 ```java
 # -*- coding: utf-8 -*-
@@ -7609,7 +7760,7 @@ bucket.delete_object(key)
 os.remove(new_pic)
 ```
 
-Not e `get_object` also supports the IMG feature.
+> Not e `get_object` also supports the IMG feature.
 
 #### 4.2.12 Handle exceptions
 
@@ -7705,7 +7856,9 @@ following structure: `.`
 |   | app.php |   |
 | require_once __DIR__ . '/vendor/autoload.php'; |   |   |
 
-Not e If `autoload.php` is imported to your project, you do not need to import it again after you add the dependency of OSS SDK for PHP. If a network error occurs when you use Composer, you can use the image source of Composer China by running the `composer config -g repositories.pa`
+> Not e
+> If `autoload.php` is imported to your project, you do not need to import it again after you add the dependency of OSS SDK for PHP.
+> If a network error occurs when you use Composer, you can use the image source of Composer China by running the `composer config -g repositories.pa`
 
 ```
 ckagist composer http://packagist.phpcomposer.com command.
@@ -8374,7 +8527,13 @@ Object Storage Service (OSS) allows you to use multipart upload to split an obje
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
-Call the ossClient.uploadPart method to upload the parts. Not e Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part. OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user. OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+Call the ossClient.uploadPart method to upload the parts.
+
+> Not e
+> Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part.
+> OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user.
+> OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+
 3. Complete the multipart upload task.
 After all parts are uploaded, call the ossClient.completeMultipartUpload method to combine these parts into a complete object. For the complete code that is used to perform multipart upload, visit GitHub. The following code provides an example on how to perform multipart upload:
 
@@ -8824,7 +8983,11 @@ OSS allows you to configure one or more conditions for object download. If the s
 | If-Match | If the specified ETag matches that of an object, the object is downloaded. Otherwise, 412 Precondition failed is returned. | OssClient::OSS_IF_MATCH |
 | If-None-Match | If the specified ETag does not match that of an object, the object is downloaded. Otherwise, 304 Not modified is returned. | OssClient::OSS_IF_NONE_MATCH |
 
-Not e You can use If-Modified-Since and If-Unmodified-Since as object download conditions at the same time. You can use If-Match and If-None-Match as object download conditions at the same time. You can use $ossClient->getObjectMeta to obtain the ETag. You can use conditional download to download objects to the local file or local memory. The following code provides an example on how to perform conditional download:
+> Not e
+> You can use If-Modified-Since and If-Unmodified-Since as object download conditions at the same time. You can use If-Match and If-None-Match as object download conditions at the same time.
+> You can use $ossClient->getObjectMeta to obtain the ETag.
+
+You can use conditional download to download objects to the local file or local memory. The following code provides an example on how to perform conditional download:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -9034,7 +9197,10 @@ stObjects operation.
        break;
 ```
 
-Not e In the preceding sample code, $options is optional and can be used to list all objects in the entire bucket or in a folder. The listObjects method is used to obtain a list of objects. For information about how to obtain attributes such as the name and size of an object, see Manage object metadata. List the objects that meet specific conditions The following code provides an example on how to list objects that meet specific conditions:
+> Not e
+> In the preceding sample code, $options is optional and can be used to list all objects in the entire bucket or in a folder.
+
+The listObjects method is used to obtain a list of objects. For information about how to obtain attributes such as the name and size of an object, see Manage object metadata. List the objects that meet specific conditions The following code provides an example on how to list objects that meet specific conditions:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -9078,7 +9244,11 @@ The following table describes the parameters contained in $options from the prec
 
 ##### 4.3.8.6 Delete objects
 
-This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects.
+
+> **Warning:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
+
+Delete a single object The following code provides an example on how to delete a single object:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -9112,7 +9282,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-Not e If an exception is thrown when you use try{}catch{} to catch errors, no objects are deleted. In this case, you can use $e->getMessage to obtain the error message and analyze the causes of the error.
+> Not e If an exception is thrown when you use try{}catch{} to catch errors, no objects are deleted. In this case, you can use $e->getMessage to obtain the error message and analyze the causes of the error.
 
 ##### 4.3.8.7 Copy objects
 
@@ -9549,7 +9719,9 @@ Other Linux-based systems Install CMake Download CMake, and run the following co
 ./configure make make install
 ```
 
-Not e When you run ./configure, the default installation path is /usr/local/. To specify the installation path, add the -prefix option when you run ./configure. Install libcurl Download libcurl, and run the following commands to install libcurl:
+> Not e When you run ./configure, the default installation path is /usr/local/. To specify the installation path, add the -prefix option when you run ./configure.
+
+Install libcurl Download libcurl, and run the following commands to install libcurl:
 
 ```
 ./configure make make install
@@ -9567,7 +9739,11 @@ Install APR-util Download APR-util, and run the following commands to install AP
 // You must specify the --with-APR option when you install APR-util. ./configure --with-apr=/your/apr/install/path make make install
 ```
 
-Install Mini-XML Not e Use Mini-XML 2.x for installation. Download Mini-XML, and run the following commands to install Mini-XML:
+Install Mini-XML
+
+> Not e Use Mini-XML 2.x for installation.
+
+Download Mini-XML, and run the following commands to install Mini-XML:
 
 ```python
 ./configure make sudo make install
@@ -9585,7 +9761,9 @@ You can specify a path to which third-party libraries cRUL, APR, APR-util, and M
 cmake -f CMakeLists.txt // Set the build type to Release. Typical build types include Debug, Release, RelWithDebInfo, and MinSizeRel. By default, Debug is used. -DCMAKE_BUILD_TYPE=Release // Set the directory to install the SDK. -DCMAKE_INSTALL_PREFIX=/usr/local/ // Specify the path where third-party libraries cRUL, APR, APR-util, and XML are installed. -DCURL_INCLUDE_DIR=/usr/include/curl -DCURL_LIBRARY=/usr/lib64/libcurl.so -DAPR_INCLUDE_DIR=/usr/include/apr-1 -DAPR_LIBRARY=/usr/lib64/libapr-1.so -DAPR_UTIL_INCLUDE_DIR=/usr/include/apr-1 -DAPR_UTIL_LIBRARY=/usr/lib64/libaprutil-1.so -DMINIXML_INCLUDE_DIR=/usr/include -DMINIXML_LIBRARY=/usr/lib64/libmxml.so // If the 'Could not find APR-config/APR-1-config' error is reported during compilation, one possible reason is that the APR-1-config file does n ot exist in the default path. Add the following options: -DAPR_CONFIG_BIN=/path/to/bin/apr-1-config // If the 'Could not find apu-config/apu-1-config' error is reported, add the following options: -DAPU_CONFIG_BIN=/path/to/bin/apu-1-config
 ```
 
-Install OSS SDK for C on Windows Download the SDK Download directly Download from GitHub Download previous versions Install the SDK For more information about how to use Visual Studio to compile OSS SDK for C, visit Use Alibaba Cloud OSS SDK for C on Windows. Not e If you use Visual Studio 2012 or later, you are prompted to choose whether to upgrade the project version to adapt to the latest versions of the compiler and libraries. We recommend that you use versions that match your project. If the project uses the compiler and libraries of the latest versions, upgrade the project. Otherwise, you do not need to upgrade the project.
+Install OSS SDK for C on Windows Download the SDK Download directly Download from GitHub Download previous versions Install the SDK For more information about how to use Visual Studio to compile OSS SDK for C, visit Use Alibaba Cloud OSS SDK for C on Windows.
+
+> Not e If you use Visual Studio 2012 or later, you are prompted to choose whether to upgrade the project version to adapt to the latest versions of the compiler and libraries. We recommend that you use versions that match your project. If the project uses the compiler and libraries of the latest versions, upgrade the project. Otherwise, you do not need to upgrade the project.
 
 #### 4.4.3 Initialization
 
@@ -9627,7 +9805,9 @@ int main() {
     return 0;
 ```
 
-Not e For more information about how to set the request options, see How to set parameters for cRUL-based communication in OSS SDK for C. Use the custom domain name to initialize request options The following code provides an example on how to use custom domain name to initialize request options:
+> Not e For more information about how to set the request options, see How to set parameters for cRUL-based communication in OSS SDK for C.
+
+Use the custom domain name to initialize request options The following code provides an example on how to use custom domain name to initialize request options:
 
 ```
 #include "oss_api.h"
@@ -9748,7 +9928,11 @@ This topic describes how to use Object Storage Service (OSS) SDK for C to comple
  make clean .
 ```
 
-For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project. Not e For more information about how to use Visual Studio, see Use Alibaba Cloud OSS SDK for C in Windows. The following code provides an example on how to create a bucket:
+For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project.
+
+> Not e For more information about how to use Visual Studio, see Use Alibaba Cloud OSS SDK for C in Windows.
+
+The following code provides an example on how to create a bucket:
 
 ```
 #include "oss_api.h"
@@ -11631,7 +11815,11 @@ char * local_filename = multibyte_to_utf8(local_filename_ch, local_filename_buf,
 
 ##### 4.4.6.3 Append upload
 
-You can append strings and files during append upload. You cannot perform CopyObject for append objects. Not e You cannot perform CopyObject for append objects. Append data from memory The following code provides an example on how to append data from memory:
+You can append strings and files during append upload. You cannot perform CopyObject for append objects.
+
+> Not e You cannot perform CopyObject for append objects.
+
+Append data from memory The following code provides an example on how to append data from memory:
 
 ```
 #include "oss_api.h"
@@ -11871,7 +12059,13 @@ OSS allows you to use multipart upload to split an object into several parts and
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
-Call the ossClient.uploadPart method to upload the parts. Not e Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part. OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user. OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+Call the ossClient.uploadPart method to upload the parts.
+
+> Not e
+> Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part.
+> OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user.
+> OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+
 3. Complete the multipart upload task.
 After all parts are uploaded, call the ossClient.completeMultipartUpload method to combine these parts into a complete object. The following code provides an example on how to perform multipart upload:
 
@@ -12008,7 +12202,9 @@ s_cname, and curl. */
     return 0;
 ```
 
-Not e Query the uploaded parts. You must provide the ETag value of each part to call the oss_complete_multipart_upload operation. You can use one of the following method to obtain the ETag values: First, the response of a part upload contains the ETag value of the part. You can save the values for future use. Second, you can call the oss_list_upload_part operation to query the ETag values of the uploaded parts. In this example, the second method is used. Cancel a multipart upload task The following sample code provides an example on how to cancel a multipart upload task:
+> Not e Query the uploaded parts. You must provide the ETag value of each part to call the oss_complete_multipart_upload operation. You can use one of the following method to obtain the ETag values: First, the response of a part upload contains the ETag value of the part. You can save the values for future use. Second, you can call the oss_list_upload_part operation to query the ETag values of the uploaded parts. In this example, the second method is used.
+
+Cancel a multipart upload task The following sample code provides an example on how to cancel a multipart upload task:
 
 ```
 #include "oss_api.h"
@@ -12083,7 +12279,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-Not e If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted.
+> Not e If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted.
 
 ##### 4.4.6.6 Use progress bars
 
@@ -12329,7 +12525,7 @@ f the name of the object is different from that of the local file, the object is
     return 0;
 ```
 
-Not e Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL.
+> Not e Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL.
 
 ##### 4.4.7.3 Download to local memory
 
@@ -12849,7 +13045,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-Not e For more information about HTTP headers, see RFC 2616.
+> Not e For more information about HTTP headers, see RFC 2616.
 
 ##### 4.4.8.4 List objects
 
@@ -12948,7 +13144,9 @@ _cname, and curl. */
     return 0;
 ```
 
-Not e A maximum of 1,000 objects can be listed by default. If a bucket contains more than 1,000 objects, only the first 1,000 objects are returned, and the value of the truncated parameter in the response is true. Additionally, the next_marker parameter is returned as the start position for the next read operation. To list more than 1,000 objects at a time, you can modify the max_ret parameter. You can also use the marker parameter to perform multiple read operations. List a specified number of objects The following sample code provides an example on how to list a specified number of objects:
+> Not e A maximum of 1,000 objects can be listed by default. If a bucket contains more than 1,000 objects, only the first 1,000 objects are returned, and the value of the truncated parameter in the response is true. Additionally, the next_marker parameter is returned as the start position for the next read operation. To list more than 1,000 objects at a time, you can modify the max_ret parameter. You can also use the marker parameter to perform multiple read operations.
+
+List a specified number of objects The following sample code provides an example on how to list a specified number of objects:
 
 ```
 #include "oss_api.h"
@@ -13412,7 +13610,11 @@ List the sizes of objects in a specified directory The following code provides a
 
 ##### 4.4.8.5 Delete objects
 
-This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code that is used to delete an object, visit GitHub. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects.
+
+> **Warning:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
+
+For the complete code that is used to delete an object, visit GitHub. Delete a single object The following code provides an example on how to delete a single object:
 
 ```
 #include "oss_api.h"
@@ -13612,7 +13814,7 @@ _cname, and curl. */
     return 0;
 ```
 
-Warning If you set the prefix to an empty string or NULL, all objects in the bucket are deleted. Exercise caution when you use this operation.
+> **Warning:** If you set the prefix to an empty string or NULL, all objects in the bucket are deleted. Exercise caution when you use this operation.
 
 ##### 4.4.8.6 Copy objects
 
@@ -14425,7 +14627,9 @@ This topic describes how to install OSS SDK for Go. Prerequisites Environment Go
 go get github.com/aliyun/aliyun-oss-go-sdk/oss
 ```
 
-Not e When you run the go get command to install the SDK, no prompts are displayed. If the installation times out, run the preceding command again. View the version of OSS SDK for Go Run the following code to view the version of OSS SDK for Go:
+> Not e When you run the go get command to install the SDK, no prompts are displayed. If the installation times out, run the preceding command again.
+
+View the version of OSS SDK for Go Run the following code to view the version of OSS SDK for Go:
 
 ```java
 package main import (
@@ -14470,7 +14674,9 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.UseCname(true) indicates
     os.Exit(-1)
 ```
 
-Import ant When you use CNAME, you cannot list buckets because a custom domain name is bound to a specified bucket. Create an OSSClient instance based on STS The following code provides an example on how to create an OSSClient instance based on Security Token Service (STS):
+> Import ant When you use CNAME, you cannot list buckets because a custom domain name is bound to a specified bucket.
+
+Create an OSSClient instance based on STS The following code provides an example on how to create an OSSClient instance based on Security Token Service (STS):
 
 ```java
 import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss.SecurityToken("<yourSecurityToken>")) if err ! = nil {
@@ -14486,7 +14692,9 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.Timeout(10, 120) indicat
     os.Exit(-1)
 ```
 
-Disable CRC By default, CRC is enabled to ensure data integrity when you upload or download objects. The following code provides an example on how to disable CRC: Warning We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object upload and download.
+Disable CRC By default, CRC is enabled to ensure data integrity when you upload or download objects. The following code provides an example on how to disable CRC:
+
+> **Warning:** We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object upload and download.
 
 ```java
 import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss.EnableCRC(false)) if err ! = nil {
@@ -15513,7 +15721,11 @@ You can specify object metadata when you perform the first append from the posit
 
 ##### 4.5.6.4 Resumable upload
 
-If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is complete. Not e The SDK records the upload progress in the checkpoint file. Make sure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must upload all parts again. If the object being uploaded is modified, you must upload the entire object again.
+If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is complete.
+
+> Not e
+> The SDK records the upload progress in the checkpoint file. Make sure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must upload all parts again.
+> If the object being uploaded is modified, you must upload the entire object again.
 
 | You can use Bucket.UploadFile to perform resumable upload. The following table describes the parameters of this operation. |   |
 |---|---|
@@ -15562,7 +15774,13 @@ OSS allows you to use multipart upload to split an object into several parts and
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
-Call the ossClient.uploadPart method to upload the parts. Not e Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part. OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user. OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+Call the ossClient.uploadPart method to upload the parts.
+
+> Not e
+> Part numbers identify the relative positions of parts in an object that share the same upload ID. If you have uploaded a part and used its part number again to upload another part, the latter part overwrites the former part.
+> OSS includes the MD5 hash of part data in the ETag header and returns the MD5 hash to the user.
+> OSS calculates the MD5 hash of uploaded data and compares it with the MD5 hash calculated by the SDK. If the two hashes are different, the InvalidDigest error code is returned.
+
 3. Complete the multipart upload task.
 After all parts are uploaded, call the ossClient.completeMultipartUpload method to combine these parts into a complete object. The following code provides an example on how to perform multipart upload:
 
@@ -16121,7 +16339,11 @@ func main() {
 
 ##### 4.5.7.5 Resumable download
 
-You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After you have downloaded all parts, these parts will be combined into a complete object. During the download, the download progress is recorded in a checkpoint file. If the download of a part fails, the next download starts from the position recorded in the checkpoint file. The checkpoint file is deleted after resumable download is complete. Not e The SDK records the download progress in the checkpoint file. Ensure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must download the entire object again. If the object being downloaded is modified (the ETag value of the object changes) or some parts are missing or modified, you must download the entire object again.
+You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After you have downloaded all parts, these parts will be combined into a complete object. During the download, the download progress is recorded in a checkpoint file. If the download of a part fails, the next download starts from the position recorded in the checkpoint file. The checkpoint file is deleted after resumable download is complete.
+
+> Not e
+> The SDK records the download progress in the checkpoint file. Ensure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must download the entire object again.
+> If the object being downloaded is modified (the ETag value of the object changes) or some parts are missing or modified, you must download the entire object again.
 
 | You can use Bucket.DownloadFile to download an object by using resumable download. The following table describes the parameters of this operation. Parameter Description objectKey The name of the object to download. filePath The local file path to which to download the object. partSize The size of each part. The part size ranges from 1 byte to 5 GB. The optional parameters, including: Routines: the number of concurrent download threads. The default value is 1, indicating that only one thread is used to download parts. Checkpoint: specifies whether resumable download is enabled and the path of the checkpoint file. By default, resumable download is disabled. For example, oss.Che ckpoint(true, "") indicates that resumable download is enabled and the options checkpoint file is the file.cp file contained in the same directory as the destination local file. file is a variable that indicates the local file name. You can also use oss.Checkpoint(true, "your-cp-file.cp") to specify the checkpoint file. Conditions: conditions for multipart download. For more information about the conditions, seeManage object metadata. |   |   |   |
 |---|---|---|---|
@@ -16841,7 +17063,11 @@ func main() {
 
 ##### 4.5.8.6 Delete objects
 
-This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code used to delete objects, visit GitHub. Delete a single object The following sample code provides an example on how to delete the exampleobject.txt object from the examplebucket bucket:
+This topic describes how to delete objects.
+
+> **Warning:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
+
+For the complete code used to delete objects, visit GitHub. Delete a single object The following sample code provides an example on how to delete the exampleobject.txt object from the examplebucket bucket:
 
 ```java
 package main import (
@@ -17038,7 +17264,11 @@ func main() {
         os.Exit(-1)
 ```
 
-Process object metadata during object copy You can use MetadataDirective to process object metadata during object copy. Valid values of MetadataDirective: oss.MetaCopy: This is the default value. Copy metadata of the source object. The metadata of the destination object is the same as the metadata of the source object. oss.MetaReplace: overwrites the source object metadata by using the specified object metadata. Import ant All metadata of the source object is overwritten if you use oss.MetaReplace. The metadata of the source object cannot be recovered. Exercise caution when you perform this operation. The following table describes the parameter you can configure when you set MetadataDirective to oss.MetaReplace.
+Process object metadata during object copy You can use MetadataDirective to process object metadata during object copy. Valid values of MetadataDirective: oss.MetaCopy: This is the default value. Copy metadata of the source object. The metadata of the destination object is the same as the metadata of the source object. oss.MetaReplace: overwrites the source object metadata by using the specified object metadata.
+
+> Import ant All metadata of the source object is overwritten if you use oss.MetaReplace. The metadata of the source object cannot be recovered. Exercise caution when you perform this operation.
+
+The following table describes the parameter you can configure when you set MetadataDirective to oss.MetaReplace.
 
 | Parameter | Description |
 |---|---|
@@ -17198,7 +17428,9 @@ func main() {
         HandleError(err)
 ```
 
-Not e For more information, see Manage object metadata. Use a signed URL to download an object
+> Not e For more information, see Manage object metadata.
+
+Use a signed URL to download an object
 
 ```java
 package main import (
@@ -17699,7 +17931,9 @@ OSS error codes The following table describes the OSS error codes.
 | TooManyBuckets | The error message returned because the number of the buckets managed by a user exceeds the limit. | 400 |
 | InvalidEncryptionAlgorithmError | The error message returned because the specified encryption algorithm based on entropy encoding is invalid. | 400 |
 
-Not e In the preceding table, the error code is specified by the OssServiceError.Code parameter. The HTTP status code is specified by the OssServiceError.StatusCode parameter. t
+> Not e In the preceding table, the error code is specified by the OssServiceError.Code parameter. The HTTP status code is specified by the OssServiceError.StatusCode parameter.
+
+t
 
 ## 5 Obtain an endpoint
 
@@ -17723,11 +17957,21 @@ An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey
 4. In the organization navigation tree, click an organization name.
 5. In the Current Organization section, click Obt ain an accesskey.
 6. In the AccessKey message, view the AccessKey pair of the organization.
-Not e An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization. Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following steps:
+
+> Not e An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
+
+Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following steps:
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click Login.
 4. In the upper-right corner of the homepage, move the pointer over the profile picture and select User Inf ormat ion from the shortcut menu.
 5. In the Apsara St ack AccessKey Pair section, view your AccessKey pair.
-Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+
+> Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.

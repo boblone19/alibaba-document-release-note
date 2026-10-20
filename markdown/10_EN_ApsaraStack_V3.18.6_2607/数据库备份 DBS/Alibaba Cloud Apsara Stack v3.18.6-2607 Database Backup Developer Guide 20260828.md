@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 114
 source_pdf: "136c6fe999aa3119_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%20DBS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Backup%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828
@@ -193,9 +193,7 @@ Configures a Database Backup (DBS) backup schedule.
 
 **Usage notes**
 
-**Note**
-
-In most cases, if you initiate a request to configure a backup schedule, DBS requires approximately five seconds to respond to your request.
+> **Note:** In most cases, if you initiate a request to configure a backup schedule, DBS requires approximately five seconds to respond to your request.
 
 **Request parameters**
 
@@ -604,9 +602,7 @@ The character class `[characters]` matches any character included in the braces.
 | character1 to character2 |   |   |
 |   |   | , such a |
 
-**Note**
-
-The `SchemaName` and `NewSchemaName` parameters are used only for MS SQL databases. The `DBName` and `NewDBName` parameters are used to define the names of other databases.
+> **Note:** The `SchemaName` and `NewSchemaName` parameters are used only for MS SQL databases. The `DBName` and `NewDBName` parameters are used to define the names of other databases.
 
 **Response parameters**
 
@@ -2653,9 +2649,7 @@ icon, and then choose **User Center > Department**
 3. Select a department and click **Create AccessKey** to obtain an AccessKey pair of this
 department.
 
-**Note**
-
-The AccessKey pair is automatically allocated to a level-1 department. The sub-departments use the same AccessKey pair as their level-1 department.
+> **Note:** The AccessKey pair is automatically allocated to a level-1 department. The sub-departments use the same AccessKey pair as their level-1 department.
 
 **Obtain an AccessKey pair of a personal account**
 

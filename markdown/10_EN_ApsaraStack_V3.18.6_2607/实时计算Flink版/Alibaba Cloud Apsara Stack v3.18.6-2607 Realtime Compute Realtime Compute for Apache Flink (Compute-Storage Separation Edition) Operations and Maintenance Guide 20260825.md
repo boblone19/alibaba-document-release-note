@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 56
 source_pdf: "3df168821e3b3a41_Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97Flink%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Realtime%20Compute%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Operations%20and%20Maintenance%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Operations and Maintenance Guide 20260825
@@ -127,7 +127,9 @@ For more information, see the **Log in to the Realtime Compute for Apache Flink*
 3. Double-click the name of the target draft.
 4. In the right pane, click **Version Information**.
 5. In the **Actions** column corresponding to the target version number, choose **More > Lock**.
-After you lock a version successfully, a success message appears at the top of the page, and the icon appears before the draft version number. You cannot delete a locked draft version, and must unlock it before deletion. To unlock a version, choose **More > Unlock**.
+After you lock a version successfully, a success message appears at the top of the page, and the icon appears before the draft version number.
+
+> **Note:** You cannot delete a locked draft version, and must unlock it before deletion. To unlock a version, choose **More > Unlock**.
 
 **Delete a draft version**
 
@@ -235,20 +237,26 @@ History
 | Checkpoints | View the generation history of system checkpoints, including checkpoint ID, status, creation time, duration, incremental storage size, and full storage size. |
 | Savepoint | View the generation history of savepoints, including savepoint ID, status, type, source and remarks, creation time, duration, and related actions (copy HDFS address, restore deployment from this savepoint, delete this savepoint). |
 
-Configuration On this tab, configure rules for scheduled automatic creation of savepoints and automatic cleanup of savepoints. Configure scheduled automatic creation of savepoints a. On the **Configuration** tab, turn on the **Automatic savepoint generation** switch. b. Click **Quick settings**, then select an appropriate time interval from the dropdown list as the period. The minimum interval is 10 minutes. If the Cron expression you enter triggers less than every 10 minutes, the system defaults to triggering every 10 minutes. c. Click **Save Changes**. d. (Optional) To reset, click **Reset**. This action immediately turns off the **Automatic**
+Configuration On this tab, configure rules for scheduled automatic creation of savepoints and automatic cleanup of savepoints. Configure scheduled automatic creation of savepoints a. On the **Configuration** tab, turn on the **Automatic savepoint generation** switch. b. Click **Quick settings**, then select an appropriate time interval from the dropdown list as the period.
+
+> **Note:** The minimum interval is 10 minutes. If the Cron expression you enter triggers less than every 10 minutes, the system defaults to triggering every 10 minutes.
+
+c. Click **Save Changes**. d. (Optional) To reset, click **Reset**. This action immediately turns off the **Automatic**
 **savepoint generation** feature.
 Configure automatic cleanup rules for savepoints
 
-**Important**
+> **Important:** The system cleans up savepoints based on either the number of savepoints or their retention duration. Meeting either condition triggers cleanup.
+> Savepoint cleanup does not include savepoints manually triggered by users. You must manually delete such savepoints on the savepoint viewing page.
 
-The system cleans up savepoints based on either the number of savepoints or their retention duration. Meeting either condition triggers cleanup. Savepoint cleanup does not include savepoints manually triggered by users. You must manually delete such savepoints on the savepoint viewing page. a. On the **Configuration** tab, turn on the **Automatic savepoint cleanup** switch. b. Configure **Number of historical savepoints to retain** and **Maximum retention**
+a. On the **Configuration** tab, turn on the **Automatic savepoint cleanup** switch. b. Configure **Number of historical savepoints to retain** and **Maximum retention**
 **time for historical savepoints (in hours)** as needed.
 c. Click **Save Changes**. d. (Optional) To reset, click **Reset**. This action immediately turns off the **Automatic**
 **savepoint cleanup** feature.
 
 **Manually create and delete a savepoint**
 
-The system supports manually creating savepoints only for **running** deployments.
+> **Note:** The system supports manually creating savepoints only for **running** deployments.
+
 1. Go to the savepoint creation interface.
 i. Log in to the Realtime Compute for Apache Flink console and go to the **Deployments** page. ii. On the **Deployments** page, click the name of the target deployment to enter the deployment details page by default. iii. In the upper-right corner of the **Deployments** page, click **Create Savepoint**.
 2. Select a savepoint format and enter a savepoint description.
@@ -259,7 +267,8 @@ On the **Deployments** page, select the **State > History** tab. Find your targe
 
 **deployment)**
 
-The system supports restoring a deployment from a specified savepoint only if the deployment is **CANCELLED**. If your job is **running**, cancel it first.
+> **Note:** The system supports restoring a deployment from a specified savepoint only if the deployment is **CANCELLED**. If your job is **running**, cancel it first.
+
 1. Locate the target savepoint.
 i. Log in to the Realtime Compute for Apache Flink console and go to the **Deployments** page. ii. On the **Deployments** page, click the name of the target deployment to enter the deployment details page by default. iii. Select the **State > History** tab. iv. In the **Savepoints** list, find the target snapshot.
 2. In the **Actions** column for the target savepoint, select **More > Restore job from this**
@@ -312,7 +321,9 @@ View Job Manager logs On the **Job Manager** tab, click **Logs**. View Task Mana
 deployment details page by default.
 2. In the **Actions** row of the **Status** tab, click **Flink UI** to enter the **Overview** page of
 **Apache Flink Dashboard**.
-The **Flink UI** entry appears only when the deployment status is **RUNNING**.
+
+> **Note:** The **Flink UI** entry appears only when the deployment status is **RUNNING**.
+
 3. In the left-side navigation pane, click **Task Managers** or **Job Manager**.
 After you click **Task Managers**, click the target **Path, ID**. On the **Logs** tab, view the Task Manager logs of the deployment. After you click **Job Manager**, on the **Logs** tab, view the Job Manager logs of the deployment.
 
@@ -343,7 +354,8 @@ Logs support pagination. Each page displays 1 MB of data, approximately 8,000–
 1. Go to the **Deployments** page.
 i. Log in to the Realtime Compute for Apache Flink console and go to the **Deployments** page. ii. On the **Deployments** page, click the name of the target deployment to enter the deployment details page by default.
 2. On the **Logs** tab, select the **JM Exceptions** tab on the left to view Job Manager exceptions.
-In the **Exception History** section, you can view exceptions generated in the last seven days and filter by exception type to review historical exceptions.
+
+> **Note:** In the **Exception History** section, you can view exceptions generated in the last seven days and filter by exception type to review historical exceptions.
 
 **View logs of failed Task Managers**
 
@@ -377,7 +389,9 @@ To view historical deployment instance logs, you must enable log archiving in th
 
 **Notes**
 
-When a log file reaches the specified size, the system automatically archives the log by default and periodically deletes log files that exceed the archive retention period. After a deployment stops, uncleaned archived logs are retained and not automatically deleted. If you delete a deployment, its corresponding logs are also deleted. By default, the log configuration retains two files, each 5 MB in size. We recommend that you do not modify this value. The number of files shown in the image does not include the file currently being written. For example, if you configure this parameter as 1, the system saves up to two files: one in memory and one on your local disk.
+When a log file reaches the specified size, the system automatically archives the log by default and periodically deletes log files that exceed the archive retention period. After a deployment stops, uncleaned archived logs are retained and not automatically deleted. If you delete a deployment, its corresponding logs are also deleted. By default, the log configuration retains two files, each 5 MB in size. We recommend that you do not modify this value.
+
+> **Note:** The number of files shown in the image does not include the file currently being written. For example, if you configure this parameter as 1, the system saves up to two files: one in memory and one on your local disk.
 
 **View logs on the deployment log page**
 
@@ -529,7 +543,9 @@ Coarse-grained allocation is a static resource assignment method. You only need 
 
 **Expert mode (fine-grained)**
 
-Only SQL drafts support expert mode configuration. Fine-grained allocation is a dynamic resource assignment method. You can configure the resources required by each task or even each operator. Flink calculates the resource specification needed per slot and dynamically requests Task Managers and slots that exactly match from the available resource pool. For complex deployments, coarse-grained allocation may lead to low resource utilization. Fine-grained allocation allows precise control over resources per operator, improving resource usage and meeting deployment throughput requirements. For more information about concepts such as TM, JM, TASK, or SLOT, see Flink architecture.
+> **Note:** Only SQL drafts support expert mode configuration.
+
+Fine-grained allocation is a dynamic resource assignment method. You can configure the resources required by each task or even each operator. Flink calculates the resource specification needed per slot and dynamically requests Task Managers and slots that exactly match from the available resource pool. For complex deployments, coarse-grained allocation may lead to low resource utilization. Fine-grained allocation allows precise control over resources per operator, improving resource usage and meeting deployment throughput requirements. For more information about concepts such as TM, JM, TASK, or SLOT, see Flink architecture.
 
 | Configuration item | Description |
 |---|---|
@@ -558,7 +574,13 @@ with downstream operators. NEVER: The current operator does not chain with upstr
 
 **Deployment configuration optimization recommendations**
 
-We recommend setting the parallelism of source nodes proportional to the number of partitions — Resource optimization tips specifically, choose a parallelism that evenly divides VVP limits the actual CPU usage of JobManager and TaskManager. The system can use only the partition count. For example, if Kafka has 16 the number of CPUs that you configure. When you optimize resources, we recommend that partitions, set parallelism to 16, 8, or 4 to avoid data skew. Also, avoid setting source node parallelism too you perform the following operations: low, which could cause one source to read excessive When a deployment has high parallelism: Increase the resources of the JobManager by data and create an input bottleneck affecting scaling up the CPU and memory in the **Resources** of the deployment. For example: deployment throughput. Set Job Manager CPU to 4. Configure parallelism for non-source nodes according to traffic volume: set higher parallelism for high- Set Job Manager Memory to 8 GiB. traffic nodes and lower parallelism for low-traffic nodes. When the deployment topology is complex: Increase the resources of the TaskManager by scaling up the CPU and memory in **Resources** of the deployment. For example: v. Click **OK**. Set Task Manager CPU to 2. Set Task Manager Memory to 4 GiB. We do not recommend that you modify taskmanager.numberOfTaskSlots. Keep the default value 1. Recommended configurations for improving throughput and resolving data hotspots Add the following code to **Advanced Configuration** > **Additional Flink Configuration** of the deployment. For more information, see Group Aggregate optimization tips.
+> We recommend setting the parallelism of source nodes proportional to the number of partitions — specifically, choose a parallelism that evenly divides the partition count. For example, if Kafka has 16 partitions, set parallelism to 16, 8, or 4 to avoid data skew. Also, avoid setting source node parallelism too low, which could cause one source to read excessive data and create an input bottleneck affecting deployment throughput.
+
+Resource optimization tips VVP limits the actual CPU usage of JobManager and TaskManager. The system can use only the number of CPUs that you configure. When you optimize resources, we recommend that you perform the following operations: When a deployment has high parallelism: Increase the resources of the JobManager by scaling up the CPU and memory in the **Resources** of the deployment. For example: Set Job Manager CPU to 4.
+
+> Configure parallelism for non-source nodes according to traffic volume: set higher parallelism for high- traffic nodes and lower parallelism for low-traffic nodes.
+
+Set Job Manager Memory to 8 GiB. When the deployment topology is complex: Increase the resources of the TaskManager by scaling up the CPU and memory in **Resources** of the deployment. For example: v. Click **OK**. Set Task Manager CPU to 2. Set Task Manager Memory to 4 GiB. We do not recommend that you modify taskmanager.numberOfTaskSlots. Keep the default value 1. Recommended configurations for improving throughput and resolving data hotspots Add the following code to **Advanced Configuration** > **Additional Flink Configuration** of the deployment. For more information, see Group Aggregate optimization tips.
 
 ```
 execution.checkpointing.interval: 180s state.backend: com.alibaba.flink.statebackend.GeminiStateBackendFactory table.exec.state.ttl: 129600000 table.exec.mini-batch.enabled: true table.exec.mini-batch.allow-latency: 5s table.optimizer.distinct-agg.split.enabled: true env.java.opts.taskmanager: -Xms4096m -XX:+UseParNewGC - XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -verbose:gc - XX:+HeapDumpOnOutOfMemoryError -XX:+UseConcMarkSweepGC - XX:+UseCMSCompactAtFullCollection -XX:CMSMaxAbortablePrecleanTime=1000 -XX:+CMSClassU nloadingEnabled -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:SurvivorRatio=5 -XX:Pa rallelGCThreads=4
@@ -594,7 +616,12 @@ The following table describes the parameters.
 | table.exec.mini-batch.enabled | Specifies whether to enable mini-batch processing. |
 | table.exec.mini-batch.allow- latency | The time interval at which data is output in batches. |
 
-Enable LocalGlobal (resolve common data hotspot issues) LocalGlobal can filter out some skewed data through LocalAgg aggregation, thereby reducing hotspots in GlobalAgg and improving performance. You can refer to the following figure to understand how LocalGlobal resolves data skew. The LocalGlobal optimization splits the original Aggregate into two stages: Local and Global aggregation. This corresponds to the Combine and Reduce stages in the MapReduce model. In the first stage, upstream nodes locally accumulate a batch of data for aggregation (localAgg) and output the incremental value (Accumulator) of this micro-batch. In the second stage, the system merges the received Accumulators (Merge) to produce the final result (GlobalAgg). Applicable scenarios Improve performance for standard aggregations (such as SUM, COUNT, MAX, MIN, and AVG) and resolve data hotspot issues in these scenarios. Usage limits LocalGlobal is enabled by default, but has the following limits: It takes effect only when minibatch is enabled. You must implement Merge using AggregateFunction. Verify effectiveness Check whether node names in the final generated topology contain GlobalGroupAggregate or LocalGroupAggregate. Enable PartialFinal (resolve COUNT DISTINCT hotspot issues) To resolve COUNT DISTINCT hotspot issues, you typically need to manually rewrite the query into two-stage aggregation (adding a shuffling layer based on modulo operations on the Distinct Key). Realtime Compute now provides automatic shuffling for COUNT DISTINCT, known as PartialFinal optimization. You no longer need to manually rewrite queries into two-stage aggregation. For a comparison of the principles between PartialFinal and LocalGlobal, see the following figure. LocalGlobal optimization works well for standard aggregations (such as SUM, COUNT, MAX, MIN, and AVG), but offers limited improvement for COUNT DISTINCT. This is because the deduplication rate for DISTINCT KEY during Local aggregation is low, causing hotspot issues to persist at the Global node. Applicable scenarios Use COUNT DISTINCT when performance requirements for aggregation nodes cannot be met. Do not use the PartialFinal optimization method in Flink SQL that contains UDAF. We do not recommend using the PartialFinal optimization method when data volume is small, as it wastes resources. PartialFinal optimization automatically shuffles data into two-stage aggregation, introducing additional network Shuffle overhead. Enable method By default, this feature is disabled. To enable it, add the following code in **Advanced**
+Enable LocalGlobal (resolve common data hotspot issues) LocalGlobal can filter out some skewed data through LocalAgg aggregation, thereby reducing hotspots in GlobalAgg and improving performance. You can refer to the following figure to understand how LocalGlobal resolves data skew. The LocalGlobal optimization splits the original Aggregate into two stages: Local and Global aggregation. This corresponds to the Combine and Reduce stages in the MapReduce model. In the first stage, upstream nodes locally accumulate a batch of data for aggregation (localAgg) and output the incremental value (Accumulator) of this micro-batch. In the second stage, the system merges the received Accumulators (Merge) to produce the final result (GlobalAgg). Applicable scenarios Improve performance for standard aggregations (such as SUM, COUNT, MAX, MIN, and AVG) and resolve data hotspot issues in these scenarios. Usage limits LocalGlobal is enabled by default, but has the following limits: It takes effect only when minibatch is enabled. You must implement Merge using AggregateFunction. Verify effectiveness Check whether node names in the final generated topology contain GlobalGroupAggregate or LocalGroupAggregate. Enable PartialFinal (resolve COUNT DISTINCT hotspot issues) To resolve COUNT DISTINCT hotspot issues, you typically need to manually rewrite the query into two-stage aggregation (adding a shuffling layer based on modulo operations on the Distinct Key). Realtime Compute now provides automatic shuffling for COUNT DISTINCT, known as PartialFinal optimization. You no longer need to manually rewrite queries into two-stage aggregation. For a comparison of the principles between PartialFinal and LocalGlobal, see the following figure. LocalGlobal optimization works well for standard aggregations (such as SUM, COUNT, MAX, MIN, and AVG), but offers limited improvement for COUNT DISTINCT. This is because the deduplication rate for DISTINCT KEY during Local aggregation is low, causing hotspot issues to persist at the Global node. Applicable scenarios Use COUNT DISTINCT when performance requirements for aggregation nodes cannot be met.
+
+> **Note:** Do not use the PartialFinal optimization method in Flink SQL that contains UDAF.
+> We do not recommend using the PartialFinal optimization method when data volume is small, as it wastes resources. PartialFinal optimization automatically shuffles data into two-stage aggregation, introducing additional network Shuffle overhead.
+
+Enable method By default, this feature is disabled. To enable it, add the following code in **Advanced**
 **Configuration** > **Additional Flink Configuration** of your deployment.
 
 ```
@@ -756,7 +783,10 @@ The Apsara Infrastructure Management Console allows you to view details of Flink
 1. Log in to the Apsara Infrastructure Management Console.
 i. Open your browser. ii. Log in to the Apsara Uni-manager Operations Console. In the address bar, enter the access address of the Apsara Uni-manager Operations Console and press Enter. Then, enter your correct username and password, and click **Log**
 **In**.
-Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from your deployment personnel or administrator. iii. In the top navigation bar, click **Platform Operation > Apsara Infrastructure**
+
+> **Note:** Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from your deployment personnel or administrator.
+
+iii. In the top navigation bar, click **Platform Operation > Apsara Infrastructure**
 **Management > Resource Management**.
 2. View details of Flink product instances.
 i. In the left-side navigation pane, select **Resource Management > Product & Cluster**
@@ -792,7 +822,11 @@ Deep inspection covers, but is not limited to, platform systems, hardware, inven
 **Cluster inspection**
 
 1. Log in to Apsara Infrastructure Management.
-i. Open your browser. altime Compute for Apache Flink ii. Log in to the Apsara Uni-manager Operations Console. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console and press Enter. Then, enter the correct username and password and click **Log In**. Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment personnel or administrator. iii. In the top navigation bar, click **Platform Operation**. iv. Select **Apsara Infrastructure Management > Resource Management**.
+i. Open your browser. altime Compute for Apache Flink ii. Log in to the Apsara Uni-manager Operations Console. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console and press Enter. Then, enter the correct username and password and click **Log In**.
+
+> **Note:** Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment personnel or administrator.
+
+iii. In the top navigation bar, click **Platform Operation**. iv. Select **Apsara Infrastructure Management > Resource Management**.
 2. Check whether the Flink cluster is in the **Ready** status.
 i. In the left-side navigation pane, click **Product & Cluster O&M**. ii. In the search box labeled **Product | Cluster** under **Products**, search for **realtime-**
 **compute-flinkonoss**.
@@ -847,13 +881,17 @@ session and job pods. i. Run the following command to confirm the information th
 kubectl get ns | grep $<Workspace ID> | grep $<Namespace>
 ```
 
-$<Workspace ID> and $<Namespace> must be replaced based on the results obtained in Step 2. The system returns a result similar to the following: altime Compute for Apache Flink ii. Run the following command to view the health information of session and job pods.
+> **Note:** $<Workspace ID> and $<Namespace> must be replaced based on the results obtained in Step 2.
+
+The system returns a result similar to the following: altime Compute for Apache Flink ii. Run the following command to view the health information of session and job pods.
 
 ```bash
 kubectl get po -n $<works-ns> |egrep "^job|^session"
 ```
 
-$<works-ns> must be replaced based on the query result in Step a. The system returns a result similar to the following:
+> **Note:** $<works-ns> must be replaced based on the query result in Step a.
+
+The system returns a result similar to the following:
 5. Verify that the inspection result meets requirements.
 Inspection requirements: All pods are pods that provide actual services for stream tasks. The STATUS must be Running. No recent RESTARTS have occurred. The AGE must exceed 5 minutes.
 
@@ -897,8 +935,9 @@ The following table describes deployment statuses: TRANSITIONING: The deployment
 
 Session cluster mode Check the Session cluster status You must manually start the session cluster in advance. If not started, find the target session cluster, click **Start** in the **Actions** column to set its status to **RUNNING**. Check resource configuration If resources are insufficient, new deployments will be stuck in the scheduling phase. Ensure that the session cluster has sufficient resource allocation. Perform the following steps: a. Find the target session cluster, and click **Edit** under the **Actions** column. b. In the **Configure Session Cluster** page, modify resource information in the
 **Configuration** section.
-You cannot modify resource information for a session cluster whose status is
-**RUNNING**. Stop the cluster first if modification is required.
+
+> **Note:** You cannot modify resource information for a session cluster whose status is **RUNNING**. Stop the cluster first if modification is required.
+
 Per-Job cluster mode The system dynamically requests resources when you submit a deployment. Insufficient resources, image pull failures, or quota limits can prevent cluster creation. Example error message:
 
 ```
@@ -911,13 +950,15 @@ Check whether CPU or memory quotas in the target namespace have reached their up
 
 **Session deployment fails to start**
 
-**Important**
+> **Important:** Because the JobManager in a session cluster is shared, any JobManager failure causes all deployments in that cluster to fail. Do not use session clusters in production environments.
 
-Because the JobManager in a session cluster is shared, any JobManager failure causes all deployments in that cluster to fail. Do not use session clusters in production environments. Log in to the Realtime Compute for Apache Flink development console. Go to the session cluster page. Find the target session cluster where the deployment failed to start. Click the cluster name to go to its details page.
+Log in to the Realtime Compute for Apache Flink development console. Go to the session cluster page. Find the target session cluster where the deployment failed to start. Click the cluster name to go to its details page.
 
 **Session resource issues**
 
-Deplolyment scheduling fails if the number of Task Managers or slots is insufficient. We recommend that you first check the following resource issues: Check whether the resources allocated to the Job Manager and Task Manager in the current session are sufficient. On the **Overview** page of the session cluster, check whether the number of slots available for running deployments in the current session cluster is sufficient. By default, the number of slots is 1, and each Task Manager has only one slot. If you set the default number of Task Managers to 1 and the number of slots to greater than 1, each Task Manager allocates four slots for running tasks.
+Deplolyment scheduling fails if the number of Task Managers or slots is insufficient. We recommend that you first check the following resource issues: Check whether the resources allocated to the Job Manager and Task Manager in the current session are sufficient. On the **Overview** page of the session cluster, check whether the number of slots available for running deployments in the current session cluster is sufficient.
+
+> **Note:** By default, the number of slots is 1, and each Task Manager has only one slot. If you set the default number of Task Managers to 1 and the number of slots to greater than 1, each Task Manager allocates four slots for running tasks.
 
 **Locate deployment startup exception logs**
 
@@ -929,7 +970,13 @@ Follow these steps to troubleshoot a Per-Job deployment that fails to start:
 1. On the **Operations** page, find the deployment that failed to start. Click the deployment
 name to go to its details page.
 2. Check the current status of the deployment. It is usually `TRANSITIONING` or `FAILED` .
-If the status is `FAILED` , try viewing events to analyze the specific cause of failure. Once the deployment enters the FAILED state, the control system forcibly destroys the JobManager and TaskManager pods. If the status is `TRANSITIONING` , the deployment is being scheduled. In this state, go to the deployment details page and check the JobManager and TaskManager. First, check whether the JM/TM pods have been started. If the JM pod has started, prioritize checking the JM startup logs and container logs. If both JM and TM pods have started, prioritize checking the TM logs.
+If the status is `FAILED` , try viewing events to analyze the specific cause of failure.
+
+> **Note:** Once the deployment enters the FAILED state, the control system forcibly destroys the JobManager and TaskManager pods.
+
+If the status is `TRANSITIONING` , the deployment is being scheduled. In this state, go to the deployment details page and check the JobManager and TaskManager.
+
+> **Note:** First, check whether the JM/TM pods have been started. If the JM pod has started, prioritize checking the JM startup logs and container logs. If both JM and TM pods have started, prioritize checking the TM logs.
 
 **Typical cases**
 
@@ -937,7 +984,11 @@ The following are common symptoms of deployments that fail to be scheduled for a
 
 **TaskManager fails to register with JobManager**
 
-After Flink pulls up the TaskManager pod, the pod attempts to register with the JobManager. If this registration cannot be completed, the deployment fails to start. In Realtime Compute for Apache Flink Compute-Storage Separation Edition, the system changes the status of a deployment instance to RUNNING after the JobManager is started. However, in Realtime Compute for Apache Flink Enterprise Edition, the system changes the status of a deployment instance to RUNNING only after both the JobManager and TaskManager are started and all TaskManagers register themselves with the JobManager. Typical scenarios: Network fluctuations cause TaskManager requests to time out when they attempt to connect to the JobManager. If network fluctuations are the cause, the process may take slightly longer than expected but will not last 5 to 10 minutes. An exception occurs on the JobManager, causing the JobManager to fail to process registration requests from TaskManagers for an extended period. As a result, TaskManager registration requests time out. Note that in the second scenario, you cannot view TaskManager details in the VVP console. However, you can query and find TaskManager pods in the tenant namespace from OPS. When you cannot view TaskManager details in the VVP console, perform the following operations:
+After Flink pulls up the TaskManager pod, the pod attempts to register with the JobManager. If this registration cannot be completed, the deployment fails to start.
+
+> **Note:** In Realtime Compute for Apache Flink Compute-Storage Separation Edition, the system changes the status of a deployment instance to RUNNING after the JobManager is started. However, in Realtime Compute for Apache Flink Enterprise Edition, the system changes the status of a deployment instance to RUNNING only after both the JobManager and TaskManager are started and all TaskManagers register themselves with the JobManager.
+
+Typical scenarios: Network fluctuations cause TaskManager requests to time out when they attempt to connect to the JobManager. If network fluctuations are the cause, the process may take slightly longer than expected but will not last 5 to 10 minutes. An exception occurs on the JobManager, causing the JobManager to fail to process registration requests from TaskManagers for an extended period. As a result, TaskManager registration requests time out. Note that in the second scenario, you cannot view TaskManager details in the VVP console. However, you can query and find TaskManager pods in the tenant namespace from OPS. When you cannot view TaskManager details in the VVP console, perform the following operations:
 1. Run the following command on OPS to query pod information in the tenant namespace:
 
 ```bash
@@ -987,7 +1038,10 @@ kubectl logs ${ververica-ververica-xxx-xxx} -n ververica -c appmanager [--since=
 kubectl logs ${vvp-appmanager-xxx-xxx} -n flinkonoss [--since=5m] | grep "${JobId}"
 ```
 
-`--since=5m` is optional and limits log queries to the last 5 minutes, helping you locate recent logs. Note: Because appmanager handles deployment scheduling and state machine maintenance, its logs are extensive. When using the `kubectl` command, you may not find the desired logs due to the large volume. In this case, enter the appmanager container interactively to view the raw log files.
+> **Note:** `--since=5m` is optional and limits log queries to the last 5 minutes, helping you locate recent logs.
+
+> **Note:** Because appmanager handles deployment scheduling and state machine maintenance, its logs are extensive. When using the `kubectl` command, you may not find the desired logs due to the large volume. In this case, enter the appmanager container interactively to view the raw log files.
+
 
 ```bash
 # For Flink Enterprise Edition:

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 56
 source_pdf: "4cb1f473de2e584d_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Management Center User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Management%20Center%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Management Center User Guide 20260701
@@ -84,11 +84,18 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
-operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**. For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
+
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
 ## 3 SOC
 
@@ -241,7 +248,10 @@ by the attack paths. You can view the following information about an attack path
 **Name**, **Path Risk Score**, **Affected Core Assets**, and **Assets in Path**.
 You can perform the following operations: Click the icon. In the **Attack Path Configuration** dialog box, configure the **Risk**
 **Score for Attack Path Filtering** and **Start Time for Attack Path** parameters and
-click OK. Click **Panorama View** to view the network topologies of all attack paths. Find the attack path that you want to manage and click its name or **View Attack Path** in the Actions column to view the network topology of the attack path. You can click **2D Mode** or **3D Mode** in the details page of an attack path to switch the view mode.
+click OK. Click **Panorama View** to view the network topologies of all attack paths. Find the attack path that you want to manage and click its name or **View Attack Path** in the Actions column to view the network topology of the attack path.
+
+> **Note:** You can click **2D Mode** or **3D Mode** in the details page of an attack path to switch the view mode.
+
 **Shadow IP Address Outside Cloud**: This tab displays the list of **shadow IP addresses**
 **outside the cloud**. You can perform the following operations:
 Click an IP address to view its details, including the **geographical location**, **cloud-**
@@ -277,7 +287,8 @@ You can use built-in security baselines to check and manage the security complia
 4. In the upper-right corner of the **Cloud Service Check** page, click **Select Organization or**
 **Resource Set**. Select one or more organizations that you want to check and click **OK**.
 5. Specify search conditions to search for baselines.
-If you do not specify search conditions, all baselines of cloud services are displayed by default.
+
+> **Note:** If you do not specify search conditions, all baselines of cloud services are displayed by default.
 
 | Search condition | Description |
 |---|---|
@@ -289,7 +300,11 @@ If you do not specify search conditions, all baselines of cloud services are dis
 6. On the **Cloud Service Check** page, view information about the baselines of cloud services.
 The information includes baseline risk items, affected assets, enabled baseline check items, disabled baseline check items, and the time when the check was last performed.
 7. Perform a cloud service check.
-Manual check Click **Check Now**. The system starts a full check on the configurations of all services to detect risks and affected assets. During the check, you can click **View** to view the check progress in the **Check Item Detection** dialog box. Do not perform other operations until the check is complete. Automatic check Click **Check Settings** to configure a check policy. The following table describes the required parameters.
+Manual check Click **Check Now**. The system starts a full check on the configurations of all services to detect risks and affected assets. During the check, you can click **View** to view the check progress in the **Check Item Detection** dialog box.
+
+> **Note:** Do not perform other operations until the check is complete.
+
+Automatic check Click **Check Settings** to configure a check policy. The following table describes the required parameters.
 
 | Parameter | Description |
 |---|---|
@@ -317,7 +332,9 @@ baselines.
 
 **Vulnerabilities**
 
-On the **Vulnerabilities** tab, you can view the following information about a vulnerability: Vulnerability Name, Vulnerability Type, Priority Score, CVE ID, Affected Assets, Vulnerability Level, Last Detected At, and Organization. You can specify search conditions to search for vulnerabilities. If you do not specify search conditions, all vulnerabilities are displayed by default.
+On the **Vulnerabilities** tab, you can view the following information about a vulnerability: Vulnerability Name, Vulnerability Type, Priority Score, CVE ID, Affected Assets, Vulnerability Level, Last Detected At, and Organization. You can specify search conditions to search for vulnerabilities.
+
+> **Note:** If you do not specify search conditions, all vulnerabilities are displayed by default.
 
 | Search condition | Description |
 |---|---|
@@ -332,7 +349,11 @@ All search results are displayed in the vulnerability list. You can perform the 
 **Vulnerability Details** tab of the panel that appears, view the details of the
 vulnerability and the suggestions on how to fix the vulnerability. On the **Scanned**
 **Asset** tab of the panel that appears, click the name of an affected asset. On the Basic
-Information tab of the Tenant Assets page, view the information about the affected asset. You can view the result of a vulnerability fix on the **Scanned Asset** tab. Deliver a task: Find the vulnerability that you want to manage, click **More** in the
+Information tab of the Tenant Assets page, view the information about the affected asset.
+
+> **Note:** You can view the result of a vulnerability fix on the **Scanned Asset** tab.
+
+Deliver a task: Find the vulnerability that you want to manage, click **More** in the
 **Actions** column, and then select **Deliver Handling Task**. In the **Create Task** panel,
 configure the parameters and click **OK**. Create a response policy: Click **More** in the Actions column of a vulnerability and select
 **Create Response Policy**. In the **Create Policy** panel, configure parameters and click
@@ -346,7 +367,9 @@ Actions column of a vulnerability. In the **Batch repair** dialog box, select **
 
 **Baselines**
 
-On the Baselines tab, you can view the following information about a baseline: Baseline Name, Risk Type, Risk Level, Affected Assets, Last Detected At, Organization, and Data Source. You can specify search conditions to search for baselines. If you do not specify search conditions, all baselines are displayed by default.
+On the Baselines tab, you can view the following information about a baseline: Baseline Name, Risk Type, Risk Level, Affected Assets, Last Detected At, Organization, and Data Source. You can specify search conditions to search for baselines.
+
+> **Note:** If you do not specify search conditions, all baselines are displayed by default.
 
 | Search condition | Description |
 |---|---|
@@ -364,7 +387,8 @@ All search results are displayed in the baseline list. You can perform the follo
 On the Tenant Assets page, you can view information about the affected asset. Deliver a task: Find the baseline that you want to manage, click **More** in the **Actions** column, and then select **Deliver Handling Task**. In the **Create Task**panel, configure the parameters and click **OK**. Create a response policy: Click **More** in the Actions column of a baseline and select
 **Create Response Policy**. In the **Create Policy** panel, configure parameters and click
 **OK**.
-We recommend that you handle the risks based on the risk description provided by SOC.
+
+> **Note:** We recommend that you handle the risks based on the risk description provided by SOC.
 
 #### 3.3.6 View traffic analysis results
 
@@ -436,7 +460,10 @@ On the Intelligence Query page, enter a malicious IP address, malicious domain n
 
 #### 3.5.1 View tenant assets
 
-You can view the assets of tenants on the Tenant Assets page. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs). This topic describes how to view the assets of tenants. You can also specify a search condition in a search box to search for an asset. If you do not specify a search condition, all assets are automatically displayed.
+You can view the assets of tenants on the Tenant Assets page. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs). This topic describes how to view the assets of tenants. You can also specify a search condition in a search box to search for an asset.
+
+> **Note:** If you do not specify a search condition, all assets are automatically displayed.
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -446,7 +473,11 @@ You can view the assets of tenants on the Tenant Assets page. The assets include
 you want to view from the **Organization** drop-down list. Then, you can view the overview of the tenant assets in the specified organizations.
 5. Click the following tabs to view the assets of the tenant: **ECS**, **ApsaraDB RDS**, **OSS**, **SLB**,
 **EIP**, **Active Internet IP Addresses**, **Tunnel**, and **Server Outside Cloud**.
-You can specify search conditions to search for servers, assets, or instances. If you do not specify search conditions, all servers, assets, or instances are automatically displayed. Configure asset importance tags and business types. Click a server or instance name to view the following details.
+You can specify search conditions to search for servers, assets, or instances.
+
+> **Note:** If you do not specify search conditions, all servers, assets, or instances are automatically displayed.
+
+Configure asset importance tags and business types. Click a server or instance name to view the following details.
 
 **ECS**
 
@@ -687,10 +718,11 @@ that are described in the following table and click **OK**.
 
 The created task is displayed in the task list. On the Tasks page, you can handle all tasks. Search for a task Specify filter conditions to search for a task. You can specify the following filter conditions:
 **Delivering Organization**, Task Type, Priority, Task Status, Handling Status, Task Name,
-and Handled By. Handle a task i. Find the task that you want to manage and click the task name or **Handling Details** in the **Actions** column. ii. On the Task Details page, turn on Received. Start to Handle. In the message that appears, click OK. iii. Handle the task based on suggestions provided in the **Handling Suggestion** section and record the handling process in the **Handling Records** field. The handling record must be 0 to 2,048 characters in length. After you enter and save a record, you can select **Synchronize to Handling**
-**Solutions**. If you encounter the same task later, you can directly reference the
-handling solution as the handling suggestion. A handling record that is synchronized to the knowledge base of handling solutions becomes a handling solution and is in the **Pending Approval** state. To approve or disable a solution synchronized from a handling record, go to the SOC console of the Apsara Uni-manager Operations Console, find the solution that you want to manage on the **Handling Solutions** page, and then click
-**Approve** or **Disable** in the **Actions** column.
+and Handled By. Handle a task i. Find the task that you want to manage and click the task name or **Handling Details** in the **Actions** column. ii. On the Task Details page, turn on Received. Start to Handle. In the message that appears, click OK. iii. Handle the task based on suggestions provided in the **Handling Suggestion** section and record the handling process in the **Handling Records** field. The handling record must be 0 to 2,048 characters in length.
+
+> **Note:** After you enter and save a record, you can select **Synchronize to Handling** **Solutions**. If you encounter the same task later, you can directly reference the handling solution as the handling suggestion.
+> A handling record that is synchronized to the knowledge base of handling solutions becomes a handling solution and is in the **Pending Approval** state. To approve or disable a solution synchronized from a handling record, go to the SOC console of the Apsara Uni-manager Operations Console, find the solution that you want to manage on the **Handling Solutions** page, and then click **Approve** or **Disable** in the **Actions** column.
+
 After a task is handled, the task state changes from **In processing** to **Completed**, and you can no longer modify the task.
 
 ### 3.8 Policy management
@@ -758,7 +790,7 @@ If one or more predefined rules are disabled, **the system prompts you to**
 
 **confirm whether to enable them.**
 
-The copied custom rules can be modified and deleted. The copied predefined rules can only be deleted.
+> The copied custom rules can be modified and deleted. The copied predefined rules can only be deleted.
 
 #### 3.8.2 Create a response policy
 
@@ -807,4 +839,8 @@ This topic describes how to enable global organization service-linked role autho
 3. In the left-side navigation pane, choose **Operations > Organization Authorization**.
 4. In the Security Operations Center section of the Organization Authorization page, click
 **View Details** next to **Organization SLR Authorization**. In the Authorization Details
-panel, view the authorization state of the current organization. You can also enable or disable authorization for specific organizations. If you want to turn on **Global Organization SLR Authorization**, you must perform this operation on the platform side of the Security Operations Center (SOC) console. Enabled: SOC is assigned the service-linked role of the organization. SOC can automatically collect information about the cloud assets and security data of the organization. The global organization security administrator has the operations management permissions on the cloud assets and security data of the organization. Disabled: SOC is not assigned the service-linked role of the organization. SOC cannot automatically collect information about the cloud assets and security data of the organization. The organization cannot use SOC features for security operations management.
+panel, view the authorization state of the current organization. You can also enable or disable authorization for specific organizations.
+
+> **Note:** If you want to turn on **Global Organization SLR Authorization**, you must perform this operation on the platform side of the Security Operations Center (SOC) console.
+
+Enabled: SOC is assigned the service-linked role of the organization. SOC can automatically collect information about the cloud assets and security data of the organization. The global organization security administrator has the operations management permissions on the cloud assets and security data of the organization. Disabled: SOC is not assigned the service-linked role of the organization. SOC cannot automatically collect information about the cloud assets and security data of the organization. The organization cannot use SOC features for security operations management.

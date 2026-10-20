@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 28
 source_pdf: "8b82b7a32ffa97ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Product Introduction 20260828
@@ -375,9 +375,7 @@ Container Security detects security alert events in real time across your assets
 
 Based on the automated analysis of massive virus samples and persistent attack patterns, the Alibaba Cloud security team developed a machine learning-powered anti-virus scanning engine. Container Security uses this engine to scan specified servers for viruses and provides actions such as cleaning, ignoring, whitelisting, or manually handling detected threats. Supported virus types include ransomware, mining programs, DDoS Trojans, Trojan programs, backdoor programs, malicious programs, high-risk programs, worms, suspicious programs, and self-mutating Trojans.
 
-**Warning**
-
-Risk exposure checks require extensive data management for assets, applications, and risks. This feature depends on the Dipper engine. If your environment lacks this engine, you cannot use this feature.
+> **Warning:** Risk exposure checks require extensive data management for assets, applications, and risks. This feature depends on the Dipper engine. If your environment lacks this engine, you cannot use this feature.
 
 **Precise Defense**
 
@@ -396,9 +394,7 @@ Host-based Intrusion Prevention System (HIPS) uses heuristic behavior rules to i
 
 Container Security detects web shells and automatically blocks suspicious connections that are initiated through known web shells. It isolates related files and effectively cleans PHP, ASP, and JSP web shells. Web shell detection is powered by the proprietary Alibaba Cloud GLE engine. Refined over seven years on the Alibaba Cloud public cloud, GLE combines static pattern matching, dynamic taint simulation through Abstract Syntax Tree (AST) execution, and heuristic anomaly detection to accurately identify large web shells, small web shells, and one-liner web shells. The Alibaba Cloud security team has publicly run four “Zeus Crowdsourced Testing” campaigns. The GLE engine has been tested by over 600 white hat hackers and achieved a detection rate of over 95% against advanced adversarial examples that were crafted by toptier researchers.
 
-**Warning**
-
-Container Security supports web shell scanning for automatically discovered or manually added web directories, including full-disk scans.
+> **Warning:** Container Security supports web shell scanning for automatically discovered or manually added web directories, including full-disk scans.
 
 **Threat Model Detection**
 
@@ -410,17 +406,14 @@ activity, sensitive file tampering, suspicious network connections, abnormal acc
 **Alert types:** web shells, malicious processes (cloud-based scanning), and malicious
 scripts.
 
-**Warning**
-
-Threat detection model computation requires the Dipper engine. If your environment lacks this engine, you cannot use this feature.
+> **Warning:** Threat detection model computation requires the Dipper engine. If your environment lacks this engine, you cannot use this feature.
 
 **Threat Intelligence Detection**
 
 Using Alibaba Cloud Threat Intelligence, Container Security can effectively identify potential threats in your assets. Threat intelligence correlates, analyzes, and processes threat-related data to deliver timely alerts, which improves threat detection efficiency and response speed. Supported intelligence types include malicious domain names, malicious IP addresses, darknet communication IP addresses, C2 communication IP addresses, miner pool communication IP addresses, malicious URLs, and malicious download sources.
 
-**Warning**
-
-Threat intelligence detection requires the Dipper engine. If your environment lacks this engine, you cannot use this feature. To use threat intelligence in Container Security, you must purchase the Alibaba Cloud Threat Intelligence Service separately.
+> **Warning:** Threat intelligence detection requires the Dipper engine. If your environment lacks this engine, you cannot use this feature.
+> To use threat intelligence in Container Security, you must purchase the Alibaba Cloud Threat Intelligence Service separately.
 
 **Container Firewall**
 

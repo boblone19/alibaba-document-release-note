@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 457
 source_pdf: "9575f76b334f9d96_Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Resource%20Orchestration%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service User Guide 20260828
@@ -139,32 +139,31 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-manager
 Management Console and press Enter.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
 sole
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy Agreement, And**
 **User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of the following
 scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -195,9 +194,9 @@ Create a template.
 6. On the **Configure Template Parameters** page, enter the stack name and parameters, and then click
 **Next**.
 
-**Note**
+> **Note:** The required parameters vary based on the template. Follow the on-screen instructions in the console to configure the parameters.
+> You can also click **Preview** to view the resource name, resource type, and resource properties.
 
-The required parameters vary based on the template. Follow the on-screen instructions in the console to configure the parameters. You can also click **Preview** to view the resource name, resource type, and resource properties.
 7. On the **Configure Stack** page, specify whether to enable rollback on failure, set the timeout period, and
 then click **Next**.
 8. On the **Confirm Information** page, verify the stack information and click **Submit**.
@@ -264,9 +263,8 @@ A stack is in the **Created** state. For more information, see Create a stack.
 5. In the **Configure Template Parameters** step, modify the parameter settings in the Set Parameter
 section. Then, click **Next**.
 
-**Note**
+> **Note:** The parameters that you must configure vary based on the template. Follow on-screen instructions to configure the parameters.
 
-The parameters that you must configure vary based on the template. Follow on-screen instructions to configure the parameters.
 6. In the **Configure Stack** step, set the timeout period and click **Next**.
 7. In the **Confirm** step, confirm the template and stack configurations, and click **Update Stack**.
 
@@ -291,9 +289,9 @@ Template section. Then, click **Next**.
 6. In the **Configure Template Parameters** step, modify the parameter settings in the Stacks and Set
 Parameters sections. Then, click **Next**.
 
-**Note**
+> **Note:** The parameters that you must configure vary based on the template. Follow on-screen instructions to configure the parameters.
+> The name must be unique in your Apsara Stack tenant account.
 
-The parameters that you must configure vary based on the template. Follow on-screen instructions to configure the parameters. The name must be unique in your Apsara Stack tenant account.
 7. In the **Configure Stack** step, configure Rollback on Failure and Timeout Period based on your business
 requirements, and click **Next**.
 8. In the **Confirm** step, confirm the template and stack configurations, and click **Create Stack**.
@@ -357,9 +355,9 @@ A template is created. For more information, see Create a template.
 3. Select a filter condition from the drop-down list and enter relevant information in the search box to search
 for templates. The templates that meet the specified filter condition are displayed.
 
-**Note**
+> **Note:** You can search for a template by **Name or ID** or **Tag**.
+> You can also click Advanced Filter and specify multiple filter conditions to narrow down the search results.
 
-You can search for a template by **Name or ID** or **Tag**. You can also click Advanced Filter and specify multiple filter conditions to narrow down the search results.
 4. On the **My Templates** page, find the template that you want to modify and click **Edit** in the **Actions**
 column.
 5. In the **Edit Template** dialog box, modify the **Template Name**, **Template Description**, and **Prepare**
@@ -6561,17 +6559,25 @@ Fn::GetAtt SecurityGroupId: The security group ID. SecurityGroupName: The securi
 
 **Scenario 1: Create a basic security group in an existing VPC.**
 
-Quick create YAML JSON
+Quick create
+
+> YAML JSON
 
 **Scenario 2: Create an advanced security group in an existing VPC.**
 
-Quick create YAML JSON
+Quick create
+
+> YAML JSON
 
 **Scenario 3: Create an ECS instance and configure the security group to**
 
 **open inbound port 9966.**
 
-Quick create YAML JSON For more examples, see public templates that include this resource.
+Quick create
+
+> YAML JSON
+
+For more examples, see public templates that include this resource.
 
 #### 7.1.23 ALIYUN::ECS::SecurityGroupClone
 
@@ -6890,11 +6896,15 @@ Fn::GetAtt None.
 
 **3306.**
 
-Quick Create YAML JSON
+Quick Create
+
+> YAML JSON
 
 **Scenario 2: Create a security group and open inbound port 80.**
 
-Quick Create YAML JSON
+Quick Create
+
+> YAML JSON
 
 **Scenario 3: Create an ECS instance and open inbound port 3000 as the**
 
@@ -14935,9 +14945,8 @@ To view more examples, visit Listener.json and Listener.yml. In the examples, th
 
 ALIYUN::SLB::Certificate is used to upload a certificate to a Server Load Balancer (SLB) instance. Server certificates and certificate authority (CA) certificates are supported.
 
-**Important**
-
-If you set CertificateType to CA, you can upload only one CA certificate at a time. If you set CertificateType to Server, you can upload only one server certificate and its corresponding private key at a time.
+> **Important:** If you set CertificateType to CA, you can upload only one CA certificate at a time.
+> If you set CertificateType to Server, you can upload only one server certificate and its corresponding private key at a time.
 
 **Syntax**
 
@@ -15806,9 +15815,7 @@ Outputs:
 
 ALIYUN::SLB::MasterSlaveServerGroup is used to create a primary/secondary server group.
 
-**Important**
-
-A primary/secondary server group contains only two ECS instances: a primary server and a secondary server.
+> **Important:** A primary/secondary server group contains only two ECS instances: a primary server and a secondary server.
 
 **Syntax**
 

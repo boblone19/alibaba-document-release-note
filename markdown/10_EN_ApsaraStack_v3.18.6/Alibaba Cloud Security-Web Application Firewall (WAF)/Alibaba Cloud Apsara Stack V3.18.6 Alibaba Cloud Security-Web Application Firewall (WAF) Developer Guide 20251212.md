@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 218
 source_pdf: "7997cdd8adfc4249_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Developer G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Developer%20Guide%2020251212.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Developer Guide 20251212
@@ -124,17 +124,17 @@ browser and press the Enter key.
 2. On the login page, enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
 operations based on the login scenario: Scenario 1: You log in to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter the username and password as described in Step 2 and click **Log In**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You log in to the Apsara Uni-manager Management Console after MFA is enabled and an MFA device is bound. Enter the six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see **Bind a virtual MFA device to enable MFA** in **Apsara** **Uni-manager Management Console User Guide**.
 
-For more information, see **Bind a virtual MFA device to enable MFA** in **Apsara**
-**Uni-manager Management Console User Guide**.
 5. In the top navigation bar, choose **Products > Development Tools > OpenAPI Explorer**.
 
 ### 1.2 View the information about an operation
@@ -163,9 +163,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
 | Parameter | Description |
 |---|---|
@@ -182,9 +180,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -215,9 +211,15 @@ Apsara Stack STS allows you to manage temporary credentials for your Apsara Stac
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 2. Obtain the access credentials assigned by STS.
 
-**Note**
-
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the current session name. In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the ARN of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS.
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with the current session name.
+> In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace it with the ARN of your RAM role.
+> "sts.aliyuns.com": Replace it with the actual endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -280,9 +282,14 @@ e that is obtained in the preceding step.
 3. Use the access credentials assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the access credentials assigned by STS to call the ECS `DescribeZones` operation:
 
-**Note**
-
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your AccessKey ID. <yourStsAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
+> **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
+> Variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourStsAccesskeyID>: Replace it with your AccessKey ID.
+> <yourStsAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourStsToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with the actual resource set ID.
+> <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -338,23 +345,41 @@ If you want to call API operations in Apsara Stack by using the POP gateway, you
 1. Log on to the Apsara Infrastructure Management console.
 i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported. iii. Enter your username and password.
+iii. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** . v. In the top navigation bar of the Apsara Uni-manager Operations Console, choose**Products > Base/Platforms > Infrastructure Management**.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
+iv. Click **Agree to Private Policy and Log On** . v. In the top navigation bar of the Apsara Uni-manager Operations Console, choose**Products > Base/Platforms > Infrastructure Management**.
 1. i. Open your browser.
 ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported. iii. Enter your username and password.
+iii. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** . v. In the top navigation bar of the Apsara Uni-manager Operations Console, choose**Products > Base/Platforms > Infrastructure Management**.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
+iv. Click **Agree to Private Policy and Log On** . v. In the top navigation bar of the Apsara Uni-manager Operations Console, choose**Products > Base/Platforms > Infrastructure Management**.
 2. In the left-side navigation pane, click **Product & Cluster O&M**.
 3. In the **Product | Cluster** search box, enter **yundun-advance**. Find the cluster whose
 name contains **BasicThinCluster** and click **Cluster Details** in the Actions column.
@@ -375,12 +400,11 @@ If you want to call the API operations of Apsara Stack Security services from th
 1. Obtain the virtual IP address (VIP) of the POP.
 i. Click **Back to Old Version** to switch to Apsara Infrastructure Management of the previous version. In the top navigation bar, choose **Operations > Cluster Operations**. ii. Enter **webappAll** in the **Project** search box and **StandardCloudCluster** in the **Cluster** search box. Click the name of the first **StandardCloudCluster** cluster. iii. In the **Cluster Resource** section, find the O&M domain, management domain, and service domain. Click the icon to the right of **Type**, select **Contains** from the dropdown list, and then enter `vip` in the Filter field.
 
-**Note**
+> **Note:** The following section describes the cluster resources of the preceding domains:
+> O&M domain: The value of the **Name** parameter of the cluster resource is **pop-vip-ops**.
+> Management domain: The value of the **Name** parameter of the cluster resource is **pop-vip-mgmt**.
+> Service domain: The value of the **Name** parameter of the cluster resource is **pop-vip-biz**.
 
-The following section describes the cluster resources of the preceding domains: O&M domain: The value of the **Name** parameter of the cluster resource is
-**pop-vip-ops**.
-Management domain: The value of the **Name** parameter of the cluster resource is **pop-vip-mgmt**. Service domain: The value of the **Name** parameter of the cluster resource is
-**pop-vip-biz**.
 iv. Right-click the value of the **Result** parameter of the O&M domain, management domain, or service domain. Click **Show More** and view the value of the **vip_ip** parameter in the Details dialog box.
 2. Configure the following hosts file on your computer.
 
@@ -434,9 +458,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 
 ##### 3.1.1.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of a service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of a service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 
@@ -494,9 +516,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. If you use Python 2.x, run the following command to install the core library:
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -510,9 +532,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 ##### 3.2.1.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 
@@ -552,9 +572,7 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 ##### 3.3.1.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 
@@ -664,9 +682,9 @@ You must sign all API requests to ensure security. Alibaba Cloud uses the reques
 
 1. Create a canonicalized query string by arranging the request parameters.
 
-**Note**
+> **Note:** The request parameters include operation-specific parameters and all common request parameters except Signature.
 
-The request parameters include operation-specific parameters and all common request parameters except Signature. i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
+i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string based on the following
 rule:
 
@@ -676,9 +694,8 @@ StringToSign=HTTPMethod + "&" + percentEncode("/") + "&" + percentEncode(Canonic
 
 3. Calculate the HMAC value of the string-to-sign based on the HMAC definition in RFC 2104.
 
-**Note**
+> **Note:** Your AccessKey secret in combination with an ampersand (&) (ASCII:38) is used as the key for the HMAC calculation. The SHA1 algorithm is used to calculate the HMAC value of the string-to-sign.
 
-Your AccessKey secret in combination with an ampersand (&) (ASCII:38) is used as the key for the HMAC calculation. The SHA1 algorithm is used to calculate the HMAC value of the string-to-sign.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 
 ```

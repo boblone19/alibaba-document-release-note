@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 26
 source_pdf: "412d4949b6f70a82_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Container Service for Kubernetes Operations and Maintenance Guide
@@ -319,9 +319,8 @@ Component List page, view the information about all components in the environmen
 3. On the **Component List** list, search for components by component name or component
 version. Find the component that you want to manage and click its name in the **Name** column to go to the **Component Details** page.
 
-**Note**
+> **Note:** You can also click **View Cluster** in the **Actions** column to view the status of the cluster that is associated with the component.
 
-You can also click **View Cluster** in the **Actions** column to view the status of the cluster that is associated with the component.
 4. On the **Component Details** page, view the basic information about the component. The
 following parameters are displayed: **Component Name**, **Component ID**, **Component**
 **Type**, **Created At**, **Component Description**, and **Component Template**.
@@ -342,9 +341,7 @@ version baseline page, view the baseline information displayed in the following 
 **Name**, **Baseline Type**, **Version**, **Cluster Type**, **Property**, **Creation Time**, and
 Operation. You can also search for baselines by name.
 
-**Note**
-
-To view the YAML or JSON file of the baseline, click the file in the **Actions** column.
+> **Note:** To view the YAML or JSON file of the baseline, click the file in the **Actions** column.
 
 ### 5.2 Troopers configurations
 
@@ -383,9 +380,7 @@ This topic describes how to view the information about operations.
 the operation information in the following columns: **Change Name**, **Change Description**,
 **Operation Type**, **Operation Object**, **Change Type**, **Status**, and **User**.
 
-**Important**
-
-In the **Actions** column, click **View Change** to view the change in read-only mode or click **Roll Back Change** to roll back the change.
+> **Important:** In the **Actions** column, click **View Change** to view the change in read-only mode or click **Roll Back Change** to roll back the change.
 
 ## 8 etcd O&M
 

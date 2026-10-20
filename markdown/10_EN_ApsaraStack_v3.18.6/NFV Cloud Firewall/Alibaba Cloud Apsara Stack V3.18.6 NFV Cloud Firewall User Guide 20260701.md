@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 205
 source_pdf: "9bb787c89a516a43_Alibaba Cloud Apsara Stack V3.18.6 NFV Cloud Firewall User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-NFV%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20NFV%20Cloud%20Firewall%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # NFV Cloud Firewall User Guide 20260701
@@ -98,24 +98,16 @@ Management Console and press Enter.
 2. Enter the correct username and password.
 etting started Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
 operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
-
-For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
 
 ## 3 NFV Cloud Firewall
 
@@ -294,9 +286,7 @@ the **Details** page.
 5. In the **Bypass** section, click **One-click bypass**, enter the **verification code**, and then
 click **OK**. The **verification code** is the UID of the level 1 organization. To resume route advertisement, click **One-click Revert**.
 
-**Warning**
-
-If you click **One-click Bypass**, all VPC routes from the vFW cluster are automatically withdrawn. If you click **One-click Revert**, advertisement of VPC routes to the vFW cluster is resumed.
+> **Warning:** If you click **One-click Bypass**, all VPC routes from the vFW cluster are automatically withdrawn. If you click **One-click Revert**, advertisement of VPC routes to the vFW cluster is resumed.
 
 #### 3.1.7 View details of a vFW cluster
 
@@ -359,9 +349,8 @@ You can view the CIDR block name, organization, resource set, CIDR, and status.
 
 **Delete CIDR blocks**
 
-**Warning**
+> **Warning:** Before you delete a CIDR block, make sure that the CIDR block is no longer used in your NFV Cloud Firewall configurations.
 
-Before you delete a CIDR block, make sure that the CIDR block is no longer used in your NFV Cloud Firewall configurations.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **NFV Cloud Firewall** page,
@@ -446,9 +435,8 @@ Advertise a single route a. Find the route that you want to advertise and click 
 
 **Withdraw routes**
 
-**Warning**
+> **Warning:** We recommend that you withdraw routes during off-peak hours. To prevent service unavailability, make sure that your service no longer uses Cloud Firewall before you withdraw a route.
 
-We recommend that you withdraw routes during off-peak hours. To prevent service unavailability, make sure that your service no longer uses Cloud Firewall before you withdraw a route.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **NFV Cloud Firewall** page,
@@ -486,9 +474,8 @@ configurations, and then click **OK**. You can modify the following parameters: 
 
 You can delete only routes that are not advertised.
 
-**Warning**
+> **Warning:** Before you delete a route, make sure that the route is not in use.
 
-Before you delete a route, make sure that the route is not in use.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **NFV Cloud Firewall** page,
@@ -665,9 +652,7 @@ icon in each step to view the details of each subtask.
 
 ### 3.6 Best practices
 
-**Note**
-
-The following best practices are created based on Apsara Stack V3.18.6. As the service continues to iterate, some console pages, parameter names, or options may have changed. For example, the **CIDR** parameter is changed to **IPv4 CIDR** and the **IPv6 CIDR** parameter is added. The **IP Stack** parameter is added when you create a virtual firewall (vFW) endpoint. When you perform operations, the console shall prevail. The core operation logic and process remain unchanged.
+> **Note:** The following best practices are created based on Apsara Stack V3.18.6. As the service continues to iterate, some console pages, parameter names, or options may have changed. For example, the **CIDR** parameter is changed to **IPv4 CIDR** and the **IPv6 CIDR** parameter is added. The **IP Stack** parameter is added when you create a virtual firewall (vFW) endpoint. When you perform operations, the console shall prevail. The core operation logic and process remain unchanged.
 
 #### 3.6.1 VPC-VPC protection within an organization by NFV Cloud Firewall in a single data center
 
@@ -717,9 +702,7 @@ VPC1 is `10.1.0.0/16` . It contains vSwitch1 ( `10.1.1.0/24` ) and ECS1 ( `10.1.
 
 Use an account that belongs to the current organization to log in to the Apsara Uni-manager Management Console, switch to the organization admin role, and create resources such as VPCs, vSwitches, and Elastic Compute Service (ECS) instances. Create VPC1 and VPC2: Create vSwitch1 and vSwitch2: Create ECS instances and a security group:
 
-**Important**
-
-In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
+> **Important:** In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
 
 **Configure NFV Cloud Firewall**
 
@@ -760,7 +743,9 @@ If this is the first time you create an NFV Cloud Firewall cluster in a level-1 
 
 **Important**
 
-We recommend that you use a subnet belonging to `192.168.0.0/16` or `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+> We recommend that you use a subnet belonging to `192.168.0.0/16` or
+> `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+
 1. On the **CIDR Management** page of the **NFV Cloud Firewall** console, click **Create CIDR**
 and configure the following parameters.
 
@@ -800,9 +785,8 @@ configure the following parameters in the panel that appears to create an NFV Cl
 | ECS Image ID | Select the image used by the vFW cluster from the drop-down list. |
 | Description | Enter the description of the cluster. We recommend that you include the business, department, and organization information in the description so that the administrator can easily identify the businesses protected by the vFW cluster. |
 
-**Note**
+> **Note:** The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 
-The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 2. After you confirm the configuration, click **OK**. Then, the system automatically verifies the
 capacity and quota. If the capacity is sufficient, the operation succeeds and a new NFV Cloud Firewall application is displayed in the list. The status of the vFW cluster changes to
 **Creating**.
@@ -828,9 +812,7 @@ in the Apsara Uni-manager Management Console. This process logically associates 
 **Process on the NFV Cloud Firewall side** : A vFW interface is automatically created. You
 can use the vFW account to access the NFV Cloud Firewall console or CLI and then view the configuration of the vFW interface. This process logically associates the endpoint with the vFW cluster.
 
-**Note**
-
-The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
+> **Note:** The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
 
 **Create an endpoint in VPC1**
 
@@ -960,9 +942,9 @@ After you click OK, the web portal enters the **processing** state. When it ente
 
 If your O&M network has access to a VPC, you can also create a VPC web portal in the VPC to access the vFW ECS instance.
 
-**Important**
+> **Important:** Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur.
 
-Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur. Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
+Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
 1. In the **VPC** section, click **Create**.
 2. In the **Create VPC Network Access Method** dialog box, set **Vswitch ID** to the ID of a
 vSwitch in the VPC. Make sure that the vSwitch has idle IP addresses.
@@ -995,9 +977,7 @@ click **OK**.
 3. **Enable session logging for the vFW** : In the Apsara Uni-manager Management Console,
 choose **Monitor > Log > Session Log** and click **Configure**. In the right-side **Session** panel, turn on **Enable**. If you want to view logs in the console, select **Local Database**. If you want to view logs at the CLI, select **Cache**.
 
-**Important**
-
-When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
+> **Important:** When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
 
 **Step 9: Create traffic redirection routes**
 
@@ -1012,15 +992,7 @@ redirection routes on NFV Cloud Firewall and publish the routes to the specified
 **Cloud Firewall** console of the Apsara Uni-manager Management Console and go to the
 **Route Configuration** page. Then, choose **Create Traffic Diversion Route > VPC-VPC**.
 
-**Warning**
-
-**If you perform this operation in a production environment, make sure that**
-
-**the specifications of the vFW meet the expectation. If the volume of business**
-
-**traffic to redirect exceeds the maximum throughput of the vFW, the network**
-
-**latency increases and packet loss occurs.**
+> **Warning:** **If you perform this operation in a production environment, make sure that** **the specifications of the vFW meet the expectation. If the volume of business** **traffic to redirect exceeds the maximum throughput of the vFW, the network** **latency increases and packet loss occurs.**
 
 2. Configure the following parameters to configure a route to redirect VPC-VPC traffic and
 click **OK**.
@@ -1199,9 +1171,7 @@ Create VPC1: Create vSwitch1: Create ECS1 and a security group:
 
 Create VPC3: Create vSwitch3: Create ECS3 and a security group:
 
-**Important**
-
-In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
+> **Important:** In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
 
 **Configure NFV Cloud Firewall**
 
@@ -1273,9 +1243,8 @@ of the Apsara Uni-manager Operations Console. Scenario 2: The capacity quota of 
 
 If this is the first time you create an NFV Cloud Firewall cluster in a level-1 organization, you need to first create a CIDR block. You can select one or more CIDR blocks that you created when you create the network element (NE) VPC. In most cases, one CIDR block is sufficient within each organization.
 
-**Important**
+> **Important:** We recommend that you use a subnet belonging to 192.168.0.0/16 or 172.16.0.0/16. Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
 
-We recommend that you use a subnet belonging to 192.168.0.0/16 or 172.16.0.0/16. Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
 1. On the **CIDR Management** page of the **NFV Cloud Firewall** console, click **Create CIDR**
 and configure the following parameters.
 
@@ -1317,9 +1286,8 @@ configure the following parameters in the panel that appears to create an NFV Cl
 | ECS Image ID | Select the image used by the vFW cluster from the drop-down list. |
 | Description | Enter the description of the cluster. We recommend that you include the business, department, and organization information in the description so that the administrator can easily identify the businesses protected by the vFW cluster. |
 
-**Note**
+> **Note:** The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 
-The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 2. After you confirm the configuration, click **OK**. Then, the system automatically verifies the
 capacity and quota. If the capacity is sufficient, the operation succeeds and a new NFV Cloud Firewall application is displayed in the list. The status of the vFW cluster changes to
 **Creating**.
@@ -1367,9 +1335,7 @@ in the Apsara Uni-manager Management Console. This process logically associates 
 **Process on the NFV Cloud Firewall side** : A vFW interface is automatically created. You
 can use the vFW account to access the NFV Cloud Firewall console or CLI and then view the configuration of the vFW interface. This process logically associates the endpoint with the vFW cluster.
 
-**Note**
-
-The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
+> **Note:** The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
 
 **Create an endpoint in VPC1**
 
@@ -1501,9 +1467,9 @@ After you click OK, the web portal enters the **processing** state. When it ente
 
 If your O&M network has access to a VPC, you can also create a VPC web portal in the VPC to access the vFW ECS instance.
 
-**Important**
+> **Important:** Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur.
 
-Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur. Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
+Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
 1. In the **VPC** section, click **Create**.
 2. In the **Create VPC Network Access Method** dialog box, set **Vswitch ID** to the ID of a
 vSwitch in the VPC. Make sure that the vSwitch has idle IP addresses.
@@ -1536,9 +1502,7 @@ click **OK**.
 3. **Enable session logging for the vFW** : In the Apsara Uni-manager Management Console,
 choose **Monitor > Log > Session Log** and click **Configure**. In the right-side **Session** panel, turn on **Enable**. If you want to view logs in the console, select **Local Database**. If you want to view logs at the CLI, select **Cache**.
 
-**Important**
-
-When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
+> **Important:** When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
 
 **Step 11: Create traffic redirection routes for Organization 1**
 
@@ -1553,15 +1517,7 @@ redirection routes on NFV Cloud Firewall and publish the routes to the specified
 **Cloud Firewall** console of the Apsara Uni-manager Management Console and go to the
 **Route Configuration** page. Then, choose **Create Traffic Diversion Route > VPC-VPC**.
 
-**Warning**
-
-**If you perform this operation in a production environment, make sure that**
-
-**the specifications of the vFW meet the expectation. If the volume of business**
-
-**traffic to redirect exceeds the maximum throughput of the vFW, the network**
-
-**latency increases and packet loss occurs.**
+> **Warning:** **If you perform this operation in a production environment, make sure that** **the specifications of the vFW meet the expectation. If the volume of business** **traffic to redirect exceeds the maximum throughput of the vFW, the network** **latency increases and packet loss occurs.**
 
 2. Configure the following parameters to configure a route to redirect VPC-VPC traffic and
 click **OK**.
@@ -1656,9 +1612,7 @@ Service Cluster
 
 Use an account that belongs to the current organization to log in to the Apsara Uni-manager Management Console, switch to the organization admin role, and create resources such as VPCs, custom route tables, vSwitches, and ECS instances. Create VPC1: Create a custom route table: Create vSwitch1 and associate it with the system route table, and create vSwitch1-2 and associate it with the custom route table: Create ECS instances and a security group:
 
-**Important**
-
-In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
+> **Important:** In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
 
 **Configure NFV Cloud Firewall**
 
@@ -1699,7 +1653,9 @@ If this is the first time you create an NFV Cloud Firewall cluster in a level-1 
 
 **Important**
 
-We recommend that you use a subnet belonging to `192.168.0.0/16` or `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+> We recommend that you use a subnet belonging to `192.168.0.0/16` or
+> `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+
 1. On the **CIDR Management** page of the **NFV Cloud Firewall** console, click **Create CIDR**
 and configure the following parameters.
 
@@ -1739,9 +1695,8 @@ configure the following parameters in the panel that appears to create an NFV Cl
 | ECS Image ID | Select the image used by the vFW cluster from the drop-down list. |
 | Description | Enter the description of the cluster. We recommend that you include the business, department, and organization information in the description so that the administrator can easily identify the businesses protected by the vFW cluster. |
 
-**Note**
+> **Note:** The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 
-The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 2. After you confirm the configuration, click **OK**. Then, the system automatically verifies the
 capacity and quota. If the capacity is sufficient, the operation succeeds and a new NFV Cloud Firewall application is displayed in the list. The status of the vFW cluster changes to
 **Creating**.
@@ -1767,9 +1722,7 @@ in the Apsara Uni-manager Management Console. This process logically associates 
 **Process on the NFV Cloud Firewall side** : A vFW interface is automatically created. You
 can use the vFW account to access the NFV Cloud Firewall console or CLI and then view the configuration of the vFW interface. This process logically associates the endpoint with the vFW cluster.
 
-**Note**
-
-The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
+> **Note:** The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
 
 **Create an endpoint for vSwitch1 in VPC1**
 
@@ -1858,9 +1811,9 @@ After you click OK, the web portal enters the **processing** state. When it ente
 
 If your O&M network has access to a VPC, you can also create a VPC web portal in the VPC to access the vFW ECS instance.
 
-**Important**
+> **Important:** Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur.
 
-Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur. Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
+Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
 1. In the **VPC** section, click **Create**.
 2. In the **Create VPC Network Access Method** dialog box, set **Vswitch ID** to the ID of a
 vSwitch in the VPC. Make sure that the vSwitch has idle IP addresses.
@@ -1895,7 +1848,7 @@ choose **Monitor > Log > Session Log** and click **Configure**. In the right-sid
 
 **Important**
 
-When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
+> When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
 
 **Step 9: Create traffic redirection routes**
 
@@ -1910,15 +1863,7 @@ Cloud Firewall and publish the routes to the specified VPC route table.
 **Cloud Firewall** console of the Apsara Uni-manager Management Console and go to the
 **Route Configuration** page. Then, choose **Create Traffic Diversion Route > VS-VS**.
 
-**Warning**
-
-**If you perform this operation in a production environment, make sure that**
-
-**the specifications of the vFW meet the expectation. If the volume of business**
-
-**traffic to redirect exceeds the maximum throughput of the vFW, the network**
-
-**latency increases and packet loss occurs.**
+> **Warning:** **If you perform this operation in a production environment, make sure that** **the specifications of the vFW meet the expectation. If the volume of business** **traffic to redirect exceeds the maximum throughput of the vFW, the network** **latency increases and packet loss occurs.**
 
 2. Configure the following parameters to configure a route to redirect vSwitch-vSwitch traffic
 and click **OK**.
@@ -1996,9 +1941,7 @@ NFV Cloud Firewall cluster, including VPCs that belong to the current organizati
 **Restoration**: republishes all traffic redirection routes to redirect east-west traffic to the
 NFV Cloud Firewall cluster for access control.
 
-**Warning**
-
-Do not set NVF Cloud Firewall to the bypass mode when no backup routes are configured because this will result in network interruptions.
+> **Warning:** Do not set NVF Cloud Firewall to the bypass mode when no backup routes are configured because this will result in network interruptions.
 
 **Status of the bypass and restoration features**
 
@@ -2045,9 +1988,9 @@ Express Connect VRouter Organization 1 VFW(M) VFW(S) vFW Network Service Cluster
 
 Use an account that belongs to the current organization to log in to the Apsara Uni-manager Management Console, switch to the organization admin role, and create VPCs, vSwitches, and Elastic Compute Service (ECS) instances. Create VPC1 and VPC2: Create vSwitch1 and vSwitch2: Create ECS instances and a security group:
 
-**Important**
+> **Important:** In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
 
-In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources. Configure Express Connect: Configure VPC routes (the mask length of the Express Connect route is set to the mask length of the VPC):
+Configure Express Connect: Configure VPC routes (the mask length of the Express Connect route is set to the mask length of the VPC):
 
 **Configure NFV Cloud Firewall**
 
@@ -2086,9 +2029,9 @@ of the Apsara Uni-manager Operations Console. Scenario 2: The capacity quota of 
 
 If this is the first time you create an NFV Cloud Firewall cluster in a level-1 organization, you need to first create a CIDR block. You can select one or more CIDR blocks that you created when you create the network element (NE) VPC. In most cases, one CIDR block is sufficient within each organization.
 
-**Important**
+> **Important:** We recommend that you use a subnet belonging to `192.168.0.0/16` or
+> `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
 
-We recommend that you use a subnet belonging to `192.168.0.0/16` or `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
 1. On the **CIDR Management** page of the **NFV Cloud Firewall** console, click **Create CIDR**
 and configure the following parameters.
 
@@ -2128,9 +2071,8 @@ configure the following parameters in the panel that appears to create an NFV Cl
 | ECS Image ID | Select the image used by the vFW cluster from the drop-down list. |
 | Description | Enter the description of the cluster. We recommend that you include the business, department, and organization information in the description so that the administrator can easily identify the businesses protected by the vFW cluster. |
 
-**Note**
+> **Note:** The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 
-The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 2. After you confirm the configuration, click **OK**. Then, the system automatically verifies the
 capacity and quota. If the capacity is sufficient, the operation succeeds and a new NFV Cloud Firewall application is displayed in the list. The status of the vFW cluster changes to
 **Creating**.
@@ -2156,9 +2098,7 @@ in the Apsara Uni-manager Management Console. This process logically associates 
 **Process on the NFV Cloud Firewall side** : A vFW interface is automatically created. You
 can use the vFW account to access the NFV Cloud Firewall console or CLI and then view the configuration of the vFW interface. This process logically associates the endpoint with the vFW cluster.
 
-**Note**
-
-The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
+> **Note:** The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
 
 **Create an endpoint in VPC1**
 
@@ -2290,9 +2230,9 @@ After you click OK, the web portal enters the **processing** state. When it ente
 
 If your O&M network has access to a VPC, you can also create a VPC web portal in the VPC to access the vFW ECS instance.
 
-**Important**
+> **Important:** Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur.
 
-Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur. Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
+Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
 1. In the **VPC** section, click **Create**.
 2. In the **Create VPC Network Access Method** dialog box, set **Vswitch ID** to the ID of a
 vSwitch in the VPC. Make sure that the vSwitch has idle IP addresses.
@@ -2305,9 +2245,8 @@ Use a browser to access the web URL of the vFW. Then, the login page of the vFW 
 
 By default, NFV Cloud Firewall blocks traffic from all sources. To enable intercommunication, you need to configure access control policies to permit access from specific sources. In this scenario: Configure a policy to permit ping packets from ECS 1 to ECS 2 and enable logging to generate access records. Configure a policy to deny access from ECS1 to ECS2 over SSH and enable logging to generate access records.
 
-**Note**
+> **Note:** In a production environment, we recommend that you do not enable logging for all access control policies.
 
-In a production environment, we recommend that you do not enable logging for all access control policies.
 1. In the Apsara Uni-manager Management Console, choose **Policy > Security Policy >**
 **Policy** and then choose **New > Policy**.
 2. Configure the following parameters to create a policy to permit ping packets from ECS1 to
@@ -2343,9 +2282,7 @@ ECS1 to ECS2 over SSH, and click **OK**.
 4. **Enable session logging for the vFW** : In the Apsara Uni-manager Management Console,
 choose **Monitor > Log > Session Log** and click **Configure**. In the right-side **Session** panel, turn on **Enable**. If you want to view logs in the console, select **Local Database**. If you want to view logs at the CLI, select **Cache**.
 
-**Important**
-
-When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
+> **Important:** When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
 
 **Step 9: Create traffic redirection routes**
 
@@ -2359,15 +2296,7 @@ redirection routes on NFV Cloud Firewall and publish the routes to the specified
 **Cloud Firewall** console of the Apsara Uni-manager Management Console and go to the
 **Route Configuration** page. Then, choose **Create Traffic Diversion Route > VPC-VPC**.
 
-**Warning**
-
-**If you perform this operation in a production environment, make sure that**
-
-**the specifications of the vFW meet the expectation. If the volume of business**
-
-**traffic to redirect exceeds the maximum throughput of the vFW, the network**
-
-**latency increases and packet loss occurs.**
+> **Warning:** **If you perform this operation in a production environment, make sure that** **the specifications of the vFW meet the expectation. If the volume of business** **traffic to redirect exceeds the maximum throughput of the vFW, the network** **latency increases and packet loss occurs.**
 
 2. Configure the following parameters to configure a route to redirect VPC-VPC traffic and
 click **OK**.
@@ -2481,9 +2410,7 @@ In this best practice, a production virtual private cloud (VPC) needs to securel
 
 To use the VPC-IDC protection architecture of NFV Cloud Firewall, you need to create a HUB_VPC that serves as a hub between NFV Cloud Firewall and the data center. All outbound traffic of the production VPC is routed to and inspected by NFV Cloud Firewall and then transmitted to the data center by the HUB_VPC. This architecture divides the network into two components: Integration of the HUB_VPC with the data center network: The HUB_VPC is connected to the network of the data center by using a standard VPC-data center network integration solution. In a scenario where there is only one data center, the active/active or active/standby mode is usually used on the data center side. When you connect the HUB_VPC and data center, you still need to add a static route that points to the CIDR block of the HUB_VPC to the route table of the virtual border router (VBR). This ensures that core switches (CSWs) can complete packet encapsulation and both sides can communicate with each other. Traffic redirection by NFV Cloud Firewall: The production VPC, NFV Cloud Firewall, and HUB_VPC are connected in a way similar to VPC-VPC protection. You need to create endpoints to establish connections and configure traffic redirection routes. After the specific routes are published to the route tables of the production VPC and HUB_VPC, outbound traffic of the production VPC and data center are redirected to NFV Cloud Firewall. The solution that uses a VPC as the hub requires you to integrate the HUB_VPC and the network of the data center only once. Then, traffic from other VPCs is automatically redirected to the HUB_VPC and then routed to the data center. This saves you the need to repeatedly perform VPC-data center network integration. You only need to add routes pointing to the CIDR blocks of the new VPCs to the route table on the data center side, the route tables of the CSWs, and the route table of the HUB_VPC.
 
-**Important**
-
-Data is exchanged through the HUB_VPC between the production VPC and data center, which means that the network link between two ends (the production VPC and the data center) becomes invisible. This affects traffic detection performed by Apsara Stack Security and traffic detection and analysis on the CSW side.
+> **Important:** Data is exchanged through the HUB_VPC between the production VPC and data center, which means that the network link between two ends (the production VPC and the data center) becomes invisible. This affects traffic detection performed by Apsara Stack Security and traffic detection and analysis on the CSW side.
 
 **Network Integration That Connects**
 
@@ -2533,9 +2460,7 @@ In the cloud: The CIDR block of the production VPC is `10.1.0.0/16` , the CIDR b
 
 Use an account that belongs to the current organization to log in to the Apsara Uni-manager Management Console, switch to the organization admin role, and create resources such as VPCs, vSwitches, and Elastic Compute Service (ECS) instances. Create VPC1 and HUB_VPC: Create vSwitch1 and hub_vSwitch: Create an ECS instance and a security group. Assets other than resources in the cloud, such as servers in the data center, are not displayed.
 
-**Important**
-
-In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
+> **Important:** In this example, the security group permits traffic from all sources to simplify the configuration. In actual business scenarios, you need to configure the security group to permit traffic based on the business needs of the ECS instances. Do not permit traffic from all sources.
 
 **Standard VPC-data center network integration**
 
@@ -2580,7 +2505,9 @@ If this is the first time you create an NFV Cloud Firewall cluster in a level-1 
 
 **Important**
 
-We recommend that you use a subnet belonging to `192.168.0.0/16` or `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+> We recommend that you use a subnet belonging to `192.168.0.0/16` or
+> `172.16.0.0/16` . Do not use a CIDR block that overlaps with that of the production VPC in the organization, in case address conflicts occur.
+
 1. On the **CIDR Management** page of the **NFV Cloud Firewall** console, click **Create CIDR**
 and configure the following parameters.
 
@@ -2620,9 +2547,8 @@ configure the following parameters in the panel that appears to create an NFV Cl
 | ECS Image ID | Select the image used by the vFW cluster from the drop-down list. |
 | Description | Enter the description of the cluster. We recommend that you include the business, department, and organization information in the description so that the administrator can easily identify the businesses protected by the vFW cluster. |
 
-**Note**
+> **Note:** The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 
-The values of the CPU Type, VFW Specification, ECS Specification, and ECS Image ID parameters vary depending on the environment and Apsara Stack version. Specify these parameters based on the actual business requirements.
 2. After you confirm the configuration, click **OK**. Then, the system automatically verifies the
 capacity and quota. If the capacity is sufficient, the operation succeeds and a new NFV Cloud Firewall application is displayed in the list. The status of the vFW cluster changes to
 **Creating**.
@@ -2648,9 +2574,7 @@ in the Apsara Uni-manager Management Console. This process logically associates 
 **Process on the NFV Cloud Firewall side** : A vFW interface is automatically created. You
 can use the vFW account to access the NFV Cloud Firewall console or CLI and then view the configuration of the vFW interface. This process logically associates the endpoint with the vFW cluster.
 
-**Note**
-
-The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
+> **Note:** The number of endpoints supported by NFV Cloud Firewall depends on the ECS specification you selected when you create the vFW cluster. The upper limit and current usage displayed in the console prevail. When the upper limit is reached, new endpoints can no longer be created.
 
 **Create an endpoint in VPC1**
 
@@ -2780,9 +2704,9 @@ After you click OK, the web portal enters the **processing** state. When it ente
 
 If your O&M network has access to a VPC, you can also create a VPC web portal in the VPC to access the vFW ECS instance.
 
-**Important**
+> **Important:** Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur.
 
-Do not create a VPC web portal in the production VPC that is connected to NFV Cloud Firewall in case route conflicts occur. Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
+Refer to the classic network web portal procedure, go to the access mode details pages of the two ECS instances, and complete the following steps to create a VPC web portal for each ECS instance.
 1. In the **VPC** section, click **Create**.
 2. In the **Create VPC Network Access Method** dialog box, set **Vswitch ID** to the ID of a
 vSwitch in the VPC. Make sure that the vSwitch has idle IP addresses.
@@ -2795,9 +2719,8 @@ Use a browser to access the web URL of the vFW. Then, the login page of the vFW 
 
 By default, NFV Cloud Firewall blocks traffic from all sources. To enable intercommunication, you need to configure access control policies to permit access from specific sources. In this scenario, configure a policy to permit ECS1 to access the server in the data center and enable logging to generate access records.
 
-**Note**
+> **Note:** In a production environment, we recommend that you do not enable logging for all access control policies.
 
-In a production environment, we recommend that you do not enable logging for all access control policies.
 1. In the Apsara Uni-manager Management Console, choose **Policy > Security Policy >**
 **Policy** and then choose **New > Policy**.
 2. Configure the following parameters to create a policy to permit ECS1 to access the server
@@ -2819,9 +2742,7 @@ in the data center, and click **OK**.
 3. **Enable session logging for the vFW** : In the Apsara Uni-manager Management Console,
 choose **Monitor > Log > Session Log** and click **Configure**. In the right-side **Session** panel, turn on **Enable**. If you want to view logs in the console, select **Local Database**. If you want to view logs at the CLI, select **Cache**.
 
-**Important**
-
-When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
+> **Important:** When session logging is disabled for the vFW, even if you have enabled logging in the access control policy, you cannot find any records on the log query page. You can view only the number of policy hits.
 
 **Step 9: Create traffic redirection routes**
 
@@ -2835,15 +2756,7 @@ redirection routes on NFV Cloud Firewall and publish the routes to the specified
 **Cloud Firewall** console of the Apsara Uni-manager Management Console and go to the
 **Route Configuration** page. Then, choose **Create Traffic Diversion Route > VPC-IDC**.
 
-**Warning**
-
-**If you perform this operation in a production environment, make sure that**
-
-**the specifications of the vFW meet the expectation. If the volume of business**
-
-**traffic to redirect exceeds the maximum throughput of the vFW, the network**
-
-**latency increases and packet loss occurs.**
+> **Warning:** **If you perform this operation in a production environment, make sure that** **the specifications of the vFW meet the expectation. If the volume of business** **traffic to redirect exceeds the maximum throughput of the vFW, the network** **latency increases and packet loss occurs.**
 
 2. Configure the following parameters to configure a route to redirect VPC-IDC traffic and click
 **OK**.
@@ -2916,18 +2829,18 @@ CSW1
 
 **VPC1**
 
-**Destination                                           Next Hop**
+> **Destination Next Hop**
 
 10.1.0.0/16
 
 |   | op Destination t t to o o_ _ _I V VD P PC C C 1 21 7 1 12 0 0. . .1 1 26 . .0 0.0 . .0 0.0 / /1 1/1 6 66 VFW(M) vFW Network Service Clu |
 |---|---|
 
-to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouter to_VPC2 10.2.0.0/16 VRouter
+> to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouter to_VPC2 10.2.0.0/16 VRouter to_hubvpc 192.168.33.0/24 VRouter
+> **Destination Next Hop**
+> to_IDC 172.16.0.0/16 NFV
 
-**Destination                                 Next Hop**
-
-to_hubvpc 192.168.33.0/24 VRouter to_IDC 172.16.0.0/16 NFV VBR
+VBR
 
 **HUB_VPC**
 
@@ -2937,16 +2850,21 @@ to_hubvpc 192.168.33.0/24 VRouter to_IDC 172.16.0.0/16 NFV VBR
 
 Data Center 172.16.0.0/ 10.1.1.0/24 Express Connect Circuit 1
 
-**Destination                                 Next Hop**
+> **Destination Next Hop**
+> **Destination**
+> to_IDC 172.16.0.0/16 CSW to_VPC1 10.1.0.0/16 NFV to_VPC2 10.2.0.0/16 NFV
+> to_VPC1 10.1.0 to_VPC2 10.2.0
 
-**Destination**
-
-to_IDC 172.16.0.0/16 CSW to_VPC1 10.1.0 to_VPC1 10.1.0.0/16 NFV ECS1 to_VPC2 10.2.0 to_VPC2 10.2.0.0/16 NFV
+ECS1
 
 |   |   | vFW Network Se |
 |---|---|---|
 
-ep-vpc1 Active/Active Access Express Connect Circuit 2 Device
+ep-vpc1
+
+> Active/Active
+
+Access Express Connect Circuit 2 Device
 
 **Server**
 
@@ -2962,13 +2880,13 @@ VFW(S) 10.2.0.0/16
 
 10.2.1.0/24
 
-**Destination                                           Next Hop**
+> **Destination Next Hop**
+> to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouter to_VPC2 10.2.0.0/16 VRouter to_hubvpc 192.168.33.0/24 VRouter
 
-to_IDC 172.16.0.0/16 IDC ep-vpc2 to_VPC1 10.1.0.0/16 VRouter to_VPC2 10.2.0.0/16 VRouter ECS2 to_hubvpc 192.168.33.0/24 VRouter CSW2
+ep-vpc2 ECS2 CSW2
 
-**Destination                                 Next Hop**
-
-to_IDC 172.16.0.0/16 NFV
+> **Destination Next Hop**
+> to_IDC 172.16.0.0/16 NFV
 
 **Scenario 2: Can I use different vFWs for protection?**
 
@@ -3001,51 +2919,39 @@ CSW1
 
 VBR A
 
-**Destination**
-
-**Next Hop**
-
-to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouterA
+> **Destination** **Next Hop** to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouterA to_hubvpcA 192.168.33.0/24 VRouterA
 
 | NFV A Destination x At Hop t to o_ _I VD PC C 11 7 12 0. .1 16 .0.0 .0.0 / VFW(M) vFW Network Service |   |   |
 |---|---|---|
 |   |   | vFW Network |
-
-to_hubvpcA 192.168.33.0/24 VRouterA
 
 |   | Destination t to o_ _I VD PC C 1 17 12 0.1 .16 .. 00 .. 00 // 11 192h .1u 6b 8_v .3S 3w .0it /c 2h 4 ep-idcA |
 |---|---|
 
 VPC1 10.1.0.0/16
 
-**DestinationNext Hop**
+> **Destination****Next Hop**
+> to_IDC 172.16.0.0/16 NFV A
 
-to_IDC 172.16.0.0/16 NFV A VBR B
+VBR B
 
-**Destination**
+> **Destination** **Next Hop** to_IDC 172.16.0.0/16 IDC to_VPC2 10.2.0.0/16 VRouterB to_hubvpcB 192.168.34.0/24 VRouterB
 
-**Next Hop**
+vSwitch1 10.1.1.0/24 VRouterA Data Center 172.16.0.0/16 ECS1 ep-vpc1 Express Connect Circuit B1
 
-vSwitch1 10.1.1.0/24 to_IDC 172.16.0.0/16 IDC to_VPC2 10.2.0.0/16 VRouterB VRouterA to_hubvpcB 192.168.34.0/24 VRouterB Data Center 172.16.0.0/16 ECS1 ep-vpc1 Express Connect Circuit B1
+> **Destination**
+> to_VPC1 10.1.0.0 to_VPC2 10.2.0.0
 
-**Destination**
+Access Active/Active Device Active/Standby Server Express Connect Circuit B2 172.16.1.1/16 HUB_VPCB 192.168.34.0/16 VPC2 10.2.0.0/16 VBR A
 
-to_VPC1 10.1.0.0 to_VPC2 10.2.0.0 Access Active/Active Device Active/Standby Server Express Connect Circuit B2 172.16.1.1/16 HUB_VPCB 192.168.34.0/16 VPC2 10.2.0.0/16 VBR A
+> **Destination****Next Hop**
+> **Destination****Next Hop**
+> to_IDC 172.16.0.0/16 VBR B to_VPC2 10.2.0.0/16 NFV B
+> to_IDC 172.16.0.0/16 NFV B
+> **Destination** **Next Hop** to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouterA to_hubvpcA 192.168.33.0/24 VRouterA
 
-**DestinationNext Hop**
+vSwitch2 10.2.1.0/24 hub_vSwitch 192.168.34.0/24 VRouterB ep-vpc2 ECS2 ep-idcB VBR B
 
-**DestinationNext Hop**
+> **Destination** **Next Hop** to_IDC 172.16.0.0/16 IDC to_VPC2 10.2.0.0/16 VRouterB to_hubvpcB 192.168.34.0/24 VRouterB
 
-to_IDC 172.16.0.0/16 VBR B to_IDC 172.16.0.0/16 NFV B to_VPC2 10.2.0.0/16 NFV B
-
-**Destination**
-
-**Next Hop**
-
-to_IDC 172.16.0.0/16 IDC to_VPC1 10.1.0.0/16 VRouterA vSwitch2 10.2.1.0/24 to_hubvpcA 192.168.33.0/24 VRouterA hub_vSwitch 192.168.34.0/24 VRouterB ep-vpc2 ECS2 ep-idcB VBR B
-
-**Destination**
-
-**Next Hop**
-
-to_IDC 172.16.0.0/16 IDC to_VPC2 10.2.0.0/16 VRouterB to_hubvpcB 192.168.34.0/24 VRouterB CSW2
+CSW2

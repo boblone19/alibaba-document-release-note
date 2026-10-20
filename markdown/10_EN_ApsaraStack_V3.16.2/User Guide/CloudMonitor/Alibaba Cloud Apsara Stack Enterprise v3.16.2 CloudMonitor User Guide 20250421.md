@@ -5,7 +5,7 @@ doc_version: "20250421"
 pdf_pages: 205
 source_pdf: "5508daed61bcf25a_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide 20250421.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20User%20Guide%2020250421.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide
@@ -118,9 +118,8 @@ CloudMonitor provides preset dashboards for the following cloud services: Apsara
 
 **Modify the name of a folder**
 
-**Important**
+> **Important:** You cannot modify the name of a preset folder.
 
-You cannot modify the name of a preset folder.
 1. On the **Custom Dashboard** page, find the folder whose name you want to modify and click
 **Edit** to the right of the folder name.
 2. In the **Edit folder** dialog box, enter a new folder name.
@@ -128,18 +127,18 @@ You cannot modify the name of a preset folder.
 
 **Delete a folder**
 
-**Important**
+> **Important:** You cannot delete a preset folder.
 
-You cannot delete a preset folder. If you delete a folder, the dashboards in the folder are also deleted. Proceed with caution.
+> If you delete a folder, the dashboards in the folder are also deleted. Proceed with caution.
+
 1. On the **Custom Dashboard** page, find the folder that you want to delete and click **Delete**
 to the right of the folder name.
 2. In the message that appears, click **OK**.
 
 **Create a dashboard**
 
-**Important**
+> **Important:** Before you create a dashboard, you must create a folder. Otherwise, the dashboard cannot be saved without a folder.
 
-Before you create a dashboard, you must create a folder. Otherwise, the dashboard cannot be saved without a folder.
 1. On the **Custom Dashboard** page, click **Create a dashboard** in the upper-right corner.
 2. On the **New Board** page, add charts and row containers.
 
@@ -147,22 +146,41 @@ Before you create a dashboard, you must create a folder. Otherwise, the dashboar
 
 a. On the **New Board** page, click **Create a chart** and select **Create a chart**. b. On the **Create a chart** page, configure settings in the **Basic style** and **Cloud**
 **Monitoring Metrics** sections.
-In the **Basic style** section, configure the basic information, chart type, chart elements, coordinate axes, legends, and auxiliary markers. In the **Cloud Monitoring Metrics** section, select a cloud service, metrics, statistical method, and monitoring scope. You can add multiple metrics. c. Click **Applied to large plate** in the upper-right corner to save the chart. You can click **Cancel** in the upper-right corner to cancel the chart. You can click **Last Day** in the upper-right corner and select a time range or specify a custom time range in the dialog box that appears. After the chart is created, you can click the icon on the chart card to
-**modify**, **copy**, or **delete** the chart based on your business requirements.
+In the **Basic style** section, configure the basic information, chart type, chart elements, coordinate axes, legends, and auxiliary markers. In the **Cloud Monitoring Metrics** section, select a cloud service, metrics, statistical method, and monitoring scope.
+
+> **Note:** You can add multiple metrics.
+
+c. Click **Applied to large plate** in the upper-right corner to save the chart.
+
+> **Note:** You can click **Cancel** in the upper-right corner to cancel the chart.
+> You can click **Last Day** in the upper-right corner and select a time range or specify a custom time range in the dialog box that appears.
+> After the chart is created, you can click the
+> icon on the chart card to
+> **modify**, **copy**, or **delete** the chart based on your business requirements.
 
 **Add a row container**
 
-a. On the **New Board** page, click **Create a chart** and select **Create row container**. b. Move the pointer over the row container and click the icon to modify the name of the row container. Move the pointer over the row container and click the icon to delete the row container.
+a. On the **New Board** page, click **Create a chart** and select **Create row container**. b. Move the pointer over the row container and click the icon to modify the name of the row container.
+
+> **Note:** Move the pointer over the row container and click the
+> icon to delete the row
+> container.
+
 3. After the charts and row containers are added, customize the dashboard layout.
 You can select **Custom layout**, **1 Display per line**, **2 in each row**, **Show 3 per line**,
 **Show 4 per line**, or **Show 5 per line** from the drop-down list in the upper-right corner
 of the canvas. You can drag a chart or a row container to change its position.
 4. Optional. Click **Last 1 hour** in the upper-right corner of the **New Board** page and select or
-specify a time range. If the time range specified for the dashboard is different from that specified for the chart, the time range specified for the dashboard prevails.
+specify a time range.
+
+> **Note:** If the time range specified for the dashboard is different from that specified for the chart, the time range specified for the dashboard prevails.
+
 5. Optional. Click the downward arrow next to the
 icon in the upper-right corner of the
 **New Board** page and select a refresh interval for the dashboard from the drop-down list.
-If you select off, automatic refresh is disabled for the dashboard.
+
+> **Note:** If you select off, automatic refresh is disabled for the dashboard.
+
 6. Click **Save large plate** in the upper-right corner. In the **Save large plate** dialog box,
 configure the **Board Name** and **Folder** parameters. The dashboard is created.
 7. Optional. Click **Set the dashboard** in the upper-right corner of the **New Board** page. In
@@ -170,7 +188,9 @@ the Settings panel, view the basic configurations and JSON mode of the dashboard
 
 **Basic configuration**
 
-In the **Basic configuration** section, you can view or modify the dashboard name and folder name, and turn on or off **Editable**. If you turn on **Editable**, you can add or delete charts or row containers, and customize the dashboard layout. If you turn off Editable, you cannot perform the preceding operations.
+In the **Basic configuration** section, you can view or modify the dashboard name and folder name, and turn on or off **Editable**.
+
+> **Note:** If you turn on **Editable**, you can add or delete charts or row containers, and customize the dashboard layout. If you turn off Editable, you cannot perform the preceding operations.
 
 **JSON mode**
 
@@ -178,9 +198,8 @@ In JSON mode, the dashboard information is displayed in the JSON format. You can
 
 **Modify the content and layout of a dashboard**
 
-**Important**
+> **Important:** You cannot modify the content or layout of a preset dashboard.
 
-You cannot modify the content or layout of a preset dashboard.
 1. On the **Custom Dashboard** page, select the folder in which you want to modify the
 dashboard, find the dashboard in the folder, and then click the name of the dashboard.
 2. On the dashboard details page, modify the charts, row containers, and layout of the
@@ -188,9 +207,8 @@ dashboard based on your business requirements. For more information, see the Cre
 
 **Modify the name of a dashboard**
 
-**Important**
+> **Important:** You cannot modify the name of a preset dashboard.
 
-You cannot modify the name of a preset dashboard.
 1. On the **Custom Dashboard** page, find the dashboard that you want to delete and click the
 icon in the **Operation** column.
 2. In the **Edit dashboard** dialog box, enter a new name for the dashboard.
@@ -198,9 +216,7 @@ icon in the **Operation** column.
 
 **Move one or more dashboards**
 
-**Important**
-
-You cannot move preset dashboards.
+> **Important:** You cannot move preset dashboards.
 
 **Move a dashboard**
 
@@ -221,9 +237,11 @@ which you want to copy the dashboard.
 
 **Specify the default dashboard**
 
-**Important**
+> **Important:** You can specify only one default dashboard.
+> After you specify a dashboard as the default dashboard, the previous default dashboard is no longer the default, and the details page of the default dashboard is automatically displayed when you access the **Custom Dashboard** page. Click the
+> icon in the upper-left corner of the details page of the default dashboard to
+> return to the **Custom Dashboard** page.
 
-You can specify only one default dashboard. After you specify a dashboard as the default dashboard, the previous default dashboard is no longer the default, and the details page of the default dashboard is automatically displayed when you access the **Custom Dashboard** page. Click the icon in the upper-left corner of the details page of the default dashboard to return to the **Custom Dashboard** page.
 1. On the **Custom Dashboard** page, find the dashboard that you want to specify as the
 default dashboard and click the icon in the **Operation** column.
 2. In the message that appears, click **OK**. After the configuration is complete,
@@ -231,9 +249,8 @@ in the Operation column of the dashboard changes to .
 
 **Cancel the default dashboard**
 
-**Important**
+> **Important:** After you cancel the default dashboard, the folders are displayed by default when you access the **Custom Dashboard** page.
 
-After you cancel the default dashboard, the folders are displayed by default when you access the **Custom Dashboard** page.
 1. On the **Custom Dashboard** page, find the default dashboard in a folder and click the
 icon in the **Operation** column.
 2. In the message that appears, click **OK**. After the default dashboard is canceled,
@@ -243,9 +260,7 @@ in the
 
 **Delete one or more dashboards**
 
-**Important**
-
-You cannot delete preset dashboards.
+> **Important:** You cannot delete preset dashboards.
 
 **Delete a dashboard**
 
@@ -283,16 +298,16 @@ The installation or upgrade process takes approximately five minutes. After the 
 
 **Install or upgrade the CloudMonitor agent globally**
 
-This operation takes effect on multiple ECS instances and can be performed every 30 minutes.
+> **Note:** This operation takes effect on multiple ECS instances and can be performed every 30 minutes.
+
 1. On the **Host Monitoring** page, click **Install/Upgrade Agent**.
 2. In the **Install/Upgrade Agent** dialog box, select **Install Only for Uninstalled**, **Only**
 **Upgrade for Installed** or **Install and Upgrade to Latest Version** .
-**Install Only for Uninstalled**: installs the CloudMonitor agent only on the ECS
-instances that are not installed with the agent.
-**Only Upgrade for Installed**: upgrades the CloudMonitor agent for the ECS
-instances that are installed with the agent.
-**Install and Upgrade to Latest Version** : installs and upgrades the
-CloudMonitor agent to the latest version for all existing ECS instances.
+
+> **Note:** **Install Only for Uninstalled**: installs the CloudMonitor agent only on the ECS instances that are not installed with the agent.
+> **Only Upgrade for Installed**: upgrades the CloudMonitor agent for the ECS instances that are installed with the agent.
+> **Install and Upgrade to Latest Version** : installs and upgrades the CloudMonitor agent to the latest version for all existing ECS instances.
+
 3. Click **Execute Now**.
 
 **Install the CloudMonitor agent on a single ECS instance**
@@ -300,9 +315,10 @@ CloudMonitor agent to the latest version for all existing ECS instances.
 1. Find the ECS instance on which you want to install the CloudMonitor agent and click the
 icon.
 2. In the message that appears, click **OK**.
-If the CloudMonitor agent fails to be installed, click the icon in the Agent Status column to view the installation failure details, including **Last Installation Failure**
-**Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent**
-**Output**.
+
+> **Note:** If the CloudMonitor agent fails to be installed, click the
+> icon in the Agent Status
+> column to view the installation failure details, including **Last Installation Failure** **Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent** **Output**.
 
 ### 4.2 Monitor processes
 
@@ -376,7 +392,11 @@ This topic describes the metrics supported by each service. CloudMonitor checks 
 
 **Basic metrics**
 
-Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds. The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
+Set the **Namespace** parameter to **acs_ecs_dashboard**.
+
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+
+The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -394,9 +414,13 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** par
 
 **Operating system-related metrics**
 
-To collect operating system-related metrics of ECS instances, you must install a monitoring plug-in. To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click **Cloud Service Monitoring**. On the **Cloud product monitoring** page, click **ECS**. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade**
-**plug-ins** below the instance list.
-Metric data is displayed in the monitoring charts in 5 to 10 minutes after the monitoring plug-in is installed. Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
+> **Note:** To collect operating system-related metrics of ECS instances, you must install a monitoring plug-in.
+> To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click **Cloud Service Monitoring**. On the **Cloud product monitoring** page, click **ECS**. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade** **plug-ins** below the instance list.
+> Metric data is displayed in the monitoring charts in 5 to 10 minutes after the monitoring plug-in is installed.
+
+Set the **Namespace** parameter to **acs_ecs_dashboard**.
+
+> Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -539,7 +563,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS (New)**
 
-ApsaraDB RDS also supports a new link. Data is collected at 60-second intervals. ApsaraDB RDS (New) supports three engines: MySQL, PolarDB, and PostgreSQL.
+> **Note:** ApsaraDB RDS also supports a new link. Data is collected at 60-second intervals.
+> ApsaraDB RDS (New) supports three engines: MySQL, PolarDB, and PostgreSQL.
 
 **ApsaraDB RDS for MySQL**
 
@@ -816,7 +841,7 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 
 **Standard instances and read/write splitting instances**
 
-Standard instances and read/write splitting instances of Tair (Redis OSS-compatible) share a set of metrics.
+> **Note:** Standard instances and read/write splitting instances of Tair (Redis OSS-compatible) share a set of metrics.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1128,7 +1153,8 @@ Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to 
 
 **AnalyticDB for MySQL V3.0**
 
-Set the **Namespace** parameter to **acs_adb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_adb**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1164,7 +1190,8 @@ Set the **Namespace** parameter to **acs_adb**. Set the **Period** parameter to 
 
 **PolarDB-X 1.0**
 
-Set the **Namespace** parameter to **acs_polarx_drds**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_polarx_drds**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1186,7 +1213,8 @@ Set the **Namespace** parameter to **acs_polarx_drds**. Set the **Period** param
 
 **Compute node-related metrics**
 
-Set the **Namespace** parameter to **acs_drds**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_drds**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1326,7 +1354,8 @@ Set the **Namespace** parameter to **acs_nat_gateway**. Set the **Period** param
 
 **Elasticsearch on Kubernetes**
 
-Set the **Namespace** parameter to **acs_elasticsearch**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_elasticsearch**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Instance-related metrics**
 
@@ -1447,7 +1476,8 @@ Set the **Namespace** parameter to **acs_rocketmq_dashboard**. Set the **Period*
 
 **File Storage NAS (NAS)**
 
-Set the **Namespace** parameter to **acs_nas**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_nas**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **File system-related metrics**
 
@@ -1537,7 +1567,9 @@ Set the **Namespace** parameter to **acs_blink**. Set the **Period** parameter t
 
 **MaxCompute**
 
-Set the **Namespace** parameter to **acs_maxcompute_prepay**. Set the **Period** parameter to an integer multiple of 300. Default value: 300. Unit: seconds.
+Set the **Namespace** parameter to **acs_maxcompute_prepay**.
+
+> Set the **Period** parameter to an integer multiple of 300. Default value: 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1550,7 +1582,9 @@ Set the **Namespace** parameter to **acs_maxcompute_prepay**. Set the **Period**
 
 **Realtime Compute for Apache Flink**
 
-Set the **Namespace** parameter to **acs_flink.** Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+Set the **Namespace** parameter to **acs_flink.**
+
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Overview**
 
@@ -1725,7 +1759,8 @@ Set the **Namespace** parameter to **acs_flink.** Set the **Period** parameter t
 
 **Cloud Storage Gateway (CSG)**
 
-Set the **Namespace** parameter to **acs_csg_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_csg_dashboard**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1745,7 +1780,8 @@ Set the **Namespace** parameter to **acs_csg_dashboard**. Set the **Period** par
 
 **Lindorm**
 
-Set the **Namespace** parameter to **acs_lindorm**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_lindorm**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Wide table engine-related metrics**
 
@@ -1840,7 +1876,8 @@ Set the **Namespace** parameter to **acs_lindorm**. Set the **Period** parameter
 
 **Container Service Monitoring**
 
-Set the **Namespace** parameter to **acs_k8s**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_k8s**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Cluster**
 
@@ -1957,7 +1994,9 @@ On the monitoring page of a cloud service, you can view the status of resources 
 4. On the **Cloud Service Monitoring** page, select a cloud service whose monitoring data you
 want to view.
 5. On the monitoring page of the cloud service, click **Monitoring Charts** in the **Actions**
-column of a resource. On the page that appears, you can view the monitoring charts of the resource. You can view the monitoring data of the last 30 days at most.
+column of a resource. On the page that appears, you can view the monitoring charts of the resource.
+
+> **Note:** You can view the monitoring data of the last 30 days at most.
 
 ### 5.3 View alert rules
 
@@ -1997,10 +2036,25 @@ clusters in the columns of the cluster list, including **Cluster ID / Cluster Na
 5. Find the cluster that you want to manage and click its ID. The cluster details page appears.
 In the basic information section, view the information about the cluster from the following parameters: **Cluster Name**, **Cluster ID**, **Cluster Type**, **Version**, and **Virtual private**
 **network (VPC)**.
-On the **Monitoring chart** tab, view the monitoring charts of metrics related to the CPU, memory, and file system of the cluster. You can view the monitoring data generated within the previous **1 hour**, **6 hours**, **12 hours**, **1 day**, **3 days**, **7 days**, and **14 days**, or a custom time range. monitoring On the **Kubernetes container monitoring** page, you can also find the cluster that you want to manage and click **Monitoring chart** in the **Operation** column to go to the **Monitoring chart** tab. On the Monitoring chart tab, you can select **One per line**, **Two in each line**, or **Three per line** from the drop-down list in the upper-right corner to display monitoring charts in different ways. You can click the icon in the upper-right corner of a monitoring chart to open the Add Rule Description panel and create an alert rule. For more information, see Create an alert rule. You can click the icon in the upper-right corner of a monitoring chart to display the monitoring chart in a larger screen. On the **Alarm Rules** tab, view the information about alert rules in the following columns:
+On the **Monitoring chart** tab, view the monitoring charts of metrics related to the CPU, memory, and file system of the cluster. You can view the monitoring data generated within the previous **1 hour**, **6 hours**, **12 hours**, **1 day**, **3 days**, **7 days**, and **14 days**, or a custom time range. monitoring
+
+> **Note:** On the **Kubernetes container monitoring** page, you can also find the cluster that you want to manage and click **Monitoring chart** in the **Operation** column to go to the **Monitoring chart** tab.
+> On the Monitoring chart tab, you can select **One per line**, **Two in each line**, or **Three per line** from the drop-down list in the upper-right corner to display monitoring charts in different ways.
+> You can click the
+> icon in the upper-right corner of a monitoring chart to
+> open the Add Rule Description panel and create an alert rule. For more information, see Create an alert rule.
+> You can click the
+> icon in the upper-right corner of a monitoring chart to
+> display the monitoring chart in a larger screen.
+
+On the **Alarm Rules** tab, view the information about alert rules in the following columns:
 **Rule Name**, **Product Name**, **Status**, **Enable**, **Related Resource**, **Alert Condition**
 **Description**, and **Notification Contact**.
-monitoring On the **Kubernetes container monitoring** page, you can also find the cluster that you want to manage and click **Alarm Rules** in the **Operation** column to go to the **Alarm Rules** tab. On the **Alarm Rules** tab, you can click **Create Alert Rule** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, you can find the alert rule that you want to manage and click a button in the Actions column to manage the alert rule. For more information, see Manage alert rules.
+monitoring
+
+> **Note:** On the **Kubernetes container monitoring** page, you can also find the cluster that you want to manage and click **Alarm Rules** in the **Operation** column to go to the **Alarm Rules** tab.
+> On the **Alarm Rules** tab, you can click **Create Alert Rule** to create an alert rule. For more information, see Create an alert rule.
+> On the **Alarm Rules** tab, you can find the alert rule that you want to manage and click a button in the Actions column to manage the alert rule. For more information, see Manage alert rules.
 
 ## 7 Alert service
 
@@ -2359,9 +2413,13 @@ lert at the earliest opportunity.
 
 **Configre ANS**
 
-**Important**
+> **Important:** After you select the alert contacts or contact groups and enable notification by using DingTalk and email for the contacts, you also need to check the configurations and configure Application Naming Service (ANS). CloudMonitor can use these methods to send alert notifications only after you configure the email addresses and DingTalk keys.
 
-After you select the alert contacts or contact groups and enable notification by using DingTalk and email for the contacts, you also need to check the configurations and configure Application Naming Service (ANS). CloudMonitor can use these methods to send alert notifications only after you configure the email addresses and DingTalk keys. i. Check whether the ANS cluster is deployed. a. Log on to the Apsara Infrastructure Management Console. b. In the left-side navigation pane, choose **Operations** > **Cluster Operations**. c. On the **Cluster Operations** page, enter ans in the **Cluster** field to search for the ans cluster. d. Click the cluster name to go to the details page of the ans cluster. e. On the **Cluster Configuration** page, click **Edit** in the upper-right corner. Then, find the **tag.conf** file and check the ANS version. Check whether ANS is updated to the latest version, which is more stable and has fewer issues. ii. Connect ANS to an external network. Contact technical support to connect the ansApi.aliyunNotifyService# container to the corresponding DingTalk server or email server. The container resides in a classic network in Apsara Stack. iii. Check whether the service is normal. a. On the details page of the ans cluster, find the **Service Instances** section. b. In the **Service Instances** section, find the **ansApi** service and click **Details** in the
+i. Check whether the ANS cluster is deployed. a. Log on to the Apsara Infrastructure Management Console. b. In the left-side navigation pane, choose **Operations** > **Cluster Operations**. c. On the **Cluster Operations** page, enter ans in the **Cluster** field to search for the ans cluster. d. Click the cluster name to go to the details page of the ans cluster. e. On the **Cluster Configuration** page, click **Edit** in the upper-right corner. Then, find the **tag.conf** file and check the ANS version. Check whether ANS is updated to the latest version, which is more stable and has fewer issues. ii. Connect ANS to an external network. Contact technical support to connect the ansApi.aliyunNotifyService# container to the corresponding DingTalk server or email server.
+
+> **Note:** The container resides in a classic network in Apsara Stack.
+
+iii. Check whether the service is normal. a. On the details page of the ans cluster, find the **Service Instances** section. b. In the **Service Instances** section, find the **ansApi** service and click **Details** in the
 **Actions** column to go to the service details page.
 c. On the service details page, find the **ansApi**.**aliyunNotifyService#** component and click **Details** in the **Actions** column. On the **Server Role Dashboard** page**,** click
 **Terminal** in the **Actions** column of the **Machine Information** section.
@@ -2375,9 +2433,7 @@ ps -ef | grep notifier | grep -v grep netstat -antp | grep notifier | grep 8010
 
 iv. Configure and check email addresses and DingTalk keys. Contact technical support to configure and check email addresses and DingTalk keys.
 
-**Important**
-
-To configure a DingTalk chatbot, we recommend that you configure the DingTalk chatbot with a signature to enhance security.
+> **Important:** To configure a DingTalk chatbot, we recommend that you configure the DingTalk chatbot with a signature to enhance security.
 
 **Notification by using webhook URLs**
 
@@ -2387,9 +2443,8 @@ CloudMonitor sends POST requests to the domain names that are configured by user
 
 If you want to use your platform to handle alerts and have a service to receive requests sent by CloudMonitor, you can configure alert callback settings when you create or modify an alert rule. For more information, see Create an alert rule.
 
-**Important**
-
-You must specify a domain name instead of an IP address when you configure the alert callback settings. The suffix of the domain name must be the same as the value of the internet_domain environment variable in the cms.cloudmonitor container. The URL that you specify must be connected to the networks of the aliyunNotifyService# container of CloudMonitor and the primary and secondary data centers.
+> **Important:** You must specify a domain name instead of an IP address when you configure the alert callback settings. The suffix of the domain name must be the same as the value of the internet_domain environment variable in the cms.cloudmonitor container.
+> The URL that you specify must be connected to the networks of the aliyunNotifyService# container of CloudMonitor and the primary and secondary data centers.
 
 **Request method**
 
@@ -2550,9 +2605,7 @@ operations. The following table describes the operations that you can perform on
 
 The initiative alerting feature allows you to configure alert rules for the key metrics of the specified cloud services with a few clicks. This way, you can quickly create an alert system for cloud services to monitor the key metrics of cloud services, and handle exceptions at the earliest opportunity.
 
-**Important**
-
-To use the initiative alerting feature, you must install Apsara Stack V3.16.2r-cms-SP013.
+> **Important:** To use the initiative alerting feature, you must install Apsara Stack V3.16.2r-cms-SP013.
 
 **Background information**
 
@@ -2595,12 +2648,11 @@ CloudMonitor allows you to sort data of the top 1,000 instances of a cloud servi
 3. In the left-side navigation pane, choose **Statistical Analysis** **>** **Sorting****.**
 4. On the **Monitoring Sort** page, select a cloud service and specify the **Indicator Name**,
 **Monitoring Sort**, **Indicator Aggregation Value**, and **Quantity** parameters.
-**Monitoring Sort**: You can set this parameter to **Ascending** or **Descending**. If
-you set this parameter to **Ascending**, the monitoring data is sorted in ascending order. If you set this parameter to **Descending**, the monitoring data is sorted in descending order.
-**Indicator Aggregation Value**: You can set this parameter to sort the average,
-minimum, or maximum value of the specified metric of instances.
-**Quantity**: You can set this parameter to 10, 50, 100, or 200 to display the top
-10, top 50, top 100, or top 200 monitoring data records.
+
+> **Note:** **Monitoring Sort**: You can set this parameter to **Ascending** or **Descending**. If you set this parameter to **Ascending**, the monitoring data is sorted in ascending order. If you set this parameter to **Descending**, the monitoring data is sorted in descending order.
+> **Indicator Aggregation Value**: You can set this parameter to sort the average, minimum, or maximum value of the specified metric of instances.
+> **Quantity**: You can set this parameter to 10, 50, 100, or 200 to display the top 10, top 50, top 100, or top 200 monitoring data records.
+
 5. Optional. In the upper-right corner, click **Report Export** to go to the **Product Data**
 **Analysis** page. On the **Product Data Analysis** page, configure custom settings to export
 a report.
@@ -2640,7 +2692,8 @@ To obtain the AccessKey ID and AccessKey secret of the level-1 organization, per
 **Management AccessKey** dialog box, you can view the AccessKey ID and AccessKey
 secret of the organization.
 5. After you complete the configurations, click **OK**. The data subscription task is created.
-You can create five data subscription tasks at most. If you need to create more tasks, contact the Apsara Stack technical support.
+
+> **Note:** You can create five data subscription tasks at most. If you need to create more tasks, contact the Apsara Stack technical support.
 
 **Manage data subscription tasks**
 
@@ -2865,7 +2918,8 @@ CloudMonitor provides the availability monitoring feature to help you check whet
 
 **Procedure**
 
-Availability monitoring allows you to use Elastic Compute Service (ECS) instances as the monitoring nodes.
+> **Note:** Availability monitoring allows you to use Elastic Compute Service (ECS) instances as the monitoring nodes.
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Monitoring and O&M** > **Cloud Monitor**.
 3. In the left-side navigation pane, click **Application Group**.
@@ -2955,9 +3009,7 @@ describes the operations that you can perform on reports.
 
 ## 12 Namespaces
 
-**Important**
-
-To use the namespace feature, you must install Apsara Stack V3.16.2r-cms-SP013.
+> **Important:** To use the namespace feature, you must install Apsara Stack V3.16.2r-cms-SP013.
 
 ### 12.1 Time series metrics
 
@@ -2976,7 +3028,10 @@ tab appears.
 4. In the left-side**Alibaba Cloud Services** section, click a cloud service. Then, the metric
 information about the cloud service is displayed in the right-side section.
 5. Find the metric that you want to view and click the
-icon next to its name. In the chart that appears, you can view the lineage of the metric, which tracks the flow from the SQL statement that creates the metric through to the dependencies on source data stored in the specific Simple Log Service project and Logstore and also includes the dimension (DIM) table of CloudMonitor that is associated with the metric. Not all cloud service metrics have DIM table data.
+icon next to its name. In the chart that appears, you can view the lineage of the metric, which tracks the flow from the SQL statement that creates the metric through to the dependencies on source data stored in the specific Simple Log Service project and Logstore and also includes the dimension (DIM) table of CloudMonitor that is associated with the metric.
+
+> **Note:** Not all cloud service metrics have DIM table data.
+
 6. Click each node in the flow. On the **Inspection Item Details** tab of the **Availability**
 **Monitoring Details** panel, check whether data exists. You can troubleshoot issues based
 on the results of inspection items. An issue may occur due to the raw data, intermediate process, or aggregation calculation in the final stage. If an issue occurs, troubleshoot the issue based on the results of the related inspection items.
@@ -3229,9 +3284,15 @@ You can create a log monitoring metric to track and analyze log data in real tim
 4. On the **SLS log monitoring** page, click **Create Log Monitoring**.
 5. In the **Create Log Monitoring** panel, configure parameters in the following steps: **Basic**
 **information**, **Log Data Source**, and **Compute Configuration**.
-i. In the **Basic information** step, enter a name in the **Monitoring Item Name** field and click **Next step**. A metric name must be unique in a level-1 organization. ii. In the **Log Data Source** step, configure the **SLS log source**, **SlsProject**, and
+i. In the **Basic information** step, enter a name in the **Monitoring Item Name** field and click **Next step**.
+
+> **Note:** A metric name must be unique in a level-1 organization.
+
+ii. In the **Log Data Source** step, configure the **SLS log source**, **SlsProject**, and
 **SlsLogstore** parameters and click **Next step**.
-**SLS log source**: the source of the log data. Default value: Redline.
+
+> **Note:** **SLS log source**: the source of the log data. Default value: Redline.
+
 **SlsProject**: the name of the project in SLS.
 **SlsLogstore**: the name of the Logstore in SLS.
 iii. In the **Compute Configuration** step, configure the **Unit**, **Aggregation cycle**,
@@ -3263,11 +3324,17 @@ In the basic information section, view the basic information about the metric fr
 **Creation time**.
 On the **Monitoring chart** tab, view the monitoring charts of the metric. You can view the monitoring data generated within the previous **1 hour**, **3 hours**, **6 hours**, **12 hours**, **1**
 **day**, **3 days**, **7 days**, and **14 days**, or **a custom time range**.
-You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, view the alert rules of the metric. You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. You can click buttons in the **Operation** column to manage alert rules. For more information, see Manage alert rules.
+You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, view the alert rules of the metric.
+
+> **Note:** You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule.
+> You can click buttons in the **Operation** column to manage alert rules. For more information, see Manage alert rules.
 
 **Modify a metric**
 
-If the information about a metric changes, you can modify the metric. The name of a metric cannot be modified.
+If the information about a metric changes, you can modify the metric.
+
+> **Note:** The name of a metric cannot be modified.
+
 1. On the **SLS log monitoring** page, find the metric that you want to modify and click **Edit** in
 the **Operation** column.
 2. In the **Edit Log Monitoring** panel, follow the steps in the wizard to modify the metric
@@ -3342,7 +3409,14 @@ availability monitoring tasks displayed in the following columns: **Task Name/Ta
 **Monitoring Status**, **Detection target**, **Probe Type**, **Number of abnormal machines**
 **probed**, **Number of abnormal plug-in machines**, **Total number of machines** ,
 **Availability**, and **Average Latency**.
-You can click the icon above the list to set the automatic refresh interval or perform manual refresh. The automatic refresh interval can be set to 1, 3, or 5 minutes. You can click the icon above the list to select the columns to be displayed. If you clear a column, the column is not displayed.
+
+> **Note:** You can click the
+> icon above the list to set the automatic refresh interval or
+> perform manual refresh. The automatic refresh interval can be set to 1, 3, or 5 minutes.
+> You can click the
+> icon above the list to select the columns to be displayed. If
+> you clear a column, the column is not displayed.
+
 2. Find the availability monitoring task that you want to manage and click the
 icon in the
 **Operation** column to view the monitoring details.
@@ -3363,25 +3437,23 @@ you want to manage and click **Modification** in the **Operation** column.
 2. In the **Modifying Availability Monitoring** panel, modify the parameters based on your
 business requirements. For more information about the parameters, see the Create an availability monitoring task section of this topic.
 
-**Important**
-
-The **Detection target** and **Probe Type** parameters cannot be modified.
+> **Important:** The **Detection target** and **Probe Type** parameters cannot be modified.
 
 **Disable one or more availability monitoring tasks**
 
 You can disable an availability monitoring task if you do not need to monitor the corresponding resources.
 
-**Important**
+> **Important:** You can disable only availability monitoring tasks in the **Enable** state.
 
-You can disable only availability monitoring tasks in the **Enable** state. Disable a single availability monitoring task i. On the**Service Availability Monitoring**page, find the availability monitoring task that you want to disable and click **Disable** in the **Operation** column. ii. Click **OK**. Disable multiple availability monitoring tasks at a time i. On the **Service Availability Monitoring** page, select the availability monitoring tasks that you want to disable. ii. Click **Batch Disable** in the lower-left corner of the task list. iii. Click **OK**.
+Disable a single availability monitoring task i. On the**Service Availability Monitoring**page, find the availability monitoring task that you want to disable and click **Disable** in the **Operation** column. ii. Click **OK**. Disable multiple availability monitoring tasks at a time i. On the **Service Availability Monitoring** page, select the availability monitoring tasks that you want to disable. ii. Click **Batch Disable** in the lower-left corner of the task list. iii. Click **OK**.
 
 **Enable one or more availability monitoring tasks**
 
 g You can enable a disabled availability monitoring task if you want to monitor the corresponding resources again.
 
-**Important**
+> **Important:** You can enable only availability monitoring tasks in the **Disable** state.
 
-You can enable only availability monitoring tasks in the **Disable** state. Enable a single availability monitoring task i. On the **Service Availability Monitoring** page, find the availability monitoring task that you want to enable and click **Enable** in the **Operation** column. ii. Click **OK**. Enable multiple availability monitoring tasks at a time i. On the **Service Availability Monitoring** page, select the availability monitoring tasks that you want to enable. ii. Click **Batch Enable** in the lower-left corner of the task list. iii. Click **OK**.
+Enable a single availability monitoring task i. On the **Service Availability Monitoring** page, find the availability monitoring task that you want to enable and click **Enable** in the **Operation** column. ii. Click **OK**. Enable multiple availability monitoring tasks at a time i. On the **Service Availability Monitoring** page, select the availability monitoring tasks that you want to enable. ii. Click **Batch Enable** in the lower-left corner of the task list. iii. Click **OK**.
 
 **Delete one or more availability monitoring tasks**
 

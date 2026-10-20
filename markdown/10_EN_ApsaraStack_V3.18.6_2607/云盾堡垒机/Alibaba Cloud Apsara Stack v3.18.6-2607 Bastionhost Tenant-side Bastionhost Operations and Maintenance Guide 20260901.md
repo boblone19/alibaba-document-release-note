@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 33
 source_pdf: "5ff03e7e56df3475_Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionhost Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E5%A0%A1%E5%9E%92%E6%9C%BA/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Bastionhost%20Tenant-side%C2%A0Bastionhost%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionhost Operations and Maintenance Guide 20260901
@@ -193,9 +193,7 @@ This topic describes how to install Bastionhost Assistant.
 and click Tool Download to go the Tool Download page.
 2. Download and install Bastionhost Assistant.
 
-**Note**
-
-Bastionhost Assistant is a logon tool that you need to install if you want to call an onpremises O&M client tool based on a web page. Make sure that you are not blocked by antivirus software.
+> **Note:** Bastionhost Assistant is a logon tool that you need to install if you want to call an on- premises O&M client tool based on a web page. Make sure that you are not blocked by antivirus software.
 
 #### 1.2.3 Specify an O&M tool
 

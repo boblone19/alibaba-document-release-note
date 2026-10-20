@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 201
 source_pdf: "2cd57708065b91f2_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828
@@ -103,8 +103,9 @@ release notes
 
 ## 1 Kernel release notes
 
-This topic describes the kernel release notes for PolarDB HTAP. For a detailed list of updates, see the **cloud-native distributed database PolarDB-X**
-**2.0** section in the **Hotfix release notes**.
+This topic describes the kernel release notes for PolarDB HTAP.
+
+> **Note:** For a detailed list of updates, see the **cloud-native distributed database PolarDB-X** **2.0** section in the **Hotfix release notes**.
 
 **Release date: 2026-07-30**
 
@@ -139,7 +140,7 @@ This topic describes the primary instance specifications for ApsaraDB for PolarD
 
 **Enterprise edition specifications**
 
-Enterprise Edition primary instances let you customize the specifications and number of compute and storage nodes.
+> **Note:** Enterprise Edition primary instances let you customize the specifications and number of compute and storage nodes.
 
 **Compute nodes**
 
@@ -298,9 +299,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. to the PolarDB Converged Edition (Centralized & Distributed) conso le You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. to the PolarDB Converged Edition (Centralized & Distributed) conso le
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -313,8 +322,10 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Database Services > Relational**
 **Database > Cloud-Native Distributed Database PolarDB-X 2.0**.
 e management
@@ -328,7 +339,13 @@ This topic shows you how to create a PolarDB for HTAP instance.
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. In the upper-left corner, click **Create New Instance**.
 3. On the **Create PolarDB-X 2.0** page, configure the following parameters.
 
@@ -389,15 +406,25 @@ When you downgrade the specifications of an instance, transient connection inter
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-e management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+e management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. On the Instance List page, find the instance that you want to manage and click **Change**
 **configuration** in the **Operation** column.
-You can also click the ID of the instance to go to the **Basic Information** page. In the upper-right corner of the **Configuration Information** section, click **Change**
-**Specifications**.
+
+> **Note:** You can also click the ID of the instance to go to the **Basic Information** page. In the upper-right corner of the **Configuration Information** section, click **Change** **Specifications**.
+
 3. On the **Change Specifications** page, configure the node specifications, storage space,
-share type, and configuration change time. After you submit the change, the compute nodes and storage nodes of the instance are upgraded or downgraded to the same node specifications. You can select **Immediately change configuration** or **O&M time**
-**configuration change** for the Configuration change time parameter. For more
-information about how to set the O&M time, see Set a maintenance window.
+share type, and configuration change time.
+
+> **Note:** After you submit the change, the compute nodes and storage nodes of the instance are upgraded or downgraded to the same node specifications.
+> You can select **Immediately change configuration** or **O&M time** **configuration change** for the Configuration change time parameter. For more information about how to set the O&M time, see Set a maintenance window.
+
 4. Click **Submit** to complete the specification change.
 
 ### 4.3 Add or remove nodes
@@ -407,7 +434,14 @@ A PolarDB-X instance is a distributed cluster that consists of multiple nodes. T
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-e management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+e management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. On the Instance List page, find the instance that you want to manage and click **Add nodes**
 or **Delete nodes** in the **Operation** column.
 3. On the page that appears, specify the number of nodes.
@@ -423,21 +457,32 @@ This topic describes how to release a PolarDB-X instance and manage its release 
 **Release an instance**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Click the name of the desired instance.
 3. On the **basic information** page, click **Release Instance**.
 e management
 
-**Warning**
+> **Warning:** This action is irreversible. After the release process begins, the instance becomes unavailable and cannot be recovered. Proceed with caution.
 
-This action is irreversible. After the release process begins, the instance becomes unavailable and cannot be recovered. Proceed with caution.
 4. On the Release Instance page, click **Release**.
 If release protection is enabled for the instance, the operation fails. You must first disable release protection. For instructions, see Manage release protection.
 
 **Manage release protection**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Click the name of the desired instance.
 3. On the **basic information** page, click **Modify Instance Release Protection**.
 4. In the dialog box that appears, select **Enable**.
@@ -452,14 +497,21 @@ If the number of connections to a PolarDB-X cluster reaches the upper limit or t
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-e management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+e management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. On the **Basic Information** page, restart the cluster or the desired node.
 Restart the cluster In the upper-right corner of the page, click **Restart Instance**.
 
-**Warning**
+> **Warning:** This operation disconnects the cluster from your application. Make sure that your business is not interrupted before you perform this operation.
 
-This operation disconnects the cluster from your application. Make sure that your business is not interrupted before you perform this operation. Restart a node In the **Compute NodeList** section, click **Restart Node** in the **Actions** column of the desired node. In the message that appears, click **Determine** to restart the cluster or node.
+Restart a node In the **Compute NodeList** section, click **Restart Node** in the **Actions** column of the desired node. In the message that appears, click **Determine** to restart the cluster or node.
 
 ### 4.6 Upgrade the kernel version
 
@@ -476,13 +528,13 @@ Upgrading the kernel version restarts the instance, causing a transient disconne
 **Information** page.
 e management
 3. In the **Configuration Information** section, click **Upgrade Kernel Version**.
-If this button is unavailable (grayed out), it means the kernel is already at the latest version.
+
+> **Note:** If this button is unavailable (grayed out), it means the kernel is already at the latest version.
+
 4. In the dialog box that appears, select a **Target Version** (optional), set the **Upgrade Time**,
 **Canary Batches**, and **Canary Interval (Hours)**, and then click **OK**.
 
-**Important**
-
-If you do not select a target version, the instance is upgraded to the latest kernel version by default.
+> **Important:** If you do not select a target version, the instance is upgraded to the latest kernel version by default.
 
 ### 4.7 Add read-only instances
 
@@ -499,7 +551,14 @@ A primary instance and the read-only instances that are associated with the prim
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-e management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+e management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. On the Instance List page, find the instance that you want to manage and click **Read-only**
 **instance** in the **Operation** column.
 Alternatively, you can click the instance name to go to the instance details page. In the
@@ -567,7 +626,10 @@ e management
 1. Log in to the PolarDB Converged Edition (Centralized & Distributed) console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instances** page, you can view the tags in the Tags column.
-If is displayed in the Tags column, move the pointer over it to view all tags added to the instance.
+
+> **Note:** If
+> is displayed in the Tags column, move the pointer over it to view all tags added to
+> the instance.
 
 **Remove a tag**
 
@@ -592,17 +654,18 @@ the instance details page.
 4. In the left-side navigation pane, choose **Configuration Management > Log Engine**.
 On the page that appears, perform the following operations: View the details of an instance The Configuration Information section displays some key information about the logging feature, and the Clusters section displays all instances for which the logging feature is enabled. Each instance can contain multiple nodes. You can enable the feature for all nodes in each instance in the single- or multi-stream mode. e management Upgrade an instance Find the instance that you want to upgrade and click **Upgrade**. In the dialog box that appears, select the version to which you want to update and click **OK**.
 
-**Important**
+> **Important:** In the node list, you can view the version of a CDC node in the **Version** column. An upgrade may interrupt the subscription to binary logs.
+> When you select a destination version, we recommend that you select the latest version, which is also the version displayed by default.
 
-In the node list, you can view the version of a CDC node in the **Version** column. An upgrade may interrupt the subscription to binary logs. When you select a destination version, we recommend that you select the latest version, which is also the version displayed by default. Release an instance Find the instance that you want to release and click **Release**. In the message that appears, click **OK**. Wait for the release task to complete.
+Release an instance Find the instance that you want to release and click **Release**. In the message that appears, click **OK**. Wait for the release task to complete.
 
-**Important**
+> **Important:** Instances that store a single stream of binary logs cannot be released.
 
-Instances that store a single stream of binary logs cannot be released. Change instance configurations Find the instance that you want to modify and click **Change Specifications**. In the dialog box that appears, modify the parameters click **OK**. Wait for the specification change task to complete.
+Change instance configurations Find the instance that you want to modify and click **Change Specifications**. In the dialog box that appears, modify the parameters click **OK**. Wait for the specification change task to complete.
 
-**Important**
+> **Important:** This operation may interrupt the subscription to binary logs.
 
-This operation may interrupt the subscription to binary logs. Enable binary logging in multi-stream mode PolarDB-X allows you to enable binary logging in multi-stream mode in scenarios of largescale instances and high concurrency. You can enable this feature in the console. Click **Enable Multi-stream**. In the dialog box that appears, configure the parameters and click **OK**. The following table describes the parameters. e management
+Enable binary logging in multi-stream mode PolarDB-X allows you to enable binary logging in multi-stream mode in scenarios of largescale instances and high concurrency. You can enable this feature in the console. Click **Enable Multi-stream**. In the dialog box that appears, configure the parameters and click **OK**. The following table describes the parameters. e management
 
 | Parameter | Description |
 |---|---|
@@ -627,13 +690,11 @@ e management The columnar engine feature is supported only for Enterprise Editio
 4. In the left-side navigation pane, click **Column Storage Engine**. On the page that appears,
 you can perform the following operations: Upgrade In the upper-right corner of the page, click Column storage engine upgrade. In the dialog box that appears, select the version to which you want to upgrade the current version and click OK.
 
-**Important**
+> **Important:** In the instance list, the version column displays the version of columnar nodes in the current instance. Version upgrades cause service interruption during Clustered Columnar Index (CCI) synchronization and synchronization latency for several tens of seconds.
 
-In the instance list, the version column displays the version of columnar nodes in the current instance. Version upgrades cause service interruption during Clustered Columnar Index (CCI) synchronization and synchronization latency for several tens of seconds. When you select a destination version, we recommend that you select the latest version, which is also the version displayed by default. Change configuration In the upper-right corner of the page, click Change configuration, select an instance type, and then click OK. Wait until the task is complete.
+When you select a destination version, we recommend that you select the latest version, which is also the version displayed by default. Change configuration In the upper-right corner of the page, click Change configuration, select an instance type, and then click OK. Wait until the task is complete.
 
-**Important**
-
-Configuration changes cause service interruption during CCI synchronization and therefore result in a synchronization latency of several tens of seconds.
+> **Important:** Configuration changes cause service interruption during CCI synchronization and therefore result in a synchronization latency of several tens of seconds.
 
 **Add a read-only column store instance**
 
@@ -670,9 +731,7 @@ side of the page and configure the following parameters.
 
 This topic describes how to upgrade an instance from Standard Edition to Enterprise Edition.
 
-**Important**
-
-If Secure Sockets Layer (SSL) is enabled before the upgrade, you must re-enable SSL in the Apsara Uni-manager Management Console after the upgrade.
+> **Important:** If Secure Sockets Layer (SSL) is enabled before the upgrade, you must re-enable SSL in the Apsara Uni-manager Management Console after the upgrade.
 
 **Prerequisites**
 
@@ -1014,9 +1073,15 @@ You do not need to go to the DTS console. All task statuses are displayed on thi
 
 **endpoints**
 
-When the incremental synchronization latency approaches zero and no errors are reported, you can proceed to change the endpoint configured in your application. B AI We recommend that the endpoint switching be performed during off-peak hours and the reconnection mechanism of your application be verified in advance.
+When the incremental synchronization latency approaches zero and no errors are reported, you can proceed to change the endpoint configured in your application. B AI
+
+> **Note:** We recommend that the endpoint switching be performed during off-peak hours and the reconnection mechanism of your application be verified in advance.
+
 1. On the **Database migration results** tab, confirm that the migration status is normal and
-then click **Migrate Endpoint** in the Operation column. In the result list, you can view the details of the task, such as the creation time, running status, the number of rows in the source when the task starts, and the number of rows in the destination when the task ends. Once the task starts, if the source data changes, data inconsistency occurs between the source and destination after the task is complete.
+then click **Migrate Endpoint** in the Operation column. In the result list, you can view the details of the task, such as the creation time, running status, the number of rows in the source when the task starts, and the number of rows in the destination when the task ends.
+
+> **Note:** Once the task starts, if the source data changes, data inconsistency occurs between the source and destination after the task is complete.
+
 2. On the tab that appears, confirm the information about the source and destination
 databases and click **Switch Endpoint**.
 
@@ -1052,7 +1117,10 @@ User question: Is DTS migration task `l65e721` running correctly? If there are e
 
 **V2.0 Standard Edition by using the console**
 
-This topic describes how to migrate data from an ApsaraDB RDS for MySQL instance to a cluster of PolarDB-X V2.0 Standard Edition by using the console. The quick migration feature relies on ApsaraDB RDS, PolarDB, Data Transmission Service (DTS), and OneConsole. You must upgrade the versions of these components to the target version or later.
+This topic describes how to migrate data from an ApsaraDB RDS for MySQL instance to a cluster of PolarDB-X V2.0 Standard Edition by using the console.
+
+> **Note:** The quick migration feature relies on ApsaraDB RDS, PolarDB, Data Transmission Service (DTS), and OneConsole. You must upgrade the versions of these components to the target version or later.
+
 1. . Overview**
 PolarDB allows you to migrate data from a local disk-based ApsaraDB RDS for MySQL instance to a cluster of PolarDB-X V2.0 Standard Edition. The following table describes the supported MySQL versions.
 
@@ -1084,7 +1152,12 @@ You need to create a cluster of PolarDB-X V2.0 Standard Edition before you perfo
 
 **Usage notes for creating a PolarDB-X cluster**
 
-Instance type: We recommend that you use the same instance type as the ApsaraDB RDS for MySQL instance. Virtual private cloud (VPC): We recommend that you deploy the PolarDB-X cluster in the same VPC as the ApsaraDB RDS for MySQL instance. If you use a different VPC, check whether the VPC is accessible to your application before the migration. Network whitelist: After you create a PolarDB-X cluster, you need to configure the same IP address whitelist as the ApsaraDB RDS for MySQL instance. This ensures that your application can access the PolarDB-X cluster. The instance ID changes after the migration. In any of the following scenarios, we recommend that you communicate with the corresponding team in advance to ensure that all involved systems are switched to the PolarDB-X cluster after the migration. Otherwise, you may encounter issues when you use these systems. If you perform the migration with endpoint switching, you do not need to modify the database endpoint or port. In this case, existing connections are not affected. However, you need to update the configurations of the following services: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. Cloud Monitor: You need to configure Cloud Monitor to monitor the PolarDB-X cluster. The following services do not support PolarDB-X V2.0: Elastic scaling service: Auto Scaling Security audit service: Sensitive Data Discovery and Protection (SDDP)
+Instance type: We recommend that you use the same instance type as the ApsaraDB RDS for MySQL instance. Virtual private cloud (VPC): We recommend that you deploy the PolarDB-X cluster in the same VPC as the ApsaraDB RDS for MySQL instance. If you use a different VPC, check whether the VPC is accessible to your application before the migration. Network whitelist: After you create a PolarDB-X cluster, you need to configure the same IP address whitelist as the ApsaraDB RDS for MySQL instance. This ensures that your application can access the PolarDB-X cluster. The instance ID changes after the migration. In any of the following scenarios, we recommend that you communicate with the corresponding team in advance to ensure that all involved systems are switched to the PolarDB-X cluster after the migration. Otherwise, you may encounter issues when you use these systems. If you perform the migration with endpoint switching, you do not need to modify the database endpoint or port. In this case, existing connections are not affected. However, you need to update the configurations of the following services: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. Cloud Monitor: You need to configure Cloud Monitor to monitor the PolarDB-X cluster.
+
+> **Note:** The following services do not support PolarDB-X V2.0:
+> Elastic scaling service: Auto Scaling
+> Security audit service: Sensitive Data Discovery and Protection (SDDP)
+
 3. . Migration precheck**
 
 **Read and assess the migration limits of DTS**
@@ -1151,11 +1224,12 @@ describes the parameters.
 B AI
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 **Synchronize data**
 
@@ -1214,9 +1288,9 @@ describes the parameters.
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
 5. . Switch to the endpoint of the destination database**
 Switch to the endpoint of the destination database during the migration process. After you update the DNS record, clients may still be connected to the source database due to the caching mechanism. You need to close the connections to the source database. B AI
@@ -1229,7 +1303,10 @@ If you want to roll back the migration, perform Step 5 to switch to the endpoint
 
 **visualized operations**
 
-This topic describes how to migrate data from a PolarDB-X 2.0 instance to a PolarDB-X 2.0 instance through visualized operations. The one-click migration feature depends on ApsaraDB RDS, PolarDB, Data Transmission Service (DTS), and OneConsole. You must upgrade the versions of these components to the destination versions or later.
+This topic describes how to migrate data from a PolarDB-X 2.0 instance to a PolarDB-X 2.0 instance through visualized operations.
+
+> **Note:** The one-click migration feature depends on ApsaraDB RDS, PolarDB, Data Transmission Service (DTS), and OneConsole. You must upgrade the versions of these components to the destination versions or later.
+
 1. . Overview**
 You can migrate data from a PolarDB-X 2.0 instance to a PolarDB-X 2.0 instance. The following table lists the supported versions.
 
@@ -1256,7 +1333,12 @@ You need to create a PolarDB-X 2.0 instance before you perform the migration. To
 
 **Usage notes**
 
-Instance type: We recommend that you use the same instance type as the PolarDB-X 2.0 instance to be migrated. Virtual private cloud (VPC): We recommend that you create the PolarDB-X instance in the same VPC as the PolarDB-X 2.0 instance. If you use a different VPC, make sure that the VPC is accessible to applications before you start the migration. Network whitelist: After you create a PolarDB-X instance, you need to configure an IP address whitelist the same as that of the PolarDB-X 2.0 instance. This ensures that applications can access the PolarDB-X instance after you switch to the destination instance. The instance ID changes after the migration. If you are in one of the following scenarios, we recommend that you communicate with the relevant teams in advance to ensure that all involved systems are switched after the migration. Otherwise, you may encounter issues when you use these application systems. Switchover with endpoints does not require modifications to the endpoint and port number of the destination database, and the existing endpoint is unaffected. However, if you want to change the configurations, you need to change relevant parameters in the following systems: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. Cloud Monitor: Cloud Monitor monitors the destination instance after the migration. B AI Note that the following services do not support PolarDB-X V2.0. Elastic scaling service: Auto Scaling Security audit service: SDDP
+Instance type: We recommend that you use the same instance type as the PolarDB-X 2.0 instance to be migrated. Virtual private cloud (VPC): We recommend that you create the PolarDB-X instance in the same VPC as the PolarDB-X 2.0 instance. If you use a different VPC, make sure that the VPC is accessible to applications before you start the migration. Network whitelist: After you create a PolarDB-X instance, you need to configure an IP address whitelist the same as that of the PolarDB-X 2.0 instance. This ensures that applications can access the PolarDB-X instance after you switch to the destination instance. The instance ID changes after the migration. If you are in one of the following scenarios, we recommend that you communicate with the relevant teams in advance to ensure that all involved systems are switched after the migration. Otherwise, you may encounter issues when you use these application systems. Switchover with endpoints does not require modifications to the endpoint and port number of the destination database, and the existing endpoint is unaffected. However, if you want to change the configurations, you need to change relevant parameters in the following systems: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. Cloud Monitor: Cloud Monitor monitors the destination instance after the migration. B AI
+
+> **Note:** Note that the following services do not support PolarDB-X V2.0.
+> Elastic scaling service: Auto Scaling
+> Security audit service: SDDP
+
 3. . Precheck for migration**
 
 **Read and evaluate the migration limits of DTS**
@@ -1323,11 +1405,12 @@ describes the parameters. B AI
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** reaches 100%. Then, click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 **Data synchronization procedure**
 
@@ -1385,9 +1468,9 @@ B AI
 
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
 5. . Switch to the endpoint of the destination database**
 Switch to the endpoint of the destination database during the migration process. After you update the DNS record, clients may still be connected to the source database due to the caching mechanism. You need to close the connections to the source database.
@@ -1405,24 +1488,36 @@ In the PolarDB-X console, you can view the description of parameters related to 
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Configuration Management > Parameter**
 **Settings**. On the page that appears, you can modify the parameters on the **Compute**
 **Layer** or **Storage Layer** tab.
 Modify parameters on the Compute Layer tab i. On the **Compute Layer** tab, find the parameter that you want to modify and enter the new value in the **Current Value** column. Modify parameters on the Storage Layer tab i. Click the **Storage Layer** tab. ii. Find the parameter that you want to modify and enter the new value in the **Current**
 **Value** column.
-Enter a value within the value range in the **Modification Scope** column. Otherwise, an error is thrown after you click **Submit**. You can move the pointer over the icon next to the name of a parameter to view the parameter description.
+
+> **Note:** Enter a value within the value range in the **Modification Scope** column. Otherwise, an error is thrown after you click **Submit**.
+> You can move the pointer over the
+> icon next to the name of a parameter to
+> view the parameter description.
+
 4. Click **Batch Submit**. In the **Save Changes** panel, confirm the parameter information and
 click **Determine**. eter management
 5. In the upper-right corner of the page, click **Restart Instance**.
-If the value in the **Whether to Restart** column of a parameter is **Yes**, you must restart the cluster for the settings to take effect after you click **Batch Submit**.
+
+> **Note:** If the value in the **Whether to Restart** column of a parameter is **Yes**, you must restart the cluster for the settings to take effect after you click **Batch Submit**.
 
 **Parameters**
 
 **Parameters on the Compute Layer tab**
 
-Only PolarDB-X Enterprise Edition supports compute layer parameters.
+> **Note:** Only PolarDB-X Enterprise Edition supports compute layer parameters.
 
 | Parameter | Wh eth er to rest art | Defau lt value | Value range | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -1934,9 +2029,8 @@ eter management
 4. In the All Instances section of the panel that appears, select the instances to which you
 want to apply the parameter template, click the icon to move the selected instances to the Selected Instances section, and then view the changes to the parameter settings in the Parameter Comparison section.
 
-**Important**
+> **Important:** Before you apply a parameter template to multiple instances, you must verify that the parameter settings are suitable for the instances. Proceed with caution.
 
-Before you apply a parameter template to multiple instances, you must verify that the parameter settings are suitable for the instances. Proceed with caution.
 5. Click **OK**.
 
 **Manage a parameter template**
@@ -1946,14 +2040,20 @@ Before you apply a parameter template to multiple instances, you must verify tha
 3. Manage parameter templates in this region.
 View a parameter template Find the parameter template that you want to view and click **View** in the **Actions** column to view the basic information and parameter settings of the parameter template. View parameter templates In the upper-right corner of the template list, you can filter engines of different versions to view parameter templates created in different versions. Modify a parameter template
 
-**Important**
+> **Important:** If you modify a custom parameter template, you must re-apply the custom parameter template to your instance for the modification to take effect.
+> After the custom parameter template is re-applied to your instance, your instance may be restarted. If you modify the parameters for which instance restart is required for the modifications to take effect, you must restart your instance.
 
-If you modify a custom parameter template, you must re-apply the custom parameter template to your instance for the modification to take effect. After the custom parameter template is re-applied to your instance, your instance may be restarted. If you modify the parameters for which instance restart is required for the modifications to take effect, you must restart your instance. a. Click the icon and select **Modify** in the **Actions** column next to the parameter template ID to modify the parameter template. b. Click **OK**. eter management Delete a parameter template. When you delete a parameter template, the instances to which the parameter template is applied are not affected. Find the parameter template that you want to delete, click the icon, and then select
+a. Click the icon and select **Modify** in the **Actions** column next to the parameter template ID to modify the parameter template. b. Click **OK**. eter management Delete a parameter template.
+
+> **Note:** When you delete a parameter template, the instances to which the parameter template is applied are not affected.
+
+Find the parameter template that you want to delete, click the icon, and then select
 **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
 **Configure a default template**
 
-The default template settings for Standard Edition and Enterprise Edition do not conflict and can be configured simultaneously.
+> **Note:** The default template settings for Standard Edition and Enterprise Edition do not conflict and can be configured simultaneously.
+
 1. Log in to the PolarDB Converged Edition (Centralized & Distributed) console.
 2. In the left-side navigation pane, click **Parameter Template**.
 3. Find the parameter template that you want to manage and click **Set to default** in the
@@ -2023,7 +2123,14 @@ This topic describes how to disable and enable full table scan for a PolarDB-X V
 **View the schema of a table**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file. se management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
+se management
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane of the instance details page, choose **Configuration**
 **Management > Database Management**.
@@ -2035,7 +2142,13 @@ click **Query table structure** in the Operation column.
 **Batch enable full table scan**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Configuration Management > Database**
 **Management**.
@@ -2059,7 +2172,13 @@ A PolarDB-X instance, a database account, and a database are created. A MySQL cl
 **Use DMS to connect to a database**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance that you want to manage and click the instance name.
 3. On the **Basic Information** page, click **Log On to Database** in the upper-right corner.
 4. In the **Log on to Database Instance** dialog box, configure the **Database Account** and
@@ -2068,12 +2187,20 @@ The console provides the following features: : Click to refresh the instance lis
 **Use the MySQL command line to connect to a database**
 
 1. Log on to the PolarDB for HTAP console.
-k and connection The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+k and connection
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance that you want to manage and click the instance name.
 3. In the **Connection Information** section, find the internal endpoint and port number and
-the public endpoint and port number. By default, no public endpoint is available. If you want to connect to the instance over the Internet for a test, click **Apply for Public Endpoint**. Then, use the **public**
-**endpoint** and **public port number** to connect to the instance. To ensure database
-security, we recommend that you use the internal endpoint to connect to the instance.
+the public endpoint and port number.
+
+> **Note:** By default, no public endpoint is available. If you want to connect to the instance over the Internet for a test, click **Apply for Public Endpoint**. Then, use the **public** **endpoint** and **public port number** to connect to the instance. To ensure database security, we recommend that you use the internal endpoint to connect to the instance.
+
 4. After you obtain the **connection information**, run the following command to obtain your
 local public IP address. Then, add the IP address to a whitelist of the instance.
 
@@ -2105,7 +2232,9 @@ k and connection
 
 **Use a third-party client to connect to a database**
 
-You can connect to a PolarDB-X database by using the following third-party clients. You can go to the corresponding official websites to download the clients. k and connection MySQL Workbench (recommended) SQLyog Sequel Pro Navicat for MySQL You can perform basic database operations on a third-party GUI client. For example, you can add, delete, modify, and query data and perform DDL operations. You cannot perform advanced operations on a PolarDB-X database from the third-party GUI clients.
+You can connect to a PolarDB-X database by using the following third-party clients. You can go to the corresponding official websites to download the clients. k and connection MySQL Workbench (recommended) SQLyog Sequel Pro Navicat for MySQL
+
+> **Note:** You can perform basic database operations on a third-party GUI client. For example, you can add, delete, modify, and query data and perform DDL operations. You cannot perform advanced operations on a PolarDB-X database from the third-party GUI clients.
 
 **Use a third-party driver for MySQL to connect to a database**
 
@@ -2125,7 +2254,7 @@ The following sample code provides an example on how to use a connection pool to
 <property name="username" value="doc_test" /> <property name="password" value="doc_test_password" /> <property name="filters" value="stat" /> <property name="maxActive" value="100" /> <property name="initialSize" value="20" /> <property name="maxWait" value="60000" /> <property name="minIdle" value="1" /> <property name="timeBetweenEvictionRunsMillis" value="60000" /> <property name="minEvictableIdleTimeMillis" value="300000" /> <property name="testWhileIdle" value="true" /> <property name="testOnBorrow" value="false" /> <property name="testOnReturn" value="false" /> <property name="poolPreparedStatements" value="true" /> <property name="maxOpenPreparedStatements" value="20" /> <property name="asyncInit" value="true" /> </bean>
 ```
 
-We recommend that you use the Druid connection pools.
+> **Note:** We recommend that you use the Druid connection pools.
 
 ### 8.2 Cluster endpoints and read-only endpoints
 
@@ -2179,22 +2308,37 @@ By default, a PolarDB-X assigned a private endpoint when the instance is created
 **Apply for a public endpoint**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the **Connection Information** section of the **Basic Information** page, click **Apply for**
 **Public Endpoint** in the upper-right corner.
 4. In the dialog box that appears, click **OK**.
-If you want to connect to the PolarDB-X instance by using the public endpoint, you must add the public IP address of your client to a whitelist of the instance. For more information, see Configure an IP address whitelist.
+
+> **Note:** If you want to connect to the PolarDB-X instance by using the public endpoint, you must add the public IP address of your client to a whitelist of the instance. For more information, see Configure an IP address whitelist.
 
 **Release a public endpoint**
 
 1. Log on to the PolarDB for HTAP console.
-k and connection The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+k and connection
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the **Connection Information** section of the **Basic Information** page, click **Release**
 **Public Endpoint** in the upper-right corner.
 4. In the dialog box that appears, click **OK**.
-After you release the public endpoint, you cannot use the public endpoint to connect to the instance. After the public endpoint is released, we recommend that you remove the corresponding public IP address from the whitelist to ensure data security.
+
+> **Note:** After you release the public endpoint, you cannot use the public endpoint to connect to the instance. After the public endpoint is released, we recommend that you remove the corresponding public IP address from the whitelist to ensure data security.
 
 ### 8.4 Manage custom endpoints
 
@@ -2287,7 +2431,13 @@ After nodes are added or released, data is migrated and evenly redistributed. To
 **Add a node**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance that you want to manage and click the instance name.
 3. On the Instance page that appears, choose Configuration Management > **Data Node**
 **Management**, and click **Add Node** in the upper-right corner.
@@ -2297,7 +2447,14 @@ The console provides the following features: : Click to refresh the instance lis
 **Release a node**
 
 1. Log on to the PolarDB for HTAP console.
-ode management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ode management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance that you want to manage and click the instance name.
 3. On the Instance page that appears, choose Configuration Management > **Data Node**
 **Management**. In the **Data node list**, find the node that you want to manage, and click
@@ -2315,15 +2472,24 @@ After you change the data node configurations, the data nodes of the PolarDB-X i
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-ode management The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ode management
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose Configuration Management > **Data Node**
 **Management**. Find the node that you want to manage and click **Change configuration**.
 4. On the **Change configuration** panel, you can change the **Node Specifications**, **Storage**
 **Size**, and **Configuration change time** parameters.
-You can select **Immediately change configuration** or **O&M time**
-**configuration change** for the **Configuration change time** parameter.
-After you change the storage size and node specifications of data nodes, you can also change the storage space of an instance in a unified manner. ts and security
+
+> **Note:** You can select **Immediately change configuration** or **O&M time** **configuration change** for the **Configuration change time** parameter.
+> After you change the storage size and node specifications of data nodes, you can also change the storage space of an instance in a unified manner.
+
+ts and security
 
 ## 10 Accounts and security
 
@@ -2340,12 +2506,20 @@ The following table describes the types of database accounts that are supported 
 | Privileged account | You can create and manage privileged accounts by using the PolarDB-X V2.0 console or API operations. You can create only one privileged account for each instance. The privileged account can be used to manage all standard accounts and databases in the instance. The privileged account is granted more permissions than a standard account. You can use the privileged account to perform fine-grained permission management based on your business requirements. For example, you can use the privileged account to grant different Resource Access Management (RAM) users permissions to access different tables. The privileged account is granted full permissions on all databases in the instance and can be used to close connections that are established by using standard accounts. |
 | Standard account | You can create and manage standard accounts by using the PolarDB-X V2.0 console, calling API operations, or executing SQL statements. You can create one or more standard accounts for each instance. The maximum number of standard accounts that can be created is determined by the kernel engine of the instance. You must grant standard accounts the required permissions on specific databases. You cannot use a standard account to create or manage other accounts, or close connections that are established by using other accounts. |
 
-After an account is created, the type of the account cannot be changed. If you want to change the type of the account, delete the account and then use the same username of the account to create an account of the other type. The following sections describe the operations that you can perform on database accounts in the console. Create an account Reset the password of a database account Modify permissions for a standard account Delete an account ts and security
+> **Note:** After an account is created, the type of the account cannot be changed. If you want to change the type of the account, delete the account and then use the same username of the account to create an account of the other type.
+
+The following sections describe the operations that you can perform on database accounts in the console. Create an account Reset the password of a database account Modify permissions for a standard account Delete an account ts and security
 
 **Create an account**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
@@ -2368,7 +2542,14 @@ ts and security
 **Reset the password of a database account**
 
 1. Log on to the PolarDB for HTAP console.
-ts and security The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ts and security
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
@@ -2376,29 +2557,51 @@ ts and security The console provides the following features: : Click to refresh 
 **Change Password** in the **Actions** column.
 5. In the dialog box that appears, enter and confirm the new password, and then click
 **Determine**.
-The password must meet the following requirements: The password must be 8 to 32 characters in length. The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: @ # $ % ^ & + =
+
+> **Note:** The password must meet the following requirements:
+> The password must be 8 to 32 characters in length.
+> The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+> The following special characters are supported: @ # $ % ^ & + =
 
 **Modify permissions for a standard account**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 ts and security
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
 4. On the **Account Management** page, find the account that you want to manage and click
 **Modify Permissions** in the **Actions** column.
-The privileged account of an instance is granted full permissions on all databases in the instance. You do not need to **modify permissions** for the privileged account.
+
+> **Note:** The privileged account of an instance is granted full permissions on all databases in the instance. You do not need to **modify permissions** for the privileged account.
+
 5. In the panel that appears, select one or more databases and click the
 icon to move the databases from the **Unauthorized Database** section to the **Authorized Databases** section.
 6. In the **Authorized Databases** section, select the database permissions that you want to
-grant to the account. Supported permissions: **Read and write**, **Read only**, **DML only**, and **DDL only**. If you want to grant the same permissions on multiple selected databases, click the permission name such as **All DDL only** next to **Authorized Databases**.
+grant to the account.
+
+> **Note:** Supported permissions: **Read and write**, **Read only**, **DML only**, and **DDL only**.
+> If you want to grant the same permissions on multiple selected databases, click the permission name such as **All DDL only** next to **Authorized Databases**.
+
 7. Click **Determine**.
 
 **Delete an account**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
@@ -2410,7 +2613,13 @@ The console provides the following features: : Click to refresh the instance lis
 
 ts and security
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
@@ -2430,7 +2639,14 @@ After a database is created, the default IP address whitelist contains only the 
 **Add a whitelist**
 
 1. Log on to the PolarDB for HTAP console.
-ts and security The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ts and security
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management > Whitelist Settings**.
@@ -2445,12 +2661,20 @@ table.
 | Whitelist within a group | IP addresses in the whitelist. Note You can enter IP addresses and CIDR blocks. For example, you can enter the IP address 192.168.0.1 or the CIDR block 192.168.0.0/24. You can specify up to 300 IP addresses or CIDR blocks in a whitelist. Separate multiple IP addresses and CIDR blocks with commas (,). For example, you can enter 192.168.0.1,192.168.0.0/24. If you want to block access from all IP addresses, you can specify 127.0.0.1 in the whitelist. |
 
 6. Click **OK**.
-ts and security The whitelist takes effect approximately 1 minute after it is created.
+ts and security
+
+> **Note:** The whitelist takes effect approximately 1 minute after it is created.
 
 **Modify a whitelist**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management > Whitelist Settings**.
@@ -2467,12 +2691,19 @@ ts and security
 |---|---|
 
 6. Click **OK**.
-The whitelist takes effect approximately 1 minute after it is created.
+
+> **Note:** The whitelist takes effect approximately 1 minute after it is created.
 
 **Delete a whitelist**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management > Whitelist Settings**.
@@ -2492,7 +2723,13 @@ The validity period of an SSL certificate is one year. Before an SSL certificate
 **Enable SSL encryption**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management**.
@@ -2500,17 +2737,18 @@ The console provides the following features: : Click to refresh the instance lis
 ts and security After you turn on the switch, the value of **SSL-protected Endpoint** is the private endpoint. You can change the value to the public endpoint. For more information, see Change the protected endpoint for SSL encryption.
 5. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** After you click OK, the instance is restarted. We recommend that you enable or disable your instance during off-peak hours and make sure that your applications can automatically reconnect to the instance.
 
-After you click OK, the instance is restarted. We recommend that you enable or disable your instance during off-peak hours and make sure that your applications can automatically reconnect to the instance.
 6. After SSL encryption is enabled, click **Download CA Certificate**.
-The file that you downloaded is a package that contains the following files: P7B file: contains the CA certificate that can be imported into a Windows application, such as Internet Information Services (IIS) and Microsoft Exchange Server. PEM file: used to import CA certificates to other applications such as MySQL Workbench and Navicat. JKS file: stores truststore certificates for Java. The password is apsaradb. The file is used to import the CA certificate chain to Java programs. When you use the JKS file in JDK 7 or JDK 8, you must modify the following default JDK security configuration items in the `jre/lib/security/java.security` file on the host on which your application resides:
+The file that you downloaded is a package that contains the following files: P7B file: contains the CA certificate that can be imported into a Windows application, such as Internet Information Services (IIS) and Microsoft Exchange Server. PEM file: used to import CA certificates to other applications such as MySQL Workbench and Navicat. JKS file: stores truststore certificates for Java. The password is apsaradb. The file is used to import the CA certificate chain to Java programs.
+
+> **Note:** When you use the JKS file in JDK 7 or JDK 8, you must modify the following default JDK security configuration items in the `jre/lib/security/java.security` file on the host on which your application resides:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 224 jdk.certpath.disabledAlgorithms=MD2, RSA keySize < 1024
 ```
 
-If you do not apply these configurations, the following error is returned. In most cases, other similar errors are also caused by invalid Java security configurations:
+> If you do not apply these configurations, the following error is returned. In most cases, other similar errors are also caused by invalid Java security configurations:
 
 ```
 javax.net.ssl.SSLHandshakeException: DHPublicKey does not comply to algorithm c onstraints
@@ -2533,18 +2771,27 @@ ts and security
 2. Right-click the database that you want to connect. Then, select **Edit Connection**.
 3. Click the **SSL** tab and select the path of the PEM certificate file.
 4. Click **OK**.
-If the `connection is being used` error message is displayed, the previous session remains connected. In this case, you must restart Navicat.
+
+> **Note:** If the `connection is being used` error message is displayed, the previous session remains connected. In this case, you must restart Navicat.
+
 5. Double-click your database and check whether Navicat can connect to the database.
 
 **Update the validity period of an SSL CA certificate**
 
-After you click **Update Validity Period**, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance. After you click **Update Validity Period**, you must download the SSL certificate file and configure the SSL certificate again.
+> **Note:** After you click **Update Validity Period**, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
+> After you click **Update Validity Period**, you must download the SSL certificate file and configure the SSL certificate again.
 
 **Change the protected endpoint for SSL encryption**
 
 After you apply for a public endpoint, you can set the public endpoint to a protected endpoint. For more information about how to apply for a public endpoint, see Apply for a public endpoint.
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management**.
@@ -2552,16 +2799,27 @@ The console provides the following features: : Click to refresh the instance lis
 5. Click **Configure SSL**.
 ts and security
 6. In the dialog box that appears, select the endpoint to which the connections you want to
-encrypt. After you turn on the switch next to the SSL configuration parameter, the value of
-**SSL-protected Endpoint** is the private endpoint. You can change the private
-endpoint to the public endpoint. After you change the endpoint to which connections are encrypted by the SSL certificate, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance. After you change the endpoint for SSL encryption, you must download and configure the SSL certificate again.
+encrypt.
+
+> **Note:** After you turn on the switch next to the SSL configuration parameter, the value of **SSL-protected Endpoint** is the private endpoint. You can change the private endpoint to the public endpoint.
+> After you change the endpoint to which connections are encrypted by the SSL certificate, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
+> After you change the endpoint for SSL encryption, you must download and configure the SSL certificate again.
+
 7. Click **OK**.
 
 **Disable SSL encryption**
 
-After you disable SSL encryption for an instance, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance. After you disable SSL encryption for an instance, the performance of your instance is improved but data security is compromised. We recommend that you disable SSL encryption only in secure environments.
+> **Note:** After you disable SSL encryption for an instance, the instance is restarted. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
+> After you disable SSL encryption for an instance, the performance of your instance is improved but data security is compromised. We recommend that you disable SSL encryption only in secure environments.
+
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **Management**.
@@ -2581,7 +2839,13 @@ After you enable the TDE feature for a PolarDB-X instance, you cannot disable th
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the PolarDB-X instance for which you want to enable the TDE feature and click the
 instance name.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
@@ -2589,7 +2853,9 @@ instance name.
 4. Click the **TDE** tab. By default, the TDE feature is disabled. Click the slider for enabling the
 TDE feature. ts and security
 5. In the **Configure TDE** dialog box, configure the following settings:
-In the dialog box that appears, select **Use Automatically Generated Key** and click **OK**. In the dialog box that appears, select **Use Existing Custom Key** and click **OK**. If you do not have a custom key, click **Create now** to create a key and import your own key material the KMS console.
+In the dialog box that appears, select **Use Automatically Generated Key** and click **OK**. In the dialog box that appears, select **Use Existing Custom Key** and click **OK**.
+
+> **Note:** If you do not have a custom key, click **Create now** to create a key and import your own key material the KMS console.
 
 **Encrypt a table by using the TDE feature**
 
@@ -2631,7 +2897,12 @@ PolarDB-X supports the three-role mode. In this mode, the permissions that are g
 
 **Permissions for different roles**
 
-The following table describes the permissions that are granted to each system account in the default mode and the three-role mode. ts and security In the default mode, the DBA account is the privileged account. After you enable or disable the three-role mode for your instance, only the permissions that are granted to system accounts are changed. The system accounts include the privileged account, DBA account, DSA account, and DAA account. The permissions that are granted to standard accounts are not affected. After the three-role mode is enabled, all system accounts are not authorized to execute DML statements, Data Query Language (DQL) statements, or Data Administration Language (DAL) statements. You can use the DSA account to grant permissions to standard accounts to execute these types of statements. ✔️ indicates that this role has this permission.  Indicates that this role does not have this permission.
+The following table describes the permissions that are granted to each system account in the default mode and the three-role mode. ts and security
+
+> **Note:** In the default mode, the DBA account is the privileged account.
+> After you enable or disable the three-role mode for your instance, only the permissions that are granted to system accounts are changed. The system accounts include the privileged account, DBA account, DSA account, and DAA account. The permissions that are granted to standard accounts are not affected.
+> After the three-role mode is enabled, all system accounts are not authorized to execute DML statements, Data Query Language (DQL) statements, or Data Administration Language (DAL) statements. You can use the DSA account to grant permissions to standard accounts to execute these types of statements.
+> ✔️ indicates that this role has this permission.  Indicates that this role does not have this permission.
 
 | Permission |   | Default mode | Three-role mode |   |   |
 |---|---|---|---|---|---|
@@ -2664,14 +2935,22 @@ You can enable and disable the three-role mode in the PolarDB-X console. After y
 **Enable the three-role mode**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**
 **management**.
 ts and security
 4. Click the **Account Dashboard** tab. In the upper-right corner of the tab, turn on the
 **Current account security mode** switch.
-Create a privileged account before you enable the three-role mode.
+
+> **Note:** Create a privileged account before you enable the three-role mode.
+
 5. In the **Create accounts for the three roles** panel, set the following parameters.
 
 | Parameter | Description |
@@ -2697,19 +2976,29 @@ ts and security
 | Description | The information about the account. The description helps you better manage the account later. The description can be up to 256 characters in length. |
 
 7. Click **OK**.
-About 3 to 5 seconds are required for the new configuration to take effect.
+
+> **Note:** About 3 to 5 seconds are required for the new configuration to take effect.
 
 **Disable the three-role mode**
 
 1. Log on to the PolarDB for HTAP console.
-ts and security The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ts and security
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Configuration Management > Security**.
 4. Click the Account Permissions tab. In the upper-right corner of the tab, turn off the **Current**
 **account security mode** switch.
 5. In the dialog box that appears, click **OK**.
 6. In the **Password verification of high-privilege account** dialog box, enter the password
-of the privileged account and click **OK**. About 3 to 5 seconds are required for the new configuration to take effect.
+of the privileged account and click **OK**.
+
+> **Note:** About 3 to 5 seconds are required for the new configuration to take effect.
 
 #### 10.5.3 Manage the accounts for the three-role mode
 
@@ -2724,7 +3013,14 @@ The DBA, DSA, and DAA accounts have the following restrictions: `GRANT ROLE` and
 **View account information**
 
 1. Log on to the PolarDB for HTAP console.
-ts and security The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ts and security
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 3. You can use one of the following methods to view the information about the accounts:
 Method 1: View account information on the **Safety Management** page. a. In the left-side navigation pane, choose **Configuration Management > Security**
@@ -2736,7 +3032,13 @@ b. On the **Account Management** page, you can view information about the DBA ac
 **Reset a password**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance ID.
 ts and security
 3. In the left-side navigation pane, choose **Configuration Management > Security**
@@ -2745,7 +3047,13 @@ ts and security
 5. Find the account for which you want to change the password and click **Change Password**
 in the Actions column.
 6. In the dialog box that appears, specify and confirm the new password.
-The password must meet the following requirements: The password must be 8 to 20 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters: @#$%^&+=
+
+> **Note:** The password must meet the following requirements:
+> The password must be 8 to 20 characters in length.
+> The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+> Supported special characters:
+> @#$%^&+=
+
 7. Click **OK**.
 
 #### 10.5.4 Permission verification
@@ -2760,7 +3068,14 @@ Disable the three-role mode. If you want to disable the three-role mode, you mus
 
 You are required to enter the password of the DSA account when you perform the following operations: Delete a standard account. Modify the permissions that are granted to a standard account. Change the password of a standard account. Authorize a standard account to access a database when you create the database. This section describes the procedure to delete a standard account.
 1. Log on to the PolarDB for HTAP console.
-ts and security The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+ts and security
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Configuration Management > Account**
 **Management**.
@@ -2773,7 +3088,13 @@ DSA account and click **OK**.
 **Operations that require the permissions of the DAA account**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click its ID.
 3. In the left-side navigation pane, choose **Log Management > SQL Audit and Analysis**.
 4. In the **Confirm Audit Permissions** dialog box, enter the password of the DAA account and
@@ -2790,7 +3111,13 @@ PolarDB-X provides the monitoring feature to help you monitor the status of your
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Performance Monitoring > Compute**
 **Monitoring**.
@@ -2827,7 +3154,14 @@ PolarDB-X provides the monitoring feature to help you monitor the status of your
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-mance monitoring The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+mance monitoring
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Performance Monitoring > Storage Resource**
 **Monitoring**.
@@ -2895,7 +3229,13 @@ This topic describes how to view log resource monitoring information in the Pola
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Performance > Log Monitoring**.
 4. On the Log Monitoring page, you can view the following metrics of your cluster or node.
@@ -2920,12 +3260,21 @@ This topic describes how to view the monitoring information of columnstore resou
 **Procedure**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Performance Monitoring > Columnstore**
 **Resource Monitoring**.
 4. On the **Columnstore Resource Monitoring** page, you can view the metrics for your
-clusters and nodes. The following table describes the metrics. To view the metrics of a cluster, click the **Clusters** tab. Specify the time range within which the metrics that you want to view are collected and click **OK**. To view the metrics of a node, click the **Nodes** tab. Select the log node whose metrics you want to view from the drop-down list, specify the time range within which the metrics that you want to view are collected, and then click **OK**.
+clusters and nodes. The following table describes the metrics.
+
+> **Note:** To view the metrics of a cluster, click the **Clusters** tab. Specify the time range within which the metrics that you want to view are collected and click **OK**.
+> To view the metrics of a node, click the **Nodes** tab. Select the log node whose metrics you want to view from the drop-down list, specify the time range within which the metrics that you want to view are collected, and then click **OK**.
 
 | Metric | Description |
 |---|---|
@@ -3103,7 +3452,10 @@ page, you can configure throttling rules to automatically throttle abnormal or h
 more information, see the **SQL optimization** section.
 **Export active sessions**.
 **End sessions**: To terminate a session, you must enter the database account and
-password for authentication. You can also use a database account with the permissions to terminate the sessions created by using other database accounts, such as a privileged account. In the **User** column of a session, you can view the database account that is used to create the session. Click **End Session History** to query the operation records of all terminated sessions, including the task ID, start time, and end time. This facilitates tracing and auditing.
+password for authentication. You can also use a database account with the permissions to terminate the sessions created by using other database accounts, such as a privileged account.
+
+> **Note:** In the **User** column of a session, you can view the database account that is used to create the session.
+> Click **End Session History** to query the operation records of all terminated sessions, including the task ID, start time, and end time. This facilitates tracing and auditing.
 
 **Session statistics**
 
@@ -3164,7 +3516,10 @@ This topic describes the slow query log feature of PolarDB-X.
 
 **Introduction**
 
-PolarDB-X provides a slow query log feature that correlates CPU utilization with the number of slow queries, helping you quickly identify SQL statements that degrade database performance. On the feature's interactive page, you can view formatted slow SQL templates, statement details, and key metrics such as execution counts, execution times, and the number of returned rows. You can also diagnose and optimize slow SQL statements. Based on an analysis of a statement's execution plan, the system recommends suitable indexing strategies, such as creating a local index or a global secondary index, and provides a detailed breakdown of the expected performance benefits. Compute node (CN) slow SQL and data node (DN) slow SQL are defined as follows: Compute node (CN) slow SQL: These are logical slow SQL statements that a client sends to PolarDB-X. Data node (DN) slow SQL: These are physical slow SQL statements that PolarDB-X sends to storage nodes. This type of slow SQL cannot be optimized. PolarDB-X stores slow query logs on each node for up to 30 days before automatically deleting them. For a column-oriented read-only instance, you can only view the slow query logs of the compute node (CN).
+PolarDB-X provides a slow query log feature that correlates CPU utilization with the number of slow queries, helping you quickly identify SQL statements that degrade database performance. On the feature's interactive page, you can view formatted slow SQL templates, statement details, and key metrics such as execution counts, execution times, and the number of returned rows. You can also diagnose and optimize slow SQL statements. Based on an analysis of a statement's execution plan, the system recommends suitable indexing strategies, such as creating a local index or a global secondary index, and provides a detailed breakdown of the expected performance benefits. Compute node (CN) slow SQL and data node (DN) slow SQL are defined as follows: Compute node (CN) slow SQL: These are logical slow SQL statements that a client sends to PolarDB-X. Data node (DN) slow SQL: These are physical slow SQL statements that PolarDB-X sends to storage nodes. This type of slow SQL cannot be optimized.
+
+> **Note:** PolarDB-X stores slow query logs on each node for up to 30 days before automatically deleting them.
+> For a column-oriented read-only instance, you can only view the slow query logs of the compute node (CN).
 
 **View slow query logs**
 
@@ -3227,11 +3582,20 @@ This topic describes how to view performance trends for PolarDB-X. PolarDB-X int
 sis and optimization
 3. In the left-side navigation pane, click **Diagnosis and Optimization > Performance**
 **Trends**.
-Click the tabs on the page to view monitoring metrics for compute nodes (CNs), data nodes (DNs), GMS nodes, and log nodes (CDCs). For detailed descriptions of the metrics, see Performance metrics. Column-oriented read-only instances do not support viewing metrics for data nodes (DNs) or log nodes (CDCs). The node list displays information for each node, such as specifications, CPU usage, memory usage, and active connections. On the **Performance Trends** tab, view the performance trends of each metric within the selected time range. Click **More Metrics** to select the metrics to view. In any metric trend chart, drag to select a time range. You can then diagnose the metric's behavior during the selected period. Click **Details** in a metric trend chart to enlarge it. You can then change the time range to view the metric's trend over different periods. On the **Performance Trend Comparison** tab, set two time periods and click **View** to compare their performance trends. On the **Custom Charts** tab, you can create custom monitoring dashboards to display multiple performance metrics in a single chart for easier troubleshooting and analysis. If this is your first time using this feature, you must create a monitoring dashboard first.
+Click the tabs on the page to view monitoring metrics for compute nodes (CNs), data nodes (DNs), GMS nodes, and log nodes (CDCs). For detailed descriptions of the metrics, see Performance metrics.
+
+> **Note:** Column-oriented read-only instances do not support viewing metrics for data nodes (DNs) or log nodes (CDCs).
+
+The node list displays information for each node, such as specifications, CPU usage, memory usage, and active connections. On the **Performance Trends** tab, view the performance trends of each metric within the selected time range. Click **More Metrics** to select the metrics to view. In any metric trend chart, drag to select a time range. You can then diagnose the metric's behavior during the selected period. Click **Details** in a metric trend chart to enlarge it. You can then change the time range to view the metric's trend over different periods. On the **Performance Trend Comparison** tab, set two time periods and click **View** to compare their performance trends. On the **Custom Charts** tab, you can create custom monitoring dashboards to display multiple performance metrics in a single chart for easier troubleshooting and analysis.
+
+> **Note:** If this is your first time using this feature, you must create a monitoring dashboard first.
 
 **Run a performance diagnosis**
 
-In addition to viewing performance trends, you can diagnose a node's resource utilization and slow SQL query performance. In any node's trend chart, drag to select a time range to begin the diagnosis. Currently, only compute nodes and data nodes support performance diagnosis. GMS nodes and log nodes do not.
+In addition to viewing performance trends, you can diagnose a node's resource utilization and slow SQL query performance. In any node's trend chart, drag to select a time range to begin the diagnosis.
+
+> **Note:** Currently, only compute nodes and data nodes support performance diagnosis. GMS nodes and log nodes do not.
+
 1. Log on to the PolarDB-X console.
 2. Find the target instance and click the instance ID.
 3. In the left-side navigation pane, click **Diagnosis and Optimization > Performance**
@@ -3332,7 +3696,11 @@ PolarDB for HTAP provides instance-level real-time performance, helping you moni
 3. In the left-side navigation pane, click **Diagnostics and Optimization > Real-time**
 **Performance**.
 4. On the **Real-time Performance** details page, view the performance metrics.
-PolarDB for HTAP supports two views: **Real-time Chart** and **Real-time Table**. The charts refresh every second. You cannot view data node (DN) metrics for a column-store read-only instance. You can perform the following operations on the details page: Enterprise Edition (Distributed) Click **Parameter Description** to view metric descriptions. Click the **Compute Node(CN)**, **Data Node(DN)**, **GMS Node**, or **Cluster** tab to view its performance information. Click the **Select Node** drop-down list to view performance information for different nodes. Standard Edition (Centralized) Click **Parameter Description** to view metric descriptions.
+
+> **Note:** PolarDB for HTAP supports two views: **Real-time Chart** and **Real-time Table**. The charts refresh every second.
+> You cannot view data node (DN) metrics for a column-store read-only instance.
+
+You can perform the following operations on the details page: Enterprise Edition (Distributed) Click **Parameter Description** to view metric descriptions. Click the **Compute Node(CN)**, **Data Node(DN)**, **GMS Node**, or **Cluster** tab to view its performance information. Click the **Select Node** drop-down list to view performance information for different nodes. Standard Edition (Centralized) Click **Parameter Description** to view metric descriptions.
 
 ### 13.7 Diagnostic reports
 
@@ -3356,7 +3724,9 @@ Click **Create Reports**. In the dialog box that appears, select a time range (L
 
 **time**
 
-Click **Auto-generating Report Settings**, select **Scheduled Trigger**, select days and a specific time, and then click **OK**. Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
+Click **Auto-generating Report Settings**, select **Scheduled Trigger**, select days and a specific time, and then click **OK**.
+
+> **Note:** Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
 
 **View diagnostic report details**
 
@@ -3375,13 +3745,20 @@ This topic describes how to query SQL statements.
 **Procedure**
 
 1. Log in to the PolarDB Converged Edition (Centralized & Distributed) console.
-You can click the following icons in the console to perform corresponding operations: : refreshes the instance list. : displays the instances in the **Default** or **Compact** mode. : specifies the instance properties displayed in the instance list. : exports the instance list to your on-premises device.
+
+> **Note:** You can click the following icons in the console to perform corresponding operations:
+> : refreshes the instance list.
+> : displays the instances in the **Default** or **Compact** mode.
+> : specifies the instance properties displayed in the instance list.
+> : exports the instance list to your on-premises device.
+
 2. Find the cluster that you want to manage and click its name.
 3. In the left-side navigation pane, choose **Log Management > SQL Audit and Analysis**.
 4. Select a time range from the list or specify a custom time range.
 5. Click **Advanced Filter** and enter **SQL statement**, **Database Name**, **Database User**,
 **Transaction ID**, **Node ID**, and **TraceID** as needed in sequence. Click **Search**.
-You can also click **Export File** in the upper-right corner to export the search results as a file.
+
+> **Note:** You can also click **Export File** in the upper-right corner to export the search results as a file.
 
 ### 14.2 Slow query logs
 
@@ -3395,8 +3772,8 @@ instance details page.
 3. In the left-side navigation pane, choose **Log Management > Slow Query**.
 4. Select a time range to view slow query logs.
 anagement
-**Instances of Enterprise Edition (Distributed)** allow you to view the details of slow
-query logs by **compute node (CN)** and **data node (DN)**.
+
+> **Note:** **Instances of Enterprise Edition (Distributed)** allow you to view the details of slow query logs by **compute node (CN)** and **data node (DN)**.
 
 | Item | Content |
 |---|---|
@@ -3425,7 +3802,13 @@ During the backup process, we recommend that you do not scale out, scale up, or 
 **Configure automatic backup**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
 4. On the page that appears, click **Backup Policy**.
@@ -3446,7 +3829,13 @@ described in the following table. and restoration
 
 and restoration
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
 4. On the page that appears, click **Backup Policy**.
@@ -3467,7 +3856,13 @@ and restoration
 **Manually create a backup**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
 4. On the page that appears, click **Create Backup**.
@@ -3476,7 +3871,13 @@ The console provides the following features: : Click to refresh the instance lis
 **Download backup files**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 and restoration y g
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
@@ -3490,14 +3891,21 @@ backup file that you want to download. Access the copied download link in your b
 
 This topic describes how to download Binlog backup files for an instance.
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Click the name or ID of the target instance to open its details page.
 For Enterprise Edition (Distributed) instances: In the navigation pane on the left, click
 **Data Recovery > CDC Binlog Backup**.
 For Standard Edition (Centralized) instances: In the navigation pane on the left, click
 **Data Recovery > Binlog Backup**.
 **Download backup**: Click **Download** in the Actions column for the target backup set.
-By default, Binlog backup files are retained for 15 days. If a download link expires during this period, you can refresh the page to generate a new link.
+
+> **Note:** By default, Binlog backup files are retained for 15 days. If a download link expires during this period, you can refresh the page to generate a new link.
 
 ### 15.3 Data restoration
 
@@ -3518,7 +3926,13 @@ PolarDB-X allows you to restore data only to a new instance. After data is resto
 **Restoration by point in time**
 
 1. Log on to the PolarDB for HTAP console.
-The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
 4. Click **Restore By Time**.
@@ -3528,13 +3942,23 @@ The created instance contains all the data of the original instance. You can use
 **Restoration by backup set**
 
 1. Log on to the PolarDB for HTAP console.
-and restoration The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+and restoration
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance that you want to manage and click the instance name.
 3. In the left-side navigation pane, choose **Restore Data > Backup and Restoration**.
 4. On the **Backup and Restoration** page, find the backup set that you want to restore and
 click **Restore** in the Actions column.
 5. Configure the parameters and click **Submit**.
-You must set the restoration method to restoration by backup set. The created instance contains all the data of the original instance. You can use the new instance or migrate the data of the new instance to the original instance.
+
+> **Note:** You must set the restoration method to restoration by backup set.
+
+The created instance contains all the data of the original instance. You can use the new instance or migrate the data of the new instance to the original instance.
 
 ### 15.4 Native flashback
 
@@ -3650,7 +4074,10 @@ and restoration If you query historical data outside the retention period (5 min
 ```
 
 6. Restore data.
-The following full table restoration operation is used only as an example. In actual scenarios, if you can locate the accidentally modified data, restore the data in batches or record by record. i. Create a temporary table with the same schema as the original table.
+
+> **Note:** The following full table restoration operation is used only as an example. In actual scenarios, if you can locate the accidentally modified data, restore the data in batches or record by record.
+
+i. Create a temporary table with the same schema as the original table.
 
 ```
 CREATE TABLE flashback_test_tmp LIKE flashback_test;
@@ -3674,7 +4101,9 @@ iii. Check whether the data in the temporary table is correct.
 +----+---------+ 3 rows in set (0.00 sec)
 ```
 
-iv. Change the name of the original table to `flashback_test_bak` and the name of the temporary table to that of the original table. Then, the restoration process is complete. Before you perform this operation, you must stop reading data from or writing data to the current table.
+iv. Change the name of the original table to `flashback_test_bak` and the name of the temporary table to that of the original table. Then, the restoration process is complete.
+
+> **Note:** Before you perform this operation, you must stop reading data from or writing data to the current table.
 
 ```
 -- Rename the original table and change the name of the temporary table to that of the original table. RENAME TABLE flashback_test TO flashback_test_bak, flashback_test_tmp to flashback_test;
@@ -3707,7 +4136,14 @@ PolarDB-X 5.4.20-20251124 and later supports separate storage for hot data. You 
 **Enable data archiving**
 
 1. Log on to the PolarDB for HTAP console.
-and restoration The console provides the following features: : Click to refresh the instance list. : Click to switch the instance list view between **Default** and **Compact** modes. : Click to select the instance properties to display in the list. : Click to export the instance list to a local file.
+and restoration
+
+> **Note:** The console provides the following features:
+> : Click to refresh the instance list.
+> : Click to switch the instance list view between **Default** and **Compact** modes.
+> : Click to select the instance properties to display in the list.
+> : Click to export the instance list to a local file.
+
 2. Find the instance and click its name.
 3. In the left-side navigation pane, choose **Data Recovery > Data Archiving**, click **Enable**
 **with One Click**, and then click **OK**.
@@ -3731,19 +4167,28 @@ Source instance: the PolarDB-X 1.0 instance from which you want to migrate a dat
 
 **Usage notes**
 
-The migration evaluation feature allows you to migrate data at the database level. You can migrate data in multiple databases at the same time. The migration evaluation feature allows you to migrate schemas and data. Only tables and views can be migrated by using schema migration. Database accounts, whitelists, backup policies, and instance parameters cannot be migrated. You must manually configure them at the destination database. During migration, do not upgrade or downgrade the source and destination instances, migrate frequently updated tables, change shard keys, or perform DDL operations on the objects that you want to migrate. Otherwise, issues such as migration failures, data inconsistency, and scaling failures may occur. If the storage type of the source instance is PolarDB for MySQL, you must enable the binary logging feature for the PolarDB for MySQL instance. For more information about how to enable binary logging, see the **Upload binary logs** topic in **PolarDB for MySQL (Local Disk) User Guide**. The migration process increases the performance load on the destination instance. Therefore, we recommend that you migrate databases to the PolarDB-X 2.0 instance that is currently not serving production workloads. You can migrate data from PolarDB-X 1.0 databases to PolarDB-X 2.0 databases that are in AUTO or DRDS mode. on evaluation When you migrate data to a database in AUTO mode, the version of the destination instance must be 5.4.16-16717637 or later. In addition, you must create an intermediate database in DRDS mode with read and write permissions (the name of the intermediate database must end with _drdstoauto). Due to certain architectural differences between databases in AUTO mode and databases in DRDS mode, if you choose to change the database mode during migration, we recommend that you conduct a business assessment of the destination database mode.
+The migration evaluation feature allows you to migrate data at the database level. You can migrate data in multiple databases at the same time. The migration evaluation feature allows you to migrate schemas and data. Only tables and views can be migrated by using schema migration. Database accounts, whitelists, backup policies, and instance parameters cannot be migrated. You must manually configure them at the destination database. During migration, do not upgrade or downgrade the source and destination instances, migrate frequently updated tables, change shard keys, or perform DDL operations on the objects that you want to migrate. Otherwise, issues such as migration failures, data inconsistency, and scaling failures may occur. If the storage type of the source instance is PolarDB for MySQL, you must enable the binary logging feature for the PolarDB for MySQL instance.
+
+> **Note:** For more information about how to enable binary logging, see the **Upload binary logs** topic in **PolarDB for MySQL (Local Disk) User Guide**.
+
+The migration process increases the performance load on the destination instance. Therefore, we recommend that you migrate databases to the PolarDB-X 2.0 instance that is currently not serving production workloads. You can migrate data from PolarDB-X 1.0 databases to PolarDB-X 2.0 databases that are in AUTO or DRDS mode. on evaluation When you migrate data to a database in AUTO mode, the version of the destination instance must be 5.4.16-16717637 or later. In addition, you must create an intermediate database in DRDS mode with read and write permissions (the name of the intermediate database must end with _drdstoauto). Due to certain architectural differences between databases in AUTO mode and databases in DRDS mode, if you choose to change the database mode during migration, we recommend that you conduct a business assessment of the destination database mode.
 
 **Prepare for the migration**
 
 **Configure the source instance**
 
-Set the **binlog_row_image** and binlog_rows_query_log_events parameters of the underlying RDS instance to FULL and ON, respectively. If you do not perform this operation, an error is reported in the precheck phase and the data migration task cannot be started. You can view and modify the preceding parameters by performing the following steps: i. Log in to ApsaraDB Operations and Maintenance System. For more information about how to log in to ApsaraDB Operations and Maintenance System, see the **Log in to ApsaraDB Operations and Maintenance System** topic in **PolarDB Converged Edition (Centralized & Distributed) O&M Guide**. ii. In the left-side navigation pane, choose **Instance management > Instance List**. iii. On the Instance List page, search for the source instance and click the instance ID to go to the **Instance details** page. iv. In the left-side navigation pane, click **Kernel-instance parameters**. On the page that appears, click the **Read/write parameters(The database will not be restarted)** tab. v. Modify the values of binlog_row_image and binlog_rows_query_log_events. Set the retention period of local binary logs of the source instance to at least seven days. Otherwise, the incremental task may fail because the binary logs cannot be obtained. You can modify the retention period of local binary logs on the **Backup and Restore** page in the PolarDB-X console. Make sure that the tables that you want to migrate have **PRIMARY KEY** or **UNIQUE** constraints. Otherwise, an error is reported in the precheck phase and the data migration task cannot be started. We recommend that you create and use a dedicated migration account and grant it the read/write permissions to reduce mutual impacts between normal business and migration.
+Set the **binlog_row_image** and binlog_rows_query_log_events parameters of the underlying RDS instance to FULL and ON, respectively. If you do not perform this operation, an error is reported in the precheck phase and the data migration task cannot be started. You can view and modify the preceding parameters by performing the following steps: i. Log in to ApsaraDB Operations and Maintenance System.
+
+> **Note:** For more information about how to log in to ApsaraDB Operations and Maintenance System, see the **Log in to ApsaraDB Operations and Maintenance System** topic in **PolarDB Converged Edition (Centralized & Distributed) O&M Guide**.
+
+ii. In the left-side navigation pane, choose **Instance management > Instance List**. iii. On the Instance List page, search for the source instance and click the instance ID to go to the **Instance details** page. iv. In the left-side navigation pane, click **Kernel-instance parameters**. On the page that appears, click the **Read/write parameters(The database will not be restarted)** tab. v. Modify the values of binlog_row_image and binlog_rows_query_log_events. Set the retention period of local binary logs of the source instance to at least seven days. Otherwise, the incremental task may fail because the binary logs cannot be obtained. You can modify the retention period of local binary logs on the **Backup and Restore** page in the PolarDB-X console. Make sure that the tables that you want to migrate have **PRIMARY KEY** or **UNIQUE** constraints. Otherwise, an error is reported in the precheck phase and the data migration task cannot be started. We recommend that you create and use a dedicated migration account and grant it the read/write permissions to reduce mutual impacts between normal business and migration.
 
 **Configure the destination instance**
 
 on evaluation The destination instance must be within the same Apsara Stack account and in the same region as the source instance. Create and use a dedicated migration account to reduce mutual impacts between normal business and migration. Create a destination database in the destination instance that has the **same character**
 **set** as the source database.
-You can execute the following statement to view the character set of the source database on the PolarDB-X 1.0 instance:
+
+> **Note:** You can execute the following statement to view the character set of the source database on the PolarDB-X 1.0 instance:
 
 ```
 SELECT default_character_set_name FROM information_schema.SCHEMATA WHERE schema_name = '...'
@@ -3789,13 +4234,17 @@ instance are set to FULL and ON, respectively.
 **TABLE_META**: Check the primary keys of databases and tables on the source instance. If
 this precheck item fails, check the tables that you want to migrate and make sure that they have PRIMARY KEY or UNIQUE constraints.
 **CONFLICT**: Check whether the destination database contains tables that have the same
-names as tables in the source database. If this precheck item fails, modify the names of the corresponding tables in the destination database. If failed items or errors are reported, you can fix them and click **Retry** to perform a precheck again. Make sure that all check items are passed. Otherwise, you cannot proceed to the next step. Automatic migration of simple sequences is supported.
+names as tables in the source database. If this precheck item fails, modify the names of the corresponding tables in the destination database.
+
+> **Note:** If failed items or errors are reported, you can fix them and click **Retry** to perform a precheck again.
+> Make sure that all check items are passed. Otherwise, you cannot proceed to the next step.
+> Automatic migration of simple sequences is supported.
+
 3. . Migrate schemas**
 After all precheck items are passed, click **Start Schema Migration** to migrate schemas.
 
-**Important**
+> **Important:** If you manually created tables on the destination instance and migrated all tables on the source instance to the destination instance, click **Skip** to skip the schema migration step.
 
-If you manually created tables on the destination instance and migrated all tables on the source instance to the destination instance, click **Skip** to skip the schema migration step.
 4. . Migrate data**
 1. After schemas are migrated, click **Start Migration** to migrate data.
 on evaluation
@@ -3804,7 +4253,12 @@ scheduling resources to prepare for the migration.
 3. When the migration task is ready, the status of the task changes to **Migrating**. In this
 phase, full data and incremental data are migrated.
 4. Click the task name to go to the **Task Details** page. In the left-side navigation pane,
-choose **Migration > Data Migration Details** to view the progress of the migration task. Start the full migration process. After the migration task is started, all historical data that you want to migrate from the source database is migrated to the destination database. After the full migration is complete, the system immediately starts the incremental migration process. In this process, all data updated in the source database after the full migration starts is synchronized to the destination database. Incremental migration is a dynamic and continuous process and does not stop until the business is switched to the destination database. If the incremental data migration is delayed by 30 seconds, the data in the destination database is almost the same as the data in the source database. In this case, the system starts the data verification process to verify the consistency between the source and destination databases.
+choose **Migration > Data Migration Details** to view the progress of the migration task.
+
+> **Note:** Start the full migration process. After the migration task is started, all historical data that you want to migrate from the source database is migrated to the destination database.
+> After the full migration is complete, the system immediately starts the incremental migration process. In this process, all data updated in the source database after the full migration starts is synchronized to the destination database.
+> Incremental migration is a dynamic and continuous process and does not stop until the business is switched to the destination database.
+> If the incremental data migration is delayed by 30 seconds, the data in the destination database is almost the same as the data in the source database. In this case, the system starts the data verification process to verify the consistency between the source and destination databases.
 
 #### 16.1.2 Business switchover and rollback solution
 
@@ -3819,7 +4273,20 @@ The latency of **Incremental Migration** is less than 20 seconds.
 
 **Overview of switchover solutions**
 
-on evaluation Switchover with endpoints: The version of the PolarDB-X 1.0 instance must be 5.3.8-15489913 or later. All databases within a PolarDB-X 1.0 instance must be migrated in the same migration task. Switchovers with endpoints modify only the endpoints, not the instance name. Services, such as Data Management (DMS), Data Transmission Service (DTS), and DataWorks, configured based on the instance name must be manually updated. The source and destination instances must use the same port number. By default, switchovers with endpoints modify the private and public primary endpoints on both sides, but do not modify read-only endpoints. You can update them manually if needed. After the domain name is switched, you must wait for the DNS cache on the application side to expire before connections can be established to the new database. This typically takes 30 seconds to 5 minutes. You can also manually fresh the DNS cache on your application server. You must **suspend all business operations** throughout the entire switchover process until the DNS records are updated to the new domain name and services can successfully connect to the new database. Switchover without endpoints: The version of the PolarDB-X 1.0 instance must be 5.3.8-15489913 or later. After you click Start forward switching, the source database will be set to the readonly state for 60 minutes. You must complete the endpoint modification within this 60-minute window. To ensure that all endpoints on the application side are properly updated, we recommend that you revoke write permissions before modifying the endpoints. This prevents accidental dual writes to both the source and destination instances due to missed configurations, which could result in data inconsistency.
+on evaluation
+
+> **Note:** Switchover with endpoints:
+> The version of the PolarDB-X 1.0 instance must be 5.3.8-15489913 or later.
+> All databases within a PolarDB-X 1.0 instance must be migrated in the same migration task.
+> Switchovers with endpoints modify only the endpoints, not the instance name. Services, such as Data Management (DMS), Data Transmission Service (DTS), and DataWorks, configured based on the instance name must be manually updated.
+> The source and destination instances must use the same port number.
+> By default, switchovers with endpoints modify the private and public primary endpoints on both sides, but do not modify read-only endpoints. You can update them manually if needed.
+> After the domain name is switched, you must wait for the DNS cache on the application side to expire before connections can be established to the new database. This typically takes 30 seconds to 5 minutes. You can also manually fresh the DNS cache on your application server.
+> You must **suspend all business operations** throughout the entire switchover process until the DNS records are updated to the new domain name and services can successfully connect to the new database.
+> Switchover without endpoints:
+> The version of the PolarDB-X 1.0 instance must be 5.3.8-15489913 or later.
+> After you click Start forward switching, the source database will be set to the read- only state for 60 minutes. You must complete the endpoint modification within this 60-minute window.
+> To ensure that all endpoints on the application side are properly updated, we recommend that you revoke write permissions before modifying the endpoints. This prevents accidental dual writes to both the source and destination instances due to missed configurations, which could result in data inconsistency.
 
 **Switchover procedure**
 
@@ -3831,24 +4298,54 @@ on evaluation Switchover with endpoints: The version of the PolarDB-X 1.0 instan
 **Required)**.
 If you select **Switchover with Endpoints (Connection Changes Not Required)**, perform the following steps: a. Select **Switchover with Endpoints (Connection Changes Not Required)** and click
 **OK**. The system sets the source database to the read-only state for 60 minutes and
-waits for the forward synchronization to complete. That is, the destination database and the source database have the same data. Once data consistency is achieved, the system automatically changes the endpoint of PolarDB-X 2.0 to the endpoint of PolarDB-X 1.0. on evaluation b. After the endpoint is modified and the DNS cache on the application side becomes invalid, you can automatically connect to PolarDB-X 2.0 without modifying any configurations on the application side. The duration of this step depends on the expiration time of the DNS cache on the application side, which usually takes 30 seconds to 5 minutes. You can also manually refresh the DNS cache on the application side to accelerate the endpoint modification to take effect. c. Continuously observe the source database and confirm that all applications are automatically connected to PolarDB-X 2.0. Then, click **Confirm that the source**
+waits for the forward synchronization to complete. That is, the destination database and the source database have the same data. Once data consistency is achieved, the system automatically changes the endpoint of PolarDB-X 2.0 to the endpoint of PolarDB-X 1.0. on evaluation b. After the endpoint is modified and the DNS cache on the application side becomes invalid, you can automatically connect to PolarDB-X 2.0 without modifying any configurations on the application side.
+
+> **Note:** The duration of this step depends on the expiration time of the DNS cache on the application side, which usually takes 30 seconds to 5 minutes. You can also manually refresh the DNS cache on the application side to accelerate the endpoint modification to take effect.
+
+c. Continuously observe the source database and confirm that all applications are automatically connected to PolarDB-X 2.0. Then, click **Confirm that the source**
 **database has no business connection** to release the read-only status of the source
-database and start the reverse synchronization link for a rollback. You can run the `show processlist` command to check IP addresses and determine whether a connection from the application side exists. If you select **Switchover without Endpoints (Connection Changes Required)**, perform the following steps: a. Select **Switchover without Endpoints (Connection Changes Required)** and click
+database and start the reverse synchronization link for a rollback.
+
+> **Note:** You can run the `show processlist` command to check IP addresses and determine whether a connection from the application side exists.
+
+If you select **Switchover without Endpoints (Connection Changes Required)**, perform the following steps: a. Select **Switchover without Endpoints (Connection Changes Required)** and click
 **OK**. The system sets the source database to the read-only state for 60 minutes and
-waits for the forward synchronization to complete. That is, the destination database and the source database have the same data. b. Once data consistency is achieved, the frontend prompts that you can enable manual switching of database endpoint on the application side. In this case, modify the database endpoint on the application side to connect the application to PolarDB-X 2.0. If you cannot modify the endpoint string within 60 minutes, you can modify the permissions to ensure that the source database remains in the read-only state during the switchover. c. Continuously observe the source database and confirm that all applications are connected to the destination PolarDB-X 2.0. Then, click **Confirm that the source**
+waits for the forward synchronization to complete. That is, the destination database and the source database have the same data. b. Once data consistency is achieved, the frontend prompts that you can enable manual switching of database endpoint on the application side. In this case, modify the database endpoint on the application side to connect the application to PolarDB-X 2.0.
+
+> **Note:** If you cannot modify the endpoint string within 60 minutes, you can modify the permissions to ensure that the source database remains in the read-only state during the switchover.
+
+c. Continuously observe the source database and confirm that all applications are connected to the destination PolarDB-X 2.0. Then, click **Confirm that the source**
 **database has no business connection** to release the read-only status of the source
-database and start the reverse synchronization link for a rollback. You can run the `show processlist` command to check IP addresses and determine whether a connection from the application side exists.
+database and start the reverse synchronization link for a rollback.
+
+> **Note:** You can run the `show processlist` command to check IP addresses and determine whether a connection from the application side exists.
 
 **Rollback procedure**
 
 1. In the left-side navigation pane of the migration task details page, click **Switch Details**.
 2. When the latency of the reverse synchronization drops below 20 seconds, click **Start**
 **Reverse Rollback and Confirm**. The system sets the destination database to the read-
-only state for 60 minutes and waits until the reverse synchronization is complete. This ensures that the source and destination databases have the same data. on evaluation If you select **Switchover with Endpoints (Connection Changes Not Required)** for a forward switchover, perform the following steps: a. Once data consistency is achieved, the system automatically changes the endpoint of PolarDB-X 2.0 to the endpoint of PolarDB-X 1.0. b. After the endpoint is modified and the DNS cache on the application side becomes invalid, the system automatically connects to PolarDB-X 1.0 without the need to modify any configurations on the application side. The duration of this step depends on the expiration time of the DNS cache on the application side, which usually takes 30 seconds to 5 minutes. You can manually refresh the DNS cache on the application side to accelerate the endpoint modification to take effect. c. Continuously observe the destination database and confirm that all applications are automatically connected to the source PolarDB-X 1.0. Then, click **Confirm that the**
+only state for 60 minutes and waits until the reverse synchronization is complete. This ensures that the source and destination databases have the same data. on evaluation If you select **Switchover with Endpoints (Connection Changes Not Required)** for a forward switchover, perform the following steps: a. Once data consistency is achieved, the system automatically changes the endpoint of PolarDB-X 2.0 to the endpoint of PolarDB-X 1.0. b. After the endpoint is modified and the DNS cache on the application side becomes invalid, the system automatically connects to PolarDB-X 1.0 without the need to modify any configurations on the application side.
+
+> **Note:** The duration of this step depends on the expiration time of the DNS cache on the application side, which usually takes 30 seconds to 5 minutes. You can manually refresh the DNS cache on the application side to accelerate the endpoint modification to take effect.
+
+c. Continuously observe the destination database and confirm that all applications are automatically connected to the source PolarDB-X 1.0. Then, click **Confirm that the**
 **destination database has no business connection** to release the read-only status
-of the destination database. You can run the `show processlist` command to check the connected client IP addresses and determine whether a connection from the application side exists. If you select **Switchover without Endpoints (Connection Changes Required)** for a forward switchover, perform the following steps: a. Once data consistency is achieved, the frontend prompts that "You can start manual switching of the endpoint string on the application side." In this case, modify the endpoint string on the application side to connect the application to PolarDB-X 1.0. If you cannot modify the endpoint string within 60 minutes, you can modify the permissions to ensure that the destination database remains in the read-only state during the switchover. b. Continuously observe the destination database and confirm that all applications are connected to the source PolarDB-X 1.0. Then, click **Confirm that the destination**
+of the destination database.
+
+> **Note:** You can run the `show processlist` command to check the connected client IP addresses and determine whether a connection from the application side exists.
+
+If you select **Switchover without Endpoints (Connection Changes Required)** for a forward switchover, perform the following steps: a. Once data consistency is achieved, the frontend prompts that "You can start manual switching of the endpoint string on the application side." In this case, modify the endpoint string on the application side to connect the application to PolarDB-X 1.0.
+
+> **Note:** If you cannot modify the endpoint string within 60 minutes, you can modify the permissions to ensure that the destination database remains in the read-only state during the switchover.
+
+b. Continuously observe the destination database and confirm that all applications are connected to the source PolarDB-X 1.0. Then, click **Confirm that the destination**
 **database has no business connection** to release the read-only status of the
-destination database. You can run the `show processlist` command to check the connected client IP addresses and determine whether a connection from the application side exists. vailability
+destination database.
+
+> **Note:** You can run the `show processlist` command to check the connected client IP addresses and determine whether a connection from the application side exists.
+
+vailability
 
 ## 17 High availability
 
@@ -3886,7 +4383,11 @@ You can view the details of a zone in the following ways. View the zone informat
 **and offline**.
 4. In the dialog box that appears, configure the **Zone**, **Replica Removal and Addition**, and
 **Forcible Addition and Removal** parameters.
-vailability A replica addition operation adds a data node replica to the instance in the destination zone. You can add a replica only when you remove a replica and want to recover the instance to the original status. A replica removal operation removes a data node replica from the instance in the destination zone. This may cause data loss. We recommend that you remove a replica only in emergency scenarios, such as a data center failure.
+vailability
+
+> **Note:** A replica addition operation adds a data node replica to the instance in the destination zone. You can add a replica only when you remove a replica and want to recover the instance to the original status.
+> A replica removal operation removes a data node replica from the instance in the destination zone. This may cause data loss. We recommend that you remove a replica only in emergency scenarios, such as a data center failure.
+
 5. Click **OK** to submit the task.
 6. In the upper-right corner of the page, click **Tasks** to view the progress of the task.
 
@@ -3897,7 +4398,11 @@ vailability A replica addition operation adds a data node replica to the instanc
 3. In the **Topology Information** section of the **Basic Information** page, click **Primary**
 **node zone switchover**.
 4. In the dialog box that appears, configure the **Primary Zone** and **Switch mode**
-parameters. When you switch your workloads to another zone, a transient disconnection that lasts approximately 30 seconds occurs. We recommend that you perform the switchover during off-peak hours. After the switchover succeeds, all primary nodes of the instance are located in the specified primary zone.
+parameters.
+
+> **Note:** When you switch your workloads to another zone, a transient disconnection that lasts approximately 30 seconds occurs. We recommend that you perform the switchover during off-peak hours.
+> After the switchover succeeds, all primary nodes of the instance are located in the specified primary zone.
+
 5. Click OK to submit the task.
 6. In the upper-right corner of the page, click **Tasks** to view the progress of the task.
 dix
@@ -3910,9 +4415,7 @@ dix
 
 This topic describes how to grant a tenant organization the permissions to access Server Load Balancer (SLB) and helps you efficiently resolve related issues.
 
-**Important**
-
-If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
+> **Important:** If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
 
 **Procedure**
 

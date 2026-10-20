@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 26
 source_pdf: "9d4261c30de1b284_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20AI%20Studio%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide 20260901
@@ -44,9 +44,7 @@ This manual guides maintenance personnel in performing preventive maintenance on
 
 Maintenance personnel must have IT skills, such as knowledge of computer networks, computer operations, and problem analysis and troubleshooting. Maintenance personnel must complete pre-job training on the Alibaba Cloud system to obtain essential knowledge about the system. This training includes system principles, networking, feature usage, and the use of maintenance tools.
 
-**Important**
-
-During maintenance, follow the operating procedures to ensure personal and system safety. User data must be kept strictly confidential. Do not copy or distribute user data without written permission from the user.
+> **Important:** During maintenance, follow the operating procedures to ensure personal and system safety. User data must be kept strictly confidential. Do not copy or distribute user data without written permission from the user.
 
 **Precautions**
 
@@ -112,7 +110,24 @@ This topic describes how to log on to AI Studio OPS from the Apsara Uni-manager 
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Log on to Apsara Uni-manager Operations Console.
-i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported. iii. Enter your username and password. Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** .
+i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
+iii. Enter your username and password.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
+iv. Click **Agree to Private Policy and Log On** .
 2. In the top menu bar, choose **Product O&M > AI & Machine Learning > AI Studio OPS**.
 
 ### 4.2 Check Resource Availability
@@ -176,9 +191,8 @@ Supported commands are get and describe.
 
 This topic describes how to manually enter chip models.
 
-**Important**
+> **Important:** The system presets supported chip models. You can use this feature to manually enter specific chip models.
 
-The system presets supported chip models. You can use this feature to manually enter specific chip models.
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Tools Box > Chip Model**.
 The page displays all chip models in the system.
@@ -205,7 +219,9 @@ After you add the chip model, the system synchronizes it to the AI Studio manage
 
 **Related operations**
 
-After entering a chip model, you can perform the following operations. You cannot delete preset chip models.
+After entering a chip model, you can perform the following operations.
+
+> **Note:** You cannot delete preset chip models.
 
 | Operation | Procedure |
 |---|---|
@@ -229,7 +245,9 @@ configuration information.
 
 **Related operations**
 
-After entering a feature, you can also perform the following operations. You cannot delete preset features.
+After entering a feature, you can also perform the following operations.
+
+> **Note:** You cannot delete preset features.
 
 | Task name | Procedure |
 |---|---|
@@ -242,7 +260,14 @@ This topic describes how to import assets on the interface.
 
 **Prerequisites**
 
-Obtain the asset package of the correct version from CICD in advance. If you purchase the training suite feature, make sure that the asset package contains the AI Studio suite material package (1uk52sgekurv41v5qc2tv1g29s). Make sure that the AI PaaS product deployment succeeds. Obtain the correct asset import tool from technical support in advance. ai-resource-sync-linux-amd64: the import tool for the AMD environment ai-resource-sync-linux-arm64: the import tool for the ARM environment Obtain the ossconfig configuration method in advance. This procedure takes /apsarapangu/disk9/aistudio_resource_2026_04_xx as the package path example. Replace it with the actual path in your environment.
+Obtain the asset package of the correct version from CICD in advance.
+
+> **Note:** If you purchase the training suite feature, make sure that the asset package contains the AI Studio suite material package (1uk52sgekurv41v5qc2tv1g29s).
+
+Make sure that the AI PaaS product deployment succeeds. Obtain the correct asset import tool from technical support in advance. ai-resource-sync-linux-amd64: the import tool for the AMD environment ai-resource-sync-linux-arm64: the import tool for the ARM environment Obtain the ossconfig configuration method in advance.
+
+> **Note:** This procedure takes /apsarapangu/disk9/aistudio_resource_2026_04_xx as the package path example. Replace it with the actual path in your environment.
+
 1. Make sure that the folder path of the asset package is empty. Check whether all packages
 exist in the path.
 
@@ -268,7 +293,12 @@ hours. Wait for the process to complete.
 sudo ai-resource-sync-linux-amd64 --path /apsarapangu/disk9/aistudio_resource_2026_04_xx --region cn-wulan-env17e-d01 --oss-co nfig /etc/.ossconfig_aistudio --type ApsaraCloud
 ```
 
-The parameters are as follows: --path: The path of the exported package. If multiple packages exist, specify a unified path, such as "/apsarapangu/disk9/aistudio_resource_2026_04_xx". If you upload the assets of a specific package, specify the exact path, such as "/apsarapangu/disk9/aistudio_resource/2bj6uvkfohoob2rl9js88phjem". --region: The region ID of the site. --oss-config: The path of the ossconfig file, which is the path of ossconfig that you configured in the previous step. After the command starts to run, confirm the asset upload path again and enter y to start the execution. --type: ApsaraCloud
+> **Note:** The parameters are as follows:
+> --path: The path of the exported package. If multiple packages exist, specify a unified path, such as "/apsarapangu/disk9/aistudio_resource_2026_04_xx". If you upload the assets of a specific package, specify the exact path, such as "/apsarapangu/disk9/aistudio_resource/2bj6uvkfohoob2rl9js88phjem".
+> --region: The region ID of the site.
+> --oss-config: The path of the ossconfig file, which is the path of ossconfig that you configured in the previous step. After the command starts to run, confirm the asset upload path again and enter y to start the execution.
+> --type: ApsaraCloud
+
 5. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 6. In the left-side navigation pane, select **Toolbox > Asset Import**.
 7. Click **Initiate Upload Task**.
@@ -285,7 +315,11 @@ The system isolates the AI Studio training and inference task list by creator an
 
 Default Isolation: the default isolation method. The system isolates resources by organization, resource set, and region. Isolated by Creator: The system isolates resources by the logged-in user. The isolation scope includes the notebook, visual modeling, task modeling, and offline inference modules.
 **Third-party Cluster Settings**:
-Third-Party Storage Path Mode: By default, the system uses the open path mode. In this mode, the storage object path is optional. If you select the forced path mode, the system strictly verifies the storage object path. Therefore, the storage object path is required. The involved feature modules include task modeling, notebook modeling, online services, and batch inference. Third-party High-performance Network Plug-in: This plugin is disabled by default. After enabling it, you must also enable the third-party high-performance network feature for the AI resource pool to support the third-party high-performance network capability for distributed training and inference tasks.
+Third-Party Storage Path Mode: By default, the system uses the open path mode. In this mode, the storage object path is optional. If you select the forced path mode, the system strictly verifies the storage object path. Therefore, the storage object path is required.
+
+> **Note:** The involved feature modules include task modeling, notebook modeling, online services, and batch inference.
+
+Third-party High-performance Network Plug-in: This plugin is disabled by default. After enabling it, you must also enable the third-party high-performance network feature for the AI resource pool to support the third-party high-performance network capability for distributed training and inference tasks.
 **OSS Mount Settings**:
 
 | Parameter | Description |
@@ -309,7 +343,10 @@ This topic describes the monitoring metrics for various resources, how to view t
 
 #### 5.1.1 Task monitoring metrics
 
-This section describes task monitoring metrics, including how to view them and their descriptions. The system collects metrics every 60 seconds. When a resource type supports multiple container groups, the metrics support both the task and container group dimensions.
+This section describes task monitoring metrics, including how to view them and their descriptions.
+
+> **Note:** The system collects metrics every 60 seconds. When a resource type supports multiple container groups, the metrics support both the task and container group dimensions.
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, a resource set, and a region.
 3. In the left-side navigation pane, click **Model Service** > **Online Services**.
@@ -348,7 +385,11 @@ ails
 
 #### 5.1.2 Pod monitoring metrics
 
-This topic describes the pod monitoring metrics, explains how to view them, and provides a description of each metric. Metrics are collected every 60 seconds. If a resource type supports multiple pods, metrics are available at both the task and pod dimensions. ails
+This topic describes the pod monitoring metrics, explains how to view them, and provides a description of each metric.
+
+> **Note:** Metrics are collected every 60 seconds. If a resource type supports multiple pods, metrics are available at both the task and pod dimensions.
+
+ails
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, resource set, and region.
 3. In the navigation pane on the left, click **Model Service** > **Online Services**.

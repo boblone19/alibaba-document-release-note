@@ -5,7 +5,7 @@ doc_version: "20220707"
 pdf_pages: 28
 source_pdf: "2cb57b7b264b10ae_Alibaba Cloud Apsara Stack Enterprise V3.16.2 NAT Gateway User Guide 20220707.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20NAT%20Gateway%20User%20Guide%2020220707.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 NAT Gateway User Guide
@@ -108,6 +108,7 @@ gateway This topic describes how to associate an elastic IP address (EIP) with a
 3. On the NAT Gat eways page, find the NAT gateway with which you want to associate an EIP and
 choose
 > Bind elast ic public net work IP in the Operat ion column.
+
 4. In the Bind elast ic public net work IP dialog box, set the following parameters and click OK.
 
 | Parameter | Description |
@@ -202,6 +203,7 @@ You can delete a NAT gateway that you no longer need. Before you delete a NAT ga
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to delete and choose
 > Delet e in the Operat ion column.
+
 4. In the message that appears, click OK.
 If you select Force delet ion, the DNAT and SNAT entries of the NAT gateway are automatically deleted. The EIPs associated with the NAT gateway are also disassociated. If you select Force deletion, you do not need to delete the DNAT entries and SNAT entries, or disassociate the EIPs before you delete the NAT gateway.
 
@@ -215,6 +217,7 @@ gateway This topic describes how to associate an elastic IP address (EIP) with a
 3. On the NAT Gat eways page, find the NAT gateway with which you want to associate an EIP and
 choose
 > Bind elast ic public net work IP in the Operat ion column.
+
 4. In the Bind elast ic public net work IP dialog box, set the following parameters and click OK.
 
 | Parameter | Description |
@@ -228,6 +231,7 @@ gateway This topic describes how to disassociate an elastic IP address (EIP) fro
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and choose
 > Unbind f lexible public net work IP in the Operat ion column.
+
 4. In the Unbind f lexible public net work IP dialog box, select the EIP that you want to
 disassociate, and click OK.
 

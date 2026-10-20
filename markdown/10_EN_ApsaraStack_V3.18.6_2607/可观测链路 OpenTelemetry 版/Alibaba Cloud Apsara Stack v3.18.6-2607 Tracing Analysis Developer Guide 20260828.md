@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 20
 source_pdf: "cdb27cca9c3e6859_Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E9%93%BE%E8%B7%AF%20OpenTelemetry%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Tracing%20Analysis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828
@@ -47,9 +47,7 @@ the reported trace data, you must set Action to GetTagKey.
 **Parameters**: the request parameters for the operation. Separate multiple parameters with
 ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information, see Common parameters. The following example demonstrates how to call the GetTagKey operation to query the tag keys in the reported trace data.
 
-**Note**
-
-The sample request is formatted to improve readability.
+> **Note:** The sample request is formatted to improve readability.
 
 ```
 https://xtrace.cn-hangzhou.aliyuncs.com/?Action=GetTagKey &AccessKeyId=key-test &Format=JSON &RegionId=cn-hangzhou &SecureTransport=true &SignatureMethod=HMAC-SHA1 &SignatureVersion=1.0 &Timestamp=2020-03-18T06%3A06%3A30Z &Version=2019-08-08 ...
@@ -130,13 +128,13 @@ string based on the URL encoding rules described in Step ii.
 2. Calculate the signature.
 i. Calculate the HMAC value of the string-to-sign based on RFC 2104.
 
-**Note**
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( `&` ) (ASCII: 38) is appended is used as the key for HMAC value calculation.
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( `&` ) (ASCII: 38) is appended is used as the key for HMAC value calculation. ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the ************* parameter.
+ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the **Signature** parameter.
 
-**Note**
+> **Note:** The signature that you add to the request must also be URL encoded.
 
-The signature that you add to the request must also be URL encoded. The following example demonstrates how to sign an API request for calling the DescribeRegions operation. In this example, the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The following request URL needs to be signed:
+The following example demonstrates how to sign an API request for calling the DescribeRegions operation. In this example, the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The following request URL needs to be signed:
 
 ```
 http://ecs.aliyuncs.com/?Timestamp=2016-02- 23T12:46:24Z&Format=XML&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=HMAC- SHA1&SignatureNonce=3ee8c1b8-xxxx-xxxx-xxxx-4e0ad82fd6cf&Version=2014-05- 26&SignatureVersion=1.0

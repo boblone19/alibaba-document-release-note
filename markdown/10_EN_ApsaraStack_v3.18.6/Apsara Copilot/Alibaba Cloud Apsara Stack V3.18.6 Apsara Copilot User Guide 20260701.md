@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 61
 source_pdf: "5fb437ec6f514b6f_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Copilot User Guide 20260701
@@ -65,9 +65,11 @@ in the top navigation bar or floating menu to enter Apsara Copilot.
 above the **Apsara Copilot** dialog box, or click **Assistant Introduction** inside the dialog box. a Copilot homepage
 4. Go to the Apsara Copilot homepage to view its positioning, features, highlights, and
 benefits.
-**Experience now**: Click **Experience now** to open the Apsara Copilot dialog box.
-**Official documents**: Click **Official documents** to go to the Apsara Copilot help
-documentation. a Copilot homepage s control of Apsara Copilot
+
+> **Note:** **Experience now**: Click **Experience now** to open the Apsara Copilot dialog box.
+> **Official documents**: Click **Official documents** to go to the Apsara Copilot help documentation.
+
+a Copilot homepage s control of Apsara Copilot
 
 ## 2 Access control of Apsara Copilot
 
@@ -227,7 +229,8 @@ This topic describes how to create an evaluation task. You are an operations adm
 **Automatic evaluation task**
 
 7. Click **Create Evaluation Task**.
-After you create an evaluation task, the system does not automatically start the task. You must click **Start Evaluation** in the **Actions** column to start the evaluation task.
+
+> **Note:** After you create an evaluation task, the system does not automatically start the task. You must click **Start Evaluation** in the **Actions** column to start the evaluation task.
 
 ##### 3.2.3.2 Manage an evaluation task
 
@@ -351,7 +354,10 @@ Adjusting chunking parameters controls how the system splits text, which affects
 in the upper-right corner of the target knowledge base card and select **Configure**
 **Chunking Policy**.
 5. In the **Chunking Policy** dialog box, adjust the chunking policy for the knowledge base. For
-detailed descriptions of chunking policies, see Create a knowledge base. The preset policies align with the followingRAGFlow chunking policies: General, QA, Book, and Laws. If you leave this parameter blank, the system uses the default policy of the knowledge base.
+detailed descriptions of chunking policies, see Create a knowledge base.
+
+> **Note:** The preset policies align with the followingRAGFlow chunking policies: General, QA, Book, and Laws. If you leave this parameter blank, the system uses the default policy of the knowledge base.
+
 6. Click **OK**.
 
 #### 3.4.4 Delete a knowledge base
@@ -377,7 +383,9 @@ Import files into a knowledge base. The operator is an operations administrator 
 4. Click the name of a knowledge base to go to its details page.
 5. On the **Knowledge Base Details** page, click **Import File**.
 6. In the **Import File** dialog box, select or drag a file into the dashed box to upload it.
-Supported file types include txt, md, doc, docx, pdf, pptx, csv, xlsx, and html.
+
+> **Note:** Supported file types include txt, md, doc, docx, pdf, pptx, csv, xlsx, and html.
+
 7. Click **OK**.
 
 #### 3.4.6 View file details
@@ -430,7 +438,22 @@ View the generated knowledge graph in a graph-type knowledge base. The operator 
 5. On the **Knowledge Base Details** page, click
 in the upper-right corner of the list.
 6. On the **Knowledge Graph** tab, view the generated knowledge graph. If no knowledge
-graph exists, click **Generate Now**. The knowledge graph displays nodes and their relationships. Enter a node name in the drop-down list at the top to search for and view the specific node. Click a node in the graph to display its description, network metrics, tags, and associations. Control the knowledge graph view. Click in the upper-right corner of the knowledge graph to zoom in. Click in the upper-right corner of the knowledge graph to zoom out. Click in the upper-right corner of the knowledge graph to enter fullscreen mode. Click in the upper-right corner of the knowledge graph to restore the default view.
+graph exists, click **Generate Now**.
+
+> **Note:** The knowledge graph displays nodes and their relationships.
+> Enter a node name in the drop-down list at the top to search for and view the specific node.
+> Click a node in the graph to display its description, network metrics, tags, and associations.
+> Control the knowledge graph view.
+> Click
+> in the upper-right corner of the knowledge graph to zoom in.
+> Click
+> in the upper-right corner of the knowledge graph to zoom out.
+> Click
+> in the upper-right corner of the knowledge graph to enter full-
+> screen mode.
+> Click
+> in the upper-right corner of the knowledge graph to restore the
+> default view.
 
 #### 3.4.10 View the mind map
 
@@ -443,7 +466,21 @@ View the generated mind map. The operator is an operations administrator by defa
 5. On the **Knowledge Base Details** page, click
 in the upper-right corner of the list.
 6. On the **Mind Map** tab, view the generated mind map.
-Click **Regenerate** above the mind map to regenerate the mind map. Enter a node name above the mind map to search by node. Control the display of the mind map. Enter a percentage in the upper-right corner of the mind map to adjust the display scale. Click in the upper-right corner of the mind map to zoom in. Click in the upper-right corner of the mind map to zoom out. Click in the upper-right corner of the mind map to enter full-screen mode. Click in the upper-right corner of the mind map to restore the default view.
+
+> **Note:** Click **Regenerate** above the mind map to regenerate the mind map.
+> Enter a node name above the mind map to search by node.
+> Control the display of the mind map.
+> Enter a percentage in the upper-right corner of the mind map to adjust the display scale.
+> Click
+> in the upper-right corner of the mind map to zoom in.
+> Click
+> in the upper-right corner of the mind map to zoom out.
+> Click
+> in the upper-right corner of the mind map to enter full-screen
+> mode.
+> Click
+> in the upper-right corner of the mind map to restore the default
+> view.
 
 #### 3.4.11 Retrieval configuration and retrieval testing
 
@@ -461,9 +498,17 @@ in the upper-right corner of the list.
 i. Click **Retrieval Configurations**. ii. In the **Retrieval Configurations** dialog box, set **Query Mode (query_mode)**,
 **Retieved Entity Relationships (top_k)**, **Retrieval Chunks (chunk_top_k)**, and
 **Enable Reranking (enable_rerank)**.
-Query mode supports **hybrid** or **mix**. iii. Click **OK**.
+
+> **Note:** Query mode supports **hybrid** or **mix**.
+
+iii. Click **OK**.
 7. Perform retrieval testing. Enter search content in the text box and click **Search**.
-Query Mode: The right side displays the currently configured query mode. Advanced Keywords: advanced keywords extracted from the search content. Basic Keywords: basic keywords extracted from the search content. The section below displays the retrieved information.
+
+> **Note:** Query Mode:
+> The right side displays the currently configured query mode.
+> Advanced Keywords: advanced keywords extracted from the search content.
+> Basic Keywords: basic keywords extracted from the search content.
+> The section below displays the retrieved information.
 
 ### 3.5 AI-assisted cloud resource management
 
@@ -563,7 +608,18 @@ ation of Apsara Copilot
 | Resource Analysis | Tracks cloud resource usage, including utilization and performance metrics, to help you fully understand resource status and optimize resource allocation. |
 | Code Generation | Automatically generates code samples in multiple programming languages for OpenAPI and Terraform based on your requirements, improving development efficiency and code quality. |
 
-Apsara Copilot supports multiple models. You can switch between different models when asking questions. If the selected model supports deep thinking, you can enable or disable deep thinking mode. Enter "/" in the input box to add a slot, then select the corresponding slot value based on the slot type. Click in the input box to expand the command center. The command center provides a complete list of common Apsara Copilot command examples for quick instruction sending. Enter keywords in the input box under the command center to quickly find related command questions. View recommended questions by command type and trigger them with one click. Click in the input box to choose whether to enable MCP and intranet search. After enabling MCP and selecting connected cloud services, you can invoke MCP services of those cloud services. The intranet search option appears here only when you have enabled its display in the custom settings of Apsara Copilot.
+> **Note:** Apsara Copilot supports multiple models. You can switch between different models when asking questions. If the selected model supports deep thinking, you can enable or disable deep thinking mode.
+> Enter "/" in the input box to add a slot, then select the corresponding slot value based on the slot type.
+> Click
+> in the input box to expand the command center.
+> The command center provides a complete list of common Apsara Copilot command examples for quick instruction sending.
+> Enter keywords in the input box under the command center to quickly find related command questions.
+> View recommended questions by command type and trigger them with one click.
+> Click
+> in the input box to choose whether to enable MCP and intranet search.
+> After enabling MCP and selecting connected cloud services, you can invoke MCP services of those cloud services.
+> The intranet search option appears here only when you have enabled its display in the custom settings of Apsara Copilot.
+
 4. After Apsara Copilot responds, you can perform the following operations.
 : Like — indicates approval of the response. : Dislike — indicates disapproval of the response. : Copy — copies the response content. : Export response — exports the generated response. ation of Apsara Copilot
 
@@ -581,7 +637,12 @@ Apsara Copilot supports multiple models. You can switch between different models
 
 ### 4.2 Perform text-selection Q&A
 
-After you enable text-selection Q&A and select text on a console page, you can trigger Apsara Copilot to answer questions about the selected content. Text-selection Q&A is enabled for Apsara Copilot. To enable the feature, click the icon in the upper-right corner of the Apsara Copilot pane and turn on Enable Word Selection.
+After you enable text-selection Q&A and select text on a console page, you can trigger Apsara Copilot to answer questions about the selected content. Text-selection Q&A is enabled for Apsara Copilot.
+
+> **Note:** To enable the feature, click the
+> icon in the upper-right corner of the Apsara Copilot
+> pane and turn on Enable Word Selection.
+
 1. Log in to the Apsara Uni-manager Management Console.
 ation of Apsara Copilot
 2. Click and drag to select text on a console page and select Consult Apsara Copilot to send
@@ -608,6 +669,7 @@ Guide. ation of Apsara Copilot
 
 For detailed operations of AI-based bill Aanalysis by organization, see the **Bill management**
 > **AI-based bill analysis by organization** section in Apsara Uni-manager Management
+
 Console User Guide. ation of Apsara Copilot
 
 **AI-based bill analysis by bill detail**
@@ -650,8 +712,10 @@ This topic describes how to view the operation logs of Apsara Copilot.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Operation Log**.
 4. On the **Operation Log** page, configure filter conditions such as Organization, Product Type,
-Resource Type, Event Type, Resource ID, Source IP, Event ID, and Start/End Time, and then click **Search**. Select **Apsara Uni-manager** from the Product Type drop-down list and **Apsara**
-**Copilot** from the Resource Type drop-down list.
+Resource Type, Event Type, Resource ID, Source IP, Event ID, and Start/End Time, and then click **Search**.
+
+> **Note:** Select **Apsara Uni-manager** from the Product Type drop-down list and **Apsara** **Copilot** from the Resource Type drop-down list.
+
 5. View the displayed operation logs.
 6. Find the operation log whose details you want to view and click **View** in the **Details**
 column. peration logs dix
@@ -664,9 +728,16 @@ column. peration logs dix
 
 This topic describes how to log in to the Apsara Uni-manager Management Console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-dix Obtain the username and password from an operations administrator. If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+dix
+
+> **Note:** Obtain the username and password from an operations administrator.
+> If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -679,7 +750,9 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to enable MFA and bind an MFA device, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to enable MFA and bind an MFA device, see Manage MFA.
 
 **What to do next**
 
@@ -687,4 +760,7 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the login password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. dix You can use the username of your account and the email address that was used to create the account. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**. dix
+
+> **Note:** You can use the username of your account and the email address that was used to create the account.
+> The system sends a link for resetting the password to the email address that you specify.

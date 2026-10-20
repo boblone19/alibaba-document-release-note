@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 12
 source_pdf: "3fe68037a9838876_Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager Product Introduction 20251027.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AE%A1%E5%AE%B6/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Big%20Data%20Manager%20Product%20Introduction%2020251027.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Big Data Manager Product Introduction 20251027

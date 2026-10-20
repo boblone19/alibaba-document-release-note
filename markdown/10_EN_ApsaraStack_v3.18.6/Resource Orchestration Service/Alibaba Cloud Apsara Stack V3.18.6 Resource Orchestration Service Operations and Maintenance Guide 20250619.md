@@ -5,7 +5,7 @@ doc_version: "20250619"
 pdf_pages: 7
 source_pdf: "3d0b51e81564e458_Alibaba Cloud Apsara Stack V3.18.6 Resource Orchestration Service Operations and Maintenance Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Resource%20Orchestration%20Service%20Operations%20and%20Maintenance%20Guide%2020250619.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Resource Orchestration Service Operations and Maintenance Guide

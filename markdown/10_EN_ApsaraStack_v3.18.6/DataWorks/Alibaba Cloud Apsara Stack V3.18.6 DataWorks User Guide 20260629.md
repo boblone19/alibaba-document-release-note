@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 1590
 source_pdf: "72031b4b5299d00a_Alibaba Cloud Apsara Stack V3.18.6 DataWorks User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataWorks%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # DataWorks User Guide 20260629
@@ -724,15 +724,25 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 **Procedure**
 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -746,15 +756,14 @@ Enter the six-digit MFA code and click **Authenticate**.
 7. In the lower-right corner, click the
 icon (Switch Account). In the dialog box that appears, configure **Organization Settings**, **Region Settings**, and **Access Mode**.
 
-**Important**
+> **Important:** You cannot use the root organization (root) to access the console.
 
-You cannot use the root organization (root) to access the console. The following describes the access modes:
-**Role-based access**: You access the console based on your current user
-roles. This highly secure mode is recommended.
-**Administrative access**: You access the console as an administrator of
-the cloud product. The default access method is **Administrator Access**. You can click **Set Default**
-**Access Method** to configure the default access method for future use as
-needed. After completing these settings, note the following: To prevent this dialog box from appearing on future logons, select the **Do not show this**
+> The following describes the access modes:
+> **Role-based access**: You access the console based on your current user roles. This highly secure mode is recommended.
+> **Administrative access**: You access the console as an administrator of the cloud product.
+> The default access method is **Administrator Access**. You can click **Set Default** **Access Method** to configure the default access method for future use as needed.
+
+After completing these settings, note the following: To prevent this dialog box from appearing on future logons, select the **Do not show this**
 **message again** checkbox.
 To close the dialog box, click the icon in its upper-right corner. After closing the dialog box, click the icon to collapse the floating menu. The icon then changes to .
 
@@ -770,7 +779,9 @@ A workspace is the basic unit in DataWorks for managing tasks, members, roles, a
 
 **Prerequisites**
 
-A MaxCompute project has been created. You must create a compute engine to initialize the MaxCompute project. You can then bind this compute engine when you create the workspace.
+A MaxCompute project has been created.
+
+> **Note:** You must create a compute engine to initialize the MaxCompute project. You can then bind this compute engine when you create the workspace.
 
 **Overview**
 
@@ -778,7 +789,9 @@ When you create a workspace, you can use preset templates provided by DataWorks 
 **Simple mode**: This mode has only a production environment and corresponds to a single
 project. It does not provide data permission isolation or separate development and production environments.
 **Standard mode**: This mode includes both development and production environments.
-These environments can correspond to two separate projects for better isolation and data security. Standard mode is recommended for task development.
+These environments can correspond to two separate projects for better isolation and data security.
+
+> **Note:** Standard mode is recommended for task development.
 
 **Procedure**
 
@@ -837,7 +850,9 @@ DataWorks allows you to create data tables and upload data. This topic describes
 | bank data _ |   |   |
 |   |   | table, |
 
-create the `bank_data` and `result_table` tables in DataWorks, how to upload local data to the `bank_data` table, and other data import methods. The bank_data table stores business data, and the result_table table stores data analytics results.
+create the `bank_data` and `result_table` tables in DataWorks, how to upload local data to the `bank_data` table, and other data import methods.
+
+> **Note:** The bank_data table stores business data, and the result_table table stores data analytics results.
 
 **Prerequisites**
 
@@ -893,7 +908,9 @@ CREATE TABLE IF NOT EXISTS bank_data
 7. Configure the **Display Name** parameter in the General section, click **Commit to**
 **Development Environment** and **Commit to Production Environment**, and then click
 **OK**.
-If you use a workspace in basic mode, click **Commit to Production Environment**.
+
+> **Note:** If you use a workspace in basic mode, click **Commit to Production Environment**.
+
 8. In the left-side navigation pane, click **Workspace Tables**. On the Workspace Tables page,
 enter the table name in the search box to search for the created table. After you find the table, double-click the table name to view the table information.
 
@@ -923,7 +940,9 @@ CREATE TABLE IF NOT EXISTS result_table
 5. Configure the Display Name parameter in the General section, click **Commit to**
 **Development Environment** and **Commit to Production Environment**, and then click
 **OK**.
-If you use a workspace in basic mode, click **Commit to Production Environment**.
+
+> **Note:** If you use a workspace in basic mode, click **Commit to Production Environment**.
+
 6. In the left-side navigation pane, click **Workspace Tables**. On the Workspace Tables page,
 enter the table name in the search box to search for the created table. After you find the table, double-click the table name to view the table information.
 
@@ -998,11 +1017,12 @@ This section describes how to create a zero load node named `start` and an ODPS 
 |---|---|---|
 | e | start | nod |
 
-node named `insert_data` in the workflow, and configure the `insert_data` node to Take note of the following items when you use a zero load node: A zero load node is a control node that is used to maintain and control its descendant nodes in a workflow. A zero load node does not generate data. If other nodes depend on a zero load node and the zero load node is set to the Failed state by O&M engineers, the pending descendant nodes cannot run. During the O&M process, a zero load node can be disabled to prevent incorrect data of ancestor nodes from being obtained by their descendant nodes. In most cases, the root node of the workspace is used as the ancestor node of a zero load node in a workflow. The root node of a workspace is named in the format
+node named `insert_data` in the workflow, and configure the `insert_data` node to
 
-```
-of Workspace name_root .
-```
+> **Note:** Take note of the following items when you use a zero load node:
+> A zero load node is a control node that is used to maintain and control its descendant nodes in a workflow. A zero load node does not generate data.
+> If other nodes depend on a zero load node and the zero load node is set to the Failed state by O&M engineers, the pending descendant nodes cannot run. During the O&M process, a zero load node can be disabled to prevent incorrect data of ancestor nodes from being obtained by their descendant nodes.
+> In most cases, the root node of the workspace is used as the ancestor node of a zero load node in a workflow. The root node of a workspace is named in the format of `Workspace name_root` .
 
 When you design a workflow, we recommend that you create a zero load node as the root node of the workflow to control the entire workflow.
 1. On the Scheduled Workflow pane, double-click the name of the workflow that you created
@@ -1021,7 +1041,10 @@ In a workflow, a zero load node is often used to control the entire workflow and
 1. Double-click the `start` node. In the right-side navigation pane of the configuration tab,
 click the **Properties** tab.
 2. In the **Dependencies** section of the Properties tab, click **Add Root Node** to configure the
-root node of the workspace as the ancestor node of the zero load node. In addition to the scheduling dependencies, you must also configure other required parameters, such as **Rerun** and **Resource Group**.
+root node of the workspace as the ancestor node of the zero load node.
+
+> **Note:** In addition to the scheduling dependencies, you must also configure other required parameters, such as **Rerun** and **Resource Group**.
+
 3. After the configuration is complete, click the
 icon in the top toolbar to save the node.
 
@@ -1078,7 +1101,8 @@ A workflow is created. For more information, see Create a workflow.
 
 **Add a data source**
 
-Only the workspace administrator can add data sources. Members of other roles can only view data sources.
+> **Note:** Only the workspace administrator can add data sources. Members of other roles can only view data sources.
+
 1. Log in to the DataWorks console, click the
 icon in the upper-left corner, and choose **All**
 **Products > Data Integration > Data Integration**. The **Data Integration** page
@@ -1163,7 +1187,9 @@ This topic describes how to configure the scheduling properties and set the recu
 
 **Prerequisites**
 
-A synchronization node is created. For more information, see Create a synchronization node. In this topic, the batch synchronization node `write_result` described in the "Create a synchronization node" topic is used, and the recurrence is set to weekly.
+A synchronization node is created. For more information, see Create a synchronization node.
+
+> **Note:** In this topic, the batch synchronization node `write_result` described in the "Create a synchronization node" topic is used, and the recurrence is set to weekly.
 
 **Configure scheduling properties for the batch synchronization**
 
@@ -1206,9 +1232,11 @@ top toolbar to save the node.
 2. Commit the node. Click the
 icon in the top toolbar to commit the node to the production environment.
 
-**Important**
+> **Important:** You must configure the **Rerun** and **Parent Nodes** parameters before you commit the node.
 
-You must configure the **Rerun** and **Parent Nodes** parameters before you commit the node. A node must be committed to the scheduling system so that the scheduling system can automatically generate and run instances for the node. The scheduling system runs these instances at the specified time from the next day based on the recurrence settings. If you commit a node after 23:30, the scheduling system automatically generates and runs instances for the node from the third day.
+A node must be committed to the scheduling system so that the scheduling system can automatically generate and run instances for the node. The scheduling system runs these instances at the specified time from the next day based on the recurrence settings.
+
+> **Note:** If you commit a node after 23:30, the scheduling system automatically generates and runs instances for the node from the third day.
 
 **What to do next**
 
@@ -1224,7 +1252,12 @@ if you need to check the scheduling time and running of a single node.
 **Data backfill**: Nodes are manually triggered. We recommend that you use this mode if you
 need to check the scheduling time of multiple nodes and scheduling dependencies among the nodes, or if you need to reperform data analysis and computing from a specific root node.
 **Periodic run**: Nodes are automatically triggered. After you commit a node, the scheduling
-system automatically runs instances for the node from 00:00 the next day. When the scheduling time of each instance arrives, the scheduling system checks whether the ancestor instances of the instance have been successfully run. If the scheduling time arrives and all the ancestor instances have been run, the scheduling system automatically triggers the instance without manual intervention. The scheduling system generates instances for manually triggered nodes and auto triggered nodes based on the same rules. The scheduling system generates an instance for each recurrence, which can occur by the day, hour, minute, month, or week. The scheduling system runs the instances generated for the specified dates only when the scheduling time arrives and generates operation logs for the instances. The scheduling system does not run the instances generated for other dates. Instead, it directly changes the states of the instances to Successful when the running conditions are met. In this case, the scheduling system does not generate operation logs.
+system automatically runs instances for the node from 00:00 the next day. When the scheduling time of each instance arrives, the scheduling system checks whether the ancestor instances of the instance have been successfully run. If the scheduling time arrives and all the ancestor instances have been run, the scheduling system automatically triggers the instance without manual intervention.
+
+> **Note:** The scheduling system generates instances for manually triggered nodes and auto triggered nodes based on the same rules.
+> The scheduling system generates an instance for each recurrence, which can occur by the day, hour, minute, month, or week.
+> The scheduling system runs the instances generated for the specified dates only when the scheduling time arrives and generates operation logs for the instances.
+> The scheduling system does not run the instances generated for other dates. Instead, it directly changes the states of the instances to Successful when the running conditions are met. In this case, the scheduling system does not generate operation logs.
 
 **Test run**
 
@@ -1238,7 +1271,10 @@ page that appears, find the node that you want to run and click **Test** in the 
 4. In the **Test** dialog box, configure the **Test Name** and **Data Timestamp** parameters and
 click **OK**.
 5. On the **Test Instance** page, click the name of the generated instance. The directed acyclic
-graph (DAG) of the instance appears on the right side. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance. In test run mode, a node is manually triggered. When the scheduling time arrives, the scheduling system immediately runs the instance that is generated for the node, regardless of whether the ancestor instances of the instance have been successfully run. The synchronization node `write_result` is configured to run at 02:00 every Monday. Based on the instance generation rules described earlier in this topic, if the data timestamp, which is one day earlier than the time at which the node is scheduled to run, is set to Sunday for a test run, the scheduling system runs the instance that is generated for the synchronization node at 02:00 on the following Monday. If the data timestamp is not set to Sunday for the test run, the scheduling system changes the state of the instance to Successful at 02:00 on the following Monday, and no operation logs are generated.
+graph (DAG) of the instance appears on the right side. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance.
+
+> **Note:** In test run mode, a node is manually triggered. When the scheduling time arrives, the scheduling system immediately runs the instance that is generated for the node, regardless of whether the ancestor instances of the instance have been successfully run.
+> The synchronization node `write_result` is configured to run at 02:00 every Monday. Based on the instance generation rules described earlier in this topic, if the data timestamp, which is one day earlier than the time at which the node is scheduled to run, is set to Sunday for a test run, the scheduling system runs the instance that is generated for the synchronization node at 02:00 on the following Monday. If the data timestamp is not set to Sunday for the test run, the scheduling system changes the state of the instance to Successful at 02:00 on the following Monday, and no operation logs are generated.
 
 **Data backfill**
 
@@ -1262,11 +1298,21 @@ The following table describes the key parameters that you must configure. You ca
 | Order | The order for the nodes to run. Valid values: Ascending by Business Date and Descending by Business Date. |
 
 4. On the **Patch Data** page, click the name of the generated data backfill instance to view the
-DAG of the instance. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance. In data backfill mode, the running of a data backfill instance on a day depends on the instance that is scheduled to run on the previous day. For example, in the scenario in which you backfill data in the period of time from September 15, 2017 to September 18, 2017 for a node, if the instance on September 15, 2017 fails to run, the instance on September 16, 2017 cannot be run. The batch synchronization node `write_result` is configured to run at 02:00 every Monday. Based on the instance generation rules described earlier in this topic, if the data timestamp, which is one day earlier than the time at which the node is scheduled to run, is set to Sunday for a data backfill operation, the scheduling system runs the instance that is generated for the synchronization node at 02:00 on the following Monday. If the data timestamp is not set to Sunday for the test run, the scheduling system changes the state of the instance to Successful at 02:00 on the following Monday, and no operation logs are generated.
+DAG of the instance. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance.
+
+> **Note:** In data backfill mode, the running of a data backfill instance on a day depends on the instance that is scheduled to run on the previous day. For example, in the scenario in which you backfill data in the period of time from September 15, 2017 to September 18, 2017 for a node, if the instance on September 15, 2017 fails to run, the instance on September 16, 2017 cannot be run.
+> The batch synchronization node `write_result` is configured to run at 02:00 every Monday. Based on the instance generation rules described earlier in this topic, if the data timestamp, which is one day earlier than the time at which the node is scheduled to run, is set to Sunday for a data backfill operation, the scheduling system runs the instance that is generated for the synchronization node at 02:00 on the following Monday. If the data timestamp is not set to Sunday for the test run, the scheduling system changes the state of the instance to Successful at 02:00 on the following Monday, and no operation logs are generated.
 
 **Periodic run**
 
-In periodic run mode, the scheduling system automatically runs instances for all nodes based on the scheduling settings of the nodes. No menu item is provided for you to control the periodic run of nodes on the Operation Center page. You can view the instance information and operation logs of a node, such as the synchronization node write_result, by using one of the following methods: On the **Operation Center** page, choose **Cycle Task Maintenance > Cycle Instance** in the left-side navigation pane. On the page that appears, set parameters such as the data timestamp or run date to search for a specific instance of the node. Then, right-click the instance of the `write_result` node in the DAG to view the instance information and operation logs. On the **Cycle Instance** page, click an instance of the node. The DAG of the instance appears. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance. If an ancestor node has not been run, its descendant nodes are not run either. If the initial state of an instance is pending, the scheduling system checks whether all its ancestor instances have been run when the scheduling time arrives. The instance can be triggered and run only after all its ancestor instances have been run and when the scheduling time arrives. If an instance is pending, check whether all its ancestor instances have been run and whether the scheduling time arrives. Works console
+In periodic run mode, the scheduling system automatically runs instances for all nodes based on the scheduling settings of the nodes. No menu item is provided for you to control the periodic run of nodes on the Operation Center page. You can view the instance information and operation logs of a node, such as the synchronization node write_result, by using one of the following methods: On the **Operation Center** page, choose **Cycle Task Maintenance > Cycle Instance** in the left-side navigation pane. On the page that appears, set parameters such as the data timestamp or run date to search for a specific instance of the node. Then, right-click the instance of the `write_result` node in the DAG to view the instance information and operation logs. On the **Cycle Instance** page, click an instance of the node. The DAG of the instance appears. Right-click the instance in the DAG to view its details or manage this instance. For example, you can rerun this instance.
+
+> **Note:** If an ancestor node has not been run, its descendant nodes are not run either.
+> If the initial state of an instance is pending, the scheduling system checks whether all its ancestor instances have been run when the scheduling time arrives.
+> The instance can be triggered and run only after all its ancestor instances have been run and when the scheduling time arrives.
+> If an instance is pending, check whether all its ancestor instances have been run and whether the scheduling time arrives.
+
+Works console
 
 ## 4 Overview of the DataWorks console
 
@@ -1532,7 +1578,11 @@ On the **Workspace Roles** tab, you can perform the following operations: Create
 **No Permissions**: The role has no permissions on the related module.
 **Read-only**: The role can only view the data in the related module.
 **Read and Write**: The role can modify the data in the related module.
-iv. **Map the custom role to a role of a compute engine** . You can map the custom role to a role of a compute engine to grant the custom role the permissions on the compute engine. For example, you can map the custom role test to the **admin** role of a MaxCompute project. This way, the custom role can assume the admin role when the custom role is used to access the MaxCompute project. You can use only a RAM user that is assigned the admin or super_administrator role of a MaxCompute project or an Apsara Stack tenant account to configure the mapping between a DataWorks custom workspace-level role and a role of a MaxCompute project. Works console v. Click **Create**. View or modify roles. On the **Workspace Roles** tab, you can view roles that have been configured for the workspace in the **Built-in Roles** and **Custom Roles** sections. You can also modify or delete custom roles. For more information about the permissions of preset roles, see View permissions.
+iv. **Map the custom role to a role of a compute engine** . You can map the custom role to a role of a compute engine to grant the custom role the permissions on the compute engine. For example, you can map the custom role test to the **admin** role of a MaxCompute project. This way, the custom role can assume the admin role when the custom role is used to access the MaxCompute project.
+
+> **Note:** You can use only a RAM user that is assigned the admin or super_administrator role of a MaxCompute project or an Apsara Stack tenant account to configure the mapping between a DataWorks custom workspace-level role and a role of a MaxCompute project.
+
+Works console v. Click **Create**. View or modify roles. On the **Workspace Roles** tab, you can view roles that have been configured for the workspace in the **Built-in Roles** and **Custom Roles** sections. You can also modify or delete custom roles. For more information about the permissions of preset roles, see View permissions.
 
 **View permissions**
 
@@ -2077,7 +2127,9 @@ iii. Add cluster configuration files. You can upload configuration files of requ
 | Config.Pr operties file | Contains the configurations of a Presto server. For example, you can use this file to configure global properties for coordinator and working nodes in a Presto cluster. | You must upload this file if you want to use the Presto component and OpenLDAP account or Kerberos account is selected as the account mapping type. |
 | Presto.Jk s file | Stores security certificates, including private keys and public key certificates issued to applications. In a Presto database query engine, the presto.jks file is used to enable SSL- or TLS- encrypted communication for the Presto process to ensure data transmission security. |   |
 
-Works console iv. Configure the default access identity for the cluster. Configure the identity that is used to access the CDH cluster when you run CDH tasks in DataWorks. The supported identities vary based on the runtime environment. If the **Default Access Identity** parameter is set to a value other than Cluster Account, but no required account mapping is configured or the Mapping Type parameter is set to No Authentication, tasks will fail to run.
+Works console iv. Configure the default access identity for the cluster. Configure the identity that is used to access the CDH cluster when you run CDH tasks in DataWorks. The supported identities vary based on the runtime environment.
+
+> **Note:** If the **Default Access Identity** parameter is set to a value other than Cluster Account, but no required account mapping is configured or the Mapping Type parameter is set to No Authentication, tasks will fail to run.
 
 | Runtime environ ment | Default access identity |
 |---|---|
@@ -2106,13 +2158,24 @@ between the RAM user and a system account. The following mappings are supported:
 
 **ram_user_1**
 
-If you use a RAM user named **r***@xxx.onaliyun.com** to run CDH tasks, the tasks are actually run by the CDH cluster account **ram_user_1**. If you use a RAM user to run CDH tasks in DataWorks, a CDH cluster account that has the same account name as the RAM user is actually used to run CDH tasks in the CDH cluster. You can also use a CDH cluster account that has a different account name from the RAM user to run CDH tasks. To prevent task execution failures, make sure that an account with the same name as the RAM user exists in the CDH cluster. To create such an account, choose **CDH Cluster Management > User Management**. Mapping between accounts with different names: A CDH cluster account that has a different account name from the RAM user is mapped to the RAM user. Configure a mapping as prompted.
+If you use a RAM user named **r***@xxx.onaliyun.com** to run CDH tasks, the tasks are actually run by the CDH cluster account **ram_user_1**.
+
+> **Note:** If you use a RAM user to run CDH tasks in DataWorks, a CDH cluster account that has the same account name as the RAM user is actually used to run CDH tasks in the CDH cluster. You can also use a CDH cluster account that has a different account name from the RAM user to run CDH tasks.
+> To prevent task execution failures, make sure that an account with the same name as the RAM user exists in the CDH cluster. To create such an account, choose **CDH Cluster Management > User Management**.
+
+Mapping between accounts with different names: A CDH cluster account that has a different account name from the RAM user is mapped to the RAM user. Configure a mapping as prompted.
 **Mapping to OpenLDAP Account**: If you select this option, you can configure a mapping
 between an Apsara Stack tenant account or a RAM user and an OpenLDAP account. Add the account information as prompted. If you select this option and use Presto at the same time, configure the `Config.Properties` and `Presto.Jks` files on the Basic Information tab of the CDH cluster. Make sure that the OpenLDAP service is enabled for the cluster.
 **Mapping to Kerberos Account**: If you select this option, you can configure a mapping
 between an Apsara Stack tenant or a RAM user and a Kerberos account of the CDH cluster. A Kerberos account is in the **Instance name@Domain name** format, such as cdn_test@HADOOP.COM. The **keytab authentication file** and **krb5.conf configuration file** are required for Kerberos authentication. The krb5.conf configuration file is used to store the configurations of the Key Distribution Center (KDC) server. The keytab authentication file is used to store the authentication credentials of the account that uses the resource. The file name must be in the **Kerberos**
 **account.keytab** format.
-Add the account information and upload the required files as prompted. Works console You must select this option when Kerberos authentication is enabled for Hive Metastore of the CDH cluster. Otherwise, metadata collection is affected. If you select this option and use Presto at the same time, configure the `Config.Properties` and `Presto.Jks` files on the Basic Information tab of the CDH cluster. Make sure that the Kerberos service is enabled for the CDH cluster.
+Add the account information and upload the required files as prompted. Works console
+
+> **Note:** You must select this option when Kerberos authentication is enabled for Hive Metastore of the CDH cluster. Otherwise, metadata collection is affected.
+> If you select this option and use Presto at the same time, configure the
+> `Config.Properties` and `Presto.Jks` files on the Basic Information tab of the CDH cluster.
+> Make sure that the Kerberos service is enabled for the CDH cluster.
+
 2. Configure a mapping.
 Configure a mapping based on the selected mapping type.
 3. After the configuration is complete, click Complete Modification.
@@ -2181,7 +2244,7 @@ Works console
 | Add Role | Click Add Role in the upper-right corner. In the Add Role dialog box, configure the Role Name parameter. In the Available Accounts section, select one or more member accounts to which you want to assign the role. Click the rightwards arrow > to move the selected accounts to the Added Accounts section. Then, click Confirm. |
 |---|---|
 
-If a user is assigned multiple custom roles, the user has all the permissions of these custom roles.
+> **Note:** If a user is assigned multiple custom roles, the user has all the permissions of these custom roles.
 
 #### 4.1.8 Configure extensions
 
@@ -2232,8 +2295,10 @@ search box in the upper-left corner and click Search. The compute engines whose 
 5. Find the compute engine that you want to manage and click **Configuration** in the **Actions**
 column.
 6. In the **Configuring the MaxCompute Compute Engine** dialog box, specify the account
-and its visitor identity for running MaxCompute nodes. As the tenant administrator, you can specify MaxCompute Owner cloud account or
-**Task cloud account** to modify the configurations of the compute engine.
+and its visitor identity for running MaxCompute nodes.
+
+> **Note:** As the tenant administrator, you can specify MaxCompute Owner cloud account or **Task cloud account** to modify the configurations of the compute engine.
+
 7. Click **Confirm**.
 
 #### 4.2.3 Manage licenses
@@ -2349,11 +2414,16 @@ You can configure data synchronization tasks in two modes:
 **Wizard mode**: Provides a guided, step-by-step development experience for quickly
 configuring data synchronization tasks. This mode is easy to learn but does not support some advanced features.
 **Script mode**: Allows you to develop data synchronization tasks by writing a JSON script.
-This mode is suitable for advanced users and provides greater flexibility for fine-grained configuration and management. Code generated in wizard mode can be converted to script mode. This is a one-way conversion. Before you write a script, you must configure the data source and create the target table.
+This mode is suitable for advanced users and provides greater flexibility for fine-grained configuration and management.
+
+> **Note:** Code generated in wizard mode can be converted to script mode. This is a one-way conversion.
+> Before you write a script, you must configure the data source and create the target table.
 
 **Network types**
 
-Data Integration supports VPC connections. A VPC allows you to build an isolated network environment on Alibaba Cloud. You have full control over your virtual network, including selecting your own IP address ranges, dividing network segments, and configuring route tables and gateways. Data Integration provides an automatic reverse proxy detection feature for data sources such as RDS (MySQL, PostgreSQL, and SQL Server), PolarDB, DRDS, HybridDB for MySQL, AnalyticDB for PostgreSQL, and AnalyticDB for MySQL 3.0. In a VPC, this feature lets you establish a network connection without purchasing an ECS instance in the same network. For other non-RDS Alibaba Cloud database services, such as PPAS, OceanBase, Redis, MongoDB, Memcache, Tablestore, and HBase, you must purchase an ECS instance in the same VPC. This instance provides network connectivity for the data synchronization task. Connections over the public network are also supported. However, due to bandwidth requirements and associated costs, we recommend using this option only when necessary.
+Data Integration supports VPC connections. A VPC allows you to build an isolated network environment on Alibaba Cloud. You have full control over your virtual network, including selecting your own IP address ranges, dividing network segments, and configuring route tables and gateways. Data Integration provides an automatic reverse proxy detection feature for data sources such as RDS (MySQL, PostgreSQL, and SQL Server), PolarDB, DRDS, HybridDB for MySQL, AnalyticDB for PostgreSQL, and AnalyticDB for MySQL 3.0. In a VPC, this feature lets you establish a network connection without purchasing an ECS instance in the same network. For other non-RDS Alibaba Cloud database services, such as PPAS, OceanBase, Redis, MongoDB, Memcache, Tablestore, and HBase, you must purchase an ECS instance in the same VPC. This instance provides network connectivity for the data synchronization task.
+
+> **Note:** Connections over the public network are also supported. However, due to bandwidth requirements and associated costs, we recommend using this option only when necessary.
 
 **Basic concepts**
 
@@ -2435,7 +2505,11 @@ This topic lists various types of data sources supported by Data Integration and
 
 #### 5.2.2 Isolate data sources
 
-Data source isolation ensures that data sources can be independently configured and used for the development and production environments. This feature applies only to workspaces in standard mode. This topic describes how to configure data source isolation and its impacts on a workspace. If a data source is configured in both the development and production environments, you can use the data source isolation feature to isolate the data source in the development environment from that in the production environment. Only workspaces in standard mode support the data source isolation feature. When you configure a synchronization node, the data source in the development environment is used. After you commit the synchronization node to the production environment for running, the data source in the production environment is used. To commit a synchronization node to the production environment for running, you must configure data sources with the same name in both the development and production environments. The data source isolation feature has the following impacts on workspaces: Workspaces in basic mode: The features and configuration dialog boxes of data sources are the same as those before the data source isolation feature is added. For more information, see Supported data sources. Workspaces in standard mode: The Environment parameter is added to the configuration dialog boxes of data sources. Workspaces upgraded from the basic mode to the standard mode: When you upgrade the mode, you are prompted to upgrade data sources. After you upgrade the mode, the data sources in the development environment are isolated from those in the production environment.
+Data source isolation ensures that data sources can be independently configured and used for the development and production environments. This feature applies only to workspaces in standard mode. This topic describes how to configure data source isolation and its impacts on a workspace. If a data source is configured in both the development and production environments, you can use the data source isolation feature to isolate the data source in the development environment from that in the production environment.
+
+> **Note:** Only workspaces in standard mode support the data source isolation feature.
+
+When you configure a synchronization node, the data source in the development environment is used. After you commit the synchronization node to the production environment for running, the data source in the production environment is used. To commit a synchronization node to the production environment for running, you must configure data sources with the same name in both the development and production environments. The data source isolation feature has the following impacts on workspaces: Workspaces in basic mode: The features and configuration dialog boxes of data sources are the same as those before the data source isolation feature is added. For more information, see Supported data sources. Workspaces in standard mode: The Environment parameter is added to the configuration dialog boxes of data sources. Workspaces upgraded from the basic mode to the standard mode: When you upgrade the mode, you are prompted to upgrade data sources. After you upgrade the mode, the data sources in the development environment are isolated from those in the production environment.
 
 #### 5.2.3 Manage permissions on data sources
 
@@ -2453,7 +2527,10 @@ icon and choose **All Products > Data**
 **Integration > Data Integration**.
 3. In the left-side navigation pane, click **Data source**.
 4. On the **Data Sources** page, find the data source that you want to manage, and click the
-icon in the Connection Information column. You cannot manage permissions on MaxCompute data sources.
+icon in the Connection Information column.
+
+> **Note:** You cannot manage permissions on MaxCompute data sources.
+
 5. In the **Manage Permissions on Data Source** dialog box, configure the parameters as
 required.
 
@@ -2950,9 +3027,8 @@ iii. In the left-side navigation pane, click **Data Sources**.
 | Endpoint | The OSS endpoint. The endpoint of the OSS service is subject to the region. Enter the endpoint of OSS based on the region. If you use the OSS data source as the reader, the format is http://my bucket name.aliyuncs.com . _ _ If you use the OSS data source as the writer, the format is http://aliyuncs.com . Note When you test the connectivity, you must add a bucket value, such as http://my bucket name.aliyuncs.com . _ _ |
 | Bucket | The name of the OSS bucket. A bucket is a container that stores objects in OSS. You can create one or more buckets and add one or more objects to each bucket. During data synchronization, DataWorks can search for objects only in the bucket that is specified by this parameter. |
 
-**Important**
+> **Important:** If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 
-If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 5. In the **Connection Configuration** section, click **Test Network Connectivity**.
 6. After the connectivity test is passed, click **Complete Creation**.
 
@@ -3971,7 +4047,9 @@ Now you have learned how to add an SQL Server data source. You can proceed with 
 
 ##### 5.2.5.16 Add an SAP HANA data source
 
-DataWorks provides SAP HANA Reader and SAP HANA Writer for you to read data from and write data to SAP HANA data sources. This topic describes how to add an SAP HANA data source. The following SAP HANA versions are supported: DataBase2.00.048.06.1623425628 and DataBase2.00.055.00.161. Other SAP HANA versions have not been tested and are not supported by default.
+DataWorks provides SAP HANA Reader and SAP HANA Writer for you to read data from and write data to SAP HANA data sources. This topic describes how to add an SAP HANA data source.
+
+> **Note:** The following SAP HANA versions are supported: DataBase2.00.048.06.1623425628 and DataBase2.00.055.00.161. Other SAP HANA versions have not been tested and are not supported by default.
 
 **Procedure**
 
@@ -4823,9 +4901,8 @@ iii. In the left-side navigation pane, click **Data Sources**.
 | Endpoint | The OSS endpoint. The endpoint of the OSS service is subject to the region. Enter the endpoint of OSS based on the region. If you use the OSS data source as the reader, the format is http://my bucket name.aliyuncs.com . _ _ If you use the OSS data source as the writer, the format is http://aliyuncs.com . Note When you test the connectivity, you must add a bucket value, such as http://my bucket name.aliyuncs.com . _ _ |
 | Bucket | The name of the OSS bucket. A bucket is a container that stores objects in OSS. You can create one or more buckets and add one or more objects to each bucket. During data synchronization, DataWorks can search for objects only in the bucket that is specified by this parameter. |
 
-**Important**
+> **Important:** If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 
-If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 5. In the **Connection Configuration** section, click **Test Network Connectivity**.
 6. After the connectivity test is passed, click **Complete Creation**.
 
@@ -5216,9 +5293,8 @@ iii. In the left-side navigation pane, click **Data Sources**.
 | Endpoint | The OSS endpoint. The endpoint of the OSS service is subject to the region. Enter the endpoint of OSS based on the region. If you use the OSS data source as the reader, the format is http://my bucket name.aliyuncs.com . _ _ If you use the OSS data source as the writer, the format is http://aliyuncs.com . Note When you test the connectivity, you must add a bucket value, such as http://my bucket name.aliyuncs.com . _ _ |
 | Bucket | The name of the OSS bucket. A bucket is a container that stores objects in OSS. You can create one or more buckets and add one or more objects to each bucket. During data synchronization, DataWorks can search for objects only in the bucket that is specified by this parameter. |
 
-**Important**
+> **Important:** If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 
-If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
 5. In the **Connection Configuration** section, click **Test Network Connectivity**.
 6. After the connectivity test is passed, click **Complete Creation**.
 
@@ -5864,7 +5940,9 @@ Troubleshooting Before testing the connectivity to a MongoDB connection that is 
 
 #### 5.3.1 Supported synchronization types
 
-DataWorks supports multiple types of data synchronization, including single-table batch or real-time synchronization, full-database batch or real-time synchronization, batch or real-time synchronization of full or incremental data in a database, and real-time synchronization of tables in shared databases. The supported data sources and destinations are listed for each type. You can choose the appropriate synchronization method for various scenarios and consult the relevant configuration method. The supported destination types displayed in the console prevail.
+DataWorks supports multiple types of data synchronization, including single-table batch or real-time synchronization, full-database batch or real-time synchronization, batch or real-time synchronization of full or incremental data in a database, and real-time synchronization of tables in shared databases. The supported data sources and destinations are listed for each type. You can choose the appropriate synchronization method for various scenarios and consult the relevant configuration method.
+
+> **Note:** The supported destination types displayed in the console prevail.
 
 **Single-table batch synchronization**
 
@@ -5969,9 +6047,9 @@ For more information about supported data sources and destinations, see Supporte
 4. . Configure the source and destination**
 In this step, select the tables from which you want to read data and the tables to which you want to write data, and specify a filter condition when you configure the source.
 
-**Important**
+> **Important:** The data source and destination configurations vary based on the type of the data source. The following examples show only common configurations. The configurations and
 
-The data source and destination configurations vary based on the type of the data source. The following examples show only common configurations. The configurations and parameters of each data source in the console shall prevail.
+> parameters of each data source in the console shall prevail.
 
 **Source**
 
@@ -6005,7 +6083,8 @@ After you specify the source and destination tables, you must configure the mapp
 | Change Fields | Click the Change Fields icon. In the Change Fields dialog box, you can manually edit the fields in the source table. Each field occupies a row. The first and the last blank rows are included, whereas other blank rows are ignored. |
 | Add | You can enter constants. Each constant must be enclosed in single quotation marks ('), such as 'abc' and '123' . You can use scheduling parameters, such as ${bizdate} . You can enter functions that are supported by relational databases, such as now() and count(1) . If the field that you entered cannot be parsed, the value of Type for the field is Unidentified. |
 
-Make sure that the data type of a source field is the same as that of the mapped destination field or the data type conversion is feasible.
+> **Note:** Make sure that the data type of a source field is the same as that of the mapped destination field or the data type conversion is feasible.
+
 6. . Configure channel control**
 After you complete the preceding steps, you can configure channel control policies for the synchronization node.
 
@@ -6112,15 +6191,22 @@ After the template is applied, the basic settings of the reader are generated. Y
     "setting": {
 ```
 
-`}` `}` Each operator is defined in the `steps` . At least one `Reader` and one `Writer` are required. Assume that you set the concurrency to 2. Then, a job has two parallel data processing streams, and each Reader and Writer belongs to a `step` in the node configuration. The `steps` define the type and parameters of each operator. The data synchronization and processing process strictly follow the order of each `step` in the JSON configuration.
+`}` `}`
+
+> **Note:** Each operator is defined in the `steps` . At least one `Reader` and one `Writer` are required. Assume that you set the concurrency to 2. Then, a job has two parallel data processing streams, and each Reader and Writer belongs to a `step` in the node configuration.
+> The `steps` define the type and parameters of each operator. The data synchronization and processing process strictly follow the order of each `step` in the JSON configuration.
 
 **Reader and Writer**
 
-Configure the Reader. Configure the Writer. Some synchronization nodes may need to synchronize incremental data. In this case, you can use the scheduling parameters of DataWorks to specify the date and time for incremental data synchronization. For more information, see Overview of scheduling parameters.
+Configure the Reader. Configure the Writer.
+
+> **Note:** Some synchronization nodes may need to synchronize incremental data. In this case, you can use the scheduling parameters of DataWorks to specify the date and time for incremental data synchronization. For more information, see Overview of scheduling parameters.
 
 **Map the fields in the source and destination tables.**
 
-The code editor supports only the mappings of fields in the same row. The data types of the fields must match. Make sure that the data type of a source field is the same as that of the mapped destination field or the data type conversion is feasible.
+The code editor supports only the mappings of fields in the same row. The data types of the fields must match.
+
+> **Note:** Make sure that the data type of a source field is the same as that of the mapped destination field or the data type conversion is feasible.
 
 **Step 6: Configure channel control policies**
 
@@ -6210,9 +6296,7 @@ Be Selected list and click the rightward arrow to move the selected data sources
 8. In the Configure tasks step, select the tables from which you want to synchronize data in
 each selected data source in the Source section, and configure the parameters in the Destination section. Then, **save** and **deploy** the synchronization node and perform subsequent operations.
 
-**Important**
-
-The **Data Sources for Sharded Databases Use Same Account and Password** option is selected by default, which indicates that all sharded data sources use the account and password configured in the first data source to access the database. If your sharded databases use different accounts and passwords, clear the check box and use the account and password of each data source to access the database.
+> **Important:** The **Data Sources for Sharded Databases Use Same Account and Password** option is selected by default, which indicates that all sharded data sources use the account and password configured in the first data source to access the database. If your sharded databases use different accounts and passwords, clear the check box and use the account and password of each data source to access the database.
 
 **Code editor**
 
@@ -6225,9 +6309,9 @@ icon in the top toolbar of the configuration tab of the node in DataStudio to sw
 5. Configure a synchronization node to synchronize data from tables in sharded databases.
 Configure the synchronization node by using the code editor. The following code provides a sample script. For more information about how to configure the synchronization node, see Configure a batch synchronization node by using the code editor.
 
-**Important**
+> **Important:** You must delete the comments from the following code before you run the code.
 
-You must delete the comments from the following code before you run the code. `{`
+`{`
 
 ```json
     "type":"job",
@@ -7296,7 +7380,11 @@ begin; drop table if exists holo_reader_basic_src; create table holo_reader_basi
 commit;
 ```
 
-Write data to a partitioned table In the following code, a synchronization node is configured to read data from a child partitioned table of a partitioned Hologres table to the memory. Exercise caution when you configure the **partition** parameter. `{`
+Write data to a partitioned table In the following code, a synchronization node is configured to read data from a child partitioned table of a partitioned Hologres table to the memory.
+
+> **Note:** Exercise caution when you configure the **partition** parameter.
+
+`{`
 
 ```json
     "transform": false,
@@ -7437,7 +7525,8 @@ The following table lists the data types that are supported by HybridDB for MySQ
 |---|---|
 | Binary | TINYBLOB, MEDIUMBLOB, BLOB, LONGBLOB, and VARBINARY |
 
-Data types that are not listed in the preceding table are not supported. HybridDB for MySQL Reader processes TINYINT(1) as an integer data type.
+> **Note:** Data types that are not listed in the preceding table are not supported.
+> HybridDB for MySQL Reader processes TINYINT(1) as an integer data type.
 
 **Code for HybridDB for MySQL Reader**
 
@@ -7940,9 +8029,7 @@ The following table lists the data type mappings based on which MaxCompute Reade
 | Binary | BYTES | BINARY |
 | Complex | STRING | ARRAY, MAP, and STRUCT |
 
-**Important**
-
-If the data conversion fails or the data fails to be written to the destination, the data is regarded as dirty data. You can specify the maximum number of dirty data records allowed.
+> **Important:** If the data conversion fails or the data fails to be written to the destination, the data is regarded as dirty data. You can specify the maximum number of dirty data records allowed.
 
 **Code for MaxCompute Reader**
 
@@ -8082,9 +8169,8 @@ OSS Reader reads data from OSS and converts the data to a format that is readabl
 |---|---|
 | Reads data from TXT objects. The data in the objects must be logical two-dimensional tables. Writes CSV-like files with custom delimiters to OSS. Reads data from files in the ORC and Parquet formats. Reads data of various types as strings and supports constants and column pruning. Supports recursive data read and object name- based filtering. Supports object compression. The following compression formats are supported: GZIP, BZIP2, and ZIP. Note You cannot compress multiple objects into one package. Uses parallel threads to read data from multiple objects. | Uses parallel threads to read data from a single object. Uses parallel threads to read a compressed object. |
 
-**Important**
-
-If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed. OSS is an unstructured data source that stores file-based data. Before you synchronize data from an OSS data source, you must check whether the field structure meets your expectation. If the field structure in an unstructured data source changes, you must re-confirm the field structure when you configure a synchronization task. Otherwise, the synchronized data may be out of order.
+> **Important:** If data in OSS is stored as CSV files, the data must comply with the standard CSV format. For example, if the data in a column of a CSV file is enclosed in a pair of single quotation marks (' '), you must replace this pair of single quotation marks with a pair of double quotation marks (" "). Otherwise, the data in the CSV file may be incorrectly parsed.
+> OSS is an unstructured data source that stores file-based data. Before you synchronize data from an OSS data source, you must check whether the field structure meets your expectation. If the field structure in an unstructured data source changes, you must re-confirm the field structure when you configure a synchronization task. Otherwise, the synchronized data may be out of order.
 
 **Common code for OSS Reader**
 
@@ -8484,9 +8570,7 @@ OSS-HDFS Reader reads data from OSS-HDFS data sources. This topic describes the 
 
 Before you use OSS-HDFS Reader, make sure that your resource group for Data Integration can access the network where the OSS-HDFS data source resides. OSS-HDFS Reader supports the following features: Supports the text, CSV, ORC, and Parquet file formats. Data stored in the files in these formats must be organized as logical two-dimensional tables. Reads data of various types and supports constants. Supports recursive reads and the following wildcard characters: asterisks `*` ) and question marks ( ? . Uses parallel threads to read data from multiple files.
 
-**Important**
-
-OSS-HDFS Reader cannot read data from a single file by using parallel threads due to the internal sharding method.
+> **Important:** OSS-HDFS Reader cannot read data from a single file by using parallel threads due to the internal sharding method.
 
 **Supported data types**
 
@@ -8500,7 +8584,10 @@ The following table lists the data type mappings based on which OSS-HDFS Reader 
 | Date and time | DATE and TIMESTAMP |
 | Boolean value | Boolean |
 
-LONG: data of the integer type in OSS-HDFS files, such as 123456789. DOUBLE: data of the floating point type in OSS-HDFS files, such as 3.1415. BOOLEAN: data of the Boolean type in OSS-HDFS files, such as true or false. Data is not case-sensitive. DATE: data of the date and time type in OSS-HDFS files, such as 2014-12-31 00:00:00.
+> **Note:** LONG: data of the integer type in OSS-HDFS files, such as 123456789.
+> DOUBLE: data of the floating point type in OSS-HDFS files, such as 3.1415.
+> BOOLEAN: data of the Boolean type in OSS-HDFS files, such as true or false. Data is not case-sensitive.
+> DATE: data of the date and time type in OSS-HDFS files, such as 2014-12-31 00:00:00.
 
 **Code for OSS-HDFS Reader**
 
@@ -8664,7 +8751,8 @@ The following table lists the data type mappings based on which PolarDB Reader c
 | Boolean | BIT and BOOLEAN |
 | Binary | TINYBLOB, MEDIUMBLOB, BLOB, LONGBLOB, and VARBINARY |
 
-Data types that are not listed in the preceding table are not supported. PolarDB Reader processes TINYINT(1) as an integer data type.
+> **Note:** Data types that are not listed in the preceding table are not supported.
+> PolarDB Reader processes TINYINT(1) as an integer data type.
 
 **Code for PolarDB Reader**
 
@@ -9044,7 +9132,8 @@ Tablestore Reader and Tablestore Writer support all data types of Tablestore tab
 | Boolean value | BOOLEAN |
 | Binary | BINARY |
 
-Tablestore does not support the DATE data type. The application layer uses the LONG-type UNIX timestamp to indicate time. To write data of the INTEGER type, set the data type to INT in the code editor. During data synchronization, Tablestore Writer converts the data from the INT data type to the INTEGER data type. If you set the data type to INTEGER, an error is reported in the log, and the synchronization node fails.
+> **Note:** Tablestore does not support the DATE data type. The application layer uses the LONG-type UNIX timestamp to indicate time.
+> To write data of the INTEGER type, set the data type to INT in the code editor. During data synchronization, Tablestore Writer converts the data from the INT data type to the INTEGER data type. If you set the data type to INTEGER, an error is reported in the log, and the synchronization node fails.
 
 **Code for Tablestore Reader**
 
@@ -9942,7 +10031,11 @@ icates that throttling is disabled, and a value of true indicates that throttlin
         "to": "Writer"
 ```
 
-`}` `]` `}` `}` Configure a synchronization node to read data from a sharded table When you configure a synchronization node to read data from a sharded MySQL table, you can select multiple partitions that have the same schema. In this case, data is synchronized from multiple MySQL tables to the same destination table. `{`
+`}` `]` `}` `}` Configure a synchronization node to read data from a sharded table
+
+> **Note:** When you configure a synchronization node to read data from a sharded MySQL table, you can select multiple partitions that have the same schema. In this case, data is synchronized from multiple MySQL tables to the same destination table.
+
+`{`
 
 ```json
   "type": "job",
@@ -10301,7 +10394,12 @@ PostgreSQL Reader reads data from PostgreSQL data sources. This topic describes 
 
 **Limits**
 
-If the name of a PostgreSQL table or the name of a field in a PostgreSQL table starts with a digit or the name contains a letter or a hyphen (-), use double quotation marks (") to escape the name. If you do not escape the name, an error occurs when you use PostgreSQL Reader or PostgreSQL Writer to read data from or write data to the PostgreSQL database. For PostgreSQL Reader and PostgreSQL Writer, double quotation marks (") are keywords in JSON code. Therefore, you must use backslashes (\) to escape the double quotation marks (") that you use. For example, if the name of a PostgreSQL table is `123Test` , the name becomes \"123Test\" after it is escaped. Each double quotation mark (") must be escaped by using a backslash (\). You can use only the code editor to escape characters. The following code provides an example on how to use the code editor to escape characters:
+If the name of a PostgreSQL table or the name of a field in a PostgreSQL table starts with a digit or the name contains a letter or a hyphen (-), use double quotation marks (") to escape the name. If you do not escape the name, an error occurs when you use PostgreSQL Reader or PostgreSQL Writer to read data from or write data to the PostgreSQL database. For PostgreSQL Reader and PostgreSQL Writer, double quotation marks (") are keywords in JSON code. Therefore, you must use backslashes (\) to escape the double quotation marks (") that you use. For example, if the name of a PostgreSQL table is `123Test` , the name becomes \"123Test\" after it is escaped.
+
+> **Note:** Each double quotation mark (") must be escaped by using a backslash (\).
+> You can use only the code editor to escape characters.
+
+The following code provides an example on how to use the code editor to escape characters:
 
 ```json
 "parameter": {
@@ -10332,7 +10430,8 @@ PostgreSQL Reader supports most PostgreSQL data types. Make sure that the data t
 | Boolean | BOOL |
 | Binary | BYTEA |
 
-Data types that are not listed in the preceding table are not supported. For PostgreSQL Reader, you can convert the MONEY, INET, and BIT data types by using syntax such as `a_inet::varchar` .
+> **Note:** Data types that are not listed in the preceding table are not supported.
+> For PostgreSQL Reader, you can convert the MONEY, INET, and BIT data types by using syntax such as `a_inet::varchar` .
 
 **Code for PostgreSQL Reader**
 
@@ -10671,9 +10770,8 @@ The following table lists the data type mappings based on which SAP HANA Reader 
 | Binary | TINYBLOB, MEDIUMBLOB, BLOB, LONGBLOB, and VARBINARY |
 |---|---|
 
-**Important**
-
-Data types that are not listed in the preceding table are not supported. SAP HANA Reader processes TINYINT(1) as an integer data type.
+> **Important:** Data types that are not listed in the preceding table are not supported.
+> SAP HANA Reader processes TINYINT(1) as an integer data type.
 
 **Code for SAP HANA Reader**
 
@@ -10766,7 +10864,11 @@ ling is enabled. The mbps parameter takes effect only when the throttle paramete
                 "to":"Writer"
 ```
 
-`}` `]` `}` `}` Configure a synchronization task to read data from SAP HANA tables in sharded databases When you configure a synchronization task to read data from SAP HANA tables in sharded databases, you can select multiple SAP HANA tables that have the same schema. `{`
+`}` `]` `}` `}` Configure a synchronization task to read data from SAP HANA tables in sharded databases
+
+> **Note:** When you configure a synchronization task to read data from SAP HANA tables in sharded databases, you can select multiple SAP HANA tables that have the same schema.
+
+`{`
 
 ```json
     "type": "job",
@@ -11699,7 +11801,9 @@ Hive Reader reads data from Hive data sources. This topic describes the paramete
 
 **Limits**
 
-Currently, you can read only files in the TextFile, ORCFile, and ParquetFile formats. When you use Data Integration to synchronize data to a Hive cluster, temporary files are generated on the server and are automatically deleted when the synchronization task is complete. You need to pay attention to the limit on the number of files in the HDFS directory on the server to avoid unavailability of the HDFS file system if the number of unexpected files reaches the upper limit. DataWorks cannot ensure that the number of files in the HDFS directory is within the allowed range. The server can modify the **dfs.namenode.fs-limits.max-directory-items** parameter to define the maximum number of directories or files in a single directory excluding recursion. The default value is 1048576 and the value range is 1 to 6400000. You can increase the parameter **dfs.namenode.fs-limits.max-directory-items** of HDFS or clean up unnecessary files to avoid this problem.
+Currently, you can read only files in the TextFile, ORCFile, and ParquetFile formats. When you use Data Integration to synchronize data to a Hive cluster, temporary files are generated on the server and are automatically deleted when the synchronization task is complete. You need to pay attention to the limit on the number of files in the HDFS directory on the server to avoid unavailability of the HDFS file system if the number of unexpected files reaches the upper limit. DataWorks cannot ensure that the number of files in the HDFS directory is within the allowed range.
+
+> **Note:** The server can modify the **dfs.namenode.fs-limits.max-directory-items** parameter to define the maximum number of directories or files in a single directory excluding recursion. The default value is 1048576 and the value range is 1 to 6400000. You can increase the parameter **dfs.namenode.fs-limits.max-directory-items** of HDFS or clean up unnecessary files to avoid this problem.
 
 **Supported field types**
 
@@ -12126,9 +12230,8 @@ The following table lists the data types that KingbaseES Reader converts.
 | Boolean | BIT and BOOL |
 | Binary Class | TINYBLOB, MEDIUMBLOB, BLOB, LONGBLOB, and VARBINARY |
 
-**Important**
-
-Except for the field types listed above, other types are not supported. KingbaseES Reader treats tinyint(1) as an integer.
+> **Important:** Except for the field types listed above, other types are not supported.
+> KingbaseES Reader treats tinyint(1) as an integer.
 
 **Reader script demo**
 
@@ -12220,7 +12323,11 @@ false indicates that throttling is disabled, and the value true indicates that t
                 "to":"Writer"
 ```
 
-`}` `]` `}` `}` Configure a synchronization task to read data from a sharded table When you configure a synchronization task to read data from a sharded KingbaseES table, you can select multiple table shards that have the same schema. `{`
+`}` `]` `}` `}` Configure a synchronization task to read data from a sharded table
+
+> **Note:** When you configure a synchronization task to read data from a sharded KingbaseES table, you can select multiple table shards that have the same schema.
+
+`{`
 
 ```json
     "type": "job",
@@ -12425,7 +12532,7 @@ indicates that throttling is disabled, and the value true indicates that throttl
 | endDateTi me | The end time of data consumption. It is the right boundary of a time range (left-closed and right-open). It is a time string in the yyyyMMddHHmmss format, such as 20180111013010. It can be used together with the scheduling time parameter in DataWorks. For example, if you choose Scheduling Settings on the right side of the node editing page and set Parameters to endDateTime=${yyyymmdd}, the Log End Time parameter is set to ${endDateTime}000000, which indicates that the end time of the obtained log is 00:00:00 on the day after the business date. Important The time of the endDatetime setting must be less than (2038-01-19 11:14:07 +8:00) . Otherwise, the data may not be retrieved. The endDateTime of the previous cycle must be the same as the beginDateTime of the next cycle, or later than the beginDateTime of the next cycle. Otherwise, you may not be able to pull data from some regions. | Yes | None |
 | query | Filter data in LogHub by using the LogHub query syntax or SPL statements (SLS Processing Language the syntax of Log Service). | Yes | None |
 
-If the Read LogHub synchronization is missing data, check whether the data metadata field receive_time is within the time interval configured for the task in the LogHub console.
+> **Note:** If the Read LogHub synchronization is missing data, check whether the data metadata field receive_time is within the time interval configured for the task in the LogHub console.
 
 ###### 5.3.2.4.33 Configure StarRocks Reader
 
@@ -12768,7 +12875,12 @@ Hive maintains the metadata of files and stores the metadata in its own metadata
 | Date and time | date | DATE and TIMESTAMP |
 | BOOLEAN | boolean | boolean |
 
-long: integer data in HDFS files, such as 123456789. double: floating-point data in HDFS files, such as 3.1415. bool: Boolean data in HDFS files, such as true and false, which is not casesensitive. date: time type data in HDFS files, such as 2014-12-31 00:00:00. The TIMESTAMP data type supported by Hive can be accurate to the nanosecond level. Therefore, the data stored in TIMESTAMP in TextFile and ORCFile is similar to `2015-08-21` `22:40:47.397898389` . If you set the conversion type to Data Integration DATE, the nanosecond component is lost after the conversion. Therefore, if you need to keep the data of the nanosecond part, configure the conversion type to a Data Integration string type.
+> **Note:** long: integer data in HDFS files, such as 123456789.
+> double: floating-point data in HDFS files, such as 3.1415.
+> bool: Boolean data in HDFS files, such as true and false, which is not case- sensitive.
+> date: time type data in HDFS files, such as 2014-12-31 00:00:00.
+
+The TIMESTAMP data type supported by Hive can be accurate to the nanosecond level. Therefore, the data stored in TIMESTAMP in TextFile and ORCFile is similar to `2015-08-21` `22:40:47.397898389` . If you set the conversion type to Data Integration DATE, the nanosecond component is lost after the conversion. Therefore, if you need to keep the data of the nanosecond part, configure the conversion type to a Data Integration string type.
 
 **Reader script demo**
 
@@ -12905,7 +13017,10 @@ enabled. The mbps parameter takes effect only when the throttle parameter is set
                 "to": "Writer"
 ```
 
-`}` `]` `}` `}` The following example shows the HDFS Reader configuration with the parquetSchema parameter. The **fileType** parameter must be set to **parquet**. If you want HDFS Reader to read specific columns from a Parquet file, you must specify the complete schema in the parquetSchema parameter and specify the columns that you want to read by using the index field in the column parameter.
+`}` `]` `}` `}` The following example shows the HDFS Reader configuration with the parquetSchema parameter.
+
+> **Note:** The **fileType** parameter must be set to **parquet**.
+> If you want HDFS Reader to read specific columns from a Parquet file, you must specify the complete schema in the parquetSchema parameter and specify the columns that you want to read by using the index field in the column parameter.
 
 ```json
 "reader": {
@@ -13172,9 +13287,7 @@ Currently, you cannot set the timeout parameter. The built-in request timeout pe
 
 **Supported field types**
 
-**Important**
-
-When data is synchronized to a target, only a single-layer table structure is supported. Nested field structures are not supported. For example, the API returns the structure {data: {user: { id: 1, name:'lily'},value: 123 }}, which is synchronized to the target. The fields can only be processed as user_id, user_name, and value in parallel.
+> **Important:** When data is synchronized to a target, only a single-layer table structure is supported. Nested field structures are not supported. For example, the API returns the structure {data: {user: { id: 1, name:'lily'},value: 123 }}, which is synchronized to the target. The fields can only be processed as user_id, user_name, and value in parallel.
 
 | Category | RestAPI data type |
 |---|---|
@@ -13366,7 +13479,8 @@ To extract one data record from the JSON object and transfer the data record to 
 
 **Parameters in code for Doris Reader**
 
-You need to configure the parameters that are described in the following table when you configure a batch synchronization task for a RestAPI data source. Scheduling parameters are not supported for a batch synchronization task that uses RestAPI Reader.
+> **Note:** You need to configure the parameters that are described in the following table when you configure a batch synchronization task for a RestAPI data source.
+> Scheduling parameters are not supported for a batch synchronization task that uses RestAPI Reader.
 
 | Metric | Describe | Required | Defau lt value |
 |---|---|---|---|
@@ -13604,7 +13718,11 @@ MongoDB Reader reads data from MongoDB data sources. This topic describes the pa
 
 **Limits**
 
-MongoDB primary /secondary clusters are not supported. If the concurrency is greater than 1, the data types of all `_id` fields in the data synchronization task must be the same. For example, `_id` fields are of the string or ObjectId type. Otherwise, some data cannot be synchronized. If the concurrency is greater than 1, task splitting uses `_id` fields to split tasks. Therefore, in this scenario, `_id` fields do not support mixed types. If the `_id` has multiple field types, you can synchronize data in a single-concurrency mode and do not configure **splitFactor** or set **splitFactor** to 1. If ApsaraDB for MongoDB cannot obtain the field structure, ApsaraDB for MongoDB generates a field mapping by default based on the following six fields: `col1` , `col2` , `col3` , `col4` , `col5` , and `col6` . By default, the `splitVector` command is preferentially used for task sharding run time
+MongoDB primary /secondary clusters are not supported. If the concurrency is greater than 1, the data types of all `_id` fields in the data synchronization task must be the same. For example, `_id` fields are of the string or ObjectId type. Otherwise, some data cannot be synchronized.
+
+> **Note:** If the concurrency is greater than 1, task splitting uses `_id` fields to split tasks. Therefore, in this scenario, `_id` fields do not support mixed types. If the `_id` has multiple field types, you can synchronize data in a single-concurrency mode and do not configure **splitFactor** or set **splitFactor** to 1.
+
+If ApsaraDB for MongoDB cannot obtain the field structure, ApsaraDB for MongoDB generates a field mapping by default based on the following six fields: `col1` , `col2` , `col3` , `col4` , `col5` , and `col6` . By default, the `splitVector` command is preferentially used for task sharding run time
 
 | goDB versions, | splitVector |   |
 |---|---|---|
@@ -13644,9 +13762,7 @@ For fields of complex data types, you can configure the type attribute to specif
 | Document | Yes. | The embedded document data type. If the type attribute is not configured, fields of this data type are converted into JSON strings. If the type attribute is configured as DOCUMENT , fields are of an embedded data type. In this case, MongoDB Reader reads data from the fields based on the paths of the fields. For more information, see the Example for using the DOCUMENT data type to recursively parse nested fields section in this topic. |
 | Array | Yes. | The ARRAY data type. If the type attribute is configured as array.json or arrays , fields of this data type are converted into JSON strings. If the type attribute is configured as array or document.array , fields are concatenated as strings by using a delimiter. The delimiter is specified by the splitter attribute in the configuration of the column parameter, and commas (,) are used as the delimiter by default. |
 
-**Important**
-
-Data Integration does not support arrays. MongoDB supports arrays, and arrays support the indexing feature. You can configure parameters to convert strings into MongoDB arrays. Then, MongoDB Writer uses parallel threads to write the arrays to a MongoDB database.
+> **Important:** Data Integration does not support arrays. MongoDB supports arrays, and arrays support the indexing feature. You can configure parameters to convert strings into MongoDB arrays. Then, MongoDB Writer uses parallel threads to write the arrays to a MongoDB database.
 
 **Supported special data type: COMBINE**
 
@@ -13728,7 +13844,8 @@ In the configuration file, specify the fields that require one-to-one correspond
 |---|---|---|
 | a | b | {x 5} _ |
 
-When you combine multiple fields in a MongoDB document and set the data type of each obtained JSON string to COMBINE, the result that is exported to MaxCompute contains only fields specific to the document. Common fields are automatically deleted. In the preceding example, a and b are common fields in these three documents. After fields in the document file `doc1: a b x_1 x_2` are combined and the data type of the obtained JSON strings is set to COMBINE, the result is {a,b,x_1,x_2}. When the result is exported to MaxCompute, common fields a and b are deleted, and the result is {x_1,x_2}.
+> **Note:** When you combine multiple fields in a MongoDB document and set the data type of each obtained JSON string to COMBINE, the result that is exported to MaxCompute contains only fields specific to the document. Common fields are automatically deleted.
+> In the preceding example, a and b are common fields in these three documents. After fields in the document file `doc1: a b x_1 x_2` are combined and the data type of the obtained JSON strings is set to COMBINE, the result is {a,b,x_1,x_2}. When the result is exported to MaxCompute, common fields a and b are deleted, and the result is {x_1,x_2}.
 
 **Example for using the DOCUMENT data type to recursively**
 
@@ -13765,9 +13882,10 @@ After you configure the preceding fields, the value of the nested field a.b.c ca
 
 The following code provides an example on how to configure a synchronization task to read data from a MongoDB database. For information about the parameters, see the parameter description.
 
-**Important**
+> **Important:** You must delete the comments from the following sample code before you run the code.
+> MongoDB Reader cannot read some elements in **arrays**.
 
-You must delete the comments from the following sample code before you run the code. MongoDB Reader cannot read some elements in **arrays**. `{`
+`{`
 
 ```json
     "type":"job",
@@ -14125,9 +14243,7 @@ ShenTong Reader supports most ShenTong data types. However, some types are not s
 | Bytes | BINARY,VARBINARY,BLOB |
 |---|---|
 
-**Important**
-
-Types not listed in the table are not supported.
+> **Important:** Types not listed in the table are not supported.
 
 **Reader script demo**
 
@@ -14795,7 +14911,7 @@ AnalyticDB for PostgreSQL Writer support most AnalyticDB for PostgreSQL types, b
 | BOOLEAN | BOOL |
 | BYTES | BYTEA |
 
-The syntax such as `a_inet::varchar` is required when AnalyticDB for PostgreSQL Writer converts data to the MONEY, INET, or BIT data type.
+> **Note:** The syntax such as `a_inet::varchar` is required when AnalyticDB for PostgreSQL Writer converts data to the MONEY, INET, or BIT data type.
 
 **Code for Milvus Writer**
 
@@ -15001,7 +15117,9 @@ ApsaraDB for OceanBase Writer plug-ins write data to ApsaraDB for OceanBase data
 
 **Limits**
 
-The entire task requires at least `insert into...` permissions. Whether additional permissions are required depends on the statements that you specify in the `preSql` and `postSql` when you configure the task. We recommend that you use the **batch** method to write data at a time. When the number of rows reaches a predetermined threshold, write requests are initiated. The ApsaraDB For OceanBase supports Oracle and MySQL tenant modes. When you configure **preSql** and **postSql**, you must comply with the SQL syntax constraints of the tenant mode. Otherwise, SQL statements may fail to be executed.
+> **Note:** The entire task requires at least `insert into...` permissions. Whether additional permissions are required depends on the statements that you specify in the `preSql` and `postSql` when you configure the task.
+
+We recommend that you use the **batch** method to write data at a time. When the number of rows reaches a predetermined threshold, write requests are initiated. The ApsaraDB For OceanBase supports Oracle and MySQL tenant modes. When you configure **preSql** and **postSql**, you must comply with the SQL syntax constraints of the tenant mode. Otherwise, SQL statements may fail to be executed.
 
 **Demo of the Writer script**
 
@@ -15147,7 +15265,9 @@ The DRDS Writer plug-in is used to write data to a DRDS data source. This topic 
 
 **Limits**
 
-Currently, the DRDS plug-in is only suitable for MySQL engine scenarios. DRDS is a set of distributed MySQL databases, and most communication protocols follow MySQL usage scenarios. At the underlying implementation level, DRDS Writer connects to the proxy of a remote DRDS database through JDBC and executes the corresponding `replace into` statement to write data to DRDS. The SQL statement that is executed is a `replace into` . To avoid repeated data writes, your table must have a primary key or a unique index. DRDS Writer obtains the protocol data generated by Reader through the data synchronization framework, and writes the data to DRDS by using the `replace into` (if no primary key or unique index conflict occurs, the behavior is the same as that of `insert` `into` . If a conflict occurs, all fields of the original row are replaced with new rows) statement. DRDS Writer sends data to the DRDS proxy when the amount of buffered data reaches a specific threshold. The proxy determines whether to write the data to one or more tables and how to route the data when the data is written to multiple tables. A synchronization task that uses DRDS Writer must have at least the permissions to execute the `REPLACE INTO` statement. Whether other permissions are required depends on the statements that you specify in preSql and postSql when you configure the task.
+Currently, the DRDS plug-in is only suitable for MySQL engine scenarios. DRDS is a set of distributed MySQL databases, and most communication protocols follow MySQL usage scenarios. At the underlying implementation level, DRDS Writer connects to the proxy of a remote DRDS database through JDBC and executes the corresponding `replace into` statement to write data to DRDS. The SQL statement that is executed is a `replace into` . To avoid repeated data writes, your table must have a primary key or a unique index. DRDS Writer obtains the protocol data generated by Reader through the data synchronization framework, and writes the data to DRDS by using the `replace into` (if no primary key or unique index conflict occurs, the behavior is the same as that of `insert` `into` . If a conflict occurs, all fields of the original row are replaced with new rows) statement. DRDS Writer sends data to the DRDS proxy when the amount of buffered data reaches a specific threshold. The proxy determines whether to write the data to one or more tables and how to route the data when the data is written to multiple tables.
+
+> **Note:** A synchronization task that uses DRDS Writer must have at least the permissions to execute the `REPLACE INTO` statement. Whether other permissions are required depends on the statements that you specify in preSql and postSql when you configure the task.
 
 **Code for Milvus Writer**
 
@@ -15550,7 +15670,12 @@ begin; drop table if exists mysql_to_holo_test; create table mysql_to_holo_test(
 commit;
 ```
 
-Write data to a partitioned table Hologres supports only list partitioning. You can specify only one column as the partition key column. The data type of the partition key column must be INT4 or TEXT. Make sure that this parameter matches the partition configuration of the table. Synchronize data from MySQL to a child table in Hologres partition table. `{`
+Write data to a partitioned table
+
+> **Note:** Hologres supports only list partitioning. You can specify only one column as the partition key column. The data type of the partition key column must be INT4 or TEXT.
+> Make sure that this parameter matches the partition configuration of the table.
+
+Synchronize data from MySQL to a child table in Hologres partition table. `{`
 
 ```json
   "type": "job",
@@ -15724,7 +15849,8 @@ HybridDB for MySQL Writer converts HybridDB for MySQL types as follows:
 | Boolean | BOOL |
 | Binary | TINYBLOB, MEDIUMBLOB, BLOB, LONGBLOB, and VARBINARY |
 
-Data types that are not listed in the preceding table are not supported. HybridDB for MySQL Reader processes TINYINT(1) as an integer data type.
+> **Note:** Data types that are not listed in the preceding table are not supported.
+> HybridDB for MySQL Reader processes TINYINT(1) as an integer data type.
 
 **Code for Milvus Writer**
 
@@ -16422,9 +16548,9 @@ indicates that throttling is disabled, and the value true indicates that throttl
 
 You can use HDFS Writer to write ORC or Parquet files to OSS. In addition to the existing parameters of OSS Writer, extended configuration parameters such as **Path** and **FileFormat** are added. The following example shows how to write an ORC or Parquet file to OSS:
 
-**Important**
+> **Important:** The following code is only for reference. You can modify the parameters based on your business requirements.
 
-The following code is only for reference. You can modify the parameters based on your business requirements. Write an ORC file to OSS If you want to write ORC files to OSS, you can use only the code editor. You must set the
+Write an ORC file to OSS If you want to write ORC files to OSS, you can use only the code editor. You must set the
 **fileFormat** parameter to `orc` , the **path** parameter to the path where the file to be
 written is stored, and the **column** parameter to a value in the `{"name":"your column` `name","type": "your column type"}` format. The following table lists the data types of data in ORC files that OSS Writer can write to OSS.
 
@@ -17183,7 +17309,8 @@ Tablestore Writer supports all Tablestore data types. The following table lists 
 | Boolean value | BOOLEAN |
 | Binary | BINARY |
 
-Tablestore does not support the DATE data type. The application layer uses the LONG-type UNIX timestamp to indicate time. To write data of the INTEGER type, set the data type to INT in the code editor. During data synchronization, Tablestore Writer converts the data from the INT data type to the INTEGER data type. If you set the data type to INTEGER, an error is reported in the log, and the synchronization task fails.
+> **Note:** Tablestore does not support the DATE data type. The application layer uses the LONG-type UNIX timestamp to indicate time.
+> To write data of the INTEGER type, set the data type to INT in the code editor. During data synchronization, Tablestore Writer converts the data from the INT data type to the INTEGER data type. If you set the data type to INTEGER, an error is reported in the log, and the synchronization task fails.
 
 **Code for Milvus Writer**
 
@@ -17562,7 +17689,11 @@ The DB2 Writer plug-in enables you to read data from a DB2 data source. This top
 
 **Limits**
 
-Db2 Writer obtains the protocol data generated by the reader through the data synchronization framework, and writes the data to Db2 by using the `insert into` statement. If the primary key or unique index conflict occurs, the conflicting rows cannot be written to Db2. In addition, a `PreparedStatement + Batch` is used for performance considerations, and a `rewriteBatchedStatements=true` is set to buffer data into the thread context buffer, and a write request is initiated only when the buffer accumulates to a predetermined threshold. The entire task must have at least `insert into` permissions. Whether other permissions are required depends on the statements that you specify in the **preSql** and **postSql** when you configure the task. The DB2 AES encryption algorithm is not currently supported.
+Db2 Writer obtains the protocol data generated by the reader through the data synchronization framework, and writes the data to Db2 by using the `insert into` statement. If the primary key or unique index conflict occurs, the conflicting rows cannot be written to Db2. In addition, a `PreparedStatement + Batch` is used for performance considerations, and a `rewriteBatchedStatements=true` is set to buffer data into the thread context buffer, and a write request is initiated only when the buffer accumulates to a predetermined threshold.
+
+> **Note:** The entire task must have at least `insert into` permissions. Whether other permissions are required depends on the statements that you specify in the **preSql** and **postSql** when you configure the task.
+
+The DB2 AES encryption algorithm is not currently supported.
 
 **Supported field types**
 
@@ -18150,7 +18281,8 @@ Most PostgreSQL data types are supported. If you write data to an **offline data
 | Boolean | BOOL |
 | Binary Class | BYTEA |
 
-Except for the field types listed above, other types are not supported. In PostgreSQL Reader, you must use `a_inet::varchar` similar syntax to convert MONEY, INET, and BIT.
+> **Note:** Except for the field types listed above, other types are not supported.
+> In PostgreSQL Reader, you must use `a_inet::varchar` similar syntax to convert MONEY, INET, and BIT.
 
 **Demo of the Writer script**
 
@@ -18986,8 +19118,10 @@ The Gbase8a Writer plug-in reads data from a Gbase8a data source. This topic des
 
 **Limits**
 
-`insert into...` : When a primary key or unique index conflict occurs, the conflicting rows cannot be written. The database where the destination table resides must be the primary database before data can be written. The entire task requires at least `insert into...` permissions. Whether you need other permissions depends on the statements that you specify in the **preSql** and
-**postSql** when you configure the task.
+`insert into...` : When a primary key or unique index conflict occurs, the conflicting rows cannot be written. The database where the destination table resides must be the primary database before data can be written.
+
+> **Note:** The entire task requires at least `insert into...` permissions. Whether you need other permissions depends on the statements that you specify in the **preSql** and **postSql** when you configure the task.
+
 You cannot configure **writeMode** parameters for Gbase8a Writer.
 
 **Code for Milvus Writer**
@@ -19131,7 +19265,10 @@ HBase Writer allows you to read data from an HBase data source. This topic descr
 
 **Supported field types**
 
-The following table lists the HBase data types that can be read by HBase Writer. The column type must be the same as that of the column in the HBase table. Except for the field types listed in the following table, other data types are not supported.
+The following table lists the HBase data types that can be read by HBase Writer.
+
+> **Note:** The column type must be the same as that of the column in the HBase table.
+> Except for the field types listed in the following table, other data types are not supported.
 
 | Type Classification | Database data type |
 |---|---|
@@ -19399,7 +19536,9 @@ Hive Writer writes data from Hive to HDFS. This topic describes how Hive Writer 
 
 **Limits**
 
-When you use Data Integration to synchronize data to a Hive cluster, temporary files are generated on the server and are automatically deleted when the synchronization task is complete. You need to pay attention to the limit on the number of files in the HDFS directory on the server to avoid unavailability of the HDFS file system if the number of unexpected files reaches the upper limit. DataWorks cannot ensure that the number of files in the HDFS directory is within the allowed range. The server can modify the **dfs.namenode.fs-limits.max-directory-items** parameter to define the maximum number of directories or files in a single directory excluding recursion. The default value is 1048576 and the value range is 1 to 6400000. You can increase the parameter **dfs.namenode.fs-limits.max-directory-items** of HDFS or clean up unnecessary files to avoid this problem.
+When you use Data Integration to synchronize data to a Hive cluster, temporary files are generated on the server and are automatically deleted when the synchronization task is complete. You need to pay attention to the limit on the number of files in the HDFS directory on the server to avoid unavailability of the HDFS file system if the number of unexpected files reaches the upper limit. DataWorks cannot ensure that the number of files in the HDFS directory is within the allowed range.
+
+> **Note:** The server can modify the **dfs.namenode.fs-limits.max-directory-items** parameter to define the maximum number of directories or files in a single directory excluding recursion. The default value is 1048576 and the value range is 1 to 6400000. You can increase the parameter **dfs.namenode.fs-limits.max-directory-items** of HDFS or clean up unnecessary files to avoid this problem.
 
 **Supported field types**
 
@@ -19541,9 +19680,8 @@ Kafka Writer reads data from Kafka data sources. This topic describes the parame
 
 Kafka stores data in unstructured storage. Generally, the data modules recorded in Kafka include key, value, offset, timestamp, headers, and partition. When you write data to Kafka, DataWorks processes the data based on the following policy: When DataWorks writes data to Kafka, you can write data in the JSON or text format. Different data synchronization solutions have different data processing policies for writing data to Kafka data sources.
 
-**Important**
-
-When you write data in the text format, field names are not written. Instead, delimiters are used to separate field values. When data is synchronously written to Kafka in real time, the written data is in the built-in JSON format. The written data includes all the data that contains the data of database change messages, business time, and DDL information.
+> **Important:** When you write data in the text format, field names are not written. Instead, delimiters are used to separate field values.
+> When data is synchronously written to Kafka in real time, the written data is in the built-in JSON format. The written data includes all the data that contains the data of database change messages, business time, and DDL information.
 
 | Synchroniza tion type | Format of data that is written to the value data module | Source field type | Data type after processing |
 |---|---|---|---|
@@ -19958,7 +20096,7 @@ indicates that throttling is disabled, and the value true indicates that throttl
 
 **Parameters in code for Milvus Writer**
 
-LogHub Writer obtains data from a reader and converts the data types supported by Data Integration into STRING. If the number of data records reaches the value specified for the batchSize parameter, LogHub Writer sends the data records to Simple Log Service at a time by using Simple Log Service SDK for Java.
+> **Note:** LogHub Writer obtains data from a reader and converts the data types supported by Data Integration into STRING. If the number of data records reaches the value specified for the batchSize parameter, LogHub Writer sends the data records to Simple Log Service at a time by using Simple Log Service SDK for Java.
 
 | Metric | Describe | Requi red | Default value |
 |---|---|---|---|
@@ -20328,7 +20466,9 @@ When you use HDFS Writer, take note of the following items: Currently, HDFS Writ
 
 **Supported data types**
 
-HDFS Writer can write text, ORC, or Parquet files to a specified directory in HDFS. You can associate the columns in the files with the columns in Hive tables. HDFS Writer supports most Hive data types. Make sure that the data types of your system are supported. The following table lists the data type mappings based on which HDFS Writer converts data types. The data types of the specified columns in the file must be the same as those of the columns in the Hive table.
+HDFS Writer can write text, ORC, or Parquet files to a specified directory in HDFS. You can associate the columns in the files with the columns in Hive tables. HDFS Writer supports most Hive data types. Make sure that the data types of your system are supported. The following table lists the data type mappings based on which HDFS Writer converts data types.
+
+> **Note:** The data types of the specified columns in the file must be the same as those of the columns in the Hive table.
 
 | Category | Hive data type |
 |---|---|
@@ -20503,9 +20643,7 @@ Currently, you cannot set the timeout parameter. The built-in request timeout pe
 
 **Supported field types**
 
-**Important**
-
-When data is synchronized to a target, only a single-layer table structure is supported. Nested field structures are not supported. For example, the API returns the structure {data: {user: { id: 1, name:'lily'},value: 123 }}, which is synchronized to the target. The fields can only be processed as user_id, user_name, and value in parallel.
+> **Important:** When data is synchronized to a target, only a single-layer table structure is supported. Nested field structures are not supported. For example, the API returns the structure {data: {user: { id: 1, name:'lily'},value: 123 }}, which is synchronized to the target. The fields can only be processed as user_id, user_name, and value in parallel.
 
 | Category | RestAPI data type |
 |---|---|
@@ -21026,7 +21164,11 @@ MongoDB Writer allows you to read data from MongoDB data sources. This topic des
 
 **Limits**
 
-If the concurrency is greater than 1, the data types of all `_id` fields in the data synchronization task must be the same. For example, `_id` fields are of the string or ObjectId type. Otherwise, some data cannot be synchronized. If the concurrency is greater than 1, task splitting uses `_id` fields to split tasks. Therefore, in this scenario, `_id` fields do not support mixed types. If the `_id` has multiple field types, you can synchronize data in a single-concurrency mode and do not configure **splitFactor** or set **splitFactor** to 1. Data Integration itself does not support the array type, but MongoDB supports the array type, and the array type has a powerful index function. You can use the special configuration of the parameter to convert a string to an array in MongoDB. After the data type is converted, data can be written to MongoDB in parallel. By default, the `splitVector` command is preferentially used for task sharding run time
+If the concurrency is greater than 1, the data types of all `_id` fields in the data synchronization task must be the same. For example, `_id` fields are of the string or ObjectId type. Otherwise, some data cannot be synchronized.
+
+> **Note:** If the concurrency is greater than 1, task splitting uses `_id` fields to split tasks. Therefore, in this scenario, `_id` fields do not support mixed types. If the `_id` has multiple field types, you can synchronize data in a single-concurrency mode and do not configure **splitFactor** or set **splitFactor** to 1.
+
+Data Integration itself does not support the array type, but MongoDB supports the array type, and the array type has a powerful index function. You can use the special configuration of the parameter to convert a string to an array in MongoDB. After the data type is converted, data can be written to MongoDB in parallel. By default, the `splitVector` command is preferentially used for task sharding run time
 
 |   | splitVector |
 |---|---|
@@ -21231,7 +21373,9 @@ ${last_day} is a scheduling parameter of DataWorks. You can configure this param
 query=(BasicDBObject) com.mongodb.util.JSON.parse(json); col.deleteMany(query);
 ```
 
-If you want to delete data with conditions, we recommend that you use the JSON configuration. item: You can configure the column name (name), condition (condition), and column value (value) for data filtering in item. `"preSql":{"type":"remove","item":`
+> **Note:** If you want to delete data with conditions, we recommend that you use the JSON configuration.
+
+item: You can configure the column name (name), condition (condition), and column value (value) for data filtering in item. `"preSql":{"type":"remove","item":`
 
 ```
 [{"name":"pv","value":"100","condition":"$gt"},{"name":"pid","value":"10"}]} , for
@@ -21247,9 +21391,7 @@ Redis Writer allows you to read data from a Redis data source. This topic descri
 
 When you use Redis Writer to write data to an ApsaraDB for Redis instance, if the value type is List, the synchronization result of the reruning synchronization task is not idempotent. Therefore, if the value type is List , you must manually clear the corresponding data on the Redis database when you re-run the synchronization task.
 
-**Important**
-
-Redis does not support Bloom filters **(**Bloom filters**)**. If you need to process duplicate data, you can use an alternative solution: add a node (such as Shell, Python, and PyOPDS) before or after the sync node by using a workflow for processing.
+> **Important:** Redis does not support Bloom filters **(**Bloom filters**)**. If you need to process duplicate data, you can use an alternative solution: add a node (such as Shell, Python, and PyOPDS) before or after the sync node by using a workflow for processing.
 
 **Supported field types**
 
@@ -21982,7 +22124,12 @@ By default, bandwidth throttling is disabled. On a synchronization node, data is
         "mbps": 1, // The synchronization speed.
 ```
 
-`}` `}` When the **throttle** parameter is set to false, throttling is disabled, and you do not need to configure the mbps parameter. The bandwidth value is a Data Integration metric and does not represent the actual elastic network interface (ENI) traffic. In most cases, the ENI traffic is one to two times the channel traffic. The actual ENI traffic varies based on the serialization of the data storage system. A semi-structured file does not have shard keys. If multiple files exist, you can configure the maximum transmission rate for a task to increase the synchronization speed. However, the maximum transmission rate is limited by the number of files. Assume that the maximum job speed limit is set to n Mbit/s for n files. If you set the limit to n+1 Mbit/s, the synchronization speed remains at n Mbit/s. If you set the limit to n-1 Mbit/s, the synchronization is performed at n-1 Mbit/s. A table can be partitioned based on the preset maximum job speed only when a maximum job speed and a shard key are configured for a relational database. Relational databases support only numeric shard keys, while Oracle databases support both numeric and string shard keys.
+`}` `}`
+
+> **Note:** When the **throttle** parameter is set to false, throttling is disabled, and you do not need to configure the mbps parameter.
+> The bandwidth value is a Data Integration metric and does not represent the actual elastic network interface (ENI) traffic. In most cases, the ENI traffic is one to two times the channel traffic. The actual ENI traffic varies based on the serialization of the data storage system.
+> A semi-structured file does not have shard keys. If multiple files exist, you can configure the maximum transmission rate for a task to increase the synchronization speed. However, the maximum transmission rate is limited by the number of files. Assume that the maximum job speed limit is set to n Mbit/s for n files. If you set the limit to n+1 Mbit/s, the synchronization speed remains at n Mbit/s. If you set the limit to n-1 Mbit/s, the synchronization is performed at n-1 Mbit/s.
+> A table can be partitioned based on the preset maximum job speed only when a maximum job speed and a shard key are configured for a relational database. Relational databases support only numeric shard keys, while Oracle databases support both numeric and string shard keys.
 
 **Scenarios of slow data synchronization**
 
@@ -22067,7 +22214,10 @@ ii. In the **Create Node** dialog box, configure the parameters. The following t
 
 You can use only exclusive resource groups for Data Integration to run real-time synchronization tasks. You can perform the following operations to configure a resource group for a real-time synchronization task: Double-click the name of the created task. In the right-side navigation pane of the configuration tab of the task, click the **Basic**
 **Configurations** tab. On the Basic Configuration tab, select the resource group for Data
-Integration that is connected to the data source from the **Resource Group** drop-down list. If you have created a resource group but the resource group is not displayed, check whether the resource group is bound to a workspace. We recommend that you run a real-time synchronization task and a batch synchronization task on different resource groups. If you run the tasks on the same resource group, the two tasks compete for resources and affect each other. For example, CPU resources, memory resources, and networks used by the tasks may affect each other. In this case, the batch synchronization task may slow down, or the real-time synchronization task may be delayed. Even worse, out of memory (OOM) errors may occur due to insufficient resources.
+Integration that is connected to the data source from the **Resource Group** drop-down list.
+
+> **Note:** If you have created a resource group but the resource group is not displayed, check whether the resource group is bound to a workspace.
+> We recommend that you run a real-time synchronization task and a batch synchronization task on different resource groups. If you run the tasks on the same resource group, the two tasks compete for resources and affect each other. For example, CPU resources, memory resources, and networks used by the tasks may affect each other. In this case, the batch synchronization task may slow down, or the real-time synchronization task may be delayed. Even worse, out of memory (OOM) errors may occur due to insufficient resources.
 
 **Step 3: Configure the real-time synchronization task**
 
@@ -22101,7 +22251,9 @@ icon in the top toolbar to save the node.
 icon in the top toolbar to commit the node.
 3. In the Submit dialog box, enter a description in the **Change description** field.
 4. Click **Confirm**.
-If you use a workspace in standard mode, you must deploy the node in the production environment after you commit the node. To deploy the real-time synchronization node, click **Publish** in the top navigation bar. You cannot run a real-time synchronization node on the node configuration tab. Instead, you must run a real-time synchronization node in the production environment after you save and commit the node.
+If you use a workspace in standard mode, you must deploy the node in the production environment after you commit the node. To deploy the real-time synchronization node, click **Publish** in the top navigation bar.
+
+> **Note:** You cannot run a real-time synchronization node on the node configuration tab. Instead, you must run a real-time synchronization node in the production environment after you save and commit the node.
 
 **Start tasks and O&M**
 
@@ -22823,7 +22975,10 @@ In this step, click **Configure** next to **Partition Initialization Settings** 
 1. Configure the synchronization mode for the synchronization node.
 By default, if you select **Full initialization** and **Incremental synchronization** for the
 **Synchronization Mode** parameter, One-time Synchronization is selected for the Full
-Synchronization parameter and Periodical Synchronization is selected for the Method Of Incremental Synchronization parameter in this section. You cannot change the settings. If you select **Full initialization** for the **Synchronization Mode** parameter, you can select One-time Synchronization or Periodical Synchronization for the Full Synchronization parameter in this section. If you select **Incremental synchronization** for the **Synchronization Mode** parameter, you can select One-time Synchronization or Periodical Synchronization for the Method Of Incremental Synchronization parameter in this section. In this example, the synchronization mode of one-time synchronization of full data and periodic synchronization of incremental data is used.
+Synchronization parameter and Periodical Synchronization is selected for the Method Of Incremental Synchronization parameter in this section. You cannot change the settings. If you select **Full initialization** for the **Synchronization Mode** parameter, you can select One-time Synchronization or Periodical Synchronization for the Full Synchronization parameter in this section. If you select **Incremental synchronization** for the **Synchronization Mode** parameter, you can select One-time Synchronization or Periodical Synchronization for the Method Of Incremental Synchronization parameter in this section.
+
+> **Note:** In this example, the synchronization mode of one-time synchronization of full data and periodic synchronization of incremental data is used.
+
 2. Configure the parameters for periodic scheduling for the synchronization node.
 If you want the synchronization node to be periodically scheduled, you can click **Configure**
 **Scheduling Parameters for Periodical Scheduling** to configure the parameters for
@@ -22856,20 +23011,25 @@ to the fields: Assign values to the fields that are added to a single destinatio
 **Configure** in the **Value assignment** column. In the Additional Field dialog box, assign
 values to the fields. Assign values to the fields that are added to multiple destination tables at a time: Select the destination tables in which you want to assign values to newly added fields, click
 **Batch Modify** in the lower part of the page, and then click **Value assignment** to assign
-values to the same fields in the selected destination tables at a time. You can click the icon on the right to switch the value assignment method and assign constants and variables to the fields that are added to a destination table.
+values to the same fields in the selected destination tables at a time.
+
+> **Note:** You can click the icon on the right to switch the value assignment method and assign constants and variables to the fields that are added to a destination table.
+
 3. . Modify the settings of advanced parameters**
 If you want to make fine-grained custom configurations for your synchronization node, you can click **Configure** in the **Configure Advanced Parameters** column to modify the configurations of advanced parameters.
 
-**Important**
+> **Important:** Before you modify the configurations of advanced parameters, make sure that you understand the meanings of the parameters to prevent unexpected errors or data quality issues.
 
-Before you modify the configurations of advanced parameters, make sure that you understand the meanings of the parameters to prevent unexpected errors or data quality issues.
 4. . Configure table sharding**
 You can select a field in the source table from the drop-down list for table sharding or select
 **No Split**.
 
 **Step 7: Configure advanced parameters**
 
-You can change the values of specific parameters configured for the synchronization node based on your business requirements. For example, you can specify an appropriate value for the Maximum read connections parameter to prevent the current synchronization node from imposing excessive pressure on the source database and data production from being affected. To prevent unexpected errors or data quality issues, we recommend that you understand the meanings of the parameters before you change the values of the parameters.
+You can change the values of specific parameters configured for the synchronization node based on your business requirements. For example, you can specify an appropriate value for the Maximum read connections parameter to prevent the current synchronization node from imposing excessive pressure on the source database and data production from being affected.
+
+> **Note:** To prevent unexpected errors or data quality issues, we recommend that you understand the meanings of the parameters before you change the values of the parameters.
+
 1. In the upper-right corner of the configuration page, click **Configure Advanced**
 **Parameters**.
 2. In the **Configure Advanced Parameters** panel, change the values of the desired
@@ -23019,14 +23179,21 @@ synchronizes the fields to the mapped destination Elasticsearch indexes. However
 **strict**: If the system detects that the source tables contain new fields, the system
 does not synchronize the fields to the mapped destination Elasticsearch indexes and reports an error. You can view the details of the error in the node logs. For more information about dynamic mappings, see the description of the dynamic parameter for open source Elasticsearch.
 **Shards** and **Replica Shards**: the number of primary shards for each destination
-Elasticsearch index and the number of replica shards for each primary shard. The shards are distributed on different nodes in an Elasticsearch cluster. This way, distributed searches can be performed, and the query efficiency of Elasticsearch is improved. The values of the **Shards** and **Replica Shards** parameters cannot be changed after you configure the parameters and run the real-time synchronization solution. The default values of the Shards and Replica Shards parameters are 1. Add fields to multiple destination tables at a time: Select the destination tables to which you want to add fields at a time, click **Batch Modify** in the lower part of the page, and then click **Destination Index Structure- Batch Add Fields**.
+Elasticsearch index and the number of replica shards for each primary shard. The shards are distributed on different nodes in an Elasticsearch cluster. This way, distributed searches can be performed, and the query efficiency of Elasticsearch is improved.
+
+> **Note:** The values of the **Shards** and **Replica Shards** parameters cannot be changed after you configure the parameters and run the real-time synchronization solution. The default values of the Shards and Replica Shards parameters are 1.
+
+Add fields to multiple destination tables at a time: Select the destination tables to which you want to add fields at a time, click **Batch Modify** in the lower part of the page, and then click **Destination Index Structure- Batch Add Fields**.
 2. Assign values to the fields. You can perform one of the following operations to assign values
 to the fields: Assign values to the fields that are added to a single destination table: Find the destination table in which you want to assign values to newly added fields, and click
 **Configure** in the **Value Assignment for Destination Index Field** column. In the
 Additional Field dialog box, assign values to the fields. Assign values to the fields that are added to multiple destination indexes at a time: Select the destination indexes in which you want to assign values to newly added fields, click
 **Batch Modify** in the lower part of the page, and then click **Value Assignment for**
 **Destination Index Field** to assign values to the same fields in the selected destination
-indexes at a time. You can click the icon on the right to switch the value assignment method and assign constants and variables to the fields that are added to a destination table.
+indexes at a time.
+
+> **Note:** You can click the icon on the right to switch the value assignment method and assign constants and variables to the fields that are added to a destination table.
+
 3. . Configure DML rules**
 Data Integration provides default DML processing rules. You can also configure DML processing rules for destination tables based on your business requirements. Configure DML processing rules for a single destination table: Find the destination table for which you want to configure DML processing rules and click **Configure** in the **Configure**
 **DML Rule** column to configure DML processing rules for the table.
@@ -23035,9 +23202,7 @@ Configure DML processing rules for multiple destination tables at a time: Select
 4. . Configure advanced parameters**
 If you want to make fine-grained custom configurations for your synchronization task, you can click **Configure** in the **Custom Advanced Parameters** column to modify the configurations of advanced parameters.
 
-**Important**
-
-Before you modify the configurations of advanced parameters, make sure that you understand the meanings of the parameters to prevent unexpected errors or data quality issues.
+> **Important:** Before you modify the configurations of advanced parameters, make sure that you understand the meanings of the parameters to prevent unexpected errors or data quality issues.
 
 **Step 5: Configure alert rules**
 
@@ -23045,13 +23210,19 @@ To prevent the failure of the synchronization task from causing latency on busin
 1. In the upper-right corner of the page, click **Configure Alert Rule** to go to the **Configure**
 **Alert Rule** panel.
 2. In the Configure Alert Rule panel, click **Add Alert Rule**. In the Add Alert Rule dialog box,
-configure the parameters to configure an alert rule. The alert rules specified on this page apply to the real-time synchronization subtasks generated by this task.
+configure the parameters to configure an alert rule.
+
+> **Note:** The alert rules specified on this page apply to the real-time synchronization subtasks generated by this task.
+
 3. Manage alert rules.
 You can enable or disable alert rules that are created. You can also specify different alert recipients based on the severity levels of alerts.
 
 **Step 6: Configure advanced parameters**
 
-You can change the values of specific parameters configured for the synchronization task based on your business requirements. For example, you can specify an appropriate value for the Maximum read connections parameter to prevent the current synchronization task from imposing excessive pressure on the source database and data production from being affected. To prevent unexpected errors or data quality issues, we recommend that you understand the meanings of the parameters before you change the values of the parameters.
+You can change the values of specific parameters configured for the synchronization task based on your business requirements. For example, you can specify an appropriate value for the Maximum read connections parameter to prevent the current synchronization task from imposing excessive pressure on the source database and data production from being affected.
+
+> **Note:** To prevent unexpected errors or data quality issues, we recommend that you understand the meanings of the parameters before you change the values of the parameters.
+
 1. In the upper-right corner of the configuration page, click **Configure Advanced**
 **Parameters**.
 2. In the **Configure Advanced Parameters** panel, change the values of the desired
@@ -23184,7 +23355,9 @@ You can set the **Automatic Partitioning by Time** parameter to **Partitioned Ta
 **Non-partitioned Table**. If you set this parameter to Partition Table, you can specify the
 partition key column.
 3. Configure mappings between the source tables and destination tables.
-Click **Refresh Source table and MaxCompute table mapping** to map the source tables to destination MaxCompute tables based on the mapping rules that you configured in the Set Mapping Rules for Table/Database Names section. If no mapping rule is configured in the Set Mapping Rules for Table/Database Names section, data in the source tables is written to the MaxCompute tables that are named the same as the source tables. If no such MaxCompute tables exist in the destination, the system automatically creates the tables in the destination. You can specify whether to create a destination table or use an existing table. You can also add additional fields to a destination table. The system maps the source tables to destination tables based on the mapping rule that you configured in **Step 3**.
+Click **Refresh Source table and MaxCompute table mapping** to map the source tables to destination MaxCompute tables based on the mapping rules that you configured in the Set Mapping Rules for Table/Database Names section. If no mapping rule is configured in the Set Mapping Rules for Table/Database Names section, data in the source tables is written to the MaxCompute tables that are named the same as the source tables. If no such MaxCompute tables exist in the destination, the system automatically creates the tables in the destination. You can specify whether to create a destination table or use an existing table. You can also add additional fields to a destination table.
+
+> **Note:** The system maps the source tables to destination tables based on the mapping rule that you configured in **Step 3**.
 
 | Operation | Procedure |
 |---|---|
@@ -23203,7 +23376,9 @@ Click **Refresh Source table and MaxCompute table mapping** to map the source ta
 
 **Step 5: Configure rules for processing DML messages**
 
-DataWorks allows you to configure table-level DML processing rules for some synchronization nodes. You can configure processing rules for the messages that are generated for INSERT, UPDATE, and DELETE operations performed on a source table. Support for synchronizing data changes generated by DML operations varies based on the destination type. You can check whether a synchronization node supports the configuration of DML processing rules when you configure the synchronization node in the DataWorks console.
+DataWorks allows you to configure table-level DML processing rules for some synchronization nodes. You can configure processing rules for the messages that are generated for INSERT, UPDATE, and DELETE operations performed on a source table.
+
+> **Note:** Support for synchronizing data changes generated by DML operations varies based on the destination type. You can check whether a synchronization node supports the configuration of DML processing rules when you configure the synchronization node in the DataWorks console.
 
 **Step 6: Configure rules for processing DDL messages**
 
@@ -23211,7 +23386,9 @@ DDL operations may be performed on the source. You can click **Configure DDL Cap
 
 **Step 7: Configure resources**
 
-After you run the synchronization node created in this example, the synchronization node generates multiple batch synchronization child nodes used to synchronize full data and a real-time synchronization child node used to synchronize incremental data. Configure the parameters in the **Configure Resource** step. Configure a resource group for running real-time incremental synchronization nodes and batch full synchronization nodes, and a scheduling resource group for running batch full synchronization nodes. DataWorks uses resource groups for scheduling to dispatch the generated batch synchronization child nodes to resource groups for Data Integration and runs the child nodes on the resource groups for Data Integration. Therefore, a batch synchronization child node also consumes the resources of a resource group for scheduling.
+After you run the synchronization node created in this example, the synchronization node generates multiple batch synchronization child nodes used to synchronize full data and a real-time synchronization child node used to synchronize incremental data. Configure the parameters in the **Configure Resource** step. Configure a resource group for running real-time incremental synchronization nodes and batch full synchronization nodes, and a scheduling resource group for running batch full synchronization nodes.
+
+> **Note:** DataWorks uses resource groups for scheduling to dispatch the generated batch synchronization child nodes to resource groups for Data Integration and runs the child nodes on the resource groups for Data Integration. Therefore, a batch synchronization child node also consumes the resources of a resource group for scheduling.
 
 **Step 8: Run the synchronization node**
 
@@ -23330,7 +23507,11 @@ performs the same operations on the destination as the operations that are perfo
 **Ignore**: DML messages from the source are ignored and not sent to the destination. The
 system does not perform any operation on the destination.
 **Conditionally Normal Processing**: If you configure this type of processing rule, you can
-specify a filter condition. The system first filters data based on the filter expression. Data that meets the filter expression is normally processed. Data that does not meet the filter expression is ignored. If no processing rule is configured in this step, the Normal processing rule is used by default. Click **Next** to go to the **Set Processing Policy for DDL Messages** step.
+specify a filter condition. The system first filters data based on the filter expression. Data that meets the filter expression is normally processed. Data that does not meet the filter expression is ignored.
+
+> **Note:** If no processing rule is configured in this step, the Normal processing rule is used by default.
+
+Click **Next** to go to the **Set Processing Policy for DDL Messages** step.
 
 **Step 7: Configure DDL processing rules**
 
@@ -23342,7 +23523,8 @@ process DDL messages from the source based on your business requirements. Click 
 
 After you run the synchronization node created in this example, the synchronization node generates multiple batch synchronization child nodes used to synchronize full data and a real-time synchronization child nodes used to synchronize incremental data. You must configure the parameters in the **Configure Resource** step. You must configure the resource groups for Data Integration that you want to use to run the real-time synchronization node and batch synchronization nodes, and the scheduling resource groups that you want to use to run batch synchronization nodes. You can also click
 **Advanced Configuration** to configure parameters such as **Retry When Subquery Fails**.
-DataWorks uses scheduling resource groups to dispatch the generated batch synchronization nodes to resource groups for Data Integration and runs the nodes in the resource groups for Data Integration. Therefore, a batch synchronization node also occupies the resources of a scheduling resource group.
+
+> **Note:** DataWorks uses scheduling resource groups to dispatch the generated batch synchronization nodes to resource groups for Data Integration and runs the nodes in the resource groups for Data Integration. Therefore, a batch synchronization node also occupies the resources of a scheduling resource group.
 
 **Step 9: Run the synchronization node**
 
@@ -23382,16 +23564,14 @@ The following example describes the configuration process of migrating data from
 1. On the configuration tab of the real-time synchronization node, click **Basic Configurations**
 in the right-side navigation pane. In the Basic Configurations panel, select the resource group that you want to use from the **Resource Group** drop-down list.
 
-**Important**
+> **Important:** You must select a **resource group** before you commit the node. Otherwise, the system returns an error when you commit the node.
 
-You must select a **resource group** before you commit the node. Otherwise, the system returns an error when you commit the node.
 2. In the **Source** section, configure the **Type** and **Data source** parameters.
 3. In the **Select Source Table for Synchronization** section, select the tables from which
 you want to synchronize data in the **Source Table** list and click the icon to move the selected tables to the **Selected Tables** list. The Source Table list displays all the tables in the source. You can select all or some tables to synchronize them at a time.
 
-**Important**
+> **Important:** If a selected table does not have a primary key, data in the table cannot be synchronized in real time.
 
-If a selected table does not have a primary key, data in the table cannot be synchronized in real time.
 4. **Optional.** In the **Set Mapping Rules for Table/Database Names** section, click **Add**
 **rule**, select a rule type, and then configure a mapping rule of the selected type.
 Supported rule types include **Source Table Name And Destination Table Name**
@@ -23596,7 +23776,11 @@ When you use resource groups, you must pay attention to their connectivity and p
 
 ##### 5.6.3.2 Shared resource groups
 
-Data Integration of DataWorks provides shared resource groups for you to create and run synchronization nodes. Shared resource groups for Data Integration are created and maintained by Data Integration. Shared resource groups compose a public resource pool. Nodes that use resources in the public resource pool may not be run as scheduled due to insufficient resources. We recommend that you prepare sufficient resources to ensure the efficient running of synchronization nodes. You can run a maximum of 25 parallel nodes on a shared resource group for Data Integration when the shared resource group is not in use. You cannot change the memory size of a shared resource group. Instead, you can change the number of parallel nodes that can be run on the shared resource group. The following formula is used to calculate the memory size: Memory size = `Number`
+Data Integration of DataWorks provides shared resource groups for you to create and run synchronization nodes. Shared resource groups for Data Integration are created and maintained by Data Integration. Shared resource groups compose a public resource pool. Nodes that use resources in the public resource pool may not be run as scheduled due to insufficient resources. We recommend that you prepare sufficient resources to ensure the efficient running of synchronization nodes.
+
+> **Note:** You can run a maximum of 25 parallel nodes on a shared resource group for Data Integration when the shared resource group is not in use.
+> You cannot change the memory size of a shared resource group. Instead, you can change the number of parallel nodes that can be run on the shared resource group.
+> The following formula is used to calculate the memory size: Memory size = `Number`
 
 ```
 of parallel nodes × 512 MB .
@@ -23668,14 +23852,20 @@ The code search feature allows you to query nodes that you created in the direct
 **Procedure**
 
 1. Log in to the DataWorks console. Then, the **DataStudio** page appears.
-To access DataStudio from other modules of DataWorks, click the icon in the top navigation bar and choose **All Products > Data Development and O&M >**
-**DataStudio**.
+
+> **Note:** To access DataStudio from other modules of DataWorks, click the
+> icon in the top
+> navigation bar and choose **All Products > Data Development and O&M >** **DataStudio**.
+
 2. In the upper part of the Scheduled Workflow pane, click the
 icon. The Search Code tab appears on the right.
 3. Configure search conditions and view search results.
 i. Enter keywords and configure search conditions. a. Enter keywords in the search box, such as a code snippet or a table name. The more detailed the keywords, the more relevant the search results. b. Click **Show** next to the search box and configure parameters, such as **Node Type**,
 **Owner**, **Modification Time**, and **Position** to narrow down the query range.
-This helps you find a desired node more accurately and quickly. If you do not configure advanced search conditions, all nodes in the current workspace are searched by default. ii. After you configure the search conditions, the system automatically queries the nodes that contain the keyword. You can view all the nodes that contain the keyword and the code details. You can also perform the following operations to locate the nodes: Click the name of a node to view the details of the node on the configuration tab of the node. Click **Copy Code** to copy the current code snippet for further use.
+
+> **Note:** This helps you find a desired node more accurately and quickly. If you do not configure advanced search conditions, all nodes in the current workspace are searched by default.
+
+ii. After you configure the search conditions, the system automatically queries the nodes that contain the keyword. You can view all the nodes that contain the keyword and the code details. You can also perform the following operations to locate the nodes: Click the name of a node to view the details of the node on the configuration tab of the node. Click **Copy Code** to copy the current code snippet for further use.
 
 #### 6.2.3 Batch operations
 
@@ -23686,7 +23876,11 @@ DataWorks allows you to perform operations on multiple nodes, resources, or func
 1. Log in to the DataWorks console. Go to the **DataStudio** page. In the left-side navigation
 pane, click the icon in the top toolbar. The Batch Operation-Data Development tab appears on the right side.
 2. Modify multiple DataWorks objects at a time.
-i. On the **Batch Operation-Data Development** tab, you can perform operations on multiple nodes, resources, or functions at a time on the **Node**, **Resource**, or **Function** tab. ii. Optional. Configure filter conditions on the **Node**, **Resource**, or **Function** tab. iii. After the search results are displayed on the tab, select multiple nodes, resources, or functions that you want to modify. If no filter condition is specified, all nodes, resources, or functions are displayed. iv. After you select the desired nodes, resources, or functions, click a button in the lower part to perform the operation on the selected objects.
+i. On the **Batch Operation-Data Development** tab, you can perform operations on multiple nodes, resources, or functions at a time on the **Node**, **Resource**, or **Function** tab. ii. Optional. Configure filter conditions on the **Node**, **Resource**, or **Function** tab. iii. After the search results are displayed on the tab, select multiple nodes, resources, or functions that you want to modify.
+
+> **Note:** If no filter condition is specified, all nodes, resources, or functions are displayed.
+
+iv. After you select the desired nodes, resources, or functions, click a button in the lower part to perform the operation on the selected objects.
 
 #### 6.2.4 Import data
 
@@ -23709,7 +23903,11 @@ You can import data on the following pages: Click the icon in the top toolbar of
 You can import only the data of your local files into a MaxCompute table.
 1. Use one of the preceding methods to open the **Data Import Wizard** dialog box.
 2. In the **Data Import Wizard** dialog box, check the name of the table into which you want to
-import data. Then, specify the partition into which the data is imported and check whether the partition exists. After that, click **Next**. If the table that you select is a non-partitioned table, click **Next** to skip this step. You can specify the partition into which the data is imported. After that, click **Check** to check whether the partition exists. If the specified partition does not exist, the system creates a partition for subsequent operations and the data is imported into the created partition. If the specified partition exists, the data is imported into this partition.
+import data. Then, specify the partition into which the data is imported and check whether the partition exists. After that, click **Next**.
+
+> **Note:** If the table that you select is a non-partitioned table, click **Next** to skip this step.
+
+You can specify the partition into which the data is imported. After that, click **Check** to check whether the partition exists. If the specified partition does not exist, the system creates a partition for subsequent operations and the data is imported into the created partition. If the specified partition exists, the data is imported into this partition.
 3. Configure the parameters, such as the File Format, Select File, and Select Delimiter
 parameters, based on your business requirements. Then, click **Next**. The following table describes the parameters.
 
@@ -23765,7 +23963,9 @@ When you move the pointer over the name of a table in the code, DataWorks displa
 
 **Built-in code templates**
 
-DataWorks provides built-in code templates for common statements, such as `CREATE_TABLE` , `SELECT_CASE` , `SELECT_ALL` , and `INSERT_OVERWRITE_TABLE` . You can select a built-in code template to generate relevant statements for a node. By default, **TABLENAME** is selected in the generated statement. You can replace TABLENAME with the name of the table that you want to query.
+DataWorks provides built-in code templates for common statements, such as `CREATE_TABLE` , `SELECT_CASE` , `SELECT_ALL` , and `INSERT_OVERWRITE_TABLE` . You can select a built-in code template to generate relevant statements for a node.
+
+> **Note:** By default, **TABLENAME** is selected in the generated statement. You can replace TABLENAME with the name of the table that you want to query.
 
 #### 6.2.6 Debug a code snippet: Quickly run a code snippet
 
@@ -23775,7 +23975,9 @@ DataWorks provides the quick run feature to allow you to quickly run the code sn
 
 **Prerequisites**
 
-A node is created and the code of the node is written. For more information, see Create an ODPS SQL node. In this topic, an ODPS SQL node is used as an example. You can check whether a node supports the quick run feature on the configuration tab of the node.
+A node is created and the code of the node is written. For more information, see Create an ODPS SQL node.
+
+> **Note:** In this topic, an ODPS SQL node is used as an example. You can check whether a node supports the quick run feature on the configuration tab of the node.
 
 **Limits**
 
@@ -23796,9 +23998,24 @@ configuration tab of the node. In the left-side navigation pane, click **Schedul
 **Workflows**, or Ad Hoc Query, find the node that you create, and then double-click the node
 to go to the configuration tab of the node.
 4. Quickly run the code that you select and view the result.
-In this example, an ODPS SQL node is used. i. Select the code that you want to quickly run. In the SQL code section of the configuration tab of the ODPS SQL node, move the pointer over a code line that you want to run. The system automatically highlights the entire code snippet to which the code line belongs. ii. Run the code. You can use the quick run feature to quickly run the code of a node only when the node is not running. If a node is running, the Quick Run icon is not displayed on the left side to the code line of the node. The resource group that is used to run the selected code snippet by using the quick run feature: The code of a node is executed when you use the quick run feature. You are not charged for scheduling resources but are charged for the compute engine instances that you use. The resource group that you use to quickly run the current code snippet is the resource group that is used for the most recent execution of the code of the ODPS SQL node. You can run the code of the ODPS SQL node by clicking the **Quick Run** icon , **Run** icon , or **Run with**
-**Parameters** icon
-in the top toolbar of the configuration tab of the node. The first time you run the code of the node, you must select a resource group for scheduling based on your business requirements. If you want to change the resource group that is used to run the code of the ODPS SQL node, click the Run with Parameters icon . The first time you quickly run a code snippet, you must specify values for variables if the code snippet contains variables. The system saves the specified values for subsequent operations. If you want to change the specified values of the variables, click the **Run with Parameters** icon . You can use one of the following methods to run the code of the ODPS SQL node: Click the icon to the left of the code line of the node. Run the code of the ODPS SQL node by using a shortcut key. Windows: Press `Ctrl + Enter` . macOS: Press `Cmd + Enter` . After the execution of the code of the ODPS SQL node is complete, you can view the execution result. If an unexpected result is returned, modify the code snippet.
+In this example, an ODPS SQL node is used. i. Select the code that you want to quickly run. In the SQL code section of the configuration tab of the ODPS SQL node, move the pointer over a code line that you want to run. The system automatically highlights the entire code snippet to which the code line belongs. ii. Run the code.
+
+> **Note:** You can use the quick run feature to quickly run the code of a node only when the node is not running. If a node is running, the Quick Run icon is not displayed on the left side to the code line of the node.
+> The resource group that is used to run the selected code snippet by using the quick run feature:
+> The code of a node is executed when you use the quick run feature. You are not charged for scheduling resources but are charged for the compute engine instances that you use.
+> The resource group that you use to quickly run the current code snippet is the resource group that is used for the most recent execution of the code of the ODPS SQL node. You can run the code of the ODPS SQL node by clicking the **Quick Run** icon
+> , **Run** icon
+> , or **Run with**
+> **Parameters** icon
+> in the top toolbar of the configuration tab of the
+> node.
+> The first time you run the code of the node, you must select a resource group for scheduling based on your business requirements.
+> If you want to change the resource group that is used to run the code of the ODPS SQL node, click the Run with Parameters icon
+> .
+> The first time you quickly run a code snippet, you must specify values for variables if the code snippet contains variables. The system saves the specified values for subsequent operations. If you want to change the specified values of the variables, click the **Run with Parameters** icon
+> .
+
+You can use one of the following methods to run the code of the ODPS SQL node: Click the icon to the left of the code line of the node. Run the code of the ODPS SQL node by using a shortcut key. Windows: Press `Ctrl + Enter` . macOS: Press `Cmd + Enter` . After the execution of the code of the ODPS SQL node is complete, you can view the execution result. If an unexpected result is returned, modify the code snippet.
 
 #### 6.2.7 Perform smoke testing
 
@@ -23812,7 +24029,10 @@ production environment is not affected.
 
 **Enable the forcible smoke testing feature**
 
-The administrator of a workspace can enable the forcible smoke testing feature on the Settings page of DataStudio. If this feature is enabled, a node in the workspace must pass smoking testing before it can be deployed to the production environment. To enable the forcible smoke testing feature, perform the following steps: The forcible smoke testing feature is unavailable for workspaces in basic mode.
+The administrator of a workspace can enable the forcible smoke testing feature on the Settings page of DataStudio. If this feature is enabled, a node in the workspace must pass smoking testing before it can be deployed to the production environment. To enable the forcible smoke testing feature, perform the following steps:
+
+> **Note:** The forcible smoke testing feature is unavailable for workspaces in basic mode.
+
 1. In the lower-right corner of the left-side navigation pane of DataStudio, click the
 icon.
 2. On the Settings page, choose **Security Settings and Others > Smoke Testing** and
@@ -23824,28 +24044,34 @@ After you write code, you can use one of the following methods to perform smoke 
 
 **Configure smoke testing parameters**
 
-Before you perform smoke testing, you must configure the Data Timestamp parameter based on your business requirements. If you set the Data Timestamp parameter to the current day or the previous day, the related smoke testing instance is not run until the scheduled time. For example, the
+Before you perform smoke testing, you must configure the Data Timestamp parameter based on your business requirements.
+
+> **Note:** If you set the Data Timestamp parameter to the current day or the previous day, the related smoke testing instance is not run until the scheduled time. For example, the current time is `12:00 on June 2, 2024` , and the scheduled time of a smoke testing smoke testing instance is not run until `15:00` on the current day.
 
 |   | 12:00 on June 2, 2024 |
 |---|---|
 | 15:00 |   |
-
-current time is `12:00 on June 2, 2024` , and the scheduled time of a smoke testing
 
 |   |   | June 1, 2024 |
 |---|---|---|
 |   | 15:00, June 2, 2024 |   |
 | 15:00 |   |   |
 
-smoke testing instance is not run until `15:00` on the current day.
-
 **View smoke testing records**
 
 1. On the configuration tab of the desired node on the **DataStudio** page, click the
-icon in the toolbar to go to the **Smoke Testing Records** page. If you use Method 1 to perform smoke testing, you can perform this step to view smoke testing records. If you use Method 2 to perform smoke testing, you can view the smoke testing records in the **View Smoke Test Log** dialog box. The dialog box appears after you perform smoke testing. You can also click Smoke Testing Records in the left-side navigation pane to view the smoke testing records. If the Smoke Testing Records module is not displayed in the left-side navigation pane, you can add the module. For more information, see Adjust the displayed DataStudio modules.
+icon in the toolbar to go to the **Smoke Testing Records** page.
+
+> **Note:** If you use Method 1 to perform smoke testing, you can perform this step to view smoke testing records.
+> If you use Method 2 to perform smoke testing, you can view the smoke testing records in the **View Smoke Test Log** dialog box. The dialog box appears after you perform smoke testing.
+> You can also click Smoke Testing Records in the left-side navigation pane to view the smoke testing records. If the Smoke Testing Records module is not displayed in the left-side navigation pane, you can add the module. For more information, see Adjust the displayed DataStudio modules.
+
 2. On the **Smoke Testing Records** page, you can view information such as **Tested At**,
 **Version**, **Tested By**, and **Data Timestamp**. You can select **Initiated in DataStudio** to
-view the smoke testing records that are triggered on the DataStudio page. If you select Initiated in DataStudio, the displayed smoke testing records do not include the smoke testing instances that are run in the development environment on the Operation Center page.
+view the smoke testing records that are triggered on the DataStudio page.
+
+> **Note:** If you select Initiated in DataStudio, the displayed smoke testing records do not include the smoke testing instances that are run in the development environment on the Operation Center page.
+
 3. On the Smoke Testing Records page, you can click **View Logs** in the Actions column to
 view the execution details of a specific smoke testing instance. You can click **Stop** in the Actions column to stop a smoke testing instance for which the value of **Status** is **Running**.
 
@@ -23896,7 +24122,10 @@ The preceding SQL code generates the following internal lineage graph.
 
 #### 6.2.9 Versions
 
-The Versions tab displays the version information that is generated each time a node is committed and deployed. You can view the historical versions and information about each version. The information includes the user that committed the node, time when the node was committed, change type, status, and description. Only a committed node has version information. Each time a node is committed, a version is generated and added to the **Versions** tab.
+The Versions tab displays the version information that is generated each time a node is committed and deployed. You can view the historical versions and information about each version. The information includes the user that committed the node, time when the node was committed, change type, status, and description.
+
+> **Note:** Only a committed node has version information. Each time a node is committed, a version is generated and added to the **Versions** tab.
+
 1. Log in to the DataWorks console.
 2. On the **DataStudio** page, double-click the desired node.
 3. On the node configuration tab that appears, click **Versions** in the right-side navigation
@@ -24001,14 +24230,15 @@ icon and choose **All Products > Data**
 4. In the **Create Workflow** dialog box, configure the **Workflow Name** and **Description**
 parameters.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 5. Click **Create**.
 
 **Composition of a manually triggered workflow**
 
-We recommend that you create no more than 100 nodes in a manually triggered workflow. A manually triggered workflow consists of nodes of the following modules. After you create a manually triggered workflow, open this workflow and create nodes of various types for each module. Double-click **Data Integration** under a manually triggered workflow to view all the Data Integration nodes in the workflow. Right-click **Data Integration** and choose **Create Node > Offline synchronization** to create an offline synchronization node. For more information, see Create a batch sync node. Right-click **Hologres** and choose **Create Node > Hologres SQL** to create a Hologres SQL node. For more information, see Create a Hologres SQL node. The MaxCompute compute engine allows you to create data analytics nodes such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions.
+> **Note:** We recommend that you create no more than 100 nodes in a manually triggered workflow.
+
+A manually triggered workflow consists of nodes of the following modules. After you create a manually triggered workflow, open this workflow and create nodes of various types for each module. Double-click **Data Integration** under a manually triggered workflow to view all the Data Integration nodes in the workflow. Right-click **Data Integration** and choose **Create Node > Offline synchronization** to create an offline synchronization node. For more information, see Create a batch sync node. Right-click **Hologres** and choose **Create Node > Hologres SQL** to create a Hologres SQL node. For more information, see Create a Hologres SQL node. The MaxCompute compute engine allows you to create data analytics nodes such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions.
 
 **Data Analytics**
 
@@ -24045,7 +24275,8 @@ icon in the top toolbar.
 2. In the **Commit** dialog box, select the nodes that you want to commit, configure the
 **Change Description** parameter, and then select **Ignore I/O Inconsistency Alerts**.
 3. Click **Confirm**.
-If you have not modified the code or properties of a node and you have committed the node on the configuration tab of the node, you cannot select the node in the Commit dialog box. If you have modified the code or properties of a node but you have not committed the node on the configuration tab of the node, you can select the node in the Commit dialog box. Then, you can enter your comments in the **Change Description** field and click **Confirm**. The modification to the code or properties of the node is committed.
+
+> **Note:** If you have not modified the code or properties of a node and you have committed the node on the configuration tab of the node, you cannot select the node in the Commit dialog box. If you have modified the code or properties of a node but you have not committed the node on the configuration tab of the node, you can select the node in the Commit dialog box. Then, you can enter your comments in the **Change Description** field and click **Confirm**. The modification to the code or properties of the node is committed.
 
 #### 6.3.2 Create and reference a node group
 
@@ -24076,7 +24307,9 @@ click OK. Then, you can view the created node group in the **Node Group** sectio
 | Delete node group | Delete the node group. Click Delete node group to delete all nodes in the selected node group. |
 | Split node group | Dismiss the node group. After the node group is dismissed, the selected nodes no longer belong to a node group in the workflow. However, the node group still exists in the node group list. |
 
-If the created node group contains a Platform for AI (PAI) node, create a PAI experiment in another workflow to reference the node group. If the created node group contains a branch node, add digits to the value in the
+> **Note:** If the created node group contains a Platform for AI (PAI) node, create a PAI experiment in another workflow to reference the node group.
+
+If the created node group contains a branch node, add digits to the value in the
 **Associated Node Output** parameter. For more information, see Create a
 branch node.
 
@@ -24098,12 +24331,16 @@ icon and choose **All Products > Data**
 icon, right-click **Manually Triggered**
 **Workflows**, and select **Create Workflow**.
 4. In the **Create Workflow** dialog box, configure the **Workflow Name** and **Description**
-parameters. The workflow name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and periods (.).
+parameters.
+
+> **Note:** The workflow name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and periods (.).
+
 5. Click **Create**.
 
 **Configure the manually triggered workflow**
 
-We recommend that you create no more than 100 nodes in a single manually triggered workflow.
+> **Note:** We recommend that you create no more than 100 nodes in a single manually triggered workflow.
+
 1. Double-click the created manually triggered workflow to go to the configuration tab.
 2. In the top toolbar of the configuration tab, click **Create Node**.
 3. Select nodes you want to create and manually connect them to establish dependencies.
@@ -24163,9 +24400,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow and choose **Create Node > Data Integration > Offline**
 **synchronization**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24177,7 +24413,9 @@ For more information about how to configure a batch synchronization task, see Co
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24197,7 +24435,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24218,9 +24461,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow and choose **Create Node > Data Integration > Real-time**
 **Synchronization**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24232,7 +24474,9 @@ Configure the real-time synchronization node. For more information, see Create, 
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24252,7 +24496,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24332,9 +24581,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > MaxCompute > ODPS SQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -24389,7 +24637,9 @@ DataWorks integrates query results with a spreadsheet feature to help you manage
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24409,7 +24659,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24438,9 +24693,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business flow and select **Create node > MaxCompute > SQL**
 **component node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24452,7 +24706,9 @@ On the SQL component node editing page, click **Select Code Component**. To impr
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24472,7 +24728,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24493,9 +24754,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and select **New Node > MaxCompute > ODPS Spark**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -24518,7 +24778,9 @@ Configure the parameters on the node editor page. You can select the **Spark ver
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24538,7 +24800,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24559,9 +24826,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > MaxCompute > Spark SQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -24576,7 +24842,9 @@ SHOW TABLES;
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the task code**
 
@@ -24592,7 +24860,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24604,7 +24877,12 @@ DataWorks provides the PyODPS 2 node type, which integrates the Python SDK for M
 
 **Background**
 
-MaxCompute provides a Python SDK that you can use to access and manage MaxCompute. The underlying Python version for a PyODPS 2 node is 2.7. A PyODPS 2 node can process a maximum of 50 MB of data locally and consume no more than 1 GB of memory during runtime. If these limits are exceeded, the task is terminated. Avoid writing data-intensive processing code in PyODPS 2 nodes. For pure Python code, use a Shell node to run Python scripts that you have uploaded to DataWorks.
+MaxCompute provides a Python SDK that you can use to access and manage MaxCompute.
+
+> **Note:** The underlying Python version for a PyODPS 2 node is 2.7.
+> A PyODPS 2 node can process a maximum of 50 MB of data locally and consume no more than 1 GB of memory during runtime. If these limits are exceeded, the task is terminated. Avoid writing data-intensive processing code in PyODPS 2 nodes.
+
+For pure Python code, use a Shell node to run Python scripts that you have uploaded to DataWorks.
 
 **Prerequisites**
 
@@ -24617,9 +24895,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business workflow and select **New Node > MaxCompute >**
 **PyODPS 2**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24670,11 +24947,13 @@ When you run an SQL statement such as desc, use the **reader.raw** attribute to 
 with o.execute_sql('desc dual').open_reader() as reader: print(reader.raw)
 ```
 
-If you use custom scheduling parameters, you must hardcode the time values when you run the PyODPS node directly from the editor page. The node cannot automatically substitute these parameters.
+> **Note:** If you use custom scheduling parameters, you must hardcode the time values when you run the PyODPS node directly from the editor page. The node cannot automatically substitute these parameters.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24694,7 +24973,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24719,9 +25003,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business process and select **Create Node > MaxCompute >**
 **PyODPS 3**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24782,11 +25065,13 @@ with o.execute_sql('desc dual').open_reader() as reader:
  print(reader.raw)
 ```
 
-If you use custom scheduling parameters, you must provide static values for them when you manually run a PyODPS 3 node in the editor. The node does not automatically substitute the variables.
+> **Note:** If you use custom scheduling parameters, you must provide static values for them when you manually run a PyODPS 3 node in the editor. The node does not automatically substitute the variables.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24806,7 +25091,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24831,9 +25121,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > MaxCompute > ODPS**
 **Script**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -24845,7 +25134,9 @@ Develop your task in the ODPS Script node. For more information, see Script Mode
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -24865,7 +25156,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -24949,9 +25245,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > MaxCompute > ODPS MR**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -24985,7 +25280,9 @@ Edit the ODPS MR node.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25005,7 +25302,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25026,22 +25328,18 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the created workflow and choose **Create Table > MaxCompute > Table**.
 You can also find the workflow that you want to use, right-click **MaxCompute**, and then select **Create Table**.
 
-**Important**
+> **Important:** The MaxCompute folder is displayed on the DataStudio page only after you associate a MaxCompute compute engine instance with the current workspace on the **Workspace** **Management** page.
 
-The MaxCompute folder is displayed on the DataStudio page only after you associate a MaxCompute compute engine instance with the current workspace on the **Workspace**
-**Management** page.
 3. In the **Create Table** dialog box, configure the **Path** and **Name** parameters, and click
 **Create**.
 
-**Important**
+> **Important:** The table name cannot exceed 64 characters in length. The table name must start with a letter and cannot contain special characters.
 
-The table name cannot exceed 64 characters in length. The table name must start with a letter and cannot contain special characters.
 4. On the table configuration tab that appears, configure the parameters in the **General**
 section.
 
@@ -25115,8 +25413,11 @@ This topic describes how to create and reference a JAR or Python resource.
 
 **Background information**
 
-If your code or function requires resource files such as**.jar** files, you can upload resources to your workspace and reference them. If the existing built-in functions do not meet your requirements, you can create user-defined functions (UDFs) and customize processing logic. You can upload the required JAR packages to your workspace so that you can reference them when you create UDFs. You can view built-in functions in the **Built-In Functions** pane. For more information, see View built-in functions. You can view the UDFs that you have committed or deployed on the **MaxCompute**
-**Functions** tab.
+If your code or function requires resource files such as**.jar** files, you can upload resources to your workspace and reference them. If the existing built-in functions do not meet your requirements, you can create user-defined functions (UDFs) and customize processing logic. You can upload the required JAR packages to your workspace so that you can reference them when you create UDFs.
+
+> **Note:** You can view built-in functions in the **Built-In Functions** pane. For more information, see View built-in functions.
+> You can view the UDFs that you have committed or deployed on the **MaxCompute** **Functions** tab.
+
 You can upload different types of resources including text files, MaxCompute tables, Python code, and compressed packages in the **.zip**, **.tgz**, **.tar.gz**, **.tar**, and **.jar** formats to MaxCompute. You can read or use these resources when you run UDFs or MapReduce jobs. MaxCompute provides API operations for you to read and use resources. The following types of resources are supported:
 **Python**: the Python code you have written. You can use Python code to register Python
 UDFs.
@@ -25127,7 +25428,8 @@ file types include **.zip**, **.tgz**, **.tar.gz**, **.tar**, and **.jar**.
 **JAR** resources and **file** resources have the following differences:
 You can write Java code in an offline Java environment, compress the code to a JAR package, and then upload the package as a JAR resource to DataWorks. You can create and edit a small-sized file resource in the DataWorks console. If you want to upload a file resource whose size is greater than 500 KB from your onpremises machine when you create a file resource, you can select **Upload On-premises**
 **Document**.
-Each resource to be uploaded cannot exceed 30 MB.
+
+> **Note:** Each resource to be uploaded cannot exceed 30 MB.
 
 **Create a JAR resource**
 
@@ -25137,12 +25439,13 @@ icon and choose **Create Resource > MaxCompute >**
 **JAR**.
 You can also find the workflow that you want to use, right-click **MaxCompute**, and then choose **Create Resource > JAR**.
 
-**Important**
+> **Important:** The MaxCompute folder is displayed on the DataStudio page only after you associate a MaxCompute compute engine instance with the current workspace on the **Workspace** **Management** page.
 
-The MaxCompute folder is displayed on the DataStudio page only after you associate a MaxCompute compute engine instance with the current workspace on the **Workspace**
-**Management** page.
 3. In the **Create Resource** dialog box, configure the **Path** and **Name** parameters.
-The resource name can be different from the name of the uploaded file. The resource name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and periods (.). The name is not case-sensitive. A JAR resource name must end with **.jar**, and a Python resource name must end with **.py**.
+
+> **Note:** The resource name can be different from the name of the uploaded file.
+> The resource name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and periods (.). The name is not case-sensitive. A JAR resource name must end with **.jar**, and a Python resource name must end with **.py**.
+
 4. Click **Upload** and select the file that you want to upload.
 5. Click **Create**.
 6. Click the
@@ -25189,9 +25492,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Write Java code in the offline Java environment, compress the code to a JAR package, and
 upload the package as a JAR resource to DataWorks. For more information, see Create, reference, and download resources.
 3. Create a function.
@@ -25239,9 +25541,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business flow and choose **New Node > Hologres > Hologres SQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -25256,7 +25557,9 @@ SELECT col_1,col_2 FROM your_table_name WHERE pt>${pt_num} limit 500;
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25276,7 +25579,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25299,9 +25607,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Find the workflow in which you want to create a Hologres node, right-click Hologres, and
 then choose **Create Node > Hologres > Schema Synchronization from**
 **MaxCompute**.
@@ -25345,7 +25652,9 @@ The parameters that you configure in this section determine the policy that is u
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Run node code**
 
@@ -25374,9 +25683,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Find the workflow in which you want to create a Hologres node, right-click Hologres, and
 then choose **Create Node > Hologres > Data Synchronization from MaxCompute** .
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -25415,11 +25723,15 @@ You can configure the parameters to configure the synchronization policy.
 | Index Configuration | Configure an index for the Hologres internal table to store the synchronized MaxCompute data. You can accelerate data queries by using the index. |
 
 4. Generate an SQL script.
-DataWorks parses the SQL statement that is used to run the current data synchronization node based on the synchronization configurations. You can go to the code editor of Hologres and run the data synchronization node in SQL mode. You cannot modify the generated SQL script. If the configurations of the data synchronization node are changed, you can click Refresh to generate a new SQL statement.
+DataWorks parses the SQL statement that is used to run the current data synchronization node based on the synchronization configurations. You can go to the code editor of Hologres and run the data synchronization node in SQL mode.
+
+> **Note:** You cannot modify the generated SQL script. If the configurations of the data synchronization node are changed, you can click Refresh to generate a new SQL statement.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -25437,7 +25749,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25461,9 +25778,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **New Node > CDH > CDH Hive**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -25478,7 +25794,9 @@ show tables; select * from userinfo ;
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25498,7 +25816,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25520,9 +25843,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and select **Create Node > CDH > CDH Spark**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -25546,9 +25868,7 @@ spark_examples_2.11_2.4.0.jar
 3. Modify the CDH Spark node code to add the spark-submit command. The following is a
 modified example.
 
-**Important**
-
-Comments are not supported when editing code for a CDH Spark node. To prevent runtime errors, modify the job code as shown in the following example and remove all comments.
+> **Important:** Comments are not supported when editing code for a CDH Spark node. To prevent runtime errors, modify the job code as shown in the following example and remove all comments.
 
 ```
 ##@resource_reference{"spark-examples_2.11-2.4.0.jar"}
@@ -25561,7 +25881,9 @@ The following describes the parameters:
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25581,7 +25903,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25603,9 +25930,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **New Node > CDH > CDH MR**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -25627,11 +25953,13 @@ i. Open the **CDH MR** node that you created. The node editor opens. ii. Under *
 onaliyun_mr_wordcount-1.0-SNAPSHOT.jar cn.apache.hadoop.onaliyun.examples.EmrWordCount oss://onaliyun-bucket- 2/cdh/datas/wordcount02/inputs oss://onaliyun-bucket-2/cdh/datas/wordcount02/outputs
 ```
 
-The CDH MR node code editor does not support comments.
+> **Note:** The CDH MR node code editor does not support comments.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25651,7 +25979,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25674,9 +26007,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > CDH > CDH Presto**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -25691,7 +26023,9 @@ SHOW tables; SELECT * FROM userinfo ;
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25711,7 +26045,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25732,9 +26071,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > CDH > CDH**
 **Impala**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -25750,7 +26088,9 @@ show tables; select * from userinfo ;
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25770,7 +26110,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25793,9 +26138,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Find the desired workflow, right-click the workflow name, and then choose **Create Node >**
 **AnalyticDB for PostgreSQL > ADB for PostgreSQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -25807,15 +26151,17 @@ you can use the node to develop and configure tasks.
 
 1. Select a data source from the **Select Data Source** drop-down list.
 
-**Important**
+> **Important:** When you associate the AnalyticDB for PostgreSQL compute engine with the workspace, DataWorks automatically creates an AnalyticDB for PostgreSQL data source.
+> You can select a data source that is added only by using the connection string mode.
 
-When you associate the AnalyticDB for PostgreSQL compute engine with the workspace, DataWorks automatically creates an AnalyticDB for PostgreSQL data source. You can select a data source that is added only by using the connection string mode.
 2. Edit SQL statements.
 After you select a data source, edit SQL statements based on the syntax that is supported by AnalyticDB for PostgreSQL.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25835,7 +26181,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -25858,16 +26209,16 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Table > AnalyticDB**
 **for PostgreSQL > Table**.
 3. In the **Create Table** dialog box, enter a name in the **Name** field.
 
-**Important**
+> **Important:** The table name must be in the format of **schema_name.table_name**.
+> The values of **schema_name** and **table_name** must be 1 to 63 characters in length and can contain letters, digits, and underscores (_). The values must start with a letter or underscore (_).
+> If you associate multiple AnalyticDB for PostgreSQL instances with the current workspace, you must select one based on your business requirements.
 
-The table name must be in the format of **schema_name.table_name**. The values of **schema_name** and **table_name** must be 1 to 63 characters in length and can contain letters, digits, and underscores (_). The values must start with a letter or underscore (_). If you associate multiple AnalyticDB for PostgreSQL instances with the current workspace, you must select one based on your business requirements.
 4. Click **Create**. The configuration tab of the table appears.
 The upper part of the table configuration tab displays the **table name** and **AnalyticDB for**
 **PostgreSQL instance name**.
@@ -25948,9 +26299,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > AnalyticDB**
 **for MySQL > ADB for MySQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -25961,15 +26311,17 @@ you can use the node to develop and configure tasks.
 Edit the AnalyticDB for MySQL node.
 1. Select a data source from the **Select Data Source** drop-down list.
 
-**Important**
+> **Important:** When you associate an AnalyticDB for MySQL compute engine instance with the workspace, DataWorks automatically adds an AnalyticDB for MySQL data source.
+> You can select a data source that is added only by using the connection string mode.
 
-When you associate an AnalyticDB for MySQL compute engine instance with the workspace, DataWorks automatically adds an AnalyticDB for MySQL data source. You can select a data source that is added only by using the connection string mode.
 2. Write SQL statements.
 After you select a data source, write the SQL statements of the node based on your business requirements.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -25989,7 +26341,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26010,16 +26367,16 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Table > AnalyticDB**
 **for MySQL > Table**.
 3. In the **Create Table** dialog box, enter a name in the **Name** field.
 
-**Important**
+> **Important:** The format of the table name is **table_name**.
+> The value of **table_name** must be 1 to 63 characters in length and can contain letters, digits, and underscores (_). The value must start with a letter or underscore (_).
+> If you associate multiple AnalyticDB for MySQL instances with the current workspace, you must select one based on your business requirements.
 
-The format of the table name is **table_name**. The value of **table_name** must be 1 to 63 characters in length and can contain letters, digits, and underscores (_). The value must start with a letter or underscore (_). If you associate multiple AnalyticDB for MySQL instances with the current workspace, you must select one based on your business requirements.
 4. Click **Create**. The configuration tab of the table appears.
 The upper part of the table configuration tab displays the **table name** and **AnalyticDB for**
 **MySQL instance name**.
@@ -26082,7 +26439,9 @@ The MySQL node in DataWorks lets you develop, periodically schedule, and integra
 
 **Prerequisites**
 
-A MySQL data source has been created. You must add your MySQL database as a MySQL data source in DataWorks to access the data. For more information, see Configure a MySQL data source. MySQL nodes only support MySQL data sources added using a connection string.
+A MySQL data source has been created. You must add your MySQL database as a MySQL data source in DataWorks to access the data. For more information, see Configure a MySQL data source.
+
+> **Note:** MySQL nodes only support MySQL data sources added using a connection string.
 
 **Step 1: Create MySQL node**
 
@@ -26091,9 +26450,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > Database > MySQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26106,7 +26464,9 @@ from the node editor page. If you have only one MySQL data source, it is selecte
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26126,7 +26486,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26147,9 +26512,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business flow and choose **Create Node > Database > SQL Server**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26162,7 +26526,9 @@ the node editor. If only one exists, it is selected by default.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26182,7 +26548,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26203,9 +26574,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target Business Process and choose **Create Node > database > Oracle**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26218,7 +26588,9 @@ editor page of the Oracle node. If only one Oracle data source exists, it is use
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26238,7 +26610,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26259,9 +26636,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business process and select **Create Node > Database >**
 **PostgreSQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -26275,7 +26651,9 @@ on the PostgreSQL node editor page. If only one PostgreSQL data source exists, D
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26295,7 +26673,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26316,9 +26699,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **New Node > Database > DRDS**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26331,7 +26713,9 @@ source on the DRDS node editor. If you have only one DRDS data source, DataWorks
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26351,7 +26735,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26367,7 +26756,9 @@ PolarDB for MySQL is a next-generation cloud-native database developed by Alibab
 
 **Prerequisites**
 
-You have created a PolarDB for MySQL data source. To access data from your PolarDB for MySQL database, you must first add it as a DataWorks data source. For more information, see Configure a PolarDB data source. The PolarDB for MySQL node supports only PolarDB for MySQL data sources that use a JDBC connection string.
+You have created a PolarDB for MySQL data source. To access data from your PolarDB for MySQL database, you must first add it as a DataWorks data source. For more information, see Configure a PolarDB data source.
+
+> **Note:** The PolarDB for MySQL node supports only PolarDB for MySQL data sources that use a JDBC connection string.
 
 **Step 1: Create a PolarDB MySQL node**
 
@@ -26376,9 +26767,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business workflow and choose **Create Node > Database >**
 **PolarDB for MySQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -26388,7 +26778,9 @@ you can use the node to develop and configure tasks.
 
 **(Optional) Select a data source**
 
-If your workspace has multiple PolarDB for MySQL data sources, you must select the appropriate data source on the PolarDB for MySQL node editor page. If only one exists, it is selected by default. The PolarDB for MySQL node supports only PolarDB for MySQL data sources that use a JDBC connection string.
+If your workspace has multiple PolarDB for MySQL data sources, you must select the appropriate data source on the PolarDB for MySQL node editor page. If only one exists, it is selected by default.
+
+> **Note:** The PolarDB for MySQL node supports only PolarDB for MySQL data sources that use a JDBC connection string.
 
 **Develop SQL code: Simple example**
 
@@ -26408,7 +26800,9 @@ SELECT '${var}'; -- Example of using a scheduling parameter.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26428,7 +26822,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26444,7 +26843,9 @@ PolarDB for PostgreSQL is a cloud-native relational database developed by Alibab
 
 **Prerequisites**
 
-A PolarDB for PostgreSQL data source has been created. To access a PolarDB for PostgreSQL database, you must add it as a data source in DataWorks. For instructions, see Configure a PolarDB data source. The PolarDB for PostgreSQL node supports only PolarDB for PostgreSQL data sources created with a JDBC connection string.
+A PolarDB for PostgreSQL data source has been created. To access a PolarDB for PostgreSQL database, you must add it as a data source in DataWorks. For instructions, see Configure a PolarDB data source.
+
+> **Note:** The PolarDB for PostgreSQL node supports only PolarDB for PostgreSQL data sources created with a JDBC connection string.
 
 **Step 1: Create a PolarDB for PostgreSQL node**
 
@@ -26453,9 +26854,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target Business Flow and choose **Create Node > Database > PolarDB**
 **PostgreSQL**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -26465,7 +26865,9 @@ you can use the node to develop and configure tasks.
 
 **(Optional) Select a data source**
 
-If you have multiple PolarDB for PostgreSQL data sources in your workspace, you need to select the one you want to use on the node's editor page. If you have only one PolarDB for PostgreSQL data source, DataWorks uses it by default. The PolarDB for PostgreSQL node supports only PolarDB for PostgreSQL data sources that use a JDBC connection string.
+If you have multiple PolarDB for PostgreSQL data sources in your workspace, you need to select the one you want to use on the node's editor page. If you have only one PolarDB for PostgreSQL data source, DataWorks uses it by default.
+
+> **Note:** The PolarDB for PostgreSQL node supports only PolarDB for PostgreSQL data sources that use a JDBC connection string.
 
 **Develop SQL code: Simple example**
 
@@ -26487,7 +26889,9 @@ SELECT '${var}'; -- This can be used with a scheduling parameter.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26507,7 +26911,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26528,9 +26937,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and select **Create Node > Database > MariaDB**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26543,7 +26951,9 @@ source on the node's editor page. If only one MariaDB data source exists, it is 
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26563,7 +26973,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26584,9 +26999,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > Database > Saphana**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26599,7 +27013,9 @@ workspace has only one, it is used by default.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26619,7 +27035,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26640,9 +27061,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business workflow and choose **Create Node > Database > Vertica**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26655,7 +27075,9 @@ node editor page. If only one is available, DataWorks uses it by default.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26675,7 +27097,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26696,9 +27123,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and select **Create Node > Database > DM**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26711,7 +27137,9 @@ node editor page. If only one exists, DataWorks selects it by default.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26731,7 +27159,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26743,7 +27176,9 @@ Use the KingbaseES node in DataWorks to develop, periodically schedule, and inte
 
 **Prerequisites**
 
-A KingbaseES data source has been created. To access your KingbaseES database in DataWorks, you must first add it as a KingbaseES data source. For more information, see Configure a KingbaseES data source. KingbaseES nodes support only KingbaseES data sources that are added using a connection string.
+A KingbaseES data source has been created. To access your KingbaseES database in DataWorks, you must first add it as a KingbaseES data source. For more information, see Configure a KingbaseES data source.
+
+> **Note:** KingbaseES nodes support only KingbaseES data sources that are added using a connection string.
 
 **Step 1: Create a KingbaseES node**
 
@@ -26752,9 +27187,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business process and choose **Create Node > Database >**
 **KingbaseES**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -26768,7 +27202,9 @@ the node editing page. If your workspace contains only one, it is used by defaul
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26788,7 +27224,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26809,9 +27250,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and select **New Node > Database > OceanBase**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26824,7 +27264,9 @@ on the OceanBase node editor page. If only one OceanBase data source is configur
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26844,7 +27286,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26865,9 +27312,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target business workflow and choose **Create Node > Database > DB2**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26880,7 +27326,9 @@ only one, it is selected by default.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26900,7 +27348,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26921,9 +27374,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **New Node > Database > GBase8a**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26936,7 +27388,9 @@ source on the GBase8a node editor page. If only one GBase8a data source exists, 
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug the node code**
 
@@ -26956,7 +27410,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -26979,9 +27438,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the target workflow and choose **Create Node > Algorithm > PAI Studio**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
@@ -26992,7 +27450,9 @@ From the **Select PAI Studio Experiment** drop-down list, select your PAI Studio
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Commit and publish**
 
@@ -27000,7 +27460,12 @@ After you configure the task, commit and publish it. Once published, the task ru
 1. Click the
 icon in the toolbar to save the node.
 2. Click the
-icon in the toolbar to commit the task. In the **Commit** dialog box, enter a **change description** and specify whether to enable code review. You must set the node's **rerun property** and **upstream dependencies** before you can commit the node. Code review allows you to control the quality of task code and prevents task errors that may occur when incorrect code is published without review. When code review is enabled, submitted node code must be approved by reviewers before it can be published. For more information, see Code Review. If you are using a workspace in standard mode, after the task is committed, click **Publish** in the upper-right corner of the node editing page to move the task to the production environment. For more information, see Publish tasks.
+icon in the toolbar to commit the task. In the **Commit** dialog box, enter a **change description** and specify whether to enable code review.
+
+> **Note:** You must set the node's **rerun property** and **upstream dependencies** before you can commit the node.
+> Code review allows you to control the quality of task code and prevents task errors that may occur when incorrect code is published without review. When code review is enabled, submitted node code must be approved by reviewers before it can be published. For more information, see Code Review.
+
+If you are using a workspace in standard mode, after the task is committed, click **Publish** in the upper-right corner of the node editing page to move the task to the production environment. For more information, see Publish tasks.
 
 **What to do next**
 
@@ -27057,14 +27522,20 @@ the task. Multiple types of nodes are supported, and the Shell node is for refer
 
 **Shell node**
 
-DataWorks automatically creates an ODPS SQL node for node execution. You can delete this default node and configure an inner node for node execution based on your business requirements. If a Shell node is used for the loop task, you can place it between the start and end nodes, and configure the dependencies. Then, double-click the **Shell node** to go to the code development page of the node to develop the task code. If the for-each node is complicated, you can add other nodes to the for-each node to orchestrate the inner workflow based on your business requirements. When you customize inner nodes of a for-each node, you can delete the dependencies between existing inner nodes and orchestrate the inner workflow. Make sure that the inner workflow starts with the **start node** and ends with the **end**
-**node**.
+DataWorks automatically creates an ODPS SQL node for node execution. You can delete this default node and configure an inner node for node execution based on your business requirements. If a Shell node is used for the loop task, you can place it between the start and end nodes, and configure the dependencies. Then, double-click the **Shell node** to go to the code development page of the node to develop the task code. If the for-each node is complicated, you can add other nodes to the for-each node to orchestrate the inner workflow based on your business requirements.
+
+> **Note:** When you customize inner nodes of a for-each node, you can delete the dependencies between existing inner nodes and orchestrate the inner workflow. Make sure that the inner workflow starts with the **start node** and ends with the **end** **node**.
+
 **Start node** and **end node**
-The start node marks the start of a loop, and the end node marks the end of a loop. The two nodes are not used to process a loop task. The number of loops for a for-each node is determined by the output of an assignment node rather than the end node.
+The start node marks the start of a loop, and the end node marks the end of a loop. The two nodes are not used to process a loop task.
+
+> **Note:** The number of loops for a for-each node is determined by the output of an assignment node rather than the end node.
 
 **Number of loops**
 
-The maximum number of loops for a for-each node is 1024. The actual number of loops for a for-each node is determined by the dataset passed by an assignment node. The number of loops is determined based on the following logic: For assignment nodes that use Shell or Python syntax: The number of loops is the number of elements in the one-dimensional array output. The elements are separated by commas (,). For example, if the assignment node is a Shell node or Python (Python 2) node and the output is the one-dimensional array `2021-03-28,2021-03-29,2021-03-30,2021-03-31,2021-04-` `01` , the for-each node loops through the output of the assignment node for five times. For assignment nodes that use SQL syntax: The number of loops is the number of rows in the two-dimensional array output. For example, if the assignment node is an ODPS SQL node and the output is the following two-dimensional array:
+> **Note:** The maximum number of loops for a for-each node is 1024. The actual number of loops for a for-each node is determined by the dataset passed by an assignment node.
+
+The number of loops is determined based on the following logic: For assignment nodes that use Shell or Python syntax: The number of loops is the number of elements in the one-dimensional array output. The elements are separated by commas (,). For example, if the assignment node is a Shell node or Python (Python 2) node and the output is the one-dimensional array `2021-03-28,2021-03-29,2021-03-30,2021-03-31,2021-04-` `01` , the for-each node loops through the output of the assignment node for five times. For assignment nodes that use SQL syntax: The number of loops is the number of rows in the two-dimensional array output. For example, if the assignment node is an ODPS SQL node and the output is the following two-dimensional array:
 
 ```
 +----------------------------------------------+
@@ -27122,7 +27593,9 @@ If you are familiar with the schema of the output table, you can also use the va
 
 **Example 1: A Shell node is used as the assignment node**
 
-Output of the assignment node The last output is `2021-03-28,2021-03-29,2021-03-30,2021-03-31,2021-04-01` . Values obtained by the for-each node The output of the assignment node is a one-dimensional array that contains five elements separated by commas (,). Therefore, the number of loops for the for-each node is 5.
+Output of the assignment node The last output is `2021-03-28,2021-03-29,2021-03-30,2021-03-31,2021-04-01` . Values obtained by the for-each node
+
+> **Note:** The output of the assignment node is a one-dimensional array that contains five elements separated by commas (,). Therefore, the number of loops for the for-each node is 5.
 
 | Built-in variable | Value for the first loop | Value for the second loop |
 |---|---|---|
@@ -27154,7 +27627,9 @@ Output of the assignment node The last SELECT statement returns the following tw
 +----------------------------------------------+
 ```
 
-Values obtained by the for-each node The output is a two-dimensional array that contains two rows of data entries. Therefore, the number of loops for the for-each node is 2.
+Values obtained by the for-each node
+
+> **Note:** The output is a two-dimensional array that contains two rows of data entries. Therefore, the number of loops for the for-each node is 2.
 
 | Built-in variable | Value for the first loop | Value for the second loop |
 |---|---|---|
@@ -27200,9 +27675,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **for-each**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27227,14 +27701,19 @@ On the node configuration tab, click the **Properties** tab in the right-side na
 echo ${dag.loopTimes} ---- Displays the number of loops.
 ```
 
-The start and end nodes of the for-each node have fixed logic and cannot be modified. After you modify the code of the Shell node, you must save the modification. The system does not prompt you to save the modification when you commit the node. If you do not save the modification, the code cannot be updated to the latest version in time. For more information about the built-in variables supported by the for-each node, see Builtin variables.
+> **Note:** The start and end nodes of the for-each node have fixed logic and cannot be modified.
+> After you modify the code of the Shell node, you must save the modification. The system does not prompt you to save the modification when you commit the node. If you do not save the modification, the code cannot be updated to the latest version in time.
+
+For more information about the built-in variables supported by the for-each node, see Builtin variables.
 5. Return to the configuration tab of the for-each node and click Properties in the right-side
 navigation pane. Find the parameter named `loopDataArray` under **Input Parameters** in the **Input and Output Parameters** section. Click **Change** in the Actions column. Change the value in the **Value Source** field and click **Save** in the **Actions** column. The value in the **Parameter Name** field is fixed to `loopDataArray` and cannot be modified. Select the outputs parameter of the ancestor assignment node for **Value Source**.
 6. Click the **Save** icon in the top toolbar of the for-each node.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Commit and deploy the node**
 
@@ -27242,11 +27721,19 @@ After a for-each node is configured, you must commit and deploy the node. After 
 1. Switch to the workflow configuration tab and click the
 icon in the toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **Step 5: Test the for-each node and view test results**
 
-The procedure for committing, deploying, and running a for-each node is the same as that for a common node. However, you cannot test a for-each node in DataStudio. If you want to verify the running result of a for-each node, you must commit and deploy the task that contains the for-each node to Operation Center and run the for-each node in Operation Center. If you use the values passed by an assignment node that serves as the ancestor of the for-each node, run both the assignment node and the for-each node in Operation Center.
+The procedure for committing, deploying, and running a for-each node is the same as that for a common node. However, you cannot test a for-each node in DataStudio.
+
+> **Note:** If you want to verify the running result of a for-each node, you must commit and deploy the task that contains the for-each node to Operation Center and run the for-each node in Operation Center. If you use the values passed by an assignment node that serves as the ancestor of the for-each node, run both the assignment node and the for-each node in Operation Center.
+
 1. On the node configuration tab, click **Operation Center** in the upper-right corner to go to
 **Operation Center**.
 2. In the left-side navigation pane of the Operation Center page, choose **Cycle Task**
@@ -27330,11 +27817,9 @@ In most cases, the built-in variables that are provided by a do-while node are c
 | ${dag.loopTimes} | The number of loops that are finished. | 1 for the first loop, 2 for the second loop, 3 for the third loop, ..., and n for the nth loop. |
 | ${dag.offset} | The offset between the current loop and the previous loop. | 0 for the first loop, 1 for the second loop, 2 for the third loop, ..., and n-1 for the nth loop. |
 
-Obtain the dataset passed by an assignment node If you use a do-while node together with an assignment node, you can obtain the values of the value assignment parameters and loop variables by using the built-in variables described in the following table. When the do-while node depends on an assignment node, you can add output parameters that are specified in **Output Parameters** for the assignment node to
-**Input Parameters** for the do-while node. Then, you can use the do-while node to
-obtain the dataset that is passed by the assignment node or specified content in the dataset. Input parameters are configured in the **${dag.Variable name}** format. Replace the **variable name** with the name of an input parameter that is specified in
-**Input Parameters** for the do-while node. In the following built-in variables, `input`
-specifies the name of the **input parameter** defined in the do-while node and is used to obtain the dataset that is passed by an assignment node. You must replace input with the actual name of the input parameter that you use.
+Obtain the dataset passed by an assignment node If you use a do-while node together with an assignment node, you can obtain the values of the value assignment parameters and loop variables by using the built-in variables described in the following table.
+
+> **Note:** When the do-while node depends on an assignment node, you can add output parameters that are specified in **Output Parameters** for the assignment node to **Input Parameters** for the do-while node. Then, you can use the do-while node to obtain the dataset that is passed by the assignment node or specified content in the dataset. Input parameters are configured in the **${dag.Variable name}** format. Replace the **variable name** with the name of an input parameter that is specified in **Input Parameters** for the do-while node. In the following built-in variables, `input` specifies the name of the **input parameter** defined in the do-while node and is used to obtain the dataset that is passed by an assignment node. You must replace input with the actual name of the input parameter that you use.
 
 | Built-in variable | Description |
 |---|---|
@@ -27486,9 +27971,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **do-while**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27519,7 +28003,9 @@ The ${dag.loopTimes} variable is a reserved variable of the system. This variabl
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Commit and deploy the node**
 
@@ -27527,11 +28013,19 @@ After a do-while node is configured, you must commit and deploy the node. After 
 1. Click the
 icon in the top toolbar to save the node.
 2. Click the
-icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **Step 5: Test the do-while node and view test results**
 
-The procedure for committing, deploying, and running a do-while node is the same as that for committing, deploying, and running a common node. However, you cannot test a do-while node in DataStudio. If you want to verify the running result of a do-while node, you must commit and deploy the task that contains the do-while node to Operation Center and run the do-while node in Operation Center. If you use the values passed by an assignment node that serves as the ancestor of the do-while node, run both the assignment node and the do-while node in Operation Center.
+The procedure for committing, deploying, and running a do-while node is the same as that for committing, deploying, and running a common node. However, you cannot test a do-while node in DataStudio.
+
+> **Note:** If you want to verify the running result of a do-while node, you must commit and deploy the task that contains the do-while node to Operation Center and run the do-while node in Operation Center. If you use the values passed by an assignment node that serves as the ancestor of the do-while node, run both the assignment node and the do-while node in Operation Center.
+
 1. On the configuration tab of the do-while node, click **Operation Center** in the top toolbar to
 go to **Operation Center**.
 2. In the left-side navigation pane of the Operation Center page, choose **Cycle Task**
@@ -27577,9 +28071,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Find the desired workflow, right-click the workflow name, and then choose **Create Node >**
 **General > Merge Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27589,7 +28082,10 @@ you can use the node to develop and configure tasks.
 
 After the merge node is created, the node configuration tab appears. Define the merging logic for the node.
 1. Add the branch nodes that you want to merge. These nodes become the ancestor nodes of
-the merge node. In the **Merged Branch** drop-down list, search for the required branch node by node name, node ID, or node output and click the icon. If you need to merge branches of multiple branch nodes, you must repeat this step to add the branch nodes one at a time.
+the merge node. In the **Merged Branch** drop-down list, search for the required branch node by node name, node ID, or node output and click the icon.
+
+> **Note:** If you need to merge branches of multiple branch nodes, you must repeat this step to add the branch nodes one at a time.
+
 2. In the **MERGE Condition** section, configure merge conditions for the branch nodes.
 You must configure the merge conditions and states for the branch nodes. The following merge logic options are supported:
 **AND**: The node status specified in the **Run Status** field takes effect only if all the
@@ -27599,13 +28095,21 @@ branch nodes have finished running and at least one of them is in its specified 
 **Successful**: The node was run successfully.
 **Failed**: The node failed to run.
 **Branch Not Running**: The node was not selected to run. The node entered a dry-run
-state — marked as successful, but the task was not executed. This state is applicable only to nodes that are downstream of a branch node.
+state — marked as successful, but the task was not executed.
+
+> **Note:** This state is applicable only to nodes that are downstream of a branch node.
+
 3. In the **Result** section, specify the status of the merge node.
-The status of the merge node itself can only be set to **Successful**. Example: Branch Nodes A and B are added as the ancestor nodes of the merge node. The **Successful**, **Branch Not Running**, and **Failed** states are specified for Node A. In this case, Node A needs only to be run, regardless of the result. The **Successful** state is specified for Node B. In this case, Node B needs to be run successfully. The merge logic is set to **AND**. Therefore, the **Successful** state of the merge node takes effect if Node A has finished running and Node B has run successfully.
+
+> **Note:** The status of the merge node itself can only be set to **Successful**.
+
+Example: Branch Nodes A and B are added as the ancestor nodes of the merge node. The **Successful**, **Branch Not Running**, and **Failed** states are specified for Node A. In this case, Node A needs only to be run, regardless of the result. The **Successful** state is specified for Node B. In this case, Node B needs to be run successfully. The merge logic is set to **AND**. Therefore, the **Successful** state of the merge node takes effect if Node A has finished running and Node B has run successfully.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -27620,7 +28124,12 @@ After a merge node is configured, you must commit and deploy the node. After you
 1. Switch to the workflow editing page and click the
 icon in the toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure parameters in the **Rerun** and **Parent Nodes** sections before you commit the node. You can use the code review feature to ensure the code quality of the node and prevent node execution errors caused by invalid node code. If you enable the code review feature, the task code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the task to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the task. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure parameters in the **Rerun** and **Parent Nodes** sections before you commit the node.
+> You can use the code review feature to ensure the code quality of the node and prevent node execution errors caused by invalid node code. If you enable the code review feature, the task code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the task to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the task. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -27641,9 +28150,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Find the desired workflow, right-click the workflow name, and then choose **Create Node >**
 **General > Branch Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27671,7 +28179,9 @@ After you configure a branch node, you can modify or delete branches attached to
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -27686,7 +28196,12 @@ After a branch node is configured, you must commit and deploy the node. After yo
 1. Switch to the workflow editing page and click the
 icon in the toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure parameters in the **Rerun** and **Parent Nodes** sections before you commit the node. You can use the code review feature to ensure the code quality of the node and prevent node execution errors caused by invalid node code. If you enable the code review feature, the task code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the task to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure parameters in the **Rerun** and **Parent Nodes** sections before you commit the node.
+> You can use the code review feature to ensure the code quality of the node and prevent node execution errors caused by invalid node code. If you enable the code review feature, the task code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the task to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -27714,7 +28229,9 @@ If you want a node to pass its output to a descendant node, you can configure th
 
 **Usage notes**
 
-Features Assignment nodes can pass data only to their level-1 descendant nodes. Assignment nodes can use the outputs parameter to pass only the output of the last statement to their descendant nodes. The version of the Python language used by assignment nodes is Python 2.0. You cannot add comments to the code of assignment nodes. Otherwise, the result may be incorrect. To prevent a node that depends on an assignment node from failing to obtain the dataset of the outputs parameter from the assignment node, you must run the workflow that contains the assignment node and its descendant nodes. All nodes that depend on an assignment node can obtain the dataset of the outputs parameter from the assignment node. No limits are imposed on the node type.
+Features Assignment nodes can pass data only to their level-1 descendant nodes. Assignment nodes can use the outputs parameter to pass only the output of the last statement to their descendant nodes. The version of the Python language used by assignment nodes is Python 2.0. You cannot add comments to the code of assignment nodes. Otherwise, the result may be incorrect. To prevent a node that depends on an assignment node from failing to obtain the dataset of the outputs parameter from the assignment node, you must run the workflow that contains the assignment node and its descendant nodes.
+
+> **Note:** All nodes that depend on an assignment node can obtain the dataset of the outputs parameter from the assignment node. No limits are imposed on the node type.
 
 **Output format of the outputs parameter**
 
@@ -27737,9 +28254,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Assignment Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27773,7 +28289,9 @@ a. **Parameter Name**: The custom name of the parameter. In this example, the pa
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -27788,7 +28306,12 @@ After an assignment node is configured, you must commit and deploy the node. Aft
 1. Switch to the workflow configuration tab and click the
 icon in the toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -27809,9 +28332,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Shell**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27830,11 +28352,15 @@ current node. On the node configuration tab, you can write code to run the resou
 
 **Configure scheduling properties for the Shell node**
 
-You are not allowed to customize variable names for common Shell nodes. The variables must be named sequentially based on their position, such as $1, $2, and $3. If the parameter number is 10 or greater, you must use the ${number} format, such as ${10}. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters. In the preceding figure, custom parameters are assigned to the custom variables $1, $2, and $3 in the Parameters section, and the custom variables are referenced in the code editor. Examples: $1: Specify **$bizdate** as $1. This variable is used to obtain the data timestamp. $bizdate is a built-in parameter. $2: Specify **${yyyymmdd}** as $2. This variable is used to obtain the data timestamp. $3: Specify **$[yyyymmdd]** as $3. This variable is used to obtain the data timestamp. For common Shell nodes, you can assign custom parameters to custom variables only by using expressions. The parameters must be separated by a space, and the parameter values must match the order in which the parameters are defined. For example, the first parameter **$bizdate** that you entered in the Parameters section is assigned to the first variable $1.
+You are not allowed to customize variable names for common Shell nodes. The variables must be named sequentially based on their position, such as $1, $2, and $3. If the parameter number is 10 or greater, you must use the ${number} format, such as ${10}. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters. In the preceding figure, custom parameters are assigned to the custom variables $1, $2, and $3 in the Parameters section, and the custom variables are referenced in the code editor. Examples: $1: Specify **$bizdate** as $1. This variable is used to obtain the data timestamp. $bizdate is a built-in parameter. $2: Specify **${yyyymmdd}** as $2. This variable is used to obtain the data timestamp. $3: Specify **$[yyyymmdd]** as $3. This variable is used to obtain the data timestamp.
+
+> **Note:** For common Shell nodes, you can assign custom parameters to custom variables only by using expressions. The parameters must be separated by a space, and the parameter values must match the order in which the parameters are defined. For example, the first parameter **$bizdate** that you entered in the Parameters section is assigned to the first variable $1.
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -27850,7 +28376,12 @@ After the node is configured, you must commit and deploy the node. After you com
 1. Click the
 icon in the top toolbar to save the node.
 2. In the top toolbar, click the
-icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -27871,9 +28402,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Check Realtime Compute Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27891,7 +28421,9 @@ On the node configuration tab that appears, configure the parameters in the **Ch
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Debug node code**
 
@@ -27906,7 +28438,12 @@ After a node is configured, you must commit and deploy the node. After you commi
 1. Switch to the workflow configuration tab and click the
 icon in the top toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -27927,9 +28464,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Zero-Load Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -27939,7 +28475,12 @@ the Properties tab, configure scheduling properties for the node. For more infor
 5. Click the
 icon in the top toolbar to save the node.
 6. Click the
-icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 ##### 6.4.9.9 HTTP trigger nodes
 
@@ -27953,9 +28494,7 @@ A workflow is created. The compute nodes that need to be triggered by an HTTP tr
 
 An external scheduling system is used to trigger nodes in the following typical scenarios: An HTTP trigger node has no ancestor nodes other than the root node of the workflow In this scenario, you must configure a trigger in the external scheduling system after you create the HTTP trigger node. Then, you must configure scheduling properties and dependencies for the nodes in DataWorks. An HTTP trigger node has one or more ancestor nodes other than the root node of the workflow In this scenario, take note of the following points: You must configure a trigger in the external scheduling system after you create the HTTP trigger node. Then, you must configure scheduling properties and dependencies for the nodes in DataWorks. By default, the HTTP trigger node uses the root node of the workflow as its ancestor node. If another ancestor node needs to finish running before the HTTP trigger node is triggered, you must manually change its dependency to point to the ancestor node. The HTTP trigger node can trigger its descendant nodes only after its ancestor node is run as expected and it receives a scheduling instruction from the external scheduling system. If the HTTP trigger node receives a scheduling instruction from the external scheduling system before its ancestor node finishes running, it does not trigger its descendant nodes. DataWorks retains the scheduling instruction from the external scheduling system and schedules the HTTP trigger node to trigger its descendant nodes after the running of the ancestor node is complete.
 
-**Important**
-
-The scheduling instruction from the external scheduling system can be retained only for 24 hours. If the running of the ancestor node is not complete within 24 hours, the scheduling instruction becomes invalid and is discarded.
+> **Important:** The scheduling instruction from the external scheduling system can be retained only for 24 hours. If the running of the ancestor node is not complete within 24 hours, the scheduling instruction becomes invalid and is discarded.
 
 **Usage notes**
 
@@ -27972,20 +28511,22 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **HTTP Trigger**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
 you can use the node to develop and configure tasks.
 4. On the configuration tab of the node, click **Properties** in the right-side navigation pane. On
-the Properties tab, configure scheduling properties for the node. For more information, see Configure basic properties. By default, the HTTP trigger node uses the root node of the workflow as its ancestor node. If another ancestor node needs to finish running before the HTTP trigger node is triggered, you must manually change its dependency to point to the ancestor node.
+the Properties tab, configure scheduling properties for the node. For more information, see Configure basic properties.
+
+> **Note:** By default, the HTTP trigger node uses the root node of the workflow as its ancestor node. If another ancestor node needs to finish running before the HTTP trigger node is triggered, you must manually change its dependency to point to the ancestor node.
+
 5. Save and commit the HTTP trigger node.
 
-**Important**
+> **Important:** You must configure the **Rerun** and **Parent Nodes** parameters before you commit the node.
 
-You must configure the **Rerun** and **Parent Nodes** parameters before you commit the node. i. Click the icon in the top toolbar to save the node. ii. Click the icon in the top toolbar. iii. In the **Submit** dialog box, enter your comments in the **Change description** field. iv. Click **Confirm**. If your workspace is in standard mode, you must click **Deploy** in the upper-right corner of the node configuration tab to deploy the node after you commit it. For more information, see Deploy nodes.
+i. Click the icon in the top toolbar to save the node. ii. Click the icon in the top toolbar. iii. In the **Submit** dialog box, enter your comments in the **Change description** field. iv. Click **Confirm**. If your workspace is in standard mode, you must click **Deploy** in the upper-right corner of the node configuration tab to deploy the node after you commit it. For more information, see Deploy nodes.
 6. Manage the node. For more information, see Auto triggered node O&M.
 
 **Configure a trigger in an external scheduling system**
@@ -28019,9 +28560,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Parameter Node**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -28068,9 +28608,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node > General >**
 **Data Analysis Reports**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -28088,7 +28627,9 @@ On the node configuration tab, set the parameters in the **Configure Data Analys
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Commit and deploy the node**
 
@@ -28096,7 +28637,12 @@ After a node is configured, you must commit and deploy the node. After you commi
 1. Switch to the workflow configuration tab and click the
 icon in the top toolbar to commit the workflow.
 2. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine
-whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -28123,9 +28669,8 @@ i. Log in to the DataWorks console. The DataStudio page appears by default. ii. 
 **Workflow**.
 iii. In the **Create Workflow** dialog box, specify the **Workflow Name** and **Description** parameters. Then, click **Create**.
 
-**Important**
+> **Important:** The name of the workflow can be up to 128 characters in length.
 
-The name of the workflow can be up to 128 characters in length.
 2. Right-click the workflow that you want to manage and choose **Create Node >**
 **UserDefined > Hologres Development**.
 3. In the **Create Node** dialog box, configure the **Name** parameter and click **Confirm**. Then,
@@ -28138,7 +28683,9 @@ If no such node is available, click **Create** to create one. You can also click
 
 **Step 3: Configure scheduling properties for the node**
 
-If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+If you want to periodically run the node, click **Properties** in the right-side navigation pane of the configuration tab of the node and configure the scheduling properties based on your business requirements. For more information, see Schedule.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
 
 **Step 4: Commit and deploy the node**
 
@@ -28146,7 +28693,12 @@ After a node is configured, you must commit and deploy the node. After you commi
 1. Click the
 icon in the top toolbar to save the node.
 2. Click the
-icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements. You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node. You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review. If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
+icon in the top toolbar to commit the node. In the **Submit** dialog box, configure the **Change description** parameter. Then, determine whether to review the node code after you commit the node based on your business requirements.
+
+> **Note:** You must configure the **Rerun** and **Parent Nodes** parameters on the Properties tab before you commit the node.
+> You can use the code review feature to ensure the code quality of nodes and prevent execution errors caused by invalid node code. If you enable the code review feature, the node code that is committed can be deployed only after the node code passes the code review. For more information, see Code review.
+
+If you use a workspace in standard mode, you must deploy the node to the production environment after you commit the node. To deploy a node, click **Deploy** in the upper-right corner of the configuration tab of the node. For more information, see Deploy nodes.
 
 **What to do next**
 
@@ -28178,7 +28730,11 @@ In DataWorks, a task is scheduled to run based on the scheduling parameters that
 
 After you define variables in the ${Variable} format in the code of a node and configure the scheduling parameters that are assigned to the variables as values in the **Add**
 **Parameter** section of the **Properties** tab, the values of the scheduling parameters are
-dynamically replaced in the node code when the node is scheduled to run. The format of a scheduling parameter varies based on the type of a node. For example, you can configure scheduling parameters for a Shell node only in the $N format. N specifies an integer that starts from 1. For more information, see Configure scheduling parameters for different types of nodes. You can **assign a constant** to a scheduling parameter. By doing so, the same value is passed to the scheduling parameter each time the node is run. You can follow the instructions in the following figure to assign a constant to a scheduling parameter. This topic describes how the values of scheduling parameters are dynamically replaced in the code of a node based on the configurations of the scheduling parameters. This topic consists of the following sections: Terms related to scheduling parameters Supported formats of scheduling parameters Notes for using scheduling parameters Appendix: Parameters Appendix: Relationships between scheduling parameters and the data timestamp, scheduling time, and actual running time of a node After you understand the supported formats of scheduling parameters, you can configure and use scheduling parameters based on your business requirements. For more information, see the What to do next: Configure and use scheduling parameters section in this topic.
+dynamically replaced in the node code when the node is scheduled to run. The format of a scheduling parameter varies based on the type of a node. For example, you can configure scheduling parameters for a Shell node only in the $N format. N specifies an integer that starts from 1. For more information, see Configure scheduling parameters for different types of nodes. You can **assign a constant** to a scheduling parameter. By doing so, the same value is passed to the scheduling parameter each time the node is run. You can follow the instructions in the following figure to assign a constant to a scheduling parameter.
+
+> **Note:** This topic describes how the values of scheduling parameters are dynamically replaced in the code of a node based on the configurations of the scheduling parameters.
+
+This topic consists of the following sections: Terms related to scheduling parameters Supported formats of scheduling parameters Notes for using scheduling parameters Appendix: Parameters Appendix: Relationships between scheduling parameters and the data timestamp, scheduling time, and actual running time of a node After you understand the supported formats of scheduling parameters, you can configure and use scheduling parameters based on your business requirements. For more information, see the What to do next: Configure and use scheduling parameters section in this topic.
 
 **Terms related to scheduling parameters**
 
@@ -28191,7 +28747,9 @@ In most cases, scheduling parameters are used in the scenarios in which you want
 
 **Supported formats of scheduling parameters**
 
-In most cases, scheduling parameters are used to obtain different time data. You can choose to use the data timestamp or scheduling time of a node to obtain time data based on your business requirements. DataWorks provides some built-in variables that have fixed formats. DataWorks also allows you to use the methods that are described in the following table to customize time formats.
+In most cases, scheduling parameters are used to obtain different time data. You can choose to use the data timestamp or scheduling time of a node to obtain time data based on your business requirements.
+
+> **Note:** DataWorks provides some built-in variables that have fixed formats. DataWorks also allows you to use the methods that are described in the following table to customize time formats.
 
 | Metho d to obtain time data | Parameter format |   |   |   |   |   |   | Sample parameter |   |   | Reference |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -28245,7 +28803,10 @@ $[…] parameters can be used to specify a time that is accurate to the hour, mi
 
 **the instance generated for a node is run.**
 
-This is because the value of a $[...] parameter is determined by the scheduling time of the instance generated for a node. The value is determined when the instance is generated. For more information, see Appendix: Relationships between scheduling parameters and the data timestamp, scheduling time, and actual running time of a node. When you use a $[...] parameter to specify a time that is accurate to the hour, both the 24-hour clock format and the 12-hour clock format are supported. `hh24` indicates a 24-hour clock. `hh` indicates a 12-hour clock.
+This is because the value of a $[...] parameter is determined by the scheduling time of the instance generated for a node. The value is determined when the instance is generated. For more information, see Appendix: Relationships between scheduling parameters and the data timestamp, scheduling time, and actual running time of a node.
+
+> **Note:** When you use a $[...] parameter to specify a time that is accurate to the hour, both the 24-hour clock format and the 12-hour clock format are supported.
+> `hh24` indicates a 24-hour clock. `hh` indicates a 12-hour clock.
 
 **Notes for using the ${bizdate}  variable**
 
@@ -28271,9 +28832,8 @@ The following table describes sample custom parameters in the ${...} format.
 | Add or subtract N years and return the year in the yy format | ${yy±N} |
 |---|---|
 
-**Important**
-
-To specify a time that is `N months` or `N years` ago, we recommend that you use ${...} parameters. You can use ${…} parameters to add or subtract only N days, months, or years.
+> **Important:** To specify a time that is `N months` or `N years` ago, we recommend that you use ${...} parameters.
+> You can use ${…} parameters to add or subtract only N days, months, or years.
 
 **Custom parameters in the $[...] format**
 
@@ -28302,9 +28862,8 @@ The following table describes sample custom parameters in the $[...] format.
 
 $[...] parameter is accurate to the hour, minute, or second. You can use engine functions to specify custom parameters in the formats that are not described in this topic. For more information, see Process the return values of scheduling parameters.
 
-**Important**
-
-If you want to specify a time that is `N hours` or `N minutes` ago, use a $[...] parameter. The value of a scheduling parameter is determined when an instance is generated for a node. It does not change with the actual time at which the instance is run.
+> **Important:** If you want to specify a time that is `N hours` or `N minutes` ago, use a $[...] parameter.
+> The value of a scheduling parameter is determined when an instance is generated for a node. It does not change with the actual time at which the instance is run.
 
 **Built-in system parameters**
 
@@ -28385,7 +28944,8 @@ i. In the Scheduled Workflow pane of the DataStudio page, double-click a desired
 
 You can perform the steps in the following figure to define variables in the code of a node and configure the scheduling parameters that you want to assign to the variables as values in the
 **Scheduling Parameter** section of the **Properties** tab based on your business requirements.
-Some nodes use the built-in variable ${bizdate} . The built-in variable is automatically assigned $bizdate as a value. You can replace `bizdate` with a custom variable name based on your business requirements.
+
+> **Note:** Some nodes use the built-in variable ${bizdate} . The built-in variable is automatically assigned $bizdate as a value. You can replace `bizdate` with a custom variable name based on your business requirements.
 
 **Assign scheduling parameters as values to variables in the**
 
@@ -28405,8 +28965,7 @@ In the **Scheduling Parameter** section, you can add parameters or load existing
 |   |   |   |   |   | datetime1=$[yyyymmdd] |   |   |
 |   |   |   |   | datetime2=$bizdate |   |   |   |
 
-If you use the built-in variable ${bdp.system.bizdate} or ${bdp.system.cyctime} in the code of a node, you do not need to assign values to the variable in the **Scheduling**
-**Parameter** section.
+> **Note:** If you use the built-in variable ${bdp.system.bizdate} or ${bdp.system.cyctime} in the code of a node, you do not need to assign values to the variable in the **Scheduling** **Parameter** section.
 
 **Test whether scheduling parameters are replaced as expected**
 
@@ -28418,23 +28977,41 @@ DataWorks replaces the scheduling parameters based on the scheduling configurati
 
 **parameters are replaced as expected**
 
-After you assign values to the scheduling parameters, we recommend that you use the smoke testing feature to specify a data timestamp for the node and test whether the code of the node is run and the scheduling parameters are replaced as expected when the node is scheduled to run. If the node is not run as expected, you can modify the scheduling configurations of the node at your earliest opportunity to prevent the invalid configurations from affecting the running of the node. After you modify the code of the node, you must click the icon and then the icon to save the modifications and commit the node to the development environment. Otherwise, you cannot perform smoke testing on the node in the development environment. When you perform smoke testing in the development environment, you are charged for the generated test instances. Before you click the or icon in the toolbar to run a node, you must manually assign constants to the variables that you want to reference in the code of the node. In this case, you cannot check whether the configured scheduling parameters work as expected. After the smoke testing is complete, click the icon to check whether the results in smoke testing logs meet your expectations.
+After you assign values to the scheduling parameters, we recommend that you use the smoke testing feature to specify a data timestamp for the node and test whether the code of the node is run and the scheduling parameters are replaced as expected when the node is scheduled to run. If the node is not run as expected, you can modify the scheduling configurations of the node at your earliest opportunity to prevent the invalid configurations from affecting the running of the node. After you modify the code of the node, you must click the icon and then the icon to save the modifications and commit the node to the development environment. Otherwise, you cannot perform smoke testing on the node in the development environment.
+
+> **Note:** When you perform smoke testing in the development environment, you are charged for the generated test instances.
+> Before you click the
+> or
+> icon in the toolbar to run a node, you must manually
+> assign constants to the variables that you want to reference in the code of the node. In this case, you cannot check whether the configured scheduling parameters work as expected.
+
+After the smoke testing is complete, click the icon to check whether the results in smoke testing logs meet your expectations.
 
 **Check the configurations of scheduling parameters in**
 
 **Operation Center**
 
-To prevent unexpected configurations of scheduling parameters from affecting the running of an auto triggered node, we recommend that you check the configurations of the scheduling parameters for the auto triggered node on the **Cycle Task** page in Operation Center in the production environment after the auto triggered node is deployed. If the scheduling parameters of an auto triggered node are not configured as expected or you cannot find the auto triggered node in Operation Center, check whether the node is deployed. For more information about how to deploy a node, see Deploy nodes.
+To prevent unexpected configurations of scheduling parameters from affecting the running of an auto triggered node, we recommend that you check the configurations of the scheduling parameters for the auto triggered node on the **Cycle Task** page in Operation Center in the production environment after the auto triggered node is deployed.
+
+> **Note:** If the scheduling parameters of an auto triggered node are not configured as expected or you cannot find the auto triggered node in Operation Center, check whether the node is deployed. For more information about how to deploy a node, see Deploy nodes.
 
 **Example on how to configure scheduling parameters**
 
 This section describes how to perform smoke testing in the development environment to check whether the scheduling parameters of a node work as expected. In this section, an ODPS SQL node is used. After the node is deployed, you can view the configurations of the scheduling parameters in Operation Center in the production environment.
 1. Edit the code of the node and configure the scheduling parameters.
-The following figure shows the code and scheduling parameter configurations of the ODPS SQL node. i. Define variables in the code. Define variables '${var1}' and '${var2}' to reference built-in parameters and define variables '${var3}' and '${var4}' to reference custom parameters in the code of the ODPS SQL node, as shown in area 1 in the preceding figure. ii. Assign values to the variables. Go to the **Scheduling Parameter** section of the **Properties** tab and assign values to the variables, as shown in area 2 in the preceding figure. var1=$bizdate : the data timestamp in the `yyyymmdd` format. var2=$cyctime : the time when the node is scheduled to run in the `yyyymmddhh24miss` format. var3=${yyyymmdd} : the data timestamp in the `yyyymmdd` format. var4=$[hh24miss-1/24/60] : the time when the node is scheduled to run in the `hh24miss-1/24/60` format. iii. **Optional:** Configure the scheduling frequency. Configure the ODPS SQL node to run at an interval of a specified number of hours, as shown in area 3 in the preceding figure. You can determine whether to configure the scheduling frequency for a node based on your business requirements. In this example, the scheduling frequency is configured. Start from: `00:00` End at: `23:59` Interval: `1` hour
+The following figure shows the code and scheduling parameter configurations of the ODPS SQL node. i. Define variables in the code. Define variables '${var1}' and '${var2}' to reference built-in parameters and define variables '${var3}' and '${var4}' to reference custom parameters in the code of the ODPS SQL node, as shown in area 1 in the preceding figure. ii. Assign values to the variables. Go to the **Scheduling Parameter** section of the **Properties** tab and assign values to the variables, as shown in area 2 in the preceding figure. var1=$bizdate : the data timestamp in the `yyyymmdd` format. var2=$cyctime : the time when the node is scheduled to run in the `yyyymmddhh24miss` format. var3=${yyyymmdd} : the data timestamp in the `yyyymmdd` format. var4=$[hh24miss-1/24/60] : the time when the node is scheduled to run in the `hh24miss-1/24/60` format. iii. **Optional:** Configure the scheduling frequency. Configure the ODPS SQL node to run at an interval of a specified number of hours, as shown in area 3 in the preceding figure.
+
+> **Note:** You can determine whether to configure the scheduling frequency for a node based on your business requirements. In this example, the scheduling frequency is configured.
+
+Start from: `00:00` End at: `23:59` Interval: `1` hour
 2. In the top toolbar of the configuration tab of the node, click the
 icon to save the configurations of the ODPS SQL node.
 3. Perform smoke testing in the development environment.
-i. Click the icon. In the **Smoke Testing** dialog box, configure a data timestamp to simulate the scheduling frequency of the node. In this example, configure a data timestamp in the following way: Data timestamp: `2022-03-09` Start from: `16:00` End at: `17:00` The ODPS SQL node is scheduled by hour. Two instances will be generated for the node at `16:00` and `17:00` on `March 10, 2022` . The data timestamp is one day earlier than the time when the node is scheduled to run. Therefore, the node is scheduled to run on `March 10, 2022` . The following results are expected for the instance that is generated at `16:00` :
+i. Click the icon. In the **Smoke Testing** dialog box, configure a data timestamp to simulate the scheduling frequency of the node. In this example, configure a data timestamp in the following way: Data timestamp: `2022-03-09` Start from: `16:00` End at: `17:00` The ODPS SQL node is scheduled by hour. Two instances will be generated for the node at `16:00` and `17:00` on `March 10, 2022` .
+
+> **Note:** The data timestamp is one day earlier than the time when the node is scheduled to run. Therefore, the node is scheduled to run on `March 10, 2022` .
+
+The following results are expected for the instance that is generated at `16:00` :
 
 ```
  var1=20220309
@@ -28456,7 +29033,11 @@ ii. Click **OK**. The node is run at its scheduling time. iii. After the smoke t
 4. On the configuration tab of the ODPS SQL node, click the
 icon in the top toolbar to commit the current node.
 5. Go to Operation Center and check the configurations of the scheduling parameters of the
-node. i. On the **DataStudio** page, click **Operation Center** on the right side of the top navigation bar to go to the Operation Center page. ii. In the left-side navigation pane, choose **Cycle Task Maintenance > Cycle Task**. On the Cycle Task page, find the node that you want to manage. You can find a node on the Cycle Task page only after the node is deployed. iii. Choose **More > View Auto Triggered Task Details** in the **Actions** column of the node. On the **Node Basic information** page, view the value of **Execution Parameters**. In this example, the scheduling parameters of the node are configured as expected in the
+node. i. On the **DataStudio** page, click **Operation Center** on the right side of the top navigation bar to go to the Operation Center page. ii. In the left-side navigation pane, choose **Cycle Task Maintenance > Cycle Task**. On the Cycle Task page, find the node that you want to manage.
+
+> **Note:** You can find a node on the Cycle Task page only after the node is deployed.
+
+iii. Choose **More > View Auto Triggered Task Details** in the **Actions** column of the node. On the **Node Basic information** page, view the value of **Execution Parameters**. In this example, the scheduling parameters of the node are configured as expected in the
 
 | var1=$bizdate var2=$cyctime var3=${yyyymmdd} |   |
 |---|---|
@@ -28476,7 +29057,11 @@ You can refer to the method that is used to configure scheduling parameters for 
 
 **SQL nodes and batch synchronization nodes**
 
-You can configure scheduling parameters for SQL nodes and batch synchronization nodes by using a method that is applicable to most types of nodes. Therefore, you can refer to this method to configure scheduling parameters for most types of nodes. In this section, an ODPS SQL node is used as an example. This section describes how to assign values to built-in variables and custom parameters, and how to reference scheduling parameters in code. Specific nodes do not support scheduling parameters. For more information about whether a type of node supports scheduling parameters, see the documentation of the type of node. Custom parameters are assigned to the custom variables var1, var2, var3, var4, and var5 in the **Scheduling Parameter** section and the custom variables are referenced in the code editor. In this example, the following variables are defined. `var1` : Specify $bizdate as var1. This variable is used to obtain the data timestamp. $bizdate is a built-in system parameter. `var3` : Specify $cyctime as var3. This variable is used to obtain the scheduling time. $cyctime is a built-in system parameter. `var2` : Specify ${yyyymmdd} as var2. This variable is used to obtain the data timestamp. `var4` : Specify $[yyyymmddhh24:mi:ss] as var4. This variable is used to obtain the scheduling time. `var5` : Assign the constant abc to this variable. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters.
+You can configure scheduling parameters for SQL nodes and batch synchronization nodes by using a method that is applicable to most types of nodes. Therefore, you can refer to this method to configure scheduling parameters for most types of nodes. In this section, an ODPS SQL node is used as an example. This section describes how to assign values to built-in variables and custom parameters, and how to reference scheduling parameters in code.
+
+> **Note:** Specific nodes do not support scheduling parameters. For more information about whether a type of node supports scheduling parameters, see the documentation of the type of node.
+
+Custom parameters are assigned to the custom variables var1, var2, var3, var4, and var5 in the **Scheduling Parameter** section and the custom variables are referenced in the code editor. In this example, the following variables are defined. `var1` : Specify $bizdate as var1. This variable is used to obtain the data timestamp. $bizdate is a built-in system parameter. `var3` : Specify $cyctime as var3. This variable is used to obtain the scheduling time. $cyctime is a built-in system parameter. `var2` : Specify ${yyyymmdd} as var2. This variable is used to obtain the data timestamp. `var4` : Specify $[yyyymmddhh24:mi:ss] as var4. This variable is used to obtain the scheduling time. `var5` : Assign the constant abc to this variable. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters.
 
 **PyODPS nodes**
 
@@ -28490,7 +29075,11 @@ strings that are in the ${param_name} format in the code. However, you can add a
 
 **Common Shell nodes**
 
-You are not allowed to specify custom variable names for common Shell nodes. The variables must be named based on their ordinal numbers, such as $1 , $2 , and $3 . If the number of parameters reaches or exceeds 10, use ${Number} to declare the excess variables. For example, use ${10} to declare the tenth variable. In the preceding code, custom parameters are assigned to the custom variables $1, $2, and $3 in the **Scheduling Parameter** section, and the custom variables are referenced in the code editor. In this example, the following variables are defined. For common Shell nodes, you can assign custom parameters to custom variables only by using expressions. Separate multiple custom parameters with spaces. Make sure that you assign the custom parameters to the custom variables in the same order in which the custom variables are defined. For example, the first parameter $bizdate that you enter in the Scheduling Parameter section is assigned to the first variable $1. $1: Specify $bizdate as $1. This variable is used to obtain the data timestamp. $bizdate is a built-in system parameter. $2: Specify ${yyyymmdd} as $2. This variable is used to obtain the data timestamp. $3: Specify $[yyyymmdd] as $3. This variable is used to obtain the data timestamp. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters.
+You are not allowed to specify custom variable names for common Shell nodes. The variables must be named based on their ordinal numbers, such as $1 , $2 , and $3 . If the number of parameters reaches or exceeds 10, use ${Number} to declare the excess variables. For example, use ${10} to declare the tenth variable. In the preceding code, custom parameters are assigned to the custom variables $1, $2, and $3 in the **Scheduling Parameter** section, and the custom variables are referenced in the code editor. In this example, the following variables are defined.
+
+> **Note:** For common Shell nodes, you can assign custom parameters to custom variables only by using expressions. Separate multiple custom parameters with spaces. Make sure that you assign the custom parameters to the custom variables in the same order in which the custom variables are defined. For example, the first parameter $bizdate that you enter in the Scheduling Parameter section is assigned to the first variable $1.
+
+$1: Specify $bizdate as $1. This variable is used to obtain the data timestamp. $bizdate is a built-in system parameter. $2: Specify ${yyyymmdd} as $2. This variable is used to obtain the data timestamp. $3: Specify $[yyyymmdd] as $3. This variable is used to obtain the data timestamp. For more information about how to configure and use scheduling parameters, see Configure and use scheduling parameters. For more information about the methods to assign values to scheduling parameters, see Overview of scheduling parameters.
 
 ###### 6.5.2.3.2 Compare custom parameters
 
@@ -28498,7 +29087,9 @@ Custom parameters are classified into built-in parameters, ${...} parameters, $[
 
 **How different custom parameters are used**
 
-For example, the current date is `November 1, 2021` , and a node is scheduled to run at `00:00` every day. The following table describes how different customer parameters are assigned values. In this example, the parameters are referenced in the pt=${datetime} format in the code.
+For example, the current date is `November 1, 2021` , and a node is scheduled to run at `00:00` every day. The following table describes how different customer parameters are assigned values.
+
+> **Note:** In this example, the parameters are referenced in the pt=${datetime} format in the code.
 
 |   | Parameter format |   | Description | Assignment |   | Replacement result |   |
 |---|---|---|---|---|---|---|---|
@@ -28758,7 +29349,11 @@ Year: `yyyy` Month: `yyyymm` Day: `yyyymmdd` Hours: `hh` Minutes: `mm`
 
 **Obtain a time range with a scheduling interval of one day**
 
-Obtain the interval for data synchronization between `00:00:00` of the previous day and `00:00:00` of the current day. The interval for periodic scheduling is one day and accurate to seconds, in the format of `yyyymmddhh24miss` . If you create a batch synchronization node to synchronize data generated in a Kafka or LogHub data source in a specific interval and you need to configure the scheduling parameters, you must set the data timestamp in the format of `yyyymmddhh24miss` , and the interval must be left-closed and right-open. The following table describes how to configure scheduling parameters to obtain the interval for data synchronization.
+Obtain the interval for data synchronization between `00:00:00` of the previous day and `00:00:00` of the current day. The interval for periodic scheduling is one day and accurate to seconds, in the format of `yyyymmddhh24miss` .
+
+> **Note:** If you create a batch synchronization node to synchronize data generated in a Kafka or LogHub data source in a specific interval and you need to configure the scheduling parameters, you must set the data timestamp in the format of `yyyymmddhh24miss` , and the interval must be left-closed and right-open.
+
+The following table describes how to configure scheduling parameters to obtain the interval for data synchronization.
 
 |   | Parameter configuration |   |   | Scheduling time for testing |   |   | Returned result |   |   |
 |---|---|---|---|---|---|---|---|---|---|
@@ -28772,7 +29367,11 @@ Obtain the interval for data synchronization between `00:00:00` of the previous 
 
 **for periodic scheduling being one hour**
 
-Obtain the interval for data synchronization between `00:00:00` of the previous day and `00:00:00` of the current day. The interval for periodic scheduling is one hour and accurate to seconds, in the format of `yyyymmddhh24miss` . If you create a batch synchronization node to synchronize data generated in a Kafka or LogHub data source in a specific interval and you need to configure the scheduling parameters, you must set the data timestamp in the format of `yyyymmddhh24miss` , and the interval must be left-closed and right-open. The following table describes how to configure scheduling parameters to obtain the interval for data synchronization.
+Obtain the interval for data synchronization between `00:00:00` of the previous day and `00:00:00` of the current day. The interval for periodic scheduling is one hour and accurate to seconds, in the format of `yyyymmddhh24miss` .
+
+> **Note:** If you create a batch synchronization node to synchronize data generated in a Kafka or LogHub data source in a specific interval and you need to configure the scheduling parameters, you must set the data timestamp in the format of `yyyymmddhh24miss` , and the interval must be left-closed and right-open.
+
+The following table describes how to configure scheduling parameters to obtain the interval for data synchronization.
 
 | Parameter configuration | Scheduling time for testing | Returned result |
 |---|---|---|
@@ -28841,9 +29440,7 @@ After you commit and deploy an auto triggered node to the scheduling system in t
 **Deployment**. The time when the generated instances take effect and the time when the
 scheduling dependencies of the node are updated are determined by the value of the Instance Generation Mode parameter. The following table describes the valid values of the Instance Generation Mode parameter.
 
-**Important**
-
-Regardless of the value of the Instance Generation Mode parameter, the changes that are made during the period of `23:30 to 24:00` will take effect on the third day after the node is deployed to the production environment. We recommend that you do not make task changes during this period.
+> **Important:** Regardless of the value of the Instance Generation Mode parameter, the changes that are made during the period of `23:30 to 24:00` will take effect on the third day after the node is deployed to the production environment. We recommend that you do not make task changes during this period.
 
 | Instance Generati on Mode | Description |
 |---|---|
@@ -28866,9 +29463,7 @@ The scheduling calendar feature is used to define the scheduling dates and the s
 
 **Scheduling cycles**
 
-A node can be automatically scheduled based on its scheduling properties only if
-**Periodic scheduling** is turned on for the workspace to which the node belongs. You can
-turn on the switch on the **Scheduling Settings** tab of the Settings page for a workspace. For more information, see Configure scheduling settings.
+> **Note:** A node can be automatically scheduled based on its scheduling properties only if **Periodic scheduling** is turned on for the workspace to which the node belongs. You can turn on the switch on the **Scheduling Settings** tab of the Settings page for a workspace. For more information, see Configure scheduling settings.
 
 **Term description**
 
@@ -28880,7 +29475,15 @@ Scheduled by minute. For more information, see Schedule a node by minute. Schedu
 
 **Usage notes**
 
-If a node is committed and deployed between 23:30 and 00:00 on a day, the scheduling system schedules instances generated for the node from the day after the next day. The dependencies of an auto triggered node take priority over its time properties. The scheduling system does not immediately run the instances of a node at the scheduling time. The system first checks whether all the ancestor instances of the node are successful. If not all its ancestor instances are successful, the node instance is in the Pending (Ancestor) state when the scheduling time of the node arrives. If all its ancestor instances are successful, the node instance enters the Pending (Schedule) state before the scheduling time of the node arrives. If all its ancestor instances are successful, the node instance enters the Pending (Resources) state when the scheduling time of the node arrives. The time at which a node is scheduled may be inconsistent with the scheduling time that you specify for the node due to unexpected issues. For example, the node needs to wait for resources. For a node that is scheduled by week, month, or year, the scheduling system runs the node at the scheduling time every day. On the days that are not specified to run the node, a dry run is performed on the node and the node generates no data. The following content describes the effects of a dry-run: The scheduling system directly returns a success response, and the running duration is `0` seconds. No run logs are generated. The descendant nodes are not affected. No resources are occupied. For example, if you schedule a node to run every Monday, the node is run and generates data only on Mondays. On the other days of the same week, the node performs a dry run and the scheduling system returns a success response. If you test the node or backfill data for the node, you must set the data timestamp to Sunday. The data timestamp is one day earlier than the scheduling time of the node. This way, the node can be tested or data can be backfilled when the node is run and generates data on Monday.
+If a node is committed and deployed between 23:30 and 00:00 on a day, the scheduling system schedules instances generated for the node from the day after the next day. The dependencies of an auto triggered node take priority over its time properties. The scheduling system does not immediately run the instances of a node at the scheduling time. The system first checks whether all the ancestor instances of the node are successful.
+
+> **Note:** If not all its ancestor instances are successful, the node instance is in the Pending (Ancestor) state when the scheduling time of the node arrives.
+> If all its ancestor instances are successful, the node instance enters the Pending (Schedule) state before the scheduling time of the node arrives.
+> If all its ancestor instances are successful, the node instance enters the Pending (Resources) state when the scheduling time of the node arrives.
+
+The time at which a node is scheduled may be inconsistent with the scheduling time that you specify for the node due to unexpected issues. For example, the node needs to wait for resources. For a node that is scheduled by week, month, or year, the scheduling system runs the node at the scheduling time every day. On the days that are not specified to run the node, a dry run is performed on the node and the node generates no data. The following content describes the effects of a dry-run: The scheduling system directly returns a success response, and the running duration is `0` seconds. No run logs are generated. The descendant nodes are not affected. No resources are occupied.
+
+> **Note:** For example, if you schedule a node to run every Monday, the node is run and generates data only on Mondays. On the other days of the same week, the node performs a dry run and the scheduling system returns a success response. If you test the node or backfill data for the node, you must set the data timestamp to Sunday. The data timestamp is one day earlier than the scheduling time of the node. This way, the node can be tested or data can be backfilled when the node is run and generates data on Monday.
 
 **Scenario description**
 
@@ -28903,11 +29506,16 @@ You can use the Timeout definition parameter to specify a timeout period for a n
 
 **Rerun properties**
 
-In the Schedule section, you can configure the conditions, interval, and number of times for rerunning a node. When you configure rerun properties for a node, make sure that the data idempotence of the node is not affected based on your business requirements. This helps prevent data quality issues after a failed node is rerun. For example, when you create and develop an ODPS SQL node, you can replace the `INSERT INTO` statement with the `INSERT OVERWRITE` statement. You can go to the **Scheduling Settings** tab of the Settings page in DataStudio to configure default scheduling settings for nodes to be created. For more information, see Configure scheduling settings.
+In the Schedule section, you can configure the conditions, interval, and number of times for rerunning a node.
+
+> **Note:** When you configure rerun properties for a node, make sure that the data idempotence of the node is not affected based on your business requirements. This helps prevent data quality issues after a failed node is rerun. For example, when you create and develop an ODPS SQL node, you can replace the `INSERT INTO` statement with the `INSERT OVERWRITE` statement.
+> You can go to the **Scheduling Settings** tab of the Settings page in DataStudio to configure default scheduling settings for nodes to be created. For more information, see Configure scheduling settings.
 
 **Rerun**
 
-The following table describes the valid values of the Rerun parameter. You can click **Modify Default Settings** next to the **Rerun** parameter to modify the default value.
+The following table describes the valid values of the Rerun parameter.
+
+> **Note:** You can click **Modify Default Settings** next to the **Rerun** parameter to modify the default value.
 
 | Value | Scenario |
 |---|---|
@@ -28924,7 +29532,9 @@ The following table describes the parameters you must configure if you allow aut
 | Number of re-runs | The default number of times that an auto triggered node is rerun after it fails to run as expected. Valid values: 1 to 10. A value of 1 indicates that the node is rerun once after it fails to run as expected. A value of 10 indicates that the node is rerun ten times after it fails to run as expected. You can change the value of this parameter based on your business requirements. |
 | Rerun interval | The interval at which a node is rerun after it fails to run as expected. You can configure this parameter based on your requirements. Valid values: 1 to 30. Default value: 30. Unit: minutes. |
 
-The **Auto Rerun upon Failure** parameter is not displayed if you set the Rerun parameter to **Disallow Regardless of Running Status** . In this case, the node is not allowed to rerun after it fails to run as scheduled. You can specify the default number of reruns and default rerun interval for the nodes in a workspace on the **Scheduling Settings** tab. For more information, see Configure scheduling settings. The automatic rerun feature does not take effect if a node fails because the timeout period is exceeded.
+> **Note:** The **Auto Rerun upon Failure** parameter is not displayed if you set the Rerun parameter to **Disallow Regardless of Running Status** . In this case, the node is not allowed to rerun after it fails to run as scheduled.
+> You can specify the default number of reruns and default rerun interval for the nodes in a workspace on the **Scheduling Settings** tab. For more information, see Configure scheduling settings.
+> The automatic rerun feature does not take effect if a node fails because the timeout period is exceeded.
 
 **Validity period**
 
@@ -28947,7 +29557,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Sample scenario**
 
-The following figure shows how to configure a node scheduled to run every 5 minutes from `00:00` to `23:59` every day. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+The following figure shows how to configure a node scheduled to run every 5 minutes from `00:00` to `23:59` every day.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -28985,7 +29597,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Configuration details**
 
-The following figure shows how to configure a node that is scheduled to run every 6 hours in the time period from `00:00` to `23:59` every day. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+The following figure shows how to configure a node that is scheduled to run every 6 hours in the time period from `00:00` to `23:59` every day.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -29025,7 +29639,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Configuration details**
 
-Assume that the import node, an analytics node, and an export node are scheduled by day. The nodes are scheduled to run at `13:00` every day. The analytics node depends on the import node, and the export node depends on the analytics node. This means that in the dependency configuration of the analytics node, its ancestor node is set to the import node. The following figure shows how to configure the nodes to be scheduled to run at 13:00 every day. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+Assume that the import node, an analytics node, and an export node are scheduled by day. The nodes are scheduled to run at `13:00` every day. The analytics node depends on the import node, and the export node depends on the analytics node. This means that in the dependency configuration of the analytics node, its ancestor node is set to the import node. The following figure shows how to configure the nodes to be scheduled to run at 13:00 every day.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -29034,7 +29650,11 @@ The scheduling system automatically generates and runs instances for the node.
 | Scheduling parameter configuration of nodes Import node 00 00 13 * * ? Analytics node 00 00 13 * * ? Export node 00 00 13 * * ? | Running of instances generated for nodes Data timestamp: Data timestamp: 20250909 20250910 Import node Import node 2025-09-10 2025-09-11 13:00 13:00 Analytics node Analytics node 2025-09-10 2025-09-11 13:00 13:00 Export node Export node 2025-09-10 2025-09-11 13:00 13:00 |
 |---|---|
 
-The following prerequisites must be met before a node is run: The ancestor node of the node is run. The scheduling time of the node arrives. Both prerequisites must be met and they have no specific chronological order. The default scheduling time of a node that is scheduled by day is randomly generated in the time period from `00:00` to `00:30` .
+> **Note:** The following prerequisites must be met before a node is run:
+> The ancestor node of the node is run.
+> The scheduling time of the node arrives.
+> Both prerequisites must be met and they have no specific chronological order.
+> The default scheduling time of a node that is scheduled by day is randomly generated in the time period from `00:00` to `00:30` .
 
 ##### 6.5.3.5 Schedule a node by week
 
@@ -29055,7 +29675,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Configuration details**
 
-If the node is scheduled to run at a point in time every Monday and Friday, the scheduling system runs the instances that are generated for the node every Monday and Friday. The scheduling system does not run the instances that are generated for the node every Tuesday, Wednesday, Thursday, Saturday, or Sunday and directly prompts that the instances are run. The following figure shows the details of the configurations. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+If the node is scheduled to run at a point in time every Monday and Friday, the scheduling system runs the instances that are generated for the node every Monday and Friday. The scheduling system does not run the instances that are generated for the node every Tuesday, Wednesday, Thursday, Saturday, or Sunday and directly prompts that the instances are run. The following figure shows the details of the configurations.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -29085,7 +29707,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Configuration details**
 
-If the node is scheduled to run on the last day of each month, the scheduling system runs the instances that are generated for the node on the last day of every month. The scheduling system generates dry-run instances for the node on each of the rest days of every month and directly prompts that the instances are successfully run. The following figure shows the details about the configurations. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+If the node is scheduled to run on the last day of each month, the scheduling system runs the instances that are generated for the node on the last day of every month. The scheduling system generates dry-run instances for the node on each of the rest days of every month and directly prompts that the instances are successfully run. The following figure shows the details about the configurations.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -29112,7 +29736,9 @@ On the DataStudio page, create a node and go to the configuration tab of the nod
 
 **Configuration details**
 
-If the node is scheduled to run at a specified point in time on the first and last days of January, April, July, and October each year, the scheduling system runs the instances that are generated on these days each year. The scheduling system generates dry-run instances for the node on each of the other days in the year and directly returns a success response for the instances. The following figure shows the details about the configurations. The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
+If the node is scheduled to run at a specified point in time on the first and last days of January, April, July, and October each year, the scheduling system runs the instances that are generated on these days each year. The scheduling system generates dry-run instances for the node on each of the other days in the year and directly returns a success response for the instances. The following figure shows the details about the configurations.
+
+> **Note:** The cron expression is automatically generated based on the scheduling time that you select and cannot be changed.
 
 **Scheduling details**
 
@@ -29127,8 +29753,11 @@ To run an auto triggered task, you must configure a resource group for schedulin
 
 **Configure a resource group**
 
-Go to the configuration tab of your task on the DataStudio page. Click the **Properties** tab in the right-side navigation pane. In the **Resource Group** section of the Properties tab, configure a resource group for the task. Select the resource group you want to use from the **Resource Group** drop-down list. By default, **Common scheduler resource group** is selected. If you want to change the default resource group of a newly created node, go to the Scheduling Settings tab of the Data Studio page and configure the related settings. For more information, see Configure scheduling settings. If you select Common scheduler resource group, the node may wait for resources during peak hours. We recommend that you change the scheduling time of the node or use an exclusive resource group to run the node. If no resource group meets your requirements, you can select **New Resource**
-**Group** from the drop-down list.
+Go to the configuration tab of your task on the DataStudio page. Click the **Properties** tab in the right-side navigation pane. In the **Resource Group** section of the Properties tab, configure a resource group for the task. Select the resource group you want to use from the **Resource Group** drop-down list. By default, **Common scheduler resource group** is selected.
+
+> **Note:** If you want to change the default resource group of a newly created node, go to the Scheduling Settings tab of the Data Studio page and configure the related settings. For more information, see Configure scheduling settings.
+> If you select Common scheduler resource group, the node may wait for resources during peak hours. We recommend that you change the scheduling time of the node or use an exclusive resource group to run the node.
+> If no resource group meets your requirements, you can select **New Resource** **Group** from the drop-down list.
 
 #### 6.5.5 Configure scheduling dependencies
 
@@ -29140,7 +29769,16 @@ Nodes in a workflow in DataWorks are run in sequence based on the scheduling dep
 
 **Reasons for configuring scheduling dependencies**
 
-Scheduling dependencies define the relationships between nodes. After you configure scheduling dependencies for a node, the node can start to run only after its ancestor node is run. Scheduling dependencies ensure that a running node can obtain the required data from its ancestor nodes. A node obtains the required data only after DataWorks detects that the ancestor nodes of the node are run and generate the latest table data. This prevents a node from obtaining invalid data or obtaining no data before the table data of its ancestor nodes is generated as expected. We recommend that you plan and configure scheduling dependencies for nodes based on the lineage of the table data of each node. Make sure that the following principles are met: A table is generated by only one node, and the table must be configured as the output of the node. The system automatically adds the table generated by an SQL node to the output of the SQL node based on the automatic parsing feature, and no manual configuration is needed. You must manually add the table generated by a batch synchronization node to the output of the node. The name of the table is in the projectname.tablename format. This way, the output table of the node is configured as the input table of its descendant node based on the automatic parsing feature when the descendant node is run. The output of a node must be configured as the input of its descendant node, which forms dependencies between nodes. For a node whose table data has no lineage, you can plan and configure scheduling dependencies for the node based on the relationships between nodes in a workflow. The configuration principles and results must comply with those of a node whose table data has a lineage. The scheduling dependencies of a node are configured in the **Properties** panel of the node. You must configure the **Parent Nodes** and Output Name of Current Node parameters for the node. Scheduling dependencies can be automatically or manually configured for a node. In most cases, the system can automatically identify input and output statements such as `SELECT` and `INSERT` based on the standard code that you developed for a node. The system can also identify the lineage of table data based on the code. Then, the system automatically configures scheduling dependencies for the node based on the automatic parsing feature and the identified lineage. In special cases, you can manually configure scheduling dependencies for a node. For example, the scheduling dependencies configured for a node contain a table that is not generated by an auto triggered node, such as a table uploaded from your on-premises machine. In this case, you can manually modify the scheduling dependencies. When you commit a node, DataWorks checks whether the scheduling dependencies configured for the node are consistent with the data lineage in the code developed for the node. If they are inconsistent, DataWorks displays an error message. In this case, you can determine whether to modify the scheduling dependencies based on actual situations.
+Scheduling dependencies define the relationships between nodes. After you configure scheduling dependencies for a node, the node can start to run only after its ancestor node is run. Scheduling dependencies ensure that a running node can obtain the required data from its ancestor nodes. A node obtains the required data only after DataWorks detects that the ancestor nodes of the node are run and generate the latest table data. This prevents a node from obtaining invalid data or obtaining no data before the table data of its ancestor nodes is generated as expected. We recommend that you plan and configure scheduling dependencies for nodes based on the lineage of the table data of each node. Make sure that the following principles are met: A table is generated by only one node, and the table must be configured as the output of the node.
+
+> **Note:** The system automatically adds the table generated by an SQL node to the output of the SQL node based on the automatic parsing feature, and no manual configuration is needed.
+> You must manually add the table generated by a batch synchronization node to the output of the node. The name of the table is in the projectname.tablename format. This way, the output table of the node is configured as the input table of its descendant node based on the automatic parsing feature when the descendant node is run.
+
+The output of a node must be configured as the input of its descendant node, which forms dependencies between nodes.
+
+> **Note:** For a node whose table data has no lineage, you can plan and configure scheduling dependencies for the node based on the relationships between nodes in a workflow. The configuration principles and results must comply with those of a node whose table data has a lineage.
+
+The scheduling dependencies of a node are configured in the **Properties** panel of the node. You must configure the **Parent Nodes** and Output Name of Current Node parameters for the node. Scheduling dependencies can be automatically or manually configured for a node. In most cases, the system can automatically identify input and output statements such as `SELECT` and `INSERT` based on the standard code that you developed for a node. The system can also identify the lineage of table data based on the code. Then, the system automatically configures scheduling dependencies for the node based on the automatic parsing feature and the identified lineage. In special cases, you can manually configure scheduling dependencies for a node. For example, the scheduling dependencies configured for a node contain a table that is not generated by an auto triggered node, such as a table uploaded from your on-premises machine. In this case, you can manually modify the scheduling dependencies. When you commit a node, DataWorks checks whether the scheduling dependencies configured for the node are consistent with the data lineage in the code developed for the node. If they are inconsistent, DataWorks displays an error message. In this case, you can determine whether to modify the scheduling dependencies based on actual situations.
 
 **Automatic parsing**
 
@@ -29209,7 +29847,12 @@ The configurations of scheduling dependencies include **Parent Nodes and Output 
 **Parent Nodes**: the ancestor node of the current node. The current node can start to run
 only after its ancestor node is successfully run.
 **Output Name of Current Node** : the output of the current node. You can search for the
-current node by its output name and configure the current node as an ancestor node of another node. You can use one of the following methods to configure scheduling dependencies for an auto triggered node in DataStudio: On the canvas of the workflow, draw lines to connect the nodes in the workflow. For more information, see the Configuration by drawing lines to connect nodes section of this topic. In the Dependencies section of the Properties tab on the configuration tab of the auto triggered node, click the Same Cycle tab, and enter the name of a node or the name of the output table of the node in the Parent Nodes field to add the node as an ancestor node of the auto triggered node. You can click **Parse Input and Output from Code** and modify the analysis results based on your business requirements. For more information, see the Manual configuration section of this topic. In the Dependencies section of the Properties tab on the configuration tab of the auto triggered node, select Yes for Automatic Parsing Before Committing to enable the automatic parsing feature. When you commit the node, the system parses the code of the node to obtain the dependencies of the node and configures dependencies for the node in the Parent Nodes section. For more information, see the Configuration based on the automatic parsing feature section of this topic. In the Dependencies section of the Properties tab, select No for Automatic Parsing Before Committing and click Recommendation. In the Recommended Parent Nodes dialog box, the system provides the recommended ancestor nodes for the auto triggered node based on the data lineage in the code of the auto triggered node. The data lineage is updated `one day later than` the scheduling time of the auto triggered node. As a result, the recommendation of ancestor nodes may be delayed. The automatic recommendation feature applies only to ODPS SQL nodes. After you configure scheduling dependencies for your node, you can preview the scheduling dependencies. For more information, see the Preview scheduling dependencies section of this topic. For more information about typical configurations, see the Instructions to configure scheduling dependencies in common business scenarios section of this topic. After scheduling dependencies are configured for a node, the system checks whether the scheduling dependencies are consistent with the data lineage in the code developed for the node when you commit the node. For more information, see the Operations performed by the system after scheduling dependencies are configured section of this topic.
+current node by its output name and configure the current node as an ancestor node of another node. You can use one of the following methods to configure scheduling dependencies for an auto triggered node in DataStudio: On the canvas of the workflow, draw lines to connect the nodes in the workflow. For more information, see the Configuration by drawing lines to connect nodes section of this topic. In the Dependencies section of the Properties tab on the configuration tab of the auto triggered node, click the Same Cycle tab, and enter the name of a node or the name of the output table of the node in the Parent Nodes field to add the node as an ancestor node of the auto triggered node. You can click **Parse Input and Output from Code** and modify the analysis results based on your business requirements. For more information, see the Manual configuration section of this topic. In the Dependencies section of the Properties tab on the configuration tab of the auto triggered node, select Yes for Automatic Parsing Before Committing to enable the automatic parsing feature. When you commit the node, the system parses the code of the node to obtain the dependencies of the node and configures dependencies for the node in the Parent Nodes section. For more information, see the Configuration based on the automatic parsing feature section of this topic. In the Dependencies section of the Properties tab, select No for Automatic Parsing Before Committing and click Recommendation. In the Recommended Parent Nodes dialog box, the system provides the recommended ancestor nodes for the auto triggered node based on the data lineage in the code of the auto triggered node.
+
+> **Note:** The data lineage is updated `one day later than` the scheduling time of the auto triggered node. As a result, the recommendation of ancestor nodes may be delayed.
+> The automatic recommendation feature applies only to ODPS SQL nodes.
+
+After you configure scheduling dependencies for your node, you can preview the scheduling dependencies. For more information, see the Preview scheduling dependencies section of this topic. For more information about typical configurations, see the Instructions to configure scheduling dependencies in common business scenarios section of this topic. After scheduling dependencies are configured for a node, the system checks whether the scheduling dependencies are consistent with the data lineage in the code developed for the node when you commit the node. For more information, see the Operations performed by the system after scheduling dependencies are configured section of this topic.
 
 **General principles for configuring scheduling dependencies**
 
@@ -29224,7 +29867,9 @@ ancestor nodes, the system can find the ancestor node based on the configured ou
 
 **Scenarios**
 
-The system can automatically parse SQL statements in the code developed for a node to obtain the data lineage. Then, the system adds an **output** or an **ancestor node** for the node based on the data lineage and automatic parsing feature. The automatic parsing feature is convenient, efficient, and suitable for most scenarios. The automatic parsing feature cannot be used to configure scheduling dependencies for batch synchronization nodes. After a table is generated in a synchronization node, you must manually add the table as the output of the node. The table name is in the projectname.tablename format. This way, the scheduling dependencies of the synchronization node can be quickly configured by using the automatic parsing feature when data of the generated table is cleansed by the descendant nodes of the synchronization node.
+The system can automatically parse SQL statements in the code developed for a node to obtain the data lineage. Then, the system adds an **output** or an **ancestor node** for the node based on the data lineage and automatic parsing feature. The automatic parsing feature is convenient, efficient, and suitable for most scenarios.
+
+> **Note:** The automatic parsing feature cannot be used to configure scheduling dependencies for batch synchronization nodes. After a table is generated in a synchronization node, you must manually add the table as the output of the node. The table name is in the projectname.tablename format. This way, the scheduling dependencies of the synchronization node can be quickly configured by using the automatic parsing feature when data of the generated table is cleansed by the descendant nodes of the synchronization node.
 
 **How it works**
 
@@ -29247,15 +29892,21 @@ The following figure shows the principles of automatic parsing for dependencies.
 
 Usage notes Nodes that do not support the automatic parsing feature Batch synchronization nodes, AnalyticDB for PostgreSQL nodes, AnalyticDB for MySQL nodes, and EMR nodes do not support configuration of scheduling dependencies based on the automatic parsing feature. The tables that are generated by these types of nodes must be manually added to the outputs of the nodes. Temporary tables that are created by executing SQL statements do not support the automatic parsing feature. For example, the tables whose names are prefixed with t_ are specified as temporary tables. Such tables cannot be automatically added to Output Name of Current Node or Parent Nodes for a node. Logic for handling non-standard configurations If a table specified in SQL statements is used as both an output table and a referenced table, the table is parsed only as an output table. If a table specified in SQL statements is used as an output table or a referenced table multiple times, only the latest scheduling dependency that is recommended by the system is used. Scheduling dependency inconsistencies After you enable automatic parsing for a node, the system automatically generates the input and output for the node based on the data lineage in the code of the node when you commit the node. This ensures that the node can successfully generate data. You can also modify the input and output of the node based on your business requirements. When you commit a node, if the scheduling dependencies of the node that are modified based on the automatic parsing result are different from those in the development or production environment, a message indicating the changes of the scheduling dependencies is displayed. The changes indicate that some inputs or outputs are added or deleted after you modify the scheduling dependencies in the **Dependencies** section of the **Properties** tab based on the automatic parsing result. You can choose whether to
 **Use the new analysis results** and commit the current node that is scheduled based on
-the current scheduling dependencies. After the node is committed, the latest inputs and outputs are automatically added to Parent Nodes and Output Name of Current Node in the **Dependencies** section of the **Properties** tab. When you commit a node, if the system detects that the current scheduling dependencies of the node are different from those in the production or development environment, check whether the current scheduling dependencies of the node meet your business requirements. This can prevent inappropriate changes that you make on the scheduling dependencies from affecting data generation. If the current node has a large number of descendant nodes, inappropriate scheduling dependencies may have a great impact on the descendant nodes and data generation. We recommend that you do not change the scheduling dependencies unless necessary. For example, if the system detects that the scheduling dependencies of the current node do not include the input A that is included in the scheduling dependencies in the production environment when you commit the node, you must check whether the current scheduling dependencies are correct. A is the **output name of an ancestor**
-**node** of the current node. If Table A is specified in the SELECT statement in the code
-of the current node but the node that generates the data of Table A is not configured as an ancestor node for the current node, the current node may start to run before the data of Table A is generated. In this case, the current node fails to run or generate data. Other limits If an SQL statement in the code of a node specifies a table that is not generated by an auto triggered node, the system adds the table to **Parent Nodes** for the current node based on the automatic parsing feature. The tables that are not generated by auto triggered nodes include dimension tables and tables uploaded from on-premises machines to DataWorks. However, the system cannot find the node that generates the table added to **Parent Nodes**, and an error occurs. In this case, you must manually delete the table.
+the current scheduling dependencies. After the node is committed, the latest inputs and outputs are automatically added to Parent Nodes and Output Name of Current Node in the **Dependencies** section of the **Properties** tab.
+
+> **Note:** When you commit a node, if the system detects that the current scheduling dependencies of the node are different from those in the production or development environment, check whether the current scheduling dependencies of the node meet your business requirements. This can prevent inappropriate changes that you make on the scheduling dependencies from affecting data generation. If the current node has a large number of descendant nodes, inappropriate scheduling dependencies may have a great impact on the descendant nodes and data generation. We recommend that you do not change the scheduling dependencies unless necessary.
+> For example, if the system detects that the scheduling dependencies of the current node do not include the input A that is included in the scheduling dependencies in the production environment when you commit the node, you must check whether the current scheduling dependencies are correct. A is the **output name of an ancestor** **node** of the current node. If Table A is specified in the SELECT statement in the code of the current node but the node that generates the data of Table A is not configured as an ancestor node for the current node, the current node may start to run before the data of Table A is generated. In this case, the current node fails to run or generate data.
+
+Other limits If an SQL statement in the code of a node specifies a table that is not generated by an auto triggered node, the system adds the table to **Parent Nodes** for the current node based on the automatic parsing feature. The tables that are not generated by auto triggered nodes include dimension tables and tables uploaded from on-premises machines to DataWorks. However, the system cannot find the node that generates the table added to **Parent Nodes**, and an error occurs. In this case, you must manually delete the table.
 
 **Manual configuration**
 
 You can manually configure scheduling dependencies in the following scenarios: You must delete a scheduling dependency configured by using a table that is not generated by an auto triggered node. You must manually add the tables generated by nodes that do not support the automatic parsing feature to the outputs of these nodes. Configuration method In the Parent Nodes section, you can enter the output of a node to add the node as an ancestor node of the current node. The output name is in the `projectname.tablename` format. Usage notes When you configure scheduling dependencies on the **Properties** tab of a node, we recommend that you click **Parse Input and Output from Code** after you set
 **Automatic Parsing Before Committing** to **No**. This way, the system automatically
-adds scheduling dependencies for the node by using a method that is similar to automatic parsing. Then, you can perform operations on the scheduling dependencies based on your business requirements. You can click **Clear Code Analysis Results** to delete the scheduling dependencies that are automatically added by the system. The scheduling dependencies that are manually added are not deleted. If you click **Recommendation**, the system recommends all the other SQL nodes that generate the input table of the current node based on the SQL lineage of the current workspace. You can select your desired node from the recommended results and configure the node as the ancestor node on which the current node depends. Only the nodes that are committed and deployed to the production environment and have generated data in the required table can be recommended by the system. Therefore, the recommended nodes may be parsed one day later than the scheduling time of the current code. The recommended nodes must be committed to the scheduling system on the previous day. This way, they can be identified by the automatic recommendation feature after data is generated on the current day.
+adds scheduling dependencies for the node by using a method that is similar to automatic parsing. Then, you can perform operations on the scheduling dependencies based on your business requirements. You can click **Clear Code Analysis Results** to delete the scheduling dependencies that are automatically added by the system. The scheduling dependencies that are manually added are not deleted. If you click **Recommendation**, the system recommends all the other SQL nodes that generate the input table of the current node based on the SQL lineage of the current workspace. You can select your desired node from the recommended results and configure the node as the ancestor node on which the current node depends.
+
+> **Note:** Only the nodes that are committed and deployed to the production environment and have generated data in the required table can be recommended by the system. Therefore, the recommended nodes may be parsed one day later than the scheduling time of the current code.
+> The recommended nodes must be committed to the scheduling system on the previous day. This way, they can be identified by the automatic recommendation feature after data is generated on the current day.
 
 **Configuration by drawing lines to connect nodes**
 
@@ -29263,9 +29914,16 @@ Scenarios DataWorks allows you to specify the relationships between nodes by dra
 
 **Preview scheduling dependencies**
 
-After you configure scheduling dependencies for a node, click **Preview Dependencies**. In the Preview Dependencies dialog box, you can preview the scheduling dependencies of the node on the **Node Dependency Preview** and **Node Instance Preview** tabs. You can modify the scheduling dependencies that do not meet your business requirements. A directed acyclic graph (DAG) that is generated based on the scheduling dependencies is only for reference. The DAG that is generated may be different from the DAG in the production environment. Only the following roles can be used to preview the scheduling dependencies of a node: **Development**, **O&M**, **Workspace Owner**, and **Workspace**
-**Administrator**.
-You can preview only the ancestor and descendant nodes that are at the nearest level of the current node. On the **Node Instance Preview** tab, you can preview scheduling dependencies of an auto triggered node that generates multiple instances. For example, you can preview the scheduling dependencies of an auto triggered node scheduled by hour. The auto triggered node scheduled by hour depends on an auto triggered node scheduled by minute. The scheduling dependencies of a node that you preview are as expected only after you save the ancestor nodes of the node. The number of scheduling cycles of an ancestor node may be different from that of a descendant node, and the scheduling dependencies between the ancestor and descendant instances in a scheduling cycle may be different from those between the ancestor and descendant instances in another scheduling cycle. To ensure that the configured scheduling dependencies meet your business requirements, we recommend that you use the preview feature to preview the scheduling dependencies between ancestor and descendant instances before you deploy a node. You can use the feature in scenarios in which the number of scheduling cycles and the scheduling time between the ancestor and descendant instances are inconsistent. Select a preview method. You can select **Not Aggregate**, **Aggregate by Workspace**, or **Aggregate by Owner** to preview the scheduling dependencies of a node. Preview scheduling dependencies of an auto triggered node that generates multiple instances. For an auto triggered node that generates multiple instances, you can click the **Node**
+After you configure scheduling dependencies for a node, click **Preview Dependencies**. In the Preview Dependencies dialog box, you can preview the scheduling dependencies of the node on the **Node Dependency Preview** and **Node Instance Preview** tabs. You can modify the scheduling dependencies that do not meet your business requirements.
+
+> **Note:** A directed acyclic graph (DAG) that is generated based on the scheduling dependencies is only for reference. The DAG that is generated may be different from the DAG in the production environment.
+> Only the following roles can be used to preview the scheduling dependencies of a node: **Development**, **O&M**, **Workspace Owner**, and **Workspace** **Administrator**.
+> You can preview only the ancestor and descendant nodes that are at the nearest level of the current node.
+> On the **Node Instance Preview** tab, you can preview scheduling dependencies of an auto triggered node that generates multiple instances. For example, you can preview the scheduling dependencies of an auto triggered node scheduled by hour. The auto triggered node scheduled by hour depends on an auto triggered node scheduled by minute.
+> The scheduling dependencies of a node that you preview are as expected only after you save the ancestor nodes of the node.
+> The number of scheduling cycles of an ancestor node may be different from that of a descendant node, and the scheduling dependencies between the ancestor and descendant instances in a scheduling cycle may be different from those between the ancestor and descendant instances in another scheduling cycle. To ensure that the configured scheduling dependencies meet your business requirements, we recommend that you use the preview feature to preview the scheduling dependencies between ancestor and descendant instances before you deploy a node. You can use the feature in scenarios in which the number of scheduling cycles and the scheduling time between the ancestor and descendant instances are inconsistent.
+
+Select a preview method. You can select **Not Aggregate**, **Aggregate by Workspace**, or **Aggregate by Owner** to preview the scheduling dependencies of a node. Preview scheduling dependencies of an auto triggered node that generates multiple instances. For an auto triggered node that generates multiple instances, you can click the **Node**
 **Instance Preview** tab to preview scheduling dependencies of the node.
 
 **Instructions to configure scheduling dependencies in common**
@@ -29347,7 +30005,9 @@ Node_A is scheduled to run every 8 hours from `00:00` to `23:59` . The scheduled
 |---|---|
 | Instance A2 _ |   |
 
-after the instance on which it depends in the previous cycle is successfully run. This example uses an auto triggered node scheduled by hour to demonstrate the logic of the dependency on the instance generated for the same node in the previous cycle. The logic is similar for an auto triggered node scheduled by minute.
+after the instance on which it depends in the previous cycle is successfully run.
+
+> **Note:** This example uses an auto triggered node scheduled by hour to demonstrate the logic of the dependency on the instance generated for the same node in the previous cycle. The logic is similar for an auto triggered node scheduled by minute.
 
 **Impact on the scheduling of the descendant nodes when the instance generated**
 
@@ -29403,7 +30063,9 @@ Instance_B', Instance_C', and the instance generated for WorkflowRoot are succes
 
 **Node dependency**
 
-The instance generated for the current node in the current cycle can start to run only after the instances generated for one or more specified nodes in the previous cycle are successfully run. If you configure this type of scheduling dependency for a node, the instance generated for the node in the current cycle can start to run only after the instances generated for one or more specified nodes in the previous cycle are successfully run. You need to manually enter the IDs of the nodes on which the current node depends.
+The instance generated for the current node in the current cycle can start to run only after the instances generated for one or more specified nodes in the previous cycle are successfully run. If you configure this type of scheduling dependency for a node, the instance generated for the node in the current cycle can start to run only after the instances generated for one or more specified nodes in the previous cycle are successfully run.
+
+> **Note:** You need to manually enter the IDs of the nodes on which the current node depends.
 
 **Scenarios**
 
@@ -29426,9 +30088,9 @@ parameter to **Other Nodes** for `Node_A` , Instance_A depends on `Instance_C'` 
 
 If a branch node has two descendant nodes, one descendant node can normally run, and the other is dry-run. If you configure the instance generated for the dry-run descendant node in the current cycle to depend on the instance generated for the dry-run descendant node in the previous cycle, the dry-run attribute of the node is passed to the descendant nodes of the dry-run node. In this case, all the instances generated for the dry-run node and the descendant nodes of the dry-run node are dry-run. If you do not want the dry-run attribute to be passed, you can set the **Skip The Dry-Run Property Of The Ancestor**
 **Node** parameter to **No** for the dry-run descendant node in the Dependencies section of the
-Properties panel. The dry-run attribute of nodes other than branch nodes is not passed. When you use a
-**branch node** that has two or more descendant nodes, the dry-run attribute of one of
-the descendant nodes can be passed if you configure the instance generated for the descendant node in the current cycle to depend on the instance generated for the descendant node in the previous cycle.
+Properties panel.
+
+> **Note:** The dry-run attribute of nodes other than branch nodes is not passed. When you use a **branch node** that has two or more descendant nodes, the dry-run attribute of one of the descendant nodes can be passed if you configure the instance generated for the descendant node in the current cycle to depend on the instance generated for the descendant node in the previous cycle.
 
 **Sample scenario**
 
@@ -29470,7 +30132,10 @@ To prevent the preceding error, you can manually add the upstream dependency tha
 
 Based on the preceding descriptions, you can obtain the following information: When you create a batch synchronization node, the system automatically generates an
 **output named** in the `projectname.nodename` format for the node.
-When the SQL node uses the generated table of the batch synchronization node, the system automatically generates an **ancestor node** of the SQL node. The ancestor mode is named in the `projectname.tablename` format. To prevent errors, you must make sure that the name of the **ancestor node** of the SQL node is the same as that of the **output** of the batch synchronization node. Therefore, to prevent the preceding error when you commit the SQL node, you must keep the name of the batch synchronization node the same as that of the table generated by the batch synchronization node. When you create a node, the system automatically generates an **output** named in the `projectname.nodename` format for the node. If you change the name of the node after the node is created, the name of the **output** does not change. Therefore, this method can be used only when you create a batch synchronization node. If you change the name of a node or a table generated by a batch synchronization node in subsequent operations to ensure consistent names, this error persists.
+When the SQL node uses the generated table of the batch synchronization node, the system automatically generates an **ancestor node** of the SQL node. The ancestor mode is named in the `projectname.tablename` format. To prevent errors, you must make sure that the name of the **ancestor node** of the SQL node is the same as that of the **output** of the batch synchronization node. Therefore, to prevent the preceding error when you commit the SQL node, you must keep the name of the batch synchronization node the same as that of the table generated by the batch synchronization node.
+
+> **Note:** When you create a node, the system automatically generates an **output** named in the
+> `projectname.nodename` format for the node. If you change the name of the node after the node is created, the name of the **output** does not change. Therefore, this method can be used only when you create a batch synchronization node. If you change the name of a node or a table generated by a batch synchronization node in subsequent operations to ensure consistent names, this error persists.
 
 **Error analysis**
 
@@ -29503,7 +30168,10 @@ Node dependency: A node depends on the previous-cycle instances of its descendan
 
 **Cross-cycle dependency: current node**
 
-Node dependency: A node depends on its previous-cycle instance. The node is run in the current cycle only after the previous-cycle instance of the node is successfully run. Business scenario: A node is run in the current cycle based on the business data that is generated by the previous-cycle instance of the node. In this example, the node is scheduled to run by hour. This way, you can conveniently view the dependencies of the node in Operation Center. To view the dependencies of the node, go to **Operation Center**. In the left-side navigation pane, choose **Cycle Task Maintenance > Cycle Instance**. Search for the node to view its dependencies. For example, a node is scheduled to run by hour and depends on its previous-cycle instance. If the instance that is generated for a specific hour is not successfully run, the system does not run the instance that is generated for the next hour. If the first instance that is generated on a day is not run or the running fails, the instances that are generated for the rest of the day cannot be run.
+Node dependency: A node depends on its previous-cycle instance. The node is run in the current cycle only after the previous-cycle instance of the node is successfully run. Business scenario: A node is run in the current cycle based on the business data that is generated by the previous-cycle instance of the node. In this example, the node is scheduled to run by hour. This way, you can conveniently view the dependencies of the node in Operation Center. To view the dependencies of the node, go to **Operation Center**. In the left-side navigation pane, choose **Cycle Task Maintenance > Cycle Instance**. Search for the node to view its dependencies.
+
+> **Note:** For example, a node is scheduled to run by hour and depends on its previous-cycle instance. If the instance that is generated for a specific hour is not successfully run, the system does not run the instance that is generated for the next hour.
+> If the first instance that is generated on a day is not run or the running fails, the instances that are generated for the rest of the day cannot be run.
 
 **Cross-cycle dependency: other nodes**
 
@@ -29518,7 +30186,9 @@ A branch node has two descendant nodes. In most cases, only one of the descendan
 2. In the **Dependencies** section, specify the **Cross-cycle Dependency (Original Previous-**
 **cycle Dependency)** parameter.
 3. If you do not want the dry-run attribute of the branch node in the previous cycle to be
-passed, you can set the **Skip The Dry-Run Property Of The Ancestor Node** parameter to **Yes**. This advanced configuration applies only to the descendant nodes of branch nodes. For other nodes, a dry run in the previous cycle does not affect the running in the current cycle.
+passed, you can set the **Skip The Dry-Run Property Of The Ancestor Node** parameter to **Yes**.
+
+> **Note:** This advanced configuration applies only to the descendant nodes of branch nodes. For other nodes, a dry run in the previous cycle does not affect the running in the current cycle.
 
 **Typical scenarios of cross-cycle dependencies**
 
@@ -29545,13 +30215,13 @@ DataWorks allows you to configure the output of a node as the input of another n
 
 **Configure scheduling dependencies for nodes across workflows**
 
-If you want to configure scheduling dependencies for branch nodes in a workflow on nodes that are in another workflow, you must use a zero load node to aggregate the outputs of the branch nodes in the current workflow, and configure the output of the zero load node as the input of the root node of the other workflow. A zero load node is a control node that supports only dry-run scheduling and does not generate data. In most cases, a zero load node serves as the root node of a workflow or the output node of multiple branch nodes. If a workflow contains multiple branch nodes, you must create a zero load node and specify the zero load node as the descendant node of the branch nodes. For example, you can create a zero load node named in the format of `Workflow_end_Zero load node` . This way, the zero load node depends on the outputs of the branch nodes. After the zero load node is successfully run, the workflow is also successfully run. The following example shows how to use zero load nodes to configure scheduling dependencies for branch nodes across workflows. Create two workflows: Workflow 1 and Workflow 2. Then, configure Workflow 1 as the ancestor workflow of Workflow 2. Create the following zero load nodes in Workflow 1: `Workflow1_start_Zero load node` : the start node of the branch nodes in Workflow 1. `Workflow1_end_Zero load node` : the output node that is used to aggregate the outputs of branch nodes in Workflow 1. Create the following zero load nodes in Workflow 2: `Workflow2_start_Zero load node` : the start node of the branch nodes in Workflow 2. `Workflow 2_end_Zero load node` : the output node that is used to aggregate the outputs of branch nodes in Workflow 2. Configure scheduling dependencies between Workflow 1 and Workflow 2: Configure the output of `Workflow1_end_Zero load node` as the input of `Workflow2_start_Zero load` `node` . This way, scheduling dependencies for branch nodes across workflows are configured. DataWorks allows you to configure the output of a node as the input of another node to establish dependencies between the nodes. You can use one of the following methods to configure scheduling dependencies: **drag nodes** in a directed acyclic graph (DAG) to configure dependencies between the nodes, enable the **automatic parsing** feature, and
-**configure dependencies**. In the preceding example, the **scheduling dependencies**
-are configured by configuring the output of `Workflow1_end_Zero load node` as the input
+If you want to configure scheduling dependencies for branch nodes in a workflow on nodes that are in another workflow, you must use a zero load node to aggregate the outputs of the branch nodes in the current workflow, and configure the output of the zero load node as the input of the root node of the other workflow.
 
-```
-of Workflow2_start_Zero load node .
-```
+> **Note:** A zero load node is a control node that supports only dry-run scheduling and does not generate data. In most cases, a zero load node serves as the root node of a workflow or the output node of multiple branch nodes. If a workflow contains multiple branch nodes, you must create a zero load node and specify the zero load node as the descendant node of the branch nodes. For example, you can create a zero load node named in the format of `Workflow_end_Zero load node` . This way, the zero load node depends on the outputs of the branch nodes. After the zero load node is successfully run, the workflow is also successfully run.
+
+The following example shows how to use zero load nodes to configure scheduling dependencies for branch nodes across workflows. Create two workflows: Workflow 1 and Workflow 2. Then, configure Workflow 1 as the ancestor workflow of Workflow 2. Create the following zero load nodes in Workflow 1: `Workflow1_start_Zero load node` : the start node of the branch nodes in Workflow 1. `Workflow1_end_Zero load node` : the output node that is used to aggregate the outputs of branch nodes in Workflow 1. Create the following zero load nodes in Workflow 2: `Workflow2_start_Zero load node` : the start node of the branch nodes in Workflow 2. `Workflow 2_end_Zero load node` : the output node that is used to aggregate the outputs of branch nodes in Workflow 2. Configure scheduling dependencies between Workflow 1 and Workflow 2: Configure the output of `Workflow1_end_Zero load node` as the input of `Workflow2_start_Zero load` `node` . This way, scheduling dependencies for branch nodes across workflows are configured.
+
+> **Note:** DataWorks allows you to configure the output of a node as the input of another node to establish dependencies between the nodes. You can use one of the following methods to configure scheduling dependencies: **drag nodes** in a directed acyclic graph (DAG) to configure dependencies between the nodes, enable the **automatic parsing** feature, and **configure dependencies**. In the preceding example, the **scheduling dependencies** are configured by configuring the output of `Workflow1_end_Zero load node` as the input of `Workflow2_start_Zero load node` .
 
 **Configure scheduling dependencies for nodes across**
 
@@ -29584,7 +30254,9 @@ the **Input Parameters** and **Output Parameters** in the **Input and Output Par
 
 **Output parameters**
 
-You can define output parameters in the **Output Parameters** section. The following value types are supported for output parameters: **Constant** and **Variable**. After you define an output parameter for the current node and commit the current node, the output parameter can be referenced as an input parameter for a descendant node of the current node. You cannot write code for the current node to assign a value to the defined output parameter.
+You can define output parameters in the **Output Parameters** section. The following value types are supported for output parameters: **Constant** and **Variable**. After you define an output parameter for the current node and commit the current node, the output parameter can be referenced as an input parameter for a descendant node of the current node.
+
+> **Note:** You cannot write code for the current node to assign a value to the defined output parameter.
 
 | Parameter | Description | Remarks |
 |---|---|---|
@@ -29649,7 +30321,8 @@ System variables
 
 When I commit a node, the system reports an error that the output name of the ancestor node of the node does not exist. The preceding figure is used to explain the error. The error occurs because the system cannot find the ancestor node that generates the `test.table_1` table based on the **Output Name**
 **of Ancestor Node** configured for the node.
-The error indicates that the output name of a node does not exist. This does not mean that the test.table_1 table does not exist. This indicates that no node uses the output name of the node as an output. If the test.table_1 table exists and is generated by a node, but the system does not add the table to the output of the node, the error is also reported.
+
+> **Note:** The error indicates that the output name of a node does not exist. This does not mean that the test.table_1 table does not exist. This indicates that no node uses the output name of the node as an output. If the test.table_1 table exists and is generated by a node, but the system does not add the table to the output of the node, the error is also reported.
 
 **Cause 1: No node generates the table**
 
@@ -29737,7 +30410,9 @@ processing. The following table describes the main settings for this type.
 
 **Configure output parameters**
 
-Define the output parameters for the process body. An output parameter represents the final table that the component produces. To help users, document the structure of the output table in the parameter configuration. The following table describes the main settings for an output parameter: A String type is not logically meaningful for an output parameter.
+Define the output parameters for the process body. An output parameter represents the final table that the component produces. To help users, document the structure of the output table in the parameter configuration. The following table describes the main settings for an output parameter:
+
+> **Note:** A String type is not logically meaningful for an output parameter.
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -29795,7 +30470,9 @@ DataStudio supports default node types such as ODPS SQL and Shell nodes. You can
 
 1. Log in to the DataWorks console.
 2. Click **Node Configuration** in the top navigation bar to go to the node type configuration
-page. Only the workspace owner and administrators can access this page.
+page.
+
+> **Note:** Only the workspace owner and administrators can access this page.
 
 **View the list of wrappers**
 
@@ -29852,7 +30529,10 @@ You can select one of the following wrapper types: **Engine Type** and **Busines
 | Descripti on | The description of the wrapper version. |
 
 4. Click **Save** and then click **Next**.
-The settings are updated to the database after you click Save. If you modify only basic settings of a wrapper without changing the resource file, the modification takes effect immediately after you click Save. If you change the resource file, the change takes effect only after deployment.
+
+> **Note:** The settings are updated to the database after you click Save.
+> If you modify only basic settings of a wrapper without changing the resource file, the modification takes effect immediately after you click Save.
+> If you change the resource file, the change takes effect only after deployment.
 
 **Deploy the wrapper in the development environment**
 
@@ -29864,11 +30544,16 @@ After you confirm the configuration, click **Deploy in Development Environment**
 
 Configure the **Arguments**, **Environment Variables**, and **Code** parameters for testing and click **Test** to send the parameters to the wrapper. This step is to validate the deployment and logic of the wrapper. You can also locally test the wrapper before uploading it for deployment. After the test, review the output logs in the test results to determine whether the test is passed. If the test is passed, select **Test Passed** and click **Next** to go to the **Deploy in**
 **Production Environment** step.
-The **Next** button is clickable only after you select **Test Passed**.
+
+> **Note:** The **Next** button is clickable only after you select **Test Passed**.
 
 **Deploy the wrapper in the production environment**
 
-Click **Deploy in Production Environment**. In the **Note** message, click **OK**. The wrapper is deployed in the production environment. You can view the deployment progress in real time. The wrapper to be deployed in the production environment must be of the latest version, have been deployed in the development environment, and have passed the test. Otherwise, a message appears, indicating that the deployment in the production environment fails. Click **Complete**. You can view and edit the created wrapper on the **Wrappers** page.
+Click **Deploy in Production Environment**. In the **Note** message, click **OK**. The wrapper is deployed in the production environment. You can view the deployment progress in real time.
+
+> **Note:** The wrapper to be deployed in the production environment must be of the latest version, have been deployed in the development environment, and have passed the test. Otherwise, a message appears, indicating that the deployment in the production environment fails.
+
+Click **Complete**. You can view and edit the created wrapper on the **Wrappers** page.
 
 #### 6.7.3 Create a custom node type
 
@@ -29941,7 +30626,12 @@ type. For more information, see Use a custom node type.
 
 #### 6.8.1 Deploy nodes
 
-In a rigorous data development process, developers develop and debug code and configure dependencies and scheduling properties for nodes in the development environment. Then, developers commit and deploy the nodes to run them in the production environment. DataWorks allows you to seamlessly commit data from the development environment to the production environment within a single workspace in standard mode. We recommend that you use workspaces in standard mode to develop and produce data. DataWorks uses the same environment for node data development and production in basic mode. Therefore, after you commit a node, the node is directly deployed to the production environment. You can upgrade a workspace from the basic mode to the standard mode. For more information, see Workspace modes. You can also deploy a node in a workspace in basic node to another workspace by using the cross-workspace cloning feature. For more information, see the Clone nodes between workspaces in basic mode section of this topic.
+In a rigorous data development process, developers develop and debug code and configure dependencies and scheduling properties for nodes in the development environment. Then, developers commit and deploy the nodes to run them in the production environment.
+
+> **Note:** DataWorks allows you to seamlessly commit data from the development environment to the production environment within a single workspace in standard mode. We recommend that you use workspaces in standard mode to develop and produce data.
+> DataWorks uses the same environment for node data development and production in basic mode. Therefore, after you commit a node, the node is directly deployed to the production environment.
+> You can upgrade a workspace from the basic mode to the standard mode. For more information, see Workspace modes.
+> You can also deploy a node in a workspace in basic node to another workspace by using the cross-workspace cloning feature. For more information, see the Clone nodes between workspaces in basic mode section of this topic.
 
 **Deploy nodes in a workspace in standard mode**
 
@@ -29954,13 +30644,20 @@ target workflow in the left-side navigation pane. On the dashboard of the workfl
 3. In the top navigation bar, switch to the workspace in which you want to deploy nodes. In
 the left-side navigation pane, click **Create Deploy Task** and select the nodes that you want to deploy to the production environment.
 4. Select the nodes to be deployed at a time and click **Add to List** at the bottom of the page.
-Up to 500 nodes can be deployed at a time. If you do not want to deploy a node, click **Cancel Deployment** in the **Actions** column of the node. After you cancel the deployment, the status of the node becomes Editing. You can deploy the node again only after you recommit the node.
+
+> **Note:** Up to 500 nodes can be deployed at a time.
+> If you do not want to deploy a node, click **Cancel Deployment** in the **Actions** column of the node. After you cancel the deployment, the status of the node becomes Editing. You can deploy the node again only after you recommit the node.
+
 5. In the upper-right corner of the page, click **Nodes to Deploy** and select **Deploy All**.
-Workspaces in standard mode protect tables in the production environment from being manipulated, and therefore provide a stable, secure, and reliable production environment. We recommend that you use workspaces in standard mode to deploy and run nodes.
+
+> **Note:** Workspaces in standard mode protect tables in the production environment from being manipulated, and therefore provide a stable, secure, and reliable production environment. We recommend that you use workspaces in standard mode to deploy and run nodes.
 
 **Clone nodes between workspaces in basic mode**
 
-You cannot deploy nodes in workspaces in basic mode. If you want to isolate the development environment from the production environment for workspaces in basic mode, create two workspaces, one for development and the other for production. You can clone nodes from the development workspace to the production workspace. As shown in the following figure, two workspaces in basic mode are created, one for development and the other for production. You can use the cross-workspace cloning feature to clone nodes from Workspace A to Workspace B, and then commit the cloned nodes to the scheduler for scheduling. Permission requirement: Only workspace administrators and Resource Access Management (RAM) users who have the O&M permissions can clone nodes. Prerequisites: The source workspace in basic mode and the destination workspace in basic mode are created.
+You cannot deploy nodes in workspaces in basic mode. If you want to isolate the development environment from the production environment for workspaces in basic mode, create two workspaces, one for development and the other for production. You can clone nodes from the development workspace to the production workspace. As shown in the following figure, two workspaces in basic mode are created, one for development and the other for production. You can use the cross-workspace cloning feature to clone nodes from Workspace A to Workspace B, and then commit the cloned nodes to the scheduler for scheduling.
+
+> **Note:** Permission requirement: Only workspace administrators and Resource Access Management (RAM) users who have the O&M permissions can clone nodes.
+> Prerequisites: The source workspace in basic mode and the destination workspace in basic mode are created.
 
 **Procedure for the source workspace A**
 
@@ -29986,8 +30683,10 @@ Go to the DataStudio page of the destination workspace B and check whether the n
 #### 6.8.2 Overview of cross-workspace cloning
 
 For workspaces under the same Apsara Stack tenant account, you can use the crossworkspace cloning feature to clone and deploy nodes across these workspaces. You can also use this feature to clone nodes, such as computing or synchronization nodes, across workspaces. This topic describes how to process the dependencies between nodes during cross-workspace cloning. If you clone nodes across workspaces by using the **cross-workspace cloning** feature, DataWorks automatically changes the output names of the cloned nodes in the destination workspace to distinguish nodes in different workspaces under the same Apsara Stack tenant account. This allows you to successfully clone node dependencies.
-**Cross-workspace cloning** cannot be used to clone nodes across workspaces in different
-regions. You can set the owner of cloned nodes in the destination workspace to **Default** or **Clone**
+
+> **Note:** **Cross-workspace cloning** cannot be used to clone nodes across workspaces in different regions.
+
+You can set the owner of cloned nodes in the destination workspace to **Default** or **Clone**
 **Task Creator**.
 If you clone nodes owned by the workspace administrator: After the nodes are cloned to the destination workspace, their owner is set to the original owner preferentially. If the original owner is not added to the destination workspace, you will become the owner. If you clone nodes owned by yourself: After the nodes are cloned to the destination workspace, their owner is set to you preferentially. If you are not added to the destination workspace, you are asked whether to change the owner. If you agree to change the owner, you will be added to the destination workspace and become the owner of the cloned nodes. If you do not agree to change the owner, the clone node is canceled.
 
@@ -30090,7 +30789,9 @@ In the **Code Review** section, you can turn on Force to review code and configu
 
 **Initiate code review for nodes**
 
-If you initiate code review for a node again when the previous code review is being performed for the code, the previous code review result becomes invalid. DataWorks allows developers to specify one or more code reviewers when the developers commit nodes. The following table describes the code review process for workspaces in different modes.
+> **Note:** If you initiate code review for a node again when the previous code review is being performed for the code, the previous code review result becomes invalid.
+
+DataWorks allows developers to specify one or more code reviewers when the developers commit nodes. The following table describes the code review process for workspaces in different modes.
 
 | Workspace mode | Code review process | Code review entry |
 |---|---|---|
@@ -30128,7 +30829,10 @@ You do not need to commit and deploy ad hoc query nodes or configure scheduling 
 3. Move the pointer over the
 icon and select **Folder**.
 4. In the **Create Folder** dialog box, configure the **Folder Name** and **Location** parameters.
-The node name cannot exceed 128 characters in length and can contain only letters, digits, underscores (_), and periods (.). DataWorks supports multiple levels of folders. You can save a newly created folder in an existing folder.
+
+> **Note:** The node name cannot exceed 128 characters in length and can contain only letters, digits, underscores (_), and periods (.).
+> DataWorks supports multiple levels of folders. You can save a newly created folder in an existing folder.
+
 5. Click **Create**.
 
 **Create an ad hoc query**
@@ -30137,7 +30841,9 @@ You can create **ODPS SQL** and **Shell** nodes on the **Ad-Hoc Query** tab. Thi
 1. In the **Ad Hoc Query** pane, right-click the folder that you created and choose **Create**
 **Node > ODPS SQL**.
 2. In the **Create Node** dialog box, configure the **Path** and **Name** parameters.
-The node name cannot exceed 128 characters in length and can contain only letters, digits, underscores (_), and periods (.).
+
+> **Note:** The node name cannot exceed 128 characters in length and can contain only letters, digits, underscores (_), and periods (.).
+
 3. Click **Confirm**.
 4. On the Node Configuration tab that appears, enter an SQL statement.
 5. Click the
@@ -30225,9 +30931,10 @@ icon. The **Personal Settings** tab of the **Settings** page appears. On the Per
 
 **DataStudio Modules**
 
-In the **DataStudio Modules** section of the Personal Settings tab, you can customize the modules to be displayed in the left-side navigation pane of DataStudio. You can select **Public** or **MaxCompute** to display the modules as needed. This way, the module is displayed in the left-side navigation pane of DataStudio. You can click the icons that represent these modules to perform corresponding data development operations. If you cannot find the desired module in the left-side navigation pane, go to the
-**DataStudio Modules** section of the Personal Settings tab and add the module.
-If you want to remove a module from the left-side navigation pane, find the module in the **DataStudio Modules** section and click the module. After that, the module is removed only from the left-side navigation pane of DataStudio, but not from DataWorks.
+In the **DataStudio Modules** section of the Personal Settings tab, you can customize the modules to be displayed in the left-side navigation pane of DataStudio. You can select **Public** or **MaxCompute** to display the modules as needed. This way, the module is displayed in the left-side navigation pane of DataStudio. You can click the icons that represent these modules to perform corresponding data development operations.
+
+> **Note:** If you cannot find the desired module in the left-side navigation pane, go to the **DataStudio Modules** section of the Personal Settings tab and add the module.
+> If you want to remove a module from the left-side navigation pane, find the module in the **DataStudio Modules** section and click the module. After that, the module is removed only from the left-side navigation pane of DataStudio, but not from DataWorks.
 
 **File Management**
 
@@ -30349,7 +31056,10 @@ You can also click **Change** or **Delete** in the **Actions** column that corre
 
 **Manage levels or categories**
 
-The level management feature allows you to design physical levels for tables. Table levels are used to define and manage the layers of data warehouses. In most cases, we recommend that you divide a data warehouse into various layers, such as the operational data store (ODS) layer, data warehouse detail (DWD) layer, data warehouse summary (DWS) layer, and application data service (ADS) layer. Table categories allow you to categorize tables in a finergrained manner from the business dimension. A workspace does not have default levels. Therefore, the workspace owner or workspace administrator must create levels based on their business requirements.
+The level management feature allows you to design physical levels for tables. Table levels are used to define and manage the layers of data warehouses. In most cases, we recommend that you divide a data warehouse into various layers, such as the operational data store (ODS) layer, data warehouse detail (DWD) layer, data warehouse summary (DWS) layer, and application data service (ADS) layer. Table categories allow you to categorize tables in a finergrained manner from the business dimension.
+
+> **Note:** A workspace does not have default levels. Therefore, the workspace owner or workspace administrator must create levels based on their business requirements.
+
 **Table Levels**: defines the levels to which tables belong. You can create, modify, or delete a
 level based on your business requirements. Create a level: Enter a level name in the **Level** field, enter a description for the level in the **Description** field, and then click **Create**. Modify or delete a level: Find the level that you want to manage and click **Change** or
 **Delete** in the **Actions** column.
@@ -30365,7 +31075,9 @@ DataWorks supports various settings for data development. On the Security Settin
 
 **Limits**
 
-The data masking feature takes effect only for the current workspace. If you want to mask sensitive information in query results in all workspaces, you must separately enable the data masking feature for each workspace. For example, you enable the data masking feature for Workspace A and do not enable the feature for Workspace B. If a member in Workspace B is granted the permissions to query tables in Workspace A, data in the tables is displayed in plaintext when the member queries the tables from Workspace B.
+The data masking feature takes effect only for the current workspace. If you want to mask sensitive information in query results in all workspaces, you must separately enable the data masking feature for each workspace.
+
+> **Note:** For example, you enable the data masking feature for Workspace A and do not enable the feature for Workspace B. If a member in Workspace B is granted the permissions to query tables in Workspace A, data in the tables is displayed in plaintext when the member queries the tables from Workspace B.
 
 **Go to the Security Settings and Others tab**
 
@@ -30380,13 +31092,18 @@ On the Security Settings and Others tab, you can perform the following operation
 
 **Enable the data masking feature**
 
-DataWorks provides built-in data masking rules. After you enable the data masking feature, if the results returned for a query in DataWorks hit one of the built-in data masking rules, DataWorks masks sensitive information in the query results based on the rule. If the built-in data masking rules cannot meet your requirements for masking query results, you must create a custom data masking rule in Data Security Guard and use the rule to mask sensitive information in the query results. For more information about Data Security Guard, see Overview. Data masking in DataStudio is dynamic data masking, which does not affect underlying data.
+DataWorks provides built-in data masking rules. After you enable the data masking feature, if the results returned for a query in DataWorks hit one of the built-in data masking rules, DataWorks masks sensitive information in the query results based on the rule. If the built-in data masking rules cannot meet your requirements for masking query results, you must create a custom data masking rule in Data Security Guard and use the rule to mask sensitive information in the query results. For more information about Data Security Guard, see Overview.
+
+> **Note:** Data masking in DataStudio is dynamic data masking, which does not affect underlying data.
 
 **Feature configuration**
 
 This feature has been moved to **Data Security Guard**. Go to Data Protection and choose
 **Rule Change > Data Masking** in the left-side navigation pane. For more information, see
-Data masking management. If you do not enable the data masking feature, sensitive information may be leaked. The **data masking** feature takes effect only for the specified workspace.
+Data masking management.
+
+> **Note:** If you do not enable the data masking feature, sensitive information may be leaked.
+> The **data masking** feature takes effect only for the specified workspace.
 
 **Enable the prompt feature that displays impacts of committing**
 
@@ -30414,9 +31131,12 @@ For more information about code review, see Code review.
 
 You can enable the forcible smoke testing feature in the **Smoke Testing** section of the
 **Security Settings and Others** tab. After you enable the forcible smoke testing feature for a
-workspace, nodes in the workspace can be deployed only after the nodes pass smoke testing. After you enable the forcible smoke testing feature: If smoke testing is not performed on a node in the workspace or smoke testing is performed on the node but fails, Check Failed is displayed in the Status column of the node in the table that is displayed on the **Create Deploy Task** page. In this case, the node cannot be deployed. If you want to deploy a node that fails smoke testing in the workspace in a special scenario, you must go to the **Create Deploy Task** page, and set the **status** of the
-**smoke testing** for the node to **successful** as the **workspace administrator**.
-Then, you can deploy the node. For more information about how to deploy a node, see Deploy nodes.
+workspace, nodes in the workspace can be deployed only after the nodes pass smoke testing.
+
+> **Note:** After you enable the forcible smoke testing feature:
+> If smoke testing is not performed on a node in the workspace or smoke testing is performed on the node but fails, Check Failed is displayed in the Status column of the node in the table that is displayed on the **Create Deploy Task** page. In this case, the node cannot be deployed.
+> If you want to deploy a node that fails smoke testing in the workspace in a special scenario, you must go to the **Create Deploy Task** page, and set the **status** of the **smoke testing** for the node to **successful** as the **workspace administrator**. Then, you can deploy the node.
+> For more information about how to deploy a node, see Deploy nodes.
 
 #### 6.13.2 Manage the recycle bin
 
@@ -30430,22 +31150,21 @@ icon).
 3. View all the deleted nodes in the current workspace.
 On this tab, you can delete or restore deleted nodes.
 
-**Important**
-
-The recycle bin displays only 100 nodes. If more than 100 nodes are deleted, the nodes deleted earlier are deleted permanently from the recycle bin. Deleted node groups are not displayed in the recycle bin.
+> **Important:** The recycle bin displays only 100 nodes. If more than 100 nodes are deleted, the nodes deleted earlier are deleted permanently from the recycle bin.
+> Deleted node groups are not displayed in the recycle bin.
 
 **Restore a node in the recycle bin**
 
 1. On the **Recycle Bin** tab, right-click a deleted node.
 2. Select **Restore**.
 3. In the **Restore Node** message, click **OK**.
-After you restore a node, a new node ID is generated for scheduling and all the information about the node is restored.
+
+> **Note:** After you restore a node, a new node ID is generated for scheduling and all the information about the node is restored.
 
 **Delete nodes from the recycle bin**
 
-**Important**
-
-The recycle bin displays only deleted nodes. Nodes permanently deleted from the recycle bin cannot be restored. Proceed with caution.
+> **Important:** The recycle bin displays only deleted nodes.
+> Nodes permanently deleted from the recycle bin cannot be restored. Proceed with caution.
 
 **Permanently delete a node from the recycle bin**
 
@@ -30460,7 +31179,9 @@ The recycle bin displays only deleted nodes. Nodes permanently deleted from the 
 
 #### 6.13.3 View operation records
 
-The Runtime Logs pane of the DataStudio page displays the records of all nodes that are run during the previous three days. In the Runtime Logs pane, you can click a node to view its run logs. To view the daily running details of a node, go to the **Runtime Logs** pane in Operation Center and view the run logs of instances that are generated for the node. To view the daily running details of a node, go to the Cycle Instance page in **Operation Center** and view the run logs of instances that are generated for the node.
+The Runtime Logs pane of the DataStudio page displays the records of all nodes that are run during the previous three days. In the Runtime Logs pane, you can click a node to view its run logs.
+
+> **Note:** To view the daily running details of a node, go to the **Runtime Logs** pane in Operation Center and view the run logs of instances that are generated for the node. To view the daily running details of a node, go to the Cycle Instance page in **Operation Center** and view the run logs of instances that are generated for the node.
 
 **View runtime logs**
 
@@ -30578,7 +31299,13 @@ Before you start, you must bind a real-time computing project.
 
 **Background information**
 
-Data source: A DataHub table (topic) that contains four fields: `m_name, id, m_type, tag` . You must create a DataHub topic beforehand. Data processing: Split the tag field using a semicolon ( ; ) as the delimiter. This creates three new fields: **color**, **mode**, and **weight**. Data output: Write the `id, m_type, weight` fields to a Simple Log Service (SLS) table. You must create an SLS project and a Logstore beforehand.
+Data source: A DataHub table (topic) that contains four fields: `m_name, id, m_type, tag` .
+
+> **Note:** You must create a DataHub topic beforehand.
+
+Data processing: Split the tag field using a semicolon ( ; ) as the delimiter. This creates three new fields: **color**, **mode**, and **weight**. Data output: Write the `id, m_type, weight` fields to a Simple Log Service (SLS) table.
+
+> **Note:** You must create an SLS project and a Logstore beforehand.
 
 **Procedure**
 
@@ -30589,9 +31316,10 @@ i. Click **Create Business Flow**. You can also hover over the **Create** icon a
 3. Create a real-time computing task.
 i. Right-click the business flow that you created and select **Create Task**. ii. In the **Create Node** dialog box, configure the parameters. iii. Click **Submit** to open the **Components** page. iv. In the navigation pane on the left, click **Resource Reference** and select
 **PUBLIC_COMMON**.
-If you do not select this option, an error message appears when you use the **Static**
-**Column Splitting** component:
-You can also select **PUBLIC_COMMON** after the message appears.
+
+> **Note:** If you do not select this option, an error message appears when you use the **Static** **Column Splitting** component:
+> You can also select **PUBLIC_COMMON** after the message appears.
+
 4. Edit the real-time computing task.
 In the navigation pane on the left, click **Components** to open the **Components** page. i. Add a data source on the **Components** page. a. Drag the DataHub component to the canvas. b. Click the DataHub component and configure the parameters in the **Parameter**
 **Settings** pane on the right.
@@ -30744,7 +31472,9 @@ Currently, Log Service supports the following three attribute fields by default.
 | topic __ __ | Specifies a log topic. |
 | timestamp __ __ | Specifies the time when a logged event occurs. |
 
-Currently, Log Service does not support the MAP type. We recommend that you define the fields in the same order as the fields in the preceding table. Unordered fields are also supported. If the input data is in JSON format, define the delimiter and use the built-in function JSON_VALUE to parse the JSON value. Otherwise, the parsing fails and the following error is returned:
+> **Note:** Currently, Log Service does not support the MAP type.
+> We recommend that you define the fields in the same order as the fields in the preceding table. Unordered fields are also supported.
+> If the input data is in JSON format, define the delimiter and use the built-in function JSON_VALUE to parse the JSON value. Otherwise, the parsing fails and the following error is returned:
 
 ```
 2017-12-25 15:24:43,467 WARN [Topology-0 (1/1)] com.alibaba.blink.streaming.connectors.common.source.parse.DefaultSourceCollect
@@ -30752,7 +31482,8 @@ Currently, Log Service does not support the MAP type. We recommend that you defi
 eld number: 1, data: [{"lg_order_code":"LP00000005","activity_code":"TEST_CODE1","occur_time":"2017- 12-10 00:00:01"}]
 ```
 
-The batchGetSize value must not exceed 1,000. Otherwise, an error occurs. The batchGetSize parameter specifies the number of log items read at a time in a log group. If both the size of a single log item and the batchGetSize value are too large, frequent garbage collection (GC) may be triggered. To avoid this, you must set batchGetSize parameter to a smaller value.
+> The batchGetSize value must not exceed 1,000. Otherwise, an error occurs.
+> The batchGetSize parameter specifies the number of log items read at a time in a log group. If both the size of a single log item and the batchGetSize value are too large, frequent garbage collection (GC) may be triggered. To avoid this, you must set batchGetSize parameter to a smaller value.
 
 ##### 6.16.5.2 Dimension tables
 
@@ -31181,7 +31912,7 @@ Realtime Compute supports creating a MaxCompute table as the result table.
 |   | 'ds=20180905' |
 |---|---|
 
-Realtime Compute writes cached data to a MaxCompute table every time when a checkpoint is reached.
+> **Note:** Realtime Compute writes cached data to a MaxCompute table every time when a checkpoint is reached.
 
 **Field type mapping**
 
@@ -31350,7 +32081,9 @@ You can use DataWorks Copilot AI in Place within the code editor for SQL nodes.
 
 **Intention activation**
 
-In the chat window, enter `/` to trigger Q&A intents. Two main ways are available to interact with Copilot: General Q&A: For intents such as **code generation** and **code-related Q&A**, directly enter your question or instruction in the chat window, such as "Help me write a SQL statement to calculate the user retention rate", and send it. Code-specific queries: For intents such as **code rewriting** and **comment generation**, you must select the code snippet in the code editor and enter instructions in the Copilot chat window, such as "Modify SQL statements to pivot the results from columns to rows by using UNPIVOT". If you do not select an intent and enter natural language inputs, the system automatically identifies your intent.
+In the chat window, enter `/` to trigger Q&A intents. Two main ways are available to interact with Copilot: General Q&A: For intents such as **code generation** and **code-related Q&A**, directly enter your question or instruction in the chat window, such as "Help me write a SQL statement to calculate the user retention rate", and send it. Code-specific queries: For intents such as **code rewriting** and **comment generation**, you must select the code snippet in the code editor and enter instructions in the Copilot chat window, such as "Modify SQL statements to pivot the results from columns to rows by using UNPIVOT".
+
+> **Note:** If you do not select an intent and enter natural language inputs, the system automatically identifies your intent.
 
 **Multi-round conversation**
 
@@ -31523,7 +32256,9 @@ Operation Center consists of the following modules: Overview, RealTime Task Main
 
 **Scenarios**
 
-You can view your nodes and instances, test nodes, and backfill data for nodes in Operation Center. If the workspace that you use is in standard mode, you can switch between the production and development environments by changing the URL of the Operation Center page. If the URL contains **env=dev**, Operation Center in the development environment is used. If the URL contains **env=prod**, Operation Center in the production environment is used. You can change the value of the env parameter to go to Operation Center of the corresponding environment. In the Cycle Task Maintenance and Trigger Task Maintenance modules, you can view the instances of all your nodes and perform related operations on the instances. For example, you can stop and rerun instances. Instances are generated after nodes are run by the scheduling system. An instance is a snapshot of a node at a specific point in time. The instance contains information such as the time when the node is run, the status and operational logs of the node.
+You can view your nodes and instances, test nodes, and backfill data for nodes in Operation Center. If the workspace that you use is in standard mode, you can switch between the production and development environments by changing the URL of the Operation Center page. If the URL contains **env=dev**, Operation Center in the development environment is used. If the URL contains **env=prod**, Operation Center in the production environment is used. You can change the value of the env parameter to go to Operation Center of the corresponding environment. In the Cycle Task Maintenance and Trigger Task Maintenance modules, you can view the instances of all your nodes and perform related operations on the instances. For example, you can stop and rerun instances.
+
+> **Note:** Instances are generated after nodes are run by the scheduling system. An instance is a snapshot of a node at a specific point in time. The instance contains information such as the time when the node is run, the status and operational logs of the node.
 
 ### 8.2 View statistics on the Overview page
 
@@ -31566,7 +32301,9 @@ If an auto triggered node is frozen, instances that are generated for the node a
 **Expired Nodes**: the number of auto triggered nodes for which the effective period of
 scheduling expires. The system generates instances for an auto triggered node and runs the instances within the effective period of scheduling of the node. If the effective period of scheduling expires, the system does not generate or schedule auto triggered instances of the node.
 **Modified Nodes**: the number of auto triggered nodes whose configurations are modified
-on the current day. The **modifications** include code changes, scheduling configuration modifications, node status changes, and node ownership changes. The **statistics** on the following nodes are collected: nodes whose configurations are modified on the DataStudio page and that are deployed to the production environment after configuration modification and nodes whose configurations are modified in the production environment. If you select **Mine** in the upper-right corner of the Focus On section, only the number of modified nodes of which you are the owner is counted.
+on the current day. The **modifications** include code changes, scheduling configuration modifications, node status changes, and node ownership changes. The **statistics** on the following nodes are collected: nodes whose configurations are modified on the DataStudio page and that are deployed to the production environment after configuration modification and nodes whose configurations are modified in the production environment.
+
+> **Note:** If you select **Mine** in the upper-right corner of the Focus On section, only the number of modified nodes of which you are the owner is counted.
 
 **Instances Status**
 
@@ -31580,7 +32317,10 @@ descendant instances may be blocked.
 **Frozen**: A frozen auto triggered instance is not automatically scheduled, and the running
 of its descendant instances is blocked.
 **Slow-running**: An auto triggered instance is considered a slow-running instance if the
-auto triggered instance is running and the running duration of the auto triggered instance is at least `15` minutes longer than the average running duration of the auto triggered instance during the last `10` days. If the number of historical auto triggered instances is less than `four` and the running duration of an auto triggered instance exceeds 30 minutes, the auto triggered instance can also be considered a slow running instance. Only statistics on **normal nodes** are collected. Statistics on dry-run nodes and frozen nodes are not collected. Normal node or instance: A normal node or instance is a node or instance that actually runs code. Normal nodes or instances do not include dry-run nodes or instances and frozen nodes or instances. Dry-run nodes or instances include nodes whose scheduling mode is set to dry-run, instances that are not generated during the period of time in which nodes are scheduled, branch nodes that are not selected, and expired instances that are generated when the scheduled time for running nodes is less than 10 minutes from the point in time when the nodes are committed and deployed.
+auto triggered instance is running and the running duration of the auto triggered instance is at least `15` minutes longer than the average running duration of the auto triggered instance during the last `10` days. If the number of historical auto triggered instances is less than `four` and the running duration of an auto triggered instance exceeds 30 minutes, the auto triggered instance can also be considered a slow running instance.
+
+> **Note:** Only statistics on **normal nodes** are collected. Statistics on dry-run nodes and frozen nodes are not collected.
+> Normal node or instance: A normal node or instance is a node or instance that actually runs code. Normal nodes or instances do not include dry-run nodes or instances and frozen nodes or instances. Dry-run nodes or instances include nodes whose scheduling mode is set to dry-run, instances that are not generated during the period of time in which nodes are scheduled, branch nodes that are not selected, and expired instances that are generated when the scheduled time for running nodes is less than 10 minutes from the point in time when the nodes are committed and deployed.
 
 **Instances Completion Status**
 
@@ -31607,8 +32347,8 @@ be displayed in the donut chart are limited. If the types of nodes that need to 
 **Ranking of Instances on Previous Day**
 
 This section ranks auto triggered instances based on their running duration, time spent in waiting for resources, and slow running duration on the previous day. Only the `top 30` auto triggered instances are displayed. You can identify a time-consuming node based on the ranking, click the **ID of the instance** that is generated for the node to go to the instance details page, and then perform diagnostics on the instance to view the running situation of the instance.
-**Slow Running**: The difference between the running duration of an instance on the
-previous day and the average running duration of the instance over a historical period is collected. Instances are sorted by the difference in descending order.
+
+> **Note:** **Slow Running**: The difference between the running duration of an instance on the previous day and the average running duration of the instance over a historical period is collected. Instances are sorted by the difference in descending order.
 
 **Ranking of Auto Triggered Node Instances with Highest Error**
 
@@ -31680,7 +32420,12 @@ go to the Stream Task page.
 
 **View real-time computing nodes in the node list**
 
-The Stream Task page displays all real-time computing nodes in the production environment. You can view the basic information of a real-time computing node and perform operations such as starting, stopping, and undeploying a real-time computing node. You can also configure alert rules for a real-time computing node. In the upper part of the page, you can specify filter conditions to search for real-time computing nodes. If you search for nodes by node ID or node name, the search results are affected by other filter conditions that you specified. Only the nodes that meet all the filter conditions that you specified are displayed. If you search for nodes by node name, fuzzy match is supported. After you enter a keyword, all real-time computing nodes whose names contain the keyword are displayed. You can view the basic information and details of a real-time computing node in the realtime monitoring node list:
+The Stream Task page displays all real-time computing nodes in the production environment. You can view the basic information of a real-time computing node and perform operations such as starting, stopping, and undeploying a real-time computing node. You can also configure alert rules for a real-time computing node. In the upper part of the page, you can specify filter conditions to search for real-time computing nodes.
+
+> **Note:** If you search for nodes by node ID or node name, the search results are affected by other filter conditions that you specified. Only the nodes that meet all the filter conditions that you specified are displayed.
+> If you search for nodes by node name, fuzzy match is supported. After you enter a keyword, all real-time computing nodes whose names contain the keyword are displayed.
+
+You can view the basic information and details of a real-time computing node in the realtime monitoring node list:
 **Node Name**: the name of the node. You can click the node name to open the details
 panel of the node.
 **Node ID**: the ID of the node.
@@ -31697,7 +32442,10 @@ DataWorks supports O&M only for real-time computing nodes that are run in EMR cl
 **Deployed At**: the time when the node was deployed. The time is in the yyyy-MM-dd
 HH:mm:ss format.
 **Responsible Person**: the owner of the workspace to which the node belongs.
-You can rank all real-time computing nodes in ascending or descending order based on the values in the **Start running**, **End Running**, or **Runtime** column. You can perform the following operations on a real-time monitoring node in the Actions column:
+
+> **Note:** You can rank all real-time computing nodes in ascending or descending order based on the values in the **Start running**, **End Running**, or **Runtime** column.
+
+You can perform the following operations on a real-time monitoring node in the Actions column:
 **Start**: Start the node if it is not running.
 **Terminate**: Stop the node if it is running.
 **Undeploy**: Undeploy the node if it is deployed.
@@ -31786,7 +32534,11 @@ Start a real-time synchronization node Find the task that you want to start and 
 
 #### 8.4.1 Manage auto triggered nodes
 
-Auto triggered nodes are automatically run as scheduled after they are committed to the scheduling system. You can view the details of and manage an auto triggered node in the auto triggered node list or in the directed acyclic graph (DAG) of the node. By default, the auto triggered node list displays nodes in all the workflows created by using the current account. After you commit a node, the scheduling system automatically generates instances for the node at 23:30 the next day and runs these instances. If you commit a node after 23:30, the scheduling system automatically generates instances for the node on the third day and runs these instances. Do not freeze the **projectname_root** node, which is the root node of your workspace. All the instances of auto triggered nodes depend on this node. If this node is frozen, the instances of auto triggered nodes cannot be run.
+Auto triggered nodes are automatically run as scheduled after they are committed to the scheduling system. You can view the details of and manage an auto triggered node in the auto triggered node list or in the directed acyclic graph (DAG) of the node.
+
+> **Note:** By default, the auto triggered node list displays nodes in all the workflows created by using the current account.
+> After you commit a node, the scheduling system automatically generates instances for the node at 23:30 the next day and runs these instances. If you commit a node after 23:30, the scheduling system automatically generates instances for the node on the third day and runs these instances.
+> Do not freeze the **projectname_root** node, which is the root node of your workspace. All the instances of auto triggered nodes depend on this node. If this node is frozen, the instances of auto triggered nodes cannot be run.
 
 **View the list of auto triggered nodes**
 
@@ -31823,7 +32575,9 @@ An auto triggered node instance is a snapshot that is taken for an auto triggere
 
 **Terms**
 
-Normal node or instance: A normal node or instance is a node or instance that actually runs code. Normal nodes or instances do not include dry-run nodes or instances and frozen nodes or instances. Dry-run nodes or instances include nodes whose scheduling mode is set to dryrun, instances that are not generated during the period of time in which nodes are scheduled, branch nodes that are not selected, and expired instances that are generated when the scheduled time for running nodes is less than 10 minutes from the point in time when the nodes are committed and deployed. An instance is generated each time an auto triggered node is run as scheduled. You can manage auto triggered node instances that have been scheduled. For example, you can view the status of instances, and stop, rerun, and unfreeze instances. Instances are generated as scheduled for auto triggered nodes. Each generated instance runs the latest code. If you modify and recommit the code of a node after instances are generated for the node, the instances that are not run will run the latest code.
+Normal node or instance: A normal node or instance is a node or instance that actually runs code. Normal nodes or instances do not include dry-run nodes or instances and frozen nodes or instances. Dry-run nodes or instances include nodes whose scheduling mode is set to dryrun, instances that are not generated during the period of time in which nodes are scheduled, branch nodes that are not selected, and expired instances that are generated when the scheduled time for running nodes is less than 10 minutes from the point in time when the nodes are committed and deployed. An instance is generated each time an auto triggered node is run as scheduled. You can manage auto triggered node instances that have been scheduled. For example, you can view the status of instances, and stop, rerun, and unfreeze instances.
+
+> **Note:** Instances are generated as scheduled for auto triggered nodes. Each generated instance runs the latest code. If you modify and recommit the code of a node after instances are generated for the node, the instances that are not run will run the latest code.
 
 **View and manage auto triggered node instances from the**
 
@@ -31833,22 +32587,42 @@ On the **Cycle Instance** page, click the **Instance Perspective** tab.
 
 **Manage auto triggered node instances in the instance list**
 
-You can manage auto triggered node instances in the instance list and perform O&M operations on the instances. For example, you can check run logs, rerun instances, and stop instances that are running. In the upper part of the page, you can specify filter conditions to search for nodes. By default, the data timestamp is set to the day before the current day. You can select **Slow Node** to find slow running instances. A node instance is considered a slow running instance if the node instance is running and the duration of the node instance is at least 15 minutes longer than the average duration of the node instance during the last 10 days. If the number of historical node instances is less than four and the duration of a node instance exceeds 30 minutes, the node instance can also be considered a slow running instance. In the auto triggered node instance list, you can view the basic information and running status of the instances. You can perform the following operations in the **Actions** column:
+You can manage auto triggered node instances in the instance list and perform O&M operations on the instances. For example, you can check run logs, rerun instances, and stop instances that are running. In the upper part of the page, you can specify filter conditions to search for nodes.
+
+> **Note:** By default, the data timestamp is set to the day before the current day.
+> You can select **Slow Node** to find slow running instances. A node instance is considered a slow running instance if the node instance is running and the duration of the node instance is at least 15 minutes longer than the average duration of the node instance during the last 10 days. If the number of historical node instances is less than four and the duration of a node instance exceeds 30 minutes, the node instance can also be considered a slow running instance.
+
+In the auto triggered node instance list, you can view the basic information and running status of the instances. You can perform the following operations in the **Actions** column:
 **DAG**: You can open the DAG of the auto triggered node instance to view the
 dependencies of the instance. In the DAG, you can right-click the instance to perform related operations.
 **Rerun**: You can rerun the auto triggered node instance if it is in the Succeeded or Failed
-state. After the instance is successfully run, its descendant instances that are in the Pending (Ancestor) state can be scheduled to run. You can perform this operation to handle an instance that fails to be run or is not run as scheduled. Only instances in the **Succeeded** or **Failed** state can be rerun.
+state. After the instance is successfully run, its descendant instances that are in the Pending (Ancestor) state can be scheduled to run. You can perform this operation to handle an instance that fails to be run or is not run as scheduled.
+
+> **Note:** Only instances in the **Succeeded** or **Failed** state can be rerun.
+
 **More**:
 **Rerun Descendent Nodes**: You can rerun the descendant instances of the auto
-triggered node instance if it is in the Succeeded or Failed state. You can select the descendant instances that you want to rerun. After a selected instance is successfully run, its descendant instances that are in the Pending (Ancestor) state can be scheduled to run. You can perform this operation to recover data. Only descendant instances in the **Succeeded** or **Failed** state can be selected. The value No is displayed in the **Meet Rerun Condition** column for instances in other states, and you cannot select these instances.
+triggered node instance if it is in the Succeeded or Failed state. You can select the descendant instances that you want to rerun. After a selected instance is successfully run, its descendant instances that are in the Pending (Ancestor) state can be scheduled to run. You can perform this operation to recover data.
+
+> **Note:** Only descendant instances in the **Succeeded** or **Failed** state can be selected. The value No is displayed in the **Meet Rerun Condition** column for instances in other states, and you cannot select these instances.
+
 **Set Status to Successful** : You can set the state of the auto triggered node instance
 to Succeeded if it fails to be run. You can perform this operation if you do not want an instance that fails to be run to block the running of its descendant instances. You can perform this operation to handle an instance that fails to be run.
 **Stop**: You can stop the auto triggered node instance if it does not need to be run. After
-you stop the instance, the instance fails to be run and exits. Only instances in the **Pending (Schedule)**, **Pending (Resources)**, or **Running** state can be stopped.
+you stop the instance, the instance fails to be run and exits.
+
+> **Note:** Only instances in the **Pending (Schedule)**, **Pending (Resources)**, or **Running** state can be stopped.
+
 **Freeze**: You can freeze the auto triggered node instance if you do not need to run the
-instance or its descendant instances. The freeze operation takes effect only on the current auto triggered node instance that is in the Running state. The frozen auto triggered node instance cannot be scheduled as expected and does not generate data. In addition, its descendant instances cannot be scheduled and run as expected. Do not perform this operation on the `projectname_root` task, which is the root task of your workspace. All the instances of auto triggered nodes depend on this node. If this node is frozen, the instances of auto triggered nodes cannot be run.
+instance or its descendant instances. The freeze operation takes effect only on the current auto triggered node instance that is in the Running state. The frozen auto triggered node instance cannot be scheduled as expected and does not generate data. In addition, its descendant instances cannot be scheduled and run as expected.
+
+> **Note:** Do not perform this operation on the `projectname_root` task, which is the root task of your workspace. All the instances of auto triggered nodes depend on this node. If this node is frozen, the instances of auto triggered nodes cannot be run.
+
 **Unfreeze**: You can unfreeze the auto triggered node instance if it is frozen.
-If the instance is not run, it is automatically run after its ancestor instances are successfully run. If all the ancestor instances of the instance are successfully run, the instance enters the Failed state. You must manually rerun the instance. The unfreeze operation takes effect only on the current auto triggered node instance. If the auto triggered node for which the instance is generated is frozen, instances that are scheduled to run on the next day are also frozen.
+If the instance is not run, it is automatically run after its ancestor instances are successfully run. If all the ancestor instances of the instance are successfully run, the instance enters the Failed state. You must manually rerun the instance.
+
+> **Note:** The unfreeze operation takes effect only on the current auto triggered node instance. If the auto triggered node for which the instance is generated is frozen, instances that are scheduled to run on the next day are also frozen.
+
 **View Lineage**: You can view the lineage of the auto triggered node instance.
 **View Auto Triggered Task Details**: You can view the basic information of the auto
 triggered node instance.
@@ -31887,7 +32661,9 @@ Find an instance in the instance list and click its name or **DAG** in the Actio
 
 **workflow perspective**
 
-On the **Cycle Instance** page, click the **Workflow Perspective** tab. On the Workflow Perspective tab, only the dependencies within workflows are displayed.
+On the **Cycle Instance** page, click the **Workflow Perspective** tab.
+
+> **Note:** On the Workflow Perspective tab, only the dependencies within workflows are displayed.
 
 | Operation | Description |
 |---|---|
@@ -32025,7 +32801,9 @@ In the left-side navigation pane, choose **Cycle Task Maintenance > Patch Data**
 
 **Manage data backfill instances in a DAG**
 
-Find a data backfill instance in the instance list and click the node name or **DAG** in the Actions column to view the DAG of the node for which the instance is generated. In the DAG, you can right-click the node to perform related operations. After you click the **Refresh** icon in the upper-right corner, only the DAG of the node is refreshed.
+Find a data backfill instance in the instance list and click the node name or **DAG** in the Actions column to view the DAG of the node for which the instance is generated. In the DAG, you can right-click the node to perform related operations.
+
+> **Note:** After you click the **Refresh** icon in the upper-right corner, only the DAG of the node is refreshed.
 
 | Operation | Description |
 |---|---|
@@ -32153,11 +32931,19 @@ i. Complete the basic settings.
 
 ii. Click **The next Step**. In the Note message, click **OK**.
 
-**Important**
+> **Important:** After you click OK, you cannot modify the parameter settings in the Basic Is Set step. Make sure that the parameter settings are correct. This reduces computing overhead and shortens your waiting time.
 
-After you click OK, you cannot modify the parameter settings in the Basic Is Set step. Make sure that the parameter settings are correct. This reduces computing overhead and shortens your waiting time. iii. Configure the parameters in the **Select Work Space** step. You can filter the descendant instances that you want to rerun by workspace. In the left section, select the workspaces to which the descendant instances you want to rerun belong from the list of **Workspace to Which Descendant Instance Belongs** , and click the **>** icon to add the selected workspaces to the **Workspace to Which**
+iii. Configure the parameters in the **Select Work Space** step. You can filter the descendant instances that you want to rerun by workspace. In the left section, select the workspaces to which the descendant instances you want to rerun belong from the list of **Workspace to Which Descendant Instance Belongs** , and click the **>** icon to add the selected workspaces to the **Workspace to Which**
 **Instance to Be Rerun Belongs** section on the right. The descendant instances in the
-selected workspaces will be forcefully rerun. Dry runs are performed for descendant instances in workspaces that are not selected. When you filter the descendant instances that you want to rerun by workspace, you can select only the workspaces in which you are the administrator. iv. Click **The next Step**. In the Note message, click **OK**. After you click OK, you cannot modify the parameter settings in the Select Work Space step. Make sure that the parameter settings are correct. This reduces computing overhead and shortens your waiting time. v. Configure the parameters in the Confirm Influence step. The following table describes the parameters.
+selected workspaces will be forcefully rerun. Dry runs are performed for descendant instances in workspaces that are not selected.
+
+> **Note:** When you filter the descendant instances that you want to rerun by workspace, you can select only the workspaces in which you are the administrator.
+
+iv. Click **The next Step**. In the Note message, click **OK**.
+
+> **Note:** After you click OK, you cannot modify the parameter settings in the Select Work Space step. Make sure that the parameter settings are correct. This reduces computing overhead and shortens your waiting time.
+
+v. Configure the parameters in the Confirm Influence step. The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -32179,7 +32965,9 @@ You can view the details about the operation on the Operation History page. For 
 
 #### 8.5.1 Manage manually triggered nodes
 
-Manually triggered nodes are nodes generated when a manually triggered workflow is committed to the scheduling system. You can view the details of and perform the required operations on a manually triggered node in the list of manually triggered nodes or in the directed acyclic graph (DAG) of the current manually triggered workflow. After a manually triggered workflow is committed to the scheduling system, the nodes in the workflow are not automatically run. You can only manually trigger the nodes to run.
+Manually triggered nodes are nodes generated when a manually triggered workflow is committed to the scheduling system. You can view the details of and perform the required operations on a manually triggered node in the list of manually triggered nodes or in the directed acyclic graph (DAG) of the current manually triggered workflow.
+
+> **Note:** After a manually triggered workflow is committed to the scheduling system, the nodes in the workflow are not automatically run. You can only manually trigger the nodes to run.
 
 **Manually triggered nodes**
 
@@ -32192,7 +32980,10 @@ the dialog box that appears, configure the parameters and click **Run**. The Ran
 manually triggered nodes in the workflow. You can select **Overall Workflow** or
 **Specified Node**.
 **Data Timestamp**: Specifies the data timestamp range of the manually triggered
-nodes. You can click Add Multiple Data Timestamp Ranges to add multiple data timestamp ranges. You can select a date in the past or in the future to filter manually triggered nodes. If you add multiple data timestamp ranges, the system runs manually triggered nodes based on the specified data timestamp ranges in chronological order.
+nodes. You can click Add Multiple Data Timestamp Ranges to add multiple data timestamp ranges. You can select a date in the past or in the future to filter manually triggered nodes.
+
+> **Note:** If you add multiple data timestamp ranges, the system runs manually triggered nodes based on the specified data timestamp ranges in chronological order.
+
 **Order**: specifies whether to run manually triggered nodes based on the data
 timestamp range in chronological order or reverse chronological order.
 **View Instances**: Click **View Instances** to go to the **Trigger Instance** page to view the
@@ -32225,9 +33016,7 @@ Click the name of a manually triggered node or **DAG** in the Actions column to 
 
 DataWorks generates manually triggered node instances from manually triggered workflows. Manually triggered workflows do not have node dependencies, and you can manually trigger these workflows as needed.
 
-**Important**
-
-DataWorks generates alerts only for auto triggered node instances that fail to be run.
+> **Important:** DataWorks generates alerts only for auto triggered node instances that fail to be run.
 
 **Go to the Trigger Instance page**
 
@@ -32251,7 +33040,9 @@ You can select multiple instances and click **Stop** in the lower part of the pa
 
 **Manage manually triggered node instances in a DAG**
 
-Find a manually triggered workflow and click its name or **DAG** in the Actions column to view the DAG of the workflow. In the DAG, you can right-click an instance to perform related operations. A manually triggered workflow does not have dependencies. Therefore, only instances in the current workflow are displayed in the DAG.
+Find a manually triggered workflow and click its name or **DAG** in the Actions column to view the DAG of the workflow. In the DAG, you can right-click an instance to perform related operations.
+
+> **Note:** A manually triggered workflow does not have dependencies. Therefore, only instances in the current workflow are displayed in the DAG.
 
 | Operation | Description |
 |---|---|
@@ -32287,7 +33078,9 @@ A baseline is used to manage a group of nodes. You can add nodes to a baseline t
 After a monitoring scope is determined, the intelligent monitoring system generates an event and reports an alert when an exception occurs on a node within the monitoring scope. The alert is reported based on the analysis results of the event. The system supports two types of events. You can choose **Operation Center > Alarm > Smart Baseline** to view events on the **Events** tab. Event types:
 **Error**: indicates that a node fails to run.
 **Slow**: indicates that the running time of a node is significantly longer than the average
-running time of the node in the previous periods. If a node times out and then fails, two events are generated.
+running time of the node in the previous periods.
+
+> **Note:** If a node times out and then fails, two events are generated.
 
 **Alert time judgment**
 
@@ -32393,7 +33186,8 @@ historical period of time = 05:00
 historical period of time = 06:00
 ```
 
-Baseline B contains Nodes E and F. The average completion time for Node E is later than the average completion time for Node F. Therefore, Node E is the node that affects the latest completion time of Baseline B, and the estimated completion time for Baseline B is determined by the average completion time for Node E.
+> **Note:** Baseline B contains Nodes E and F. The average completion time for Node E is later than the average completion time for Node F. Therefore, Node E is the node that affects the latest completion time of Baseline B, and the estimated completion time for Baseline B is determined by the average completion time for Node E.
+
 2. Estimate the latest completion time and latest start time for each node within the
 monitoring scope
 
@@ -32407,14 +33201,26 @@ monitoring scope
 
 **Alerting mechanism**
 
-If a baseline that you create is enabled, and you enable the alerting feature for the baseline, the system sends you an alert notification when a baseline alert is triggered. You can specify the alert margin threshold and committed completion time for the baseline based on the estimated completion time for the baseline. DataWorks can estimate the latest completion time for each node within the monitoring scope based on the status of the nodes over a historical period of time. DataWorks also monitors the status of nodes in the baseline. When DataWorks predicts that a node in the baseline cannot be complete before the alert time that is obtained by subtracting the alert margin threshold from the committed completion time, DataWorks sends an alert notification to an alert contact that you specify when you configure the baseline. If the alert margin threshold and committed completion time that you specify are inappropriate, the triggered alert may not meet your expectations. Alert rules for a baseline before a node in the baseline is run: A baseline can estimate the completion time for each node within the monitoring scope on the current day. The completion time is estimated based on the average points in time at which the nodes within the monitoring scope are complete over a historical period of time. The system can predict nodes that cannot be complete before the alert time for the baseline and send an alert notification that contains exception information to the specified alert contact at the earliest opportunity before the nodes in the baseline start to run on that day. A baseline can help you identify exceptions and receive an alert notification about the exceptions at the earliest opportunity in scenarios where dependencies between nodes in the baseline are complex and the dependencies frequently change. If the estimated completion time for a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered. You can view the estimated completion time for a baseline on the **Baselines** tab. If the estimated completion time for an ancestor node of a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered. The estimated completion time for the ancestor node is calculated based on the average completion time for the ancestor node over a historical period of time. Alert rules for a baseline when a node in the baseline is running: If the completion time for a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered.
+If a baseline that you create is enabled, and you enable the alerting feature for the baseline, the system sends you an alert notification when a baseline alert is triggered. You can specify the alert margin threshold and committed completion time for the baseline based on the estimated completion time for the baseline. DataWorks can estimate the latest completion time for each node within the monitoring scope based on the status of the nodes over a historical period of time. DataWorks also monitors the status of nodes in the baseline. When DataWorks predicts that a node in the baseline cannot be complete before the alert time that is obtained by subtracting the alert margin threshold from the committed completion time, DataWorks sends an alert notification to an alert contact that you specify when you configure the baseline.
+
+> **Note:** If the alert margin threshold and committed completion time that you specify are inappropriate, the triggered alert may not meet your expectations.
+
+Alert rules for a baseline before a node in the baseline is run:
+
+> **Note:** A baseline can estimate the completion time for each node within the monitoring scope on the current day. The completion time is estimated based on the average points in time at which the nodes within the monitoring scope are complete over a historical period of time. The system can predict nodes that cannot be complete before the alert time for the baseline and send an alert notification that contains exception information to the specified alert contact at the earliest opportunity before the nodes in the baseline start to run on that day. A baseline can help you identify exceptions and receive an alert notification about the exceptions at the earliest opportunity in scenarios where dependencies between nodes in the baseline are complex and the dependencies frequently change.
+
+If the estimated completion time for a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered. You can view the estimated completion time for a baseline on the **Baselines** tab. If the estimated completion time for an ancestor node of a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered. The estimated completion time for the ancestor node is calculated based on the average completion time for the ancestor node over a historical period of time. Alert rules for a baseline when a node in the baseline is running: If the completion time for a node in a baseline is later than the alert time for the baseline, a baseline alert is triggered.
 
 **Core logic: Event alerting**
 
 After a monitoring scope is determined, the intelligent monitoring system generates an event and reports an alert when an exception occurs on a node within the monitoring scope. The alert is reported based on the analysis results of the event. The system supports two types of events:
 **Error**: indicates that a node fails to run.
 **Slow**: the duration of a node is significantly longer than the average duration of the node in
-the previous periods. If a node slows down and then encounters an error, two events are generated. You can view the details of an event on the Events tab.
+the previous periods.
+
+> **Note:** If a node slows down and then encounters an error, two events are generated.
+
+You can view the details of an event on the Events tab.
 
 **Core logic: Key path and key instance**
 
@@ -32488,7 +33294,9 @@ An intelligent baseline enables DataWorks to identify an exception that prevents
 
 **Terms**
 
-Error: A node fails to run. Slowdown: The running time of a node is significantly longer than the average running time of the node in the previous periods. If a node slows down and then encounters an error, two events are generated.
+Error: A node fails to run. Slowdown: The running time of a node is significantly longer than the average running time of the node in the previous periods.
+
+> **Note:** If a node slows down and then encounters an error, two events are generated.
 
 **View events**
 
@@ -32528,7 +33336,9 @@ The intelligent baseline feature enables DataWorks to identify an exception that
 
 **Limits**
 
-Permissions: Only workspace administrators and tenant administrators have the permissions to create baselines. Only tenant administrators and baseline owners have the permissions to delete, modify, enable, and disable baselines. Alert notification methods: Event alerts and baseline alerts can be sent by using the email, text message, DingTalk chatbot, and webhook notification methods. DataWorks supports only the webhook URLs of DingTalk, WeCom, and Lark. If you want to use the webhook URLs of other applications, you can join the DataWorks DingTalk group for technical support.
+Permissions: Only workspace administrators and tenant administrators have the permissions to create baselines. Only tenant administrators and baseline owners have the permissions to delete, modify, enable, and disable baselines. Alert notification methods: Event alerts and baseline alerts can be sent by using the email, text message, DingTalk chatbot, and webhook notification methods.
+
+> **Note:** DataWorks supports only the webhook URLs of DingTalk, WeCom, and Lark. If you want to use the webhook URLs of other applications, you can join the DataWorks DingTalk group for technical support.
 
 **Create a baseline**
 
@@ -32588,7 +33398,11 @@ change records of the baseline.
 
 **Add nodes to a baseline**
 
-A node can be added to only one baseline. For example, if Node A has been added to Baseline A, when you create Baseline B and add Node A to Baseline B, Node A is removed from Baseline A and added to Baseline B. If a baseline that is enabled contains no nodes, the baseline becomes an empty baseline, and a baseline instance in the Empty Baseline state is generated. You use one of the following methods to add nodes to a baseline: On the **Baselines** tab, click **Create Baseline** to create a baseline, and add nodes to the baseline. On the **Cycle Task** page, find the node that you want to add to the baseline and choose
+A node can be added to only one baseline. For example, if Node A has been added to Baseline A, when you create Baseline B and add Node A to Baseline B, Node A is removed from Baseline A and added to Baseline B.
+
+> **Note:** If a baseline that is enabled contains no nodes, the baseline becomes an empty baseline, and a baseline instance in the Empty Baseline state is generated.
+
+You use one of the following methods to add nodes to a baseline: On the **Baselines** tab, click **Create Baseline** to create a baseline, and add nodes to the baseline. On the **Cycle Task** page, find the node that you want to add to the baseline and choose
 **More > Add Baseline** in the Actions column.
 
 **Related operations**
@@ -32635,11 +33449,15 @@ You can use custom alert rules to monitor the status or resource usage of specif
 
 Custom alert rules take effect only on auto triggered node instances. The results of test instances and data backfill instances that are generated for auto triggered nodes are not monitored. Custom alert rules support the following alert notification methods: **Mail**, **SMS**, **DingTalk**
 **Chatbot**, and **WebHook**. The supported alert notification methods have the following
-limits: DataWorks supports only the webhook URLs of DingTalk, WeCom, and Lark. If you want to use the webhook URLs of other applications, you can join the Alibaba Cloud Big Data & AI Platform group and scan the following QR code to join the DataWorks DingTalk group for pre-sales and after-sales technical support. You can directly contact the DingTalk chatbot or the on-duty staff.
+limits:
+
+> **Note:** DataWorks supports only the webhook URLs of DingTalk, WeCom, and Lark. If you want to use the webhook URLs of other applications, you can join the Alibaba Cloud Big Data & AI Platform group and scan the following QR code to join the DataWorks DingTalk group for pre-sales and after-sales technical support. You can directly contact the DingTalk chatbot or the on-duty staff.
 
 **Usage notes**
 
-For auto triggered nodes for which an error is reported, custom alert rules take effect on auto triggered node instances that are generated within three data timestamps. For auto triggered nodes in other states, custom alert rules take effect on auto triggered node instances that are generated within two data timestamps. For example, if an alert rule is triggered for auto triggered node instances that are generated within the recent two data timestamps, which are the current day and the previous day, the system sends an alert notification. Even if an alert rule is triggered after auto triggered node instances that are generated on the day before the previous day are run, the system does not send an alert notification.
+For auto triggered nodes for which an error is reported, custom alert rules take effect on auto triggered node instances that are generated within three data timestamps. For auto triggered nodes in other states, custom alert rules take effect on auto triggered node instances that are generated within two data timestamps.
+
+> **Note:** For example, if an alert rule is triggered for auto triggered node instances that are generated within the recent two data timestamps, which are the current day and the previous day, the system sends an alert notification. Even if an alert rule is triggered after auto triggered node instances that are generated on the day before the previous day are run, the system does not send an alert notification.
 
 **Create a custom alert rule**
 
@@ -32705,9 +33523,8 @@ following table.
 8. After you configure the custom chatbot, copy the webhook URL of the chatbot and click
 **Finished**.
 
-**Important**
-
-Save the copied webhook URL and paste it in the **Webhook Address** field in the Create Custom Rule dialog box. Keep the webhook URL confidential. If the webhook URL is leaked, your business is at risk.
+> **Important:** Save the copied webhook URL and paste it in the **Webhook Address** field in the Create Custom Rule dialog box.
+> Keep the webhook URL confidential. If the webhook URL is leaked, your business is at risk.
 
 #### 8.6.5 View alerts
 
@@ -32727,7 +33544,10 @@ Management page appears.
 
 **View alerts**
 
-On the **Alert Management** page, you can view all alerts. At the top of this page, you can specify filter conditions to search for alerts. In the alert list section, you can view the information about all alerts that meet the filter conditions. You can click **View Details** in the Actions column of an alert to view details about the alert on the Alert Details page. For an event alert, the **Rule/Baseline** column displays all baselines that are affected by the current event. For a rule-triggered alert, the **Object** column displays the objects for which the alert is generated.
+On the **Alert Management** page, you can view all alerts. At the top of this page, you can specify filter conditions to search for alerts. In the alert list section, you can view the information about all alerts that meet the filter conditions. You can click **View Details** in the Actions column of an alert to view details about the alert on the Alert Details page.
+
+> **Note:** For an event alert, the **Rule/Baseline** column displays all baselines that are affected by the current event.
+> For a rule-triggered alert, the **Object** column displays the objects for which the alert is generated.
 
 **View alert details**
 
@@ -32736,7 +33556,8 @@ On the **Alert Details** page of an alert, you can view details about the alert,
 **Alert Cause**: the alert trigger condition. If you have questions about the trigger condition,
 see Overview.
 **Alert Contact**: the alert contact who is specified in an alert rule.
-If you do not want to receive notifications for a certain type of alert, send the URL of the desired Alert Details page to the alert rule creator and ask the creator to remove you from the alert contacts specified on the Rule Management page or Smart Baseline page.
+
+> **Note:** If you do not want to receive notifications for a certain type of alert, send the URL of the desired Alert Details page to the alert rule creator and ask the creator to remove you from the alert contacts specified on the Rule Management page or Smart Baseline page.
 
 #### 8.6.6 Create and manage a shift schedule
 
@@ -32782,11 +33603,17 @@ describes the parameters.
 | Repetition Interval | You can set the Repetition Interval parameter to any number of days before or after the current shift period. This parameter is required only when you set the Repetition parameter to Custom. |
 | End Time | The time when the repetition cycle ends. Default value: Never. This parameter is required only when you set the Repetition parameter to Daily, Weekly, Every Monday to Every Friday, Monthly, Yearly, or Custom. |
 
-The information marked in blue is the shift information about the primary engineer in charge. The information marked in yellow is the shift information about the secondary engineer in charge. You can create a shift plan only for the current date or a later date. DataWorks allows you to specify multiple primary engineers or secondary engineers in charge for the same shift plan.
+> **Note:** The information marked in blue is the shift information about the primary engineer in charge. The information marked in yellow is the shift information about the secondary engineer in charge.
+> You can create a shift plan only for the current date or a later date.
+> DataWorks allows you to specify multiple primary engineers or secondary engineers in charge for the same shift plan.
 
 **Manage a shift schedule**
 
-In the **Shift Schedule** pane, you can perform the following operations: Search for a shift schedule by specifying the **Search** or **Admin** parameter. Move the pointer over the icon on the right side of the name of a shift schedule and select **Modify** or **Delete** to modify or delete the shift schedule. Only the administrator of a shift schedule can modify or delete the shift schedule or a shift plan created in the shift schedule. Double-click a shift schedule to go to the details pane and view the detailed information about the shift schedule. In the details pane of a shift schedule, you can perform the following operations: At the top of the details pane, you can select the type of engineers in charge to view a specific shift plan. You can also specify a month to view a shift plan. By default, the shift plans of all engineers in charge within the current month are displayed. At the top of a shift schedule, you can view the basic information about the shift schedule and view the current engineer in charge. If the custom alert rule that you configured uses this shift schedule, related alert notifications are sent based on the shift plan created in the shift schedule. You can click **Details** next to **Usage** to view detailed information. For more information about how to manage custom alert rules, see Manage custom alert rules. After you view a shift plan that is not created in the current month, you can click **Back to**
+In the **Shift Schedule** pane, you can perform the following operations: Search for a shift schedule by specifying the **Search** or **Admin** parameter. Move the pointer over the icon on the right side of the name of a shift schedule and select **Modify** or **Delete** to modify or delete the shift schedule.
+
+> **Note:** Only the administrator of a shift schedule can modify or delete the shift schedule or a shift plan created in the shift schedule.
+
+Double-click a shift schedule to go to the details pane and view the detailed information about the shift schedule. In the details pane of a shift schedule, you can perform the following operations: At the top of the details pane, you can select the type of engineers in charge to view a specific shift plan. You can also specify a month to view a shift plan. By default, the shift plans of all engineers in charge within the current month are displayed. At the top of a shift schedule, you can view the basic information about the shift schedule and view the current engineer in charge. If the custom alert rule that you configured uses this shift schedule, related alert notifications are sent based on the shift plan created in the shift schedule. You can click **Details** next to **Usage** to view detailed information. For more information about how to manage custom alert rules, see Manage custom alert rules. After you view a shift plan that is not created in the current month, you can click **Back to**
 **Current Month** to go back to the details pane of a shift schedule in the current month.
 In the details pane of a shift schedule, you can view the detailed information about a created shift plan, including engineers in charge, the shift dates, and the types of engineers in charge. You can also click a created shift plan to modify or delete it.
 
@@ -32823,7 +33650,13 @@ icon in the upper-left corner and choose **All Products > Data Development**
 3. In the left-side navigation pane, choose **Alarm > Smart Baseline**. On the page that
 appears, click the **Events** tab.
 4. On the **Events** tab, disable alerting. You can disable alerting by using one of the following
-methods: Handle the event that triggers the alert. Then, alerting is temporarily disabled for the event. a. Find the event and click **Handle** in the Actions column. b. In the **Handle Events** dialog box, configure the **Expected Handling Duration** parameter. c. Click **OK**. DataWorks records the event handling operation and temporarily disables alerting for the event when the event is being handled. Ignore the event that triggers the alert. Then, alerting is permanently disabled for the event. a. Find the event and click **Ignore** in the Actions column. b. In the **Ignore** message, click **OK**. DataWorks records the event ignoring operation and permanently disables alerting for the event.
+methods: Handle the event that triggers the alert. Then, alerting is temporarily disabled for the event. a. Find the event and click **Handle** in the Actions column. b. In the **Handle Events** dialog box, configure the **Expected Handling Duration** parameter. c. Click **OK**.
+
+> **Note:** DataWorks records the event handling operation and temporarily disables alerting for the event when the event is being handled.
+
+Ignore the event that triggers the alert. Then, alerting is permanently disabled for the event. a. Find the event and click **Ignore** in the Actions column. b. In the **Ignore** message, click **OK**.
+
+> **Note:** DataWorks records the event ignoring operation and permanently disables alerting for the event.
 
 ### 8.7 Perform MaxCompute engine O&M
 
@@ -32913,7 +33746,11 @@ Weak constraint:
 
 On the DataStudio page, find a node in a workspace to which a scheduling calendar can be applied and open the **Properties > Schedule** section, select Customize Calendar for the
 **Scheduling Calendar** parameter and select the scheduling calendar from the drop-down list
-that appears. This way, the node can be scheduled based on the scheduling calendar. A custom scheduling calendar takes effect only if the Recurrence parameter of a node is set to **Normal**. When the Recurrence parameter of the node is set to **Normal**, the node is scheduled based on the scheduling calendar that is selected for the node. When the Recurrence parameter of the node is set to **Skip Execution** or **Dry Run**, the node is scheduled based on the value of the Recurrence parameter configured for the node.
+that appears. This way, the node can be scheduled based on the scheduling calendar.
+
+> **Note:** A custom scheduling calendar takes effect only if the Recurrence parameter of a node is set to **Normal**.
+> When the Recurrence parameter of the node is set to **Normal**, the node is scheduled based on the scheduling calendar that is selected for the node.
+> When the Recurrence parameter of the node is set to **Skip Execution** or **Dry Run**, the node is scheduled based on the value of the Recurrence parameter configured for the node.
 
 **View workspaces and nodes that reference a scheduling**
 
@@ -32946,8 +33783,9 @@ icon in the upper-left corner and choose **All Products > Data Development**
 3. In the left-side navigation pane, click **Tenant Schedule Setting**. On the page that
 appears, click the **Workspace-level Parameters** page.
 4. Create workspace-level parameters.
-i. On the Workspace-level Parameters tab, click **Create Workspace-level Parameter**. In the Create Workspace-level Parameter dialog box, configure the parameters based on your business requirements. If you want to create multiple workspace-level parameters at a time, you can click
-**Batch Create Workspace-level Parameters** .
+i. On the Workspace-level Parameters tab, click **Create Workspace-level Parameter**. In the Create Workspace-level Parameter dialog box, configure the parameters based on your business requirements.
+
+> **Note:** If you want to create multiple workspace-level parameters at a time, you can click **Batch Create Workspace-level Parameters** .
 
 | Parameter | Description |
 |---|---|
@@ -32969,9 +33807,11 @@ In the **Scheduling Parameter** section, assign a workspace-level parameter to t
 
 **Manage workspace-level parameters**
 
-On the **Workspace-level Parameters** tab, you can perform the following operations on workspace-level parameters. Only workspace members that are assigned the **Workspace Administrator** role can modify or delete workspace-level parameters. Only workspace members that are assigned the **Development, O&M, or**
-**Workspace Administrator** role can view the tasks that reference a specific
-workspace-level parameter and the versions of the parameter.
+On the **Workspace-level Parameters** tab, you can perform the following operations on workspace-level parameters.
+
+> **Note:** Only workspace members that are assigned the **Workspace Administrator** role can modify or delete workspace-level parameters.
+> Only workspace members that are assigned the **Development, O&M, or** **Workspace Administrator** role can view the tasks that reference a specific workspace-level parameter and the versions of the parameter.
+
 **View workspace-level parameters**: You can view the details of a workspace-level
 parameter, the workspace to which a workspace-level parameter is applied, and the tasks that reference a workspace-level parameter. You can click the ID of a task to go to the configuration tab of the corresponding node and perform development operations. Modify workspace-level parameters: You can modify only the owner, value, and description of a workspace-level parameter. Each time you modify a workspace-level parameter, a new version is generated. If you modify a workspace-level parameter that is referenced by other tasks, the value of the workspace-level parameter on the tasks is affected. Exercise caution when you modify a workspace-level parameter. The modification takes effect within 10 minutes. Compare parameter versions and roll back parameters: You can view the historical versions of a workspace-level parameter, compare the versions of the workspace-level parameter, and roll back the workspace-level parameter to a specific version. Delete workspace-level parameters: If a workspace-level parameter is referenced by other tasks, you cannot delete the parameter. If you delete a workspace-level parameter, the tasks that reference the parameter fail to run. Exercise caution when you delete a workspace-level parameter. The delete operation takes effect immediately. After you delete a workspace-level parameter, you cannot find the parameter on the **Workspace-level Parameters** tab. Within 10 minutes after the workspace-level parameter is deleted, the tasks that reference the workspace-level parameter may still be able to obtain the value of the parameter.
 
@@ -33119,28 +33959,36 @@ On the left side of this page, you can view the following information about the 
 **Table Basic Information**: In this section, you can view the basic information about the
 table, such as the number of times the table is viewed, the number of times the table is read, and the number of times the table is added to My Favorites. You can click **View**
 **Code** next to the **Output Node** parameter to view the node code.
-**Views**: This item displays the number of times that the table is viewed in Data
-Map over the last 30 days. The number of times is collected in offline mode and is updated with a delay of one day.
-**Reads**: This item displays the number of times that the table is read from the
-production environment by executing SQL statements or running Tunnel Download commands, or for data synchronization over the last 30 days. The information is collected in offline mode and is updated with a delay of one day.
-**Favorites**: This item displays the number of times that the table is added to
-My Favorites. The number of times is collected in real time.
-**Storage**: This item displays the logical storage space occupied by data in the
-table. The information is collected in offline mode and is updated with a delay of one day.
-**Output Node**: This item displays the ID of the auto triggered node that
-generates the table. If the table is periodically updated but no node ID is displayed, the data in the table may not be generated by an auto triggered node in DataWorks. You can contact the table owner for details. The information is collected in offline mode and is updated with a delay of one day.
+
+> **Note:** **Views**: This item displays the number of times that the table is viewed in Data Map over the last 30 days. The number of times is collected in offline mode and is updated with a delay of one day.
+> **Reads**: This item displays the number of times that the table is read from the production environment by executing SQL statements or running Tunnel Download commands, or for data synchronization over the last 30 days. The information is collected in offline mode and is updated with a delay of one day.
+> **Favorites**: This item displays the number of times that the table is added to My Favorites. The number of times is collected in real time.
+> **Storage**: This item displays the logical storage space occupied by data in the table. The information is collected in offline mode and is updated with a delay of one day.
+> **Output Node**: This item displays the ID of the auto triggered node that generates the table. If the table is periodically updated but no node ID is displayed, the data in the table may not be generated by an auto triggered node in DataWorks. You can contact the table owner for details. The information is collected in offline mode and is updated with a delay of one day.
+
 **Business Information**: In this section, you can view information such as the name of
 the workspace to which the table belongs, the environment type, and the category to which the table belongs.
 **Permission Information**: In this section, you can view your permissions on a table.
 After you click **Click to View**, the **Permission Application** tab appears. You can view the request processing status on this tab.
 **Technical Information**: In this section, you can view the following information about a
-table: **DDL Statement Updated At**, **Data Updated At**, and **Last Viewed At**. Last Viewed At: The value of this parameter indicates the time when the table was last accessed by using a command or in a node scheduling scenario. The time is for reference only and may not be the same as the actual time when the table was last accessed. The information is collected in offline mode and is updated with a delay of one day. On the right side of this page, you can view the following information about the table:
+table: **DDL Statement Updated At**, **Data Updated At**, and **Last Viewed At**.
+
+> **Note:** Last Viewed At:
+> The value of this parameter indicates the time when the table was last accessed by using a command or in a node scheduling scenario.
+> The time is for reference only and may not be the same as the actual time when the table was last accessed.
+> The information is collected in offline mode and is updated with a delay of one day.
+
+On the right side of this page, you can view the following information about the table:
 **Details**: You can view the following information of the table on this tab: **Field**
 **Information**, **Partition Information**, and **Change Records**.
 **Output**: If the table data periodically changes with the node that generates the table,
 you can view the change status and the data that is continuously updated on this tab. The information is collected in offline mode and is updated with a delay of one day.
 **Lineage**: You can view the inner lineages of the node that generates the table. If the
-current table is used as the data source of an API, you can also view the lineages between the table and the API. Data Map also allows you to view the full-link lineage of a MaxCompute table for batch synchronization. The information is collected in offline mode and is updated with a delay of one day. For more information about how to view the complete lineages of a DataService Studio API, see View the details of an API. Due to the complexity of data cleaning, the impact analysis feature of the current field cannot be completely integrated and accurate. Do not use this feature if you have requirements on integrity and accuracy in your business.
+current table is used as the data source of an API, you can also view the lineages between the table and the API. Data Map also allows you to view the full-link lineage of a MaxCompute table for batch synchronization. The information is collected in offline mode and is updated with a delay of one day.
+
+> **Note:** For more information about how to view the complete lineages of a DataService Studio API, see View the details of an API.
+> Due to the complexity of data cleaning, the impact analysis feature of the current field cannot be completely integrated and accurate. Do not use this feature if you have requirements on integrity and accuracy in your business.
+
 **Usage Notes**: On this tab, you can click **Edit** to modify the table usage notes and click
 **View Versions** to view the historical versions of the table usage notes.
 **Data Quality**: You can view the monitoring rules that are configured for the table and
@@ -33149,13 +33997,17 @@ the alerts that are generated based on the monitoring rules. You can click **Con
 **Usage Records**: You can view the reference and access records of the table on the
 following subtabs:
 **Frequently Associated**: You can view the number of times that the table data is
-referenced on this subtab. The Frequently Associated subtab displays the number of times that the table data is referenced over the last 30 days. The number of times is collected in offline mode and is updated with a delay of one day.
+referenced on this subtab.
+
+> **Note:** The Frequently Associated subtab displays the number of times that the table data is referenced over the last 30 days. The number of times is collected in offline mode and is updated with a delay of one day.
+
 **Access Statistics**: You can view a list of access records of the table on this subtab:
 **Data Preview**: You can preview the data in the table on this tab.
 
-**Important**
-
-You can preview the tables that are in the production environment only if you are granted the required permissions. If the preview feature for tables is enabled for the workspace to which the table belongs, you can preview the table data without the need to apply for permissions on tables in Security Center. If you configure data masking rules and the data masking rules are in the active state, the Data Preview tab displays data based on the data masking rules. The Data Preview tab cannot display data in external tables.
+> **Important:** You can preview the tables that are in the production environment only if you are granted the required permissions.
+> If the preview feature for tables is enabled for the workspace to which the table belongs, you can preview the table data without the need to apply for permissions on tables in Security Center.
+> If you configure data masking rules and the data masking rules are in the active state, the Data Preview tab displays data based on the data masking rules.
+> The Data Preview tab cannot display data in external tables.
 
 ##### 9.1.3.2 View the details of an API
 
@@ -33170,7 +34022,11 @@ You can go to the details page of an API by searching for the API on the homepag
 On the details page of an API, you can view the following information about the API: **Basic**
 **Information**, **Technical Information**, **Parameter Information**, **Sample Response**,
 **Lineage**, and **Usage Notes**.
-At the top of this page, you can click **Edit API** to go to the configuration tab of the API in the related workspace and edit the API. If the account that you use to log in is not added as a member of the workspace to which the API belongs, contact the workspace administrator to add the account to the workspace as a member and assign the developer role to the account. On the left side of this page, you can view the following information about the API.
+At the top of this page, you can click **Edit API** to go to the configuration tab of the API in the related workspace and edit the API.
+
+> **Note:** If the account that you use to log in is not added as a member of the workspace to which the API belongs, contact the workspace administrator to add the account to the workspace as a member and assign the developer role to the account.
+
+On the left side of this page, you can view the following information about the API.
 **Basic Information**: In this section, you can view the basic information about the API,
 such as **Views**, **Calls**, **API ID**, **Workspace**, **Owner**, **Created At**, **Updated At**, and
 **Description**.
@@ -33187,7 +34043,12 @@ API.
 **Sample Response**: If you select **Save the correct response example automatically**
 during an API test before the API is published, the sample response is updated based on the test result. You can view the result returned by an API request based on the data content and data structure on the **Sample Response** tab.
 **Lineage**: On this tab, you can view the complete lineages of tables, APIs, and
-applications. For a generated API, the API is generated based on a data source or by encapsulating a table. The API lineage includes data tables, the API, and applications. For a registered API, the API is obtained by encapsulating a backend address. The API lineage includes only the API and applications. The lineage information is generated and updated with a delay of one day.
+applications.
+
+> **Note:** For a generated API, the API is generated based on a data source or by encapsulating a table. The API lineage includes data tables, the API, and applications.
+> For a registered API, the API is obtained by encapsulating a backend address. The API lineage includes only the API and applications.
+> The lineage information is generated and updated with a delay of one day.
+
 **Usage Notes**: On this tab, you can click **Edit** to modify the API usage notes and click
 **View Versions** to view the historical versions of the API usage notes.
 
@@ -33225,7 +34086,10 @@ configure categories and click its name in the **Album Name** column. The detail
 for the data album to create a subcategory or rename the category. Create a subcategory: Right-click the category and select Create Subcategory. In the
 **Create Subcategory** dialog box, configure the **Destination Directory** and **Category**
 **Name** parameters.
-A category can contain at most four levels. Rename a category: Right-click the category and select Rename. In the **Rename** dialog box, configure the Category Name parameter.
+
+> **Note:** A category can contain at most four levels.
+
+Rename a category: Right-click the category and select Rename. In the **Rename** dialog box, configure the Category Name parameter.
 3. Click **OK**.
 
 **Add data tables to a data album**
@@ -33252,9 +34116,15 @@ to add the data table.
 
 **Manage a data album**
 
-You can modify only the data album that you created. Modify the attributes of a data album i. On the details page of the data album whose attributes you want to modify, click **Edit** to the right of the album name. ii. In the **Modify Album** dialog box, you can modify the **Album Name, Visible Scope,**
+> **Note:** You can modify only the data album that you created.
+
+Modify the attributes of a data album i. On the details page of the data album whose attributes you want to modify, click **Edit** to the right of the album name. ii. In the **Modify Album** dialog box, you can modify the **Album Name, Visible Scope,**
 **and Description** parameters.
-iii. Click **Confirmation**. Modify the administrator of a data album i. On the details page of the data album for which you want to change the album administrator, click the icon on the right side of **Administrator** below the album name. ii. In the **Edit Collection Administrator** dialog box, select an Apsara Stack account. You can specify up to five administrators for a data album. iii. Click **OK**. Modify the usage notes for a data album i. On the **Usage Notes** tab of the details page for the desired data album, click **Edit**. ii. In the **Edit** input field, modify the usage notes for the data album and click **Preview**. Confirm the modification information and click **Save**. iii. Optional. After the modification is complete, you can click **View Versions** to view the modification details of each version. Remove a data table from a data album. i. In the **Objects** directory, click the desired category. ii. Find the data table that you want to remove and choose **More > Remove from**
+iii. Click **Confirmation**. Modify the administrator of a data album i. On the details page of the data album for which you want to change the album administrator, click the icon on the right side of **Administrator** below the album name. ii. In the **Edit Collection Administrator** dialog box, select an Apsara Stack account.
+
+> **Note:** You can specify up to five administrators for a data album.
+
+iii. Click **OK**. Modify the usage notes for a data album i. On the **Usage Notes** tab of the details page for the desired data album, click **Edit**. ii. In the **Edit** input field, modify the usage notes for the data album and click **Preview**. Confirm the modification information and click **Save**. iii. Optional. After the modification is complete, you can click **View Versions** to view the modification details of each version. Remove a data table from a data album. i. In the **Objects** directory, click the desired category. ii. Find the data table that you want to remove and choose **More > Remove from**
 **Collection** in the **Actions** column
 Follow or like a data album i. On the details page of the data album, click **Follow** and **Like**. ii. You can quickly locate the data album by clicking **Albums Followed** on the **Homepage** page of **Data Map** or clicking **Followed** on the **Collections** page of Data Map. Delete a data album On the **Collections** page, click **Managed by Me** or **Created by Me**. Find the data album that you want to delete and click **Delete** in the **Actions** column.
 
@@ -33353,7 +34223,11 @@ After you add a data source to a workspace, DataWorks can collect metadata from 
 
 **Supported data sources**
 
-DataWorks can collect metadata from the following types of data sources: Hologres, CDH Hive, CDH HBase, AnalyticDB for MySQL V2.0, AnalyticDB for MySQL V3.0, AnalyticDB for PostgreSQL, Tablestore, PostgreSQL, MySQL, SQL Server, and Oracle. The metadata of MaxCompute data sources is automatically collected and no manual collection is required. To collect metadata from a PolarDB for MySQL data source, you need to select MySQL as the type of data source. To collect metadata from a PolarDB for PostgreSQL data source, you need to select PostgreSQL as the type of the data source.
+DataWorks can collect metadata from the following types of data sources: Hologres, CDH Hive, CDH HBase, AnalyticDB for MySQL V2.0, AnalyticDB for MySQL V3.0, AnalyticDB for PostgreSQL, Tablestore, PostgreSQL, MySQL, SQL Server, and Oracle.
+
+> **Note:** The metadata of MaxCompute data sources is automatically collected and no manual collection is required.
+> To collect metadata from a PolarDB for MySQL data source, you need to select MySQL as the type of data source.
+> To collect metadata from a PolarDB for PostgreSQL data source, you need to select PostgreSQL as the type of the data source.
 
 **Prerequisites**
 
@@ -33421,7 +34295,14 @@ You can use the category management feature to organize and manage tables by cat
 1. In the left-side navigation pane of the Data Map page, choose **Manage Configurations >**
 **Manage Categories**.
 2. Create a category.
-In the **Manage Categories** section, click the icon next to Categories to create a category. Up to six levels of categories can be created. After a category is created, you can click , , and to add a subcategory to the category, modify the category name, and delete the category, respectively.
+In the **Manage Categories** section, click the icon next to Categories to create a category.
+
+> **Note:** Up to six levels of categories can be created. After a category is created, you can click
+> ,
+> , and
+> to add a subcategory to the category, modify the category name, and
+> delete the category, respectively.
+
 3. Manage tables in the category.
 You can click **Add Tables** in the upper-right corner of the page to add a table to the current category as prompted. The added table is displayed on the right side of the page. You can also remove the added table from the current category based on your business requirements. Add one or more tables to a category: a. Select a category and click **Quick Add** in the upper-right corner. b. In the **Quick Add** panel, configure the **Data Type** and **Project** parameters, enter a table name or keyword, and then click the icon to search for the tables that you want to add. c. If you want to add a table to the category, find the table that you want to add and click
 **Add** in the Actions column.
@@ -33431,7 +34312,10 @@ Remove one or more tables from a category: a. If you want to remove a table from
 
 **Manage workspaces**
 
-On the **Manage Workspaces** page, you can manage the visibility property of metadata at the project and table levels in Data Map. You can perform operations for permission management only on the MaxCompute compute engine on the Manage Workspaces page. If you want to manage permissions on other types of compute engines, you must create and configure a metadata collector for the compute engine that you want to use. For more information, see Collect metadata from an EMR data source.
+On the **Manage Workspaces** page, you can manage the visibility property of metadata at the project and table levels in Data Map.
+
+> **Note:** You can perform operations for permission management only on the MaxCompute compute engine on the Manage Workspaces page. If you want to manage permissions on other types of compute engines, you must create and configure a metadata collector for the compute engine that you want to use. For more information, see Collect metadata from an EMR data source.
+
 1. In the left-side navigation pane, choose **Manage Configurations > Manage**
 **Workspaces**.
 2. In the **Workspaces Owned/Managed by Me** section, select a workspace. In the
@@ -33446,7 +34330,9 @@ property for tables in a project. This switch specifies whether tables in a proj
 
 **Other settings**
 
-On the **Other Settings** page, you can specify the following items: Whether to allow a Resource Access Management (RAM) user to access the Data Map service only after the RAM user is added to a workspace as a member. Whether to allow a RAM user to call an API operation related to metadata only after the RAM user is added to a workspace as a member. Only an Apsara Stack tenant account or a tenant administrator can configure the preceding settings.
+On the **Other Settings** page, you can specify the following items: Whether to allow a Resource Access Management (RAM) user to access the Data Map service only after the RAM user is added to a workspace as a member. Whether to allow a RAM user to call an API operation related to metadata only after the RAM user is added to a workspace as a member.
+
+> **Note:** Only an Apsara Stack tenant account or a tenant administrator can configure the preceding settings.
 
 #### 9.1.8 Appendix: Data Map permission control
 
@@ -33469,7 +34355,9 @@ You can control access to the entire Data Map feature module.
 
 **Project-level permission control**
 
-Only Alibaba Cloud accounts, RAM users with the **AliyunDataWorksFullAccess** permission, and RAM users with the tenant administrator or project administrator role can configure the following permission controls. Currently, these project-level permission controls apply only to the MaxCompute engine. Data Map collects metadata from other compute engines only after you configure metadata collection for them. To prevent metadata collection for a specific engine, do not configure it. For more information about how to configure metadata collection, see Metadata Collection.
+> **Note:** Only Alibaba Cloud accounts, RAM users with the **AliyunDataWorksFullAccess** permission, and RAM users with the tenant administrator or project administrator role can configure the following permission controls.
+> Currently, these project-level permission controls apply only to the MaxCompute engine.
+> Data Map collects metadata from other compute engines only after you configure metadata collection for them. To prevent metadata collection for a specific engine, do not configure it. For more information about how to configure metadata collection, see Metadata Collection.
 
 | Permission policies | Actions |
 |---|---|
@@ -33525,7 +34413,9 @@ The following table describes the modules of Data Quality.
 icon and choose **All Products > Data Governance >**
 **Data Quality**.
 3. In the upper part of the page that appears, **Streaming Data Monitoring** is displayed. You
-are on the **Stream Data Monitoring** page. The system allows you to switch between the streaming and offline monitoring modes. You can click **Streaming Data Monitoring** or **Offline Data Monitoring** to switch between different monitoring modes.
+are on the **Stream Data Monitoring** page.
+
+> **Note:** The system allows you to switch between the streaming and offline monitoring modes. You can click **Streaming Data Monitoring** or **Offline Data Monitoring** to switch between different monitoring modes.
 
 ##### 9.2.1.1 View the quality dashboard
 
@@ -33545,7 +34435,13 @@ The Quality Dashboard page provides statistics on the data quality of a workspac
 **Yesterday**, **The Day Before Yesterday Day** , or another specific day based on your
 business requirements to view the data quality within the selected time range. By default, Today is selected. In the upper-right corner of the Quality Dashboard page, you can also select **View Only**
 **Data in Production Environment** to view data quality in the workspace only in the
-production environment. If you select View Only Data in Production Environment, the check results of the tables in the workspace in the development environment are not included in the statistics. Only workspaces in standard mode provide both the development environment and production environment and isolate the environments. All data tables in a workspace in basic mode are in the production environment. For more information, see Workspace modes. You can also view the data quality overview of a workspace from the following perspectives: All data sources: If you select **All**, the Quality Dashboard page displays the statistics on data quality of all types of data sources in the current workspace. Specific data source: If you select a specific data source, such as MaxCompute, Hologres, AnalyticDB for PostgreSQL, or AnalyticDB for MySQL, the Quality Dashboard page displays the statistics on data quality of the data source in the current workspace. Statistics on streaming data are not supported.
+production environment.
+
+> **Note:** If you select View Only Data in Production Environment, the check results of the tables in the workspace in the development environment are not included in the statistics. Only workspaces in standard mode provide both the development environment and production environment and isolate the environments. All data tables in a workspace in basic mode are in the production environment. For more information, see Workspace modes.
+
+You can also view the data quality overview of a workspace from the following perspectives: All data sources: If you select **All**, the Quality Dashboard page displays the statistics on data quality of all types of data sources in the current workspace. Specific data source: If you select a specific data source, such as MaxCompute, Hologres, AnalyticDB for PostgreSQL, or AnalyticDB for MySQL, the Quality Dashboard page displays the statistics on data quality of the data source in the current workspace.
+
+> **Note:** Statistics on streaming data are not supported.
 
 **Main data quality metrics**
 
@@ -33596,7 +34492,9 @@ the check value.
 
 Based on the ranking of the numbers of monitoring rules for tables, the Top N Tables with Maximum Number of Quality Issues section displays the statistics on the **top N tables** sorted based on the number of data quality issues within the specified time range, and the Owners of Top N Tables with Maximum Number of Quality Issues section displays the **owners of the**
 **issues**. You can click View more in the upper-right corner to go to the Running Records page.
-On this page, you can view the historical checks and check details and resolve data quality issues at the earliest opportunity. The owner of a monitoring rule is the data quality owner of a data table partition. In most cases, the owner is the user who creates a partition filter expression.
+On this page, you can view the historical checks and check details and resolve data quality issues at the earliest opportunity.
+
+> **Note:** The owner of a monitoring rule is the data quality owner of a data table partition. In most cases, the owner is the user who creates a partition filter expression.
 
 **Quality configuration analysis**
 
@@ -33607,7 +34505,10 @@ The Quality Configuration Analysis section displays the overall coverage of moni
 **Recipient Is Configured**. You can also click **View Details** in the **Actions** column of a table
 to view the rule configuration details of the table from this dimension. Description of each dimension:
 **No Rules Are Configured**: Tables for which no monitoring rule is configured are included
-in statistics. This dimension is supported only for MaxCompute data sources.
+in statistics.
+
+> **Note:** This dimension is supported only for MaxCompute data sources.
+
 **No Rules Are Enabled**: Tables for which no monitoring rule is enabled are included in
 statistics.
 **Configured with Rules with Which No Scheduling Node Is Associated** : Tables
@@ -33697,9 +34598,11 @@ You can use one of the following methods provided by Data Quality to configure m
 
 **Method 1: Configure a rule based on a built-in rule template**
 
-Data Quality provides dozens of built-in rule templates. You can quickly create a monitoring rule based on a built-in rule template. In the upper part of the Create Rule panel, you can click **+ System Template**
-**Rules**. Then, you can configure the **template** parameter to select the desired
-rule template. Alternatively, you can find the desired built-in rule template in the left-side navigation pane of the **Create Rule** panel and click **+ Use**. You can add multiple rules at the same time.
+Data Quality provides dozens of built-in rule templates. You can quickly create a monitoring rule based on a built-in rule template.
+
+> **Note:** In the upper part of the Create Rule panel, you can click **+ System Template** **Rules**. Then, you can configure the **template** parameter to select the desired rule template.
+> Alternatively, you can find the desired built-in rule template in the left-side navigation pane of the **Create Rule** panel and click **+ Use**.
+> You can add multiple rules at the same time.
 
 | Parameter | Description |
 |---|---|
@@ -33720,9 +34623,9 @@ rule template. Alternatively, you can find the desired built-in rule template in
 
 **Method 2: Configure a rule based on a custom rule template**
 
-Before you use this method to create a rule, you must choose **Quality Assets >**
-**Rule Template Library** in the left-side navigation pane to create a custom rule
-template. When you reference a custom rule template, the basic configurations of the template, such as **FLAG parameter** and **SQL**, are automatically displayed. You can configure the
+> **Note:** Before you use this method to create a rule, you must choose **Quality Assets >** **Rule Template Library** in the left-side navigation pane to create a custom rule template.
+
+When you reference a custom rule template, the basic configurations of the template, such as **FLAG parameter** and **SQL**, are automatically displayed. You can configure the
 **Rule Name** parameter based on your business requirements, and the Monitoring
 Threshold parameter based on the rule type. Only the parameters that are unique to rules created based on custom rule templates are described in the following table. For information about other parameters, see the parameters for configuring a rule based on a built-in rule template.
 
@@ -33733,9 +34636,15 @@ Threshold parameter based on the rule type. Only the parameters that are unique 
 
 **Method 3: Configure a rule based on a custom SQL statement**
 
-This method allows you to configure the data quality check logic for the table based on your business requirements. The parameters for configuring monitoring rules based on a custom SQL statement are the same as those for configuring monitoring rules based on built-in rule templates and custom rule templates.
+This method allows you to configure the data quality check logic for the table based on your business requirements.
+
+> **Note:** The parameters for configuring monitoring rules based on a custom SQL statement are the same as those for configuring monitoring rules based on built-in rule templates and custom rule templates.
+
 3. Optional. Add the configured rule to a monitor.
-The configured monitoring rule can be triggered only if you add the rule to a monitor. To associate a rule with a monitor, you can select Add to Monitor in the lower part of the Create Rule panel and select the desired monitor. Alternatively, when you configure a monitor, you can associate an existing rule with the monitor in the **Monitoring Rule** section of the Create Monitor page. You can select **Add Me as an Alert Recipient of the Monitor** to receive notifications in real time when alerts are triggered.
+
+> **Note:** The configured monitoring rule can be triggered only if you add the rule to a monitor. To associate a rule with a monitor, you can select Add to Monitor in the lower part of the Create Rule panel and select the desired monitor. Alternatively, when you configure a monitor, you can associate an existing rule with the monitor in the **Monitoring Rule** section of the Create Monitor page.
+> You can select **Add Me as an Alert Recipient of the Monitor** to receive notifications in real time when alerts are triggered.
+
 4. Click **Determine**.
 
 **Step 4: Test the rule**
@@ -33753,12 +34662,17 @@ Perform a test run on the Monitor tab i. On the **Monitor** tab, find the create
 
 If an alert subscription is configured when you create a monitor or create a monitoring rule, the system sends a notification to the recipient when the monitoring rule is triggered. If you want to modify the alert subscription, such as adding recipients, perform the following steps.
 1. In the **Monitor Perspective** section of the **Rule Management** tab, find the created
-monitor, move the pointer over the more icon on the right side, and then select **Alarm**. You can also find the created monitor on the **Monitor** tab and choose **More >**
-**Subscribe to Alerts** in the **Actions** column.
+monitor, move the pointer over the more icon on the right side, and then select **Alarm**.
+
+> **Note:** You can also find the created monitor on the **Monitor** tab and choose **More >** **Subscribe to Alerts** in the **Actions** column.
+
 2. In the **Alarm** dialog box, add a **notification method** and a **recipient** and click **Save** in
 the **Actions** column. After you save the configurations, you can configure another subscription with a different notification method and alert recipient. Alert notifications can be sent by using **Email**, **Emails and SMS**, **DingTalk Chatbot**,
 **DingTalk Chatbot @ ALL**, and **Custom Webhooks**.
-Add a DingTalk chatbot and obtain a webhook URL. Then, copy the webhook URL to the Subscribe to Alerts dialog box. For information about the message format of an alert notification sent by using a
+
+> **Note:** Add a DingTalk chatbot and obtain a webhook URL. Then, copy the webhook URL to the Subscribe to Alerts dialog box.
+
+For information about the message format of an alert notification sent by using a
 **custom webhook**, see the "Appendix 4: Message format of alert notifications
 sent by using a custom webhook URL" section in Configure a monitoring rule for multiple tables based on a template.
 
@@ -33785,20 +34699,22 @@ the fluctuation in the number of table rows on an SQL task within a day, the sam
 | number of table rows on an SQL task |   |
 |---|---|
 
-If you want to check the fluctuation in the `number of table rows on an SQL task` `within a day` , the baseline value is the number of table rows in partitions on the previous day.
+> **Note:** If you want to check the fluctuation in the `number of table rows on an SQL task`
+> `within a day` , the baseline value is the number of table rows in partitions on the previous day.
 
 |   | average fluctuation in the number of table rows on an |
 |---|---|
 | SQL task within seven days |   |
 
-rows in the last seven days. Calculation formula of the variance: `(Current sample value - Average value of previous N`
+> rows in the last seven days.
+
+Calculation formula of the variance: `(Current sample value - Average value of previous N`
 
 ```
 days)/Standard deviation
 ```
 
-You can calculate the fluctuation variance only for numeric fields such as **BIGINT** and
-**DOUBLE** fields by using the preceding formula.
+> **Note:** You can calculate the fluctuation variance only for numeric fields such as **BIGINT** and **DOUBLE** fields by using the preceding formula.
 
 **Appendix 2: Built-in partition filter expressions**
 
@@ -34060,7 +34976,15 @@ Data Quality provides built-in **table-level** rule templates and **field-level*
 
 **to be checked by the rule at the same time**
 
-You can add multiple tables or fields whose data quality needs to be checked based on the selected **table-level** or **field-level rule template**. Add tables i. Click **Add Table**. In the **Batch Create** panel, select the tables for which you want to configure a monitoring rule. All tables of the **data source type** specified in the **basic attributes** are displayed in the panel. You can also enter a **keyword** to search for the desired tables. ii. Select the tables for which you want to configure the monitoring rule and click **Confirm** to add them to the **Tables for Which You Want to Configure Rules** list. Add fields i. Click **Add Fields**. In the **Select a field** dialog box, select the table that contains the fields for which you want to configure the monitoring rule. In the **Tables to Be Selected** section, all tables of the **data source type** specified in the **basic attributes** are displayed. ii. After you select tables, the **Select Fields** section displays all fields in the selected tables. You can filter the fields by **field name** or **field description**. iii. Select the fields for which you want to configure a monitoring rule and click **Create** to add the fields to the **Fields for Which You Want to Configure Rules** list.
+You can add multiple tables or fields whose data quality needs to be checked based on the selected **table-level** or **field-level rule template**. Add tables i. Click **Add Table**. In the **Batch Create** panel, select the tables for which you want to configure a monitoring rule.
+
+> **Note:** All tables of the **data source type** specified in the **basic attributes** are displayed in the panel. You can also enter a **keyword** to search for the desired tables.
+
+ii. Select the tables for which you want to configure the monitoring rule and click **Confirm** to add them to the **Tables for Which You Want to Configure Rules** list. Add fields i. Click **Add Fields**. In the **Select a field** dialog box, select the table that contains the fields for which you want to configure the monitoring rule.
+
+> **Note:** In the **Tables to Be Selected** section, all tables of the **data source type** specified in the **basic attributes** are displayed.
+
+ii. After you select tables, the **Select Fields** section displays all fields in the selected tables. You can filter the fields by **field name** or **field description**. iii. Select the fields for which you want to configure a monitoring rule and click **Create** to add the fields to the **Fields for Which You Want to Configure Rules** list.
 
 **Step 4: Associate the rule with a new monitor or an existing**
 
@@ -34099,9 +35023,8 @@ You can click **Use Recommended Running Mode** or **Manually Specify Running**
 **Mode** to associate one or more monitoring rules with the auto triggered nodes that
 generate table data. In Operation Center, auto triggered nodes generate the table data after the auto triggered node instances, data backfill instances, or test instances generated for the auto triggered nodes are successfully run. When the auto triggered nodes start to run, the monitoring rules are triggered. You can specify the strength of a rule to control whether to block the running of the descendant nodes of an associated auto triggered node. This helps reduce the impact of dirty data records. Use Recommended Running Mode: The system associates the selected monitoring rules with auto triggered nodes based on the lineages of the auto triggered nodes that generate the table data. Manually Specify Running Mode: You can manually associate the selected monitoring rule with specific auto triggered nodes.
 
-**Important**
+> **Important:** A monitoring rule can be triggered only when the rule is associated with related auto triggered nodes.
 
-A monitoring rule can be triggered only when the rule is associated with related auto triggered nodes.
 **Delete**: You can select one or more rules that you want to delete.
 **View Rule Details**: You can click **View Rule Details** in the Actions column of a rule to
 view the rule details. On the page that appears, you can perform the following operations: modify, start, stop, and delete the rule, specify the rule strength, and view logs.
@@ -34168,7 +35091,8 @@ icon and choose **All Products > Data Governance >**
 4. In the **Connection** section, select a database. On the right side of the Configure by Table
 page, find the table for which you want to configure monitoring rules and click the name of the table or click **Configure Monitoring Rule** in the **Actions** column. The **Table Quality**
 **Details** page appears.
-You can search for a table by name. You can use the initial letters of a table name to perform a fuzzy match.
+
+> **Note:** You can search for a table by name. You can use the initial letters of a table name to perform a fuzzy match.
 
 **Step 2: Create a monitor**
 
@@ -34250,7 +35174,9 @@ example demonstrates how to configure a custom monitoring rule to verify whether
 | Monitoring Threshold | To trigger an alert when the field length exceeds a specified threshold: for example, set Normal threshold to <= 3 (where 3 is the specified threshold you have set; you can also set it to another value based on your business requirements). To trigger an alert when the field length isl ess than a specified threshold: for example, set Normal threshold to >= 3 (where 3 is the specified threshold you have set; you can also set it to another value based on your business requirements). |
 
 3. Add the configured rule to a monitor.
-The configured monitoring rule can be triggered only if you add the rule to a monitor. To associate a rule with a monitor, you can select Add to Monitor in the lower part of the Create Rule panel and select the desired monitor. Alternatively, when you configure a monitor, you can associate an existing rule with the monitor in the **Monitoring Rule** section of the Create Monitor page.
+
+> **Note:** The configured monitoring rule can be triggered only if you add the rule to a monitor. To associate a rule with a monitor, you can select Add to Monitor in the lower part of the Create Rule panel and select the desired monitor. Alternatively, when you configure a monitor, you can associate an existing rule with the monitor in the **Monitoring Rule** section of the Create Monitor page.
+
 4. Click **Determine**.
 
 **Test the rule**
@@ -34406,7 +35332,9 @@ You can enable the problem data retention feature only for a specific field-leve
 
 **View problem data**
 
-On the **Quality O&M > Running Records** page in Data Quality, find the running record of a quality check exception or a quality check failure and click **Details** in the **Actions** column. On the **Monitor Running Details** page, click the **Problem Data Processing** tab. If you do not have the permissions to preview the problem data or query the table that stores the problem data by running commands, go to **Security Center** to apply for the query permissions on the table. For more information, see Manage permissions on MaxCompute.
+On the **Quality O&M > Running Records** page in Data Quality, find the running record of a quality check exception or a quality check failure and click **Details** in the **Actions** column. On the **Monitor Running Details** page, click the **Problem Data Processing** tab.
+
+> **Note:** If you do not have the permissions to preview the problem data or query the table that stores the problem data by running commands, go to **Security Center** to apply for the query permissions on the table. For more information, see Manage permissions on MaxCompute.
 
 **View problem data collection logs**
 
@@ -34464,7 +35392,11 @@ page, configure the parameters. The following table describes the parameters.
 |   | Actions | You can modify or delete subscriptions that you have added. |
 
 2. Click **Save** in the upper-right corner. A template of data quality reports is generated.
-You can also perform the following operations: Click **Preview** in the upper-right corner to view the display format of the report template. On the preview page, click **Download** in the upper-right corner to download the data quality report in PDF format. If report subscribers view reports in emails, they can view the reports only in tables. If report subscribers view reports on the Data Quality page, they can view the reports in tables or charts. Click **Cancel** in the upper-right corner. In the **Confirm** message, click **OK** to cancel the creation of the report template.
+You can also perform the following operations: Click **Preview** in the upper-right corner to view the display format of the report template. On the preview page, click **Download** in the upper-right corner to download the data quality report in PDF format.
+
+> **Note:** If report subscribers view reports in emails, they can view the reports only in tables. If report subscribers view reports on the Data Quality page, they can view the reports in tables or charts.
+
+Click **Cancel** in the upper-right corner. In the **Confirm** message, click **OK** to cancel the creation of the report template.
 
 **Manage a report template**
 
@@ -34727,8 +35659,9 @@ icon and choose **All Products > Data Governance >**
 3. If **Streaming Data Monitoring** is displayed in the upper part of the page, you have
 opened the **offline data monitoring** page.
 4. You can click **Streaming Data Monitoring** to switch to the **Streaming Data Monitoring**
-page. The system allows you to switch between the streaming data monitoring and offline monitoring modes. You can switch between the two modes by clicking **Streaming**
-**Data Monitoring** or **Go Offline Data Monitoring** .
+page.
+
+> **Note:** The system allows you to switch between the streaming data monitoring and offline monitoring modes. You can switch between the two modes by clicking **Streaming** **Data Monitoring** or **Go Offline Data Monitoring** .
 
 ##### 9.2.2.1 Go to the Overview page
 
@@ -34793,11 +35726,13 @@ icon and choose **All Products > Data Governance >**
 **Table)**. The Rule Configuration-Configure by Table page appears.
 Data Quality allows you to configure **template rules** and **custom rules**. You can find the desired template and click **Configure Monitoring Rules** in the Actions column to configure a monitoring rule based on the template for multiple tables or fields at a time.
 
-**Important**
+> **Important:** In Data Quality, you must configure monitoring rules based on partition filter expressions. You can click the
+> icon on the left side of the rule configuration page to
+> configure a **partition filter expression** for a table.
+> To configure a monitoring rule for a non-partitioned table, you can specify **NOTAPARTITIONTABLE** as the partition filter expression.
+> To configure a monitoring rule for a partitioned table, you can specify a data timestamp expression, such as $[yyyymmdd], as the partition filter expression. For more information, see the Configure a partition filter expression section of the "Configure monitoring rules for MaxCompute" topic.
 
-In Data Quality, you must configure monitoring rules based on partition filter expressions. You can click the icon on the left side of the rule configuration page to configure a **partition filter expression** for a table. To configure a monitoring rule for a non-partitioned table, you can specify
-**NOTAPARTITIONTABLE** as the partition filter expression.
-To configure a monitoring rule for a partitioned table, you can specify a data timestamp expression, such as $[yyyymmdd], as the partition filter expression. For more information, see the Configure a partition filter expression section of the "Configure monitoring rules for MaxCompute" topic. Data Quality supports MaxCompute, Kafka, and DataHub data sources: Select MaxCompute from the Engine/Data Source drop-down list. All MaxCompute tables are displayed. Select a Kafka from the Engine/Data Source drop-down list. All Kafka topics are displayed. Select Datahub from the Engine/Data Source drop-down list. All DataHub topics and dimension tables are displayed.
+Data Quality supports MaxCompute, Kafka, and DataHub data sources: Select MaxCompute from the Engine/Data Source drop-down list. All MaxCompute tables are displayed. Select a Kafka from the Engine/Data Source drop-down list. All Kafka topics are displayed. Select Datahub from the Engine/Data Source drop-down list. All DataHub topics and dimension tables are displayed.
 
 **Create a template rule**
 
@@ -34975,11 +35910,15 @@ page, configure the following parameters.
 
 **Preview a report template**
 
-After you create a report template, you can click **Preview** in the upper-right corner of the Create Report Template page to view the display format of reports generated based on this template. If report subscribers view reports through email notifications, they can only view the reports in tables. If they view reports on the Data Quality page, they can view reports in tables or charts.
+After you create a report template, you can click **Preview** in the upper-right corner of the Create Report Template page to view the display format of reports generated based on this template.
+
+> **Note:** If report subscribers view reports through email notifications, they can only view the reports in tables. If they view reports on the Data Quality page, they can view reports in tables or charts.
 
 **Download data quality reports**
 
-You can download data quality reports in the PDF format only as a default role. You can use one of the following methods to download data quality reports: Method 1: i. On the **Report** page, find the template that you want to manage and click **View Report** in the **Actions** column. ii. On the page that appears, click **download** in the upper-right corner. Method 2: i. On the **Report** page, find the template that you want to manage and click **Edit** in the
+> **Note:** You can download data quality reports in the PDF format only as a default role.
+
+You can use one of the following methods to download data quality reports: Method 1: i. On the **Report** page, find the template that you want to manage and click **View Report** in the **Actions** column. ii. On the page that appears, click **download** in the upper-right corner. Method 2: i. On the **Report** page, find the template that you want to manage and click **Edit** in the
 **Actions** column.
 ii. On the **Edit Report Template** page, click **Preview** in the upper-right corner. iii. On the page that appears, click **download** in the upper-right corner.
 
@@ -35031,7 +35970,10 @@ In Data Quality, you can create template rules and custom rules. On the Template
 | Warning Threshold | The warning threshold, in seconds. The value must be an integer and less than the error threshold. |
 | Error Threshold | The error threshold, in seconds. The value must be an integer and greater than the warning threshold. |
 
-If template rules do not meet your requirements for monitoring the data quality of DataHub topics, you can create a custom rule. On the Custom Rules tab of the Create Rule panel, click **Create Custom Rule**. The field in the SELECT clause must be a column. Make sure that you can compare the field values with the warning threshold and error threshold. The FROM clause must include the current topic and all columns of the topic.
+If template rules do not meet your requirements for monitoring the data quality of DataHub topics, you can create a custom rule. On the Custom Rules tab of the Create Rule panel, click **Create Custom Rule**.
+
+> **Note:** The field in the SELECT clause must be a column. Make sure that you can compare the field values with the warning threshold and error threshold.
+> The FROM clause must include the current topic and all columns of the topic.
 
 | Parameter | Description |
 |---|---|
@@ -35047,7 +35989,8 @@ If template rules do not meet your requirements for monitoring the data quality 
 5. Click **Batch Create**. After rules are created for the topic, you can perform the following
 operations: Click **View Log** to view the operation logs of the rules. Click **Manage Subscriptions** to view and modify subscribers to the rules, and change the notification method. The changed notification method takes effect for all the subscribers to the rules. Data Quality supports the following notification methods: **Email**, **Email and SMS**,
 **DingTalk Chatbot**, and **DingTalk Chatbot @ALL**.
-Add a DingTalk chatbot and obtain the webhook URL of the chatbot. Then, copy the webhook URL to the Manage Subscriptions dialog box.
+
+> **Note:** Add a DingTalk chatbot and obtain the webhook URL of the chatbot. Then, copy the webhook URL to the Manage Subscriptions dialog box.
 
 ### 9.3 Security Center
 
@@ -35093,7 +36036,9 @@ On the **Platform Security Diagnosis** page, the diagnostics items to be optimiz
 
 **Appendix: Details of diagnostics items**
 
-The following tables describe the diagnostics items supported by the platform security diagnostics feature. The diagnostics items displayed on the page vary based on the compute engines associated with your workspace and the existing diagnostics items to be optimized.
+The following tables describe the diagnostics items supported by the platform security diagnostics feature.
+
+> **Note:** The diagnostics items displayed on the page vary based on the compute engines associated with your workspace and the existing diagnostics items to be optimized.
 
 **Data calculation and storage**
 
@@ -35163,7 +36108,11 @@ i. In the **Application Content** section, configure the **Workspace** and **Max
 **Project** parameters.
 You can request only permissions on MaxCompute tables by using the **data access**
 **control** feature.
-The default value of the **Application Type** parameter is **Table** and the default value of the **Data Source Type** parameter is **MaxCompute**. ii. In the **Tables to Be Added** section, select the tables on which you want to request permissions. After you select tables, the information about the tables is displayed on the right side. You can click the icon on the left side of a **table name** to view all fields in the table. You can request the permissions on specific or all fields. By default, the permissions on all fields are requested. If you enable policy-based authorization for a MaxCompute project, you can define tables in the project and request permissions on specific fields of the tables in Security Center. You can request the following permissions on tables: SELECT, DESCRIBE, DROP, ALTER, UPDATE, and DOWNLOAD. You can also request permissions on a specific field.
+The default value of the **Application Type** parameter is **Table** and the default value of the **Data Source Type** parameter is **MaxCompute**. ii. In the **Tables to Be Added** section, select the tables on which you want to request permissions. After you select tables, the information about the tables is displayed on the right side. You can click the icon on the left side of a **table name** to view all fields in the table. You can request the permissions on specific or all fields. By default, the permissions on all fields are requested.
+
+> **Note:** If you enable policy-based authorization for a MaxCompute project, you can define tables in the project and request permissions on specific fields of the tables in Security Center.
+> You can request the following permissions on tables: SELECT, DESCRIBE, DROP, ALTER, UPDATE, and DOWNLOAD. You can also request permissions on a specific field.
+
 3. In the **Application information** section, configure the parameters.
 
 | Parameter | Description |
@@ -35181,7 +36130,10 @@ You can view the processing details and the record of the current request on the
 **Process requests**
 
 1. View the information about pending requests.
-Go to the **Permission Application Processing** tab. You can specify the following filter conditions to search for the pending requests within the current Apsara Stack tenant account: **Application Account Number**, **Application Time**, **Workspace**, **Project Name**, and **Object Name**. If permissions on multiple tables that belong to different owners are requested, the system splits the request into multiple requests based on the table owners.
+Go to the **Permission Application Processing** tab. You can specify the following filter conditions to search for the pending requests within the current Apsara Stack tenant account: **Application Account Number**, **Application Time**, **Workspace**, **Project Name**, and **Object Name**.
+
+> **Note:** If permissions on multiple tables that belong to different owners are requested, the system splits the request into multiple requests based on the table owners.
+
 2. View the details about a permission request.
 Find the permission request that you want to view and click **Approval** in the **Operation** column. You can view the details and processing record of the permission request in the
 **Application Details** and **Approval record** sections of the **Approval details** dialog box.
@@ -35205,9 +36157,7 @@ Go to the **Permission Audit** tab. Then, you can use the following parameters t
 **Operation** column of the target account, select the table permissions that you want to
 reclaim, and then click **Confirmation**.
 
-**Important**
-
-The revoke permission operation clears all permissions of the user to access resources in the workspace. Proceed with caution.
+> **Important:** The revoke permission operation clears all permissions of the user to access resources in the workspace. Proceed with caution.
 
 ##### 9.3.2.3 Sensitive behavior control
 
@@ -35222,7 +36172,9 @@ icon in the upper-left corner, and choose **All Products > Data Governance >**
 3. In the left-side navigation pane, click **Sensitive Behavior Control**. The **Sensitive**
 **Behavior Control** page appears.
 4. On the Permission Application tab, select the **application type** and handle application
-tickets. Only after an application for **saving Data Integration nodes** is initiated on the Data Integration page or an application for **publishing APIs in DataService Studio** is initiated on the Data Service page, the DataWorks tenant administrator can handle the application on the Sensitive Behavior Control page.
+tickets.
+
+> **Note:** Only after an application for **saving Data Integration nodes** is initiated on the Data Integration page or an application for **publishing APIs in DataService Studio** is initiated on the Data Service page, the DataWorks tenant administrator can handle the application on the Sensitive Behavior Control page.
 
 **Procedure for processing applications for permissions on Data**
 
@@ -35282,7 +36234,9 @@ DataWorks provides the Data Security Guard service. This service helps you prote
 icon in the upper-left corner and choose **All Products > Data Governance >**
 **Data Security Guard**.
 3. Click **Try now** to go to the Data Security Guard page.
-If you have activated Data Security Guard by using your Alibaba Cloud account, the Data Security Guard homepage appears. If you have not activated Data Security Guard by using your Alibaba Cloud account, the page for activating Data Security Guard appears.
+
+> **Note:** If you have activated Data Security Guard by using your Alibaba Cloud account, the Data Security Guard homepage appears.
+> If you have not activated Data Security Guard by using your Alibaba Cloud account, the page for activating Data Security Guard appears.
 
 **Activate Data Security Guard**
 
@@ -35307,7 +36261,10 @@ You can use only the tenant security administrator role or tenant administrator 
 
 **Entity transfer logic**
 
-If you configure a custom transfer rule and enable the rule, the entities that you want to transfer are preferentially transferred to the entity receiver that you specify in the rule. If the entity receiver that you specify in the rule does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule. Trigger condition for automatic transfer: If a Resource Access Management (RAM) user is removed from a workspace or is deleted, the automatic transfer mechanism is triggered. If no entity receiver is specified for the workspace, the transfer is performed based on the default transfer rule after the RAM user is removed or deleted. By default, the entities that belong to the RAM user are transferred to another RAM user to which the Workspace Administrator role is assigned in the workspace. If no RAM users in the workspace are assigned the Workspace Administrator role, the entities are transferred to the Alibaba Cloud account to which the RAM user belongs. If you configure a custom transfer rule for the workspace and specify an entity receiver that is a member of the workspace in the rule, the transfer is performed based on the rule that you configure. Trigger condition for manual transfer: If a RAM user is not deleted and remains a member of the workspace, you can go to the **Entity transfer** page to manually perform the transfer. For more information, see the Perform a transfer section of this topic. If no custom transfer rule is configured for the workspace, the transfer is performed based on the default transfer rule after the RAM user is removed from the workspace or is deleted. If you configure a custom transfer rule for the workspace and specify an entity receiver that is a member of the workspace in the rule, the transfer is performed based on the rule that you configure. For more information about custom workspace-level transfer rules, see the Configure an entity transfer rule section of this topic. If the entity receiver that you specify in a custom transfer rule is the access identity of a MaxCompute compute engine instance, the access identity of the MaxCompute compute engine instance is changed to the entity receiver after the transfer is performed based on the rule. DataWorks allows you to configure a custom workspace-level transfer rule.
+If you configure a custom transfer rule and enable the rule, the entities that you want to transfer are preferentially transferred to the entity receiver that you specify in the rule. If the entity receiver that you specify in the rule does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule. Trigger condition for automatic transfer: If a Resource Access Management (RAM) user is removed from a workspace or is deleted, the automatic transfer mechanism is triggered. If no entity receiver is specified for the workspace, the transfer is performed based on the default transfer rule after the RAM user is removed or deleted. By default, the entities that belong to the RAM user are transferred to another RAM user to which the Workspace Administrator role is assigned in the workspace. If no RAM users in the workspace are assigned the Workspace Administrator role, the entities are transferred to the Alibaba Cloud account to which the RAM user belongs. If you configure a custom transfer rule for the workspace and specify an entity receiver that is a member of the workspace in the rule, the transfer is performed based on the rule that you configure. Trigger condition for manual transfer: If a RAM user is not deleted and remains a member of the workspace, you can go to the **Entity transfer** page to manually perform the transfer. For more information, see the Perform a transfer section of this topic. If no custom transfer rule is configured for the workspace, the transfer is performed based on the default transfer rule after the RAM user is removed from the workspace or is deleted. If you configure a custom transfer rule for the workspace and specify an entity receiver that is a member of the workspace in the rule, the transfer is performed based on the rule that you configure. For more information about custom workspace-level transfer rules, see the Configure an entity transfer rule section of this topic.
+
+> **Note:** If the entity receiver that you specify in a custom transfer rule is the access identity of a MaxCompute compute engine instance, the access identity of the MaxCompute compute engine instance is changed to the entity receiver after the transfer is performed based on the rule.
+> DataWorks allows you to configure a custom workspace-level transfer rule.
 
 **Go to the Entity transfer page**
 
@@ -35320,7 +36277,9 @@ icon in the upper-left corner and choose **All Products > Data Governance >**
 
 **View the entities that can be transferred**
 
-In the Instructions for use section, view the entities that can be transferred, and the trigger condition and precautions for automatic transfer. More entities that can be transferred will be available in the future. The entities that can be transferred in the DataWorks console prevail.
+In the Instructions for use section, view the entities that can be transferred, and the trigger condition and precautions for automatic transfer.
+
+> **Note:** More entities that can be transferred will be available in the future. The entities that can be transferred in the DataWorks console prevail.
 
 **Configure an entity transfer rule**
 
@@ -35329,7 +36288,19 @@ configure an entity transfer rule.
 2. Configure an entity receiver.
 i. In the **Transfer rule configuration** section, customize a transfer rule. Transfer rules are classified into the default transfer rule and custom transfer rules. Find the workspace that you want to manage and click **Revised** in the **Transfer entity receiver** column. In the
 **Select Transfer Entity Recipient** dialog box, select an entity receiver from the Please
-select a space member drop-down list and click OK. When the transfer procedure is triggered, the system performs the transfer based on the custom transfer rule that you configure. If the rule is disabled for the workspace, or the entity receiver that you specify does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule. Default transfer rule: The default transfer rule is enabled by default and cannot be disabled. The default transfer rule takes effect if no entity receiver is specified for the workspace whose entities you want to transfer or the entity receiver specified for the workspace is invalid. If the entity receiver is removed from the workspace before the transfer, the entity receiver is considered invalid. Custom workspace-level transfer rule: Custom workspace-level transfer rules are disabled by default. If you need to specify an entity receiver, you can select a member in a workspace as the entity receiver. You can also enable or disable a custom transfer rule based on your business requirements. If you enable a custom transfer rule, the rule takes effect when entities are transferred. If you enable a custom transfer rule, the entities that you want to transfer are preferentially transferred to the entity receiver that you specify in the rule. If the entity receiver that you specify in the rule does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule. ii. Turn on or off the switch in the Operation column that corresponds to the workspace to enable or disable the custom transfer rule. If you turn on the switch, the entities that you want to transfer are transferred to the entity receiver that you specify. If the entity receiver that you specify does not exist or is removed from the workspace, the entities are transferred to the entity receiver specified in the default transfer rule. If you turn off the switch, the entities that you want to transfer are transferred to the entity receiver specified in the default transfer rule.
+select a space member drop-down list and click OK. When the transfer procedure is triggered, the system performs the transfer based on the custom transfer rule that you configure. If the rule is disabled for the workspace, or the entity receiver that you specify does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule. Default transfer rule: The default transfer rule is enabled by default and cannot be disabled. The default transfer rule takes effect if no entity receiver is specified for the workspace whose entities you want to transfer or the entity receiver specified for the workspace is invalid.
+
+> **Note:** If the entity receiver is removed from the workspace before the transfer, the entity receiver is considered invalid.
+
+Custom workspace-level transfer rule: Custom workspace-level transfer rules are disabled by default. If you need to specify an entity receiver, you can select a member in a workspace as the entity receiver. You can also enable or disable a custom transfer rule based on your business requirements. If you enable a custom transfer rule, the rule takes effect when entities are transferred.
+
+> **Note:** If you enable a custom transfer rule, the entities that you want to transfer are preferentially transferred to the entity receiver that you specify in the rule. If the entity receiver that you specify in the rule does not exist or is removed from the workspace, the system performs the transfer based on the default transfer rule.
+
+ii. Turn on or off the switch in the Operation column that corresponds to the workspace to enable or disable the custom transfer rule. If you turn on the switch, the entities that you want to transfer are transferred to the entity receiver that you specify.
+
+> **Note:** If the entity receiver that you specify does not exist or is removed from the workspace, the entities are transferred to the entity receiver specified in the default transfer rule.
+
+If you turn off the switch, the entities that you want to transfer are transferred to the entity receiver specified in the default transfer rule.
 
 **Perform a transfer**
 
@@ -35443,9 +36414,16 @@ The **Data classification and level** page displays the total number of categori
 1. Configure the basic information about the data sensitivity level template.
 i. Click the icon in the **Actions** column of the data sensitivity level template. ii. In the Set Basic Info step of the **Template Edit** dialog box, configure the **Template**
 **name** and **Description** parameters.
-The template name must be 1 to 30 characters in length and can contain digits, letters, and underscores (_). iii. Click **Next**.
+
+> **Note:** The template name must be 1 to 30 characters in length and can contain digits, letters, and underscores (_).
+
+iii. Click **Next**.
 2. Configure sensitivity levels.
-i. In the **Configuration level** step, specify the name of each sensitivity level. If you change the name of a sensitivity level, the name of the sensitivity level is updated on the Data Recognition Rules page. The name of the sensitivity level must be unique. A greater sequence number indicates a higher sensitivity level. You can create up to 10 sensitivity levels. Create a sensitivity level: Click the icon. Delete a sensitivity level: Click the icon. Before you delete a sensitivity level, you must delete all the sensitive field types that are associated with this sensitivity level regardless of whether the sensitive field types are published. Otherwise, the sensitivity level cannot be deleted. For more information, see Configure a data identification rule. ii. Click **Save**.
+i. In the **Configuration level** step, specify the name of each sensitivity level. If you change the name of a sensitivity level, the name of the sensitivity level is updated on the Data Recognition Rules page.
+
+> **Note:** The name of the sensitivity level must be unique. A greater sequence number indicates a higher sensitivity level. You can create up to 10 sensitivity levels.
+
+Create a sensitivity level: Click the icon. Delete a sensitivity level: Click the icon. Before you delete a sensitivity level, you must delete all the sensitive field types that are associated with this sensitivity level regardless of whether the sensitive field types are published. Otherwise, the sensitivity level cannot be deleted. For more information, see Configure a data identification rule. ii. Click **Save**.
 
 **View the template**
 
@@ -35481,11 +36459,16 @@ side navigation pane.
 
 3. Click **Next** to go to the **Model Training** step.
 4. Select **I accept data umbrella sampling for model training** and click **Start Training**.
-The column that you select must contain more than 10 rows. Otherwise, the system cannot start to train the model. After the training starts, you can close the dialog box and view the training progress in the recognition model list.
+
+> **Note:** The column that you select must contain more than 10 rows. Otherwise, the system cannot start to train the model.
+
+After the training starts, you can close the dialog box and view the training progress in the recognition model list.
 5. View the status of the model in the recognition model list. After the training is complete, the
 status of the model becomes **Training Completed**. Click the icon in the Actions column. Then, the Assess step of the Edit Model dialog box appears.
 6. View the recognition results in the Assess step. In this step, a maximum of 10 results are
-displayed. You can also adjust the results based on your business requirements. If the accuracy of the recognition can meet your requirements, click **Create**. Then, the model is created. If excessive mismatches exist, you can click **Retrain** to retrain the model after you adjust the recognition results. In most cases, you must perform two to three training to optimize the model.
+displayed. You can also adjust the results based on your business requirements. If the accuracy of the recognition can meet your requirements, click **Create**. Then, the model is created. If excessive mismatches exist, you can click **Retrain** to retrain the model after you adjust the recognition results.
+
+> **Note:** In most cases, you must perform two to three training to optimize the model.
 
 **Retrain the self-generated data recognition model**
 
@@ -35522,7 +36505,10 @@ icon to continue the training.
 
 **Delete a self-generated data recognition model**
 
-Find a model that is not being trained and click the **Delete** icon in the Actions column to delete the model. A model that is being trained cannot be deleted. If you want to delete such a model, you can stop training the model and delete it. A model that is in use cannot be deleted. If you want to delete such a model, you can delete the data recognition rules configured for the model and delete the model.
+Find a model that is not being trained and click the **Delete** icon in the Actions column to delete the model.
+
+> **Note:** A model that is being trained cannot be deleted. If you want to delete such a model, you can stop training the model and delete it.
+> A model that is in use cannot be deleted. If you want to delete such a model, you can delete the data recognition rules configured for the model and delete the model.
 
 ##### 9.4.6.3 Create and manage sample libraries
 
@@ -35530,7 +36516,9 @@ This topic describes how to create and manage sample libraries based on the samp
 
 **Limits**
 
-You can upload only UTF-8 encoded files in the TXT format as sample files. The size of a sample file cannot exceed 500 KB. Each data entry in a sample file occupies a line. A data identification rule can be used to identify only one type of data. We recommend that you store the data of the same type in a sample library. To identify multiple types of data, you must configure multiple sample libraries. For example, if you want to identify employee names and home addresses, you must configure two sample libraries. One is used to identify employee names and the other is used to identify home addresses.
+You can upload only UTF-8 encoded files in the TXT format as sample files. The size of a sample file cannot exceed 500 KB. Each data entry in a sample file occupies a line.
+
+> **Note:** A data identification rule can be used to identify only one type of data. We recommend that you store the data of the same type in a sample library. To identify multiple types of data, you must configure multiple sample libraries. For example, if you want to identify employee names and home addresses, you must configure two sample libraries. One is used to identify employee names and the other is used to identify home addresses.
 
 **Create a sample library**
 
@@ -35542,13 +36530,18 @@ icon in the upper-left corner and choose **All Products**
 4. In the left-side navigation pane, choose **Rule Change > Data Recognition Rules**.
 5. On the Data Recognition Rules page, click the **Sample Management** tab.
 6. On the Sample Management tab, click **Add Sample**. In the dialog box that appears, specify
-a name for the sample library and upload a sample file. You can upload multiple sample files to a sample library.
+a name for the sample library and upload a sample file.
+
+> **Note:** You can upload multiple sample files to a sample library.
+
 7. Click **Save**. The sample library is created.
 After you create a sample library, you can associate the sample library with a data identification rule. If the data to be identified contains the data in the sample library, the data identification rule is hit. For more information, see Configure a data identification rule.
 
 **Manage sample libraries**
 
-On the **Sample Management** tab, you can perform the following operations to manage existing sample libraries. View the sample libraries. You can view the number of samples in and the data identification rules associated with each existing sample library. You can also view the details of a specific sample library by clicking the icon in the **Actions** column. Modify a sample library. Find the sample library that you want to modify and click the icon in the **Actions** column. You can upload a new sample file or replace an existing sample file. Delete a sample library. Find the sample library that you want to delete and click the icon in the **Actions** column. If the sample library is associated with a data identification rule, you cannot delete the sample library. You can view the data identification rule that is associated with the sample library on the Sample Management tab. Before you delete the sample library, you must disassociate the sample library from the data identification rule on the configuration page of the data identification rule. For more information, see Configure a data identification rule.
+On the **Sample Management** tab, you can perform the following operations to manage existing sample libraries. View the sample libraries. You can view the number of samples in and the data identification rules associated with each existing sample library. You can also view the details of a specific sample library by clicking the icon in the **Actions** column. Modify a sample library. Find the sample library that you want to modify and click the icon in the **Actions** column. You can upload a new sample file or replace an existing sample file. Delete a sample library. Find the sample library that you want to delete and click the icon in the **Actions** column.
+
+> **Note:** If the sample library is associated with a data identification rule, you cannot delete the sample library. You can view the data identification rule that is associated with the sample library on the Sample Management tab. Before you delete the sample library, you must disassociate the sample library from the data identification rule on the configuration page of the data identification rule. For more information, see Configure a data identification rule.
 
 ##### 9.4.6.4 Configure a data identification rule
 
@@ -35565,7 +36558,11 @@ i. Log in to the DataWorks console. ii. On the DataStudio page, click the icon i
 **Products > Data Governance > Data Protection**.
 iii. Click **Try now**. The homepage of the **Data Protection** module appears. iv. In the left-side navigation pane, choose **Rule Change > Data Recognition Rules** to go to the **Data Recognition Rules** tab.
 2. Configure sensitive field categories.
-The first time that you use Data Security Guard, the default categories that are provided by the **built-in data sensitivity level template** are displayed on the left side of the Data Recognition Rules tab. You can search for a category by entering its name in the search box. You can also click the icon to the right of a category name and select an option to create a category or a subcategory, rename the category, or delete the category. If you have used Data Security Guard before, you can create categories in the left-side section on the Data Recognition Rules tab based on your business requirements. The name of a category must be unique. The name must be 1 to 30 characters in length, and can contain letters and digits. If you want to delete a category, make sure that all sensitive field types in this category are not published. Otherwise, the category cannot be deleted. For more information, see the Unpublish multiple sensitive field types at a time section of this topic.
+The first time that you use Data Security Guard, the default categories that are provided by the **built-in data sensitivity level template** are displayed on the left side of the Data Recognition Rules tab. You can search for a category by entering its name in the search box. You can also click the icon to the right of a category name and select an option to create a category or a subcategory, rename the category, or delete the category. If you have used Data Security Guard before, you can create categories in the left-side section on the Data Recognition Rules tab based on your business requirements.
+
+> **Note:** The name of a category must be unique. The name must be 1 to 30 characters in length, and can contain letters and digits.
+> If you want to delete a category, make sure that all sensitive field types in this category are not published. Otherwise, the category cannot be deleted. For more information, see the Unpublish multiple sensitive field types at a time section of this topic.
+
 3. Create a sensitive field type.
 i. Select the category in which you want to create a sensitive field type. On the left side of the page, select the category in which you want to create a sensitive field type. ii. Create a sensitive field type and configure a data identification rule. Click **Sensitive field type** in the upper-right corner. a. In the **Set Basic Info** step, configure the parameters and click **Next**.
 
@@ -35599,11 +36596,19 @@ c. After you confirm the configurations of the data identification rule, click *
 4. Manage sensitive field types.
 Copy a sensitive field type Find the sensitive field type that you want to copy and click the icon in the Actions column. A new sensitive field type with the same settings is created. The name of the generated sensitive field type is suffixed with **-copy**. By default, it is in the **The draft** state. You can configure the replicated sensitive field type based on your business requirements. Modify a sensitive field type Find the sensitive field type that you want to modify and click the icon in the Actions column. In the dialog box that appears, you can modify the sensitive data identification rule for the sensitive field type in the **Rule Change** step. You can modify the configurations of a custom sensitive field type. However, you cannot change the name, category, and sensitivity level of a built-in sensitive field type. Delete a sensitive field type Find the sensitive field type that you want to delete and click the icon in the Actions column to delete the sensitive field type. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** The following situations occur if a sensitive field type is deleted. Take note of the information before you delete a sensitive field type.
 
-The following situations occur if a sensitive field type is deleted. Take note of the information before you delete a sensitive field type. The identification results generated based on the sensitive data identification rule for this type are deleted. For more information, see Manually correct sensitive data identification results. The statistics on this sensitive field type are no longer displayed on the Data Recognition page. For more information, see View sensitive data distribution. If the sensitive field type is referenced by a risk identification rule, the sensitive field type is removed from the configurations of the risk identification rule.
+The identification results generated based on the sensitive data identification rule for this type are deleted. For more information, see Manually correct sensitive data identification results.
+
+> The statistics on this sensitive field type are no longer displayed on the Data Recognition page. For more information, see View sensitive data distribution.
+> If the sensitive field type is referenced by a risk identification rule, the sensitive field type is removed from the configurations of the risk identification rule.
+
 5. Publish multiple sensitive field types at a time.
-After you publish sensitive field types, the system identifies sensitive data based on the sensitive data identification rules for these types. For more information about the identification results, see View sensitive data distribution. i. Click **Batch release** and select the sensitive field types that you want to publish. You cannot select sensitive field types whose status is The published. ii. Click **release**. Then, the status of each selected sensitive field type is changed to The published. iii. You can also click **Cancel** to cancel the operation.
+After you publish sensitive field types, the system identifies sensitive data based on the sensitive data identification rules for these types. For more information about the identification results, see View sensitive data distribution. i. Click **Batch release** and select the sensitive field types that you want to publish.
+
+> **Note:** You cannot select sensitive field types whose status is The published.
+
+ii. Click **release**. Then, the status of each selected sensitive field type is changed to The published. iii. You can also click **Cancel** to cancel the operation.
 6. Unpublish multiple sensitive field types at a time.
 After you unpublish sensitive field types, the system stops identifying sensitive data for these types. Records of the unpublished sensitive field types on the Data Recognition page and the Manual Check tab are also deleted. Before you unpublish a sensitive field type, check whether it is referenced by **data masking rules** and **risk identification rules**. If so, change the status of the **data masking rule** to Inactive and remove the sensitive field type from the configurations of the **risk identification rule**. i. Click **The batch from the shelves** and select the sensitive field types that you want to unpublish. ii. Click **The shelves**. Then, the status of each selected sensitive field type is changed to The draft. iii. You can also click **Cancel** to cancel the operation.
 
@@ -35642,7 +36647,9 @@ the Data Engine parameter to the compute engine to which the added field belongs
 drop-down list and click **OK**. A sensitive data identification result is manually added. The drop-down list displays all **published** sensitive field types that are provided by the default data sensitivity level template of the current tenant.
 **Export sensitive data identification results**: After you click **Export recognition**
 **results**, the system exports the sensitive data identification results that are displayed
-based on the specified filter conditions. You can export up to 100,000 sensitive data identification records at the same time.
+based on the specified filter conditions.
+
+> **Note:** You can export up to 100,000 sensitive data identification records at the same time.
 
 ##### 9.4.6.6 Data masking management
 
@@ -35711,16 +36718,28 @@ For example, you can mask the first 3 characters and leave the remaining charact
 and SM3.
 **Salt Value**: The salt for the selected encryption algorithm. The default value is
 5. Valid values are integers from 0 to 9.
-In cryptography, salting involves inserting a specific string into a password at a fixed position. This action generates a hash value that is different from the hash of the original password. This process is called salting. The salt value is the specific string that is inserted. c. To verify the data masking configuration, enter sample data of up to 100 characters in the **Sample Data** text box and click **Verify Masking**. The masked data is displayed in the **Masking Effect** field. iii. Click **Save**. iv. On the **Data Masking Configuration** page, you can set the data masking rule to **Active** or **Inactive**. After a rule is configured, you can click the icons in the Actions column to **Delete**,
+
+> **Note:** In cryptography, salting involves inserting a specific string into a password at a fixed position. This action generates a hash value that is different from the hash of the original password. This process is called salting. The salt value is the specific string that is inserted.
+
+c. To verify the data masking configuration, enter sample data of up to 100 characters in the **Sample Data** text box and click **Verify Masking**. The masked data is displayed in the **Masking Effect** field. iii. Click **Save**. iv. On the **Data Masking Configuration** page, you can set the data masking rule to **Active** or **Inactive**. After a rule is configured, you can click the icons in the Actions column to **Delete**,
 **Modify**, or **View Details**.
-You cannot **Delete** or **Modify** an active rule. To delete or modify a rule, you must first set its status to **Inactive**. Before you deactivate a rule, check if it is used by any tasks and contact the security administrator for confirmation. When a rule is in the **Inactive** state, you can modify its masking method, but not the **Sensitive Data Type** or **Data Masking Rule Name**. After you modify the rule, set its status to **Active** to resume data masking for tasks that use the rule.
+
+> **Note:** You cannot **Delete** or **Modify** an active rule. To delete or modify a rule, you must first set its status to **Inactive**. Before you deactivate a rule, check if it is used by any tasks and contact the security administrator for confirmation.
+> When a rule is in the **Inactive** state, you can modify its masking method, but not the **Sensitive Data Type** or **Data Masking Rule Name**.
+> After you modify the rule, set its status to **Active** to resume data masking for tasks that use the rule.
+
 3. Add a whitelist.
-i. In the menu bar, click **Whitelist Configuration Management**. ii. On the **Whitelist Configuration Management** page, click the **Add Whitelist** button in the upper-right corner. iii. In the **Add Whitelist** dialog box, you can configure the settings. Sensitive data that meets the whitelist conditions is not masked during the specified effective period. iv. Click **Save** to complete the whitelist configuration.
+i. In the menu bar, click **Whitelist Configuration Management**. ii. On the **Whitelist Configuration Management** page, click the **Add Whitelist** button in the upper-right corner. iii. In the **Add Whitelist** dialog box, you can configure the settings.
+
+> **Note:** Sensitive data that meets the whitelist conditions is not masked during the specified effective period.
+
+iv. Click **Save** to complete the whitelist configuration.
 4. Optional: Configure workspace management.
 
-**Important**
+> **Important:** This feature is available only in the **DataWorks Data Masking** scenario. Enabling this feature masks query results in the current workspace.
+> If you do not enable this feature, sensitive information may be exposed.
 
-This feature is available only in the **DataWorks Data Masking** scenario. Enabling this feature masks query results in the current workspace. If you do not enable this feature, sensitive information may be exposed. i. Click **Workspace Management** in the menu bar. ii. Turn on the switch in the **Status** column for the target workspace. The configuration is applied immediately.
+i. Click **Workspace Management** in the menu bar. ii. Turn on the switch in the **Status** column for the target workspace. The configuration is applied immediately.
 5. What to do next: After you create data masking rules, sensitive data that you query on
 pages such as Data Development, Data Preview, and DataAnalysis is masked based on the rules.
 
@@ -35749,7 +36768,10 @@ icon in the Actions column. In the message that appears, click
 
 **AI-based Identification Rules**
 
-On the **Custom Identification Rules** page, click the **AI-based Identification Rules** tab. On the AI-based Identification Rules tab, you can view only an AI-based risk identification rule that is used to identify highly similar SQL statements. To enable the AI-based risk identification rule, set the status of the rule to **Active**. After the rule is activated, the SQL statements that meet the rule are displayed on the Data Risks page on the next day. You can disable the rule by changing its status to **Inactive**. After you disable the rule, the data risks that have been identified based on the rule are not removed.
+On the **Custom Identification Rules** page, click the **AI-based Identification Rules** tab. On the AI-based Identification Rules tab, you can view only an AI-based risk identification rule that is used to identify highly similar SQL statements. To enable the AI-based risk identification rule, set the status of the rule to **Active**.
+
+> **Note:** After the rule is activated, the SQL statements that meet the rule are displayed on the Data Risks page on the next day.
+> You can disable the rule by changing its status to **Inactive**. After you disable the rule, the data risks that have been identified based on the rule are not removed.
 
 ##### 9.4.6.8 Manage user groups
 
@@ -35781,7 +36803,11 @@ icon in the upper-left corner and choose **All Products**
 
 **Copy a user group**
 
-On the **User Group Management** page, find the user group that you want to copy and click the icon in the Actions column. An identical user group is generated. The name of the generated user group is suffixed with **-Copy**. You can click the icon in the Actions column and modify the user group in the EditAccount dialog box. You can copy only the content but not the dependencies of a user group.
+On the **User Group Management** page, find the user group that you want to copy and click the icon in the Actions column. An identical user group is generated.
+
+> **Note:** The name of the generated user group is suffixed with **-Copy**. You can click the
+> icon in the Actions column and modify the user group in the EditAccount dialog box.
+> You can copy only the content but not the dependencies of a user group.
 
 **Modify a user group**
 
@@ -35794,7 +36820,10 @@ click the icon in the Actions column.
 
 **Delete a user group**
 
-To delete a user group, find the user group on the User Group Management page and click the icon in the Actions column. In the message that appears, click **Delete**. You cannot delete a user group that is referenced in a masking whitelist. To delete the user group, delete the user group from the corresponding masking whitelist first.
+To delete a user group, find the user group on the User Group Management page and click the icon in the Actions column. In the message that appears, click **Delete**.
+
+> **Note:** You cannot delete a user group that is referenced in a masking whitelist.
+> To delete the user group, delete the user group from the corresponding masking whitelist first.
 
 #### 9.4.7 Manage system configurations
 
@@ -35834,18 +36863,27 @@ icon in the upper-left corner and choose **All Products**
 4. On the Data Protection page, choose **Rule Change > Data Masking** in the left-side
 navigation pane.
 5. On the Data Masking page, click Create Rule to create a data masking rule. For more
-information, see Customize de-identification rules. When you configure a data masking rule, you can turn on **Data watermark**. This way, a data watermark can be embedded into data when data masking is performed on the data, which facilitates the tracking of the leaked data. A data watermark cannot be added to Chinese data.
+information, see Customize de-identification rules. When you configure a data masking rule, you can turn on **Data watermark**. This way, a data watermark can be embedded into data when data masking is performed on the data, which facilitates the tracking of the leaked data.
+
+> **Note:** A data watermark cannot be added to Chinese data.
 
 **Create a data tracking task**
 
 1. In the left-side navigation pane, click **Data traceability**.
 2. On the **Data traceability** page, click **New data tracing task**.
 3. Drag the file in which data is leaked to the middle part of the **Traceability tasks** dialog
-box or click **Upload** to upload the file. You can upload a CSV file whose size is no more than 200 MB.
+box or click **Upload** to upload the file.
+
+> **Note:** You can upload a CSV file whose size is no more than 200 MB.
+
 4. Click **Start tracing** to track the source of the leaked data.
-After the tracking computing starts, you can close the dialog box, and the computing is not affected.
+
+> **Note:** After the tracking computing starts, you can close the dialog box, and the computing is not affected.
+
 5. After the computing is complete, click the
-icon that corresponds to your data tracking task and view the tracking result. You can also enter a file name in the search box of the Data traceability page to view the historical data tracking task. Tracking results are for reference only. A data tracking task may not generate results or generate one or more results.
+icon that corresponds to your data tracking task and view the tracking result. You can also enter a file name in the search box of the Data traceability page to view the historical data tracking task.
+
+> **Note:** Tracking results are for reference only. A data tracking task may not generate results or generate one or more results.
 
 **Download a data tracking file**
 
@@ -36092,9 +37130,14 @@ In the **To-Be-Undeployed Object** section, you can select **Task** or **Table**
 **Add to-be-undeployed Object**: Add nodes that you want to undeploy by specifying the
 node IDs.
 **Import Based on Lineage**: Select a node and select nodes based on lineage levels.
-You can view the node ID in the **General** section of the **Properties** panel on the node configuration page. You can also go to Operation Center and choose **Cycle Task Maintenance >**
-**Cycle Task** in the left-side navigation pane to view the node ID.
-Undeploy tables: You can select **Add to-be-undeployed Object** to undeploy tables. You cannot select an object that is already added to an undeployment plan. Each object can be added only to one undeployment plan. Specific types of objects cannot be added to an undeployment plan. For example, you cannot add the root node of a workspace to an undeployment plan or add a zero load node that you created for an undeployment plan to the undeployment plan.
+
+> **Note:** You can view the node ID in the **General** section of the **Properties** panel on the node configuration page.
+> You can also go to Operation Center and choose **Cycle Task Maintenance >** **Cycle Task** in the left-side navigation pane to view the node ID.
+
+Undeploy tables: You can select **Add to-be-undeployed Object** to undeploy tables.
+
+> **Note:** You cannot select an object that is already added to an undeployment plan. Each object can be added only to one undeployment plan.
+> Specific types of objects cannot be added to an undeployment plan. For example, you cannot add the root node of a workspace to an undeployment plan or add a zero load node that you created for an undeployment plan to the undeployment plan.
 
 | Item | Description |
 |---|---|
@@ -36123,7 +37166,8 @@ After you add objects that you want to undeploy, you can configure fine-grained 
 |---|---|---|
 | Undeploy Complete d | End the graceful undeployment. This phase is selected by default and cannot be unselected. | - |
 
-The steps in the phases of the graceful undeployment plan are performed in sequence. You can specify whether to perform the step in each phase. If you unselect a phase, the phase is skipped by default and the system proceeds to the next phase. The graceful undeployment plan allows you to send notifications to the specified contacts by **internal messages** and **emails**.
+> **Note:** The steps in the phases of the graceful undeployment plan are performed in sequence. You can specify whether to perform the step in each phase. If you unselect a phase, the phase is skipped by default and the system proceeds to the next phase.
+> The graceful undeployment plan allows you to send notifications to the specified contacts by **internal messages** and **emails**.
 
 **Step 4: Specify the method to execute the undeployment plan**
 
@@ -36147,7 +37191,15 @@ and the importance of the workflows is low.
 
 On the **Shutdown** page, you can view the list of undeployment plans. You can **execute**,
 **cancel**, or **delete** an undeployment plan.
-If you cancel an undeployment plan, the system cancels undeployment for nodes that are in the Undeploying state in the undeployment plan. Undeployed nodes are not affected. If you delete an undeployment plan, the system cancels undeployment for nodes that are in the Undeploying state in the undeployment plan. Undeployed nodes are not affected. After the undeployment is canceled, the system deletes the undeployment plan. The deletion operation is irreversible. You can click **Running Details** in the **Actions** column of an undeployment plan to view the configuration details of the plan. You can also perform the operations that are described in the following table on a single node. You can view the undeployment details of a single node, such as the undeployment progress, node status, and execution details of each phase. You can also perform various operations on the node, such as canceling undeployment for the node and rolling back the undeployment operation for the node. Cancel undeployment for a single node: You can cancel the unfinished steps of the node undeployment process for the node. Roll back the undeployment operation for a single node: You can roll back all undeployment steps for the node to the initial states. You cannot roll back a single step for the node. If an undeployment plan is canceled, you cannot perform the rollback operation. If a substep of the step in the current phase is being performed, you cannot perform the rollback operation. You cannot roll back the operations performed on a node after the undeployment phase. You cannot roll back the operations performed on an object (node or table) after the undeployment completion phase.
+
+> **Note:** If you cancel an undeployment plan, the system cancels undeployment for nodes that are in the Undeploying state in the undeployment plan. Undeployed nodes are not affected.
+> If you delete an undeployment plan, the system cancels undeployment for nodes that are in the Undeploying state in the undeployment plan. Undeployed nodes are not affected. After the undeployment is canceled, the system deletes the undeployment plan. The deletion operation is irreversible.
+
+You can click **Running Details** in the **Actions** column of an undeployment plan to view the configuration details of the plan. You can also perform the operations that are described in the following table on a single node. You can view the undeployment details of a single node, such as the undeployment progress, node status, and execution details of each phase. You can also perform various operations on the node, such as canceling undeployment for the node and rolling back the undeployment operation for the node. Cancel undeployment for a single node: You can cancel the unfinished steps of the node undeployment process for the node. Roll back the undeployment operation for a single node: You can roll back all undeployment steps for the node to the initial states. You cannot roll back a single step for the node.
+
+> **Note:** If an undeployment plan is canceled, you cannot perform the rollback operation.
+> If a substep of the step in the current phase is being performed, you cannot perform the rollback operation.
+> You cannot roll back the operations performed on a node after the undeployment phase. You cannot roll back the operations performed on an object (node or table) after the undeployment completion phase.
 
 ##### 9.5.2.3 Governance toolbox
 
@@ -36163,7 +37215,10 @@ i. Log on to the DataWorks console. ii. In the upper-left corner of the DataStud
 2. Click **Workbench** in the top navigation bar. In the left-side navigation pane, click **Task**
 **360**. The **Task 360** page appears.
 3. In the upper part of the page, select a workspace from the **Workspace** drop-down list and
-select a node from the **Task** drop-down list. You can also enter the ID of a node in the field to search for the node. If you log on to the DataWorks console by using an Apsara Stack account or as a Resource Access Management (RAM) user to which the **AliyunDataWorksFullAccess** policy is attached, you can select any workspace. If you log on to the DataWorks console as a RAM user to which the AliyunDataWorksFullAccess policy is not attached, you can select only workspaces in which you are assigned the Workspace Administrator role.
+select a node from the **Task** drop-down list. You can also enter the ID of a node in the field to search for the node.
+
+> **Note:** If you log on to the DataWorks console by using an Apsara Stack account or as a Resource Access Management (RAM) user to which the **AliyunDataWorksFullAccess** policy is attached, you can select any workspace. If you log on to the DataWorks console as a RAM user to which the AliyunDataWorksFullAccess policy is not attached, you can select only workspaces in which you are assigned the Workspace Administrator role.
+
 4. On the **Task 360** page, view the information about a node in the following sections: **Basic**
 **information**, **Node governance item**, **Related baseline**, **Task execution**
 **information**, **Indicator trend**, and **Event Record**.
@@ -36197,9 +37252,8 @@ On this page, click **Table 360** in the left-side navigation pane. The **Table 
 3. In the upper part of the page, select a project from the **Project** drop-down list and then
 select a table from the **Table** drop-down list.
 
-**Important**
+> **Important:** If you log on to the DataWorks console by using an Apsara Stack account or as a RAM user to which the **AliyunDataWorksFullAccess** policy is attached, you can select any workspace. If you log on to the DataWorks console as a RAM user to which the AliyunDataWorksFullAccess policy is not attached, you can select only workspaces in which you are assigned the Workspace Administrator role.
 
-If you log on to the DataWorks console by using an Apsara Stack account or as a RAM user to which the **AliyunDataWorksFullAccess** policy is attached, you can select any workspace. If you log on to the DataWorks console as a RAM user to which the AliyunDataWorksFullAccess policy is not attached, you can select only workspaces in which you are assigned the Workspace Administrator role.
 4. On the **Table 360** page, view the information about the table in the following sections:
 **Basic information**, **Governance issues**, **Related baseline**, **Task execution**
 **information**, **Indicator trend**, and **Event Record**.
@@ -36337,7 +37391,11 @@ DataWorks provides governance plan templates that are applicable to various indu
 
 **Background information**
 
-Features DataWorks Data Governance Center provides governance plan templates to help you troubleshoot governance issues within the current account. Each governance plan template collects and categorizes common governance items and check items, and provides corresponding solutions. You can use a governance plan template to quickly detect governance issues within the current account. Data Governance Center displays the detected issues in reports or rankings to provide reference for data governance engineers. After the issues are handled, Data Governance Center shows the effectiveness of data governance by using health scores. Implementation rules A governance plan template takes effect in all workspaces of a tenant. After you enable Data Governance Center for a tenant and specify the default governance plan template, this template takes effect in all DataWorks workspaces of the tenant. After you enable a governance plan template, the system generates check items and governance items based on the template. By default, the built-in check items and governance items are enabled and take effect globally. Data Governance Center detects governance issues and displays data for the current tenant based on the check items and governance items configured in the template. You can also go to the details pages of check items and governance items of the default governance plan template to view the details of check items and governance items in the template. The built-in check items in a governance plan template are available only for ODPS SQL nodes. If a governance plan template contains a check item that is unnecessary for a workspace, you can disable the check item for this workspace. After the check item is disabled, Data Governance Center does not inspect events triggered based on the check item in the specified workspace. For more information, see Create and configure check items. If a governance plan template contains a governance item that is unnecessary for a workspace, you can create an exclusion rule on the Governance item configuration page to disable this governance item in the specified workspace. After the governance item is disabled, Data Governance Center does not detect governance issues based on the governance item in the specified workspace. In addition, the detected governance issues are not displayed on the Governance issues page. For more information about how to configure governance items, see Configure governance items.
+Features DataWorks Data Governance Center provides governance plan templates to help you troubleshoot governance issues within the current account. Each governance plan template collects and categorizes common governance items and check items, and provides corresponding solutions. You can use a governance plan template to quickly detect governance issues within the current account. Data Governance Center displays the detected issues in reports or rankings to provide reference for data governance engineers. After the issues are handled, Data Governance Center shows the effectiveness of data governance by using health scores. Implementation rules A governance plan template takes effect in all workspaces of a tenant. After you enable Data Governance Center for a tenant and specify the default governance plan template, this template takes effect in all DataWorks workspaces of the tenant. After you enable a governance plan template, the system generates check items and governance items based on the template. By default, the built-in check items and governance items are enabled and take effect globally. Data Governance Center detects governance issues and displays data for the current tenant based on the check items and governance items configured in the template. You can also go to the details pages of check items and governance items of the default governance plan template to view the details of check items and governance items in the template.
+
+> **Note:** The built-in check items in a governance plan template are available only for ODPS SQL nodes.
+> If a governance plan template contains a check item that is unnecessary for a workspace, you can disable the check item for this workspace. After the check item is disabled, Data Governance Center does not inspect events triggered based on the check item in the specified workspace. For more information, see Create and configure check items.
+> If a governance plan template contains a governance item that is unnecessary for a workspace, you can create an exclusion rule on the Governance item configuration page to disable this governance item in the specified workspace. After the governance item is disabled, Data Governance Center does not detect governance issues based on the governance item in the specified workspace. In addition, the detected governance issues are not displayed on the Governance issues page. For more information about how to configure governance items, see Configure governance items.
 
 **Limits**
 
@@ -36352,9 +37410,17 @@ i. Log on to the DataWorks console. ii. In the upper-left corner of the DataStud
 3. View the configurations of a template.
 In the **Default Template** section, you can click **Inspector details** or **Governance**
 **Details** to view the details of check items or governance items in the template.
-DataWorks allows you to use only the default template provided by the system. You cannot modify the configurations of this template. View the details of check items. On the **Inspector details** page, check items are categorized in the **R&D**, **quality**,
+
+> **Note:** DataWorks allows you to use only the default template provided by the system. You cannot modify the configurations of this template.
+
+View the details of check items. On the **Inspector details** page, check items are categorized in the **R&D**, **quality**,
 **security**, **computing**, and **storage** dimensions. On the tab of each dimension, you can
-view the information about each check item, such as the ID, name, and applicable module. By default, check items are enabled on the Inspector details page. After a check item is enabled, Data Governance Center inspects events triggered based on this check item. If an event does not pass the check, the subsequent data development process is blocked. In a governance plan template, you cannot modify the configurations of check items. To enable or disable a check item, you can go to the **Inspector Setting** page. For more information about how to enable a check item, see Create and configure check items. The following figure shows the details of check items in the R&D dimension. View the details of governance items. On the **Governance Details** page, **mandatory** and **optional** governance items are categorized in the **R&D**, **quality**, **security**, **computing**, and **storage** dimensions. On the tab of each dimension, you can view the information about each governance item, such as the name, description, associated solution, and health score weight. Data Governance Center provides solutions for different governance items. If issues are detected based on a governance item, you can find the governance item and click the button in the **Associated solution** column to view the provided solution. Then, you can resolve the issues by using the provided solution. In a governance plan template, you cannot modify the configurations of governance items. To configure optional governance items, you can go to the **Governance item** page. On this page, you can enable or disable an optional governance item based on your business requirements, and configure exclusion rules to disable specific optional governance items in a workspace. For more information, see Configure governance items. A health assessment model is built in each governance plan template. This model defines the health score weights of different governance items. You cannot modify the health score weights. Mandatory governance items are part of the criteria for calculating health scores. Therefore, mandatory governance items must be globally enabled. You cannot disable mandatory governance items or specify them in exclusion rules. Optional governance items are excluded from the criteria for calculating health scores. You can enable optional governance items based on your business requirements. The following figure shows the details of governance items in the R&D dimension.
+view the information about each check item, such as the ID, name, and applicable module. By default, check items are enabled on the Inspector details page. After a check item is enabled, Data Governance Center inspects events triggered based on this check item. If an event does not pass the check, the subsequent data development process is blocked. In a governance plan template, you cannot modify the configurations of check items. To enable or disable a check item, you can go to the **Inspector Setting** page. For more information about how to enable a check item, see Create and configure check items. The following figure shows the details of check items in the R&D dimension. View the details of governance items. On the **Governance Details** page, **mandatory** and **optional** governance items are categorized in the **R&D**, **quality**, **security**, **computing**, and **storage** dimensions. On the tab of each dimension, you can view the information about each governance item, such as the name, description, associated solution, and health score weight. Data Governance Center provides solutions for different governance items. If issues are detected based on a governance item, you can find the governance item and click the button in the **Associated solution** column to view the provided solution. Then, you can resolve the issues by using the provided solution. In a governance plan template, you cannot modify the configurations of governance items. To configure optional governance items, you can go to the **Governance item** page. On this page, you can enable or disable an optional governance item based on your business requirements, and configure exclusion rules to disable specific optional governance items in a workspace. For more information, see Configure governance items.
+
+> **Note:** A health assessment model is built in each governance plan template. This model defines the health score weights of different governance items. You cannot modify the health score weights.
+> Mandatory governance items are part of the criteria for calculating health scores. Therefore, mandatory governance items must be globally enabled. You cannot disable mandatory governance items or specify them in exclusion rules. Optional governance items are excluded from the criteria for calculating health scores. You can enable optional governance items based on your business requirements.
+
+The following figure shows the details of governance items in the R&D dimension.
 
 ##### 9.5.5.2 Create and configure check items
 
@@ -36366,7 +37432,9 @@ A governance plan template is enabled. For more information, see View governance
 
 **Background information**
 
-Data Governance Center allows you to use the out-of-the-box and built-in check items by enabling a governance plan template. The built-in check items include Forbid Use of select* and Forbid Simple Processing. You can enable the check items based on your business requirements. DataWorks allows you to create a check item in Data Governance Center for a custom extension. After the check item is created, Data Governance Center inspects the events triggered by the custom extension. If you do not want DataWorks to inspect events triggered by the custom extension, you do not need to create a check item for the extension. Built-in check items are available only for ODPS SQL nodes. You can use built-in check items to inspect events that are generated before files are committed and deployed. If an event does not pass the check, the subsequent process is blocked.
+Data Governance Center allows you to use the out-of-the-box and built-in check items by enabling a governance plan template. The built-in check items include Forbid Use of select* and Forbid Simple Processing. You can enable the check items based on your business requirements. DataWorks allows you to create a check item in Data Governance Center for a custom extension. After the check item is created, Data Governance Center inspects the events triggered by the custom extension. If you do not want DataWorks to inspect events triggered by the custom extension, you do not need to create a check item for the extension.
+
+> **Note:** Built-in check items are available only for ODPS SQL nodes. You can use built-in check items to inspect events that are generated before files are committed and deployed. If an event does not pass the check, the subsequent process is blocked.
 
 **Limits**
 
@@ -36383,7 +37451,10 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 
 **Manage check items**
 
-On the **Inspector Setting** page, you can view the check items within the current account or the specified workspace. You can also enable or disable specified check items for a workspace. After a check item is enabled, Data Governance Center inspects events triggered by the check item. The following table describes the sections on the Inspector Setting page. Governance administrators can view all check items within the current account. Common users can view only the check items in the current DataWorks workspace. Only governance administrators can globally enable or disable the check item feature. An Alibaba Cloud account or a Resource Access Management (RAM) user to which the **AliyunDataWorksFullAccess** policy is attached is a governance administrator.
+On the **Inspector Setting** page, you can view the check items within the current account or the specified workspace. You can also enable or disable specified check items for a workspace. After a check item is enabled, Data Governance Center inspects events triggered by the check item. The following table describes the sections on the Inspector Setting page.
+
+> **Note:** Governance administrators can view all check items within the current account. Common users can view only the check items in the current DataWorks workspace.
+> Only governance administrators can globally enable or disable the check item feature. An Alibaba Cloud account or a Resource Access Management (RAM) user to which the **AliyunDataWorksFullAccess** policy is attached is a governance administrator.
 
 | No. | Description |
 |---|---|
@@ -36395,7 +37466,10 @@ On the **Inspector Setting** page, you can view the check items within the curre
 
 **Create check items**
 
-After you enable a governance plan template, the system automatically generates check items based on the template. If the built-in check items cannot meet your requirements, you can create check items for extensions that you want. The built-in check items in the governance plan template are available only for ODPS SQL nodes.
+After you enable a governance plan template, the system automatically generates check items based on the template. If the built-in check items cannot meet your requirements, you can create check items for extensions that you want.
+
+> **Note:** The built-in check items in the governance plan template are available only for ODPS SQL nodes.
+
 1. Click **New Inspector** in the upper-right corner.
 2. Configure the check item.
 In the **New Inspector** dialog box, configure the parameters.
@@ -36486,7 +37560,10 @@ iii. Click **OK**.
 
 On the **Governance unit** page, you can search for a specific governance unit by configuring the **Name** and **Workspace** parameters. In the search result, you can view the **name**,
 **description**, **workspaces**, **owner**, **creator**, and **creation time** of the governance unit. You
-can also modify or delete a governance unit. You can enter a keyword in the **Name** field to search for governance units in fuzzy match mode. All governance units whose names contain the keyword are displayed in the search result. DataWorks allows only governance administrators to create, modify, or delete governance units. Regular users can only view the information about governance units.
+can also modify or delete a governance unit.
+
+> **Note:** You can enter a keyword in the **Name** field to search for governance units in fuzzy match mode. All governance units whose names contain the keyword are displayed in the search result.
+> DataWorks allows only governance administrators to create, modify, or delete governance units. Regular users can only view the information about governance units.
 
 #### 9.5.6 View data governance results
 
@@ -36597,7 +37674,12 @@ The **Business Panorama** tab displays all published data assets in the current 
 
 **Asset Overview**
 
-The **Asset Overview** tab displays the core metrics of all published data assets in the current workspace and other workspaces that are managed in the same asset space from different dimensions, such as the asset directory and asset type. You can also view the rankings of popular assets, newly published assets, and newly updated assets. On this tab, you can perform the following operations: View the following core metrics for a specific date: The statistics on the published data assets until the specified date are collected. By default, the statistics on the published data assets until the previous day are collected. The statistics on unpublished data assets are not collected. You can query and view a data asset only after the data asset is published. The total number of data assets and the number of data assets of each type. The data assets added in the previous month of different types. The week-on-week and month-on-month trends of data assets of different types. View the following asset trends: The accumulated number of published data assets until now, and the week-on-week and month-on-month trends of data assets. The number of data assets whose status changes from **Unpublished** to **Published** in the current month, and the week-on-week and month-on-month trends of the change. The accumulated data assets of a specific asset type in a specific cycle and the change trend. View the directories to which the data assets of a specific type are mounted and the published and updated data assets of this type. View the view ranking of data assets of a specific type in the previous month. You can unpublish the data assets with low views. For more information about how to unpublish data assets, see Manage data assets. Click **Download** in the upper-right corner to download the asset overview report in PDF format.
+The **Asset Overview** tab displays the core metrics of all published data assets in the current workspace and other workspaces that are managed in the same asset space from different dimensions, such as the asset directory and asset type. You can also view the rankings of popular assets, newly published assets, and newly updated assets. On this tab, you can perform the following operations: View the following core metrics for a specific date:
+
+> **Note:** The statistics on the published data assets until the specified date are collected. By default, the statistics on the published data assets until the previous day are collected.
+> The statistics on unpublished data assets are not collected. You can query and view a data asset only after the data asset is published.
+
+The total number of data assets and the number of data assets of each type. The data assets added in the previous month of different types. The week-on-week and month-on-month trends of data assets of different types. View the following asset trends: The accumulated number of published data assets until now, and the week-on-week and month-on-month trends of data assets. The number of data assets whose status changes from **Unpublished** to **Published** in the current month, and the week-on-week and month-on-month trends of the change. The accumulated data assets of a specific asset type in a specific cycle and the change trend. View the directories to which the data assets of a specific type are mounted and the published and updated data assets of this type. View the view ranking of data assets of a specific type in the previous month. You can unpublish the data assets with low views. For more information about how to unpublish data assets, see Manage data assets. Click **Download** in the upper-right corner to download the asset overview report in PDF format.
 
 #### 9.6.3 Search for data assets
 
@@ -36623,7 +37705,14 @@ Find the data assets that you want to use in the directory tree of data assets l
 
 **Method 2**
 
-Search for data assets by keyword. In the search results, you can filter data assets by specifying filter conditions such as asset type, asset tag, and asset owner. Fuzzy match is supported when you search for data assets by keyword. If you enter a keyword in the search box, data assets whose names contain the keyword are displayed. After you find the required data asset, you can view the asset details and apply for the required permissions to perform operations such as data analysis on the data asset. You can apply for permissions only on MaxCompute physical tables and models that have been published to the production environment. For more information about asset analysis, see Consume data assets.
+Search for data assets by keyword. In the search results, you can filter data assets by specifying filter conditions such as asset type, asset tag, and asset owner.
+
+> **Note:** Fuzzy match is supported when you search for data assets by keyword. If you enter a keyword in the search box, data assets whose names contain the keyword are displayed.
+
+After you find the required data asset, you can view the asset details and apply for the required permissions to perform operations such as data analysis on the data asset.
+
+> **Note:** You can apply for permissions only on MaxCompute physical tables and models that have been published to the production environment.
+> For more information about asset analysis, see Consume data assets.
 
 #### 9.6.4 View asset values
 
@@ -36651,13 +37740,19 @@ The **Data Asset** module of DataWorks supports the asset consumption feature. T
 2. On the Data Asset page, click the
 icon in the left-side navigation pane to go to the **Asset**
 **consumption** page.
-On the Asset consumption page, you can analyze data assets on which you have permissions, query analysis results, and download the analysis results to your computer. You can analyze only MaxCompute physical tables and models that have been published as MaxCompute physical tables.
+On the Asset consumption page, you can analyze data assets on which you have permissions, query analysis results, and download the analysis results to your computer.
+
+> **Note:** You can analyze only MaxCompute physical tables and models that have been published as MaxCompute physical tables.
 
 **Consume data assets**
 
 On the **Asset consumption** page, you can create an analysis file to query and analyze data assets on which you have permissions, and download the analysis results as Excel files to your computer.
 1. Create an analysis file.
-i. On the Asset consumption page, click **Create Analysis File** in the upper-right corner. ii. Enter a name for the analysis file. Select the source tables and fields that you want to analyze, and specify filter conditions. You can filter only partition fields. iii. Configure the **File Name** and **Remarks** parameters in the Basic information section, and click **Save and Run**. You can save the analysis file or save and run the analysis file based on your business requirements.
+i. On the Asset consumption page, click **Create Analysis File** in the upper-right corner. ii. Enter a name for the analysis file. Select the source tables and fields that you want to analyze, and specify filter conditions.
+
+> **Note:** You can filter only partition fields.
+
+iii. Configure the **File Name** and **Remarks** parameters in the Basic information section, and click **Save and Run**. You can save the analysis file or save and run the analysis file based on your business requirements.
 2. View and download the analysis results.
 You can filter analysis files by file name, source table, or asset directory to view the execution status and execution time of a specific data asset analysis file. You can also download the analysis results as Excel files to your computer.
 
@@ -36691,7 +37786,11 @@ Only **project administrators** and **project owners** can create, edit, and del
 
 **Create and edit asset directories**
 
-Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory. If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets. You must be a member of the current workspace before you can be an asset owner. An asset owner must be a member of the current workspace. For more information about how to add a workspace member, see Manage workspace members and roles. Drag a directory to modify the position of the directory.
+Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory. If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
+
+> You must be a member of the current workspace before you can be an asset owner. An asset owner must be a member of the current workspace. For more information about how to add a workspace member, see Manage workspace members and roles.
+
+Drag a directory to modify the position of the directory.
 
 **Batch operation**
 
@@ -36716,7 +37815,11 @@ data assets that have been imported. Only published data assets can be viewed on
 | Local files are uploaded to Alibaba Cloud Object Storage Service (OSS) buckets. | Upload files to OSS buckets Configure OSS-related information |
 | Asset directories are created. Published data assets must be mounted to directories. | Manage asset directories |
 
-After model or metrics are submitted, or MaxCompute physical tables are published to the production environment, these data assets are automatically imported into DataWorks. After an asset administrator publishes the data assets, you can view or consume the data assets on pages such as the Asset Overview and Asset Marketplace pages. You can manage data assets only after they are imported into DataWorks. If you want to manage MaxCompute physical tables as data assets, the MaxCompute physical tables must have been published to the production environment. Only administrators and developers can publish data assets. Data assets that can be managed include but are not limited to data assets that are created by members of the current workspace in each module of DataWorks. You can manage data assets of multiple types, such as models, metrics, MaxCompute physical tables, and OSS objects.
+After model or metrics are submitted, or MaxCompute physical tables are published to the production environment, these data assets are automatically imported into DataWorks. After an asset administrator publishes the data assets, you can view or consume the data assets on pages such as the Asset Overview and Asset Marketplace pages. You can manage data assets only after they are imported into DataWorks.
+
+> **Note:** If you want to manage MaxCompute physical tables as data assets, the MaxCompute physical tables must have been published to the production environment.
+> Only administrators and developers can publish data assets.
+> Data assets that can be managed include but are not limited to data assets that are created by members of the current workspace in each module of DataWorks. You can manage data assets of multiple types, such as models, metrics, MaxCompute physical tables, and OSS objects.
 
 **Go to the Asset Management page**
 
@@ -36738,9 +37841,16 @@ DataWorks allows you to **perform operations on a single data asset** or **perfo
 **Operations**
 
 **View asset details**: You can filter data assets by using filter conditions such as the
-name or source service. You can click the name of a data asset to go to the details page and view details of the data asset. The filter conditions vary based on the types of data assets. The filter conditions on the actual page prevail. Fuzzy match is supported for data asset names. You can enter a keyword to search for all data assets whose names contain the keyword.
+name or source service. You can click the name of a data asset to go to the details page and view details of the data asset.
+
+> **Note:** The filter conditions vary based on the types of data assets. The filter conditions on the actual page prevail.
+> Fuzzy match is supported for data asset names. You can enter a keyword to search for all data assets whose names contain the keyword.
+
 **Publish data assets**: You can view and use data assets on the Asset Overview and
-Asset Marketplace pages only after the data assets are published. When you publish data assets, you must mount the asserts to asset directories. Then, you can search for data assets by asset directory. For more information about how to create an asset directory, see Manage asset directories.
+Asset Marketplace pages only after the data assets are published.
+
+> **Note:** When you publish data assets, you must mount the asserts to asset directories. Then, you can search for data assets by asset directory. For more information about how to create an asset directory, see Manage asset directories.
+
 **Unpublish data assets**: You cannot use data assets after they are unpublished. Proceed
 with caution.
 **Modify the directory to which a data asset is mounted** : You can mount a published
@@ -36772,7 +37882,9 @@ By default, only the current workspace is managed in an asset space. If you want
 
 **Modify configurations of an asset space**
 
-In the **Asset Space Configuration** section, click **Modify**. Then, add workspaces to or delete workspaces from the asset space. Only the workspaces whose **project administrators** or **project owners** belong to the current tenant can be added to an asset space.
+In the **Asset Space Configuration** section, click **Modify**. Then, add workspaces to or delete workspaces from the asset space.
+
+> **Note:** Only the workspaces whose **project administrators** or **project owners** belong to the current tenant can be added to an asset space.
 
 **View the change records of an asset space**
 
@@ -36875,13 +37987,23 @@ Configure the **Policy Name** and **Purpose** parameters based on your business 
 
 **Specify the data scope**
 
-You must specify the data scope to which the request processing policy applies based on your business scenario. After the request processing policy is created, the requests for the permissions on the data in this data scope must be processed based on this request processing policy. For a MaxCompute compute engine, you can specify the data scope of a request processing policy in a workspace based on a MaxCompute project or the category and sensitivity level of data in Data Security Guard. When you specify the data scope, take note of the following items: Specify the data range based on a MaxCompute project You must select an appropriate MaxCompute project from the **MaxCompute Project** drop-down list. This way, when requests for the permissions on the tables in this MaxCompute project are submitted, this request processing policy is used to process the requests. A MaxCompute project can be associated with only one MaxCompute project-based request processing policy. Otherwise, a policy conflict error is reported. You can select a MaxCompute project in which the current account assumes the administrator or super administrator role. If no MaxCompute project is displayed in the drop-down list, the current account may not have the required permissions. In this case, you must use an account that is assigned the Admin or Super_Administrator role. A DataWorks administrator is assigned the role_project_admin role in a DataWorks workspace, but not the Admin or Super_Administrator role in the MaxCompute project that you associate with the DataWorks workspace. To check the role of the current account, run the `whoami` command on the DataStudio page in DataWorks to obtain the account information. Then, run the `show grants for <Your current account>` command to check whether the current account is assigned the Admin or Super_Administrator role in the MaxCompute project. Specify the data scope based on data classification in Data Security Guard You must select the category and sensitivity level of data from the **Select Data**
+You must specify the data scope to which the request processing policy applies based on your business scenario. After the request processing policy is created, the requests for the permissions on the data in this data scope must be processed based on this request processing policy. For a MaxCompute compute engine, you can specify the data scope of a request processing policy in a workspace based on a MaxCompute project or the category and sensitivity level of data in Data Security Guard. When you specify the data scope, take note of the following items: Specify the data range based on a MaxCompute project You must select an appropriate MaxCompute project from the **MaxCompute Project** drop-down list. This way, when requests for the permissions on the tables in this MaxCompute project are submitted, this request processing policy is used to process the requests. A MaxCompute project can be associated with only one MaxCompute project-based request processing policy. Otherwise, a policy conflict error is reported. You can select a MaxCompute project in which the current account assumes the administrator or super administrator role. If no MaxCompute project is displayed in the drop-down list, the current account may not have the required permissions. In this case, you must use an account that is assigned the Admin or Super_Administrator role.
+
+> **Note:** A DataWorks administrator is assigned the role_project_admin role in a DataWorks workspace, but not the Admin or Super_Administrator role in the MaxCompute project that you associate with the DataWorks workspace.
+> To check the role of the current account, run the `whoami` command on the DataStudio page in DataWorks to obtain the account information. Then, run the
+> `show grants for <Your current account>` command to check whether the current account is assigned the Admin or Super_Administrator role in the MaxCompute project.
+
+Specify the data scope based on data classification in Data Security Guard You must select the category and sensitivity level of data from the **Select Data**
 **Security Level** drop-down list. This way, when requests for the permissions on the
 tables of the selected data category and sensitivity level are submitted, this request processing policy is used to process the requests. A data sensitivity level can be associated with only one request processing policy that is based on the data category and sensitivity level. Otherwise, a policy conflict error is reported. You can specify the data scope by using an Apsara Stack account or as a RAM user. If you specify the data scope as a RAM user, the following conditions must be met: The **AdministratorAccess** policy is attached to the RAM user. The RAM user is granted the **AliyunDataWorksFullAccess** permission and assigned the Project Owner or Super_Administrator role of all MaxCompute projects.
 
 **Configure the notification methods**
 
-Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing. In the Configure Processing Links step, you can specify an approver on each request processing node. To ensure that the approvers can receive notifications by using a DingTalk chatbot, select **Custom Keywords** when you configure the **Security Settings** parameter in the Add Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter. If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the processing personnel cannot receive notifications by using the DingTalk chatbot.
+Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing.
+
+> **Note:** In the Configure Processing Links step, you can specify an approver on each request processing node.
+> To ensure that the approvers can receive notifications by using a DingTalk chatbot, select **Custom Keywords** when you configure the **Security Settings** parameter in the Add Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter.
+> If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the processing personnel cannot receive notifications by using the DingTalk chatbot.
 
 **Configure the request processing nodes**
 
@@ -36889,7 +38011,9 @@ When you configure the request processing nodes, take note of the following item
 **Owner**, **Alibaba Cloud Account**, and **MaxCompute Role**.
 If you set the scope type to **Data Security Level in Data Security Guard**, the following roles of approvers are supported: **DataWorks Workspace Role**, **Table Owner**, and
 **Alibaba Cloud Account**.
-DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing. If multiple users who assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
+
+> **Note:** DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing.
+> If multiple users who assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
 
 **Set priorities for request processing policies**
 
@@ -36927,7 +38051,11 @@ You must specify the data scope to which the request processing policy applies b
 
 **Configure the notification methods**
 
-Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing. In the Configure Processing Links step, you can specify an approver on each request processing node. To ensure that the approvers can receive notifications by using a DingTalk chatbot, select **Custom Keywords** when you configure the **Security Settings** parameter in the Add Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter. If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the processing personnel cannot receive notifications by using the DingTalk chatbot.
+Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing.
+
+> **Note:** In the Configure Processing Links step, you can specify an approver on each request processing node.
+> To ensure that the approvers can receive notifications by using a DingTalk chatbot, select **Custom Keywords** when you configure the **Security Settings** parameter in the Add Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter.
+> If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the processing personnel cannot receive notifications by using the DingTalk chatbot.
 
 **Configure the request processing nodes**
 
@@ -36935,7 +38063,9 @@ When you configure the request processing nodes, take note of the following item
 **Owner**, **Alibaba Cloud Account**, and **MaxCompute Role**.
 If you set the scope type to **Data Security Level in Data Security Guard**, the following roles of approvers are supported: **DataWorks Workspace Role**, **Table Owner**, and
 **Alibaba Cloud Account**.
-DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing. If multiple users who assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
+
+> **Note:** DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing.
+> If multiple users who assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
 
 ##### 9.7.2.3 Request processing policies for Data Integration nodes
 
@@ -36972,19 +38102,28 @@ Configure the **Policy Name** and **Purpose** parameters based on your business 
 
 **Specify the data range**
 
-You must specify the data range to which the request processing policy applies based on your business scenario. You can determine the Data Integration nodes on which the operation requests must be processed based on a combination of **a source and a destination** . After the request processing policy is configured and takes effect, the request processing procedure is triggered when a developer saves a node that matches the specified source and destination. The developer can proceed to the save operation only after the request is approved in Approval Center. When you specify the data range, take note of the following items: You can select multiple workspaces. You have permissions to manage all workspaces only if you log on to the DataWorks console by using an Alibaba Cloud account or as a RAM user to which the **AliyunDataWorksFullAccess** policy is attached. The request processing policy that you create takes effect only for workspaces on which you have management permissions. A user who is assigned the **Workspace Administrator** role can manage only workspaces to which the user belongs. The request processing policy that the user creates takes effect only for workspaces to which the user belongs. You can click **Add** to add a combination of a source and a destination for a specific workspace. To add multiple combinations of sources and destinations for the workspace, repeat the add operation.
+You must specify the data range to which the request processing policy applies based on your business scenario. You can determine the Data Integration nodes on which the operation requests must be processed based on a combination of **a source and a destination** . After the request processing policy is configured and takes effect, the request processing procedure is triggered when a developer saves a node that matches the specified source and destination. The developer can proceed to the save operation only after the request is approved in Approval Center. When you specify the data range, take note of the following items: You can select multiple workspaces.
+
+> **Note:** You have permissions to manage all workspaces only if you log on to the DataWorks console by using an Alibaba Cloud account or as a RAM user to which the **AliyunDataWorksFullAccess** policy is attached. The request processing policy that you create takes effect only for workspaces on which you have management permissions.
+> A user who is assigned the **Workspace Administrator** role can manage only workspaces to which the user belongs. The request processing policy that the user creates takes effect only for workspaces to which the user belongs.
+
+You can click **Add** to add a combination of a source and a destination for a specific workspace. To add multiple combinations of sources and destinations for the workspace, repeat the add operation.
 
 **Configure the notification methods**
 
-The following four notification methods are supported: text message, email, DingTalk chatbot, and webhook. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing. You need to only configure notification methods in this section. You can configure approvers when you configure request processing nodes in the next step. To ensure that the approvers can receive notifications by using a DingTalk chatbot, select
-**Custom Keywords** when you configure the **Security Settings** parameter in the Add
-Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter. If you do not add DataWorks as a custom keyword or you select other check boxes when you configure the Security Settings parameter, the approvers cannot receive notifications by using the DingTalk chatbot.
+The following four notification methods are supported: text message, email, DingTalk chatbot, and webhook. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission request is submitted for processing.
+
+> **Note:** You need to only configure notification methods in this section. You can configure approvers when you configure request processing nodes in the next step.
+> To ensure that the approvers can receive notifications by using a DingTalk chatbot, select **Custom Keywords** when you configure the **Security Settings** parameter in the Add Robot dialog box. Then, enter **DataWorks** in the Custom Keywords field. Make sure that the other check boxes are **cleared** when you configure the Security Settings parameter.
+> If you do not add DataWorks as a custom keyword or you select other check boxes when you configure the Security Settings parameter, the approvers cannot receive notifications by using the DingTalk chatbot.
 
 **Configure request processing nodes**
 
 You can specify an approver and a role for the approver on each request processing node in the **Configure Processing Links** step. When you configure the request processing nodes, take note of the following items: Request processing procedure: After a request processing procedure is configured, a permission request is forwarded to the approvers that you specified on the request processing nodes in sequence. The next approver can receive a request processing notification and process the permission request only after the current approver approves the permission request. Approver: You can specify the following types of entities as approvers on the request processing nodes: **DataWorks workspace-level role**, **DataWorks workspace member**,
 **table owner**, **Alibaba Cloud account**, and **MaxCompute role**.
-DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing. If multiple users that assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
+
+> **Note:** DataWorks sends notifications to each approver based on the configured notification methods when a permission request is submitted for processing.
+> If multiple users that assume the same role are specified as approvers on a request processing node, notifications are sent to all the approvers. In this case, if one of the approvers on the request processing node approves the request, the request is forwarded to the next request processing node.
 
 **Enable or disable a request processing policy**
 
@@ -37104,7 +38243,9 @@ You can perform the following steps to apply an existing template to the current
 1. In the upper-right corner of the workbook editing page, choose **Template** > **Import**
 **Template**.
 2. In the **Import Template** dialog box, click the template you want to use.
-The data of the template will overwrite that of the current workbook.
+
+> **Note:** The data of the template will overwrite that of the current workbook.
+
 3. Click **OK**.
 You can also perform the following steps to save the current workbook as a template:
 1. In the upper-right corner of the workbook editing page, choose **Template** > **Save as**
@@ -37112,9 +38253,8 @@ You can also perform the following steps to save the current workbook as a templ
 2. In the **Template settings** dialog box, configure the **Type**, **Name**, and **Description**
 parameters.
 
-**Important**
+> **Important:** The template name cannot exceed 256 characters in length, and the template description cannot exceed 1,024 characters in length.
 
-The template name cannot exceed 256 characters in length, and the template description cannot exceed 1,024 characters in length.
 3. Click **OK**.
 
 **Import data from your on-premises machine**
@@ -37164,7 +38304,9 @@ In the **Import** dialog box, click **Local Excel File**, configure the paramete
 
 **Share and download a workbook**
 
-To share and download a workbook, you must choose **More > System Management** in the top navigation bar, and turn on **Allow Sharing** and **Allow Download** in the Spreadsheet section. Then, you can share and download a workbook. In the upper-right corner of the workbook editing page, click **Share**. In the dialog box that appears, configure the sharing mode. You must configure the following information before you can share a workbook:
+> **Note:** To share and download a workbook, you must choose **More > System Management** in the top navigation bar, and turn on **Allow Sharing** and **Allow Download** in the Spreadsheet section. Then, you can share and download a workbook.
+
+In the upper-right corner of the workbook editing page, click **Share**. In the dialog box that appears, configure the sharing mode. You must configure the following information before you can share a workbook:
 **Link**: After you specify Users with Edit Access and Users with Read Access, click **Copy Link**
 to copy the URL and send the copied URL to specified users.
 **Users with Edit Access**: In the **Users with Edit Access** section, click **Add**. In the dialog
@@ -37175,7 +38317,10 @@ box that appears, select members with whom you want to share the workbook and cl
 **All** and click **Add** in the **Users with Read Access** section. In the Share File with These
 Users dialog box, select members with whom you want to share the workbook and click
 **OK**.
-If you are prompted that the number of members with whom you want to share the workbook reaches the upper limit, you can upgrade the DataWorks edition to increase the upper limit. In the upper-right corner of the workbook editing page, click **Download** to download the workbook to your on-premises machine. After the download, you can log on to Simple Log Service (SLS) to view operation logs.
+
+> **Note:** If you are prompted that the number of members with whom you want to share the workbook reaches the upper limit, you can upgrade the DataWorks edition to increase the upper limit.
+
+In the upper-right corner of the workbook editing page, click **Download** to download the workbook to your on-premises machine. After the download, you can log on to Simple Log Service (SLS) to view operation logs.
 
 **Menu bar**
 
@@ -37274,7 +38419,9 @@ charts, bar charts, scatter charts, and stock charts.
 
 **Data Profile**
 
-The data profiling feature allows you to analyze the quality, structure, distribution, and statistics of the data. It also allows you to preview, detect, process, analyze, and visualize data. The data profiling feature analyzes data by column and allows you to view the data types and value distribution of each column. Select the data that you want to analyze and click **Data Profile** in the Data Analysis section in the top toolbar. Then, you can view the data types and value distribution of each column at the top of the workbook in the form of charts and rich text. The simple mode of the data profiling feature has the following features: For a column whose values are of the STRING or DATE data type: displays the values that rank top 2 and their respective percentages, and the percentage of other values in the form of rich text. If the number of unique values exceeds 50% of the total number of values, the number of unique values is displayed. For a column whose values are of the INTEGER or FLOAT data type: displays the value distribution in the form of a histogram. For a column whose values are of the BOOLEAN data type: displays the proportions of different values in the form of pie charts. For a column whose values are of two or more data types: displays the proportions of different data types in the form of pie charts. The system reminds you that the current column contains dirty data. After the dirty data is cleared, the simple mode displays value distribution in one of the preceding forms based on the data type. For a column whose values are null values: displays the percentage of the null values in red. Click **Detailed Mode** in the upper-right corner. In the **Data Profile** dialog box, you can view the profiling result of each column. The profiling result information includes the column name, value distribution information, data type, and data source. The detailed mode of the data profiling feature has the following features: For a column whose values are of the STRING or DATE data type: displays basic information and the values that rank top 5 based on frequency. The basic information includes the number of fields, unique values, valid values, and the percentage of null values. For a column whose values are of the INTEGER or FLOAT data type: displays basic information, the values that rank top 5 based on frequency, statistics, and a histogram. The basic information includes the number of fields, unique values, zeros, and the percentage of null values. For a column whose values are of the BOOLEAN data type: displays basic information, the values that rank top 5 based on frequency, and a pie chart. The basic information includes the number of fields, unique values, zeros, and the percentage of null values. The system considers the **true** and **false** strings and the **0** and **1** integers as values of the BOOLEAN data type.
+The data profiling feature allows you to analyze the quality, structure, distribution, and statistics of the data. It also allows you to preview, detect, process, analyze, and visualize data. The data profiling feature analyzes data by column and allows you to view the data types and value distribution of each column. Select the data that you want to analyze and click **Data Profile** in the Data Analysis section in the top toolbar. Then, you can view the data types and value distribution of each column at the top of the workbook in the form of charts and rich text. The simple mode of the data profiling feature has the following features: For a column whose values are of the STRING or DATE data type: displays the values that rank top 2 and their respective percentages, and the percentage of other values in the form of rich text. If the number of unique values exceeds 50% of the total number of values, the number of unique values is displayed. For a column whose values are of the INTEGER or FLOAT data type: displays the value distribution in the form of a histogram. For a column whose values are of the BOOLEAN data type: displays the proportions of different values in the form of pie charts. For a column whose values are of two or more data types: displays the proportions of different data types in the form of pie charts. The system reminds you that the current column contains dirty data. After the dirty data is cleared, the simple mode displays value distribution in one of the preceding forms based on the data type. For a column whose values are null values: displays the percentage of the null values in red. Click **Detailed Mode** in the upper-right corner. In the **Data Profile** dialog box, you can view the profiling result of each column. The profiling result information includes the column name, value distribution information, data type, and data source. The detailed mode of the data profiling feature has the following features: For a column whose values are of the STRING or DATE data type: displays basic information and the values that rank top 5 based on frequency. The basic information includes the number of fields, unique values, valid values, and the percentage of null values. For a column whose values are of the INTEGER or FLOAT data type: displays basic information, the values that rank top 5 based on frequency, statistics, and a histogram. The basic information includes the number of fields, unique values, zeros, and the percentage of null values. For a column whose values are of the BOOLEAN data type: displays basic information, the values that rank top 5 based on frequency, and a pie chart. The basic information includes the number of fields, unique values, zeros, and the percentage of null values.
+
+> **Note:** The system considers the **true** and **false** strings and the **0** and **1** integers as values of the BOOLEAN data type.
 
 **List of Shortcut Keys**
 
@@ -37286,7 +38433,8 @@ In system settings, you can configure the maximum number of SQL query records th
 
 **Procedure**
 
-This configuration will take effect within the scope of the tenant.
+> **Note:** This configuration will take effect within the scope of the tenant.
+
 1. Go to the DataAnalysis page.
 i. Log in to the DataWorks console. ii. In the upper-left corner of the console, click the icon and choose **All Products > Data**
 **Analysis > DataAnalysis**.
@@ -37364,7 +38512,10 @@ After the business process is created, you can view it in the business process l
 1. In the **Service Development** pane, right-click the business process that you want to
 modify and select **Modify attributes**.
 2. In the **Edit business process** dialog box, modify the **Name** and **Description** parameters
-based on your requirements. The **Creator** and **API Group** parameters of a business process cannot be modified.
+based on your requirements.
+
+> **Note:** The **Creator** and **API Group** parameters of a business process cannot be modified.
+
 3. Click **OK**.
 
 **Delete a business process**
@@ -37372,7 +38523,9 @@ based on your requirements. The **Creator** and **API Group** parameters of a bu
 1. In the **Service Development** pane, right-click the business process that you want to
 delete and select **Delete**.
 2. In the **Notes** message, click **OK**.
-You can delete only business processes that do not contain objects such as folders, APIs, functions, or workflows. If you want to delete a business process that contains such objects, delete the objects before you delete the business process.
+
+> **Note:** You can delete only business processes that do not contain objects such as folders, APIs, functions, or workflows.
+> If you want to delete a business process that contains such objects, delete the objects before you delete the business process.
 
 ### 11.4 API
 
@@ -37429,7 +38582,8 @@ On the Data Source page, add a data source based on your business requirements. 
 | Hologres | Supported | Supported |
 | ClickHouse | Supported | Supported |
 
-DataService Studio cannot directly read data from MaxCompute. You can add a Hologres data source and use the accelerated query feature of Hologres to allow DataService Studio to query data in MaxCompute. Hologres is compatible with PostgreSQL. PostgreSQL does not support the DATETIME data type. If your Hologres instance contains data of the DATETIME type, Hologres converts the data from the DATETIME type to the TIMESTAMP type of PostgreSQL. This way, DataService Studio can query the data.
+> **Note:** DataService Studio cannot directly read data from MaxCompute. You can add a Hologres data source and use the accelerated query feature of Hologres to allow DataService Studio to query data in MaxCompute.
+> Hologres is compatible with PostgreSQL. PostgreSQL does not support the DATETIME data type. If your Hologres instance contains data of the DATETIME type, Hologres converts the data from the DATETIME type to the TIMESTAMP type of PostgreSQL. This way, DataService Studio can query the data.
 
 ###### 11.4.1.1.2 Create an API by using the codeless UI
 
@@ -37478,7 +38632,12 @@ You can also select a workflow, right-click **API**, and then choose **Create AP
 
 1. Double-click the API in the API list. On the tab that appears, configure the **Datasource**
 **Type**, **Datasource Name**, **Datasource Environment**, and **Table Name** parameters in
-the **Select Table** section. The parameters that you need to configure vary based on the selected data source type. The parameters in the console shall prevail. Before you select a table for an API, you must configure a data source in Data Integration. You can enter a table name in the Table Name field to search for the table that you want to use. For a workspace in standard mode, you can select Production or Environment for the **Datasource Environment** parameter. After you create an API, the API configuration tab appears. Then, you can select a table for the API.
+the **Select Table** section. The parameters that you need to configure vary based on the selected data source type. The parameters in the console shall prevail.
+
+> **Note:** Before you select a table for an API, you must configure a data source in Data Integration. You can enter a table name in the Table Name field to search for the table that you want to use.
+> For a workspace in standard mode, you can select Production or Environment for the **Datasource Environment** parameter.
+> After you create an API, the API configuration tab appears. Then, you can select a table for the API.
+
 2. In the **Select Parameters** section, configure request and response parameters for the API.
 After you select a table in the Select Table section, all fields in the table automatically appear in the **Select Parameters** section. In the **Set as Req Param** column, select the check boxes of the fields that you want to specify as request parameters. In the **Set as**
 **Resp Param** column, select the check boxes of the fields that you want to specify as
@@ -37492,9 +38651,14 @@ Common response parameters
 **pageNum**: the page number.
 **pageSize**: the number of entries to return on each page.
 **totalNum**: the total number of entries returned.
-Request parameters are optional for an API. If you do not specify request parameters for an API, you must enable **Pagination for Return Results**.
+
+> **Note:** Request parameters are optional for an API. If you do not specify request parameters for an API, you must enable **Pagination for Return Results**.
+
 3. In the right-side navigation pane, click the **Request Param** tab. On the Request Param tab,
-configure the parameters based on your business requirements. Before you preview the result, you must configure information such as the example value, default value, and description for each request parameter of the API. To improve the match efficiency, specify an indexed field as a request parameter.
+configure the parameters based on your business requirements.
+
+> **Note:** Before you preview the result, you must configure information such as the example value, default value, and description for each request parameter of the API.
+> To improve the match efficiency, specify an indexed field as a request parameter.
 
 | Parameter | Description |
 |---|---|
@@ -37527,7 +38691,10 @@ an API, you can perform the following steps to configure a filter for the API: I
 **Use Post-filter** based on your requirements. After you specify the **Function Type**
 parameter, select one or more functions from the drop-down list next to the Use Pre-filter or Use Post-filter check box. If you select multiple functions, the functions are used to process parameters based on the sequence in which they are selected. Then, you can click
 **Preview Responses Returned by API Operation** and check whether the processing
-results of the selected functions meet your expectations. For more information about how to create and use a filter, see Create an Aviator function and use it as a filter. If the function that you want to use is not available in the drop-down list, check whether the function is published. If the function is not published, publish the function. Alternatively, you can create and publish a new function. For more information, see Publish a function.
+results of the selected functions meet your expectations. For more information about how to create and use a filter, see Create an Aviator function and use it as a filter.
+
+> **Note:** If the function that you want to use is not available in the drop-down list, check whether the function is published. If the function is not published, publish the function. Alternatively, you can create and publish a new function. For more information, see Publish a function.
+
 6. In the right-side navigation pane, click **Environment Configuration**. You can configure
 the **Memory**, **Function Timeout**, and **Maximum Number of Data Records for a Single**
 **Request** parameters.
@@ -37547,9 +38714,8 @@ icon in the top toolbar. Select **Switch to Basic SQL** or **Switch to Advanced*
 3. In the message that appears, click **OK**. Then, you can view the SQL statements of the API in
 the **Edit Query SQL** section.
 
-**Important**
-
-DataService Studio allows you to switch only from the codeless UI to the code editor. After you switch from the codeless UI to the code editor, you cannot switch back to the codeless UI.
+> **Important:** DataService Studio allows you to switch only from the codeless UI to the code editor.
+> After you switch from the codeless UI to the code editor, you cannot switch back to the codeless UI.
 
 ###### 11.4.1.1.3 Create an API in the code editor
 
@@ -37594,9 +38760,18 @@ You can also select a workflow, right-click **API**, and then choose **Create AP
 
 1. Double-click the API in the API list. On the tab that appears, configure the **Datasource**
 **Type**, **Datasource Name**, **Datasource Environment**, and **Table Name** parameters in
-the **Select Table** section. The parameters that you need to configure vary based on the selected data source type. The parameters in the console shall prevail. Before you select a table for an API, you must configure a data source in Data Integration. You can enter a table name in the Table Name field to search for the table that you want to use. For a workspace in standard mode, you can select Production or Environment for the **Datasource Environment** parameter. After you create an API, the API configuration tab appears. Then, you can select a table for the API.
+the **Select Table** section. The parameters that you need to configure vary based on the selected data source type. The parameters in the console shall prevail.
+
+> **Note:** Before you select a table for an API, you must configure a data source in Data Integration. You can enter a table name in the Table Name field to search for the table that you want to use.
+> For a workspace in standard mode, you can select Production or Environment for the **Datasource Environment** parameter.
+> After you create an API, the API configuration tab appears. Then, you can select a table for the API.
+
 2. In the **Edit Query SQL** section, write an SQL statement for querying data.
-If you set the SQL Mode parameter to **Basic SQL**, you can write only a basic SQL statement. The SELECT statement specifies the parameters that the API returns. The WHERE clause specifies the request parameters of the API. You must use ${} to interpolate a request parameter. Follow the following rules when you write an SQL statement: Single-table queries, table join queries, and nested queries are supported in the same data source. The SQL statement must meet the following requirements: You can write only one SQL statement. An SQL comment is not allowed. Only the SELECT statement is supported. Other statements such as INSERT, UPDATE, or DELETE are not supported. The SELECT \* statement is not supported. You must specify the columns to be queried.
+If you set the SQL Mode parameter to **Basic SQL**, you can write only a basic SQL statement.
+
+> **Note:** The SELECT statement specifies the parameters that the API returns. The WHERE clause specifies the request parameters of the API. You must use ${} to interpolate a request parameter.
+
+Follow the following rules when you write an SQL statement: Single-table queries, table join queries, and nested queries are supported in the same data source. The SQL statement must meet the following requirements: You can write only one SQL statement. An SQL comment is not allowed. Only the SELECT statement is supported. Other statements such as INSERT, UPDATE, or DELETE are not supported. The SELECT \* statement is not supported. You must specify the columns to be queried.
 **${param}** cannot be enclosed in single quotation marks (' '). For example,
 
 | '${id}' | or | 'abc${xyz}123' |   |
@@ -37633,9 +38808,15 @@ Common response parameters
 **pageNum**: the number of the page to return.
 **pageSize**: the number of entries to return on each page.
 **totalNum**: the total number of entries returned.
-Request parameters are optional for an API. If you do not specify request parameters for an API, you must turn on **Pagination for Return Results**. After you turn on **Pagination for Return Results**, the number of records to return is subject to the pagination settings. If you write SQL statements to set a limit for the number of records to return in the **Edit Query SQL** section, the limit does not take effect.
+
+> **Note:** Request parameters are optional for an API. If you do not specify request parameters for an API, you must turn on **Pagination for Return Results**.
+> After you turn on **Pagination for Return Results**, the number of records to return is subject to the pagination settings. If you write SQL statements to set a limit for the number of records to return in the **Edit Query SQL** section, the limit does not take effect.
+
 3. In the right-side navigation pane, click the **Request Param** tab. On the Request Param tab,
-configure the parameters based on your business requirements. If you set the SQL Mode parameter to **Advanced SQL**, you must manually add all request parameters that are specified in the SQL statement to the parameter list. This ensures that the parameters that are described in the API details are consistent with the parameters that are used. Before you preview the result, you must configure information such as the example value, default value, and description for each request parameter of the API. To improve the match efficiency, specify an indexed field as a request parameter.
+configure the parameters based on your business requirements. If you set the SQL Mode parameter to **Advanced SQL**, you must manually add all request parameters that are specified in the SQL statement to the parameter list. This ensures that the parameters that are described in the API details are consistent with the parameters that are used.
+
+> **Note:** Before you preview the result, you must configure information such as the example value, default value, and description for each request parameter of the API.
+> To improve the match efficiency, specify an indexed field as a request parameter.
 
 | Parameter | Description |
 |---|---|
@@ -37663,7 +38844,10 @@ an API, you can perform the following steps to configure a filter for the API: I
 **Use Post-filter** based on your requirements. After you specify the **Function Type**
 parameter, select one or more functions from the drop-down list next to the Use Pre-filter or Use Post-filter check box. If you select multiple functions, the functions are used to process parameters based on the sequence in which they are selected. Then, you can click
 **Preview Responses Returned by API Operation** and check whether the processing
-results of the selected functions meet your expectations. For more information about how to create and use a filter, see Create an Aviator function and use it as a filter. If the function that you want to use is not available in the drop-down list, check whether the function is published. If the function is not published, publish the function. Alternatively, you can create and publish a new function. For more information, see Publish a function.
+results of the selected functions meet your expectations. For more information about how to create and use a filter, see Create an Aviator function and use it as a filter.
+
+> **Note:** If the function that you want to use is not available in the drop-down list, check whether the function is published. If the function is not published, publish the function. Alternatively, you can create and publish a new function. For more information, see Publish a function.
+
 6. In the right-side navigation pane, click **Environment Configuration**. You can configure
 the **Memory**, **Function Timeout**, and **Maximum Number of Data Records for a Single**
 **Request** parameters.
@@ -37818,7 +39002,9 @@ The request and response details appear on the right. If the API fails the test,
 1. Go to the **Data Service** page and click the **Service Management** tab.
 2. In the left-side navigation pane, click **Test APIs**.
 3. Select the API to be tested, set the request parameters, and then click **Test**.
-On the Test APIs page, you can only test published APIs online, but not update sample success responses for APIs. To update the sample success response for an API, click the API name in the API list to go to the API Details page. Then, update the sample success response for the API in the Successful Response Example section. You must test an API before you publish it.
+
+> **Note:** On the Test APIs page, you can only test published APIs online, but not update sample success responses for APIs. To update the sample success response for an API, click the API name in the API list to go to the API Details page. Then, update the sample success response for the API in the Successful Response Example section.
+> You must test an API before you publish it.
 
 #### 11.4.3 Publish an API
 
@@ -37840,15 +39026,23 @@ i. Log in to the DataWorks console. ii. Click the icon in the upper-left corner 
 2. In the **Service Development** pane, find the API that you want to publish in the Business
 Processes section and double-click the API name. On the configuration tab of the API, click
 **Submit** in the top toolbar.
-Only the APIs that have been tested can be submitted. For more information about how to test APIs, see Test an API. After the API is submitted, a prompt message is displayed in the upper part of the page, and an API version is automatically generated. In the **Version** panel, you can view the current version information about the submitted API, such as the API status.
+
+> **Note:** Only the APIs that have been tested can be submitted. For more information about how to test APIs, see Test an API.
+
+After the API is submitted, a prompt message is displayed in the upper part of the page, and an API version is automatically generated. In the **Version** panel, you can view the current version information about the submitted API, such as the API status.
 3. Submit an application to publish the API.
 i. In the right-side navigation pane of the API configuration tab, click **Version**. In the Version panel, find the API version that you want to publish and click **Request to**
 **Publish** in the Actions column to go to the application page.
-ii. Use the default application type Publish data service API and enter the reason for the application in the Reason for application field. Then, click **Apply for permission** to submit the application. If you defined an approval policy in DataWorks Approval Center, the API must be approved before the API can be published. For more information, see Overview.
+ii. Use the default application type Publish data service API and enter the reason for the application in the Reason for application field. Then, click **Apply for permission** to submit the application.
+
+> **Note:** If you defined an approval policy in DataWorks Approval Center, the API must be approved before the API can be published. For more information, see Overview.
+
 4. Wait for the application to be approved.
 After you submit the application, you can publish the API only after the reviewer completes the approval based on the approval policy in DataWorks Approval Center. The reviewer can view the application details and process the application on the **Requests To Be**
 **Processed** page in DataWorks **Approval Center**.
-After the application is approved, the status of the API in the **Version** panel changes from **To Be Requested** to **Can Be Published**.
+
+> **Note:** After the application is approved, the status of the API in the **Version** panel changes from **To Be Requested** to **Can Be Published**.
+
 5. Publish the API.
 After the application is approved, click **Version** in the right-side navigation pane of the API configuration tab. Find the approval record and click **Publish** in the Actions column. After the API is published on the DataService Studio page, DataWorks publishes the API to the related API group in API Gateway based on the associated API group of the business process to which the API belongs. To view the API group that is associated with the business process, find the business process in the Service Development pane of the DataService Studio page, right-click the name of the business process, and then select
 **Modify attributes**. After the API is published, you can go to the API Gateway console and
@@ -37888,7 +39082,9 @@ column.
 
 **Unpublish an API**
 
-If you unpublish or delete an API after you grant a workspace the permissions to call the API, the workspace can no longer call the API. If you republish an API after you unpublish or modify the API, you must grant the related workspace the permissions to call the API again.
+> **Note:** If you unpublish or delete an API after you grant a workspace the permissions to call the API, the workspace can no longer call the API.
+> If you republish an API after you unpublish or modify the API, you must grant the related workspace the permissions to call the API again.
+
 1. On the **Published APIs** tab, find the API that you want to unpublish and click **Unpublish** in
 the Actions column.
 2. In the **Unpublish API** message, click **OK**.
@@ -37899,7 +39095,9 @@ On the **Published APIs** tab, find the API that you want to test and click **Te
 
 **Change the protocol of an API**
 
-If you delete a protocol, the API can no longer be called by using the protocol. Proceed with caution when you perform this operation. The protocol change takes effect in real time.
+> **Note:** If you delete a protocol, the API can no longer be called by using the protocol. Proceed with caution when you perform this operation.
+> The protocol change takes effect in real time.
+
 1. On the **Published APIs** tab, find the API of which you want to change the protocol, move
 the pointer over **More** in the Actions column, and then select **Change Protocol**.
 2. In the **Change Protocol** dialog box, change the protocol that is used by the API and click
@@ -37915,7 +39113,8 @@ On the **Published APIs** tab, find the API of which you want to view the statis
 
 On the **Manage APIs** page, click the **Authorized to Use** tab to view the APIs that your workspace is granted the permissions to call. You can perform the following operations on the APIs that your workspace is granted the permissions to call: Find the API that you want to test and click **Test** in the Actions column to test the API on the **Test APIs** page. For more information, see Test an API. Find the API on which you want to remove access permissions and click **Delete**. In the
 **Delete authorized** message, click **OK** to remove access permissions on the API.
-If you remove access permissions on an API, the workspace to which you belong can no longer call the API.
+
+> **Note:** If you remove access permissions on an API, the workspace to which you belong can no longer call the API.
 
 **View the APIs that you grant other workspaces the permissions**
 
@@ -37958,7 +39157,10 @@ icon in the upper-left corner and choose **All Products > Data Service > Data**
 4. In the left-side navigation pane, click **Call APIs**.
 On the **Call APIs** page, perform the following operations based on your business requirements: View or copy the identity authentication information that is required to call APIs. In the
 **Encrypted Signature Authentication** section, click Reset to reset the AppSecret.
-To reset the AppCode in the **Quick Authentication** section, go to the API Gateway console. You can also view the information about the applications that are bound to the current workspace. This helps you find the applications in the API Gateway console.
+
+> **Note:** To reset the AppCode in the **Quick Authentication** section, go to the API Gateway console.
+
+You can also view the information about the applications that are bound to the current workspace. This helps you find the applications in the API Gateway console.
 
 ##### 11.4.5.2 View API statistics
 
@@ -38008,7 +39210,10 @@ HTTP Status Codes chart The HTTP Status Codes chart displays the trends of the n
 
 ##### 11.4.6.1 View and manage API tags
 
-This topic describes how to create, add, view, and remove tags for an API. DataService Studio allows you to add tags to APIs when you manage workflows and create, register, and deploy APIs. In this topic, the scenario of creating an API in the codeless user interface (UI) is used. Tags allow you to efficiently classify and search for APIs. You can maintain only one tag list in a workspace, and cannot use the tag list of a workspace in another workspace. Each API supports zero to five tags. You can add no tag to an API at all or add up to five tags to an API. A tag can be up to 20 characters in length and can contain letters, digits, and underscores (_).
+This topic describes how to create, add, view, and remove tags for an API. DataService Studio allows you to add tags to APIs when you manage workflows and create, register, and deploy APIs. In this topic, the scenario of creating an API in the codeless user interface (UI) is used. Tags allow you to efficiently classify and search for APIs. You can maintain only one tag list in a workspace, and cannot use the tag list of a workspace in another workspace.
+
+> **Note:** Each API supports zero to five tags. You can add no tag to an API at all or add up to five tags to an API.
+> A tag can be up to 20 characters in length and can contain letters, digits, and underscores (_).
 
 **Create a tag for an API**
 
@@ -38045,7 +39250,11 @@ icon in the upper-left corner and choose **All Products > Data Service > Data**
 3. In the **Service Development** pane, double-click the API that you want to view in the API
 list.
 4. In the right-side navigation pane, click **Properties**. In the Properties panel, view the tags of
-the API in the **Label** field. You can also create, add, and remove tags for the API in the Properties panel. If an API is published, you can also perform the following steps to view the tags of the API: i. Click **Service Management** in the top navigation bar. ii. Click **Manage APIs** in the left-side navigation pane. On the page that appears, click the
+the API in the **Label** field.
+
+> **Note:** You can also create, add, and remove tags for the API in the Properties panel.
+
+If an API is published, you can also perform the following steps to view the tags of the API: i. Click **Service Management** in the top navigation bar. ii. Click **Manage APIs** in the left-side navigation pane. On the page that appears, click the
 **Published APIs** tab. On the Published APIs tab, click the API whose tags you want to
 view. The **API Details** page appears. iii. View the tags of the API under **Label** in the **API Basic Information** section.
 
@@ -38074,7 +39283,9 @@ icon in the upper-left corner and choose **All Products > Data Service > Data**
 **Published APIs** tab. On the Published APIs tab, view the tags of each API in the **Label**
 column. If an API has multiple tags and some of them are hidden, click **...** to show all the tags.
 5. On the **Published APIs** tab, enter a tag in the **Label** field to search for all APIs associated
-with the tag. You can search for APIs based on multiple tags.
+with the tag.
+
+> **Note:** You can search for APIs based on multiple tags.
 
 ##### 11.4.6.2 View and manage API versions
 
@@ -38087,7 +39298,10 @@ This topic describes how to manage versions of APIs, workflows, and functions in
 icon in the upper-left corner and choose **All Products > Data Service > Data**
 **Service**.
 3. In the **Service Development** pane, double-click the API that you want to view in the API
-list. You can also click Function or the Table icon in the left-side navigation pane and double-click the name of a workflow or function to manage its versions.
+list.
+
+> **Note:** You can also click Function or the Table icon in the left-side navigation pane and double-click the name of a workflow or function to manage its versions.
+
 4. In the right-side navigation pane, click **Version**. In the **Version** panel, view historical
 versions of the API.
 
@@ -38106,7 +39320,10 @@ versions of the API.
 
 In the **Version** panel, select two versions and click **Compare**. In the **History Version**
 **Contrast** message, compare the code or parameters of the two versions.
-The information that appears in the History Version Contrast message varies based on the mode in which the API was created. If the API was created in the codeless user interface (UI), the request parameters and response parameters of the two versions are compared. If the API was created in the code editor, the SQL statements of the two versions are compared.
+
+> **Note:** The information that appears in the History Version Contrast message varies based on the mode in which the API was created.
+> If the API was created in the codeless user interface (UI), the request parameters and response parameters of the two versions are compared.
+> If the API was created in the code editor, the SQL statements of the two versions are compared.
 
 ##### 11.4.6.3 View, delete, move, and clone an API
 
@@ -38120,7 +39337,8 @@ icon in the upper-left corner and choose **All Products > Data Service > Data**
 **Service**.
 3. In the **Service Development** pane, right-click the name of the specified API and select
 **View Details**.
-You can click **View Details** to view only the details of an API that has been published. If an API has not been published, double-click the API to go to the configuration tab of the API. Then, click **Properties** in the right-side navigation pane to view the basic information about the API.
+
+> **Note:** You can click **View Details** to view only the details of an API that has been published. If an API has not been published, double-click the API to go to the configuration tab of the API. Then, click **Properties** in the right-side navigation pane to view the basic information about the API.
 
 **Clone an API**
 
@@ -38145,7 +39363,8 @@ If the API that you want to delete is in the Unpublished state, skip this step. 
 2. In the **Service Development** pane, right-click the name of the specified API and select
 **Delete**.
 3. In the **Delete API** message, click **OK**.
-Deleted APIs cannot be recovered. Exercise caution when you delete an API.
+
+> **Note:** Deleted APIs cannot be recovered. Exercise caution when you delete an API.
 
 **Move an API to another folder**
 
@@ -38208,7 +39427,15 @@ After a function is created, you can click tabs in the right-side navigation pan
 **Mobile** to clone, delete, or move the function.
 Clone a function: Select **Clone**. In the **Clone Function** dialog box, configure the
 **Function Name** parameter, select a folder from the **Destination Folder** drop-down list,
-and click OK. The function is cloned. The name of the function can be 4 to 50 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter. Delete a function: Select **Delete**. In the **Delete Function** message, click **OK**. The function is deleted. If the function is referenced by APIs, the function fails to be deleted. In this case, you must remove the function from the filters of the APIs before you can delete the function. Move a function: Select Mobile. In the **Modify file path** dialog box, select a folder from the **Destination Folder** drop-down list and click OK. The function is moved to the destination folder.
+and click OK. The function is cloned.
+
+> **Note:** The name of the function can be 4 to 50 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
+
+Delete a function: Select **Delete**. In the **Delete Function** message, click **OK**. The function is deleted.
+
+> **Note:** If the function is referenced by APIs, the function fails to be deleted. In this case, you must remove the function from the filters of the APIs before you can delete the function.
+
+Move a function: Select Mobile. In the **Modify file path** dialog box, select a folder from the **Destination Folder** drop-down list and click OK. The function is moved to the destination folder.
 
 **What to do next**
 
@@ -38321,7 +39548,11 @@ icon in the top toolbar. After the function is created, you can test and publish
 1. In the **Service Development** pane, click the **business process > API**.
 2. Find and double-click the API. The configuration tab of the API appears.
 3. In the right-side navigation pane, click **Filter**.
-In the Filter panel, select **Use Pre-filter** or **Use Post-filter** based on your business requirements. The selected **Aviator Function** check box is highlighted. Select the function that you want to use as a prefilter or post-filter from the Use Pre-filter or Use Post-filter drop-down list. You can select multiple functions. When you execute these functions, the request parameters or responses of an API with which you associate the multiple functions are processed in the same sequence as the functions are selected. You can specify one or more functions as a filter to process the request parameters or responses of an API. If the function that you want to use is not displayed in the drop-down list next to the Use Pre-filter or Use Post-filter check box, check whether the function is published. If the function is not published, publish the function. You can also create and publish a new function. For more information, see Publish a function.
+In the Filter panel, select **Use Pre-filter** or **Use Post-filter** based on your business requirements. The selected **Aviator Function** check box is highlighted. Select the function that you want to use as a prefilter or post-filter from the Use Pre-filter or Use Post-filter drop-down list. You can select multiple functions. When you execute these functions, the request parameters or responses of an API with which you associate the multiple functions are processed in the same sequence as the functions are selected.
+
+> **Note:** You can specify one or more functions as a filter to process the request parameters or responses of an API.
+> If the function that you want to use is not displayed in the drop-down list next to the Use Pre-filter or Use Post-filter check box, check whether the function is published. If the function is not published, publish the function. You can also create and publish a new function. For more information, see Publish a function.
+
 4. Click **Preview Responses Returned by API Operation** and check whether the
 processing results of the selected functions meet your expectations.
 
@@ -38341,7 +39572,9 @@ For more information about how to create, test, submit, publish, delete, move, a
 
 **Input parameters of a function**
 
-The name of the default variable in the code for an Aviator function is $0 , which indicates the entire input of the Aviator function. Scenario 1: Use an Aviator function as the prefilter for an API. The request parameters and the values of the request parameters of the API are used as the entire input for the Aviator function. The input is in a single-layer JSON format. Example:
+> **Note:** The name of the default variable in the code for an Aviator function is $0 , which indicates the entire input of the Aviator function.
+
+Scenario 1: Use an Aviator function as the prefilter for an API. The request parameters and the values of the request parameters of the API are used as the entire input for the Aviator function. The input is in a single-layer JSON format. Example:
 
 ```
 ## user_id is the request parameter.
@@ -38957,7 +40190,11 @@ Input and output of the Aviator function:
 
 **Filter showcase**
 
-We recommend that you perform the operations in Example 2 and then the operations in Example 1 in Scenario 1. We recommend that you perform the operations in Example 1 and then the operations in Example 2 in Scenario 2. You can use only a published function as a filter for an API. Input and output of the API:
+We recommend that you perform the operations in Example 2 and then the operations in Example 1 in Scenario 1. We recommend that you perform the operations in Example 1 and then the operations in Example 2 in Scenario 2.
+
+> **Note:** You can use only a published function as a filter for an API.
+
+Input and output of the API:
 
 ```
 ## API input:
@@ -39123,7 +40360,8 @@ icon in the upper-left corner and choose **All Products > Data Service > Data**
 3. In the **Service Development** pane, find the specified business process and click the icon
 next to **Create Workflow**.
 4. Right-click the name of the workflow that you want to view and select **View Details**.
-You can click View Details to view only the details of a workflow that has been published. If a workflow has not been published, double-click the workflow to go to the configuration tab of the workflow. Then, click **Properties** in the right-side navigation pane to view the basic information about the workflow.
+
+> **Note:** You can click View Details to view only the details of a workflow that has been published. If a workflow has not been published, double-click the workflow to go to the configuration tab of the workflow. Then, click **Properties** in the right-side navigation pane to view the basic information about the workflow.
 
 **Clone a workflow**
 
@@ -39149,7 +40387,8 @@ If the workflow that you want to delete is in the Unpublished state, skip this s
 2. In the **Service Development** pane, right-click the name of the workflow that you want to
 delete and select **Delete**.
 3. In the **Delete API** message, click **OK**.
-Deleted APIs cannot be recovered. Exercise caution when you delete an API.
+
+> **Note:** Deleted APIs cannot be recovered. Exercise caution when you delete an API.
 
 **Move a workflow to another folder**
 
@@ -39187,9 +40426,7 @@ After DataService Studio receives an API request, it returns a response that con
 
 The Migration Assistant service of DataWorks allows you to migrate data objects across different DataWorks versions, Alibaba Cloud accounts, regions, and workspaces. Migration Assistant allows you to export data objects in your workspace, including auto triggered nodes, manually triggered nodes, resources, functions, data sources, table metadata, ad hoc queries, and components. You can create full export tasks, incremental export tasks, or custom export tasks to export your data objects in DataWorks based on your business requirements.
 
-**Important**
-
-To create export or import tasks, you must use an Alibaba Cloud account or be the workspace administrator. If you use a Resource Access Management (RAM) user that is not assigned the administrator role, you can only view export and import tasks.
+> **Important:** To create export or import tasks, you must use an Alibaba Cloud account or be the workspace administrator. If you use a Resource Access Management (RAM) user that is not assigned the administrator role, you can only view export and import tasks.
 
 **Scenarios**
 
@@ -39228,7 +40465,11 @@ You can download a specific flow in the Azkaban console.
 2. Select a project whose package you want to download. On the project page, click **Flows** to
 show all flows of the project.
 3. Click **Download** in the upper-right corner of the page to download the package of the
-project. The actual product page prevails. Native Azkaban packages can be exported. No format limit is imposed on the packages of Azkaban. The exported package in the ZIP format contains information about all jobs and relationships of a specific project of Azkaban. You can directly upload the ZIP package exported from the Azkaban console to the Scheduling Engine Import in DataWorks.
+project.
+
+> **Note:** The actual product page prevails.
+
+Native Azkaban packages can be exported. No format limit is imposed on the packages of Azkaban. The exported package in the ZIP format contains information about all jobs and relationships of a specific project of Azkaban. You can directly upload the ZIP package exported from the Azkaban console to the Scheduling Engine Import in DataWorks.
 
 **Conversion logic**
 
@@ -39251,9 +40492,7 @@ DataWorks allows you to migrate DataGo tasks to DataWorks. The following section
 
 Go to {Datago domain}/index.htm#/deployPackage/deploy and create an export task. You can export the following items: Tasks Projects
 
-**Important**
-
-When you export a task, the task information in the publish domain is exported. Therefore, make sure that a task is published in the specified domain before you export the task. When you export a publish package, the latest versions of the tasks that are published to the specified domain are exported. Therefore, the publish domain ID is required when you export a publish package.
+> **Important:** When you export a task, the task information in the publish domain is exported. Therefore, make sure that a task is published in the specified domain before you export the task. When you export a publish package, the latest versions of the tasks that are published to the specified domain are exported. Therefore, the publish domain ID is required when you export a publish package.
 
 **View the publish domain ID**
 
@@ -39261,11 +40500,15 @@ To view the publish domain ID of a DataGo node, perform the following operations
 
 **View the project ID, tenant ID, and workspace ID**
 
-To view the project ID, tenant ID, and workspace ID of a DataGo node, perform the following operations: Go to the DataGo console and refresh the page. Click the Data Development tab and go to the DevTools panel. In the DevTools panel, click the Network tab. In the Name section, find the list.json operation and click its name. On the Headers tab, view the project ID, tenant ID, and workspace ID of the node that you want to export. In the query result, currentTenantId indicates the ID of the tenant, namespaceId indicates the ID of the workspace, and dataProjectId indicates the ID of the project. If you migrate a node to DataWorks, the mapping of the environment variable is unavailable. You can specify the mapping.
+To view the project ID, tenant ID, and workspace ID of a DataGo node, perform the following operations: Go to the DataGo console and refresh the page. Click the Data Development tab and go to the DevTools panel. In the DevTools panel, click the Network tab. In the Name section, find the list.json operation and click its name. On the Headers tab, view the project ID, tenant ID, and workspace ID of the node that you want to export. In the query result, currentTenantId indicates the ID of the tenant, namespaceId indicates the ID of the workspace, and dataProjectId indicates the ID of the project.
+
+> **Note:** If you migrate a node to DataWorks, the mapping of the environment variable is unavailable. You can specify the mapping.
 
 **Limits**
 
-You cannot export tables, resources, functions, or data sources. You cannot export the system variables of projects. When you export a node that has cross-workspace dependencies, you must export its ancestor nodes first. Otherwise, node dependencies may be lost. Sync nodes depend on data sources. After you import a sync node, we recommend that you check the configuration of the node.
+You cannot export tables, resources, functions, or data sources. You cannot export the system variables of projects. When you export a node that has cross-workspace dependencies, you must export its ancestor nodes first. Otherwise, node dependencies may be lost.
+
+> **Note:** Sync nodes depend on data sources. After you import a sync node, we recommend that you check the configuration of the node.
 
 **Export a task from Airflow**
 
@@ -39436,7 +40679,10 @@ Migration Assistant allows you to export data objects in **full export**, **incr
 **Full export** tasks are used to export all or selected types of data objects in your
 workspace. For example, you can use a full export task to back up the code of all nodes in your workspace or clone your workspace for a test environment. When you run a full export task, data objects of the latest version are exported. Only saved data objects can be exported. If a node is saved in both the development environment and production environment, the node saved in the development environment is exported.
 **Incremental export** tasks are used to export data objects that were modified after the
-specified date. You cannot configure a blacklist for incremental export tasks.
+specified date.
+
+> **Note:** You cannot configure a blacklist for incremental export tasks.
+
 **Custom export** tasks are used to export data objects that you specify. For example, you
 can use a custom export task to extract a common workflow. This way, you can clone this workflow to other workspaces. If a workspace runs in both a production environment and a development environment that are completely isolated from each other, you can run a custom export task to export nodes from the development environment and import them to the production environment for deployment.
 
@@ -39569,7 +40815,11 @@ When you configure the import task, you must complete the settings in the **Engi
 **Instance Mapping** section. The settings in other sections are optional and can be
 configured based on your business requirements. i. In the **Engine Instance Mapping** section, select a compute engine instance that is associated with the destination workspace to establish a mapping. If multiple types of compute engines are enabled for the source workspace but only one type of compute engine is enabled for the destination workspace, the import task fails. This is because some types of nodes cannot be created in the destination workspace due to the absence of the required compute engines. ii. **Optional**. In the **Resource Group Mapping** section, configure a resource group mapping between the source and destination workspaces. This ensures that resource groups are available for imported nodes. iii. **Optional**. In the **Dependency Mapping** section, configure a workspace mapping for the related nodes. Some nodes use the name of the source workspace in their code. In this case, you must configure a workspace mapping for the nodes. This ensures that these nodes are normally run after they are imported. Set the **New Workspace** parameter to the name of the destination workspace. The system uses this name to replace the original workspace name in the code, input settings, and output settings of the nodes. iv. **Optional**. In the **Dry-run** section, find the node that you want to configure as a dry-run node and click **Set up empty run** in the Actions column. You can also select multiple nodes and click **Batch Configure** to configure these nodes as dry-run nodes. This configuration is used to configure time properties for auto triggered tasks. The system returns a success response for the auto triggered task that is configured as a dryrun node without running the node. The node does not generate data. v. **Optional**. In the **Data service settings** section, configure a mapping between data service business processes. vi. **Optional**: In the **Configure Policy Settings** section, configure an import policy for the object with the same name. vii. **Optional**. In the **Commission Rules** section, configure the committing rules for
 **Resources**, **Functions**, and **Tables**, and configure the **Change Owner** parameter
-based on your business requirements. If the destination workspace contains a data object that has the same name as the data object that you want to import, the data object that you want to import cannot be committed. If you select No for the Change Owner parameter and no owner is specified for the node that you want to import, you are automatically configured as the owner of the node after it is imported.
+based on your business requirements.
+
+> **Note:** If the destination workspace contains a data object that has the same name as the data object that you want to import, the data object that you want to import cannot be committed.
+> If you select No for the Change Owner parameter and no owner is specified for the node that you want to import, you are automatically configured as the owner of the node after it is imported.
+
 5. Click **Import**.
 6. In the **Confirm** message, click **OK**.
 
@@ -39631,7 +40881,12 @@ The **Asset Panorama** section displays all published data assets in the current
 
 **Asset Overview**
 
-The **Asset Panoramic** section displays the core metrics of all published data assets in the current workspace and other workspaces that are managed in the same asset space from different dimensions, such as the asset directory and asset type. You can also view the rankings of popular assets, newly published assets, and newly updated assets. In this section, you can perform the following operations: View the following core metrics for a specific date: ama The statistics on the published data assets until the specified date are collected. By default, the statistics on the published data assets until the previous day are collected. The statistics on unpublished data assets are not collected. You can query and view a data asset only after the data asset is published. The total number of data assets and the number of data assets of each type. The data assets added in the previous month of different types. The week-on-week and month-on-month trends of data assets of different types. View the following asset trends: The accumulated number of published data assets until now, and the week-on-week and month-on-month trends of data assets. The number of data assets whose status changes from **Unpublished** to **Published** in the current month, and the week-on-week and month-on-month trends of the change. The accumulated data assets of a specific asset type in a specific cycle and the change trend. View the directories to which the data assets of a specific type are mounted and the published and updated data assets of this type. View the view ranking of data assets of a specific type in the previous month. You can unpublish the data assets with low views. For more information about how to unpublish data assets, see Manage data assets.
+The **Asset Panoramic** section displays the core metrics of all published data assets in the current workspace and other workspaces that are managed in the same asset space from different dimensions, such as the asset directory and asset type. You can also view the rankings of popular assets, newly published assets, and newly updated assets. In this section, you can perform the following operations: View the following core metrics for a specific date: ama
+
+> **Note:** The statistics on the published data assets until the specified date are collected. By default, the statistics on the published data assets until the previous day are collected.
+> The statistics on unpublished data assets are not collected. You can query and view a data asset only after the data asset is published.
+
+The total number of data assets and the number of data assets of each type. The data assets added in the previous month of different types. The week-on-week and month-on-month trends of data assets of different types. View the following asset trends: The accumulated number of published data assets until now, and the week-on-week and month-on-month trends of data assets. The number of data assets whose status changes from **Unpublished** to **Published** in the current month, and the week-on-week and month-on-month trends of the change. The accumulated data assets of a specific asset type in a specific cycle and the change trend. View the directories to which the data assets of a specific type are mounted and the published and updated data assets of this type. View the view ranking of data assets of a specific type in the previous month. You can unpublish the data assets with low views. For more information about how to unpublish data assets, see Manage data assets.
 
 ### 13.1 Open platform overview
 
@@ -39670,9 +40925,15 @@ icon and choose **All Products > More >**
 1. In the left-side navigation pane of the **Developer Backend** page, click **OpenEvent**. The
 OpenEvent page appears.
 2. Add a Kafka endpoint.
-DataWorks allows you to add only one Kafka endpoint. i. In the **Kafka Endpoint Information** section, click **Add Kafka Endpoint**. In the Add Kafka Endpoint dialog box, configure the parameters for the endpoint, such as Type and Protocol. ii. After the configuration is complete, click **Test Connectivity** in the **Actions** column to test the connectivity of the endpoint.
+
+> **Note:** DataWorks allows you to add only one Kafka endpoint.
+
+i. In the **Kafka Endpoint Information** section, click **Add Kafka Endpoint**. In the Add Kafka Endpoint dialog box, configure the parameters for the endpoint, such as Type and Protocol. ii. After the configuration is complete, click **Test Connectivity** in the **Actions** column to test the connectivity of the endpoint.
 3. Add Kafka topics.
-DataWorks allows you to add up to 50 Kafka topics. i. In the **Kafka Topic Information** section, click **Add Kafka Topic**. ii. In the **Add Kafka Topic** dialog box, enter a topic name and click **OK**. ama iii. Find the topic that you added and click **Event Subscription Settings** in the **Actions** column to configure the subscription settings for the topic. In the **Configure Topic Settings** dialog box, select the workspace whose events you want to subscribe to and the event types. This way, messages are sent to you if the specified events occur in the workspace. You can handle the events based on the messages. iv. (Optional) After you configure the subscription settings for a topic, you can also perform the following operations: Find the topic whose subscription details you want to view and click **View**
+
+> **Note:** DataWorks allows you to add up to 50 Kafka topics.
+
+i. In the **Kafka Topic Information** section, click **Add Kafka Topic**. ii. In the **Add Kafka Topic** dialog box, enter a topic name and click **OK**. ama iii. Find the topic that you added and click **Event Subscription Settings** in the **Actions** column to configure the subscription settings for the topic. In the **Configure Topic Settings** dialog box, select the workspace whose events you want to subscribe to and the event types. This way, messages are sent to you if the specified events occur in the workspace. You can handle the events based on the messages. iv. (Optional) After you configure the subscription settings for a topic, you can also perform the following operations: Find the topic whose subscription details you want to view and click **View**
 **Subscription Details** in the **Actions** column.
 Find the topic that you want to delete and click **Delete** in the **Actions** column.
 
@@ -39697,7 +40958,11 @@ to the Extensions page.
 3. In the Register Extension panel, configure the parameters for the extension.
 i. Select a deployment mode. In the Select Deployment Method step of the Register Extension dialog box, select
 **Deploy Based on Self-managed Service** and click **Next**.
-ii. Register the extension. During the preparation, you need to configure only the required parameters. You can configure the optional parameters after you develop and debug the extension. The required parameters include **Extension Name**, **Processed Extension Points**,
+ii. Register the extension.
+
+> **Note:** During the preparation, you need to configure only the required parameters. You can configure the optional parameters after you develop and debug the extension.
+
+The required parameters include **Extension Name**, **Processed Extension Points**,
 **Owner**, and **Workspace for Testing**. The rest of the parameters can be configured
 after the extension is developed and deployed. The following table describes the parameters.
 
@@ -39743,8 +41008,9 @@ icon in the upper-right corner.
 
 1. On the **Extension** page, configure the **effective scope**.
 2. In the extension list, find the target extension and turn on the switch in the **Enable** column.
-In the dialog box that appears, grant the required permissions. If the **Actions** column for your extension includes a **Settings** option, you can click the
-**Settings** button to configure data authorization for the extension before enabling it.
+In the dialog box that appears, grant the required permissions.
+
+> **Note:** If the **Actions** column for your extension includes a **Settings** option, you can click the **Settings** button to configure data authorization for the extension before enabling it.
 
 ## 14 View operation logs
 
@@ -39761,16 +41027,24 @@ Only authorized users can access the operation log. To gain access, contact your
 **Access the operation log**
 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 3. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 4. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -39784,7 +41058,12 @@ Enter the six-digit MFA code and click **Authenticate**.
 
 **Search for DataWorks audit events**
 
-On the **Advanced Search** page, you can filter events by criteria such as organization, product type, and source IP. To view the details of a specific event, click **View** next to the event. You can then assess potential risks based on the instance details. DataWorks currently supports the following two types of audit events: API-based events: For these events, the **Event Name** corresponds to the name of the API operation. Non-API events: For a list of these events, see Appendix: DataWorks audit events.
+On the **Advanced Search** page, you can filter events by criteria such as organization, product type, and source IP. To view the details of a specific event, click **View** next to the event. You can then assess potential risks based on the instance details.
+
+> **Note:** DataWorks currently supports the following two types of audit events:
+> API-based events: For these events, the **Event Name** corresponds to the name of the API operation.
+
+Non-API events: For a list of these events, see Appendix: DataWorks audit events.
 
 **Log storage**
 
@@ -40005,7 +41284,11 @@ A task is an operation performed on data. Examples include: A data synchronizati
 
 **Instance**
 
-An instance is a snapshot of a task for a specific execution. When a task is triggered, either automatically by the scheduling system or manually by a user, it generates an instance. This instance contains details about the execution, such as its runtime, status, and logs. The **Operation Center > Cycle Task** page shows information about an instance. For example, if Task1 is scheduled to run at 2:00 AM every day, the scheduling system automatically generates a snapshot at 11:30 PM the day before. This snapshot is the instance for the 2:00 AM run. At 2:00 AM, the Task1 instance starts if all its ancestor instances have successfully completed.
+An instance is a snapshot of a task for a specific execution. When a task is triggered, either automatically by the scheduling system or manually by a user, it generates an instance. This instance contains details about the execution, such as its runtime, status, and logs.
+
+> **Note:** The **Operation Center > Cycle Task** page shows information about an instance.
+
+For example, if Task1 is scheduled to run at 2:00 AM every day, the scheduling system automatically generates a snapshot at 11:30 PM the day before. This snapshot is the instance for the 2:00 AM run. At 2:00 AM, the Task1 instance starts if all its ancestor instances have successfully completed.
 
 **Resources and functions**
 
@@ -40013,7 +41296,9 @@ Resources and functions are MaxCompute concepts. You can manage resources and fu
 
 **Output name**
 
-An output name identifies a task's output. It is an identifier used within a single tenant (Alibaba Cloud account) to connect upstream and downstream Node Tasks when you configure a dependency. When you set the upstream and downstream dependencies for a task, you must use its output name, not the node name or node ID. Once configured, this output name also serves as the input name for its downstream nodes. The output name of a node must be unique within a tenant.
+An output name identifies a task's output. It is an identifier used within a single tenant (Alibaba Cloud account) to connect upstream and downstream Node Tasks when you configure a dependency. When you set the upstream and downstream dependencies for a task, you must use its output name, not the node name or node ID. Once configured, this output name also serves as the input name for its downstream nodes.
+
+> **Note:** The output name of a node must be unique within a tenant.
 
 **Metadata**
 

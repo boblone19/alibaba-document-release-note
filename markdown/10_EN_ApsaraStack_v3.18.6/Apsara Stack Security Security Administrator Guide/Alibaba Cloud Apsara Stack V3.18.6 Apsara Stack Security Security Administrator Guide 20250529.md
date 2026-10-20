@@ -5,7 +5,7 @@ doc_version: "20250529"
 pdf_pages: 38
 source_pdf: "41ad4128af759968_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Security Security Administrator Guide 20250529.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E5%9F%BA%E7%A1%80%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Security%20Security%20Administrator%20Guide%2020250529.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Security Security Administrator Guide 20250529
@@ -79,14 +79,13 @@ The URL, username, and password that are required to log on to the Apsara Uni-ma
 1. Open your browser.
 2. In the address bar, enter the URL. Then, press the Enter key.
 
-**Note**
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
 
-You can select a language from the drop-down list in the upper-right corner of the page.
 3. Enter your username and password.
 
-**Note**
+> **Note:** To obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console, contact the deployment personnel or administrators.
 
-To obtain the username and password that are used to log on to the Apsara Unimanager Operations Console, contact the deployment personnel or administrators. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. on to Cloud Security Operations Center The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. on to Cloud Security Operations Center The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 4. Click **Log On**.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Apsara Stack Security**.
@@ -328,9 +327,7 @@ ud service management
 
 Cloud Hardware Security Module-managed HSMs
 
-**Important**
-
-If you have already registered Key Management Service (KMS)-managed HSMs, the Cloud Hardware Security Module-managed HSMs tab is dimmed.
+> **Important:** If you have already registered Key Management Service (KMS)-managed HSMs, the Cloud Hardware Security Module-managed HSMs tab is dimmed.
 
 | Parameter | Description |
 |---|---|
@@ -344,11 +341,10 @@ i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > *
 **KMS O&M**.
 ii. On the **Resources** tab, click **Initialize HSM**. In the **Initialize HSM** message, click **OK**.
 
-**Note**
+> **Note:** If the number of VSMs is smaller than 3, you cannot initialize the HSM.
+> After the initialization request is submitted, the system generates an O&M task. You can choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS** **O&M** in the left-side navigation pane to go to the Tenant-side KMS O&M page and view the status of the O&M task on the **Tasks** tab.
+> After the HSM is initialized, health check tasks for the HSM are continuously added to the task list. You can use HSM-related features.
 
-If the number of VSMs is smaller than 3, you cannot initialize the HSM. After the initialization request is submitted, the system generates an O&M task. You can choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS**
-**O&M** in the left-side navigation pane to go to the Tenant-side KMS O&M page
-and view the status of the O&M task on the **Tasks** tab. After the HSM is initialized, health check tasks for the HSM are continuously added to the task list. You can use HSM-related features.
 5. Disable the HSM.
 i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side**
 **KMS O&M**.
@@ -477,10 +473,7 @@ This topic describes how to configure global quotas.
 | Ticket Link | The link for the change ticket in your change management system. If no tickets are created, enter ignore. |
 | Description | The description for your operation. Both Chinese and English are supported. |
 
-**Note**
-
-After the global quota is modified, the system generates an O&M event. You can view the details about the event by choosing **O&M Management > Event**. You can also view the task status for the event by choosing **O&M Management >**
-**Tasks**.
+> **Note:** After the global quota is modified, the system generates an O&M event. You can view the details about the event by choosing **O&M Management > Event**. You can also view the task status for the event by choosing **O&M Management >** **Tasks**.
 
 #### 5.3.6 Configure global settings
 
@@ -529,10 +522,8 @@ dates If your Apsara Stack environment is inaccessible over the Internet, you ca
 **Identifier**. Then, download update packages. For more information, see Download
 update packages. b. Click Import Upgrade Package and drag the downloaded update packages to the dotted box. You can also click the icon to upload the update packages.
 
-**Note**
+> **Note:** Before you upload the update packages, click the link in the **Manually Import** **offline upgrade packages**dialog box and trust the certificate.
 
-Before you upload the update packages, click the link in the **Manually Import**
-**offline upgrade packages**dialog box and trust the certificate.
 After you import the update packages, you can view the update packages on the Feature Library Upgrade page and Version Upgrade page and perform updates.
 
 **Automatic import**
@@ -767,9 +758,9 @@ You can also perform the following operations: View and edit an audit rule If an
 **Search**.
 Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column.
 
-**Note**
+> **Note:** You can delete only custom rules.
 
-You can delete only custom rules. Import a rule Click **Import Rule** and upload a rule file as prompted. Export a rule You can export multiple custom rules at a time. Select the custom rules that you want to export and click **Export Rule**.
+Import a rule Click **Import Rule** and upload a rule file as prompted. Export a rule You can export multiple custom rules at a time. Select the custom rules that you want to export and click **Export Rule**.
 
 #### 8.6.2 Configure alert recipients
 

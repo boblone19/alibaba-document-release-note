@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 241
 source_pdf: "1e7e30b9d7c067aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828
@@ -188,17 +188,17 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Login**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for Kafka**.
 6. On the **ApsaraMQ for Kafka** page, select the organization and region and click **Kafka**.
 
@@ -312,9 +312,7 @@ To create an instance in the ApsaraMQ for Kafka console, you must upgrade Apsara
 4. On the **Create a Kafka instance** page, configure the following parameters and click
 **Submit**.
 
-**Note**
-
-If Service Catalog is enabled for your environment, configure the following parameters on the **Create a Kafka instance** page and click **Confirm Order**.
+> **Note:** If Service Catalog is enabled for your environment, configure the following parameters on the **Create a Kafka instance** page and click **Confirm Order**.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -370,17 +368,14 @@ i. **Basic information**: You can view the instance ID, instance name, zone, reg
 
 If your ApsaraMQ for Kafka instance cannot meet your business requirements, you can scale out the instance in the ApsaraMQ for Kafka console.
 
-**Important**
+> **Important:** After the scale-out, the number of brokers cannot be greater than the total number of exclusive nodes. ApsaraMQ for Kafka does not allow you to scale in an instance.
 
-After the scale-out, the number of brokers cannot be greater than the total number of exclusive nodes. ApsaraMQ for Kafka does not allow you to scale in an instance.
 1. On the **Instance List** page, find the instance that you want to scale out and click
 **Expansion** in the **Operation** column.
 2. On the **Kafka instance expansion** page, specify a value in the **Number of final state**
 **Broker nodes** and **Specifications** fields, and click **Submit**.
 
-**Note**
-
-If Service Catalog is enabled for your environment, configure the following parameters on the **Create a Kafka instance** page and click **Confirm Order**.
+> **Note:** If Service Catalog is enabled for your environment, configure the following parameters on the **Create a Kafka instance** page and click **Confirm Order**.
 
 **Perform load balancing**
 
@@ -390,15 +385,15 @@ icon in the
 **Operation** column. Then, click **Load balancing**.
 2. In the message that appears, read the note and click **OK**.
 
-**Note**
-
-After the scale-out, you can perform load balancing to evenly reallocate all partitions in the instance to all brokers. Load balancing operations may affect concurrent traffic. We recommend that you perform these operations during off-peak hours. Load balancing operations may affect the topics on which you have performed load balancing in the instance. Fully evaluate the impacts before you perform load balancing operations.
+> **Note:** After the scale-out, you can perform load balancing to evenly reallocate all partitions in the instance to all brokers.
+> Load balancing operations may affect concurrent traffic. We recommend that you perform these operations during off-peak hours.
+> Load balancing operations may affect the topics on which you have performed load balancing in the instance. Fully evaluate the impacts before you perform load balancing operations.
 
 **Release an instance**
 
-**Warning**
+> **Warning:** After you release an instance, all data in the instance is deleted and cannot be restored. Proceed with caution.
+> Before you release an instance, make sure that the disaster recovery cluster relationship has been removed.
 
-After you release an instance, all data in the instance is deleted and cannot be restored. Proceed with caution. Before you release an instance, make sure that the disaster recovery cluster relationship has been removed.
 1. On the **Instance List** page, find the instance that you want to manage and click **Release**
 in the **Operation** column. `confirm`, and then click **OK**.
 2. In the dialog box that appears, read the note, enter
@@ -465,9 +460,7 @@ This topic describes how to configure the parameters of an ApsaraMQ for Kafka in
 3. In the **Parameter configuration** panel, modify the parameters that are described in the
 following table.
 
-**Warning**
-
-The default configurations are optimal configurations. We recommend that you do not modify the default configurations unless necessary. The modification of the following parameters, except for the **log.retention.bytes** parameter, causes the restart of ApsaraMQ for Kafka. We recommend that you modify the parameters when your business is idle.
+> **Warning:** The default configurations are optimal configurations. We recommend that you do not modify the default configurations unless necessary. The modification of the following parameters, except for the **log.retention.bytes** parameter, causes the restart of ApsaraMQ for Kafka. We recommend that you modify the parameters when your business is idle.
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -513,15 +506,13 @@ ApsaraMQ for Kafka allows you to monitor the status of your resources in real ti
 3. On the **Instance List** page, find the instance that you want to manage, and click the
 instance name, or click **Details** in the **Operation** column.
 
-**Note**
+> **Note:** You can also click the
+> icon in the **Monitoring** column to open the monitoring panel.
 
-You can also click the icon in the **Monitoring** column to open the monitoring panel.
 4. On the **Instance details** page, click the **Monitoring** tab to view the monitoring
 information.
 
-**Note**
-
-You can also click **View more** in the upper-right corner of the Monitoring tab to go to the CloudMonitor console and view the detailed monitoring data of the instance.
+> **Note:** You can also click **View more** in the upper-right corner of the Monitoring tab to go to the CloudMonitor console and view the detailed monitoring data of the instance.
 
 | Item | Description |
 |---|---|
@@ -677,9 +668,7 @@ icon in the **Operation** column, and then click **Increase the number of partit
 5. In the **Increase the number of partitions** dialog box, configure the **Number of new**
 **partitions** parameter and click **OK**.
 
-**Note**
-
-The number of partitions ranges from 1 to 48. To reduce the risk of data skew, we recommend that you select a multiple of 6. For special requirements, submit a ticket for consultation.
+> **Note:** The number of partitions ranges from 1 to 48. To reduce the risk of data skew, we recommend that you select a multiple of 6. For special requirements, submit a ticket for consultation.
 
 #### 2.4.7 Migrate topic partitions
 
@@ -705,9 +694,8 @@ which you want to redistribute messages.
 
 **Batch rebalance messages**
 
-**Note**
+> **Note:** You cannot select destination brokers for batch message rebalancing. By default, messages are load-balanced across all brokers.
 
-You cannot select destination brokers for batch message rebalancing. By default, messages are load-balanced across all brokers.
 1. Log in to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instance List**.
 3. On the **Instance List** page, find the instance that you want to manage, and click the
@@ -739,9 +727,8 @@ You can also click **Details** in the **Operation** column.
 6. In the **Create Consumer Group** dialog box, enter a name into the **Consumer Group**
 parameter and click **OK**.
 
-**Note**
-
-The value of the **Consumer Group** parameter must be 1 to 255 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The value of the **Consumer Group** parameter cannot be modified after the consumer group is created. Proceed with caution.
+> **Note:** The value of the **Consumer Group** parameter must be 1 to 255 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.).
+> The value of the **Consumer Group** parameter cannot be modified after the consumer group is created. Proceed with caution.
 
 **What to do next**
 
@@ -803,9 +790,8 @@ the topic list of the **Consumption status** panel and click **Details** in the 
 
 If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages sent after a point in time regardless of whether the messages sent before this point in time are consumed. All consumers in the consumer group for which you want to reset the consumer offset are stopped.
 
-**Important**
-
-ApsaraMQ for Kafka no longer supports the resetting of offsets during client connection. ApsaraMQ for Kafka considers a consumer stopped only after the period of time specified by the `ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG` parameter elapses. The default value of the parameter is 10000, in milliseconds.
+> **Important:** ApsaraMQ for Kafka no longer supports the resetting of offsets during client connection.
+> ApsaraMQ for Kafka considers a consumer stopped only after the period of time specified by the `ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG` parameter elapses. The default value of the parameter is 10000, in milliseconds.
 
 **Background information**
 
@@ -813,9 +799,8 @@ ApsaraMQ for Kafka allows you to reset consumer offsets by using one of the foll
 **Clear all accumulated messages and start consumption from the latest offset:** If
 you no longer want to consume accumulated messages on the broker, clear the messages for the consumer. This way, the consumer offset is set to the latest offset.
 
-**Important**
+> **Important:** This method changes only the consumer offset. The accumulated messages are not deleted.
 
-This method changes only the consumer offset. The accumulated messages are not deleted.
 **Start consumption at the specified time point**: You can reset the offset of a consumer
 group to a previous or future time point. For example, assume "t" is the time point when a message is stored. After the reset, the consumer group subscribes to messages stored after the "t" time point.
 
@@ -1106,9 +1091,7 @@ instance name, or click **Details** in the **Operation** column.
 5. In the **Confirm deletion** dialog box, enter
 `confirm` and click **OK**.
 
-**Important**
-
-After you delete a VIP, the ApsaraMQ for Kafka instance becomes unavailable. Proceed with caution.
+> **Important:** After you delete a VIP, the ApsaraMQ for Kafka instance becomes unavailable. Proceed with caution.
 
 #### 2.8.3 Request a domain name
 
@@ -1173,15 +1156,14 @@ and **timestamp**.
 **Status**, and **Task Configuration**.
 Click **Restart** in the upper-right corner of the **Connector Information** module to restart the MirrorSourceConnector, MirrorCheckpointConnector, MirrorHeartbeatConnector, and all tasks.
 
-**Note**
-
-MirrorSourceConnector: reads data from the source cluster and writes the data to the destination cluster. MirrorCheckpointConnector: records the offset of the consumer group in the source cluster and synchronizes the offset to the destination cluster. MirrorHeartbeatConnector: sends heartbeats between the source and destination clusters to monitor the connection status.
+> **Note:** MirrorSourceConnector: reads data from the source cluster and writes the data to the destination cluster.
+> MirrorCheckpointConnector: records the offset of the consumer group in the source cluster and synchronizes the offset to the destination cluster.
+> MirrorHeartbeatConnector: sends heartbeats between the source and destination clusters to monitor the connection status.
 
 **Restart a replicator**
 
-**Important**
+> **Important:** During the restart of a replicator, message replication between the source and destination clusters is suspended.
 
-During the restart of a replicator, message replication between the source and destination clusters is suspended.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, choose **Data Integration > Message Routing**.
 3. On the **Replicator** tab, click **Restart** in the Operation column of the desired replicator.
@@ -1372,9 +1354,10 @@ You can perform the following steps to start a local task.
 
 You can perform the following steps to migrate the domain name of a source cluster to the destination cluster.
 
-**Note**
+> **Note:** Prerequisites:
+> The source instance has a domain name.
+> The message lag between the source and destination instances is 0. A domain name can be migrated only if the message lag between the source and destination instances is 0. You can view the message **lag** in the **Other information** section on the **Task Details** page.
 
-Prerequisites: The source instance has a domain name. The message lag between the source and destination instances is 0. A domain name can be migrated only if the message lag between the source and destination instances is 0. You can view the message **lag** in the **Other information** section on the **Task Details** page.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, choose **Data Integration > Message Routing**.
 3. On the **Message Routing** page, click the **Tasks** tab.
@@ -1386,9 +1369,8 @@ Prerequisites: The source instance has a domain name. The message lag between th
 
 You can perform the following steps to block the traffic of the source cluster so that a local task can be performed.
 
-**Note**
+> **Note:** Note that write operations cannot be re-enabled within three minutes after they are disabled.
 
-Note that write operations cannot be re-enabled within three minutes after they are disabled.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, choose **Data Integration > Message Routing**.
 3. On the **Message Routing** page, click the **Tasks** tab.
@@ -4861,9 +4843,8 @@ This article describes how to configure conditional predicates and converters.
 
 **Configure conditional predicates**
 
-**Note**
-
-You can click **Add Predicate** to add at most 10 conditional predicates. A conditional predicate can be referenced by multiple converters.
+> **Note:** You can click **Add Predicate** to add at most 10 conditional predicates.
+> A conditional predicate can be referenced by multiple converters.
 
 | Parameter | Description |
 |---|---|
@@ -4876,9 +4857,7 @@ You can click **Add Predicate** to add at most 10 conditional predicates. A cond
 
 **Configure converters**
 
-**Note**
-
-You can click **Add converter** to add at most 10 converters.
+> **Note:** You can click **Add converter** to add at most 10 converters.
 
 | Parameter | Description |
 |---|---|
@@ -5048,9 +5027,9 @@ i. Select a connect. Select a connect from the **Please select a Connect cluster
 **Next**.
 ii. Select a data source. Select a connector from the **Connector** drop-down list, configure the relevant parameters, and click **Next**.
 
-**Note**
+> **Note:** For more information about the supported connector types and the configuration for each connector type, see Connector types.
 
-For more information about the supported connector types and the configuration for each connector type, see Connector types. iii. Specify the destination table. In the **Configure Target Table** step, configure the following parameters, confirm other information, and click **Next**.
+iii. Specify the destination table. In the **Configure Target Table** step, configure the following parameters, confirm other information, and click **Next**.
 
 | Parameter | Description |
 |---|---|
@@ -5078,9 +5057,10 @@ data format.
 **Associated Connector**: displays the two key components of the task. Both connectors
 must be in the RUNNING state before the task can synchronize data as normal.
 
-**Note**
+> **Note:** Click **Pause** to stop pulling data from the database.
+> Click **Resume** to resume consumption from the offset.
+> Click **Restart** to reinitialize the connection. Perform this operation after the configuration is updated.
 
-Click **Pause** to stop pulling data from the database. Click **Resume** to resume consumption from the offset. Click **Restart** to reinitialize the connection. Perform this operation after the configuration is updated.
 **Operation History**: displays the logs of key events in descending chronological order.
 
 **Pause or resume a data ingestion task**
@@ -5092,9 +5072,8 @@ When you pause a data ingestion task, the Kafka connect stops the task thread of
 
 **Delete a data ingestion task**
 
-**Important**
+> **Important:** You cannot restore a data ingestion task after you delete it. Make sure that important configurations are backed up or metadata is exported before you start.
 
-You cannot restore a data ingestion task after you delete it. Make sure that important configurations are backed up or metadata is exported before you start.
 1. On the **Data Lake Ingest** page, find the desired data ingestion task and click **Delete** in
 the **Operation** column.
 2. Click **OK**.
@@ -5142,17 +5121,14 @@ iii. In the **Configure Target Services** step, specify the information about th
 After a replica cluster is created, you can view the replica cluster on the **Disaster**
 **Recovery** page.
 
-**Note**
-
-You cannot use instances that are used to create a replica cluster as the source or destination instances to create another replica cluster.
+> **Note:** You cannot use instances that are used to create a replica cluster as the source or destination instances to create another replica cluster.
 
 **Switch to the secondary cluster**
 
 When faults occur in the primary cluster, you can switch business in the primary cluster to the secondary cluster to prevent business interruption.
 
-**Important**
+> **Important:** During the switchover, the network is switched. As a result, temporary disconnection can occur on the client. Confirm before you perform the switchover.
 
-During the switchover, the network is switched. As a result, temporary disconnection can occur on the client. Confirm before you perform the switchover.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Replica Clusters**.
 3. On the **Disaster Recovery** page, find the replica cluster that you want to manage and click
@@ -5164,9 +5140,8 @@ to switch and click **OK**.
 
 If you no longer require disaster recovery capabilities, you can delete the replica cluster.
 
-**Important**
+> **Important:** After you delete a replica cluster, synchronization tasks that are running are stopped and deleted. The primary and secondary clusters no longer provide disaster recovery capabilities. Deleted clusters cannot be recovered. Proceed with caution.
 
-After you delete a replica cluster, synchronization tasks that are running are stopped and deleted. The primary and secondary clusters no longer provide disaster recovery capabilities. Deleted clusters cannot be recovered. Proceed with caution.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Replica Clusters**.
 3. On the **Disaster Recovery** page, find the replica cluster that you want to manage and click
@@ -5659,9 +5634,9 @@ and query statements. Execute a KSQL statement: Enter the KSQL statement in the 
 **Operation** column.
 2. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** Deleted KSQL clusters cannot be restored. Proceed with caution.
 
-Deleted KSQL clusters cannot be restored. Proceed with caution. ions
+ions
 
 ## 3 Pod command operations
 
@@ -5702,9 +5677,7 @@ Sample output:
 __consumer_offsets test
 ```
 
-**Note**
-
-The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
+> **Note:** The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
 
 #### 3.1.2 Send messages
 
@@ -5816,9 +5789,7 @@ Sample output:
 __consumer_offsets test
 ```
 
-**Note**
-
-The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
+> **Note:** The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
 
 #### 3.2.2 View the status of a topic
 

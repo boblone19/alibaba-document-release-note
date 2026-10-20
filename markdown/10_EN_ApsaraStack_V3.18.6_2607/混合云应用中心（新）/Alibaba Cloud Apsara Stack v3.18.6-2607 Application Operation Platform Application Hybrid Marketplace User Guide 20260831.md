@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 31
 source_pdf: "20c368d04d139a1e_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace User Guide 20260831
@@ -67,9 +67,11 @@ This topic describes how to use the Hybrid Cloud Application Center console to d
 
 Before you deploy an application, make the following preparations: Account: Create a user account that has the permissions to use the resources of the specified organization and resource set to which you want to deploy the application. Network resources: Create a virtual private cloud (VPC) and vSwitches in the specified organization and resource set. ACK cluster: Create an ACK cluster in the specified organization and resource set. The specifications of the worker nodes in the cluster must be at least the component container specifications required for application access in the base environment. For example, if the component container specifications are 4 CPU cores and 8 GB of memory, the specifications of a worker node in the ACK cluster must be at least 4 CPU cores and 8 GB of memory. Cluster data authorization: Grant data permissions on the ACK cluster to the user account. Wildcard domain name: Bind an available wildcard domain name to each Ingress of the ACK cluster.
 
-**Note**
+> **Note:** Log on to the ACK console. In the left-side navigation pane of the details page of your cluster, choose Network > Services. On the Services page, select kube- system from the Namespace drop-down list and click nginx-ingress-lb in the Name column. On the service details page, the IP addresses in the External Endpoint field are the origin IP addresses to which you need to bind wildcard domain names.
+> If you use DNS to bind domain names, we recommend that you use an A record to bind a wildcard domain name to an Ingress. If you do not bind wildcard domain names, you must configure an A record for each service domain name to point to the IP address of the Ingress.
+> The bound wildcard domain name must be specified in the environment variables of the cluster when you deploy the application.
 
-Log on to the ACK console. In the left-side navigation pane of the details page of your cluster, choose Network > Services. On the Services page, select kubesystem from the Namespace drop-down list and click nginx-ingress-lb in the Name column. On the service details page, the IP addresses in the External Endpoint field are the origin IP addresses to which you need to bind wildcard domain names. If you use DNS to bind domain names, we recommend that you use an A record to bind a wildcard domain name to an Ingress. If you do not bind wildcard domain names, you must configure an A record for each service domain name to point to the IP address of the Ingress. The bound wildcard domain name must be specified in the environment variables of the cluster when you deploy the application. Image repository in Container Registry: Create an image repository in Container Registry and push the required application images to the image repository.
+Image repository in Container Registry: Create an image repository in Container Registry and push the required application images to the image repository.
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **System Management** > **Image Repositories**.
 On the page that appears, make sure that the Repository URL, Read/Write Account, and Account Password of the image repository are the same as those of the image repository created in Container Registry.
@@ -122,24 +124,22 @@ This topic describes how to use the Hybrid Cloud Application Center console to d
 
 Before you deploy an application, make the following preparations: Account: Create a user account that has the permissions to use the resources of the specified organization and resource set to which you want to deploy the application. Resource Access Management (RAM) authorization: The created account must have the required permissions on the ECS instance. You can use RAM-based authorization to grant the account only the permissions required for application deployment.
 
-**Note**
-
-**RAM authorization configuration**
-
-i. Create a RAM role and grant the required permissions to the role in the Apsara Unimanager Management Console. ii. Add a permission policy to the created RAM role. The following code shows the permission policy: `{`
+> **Note:** **RAM authorization configuration**
+> i. Create a RAM role and grant the required permissions to the role in the Apsara Uni-
+> manager Management Console.
+> ii. Add a permission policy to the created RAM role. The following code shows the
+> permission policy:
+> `{`
 
 ```json
     "Version": "1",
     "Statement":
 ```
 
-`[` `{`
+> `[`
 
-```json
-            "Action":
-```
-
-`[`
+> `{` `"Action":`
+> `[`
 
 ```
                 "rds:Describe*",
@@ -154,23 +154,22 @@ i. Create a RAM role and grant the required permissions to the role in the Apsar
                 "rds:CreateOnlineDatabaseTask"
 ```
 
-`],`
+> `],` `"Resource": "*",`
 
 ```json
-            "Resource": "*",
             "Effect": "Allow"
 ```
 
-`},` `{`
+> `},`
+> `{`
 
 ```json
             "Action":
 ```
 
-`[`
+> `[` `"ecs:DescribeSecurityGroupAttribute",`
 
 ```
-                "ecs:DescribeSecurityGroupAttribute",
                 "ecs:DescribeInstances",
                 "ecs:DescribeRegions",
                 "ecs:AuthorizeSecurityGroup",
@@ -203,7 +202,12 @@ i. Create a RAM role and grant the required permissions to the role in the Apsar
             "Effect": "Allow"
 ```
 
-`}` `]` `}` iii. Associate the prepared user account with the RAM role by using a user group. Network resources: Create a virtual private cloud (VPC) and vSwitches in the specified organization and resource set.
+> `}`
+> `]`
+> `}`
+> iii. Associate the prepared user account with the RAM role by using a user group.
+
+Network resources: Create a virtual private cloud (VPC) and vSwitches in the specified organization and resource set.
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **System Management** > **Variables**. On the page
 that appears, you can modify the variable settings based on your business requirements.
@@ -304,9 +308,8 @@ that appears, follow on-screen instructions to configure the basic information f
 
 After an application is deployed, you can view all purchased and trial applications in the Hybrid Cloud Application Center console. You can also unpublish applications that have been deployed.
 
-**Note**
+> **Note:** You must have the necessary permissions to manage applications. Applications that you are not authorized to manage are not displayed on the My Applications page.
 
-You must have the necessary permissions to manage applications. Applications that you are not authorized to manage are not displayed on the My Applications page.
 1. Log on to the Hybrid Cloud Application Center console.
 2. On the **My Applications** page, click the card of the application that you want to view. In
 the panel that appears, click an instance in the Instances Deployed in Application System section to go to the application details page.
@@ -315,9 +318,8 @@ the panel that appears, click an instance in the Instances Deployed in Applicati
 4. Unpublish an application.
 i. On the application details page, click **Delete** in the upper-right corner. ii. In the message that appears, click **Deprecate Application** to unpublish the application and release resources.
 
-**Important**
+> **Important:** After an application is unpublished, the resources that you use in the production environment will be released, and the generated application data will be deleted. Perform the operation after confirmation.
 
-After an application is unpublished, the resources that you use in the production environment will be released, and the generated application data will be deleted. Perform the operation after confirmation.
 5. View application system configurations.
 i. On the application details page, click **Configure** in the upper-right corner. ii. You can view the **Input Configurations**, **Output Configurations**, and **System**
 **Configurations** of the application.

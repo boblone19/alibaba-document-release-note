@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 185
 source_pdf: "4296c6f44c118770_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis User Guide 20260831
@@ -96,8 +96,9 @@ e notes
 
 **notes**
 
-This topic describes the kernel version release notes of Tair (Redis OSS-compatible). For more information about detailed updates and version differences, see the **Tair**
-**(Redis OSS-compatible)** section in **Hotfix release notes**.
+This topic describes the kernel version release notes of Tair (Redis OSS-compatible).
+
+> **Note:** For more information about detailed updates and version differences, see the **Tair** **(Redis OSS-compatible)** section in **Hotfix release notes**.
 
 **Release date: 2026-07-30**
 
@@ -193,7 +194,11 @@ This topic describes the commands introduced in Tair (Enterprise Edition) perfor
 
 **Prerequisites**
 
-The following conditions must be met for TairHash commands to take effect: The instance is a performance-enhanced instance of Tair (Enterprise Edition). The Redis strings that you want to manage are stored on the performance-enhanced instance. You can manage Redis strings and TairStrings on a performance-enhanced instance. However, CAS and CAD commands are applicable only to Redis strings. Table 1. Commands that enhance string functionality
+The following conditions must be met for TairHash commands to take effect: The instance is a performance-enhanced instance of Tair (Enterprise Edition). The Redis strings that you want to manage are stored on the performance-enhanced instance.
+
+> **Note:** You can manage Redis strings and TairStrings on a performance-enhanced instance. However, CAS and CAD commands are applicable only to Redis strings.
+
+Table 1. Commands that enhance string functionality
 
 | Command | Syntax | Description |
 |---|---|---|
@@ -253,13 +258,13 @@ This topic describes the commands that TairString data supports.
 
 TairString is a string data structure with a built-in version number. While a Redis string consists only of a key and a value, TairString carries a version number in addition to a key and a value making it ideal for, scenarios such as optimistic locking. Built upon the increment and decrement features of Redis strings, TairString supports boundary settings. You can limit the results of **INCRBY** and **INCRBYFLOAT** to a specified range. If the result exceeds the range, the system returns an error. Key features: Values carry version numbers. You can set a change range when using **INCRBY** and **INCRBYFLOAT** to increment data.
 
-**Warning**
-
-TairString and native Redis strings are two different data structures. Do not mix their commands.
+> **Warning:** TairString and native Redis strings are two different data structures. Do not mix their commands.
 
 **Prerequisites**
 
-The commands described in this topic take effect only when the following conditions are met. The Redis instances are Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair). The operation targets TairString data in a performance-enhanced instance. A performance-enhanced instance supports both Redis strings (native Redis strings) and TairStrings. The commands in this topic do not apply to Redis strings.
+The commands described in this topic take effect only when the following conditions are met. The Redis instances are Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair). The operation targets TairString data in a performance-enhanced instance.
+
+> **Note:** A performance-enhanced instance supports both Redis strings (native Redis strings) and TairStrings. The commands in this topic do not apply to Redis strings.
 
 **Command list**
 
@@ -508,13 +513,13 @@ This topic describes the commands supported by a TairHash.
 
 A TairHash is a hash that allows you to specify the expiration time and version number of a field. TairHash and Redis Hash support a variety of data interfaces and provide high performance in data processing. However, Redis Hash allows you to specify expiration times only for keys. TairHash allows you to specify expiration times for both keys and fields. You can also use TairHash to specify the version numbers of fields. TairHash is flexible and can help simplify business development in most scenarios. TairHash uses the efficient active expiration algorithm to check the expiration times of fields and delete expired fields. This process does not increase the database response time. TairHashes have the following features: TairHash allows you to specify expiration times and version numbers for fields. The active expiration and passive expiration algorithms can be used on fields. TairHash provides a similar syntax to Redis Hash. TairHashes support efficient active expiration policies. However, this can increase memory consumption to some extent.
 
-**Warning**
-
-TairHashes and native Redis hashes are two different data types. The commands that are supported by TairHashes and native Redis hashes are not interchangeable.
+> **Warning:** TairHashes and native Redis hashes are two different data types. The commands that are supported by TairHashes and native Redis hashes are not interchangeable.
 
 **Prerequisites**
 
-The following conditions must be met for TairHash commands to take effect: Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair) are used. The TairHash data that you want to manage is stored on the performance-enhanced instance. You can manage both native Redis hashes and TairHashes on the performanceenhanced instance. However, native Redis hashes do not support the TairHash commands that are described in this topic.
+The following conditions must be met for TairHash commands to take effect: Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair) are used. The TairHash data that you want to manage is stored on the performance-enhanced instance.
+
+> **Note:** You can manage both native Redis hashes and TairHashes on the performance- enhanced instance. However, native Redis hashes do not support the TairHash commands that are described in this topic.
 
 **Commands**
 
@@ -735,7 +740,9 @@ Syntax EXHINCRBY <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time]
 | MAX | The maximum value of the field. If the specified value is larger than this upper limit, an exception is returned. |
 | NOACTIVE | When you set the EX, EXAT, PX, or PXAT parameter, you can set the NOACTIVE parameter to disable the active expiration policy for the field. This allows you to reduce the memory consumption. |
 
-To add a field that does not expire, you can run this command without the need to specify an expiration time. Return values The value increased by num is returned if the operation is successful. Otherwise, an exception is returned.
+> **Note:** To add a field that does not expire, you can run this command without the need to specify an expiration time.
+
+Return values The value increased by num is returned if the operation is successful. Otherwise, an exception is returned.
 
 **EXHINCRBYFLOAT**
 
@@ -758,7 +765,9 @@ Syntax EXHINCRBYFLOAT <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT 
 | MAX | The maximum value of the field. If the specified value is larger than this upper limit, an exception is returned. |
 | NOACTIVE | When you set the EX, EXAT, PX, or PXAT parameter, you can set the NOACTIVE parameter to disable the active expiration policy for the field. This allows you to reduce the memory consumption. |
 
-To add a field that does not expire, you can run this command without the need to specify an expiration time. Return values The value increased by num is returned if the operation is successful. Otherwise, an exception is returned.
+> **Note:** To add a field that does not expire, you can run this command without the need to specify an expiration time.
+
+Return values The value increased by num is returned if the operation is successful. Otherwise, an exception is returned.
 
 **EXHGETWITHVER**
 
@@ -1783,11 +1792,19 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar of your
 browser and press the Enter key.
 2. Enter your username and password.
-You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%).
+You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator.
+
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 8 to 20 characters in length and contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%).
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
-operations in the following scenarios: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**. For more information about how to bind an MFA device and enable MFA, see the
-**Manage MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+operations in the following scenarios: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to bind an MFA device and enable MFA, see the **Manage MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+
 5. In the top navigation bar, choose **Products > Database Services > Tair (Redis OSS-**
 **compatible)**.
 
@@ -1909,7 +1926,7 @@ Before you use a Tair (Redis OSS-compatible) instance, add IP addresses or CIDR 
 
 **Background information**
 
-A properly configured whitelist can enhance the security of your instance. We recommend that you perform regular maintenance on your whitelists.
+> **Note:** A properly configured whitelist can enhance the security of your instance. We recommend that you perform regular maintenance on your whitelists.
 
 **Procedure**
 
@@ -1936,7 +1953,9 @@ the following parameters.
 
 ### 6.5 Connect to an instance
 
-This topic describes how to connect to a Tair (Redis OSS-compatible) cluster instance by using redis-cli. For more information about other connection methods, see Connection guide.
+This topic describes how to connect to a Tair (Redis OSS-compatible) cluster instance by using redis-cli.
+
+> **Note:** For more information about other connection methods, see Connection guide.
 
 **Prerequisites**
 
@@ -1992,7 +2011,12 @@ If you forget your password, need to change your password, or have not set a pas
 2. On the **Instance List** page, click the ID of the instance.
 3. On the **Account Management** page, click **Reset Password**.
 4. In the dialog box that appears, enter the current password and a new password.
-If you forget your password, you can click **Forgot password** in the Change Password dialog box and enter a new password. The password must be 9 to 30 characters in length. The password must contain at least three of the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The supported special characters include ! @ # $ % ^ & * ( ) _ + - = The password must not contain keywords such as admin or password.
+
+> **Note:** If you forget your password, you can click **Forgot password** in the Change Password dialog box and enter a new password.
+> The password must be 9 to 30 characters in length.
+> The password must contain at least three of the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The supported special characters include ! @ # $ % ^ & * ( ) _ + - =
+> The password must not contain keywords such as admin or password.
+
 5. Click **OK**.
 
 ### 7.2 Configure an IP address whitelist
@@ -2003,7 +2027,7 @@ Before you use a Tair (Redis OSS-compatible) instance, add IP addresses or CIDR 
 
 **Background information**
 
-Whitelists can be used to improve the access security of Tair (Redis OSS-compatible) instances. We recommend that you maintain whitelists on a regular basis.
+> **Note:** Whitelists can be used to improve the access security of Tair (Redis OSS-compatible) instances. We recommend that you maintain whitelists on a regular basis.
 
 **Procedure**
 
@@ -2011,7 +2035,10 @@ Whitelists can be used to improve the access security of Tair (Redis OSS-compati
 2. On the **Instances** page, find the desired instance and click its ID.
 3. In the left-side navigation pane, click **Whitelist Settings**.
 4. Find the desired whitelist group and click Modify.**Modify**
-t You can also click **Add Whitelist** to create a whitelist. The name of a whitelist must be 2 to 32 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter and end with a lowercase letter or digit.
+t
+
+> **Note:** You can also click **Add Whitelist** to create a whitelist. The name of a whitelist must be 2 to 32 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter and end with a lowercase letter or digit.
+
 5. In the panel that appears, perform one of the following operations.
 
 | Operation | Procedure |
@@ -2088,13 +2115,17 @@ The instance meets the following requirements: The instance is deployed in cloud
 A **cloud-native** instance is compatible with later Redis versions and supports more flexible architecture configurations. This topic describes how to convert a **classic** instance into a
 **cloud-native** instance.
 
-**Important**
+> **Important:** When you change the configurations of an instance, the instance may experience one intermittent disconnection that lasts up to 30 seconds. Make sure that your application can automatically reconnect to the instance.
 
-When you change the configurations of an instance, the instance may experience one intermittent disconnection that lasts up to 30 seconds. Make sure that your application can automatically reconnect to the instance. t To synchronize incremental data from the original instance to the new instance and prevent dual writes caused by Domain Name System (DNS) caching, the instance remains read-only for up to 1 minute during the configuration change. This ensures data consistency between the new instance and the original instance. If a large amount of data is written to the instance, the instance may remain read-only for an extended period of time. Therefore, we recommend that you perform the configuration change during off-peak hours.
+t
+
+> To synchronize incremental data from the original instance to the new instance and prevent dual writes caused by Domain Name System (DNS) caching, the instance remains read-only for up to 1 minute during the configuration change. This ensures data consistency between the new instance and the original instance. If a large amount of data is written to the instance, the instance may remain read-only for an extended period of time. Therefore, we recommend that you perform the configuration change during off-peak hours.
 
 **Usage notes**
 
-After the conversion, the instance information, such as the instance ID, endpoints, IP address whitelists, accounts, and account passwords remain unchanged. Data in the instance is not lost. Currently, only Tair (Redis OSS-compatible) instances that run Redis 5.0 (Enterprise Edition) can be converted into cloud-native instances. If the original instance is of another version, you must upgrade the instance to Redis 5.0 (Enterprise Edition) before you perform a conversion. If a Tair (Redis OSS-compatible) instance that runs Redis 5.0 (Enterprise Edition) has a public endpoint, it cannot be converted into a cloud-native instance.
+After the conversion, the instance information, such as the instance ID, endpoints, IP address whitelists, accounts, and account passwords remain unchanged. Data in the instance is not lost. Currently, only Tair (Redis OSS-compatible) instances that run Redis 5.0 (Enterprise Edition) can be converted into cloud-native instances. If the original instance is of another version, you must upgrade the instance to Redis 5.0 (Enterprise Edition) before you perform a conversion.
+
+> **Note:** If a Tair (Redis OSS-compatible) instance that runs Redis 5.0 (Enterprise Edition) has a public endpoint, it cannot be converted into a cloud-native instance.
 
 **Procedure**
 
@@ -2122,9 +2153,9 @@ You can adjust the number of shards only in a cluster instance. You cannot adjus
 **number of shards** or **Reduce the number of shards** based on your business
 requirements. Add shards a. Click **Increase the number of shards** . In the panel that appears, specify the number of shards. You can add 1 to 64 shards. b. Click **OK**. Remove shards
 
-**Important**
+> **Important:** After you remove shards from a cluster instance, the total storage capacity and performance of the instance decrease, and your application is disconnected from the shards. Proceed with caution. To perform this operation, make sure that the application can automatically reconnect to the cluster instance.
 
-After you remove shards from a cluster instance, the total storage capacity and performance of the instance decrease, and your application is disconnected from the shards. Proceed with caution. To perform this operation, make sure that the application can automatically reconnect to the cluster instance. a. Enter the number of shards to be removed and select a removal policy. You can select **Execute Now** or **Execute within Maintenance Window** (recommended). b. Click **OK**. The shards are immediately removed and the data is automatically migrated to other shards.
+a. Enter the number of shards to be removed and select a removal policy. You can select **Execute Now** or **Execute within Maintenance Window** (recommended). b. Click **OK**. The shards are immediately removed and the data is automatically migrated to other shards.
 
 ### 7.7 Configure a maintenance window
 
@@ -2134,7 +2165,9 @@ You can modify the default maintenance window to perform maintenance on Tair (Re
 
 **Background information**
 
-To ensure the stability of Tair (Redis OSS-compatible) instances on the Alibaba Cloud platform, the backend system irregularly maintains instances and servers. To guarantee the stability of the maintenance process, instances enter the Maintaining Instance state before the preset maintenance window on the day of maintenance. While an instance is in this state, data in the database can still be accessed and performance monitoring data can be queried. However, change-related operations such as configuration change are temporarily unavailable for the instance in the console. During the preset maintenance window, instances may be disconnected in the process of maintenance. We recommend that you set the maintenance window to a period during off-peak hours.
+To ensure the stability of Tair (Redis OSS-compatible) instances on the Alibaba Cloud platform, the backend system irregularly maintains instances and servers. To guarantee the stability of the maintenance process, instances enter the Maintaining Instance state before the preset maintenance window on the day of maintenance. While an instance is in this state, data in the database can still be accessed and performance monitoring data can be queried. However, change-related operations such as configuration change are temporarily unavailable for the instance in the console.
+
+> **Note:** During the preset maintenance window, instances may be disconnected in the process of maintenance. We recommend that you set the maintenance window to a period during off-peak hours.
 
 **Procedure**
 
@@ -2143,7 +2176,8 @@ t
 2. On the **Instances** page, click the ID of the desired instance.
 3. In the Basic Information section, click **Settings** on the right of **Maintenance Window**.
 4. Select a time period for maintenance and click **Save**.
-The time periods are in UTC+8.
+
+> **Note:** The time periods are in UTC+8.
 
 ### 7.8 Migrate an instance across zones
 
@@ -2246,11 +2280,15 @@ If Data Transmission Service (DTS) tasks are created for the instance for which 
 2. On the **Instance List** page, click the ID of the instance.
 t
 3. In the Configuration Information section of the **Instance Information** page, click **Update**
-next to **Version** and then select **Major Update**. If the **Major Update** menu item is dimmed, the major version of the instance cannot be upgraded.
+next to **Version** and then select **Major Update**.
+
+> **Note:** If the **Major Update** menu item is dimmed, the major version of the instance cannot be upgraded.
+
 4. In the **Major Update** dialog box, specify the destination version and the time when you
-want to perform the upgrade. During instance upgrades or master-replica switchovers, an instance experiences transient connections that last for a few seconds and remains read-only for up to 60 seconds. To minimize impacts, we recommend that you select **Execution within**
-**maintenance time**. This way, the system performs the operation during the
-maintenance window.
+want to perform the upgrade.
+
+> **Note:** During instance upgrades or master-replica switchovers, an instance experiences transient connections that last for a few seconds and remains read-only for up to 60 seconds. To minimize impacts, we recommend that you select **Execution within** **maintenance time**. This way, the system performs the operation during the maintenance window.
+
 5. Click **OK**.
 
 ### 7.11 Update the minor version of an instance
@@ -2261,7 +2299,8 @@ Tair (Redis OSS-compatible) continuously optimizes the kernel and fixes security
 
 **Background information**
 
-We recommend that you upgrade instance versions during off-peak hours and ensure that your application supports automatic reconnection. The system automatically checks the kernel version of an instance. If the current version is the latest, the **Minor Version Upgrade** button in the upper-right corner of the **Basic Information** section for this instance will appear dimmed.
+> **Note:** We recommend that you upgrade instance versions during off-peak hours and ensure that your application supports automatic reconnection.
+> The system automatically checks the kernel version of an instance. If the current version is the latest, the **Minor Version Upgrade** button in the upper-right corner of the **Basic Information** section for this instance will appear dimmed.
 
 **Procedure**
 
@@ -2314,14 +2353,18 @@ Connection interruption risk: After you enable the required (forceful encryption
 | Select Connection String to Protect | Select a database connection string for whichto enable SSL encryption. You can select an intranet connection string. |
 
 2. Click **Enable SSL Encryption**.
-After you complete the operation, wait for a period of time before the system displays the result. You can also click buttons such as **Modify Expiry**, **Download CA Certificate**, and **Version Name** to perform related operations.
+
+> **Note:** After you complete the operation, wait for a period of time before the system displays the result.
+> You can also click buttons such as **Modify Expiry**, **Download CA Certificate**, and **Version Name** to perform related operations.
 
 **Classic Edition cluster architecture instances**
 
 This section applies to Classic Edition cluster architecture 4.0, 5.0, 6.0, and 7.0 instances. t
 1. On the **TLS Settings (SSL)** page, turn on the switch next to **SSL Certificate**
 **Information**.
-If the system prompts that the version is not supported, upgrade the minor version. For more information, see Upgrade the minor version.
+
+> **Note:** If the system prompts that the version is not supported, upgrade the minor version. For more information, see Upgrade the minor version.
+
 2. Complete the activation.
 After you complete the operation, wait for a period of time before the system displays the result. You can also click buttons such as **Update Certificate** and **Download CA Certificate** in the upper-right corner to perform related operations. The default minimum TLS version is TLSv1.2. TLSv1 and TLSv1.1 are also supported.
 
@@ -2360,9 +2403,12 @@ TDE can be enabled for an instance but not for a key or a database. TDE encrypts
 4. Turn on **TDE Status** to enable TDE.
 5. In the dialog box that appears, select **Use Automatically Generated Key** or **Use Custom**
 **Key** and then click **OK**.
-Figure 1. Select the key type for enabling TDE The first time you enable TDE for an instance within your Alibaba Cloud account, follow the instructions on the page to assign the
-**AliyunRdsInstanceEncryptionDefaultRole** role to Tair (Redis OSS-
-compatible). Tair (Redis OSS-compatible) can access KMS resources only after it assumes the role. For information about how to create a custom key, see **Create a CMK** in **User Guide** of **KMS**. After the instance state changes from **Modifying TDE** to **Running**, TDE is enabled.
+Figure 1. Select the key type for enabling TDE
+
+> **Note:** The first time you enable TDE for an instance within your Alibaba Cloud account, follow the instructions on the page to assign the **AliyunRdsInstanceEncryptionDefaultRole** role to Tair (Redis OSS- compatible). Tair (Redis OSS-compatible) can access KMS resources only after it assumes the role.
+> For information about how to create a custom key, see **Create a CMK** in **User Guide** of **KMS**.
+
+After the instance state changes from **Modifying TDE** to **Running**, TDE is enabled.
 
 ### 7.14 Clear data
 
@@ -2380,11 +2426,11 @@ cannot be restored.
 **Expired Data**: runs the **SCAN** command to batch clear all expired data of the instance.
 Cleared data cannot be restored. You can select **Update Now** or Update During Maintenance. For more information, see Configure a maintenance window.
 
-**Warning**
+> **Warning:** Data clearing takes effect immediately and cleared data cannot be restored. This may affect your business. Proceed with caution. We recommend that you back up the data of your instance before you clear data. For more information, see Back up data manually.
 
-Data clearing takes effect immediately and cleared data cannot be restored. This may affect your business. Proceed with caution. We recommend that you back up the data of your instance before you clear data. For more information, see Back up data manually.
 5. Click **OK**.
-If you select **All Data**, you can specify whether to back up the data after you click **OK**.
+
+> **Note:** If you select **All Data**, you can specify whether to back up the data after you click **OK**.
 
 ### 7.15 Release an instance
 
@@ -2396,9 +2442,8 @@ You can release a Tair instance at any time. This topic describes the procedure 
 2. On the **Instances** page, find the target instance and choose **Release** in the **Actions**
 column.
 
-**Warning**
+> **Warning:** Back up your data before you release the instance. Proceed with caution.
 
-Back up your data before you release the instance. Proceed with caution.
 3. In the **Release Instance** dialog box, click **Release**.
 After an instance is released, it is retained in the recycle bin for a period of time. You can unlock or rebuild the instance from the recycle bin. For more information, see Instance Recycle Bin. t
 
@@ -2419,12 +2464,13 @@ Released instances are kept in the recycle bin for 7 days. They will be permanen
 3. In the instance list on the Recycle Bin page, perform the **Recovery** or **Destroy now**
 operation.
 **Recovery**: The system restores all data and partial configurations (such as the port
-number) of the original instance to a newly created instance. However, you must reconfigure parameters, such as **Availability Zone**, **Network Type**, and **IP Type**. If **Network Type** is set to **VPC**, you must also configure the VPC and vSwitch.
+number) of the original instance to a newly created instance. However, you must reconfigure parameters, such as **Availability Zone**, **Network Type**, and **IP Type**.
+
+> **Note:** If **Network Type** is set to **VPC**, you must also configure the VPC and vSwitch.
+
 **Destroy now**: The system permanently deletes the instance and its data backup.
 
-**Warning**
-
-Destroying an instance also destroys all backups of that instance, including regular data backups, archive backups, and log backups. This operation is irreversible. Proceed with caution.
+> **Warning:** Destroying an instance also destroys all backups of that instance, including regular data backups, archive backups, and log backups. This operation is irreversible. Proceed with caution.
 
 ### 7.17 Manage accounts
 
@@ -2432,7 +2478,9 @@ Tair (Redis OSS-compatible) allows you to create up to 20 database accounts for 
 
 **Prerequisites**
 
-The engine version of the instance is Redis 4.0 or later. t If the engine version of the instance is not Redis 4.0, only the default account that is created when you create the instance is available. For information about how to change the password of the default account, see Change the password.
+The engine version of the instance is Redis 4.0 or later. t
+
+> **Note:** If the engine version of the instance is not Redis 4.0, only the default account that is created when you create the instance is available. For information about how to change the password of the default account, see Change the password.
 
 **Background information**
 
@@ -2473,9 +2521,8 @@ You can restart an instance from the Instance List page of the console.
 
 **Instance**.
 
-**Warning**
+> **Warning:** During the restart, the instance may be disconnected for a few seconds. We recommend that you restart your instance during off-peak hours and make sure that your application can automatically reconnect to the instance.
 
-During the restart, the instance may be disconnected for a few seconds. We recommend that you restart your instance during off-peak hours and make sure that your application can automatically reconnect to the instance.
 3. In the dialog box that appears, select a restart time and click **OK**.
 Restart Now: restarts the instance immediately after you click OK. Restart Within Maintenance Window: restarts the instance within the preset maintenance window.
 
@@ -2488,7 +2535,8 @@ You can export the instance list from the console to manage the instances offlin
 1. Log in to the Tair (Redis OSS-compatible) console.
 2. In the upper-right corner of the **Instances** page, click the **Export Instances** icon.
 3. In the **Export Instance List** dialog box, select the columns to export and click **OK**.
-After you click **OK**, the browser begins to download the CSV file. You can use Excel or a text editor to view this file.
+
+> **Note:** After you click **OK**, the browser begins to download the CSV file. You can use Excel or a text editor to view this file.
 
 ### 7.20 Manage tags
 
@@ -2496,7 +2544,11 @@ If you have a large number of instances, you can create multiple tags and add di
 
 **Precautions**
 
-A tag consists of a key-value pair. Each key must be unique for an Alibaba Cloud account in a region. This limit does not apply to key values. t A key can have zero to multiple values. You can add up to 20 tags to an instance. You can add or remove up to 20 tags at a time.
+A tag consists of a key-value pair. Each key must be unique for an Alibaba Cloud account in a region. This limit does not apply to key values. t
+
+> **Note:** A key can have zero to multiple values.
+
+You can add up to 20 tags to an instance. You can add or remove up to 20 tags at a time.
 
 **Create tags**
 
@@ -2512,7 +2564,12 @@ If you want to add an existing tag, click the corresponding field and select an 
 1. Log in to the Tair (Redis OSS-compatible) console.
 2. On the **Instances** page, click **Advanced Filter**.
 3. On the right side of **Filter by Tag**, select a **tag key** and a **tag value** from the drop-down
-list. After you create a tag or update an existing tag, you must refresh the page to view the updated tag list. To clear a filter condition, click the icon next to the selected tag.
+list.
+
+> **Note:** After you create a tag or update an existing tag, you must refresh the page to view the updated tag list.
+> To clear a filter condition, click the
+> icon next to the selected tag.
+
 4. Click **Search**.
 
 **Add or remove tags**
@@ -2521,7 +2578,12 @@ list. After you create a tag or update an existing tag, you must refresh the pag
 2. In the **Tag** column corresponding to the instance that you want to manage, click the
 icon.
 3. In the dialog box that appears, click the
-icon next to the tag that you want to remove. t You can remove up to 20 tags at a time. If you remove a tag from all instances to which the tag is added, the tag is automatically deleted. An instance keeps running when you remove tags from the instance. After all tags of an instance are removed, the instance cannot be filtered by tag.
+icon next to the tag that you want to remove. t
+
+> **Note:** You can remove up to 20 tags at a time.
+> If you remove a tag from all instances to which the tag is added, the tag is automatically deleted.
+> An instance keeps running when you remove tags from the instance. After all tags of an instance are removed, the instance cannot be filtered by tag.
+
 4. Click **OK**.
 
 ### 7.21 Use a Lua script
@@ -2530,7 +2592,10 @@ Tair (Redis OSS-compatible) instances support Lua-related commands.
 
 **Support for Lua commands**
 
-Lua scripts improve the performance of Tair (Redis OSS-compatible). With support for the Lua environment, Tair (Redis OSS-compatible) can perform check-and-set (CAS) operations, allowing you to combine and run multiple commands in an efficient manner. If an error message indicating a failure to run the EVAL command is returned, such as `ERR command eval not support for normal user` , update the minor version. During the update, the instance may be disconnected and become read-only for a few seconds. We recommend that you update the minor version during off-peak hours.
+Lua scripts improve the performance of Tair (Redis OSS-compatible). With support for the Lua environment, Tair (Redis OSS-compatible) can perform check-and-set (CAS) operations, allowing you to combine and run multiple commands in an efficient manner.
+
+> **Note:** If an error message indicating a failure to run the EVAL command is returned, such as
+> `ERR command eval not support for normal user` , update the minor version. During the update, the instance may be disconnected and become read-only for a few seconds. We recommend that you update the minor version during off-peak hours.
 
 **Limits on Lua scripts**
 
@@ -2554,7 +2619,9 @@ Keys must be included in all the commands that you want to run. Otherwise, the f
 
 The following Pub/Sub commands are not supported: **PSUBSCRIBE**, **PUBSUB**, **PUBLISH**,
 **PUNSUBSCRIBE**, **SUBSCRIBE**, and **UNSUBSCRIBE**.
-The UNPACK function is not supported. t If you do not want to impose the preceding limits but can make sure that all operations are performed in the same hash slot in the code, you can set the script_check_enable parameter to 0 in the console to disable the backend script check.
+The UNPACK function is not supported. t
+
+> **Note:** If you do not want to impose the preceding limits but can make sure that all operations are performed in the same hash slot in the code, you can set the script_check_enable parameter to 0 in the console to disable the backend script check.
 
 ## 8 Connection guide
 
@@ -2573,7 +2640,9 @@ The virtual IP address (VIP) of a Tair (Redis OSS-compatible) instance may chang
 1. Log in to the Tair (Redis OSS-compatible) console.
 2. On the **Instance List** page, click the ID of the instance.
 3. In the **Connection Information** section, you can view the private and public endpoints of
-the instance. By default, a Tair (Redis OSS-compatible) instance comes only with a private endpoint. You need to manually apply for a public endpoint if you want to connect to the instance over the Internet. For more information, see Apply for an endpoint.
+the instance.
+
+> **Note:** By default, a Tair (Redis OSS-compatible) instance comes only with a private endpoint. You need to manually apply for a public endpoint if you want to connect to the instance over the Internet. For more information, see Apply for an endpoint.
 
 **Enable or disable IPv6**
 
@@ -2582,9 +2651,8 @@ the instance. By default, a Tair (Redis OSS-compatible) instance comes only with
 3. In the Connection Information section, turn on or off the switch in the **Whether IPv6 is**
 **applied** column.
 
-**Important**
+> **Important:** After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database. This causes business interruptions. Therefore, before you disable IPv6, make sure that no service is connected to the database through an IPv6 address.
 
-After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database. This causes business interruptions. Therefore, before you disable IPv6, make sure that no service is connected to the database through an IPv6 address.
 4. Click **OK**.
 
 ### 8.2 Apply for an endpoint
@@ -2598,9 +2666,15 @@ This topic describes how to apply for an endpoint for a Tair (Redis OSS-compatib
 3. In the **Connection Information** section, select **Network** and click
 **redis.detail.info.apply_link_host** in the **Actions** column.
 4. In the dialog box that appears, enter a custom endpoint and a port number, and click OK.
-The custom endpoint must be 8 to 64 characters in length and can contain letters and digits. The endpoint must start with a lowercase letter. The custom port number ranges from 1024 to 65535. The default value is 6379. After you apply for an endpoint for a Tair (Redis OSS-compatible) cluster instance, you must add the endpoint to the IP address whitelist of the cluster instance. This way, you can connect to the cluster instance. For more information, see Configure a whitelist.
+
+> **Note:** The custom endpoint must be 8 to 64 characters in length and can contain letters and digits. The endpoint must start with a lowercase letter.
+> The custom port number ranges from 1024 to 65535. The default value is 6379.
+> After you apply for an endpoint for a Tair (Redis OSS-compatible) cluster instance, you must add the endpoint to the IP address whitelist of the cluster instance. This way, you can connect to the cluster instance. For more information, see Configure a whitelist.
+
 5. On the **Instance Information** page, view the endpoint in the **Connection Information**
-section. If you no longer need an endpoint, click **redis.detail.info.release_link_host** next to the endpoint to release the endpoint.
+section.
+
+> **Note:** If you no longer need an endpoint, click **redis.detail.info.release_link_host** next to the endpoint to release the endpoint.
 
 ### 8.3 Change the endpoint
 
@@ -2628,7 +2702,9 @@ The instance is in the Running state.
 
 5. In the **Modify Public Endpoint** dialog box, modify **Connection Type**, **Endpoint**, and
 **Port**, and then click **OK**.
-The custom endpoint prefix must be 8 to 64 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter. The custom port number ranges from 1024 to 65535. The default value is 6379.
+
+> **Note:** The custom endpoint prefix must be 8 to 64 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter.
+> The custom port number ranges from 1024 to 65535. The default value is 6379.
 
 ### 8.4 Use the direct connection mode to connect to a cluster instance
 
@@ -2640,7 +2716,12 @@ If you have applied for a private endpoint for a Tair (Redis OSS-compatible) clu
 
 **Prerequisites**
 
-A private endpoint has been applied for a Tair (Redis OSS-compatible) cluster instance. For more information, see Apply for an endpoint. The client IP address is added to the IP address whitelist of the cluster instance. For more information, see Configure a whitelist. Clients that support the Redis Cluster protocol are used, such as Jedis and PhpRedis. If you use a client that does not support the Redis Cluster protocol, you may be unable to obtain data because the client cannot redirect your request to the correct shard. You can obtain a list of clients that support the Redis Cluster protocol from the Clients page on the Redis official website. The Elastic Compute Service (ECS) instance on which the client is deployed and the cluster instance belong to the same virtual private cloud (VPC).
+A private endpoint has been applied for a Tair (Redis OSS-compatible) cluster instance. For more information, see Apply for an endpoint. The client IP address is added to the IP address whitelist of the cluster instance. For more information, see Configure a whitelist. Clients that support the Redis Cluster protocol are used, such as Jedis and PhpRedis.
+
+> **Note:** If you use a client that does not support the Redis Cluster protocol, you may be unable to obtain data because the client cannot redirect your request to the correct shard.
+> You can obtain a list of clients that support the Redis Cluster protocol from the Clients page on the Redis official website.
+
+The Elastic Compute Service (ECS) instance on which the client is deployed and the cluster instance belong to the same virtual private cloud (VPC).
 
 **Background information**
 
@@ -2678,9 +2759,7 @@ Private endpoints can be accessed only over the Alibaba Cloud internal network. 
 
 Use a private endpoint to connect to a cluster instance from redis-cli.
 
-**Important**
-
-When you use a private endpoint to connect to a cluster instance from redis-cli, you must add the -c parameter to the command. Otherwise, the connection fails.
+> **Important:** When you use a private endpoint to connect to a cluster instance from redis-cli, you must add the -c parameter to the command. Otherwise, the connection fails.
 
 ```
 ./redis-cli -h r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com -p 6379 -c
@@ -2895,9 +2974,8 @@ jedisPoolConfig);
 
 `}` Spring Data Redis With Lettuce
 
-**Important**
-
-The default configurations of Lettuce may cause issues such as increased application latency and inaccessibility when the instance is changed. The version of Lettuce must be 6.3.0.RELEASE or later.
+> **Important:** The default configurations of Lettuce may cause issues such as increased application latency and inaccessibility when the instance is changed.
+> The version of Lettuce must be 6.3.0.RELEASE or later.
 
 ```
      /**
@@ -3041,9 +3119,7 @@ bp10noxlhcoim2****.redis.rds.aliyuncs.com:6379'
 
 In this example, Go 1.19.7 and go-redis 9.5.1 are used.
 
-**Important**
-
-Please use go-redis 9.0 or later.
+> **Important:** Please use go-redis 9.0 or later.
 
 ```java
 package main import (
@@ -3086,9 +3162,9 @@ var ctx = context.Background() func main() {
 
 **Lettuce**
 
-**Important**
+> **Important:** The default configurations of Lettuce may cause issues such as increased application latency and inaccessibility when the instance is changed.
+> The version of Lettuce must be 6.3.0.RELEASE or later.
 
-The default configurations of Lettuce may cause issues such as increased application latency and inaccessibility when the instance is changed. The version of Lettuce must be 6.3.0.RELEASE or later.
 1. Add the following Maven dependencies:
 
 ```xml
@@ -3473,9 +3549,7 @@ gcc -o example -g example.c -I /usr/local/include/hiredis -lhiredis
 
 **.NET client**
 
-**Warning**
-
-If you need to switch over to a different database or select a database from multiple databases in a cluster instance, you must set the **cluster_compat_enable** parameter to 0 to disable the support for the Redis Cluster syntax, and then restart the client.
+> **Warning:** If you need to switch over to a different database or select a database from multiple databases in a cluster instance, you must set the **cluster_compat_enable** parameter to 0 to disable the support for the Redis Cluster syntax, and then restart the client.
 
 |   | Multiple databases are not |
 |---|---|
@@ -3647,9 +3721,7 @@ var redis = require("redis"), client = redis.createClient(6379, "r-abcdefg.redis
 
 **C# client StackExchange.Redis**
 
-**Warning**
-
-If you need to switch over to a different database or select a database from multiple databases in a cluster instance, you must set the **cluster_compat_enable** parameter to 0 to disable the support for the Redis Cluster syntax, and then restart the client.
+> **Warning:** If you need to switch over to a different database or select a database from multiple databases in a cluster instance, you must set the **cluster_compat_enable** parameter to 0 to disable the support for the Redis Cluster syntax, and then restart the client.
 
 |   | RedisCommandException: Multiple |
 |---|---|
@@ -3664,7 +3736,9 @@ using StackExchange.Redis;
 ```
 
 3. Initialize ConnectionMultiplexer.
-ConnectionMultiplexer is the core of StackExchange.Redis. ConnectionMultiplexer is shared and reused in the entire application. You must use ConnectionMultiplexer as a singleton. ConnectionMultiplexer is initialized in the following method. For information about how to obtain the endpoint and password of an instance, see Obtain connection information. ConfigurationOptions contains multiple options, such as keepAlive, connectRetry, and name. For more information, see ConfigurationOptions.
+ConnectionMultiplexer is the core of StackExchange.Redis. ConnectionMultiplexer is shared and reused in the entire application. You must use ConnectionMultiplexer as a singleton. ConnectionMultiplexer is initialized in the following method. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+
+> ConfigurationOptions contains multiple options, such as keepAlive, connectRetry, and name. For more information, see ConfigurationOptions.
 
 ```java
  // redis config
@@ -3718,7 +3792,10 @@ ConnectionMultiplexer object.
 ```
 
 5. You can use the client to perform database operations.
-The following examples demonstrate the commands for common data types, which are slightly different from the Redis-native commands. String
+
+> **Note:** The following examples demonstrate the commands for common data types, which are slightly different from the Redis-native commands.
+
+String
 
 ```
 //set get string strKey = "hello"; string strValue = "world"; bool setResult = db.StringSet(strKey, strValue); Console.WriteLine("set " + strKey + " " + strValue + ", result is " + setResult); //incr string counterKey = "counter"; long counterValue = db.StringIncrement(counterKey); Console.WriteLine("incr " + counterKey + ", result is " + counterValue); //expire db.KeyExpire(strKey, new TimeSpan(0, 0, 5)); Thread.Sleep(5 * 1000); Console.WriteLine("expire " + strKey + ", after 5 seconds, value is " + db.StringGe t(strKey)); //mset mget KeyValuePair<RedisKey, RedisValue> kv1 = new KeyValuePair<RedisKey, RedisValue>("ke y1", "value1"); KeyValuePair<RedisKey, RedisValue> kv2 = new KeyValuePair<RedisKey, RedisValue>("ke y2", "value2"); db.StringSet(new KeyValuePair<RedisKey, RedisValue>[] {kv1,kv2}); RedisValue[] values = db.StringGet(new RedisKey[] {kv1.Key, kv2.Key}); Console.WriteLine("mget " + kv1.Key.ToString() + " " + kv2.Key.ToString() + ", resu lt is " + values[0] + "&&" + values[1]);
@@ -3842,7 +3919,11 @@ You can query the monitoring data of a KVStore for Redis instance for a specifie
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, click **Performance Monitoring**.
 4. Perform the following operations based on the architecture of the instance:
-If the instance uses the master-replica architecture, you need only to focus on the metrics of the master node. If the instance uses the cluster or read/write splitting architecture, you have the following options: On the **All** tab, you can view the overall performance of the instance. Metrics on the All tab show the aggregated monitoring data of replica nodes or read replicas. Different metrics use different methods to aggregate values, such as average or sum. For example, the CPU utilization on the All tab is the average of all replica nodes or read replicas. On the **Data Node** tab, you can view the metrics of each data node. If your instance has proxy nodes, you can view the overall performance of the proxy nodes on the **All** tab and view the metrics of each proxy node on the **Proxy Node** tab. You can query the monitoring data within the previous month. The maximum time range that you can specify is seven days. To ensure a smooth and efficient performance monitoring experience and prevent negative impacts on your instance, the granularity of data displayed in the trend charts varies based on the time range that you specify. For read/write splitting instances, the metrics of read replicas are not aggregated.
+If the instance uses the master-replica architecture, you need only to focus on the metrics of the master node. If the instance uses the cluster or read/write splitting architecture, you have the following options: On the **All** tab, you can view the overall performance of the instance. Metrics on the All tab show the aggregated monitoring data of replica nodes or read replicas. Different metrics use different methods to aggregate values, such as average or sum. For example, the CPU utilization on the All tab is the average of all replica nodes or read replicas. On the **Data Node** tab, you can view the metrics of each data node. If your instance has proxy nodes, you can view the overall performance of the proxy nodes on the **All** tab and view the metrics of each proxy node on the **Proxy Node** tab.
+
+> **Note:** You can query the monitoring data within the previous month. The maximum time range that you can specify is seven days.
+> To ensure a smooth and efficient performance monitoring experience and prevent negative impacts on your instance, the granularity of data displayed in the trend charts varies based on the time range that you specify.
+> For read/write splitting instances, the metrics of read replicas are not aggregated.
 
 ## 10 Cloud Monitor
 
@@ -3858,8 +3939,9 @@ service.
 3. You can use one of the following methods to view metrics collected by Cloud Monitor.
 i. Method 1 a. On the instance or cluster list page, click the ID of the desired instance or cluster. b. In the left-side navigation pane, click **Cloud Monitoring**. ii. Method 2 a. On the instance or cluster list page, find the desired instance or cluster and click the icon in the Monitoring column. b. View the metrics.
 4. You can select the metrics you want to view based on your business requirements. For
-more information, see the **Metrics** topic in **Cloud Monitor User Guide**. In the time granularity drop-down list, select a time range from **Last 1 Minute** to **Last**
-**30 Days** to view the monitoring data within the specified time period.
+more information, see the **Metrics** topic in **Cloud Monitor User Guide**.
+
+> **Note:** In the time granularity drop-down list, select a time range from **Last 1 Minute** to **Last** **30 Days** to view the monitoring data within the specified time period.
 
 ### 10.2 Historical alerts
 
@@ -3980,11 +4062,17 @@ To ensure the stable operation of Redis instances, the system exposes only a sub
 4. Modify target parameters on the **System Parameters** tab.
 The system supports the following three methods for modifying parameters. For descriptions of parameters and parameter values, see Appendix: Parameter descriptions.
 
-**Warning**
+> **Warning:** The system automatically restarts the instance after you submit changes to certain parameters. Brief connection interruptions of a few seconds may occur during the restart Exercise caution when you perform this operation. For more information, see the **Restart and Take Effect** column for the target parameter.
 
-The system automatically restarts the instance after you submit changes to certain parameters. Brief connection interruptions of a few seconds may occur during the restart Exercise caution when you perform this operation. For more information, see the
-**Restart and Take Effect** column for the target parameter.
-Modify a single parameter: a. Find the target parameter and click **Modify** in the **Operation** column. b. Click **OK**. Modify parameters in batches: a. Click **Batch Modify**. b. Modify the parameter values in the **Running Value** column of the target parameters. c. After modifications, click **Modify** at the bottom of the page. Import from a file: To apply the parameter configurations of another instance to the current instance, you can use this method. Before you use this feature, go to the **Parameter Settings** page of the source instance, click the icon in the upper-right corner of the page, and download the parameter configuration file of the source instance. ent Import the parameter configuration file into an instance that runs the same version and uses the same architecture. Otherwise, some parameters may not take effect. a. Click **Import from File**. b. In the **Batch Import** panel, click the icon to upload the target file. c. In the **Parameter Details** section, confirm and select the parameters that you want to modify. You can turn on the **Display Only Changed Parameters** switch to quickly filter parameters whose values differ from the current **Running Value**. d. Click **Modify**.
+Modify a single parameter: a. Find the target parameter and click **Modify** in the **Operation** column. b. Click **OK**. Modify parameters in batches: a. Click **Batch Modify**. b. Modify the parameter values in the **Running Value** column of the target parameters. c. After modifications, click **Modify** at the bottom of the page. Import from a file: To apply the parameter configurations of another instance to the current instance, you can use this method. Before you use this feature, go to the **Parameter Settings** page of the source instance, click the icon in the upper-right corner of the page, and download the parameter configuration file of the source instance. ent
+
+> **Note:** Import the parameter configuration file into an instance that runs the same version and uses the same architecture. Otherwise, some parameters may not take effect.
+
+a. Click **Import from File**. b. In the **Batch Import** panel, click the icon to upload the target file. c. In the **Parameter Details** section, confirm and select the parameters that you want to modify.
+
+> **Note:** You can turn on the **Display Only Changed Parameters** switch to quickly filter parameters whose values differ from the current **Running Value**.
+
+d. Click **Modify**.
 
 **Appendix: Parameter descriptions**
 
@@ -4042,7 +4130,7 @@ ent
 | script check enable _ _ | Check whether the keys involved in a Lua script reside in the same slot. Valid values: 0: Disable the check. 1: Enable the check. The default value. |
 | ptod enabled _ | Control whether to pass through the real IP address of the client to the underlying database through the proxy layer. 0: Disable passthrough. 1: Enables passthrough. The default value. |
 
-You cannot customize the `maxclients` parameter, which adjusts the maximum number of connections for Redis data nodes. The default value is 10000.
+> **Note:** You cannot customize the `maxclients` parameter, which adjusts the maximum number of connections for Redis data nodes. The default value is 10000.
 
 ### 11.2 Use parameter templates
 
@@ -4081,9 +4169,8 @@ ent
 4. Select the instances to which you want to apply the parameter template from the instance
 list on the left side, click to move the instance to the right side, and then verify the parameter changes.
 
-**Important**
+> **Important:** When you apply a parameter template to multiple instances, make sure that the parameters are applicable to the target instances. Proceed with caution.
 
-When you apply a parameter template to multiple instances, make sure that the parameters are applicable to the target instances. Proceed with caution.
 5. Click **OK**.
 
 **Clone a parameter template**
@@ -4111,7 +4198,11 @@ In addition to the preceding operations, you can perform the following operation
 1. Log in to the Tair (Redis OSS-compatible) console.
 2. In the left-side navigation pane, click **Parameter Templates**.
 3. You can perform the following operations on a parameter template:
-View a parameter template. Click **View** in the **Operation** column of a parameter template to view the basic information and parameter information of the template. Delete a parameter template. Deleting a parameter template does not affect the instances to which the template is already applied. Click **Delete** in the **Operation** column of a parameter template. In the message that appears, click **OK**.
+View a parameter template. Click **View** in the **Operation** column of a parameter template to view the basic information and parameter information of the template. Delete a parameter template.
+
+> **Note:** Deleting a parameter template does not affect the instances to which the template is already applied.
+
+Click **Delete** in the **Operation** column of a parameter template. In the message that appears, click **OK**.
 
 ## 12 Backup and recovery
 
@@ -4145,7 +4236,8 @@ You can initiate a manual backup task in the console at any time.
 3. In the left-side navigation pane, click **Backup and Recovery**.
 4. Click **Create Backup** in the upper-right corner of the page.
 5. Click **OK**.
-You can view the completed backup data on the **Backup Settings** page. The retention period for backup data ranges from 7 to 730 days. Configure the retention days appropriately.
+
+> **Note:** You can view the completed backup data on the **Backup Settings** page. The retention period for backup data ranges from 7 to 730 days. Configure the retention days appropriately.
 
 ### 12.3 Download backup files
 
@@ -4157,7 +4249,8 @@ To archive backup files for a long period, you can copy the URLs in the console 
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, click **Backup and Recovery**.
 4. Find the backup file that you want to download and click **Download** in the Actions column.
-For a cluster instance, you must download the backup file for each data shard at the same point in time to ensure data consistency.
+
+> **Note:** For a cluster instance, you must download the backup file for each data shard at the same point in time to ensure data consistency.
 
 ### 12.4 Restore data
 
@@ -4177,9 +4270,8 @@ instance: Master-replica instance: Find the backup set that you want to restore 
 **Data** in the **Actions** column.
 Cluster instance: Select the backup sets of all data shards that were generated at the same point in time and click **Restore Data** in the upper-right corner.
 
-**Warning**
+> **Warning:** Risks may occur when you restore data. Proceed with caution. Verify the data that you want to restore before you restore the data.
 
-Risks may occur when you restore data. Proceed with caution. Verify the data that you want to restore before you restore the data.
 5. In the message that appears, read the content and click Continue.
 You can also restore backup data by cloning an instance. For more information, see Clone an instance.
 
@@ -4197,7 +4289,10 @@ The instance must be a master-replica or cluster instance.
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, click **Backup and Recovery**.
 4. Find the backup set that you want to restore and click **Clone Instance** in the Actions
-column. For a cluster instance, you must select the backup file for each data shard at the same point in time.
+column.
+
+> **Note:** For a cluster instance, you must select the backup file for each data shard at the same point in time.
+
 5. In the message that appears, click **OK**.
 6. On the Restore Instance page, configure the parameters and click Submit.
 For more information about the configurations of the new instance, see Create an instance.
@@ -4214,7 +4309,13 @@ CloudDBA provides the performance trends feature that allows you to monitor the 
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, choose **CloudDBA > Performance Trends**.
 4. Use the following methods to view performance trends.
-If the KVStore for Redis instance uses a cluster architecture, the Performance Trends page displays the information about the nodes. The performance data during the last 1 hour is displayed. If you click the node ID, you can view the details of a specified node. On the **Performance Trends** tab, specify a time range, select desired metrics, and then click **Search**. By default, **Correlation** is enabled. If you move the pointer over the CPU chart to view the CPU metric of the instance at 09:00, other charts also display other metrics of the instance at 09:00. To view the definition of the performance metric and the performance trend, click **Definition?** and **Details** in the upper-right corner of the chart.
+
+> **Note:** If the KVStore for Redis instance uses a cluster architecture, the Performance Trends page displays the information about the nodes. The performance data during the last 1 hour is displayed. If you click the node ID, you can view the details of a specified node.
+
+On the **Performance Trends** tab, specify a time range, select desired metrics, and then click **Search**.
+
+> **Note:** By default, **Correlation** is enabled. If you move the pointer over the CPU chart to view the CPU metric of the instance at 09:00, other charts also display other metrics of the instance at 09:00.
+> To view the definition of the performance metric and the performance trend, click **Definition?** and **Details** in the upper-right corner of the chart.
 
 **Performance trend comparison**
 
@@ -4287,7 +4388,9 @@ CloudDBA allows you to view the performance metrics of KVStore for Redis instanc
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, choose **CloudDBA > Real-time Performance**.
 4. Select a view based on your business requirements.
-In the upper part of the page, performance metrics are displayed in real time. The metrics include information about the server, keys, memory, clients, and connections. The details about the performance metrics are displayed in **Real-time Charts** and **Real-time Tables**. The metrics are automatically updated every 5 minutes. Therefore, you can view realtime changes in performance. The remaining updating times are displayed in the upper-right corner. To stop updating the performance metrics, you can click **Pause**.
+In the upper part of the page, performance metrics are displayed in real time. The metrics include information about the server, keys, memory, clients, and connections. The details about the performance metrics are displayed in **Real-time Charts** and **Real-time Tables**.
+
+> **Note:** The metrics are automatically updated every 5 minutes. Therefore, you can view real- time changes in performance. The remaining updating times are displayed in the upper-right corner. To stop updating the performance metrics, you can click **Pause**.
 
 | View | Description |
 |---|---|
@@ -4304,13 +4407,18 @@ Instance sessions allow you to view the statistics for sessions between a KVStor
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, choose **CloudDBA > Instance Sessions**.
 4. Perform the following operations to manage your instance sessions:
-View sessions: By default, the details of all sessions are displayed. You can move the pointer over a specific parameter name to view its information. You can enter keywords in the search box to filter sessions. To refresh instance sessions, click **Refresh** in the upper-left corner or enable
-**Auto Refresh**. If you enable auto-refresh, the system automatically refreshes
-the page every 30 seconds. Close sessions: You can close the specified one or more sessions at a time or close all sessions. To close one or more sessions at a time, select the specified session or press the Shift key and select multiple sessions, and then click **Kill Selected** in the upper-right corner. To close all sessions, click **Kill All**.
+View sessions: By default, the details of all sessions are displayed. You can move the pointer over a specific parameter name to view its information.
 
-**Warning**
+> **Note:** You can enter keywords in the search box to filter sessions.
+> To refresh instance sessions, click **Refresh** in the upper-left corner or enable **Auto Refresh**. If you enable auto-refresh, the system automatically refreshes the page every 30 seconds.
 
-To prevent unexpected consequences, we recommend that you do not close systemlevel sessions. View session statistics: Session statistics record the total number of clients, active clients, and source IP addresses involved in instance sessions. In the **Statistics by Source** table, click the icon next to the source IP address to modify the source alias. In the Total Sessions column, click a value to view the details of source IP addresses.
+Close sessions: You can close the specified one or more sessions at a time or close all sessions. To close one or more sessions at a time, select the specified session or press the Shift key and select multiple sessions, and then click **Kill Selected** in the upper-right corner. To close all sessions, click **Kill All**.
+
+> **Warning:** To prevent unexpected consequences, we recommend that you do not close system- level sessions.
+
+View session statistics: Session statistics record the total number of clients, active clients, and source IP addresses involved in instance sessions.
+
+> **Note:** In the **Statistics by Source** table, click the icon next to the source IP address to modify the source alias. In the Total Sessions column, click a value to view the details of source IP addresses.
 
 ### 13.6 Slow queries
 
@@ -4322,7 +4430,8 @@ Slow queries reduce the stability of KVStore for Redis instances. To monitor and
 2. On the **Instance List** page, click the ID of the instance.
 3. In the left-side navigation pane, choose **Slow Queries**.
 4. Query the details about the slow query logs.
-You can select the number of log entries to be displayed or enter keywords in the search box to filter log entries.
+
+> **Note:** You can select the number of log entries to be displayed or enter keywords in the search box to filter log entries.
 
 ### 13.7 Use the offline key analysis feature
 
@@ -4354,7 +4463,10 @@ detailed results.
 **Basic information**: displays the basic information of the instance such as the basic
 attributes and the cache analysis method.
 **Related node**: displays the memory usage and key statistics on each node of the
-instance. If you select a cluster instance from the Select a node for analysis drop-down list, you can view node information in the **Relevant Nodes** section and select a node in the Details section of the **Details** page.
+instance.
+
+> **Note:** If you select a cluster instance from the Select a node for analysis drop-down list, you can view node information in the **Relevant Nodes** section and select a node in the Details section of the **Details** page.
+
 **Details**: displays the details about the instance or node, such as the memory usage and
 distribution of keys, memory usage and distribution of elements in keys, distribution of key expiration time, and ranking of large keys.
 
@@ -4371,7 +4483,10 @@ Tair (Redis OSS-compatible) integrates the diagnostic report feature of Database
 3. In the left-side navigation pane, choose **CloudDBA > Diagnostic Reports**.
 4. Click **Create Reports**.
 5. In the dialog box that appears, specify a time range for which you want to create a
-diagnostic report and click **OK**. The time range cannot exceed one day. If you specify a shorter time range for diagnostics, more detailed statistics are collected in the diagnostic report.
+diagnostic report and click **OK**.
+
+> **Note:** The time range cannot exceed one day. If you specify a shorter time range for diagnostics, more detailed statistics are collected in the diagnostic report.
+
 6. Refresh the Diagnostic Report page to view the progress of the diagnostics task. After the
 diagnostic report is created, click **View Report** in the **Actions** column. The diagnostic report displays basic information such as the ID, specifications, type, and zone of the instance. It also provides statistics on key performance metrics of the instance and its status. The report also displays the top 10 data nodes that receive the greatest number of slow queries and provides information about the slow queries.
 
@@ -4392,7 +4507,8 @@ Monitoring and alerting are implemented through CloudMonitor. CloudMonitor enabl
 **CloudMonitor** console.
 5. On the **Alarm Rules** page, click **Create Alarm Rule**.
 6. Configure required parameters and click **OK**.
-After an alert rule has been created, you can modify, disable, and delete the alert rule on the **Alarm Rules** page of the CloudMonitor console. You can also view the alert history on the page.
+
+> **Note:** After an alert rule has been created, you can modify, disable, and delete the alert rule on the **Alarm Rules** page of the CloudMonitor console. You can also view the alert history on the page.
 
 ## 15 SQL audit logs
 
@@ -4400,7 +4516,9 @@ This topic describes how to use the SQL audit feature of Tair (Redis OSS-compati
 
 **Usage notes**
 
-The retention period of SQL audit log files is 30 days. The retention period of SQL audit log files that are exported is two days. PolarDB for MySQL V2.0 automatically deletes the SQL audit log files that are stored for longer than two days. If you no longer require audit logs, you can click **Disable Audit** in the upper-left corner. You can also enable or disable SQL read audit logs and write audit logs separately.
+The retention period of SQL audit log files is 30 days. The retention period of SQL audit log files that are exported is two days. PolarDB for MySQL V2.0 automatically deletes the SQL audit log files that are stored for longer than two days.
+
+> **Note:** If you no longer require audit logs, you can click **Disable Audit** in the upper-left corner. You can also enable or disable SQL read audit logs and write audit logs separately.
 
 **View SQL audit information**
 
@@ -4427,9 +4545,7 @@ click **OK** to export SQL audit log files within the specified time range. Afte
 
 This topic describes how to grant a tenant organization the permissions to access Server Load Balancer (SLB) and helps you efficiently resolve related issues.
 
-**Important**
-
-If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
+> **Important:** If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
 
 **Procedure**
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 836
 source_pdf: "fa6d7cc2d397a080_Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Developer Guide 20260312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20Compute%20Service%20Developer%20Guide%2020260312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Elastic Compute Service Developer Guide 20260312
@@ -249,17 +249,17 @@ Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 1.2 Obtain API information
@@ -287,9 +287,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3tuple. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -306,9 +304,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -339,9 +335,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right c
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your RAM role in `RAM Role` .
 2. Obtain the STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with the actual session name. For more information, see AssumeRole.
+> <yourRoleArn>: Replace it with your RAM role.
 
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the actual session name. For more information, see AssumeRole. <yourRoleArn>: Replace it with your RAM role. <sts.aliyuns.com>: Replace it with the actual endpoint of STS. For more information, see AssumeRole.
+<sts.aliyuns.com>: Replace it with the actual endpoint of STS. For more information, see AssumeRole.
 
 ```xml
 public static void main(String[] args) {
@@ -403,9 +404,13 @@ for the RAM role in the preceding step.
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the ECS `DescribeZones` operation:
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>. Replace it with your STS security token. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the region ID.
+> <yourStsAccesskeyID>: Replace it with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret.
+> <yourStsToken>. Replace it with your STS security token.
+> <yourResourceGroupID>: Replace it with the actual resource set ID.
+> <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -503,9 +508,9 @@ After you call operations to query the instances of cloud services, the followin
 
 If you want to use the POP gateway to call API operations in Apsara Stack, you must obtain an Elastic Compute Service (ECS) SDK. This topic describes how to obtain ECS SDKs. ECS SDKs encapsulate the API version released on May 26, 2014. It identifies callers based on their AccessKey pairs and provides features such as automatic signature to allow you to create and manage resources by calling API operations. To use ECS features, you must install ECS SDKs and Alibaba Cloud core libraries. For example, to use ECS SDK for Java, you must download aliyun-java-sdk-core and aliyun-java-sdk-ecs. An SDK includes code and examples. You can create cloud applications by using an SDK in your desired programming language. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. xample
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. xample
 
 ## 2 Java SDK call example
 
@@ -528,9 +533,17 @@ To use ECS SDK for Java, perform the following steps:
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <Product>: Replace it with the name of the current service. <Endpoint>: Replace it with the endpoint of the current service. <readTimeout>: Replace it with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace it with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace it with the maximum number of requests that are supported by each host. <maxRequests>: Replace it with the maximum number of requests. <http://192.168.XX:33XX>: Replace it with the IP address and port of the proxy.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <Product>: Replace it with the name of the current service.
+> <Endpoint>: Replace it with the endpoint of the current service.
+> <readTimeout>: Replace it with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace it with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace it with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace it with the maximum number of requests.
+> <http://192.168.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -635,9 +648,7 @@ This topic describes how to install and use Elastic Compute Service (ECS) SDK fo
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
-
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Note:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -648,17 +659,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 xample
 
-**Note**
-
-In the preceding sample code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
 
 #### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -790,9 +803,16 @@ You must obtain the value of the `Action` parameter and specify the API operatio
 
 The following code provides an example of how to call the `DescribeInstanceStatus` operation to obtain the status list of ECS instances.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <Endpoint>: Replace it with the endpoint of the current service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <Endpoint>: Replace it with the endpoint of the current service.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -909,17 +929,20 @@ pip3 install aliyun-python-sdk-ecs
 
 **Use ECS SDK for Python**
 
-**Note**
+> **Note:** The code provided in this topic is applicable to Python 2 and Python 3.
 
-The code provided in this topic is applicable to Python 2 and Python 3. To use ECS SDK for Python, perform the following steps:
+To use ECS SDK for Python, perform the following steps:
 1. Create a Client instance. When you create the Client instance, you must obtain a region ID,
 AccessKey ID, and AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following sample code, replace the variables with actual values. Delete the angle brackets (<>) from the code. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <ecs.aliyuns.com>: Replace this variable with the endpoint of the service. <http://192.168.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
+> **Note:** In the following sample code, replace the variables with actual values. Delete the angle brackets (<>) from the code.
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <ecs.aliyuns.com>: Replace this variable with the endpoint of the service.
+> <http://192.168.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
 
 ```python
 #!/usr/bin/env python
@@ -947,9 +970,8 @@ This topic describes how to install and use Elastic Compute Service (ECS) SDK fo
 
 Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, Python 3.x, or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the SDK core library for Python and ECS SDK for Python.
 
-To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the SDK core library for Python and ECS SDK for Python.
 1. Install the SDK core library.
 If you use Python 2.x, run the following command:
 
@@ -980,9 +1002,7 @@ pip3 install aliyun-python-sdk-ecs
 
 When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara SDK for Java supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
-
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Note:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret, region_id)
@@ -992,9 +1012,7 @@ from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -1100,9 +1118,15 @@ You must obtain the `Action` parameter and specify the API operation in the `req
 
 The following code provides an example of how to call the `DescribeInstanceStatus` operation to obtain the status list of ECS instances.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with the instance ID. <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with your resource set ID.
+> <yourOrganizationID>: Replace it with your organization ID.
+> <yourInstanceID>: Replace it with the instance ID.
+> <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
 
 ```python
 #!/usr/bin/env python
@@ -1169,9 +1193,14 @@ The following sample code shows how to use ECS SDK for Go:
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-**Note**
+> **Note:** In the following sample code, replace the following variables with actual values. Delete the angle brackets (<>) from the final code.
+> <yourRegionID>: Replace the variable with the actual region ID.
+> <yourAccessKeyID>: Replace the variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with your AccessKey secret.
+> <Endpoint>: Replace the variable with the endpoint of the required service.
+> <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use.
 
-In the following sample code, replace the following variables with actual values. Delete the angle brackets (<>) from the final code. <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <Endpoint>: Replace the variable with the endpoint of the required service. <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use. mple
+mple
 
 ```java
 package main import (
@@ -1251,9 +1280,9 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara SDK for Java supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
+> **Note:** Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize an ecsClient instance.
+The following code provides an example on how to initialize an ecsClient instance.
 
 ```
 // Initialize the ecsClient instance. ecsClient, err := ecs.NewClientWithAccessKey(
@@ -1262,9 +1291,7 @@ Do not disclose code that contains your AccessKey pair. For example, do not comm
         "<yourAccessKeySecret>")        // Replace the variable with your AccessKey secret.
 ```
 
-**Note**
-
-In the preceding sample code, replace the variables with actual values. Remove the brackets (<>) from the final code.
+> **Note:** In the preceding sample code, replace the variables with actual values. Remove the brackets (<>) from the final code.
 
 #### 4.2.3 Initiate a request
 
@@ -1314,9 +1341,7 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following sample code provides an example on how to identify and obtain the error message in a `ClientError` returned by ECS SDK for Go.
 
-**Note**
-
-If you use a specific error struct, you must add the error package github.com/aliyun/alibabacloud-sdk-go/sdk/errors by using the following code
+> **Note:** If you use a specific error struct, you must add the error package github.com/aliyun/alibaba- cloud-sdk-go/sdk/errors by using the following code
 
 ```java
 package main import (
@@ -1346,9 +1371,8 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
 
 If the server returns an error response, the SDK wraps the response into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from Response. The following sample code provides an example on how to identify and obtain the error message in a `ServerError` and `Response` returned by ECS SDK for Go.
 
-**Note**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Note:** When you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 import (
@@ -1401,9 +1425,17 @@ You must obtain the value of the `Action` parameter and specify the API operatio
 
 The following code provides an example of how to call the `DescribeInstanceStatus` operation to obtain the status list of ECS instances.
 
-**Note**
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code.
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
+> <yourSecurityToken>: Replace it with your security token.
+> <yourResourceGroupID>: Replace it with the resource set ID.
+> <yourOrganizationID>: Replace it with the organization ID.
+> <yourInstanceID>: Replace it with the instance ID.
 
-In the following code, replace the variables with actual values. Delete the angle brackets (<>) in the final code. <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with the resource set ID. <yourOrganizationID>: Replace it with the organization ID. <yourInstanceID>: Replace it with the instance ID. mple
+mple
 
 ```java
 package main import (
@@ -1518,9 +1550,9 @@ You must sign all HTTP and HTTPS API requests to ensure security. Elastic Comput
 1. Create a canonicalized query string by arranging the request parameters.
 i. Sort the request parameters (including all **common** and **operation-specific** request parameters except **Signature**) in alphabetical order.
 
-**Note**
+> **Note:** If you use the GET method to send a request, the request parameters are included as a part of the request URI and connected by ampersands (**&** ). The first request parameter follows the question mark (**?**).
 
-If you use the GET method to send a request, the request parameters are included as a part of the request URI and connected by ampersands (**&** ). The first request parameter follows the question mark (**?**). ii. Encode the request parameters. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following rules apply in the encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 instead of plus signs (+). The preceding encoding method is similar to but different from the `application/x-www-form-` `urlencoded` MIME encoding algorithms, such as java.net.URLEncoder in the Java standard library. You can encode the parameter names and values by using the encoding method in the Java standard library. Then, in the encoded string, replace plus signs (+) with %20, asterisks (*) with %2A, and %7E with tildes (~) to obtain an encoded string that complies with the preceding encoding rules. You can use the following percentEncode method to implement the encoding:
+ii. Encode the request parameters. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following rules apply in the encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 instead of plus signs (+). The preceding encoding method is similar to but different from the `application/x-www-form-` `urlencoded` MIME encoding algorithms, such as java.net.URLEncoder in the Java standard library. You can encode the parameter names and values by using the encoding method in the Java standard library. Then, in the encoded string, replace plus signs (+) with %20, asterisks (*) with %2A, and %7E with tildes (~) to obtain an encoded string that complies with the preceding encoding rules. You can use the following percentEncode method to implement the encoding:
 
 ```java
   private static final String ENCODING = "UTF-8";
@@ -1548,18 +1580,15 @@ rules:
 HTTPMethod specifies the HTTP method used to make the request, such as GET. percentEncode("/") specifies the encoded value for the forward slash (/) based on the URL encoding rules described in Step 1.ii. The value is %2F. percentEncode(CanonicalizedQueryString) specifies the encoded string of the canonicalized query string constructed in Step 1. The encoding follows the URL encoding rules described in Step 1.ii.
 3. Calculate the RFC 2104-compliant HMAC value of the string-to-sign.
 
-**Note**
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The ******************** to which an ampersand (&) (ASCII:38) is appended is used as the key for HMAC calculation.
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The
-******************** to which an ampersand (&) (ASCII:38) is appended is used as the key for
-HMAC calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the **Signature** parameter. The result is the signed
 API request.
 
-**Note**
+> **Note:** When the signature string is submitted to ECS as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986.
 
-When the signature string is submitted to ECS as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986. In this example, DescribeRegions is used . Assume that the **AccessKey ID** is testid and the
+In this example, DescribeRegions is used . Assume that the **AccessKey ID** is testid and the
 ******************** is testsecret. The following URL is the request URL to be signed:
 
 ```
@@ -1582,9 +1611,7 @@ http://ecs.example.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&
 
 API responses use unified formats. 2xx HTTP status codes indicate successful calls. 4xx or 5xx HTTP status codes indicate failed calls. Responses can be returned in the JSON or XML format. By default, responses are returned in the XML format. You can specify the response format in the request.
 
-**Note**
-
-The sample responses provided in this topic have been formatted with line breaks and indentations for better readability. The actual responses are not properly formatted as in these examples.
+> **Note:** The sample responses provided in this topic have been formatted with line breaks and indentations for better readability. The actual responses are not properly formatted as in these examples.
 
 **Sample success responses**
 
@@ -1739,9 +1766,7 @@ You can obtain the values of the `Product` and `Version` parameters in the Apsar
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information, see Obtain a resource set ID in Obtain the values of common header parameters. |
 | x-acs-instanceid | The ID of the instance that you want to manage. For more information, see Obtain an instance ID in Obtain the values of common header parameters. |
 
-**Note**
-
-When you call API operations of various Alibaba Cloud services, you must include the values of the **x-acs-instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** parameters in the request header to specify the ID of the current instance and the organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, if the values of these parameters are not included in the request header when you call API operations, the root organization and root resource set are used.
+> **Note:** When you call API operations of various Alibaba Cloud services, you must include the values of the **x-acs-instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** parameters in the request header to specify the ID of the current instance and the organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, if the values of these parameters are not included in the request header when you call API operations, the root organization and root resource set are used.
 
 **Common response parameters**
 
@@ -8333,7 +8358,9 @@ Sample success responses `XML` format
 
 ##### 5.1.8.1 CreateDisk
 
-Call CreateDisk operation to create a data disk. Operation description After you create a disk, and when the disk is deleted, its snapshots is automatically deleted by default. This means `DeleteAutoSnapshot` is set to `true` . You can modify this parameter by calling `ModifyDiskAttribute` operation. You must specify either the `Size` or `SnapshotId` request parameter. The `Size` parameter specifies the disk capacity, and the `SnapshotId` parameter creates a disk from a snapshot. When creating a disk, you can enable the multi-attach feature ( `MultiAttach` ). We recommend that you understand this feature and its limitations before using it. For more information, see the **Cloud Disks > Support for NVMe Protocol and Multi-Attach Function** section in the ECS User Guide of Apsara Stack documentation center. You can create premium performance disks, standard performance disks, ultra disks, and standard SSDs. By default, shared standard SSDs and shared ultra disks cannot be created. If you want to create shared standard SSDs and shared ultra disks, you should submit a ticket.
+Call CreateDisk operation to create a data disk. Operation description After you create a disk, and when the disk is deleted, its snapshots is automatically deleted by default. This means `DeleteAutoSnapshot` is set to `true` . You can modify this parameter by calling `ModifyDiskAttribute` operation. You must specify either the `Size` or `SnapshotId` request parameter. The `Size` parameter specifies the disk capacity, and the `SnapshotId` parameter creates a disk from a snapshot. When creating a disk, you can enable the multi-attach feature ( `MultiAttach` ). We recommend that you understand this feature and its limitations before using it. For more information, see the **Cloud Disks > Support for NVMe Protocol and Multi-Attach Function** section in the ECS User Guide of Apsara Stack documentation center. You can create premium performance disks, standard performance disks, ultra disks, and standard SSDs.
+
+> By default, shared standard SSDs and shared ultra disks cannot be created. If you want to create shared standard SSDs and shared ultra disks, you should submit a ticket.
 
 **Request headers**
 
@@ -9404,7 +9431,9 @@ Call the ResizeDisk operation to resize a system disk or data disk.
 
 **Operation description**
 
-Before you resize a disk, you must check the partition format of the disk. If a disk is in master boot record (MBR) format, it cannot be resized to greater than 2 TiB in size. If an MBR disk is resized to a size that is larger than 2 TiB, data may be lost. To resize an MBR disk to a size that is larger than 2 TiB, we recommend that you create and attach a new data disk. Then, you can set the new data disk to GUID partition table (GPT), and then copy data from the MBR disk to the new GPT data disk. For more information, see the Resize a disk in the ECS User Guide. The following disk categories support resizing: standard performance disk (cloud), ultra disk (cloud_efficiency), and standard SSD (cloud_ssd). A disk cannot be resized when a snapshot is being created for the disk. The instance to which the disk is attached must be in the Running or Stopped state. After you resize a disk, the partitions and file systems of the disk are not changed. You must allocate the storage space on the disk after the disk is resized.
+> Before you resize a disk, you must check the partition format of the disk. If a disk is in master boot record (MBR) format, it cannot be resized to greater than 2 TiB in size. If an MBR disk is resized to a size that is larger than 2 TiB, data may be lost. To resize an MBR disk to a size that is larger than 2 TiB, we recommend that you create and attach a new data disk. Then, you can set the new data disk to GUID partition table (GPT), and then copy data from the MBR disk to the new GPT data disk. For more information, see the Resize a disk in the ECS User Guide.
+
+The following disk categories support resizing: standard performance disk (cloud), ultra disk (cloud_efficiency), and standard SSD (cloud_ssd). A disk cannot be resized when a snapshot is being created for the disk. The instance to which the disk is attached must be in the Running or Stopped state. After you resize a disk, the partitions and file systems of the disk are not changed. You must allocate the storage space on the disk after the disk is resized.
 
 **Request headers**
 
@@ -15074,9 +15103,9 @@ Sample success responses `XML` format
 
 You can call this operation to bind an elastic network interface (ENI) to an ECS instance in a VPC. When you call this operation, take note of the following items: The ENI must be in the **Available** ( `Available` ) state. Each ENI can be bound to a single instance. The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ). When you bind ENIs to instances of some instance types, the instances must be in the **Stopped** ( `Stopped` ) state.
 
-**Note**
+> **Note:** If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be attached to the instance.
 
-If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be attached to the instance. You can bind multiple ENIs to a single instance. The instance must be in the same zone and the same VPC as the VSwitch to which the ENI is connected.
+You can bind multiple ENIs to a single instance. The instance must be in the same zone and the same VPC as the VSwitch to which the ENI is connected.
 
 **Request parameters**
 

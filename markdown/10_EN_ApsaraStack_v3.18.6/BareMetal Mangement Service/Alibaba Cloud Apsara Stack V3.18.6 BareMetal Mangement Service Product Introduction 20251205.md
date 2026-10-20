@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 11
 source_pdf: "12c7f73355752e78_Alibaba Cloud Apsara Stack V3.18.6 BareMetal Mangement Service Product Introduction 20251205.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86BMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20BareMetal%C2%A0Mangement%C2%A0Service%20Product%20Introduction%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # BareMetal Mangement Service Product Introduction 20251205

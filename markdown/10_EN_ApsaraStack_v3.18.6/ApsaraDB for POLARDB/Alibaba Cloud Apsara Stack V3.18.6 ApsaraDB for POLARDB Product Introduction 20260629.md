@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 29
 source_pdf: "f51f43f3dbb92fd6_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for POLARDB Product Introduction 20260629

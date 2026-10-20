@@ -5,7 +5,7 @@ doc_version: "20230714"
 pdf_pages: 21
 source_pdf: "d9b45be3306157e5_Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 20230714.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230718/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20cloud%20gateway%20User%20Guide%2020230714.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 20230714
@@ -39,10 +39,20 @@ manager Management Console This topic describes how to log on to the Apsara Uni-
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click Log On.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations in
-the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. For more information, see the Bind a virt ual MFA device t o enable MFA topic in Apsara Uni-manager Operat ions Console User Guide. stance to a VPC
+the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e.
+
+> Not e For more information, see the Bind a virt ual MFA device t o enable MFA topic in Apsara Uni-manager Operat ions Console User Guide.
+
+stance to a VPC
 
 ## 3 Connect a bare metal instance to a VPC
 
@@ -51,9 +61,21 @@ instance to a VPC After you create a vSwitch that is exclusive for bare metal in
 2. In the top navigation bar, choose Product s > Net working > Virt ual Privat e Cloud.
 3. In the left-side navigation pane, click VSwit ches.
 4. Click Creat e a swit ch to create a vSwitch that is exclusive for bare metal instances.
-Basic Information: Set the Origination and Resource Set parameters. Region: Select a region and a zone for the vSwitch. Detailed Settings: Set the Sharing Scope, VPC, Dedicated for Bare Metal Instances, IPv4 CIDR Block, IPv6 CIDR Block, and Description parameters. Import ant Turn on Dedicated for Bare Metal Instances because the vSwitch needs to be exclusive for the bare metal instance.
+Basic Information: Set the Origination and Resource Set parameters. Region: Select a region and a zone for the vSwitch. Detailed Settings: Set the Sharing Scope, VPC, Dedicated for Bare Metal Instances, IPv4 CIDR Block, IPv6 CIDR Block, and Description parameters.
+
+> Import ant
+> Turn on Dedicated for Bare Metal Instances because the vSwitch needs to be exclusive for the bare metal instance.
+
 5. Use Bare Metal Management Service to connect the bare metal instance to the VPC.
-i. In the top-navigation bar, choose Product s > Ot hers > Int elligent Operat ions Syst em. ii. In the left-side navigation pane, choose Bare Met al Management Service > Applicat ion Groups. T hen, set Group T ype to Instance. If the Instance group type does not exist, create one first. iii. Select the bare metal instance that you want to add to the application group, and click View Det ails in the Actions column. iv. On the Group Det ails page, click Apply f or Bare Met al Inst ance in t he Machines sect ion. Set the network type to VPC, and specify the organization, resource set, VPC, and VPC subnet. After your application is approved, the bare metal instance can access the VPC. Import ant To avoid potential risks, Bare Metal Management Service does not support bare metal instances that use classic networks.
+i. In the top-navigation bar, choose Product s > Ot hers > Int elligent Operat ions Syst em. ii. In the left-side navigation pane, choose Bare Met al Management Service > Applicat ion Groups. T hen, set Group T ype to Instance.
+
+> Not e
+> If the Instance group type does not exist, create one first.
+
+iii. Select the bare metal instance that you want to add to the application group, and click View Det ails in the Actions column. iv. On the Group Det ails page, click Apply f or Bare Met al Inst ance in t he Machines sect ion. Set the network type to VPC, and specify the organization, resource set, VPC, and VPC subnet. After your application is approved, the bare metal instance can access the VPC.
+
+> Import ant
+> To avoid potential risks, Bare Metal Management Service does not support bare metal instances that use classic networks.
 
 ## 4 ONSP
 
@@ -107,7 +129,10 @@ Before you create and manage an open network service in Hybrid Cloud Application
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
 1. Obtain the image from Apsara Stack Image Center.
-Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
+
+> Not e
+> Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
+
 2. Upload the image to the `/home/admin/onp_openapi/images` directory on the machine where the
 onp-openapi service is deployed.
 3. Call the CreateImage API operation to create an image. For more information, see CreateImage in ECS
@@ -120,7 +145,10 @@ This topic describes how to import the configuration file of a network service t
 2. In the top navigation bar, choose Applicat ions > Hybrid Cloud Applicat ion Cent er.
 3. In the left-side navigation pane, click App St ore.
 4. On the App St ore page, click Import Applicat ion.
-To obtain the configuration file of the open network service, contact Apsara Stack technical support.
+
+> Not e
+> To obtain the configuration file of the open network service, contact Apsara Stack technical support.
+
 5. After you import the configuration file, click the Open Net work Services category to view the
 details about the service. Deploy a service cluster After you import the configuration file, you can deploy a service cluster.
 1. Navigate to the Hybrid Cloud Applicat ion Cent er > App St ore page, select the Open Network
@@ -142,7 +170,17 @@ Services category, and then click the card of the service that you want to deplo
 | Cluster Description | Enter a description for the cluster. |
 
 3. Click Deploy to start the deployment. You can click View Det ails to go to the details page of the
-cluster. You can also view the cluster on the My Applicat ions page. What to do next To delete a service cluster, click Delet e Clust er on the right side of the Details section. Warning Deleting a service cluster may result in service disruptions. Proceed with caution. You must delete all routing entries that point to the service cluster before you can delete the cluster. To scale out a service cluster, click Scale out Clust er on the right side of the Details section. To create a redundant cluster, click Creat e Redundant Clust er in the upper-right corner of the application details page. Import ant The redundant cluster must be deployed in a different zone than the primary cluster. If an error arises in the primary cluster, network traffic is automatically switched to the redundant cluster. Activate the cluster After you deploy a service cluster, you must activate the cluster before you can use it. Contact technical support and provide the network service that you want to deploy and the information about the ECS instance that you want to use. Then, a license file is issued to you. Go to the network service page to activate the service cluster.
+cluster. You can also view the cluster on the My Applicat ions page. What to do next To delete a service cluster, click Delet e Clust er on the right side of the Details section.
+
+> **Warning:** Deleting a service cluster may result in service disruptions. Proceed with caution.
+> You must delete all routing entries that point to the service cluster before you can delete the cluster.
+
+To scale out a service cluster, click Scale out Clust er on the right side of the Details section. To create a redundant cluster, click Creat e Redundant Clust er in the upper-right corner of the application details page.
+
+> Import ant
+> The redundant cluster must be deployed in a different zone than the primary cluster. If an error arises in the primary cluster, network traffic is automatically switched to the redundant cluster.
+
+Activate the cluster After you deploy a service cluster, you must activate the cluster before you can use it. Contact technical support and provide the network service that you want to deploy and the information about the ECS instance that you want to use. Then, a license file is issued to you. Go to the network service page to activate the service cluster.
 
 ### 4.3 Open network service
 
@@ -163,7 +201,11 @@ This topic describes how to route network traffic to an open network service clu
 2. Log on to the VPC console to create a vSwitch in which you want to deploy Elastic Compute Service
 (ECS) instances. For more information, see Manage vSwitches in VPC User Guide.
 3. Create a vSwitch based on your business requirements.
-If you use a virtual load balancer (VLB) in your network, you need to create an additional virtual IP address (VIP) and an additional vSwitch in the VPC so that an IP address is reserved to provide external services. Add an Open Network Service Platform (ONSP) endpoint Network traffic is routed to the open network service cluster through an elastic network interface (ENI). Therefore, you need to add an ENI in advance. The ENI is automatically associated with the open network service cluster.
+
+> Not e
+> If you use a virtual load balancer (VLB) in your network, you need to create an additional virtual IP address (VIP) and an additional vSwitch in the VPC so that an IP address is reserved to provide external services.
+
+Add an Open Network Service Platform (ONSP) endpoint Network traffic is routed to the open network service cluster through an elastic network interface (ENI). Therefore, you need to add an ENI in advance. The ENI is automatically associated with the open network service cluster.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose Applicat ions > Hybrid Cloud Applicat ion Cent er.
 3. In the left-side navigation pane, click My Applicat ions and click the cluster that you want to
@@ -179,7 +221,18 @@ manage.
 | Description | Enter a description for the endpoint. |
 
 6. In the ONSP Endpoint section, view the information about the resources used for routing. Record
-the endpoint ID, endpoint IP address, and VLAN ID. Result After you add an endpoint, an ENI and a security group are automatically created. You can view the security group in the ECS console. To view the details about the ENI, navigate to the Net work & Securit y > ENIs page. Import ant The ENI is created by the systemWe recommend thatyou do notmodify the ENI The ENI is created by the system. We recommend that you do not modify the ENI. To view or modify the security group rule, navigate to the Net work & Securit y > Securit y Groups page. A security group is automatically created for the ENI. By default, all inbound and outbound traffic is allowed. Related operations Remove an ONSP endpoint : To remove an endpoint, click Delet e in the Actions column. Before you remove an endpoint, make sure that all route entries that point to the ENI and the elastic IP addresses (EIPs) associated with the ENI are deleted. Warning Removing an endpoint may result in network interruptions. Make sure that no network traffic is forwarded to the endpoint. Proceed with caution. Configure a cluster network After you create an ENI, you need to log on to the ECS instance and configure a port and a CIDR block for receiving network traffic from the VPC.
+the endpoint ID, endpoint IP address, and VLAN ID. Result After you add an endpoint, an ENI and a security group are automatically created. You can view the security group in the ECS console. To view the details about the ENI, navigate to the Net work & Securit y > ENIs page.
+
+> Import ant
+> The ENI is created by the systemWe recommend thatyou do notmodify the ENI
+
+> The ENI is created by the system. We recommend that you do not modify the ENI.
+
+To view or modify the security group rule, navigate to the Net work & Securit y > Securit y Groups page. A security group is automatically created for the ENI. By default, all inbound and outbound traffic is allowed. Related operations Remove an ONSP endpoint : To remove an endpoint, click Delet e in the Actions column. Before you remove an endpoint, make sure that all route entries that point to the ENI and the elastic IP addresses (EIPs) associated with the ENI are deleted.
+
+> **Warning:** Removing an endpoint may result in network interruptions. Make sure that no network traffic is forwarded to the endpoint. Proceed with caution.
+
+Configure a cluster network After you create an ENI, you need to log on to the ECS instance and configure a port and a CIDR block for receiving network traffic from the VPC.
 1. In the cluster details section, find the ECS instance that you want to manage and click Det ails in the
 Act ions column.
 2. Click Creat e on the right side of the Classic Network section.
@@ -188,7 +241,11 @@ a route entry that points to the CIDR block of the VPC by specifying the endpoin
 4. Go to the page of the open network service and probe the gateway IP address to test the network
 connectivity. Configure VPC routes Configure a route that points to the ENI for the VPC. Then, network traffic can be routed to the open network service cluster.
 1. Determine the destination CIDR block.
-In VLB scenarios, VIPs need to be divided into two CIDR blocks. One of the CIDR blocks is the destination CIDR block. In virtual firewall scenarios, you need to specify a destination CIDR block. For example, you need to specify the CIDR block of the peer VPC for VPC-to-VPC communication. For VPCto-data center communication, you need to specify the CIDR block of the data center.
+
+> Not e
+> In VLB scenarios, VIPs need to be divided into two CIDR blocks. One of the CIDR blocks is the destination CIDR block.
+> In virtual firewall scenarios, you need to specify a destination CIDR block. For example, you need to specify the CIDR block of the peer VPC for VPC-to-VPC communication. For VPC- to-data center communication, you need to specify the CIDR block of the data center.
+
 2. Query the ID of the next hop ENI.
 On the Applicat ion Det ails page, find the ID of the endpoint based on the VPC and vSwitch.
 3. On the Rout ing Policy tab, click Add Rout e.
@@ -209,7 +266,9 @@ Zone-disast er recovery: To enable zone-disaster recovery, specify the secondary
 4. Click Submit .
 Enable Internet access You need to configure a public IP address to route Internet traffic to the open network service cluster. This allows requests from the Internet to access the service cluster.
 1. On the Rout ing Policy tab, click Add Public IP.
-To enable zone-disaster recovery, assign a public IP address to each of the primary and secondary data centers, and mount both the public IP addresses to the Global Server Load Balancing (GSLB) instance.
+
+> Not e
+> To enable zone-disaster recovery, assign a public IP address to each of the primary and secondary data centers, and mount both the public IP addresses to the Global Server Load Balancing (GSLB) instance.
 
 | Paramet er | Descript ion |
 |---|---|
@@ -241,7 +300,11 @@ with the service port.
 
 #### 4.3.5 Configure resource sharing
 
-This topic describes how to configure resource sharing so that you can share an application with another user to allow the user to create endpoints and manage traffic routing. Import ant Recipient accounts do not have permissions on cluster network management. Therefore, the recipient accounts need to contact the creator of the open network service after they create endpoints. The creator needs to log on to the ECS instances in the cluster to configure networks for the cluster. Then, the cluster can receive network traffic.
+This topic describes how to configure resource sharing so that you can share an application with another user to allow the user to create endpoints and manage traffic routing.
+
+> Import ant
+> Recipient accounts do not have permissions on cluster network management. Therefore, the recipient accounts need to contact the creator of the open network service after they create endpoints. The creator needs to log on to the ECS instances in the cluster to configure networks for the cluster. Then, the cluster can receive network traffic.
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose Applicat ions > Hybrid Cloud Applicat ion Cent er.
 3. In the left-side navigation pane, click My Applicat ions, select the application that you want to

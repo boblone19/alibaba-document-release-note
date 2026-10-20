@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 552
 source_pdf: "ed70f1fd02df88f5_Alibaba Cloud Apsara Stack V3.18.6 CloudMonitor Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20CloudMonitor%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # CloudMonitor Developer Guide 20260629
@@ -219,6 +219,7 @@ This topic describes how to obtain the endpoint of CloudMonitor.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, select **Platform O&M** > **Apsara Infrastructure Management**
 > **Resource Management**.
+
 3. On the **Product Cluster O&M** page, search for CMS and click **Cluster Details** in the
 **Actions** column.
 4. On the **Services** tab, click **Details** in the **Actions** column for cms.
@@ -831,9 +832,9 @@ http(s)://[Endpoint]/?Action=DescribeMetricMetaList &Namespace=acs_ecs_dashboard
 
 Sample success responses
 
-**Note**
+> **Note:** The response content varies based on the monitored service.
 
-The response content varies based on the monitored service. `XML` format
+`XML` format
 
 ```json
 <DescribeMetricMetaListResponse>
@@ -1517,9 +1518,9 @@ http(s)://[Endpoint]/?Action=DescribeProjectMeta &<Common request parameters>
 
 Sample success responses
 
-**Note**
+> **Note:** The response content varies with the services that are actually monitored.
 
-The response content varies with the services that are actually monitored. `JSON` format `{`
+`JSON` format `{`
 
 ```json
  "PageNumber":1,
@@ -10838,9 +10839,11 @@ This topic describes the metrics available for each service. CloudMonitor checks
 | Number of processes | While an alarm rule is configured with this metric, the number of specified processes is counted and the total number displayed. | ECS | None | To monitor the running conditions of processes in an ECS instance, configure an alarm rule with this metric to trigger the alarm when the number of running processes does not equal the actual number of processes. |
 | Average load | Measures the average load value of a Linux ECS instance. | ECS | None | The average load value cannot be greater than 1. If your ECS instance has a multi-core processor, the average load value must be divided by the number of CPU cores and the obtained value must be smaller than 1. If the average load value is greater than 1, processes are queued up and the ECS instance slows down. |
 
-**Note**
+> **Note:** For ECS instances, you must install a monitoring plug-in to collect metric data at the operating system level.
+> Installation method: In the ECS instance list on the **CloudMonitor** page, select the instance to be monitored, and click **Batch Install** below the instance list.
+> The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plug- in is installed.
 
-For ECS instances, you must install a monitoring plug-in to collect metric data at the operating system level. Installation method: In the ECS instance list on the **CloudMonitor** page, select the instance to be monitored, and click **Batch Install** below the instance list. The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plugin is installed. Table 1. Metrics for ApsaraDB for RDS
+Table 1. Metrics for ApsaraDB for RDS
 
 | Metric | Description | Apsara Stack service | Calculation formula |
 |---|---|---|---|
@@ -11042,9 +11045,7 @@ This topic describes the metrics supported by Elastic Compute Service (ECS).
 
 Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
-**Note**
-
-The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
+> **Note:** The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -11064,9 +11065,9 @@ The metrics described in the following table are collected from the virtual host
 
 Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 15. Default value: **15**. Unit: seconds.
 
-**Note**
-
-To collect operating system-related metrics of ECS instances, you must install a monitoring plug-in. To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click Cloud Service Monitoring. On the Cloud product monitoring page, click ECS. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade plug-ins** below the instance list. Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
+> **Note:** To collect operating system-related metrics of ECS instances, you must install a monitoring plug-in.
+> To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click Cloud Service Monitoring. On the Cloud product monitoring page, click ECS. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade plug-ins** below the instance list.
+> Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -11819,9 +11820,7 @@ This topic describes the metrics supported by Tair (Redis OSS-compatible) (New).
 
 **of Tair (Redis OSS-compatible)**
 
-**Note**
-
-Tair (Redis OSS-compatible) Standard Edition instances and Tair (Redis OSS-compatible) Read/write splitting instances share a set of metrics.
+> **Note:** Tair (Redis OSS-compatible) Standard Edition instances and Tair (Redis OSS-compatible) Read/write splitting instances share a set of metrics.
 
 | Console- based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|

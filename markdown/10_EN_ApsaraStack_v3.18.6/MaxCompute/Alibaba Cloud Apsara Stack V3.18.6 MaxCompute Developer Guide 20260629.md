@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 316
 source_pdf: "bd45728b747ee2b2_Alibaba Cloud Apsara Stack V3.18.6 MaxCompute Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20MaxCompute%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # MaxCompute Developer Guide 20260629
@@ -550,7 +550,9 @@ The MaxCompute SDK includes the following packages:
 | odps-sdk-udf | Provides programming interfaces for MaxCompute UDFs. |
 | odps-sdk-mapred | Provides programming interfaces for MaxCompute MapReduce jobs. |
 
-To download an SDK package, go to Download SDK package. For the SDK packages provided for MaxCompute, if you use a MaxCompute version earlier than V3.8.0, download and use SDK package version **0.27.2**. If you use a MaxCompute version from V3.8.0 to V3.11.0, download and use SDK package version **0.30.8** or **0.30.9**. If you use MaxCompute V3.12.0 or later, download and use SDK package version **0.36.2**.
+To download an SDK package, go to Download SDK package.
+
+> **Note:** For the SDK packages provided for MaxCompute, if you use a MaxCompute version earlier than V3.8.0, download and use SDK package version **0.27.2**. If you use a MaxCompute version from V3.8.0 to V3.11.0, download and use SDK package version **0.30.8** or **0.30.9**. If you use MaxCompute V3.12.0 or later, download and use SDK package version **0.36.2**.
 
 ### 1.2 Prerequisites
 
@@ -568,11 +570,18 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 2. Enter your username and password.
-You need to obtain the username and password from an operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%).
+You need to obtain the username and password from an operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%).
+
 3. Click **Log on**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding operations in the
-following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**. For more information, see the **Manage MFA** section in **Apsara Uni-manager Management Console User**
-**Guide**.
+following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information, see the **Manage MFA** section in **Apsara Uni-manager Management Console User** **Guide**.
 
 ##### 1.2.2.2 Obtain the AccessKey pair of an organization
 
@@ -587,7 +596,8 @@ This topic describes how to obtain the AccessKey pair of an organization. Only t
 icon on the right of an organization.
 5. Select **AccessKey** from the drop-down list.
 6. In the message that appears, view the AccessKey pair of the organization.
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
+
+> **Note:** An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
 
 ##### 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
 
@@ -598,7 +608,8 @@ To ensure the security of cloud resources, the system must verify the identity o
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
-The AccessKey pair provides full access to cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+
+> **Note:** The AccessKey pair provides full access to cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
 #### 1.2.3 Obtain an endpoint
 
@@ -607,9 +618,14 @@ This topic describes how to obtain the endpoint of MaxCompute in the Apsara Uni-
 **Procedure**
 
 1. Open your browser. In the address bar, enter the URL (ops.asconsole.intranet-domain-id.com). Then, press Enter.
-You can select a language from the drop-down list in the upper-right corner of the page.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, the password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator.
+
+If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, the password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
 3. Click **Log On** to log on to the Apsara Uni-manager Operations Console.
 4. In the top navigation bar of the Apsara Uni-manager Operations Console, click **O&M**. In the left-side navigation pane,
 choose **Product Management > Products**. In the **Apsara Stack O&M** section, click **Apsara Infrastructure**
@@ -632,8 +648,8 @@ server.endpoint) of MaxCompute.
 #### 1.3.1 AliyunAccount
 
 This topic describes the AliyunAccount API provided by SDK for Java. You can call this API to obtain your Alibaba Cloud account. The input parameters are **accessId** and **accessKey**. This API is also considered a class that is used to initialize MaxCompute.
-**accessId** indicates the AccessKey ID that uniquely identifies an Alibaba Cloud account. **accessKey**
-indicates the AccessKey secret that is used to authenticate the identity of the account.
+
+> **Note:** ************ indicates the AccessKey ID that uniquely identifies an Alibaba Cloud account. ************* indicates the AccessKey secret that is used to authenticate the identity of the account.
 
 #### 1.3.2 Odps
 
@@ -671,7 +687,9 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { String result = results.get(status.getKey());
 ```
 
-`}` To create a table, you must call the SQLTask API instead of the Table API. In this case, you must pass the CREATE TABLE statement into SQLTask.
+`}`
+
+> **Note:** To create a table, you must call the SQLTask API instead of the Table API. In this case, you must pass the CREATE TABLE statement into SQLTask.
 
 #### 1.3.6 Instances
 
@@ -1261,7 +1279,9 @@ from odps import ODPS odps = ODPS('**your-access-id**', '**your-secret-access-ke
             endpoint='**your-end-point**')
 ```
 
-After initialization, you can perform operations on tables, resources, and functions. Unless otherwise specified, **objects** in the following sections all refer to MaxCompute entry objects.
+After initialization, you can perform operations on tables, resources, and functions.
+
+> **Note:** Unless otherwise specified, **objects** in the following sections all refer to MaxCompute entry objects.
 
 **Obtain a PyODPS project**
 
@@ -1271,7 +1291,9 @@ A project is the basic organizational unit in MaxCompute, similar to a database.
 |---|---|---|
 | project = odps.get project('my project') # Obtain information about a project. _ _ project = odps.get project() # Obtain information about the default project. _ |   |   |
 
-If no parameters are specified, information about the default project is obtained. You can call the `exist_project` method to check whether a project exists. A table is the data storage unit in MaxCompute.
+> **Note:** If no parameters are specified, information about the default project is obtained.
+> You can call the `exist_project` method to check whether a project exists.
+> A table is the data storage unit in MaxCompute.
 
 **Perform operations on PyODPS tables**
 
@@ -1506,7 +1528,9 @@ Update a table resource.
 
 **DataFrame**
 
-PyODPS provides a pandas-like API called PyODPS DataFrame. This API makes full use of the computing power of MaxCompute. For more information, see DataFrame. The following DataFrame examples are provided for reference only. You must create a MaxCompute object before you perform the following steps.
+PyODPS provides a pandas-like API called PyODPS DataFrame. This API makes full use of the computing power of MaxCompute. For more information, see DataFrame. The following DataFrame examples are provided for reference only.
+
+> **Note:** You must create a MaxCompute object before you perform the following steps.
 
 ```
  odps = ODPS('**your-access-id**', '**your-secret-access-key**',
@@ -1823,9 +1847,19 @@ An explicit conversion uses CAST to convert a value type into another one. This 
 | BOOLEAN | N | N | N | N | N/A | N |
 | DECIMAL | Y | Y | Y | N | N | N/A |
 
-Y indicates that the conversion is supported. N indicates that the conversion is not supported. N/A indicates that the conversion is not required. If the DOUBLE type is converted into the BIGINT type, the fractional part is truncated. Example: **cast(1.6 as**
-**bigint) = 1**.
-If the STRING type that meets the format of the DOUBLE type is converted into the BIGINT type, the STRING type is first converted into the DOUBLE type and then to the BIGINT type. Therefore, the fractional part is truncated. Example: **cast("1.6" as bigint) = 1**. If the STRING type that meets the format of the BIGINT type is converted into the DOUBLE type, one digit is retained after the decimal point. Example: **cast("1" as double) = 1.0**. To convert a constant string into the DECIMAL type, enclose the constant string within a pair of double quotation marks ("). If the value is not enclosed in quotation marks, it is considered a DOUBLE-type value. Example: **cast("1.234567890123456789" as decimal)**. An unsupported explicit conversion causes an exception. If a conversion fails, the system returns an error and exits. The conversion of the DATETIME type uses the default format **yyyy-mm-dd hh:mi:ss:ff3**. For more information, see Conversion between string and datetime types. Some data types cannot be explicitly converted, but can be converted by using SQL built-in functions. For example, you can use the TO_CHAR function to convert the BOOLEAN type into the STRING type. For more information, see TO_CHAR. You can also use the TO_DATE function to convert the STRING type into the DATETIME type. If the values of the DECIMAL type are not within the value range, the cast string to decimal operation may return an error, such as most significant bit overflow or least significant bit overflow truncation.
+Y indicates that the conversion is supported. N indicates that the conversion is not supported. N/A indicates that the conversion is not required.
+
+> **Note:** If the DOUBLE type is converted into the BIGINT type, the fractional part is truncated. Example: **cast(1.6 as** **bigint) = 1**.
+> If the STRING type that meets the format of the DOUBLE type is converted into the BIGINT type, the STRING type is first converted into the DOUBLE type and then to the BIGINT type. Therefore, the fractional part is truncated. Example: **cast("1.6" as bigint) = 1**.
+> If the STRING type that meets the format of the BIGINT type is converted into the DOUBLE type, one digit is retained after the decimal point. Example: **cast("1" as double) = 1.0**.
+> To convert a constant string into the DECIMAL type, enclose the constant string within a pair of double quotation marks ("). If the value is not enclosed in quotation marks, it is considered a DOUBLE-type value. Example: **cast("1.234567890123456789" as decimal)**.
+> An unsupported explicit conversion causes an exception.
+> If a conversion fails, the system returns an error and exits.
+
+The conversion of the DATETIME type uses the default format **yyyy-mm-dd hh:mi:ss:ff3**. For more information, see Conversion between string and datetime types.
+
+> Some data types cannot be explicitly converted, but can be converted by using SQL built-in functions. For example, you can use the TO_CHAR function to convert the BOOLEAN type into the STRING type. For more information, see TO_CHAR. You can also use the TO_DATE function to convert the STRING type into the DATETIME type.
+> If the values of the DECIMAL type are not within the value range, the cast string to decimal operation may return an error, such as most significant bit overflow or least significant bit overflow truncation.
 
 ##### 3.1.4.2 Implicit type conversion and its scope
 
@@ -1863,7 +1897,12 @@ Table 2. Implicit conversion 2
 | TIMESTAMP | F | F | T | T | T | F |
 | BINARY | F | F | F | F | F | T |
 
-T indicates that the conversion is supported. F indicates that the conversion is not supported. If an unsupported implicit conversion is performed, an error is returned. If a conversion fails, the system returns an error and exits. MaxCompute automatically performs implicit conversions on data types based on the context. If the types do not match, you can use the CAST function to explicitly convert data types. The rules of implicit conversions apply to specific scopes. In specific scenarios, only some rules take effect.
+T indicates that the conversion is supported. F indicates that the conversion is not supported.
+
+> **Note:** If an unsupported implicit conversion is performed, an error is returned.
+> If a conversion fails, the system returns an error and exits.
+> MaxCompute automatically performs implicit conversions on data types based on the context. If the types do not match, you can use the CAST function to explicitly convert data types.
+> The rules of implicit conversions apply to specific scopes. In specific scenarios, only some rules take effect.
 
 **Implicit conversions with relational operators**
 
@@ -1878,7 +1917,8 @@ Relational operators include =, <>, <, ≤, >, ≥, IS NULL, IS NOT NULL, LIKE, 
 | BOOLEAN | N | N | N | N | N/A | N |
 | DECIMAL | DECIMAL | DECIMAL | DECIMAL | N | N | N/A |
 
-If an implicit conversion is not supported between two values that you want to compare, the relational operation cannot be performed and an error is returned. For more information about relational operators, see Relational operators.
+> **Note:** If an implicit conversion is not supported between two values that you want to compare, the relational operation cannot be performed and an error is returned.
+> For more information about relational operators, see Relational operators.
 
 **Implicit conversion with special relational operators**
 
@@ -1894,15 +1934,21 @@ Take note of the following points for the two relational operators in implicit c
 key in (value1, value2,...);
 ```
 
-Rules of implicit conversions for IN: The data types of the **values** on the right of the IN keyword must be consistent. MaxCompute automatically compares the values in the column specified by **key** and **values** on the right of the IN keyword. If these values are of the BIGINT, DOUBLE, and STRING types, the values are converted into the DOUBLE type for comparison. If these values are of the DATETIME and STRING types, the values are converted into the DATETIME type for comparison. Conversions between other types are not allowed. The memory used by the compiler increases with the number of parameters used in the IN operation. If 5,000 parameters are used in an IN operation, the GCC compiler consumes 17 GB of memory for compilation. We recommend that you limit the number of parameters to 1,024. In this case, the compiler consumes a maximum of 1 GB of memory and requires 39 seconds for compilation.
+Rules of implicit conversions for IN: The data types of the **values** on the right of the IN keyword must be consistent. MaxCompute automatically compares the values in the column specified by **key** and **values** on the right of the IN keyword. If these values are of the BIGINT, DOUBLE, and STRING types, the values are converted into the DOUBLE type for comparison. If these values are of the DATETIME and STRING types, the values are converted into the DATETIME type for comparison. Conversions between other types are not allowed.
+
+> **Note:** The memory used by the compiler increases with the number of parameters used in the IN operation. If 5,000 parameters are used in an IN operation, the GCC compiler consumes 17 GB of memory for compilation. We recommend that you limit the number of parameters to 1,024. In this case, the compiler consumes a maximum of 1 GB of memory and requires 39 seconds for compilation.
 
 **Implicit conversions with arithmetic operators**
 
-Arithmetic operators include addition (+), subtraction (−), multiplication (×), division (/), and percent (%). This section describes the rules for implicit conversions that use these operators. Only the STRING, BIGINT, DECIMAL, and DOUBLE types can be used in arithmetic operations. Before an arithmetic operation, STRING data is implicitly converted into DOUBLE data. If an arithmetic operation involves data of the BIGINT and DOUBLE types, BIGINT data is implicitly converted into DOUBLE data. The DATETIME and BOOLEAN types cannot be used in arithmetic operations. For more information about arithmetic operators, see Arithmetic operators.
+Arithmetic operators include addition (+), subtraction (−), multiplication (×), division (/), and percent (%). This section describes the rules for implicit conversions that use these operators. Only the STRING, BIGINT, DECIMAL, and DOUBLE types can be used in arithmetic operations. Before an arithmetic operation, STRING data is implicitly converted into DOUBLE data. If an arithmetic operation involves data of the BIGINT and DOUBLE types, BIGINT data is implicitly converted into DOUBLE data. The DATETIME and BOOLEAN types cannot be used in arithmetic operations.
+
+> **Note:** For more information about arithmetic operators, see Arithmetic operators.
 
 **Implicit conversions with logical operators**
 
-Logical operators include AND, OR, and NOT. This section describes the rules for implicit conversions that use these operators. Only the BOOLEAN type can be used in logical operations. The other types are not supported by logical operations or implicit conversions. For more information about logical operators, see Logical operators.
+Logical operators include AND, OR, and NOT. This section describes the rules for implicit conversions that use these operators. Only the BOOLEAN type can be used in logical operations. The other types are not supported by logical operations or implicit conversions.
+
+> **Note:** For more information about logical operators, see Logical operators.
 
 ##### 3.1.4.3 SQL built-in functions
 
@@ -1926,9 +1972,8 @@ MaxCompute supports conversions between the STRING and DATETIME types. The forma
 | Second | ss | 00 to 59 |
 | Millisecond | ff3 | 00 to 999 |
 
-If the first digit of a valid value for each time unit is 0, 0 cannot be omitted. For example, **2017-1-9**
-**12:12:12** is an invalid DATETIME format and it cannot be converted from the STRING type into the
-DATETIME type. It must be written as **2017-01-09 12:12:12**. Only the STRING type that meets the preceding format requirements can be converted into the DATETIME type. For example, **cast("2017-12-31 02:34:34" as datetime)** converts **2017-12-31 02:34:34** of the STRING type into the DATETIME type. Similarly, if the DATETIME type is converted into the STRING type, the default conversion format is **yyyy-mm-dd hh:mi:ss**. Conversions that use the following or similar statements may fail, and errors are returned.
+> **Note:** If the first digit of a valid value for each time unit is 0, 0 cannot be omitted. For example, **2017-1-9** **12:12:12** is an invalid DATETIME format and it cannot be converted from the STRING type into the DATETIME type. It must be written as **2017-01-09 12:12:12**.
+> Only the STRING type that meets the preceding format requirements can be converted into the DATETIME type. For example, **cast("2017-12-31 02:34:34" as datetime)** converts **2017-12-31 02:34:34** of the STRING type into the DATETIME type. Similarly, if the DATETIME type is converted into the STRING type, the default conversion format is **yyyy-mm-dd hh:mi:ss**. Conversions that use the following or similar statements may fail, and errors are returned.
 
 ```
 cast("2017/12/31 02/34/34" as datetime) cast("20171231023434" as datetime) cast("2017-12-31 2:34:34" as datetime)
@@ -1964,7 +2009,8 @@ The values of the DOUBLE type in MaxCompute are different in precision. We recom
 abs(0.9999999999 - 1.0000000000) < 0.000000001 -- 0.9999999999 and 1.0000000000 have a precision of 10 decimal digits, whereas 0.000000001 has a precision of 9 decimal digits. -- 0.9999999999 is considered to be equal to 1.0000000000.
 ```
 
-ABS is a built-in function provided by MaxCompute to take the absolute value of its input. For more information, see ABS. In most cases, a value of the DOUBLE type in MaxCompute can retain 16 valid digits.
+> **Note:** ABS is a built-in function provided by MaxCompute to take the absolute value of its input. For more information, see ABS.
+> In most cases, a value of the DOUBLE type in MaxCompute can retain 16 valid digits.
 
 #### 3.2.2 Arithmetic operators
 
@@ -1982,7 +2028,10 @@ This topic describes arithmetic operators in MaxCompute SQL operators. Table 1. 
 | +A | A is returned. |
 | -A | If A is NULL, NULL is returned. Otherwise, -A is returned. |
 
-You can use only the values of the STRING, BIGINT, DOUBLE, or DECIMAL type to perform arithmetic operations. You cannot use the values of the DATETIME or BOOLEAN type to perform arithmetic operations. Values of the STRING type are implicitly converted into values of the DOUBLE type before arithmetic operations. If you use the values of the BIGINT and DOUBLE types to perform arithmetic operations, the value of the BIGINT type is implicitly converted into the value of the DOUBLE type before arithmetic operations. A value of the DOUBLE type is returned. If both A and B are of the BIGINT type, a value of the DOUBLE type is returned after you perform the A/B operation. For other arithmetic operations, a value of the BIGINT type is returned.
+> **Note:** You can use only the values of the STRING, BIGINT, DOUBLE, or DECIMAL type to perform arithmetic operations. You cannot use the values of the DATETIME or BOOLEAN type to perform arithmetic operations.
+> Values of the STRING type are implicitly converted into values of the DOUBLE type before arithmetic operations.
+> If you use the values of the BIGINT and DOUBLE types to perform arithmetic operations, the value of the BIGINT type is implicitly converted into the value of the DOUBLE type before arithmetic operations. A value of the DOUBLE type is returned.
+> If both A and B are of the BIGINT type, a value of the DOUBLE type is returned after you perform the A/B operation. For other arithmetic operations, a value of the BIGINT type is returned.
 
 #### 3.2.3 Bitwise operators
 
@@ -1993,9 +2042,7 @@ This topic describes bitwise operators in MaxCompute SQL operators. Table 1. Bit
 | A & B | The bitwise AND result of A and B is returned. For example, the result of 1&2 is 0, and the result of 1&3 is 1. The bitwise AND result of NULL and a value is NULL. Both A and B must be of the BIGINT type. |
 | A \| B | The bitwise OR result of A and B is returned. For example, the result of 1\|2 is 3, and the result of 1\|3 is 3. The bitwise OR result of NULL and a value is NULL. Both A and B must be of the BIGINT type. |
 
-**Important**
-
-Bitwise operators do not support implicit type conversions. You can use the values only of the BIGINT type in bitwise operations.
+> **Important:** Bitwise operators do not support implicit type conversions. You can use the values only of the BIGINT type in bitwise operations.
 
 #### 3.2.4 Logical operators
 
@@ -2026,7 +2073,7 @@ This topic describes logical operators in MaxCompute SQL. Table 1. Logical opera
 |   | If A is TRUE, FALSE is returned. |
 |   | If A is FALSE, TRUE is returned. |
 
-Logical operators do not support implicit type conversions. You can use only the values of the BOOLEAN type in logical operations.
+> **Note:** Logical operators do not support implicit type conversions. You can use only the values of the BOOLEAN type in logical operations.
 
 ### 3.3 LOAD
 
@@ -2040,9 +2087,9 @@ MaxCompute must be authorized to access data in external storage. The methods us
 'oss://<yourAccessKeyId>:<yourAccessKeySecret>@oss-cn-hangzhou-zmf.aliyuncs.com/my_bucket_id/my_location/'
 ```
 
-**Important**
+> **Important:** If you use this authorization method, you must use the plaintext of the AccessKey ID and AccessKey secret. This may pose security risks. We recommend that you do not use this method.
 
-If you use this authorization method, you must use the plaintext of the AccessKey ID and AccessKey secret. This may pose security risks. We recommend that you do not use this method. Use Security Token Service (STS). For more information about the STS mode authorization for OSS, see STS mode authorization for OSS.
+Use Security Token Service (STS). For more information about the STS mode authorization for OSS, see STS mode authorization for OSS.
 
 **Use an extractor or a storage handler to import data**
 
@@ -2107,7 +2154,7 @@ authorization is allowed.
 oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/ds=20200910/' -- The OSS directory where the MaxCompute external table is saved uses the preceding structure. The MaxCompute external table in the directory does not include partition key columns. The information of partition key column s is included in the directory information. CREATE TABLE ambulance_data_csv_load_pt ( vehicleId STRING, recordId STRING, patientId STRING, calls STRING, locationLatitute STRING, locationLongtitue STRING, recordTime STRING, direction STRING) PARTITIONED BY (ds STRING); -- Create a destination table named ambulance_data_csv_load_pt. LOAD OVERWRITE TABLE ambulance_data_csv_load_pt PARTITION(ds='20200910') FROM LOCATION 'oss://<yourAccessKeyId>:<yourAccessKeySecret>@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/' ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' STORED AS TEXTFILE; -- Import data stored in open source formats from OSS to the destination table.
 ```
 
-If you download data to a partitioned table, the schema of the external table in the OSS directory does not include partition key columns. In the preceding example, the external table in the directory contains only the business fields. The table does not include partition key columns.
+> **Note:** If you download data to a partitioned table, the schema of the external table in the OSS directory does not include partition key columns. In the preceding example, the external table in the directory contains only the business fields. The table does not include partition key columns.
 
 ### 3.4 DDL statements
 
@@ -2127,7 +2174,11 @@ Parameters:
 **table_name** and **col_name**: the table name and column name. The names are not case-sensitive. The names
 cannot contain special characters. A table or column name can contain only letters, digits, and underscores (_) and can be up to 128 bytes in length. We recommend that you start the table or column name with a letter. A table can contain a maximum of 1,200 columns.
 **data_type**: the type of data. Valid values: BIGINT, DOUBLE, BOOLEAN, DATETIME, DECIMAL, STRING, ARRAY<T>,
-and MAP<T1,T2>. If you want to use new data types, such as TINYINT, SMALLINT, INT, FLOAT, VARCHAR, TIMESTAMP, and BINARY, you must enable these data types. To enable new data types at the session level, add set odps.sql.type.system.odps2=true; before the SQL statement. Then, commit them for execution. To enable new data types at the project level, run the following command as the project owner:
+and MAP<T1,T2>.
+
+> **Note:** If you want to use new data types, such as TINYINT, SMALLINT, INT, FLOAT, VARCHAR, TIMESTAMP, and BINARY, you must enable these data types.
+> To enable new data types at the session level, add set odps.sql.type.system.odps2=true; before the SQL statement. Then, commit them for execution.
+> To enable new data types at the project level, run the following command as the project owner:
 
 ```
 setproject odps.sql.type.system.odps2=true;
@@ -2138,7 +2189,9 @@ operation, the default value is used for the column.
 **COMMENT table_comment**: the comment of the table. The comment must be a valid string that can be up to 1,024
 bytes in length.
 **PARTITIONED BY (col_name data_type [COMMENT col_comment], …)** : the partition field of the table. The
-following data types are supported: TINYINT, SMALLINT, INT, BIGINT, VARCHAR, and STRING. The value of the partition field cannot contain double-byte characters. It must start with a letter, followed by letters, digits, or special characters. The value can be a maximum of 128 bytes in length. The value can contain the following special characters: spaces, colons (:), underscores (_), dollar signs ($), number signs (#), periods (.), exclamation points (!), and at signs (@). Other characters, such as \t, \n, and /, are considered undefined characters. After you use partition fields to partition a table, a full table scan is not triggered when you add partitions, update partition data, or read partition data. This makes data processing more efficient. A table can contain a maximum of 60,000 partitions at six or lower levels.
+following data types are supported: TINYINT, SMALLINT, INT, BIGINT, VARCHAR, and STRING. The value of the partition field cannot contain double-byte characters. It must start with a letter, followed by letters, digits, or special characters. The value can be a maximum of 128 bytes in length. The value can contain the following special characters: spaces, colons (:), underscores (_), dollar signs ($), number signs (#), periods (.), exclamation points (!), and at signs (@). Other characters, such as \t, \n, and /, are considered undefined characters. After you use partition fields to partition a table, a full table scan is not triggered when you add partitions, update partition data, or read partition data. This makes data processing more efficient.
+
+> **Note:** A table can contain a maximum of 60,000 partitions at six or lower levels.
 
 **CLUSTERED BY | RANGE CLUSTERED BY (col_name [, col_name, …]) [SORTED BY (col_name [ASC | DESC]**
 
@@ -2149,13 +2202,22 @@ data to each bucket based on the hash values. We recommend that you specify a co
 **SORTED BY**: specifies how the data in a bucket is sorted. To achieve better performance, we recommend that
 you set **SORTED BY** and **CLUSTERED BY** to the same value. If you specify the **SORTED BY** clause, MaxCompute automatically generates indexes and uses these indexes to speed up your queries.
 **INTO number_of_buckets BUCKETS**: the number of hash buckets. This parameter is required, and the value
-of this parameter varies based on the amount of data. By default, MaxCompute supports a maximum of 1,111 reducers. Therefore, MaxCompute supports a maximum of 1,111 hash buckets. You can run the `set` odps.sql.reducer.instances=xxx; command to increase the number of hash buckets. The maximum number of hash buckets that is supported is 4,000. If the value exceeds 4000, computing performance deteriorates. To ensure optimal performance, we recommend that you take note of the following rules when you specify the number of hash buckets: Keep the size of each bucket around 500 MB. For example, if you want to add 1,000 buckets to a partition whose size is 500 GB, you must make sure that the average size of each bucket is 500 MB. If a table contains a large amount of data, you can increase the size of each bucket from 500 MB to a size in the range of 2 GB to 3 GB. You can also execute the set odps.sql.reducer.instances=xxx; statement to set the maximum number of hash buckets to a value greater than 1111. To optimize JOIN operations, we recommend that you do not specify the shuffle and sort attributes. The number of hash buckets of a table must be a multiple of the number of hash buckets of the other table. For example, one table has 256 hash buckets and the other table has 512 hash buckets. We recommend that you set the number of hash buckets to 2n, such as 512, 1,024, 2,048, or 4,096. This way, MaxCompute can automatically split and merge hash buckets. To make the execution more efficient, we recommend that you do not specify the shuffle and sort attributes. Range-clustered tables
+of this parameter varies based on the amount of data. By default, MaxCompute supports a maximum of 1,111 reducers. Therefore, MaxCompute supports a maximum of 1,111 hash buckets. You can run the `set` odps.sql.reducer.instances=xxx; command to increase the number of hash buckets. The maximum number of hash buckets that is supported is 4,000. If the value exceeds 4000, computing performance deteriorates.
+
+> **Note:** To ensure optimal performance, we recommend that you take note of the following rules when you specify the number of hash buckets:
+> Keep the size of each bucket around 500 MB. For example, if you want to add 1,000 buckets to a partition whose size is 500 GB, you must make sure that the average size of each bucket is 500 MB. If a table contains a large amount of data, you can increase the size of each bucket from 500 MB to a size in the range of 2 GB to 3 GB. You can also execute the set odps.sql.reducer.instances=xxx; statement to set the maximum number of hash buckets to a value greater than 1111.
+> To optimize JOIN operations, we recommend that you do not specify the shuffle and sort attributes. The number of hash buckets of a table must be a multiple of the number of hash buckets of the other table. For example, one table has 256 hash buckets and the other table has 512 hash buckets. We recommend that you set the number of hash buckets to 2n, such as 512, 1,024, 2,048, or 4,096. This way, MaxCompute can automatically split and merge hash buckets. To make the execution more efficient, we recommend that you do not specify the shuffle and sort attributes.
+
+Range-clustered tables
 **RANGE CLUSTERED BY**: the column for range clustering. MaxCompute performs the bucket operation on the
 specified columns and distributes data to each bucket based on the bucket ID.
 **SORTED BY**: specifies how the data in a bucket is sorted. You can use this clause in the same way you use it for
 a hash-clustered table.
 **INTO number_of_buckets BUCKETS**: the number of hash buckets. Compared with hash-clustered tables,
-range-clustered tables have no limits on the number of buckets if the data is reasonably distributed. If you do not specify the number of buckets for a range-clustered table, MaxCompute automatically determines the optimal number of buckets based on your data volume. If join and aggregate operations are performed on range-clustered tables and the join or group key is the range clustering key or the prefix of the range clustering key, you can control flags to remove data shuffling. This makes the execution more efficient. You can set `odps.optimizer.enable.range.partial.repartitioning` to true or false to control shuffling. By default, this parameter is set to false. The default value indicates that shuffling is disabled.
+range-clustered tables have no limits on the number of buckets if the data is reasonably distributed. If you do not specify the number of buckets for a range-clustered table, MaxCompute automatically determines the optimal number of buckets based on your data volume.
+
+> **Note:** If join and aggregate operations are performed on range-clustered tables and the join or group key is the range clustering key or the prefix of the range clustering key, you can control flags to remove data shuffling. This makes the execution more efficient. You can set `odps.optimizer.enable.range.partial.repartitioning` to true or false to control shuffling. By default, this parameter is set to false. The default value indicates that shuffling is disabled.
+
 **STORED AS**: the storage format of the table. The default value is CFile2. AliORC in C++ is now available. It is
 developed by the MaxCompute storage team. AliORC is fully compatible with the open source Optimized Row Columnar (ORC). Compared with CFile2, AliORC frees up more than 10% of storage and improves read performance by more than 20%.
 **LIFECYCLE**: the lifecycle of the table, in days. If you execute the **CREATE TABLE LIKE** statement to create a table
@@ -2177,7 +2239,9 @@ lifecycle and comment attributes in this clause. **compressionstrategy** specifi
 **odps.storage.compression.strategy** to specify the compression policy in the common attributes for project
 management. After this attribute is specified, the configuration applies to all generated non-archived data and does not affect the archive policy.
 **TBLPROPERTIES("transactional"="true")**: indicates that the table that you want to create is a transactional
-table. You can execute the UPDATE or DELETE statement to update or delete data by row. If you do not specify **IF NOT EXISTS** in a table creation statement and another table with the same name exists, an error is returned. If you specify **IF NOT EXISTS** in a table creation statement, a success message is returned regardless of whether a table with the same name exists. The message is returned even if the schema of the existing table is different from that of the table to create. In addition, the metadata of the existing table remains unchanged.
+table. You can execute the UPDATE or DELETE statement to update or delete data by row.
+
+> **Note:** If you do not specify **IF NOT EXISTS** in a table creation statement and another table with the same name exists, an error is returned. If you specify **IF NOT EXISTS** in a table creation statement, a success message is returned regardless of whether a table with the same name exists. The message is returned even if the schema of the existing table is different from that of the table to create. In addition, the metadata of the existing table remains unchanged.
 
 **Example for creating a partitioned table**
 
@@ -2207,7 +2271,11 @@ You can execute the `CREATE TABLE...AS select_statement...` statement to create 
 CREATE TABLE sale_detail_ctas1 AS SELECT * FROM sale_detail;
 ```
 
-If the sale_detail table contains data, all data in the sale_detail table is replicated to the sale_detail_ctas1 table after you execute the preceding statement. The sale_detail table is a partitioned table. When you execute the `CREATE TABLE...AS select_statement...` statement to create the sale_detail_ctas1 table, partition attributes of the sale_detail table are not replicated to the sale_detail_ctas1 table, and partition key columns in the sale_detail table are considered standard columns in the sale_detail_ctas1 table. sale_detail_ctas1 is a non-partitioned table that has five columns. If the SELECT clause in the `CREATE TABLE...AS select_statement...` statement uses constants as column values, we recommend that you specify the names of columns. Example:
+If the sale_detail table contains data, all data in the sale_detail table is replicated to the sale_detail_ctas1 table after you execute the preceding statement.
+
+> **Note:** The sale_detail table is a partitioned table. When you execute the `CREATE TABLE...AS select_statement...` statement to create the sale_detail_ctas1 table, partition attributes of the sale_detail table are not replicated to the sale_detail_ctas1 table, and partition key columns in the sale_detail table are considered standard columns in the sale_detail_ctas1 table. sale_detail_ctas1 is a non-partitioned table that has five columns.
+
+If the SELECT clause in the `CREATE TABLE...AS select_statement...` statement uses constants as column values, we recommend that you specify the names of columns. Example:
 
 ```
 CREATE TABLE sale_detail_ctas2
@@ -2277,7 +2345,7 @@ MaxCompute allows you to execute the SHOW CREATE TABLE statement to query the st
 SHOW CREATE TABLE <table_name>;
 ```
 
-You can use this statement to generate SQL DDL statements that are used to create tables. These DDL statements can be used to rebuild the table schema.
+> **Note:** You can use this statement to generate SQL DDL statements that are used to create tables. These DDL statements can be used to rebuild the table schema.
 
 ##### 3.4.1.2 Delete a table
 
@@ -2287,7 +2355,7 @@ This topic describes how to use a DDL statement to delete a table.
 DROP TABLE [IF EXISTS] table_name;
 ```
 
-If you do not specify **IF EXISTS** and the table does not exist, an error is returned. If this option is specified, a success message is returned regardless of whether the table exists.
+> **Note:** If you do not specify **IF EXISTS** and the table does not exist, an error is returned. If this option is specified, a success message is returned regardless of whether the table exists.
 
 ```
 CREATE TABLE sale_detail_drop LIKE sale_detail; DROP TABLE sale_detail_drop; -- If the table exists, a success message is returned. If the table does not exist, an error is returned. DROP TABLE IF EXISTS sale_detail_drop2; -- A success message is returned regardless of whether the sale_detail_drop2 table exists.
@@ -2301,7 +2369,9 @@ This topic describes how to use a DDL statement to rename a table.
 ALTER TABLE table_name RENAME TO new_table_name;
 ```
 
-The **RENAME** operation changes only the name of a table. Data in the table remains unchanged. If a table that has the same name as the table specified by new_table_name exists, an error is returned. If the table specified by **table_name** does not exist, an error is returned.
+> **Note:** The **RENAME** operation changes only the name of a table. Data in the table remains unchanged.
+> If a table that has the same name as the table specified by new_table_name exists, an error is returned.
+> If the table specified by **table_name** does not exist, an error is returned.
 
 ```
 CREATE TABLE sale_detail_rename1 LIKE sale_detail; ALTER TABLE sale_detail_rename1 RENAME TO sale_detail_rename2;
@@ -2323,7 +2393,8 @@ This topic describes how to use a DDL statement to modify the comment of a table
 ALTER TABLE table_name SET COMMENT 'tbl comment';
 ```
 
-The table specified by **table_name** must exist. The value of **comment** can be up to 1,024 bytes.
+> **Note:** The table specified by **table_name** must exist.
+> The value of **comment** can be up to 1,024 bytes.
 
 ```
 ALTER TABLE sale_detail SET COMMENT 'new coments for table sale_detail';
@@ -2339,11 +2410,13 @@ MaxCompute provides the lifecycle management feature to facilitate storage relea
 ALTER TABLE table_name SET lifecycle days;
 ```
 
-**days**: the lifecycle duration, which must be a positive integer in days.
-**table_name**: the name of the table whose lifecycle settings you want to modify.
-You can specify the lifecycle when you create a table. The lifecycle can be specified only for a table rather than a partition. After a lifecycle is specified for a partitioned table, the lifecycle applies to the partitions of the table. If data in a table is modified, the value of **LastDataModifiedTime** is updated. Therefore, MaxCompute determines whether to reclaim this table based on the value of **LastDataModifiedTime** and the lifecycle settings. For a non-partitioned table, if the data remains unchanged for the duration specified by **days** after data is last modified, MaxCompute automatically executes a statement such as DROP TABLE to reclaim the table. For a partitioned table, MaxCompute determines whether to reclaim a partition based on the value of
-**LastDataModifiedTime** for the partition. Unlike non-partitioned tables, a partitioned table is not deleted
-even if all of the partitions are reclaimed. You can only modify the lifecycle settings instead of disabling the lifecycle for non-partitioned tables. You can disable the lifecycle for a specific partition in a partitioned table.
+> **Note:** **days**: the lifecycle duration, which must be a positive integer in days.
+> **table_name**: the name of the table whose lifecycle settings you want to modify.
+> You can specify the lifecycle when you create a table. The lifecycle can be specified only for a table rather than a partition. After a lifecycle is specified for a partitioned table, the lifecycle applies to the partitions of the table.
+> If data in a table is modified, the value of **LastDataModifiedTime** is updated. Therefore, MaxCompute determines whether to reclaim this table based on the value of **LastDataModifiedTime** and the lifecycle settings.
+> For a non-partitioned table, if the data remains unchanged for the duration specified by **days** after data is last modified, MaxCompute automatically executes a statement such as DROP TABLE to reclaim the table.
+> For a partitioned table, MaxCompute determines whether to reclaim a partition based on the value of **LastDataModifiedTime** for the partition. Unlike non-partitioned tables, a partitioned table is not deleted even if all of the partitions are reclaimed.
+> You can only modify the lifecycle settings instead of disabling the lifecycle for non-partitioned tables. You can disable the lifecycle for a specific partition in a partitioned table.
 
 ```
 create table test_lifecycle(key string) lifecycle 100; -- Create a table named test_lifecycle with a lifecycle of 100 days. alter table test_lifecycle set lifecycle 50; -- Change the lifecycle of the test_lifecycle table to 50 days.
@@ -2357,12 +2430,13 @@ In some cases, if you do not want some partitions to be automatically reclaimed 
 ALTER TABLE table_name partition[partition_spec] ENABLE|DISABLE LIFECYCLE;
 ```
 
-**DISABLE LIFECYCLE**: disables the lifecycle feature for a table or partition.
-It prevents the reclamation of a table and its partitions based on the lifecycle feature. This parameter has a higher priority than partition_spec enable lifecycle. If you use **table disable lifecycle**,
-**partition_spec enable lifecycle** is invalid.
-After the lifecycle feature of a table is disabled, the table lifecycle settings and the ENABLE and DISABLE tags of partitions in the table are retained. After the lifecycle feature of a table is disabled, you can still modify the lifecycle settings of the table and its partitions.
-**ENABLE LIFECYCLE**: enables the lifecycle feature for a table or partition.
-A table and its partitions can be reclaimed based on the lifecycle feature again. The lifecycle settings of the current table and its partitions are used by default. Before you enable the lifecycle feature for a table, you can modify the lifecycle settings of the table and its partitions. This prevents data from being mistakenly reclaimed due to the use of previous settings.
+> **Note:** **DISABLE LIFECYCLE**: disables the lifecycle feature for a table or partition.
+> It prevents the reclamation of a table and its partitions based on the lifecycle feature. This parameter has a higher priority than partition_spec enable lifecycle. If you use **table disable lifecycle**, **partition_spec enable lifecycle** is invalid.
+> After the lifecycle feature of a table is disabled, the table lifecycle settings and the ENABLE and DISABLE tags of partitions in the table are retained.
+> After the lifecycle feature of a table is disabled, you can still modify the lifecycle settings of the table and its partitions.
+> **ENABLE LIFECYCLE**: enables the lifecycle feature for a table or partition.
+> A table and its partitions can be reclaimed based on the lifecycle feature again. The lifecycle settings of the current table and its partitions are used by default.
+> Before you enable the lifecycle feature for a table, you can modify the lifecycle settings of the table and its partitions. This prevents data from being mistakenly reclaimed due to the use of previous settings.
 
 ```
 ALTER TABLE trans DISABLE LIFECYCLE; -- Disable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') DISABLE LIFECYCLE; -- Disable the lifecycle feature for the dt='20141111' partition in the trans table. ALTER TABLE trans ENABLE LIFECYCLE; -- Enable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') ENABLE LIFECYCLE; -- Enable the lifecycle feature for the dt='20141111' partition in the trans table.
@@ -2376,11 +2450,16 @@ MaxCompute SQL allows you to perform the TOUCH operation to modify the value of 
 ALTER TABLE table_name TOUCH;
 ```
 
-If the table specified by **table_name** does not exist, an error is returned. This operation modifies the value of **LastDataModifiedTime** for a table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle.
+> **Note:** If the table specified by **table_name** does not exist, an error is returned.
+> This operation modifies the value of **LastDataModifiedTime** for a table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle.
 
 ##### 3.4.1.9 Modify the clustering attributes of a table
 
-This topic describes how to use a DDL statement to modify the clustering attributes of a table. MaxCompute allows you to add or remove the clustering attributes of a partitioned table by using the `ALTER TABLE` statement. The `ALTER TABLE` statement can modify only the clustering attributes of a partitioned table. The clustering attributes of a non-partitioned table cannot be modified after these attributes are added. The `ALTER TABLE` statement is applicable to the tables that already exist. After new clustering attributes are added, new partitions are stored based on the modified clustering attributes. The `ALTER TABLE` statement affects only the new partitions of partitioned tables, including the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the new clustering attributes, while the clustering attributes and storage of existing partitions remain unchanged. After you specify the clustering attributes for a table, you can remove the clustering attributes and add clustering attributes for the table again. You can specify different clustering columns, sort columns, and numbers of buckets for new partitions. The `ALTER TABLE` statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement.
+This topic describes how to use a DDL statement to modify the clustering attributes of a table. MaxCompute allows you to add or remove the clustering attributes of a partitioned table by using the `ALTER TABLE` statement.
+
+> **Note:** The `ALTER TABLE` statement can modify only the clustering attributes of a partitioned table. The clustering attributes of a non-partitioned table cannot be modified after these attributes are added. The `ALTER TABLE` statement is applicable to the tables that already exist. After new clustering attributes are added, new partitions are stored based on the modified clustering attributes.
+> The `ALTER TABLE` statement affects only the new partitions of partitioned tables, including the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the new clustering attributes, while the clustering attributes and storage of existing partitions remain unchanged. After you specify the clustering attributes for a table, you can remove the clustering attributes and add clustering attributes for the table again. You can specify different clustering columns, sort columns, and numbers of buckets for new partitions.
+> The `ALTER TABLE` statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement.
 
 **Add hash clustering attributes to a table**
 
@@ -2416,7 +2495,7 @@ This topic describes how to use a DDL statement to delete data from a non-partit
 TRUNCATE TABLE table_name;
 ```
 
-This statement is used to delete data from a specific non-partitioned table. To delete data from a partitioned table, execute the `ALTER TABLE table_name DROP PARTITION(partition_spec)` statement.
+> **Note:** This statement is used to delete data from a specific non-partitioned table. To delete data from a partitioned table, execute the `ALTER TABLE table_name DROP PARTITION(partition_spec)` statement.
 
 ##### 3.4.1.11 Archive table data
 
@@ -2426,7 +2505,8 @@ This topic describes how to use a DDL statement to archive the data of a table. 
 ALTER TABLE [table_name] <PARTITION(partition_name='partition_value')> ARCHIVE;
 ```
 
-If the table specified by **table_name** does not exist, an error is returned. If the partition specified by **partition_name** does not exist, an error is returned.
+> **Note:** If the table specified by **table_name** does not exist, an error is returned.
+> If the partition specified by **partition_name** does not exist, an error is returned.
 
 ```
 alter table my_log partition(ds='20170101') archive;
@@ -2461,7 +2541,12 @@ This topic describes how to use a DDL statement to create a view.
 CREATE [OR REPLACE] VIEW [IF NOT EXISTS] view_name [(col_name [COMMENT col_comment], ...)] [COMMENT view_comment] [AS select_statement];
 ```
 
-To create a view, you must have read permissions on the table referenced by the view. A view can contain only one valid SELECT statement. A view can reference other views but cannot reference itself. Circular references are not supported. You cannot write data to a view. For example, the `INSERT INTO` and `INSERT OVERWRITE` statements do not work on views. If the table referenced by a view changes, you may no longer be able to access the view. For example, a view becomes inaccessible after the table it references is deleted. You must maintain the mappings between referenced tables and views. If the `CREATE VIEW` statement is executed without the **IF NOT EXISTS** option and the view already exists, an exception is returned. In this case, you can execute `CREATE VIEW or REPLACE VIEW` to recreate the view. The permissions on the view remain unchanged after the view is recreated.
+> **Note:** To create a view, you must have read permissions on the table referenced by the view.
+> A view can contain only one valid SELECT statement.
+> A view can reference other views but cannot reference itself. Circular references are not supported.
+> You cannot write data to a view. For example, the `INSERT INTO` and `INSERT OVERWRITE` statements do not work on views.
+> If the table referenced by a view changes, you may no longer be able to access the view. For example, a view becomes inaccessible after the table it references is deleted. You must maintain the mappings between referenced tables and views.
+> If the `CREATE VIEW` statement is executed without the **IF NOT EXISTS** option and the view already exists, an exception is returned. In this case, you can execute `CREATE VIEW or REPLACE VIEW` to recreate the view. The permissions on the view remain unchanged after the view is recreated.
 
 ```
 create view if not exists sale_detail_view (store_name, customer_id, price, sale_date, region) comment 'a view for table sale_detail' as select * from sale_detail; -- Create a view named sale_detail_view.
@@ -2475,7 +2560,7 @@ This topic describes how to use a DDL statement to delete a view.
 DROP VIEW [IF EXISTS] view_name;
 ```
 
-If the partition does not exist and **IF EXISTS** is not specified, an error is returned.
+> **Note:** If the partition does not exist and **IF EXISTS** is not specified, an error is returned.
 
 ```
 DROP VIEW IF EXISTS sale_detail_view;
@@ -2489,7 +2574,7 @@ This topic describes how to use a DDL statement to rename a view.
 ALTER VIEW view_name RENAME TO new_view_name;
 ```
 
-If a view with the same name already exists, an error is returned.
+> **Note:** If a view with the same name already exists, an error is returned.
 
 ```
 alter view sale_detail_view rename to market;
@@ -2806,7 +2891,9 @@ Parameters and descriptions
 DESC EXTENDED mv;
 ```
 
-Sample query result: The following sample result can be returned only if the version of the MaxCompute client is V0.43 or later.
+Sample query result:
+
+> **Note:** The following sample result can be returned only if the version of the MaxCompute client is V0.43 or later.
 
 ```
 +------------------------------------------------------------------------------------+
@@ -2877,7 +2964,11 @@ SELECT materialized_view_is_valid("count_mv"); SELECT materialized_view_is_valid
 
 **List all materialized views within a project**
 
-You can use this feature to list all materialized views in a project or the materialized views that meet specific rules in a project. To run the `SHOW MATERIALIZED VIEWS` command on the MaxCompute client (odpscmd), the version of the MaxCompute client must be 0.43.0 or later. Command syntax
+You can use this feature to list all materialized views in a project or the materialized views that meet specific rules in a project.
+
+> **Note:** To run the `SHOW MATERIALIZED VIEWS` command on the MaxCompute client (odpscmd), the version of the MaxCompute client must be 0.43.0 or later.
+
+Command syntax
 
 ```
 -- List all materialized views in a project. SHOW MATERIALIZED VIEWS; -- List the materialized views whose names match the condition specified by materialized_view in a project. SHOW MATERIALIZED VIEWS LIKE '<materialized_view>'; -- List the materialized views whose names match the test* keyword in a project. The asterisk (*) indicates a ny character. SHOW MATERIALIZED VIEWS LIKE 'test*';
@@ -2990,7 +3081,9 @@ This topic describes how to use a DDL statement to add partitions.
 alter table table_name add [if not exists] partition partition_spec; -- Add one partition at a time. alter table table_name add [if not exists] partition partition_spec [PARTITION partition_spec PARTITION partiti on_spec...] ; -- Add multiple partitions at a time.
 ```
 
-If you do not specify **IF NOT EXISTS** and another partition with the same name exists, an error is returned. A MaxCompute table can contain a maximum of 60,000 partitions. To add a partition to a table that has multi-level partitions, you must specify all partition values.
+> **Note:** If you do not specify **IF NOT EXISTS** and another partition with the same name exists, an error is returned.
+> A MaxCompute table can contain a maximum of 60,000 partitions.
+> To add a partition to a table that has multi-level partitions, you must specify all partition values.
 
 ```
 alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou'); -- Add a partition to store the sales records of the China (Hangzhou) region for December 2017. alter table sale_detail add if not exists partition (sale_date='201712', region='shanghai'); -- Add a partition to store the sales records of the China (Shanghai) region for December 2017. alter table sale_detail add if not exists partition(sale_date='20171011'); -- Specify only the sale_date partition. An error is returned. alter table sale_detail add if not exists partition(region='shanghai'); -- Specify only the region partition. An error is returned. alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou') partition (sale_date='201712', region='shanghai'); -- Add two partitions to store the sales records of the China (Hangzhou) and China (Shanghai) regions for December 2017.
@@ -3004,7 +3097,7 @@ This topic describes how to use DDL statements to delete a partition. MaxCompute
 alter table table_name drop [if exists] PARTITION partition_spec; -- Delete one partition at a time. alter table table_name drop [if exists] PARTITION partition_spec,PARTITION partition_spec,[PARTITION partition_spec....] ; -- Delete multiple partitions at a time.
 ```
 
-Syntax for **partition_spec**:
+> **Note:** Syntax for **partition_spec**:
 
 ```
 partition_spec:(partition_col1 = partition_col_value1, partition_col2 = partiton_col_value2, ...)
@@ -3016,7 +3109,7 @@ If you specify a filter condition, execute the following statement:
 ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_filtercondition; -- Delete a partition based on the specified filter condition.
 ```
 
-Syntax for **PARTITION partition_filtercondition**:
+> **Note:** Syntax for **PARTITION partition_filtercondition**:
 
 ```
 PARTITION partition_filtercondition
@@ -3073,7 +3166,8 @@ This topic describes how to use a DDL statement to change the name of a column.
 ALTER TABLE table_name CHANGE COLUMN old_col_name RENAME TO new_col_name;
 ```
 
-The column specified by **old_col_name** must exist in the table. The table cannot contain the column specified by **new_col_name**.
+> **Note:** The column specified by **old_col_name** must exist in the table.
+> The table cannot contain the column specified by **new_col_name**.
 
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer_name RENAME TO customer; -- Change the name of a column in the sale_detail table.
@@ -3087,7 +3181,9 @@ This topic describes how to use a DDL statement to modify the comment of a colum
 ALTER TABLE table_name CHANGE COLUMN col_name COMMENT 'comment_string';
 ```
 
-The value of **comment_string** cannot exceed 1,024 bytes. The data type and position of a column cannot be changed. The column specified by **col_name** must exist.
+> **Note:** The value of **comment_string** cannot exceed 1,024 bytes.
+> The data type and position of a column cannot be changed.
+> The column specified by **col_name** must exist.
 
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer COMMENT 'customer'; -- Modify the comment of a column in the sale_detail table.
@@ -3103,7 +3199,10 @@ This topic describes how to use a DDL statement to modify the name and comment o
 ALTER TABLE table_name CHANGE COLUMN old_col_name new_col_name column_type COMMENT 'column_comment';
 ```
 
-The column specified by **old_col_name** must exist. The table cannot contain the column specified by **new_col_name**. The data type and position of a column cannot be changed. The value of **column_comment** cannot exceed 1,024 bytes.
+> **Note:** The column specified by **old_col_name** must exist.
+> The table cannot contain the column specified by **new_col_name**.
+> The data type and position of a column cannot be changed.
+> The value of **column_comment** cannot exceed 1,024 bytes.
 
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer customer_name string COMMENT 'Customer'; -- Modify the name and comment of a column in the sale_detail table.
@@ -3119,7 +3218,11 @@ MaxCompute SQL allows you to execute the TOUCH operation to modify the value of 
 ALTER TABLE table_name TOUCH; -- Change the value of LastDataModifiedTime for a non-partitioned table. ALTER TABLE table_name TOUCH PARTITION(partition_col='partition_col_value', ...); -- Change the value of LastDataModifiedTime for a partition in a partitioned table.
 ```
 
-If the table specified by **table_name** does not exist, an error is returned. If the partition specified by **partition_col='partition_col_value'** does not exist, an error is returned. This operation changes the value of **LastDataModifiedTime** for a non-partitioned table or a partition in a partitioned table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle. Sample statements:
+> **Note:** If the table specified by **table_name** does not exist, an error is returned.
+> If the partition specified by **partition_col='partition_col_value'** does not exist, an error is returned.
+> This operation changes the value of **LastDataModifiedTime** for a non-partitioned table or a partition in a partitioned table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle.
+
+Sample statements:
 
 ```
 ALTER TABLE result_table TOUCH; -- Change the value of LastDataModifiedTime for a non-partitioned table. ALTER TABLE sale_detail TOUCH PARTITION(sale_date='201712'); -- Change the value of LastDataModifiedTime for a partition in a partitioned table.
@@ -3133,7 +3236,9 @@ This topic describes how to use a DDL statement to modify partition values.
 ALTER TABLE table_name PARTITION (partition_col1 = 'partition_col_value1', partition_col2 = 'partiton_col_value2', ...) RENAME TO PARTITION (partition_col1 = 'partition_col_newvalue1', partition_col2 = 'partiton_col_newvalue2', ... ) ;
 ```
 
-This statement can modify only the values rather than the names of partition key columns. To modify the values of one or more partitions in a table that has multi-level partitions, you must specify the partition values at each level. If the table specified by **table_name** does not exist, an error is returned.
+> **Note:** This statement can modify only the values rather than the names of partition key columns.
+> To modify the values of one or more partitions in a table that has multi-level partitions, you must specify the partition values at each level.
+> If the table specified by **table_name** does not exist, an error is returned.
 
 ```
 ALTER TABLE sale_detail PARTITION (sale_date = '201712', region = 'hangzhou') RENAME TO PARTITION (sale_date = '201710', region = 'beijing'); -- Modify the partition values in the sale_detail table.
@@ -3147,7 +3252,12 @@ MaxCompute SQL allows you to execute the `MERGE PARTITION` statement to merge mu
 ALTER TABLE <tableName> MERGE [IF EXISTS] PARTITION(<predicate>) [, PARTITION(<predicate2>) ...] OVERWRITE PART ITION(<fullPartitionSpec>) [PURGE];
 ```
 
-If you do not specify **IF EXISTS** and the partition that you want to merge does not exist, an error is returned. If you specify **IF EXISTS** but no partitions meet the merge conditions, no new partitions are generated. If operations such as INSERT, RENAME, and DROP are performed at the same time to modify the source data when you execute the preceding statement, an error is returned even if you specified **IF EXISTS**. If the PURGE attribute is specified, you cannot back up or restore merged partitions by using metadata snapshots. Limits and troubleshooting: Partitions of external tables cannot be merged. After partitions of a clustered table are merged into one partition, the partition does not have the clustering attribute. You can merge a maximum of 4,000 partitions at a time. If an error that indicates the catalog server is busy is returned, you can try again later. If a hard link in Apsara Distributed File System is faulty, you can clear the recycle bin and try again. Sample code:
+> **Note:** If you do not specify **IF EXISTS** and the partition that you want to merge does not exist, an error is returned.
+> If you specify **IF EXISTS** but no partitions meet the merge conditions, no new partitions are generated.
+> If operations such as INSERT, RENAME, and DROP are performed at the same time to modify the source data when you execute the preceding statement, an error is returned even if you specified **IF EXISTS**.
+> If the PURGE attribute is specified, you cannot back up or restore merged partitions by using metadata snapshots.
+
+Limits and troubleshooting: Partitions of external tables cannot be merged. After partitions of a clustered table are merged into one partition, the partition does not have the clustering attribute. You can merge a maximum of 4,000 partitions at a time. If an error that indicates the catalog server is busy is returned, you can try again later. If a hard link in Apsara Distributed File System is faulty, you can clear the recycle bin and try again. Sample code:
 
 ```
 odps@ jet_zwz>SHOW PARTITIONS intpstringstringstring; ds=20181101/hh=00/mm=00 ds=20181101/hh=00/mm=10 ds=20181101/hh=10/mm=00 ds=20181101/hh=10/mm=10
@@ -3217,7 +3327,15 @@ the `INSERT OVERWRITE` statement.
 **from_statement**: the FROM clause used to indicate the data source. For example, the value can be the name of the
 source table.
 **[ZORDER BY zcol1 [, zcol2 ...]]**: the columns that are used to sort data. If you write data to a table or partition,
-you can use this clause to place rows with similar data records in the columns specified in select_statement in adjacent positions. This improves filtering performance for queries and reduces storage costs. The `ORDER BY x, y` clause sorts data records based on the ordering of x coming before y. The `ZORDER BY x, y` clause places rows that have similar x values in adjacent positions and rows that have similar y values in adjacent positions. If the filter condition of an SQL query statement includes sort columns, the ORDER BY clause filters and sorts data based on x, whereas the ZORDER BY clause filters and sorts data based on x or on both x and y. ZORDER BY increases the column store ratio. The mappings between the source and destination tables are based on the column sequence in the SELECT clause. The mappings between the column names of the tables are not considered. If the destination table consists of static partitions and you want to insert data into a partition, partition key columns cannot be included in the SELECT clause. The ZORDER BY clause occupies a large number of resources to write data. As a result, data writes based on ZORDER BY require a longer time than data writes without ordering. If the destination table is a clustered table, ZORDER BY is not supported. ZORDER BY can be used with DISTRIBUTE BY. However, ZORDER BY cannot be used with ORDER BY, CLUSTER BY, or SORT BY. Calculate the sales of different regions listed in the sale_detail table. Then, insert the obtained data into the sale_detail_insert table.
+you can use this clause to place rows with similar data records in the columns specified in select_statement in adjacent positions. This improves filtering performance for queries and reduces storage costs. The `ORDER BY x, y` clause sorts data records based on the ordering of x coming before y. The `ZORDER BY x, y` clause places rows that have similar x values in adjacent positions and rows that have similar y values in adjacent positions. If the filter condition of an SQL query statement includes sort columns, the ORDER BY clause filters and sorts data based on x, whereas the ZORDER BY clause filters and sorts data based on x or on both x and y. ZORDER BY increases the column store ratio.
+
+> **Note:** The mappings between the source and destination tables are based on the column sequence in the SELECT clause. The mappings between the column names of the tables are not considered.
+> If the destination table consists of static partitions and you want to insert data into a partition, partition key columns cannot be included in the SELECT clause.
+> The ZORDER BY clause occupies a large number of resources to write data. As a result, data writes based on ZORDER BY require a longer time than data writes without ordering.
+> If the destination table is a clustered table, ZORDER BY is not supported.
+> ZORDER BY can be used with DISTRIBUTE BY. However, ZORDER BY cannot be used with ORDER BY, CLUSTER BY, or SORT BY.
+
+Calculate the sales of different regions listed in the sale_detail table. Then, insert the obtained data into the sale_detail_insert table.
 
 ```
 -- Create a partitioned table named sale_detail, add partitions, and insert data into the table. You do not nee d to define partition key columns as standard columns in the statement that is used to create the source table. CREATE TABLE IF NOT EXISTS sale_detail
@@ -3277,9 +3395,10 @@ This topic describes how to use an INSERT statement to insert data to multiple o
 FROM from_statement INSERT OVERWRITE | INTO TABLE tablename1 [PARTITION (partcol1=val1, partcol2=val2 ...)] select_statement1 [FROM from_statement] [INSERT OVERWRITE | INTO TABLE tablename2 [PARTITION (partcol1=val3, partcol2=val4 ...)] select_statement2 [FROM from_statement]];
 ```
 
-In most cases, an SQL statement supports up to 256 outputs. If the number of outputs exceeds 256, a syntax error is returned. In a MULTI INSERT statement, non-partitioned tables and destination partitions in a partitioned table must be unique. The `INSERT OVERWRITE` and `INSERT INTO` operations cannot be simultaneously performed on different partitions of a table. If these operations are simultaneously performed on the partitions, an error is returned.
-**PARTITION (partcol1=val1, partcol2=val2 ...)**: The parameter values can be only constants rather than
-expressions, such as functions.
+> **Note:** In most cases, an SQL statement supports up to 256 outputs. If the number of outputs exceeds 256, a syntax error is returned.
+> In a MULTI INSERT statement, non-partitioned tables and destination partitions in a partitioned table must be unique.
+> The `INSERT OVERWRITE` and `INSERT INTO` operations cannot be simultaneously performed on different partitions of a table. If these operations are simultaneously performed on the partitions, an error is returned.
+> **PARTITION (partcol1=val1, partcol2=val2 ...)**: The parameter values can be only constants rather than expressions, such as functions.
 
 ```
 -- Create a destination table named sale_detail_multi. create table sale_detail_multi like sale_detail; -- Insert data from sale_detail into sale_detail_multi. set odps.sql.allow.fullscan=true; -- Enable the full table scan, which is valid only for this session. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price ; -- An error is returned because the same partition appears more than once. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price; -- An error is returned because the INSERT OVERWRITE and INSERT INTO operations are simultaneously performed on different partitions of a partitioned table. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert into table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price;
@@ -3293,13 +3412,19 @@ This topic describes how to use an INSERT statement to insert data into dynamic 
 INSERT OVERWRITE|INTO TABLE tablename PARTITION (partcol1, partcol2 ...) select_statement FROM from_statement;
 ```
 
-A maximum of 10,000 dynamic partitions can be generated by using the INSERT INTO statement. A maximum of 60,000 dynamic partitions can be generated by using the INSERT OVERWRITE statement. An SQL statement that is used to insert data into dynamic partitions in a distributed environment can generate a maximum of 512 dynamic partitions in a single process. If the number of dynamic partitions exceeds this limit, an exception occurs. The dynamically generated partition values cannot be NULL or contain special characters. If a value is NULL or contains special characters, an exception occurs.
+> **Note:** A maximum of 10,000 dynamic partitions can be generated by using the INSERT INTO statement. A maximum of 60,000 dynamic partitions can be generated by using the INSERT OVERWRITE statement.
+> An SQL statement that is used to insert data into dynamic partitions in a distributed environment can generate a maximum of 512 dynamic partitions in a single process. If the number of dynamic partitions exceeds this limit, an exception occurs.
+> The dynamically generated partition values cannot be NULL or contain special characters. If a value is NULL or contains special characters, an exception occurs.
 
 ```
 FAILED: ODPS-0123031:Partition exception - invalid dynamic partition value: province=xxx
 ```
 
-If the destination table has multi-level partitions, you can specify some partitions as static partitions in an INSERT statement. However, the static partitions must be high-level partitions. If the destination table is a hash-clustered table, dynamic partitions are not supported. If you insert data into dynamic partitions, the mappings between the columns in **select_statement** and dynamic partitions in the destination table are determined by the column sequence, not by the column names. If the sequence of columns in the source table is different from that in the destination table, we recommend that you specify the columns in **select_statement** based on the column sequence in the destination table. Insert data from a source table into a destination table. You can obtain the partitions generated based on the region field only after the required statement is executed.
+> If the destination table has multi-level partitions, you can specify some partitions as static partitions in an INSERT statement. However, the static partitions must be high-level partitions.
+> If the destination table is a hash-clustered table, dynamic partitions are not supported.
+> If you insert data into dynamic partitions, the mappings between the columns in **select_statement** and dynamic partitions in the destination table are determined by the column sequence, not by the column names. If the sequence of columns in the source table is different from that in the destination table, we recommend that you specify the columns in **select_statement** based on the column sequence in the destination table.
+
+Insert data from a source table into a destination table. You can obtain the partitions generated based on the region field only after the required statement is executed.
 
 ```
 -- Create a destination table named total_revenues. create table total_revenues (revenue bigint) partitioned by (region string); -- Insert the data from sale_detail into total_revenues. insert overwrite table total_revenues partition(region) select total_price as revenue, region from sale_detail;
@@ -3343,13 +3468,16 @@ Parameters:
 a partitioned table, you must configure this parameter.
 **[(co1name1,colname2,...)]**: the names of the columns in the destination table.
 **col_value**: the value in the specified column in the destination table. Separate multiple values with commas (,).
-Each value in the column must be a constant. If no values are specified, the default value NULL is used. You can use only the `INSERT INTO` statement rather than the `INSERT OVERWRITE` statement to insert data into specific columns. Functions cannot be used to construct constants for some complex data types, such as ARRAY, in VALUES. However, you can use the following statement to pass the values of the ARRAY type to VALUES:
+Each value in the column must be a constant. If no values are specified, the default value NULL is used.
+
+> **Note:** You can use only the `INSERT INTO` statement rather than the `INSERT OVERWRITE` statement to insert data into specific columns.
+> Functions cannot be used to construct constants for some complex data types, such as ARRAY, in VALUES. However, you can use the following statement to pass the values of the ARRAY type to VALUES:
 
 ```
 INSERT INTO TABLE srcp (p='abc') SELECT 'a', ARRAY('1', '2', '3');
 ```
 
-To pass the values of the DATETIME or TIMESTAMP type, you must specify the data type in VALUES.
+> To pass the values of the DATETIME or TIMESTAMP type, you must specify the data type in VALUES.
 
 ```
 INSERT INTO TABLE srcp (p='abc') VALUES (datetime'2017-11-11 00:00:00',timestamp'2017-11-11 00:00:00.123456789');
@@ -3579,10 +3707,9 @@ User-defined functions (UDFs) support partition pruning. UDFs are run as small j
 @com.aliyun.odps.udf.annotation.UdfProperty(isDeterministic=true)
 ```
 
-**Important**
+> **Important:** **com.aliyun.odps.udf.annotation.UdfProperty** defines that the version of referenced **odps-sdk-udf** must be 0.30.x or later in odps-sdk-udf.jar.
 
-**com.aliyun.odps.udf.annotation.UdfProperty** defines that the version of referenced **odps-sdk-udf** must
-be 0.30.x or later in odps-sdk-udf.jar. Add the set odps.sql.udf.ppr.deterministic = true; flag before the SQL statement that you want to execute. Then, all UDFs in the SQL statement are considered **deterministic** UDFs.
+Add the set odps.sql.udf.ppr.deterministic = true; flag before the SQL statement that you want to execute. Then, all UDFs in the SQL statement are considered **deterministic** UDFs.
 
 |   | Note The preceding SET command backfills partitions with the results of jobs. A maximum of 1,000 partitions can be backfilled with the results of jobs. If you add an annotation to a UDF class, an error that indicates more than 1,000 partitions are backfilled may be returned. To ignore this error, you can run the set odps.sql.udf.ppr.to.subquery = false; command. After you run this command, UDF-based partition pruning is no longer in effect. |
 |---|---|
@@ -3646,15 +3773,22 @@ If the SORT BY clause is not preceded by the DISTRIBUTE BY clause, the SORT BY c
 SELECT region FROM sale_detail SORT BY region;
 ```
 
-The value of ORDER BY, DISTRIBUTE BY, or SORT BY must be the alias of an output column from the SELECT statement. Column aliases can be Chinese. During the parsing of MaxCompute SQL statements, the ORDER BY, DISTRIBUTE BY, or SORT BY clause is executed after the SELECT operation. Therefore, the value of ORDER BY, DISTRIBUTE BY, or SORT BY must be the alias of an output column from the SELECT operation. The ORDER BY clause cannot be used with the DISTRIBUTE BY or SORT BY clause. The GROUP BY clause cannot be used with the DISTRIBUTE BY or SORT BY clause.
+> **Note:** The value of ORDER BY, DISTRIBUTE BY, or SORT BY must be the alias of an output column from the SELECT statement. Column aliases can be Chinese.
+> During the parsing of MaxCompute SQL statements, the ORDER BY, DISTRIBUTE BY, or SORT BY clause is executed after the SELECT operation. Therefore, the value of ORDER BY, DISTRIBUTE BY, or SORT BY must be the alias of an output column from the SELECT operation.
+> The ORDER BY clause cannot be used with the DISTRIBUTE BY or SORT BY clause. The GROUP BY clause cannot be used with the DISTRIBUTE BY or SORT BY clause.
 
 **LIMIT**
 
-The **number** in the LIMIT clause is a constant that limits the number of rows to return. Remove the limit on the simultaneous execution of the ORDER BY and LIMIT clauses The ORDER BY clause needs to sort all data of a single node. By default, the ORDER BY clause is used with the LIMIT clause to prevent a single node from processing large amounts of data. You can remove the limit on the simultaneous execution of the ORDER BY and LIMIT clauses for a project or session. To remove the limit for a project, run the setproject odps.sql.validate.orderby.limit=false; command. To remove the limit for a session, run the setproject odps.sql.validate.orderby.limit=false; command with the SQL statement. If a single node has large amounts of data to sort after the limit is removed, more resources and time are required. Limits on the number of rows to return If you use a SELECT statement without the LIMIT clause or the number in the LIMIT clause exceeds the specified upper limit, you can view only the rows within the upper limit. The maximum number of rows that can be displayed varies based on projects. You can use one of the following methods to control the maximum number: If project data protection is disabled by setting **use_instance_tunnel** to true and **instance_tunnel_max_record** is not specified, no limits are imposed on the number of rows to return. For more information about project data protection, see Data protection. For more information about the configurations of **use_instance_tunnel=true** and
+The **number** in the LIMIT clause is a constant that limits the number of rows to return. Remove the limit on the simultaneous execution of the ORDER BY and LIMIT clauses The ORDER BY clause needs to sort all data of a single node. By default, the ORDER BY clause is used with the LIMIT clause to prevent a single node from processing large amounts of data. You can remove the limit on the simultaneous execution of the ORDER BY and LIMIT clauses for a project or session. To remove the limit for a project, run the setproject odps.sql.validate.orderby.limit=false; command. To remove the limit for a session, run the setproject odps.sql.validate.orderby.limit=false; command with the SQL statement.
+
+> **Note:** If a single node has large amounts of data to sort after the limit is removed, more resources and time are required.
+
+Limits on the number of rows to return If you use a SELECT statement without the LIMIT clause or the number in the LIMIT clause exceeds the specified upper limit, you can view only the rows within the upper limit. The maximum number of rows that can be displayed varies based on projects. You can use one of the following methods to control the maximum number: If project data protection is disabled by setting **use_instance_tunnel** to true and **instance_tunnel_max_record** is not specified, no limits are imposed on the number of rows to return. For more information about project data protection, see Data protection. For more information about the configurations of **use_instance_tunnel=true** and
 **instance_tunnel_max_record**, see Tunnel operations.
-If project data protection is enabled, the number of rows to return is limited by **READ_TABLE_MAX_ROW**. The maximum value of this parameter is 10000. You can run the SHOW SecurityConfiguration; command to view the value of **ProjectProtection**. If
-**ProjectProtection** is set to true, you can determine whether to disable project data protection. You can run the
-set ProjectProtection=false; command to disable project data protection. By default, **ProjectProtection** is disabled. For more information about project data protection, see Data protection.
+If project data protection is enabled, the number of rows to return is limited by **READ_TABLE_MAX_ROW**. The maximum value of this parameter is 10000.
+
+> **Note:** You can run the SHOW SecurityConfiguration; command to view the value of **ProjectProtection**. If **ProjectProtection** is set to true, you can determine whether to disable project data protection. You can run the
+> set ProjectProtection=false; command to disable project data protection. By default, **ProjectProtection** is disabled. For more information about project data protection, see Data protection.
 
 ##### 3.5.2.2 Subquery
 
@@ -3664,15 +3798,13 @@ This topic describes how to use a SELECT statement to perform subqueries. A comm
 select * from (select shop_name from sale_detail) a;
 ```
 
-**Important**
-
-A subquery must have an alias.
+> **Important:** A subquery must have an alias.
 
 ```
 create table shop as select * from sale_detail; select a.shop_name, a.customer_id, a.total_price from (select * from shop) a join sale_detail on a.shop_name = sale_detail.shop_name;
 ```
 
-In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
+> **Note:** In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
 
 ##### 3.5.2.3 UNION ALL
 
@@ -3682,7 +3814,9 @@ This topic describes how to use a SELECT statement to perform UNION ALL operatio
 select_statement union all select_statement
 ```
 
-The UNION ALL clause is used to combine two or more datasets returned from a SELECT operation into one dataset. If duplicate rows exist in the results, all rows that meet the condition are returned, with duplicate rows retained. MaxCompute SQL does not support UNION ALL between two top-level query statements. To combine the query results of the two statements, you must rewrite the UNION ALL clause as a subquery. Syntax before rewriting:
+> **Note:** The UNION ALL clause is used to combine two or more datasets returned from a SELECT operation into one dataset. If duplicate rows exist in the results, all rows that meet the condition are returned, with duplicate rows retained.
+
+MaxCompute SQL does not support UNION ALL between two top-level query statements. To combine the query results of the two statements, you must rewrite the UNION ALL clause as a subquery. Syntax before rewriting:
 
 ```
 select * from sale_detail where region = 'hangzhou' select * from sale_detail where region = 'shanghai';
@@ -3700,9 +3834,8 @@ The syntax that uses a pair of parentheses to specify the priority of UNION ALL 
 SELECT * FROM src UNION ALL (SELECT * FROM src2 UNION ALL SELECT * FROM src3); -- Execute the UNION ALL clause for the src2 and src3 tables. Then, execute the UNION ALL clause for the src ta ble and the result of the first UNION ALL operation.
 ```
 
-**Important**
-
-For a UNION ALL operation, all subqueries must have the same number of columns, column names, and column types. If the column names are inconsistent, use column aliases. In most cases, MaxCompute allows a UNION ALL operation for a maximum of 256 subqueries. If the limit is exceeded, a syntax error is returned.
+> **Important:** For a UNION ALL operation, all subqueries must have the same number of columns, column names, and column types. If the column names are inconsistent, use column aliases.
+> In most cases, MaxCompute allows a UNION ALL operation for a maximum of 256 subqueries. If the limit is exceeded, a syntax error is returned.
 
 ##### 3.5.2.4 JOIN
 
@@ -3723,14 +3856,17 @@ join_table:
         ON equality_expression ( AND equality_expression )
 ```
 
-**equality_expression** indicates an equality expression.
+> **Note:** **equality_expression** indicates an equality expression.
+
 Types of JOIN operations: LEFT OUTER JOIN: shortened as LEFT JOIN. It returns all rows in the left table, including the rows that do not match any rows in the right table.
 
 ```
 SELECT a.shop_name AS ashop, b.shop_name AS bshop FROM shop a LEFT OUTER JOIN sale_detail b ON a.shop_name=b.shop_name; -- Both the shop and sale_detail tables have the shop_name column. You must use aliases to distinguish the co lumns in the SELECT operation.
 ```
 
-If the values in some rows of the right table are duplicate, we recommend that you do not consecutively use LEFT JOIN. If you consecutively use LEFT JOIN, data bloat may occur and interrupt your jobs. RIGHT OUTER JOIN: shortened as RIGHT JOIN. It returns all rows in the right table, including rows that do not match any rows in the left table.
+> **Note:** If the values in some rows of the right table are duplicate, we recommend that you do not consecutively use LEFT JOIN. If you consecutively use LEFT JOIN, data bloat may occur and interrupt your jobs.
+
+RIGHT OUTER JOIN: shortened as RIGHT JOIN. It returns all rows in the right table, including rows that do not match any rows in the left table.
 
 ```
 SELECT a.shop_name AS ashop, b.shop_name AS bshop FROM shop a RIGHT OUTER JOIN sale_detail b ON a.shop_name=b.shop_name;
@@ -3832,18 +3968,30 @@ Parameters:
 **SELECT TRANSFORM**: the keyword, which can be replaced with the **MAP** or **REDUCE** keyword. These keywords
 have the same syntax. We recommend that you use **SELECT TRANSFORM** to make the syntax clearer.
 **(arg1, arg2 ...)**: the input data. The data format is similar to that of the SELECT statement. In the default format,
-the results of expressions for each parameter are implicitly converted into a value of the STRING type. Then, the parameters are combined by **\t** and passed to the specified child process. The format is configurable. For more information, see **ROW FORMAT**.
+the results of expressions for each parameter are implicitly converted into a value of the STRING type. Then, the parameters are combined by **\t** and passed to the specified child process.
+
+> **Note:** The format is configurable. For more information, see **ROW FORMAT**.
+
 **USING**: the commands that are used to start a child process. Take note of the following points:
 In most MaxCompute SQL statements, the USING clause specifies resources. However, in the SELECT TRANSFORM statement, the USING clause specifies the commands to start a child process. The USING clause is used to ensure compatibility with the Hive syntax. The syntax of the USING clause is similar to that of a shell script. However, instead of running the shell script, the USING clause creates a child process based on the input commands. Therefore, some shell features, such as input and output redirection, pipe, and loop, cannot be used. A shell script can be used as the commands to start a child process if necessary.
 **RESOURCES**: the resources that the specified child process can access. You can use one of the following methods to
-specify resources: Use the RESOURCES clause. Example: `using 'sh foo.sh bar.txt' resources 'foo.sh','bar.txt'` . Add the set odps.sql.session.resources=foo.sh,bar.txt; flag before SQL statements to specify resources. This is a global configuration. It allows all **SELECT TRANSFORM** statements to access the specified resources. Separate multiple resource files with commas (,).
+specify resources: Use the RESOURCES clause. Example: `using 'sh foo.sh bar.txt' resources 'foo.sh','bar.txt'` . Add the set odps.sql.session.resources=foo.sh,bar.txt; flag before SQL statements to specify resources.
+
+> **Note:** This is a global configuration. It allows all **SELECT TRANSFORM** statements to access the specified resources. Separate multiple resource files with commas (,).
+
 **ROW FORMAT**: the input and output formats. The syntax includes two ROW FORMAT clauses. The first clause
-specifies the format of the input data, and the second clause specifies the format of the output data. By default, **\t** is used as a column delimiter, **\n** is used as a row delimiter, and **\N** is used to represent NULL values. For field_delimiter, character_escape, and line_separator, only one character is accepted. If you specify a string, the first character in the string takes priority over the others. MaxCompute supports syntax in the formats that are specified by Hive, such as **inputRecordReader**,
-**outputRecordReader**, and **SerDe**. You must enable the Hive-compatible mode to use the syntax. To
-enable the Hive-compatible mode, add set odps.sql.hive.compatible=true; before SQL statements. If you specify the syntax that is supported by Hive, such as **inputRecordReader** and
-**outputRecordReader**, the performance of SQL queries may deteriorate.
+specifies the format of the input data, and the second clause specifies the format of the output data. By default, **\t** is used as a column delimiter, **\n** is used as a row delimiter, and **\N** is used to represent NULL values.
+
+> **Note:** For field_delimiter, character_escape, and line_separator, only one character is accepted. If you specify a string, the first character in the string takes priority over the others.
+> MaxCompute supports syntax in the formats that are specified by Hive, such as **inputRecordReader**, **outputRecordReader**, and **SerDe**. You must enable the Hive-compatible mode to use the syntax. To enable the Hive-compatible mode, add set odps.sql.hive.compatible=true; before SQL statements.
+> If you specify the syntax that is supported by Hive, such as **inputRecordReader** and **outputRecordReader**, the performance of SQL queries may deteriorate.
+
 **AS**: the output columns.
-If you do not specify the data types for output columns, the STRING type is used. The output data is obtained after the standard output of the child process is parsed. If the data is not of the STRING type, the system implicitly calls the CAST function to convert the data into the STRING type. Exceptions may occur during the conversion process. You must specify data types for all output columns. If you omit the AS keyword, the field before the first **\t** in the standard output data is the key and all the following parts are values. This is equivalent to **AS(key, value)**.
+
+> **Note:** If you do not specify the data types for output columns, the STRING type is used.
+> The output data is obtained after the standard output of the child process is parsed. If the data is not of the STRING type, the system implicitly calls the CAST function to convert the data into the STRING type. Exceptions may occur during the conversion process.
+> You must specify data types for all output columns.
+> If you omit the AS keyword, the field before the first **\t** in the standard output data is the key and all the following parts are values. This is equivalent to **AS(key, value)**.
 
 ###### 3.5.2.6.2 SELECT TRANSFORM examples
 
@@ -3857,7 +4005,11 @@ SELECT TRANSFORM(script) USING 'sh' AS (data) FROM (
         ) t
 ```
 
-; You can use shell commands as the input for SELECT TRANSFORM. SELECT TRANSFORM allows you to use the scripts of multiple programming languages, such as AWK, Python, Perl, and shell, as the input to implement simple features. You do not need to compile script files or upload resources, which simplifies development. You can upload a script to implement complex features. For more information, see Call Python scripts.
+; You can use shell commands as the input for SELECT TRANSFORM.
+
+> **Note:** SELECT TRANSFORM allows you to use the scripts of multiple programming languages, such as AWK, Python, Perl, and shell, as the input to implement simple features. You do not need to compile script files or upload resources, which simplifies development.
+
+You can upload a script to implement complex features. For more information, see Call Python scripts.
 
 ###### 3.5.2.6.2.2 Call Python scripts
 
@@ -3887,7 +4039,7 @@ add py ./myplus.py -f;
 -- Create a test table. CREATE TABLE testdata(c1 bigint,c2 bigint); -- Insert test data into the test table. INSERT INTO TABLE testdata VALUES (1,4),(2,5),(3,6); -- Execute the following statement: TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py'resources 'myplus.py' AS (result1,result2) FROM testdata; -- The preceding statement is equivalent to the following statement: set odps.sql.session.resources=myplus.py; SELECT TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py' AS (result1,result2) FROM testdata;
 ```
 
-In MaxCompute, you can use Python scripts as the input for SELECT TRANSFORM. For example, you can run Python commands to call shell scripts.
+> **Note:** In MaxCompute, you can use Python scripts as the input for SELECT TRANSFORM. For example, you can run Python commands to call shell scripts.
 
 ```
 SELECT TRANSFORM('for i in xrange(1, 50): print i;') USING 'python' AS (data);
@@ -3979,7 +4131,7 @@ Example on how to call a Perl script:
 SELECT TRANSFORM (testdata.c1, testdata.c2) USING "perl -e 'WHILE($input = <STDIN>){print $input;}'" FROM testdata;
 ```
 
-PHP and Ruby are not deployed in MaxCompute compute clusters. Therefore, you cannot call PHP or Ruby scripts in MaxCompute.
+> **Note:** PHP and Ruby are not deployed in MaxCompute compute clusters. Therefore, you cannot call PHP or Ruby scripts in MaxCompute.
 
 ###### 3.5.2.6.2.5 Call scripts in series
 
@@ -4025,7 +4177,9 @@ SELECT TRANSFORM supports two processes: parent and child processes. UDTFs suppo
 
 ###### 3.5.2.7.1 Overview
 
-This topic describes GROUPING SETS in MaxCompute. In some cases, you must execute the UNION ALL clause multiple times to aggregate and analyze data from multiple dimensions. For example, you want to aggregate Column A, aggregate Column B, and then aggregate Column A and Column B. The GROUPING SETS clause is a better choice in these cases. GROUPING SETS is an extension to the GROUP BY clause in a SELECT statement. GROUPING SETS allows you to group results by using various methods without the need to execute multiple SELECT statements. This allows the MaxCompute engine to generate more efficient execution plans with high performance. Most examples in this topic are demonstrated by using MaxCompute Studio. We recommend that you install MaxCompute Studio before you proceed with subsequent operations. For more information, see MaxCompute Studio.
+This topic describes GROUPING SETS in MaxCompute. In some cases, you must execute the UNION ALL clause multiple times to aggregate and analyze data from multiple dimensions. For example, you want to aggregate Column A, aggregate Column B, and then aggregate Column A and Column B. The GROUPING SETS clause is a better choice in these cases. GROUPING SETS is an extension to the GROUP BY clause in a SELECT statement. GROUPING SETS allows you to group results by using various methods without the need to execute multiple SELECT statements. This allows the MaxCompute engine to generate more efficient execution plans with high performance.
+
+> **Note:** Most examples in this topic are demonstrated by using MaxCompute Studio. We recommend that you install MaxCompute Studio before you proceed with subsequent operations. For more information, see MaxCompute Studio.
 
 ###### 3.5.2.7.2 Example
 
@@ -4073,7 +4227,9 @@ You can also execute multiple SELECT statements to obtain the same result.
 SELECT NULL, NULL, NULL, COUNT(*) FROM requests SELECT os, device, NULL, COUNT(*) FROM requests GROUP BY os, device SELECT null, null, city, COUNT(*) FROM requests GROUP BY city;
 ```
 
-However, the execution of GROUPING SETS is simpler and more efficient. NULL is used as placeholders for the expressions that are not used in GROUPING SETS. This way, you can perform UNION operations on the result sets.
+However, the execution of GROUPING SETS is simpler and more efficient.
+
+> **Note:** NULL is used as placeholders for the expressions that are not used in GROUPING SETS. This way, you can perform UNION operations on the result sets.
 
 ###### 3.5.2.7.3 CUBE and ROLLUP
 
@@ -4325,7 +4481,9 @@ The following result is returned. The preceding statement is equivalent to the `
 +------------+------------+
 ```
 
-Set operations do not necessarily return sorted results. The two branches for a set operation must have the same number of output columns with consistent data types. If data types are inconsistent, implicit conversion of the data types may be performed. To ensure compatibility for set operations, MaxCompute forbids the implicit conversion between STRING and other data types. MaxCompute supports a maximum of 256 branches for a set operation. If the limit is exceeded, an error is returned.
+> **Note:** Set operations do not necessarily return sorted results.
+> The two branches for a set operation must have the same number of output columns with consistent data types. If data types are inconsistent, implicit conversion of the data types may be performed. To ensure compatibility for set operations, MaxCompute forbids the implicit conversion between STRING and other data types.
+> MaxCompute supports a maximum of 256 branches for a set operation. If the limit is exceeded, an error is returned.
 
 #### 3.5.3 EXPLAIN
 
@@ -4335,7 +4493,10 @@ This topic describes the EXPLAIN statement in MaxCompute SQL. This statement sho
 EXPLAIN <DML query>;
 ```
 
-The execution results of an EXPLAIN statement include: Dependencies among all the jobs of this DML statement Dependencies among all the tasks of each job Dependencies among all operators in a task
+> **Note:** The execution results of an EXPLAIN statement include:
+> Dependencies among all the jobs of this DML statement
+> Dependencies among all the tasks of each job
+> Dependencies among all operators in a task
 
 ```
 SELECT abs(a.key), b.value FROM src a JOIN src1 b ON a.value = b.value;
@@ -4347,7 +4508,10 @@ The output of the EXPLAIN statement consists of the following three parts: Job d
 In Job job0: root Tasks: M1_Stg1, M2_Stg1 J3_1_2_Stg1 depends on: M1_Stg1, M2_Stg1
 ```
 
-Job0 contains three tasks, M1_Stg1, M2_Stg1, and J3_1_2_Stg1. J3_1_2_Stg1 is executed after the M1_Stg1 and M2_Stg1 tasks are complete. Naming conventions for a task: MaxCompute provides the task types of map, reduce, join, and local work. The first letter in a task name indicates the type of the task. For example, M2Stg1 is a map task. The number following the first letter indicates the task ID. This ID is unique among all tasks that correspond to the current query. Digits that are combined by underscores (_) indicate the task dependencies. For example, J3_1_2_Stg1 indicates that the current task with the ID of 3 depends on two tasks whose IDs are 1 and 2. Operator structure, where each operator string describes the execution semantics of a task.
+> **Note:** Job0 contains three tasks, M1_Stg1, M2_Stg1, and J3_1_2_Stg1. J3_1_2_Stg1 is executed after the M1_Stg1 and M2_Stg1 tasks are complete.
+> Naming conventions for a task: MaxCompute provides the task types of map, reduce, join, and local work. The first letter in a task name indicates the type of the task. For example, M2Stg1 is a map task. The number following the first letter indicates the task ID. This ID is unique among all tasks that correspond to the current query. Digits that are combined by underscores (_) indicate the task dependencies. For example, J3_1_2_Stg1 indicates that the current task with the ID of 3 depends on two tasks whose IDs are 1 and 2.
+
+Operator structure, where each operator string describes the execution semantics of a task.
 
 ```
 In Task M1_Stg1:
@@ -4390,7 +4554,8 @@ The following table describes the operators.
 | LimitOperator | Describes the logic of LIMIT statement blocks in a query statement. The number of records specified by LIMIT is displayed in the EXPLAIN results. |
 | MapjoinOperator | Describes JOIN operations on large tables. This operator is similar to JoinOperator. |
 
-If a query statement is complex, the EXPLAIN statement returns excessive results. As a result, API limits are reached and complete results cannot be obtained. In this case, you can split a query and execute the EXPLAIN statement on each subquery to understand the structure of the job. If you specify more than 10,000 partitions in a query, large amounts of source data needs to be read. To circumvent this limit, you can add filter conditions in the query to filter out most partitions.
+> **Note:** If a query statement is complex, the EXPLAIN statement returns excessive results. As a result, API limits are reached and complete results cannot be obtained. In this case, you can split a query and execute the EXPLAIN statement on each subquery to understand the structure of the job.
+> If you specify more than 10,000 partitions in a query, large amounts of source data needs to be read. To circumvent this limit, you can add filter conditions in the query to filter out most partitions.
 
 #### 3.5.4 IF statement
 
@@ -4410,7 +4575,9 @@ END ELSE BEGIN
 END
 ```
 
-The BEGIN and END conditional clause can be omitted if it contains only one statement, similar to '{ }' in Java. The IF statement can contain two types of conditions: expressions and scalar subqueries. Both of them are of the BOOLEAN type. Expressions: A BOOLEAN-type expression in the IF-ELSE statement determines which branch is executed at the compiling stage. Example:
+> **Note:** The BEGIN and END conditional clause can be omitted if it contains only one statement, similar to '{ }' in Java.
+
+The IF statement can contain two types of conditions: expressions and scalar subqueries. Both of them are of the BOOLEAN type. Expressions: A BOOLEAN-type expression in the IF-ELSE statement determines which branch is executed at the compiling stage. Example:
 
 ```
 @date := '20190101'; @row TABLE(id STRING); -- Declare the row variable. The type of the row is Table and schema is STRING. IF ( cast(@date as bigint) % 2 == 0 ) BEGIN @row := SELECT id from src1; END ELSE BEGIN @row := SELECT id from src2; END INSERT OVERWRITE TABLE dest SELECT * FROM @row;
@@ -4430,7 +4597,10 @@ This topic describes the UPDATE and DELETE statements in MaxCompute SQL. The UPD
 
 When you execute a DELETE statement, the system automatically generates a Delta file. **txnid(bigint)** and
 **rowid(bigint)** in the Delta file indicate which rows in which transactional table are deleted from the Base file.
-The Delta file stores the row numbers that are used to indicate the deleted rows in the Base file. If you execute a DELETE statement again, another Delta file named f2.del is generated. The f2.del file also stores the row numbers based on the Base file. During data reading, all Delta files are queried and data that is not deleted is returned. Similarly, the UPDATE statement is converted into the combination of the DELETE and INSERT INTO statements. If jobs are run in parallel and the tables on which you want to perform operations are the same, conflicts may occur. For more information, see ACID semantics of MaxCompute concurrent write jobs.
+
+> **Note:** The Delta file stores the row numbers that are used to indicate the deleted rows in the Base file.
+
+If you execute a DELETE statement again, another Delta file named f2.del is generated. The f2.del file also stores the row numbers based on the Base file. During data reading, all Delta files are queried and data that is not deleted is returned. Similarly, the UPDATE statement is converted into the combination of the DELETE and INSERT INTO statements. If jobs are run in parallel and the tables on which you want to perform operations are the same, conflicts may occur. For more information, see ACID semantics of MaxCompute concurrent write jobs.
 
 **Precautions**
 
@@ -4516,7 +4686,11 @@ The following result is returned:
 update <table_name> set col1 = value1 [, col2 = value2 ...] [WHERE where_condition]; update <table_name> set (col1 [, col2 ...]) = (value1 [, value2 ...]);
 ```
 
-Description: This statement is used to update some rows in a table. The UPDATE statement is converted into the combination of the DELETE and INSERT INTO statements to update some rows. The following examples are provided: Example 1: Update some rows in a table.
+Description: This statement is used to update some rows in a table.
+
+> **Note:** The UPDATE statement is converted into the combination of the DELETE and INSERT INTO statements to update some rows.
+
+The following examples are provided: Example 1: Update some rows in a table.
 
 ```
 -- Create a transactional table. create table if not exists acid_update(id bigint) tblproperties ("transactional"="true"); -- Insert data into the table. insert overwrite table acid_update values(1),(2),(3); -- Query the table to check whether data is inserted. select * from acid_update;
@@ -4598,9 +4772,13 @@ destination table. Parameters:
 **ON**: the clause that is used to determine whether the source table is joined with the destination table. **boolean**
 **expression** specifies the join condition.
 **WHEN MATCHED…THEN**: specifies the action when the **ON** clause determines that the two tables are joined. Data
-obtained from multiple **WHEN MATCHED [AND <boolean expression>]** clauses must have no intersections. The MERGE INTO statement has clear objectives. You are not allowed to perform the INSERT or UPDATE operation on the same row in a single MERGE INTO statement. When you execute the MERGE INTO statement, make sure that the data in the source tables that meet the ON joint condition is unique. Otherwise, an error is returned. If a MERGE INTO statement has three WHEN clauses, the UPDATE, DELETE, and INSERT operations can appear at most once in each clause.
-**WHEN NOT MATCHED** must be the last WHEN clause and can be used only for an INSERT operation.
-If both the UPDATE and DELETE statements are included in a MERGE INTO statement, the statement that appears first must include **[AND <boolean expression>]**. The following example is provided: Prepare the test data.
+obtained from multiple **WHEN MATCHED [AND <boolean expression>]** clauses must have no intersections. The MERGE INTO statement has clear objectives. You are not allowed to perform the INSERT or UPDATE operation on the same row in a single MERGE INTO statement. When you execute the MERGE INTO statement, make sure that the data in the source tables that meet the ON joint condition is unique. Otherwise, an error is returned.
+
+> **Note:** If a MERGE INTO statement has three WHEN clauses, the UPDATE, DELETE, and INSERT operations can appear at most once in each clause.
+> **WHEN NOT MATCHED** must be the last WHEN clause and can be used only for an INSERT operation.
+> If both the UPDATE and DELETE statements are included in a MERGE INTO statement, the statement that appears first must include **[AND <boolean expression>]**.
+
+The following example is provided: Prepare the test data.
 
 ```
 -- Create a destination table. create table if not exists acid_address_book_base1 (id bigint,first_name string,last_name string,phone string) partitioned by(year string, month string, day string, hour string) tblproperties ("transactional"="true"); -- Create a source table. create table if not exists tmp_table1 (id bigint, first_name string, last_name string, phone string, _event_type_ string); -- Insert the test data into the destination table. insert overwrite table acid_address_book_base1 partition(year='2020', month='08', day='20', hour='16') values (4, 'nihaho', 'li', '222'), (5, 'tahao', 'ha', '333'), (7, 'djh', 'hahh', '555'); -- Insert the test data into the source table. insert overwrite table tmp_table1 values (1, 'hh', 'liu', '999', 'I'), (2, 'cc', 'zhang', '888', 'I'), (3, 'cy', 'zhang', '666', 'I'),(4, 'hh', 'liu', '999', 'U'), (5, 'cc', 'zhang', '888', 'U'),(6, 'cy', 'zhang', '666', 'U');
@@ -4666,7 +4844,9 @@ This topic describes the ABS function in mathematical functions and provides exa
 double abs(double number) bigint abs(bigint number) decimal abs(decimal number)
 ```
 
-Description: This function calculates the absolute value of **number**. Parameters: The **number** parameter supports a value of the BIGINT, DOUBLE, or DECIMAL type. If the input value is of the BIGINT, DOUBLE, or DECIMAL type, a value of the same type is returned. If the input value is of the STRING type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The type of the return value depends on that of the input value, which can be DOUBLE, BIGINT, or DECIMAL. If the input value is NULL, NULL is returned. If the input value is of the BIGINT type and is greater than the maximum value of the BIGINT type, a value of the DOUBLE type is returned. However, the precision may be lost.
+Description: This function calculates the absolute value of **number**. Parameters: The **number** parameter supports a value of the BIGINT, DOUBLE, or DECIMAL type. If the input value is of the BIGINT, DOUBLE, or DECIMAL type, a value of the same type is returned. If the input value is of the STRING type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The type of the return value depends on that of the input value, which can be DOUBLE, BIGINT, or DECIMAL. If the input value is NULL, NULL is returned.
+
+> **Note:** If the input value is of the BIGINT type and is greater than the maximum value of the BIGINT type, a value of the DOUBLE type is returned. However, the precision may be lost.
 
 ```
 abs(null)=null abs(-1)=1 abs(-1.2)=1.2 abs("-2")=2.0 abs(122320837456298376592387456923748)=1.2232083745629837e32
@@ -4917,8 +5097,10 @@ Description: This function returns a number rounded to the specified decimal pla
 converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned.
 **decimal_places**: a constant of the BIGINT type. It specifies the decimal place to which the number is rounded. If the
 input value is of another data type, an error is returned. If this parameter is not specified, the number is rounded to the ones place. The default value is 0.
-**decimal_places** supports negative values. A negative value indicates counting from the decimal
-point to the left, and the decimal part is excluded. If **decimal_places** exceeds the length of the integer part, 0 is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned.
+
+> **Note:** **decimal_places** supports negative values. A negative value indicates counting from the decimal point to the left, and the decimal part is excluded. If **decimal_places** exceeds the length of the integer part, 0 is returned.
+
+Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned.
 
 ```
 round(125.315) = 125.0 round(125.315, 0) = 125.0 round(125.315, 1) = 125.3 round(125.315, 2) = 125.32 round(125.315, 3) = 125.315 round(-125.315, 2) = -125.32 round(123.345, -2) = 100.0 round(null) = null round(123.345, 4) = 123.345 round(123.345, -4) = 0.0
@@ -4987,8 +5169,13 @@ Description: This function truncates the input value of **number** to a specifie
 converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned.
 **decimal_places**: the decimal place, which is a constant of the BIGINT type. This parameter indicates the position
 where the number is truncated. If it is of another data type, it is implicitly converted into the BIGINT type. If you do not specify this parameter, the number is truncated to the ones place.
-**decimal_places** can be a negative value, which indicates that the number is truncated from the
-decimal point to the left and the decimal part is left out. If **decimal_places** exceeds the length of the integer part, 0 is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned. If a value of the DOUBLE type is returned, the return value may not be properly displayed. This issue exists in all systems. For more information, see **trunc(125.815,1)** in the following example. The number is filled with zeros from the specified position.
+
+> **Note:** **decimal_places** can be a negative value, which indicates that the number is truncated from the decimal point to the left and the decimal part is left out. If **decimal_places** exceeds the length of the integer part, 0 is returned.
+
+Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned.
+
+> **Note:** If a value of the DOUBLE type is returned, the return value may not be properly displayed. This issue exists in all systems. For more information, see **trunc(125.815,1)** in the following example.
+> The number is filled with zeros from the specified position.
 
 ```
 trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000000001 trunc(125.815, 2) = 125.81 trunc(125.815, 3) = 125.815 trunc(-125.815, 2) = -125.81 trunc(125.815, -1) = 120.0 trunc(125.815, -2) = 100.0 trunc(125.815, -3) = 0.0 trunc(123.345, 4) = 123.345 trunc(123.345, -4) = 0.0
@@ -5004,7 +5191,7 @@ This topic provides notes for you to use additional mathematical functions. MaxC
 set odps.sql.type.system.odps2=true;
 ```
 
-You must simultaneously submit and execute the SET statement and the SQL statement that contains the additional mathematical functions.
+> **Note:** You must simultaneously submit and execute the SET statement and the SQL statement that contains the additional mathematical functions.
 
 ###### 3.6.1.23.2 LOG2
 
@@ -5237,7 +5424,12 @@ Description: This function converts a number to a string in the specified format
 **expr1**: a numeric expression that you want to format.
 **expr2**: the number of decimal places. It can be of the INT type. It can also be expressed in the format of
 **#,###,###.##**.
-If **expr2** is greater than 0, the value is rounded to the specified place after the decimal point. If **expr2** is equal to 0, the value has no decimal point or fractional part. If **expr2** is less than 0 or greater than 340, an error is returned. Return value: A value of the STRING type is returned.
+
+> **Note:** If **expr2** is greater than 0, the value is rounded to the specified place after the decimal point.
+> If **expr2** is equal to 0, the value has no decimal point or fractional part.
+> If **expr2** is less than 0 or greater than 340, an error is returned.
+
+Return value: A value of the STRING type is returned.
 
 ```
 select format_number(5.230134523424545456,3); -- The value 5.230 is returned. select format_number(12332.123456, '#,###,###,###. ###'); -- The value 12,332.123 is returned.
@@ -5524,7 +5716,11 @@ Description: This function splits **source** based on the regular expression spe
 **pattern**: a constant of the STRING type. If **pattern** is an empty string or **group** is not specified in **pattern**, an error
 is returned.
 **occurrence**: a constant of the BIGINT type, which must be greater than or equal to 0. If the input value is of another
-data type or is smaller than 0, an error is returned. If you do not specify this parameter, the default value 1 is used. The value 1 indicates that characters in the first **group** are returned. If you set **occurrence** to 0, all substrings that match the regular expression specified by **pattern** are returned. Data is encoded by using UTF-8. Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned.
+data type or is smaller than 0, an error is returned. If you do not specify this parameter, the default value 1 is used. The value 1 indicates that characters in the first **group** are returned. If you set **occurrence** to 0, all substrings that match the regular expression specified by **pattern** are returned.
+
+> **Note:** Data is encoded by using UTF-8.
+
+Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned.
 
 ```
 regexp_extract('foothebar', 'foo(. *?)( bar)', 1) = the regexp_extract('foothebar', 'foo(. *?)( bar)', 2) = bar regexp_extract('foothebar', 'foo(. *?)( bar)', 0) = foothebar regexp_extract('8d99d8', '8d(\\d+)d8') = 99 -- If the regular expression is submitted on the MaxCompute client, use two backslashes (\\) as the escape char acters. regexp_extract('foothebar', 'foothebar') -- An error is returned because group is not specified in pattern.
@@ -5613,7 +5809,11 @@ is NULL, an error is returned.
 **replace_string**: a value of the STRING type. It specifies the string to substitute for the substring that matches
 **pattern**.
 **occurrence**: a constant of the BIGINT type. It specifies the number of times at which the substring matches the
-pattern and is substituted with **replace_string**. It must be greater than or equal to 0. If the input value is 0, all matched substrings are substituted. If the input value is less than 0 or is not of the BIGINT type, an error is returned. Default value: 0. The action of referencing a character class that does not exist is undefined. Return value: A value of the STRING type is returned. If the function references a character class that does not exist, substitution is not performed. If **replace_string** is NULL and substrings match **pattern**, NULL is returned. If
+pattern and is substituted with **replace_string**. It must be greater than or equal to 0. If the input value is 0, all matched substrings are substituted. If the input value is less than 0 or is not of the BIGINT type, an error is returned. Default value: 0.
+
+> **Note:** The action of referencing a character class that does not exist is undefined.
+
+Return value: A value of the STRING type is returned. If the function references a character class that does not exist, substitution is not performed. If **replace_string** is NULL and substrings match **pattern**, NULL is returned. If
 **replace_string** is NULL and no substrings match **pattern**, the source string is returned. If an input value is NULL,
 NULL is returned.
 
@@ -5660,7 +5860,9 @@ implicitly converted into a value of the STRING type before calculation. If the 
 **start_position**: a value of the BIGINT type. The search starts from the first character. If **start_position** is 0, null is
 returned. If **start_position** is a negative value, the search starts from the end to the start of the string and the last character is -1. If the input value is of another data type, an error is returned.
 **length**: a value of the BIGINT type. This parameter specifies the length of the substring. The input value must be
-greater than 0. If the input value is of another data type or is less than or equal to 0, an error is returned. Return value: A value of the STRING type is returned. If an input value is null, null is returned. If **length** is not specified, this function returns a substring that starts from **start_position** in **str** to the end of **str**.
+greater than 0. If the input value is of another data type or is less than or equal to 0, an error is returned. Return value: A value of the STRING type is returned. If an input value is null, null is returned.
+
+> **Note:** If **length** is not specified, this function returns a substring that starts from **start_position** in **str** to the end of **str**.
 
 ```
 -- The return value is bc. select substr('abc', 2); -- The return value is b. select substr('abc', 2, 1); -- The return value is bc. select substr('abc',-2 , 2);
@@ -5828,7 +6030,7 @@ This topic provides notes for you to use additional string functions. MaxCompute
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit the flag along with the SQL statement that contains the additional string functions for execution.
+> **Note:** You must submit the flag along with the SQL statement that contains the additional string functions for execution.
 
 ###### 3.6.2.28.2 CONCAT_WS
 
@@ -5994,9 +6196,16 @@ Description: This function extracts specific strings from a standard JSON string
 Parameters:
 **json**: a value of the STRING type. It specifies a standard JSON string.
 **key**: a value of the STRING type. It describes the JSON **path**. You can enter multiple keys at a time. A key cannot
-start with a dollar sign ($). Return value: A value of the STRING type is returned. If the **JSON** parameter is empty or invalid, NULL is returned. If the **key** parameter is empty or invalid, NULL is returned. If the key value does not exist in the **JSON** string, it is considered invalid. If the **JSON** parameter is valid and the **key** value exists in the JSON string, the required string is returned. This function can parse JSON data that contains Chinese characters. This function can parse nested JSON data. This function can parse JSON data that contains nested arrays. This function parses a JSON string in the same way as the GET_JSON_OBJECT function for which `set` odps.sql.udf.getjsonobj.new=true; is added. To parse a **JSON** string multiple times, you must call the GET_JSON_OBJECT function multiple times. However, the JSON_TUPLE function allows you to enter multiple
-**keys** at a time and parse the **JSON** string only once. This improves parsing efficiency.
-JSON_TUPLE is a user-defined table-valued function (UDTF). To select other columns, you can use JSON_TUPLE with LATERAL VIEW. Prepare a school table that contains the following data:
+start with a dollar sign ($). Return value: A value of the STRING type is returned. If the **JSON** parameter is empty or invalid, NULL is returned. If the **key** parameter is empty or invalid, NULL is returned. If the key value does not exist in the **JSON** string, it is considered invalid. If the **JSON** parameter is valid and the **key** value exists in the JSON string, the required string is returned.
+
+> **Note:** This function can parse JSON data that contains Chinese characters.
+> This function can parse nested JSON data.
+> This function can parse JSON data that contains nested arrays.
+> This function parses a JSON string in the same way as the GET_JSON_OBJECT function for which `set`
+> odps.sql.udf.getjsonobj.new=true; is added. To parse a **JSON** string multiple times, you must call the GET_JSON_OBJECT function multiple times. However, the JSON_TUPLE function allows you to enter multiple **keys** at a time and parse the **JSON** string only once. This improves parsing efficiency.
+> JSON_TUPLE is a user-defined table-valued function (UDTF). To select other columns, you can use JSON_TUPLE with LATERAL VIEW.
+
+Prepare a school table that contains the following data:
 
 ```json
 Table: school +------------+------------+
@@ -6117,7 +6326,11 @@ The following table describes the mapping relationships between JSON and MaxComp
 | String | STRING |
 | null | All types |
 
-For the OBJECT and ARRAY types, this function preferentially parses the data. For the types that are not supported by MaxCompute, this function ignores the data. Return value: A value of the ARRAY, MAP, or STRUCT type is returned. If the **schema** parameter is left empty, an error is returned.
+> **Note:** For the OBJECT and ARRAY types, this function preferentially parses the data. For the types that are not supported by MaxCompute, this function ignores the data.
+
+Return value: A value of the ARRAY, MAP, or STRUCT type is returned.
+
+> **Note:** If the **schema** parameter is left empty, an error is returned.
 
 ```
 SELECT from_json('{"a":1, "b":0.8}', 'a INT, b DOUBLE'); -- {"a":1, "b":0.8} is returned. SELECT from_json('{"time":"26/08/2015"}', 'time string'); -- {"time":"26/08/2015"} is returned. SELECT from_json('{"a":1, "b":0.8}', 'a INT, b DOUBLE, c STRING'); -- {"a":1, "b":0.8, c: NULL} is returned. SELECT from_json('[1, 2, 3, "a"]', 'array<BIGINT>'); -- [1, 2, 3] is returned.
@@ -6151,7 +6364,11 @@ Description: This function modifies a **date** value based on **datepart** and *
 **date**: a date value of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, it is
 implicitly converted into a value of the DATETIME type before the calculation. If the input value is of another data type, an error is returned.
 **delta**: a value of the BIGINT type, which indicates the interval to add to the specified part of the date value. If the
-input value is of the STRING or DOUBLE type, it is implicitly converted into a value of the BIGINT type before the calculation. If the input value is of another data type, an error is returned. If the value of **delta** is greater than 0, this function adds the interval to the date value. In other cases, this function subtracts the interval from the date value. If you add or subtract the interval specified by **delta** at a date part, a carry or return at more significant date parts may occur. The year, month, hour, minute, and second parts are computed by using different numeral systems. The year part uses the base-10 numeral system. The month part uses the base-12 numeral system. The hour part uses the base-24 numeral system. The minute and second parts use the base-60 numeral system. If the DATEADD function adds an interval specified by **delta** to the month part of a date value of the DATETIME type and this operation does not cause an overflow of **day**, keep **day** unchanged. If the operation causes an overflow of day, set **day** to the last day of the specified month.
+input value is of the STRING or DOUBLE type, it is implicitly converted into a value of the BIGINT type before the calculation. If the input value is of another data type, an error is returned. If the value of **delta** is greater than 0, this function adds the interval to the date value. In other cases, this function subtracts the interval from the date value.
+
+> **Note:** If you add or subtract the interval specified by **delta** at a date part, a carry or return at more significant date parts may occur. The year, month, hour, minute, and second parts are computed by using different numeral systems. The year part uses the base-10 numeral system. The month part uses the base-12 numeral system. The hour part uses the base-24 numeral system. The minute and second parts use the base-60 numeral system.
+> If the DATEADD function adds an interval specified by **delta** to the month part of a date value of the DATETIME type and this operation does not cause an overflow of **day**, keep **day** unchanged. If the operation causes an overflow of day, set **day** to the last day of the specified month.
+
 **datepart**: the part you want to modify in the date value. The value is a constant of the STRING type. If the value is
 in an invalid format or is not a constant of the STRING type, an error is returned. The value of this parameter is specified in compliance with the rules of conversions between the STRING and DATETIME types. The value **yyyy** indicates that the DATEADD function adds an interval to the year part of the date value. The value **mm** indicates that the DATEADD function adds an interval to the month part of the date value. This parameter also supports extended date formats, such as **-year**, **-month**, **-mon**, **-day**, and **-hour**. For more information about the rules of data type conversions, see Conversion between string and datetime types. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned. Example 1: common usage
 
@@ -6178,7 +6395,10 @@ Description: This function calculates the difference between **date1** and **dat
 input value is of the STRING type, it is implicitly converted into a value of the DATETIME type before the calculation. If the input value is of another data type, an error is returned.
 **datepart**: the time unit, which is a constant of the STRING type. This parameter supports extended date formats. If
 **datepart** is not in the specified format or is of another data type, an error is returned.
-Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned. If **date1** is earlier than **date2**, a negative value is returned. If the difference between two dates is more precise than the unit specified by **datepart**, the excessive parts are discarded in the return value. For example, if the unit specified by **datepart** is day, the hour, minute, and second parts are discarded in the return value. This function omits the parts with smaller units based on the unit specified by **datepart** and calculates the result. The parts with smaller units refer to the excessive parts previously described.
+Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned. If **date1** is earlier than **date2**, a negative value is returned.
+
+> **Note:** If the difference between two dates is more precise than the unit specified by **datepart**, the excessive parts are discarded in the return value. For example, if the unit specified by **datepart** is day, the hour, minute, and second parts are discarded in the return value.
+> This function omits the parts with smaller units based on the unit specified by **datepart** and calculates the result. The parts with smaller units refer to the excessive parts previously described.
 
 ```
 -- The start time is 2005-12-31 23:59:59 and the end time is 2006-01-01 00:00:00.
@@ -6239,7 +6459,9 @@ This topic describes the GETDATE function in date functions.
 datetime getdate()
 ```
 
-Description: This function returns the current system time as a date value. MaxCompute uses UTC+8 as the standard time zone. Return value: A value of the DATETIME type is returned. The value indicates the current date and time. In a MaxCompute SQL task that is executed in distributed mode, the **GETDATE** function always returns a fixed value. The return value is an arbitrary time during the execution of the MaxCompute SQL task. The time is accurate to seconds. In MaxCompute V2.0 that supports more data types, the time is accurate to milliseconds.
+Description: This function returns the current system time as a date value. MaxCompute uses UTC+8 as the standard time zone. Return value: A value of the DATETIME type is returned. The value indicates the current date and time.
+
+> **Note:** In a MaxCompute SQL task that is executed in distributed mode, the **GETDATE** function always returns a fixed value. The return value is an arbitrary time during the execution of the MaxCompute SQL task. The time is accurate to seconds. In MaxCompute V2.0 that supports more data types, the time is accurate to milliseconds.
 
 ##### 3.6.3.6 ISDATE
 
@@ -6277,7 +6499,9 @@ Description: This function converts a **date** string in a specified **format** 
 **date**: a date value of the STRING type, which indicates the date string you want to convert. If the input value is of
 the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type or an empty string, an error is returned.
 **format**: a constant of the STRING type, which indicates a date format. If the input value is not a constant or is not of
-the STRING type, an error is returned. The Extended Date/Time Format (EDTF) is not supported. In this format, the characters are parsed as invalid characters and omitted. The value of this parameter must contain **yyyy**. Otherwise, an error is returned. If redundant format strings are included in the value of this parameter, only the date value that corresponds to the first format string is used, and the date values that correspond to the other format strings are parsed as delimiters. For example, **to_date('1234-2234 ', 'yyyy-yyyy ')** is parsed as **1234-01-01 00:00:00**. Return value: A value of the DATETIME type is returned and the value is in the format of **yyyy-mm-dd hh:mi:ss:ff3**. If the value of any input parameter is NULL, NULL is returned. In the format, yyyy indicates a 4-digit year, mm indicates a 2-digit month, dd indicates a 2-digit day, hh indicates an hour in 24-hour display, mi indicates a 2-digit minute, ss indicates a 2-digit second, and ff3 indicates a 3-digit millisecond.
+the STRING type, an error is returned. The Extended Date/Time Format (EDTF) is not supported. In this format, the characters are parsed as invalid characters and omitted. The value of this parameter must contain **yyyy**. Otherwise, an error is returned. If redundant format strings are included in the value of this parameter, only the date value that corresponds to the first format string is used, and the date values that correspond to the other format strings are parsed as delimiters. For example, **to_date('1234-2234 ', 'yyyy-yyyy ')** is parsed as **1234-01-01 00:00:00**. Return value: A value of the DATETIME type is returned and the value is in the format of **yyyy-mm-dd hh:mi:ss:ff3**. If the value of any input parameter is NULL, NULL is returned.
+
+> **Note:** In the format, yyyy indicates a 4-digit year, mm indicates a 2-digit month, dd indicates a 2-digit day, hh indicates an hour in 24-hour display, mi indicates a 2-digit minute, ss indicates a 2-digit second, and ff3 indicates a 3-digit millisecond.
 
 ```
 to_date('Alibaba2017-12*03', 'Alibabayyyy-mm*dd') = 2017-12-03 00:00:00 to_date('20170718', 'yyyymmdd') = 2017-07-18 00:00:00 to_date('201707182030','yyyymmddhhmi')=2017-07-18 20:30:00 to_date('2017718', 'yyyymmdd') -- Invalid format. NULL is returned. to_date('Alibaba2017-12*3', 'Alibabayyyy-mm*dd') -- Invalid format. NULL is returned. to_date('2017-24-01', 'yyyy') -- Invalid format. NULL is returned. to_date('20181030 15-13-12.345','yyyymmdd hh-mi-ss.ff3')=2018-10-30 15:13:12
@@ -6324,7 +6548,9 @@ This topic describes the FROM_UNIXTIME function and provides examples of using t
 datetime from_unixtime(bigint unixtime)
 ```
 
-Description: This function converts **unixtime** of the BIGINT type to a date value of the DATETIME type. Parameters: **unixtime**: a date value of the BIGINT type in the UNIX format. Its value is accurate to seconds. If the input value is of the STRING, DOUBLE, or DECIMAL type, it is implicitly converted into a value of the BIGINT type before calculation. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned. In the Hive-compatible mode where set odps.sql.hive.compatible=true; has been run, if the value of the input parameter is of the STRING type, a date value of the STRING type is returned.
+Description: This function converts **unixtime** of the BIGINT type to a date value of the DATETIME type. Parameters: **unixtime**: a date value of the BIGINT type in the UNIX format. Its value is accurate to seconds. If the input value is of the STRING, DOUBLE, or DECIMAL type, it is implicitly converted into a value of the BIGINT type before calculation. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned.
+
+> **Note:** In the Hive-compatible mode where set odps.sql.hive.compatible=true; has been run, if the value of the input parameter is of the STRING type, a date value of the STRING type is returned.
 
 ```
 from_unixtime(123456789) = 1973-11-30 05:33:09;
@@ -6348,7 +6574,11 @@ This topic describes the WEEKOFYEAR function and provides examples of using this
 bigint weekofyear(datetime date)
 ```
 
-Description: This function returns the calendar week of the year that the specified date falls in. Monday is treated as the first day of a week. If a week spans two years, whether this week belongs to the previous year or the next year is based on which year contains more than four days. If more days fall in the previous year, the week is considered as the last week of the previous year. If more days fall in the next year, the week is considered as the first week of the next year. Parameters: **date**: a date value of the DATETIME type. If the value of the input parameter is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the value of the input parameter is not of the STRING type, an error is returned. Return value: A value of the BIGINT type is returned. If the value of the input parameter is NULL, NULL is returned.
+Description: This function returns the calendar week of the year that the specified date falls in. Monday is treated as the first day of a week.
+
+> **Note:** If a week spans two years, whether this week belongs to the previous year or the next year is based on which year contains more than four days. If more days fall in the previous year, the week is considered as the last week of the previous year. If more days fall in the next year, the week is considered as the first week of the next year.
+
+Parameters: **date**: a date value of the DATETIME type. If the value of the input parameter is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the value of the input parameter is not of the STRING type, an error is returned. Return value: A value of the BIGINT type is returned. If the value of the input parameter is NULL, NULL is returned.
 
 ```
 select weekofyear(to_date("20141229", "yyyymmdd")); -- The following result is returned: +------------+
@@ -6368,7 +6598,7 @@ This topic describes the configuration operation that you must perform before yo
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+> **Note:** You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
 
 ###### 3.6.3.14.2 YEAR
 
@@ -6629,9 +6859,10 @@ set odps.sql.type.system.odps2=true; select extract(hour from '2019-05-01 31:01:
 
 In MaxCompute SQL, window functions can be used for flexible data analysis and processing. This topic describes the precautions for using window functions and the syntax of window functions.
 
-**Important**
-
-Window functions can only be included in the SELECT clause. A window function cannot contain nested window functions or aggregate functions. Window functions cannot be used with aggregate functions of the same level. A maximum of five window functions can be used in a MaxCompute SQL statement.
+> **Important:** Window functions can only be included in the SELECT clause.
+> A window function cannot contain nested window functions or aggregate functions.
+> Window functions cannot be used with aggregate functions of the same level.
+> A maximum of five window functions can be used in a MaxCompute SQL statement.
 
 ```
 window_func() over (partition by [col1,col2…] [order by [col1[asc|desc], col2[asc|desc]…]] windowing_clause)
@@ -6645,7 +6876,11 @@ key columns are considered in the same window. A window can contain a maximum of
 **rows between x preceding|following and y preceding|following**: indicates a window that ranges from the
 xth row preceding or following the current row to the yth row preceding or following the current row.
 **rows x preceding|following**: indicates a window that ranges from the xth row preceding or following the current
-row to the current row. x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10000. 0 indicates the current row. You must specify **ORDER BY** before you use **ROWS** to specify a window range. Window functions that allow you to use **rows** to define the window include AVG, COUNT, MAX, MIN, STDDEV, and SUM.
+row to the current row.
+
+> **Note:** x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10000. 0 indicates the current row.
+> You must specify **ORDER BY** before you use **ROWS** to specify a window range.
+> Window functions that allow you to use **rows** to define the window include AVG, COUNT, MAX, MIN, STDDEV, and SUM.
 
 ##### 3.6.4.2 COUNT
 
@@ -6660,7 +6895,11 @@ Description: This function returns the counted values of specified rows. Paramet
 keyword is specified, only the distinct values are counted.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the counted value of **expr** in the current
-window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value accumulated from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the BIGINT type is returned. The test_src table contains the **user_id** column of the BIGINT type.
+window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value accumulated from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: A value of the BIGINT type is returned. The test_src table contains the **user_id** column of the BIGINT type.
 
 ```
 select user_id,count(user_id) over (partition by user_id) as count from test_src; +---------+------------+
@@ -6734,7 +6973,11 @@ Description: This function returns the average value of input values in specifie
 converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the input value for a row is NULL, the row is not used for calculation. Values of the BOOLEAN type are not used for calculation. If the **distinct** keyword is specified, the average value of distinct values is calculated.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the average value of all values in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in a specified order and the accumulated average value of the values from the starting row to the current row is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the DOUBLE type is returned. If duplicate values are specified for **ORDER BY**, the processing method is based on the compatibility between MaxCompute and Hive. If MaxCompute is not compatible with Hive, the return value is the average value for each row.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in a specified order and the accumulated average value of the values from the starting row to the current row is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: A value of the DOUBLE type is returned. If duplicate values are specified for **ORDER BY**, the processing method is based on the compatibility between MaxCompute and Hive. If MaxCompute is not compatible with Hive, the return value is the average value for each row.
 
 ```
 set odps.sql.hive.compatible=false; select user_id, price, avg(price) over
@@ -6789,7 +7032,11 @@ Description: This function calculates the maximum value of specified rows in the
 the **distinct** keyword is specified, the maximum value of distinct values is calculated. The calculation result is not affected regardless of whether the parameter is specified.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the maximum value of all values in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the maximum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the maximum value of values from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: A value of the same data type as **expr** is returned.
 
 ##### 3.6.4.5 MIN
 
@@ -6804,7 +7051,11 @@ Description: This function returns the minimum value of values in specified rows
 the **distinct** keyword is specified, the minimum value of distinct values is calculated. The calculation result is not affected regardless of whether the parameter is specified.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the minimum value in the current
-window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the minimum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned.
+window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the minimum value of values from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: A value of the same data type as **expr** is returned.
 
 ##### 3.6.4.6 MEDIAN
 
@@ -6833,7 +7084,11 @@ Description: This function calculates the population standard deviation of value
 converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the value for a row is NULL, this row is not used for calculation. If the **distinct** keyword is specified, the population standard deviation of distinct values is calculated.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the population standard deviation of
-rows in the current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the population standard deviation from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
+rows in the current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the population standard deviation from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
 
 ```
 select window, seq, stddev_pop('1\01') over (partition by window order by seq) from dual;
@@ -6894,7 +7149,11 @@ Description: This function calculates the sample standard deviation. Parameters:
 converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the value for a row is NULL, the row is not used for calculation. If the **distinct** keyword is specified, the sample standard deviation of distinct values is calculated.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the sample standard deviation in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sample standard deviation from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sample standard deviation from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
 
 ##### 3.6.4.9 SUM
 
@@ -6909,7 +7168,11 @@ Description: This function returns the sum of values in specified rows. Paramete
 converted to the DOUBLE type before calculation. If it is not of the STRING type, an error is returned. If the value for a row is NULL, the row is not used for calculation. If the **distinct** keyword is specified, the sum of distinct values is calculated.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the sum of the **expr** values in the current
-window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sum of the values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: If the input value is of the BIGINT type, a value of the BIGINT type is returned. If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. If the input value is of the DOUBLE or STRING type, a value of the DOUBLE type is returned. If duplicate values are specified for **ORDER BY**, the processing method is based on the compatibility between MaxCompute and Hive. If MaxCompute is not compatible with Hive, the return value is the sum of values for each row.
+window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sum of the values from the starting row to the current row in the current window is returned.
+
+> **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
+
+Return value: If the input value is of the BIGINT type, a value of the BIGINT type is returned. If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. If the input value is of the DOUBLE or STRING type, a value of the DOUBLE type is returned. If duplicate values are specified for **ORDER BY**, the processing method is based on the compatibility between MaxCompute and Hive. If MaxCompute is not compatible with Hive, the return value is the sum of values for each row.
 
 ```
 set odps.sql.hive.compatible=false; select user_id, price, sum(price) over
@@ -7180,7 +7443,9 @@ percent_rank() over(partition by [col1, col2…] order by [col1[asc|desc], col2[
 Description: This function returns the relative percent rank of a row in a group of data. Parameters:
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by col1[asc|desc], col2[asc|desc]**: the value that is used to calculate the percent rank.
-Return value: A value of the DOUBLE type is returned. Valid values: [0,1]. The relative percent rank is calculated by using the following formula: **(Rank - 1)/(Number of rows - 1)** The number of rows in a single window cannot exceed 10 million.
+Return value: A value of the DOUBLE type is returned. Valid values: [0,1]. The relative percent rank is calculated by using the following formula: **(Rank - 1)/(Number of rows - 1)**
+
+> **Note:** The number of rows in a single window cannot exceed 10 million.
 
 ##### 3.6.4.15 ROW_NUMBER
 
@@ -7567,7 +7832,8 @@ The following result is returned:
 +------------+------------+------------+
 ```
 
-Only built-in aggregate functions support FILTER (WHERE where_condition). User-defined aggregate functions (UDAFs) do not support FILTER (WHERE where_condition). COUNT(*) cannot be used with FILTER (WHERE where_condition). To implement this feature, use the COUNT_IF function.
+> **Note:** Only built-in aggregate functions support FILTER (WHERE where_condition). User-defined aggregate functions (UDAFs) do not support FILTER (WHERE where_condition).
+> COUNT(*) cannot be used with FILTER (WHERE where_condition). To implement this feature, use the COUNT_IF function.
 
 ##### 3.6.5.2 COUNT
 
@@ -7878,7 +8144,11 @@ Description: This function returns a string of values that are separated by usin
 **separator**: the delimiter, which is a constant of the STRING type. If it is not of the STRING type or is not a constant,
 an error is returned.
 **str**: a value of the STRING type. If the input value is of the BIGINT, DOUBLE, or DATETIME type, it is implicitly
-converted into the STRING type before calculation. If the input value is not of the BIGINT, DOUBLE, or DATETIME type, an error is returned. Return value: A value of the STRING type is returned. If **test_src** in **select wm_concat(',', name) from test_src;** is an empty set, NULL is returned. Group and sort values in the test table and use a string to list the values in the same group.
+converted into the STRING type before calculation. If the input value is not of the BIGINT, DOUBLE, or DATETIME type, an error is returned. Return value: A value of the STRING type is returned.
+
+> **Note:** If **test_src** in **select wm_concat(',', name) from test_src;** is an empty set, NULL is returned.
+
+Group and sort values in the test table and use a string to list the values in the same group.
 
 ```
 -- Create the test table. create table test(id int , alphabet string); -- Insert data into the test table. insert into test values (1,'a'),(1,'b'),(1,'c'),(2,'D'),(2,'E'),(2,'F'); -- Group and sort values in the test table based on the id column. Then, use a string to list values in the sam e group. select id,wm_concat('',alphabet) from test group by id order by id limit 100; +------------+------------+
@@ -7899,9 +8169,9 @@ double percentile(bigint col, p) array<double> percentile(bigint col, array(p1 [
 
 Description: This function returns the **p**th percentile of the specified column. **p** must be between 0 and 1.
 
-**Important**
+> **Important:** You can calculate the percentile only for integer values.
 
-You can calculate the percentile only for integer values. Parameters:
+Parameters:
 **col**: the name of the table column of the BIGINT type.
 **p**: the percentile that must be between 0 and 1.
 The var_test table contains the **c1** column. Data in the var_test table:
@@ -7941,7 +8211,7 @@ This topic describes the configuration operation that you must perform before yo
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+> **Note:** You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
 
 ###### 3.6.5.13.2 COLLECT_LIST
 
@@ -8107,7 +8377,7 @@ select key, ANY_VALUE(value) from values (1, 'value1'),(1, 'value2'),(2, 'value3
 +------------+------------+
 ```
 
-The value returned by ANY_VALUE is not deterministic and different values may be returned for the same input value.
+> **Note:** The value returned by ANY_VALUE is not deterministic and different values may be returned for the same input value.
 
 ###### 3.6.5.13.9 NUMERIC_HISTOGRAM
 
@@ -8203,7 +8473,11 @@ This topic describes the COALESCE function.
 coalesce(expr1, expr2, ...)
 ```
 
-Description: This function returns the first non-NULL value in a list. If all values in the list are NULL, NULL is returned. Parameters: **expr**: the values you want to test. All these values must be of the same data type or are all NULL. Otherwise, an error is returned. The list must include at least one parameter. Otherwise, an error is returned. Return value: A value of the same data type as the expr parameter is returned.
+Description: This function returns the first non-NULL value in a list. If all values in the list are NULL, NULL is returned. Parameters: **expr**: the values you want to test. All these values must be of the same data type or are all NULL. Otherwise, an error is returned.
+
+> **Note:** The list must include at least one parameter. Otherwise, an error is returned.
+
+Return value: A value of the same data type as the expr parameter is returned.
 
 ##### 3.6.6.5 DECODE
 
@@ -8218,7 +8492,11 @@ Description: This function implements the IF-THEN-ELSE conditional branching fea
 **search**: the search item that you want to compare with **expression**.
 **result**: the value returned if the values of **search** and **expression** match.
 **default**: the value returned if no search item matches the expression. If **default** is not specified, NULL is returned.
-This parameter is optional. Return value: The matched **search** value is returned. If no matched item exists, **default** is returned. If **default** is not specified, NULL is returned. Three or more parameters must be specified. All **results** must be of the same data type or be NULL. Inconsistent data types will cause an error. All values of **search** and **expression** must be of the same data type. Otherwise, an error is returned. If **search** in the **DECODE** function has duplicate values that match the expression, the first mapping result is returned.
+This parameter is optional. Return value: The matched **search** value is returned. If no matched item exists, **default** is returned. If **default** is not specified, NULL is returned.
+
+> **Note:** Three or more parameters must be specified.
+> All **results** must be of the same data type or be NULL. Inconsistent data types will cause an error. All values of **search** and **expression** must be of the same data type. Otherwise, an error is returned.
+> If **search** in the **DECODE** function has duplicate values that match the expression, the first mapping result is returned.
 
 ```
 decode(customer_id, 1, 'Taobao', 2, 'Alipay', 3, 'Aliyun', NULL, 'N/A', 'Others') as result FROM VALUES (1,10),
@@ -8237,7 +8515,8 @@ In this example, the **DECODE** function implements the **IF-THEN-ELSE** stateme
 if customer_id = 1 then result := 'Taobao'; elsif customer_id = 2 then result := 'Alipay'; elsif customer_id = 3 then result := 'Aliyun'; ... else result := 'Others'; end if;
 ```
 
-In most cases, if "NULL = NULL" appears during data computation, the result returned by the MaxCompute SQL engine is NULL, whereas the **DECODE** function considers that the two NULL values are the same. In this example, if the value of **customer_id** is NULL, the **DECODE** function returns N/A.
+> **Note:** In most cases, if "NULL = NULL" appears during data computation, the result returned by the MaxCompute SQL engine is NULL, whereas the **DECODE** function considers that the two NULL values are the same.
+> In this example, if the value of **customer_id** is NULL, the **DECODE** function returns N/A.
 
 ##### 3.6.6.6 EXPLODE
 
@@ -8247,7 +8526,11 @@ This topic describes the EXPLODE function and provides examples of using this fu
 explode (var)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF) that transposes one row into multiple rows. If **var** is of the ARRAY <T> type, the data of the ARRAY type stored in a column is converted into multi-row data. If **var** is of the MAP<K, V> type, each key-value pair of the MAP type stored in a column is transposed to a row with two columns. One column is used for storing keys and the other column is used for storing values. Parameters: **var**: a value of the ARRAY<T> or MAP<K, V> type. Return value: transposed rows. Limits on the EXPLODE function: A SELECT statement can specify only the column that is used for this function. Other columns cannot be specified. This function cannot be used with the GROUP BY, CLUSTER BY, DISTRIBUTE BY, or SORT BY clause.
+Description: This function is a user-defined table-valued function (UDTF) that transposes one row into multiple rows. If **var** is of the ARRAY <T> type, the data of the ARRAY type stored in a column is converted into multi-row data. If **var** is of the MAP<K, V> type, each key-value pair of the MAP type stored in a column is transposed to a row with two columns. One column is used for storing keys and the other column is used for storing values. Parameters: **var**: a value of the ARRAY<T> or MAP<K, V> type. Return value: transposed rows.
+
+> **Note:** Limits on the EXPLODE function:
+> A SELECT statement can specify only the column that is used for this function. Other columns cannot be specified.
+> This function cannot be used with the GROUP BY, CLUSTER BY, DISTRIBUTE BY, or SORT BY clause.
 
 ```
 select explode(array(null, 'a', 'b', 'c')); -- The following result is returned: +------------+
@@ -8333,7 +8616,8 @@ select str_to_map("test1=1,test2=2")["test1"] from dual; -- The following result
 +-----+
 ```
 
-To execute the SQL statement, remove the index, and execute `var1[var2]` directly. Otherwise, a syntax error is returned. If the value of **var1** is NULL, NULL is returned.
+> **Note:** To execute the SQL statement, remove the index, and execute `var1[var2]` directly. Otherwise, a syntax error is returned.
+> If the value of **var1** is NULL, NULL is returned.
 
 ##### 3.6.6.12 MAX_PT
 
@@ -8356,7 +8640,7 @@ The return value of the following statement is **'20120902'**. The MaxCompute SQ
 select * from tbl where pt=max_pt('myproject.tbl');
 ```
 
-If a partition is added by using the **ALTER TABLE** statement and the partition contains no data file, the maximum value in this partition is not returned.
+> **Note:** If a partition is added by using the **ALTER TABLE** statement and the partition contains no data file, the maximum value in this partition is not returned.
 
 ##### 3.6.6.13 ORDINAL
 
@@ -8455,7 +8739,9 @@ This topic describes the UUID function.
 string uuid()
 ```
 
-Description: This function returns a random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212**. The return value of this function is a random global ID that has a low probability of duplication.
+Description: This function returns a random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212**.
+
+> **Note:** The return value of this function is a random global ID that has a low probability of duplication.
 
 ##### 3.6.6.19 UNIQUE_ID
 
@@ -8465,7 +8751,9 @@ This topic describes the UNIQUE_ID function.
 string unique_id()
 ```
 
-Description: This function returns a unique random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212_1**. This function is more efficient than the UUID function.
+Description: This function returns a unique random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212_1**.
+
+> **Note:** This function is more efficient than the UUID function.
 
 ##### 3.6.6.20 SAMPLE
 
@@ -8477,7 +8765,11 @@ boolean sample(x, y, column_name1,column_name2,...)
 
 Description: This function samples all values that are read from the column specified by **column_name** based on x and y, and filters out the rows that do not meet the sampling condition. Parameters: x and y: integer constants that are greater than 0. The values of the two parameters are of the BIGINT type. These parameters indicate that the values fall into **x** portions by calling the hash function and the **y**th portion is used. If **y** is not specified, the first portion is used, and you must not specify **column_name**. If the value of x or y is not of the BIGINT type or is less than or equal to 0, an error is returned. If the value of y is greater than the value of x, an error is returned. If the value of x or y is NULL, NULL is returned.
 **column_name**: the column from which you want to sample values. This parameter is optional. If this parameter is
-not specified, random sampling is performed based on the values of x and y. This parameter can be of any data type, and its value can be NULL. No implicit conversion is performed. If the value of **column_name** is a constant, an error is returned. Return value: A value of the BOOLEAN type is returned. To avoid data skew due to NULL values, the system performs uniform hashing on NULL values in the columns specified by **column_name**. This ensures that data evenly falls into **x** portions. If **column_name** is not specified and the amount of data is small, random hashing may be performed. In this case, we recommend that you specify **column_name** for uniform hashing. The tbla table contains the **cola** column.
+not specified, random sampling is performed based on the values of x and y. This parameter can be of any data type, and its value can be NULL. No implicit conversion is performed. If the value of **column_name** is a constant, an error is returned. Return value: A value of the BOOLEAN type is returned.
+
+> **Note:** To avoid data skew due to NULL values, the system performs uniform hashing on NULL values in the columns specified by **column_name**. This ensures that data evenly falls into **x** portions. If **column_name** is not specified and the amount of data is small, random hashing may be performed. In this case, we recommend that you specify **column_name** for uniform hashing.
+
+The tbla table contains the **cola** column.
 
 ```
 select * from tbla where sample (4, 1 , cola) = true; -- The values in the cola column fall into four portions by calling the hash function, and data in the first po rtion is extracted. select * from tbla where sample (4, 2) = true; -- The values in each row are randomly hashed into four portions, and data in the second portion is extracted.
@@ -8497,7 +8789,9 @@ The CASE WHEN expression can return different values based on the calculation re
 case when shop_name is null then 'default_region' when shop_name like 'hang%' then 'zj_region' end as region from sale_detail;
 ```
 
-If all **result** values are of the BIGINT or DOUBLE type, the data types are converted into the DOUBLE type before the values are returned. If some **result** values are of the STRING type, the data types of all values are converted into the STRING type before the values are returned. If the conversion cannot be performed, for example, the BOOLEAN type cannot be converted into the STRING type, an error is returned. Conversions between other data types are not allowed.
+> **Note:** If all **result** values are of the BIGINT or DOUBLE type, the data types are converted into the DOUBLE type before the values are returned.
+> If some **result** values are of the STRING type, the data types of all values are converted into the STRING type before the values are returned. If the conversion cannot be performed, for example, the BOOLEAN type cannot be converted into the STRING type, an error is returned.
+> Conversions between other data types are not allowed.
 
 ##### 3.6.6.22 IF
 
@@ -8533,7 +8827,7 @@ This topic describes the configuration operation that you must perform before yo
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+> **Note:** You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
 
 ###### 3.6.6.23.2 MAP
 
@@ -8847,7 +9141,11 @@ create table foo (id bigint) partitioned by (ds string, hr string); -- Create a 
 
 ##### 3.7.1.1 Overview
 
-This topic describes user-defined functions (UDFs) in MaxCompute. MaxCompute offers a variety of built-in functions to meet your computing requirements. You can also create UDFs. UDFs work in a way similar to built-in functions. For the mapping between Java and MaxCompute data types, see Types of parameters and returned values. If a UDF has the same name as a built-in function, MaxCompute executes the UDF by default. To call the built-in function, you must execute the select ::Function name (expression) ; statement. For example, if a UDF in MaxCompute is named CONCAT, MaxCompute calls the UDF rather than the CONCAT built-in function. To call the CONCAT built-in function, execute the select ::concat('ab', 'c') ; statement. The following table describes three types of UDFs supported by MaxCompute.
+This topic describes user-defined functions (UDFs) in MaxCompute. MaxCompute offers a variety of built-in functions to meet your computing requirements. You can also create UDFs. UDFs work in a way similar to built-in functions. For the mapping between Java and MaxCompute data types, see Types of parameters and returned values.
+
+> **Note:** If a UDF has the same name as a built-in function, MaxCompute executes the UDF by default. To call the built-in function, you must execute the select ::Function name (expression) ; statement. For example, if a UDF in MaxCompute is named CONCAT, MaxCompute calls the UDF rather than the CONCAT built-in function. To call the CONCAT built-in function, execute the select ::concat('ab', 'c') ; statement.
+
+The following table describes three types of UDFs supported by MaxCompute.
 
 | UDF type | Description |
 |---|---|
@@ -8855,7 +9153,9 @@ This topic describes user-defined functions (UDFs) in MaxCompute. MaxCompute off
 | UDTF | User-defined table-valued function. A UDTF is used in scenarios in which multiple rows of data are returned after you call the function. Only this type of function can return multiple fields. A UDTF is not equivalent to a user-defined type (UDT). |
 | UDAF | User-defined aggregate function. The input and output of a user-defined aggregate function have a many-to-one mapping relationship. Multiple input records are aggregated to generate one output value. This type of function can be used with the GROUP BY clause of SQL. |
 
-When you use a UDF in an SQL statement, the system may prompt insufficient memory. The reason is that the memory size required for the computing task exceeds the default memory size. In this case, you can execute the set odps.sql.udf.joiner.jvm.memory=xxxx; statement to adjust the memory size. MaxCompute UDFs can be shared by multiple projects. UDFs in one project can be used in another project. SQL statement for cross-project UDF sharing:
+> **Note:** When you use a UDF in an SQL statement, the system may prompt insufficient memory. The reason is that the memory size required for the computing task exceeds the default memory size. In this case, you can execute the set odps.sql.udf.joiner.jvm.memory=xxxx; statement to adjust the memory size.
+
+MaxCompute UDFs can be shared by multiple projects. UDFs in one project can be used in another project. SQL statement for cross-project UDF sharing:
 
 ```
 select other_project:udf_in_other_project(arg0, arg1) as res from table_t;
@@ -8875,9 +9175,11 @@ If you use Maven, you can obtain the dependency from the Maven repository.
 
 This topic describes the types of parameters and return values of user-defined functions (UDFs) in MaxCompute. Java UDFs in MaxCompute V2.0 support more basic data types in addition to BIGINT, STRING, DOUBLE, and BOOLEAN. These UDFs also support complex data types, such as ARRAY, MAP, and STRUCT, as well as Writable types. To use a new basic data type, UDFs specify their function signatures in the following ways: A user-defined aggregate function (UDAF) or user-defined table-valued function (UDTF) uses the **@Resolve** annotation, for example, `@Resolve("smallint->varchar(10)")` . A user-defined scalar function uses the **evaluate** method. In this case, the built-in function types of MaxCompute and Java function types have a one-to-one mapping relationship.
 
-**Important**
+> **Important:** You can use `type,*` to pass any number of parameters, for example, @resolve("string,*- >array<string>"). You must add Subtype after ARRAY.
+> The field name and field type of com.aliyun.odps.data.Struct cannot be reflected. Therefore, you must use the @Resolve annotation to obtain the field name and field type. In other words, to use STRUCT in a UDF, you must add the @Resolve annotation to the UDF class. This annotation affects only the overloads of parameters or return values that contain com.aliyun.odps.data.Struct.
+> Only one @Resolve annotation can be provided for the class. Therefore, only one overload with a STRUCT parameter or return value exists in a UDF.
 
-You can use `type,*` to pass any number of parameters, for example, @resolve("string,*- >array<string>"). You must add Subtype after ARRAY. The field name and field type of com.aliyun.odps.data.Struct cannot be reflected. Therefore, you must use the @Resolve annotation to obtain the field name and field type. In other words, to use STRUCT in a UDF, you must add the @Resolve annotation to the UDF class. This annotation affects only the overloads of parameters or return values that contain com.aliyun.odps.data.Struct. Only one @Resolve annotation can be provided for the class. Therefore, only one overload with a STRUCT parameter or return value exists in a UDF. To use a complex data type, UDFs specify their function signatures in the following ways: A UDTF uses the **@Resolve** annotation, for example, `@Resolve("array<string>,struct<a1:bigint,b1:string>,string-`
+To use a complex data type, UDFs specify their function signatures in the following ways: A UDTF uses the **@Resolve** annotation, for example, `@Resolve("array<string>,struct<a1:bigint,b1:string>,string-`
 
 ```
 >map<string,bigint>,struct<b1:bigint>") .
@@ -8904,7 +9206,12 @@ A user-defined scalar function uses the signature of the **evaluate** method to 
 | MAP | java.util.Map |
 | STRUCT | com.aliyun.odps.data.Struct |
 
-Make sure that the input and output parameters in a UDF are of a Java type. Otherwise, error ODPS-0130071 is returned. Java data types and the data types of return values are objects. Java data types must start with an uppercase letter. The NULL value in SQL statements is represented by a NULL reference in Java. Java Primitive Type cannot have NULL values and must not be used. The ARRAY type in the preceding table maps java.util.List. MaxCompute V2.0 allows you to use Writable types as parameters and return values when you define Java UDFs. The following table describes the mapping between MaxCompute data types and Java Writable types.
+> **Note:** Make sure that the input and output parameters in a UDF are of a Java type. Otherwise, error ODPS-0130071 is returned.
+> Java data types and the data types of return values are objects. Java data types must start with an uppercase letter.
+> The NULL value in SQL statements is represented by a NULL reference in Java. Java Primitive Type cannot have NULL values and must not be used.
+> The ARRAY type in the preceding table maps java.util.List.
+
+MaxCompute V2.0 allows you to use Writable types as parameters and return values when you define Java UDFs. The following table describes the mapping between MaxCompute data types and Java Writable types.
 
 | MaxCompute data type | Java Writable type |
 |---|---|
@@ -8931,10 +9238,12 @@ Make sure that the input and output parameters in a UDF are of a Java type. Othe
 
 This topic describes user-defined scalar functions (UDFs) and provides examples of using UDFs. UDFs must inherit the class **com.aliyun.odps.udf.UDF** and implement the **evaluate** method of the class. The
 **evaluate** method must be a non-static public method, and the types of parameters and return values are used as the
-UDF signature in SQL statements. You can implement multiple **evaluate** methods in a UDF. To call a UDF, the framework matches the correct **evaluate** method based on the parameter type called by the UDF. We recommend that you do not use the classes that have the same name but different function logic in different JAR packages. For example, in **UDF(UDAF/UDTF): udf1, udf2**, the JAR package of udf1 is
-**udf1.jar** and the JAR package of udf2 is **udf2.jar**. Assume that the two JAR packages contain the
-**com.aliyun.UserFunction.class** class. If you use the two UDFs in the same SQL statement, the system
-randomly loads the class contained in one of the two JAR packages. This may cause the UDFs to be executed in different ways or even cause a compilation failure. If you execute an SQL statement that has two UDFs, the UDFs are not isolated from each other. This is because the UDFs share the same classpath. If the resources referenced by the UDFs contain the same class, the class that the classloader attempts to load is uncertain. To avoid this issue, make sure that the resources referenced by the two UDFs do not contain the same class. You can use `void setup(ExecutionContext ctx)` to initialize a UDF and use `void close()` to terminate a UDF. The following example shows how to implement a UDF:
+UDF signature in SQL statements. You can implement multiple **evaluate** methods in a UDF. To call a UDF, the framework matches the correct **evaluate** method based on the parameter type called by the UDF.
+
+> **Note:** We recommend that you do not use the classes that have the same name but different function logic in different JAR packages. For example, in **UDF(UDAF/UDTF): udf1, udf2**, the JAR package of udf1 is **udf1.jar** and the JAR package of udf2 is **udf2.jar**. Assume that the two JAR packages contain the **com.aliyun.UserFunction.class** class. If you use the two UDFs in the same SQL statement, the system randomly loads the class contained in one of the two JAR packages. This may cause the UDFs to be executed in different ways or even cause a compilation failure.
+> If you execute an SQL statement that has two UDFs, the UDFs are not isolated from each other. This is because the UDFs share the same classpath. If the resources referenced by the UDFs contain the same class, the class that the classloader attempts to load is uncertain. To avoid this issue, make sure that the resources referenced by the two UDFs do not contain the same class.
+
+You can use `void setup(ExecutionContext ctx)` to initialize a UDF and use `void close()` to terminate a UDF. The following example shows how to implement a UDF:
 
 ```java
 package org.alidata.odps.udf.examples;
@@ -9309,7 +9618,11 @@ create function my_index as 'UdfArray' using 'myjar.jar'; select id, my_index(ar
 
 **Use Hive UDFs**
 
-MaxCompute V2.0 supports Hive UDFs. Some Hive UDFs and UDTFs can be directly used in MaxCompute. MaxCompute V2.0 is compatible with Hive 2.1.0 and Hadoop 2.7.2. If you develop a UDF by using other versions of Hive or Hadoop, you may need to recompile the UDF on the compatible Hive or Hadoop version. The following example shows how to use a Hive UDF in MaxCompute:
+MaxCompute V2.0 supports Hive UDFs. Some Hive UDFs and UDTFs can be directly used in MaxCompute.
+
+> **Note:** MaxCompute V2.0 is compatible with Hive 2.1.0 and Hadoop 2.7.2. If you develop a UDF by using other versions of Hive or Hadoop, you may need to recompile the UDF on the compatible Hive or Hadoop version.
+
+The following example shows how to use a Hive UDF in MaxCompute:
 
 ```java
 package com.aliyun.odps.compiler.hive; import org.apache.hadoop.hive.ql.exec.UDFArgumentException; import org.apache.hadoop.hive.ql.metadata.HiveException; import org.apache.hadoop.hive.ql.udf.generic.GenericUDF; import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector; import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory; import java.util.ArrayList; import java.util.List; import java.util.Objects; public class Collect extends GenericUDF {
@@ -9373,7 +9686,10 @@ Returned result:
 +------+
 ```
 
-Take note of the following items when you use Hive UDFs that are compatible with MaxCompute: Specify the JAR package when you create a Hive UDF. MaxCompute cannot automatically add all JAR packages to the classpath. The `add jar` command in MaxCompute creates a permanent resource in the project. Insert set odps.sql.hive.compatible=true; before an SQL statement, and commit and execute the SET statement with the SQL statement. Pay attention to the limits imposed by the Java sandbox on MaxCompute.
+> **Note:** Take note of the following items when you use Hive UDFs that are compatible with MaxCompute:
+> Specify the JAR package when you create a Hive UDF. MaxCompute cannot automatically add all JAR packages to the classpath. The `add jar` command in MaxCompute creates a permanent resource in the project.
+> Insert set odps.sql.hive.compatible=true; before an SQL statement, and commit and execute the SET statement with the SQL statement.
+> Pay attention to the limits imposed by the Java sandbox on MaxCompute.
 
 #### 3.7.2 Python UDFs
 
@@ -9389,9 +9705,7 @@ This topic describes limits on Python user-defined functions (UDFs). MaxCompute 
 
 This topic describes third-party libraries for Python user-defined functions (UDFs). Common third-party libraries such as NumPy are installed in the runtime environment to supplement the standard library.
 
-**Warning**
-
-The use of third-party libraries is also subject to limits. For example, when you use a third-party library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled.
+> **Warning:** The use of third-party libraries is also subject to limits. For example, when you use a third-party library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled.
 
 ##### 3.7.2.4 Types of parameters and return values
 
@@ -9407,7 +9721,13 @@ Python UDFs support MaxCompute SQL data types, such as BIGINT, STRING, DOUBLE, B
 arg_type_list '->' type_list arg_type_list: type_list | '*' | '' | 'char(n)' | 'varchar(n)' type_list: [type_list ','] type type: 'bigint' | 'string' | 'double' | 'boolean' | 'datetime' | 'float' | 'binary' | 'date' | 'decimal' | 'deci mal(precision,scale)'
 ```
 
-The part to the left of the arrow indicates the types of parameters. The part to the right of the arrow indicates the types of return values. The return value of a UDTF can contain multiple columns, while the return value of a UDF or UDAF contains only one column. An asterisk (*) represents variable-length parameters. If variable-length parameters are used, UDFs, UDTFs, and UDAFs can match input parameters of any type. In a project that uses the MaxCompute V2.0 data type edition, you can set the **decimal** parameter to precision or scale. The return value cannot be of the CHAR or VARCHAR type. The following example shows a valid signature:
+> **Note:** The part to the left of the arrow indicates the types of parameters. The part to the right of the arrow indicates the types of return values.
+> The return value of a UDTF can contain multiple columns, while the return value of a UDF or UDAF contains only one column.
+> An asterisk (*) represents variable-length parameters. If variable-length parameters are used, UDFs, UDTFs, and UDAFs can match input parameters of any type.
+> In a project that uses the MaxCompute V2.0 data type edition, you can set the **decimal** parameter to precision or scale.
+> The return value cannot be of the CHAR or VARCHAR type.
+
+The following example shows a valid signature:
 
 ```
 'bigint,double->string' # Parameters are of the BIGINT and DOUBLE types, and return values are of th e STRING type. 'bigint,boolean->string,datetime' # UDTF parameters are of the BIGINT and BOOLEAN types, and return values are of the STRING and DATETIME types. '*->string' # Input parameters are variable-length parameters and can be of any type, and return values are of the STRING type. '->double' # Parameters are left empty, and return values are of the DOUBLE type. 'array<bigint>->struct<x:string, y:int>' # Parameters are of the ARRAY<BIGINT> type, and return values are of t he STRUCT<x:STRING, y:BIGINT> type. '->map<bigint, string>' # Parameters are left empty, and return values are of the MAP<BIGINT, STRING> type.
@@ -9434,9 +9754,9 @@ If an invalid signature is found during query parsing, an error is reported, and
 | MAP | DICT |
 | STRUCT | COLLECTIONS.NAMEDTUPLE |
 
-A value of the DATETIME type is converted to a value of the INT type. The value of the INT type follows the UNIX format, which is the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970. You can process data of the DATETIME type by using the DATETIME module in the Python standard library.
-**silent** is added to `odps.udf.int(value,[silent=True])` . If **silent** is set to True and **value** cannot be
-converted to the INT type, None is returned, and no error is reported. The NULL value corresponds to None in Python.
+> **Note:** A value of the DATETIME type is converted to a value of the INT type. The value of the INT type follows the UNIX format, which is the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970. You can process data of the DATETIME type by using the DATETIME module in the Python standard library.
+> **silent** is added to `odps.udf.int(value,[silent=True])` . If **silent** is set to True and **value** cannot be converted to the INT type, None is returned, and no error is reported.
+> The NULL value corresponds to None in Python.
 
 ##### 3.7.2.5 UDF
 
@@ -9450,7 +9770,7 @@ from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(ob
        return arg0 + arg1
 ```
 
-A Python UDF must have its signature specified by using **annotate**.
+> **Note:** A Python UDF must have its signature specified by using **annotate**.
 
 ##### 3.7.2.6 UDAF
 
@@ -9506,7 +9826,7 @@ from odps.udf import annotate from odps.udf import BaseUDTF @annotate('string ->
            self.forward(p)
 ```
 
-The types of parameters and the return value of a Python UDTF can be specified without the need to use **annotate** to specify the UDTF signature. This way, the function can match input parameters of any type in SQL. However, the type of the return value cannot be deduced. All output parameters are considered to be of the STRING type. Therefore, when **FORWARD** is called, all output values must be converted to the STRING type.
+> **Note:** The types of parameters and the return value of a Python UDTF can be specified without the need to use **annotate** to specify the UDTF signature. This way, the function can match input parameters of any type in SQL. However, the type of the return value cannot be deduced. All output parameters are considered to be of the STRING type. Therefore, when **FORWARD** is called, all output values must be converted to the STRING type.
 
 ##### 3.7.2.8 Resource reference
 
@@ -9574,7 +9894,9 @@ MaxCompute Python UDFs support third-party libraries. The third-party library Nu
 
 **Port Python 2 UDFs**
 
-Python Software Foundation announced the EOL for Python 2. Therefore, we recommend that you port Python 2 UDFs. The method used to port Python 2 UDFs varies based on the types of MaxCompute projects. In a new project or an existing project for which you write UDFs in Python for the first time, we recommend that you use Python 3 to write all Python UDFs. In an existing project where a large number of Python 2 UDFs exist, proceed with caution when you enable Python 3. This is because you cannot use Python 2 code and Python 3 code in a single SQL statement at the same time. If you plan to gradually replace Python 2 UDFs with Python 3 UDFs, use the following methods: Use Python 3 to write new UDFs and enable Python 3 for new jobs. Rewrite Python 2 UDFs in a manner in which the UDFs are compatible with Python 2 and Python 3. For more information about how to rewrite UDFs, see Porting Python 2 Code to Python 3. If you write a public UDF that needs to be shared among multiple projects, we recommend that you write the UDF that is compatible with both Python 2 and Python 3.
+Python Software Foundation announced the EOL for Python 2. Therefore, we recommend that you port Python 2 UDFs. The method used to port Python 2 UDFs varies based on the types of MaxCompute projects. In a new project or an existing project for which you write UDFs in Python for the first time, we recommend that you use Python 3 to write all Python UDFs. In an existing project where a large number of Python 2 UDFs exist, proceed with caution when you enable Python 3. This is because you cannot use Python 2 code and Python 3 code in a single SQL statement at the same time. If you plan to gradually replace Python 2 UDFs with Python 3 UDFs, use the following methods: Use Python 3 to write new UDFs and enable Python 3 for new jobs. Rewrite Python 2 UDFs in a manner in which the UDFs are compatible with Python 2 and Python 3. For more information about how to rewrite UDFs, see Porting Python 2 Code to Python 3.
+
+> **Note:** If you write a public UDF that needs to be shared among multiple projects, we recommend that you write the UDF that is compatible with both Python 2 and Python 3.
 
 #### 3.7.4 SQL Function
 
@@ -9822,7 +10144,11 @@ Description: The indentation of Python code must comply with the specifications 
 
 #### 3.8.1 Scenarios and limits
 
-This topic describes the scenarios and limits of user-defined types (UDTs). MaxCompute introduces UDTs based on the new-generation SQL engine. UDTs allow you to reference classes or objects of third-party programming languages in SQL statements to call methods or obtain data. UDTs are suitable for the following scenarios: You want to use some features that are not provided by MaxCompute but can be implemented in other programming languages. For example, to implement some features, you need only to call built-in Java classes once. However, MaxCompute does not provide methods to implement these features. If you use user-defined functions (UDFs) to run these tasks, the procedure is complex. You want to call a third-party library in SQL statements to implement the related features. In this scenario, UDFs allow you to directly use a function provided by a third-party library in a SQL statement, instead of wrapping the function inside a UDF. You want to directly call the source code of a third-party programming language in SQL statements. The SELECT TRANSFORM statement allows you to write scripts to SQL statements. This improves readability and facilitates code maintenance. For some programming languages, such as Java, the source code can be executed only after it is compiled. You can use UDTs to reference objects and classes of these languages in SQL statements. UDTs support only Java. By default, all classes of SDK for Java can be referenced by UDTs. JDK 1.8 is used. A version later than JDK 1.8 may not be supported. All operators use the semantics of MaxCompute SQL instead of UDTs. UDTs cannot be used as shuffle keys in clauses, such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, or CLUSTER BY. DDL statements do not support UDTs. You cannot create tables that contain UDT objects. The final output cannot be UDT types.
+This topic describes the scenarios and limits of user-defined types (UDTs). MaxCompute introduces UDTs based on the new-generation SQL engine. UDTs allow you to reference classes or objects of third-party programming languages in SQL statements to call methods or obtain data. UDTs are suitable for the following scenarios: You want to use some features that are not provided by MaxCompute but can be implemented in other programming languages. For example, to implement some features, you need only to call built-in Java classes once. However, MaxCompute does not provide methods to implement these features. If you use user-defined functions (UDFs) to run these tasks, the procedure is complex. You want to call a third-party library in SQL statements to implement the related features. In this scenario, UDFs allow you to directly use a function provided by a third-party library in a SQL statement, instead of wrapping the function inside a UDF. You want to directly call the source code of a third-party programming language in SQL statements. The SELECT TRANSFORM statement allows you to write scripts to SQL statements. This improves readability and facilitates code maintenance. For some programming languages, such as Java, the source code can be executed only after it is compiled. You can use UDTs to reference objects and classes of these languages in SQL statements. UDTs support only Java. By default, all classes of SDK for Java can be referenced by UDTs.
+
+> **Note:** JDK 1.8 is used. A version later than JDK 1.8 may not be supported.
+
+All operators use the semantics of MaxCompute SQL instead of UDTs. UDTs cannot be used as shuffle keys in clauses, such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, or CLUSTER BY. DDL statements do not support UDTs. You cannot create tables that contain UDT objects. The final output cannot be UDT types.
 
 #### 3.8.2 Feature summary
 
@@ -9912,13 +10238,27 @@ UDTs support resource access. In MaxCompute SQL, you can call the static method 
 |---|---|
 | new |   |
 
-Create objects by using the `new` method. Create arrays by using the `new` method. Initializer lists can be used. Example: `new Integer[] { 1, 2, 3 }` . Call methods, including static methods. The identifiers in UDTs contain the names of packages, classes, methods, and fields. All identifiers are case-sensitive. Anonymous classes and lambda expressions are not supported. UDTs are used in expressions. Functions that do not return values cannot be called in expressions. This issue will be resolved in later versions. UDTs support the following data types: UDTs support SQL type conversions, such as `cast(1 as java.lang.Object)` . UDTs do not support Java type conversions, such as `(Object)1` . The built-in types of UDTs have a one-to-one mapping relationship with specific Java types. You can directly call the method of the Java type to which the built-in type is mapped. Example: `'123'.length()`
+Create objects by using the `new` method. Create arrays by using the `new` method. Initializer lists can be used. Example: `new Integer[] { 1, 2, 3 }` . Call methods, including static methods.
+
+> **Note:** The identifiers in UDTs contain the names of packages, classes, methods, and fields. All identifiers are case-sensitive.
+> Anonymous classes and lambda expressions are not supported.
+> UDTs are used in expressions. Functions that do not return values cannot be called in expressions. This issue will be resolved in later versions.
+
+UDTs support the following data types: UDTs support SQL type conversions, such as `cast(1 as java.lang.Object)` . UDTs do not support Java type conversions, such as `(Object)1` . The built-in types of UDTs have a one-to-one mapping relationship with specific Java types. You can directly call the method of the Java type to which the built-in type is mapped. Example: `'123'.length()`
 
 ```
 , 1L.hashCode() .
 ```
 
-UDTs can be used in built-in functions and UDFs. For example, in `chr(Long.valueOf('100'))` , **Long.valueOf** returns a value of the **java.lang.Long** type. The built-in function CHR supports the built-in BIGINT type. The data of a Java primitive type is automatically converted to the boxing type and the preceding two rules apply. For some new built-in data types, you must use set odps.sql.type.system.odps2=true; to declare these types. Otherwise, an error occurs. The following type conversion rules apply in UDTs: UDT objects can be implicitly converted to the objects of their base classes. UDT objects can be forcibly converted to the objects of their base classes or subclasses. The data type conversion between two objects without inheritance follows the original conversion rules. However, such conversions may result in changes to the data. For example, data of the **java.lang.Long** type can be forcibly converted to the **java.lang.Integer** type. This conversion uses the rules that are used to convert the built-in BIGINT type to the INT type. This process may result in changes to the data and even loss of data precision. UDTs support Java generics. For example, the compiler can determine that the value returned by `java.util.Arrays.asList(new java.math.BigInteger('1'))` is of the **java.util.List<java.math.BigInteger>** type based on the parameter type. You must specify the type parameter in a constructor function or use **java.lang.Object**. This is the same as Java. All operators use the semantics of MaxCompute SQL. Examples: Combination of strings: The result of `String.valueOf(1) + String.valueOf(2)` is 3. The two strings are implicitly converted to DOUBLE-type values and summed. If you use Java string concatenation to combine the strings, the result is 12.
+UDTs can be used in built-in functions and UDFs. For example, in `chr(Long.valueOf('100'))` , **Long.valueOf** returns a value of the **java.lang.Long** type. The built-in function CHR supports the built-in BIGINT type. The data of a Java primitive type is automatically converted to the boxing type and the preceding two rules apply.
+
+> **Note:** For some new built-in data types, you must use set odps.sql.type.system.odps2=true; to declare these types. Otherwise, an error occurs.
+
+The following type conversion rules apply in UDTs: UDT objects can be implicitly converted to the objects of their base classes. UDT objects can be forcibly converted to the objects of their base classes or subclasses. The data type conversion between two objects without inheritance follows the original conversion rules. However, such conversions may result in changes to the data. For example, data of the **java.lang.Long** type can be forcibly converted to the **java.lang.Integer** type. This conversion uses the rules that are used to convert the built-in BIGINT type to the INT type. This process may result in changes to the data and even loss of data precision. UDTs support Java generics. For example, the compiler can determine that the value returned by `java.util.Arrays.asList(new java.math.BigInteger('1'))` is of the **java.util.List<java.math.BigInteger>** type based on the parameter type.
+
+> **Note:** You must specify the type parameter in a constructor function or use **java.lang.Object**. This is the same as Java.
+
+All operators use the semantics of MaxCompute SQL. Examples: Combination of strings: The result of `String.valueOf(1) + String.valueOf(2)` is 3. The two strings are implicitly converted to DOUBLE-type values and summed. If you use Java string concatenation to combine the strings, the result is 12.
 **=** operations: The **=** operator in SQL statements is used as a comparison operator. It is used to compare one
 expression with another. You must call the equals method in Java to check whether two objects are equivalent. The **=** operator cannot be used to verify the equivalence of two objects. UDTs do not have a clear definition of object equality. This is caused by data reshuffling. Objects may be transmitted between different processes or physical machines. During object transmission, an object may be referenced as two different objects. For example, an object may be shuffled to two machines and then reshuffled. Therefore, when you use UDTs, you must use the equals method instead of the **=** operator to verify the equivalence of two objects. Objects in the same row or column are correlated in some way. However, a correlation between objects in different rows or columns cannot be ensured. UDTs cannot be used as shuffle keys in clauses, such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, or CLUSTER BY. UDTs can be used at the stages of expressions, but cannot be used as outputs. You can use UDTs to implement the feature provided by the SCALAR function. You can use the built-in functions COLLECT_SET and EXPLODE with UDTs to implement the features provided by aggregate and table-valued functions.
 
@@ -9956,7 +10296,11 @@ array of the Array<Int> type. This is another way to create a built-in array. FR
 
 ##### 3.8.7.2 Example of using JSON
 
-This topic provides an example of using JSON for user-defined types (UDTs). The runtime of a UDT carries a JSON dependency (V2.2.4), which can be directly used in JSON. In addition to JSON dependencies, MaxCompute runtime also carries other dependencies, including commons-logging (1.1.1), commons-lang (2.5), commons-io (2.4), and protobuf-java (2.4.1). Example:
+This topic provides an example of using JSON for user-defined types (UDTs). The runtime of a UDT carries a JSON dependency (V2.2.4), which can be directly used in JSON.
+
+> **Note:** In addition to JSON dependencies, MaxCompute runtime also carries other dependencies, including commons-logging (1.1.1), commons-lang (2.5), commons-io (2.4), and protobuf-java (2.4.1).
+
+Example:
 
 ```
 set odps.sql.type.system.odps2=true; set odps.sql.session.java.imports=java.util.*,java,com.google.gson. *; -- To import multiple packages at a time , separate the packages with commas (,). @a := select new Gson() gson; -- Create a Gson object. gson.toJson(new ArrayList<Integer>(Arrays.asList(1, 2, 3))), -- Convert an object to a JSON string. cast(gson.fromJson('["a","b","c"]', List.class) as List<String>) -- Deserialize the JSON string. Gson forcibly converts the deserialization result from the List<Object> type to the List<String> type. from @a;
@@ -10392,7 +10736,10 @@ that the first parameter of the view can be a value of any data type. However, t
 CREATE VIEW paramed_view (@a TABLE(name STRING, id ANY, age BIGINT)) AS SELECT * FROM @a WHERE name = 'foo' A ND age < 25; -- The call example. SELECT * FROM param_view((SELECT name, id, age FROM students));
 ```
 
-After you execute the `CREATE VIEW` statement to create a view, you can run the `DESC` command to obtain the description of the view. This description contains the return type of the view. The return type of a view is recalculated when the view is called. It may be different from the return type, such as ANY, that you specify when you create the view. When you create a view, you can use an asterisk (*) in the TABLE parameter to retrieve any columns. The asterisk (*) can represent a specific data type or the ANY type. Example:
+> **Note:** After you execute the `CREATE VIEW` statement to create a view, you can run the `DESC` command to obtain the description of the view. This description contains the return type of the view.
+> The return type of a view is recalculated when the view is called. It may be different from the return type, such as ANY, that you specify when you create the view.
+
+When you create a view, you can use an asterisk (*) in the TABLE parameter to retrieve any columns. The asterisk (*) can represent a specific data type or the ANY type. Example:
 
 ```
 CREATE VIEW paramed_view (@a TABLE(key STRING, * ANY), @b TABLE(key STRING, * STRING)) AS SELECT a. * FROM @a JOIN @b ON a.key = b.key; -- The call example. SELECT name, address FROM param_view((SELECT school, name, age, address FROM student), school) WHERE age < 20
@@ -10408,13 +10755,19 @@ You can execute the following statement to call the pv1 view that you defined:
 @a := SELECT * FROM src WHERE value >0; --call view with table variable and scalar @b := SELECT * FROM pv1(@a,'20170101'); @another_day := '20170102'; --call view with table name and scalar variable @c := SELECT * FROM pv1(src2, @another_day); @d := SELECT * FROM @c UNION ALL SELECT * FROM @b; WITH t AS(SELECT * FROM src3) SELECT * FROM @c SELECT * FROM @d SELECT* FROM pv1(t,@another_day);
 ```
 
-You can use different parameters to call the pv1 view. The value of the TABLE parameter can be the name of a physical table, view, or table variable. You can also set the TABLE parameter to a table alias by using common table expressions (CTEs). The values of common parameters can be variables or constants. The script of a parameterized view can contain only data manipulation language (DML) statements. The statements, such as INSERT, CREATE TABLE, or PRINT, cannot be contained. A parameterized view can contain multiple SQL statements.
+> **Note:** You can use different parameters to call the pv1 view.
+> The value of the TABLE parameter can be the name of a physical table, view, or table variable. You can also set the TABLE parameter to a table alias by using common table expressions (CTEs).
+> The values of common parameters can be variables or constants.
+
+The script of a parameterized view can contain only data manipulation language (DML) statements. The statements, such as INSERT, CREATE TABLE, or PRINT, cannot be contained. A parameterized view can contain multiple SQL statements.
 
 ```
 -- view with parameters -- param @a -a table parameter -- param @b -a string parameter -- returns a table with schema (key string,value string) CREATE VIEW IF NOT EXISTS pv2(@a TABLE (k STRING,v BIGINT), @b STRING) AS BEGIN @srcp := SELECT * FROM srcp WHERE p=@b; @pv2 := SELECT srcp.key,srcp.value FROM @srcp JOIN @a ON srcp.key=a.k; END;
 ```
 
-Statements between BEGIN and END are the script of this view. The `@pv2 :=...` statement is similar to the RETURN statement in other programming languages. You can use the @pv2 :=... statement to assign a value to a variable of an implicit table that has the same name as the view. The matching rules for actual and formal view parameters are the same as those specified in a common weaklytyped language. Specifically, if a view parameter can be implicitly converted, it can match the defined parameter. For example, a value of the BIGINT type can match parameters of the DOUBLE type. For table variables, if the schema of table a can be inserted into table b, table a can be used to match the table-type parameters that have the same schema as table b. You can explicitly declare the return type to make the code easier to read.
+> **Note:** Statements between BEGIN and END are the script of this view. The `@pv2 :=...` statement is similar to the RETURN statement in other programming languages. You can use the @pv2 :=... statement to assign a value to a variable of an implicit table that has the same name as the view.
+
+The matching rules for actual and formal view parameters are the same as those specified in a common weaklytyped language. Specifically, if a view parameter can be implicitly converted, it can match the defined parameter. For example, a value of the BIGINT type can match parameters of the DOUBLE type. For table variables, if the schema of table a can be inserted into table b, table a can be used to match the table-type parameters that have the same schema as table b. You can explicitly declare the return type to make the code easier to read.
 
 ```
 CREATE VIEW IF NOT EXISTS pv3(@a table (k STRING,v BIGINT), @b STRING) RETURNS @ret TABLE (x STRING,y STRING)
@@ -10429,10 +10782,10 @@ BEGIN
 end;
 ```
 
-**RETURNS @ret TABLE (x STRING,y STRING)** defines the following information:
-The return type, which indicates the type returned to the caller. The return type is specified by the **TABLE**
-**(x STRING,y STRING)** parameter. You can use this parameter to customize the table schema.
-The response parameter. The **@ret** parameter defines the name of the response parameter. Assigning a value to the response parameter is performed in the view script. You can consider the view that contains no **BEGIN/END** or return variables as a simplified parameterized view.
+> **Note:** **RETURNS @ret TABLE (x STRING,y STRING)** defines the following information:
+> The return type, which indicates the type returned to the caller. The return type is specified by the **TABLE** **(x STRING,y STRING)** parameter. You can use this parameter to customize the table schema.
+> The response parameter. The **@ret** parameter defines the name of the response parameter. Assigning a value to the response parameter is performed in the view script.
+> You can consider the view that contains no **BEGIN/END** or return variables as a simplified parameterized view.
 
 ### 3.11 CLONE TABLE
 
@@ -10447,7 +10800,9 @@ CLONE TABLE <[src_project_name.]src_table_name> [PARTITION(spec), ...]
 
 **Description**
 
-The CLONE TABLE statement is used to clone data from the src_table_name table to the desc_table_name table. After you clone data to the desc_table_name table, we recommend that you verify the data accuracy. For example, you can execute the SELECT COUNT statement to view the number of rows in the destination table or execute the DESC statement to view the table size.
+The CLONE TABLE statement is used to clone data from the src_table_name table to the desc_table_name table.
+
+> **Note:** After you clone data to the desc_table_name table, we recommend that you verify the data accuracy. For example, you can execute the SELECT COUNT statement to view the number of rows in the destination table or execute the DESC statement to view the table size.
 
 **Parameters**
 
@@ -10746,9 +11101,9 @@ ST_GeomCollection(wkt)
 
 Description: This function constructs a multi-part geometry based on the well-known text (WKT) representation defined by the Open Geospatial Consortium (OGC).
 
-**Important**
+> **Important:** The ST_GeomCollection function in MaxCompute supports only the multi-part geometry feature, not the collection feature.
 
-The ST_GeomCollection function in MaxCompute supports only the multi-part geometry feature, not the collection feature. Example:
+Example:
 
 ```
 SELECT ST_GeomCollection('multipoint ((1 0), (2 3))') FROM src LIMIT 1; -- Construct a multipoint geometry. ST_GeomCollection('POINT(1 1), LINESTRING(2 0,3 0)') -- The collection feature is not supported.
@@ -12096,7 +12451,11 @@ This topic describes the ST_Crosses function and provides an example of using th
 BOOLEAN ST_Crosses(geometry1, geometry2)
 ```
 
-Description: If geometry1 crosses geometry2, this function returns true. Otherwise, this function returns false. Crossing indicates that some points in the two geometries are the same. Example:
+Description: If geometry1 crosses geometry2, this function returns true. Otherwise, this function returns false.
+
+> **Note:** Crossing indicates that some points in the two geometries are the same.
+
+Example:
 
 ```
 SELECT ST_Crosses(st_linestring(0,0, 1,1), st_linestring(1,0, 0,1)) from src LIMIT 1; -- true is returned. SELECT ST_Crosses(st_linestring(2,0, 2,3), st_polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 1; -- true is returned. SELECT ST_Crosses(st_linestring(0,2, 0,1), ST_linestring(2,0, 1,0)) from src LIMIT 1; -- false is returned.
@@ -12224,7 +12583,9 @@ This topic describes the ST_GeoHash function and provides an example on how to u
 string ST_GeoHash(st_geometry geometry, integer precision=full_precision) string ST_GeoHash(double longitude, double latitude, integer precision=full_precision)
 ```
 
-Description: This function returns the unique Geohash string of the specified point. This function uses a function with the ST_ prefix or the specified longitudes and latitudes as input parameters. If the precision is not specified, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
+Description: This function returns the unique Geohash string of the specified point. This function uses a function with the ST_ prefix or the specified longitudes and latitudes as input parameters.
+
+> **Note:** If the precision is not specified, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
 
 ```
 SELECT ST_GeoHash(ST_Point(-102.849854, 36.451113), 8); SELECT ST_GeoHash(ST_GeomFromText('POINT(-102.849854 36.451113)')); SELECT ST_GeoHash(-102.849854, 36.451113, 10);
@@ -12238,7 +12599,9 @@ This topic describes the ST_PointFromGeoHash function and provides an example on
 st_geometry ST_PointFromGeoHash(string geohash, integer precision=full_precision)
 ```
 
-Description: This function returns a point based on the input Geohash value. If the precision parameter is not configured, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
+Description: This function returns a point based on the input Geohash value.
+
+> **Note:** If the precision parameter is not configured, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
 
 ```
 SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq')); SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq', 4));
@@ -12252,7 +12615,9 @@ This topic describes the ST_EnvelopeFromGeoHash function and provides an example
 st_geometry ST_EnvelopeFromGeoHash(string geohash, integer precision=full_precision)
 ```
 
-Description: This function returns the envelope of the specified precision based on the input Geohash value. If the precision parameter is not configured, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
+Description: This function returns the envelope of the specified precision based on the input Geohash value.
+
+> **Note:** If the precision parameter is not configured, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
 
 ```
 SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq', 8)); SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq'));
@@ -12666,7 +13031,9 @@ This topic describes how to enable the Hash Clustering feature of MaxCompute. Th
 set odps.sql.cfile2.enable.read.write.index.flag=true;
 ```
 
-After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project at all times, contact the MaxCompute team. Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. You can experience the superior performance provided by Hash Clustering even if you do not add this flag.
+After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project at all times, contact the MaxCompute team.
+
+> **Note:** Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. You can experience the superior performance provided by Hash Clustering even if you do not add this flag.
 
 ##### 3.13.2.2 Create a hash-clustered table
 
@@ -12938,14 +13305,25 @@ set odps.sql.skewinfo=src_skewjoin1:(key)[("0")("1")]; -- Output result: explain
 
 #### 3.15.1 Overview
 
-This topic provides an overview of the MapReduce-to-SQL conversion for execution feature. MaxCompute provides a series of Java APIs for MapReduce to process data. MapReduce programs are automatically converted to SQL for execution. After the conversion, you can use the compiler, cost-based optimizer, and vectorized execution engine released with MaxCompute V2.0 to process the MapReduce programs. The new features of the SQL engine can also be used. The features, performance, and stability of the SQL engine are optimized. You do not need to change the original APIs and job logic. Only MapReduce jobs of the OpenMR type, which are written by using MapReduce APIs, can be converted to SQL. This feature can be used only for projects and jobs. This feature supports views as the input. This feature supports external tables as the input. This feature supports TemporaryFile reads and writes. This feature allows you to read data from and write data to hash-clustered tables. This feature supports near-real-time execution of small jobs.
+This topic provides an overview of the MapReduce-to-SQL conversion for execution feature. MaxCompute provides a series of Java APIs for MapReduce to process data. MapReduce programs are automatically converted to SQL for execution. After the conversion, you can use the compiler, cost-based optimizer, and vectorized execution engine released with MaxCompute V2.0 to process the MapReduce programs. The new features of the SQL engine can also be used. The features, performance, and stability of the SQL engine are optimized.
+
+> **Note:** You do not need to change the original APIs and job logic.
+> Only MapReduce jobs of the OpenMR type, which are written by using MapReduce APIs, can be converted to SQL.
+> This feature can be used only for projects and jobs.
+> This feature supports views as the input.
+> This feature supports external tables as the input.
+> This feature supports TemporaryFile reads and writes.
+> This feature allows you to read data from and write data to hash-clustered tables.
+> This feature supports near-real-time execution of small jobs.
 
 #### 3.15.2 Configure the MaxCompute client
 
 This topic describes how to configure the MaxCompute client when you use the MapReduce-to-SQL conversion feature.
 1. Download the latest version of the MaxCompute client package to your on-premises machine and configure the
-MaxCompute client. On the download page, you can obtain the MaxCompute client package of the required version in the **Other**
-**Resources** section.
+MaxCompute client.
+
+> **Note:** On the download page, you can obtain the MaxCompute client package of the required version in the **Other** **Resources** section.
+
 2. Configure the execution mode.
 You can configure the execution mode based on your business requirements. The default execution mode is lot. In lot mode, jobs are run by MapReduce. The new compiler, optimizer, and execution engine are not used. You can enable the execution mode by setting the **odps.mr.run.mode** parameter. Valid values: **lot**, **sql**, and
 **hybrid**.
@@ -13096,7 +13474,7 @@ This topic describes possible causes of the GROUP BY data skew and provides a so
 set odps.sql.groupby.skewindata=true;
 ```
 
-If you set this parameter to true, when the Shuffle hash algorithm is used, the system automatically adds a random factor and introduces a new task to prevent data skew.
+> **Note:** If you set this parameter to true, when the Shuffle hash algorithm is used, the system automatically adds a random factor and introduces a new task to prevent data skew.
 
 ##### 3.17.1.3 DISTRIBUTE BY data skew
 
@@ -13211,9 +13589,9 @@ create table if not exists sale_detail( shop_name string, customer_id string, to
 
 Storage space on MaxCompute is precious. You can set the life cycle of a table according to data usage. MaxCompute will delete expired data to save storage space. Example: Run the `create table test3 (key boolean) partitioned by (pt string, ds string) lifecycle` 100; command to create a table with a lifecycle of 100. If the latest modification time of this table or partition was more than 100 days ago, the table or partition will be deleted.
 
-**Important**
+> **Important:** The lifecycle takes a partition as the smallest unit, so for a partitioned table, if some partitions reach the lifecycle threshold, they will be deleted directly. Partitions that have not reached the lifecycle threshold are not be affected.
 
-The lifecycle takes a partition as the smallest unit, so for a partitioned table, if some partitions reach the lifecycle threshold, they will be deleted directly. Partitions that have not reached the lifecycle threshold are not be affected. Run the alter table table_name set lifecycle days; command to modify the lifecycle of an existing table.
+Run the alter table table_name set lifecycle days; command to modify the lifecycle of an existing table.
 
 **Archive cold data**
 
@@ -13286,9 +13664,7 @@ This topic describes all the limits of MaxCompute SQL statements.
 |   |   |   |   | 0010000:System internal error - The |   |
 |   |   |   |   | Size of Plan is too large |   |
 
-**Important**
-
-The preceding limits cannot be manually modified.
+> **Important:** The preceding limits cannot be manually modified.
 
 ### 3.19 Appendix
 
@@ -13329,7 +13705,7 @@ This topic describes how to use the LIKE operator for character matching. In LIK
 'abcd' like 'ab%' -- True. 'abcd' like 'ab_' -- False. 'ab_cde' like 'ab\\_c%'; -- True.
 ```
 
-MaxCompute SQL statements support only UTF-8 character sets. If data is encoded in another format, the calculation result may be incorrect.
+> **Note:** MaxCompute SQL statements support only UTF-8 character sets. If data is encoded in another format, the calculation result may be incorrect.
 
 #### 3.19.3 Regular expressions
 
@@ -13422,7 +13798,9 @@ The following result is returned:
 +-----+------+
 ```
 
-If a MaxCompute SQL statement contains a\\b , MaxCompute returns a\b because MaxCompute escapes the expression. If a string contains tab characters, MaxCompute stores \t as one character when MaxCompute reads this expression. In this case, \t is a common character in regular expressions.
+> **Note:** If a MaxCompute SQL statement contains a\\b , MaxCompute returns a\b because MaxCompute escapes the expression.
+
+If a string contains tab characters, MaxCompute stores \t as one character when MaxCompute reads this expression. In this case, \t is a common character in regular expressions.
 
 ```
 select 'a\tb', 'a\tb' rlike 'a\tb' from test_dual;
@@ -13442,9 +13820,8 @@ The following result is returned:
 
 This topic describes all reserved words and keywords in MaxCompute SQL.
 
-**Important**
-
-When you name a table, a column, or a partition, do not use reserved words or keywords. Otherwise, an error may occur. Reserved words and keywords are not case-sensitive.
+> **Important:** When you name a table, a column, or a partition, do not use reserved words or keywords. Otherwise, an error may occur.
+> Reserved words and keywords are not case-sensitive.
 
 ```
     %    &    &&    (    )    *    +
@@ -13524,7 +13901,12 @@ The following table simplifies the preceding rules and describes only whether an
 | UPDATE/DELETE | Yes |
 | MERGE SMALLFILES | Yes |
 
-No conflict occurs for INSERT operations in the event of data changes. An error is reported in the UPDATE/DELETE or MERGE SMALLFILES operation if the destination non-partitioned table or partition has data changes. Minor or major compaction is classified as MERGE SMALLFILES operations. In extreme scenarios, if multiple jobs are all in the metadata update phase, an error may be reported due to a conflict among these parallel update operations. atures of MaxCompute
+No conflict occurs for INSERT operations in the event of data changes. An error is reported in the UPDATE/DELETE or MERGE SMALLFILES operation if the destination non-partitioned table or partition has data changes.
+
+> **Note:** Minor or major compaction is classified as MERGE SMALLFILES operations.
+> In extreme scenarios, if multiple jobs are all in the metadata update phase, an error may be reported due to a conflict among these parallel update operations.
+
+atures of MaxCompute
 
 ## 4 Open source features of MaxCompute
 

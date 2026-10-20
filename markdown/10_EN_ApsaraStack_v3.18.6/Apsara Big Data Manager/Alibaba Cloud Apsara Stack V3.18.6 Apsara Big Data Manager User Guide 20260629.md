@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 50
 source_pdf: "f2627c6e2d3afa58_Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AE%A1%E5%AE%B6/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Big%20Data%20Manager%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Big Data Manager User Guide 20260629
@@ -110,16 +110,21 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. After you log on to the Apsara Uni-manager Operations Console, click **Product O&M** in the
 top menu bar.
@@ -218,9 +223,8 @@ icon and select a service.
 3. In the top navigation bar of the service page, click **Operation and maintenance**. On the
 page that appears, click the **Cluster O&M** tab.
 
-**Note**
+> **Note:** The Cluster O&M tab is displayed only for MaxCompute, DataHub, RealtimeCompute, Hologres, DataWorks, Dataphin, and QuickBI.
 
-The Cluster O&M tab is displayed only for MaxCompute, DataHub, RealtimeCompute, Hologres, DataWorks, Dataphin, and QuickBI.
 4. On the **Cluster O&M** tab, click the **Health** tab.
 5. On the **Health** tab, click the
 icon to expand a checker with alerts. You can view all hosts where the checker is run.
@@ -277,9 +281,10 @@ The Resource Library tab displays the resource usage data of MaxCompute, DataWor
 
 1. Log in to the Apsara Big Data Manager (ABM) console.
 
-**Note**
+> **Note:** After you log in to the ABM console, the **Instrument cluster** tab appears by default. To return to the **Instrument cluster** tab, click the
+> icon in the upper-left corner and
+> then click **ABM**.
 
-After you log in to the ABM console, the **Instrument cluster** tab appears by default. To return to the **Instrument cluster** tab, click the icon in the upper-left corner and then click **ABM**.
 2. On the **Instrument cluster** tab, click the **Resource Library** tab. The Resource Library tab
 appears.
 
@@ -391,9 +396,7 @@ ii. Adjust the following two parameters based on the actual volume of data to be
 Log in to the Apsara Uni-manager Management Console as an administrator and create a multi-cluster project. For more information, see **Apsara Stack Help CenterBig Data Services > MaxCompute**
 **> User Guide > Preparations > Create a project**.
 
-**Note**
-
-Single-cluster projects do not support disaster recovery.
+> **Note:** Single-cluster projects do not support disaster recovery.
 
 **Configure the disaster recovery project**
 
@@ -426,9 +429,7 @@ The following table describes the key configuration items.
 **Versions**to view the highlighted version differences.
 7. Confirm the correctness of parameter configurations and click **Run**.
 
-**Note**
-
-If the modified configurations do not take effect, the reason may be that the zonedisaster recovery feature of ABM is not enabled. In this case, contact Apsara Stack technical support.
+> **Note:** If the modified configurations do not take effect, the reason may be that the zone- disaster recovery feature of ABM is not enabled. In this case, contact Apsara Stack technical support.
 
 ## 6 Management
 
@@ -624,9 +625,9 @@ A Apsara Big Data Manager account with the required O&M permissions is obtained.
 
 **Background information**
 
-**Note**
+> **Note:** Different products have different scheduling items and monitoring items, but their configurations and operation methods are the same. .
 
-Different products have different scheduling items and monitoring items, but their configurations and operation methods are the same. . Scheduling item: The scheduling item runs the scheduling script in the full machine list corresponding to the specified tianji role to generate the raw data of the alarm (which scheduling item generates what level of alarm on which machine and what is the alarm result data). The raw data is reported to the database of ABM for storage. Monitoring item: The monitoring item mounts the alarm raw data generated by the scheduling item to the page of the corresponding product in ABM. When you attach a metric to a product page, you can configure different filter policies to filter the alert results of the metrics you are concerned about on the specified page. Both scheduling items and monitoring items are built-in and cannot be added. However, you can modify some parameters of scheduling items and monitoring items, such as whether to enable, running parameters, and description. You can also configure mount points and delete them.
+Scheduling item: The scheduling item runs the scheduling script in the full machine list corresponding to the specified tianji role to generate the raw data of the alarm (which scheduling item generates what level of alarm on which machine and what is the alarm result data). The raw data is reported to the database of ABM for storage. Monitoring item: The monitoring item mounts the alarm raw data generated by the scheduling item to the page of the corresponding product in ABM. When you attach a metric to a product page, you can configure different filter policies to filter the alert results of the metrics you are concerned about on the specified page. Both scheduling items and monitoring items are built-in and cannot be added. However, you can modify some parameters of scheduling items and monitoring items, such as whether to enable, running parameters, and description. You can also configure mount points and delete them.
 
 **Go to the management page**
 
@@ -659,9 +660,8 @@ the Actions column. In the Modify Checker dialog box, configure the parameters.
 **Interval** and **Parameters**, are set to the default values. If you set this parameter to
 **Custom**, you can configure other parameters as needed.
 
-**Note**
+> **Note:** Configure the **Execution Interval** parameter based on the **crontab** command.
 
-Configure the **Execution Interval** parameter based on the **crontab** command.
 3. Click **OK**. The scheduling item is modified.
 
 **View the list of faulty machines**
@@ -792,9 +792,7 @@ Your ABM account is granted the required permissions on the services on which yo
 
 You can view operation audit logs by service. For example, to view the operation audit logs of a big data service, you must go to the service page first.
 
-**Note**
-
-The Operational Audit page displays only the **O&M** operation history of a big data service. Note that the O&M operations of job services are not included.
+> **Note:** The Operational Audit page displays only the **O&M** operation history of a big data service. Note that the O&M operations of job services are not included.
 
 **Procedure**
 
@@ -839,9 +837,8 @@ cluster.
 2. Obtain the vSwitch and port information based on **Hostname**.
 Run the following command with the `hostname` parameter set to the actual name of the current host to obtain the information about the vSwitch and port connected to the host.
 
-**Note**
-
-If you want to view the vSwitch and port traffic of other service clusters, replace the `hostname` parameter with the `hostname` of the machine in the service cluster to be queried.
+> **Note:** If you want to view the vSwitch and port traffic of other service clusters, replace the
+> `hostname` parameter with the `hostname` of the machine in the service cluster to be queried.
 
 ```
 $curl -s 'http://127.0.0.1:7070/api/v5/GetMachineInfo? hostname=c27***.cloud.c07.amtest35&attr=uplink_info'

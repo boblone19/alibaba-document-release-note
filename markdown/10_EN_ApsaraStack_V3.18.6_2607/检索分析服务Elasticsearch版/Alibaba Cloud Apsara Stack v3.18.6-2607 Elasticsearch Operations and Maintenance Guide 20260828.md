@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 126
 source_pdf: "6e06d4c5d38289e2_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Operations and Maintenance Guide 20260828
@@ -88,13 +88,28 @@ Google Chrome is the recommended browser. Do not use the default `elasticsearch-
 
 1. Open your browser.
 2. In the address bar, enter the access address for the Apsara Uni-manager O&M console and
-press Enter. To change the display language, click the current language in the upper-right corner. The console supports Simplified Chinese and English.
+press Enter.
+
+> **Note:** To change the display language, click the current language in the upper-right corner. The console supports Simplified Chinese and English.
+
 3. Enter your username and password.
-M console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+M console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Log in**.
-If a Privacy Policy is displayed, click **Agree and Log In** instead.
+
+> **Note:** If a Privacy Policy is displayed, click **Agree and Log In** instead.
+
 5. In the top navigation bar, select **Product O&M > Big Data O&M > Alibaba Cloud**
 **Elasticsearch O&M console** to open the **Elasticsearch O&M console.**
 
@@ -102,8 +117,9 @@ If a Privacy Policy is displayed, click **Agree and Log In** instead.
 
 ### 2.1 Create an instance
 
-We recommend that you create clusters in the user-side console. If the clusters in the userside console cannot meet your business requirements, you can create clusters in the O&Mside console after assessing the O&M risks. For example, you can create clusters of low specifications for testing or create clusters of Elasticsearch versions other than the suggested versions in the O&M-side console. This topic describes how to create an Elasticsearch cluster in the O&M-side console. For instructions on how to create an instance in the console, see the **Elasticsearch User**
-**Guide**, specifically the **Create an instance** section.
+We recommend that you create clusters in the user-side console. If the clusters in the userside console cannot meet your business requirements, you can create clusters in the O&Mside console after assessing the O&M risks. For example, you can create clusters of low specifications for testing or create clusters of Elasticsearch versions other than the suggested versions in the O&M-side console. This topic describes how to create an Elasticsearch cluster in the O&M-side console.
+
+> **Note:** For instructions on how to create an instance in the console, see the **Elasticsearch User** **Guide**, specifically the **Create an instance** section.
 
 **Create an Elasticsearch instance**
 
@@ -112,7 +128,10 @@ We recommend that you create clusters in the user-side console. If the clusters 
 click **Confirm**.
 3. Set Instance Type to **elasticsearch**.
 4. In the **Basic Configuration** step, select a deployment mode, zone, chip architecture, and
-version. Then, click **Next**. We recommend that you select V7.10.0 or V6.8.13.
+version. Then, click **Next**.
+
+> **Note:** We recommend that you select V7.10.0 or V6.8.13.
+
 5. Configure the parameters as described in the following table and click **Next**.
 
 | Parameter | Description |
@@ -142,7 +161,9 @@ version. Then, click **Next**. We recommend that you select V7.10.0 or V6.8.13.
 | .spec.parameters |   |
 
 7. Click **Start Creation**.
-After the cluster is created, you are redirected to the **Instance Management** page. Check the status of the cluster. Wait until the cluster enters the Normal state. Before you use the cluster, you must configure a whitelist. Otherwise, you may encounter issues such as monitoring data collection failure or Kibana console login failure. For more information, see Security settings.
+After the cluster is created, you are redirected to the **Instance Management** page. Check the status of the cluster. Wait until the cluster enters the Normal state.
+
+> **Note:** Before you use the cluster, you must configure a whitelist. Otherwise, you may encounter issues such as monitoring data collection failure or Kibana console login failure. For more information, see Security settings.
 
 **Create an OpenSearch instance**
 
@@ -151,7 +172,10 @@ After the cluster is created, you are redirected to the **Instance Management** 
 click **OK**.
 3. Set Instance Type to **opensearch**.
 4. In the **Basic Configuration** step, select a deployment mode, zone, chip architecture, and
-version. Then, click **Next**. Currently, OpenSearch instances can be deployed only in a single zone.
+version. Then, click **Next**.
+
+> **Note:** Currently, OpenSearch instances can be deployed only in a single zone.
+
 5. Configure the cluster parameters as described in the following table, and then click **Next**.
 
 | Parameter | Description |
@@ -228,7 +252,9 @@ The Elasticsearch instance is in the Normal state, and Kibana nodes are enabled.
 4. On the **Basic Information** page, click **Kibana** to the right of **Cluster Management**.
 5. On the Kibana console log in page, enter your username and password, and then click **Log**
 **In**.
-The default username is elastic. The password is the one that you specified when you created the instance.
+
+> **Note:** The default username is elastic. The password is the one that you specified when you created the instance.
+
 6. Click the
 icon in the upper-left corner and choose **Management > Dev Tools** to go to the **Console** page.
 
@@ -249,7 +275,9 @@ The OpenSearch instance is in the Normal state and the Dashboard node is enabled
 3. On the **Instance Management** page, click the target **instance ID**.
 4. On the **Basic Information** page, to the right of **Cluster Management**, click **Dashboard**.
 5. Enter your username and password, and then click **Log In**.
-The default username is admin. The password is the one that you set when you created the instance.
+
+> **Note:** The default username is admin. The password is the one that you set when you created the instance.
+
 6. In the upper-left corner, click the
 icon and choose **Management > Dev Tools** to go to the **Console** page.
 
@@ -279,9 +307,12 @@ If no repositories are available, you must first add a repository in Platform Ma
 6. Click **Modify Settings**. In the dialog box that appears, specify the backup interval, cycle,
 and time, and click **Confirm**.
 
-**Important**
+> **Important:** The first snapshot backup of a cluster is a full backup of its data. The time required depends on the data volume. Perform snapshot backups during off-peak hours.
+> Scheduled backups can reduce the query and write performance of the cluster. Set a reasonable frequency and time period for backups. Do not use a very short interval.
 
-The first snapshot backup of a cluster is a full backup of its data. The time required depends on the data volume. Perform snapshot backups during off-peak hours. Scheduled backups can reduce the query and write performance of the cluster. Set a reasonable frequency and time period for backups. Do not use a very short interval. After you confirm the settings, the system automatically backs up data based on the specified backup cycle. To back up data immediately, click **Backup Now**. After an automatic backup is complete, you can click **Disable Automatic Backup** to disable this feature. If you enable the feature again, you must re-associate a repository. Existing backup records are not affected. You can also query your snapshots and refresh the list. The snapshot list automatically deletes automatic backup records. The system runs a cleanup task once every hour and retains the 10 most recent records. Manual backup records, which are created when you click **Backup Now**, are not automatically deleted.
+After you confirm the settings, the system automatically backs up data based on the specified backup cycle. To back up data immediately, click **Backup Now**. After an automatic backup is complete, you can click **Disable Automatic Backup** to disable this feature. If you enable the feature again, you must re-associate a repository. Existing backup records are not affected. You can also query your snapshots and refresh the list.
+
+> **Note:** The snapshot list automatically deletes automatic backup records. The system runs a cleanup task once every hour and retains the 10 most recent records. Manual backup records, which are created when you click **Backup Now**, are not automatically deleted.
 
 #### 2.6.2 Restore data from snapshots
 
@@ -298,7 +329,8 @@ An Elasticsearch cluster is created, and the cluster is in the normal state. For
 
 **Procedure**
 
-1. Log in to the Elasticsearch O&M console.
+## 1 Log in to the Elasticsearch O&M console.
+
 2. In the left-side navigation pane, click **Instance Management**.
 3. On the **Instance Management** page, click the value in the **Instance ID** column for the
 cluster that you want to manage.
@@ -357,18 +389,22 @@ An Elasticsearch cluster is created, and the cluster is in the normal state. For
 2. In the navigation pane on the left, click **Instance Management**.
 3. On the **Instance Management** page, click the ID of the target **instance**.
 4. In the navigation pane on the left, choose **Plugin Management > Elasticsearch Plugin**.
-Elasticsearch plug-ins are used as an example in this topic. You can install other plugins by following the same procedure.
+
+> **Note:** Elasticsearch plug-ins are used as an example in this topic. You can install other plug- ins by following the same procedure.
+
 5. Install or update a plug-in.
 Install a plug-in If the page displays large numbers of plug-ins, enter the name of the desired plug-in into the search box to find the plug-in. Fuzzy match is supported. Install a plugin: Click **Install** in the **Update** column for the target plugin. Install multiple plug-ins at a time: Select the plug-ins you want to install and click
 **Batch Install**.
 
-**Warning**
+> **Warning:** Plug-in installation triggers cluster restarts. Proceed with caution.
 
-Plug-in installation triggers cluster restarts. Proceed with caution. Update a plug-in If a new version is available for an installed plug-in, the system displays the new version number in the **Updatable Plugin Version** column. To update the plug-in, click the
+Update a plug-in If a new version is available for an installed plug-in, the system displays the new version number in the **Updatable Plugin Version** column. To update the plug-in, click the
 **Update** button in the corresponding row.
 6. Click **OK**.
 7. Select a cluster restart method as needed and click **OK**.
-After you confirm the installation, the cluster automatically restarts. The plug-in is installed after the restart is complete. After you confirm the update, the cluster does not automatically restart. You must click the **Restart** button in the upper-right corner to apply the update. After the restart is complete, the new version number is displayed in the **Plugin Version** column. You can use the same method to install or update plug-ins on other plug-in pages. After a plug-in is installed or updated, you can click **Uninstall** or **Batch Uninstall** to remove the plug-in if it is no longer needed. If an error occurs during the plug-in installation or update, contact the O&M engineer.
+After you confirm the installation, the cluster automatically restarts. The plug-in is installed after the restart is complete. After you confirm the update, the cluster does not automatically restart. You must click the **Restart** button in the upper-right corner to apply the update. After the restart is complete, the new version number is displayed in the **Plugin Version** column. You can use the same method to install or update plug-ins on other plug-in pages. After a plug-in is installed or updated, you can click **Uninstall** or **Batch Uninstall** to remove the plug-in if it is no longer needed.
+
+> **Note:** If an error occurs during the plug-in installation or update, contact the O&M engineer.
 
 #### 2.7.2 Modify Configuration
 
@@ -385,13 +421,14 @@ An instance has been created and its status is Normal. For more information, see
 3. On the **Instance Management** page, click the target **instance ID**.
 4. In the navigation pane on the left, choose **Plugin Management > Elasticsearch**
 **Plugins**.
-Elasticsearch plug-ins are used as an example in this topic. You can install other plugins by following the same procedure.
+
+> **Note:** Elasticsearch plug-ins are used as an example in this topic. You can install other plug- ins by following the same procedure.
+
 5. Find the built-in plug-in that you want to modify and click **Modify Configuration** in the
 Action column.
 
-**Warning**
+> **Warning:** Modifying the configuration file of a plugin restarts the cluster. Confirm the operation before you proceed.
 
-Modifying the configuration file of a plugin restarts the cluster. Confirm the operation before you proceed.
 6. Click **Add File**.
 7. In the **Add File** dialog box, enter the file name and click **OK**.
 8. Click the file that you added and enter the plug-in configuration into the editor on the right
@@ -444,9 +481,8 @@ Security settings let you enable the HTTPS protocol with one click, modify the E
 
 Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that uses a Secure Sockets Layer (SSL) to protect data in transit. It encrypts the communication by using a Secure Sockets Layer (SSL) connection. To protect your data, use the HTTPS protocol.
 
-**Important**
+> **Important:** For Alibaba Cloud Elasticsearch instances, this feature is disabled by default and should be enabled manually. For OpenSearch instances, this feature is enabled by default and cannot be disabled.
 
-For Alibaba Cloud Elasticsearch instances, this feature is disabled by default and should be enabled manually. For OpenSearch instances, this feature is enabled by default and cannot be disabled.
 1. Go to the cluster operations page.
 2. In the left-side navigation pane, click **Security Settings**.
 3. On the **Security Settings** page, go to the **HTTPS Protocol** section and toggle the switch
@@ -458,7 +494,9 @@ After you create an instance, you can modify its port number.
 1. Go to the cluster operations page.
 2. In the left-side navigation pane, click **Security Settings**.
 3. On the **Security Settings** page, in the **Port Number** section, enter the desired port
-number and click **Modify**. The default port number is 9200. After a successful modification, a success message appears, and the port number updates to the value you specified.
+number and click **Modify**.
+
+> **Note:** The default port number is 9200. After a successful modification, a success message appears, and the port number updates to the value you specified.
 
 **Configure the VPC access whitelist**
 
@@ -478,9 +516,10 @@ You can secure your cluster by configuring which users can log on to Kibana or t
 3. On the **Security Settings** page, click **Account Information** to view and modify account
 information. View username `elastic` (or `admin` ): The username is `elastic` for Alibaba Cloud Elasticsearch instances and `admin` for OpenSearch instances. The `elastic` / `admin` account is the administrator account with `superuser` permissions.
 
-**Important**
+> **Important:** Resetting the password for the `elastic` / `admin` account affects access for that account only; it does not affect other accounts. Therefore, do not use the
+> `elastic` / `admin` account for programmatic access. Instead, create custom users and grant them the necessary permissions.
 
-Resetting the password for the `elastic` / `admin` account affects access for that account only; it does not affect other accounts. Therefore, do not use the `elastic` / `admin` account for programmatic access. Instead, create custom users and grant them the necessary permissions. `kibanaserver` : The account used by the Kibana service. It has the `kibana_system` role, which includes only the minimum permissions required for Kibana to initialize and does not allow it to read user data. You must include the IP address of the Kibana service in this account's whitelist. If not configured correctly, Kibana will be inaccessible.
+`kibanaserver` : The account used by the Kibana service. It has the `kibana_system` role, which includes only the minimum permissions required for Kibana to initialize and does not allow it to read user data. You must include the IP address of the Kibana service in this account's whitelist. If not configured correctly, Kibana will be inaccessible.
 
 | monitoring collector _ |   |
 |---|---|
@@ -488,9 +527,9 @@ Resetting the password for the `elastic` / `admin` account affects access for th
 
 `monitoring_collector` : The account used by management services. It has the `aliyun-ops` role. Some management features, such as collecting monitoring data and running automatic backup, depend on this account. This role includes only the minimum permissions required for management and cannot be used to read user data. This account's whitelist must include all possible IP addresses of the management components. Otherwise, some management features may degrade or become unavailable. For example, you may be unable to view monitoring data, enable automatic backup, or perform disaster recovery failovers using asr. Modify password Click **Modify Password** to change the password for the corresponding account. A cluster restart is not required. Modify whitelist
 
-**Important**
+> **Important:** Currently, only Alibaba Cloud Elasticsearch instances support whitelist modification. This feature is not supported for OpenSearch instances.
 
-Currently, only Alibaba Cloud Elasticsearch instances support whitelist modification. This feature is not supported for OpenSearch instances. Click **Modify Whitelist** to change the whitelist configuration. To add multiple IP addresses, separate them with a comma (,). For example:
+Click **Modify Whitelist** to change the whitelist configuration. To add multiple IP addresses, separate them with a comma (,). For example:
 
 ```
  127.0.0.1,127.0.0.2 .
@@ -506,9 +545,8 @@ This certificate enables communication between Elasticsearch nodes. Nodes can co
 3. On the **Security Settings** page, click **Certificate Information** to view the certificate
 details.
 
-**Important**
-
-The system randomly generates the current certificate. Features like Cross- Datacenter Replication (XDCR), cross-cluster search (CCS), or cross-cluster reindexing require the primary and secondary clusters to have identical certificates to connect. Custom certificates are supported. To modify a certificate, contact your on-site operations team.
+> **Important:** The system randomly generates the current certificate. Features like Cross- Datacenter Replication (XDCR), cross-cluster search (CCS), or cross-cluster re- indexing require the primary and secondary clusters to have identical certificates to connect.
+> Custom certificates are supported. To modify a certificate, contact your on-site operations team.
 
 **References**
 
@@ -516,7 +554,7 @@ The system randomly generates the current certificate. Features like Cross- Data
 
 **Method 1: Get pod IP addresses**
 
-When you run this command on the management machine, remove the ${} characters and use only the content inside.
+> **Note:** When you run this command on the management machine, remove the ${} characters and use only the content inside.
 
 ```bash
  # Get the pod IP address. The namespace for Kibana/exporter is the same as the cluster
@@ -526,9 +564,9 @@ When you run this command on the management machine, remove the ${} characters a
 
 **Method 2: Get the IP subnet**
 
-**Important**
+> **Important:** Use an IP subnet because the pod IP address from Method 1 can change if the pod restarts. Configuring an IP subnet avoids this issue. However, you must configure the whitelist with the narrowest possible scope. For information on the minimum effective subnet, consult your delivery or on-site security teams.
 
-Use an IP subnet because the pod IP address from Method 1 can change if the pod restarts. Configuring an IP subnet avoids this issue. However, you must configure the whitelist with the narrowest possible scope. For information on the minimum effective subnet, consult your delivery or on-site security teams. To get the possible IP subnets for the corresponding Elasticsearch service, retrieve all subnet information in the current environment:
+To get the possible IP subnets for the corresponding Elasticsearch service, retrieve all subnet information in the current environment:
 
 ```bash
  kubectl get subnet
@@ -536,9 +574,7 @@ Use an IP subnet because the pod IP address from Method 1 can change if the pod 
 
 Address ranges are represented using CIDR notation. In a mixed deployment, any network segment can be allocated. In a dedicated deployment, resources related to the Elasticsearch instance are deployed on dedicated machines, but management services can still be located in any network segment.
 
-**Important**
-
-This method is for reference only. For specific details, consult your delivery or on-site security teams.
+> **Important:** This method is for reference only. For specific details, consult your delivery or on-site security teams.
 
 **Troubleshooting**
 
@@ -581,9 +617,8 @@ The cluster configuration feature of Elasticsearch allows you to configure the b
 
 **Procedure**
 
-**Important**
+> **Important:** After you modify the configurations of an Elasticsearch cluster, the cluster is restarted. Proceed with caution.
 
-After you modify the configurations of an Elasticsearch cluster, the cluster is restarted. Proceed with caution.
 1. Go to the Cluster Operations page of an Elasticsearch cluster.
 2. In the left-side navigation pane, click **Configuration Modification**.
 3. Modifies the configurations of the cluster.
@@ -662,13 +697,15 @@ Only Elasticsearch instances support this feature. This feature is not supported
 
 **Upgrade the deployment method**
 
-**Important**
+> **Important:** Deployment method upgrades are available only for clusters that were initially configured for dual-zone or multi-zone deployment.
 
-Deployment method upgrades are available only for clusters that were initially configured for dual-zone or multi-zone deployment.
 1. Go to the Cluster O&M page.
 2. In the navigation pane on the left, click **Deployment Method Upgrade**.
 3. On the **Deployment Method Upgrade** page, check if the deployment method of the
-current instance can be upgraded. If a message indicates that no deployment methods are available for upgrade, the current instance cannot be upgraded. To enable an upgrade, go to the Platform Management page and change the zone configuration. For more information, see Zone Configuration. If the page shows the instance ID/Name, Deployment Method (Before Upgrade), and Deployment Method (After Upgrade), the instance can be upgraded. Follow the subsequent steps to perform the upgrade. The deployment method can only be upgraded to the one specified in the zone configuration on the Platform Management page of the O&M console. Downgrades are not supported.
+current instance can be upgraded. If a message indicates that no deployment methods are available for upgrade, the current instance cannot be upgraded. To enable an upgrade, go to the Platform Management page and change the zone configuration. For more information, see Zone Configuration. If the page shows the instance ID/Name, Deployment Method (Before Upgrade), and Deployment Method (After Upgrade), the instance can be upgraded. Follow the subsequent steps to perform the upgrade.
+
+> **Note:** The deployment method can only be upgraded to the one specified in the zone configuration on the Platform Management page of the O&M console. Downgrades are not supported.
+
 4. In the **Basic Check** section, follow the prompts to check if the instance meets the upgrade
 requirements. After confirming that the requirements are met, click **Next**.
 5. In the **Resource Assessment** section, assess the resources as prompted on the page.
@@ -709,7 +746,9 @@ configuration, and then click **Confirm**.
 | secret access key _ _ | In the Unified Cloud Management Platform, go to Enterprise > Resource Management > Organization Management. In the Organizational Structure section, select your target organization and click Manage AccessKey to obtain your AccessKey ID and AccessKey secret. |
 |---|---|
 
-After you add the repository, it appears in the repository list. If the newly added repository does not appear, click **Refresh** in the upper-right corner to refresh the list.
+After you add the repository, it appears in the repository list.
+
+> **Note:** If the newly added repository does not appear, click **Refresh** in the upper-right corner to refresh the list.
 
 **Query repositories**
 
@@ -726,18 +765,15 @@ The system automatically runs the query using fuzzy match.
 3. In the dialog box that appears, modify the repository configuration and click **Confirm**. The
 repository name is not modifiable.
 
-**Important**
-
-If automatic backup is enabled, modifying the repository does not affect the current automatic backup configuration. If automatic backup is disabled and you enable it after you modify the repository (for example, by changing the bucket name), new automatic backups use the updated repository configuration. In this case, you cannot view previous automatic backup data.
+> **Important:** If automatic backup is enabled, modifying the repository does not affect the current automatic backup configuration. If automatic backup is disabled and you enable it after you modify the repository (for example, by changing the bucket name), new automatic backups use the updated repository configuration. In this case, you cannot view previous automatic backup data.
 
 **Delete a repository**
 
 1. Go to the Repository Management page.
 2. In the repository list, click **Delete** in the **Action** column of a repository.
 
-**Warning**
+> **Warning:** Deleted repositories cannot be recovered. Proceed with caution.
 
-Deleted repositories cannot be recovered. Proceed with caution.
 3. In the message that appears, click **Confirm**.
 
 ### 3.2 Plugin management
@@ -938,21 +974,21 @@ supports. The following figure uses Elasticsearch plugins as an example.
 
 **Upload a plug-in**
 
-**Important**
+> **Important:** You can upload custom plugins, but not all custom plugins are supported. For example, plugins related to X-Pack, such as Security, ML, Alerting, index lifecycle management (ILM), and Reporting, are not supported. Third-party plugins that depend on the X-Pack API are also not supported.
 
-You can upload custom plugins, but not all custom plugins are supported. For example, plugins related to X-Pack, such as Security, ML, Alerting, index lifecycle management (ILM), and Reporting, are not supported. Third-party plugins that depend on the X-Pack API are also not supported.
 1. Go to the plug-in management page.
 2. In the top-left corner of the page, select the version.
 3. Click **Upload Plugin**.
 4. In the **Upload Plugin** dialog box, upload the plug-in installation package.
 5. Click **Upload**.
-After the upload is successful, the plugin appears in the plugin list. If the uploaded plugin is not visible, click **Refresh** in the upper-right corner to refresh the plugin list and check again.
+After the upload is successful, the plugin appears in the plugin list.
+
+> **Note:** If the uploaded plugin is not visible, click **Refresh** in the upper-right corner to refresh the plugin list and check again.
 
 **Update a plug-in**
 
-**Important**
+> **Important:** Built-in plugins cannot be updated.
 
-Built-in plugins cannot be updated.
 1. Go to the plug-in management page.
 2. In the upper-left corner, select the version.
 3. Click **Update** in the **Action** column of a plug-in.
@@ -961,9 +997,9 @@ Built-in plugins cannot be updated.
 
 **Delete a plug-in**
 
-**Warning**
+> **Warning:** After a plugin is deleted, it must be reinstalled before you can use it again. Proceed with caution.
+> If an existing cluster uses the plugin to be deleted, the cluster's rolling operations, scale-out operations, and automatic restarts will fail after the plugin is deleted.
 
-After a plugin is deleted, it must be reinstalled before you can use it again. Proceed with caution. If an existing cluster uses the plugin to be deleted, the cluster's rolling operations, scale-out operations, and automatic restarts will fail after the plugin is deleted.
 1. Go to the plug-in management page.
 2. In the top-left corner of the page, select the version.
 3. Click **Delete** in the **Action** column of a plug-in.
@@ -975,7 +1011,6 @@ This topic describes how to view the resource usage of physical machines on the 
 
 **Procedure**
 
-1. Log in to the Elasticsearch O&M console.
 2. In the left-side navigation pane, choose **Platform Management > Resource**
 **Management > Resource Management**.
 3. On the **Resource Management** page, enter the name of the target physical machine in
@@ -993,7 +1028,6 @@ Zone configuration is supported only for Elasticsearch instances that are deploy
 
 **Modify the zone configuration**
 
-1. Log in to the Elasticsearch O&M console.
 2. In the navigation pane on the left, choose **Platform Management > Availability Zone**
 **Configuration > Availability Zone Configuration**.
 3. On the **Availability Zone Configuration** page, click **Modify Configuration**.
@@ -1012,9 +1046,7 @@ The operation control feature lets you manage the network type and resource owne
 3. On the **Operation Control** page, configure the network type control, resource ownership,
 and modification operation control settings for newly created instances.
 
-**Warning**
-
-This configuration affects user access. Modify this configuration with caution. Follow the instructions and notes on the console.
+> **Warning:** This configuration affects user access. Modify this configuration with caution. Follow the instructions and notes on the console.
 
 **The network type control setting for newly created instances of the current**
 
@@ -1033,7 +1065,9 @@ existing clusters are not affected.
 **(ascm-Elasticsearch)**: **Allow changes (users can perform instance modification**
 **operations in both the user console and the O&M console)**, **Disallow changes**
 **only in the user console**, or **Disallow all changes**.
-If your cloud platform is under lockdown or you need to restrict modification operations for a specific period, you can update this setting. When this option is set to **Disallow all changes**, operations such as cluster creation, scale-out, configuration modification, or plugin installation are not allowed in either the user console or the O&M console. The display of information is not affected.
+
+> **Note:** If your cloud platform is under lockdown or you need to restrict modification operations for a specific period, you can update this setting. When this option is set to **Disallow all changes**, operations such as cluster creation, scale-out, configuration modification, or plugin installation are not allowed in either the user console or the O&M console. The display of information is not affected.
+
 4. Click **Modify**.
 
 ### 3.6 Benchmark testing
@@ -1055,9 +1089,8 @@ A one-click benchmark test consists of two parts: Machine performance test: Eval
 
 **Procedure**
 
-**Important**
+> **Important:** Benchmark testing requires reading and writing data on the destination cluster, which affects the cluster's read and write performance. Run tests on production clusters with caution.
 
-Benchmark testing requires reading and writing data on the destination cluster, which affects the cluster's read and write performance. Run tests on production clusters with caution.
 1. Log on to the Search & Analysis Service O&M console.
 2. In the left navigation pane, click **Platform Management**.
 3. Choose **Benchmark Testing > Benchmark Testing**.
@@ -1091,7 +1124,8 @@ and the baseline Elasticsearch cluster. The following table describes the namesp
 
 **warn**: warning information.
 **error**: error information, which indicates a program error.
-If logs of the error type are generated or you have any questions about the logs, submit a ticket.
+
+> **Note:** If logs of the error type are generated or you have any questions about the logs, submit a ticket.
 
 **View the logs of control components**
 
@@ -1116,7 +1150,11 @@ kubectl logs ${podname} -n ${namespace} | tail -n 500
 
 **View product logs**
 
-You can use one of the following methods to view the logs of the baseline Elasticsearch cluster and the logs of an Elasticsearch cluster. Method 1: This mode lets you view up to 100 log entries in the user-side console. i. Log in to the user-side console of the Elasticsearch cluster. For more information, see **Log on to the Alibaba Cloud Elasticsearch Service conso**
+You can use one of the following methods to view the logs of the baseline Elasticsearch cluster and the logs of an Elasticsearch cluster. Method 1:
+
+> **Note:** This mode lets you view up to 100 log entries in the user-side console.
+
+i. Log in to the user-side console of the Elasticsearch cluster. For more information, see **Log on to the Alibaba Cloud Elasticsearch Service conso**
 **le** in the **Elasticsearch User Guide**.
 ii. In the navigation pane on the left, click **Instance List**. iii. On the **Instance List** page, click the ID of the target instance. iv. In the **Node Visualization** section of the **Basic Information** page, move the pointer over the desired node and click **View Node Logs**. In the message that appears, view the node logs. Method 2: i. Log on to the OPS1 machine. ii. Run the following command to obtain the component name ${podname} :
 
@@ -1152,7 +1190,13 @@ ${podname} indicates the name of the component that you obtained. iv. Run the fo
 cd /usr/share/elasticsearch/logs/
 ```
 
-All node logs of an Elasticsearch cluster are stored in the /usr/share/elasticsearch/logs/ directory of the container. v. Run the following command to view log files: `ls` Method 4: i. Log on to the Apsara Uni-manager Operations Console. ii. Choose **Platform O&M > Log Query** to go to the Log Query page. iii. On the **Platform Logs** tab, specify filter conditions to search for logs. By default, Elasticsearch has slow indexing logs disabled. Before you query slow indexing logs, you need to manually modify the Elasticsearch configuration to load the `log4j` configuration file to enable slow indexing logs. For more information, see Slow Log. Set **Products** to `elasticsearch` and **Log Name** to `elasticsearchlog` , and specify other filter conditions as needed. In the **Export List** section, you can filter for target logs by keyword, such as `index.search.accesslog` , or choose to display only abnormal logs. Move the pointer over the desired log to view the log details, such as the log time, log level, IP address, request, and response. Elasticsearch cluster logs:
+> **Note:** All node logs of an Elasticsearch cluster are stored in the /usr/share/elasticsearch/logs/ directory of the container.
+
+v. Run the following command to view log files: `ls` Method 4: i. Log on to the Apsara Uni-manager Operations Console. ii. Choose **Platform O&M > Log Query** to go to the Log Query page. iii. On the **Platform Logs** tab, specify filter conditions to search for logs.
+
+> **Note:** By default, Elasticsearch has slow indexing logs disabled. Before you query slow indexing logs, you need to manually modify the Elasticsearch configuration to load the `log4j` configuration file to enable slow indexing logs. For more information, see Slow Log.
+
+Set **Products** to `elasticsearch` and **Log Name** to `elasticsearchlog` , and specify other filter conditions as needed. In the **Export List** section, you can filter for target logs by keyword, such as `index.search.accesslog` , or choose to display only abnormal logs. Move the pointer over the desired log to view the log details, such as the log time, log level, IP address, request, and response. Elasticsearch cluster logs:
 
 | Log type | Log File Name | Description | Use scenario |
 |---|---|---|---|
@@ -1168,7 +1212,7 @@ All node logs of an Elasticsearch cluster are stored in the /usr/share/elasticse
 |---|---|---|---|
 | Depre cation logs | elasticsear ch- cluster de _ precation.l og | Using APIs or features that have been replaced or removed in Elasticsearch clusters may cause system stability issues or errors. Deprecation logs record the use of deprecated APIs and features in Elasticsearch clusters. | Helps you promptly identify deprecated APIs and features that are still in use in the cluster, so you can take measures to fix or migrate them. |
 
-You can view the log output configuration in the $ES_HOME/config/log4j2.properties file. For more information about the log4j configuration, see Appenders.
+> **Note:** You can view the log output configuration in the $ES_HOME/config/log4j2.properties file. For more information about the log4j configuration, see Appenders.
 
 **View product audit logs**
 
@@ -1177,7 +1221,10 @@ The procedure for viewing audit logs varies based on the Elasticsearch version u
 **View Audit Logs for Clusters Based on Older Image Versions**
 
 1. Log in to the Kibana console of the Elasticsearch cluster. For more information, see Log in to
-the Kibana console. In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+the Kibana console.
+
+> **Note:** In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+
 2. In the navigation pane on the left, click the
 icon and choose **Management > Dev**
 **Tools**.
@@ -1242,9 +1289,13 @@ ${podname} indicates the name of the component that you obtained.
 cd /usr/share/elasticsearch/logs/
 ```
 
-All node logs of an Elasticsearch cluster are stored in the /usr/share/elasticsearch/logs/ directory of the container.
+> **Note:** All node logs of an Elasticsearch cluster are stored in the /usr/share/elasticsearch/logs/ directory of the container.
+
 5. Run the following command to view log files:
-`ls` You can run the `ls` command to list all types of Elasticsearch logs. The audit log file is named elasticsearch-cluster_audit_log.log.
+`ls`
+
+> **Note:** You can run the `ls` command to list all types of Elasticsearch logs. The audit log file is named elasticsearch-cluster_audit_log.log.
+
 6. View the audit logs.
 
 ```
@@ -1266,13 +1317,16 @@ You can run the following command to view the tag number of an image:
 kubectl get es ${es_name} -o yaml -n ${namespace} | grep -w image
 ```
 
-${es_name} indicates the name of the Elasticsearch cluster. ${namespace} specifies the namespace of the Elasticsearch instance.
+> **Note:** ${es_name} indicates the name of the Elasticsearch cluster.
+> ${namespace} specifies the namespace of the Elasticsearch instance.
 
 |   | kubectl get es -A |
 |---|---|
 | ${es name} _ |   |
 
-You can run the `kubectl get es -A` command to query the mapping between the The baseline Elasticsearch cluster is used as an example. Run the `kubectl get es` elasticsearch-cluster -o yaml -n elasticsearch | grep -w image command to query the tag number of the image. The following figure shows the result. The retrieved image tag is 6.8.13_1.3.0_5-arm64. For the ARM architecture, version 6.8.13_1.3.0_5 is newer than 6.8.13_1.3.0_3_1. Therefore, this baseline cluster uses a newer image version.
+> You can run the `kubectl get es -A` command to query the mapping between the
+
+The baseline Elasticsearch cluster is used as an example. Run the `kubectl get es` elasticsearch-cluster -o yaml -n elasticsearch | grep -w image command to query the tag number of the image. The following figure shows the result. The retrieved image tag is 6.8.13_1.3.0_5-arm64. For the ARM architecture, version 6.8.13_1.3.0_5 is newer than 6.8.13_1.3.0_3_1. Therefore, this baseline cluster uses a newer image version.
 
 ### 4.2 View the monitoring metrics of Elasticsearch clusters in the Apsara Uni-manager Operations Console
 
@@ -1289,8 +1343,9 @@ The default monitoring and alerting feature in the Apsara Uni-manager Operations
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alert > Alert Management > Alert List**.
 3. On the **Alert List** page, select **elasticsearch** from the **Resource Owner** drop-down list to
-view the default monitoring metrics of the Elasticsearch service. The Elasticsearch service supports the following alerts: Elasticsearch_health_up Elastic_Cluster_Health_RED Elastic_Cluster_Health_Yellow Elasticsearch_Pending_Tasks Elasticsearch_JVM_Heap_Too_High Elasticsearch_JVM_Heap_Warning Elasticsearch_Disk_Out_Of_Space Elasticsearch_Disk_Space_Low Elasticsearch_Cpu_Usage_Too_High Elasticsearch_Count_of_JVM_GC_Runs Elasticsearch_slow_young_gc Elasticsearch_slow_old_gc Elasticsearch_young_gc_surge Elasticsearch_old_gc_surge Elasticsearch_XDCR_Too_Many_Repository Elasticsearch_XDCR_Synchronize_Error Elasticsearch_XDCR_Synchronize_Max In addition to the default monitoring metrics, you can also use the capabilities of the operations console to customize alert rules based on your business scenarios. For more information, see **Alert rules** in **Alert management** of **Apsara Uni-manager**
-**Operations Console User Guide**.
+view the default monitoring metrics of the Elasticsearch service. The Elasticsearch service supports the following alerts: Elasticsearch_health_up Elastic_Cluster_Health_RED Elastic_Cluster_Health_Yellow Elasticsearch_Pending_Tasks Elasticsearch_JVM_Heap_Too_High Elasticsearch_JVM_Heap_Warning Elasticsearch_Disk_Out_Of_Space Elasticsearch_Disk_Space_Low Elasticsearch_Cpu_Usage_Too_High Elasticsearch_Count_of_JVM_GC_Runs Elasticsearch_slow_young_gc Elasticsearch_slow_old_gc Elasticsearch_young_gc_surge Elasticsearch_old_gc_surge Elasticsearch_XDCR_Too_Many_Repository Elasticsearch_XDCR_Synchronize_Error Elasticsearch_XDCR_Synchronize_Max
+
+> **Note:** In addition to the default monitoring metrics, you can also use the capabilities of the operations console to customize alert rules based on your business scenarios. For more information, see **Alert rules** in **Alert management** of **Apsara Uni-manager** **Operations Console User Guide**.
 
 **Elasticsearch_health_up**
 
@@ -1410,7 +1465,7 @@ If the time of the old GC remains greater than 10 times of the average time in t
 
 **Elasticsearch_XDCR_Too_Many_Repository**
 
-Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
+> **Note:** Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
 
 **Description**
 
@@ -1422,7 +1477,7 @@ XDCR synchronization is abnormal.
 
 **Elasticsearch_XDCR_Synchronize_Error**
 
-Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
+> **Note:** Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
 
 **Description**
 
@@ -1434,7 +1489,7 @@ Synchronization exceptions affect disaster recovery.
 
 **Elasticsearch_XDCR_Synchronize_Max**
 
-Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
+> **Note:** Only XDCR-related alerts are supported in V6.8.13. XDCR-related alerts are not supported in V7.10.0.
 
 **Description**
 
@@ -1673,11 +1728,7 @@ This section describes the key monitoring metrics. For the definitive values, re
 |   | Number of current refresh listeners | Represents the number of queries waiting for an index refresh to complete. A persistently high number indicates significant indexing pressure, which delays new data visibility and can block queries, severely affecting real-time performance. |
 |   | Number of active merge tasks | The number of active merge tasks. Because merging is a highly I/O and CPU-intensive background operation, this metric shows whether a node is under heavy pressure from maintenance, which can directly affect the latency of foreground requests. |
 
-For more information about custom dashboards, see the **monitoring and alerts >**
-
-**monitoring management > cloud platform monitoring > dashboard > custom**
-
-**dashboard** section in the **Apsara Stack O&M Platform user guide** .
+> **Note:** For more information about custom dashboards, see the **monitoring and alerts >** **monitoring management > cloud platform monitoring > dashboard > custom** **dashboard** section in the **Apsara Stack O&M Platform user guide** .
 
 ### 4.4 Use Cloud Monitor to view the metrics of an Elasticsearch cluster
 
@@ -1704,7 +1755,7 @@ a. In the left-side navigation pane, choose **Cloud Resource Monitoring > Namesp
 
 **Metrics**
 
-The metrics for cloud service monitoring are the same as those for namespaces. They differ only in their presentation formats.
+> **Note:** The metrics for cloud service monitoring are the same as those for namespaces. They differ only in their presentation formats.
 
 **Metrics for cloud service monitoring**
 
@@ -2021,7 +2072,11 @@ You can use the dashboards or run Elasticsearch commands to check the status of 
 
 **Query the health status of a cluster**
 
-You can view the health status of Elasticsearch clusters by using the following methods: View the health status of clusters in the cluster list of the Elasticsearch O&M console. For more information, see Cluster list. View the health status of clusters on the custom dashboard. For more information, see View Elasticsearch monitoring metrics. View the health status of clusters in Cloud Monitor. For more information, see Use Cloud Monitor to view the metrics of an Elasticsearch cluster. View the health status of clusters in the Grafana dashboard. For more information, see Use the Grafana dashboard to view the metrics of an Elasticsearch cluster. Run Elasticsearch commands to check the status of Elasticsearch clusters. Log in to the Kibana console and run the `GET _cluster/health` command to check the cluster status. You can also run the `GET _cat/nodes` command to view node information. Log in to OPS1 and run the `kubectl get es -A` command to check the cluster status.
+You can view the health status of Elasticsearch clusters by using the following methods: View the health status of clusters in the cluster list of the Elasticsearch O&M console. For more information, see Cluster list. View the health status of clusters on the custom dashboard. For more information, see View Elasticsearch monitoring metrics. View the health status of clusters in Cloud Monitor. For more information, see Use Cloud Monitor to view the metrics of an Elasticsearch cluster. View the health status of clusters in the Grafana dashboard. For more information, see Use the Grafana dashboard to view the metrics of an Elasticsearch cluster. Run Elasticsearch commands to check the status of Elasticsearch clusters. Log in to the Kibana console and run the `GET _cluster/health` command to check the cluster status.
+
+> **Note:** You can also run the `GET _cat/nodes` command to view node information.
+
+Log in to OPS1 and run the `kubectl get es -A` command to check the cluster status.
 
 **Cluster health status and exception description**
 
@@ -2057,7 +2112,10 @@ If the cluster is in the yellow or red state, the cluster has primary or replica
 **Method 1: Use the Kibana console**
 
 1. Log in to the Kibana console of the Elasticsearch cluster. For more information, see Log in
-to the Kibana console. In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+to the Kibana console.
+
+> **Note:** In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
 2. In the left-side navigation pane, click the
 icon, and then choose **Management > Dev**
 **tools**.
@@ -2094,7 +2152,9 @@ GET _cluster/allocation/explain
 |---|---|
 | ${shardNum} |   |
 
-Replace ${indexName} with the name of the abnormal index. Replace ${shardNum} with the number of the abnormal shard.
+> **Note:** Replace ${indexName} with the name of the abnormal index. Replace
+> ${shardNum} with the number of the abnormal shard.
+
 4. Troubleshoot the issue based on the reason, the descriptions in the Cluster health status
 and exception description section of this topic, and the actual situation.
 
@@ -2145,9 +2205,12 @@ When you run the command, replace the following variables:
 |   | ${Index name} |   | Replace with the name of the abnormal index obtained in the previous step. |
 |   | ${Shard number} |   | Replace with the number of the abnormal shard obtained in the previous step. |
 
-`"primary":false` indicates a replica shard, and `"primary":true` indicates primary shard.
+> **Note:** `"primary":false` indicates a replica shard, and `"primary":true` indicates primary shard.
+
 3. Troubleshoot the issue based on the reason, the descriptions in the Cluster health status and
-exception description section of this topic, and the actual situation. If the issue persists, collect the troubleshooting information and submit a ticket to the technical support of Alibaba Cloud. You must attach a screenshot of the abnormal state to the ticket and describe the operations you performed in detail.
+exception description section of this topic, and the actual situation.
+
+> **Note:** If the issue persists, collect the troubleshooting information and submit a ticket to the technical support of Alibaba Cloud. You must attach a screenshot of the abnormal state to the ticket and describe the operations you performed in detail.
 
 **Example on troubleshooting a cluster whose health status is**
 
@@ -2187,7 +2250,11 @@ This topic describes how to troubleshoot Elasticsearch cluster access failures.
 
 When a business request sent to an Elasticsearch cluster is abnormal, if the request is a slow request, see Slow queries to troubleshoot the issue. If access to the Elasticsearch cluster fails, perform the following steps to troubleshoot the issue.
 1. Check whether the Elasticsearch cluster is in the Normal state.
-i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, the Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions. ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
+i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, the Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
+ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
 **Tools**.
 iii. On the **Console** tab, run the following command to check whether the state of the index to be accessed is normal:
 
@@ -2197,7 +2264,10 @@ GET _cat/indices
 
 If the index is in the red state, refer to Abnormal cluster states.
 2. If the cluster is in the Normal state, check the network. Make sure that the application and
-cluster reside in the same network. If they reside in different networks, switch to the same network. If the Elasticsearch cluster uses the SingleTunnel network type, the client must be connected to the same virtual private cloud (VPC) and vSwitch of the cluster.
+cluster reside in the same network. If they reside in different networks, switch to the same network.
+
+> **Note:** If the Elasticsearch cluster uses the SingleTunnel network type, the client must be connected to the same virtual private cloud (VPC) and vSwitch of the cluster.
+
 3. If the application and cluster reside in the same network, run the following command on the
 client to check whether access to the cluster is normal:
 
@@ -2307,7 +2377,10 @@ Elasticsearch allows you to configure cluster anti-affinity to avoid deploying m
 **rule for data nodes**
 
 1. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, a cluster of Elasticsearch V7.10 is used. The procedure may vary depending on the Elasticsearch version. The actual console page prevails.
+
 2. In the left-side navigation pane, click the
 icon and choose **Management > Dev Tools**.
 3. On the **Console** tab, run the following command to view the distribution of nodes. Make
@@ -2332,9 +2405,9 @@ PUT _cluster/settings
 
 `}` `}`
 
-**Important**
+> **Important:** You may need to replace awareness with node_ip for certain clusters. The actual cluster configuration prevails.
+> When node migration occurs, pay attention to the node distribution and make sure that the nodes are deployed across at least two physical machines.
 
-You may need to replace awareness with node_ip for certain clusters. The actual cluster configuration prevails. When node migration occurs, pay attention to the node distribution and make sure that the nodes are deployed across at least two physical machines.
 5. After all indexes are assigned, reset the setting in case all nodes are migrated to the same
 physical machine.
 
@@ -2376,7 +2449,11 @@ This topic describes how to troubleshoot slow queries.
 **Procedure**
 
 1. Check whether all machines are slow or only some machines are slow.
-i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, an Elasticsearch V7.10 instance is used. Different operations may be required to log in to the Kibana console of instances of other versions. ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
+i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, an Elasticsearch V7.10 instance is used. Different operations may be required to log in to the Kibana console of instances of other versions.
+
+ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
 **Tools**.
 iii. On the **Console** tab, run the following command: Call the profile API operation to obtain the profile content. Replace the values in the ${Index name} and `query` fields as needed.
 
@@ -2393,7 +2470,11 @@ GET /${Index name}/_search?human=true
        "Your business code"
 ```
 
-`}` `}` If you use other query methods, insert `"profile": true` into the code of the query. The returned result shows node IDs and the time required for handling the query on each node. If the query is slow on all nodes, all machines are slow. If the query is slow only on some nodes, some machines are slow. Query the correlation between node IDs and cluster pod names to locate the pod of a slow machine.
+`}` `}`
+
+> **Note:** If you use other query methods, insert `"profile": true` into the code of the query.
+
+The returned result shows node IDs and the time required for handling the query on each node. If the query is slow on all nodes, all machines are slow. If the query is slow only on some nodes, some machines are slow. Query the correlation between node IDs and cluster pod names to locate the pod of a slow machine.
 
 ```
 GET _cluster/state
@@ -2411,7 +2492,11 @@ This topic describes how to troubleshoot slow write requests.
 1. Determine whether an individual write request is slow or all write requests are slow due to
 heavy loads. If an individual write request is slow, test the request in other environments to determine whether the issue is caused by the environment. If all write requests are slow due to heavy loads, compare the cluster performance with the performance baseline.
 2. If the issue is not caused by the preceding factors, check whether a performance bottleneck
-exists. i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions. ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
+exists. i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
+ii. In the left-side navigation pane, click the icon and choose **Management > Dev**
 **Tools**.
 iii. On the **Console** page, run the following command to query node information and sort nodes by node name:
 
@@ -2464,13 +2549,17 @@ ii. View the usage of all disks. Pay attention to the read rate (rkB/s), write r
 iostat -xm 3
 ```
 
-`-m` indicates that MB is used as the unit for the read and write rates. `3` indicates that the read interval is 3 seconds. Data is refreshed every 3 seconds. iii. Find the overloaded disk on the disk usage, and then run the following command to view the information of the disk. The Device column shows the disk name.
+> **Note:** `-m` indicates that MB is used as the unit for the read and write rates. `3` indicates that the read interval is 3 seconds. Data is refreshed every 3 seconds.
+
+iii. Find the overloaded disk on the disk usage, and then run the following command to view the information of the disk. The Device column shows the disk name.
 
 ```
 iostat -xm ${Name of the disk} 3
 ```
 
-Replace ${Name of the disk} with the value output in the previous step. iv. Collect disk information and submit a ticket to the technical support. If the issue persists, perform the preceding steps to collect information and submit a ticket to the technical support. You must attach a screenshot of the issue to the ticket and describe the operations you performed in detail.
+> **Note:** Replace ${Name of the disk} with the value output in the previous step.
+
+iv. Collect disk information and submit a ticket to the technical support. If the issue persists, perform the preceding steps to collect information and submit a ticket to the technical support. You must attach a screenshot of the issue to the ticket and describe the operations you performed in detail.
 
 #### 5.2.3 High CPU usage
 
@@ -2482,7 +2571,10 @@ When the CPU usage of a cluster exceeds 80, troubleshoot the cluster as follows.
 1. Log in to the Grafana dashboard for Elasticsearch and check whether the CPU usage
 remains at a high level. For more information, see Use Grafana to view the metrics of an Elasticsearch cluster. If the CPU usage is consistently high, perform the following steps to troubleshoot the issue.
 2. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this topic, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this topic, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
 3. In the left-side navigation pane, click the
 icon and choose **Management > Dev Tools**.
 4. On the **Console** tab, run the following command to query the name of the node whose CPU
@@ -2499,7 +2591,8 @@ node with high CPU usage:
 GET _nodes/${Name of the node with high CPU usage}/hot_threads
 ```
 
-Replace ${Name of the node with high CPU usage} as needed based on the query result obtained in Step 4.
+> **Note:** Replace ${Name of the node with high CPU usage} as needed based on the query result obtained in Step 4.
+
 6. Troubleshoot the issue based on the hot_threads information and the actual situation.
 If the issue persists, perform the preceding steps to collect information and submit a ticket to the technical support. You must attach a screenshot of the issue to the ticket and describe the operations you performed in detail.
 
@@ -2513,7 +2606,10 @@ When the heap memory usage of a cluster exceeds 90, troubleshoot the cluster as 
 1. Log in to the Grafana dashboard for Elasticsearch and check whether the heap memory
 usage remains at a high level. In addition, view the garbage collection (GC) metrics. For more information, see Use Grafana to view the metrics of an Elasticsearch cluster. If the heap memory usage is consistently high, perform the following steps to troubleshoot the issue.
 2. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the
-Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, the Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, the Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
 3. In the left-side navigation pane, click the
 icon and choose **Management > Dev Tools**.
 4. On the **Console** page, run the following command to view the total memory occupied by all
@@ -2525,9 +2621,8 @@ GET _cat/nodes?v&h=name,sm
 
 If the memory occupied by segments on a node is excessively large, you need to reduce the memory usage by performing the following operations. i. Delete indexes that are no longer needed.
 
-**Warning**
-
-You cannot restore deleted indexes. Proceed with caution. Replace the ${Index name} in the following sections based on your requirements.
+> **Warning:** You cannot restore deleted indexes. Proceed with caution.
+> Replace the ${Index name} in the following sections based on your requirements.
 
 ```
 DELETE ${Index name}
@@ -2619,7 +2714,11 @@ If the value of the Load5 average metric of a node remains greater than the valu
 1. Obtain the value of the Load5 average metric of the node.
 i. Go to the Grafana dashboard of the Elasticsearch cluster. For more information, see Use Grafana to view the metrics of an Elasticsearch cluster. ii. Check whether the value of the Load5 average metric of each node is consistently high If the value of the Load5 average metric of a node remains high for a long period of time, record the name of the node and the value of the Load5 average metric.
 2. Obtain the value of the available_processors metric of the node.
-i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console. In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions. ii. In the left-side navigation pane, click the icon, and then choose **Management > Dev**
+i. Log in to the Kibana console of the Elasticsearch cluster and go to the homepage of the Kibana console as prompted. For information about how to log in to the Kibana console, see Log in to the Kibana console.
+
+> **Note:** In this example, an Elasticsearch V7.10 cluster is used. Different operations may be required to log in to the Kibana console of clusters of other versions.
+
+ii. In the left-side navigation pane, click the icon, and then choose **Management > Dev**
 **tools**.
 iii. On the **Console** page, run the following command to query the value of available_processors of the desired node.
 
@@ -2627,7 +2726,8 @@ iii. On the **Console** page, run the following command to query the value of av
 GET _nodes/${Name of the Elasticsearch node}/? filter_path=*.*.os.available_processors
 ```
 
-Replace ${Name of the Elasticsearch node} with the name of the node in Step 1.
+> **Note:** Replace ${Name of the Elasticsearch node} with the name of the node in Step 1.
+
 3. Check whether the loads of the cluster are high.
 If the value of available_processors is greater than the value of the Load5 average metric recorded in Step 1, the node is overloaded. Proceed to the following steps.
 4. On the **Console** page, run the following command to query the hot_threads value of the
@@ -2685,7 +2785,8 @@ This means that the deployment of the cluster has not reached the final state.
 kubectl get es -A | grep ${Cluster name}
 ```
 
-Replace ${Cluster name} with the actual name.
+> **Note:** Replace ${Cluster name} with the actual name.
+
 3. Query the pod information of the cluster. Obtain the name of the pod whose status is not
 Running.
 
@@ -2693,14 +2794,17 @@ Running.
 kubectl get pod -n ${Cluster namespace}
 ```
 
-Replace ${Cluster namespace} based on the query result obtained in Step 2.
+> **Note:** Replace ${Cluster namespace} based on the query result obtained in Step 2.
+
 4. View the details of the pod whose status is not Running.
 
 ```bash
 kubectl describe pod ${podname} -n ${Cluster namespace}
 ```
 
-${podname} indicates the name of the pod whose status is not Running. Replace it based on the query result in step 3. Replace ${Cluster namespace} based on the query result obtained in Step 2.
+> **Note:** ${podname} indicates the name of the pod whose status is not Running. Replace it based on the query result in step 3.
+> Replace ${Cluster namespace} based on the query result obtained in Step 2.
+
 5. Find the reason why the pod is not in the Running state and fix the issue.
 If the issue persists, perform the preceding steps to collect information and submit a ticket to the technical support. You must attach a screenshot of the issue to the ticket and describe the operations you performed in detail.
 
@@ -2771,9 +2875,9 @@ iv. In the plugin list, find the **analysis-ik** plugin and click **Modify confi
 2. Add files.
 i. Add a custom file. a. On the configuration page, click **Add file** and enter a custom file name in the dialog box. This topic uses `extra_main_1.dic` as an example.
 
-**Important**
+> **Important:** You can customize the file name, but do not change the extension `.dic` .
 
-You can customize the file name, but do not change the extension `.dic` . b. Click the created file name and edit its content on the right. Example:
+b. Click the created file name and edit its content on the right. Example:
 
 ```
 Xixi Wetland Multiple lines of content aaabbb
@@ -2795,15 +2899,12 @@ ii. Add the IKAnalyzer.cfg.xml file. Click **Add file** again, name it `IKAnalyz
 </properties>
 ```
 
-**Important**
-
-In the preceding code, replace the value after `key="ext_dict"` with the file name
+> **Important:** In the preceding code, replace the value after `key="ext_dict"` with the file name from step a ( `extra_main_1.dic` ). If you have multiple files, separate them with a
 
 |   | extra main 1.dic _ _ |
 |---|---|
 | ; |   |
 
-from step a ( `extra_main_1.dic` ). If you have multiple files, separate them with a
 3. Select the two files you created and click **OK**.
 4. In the confirmation dialog box, click **OK**.
 5. Select a restart method and click **OK**.

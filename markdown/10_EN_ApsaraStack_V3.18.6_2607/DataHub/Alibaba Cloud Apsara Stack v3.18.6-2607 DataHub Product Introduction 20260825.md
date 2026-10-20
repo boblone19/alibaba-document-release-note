@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 9
 source_pdf: "65b2bb428bb1f72d_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 20260825

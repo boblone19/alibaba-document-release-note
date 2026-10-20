@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 465
 source_pdf: "25e6f517453d0b94_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902
@@ -241,9 +241,9 @@ You must sign all HTTP and HTTPS API requests to ensure security. Elastic Comput
 1. Create a canonicalized query string by arranging the request parameters.
 i. Sort the request parameters (including all **common** and **operation-specific** request parameters except **Signature**) in alphabetical order.
 
-**Note**
+> **Note:** If you use the GET method to send a request, the request parameters are included as a part of the request URI and connected by ampersands (**&** ). The first request parameter follows the question mark (**?**).
 
-If you use the GET method to send a request, the request parameters are included as a part of the request URI and connected by ampersands (**&** ). The first request parameter follows the question mark (**?**). ii. Encode the request parameters. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following rules apply in the encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 instead of plus signs (+). The preceding encoding method is similar to but different from the `application/x-www-form-urlencoded` MIME encoding algorithms, such as java.net.URLEncoder in the Java standard library. You can encode the parameter names and values by using the encoding method in the Java standard library. Then, in the encoded string, replace plus signs (+) with %20, asterisks (*) with %2A, and %7E with tildes (~) to obtain an encoded string that complies with the preceding encoding rules. You can use the following percentEncode method to implement the encoding:
+ii. Encode the request parameters. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following rules apply in the encoding process: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 instead of plus signs (+). The preceding encoding method is similar to but different from the `application/x-www-form-urlencoded` MIME encoding algorithms, such as java.net.URLEncoder in the Java standard library. You can encode the parameter names and values by using the encoding method in the Java standard library. Then, in the encoded string, replace plus signs (+) with %20, asterisks (*) with %2A, and %7E with tildes (~) to obtain an encoded string that complies with the preceding encoding rules. You can use the following percentEncode method to implement the encoding:
 
 | private static final String ENCODING = "UTF-8"; private static String percentEncode(String value) throws UnsupportedEncodingException { return value != null ? URLEncoder.encode(value, ENCODING).replace("+", "%20").replace("*", "%2A").replace("%7E", "~") : null; } |   |   |
 |---|---|---|
@@ -262,15 +262,14 @@ iv. Sort the connected parameter name-value pairs in the order specified in Step
 HTTPMethod specifies the HTTP method used to make the request, such as GET. percentEncode("/") specifies the encoded value for the forward slash (/) based on the URL encoding rules described in Step 1.ii. The value is %2F. percentEncode(CanonicalizedQueryString) specifies the encoded string of the canonicalized query string constructed in Step 1. The encoding follows the URL encoding rules described in Step 1.ii.
 3. Calculate the RFC 2104-compliant HMAC value of the string-to-sign.
 
-**Note**
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The ******************** to which an ampersand (&) (ASCII:38) is appended is used as the key for HMAC calculation.
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The ******************** to which an ampersand (&) (ASCII:38) is appended is used as the key for HMAC calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the **Signature** parameter. The result is the signed API request.
 
-**Note**
+> **Note:** When the signature string is submitted to ECS as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986.
 
-When the signature string is submitted to ECS as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986. In this example, DescribeRegions is used . Assume that the **************** is testid and the ******************** is testsecret. The following URL is the request URL to be signed:
+In this example, DescribeRegions is used . Assume that the **************** is testid and the ******************** is testsecret. The following URL is the request URL to be signed:
 
 ```
 http://ecs.example.com/?TimeStamp=2016-02-23T12:46:24Z&Format=XML&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=HMAC- SHA1&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82f****&Version=2014-05-26&SignatureVersion=1.0
@@ -292,9 +291,7 @@ http://ecs.example.com/?SignatureVersion=1.0&Action=DescribeRegions&Format=XML&S
 
 sts API responses use unified formats. 2xx HTTP status codes indicate successful calls. 4xx or 5xx HTTP status codes indicate failed calls. Responses can be returned in the JSON or XML format. By default, responses are returned in the XML format. You can specify the response format in the request.
 
-**Note**
-
-The sample responses provided in this topic have been formatted with line breaks and indentations for better readability. The actual responses are not properly formatted as in these examples.
+> **Note:** The sample responses provided in this topic have been formatted with line breaks and indentations for better readability. The actual responses are not properly formatted as in these examples.
 
 **Sample success responses**
 
@@ -449,11 +446,7 @@ You can obtain the values of the `Product` and `Version` parameters in the Apsar
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information, see Obtain a resource set ID in Obtain the values of common header parameters. |
 | x-acs-instanceid | The ID of the instance that you want to manage. For more information, seeO btain an instance ID in Obtain the values of common header parameters. |
 
-**Note**
-
-When you call API operations of various Alibaba Cloud services, you must include the values of the **x-acs-instanceid**, **x-acs-**
-**organizationid**, and **x-acs-resourcegroupid** parameters in the request header to specify the ID of the current instance and the
-organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, if the values of these parameters are not included in the request header when you call API operations, the root organization and root resource set are used.
+> **Note:** When you call API operations of various Alibaba Cloud services, you must include the values of the **x-acs-instanceid**, **x-acs-** **organizationid**, and **x-acs-resourcegroupid** parameters in the request header to specify the ID of the current instance and the organization and resource set to which the instance belongs. If you are creating an instance and querying the instance list, you do not need to specify the ID of the instance. By default, if the values of these parameters are not included in the request header when you call API operations, the root organization and root resource set are used.
 
 **Common response parameters**
 
@@ -5662,7 +5655,9 @@ Sample success responses
 
 ### 8.1 CreateDisk
 
-Call CreateDisk operation to create a data disk. Operation description After you create a disk, and when the disk is deleted, its snapshots is automatically deleted by default. This means `DeleteAutoSnapshot` is set to `true` . You can modify this parameter by calling `ModifyDiskAttribute` operation. You must specify either the `Size` or `SnapshotId` request parameter. The `Size` parameter specifies the disk capacity, and the `SnapshotId` parameter creates a disk from a snapshot. When creating a disk, you can enable the multi-attach feature ( `MultiAttach` ). We recommend that you understand this feature and its limitations before using it. For more information, see the **Cloud Disks > Support for NVMe Protocol and Multi-Attach Function** section in the ECS User Guide of Apsara Stack documentation center. You can create premium performance disks, standard performance disks, ultra disks, and standard SSDs. By default, shared standard SSDs and shared ultra disks cannot be created. If you want to create shared standard SSDs and shared ultra disks, you should submit a ticket.
+Call CreateDisk operation to create a data disk. Operation description After you create a disk, and when the disk is deleted, its snapshots is automatically deleted by default. This means `DeleteAutoSnapshot` is set to `true` . You can modify this parameter by calling `ModifyDiskAttribute` operation. You must specify either the `Size` or `SnapshotId` request parameter. The `Size` parameter specifies the disk capacity, and the `SnapshotId` parameter creates a disk from a snapshot. When creating a disk, you can enable the multi-attach feature ( `MultiAttach` ). We recommend that you understand this feature and its limitations before using it. For more information, see the **Cloud Disks > Support for NVMe Protocol and Multi-Attach Function** section in the ECS User Guide of Apsara Stack documentation center. You can create premium performance disks, standard performance disks, ultra disks, and standard SSDs.
+
+> By default, shared standard SSDs and shared ultra disks cannot be created. If you want to create shared standard SSDs and shared ultra disks, you should submit a ticket.
 
 **Request headers**
 
@@ -6555,7 +6550,9 @@ Call the ResizeDisk operation to resize a system disk or data disk.
 
 **Operation description**
 
-Before you resize a disk, you must check the partition format of the disk. If a disk is in master boot record (MBR) format, it cannot be resized to greater than 2 TiB in size. If an MBR disk is resized to a size that is larger than 2 TiB, data may be lost. To resize an MBR disk to a size that is larger than 2 TiB, we recommend that you create and attach a new data disk. Then, you can set the new data disk to GUID partition table (GPT), and then copy data from the MBR disk to the new GPT data disk. For more information, see the Resize a disk in the ECS User Guide. The following disk categories support resizing: standard performance disk (cloud), ultra disk (cloud_efficiency), and standard SSD (cloud_ssd). A disk cannot be resized when a snapshot is being created for the disk. The instance to which the disk is attached must be in the Running or Stopped state. After you resize a disk, the partitions and file systems of the disk are not changed. You must allocate the storage space on the disk after the disk is resized.
+> Before you resize a disk, you must check the partition format of the disk. If a disk is in master boot record (MBR) format, it cannot be resized to greater than 2 TiB in size. If an MBR disk is resized to a size that is larger than 2 TiB, data may be lost. To resize an MBR disk to a size that is larger than 2 TiB, we recommend that you create and attach a new data disk. Then, you can set the new data disk to GUID partition table (GPT), and then copy data from the MBR disk to the new GPT data disk. For more information, see the Resize a disk in the ECS User Guide.
+
+The following disk categories support resizing: standard performance disk (cloud), ultra disk (cloud_efficiency), and standard SSD (cloud_ssd). A disk cannot be resized when a snapshot is being created for the disk. The instance to which the disk is attached must be in the Running or Stopped state. After you resize a disk, the partitions and file systems of the disk are not changed. You must allocate the storage space on the disk after the disk is resized.
 
 **Request headers**
 
@@ -11465,9 +11462,9 @@ interfaces
 
 You can call this operation to bind an elastic network interface (ENI) to an ECS instance in a VPC. When you call this operation, take note of the following items: The ENI must be in the **Available** ( `Available` ) state. Each ENI can be bound to a single instance. The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ). When you bind ENIs to instances of some instance types, the instances must be in the **Stopped** ( `Stopped` ) state.
 
-**Note**
+> **Note:** If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be attached to the instance.
 
-If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be attached to the instance. You can bind multiple ENIs to a single instance. The instance must be in the same zone and the same VPC as the VSwitch to which the ENI is connected.
+You can bind multiple ENIs to a single instance. The instance must be in the same zone and the same VPC as the VSwitch to which the ENI is connected.
 
 **Request parameters**
 

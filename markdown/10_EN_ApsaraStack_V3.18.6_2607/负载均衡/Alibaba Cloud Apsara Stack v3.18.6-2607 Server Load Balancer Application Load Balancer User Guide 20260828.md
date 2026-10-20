@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 137
 source_pdf: "ab77f7bb79538766_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Application%20Load%20Balancer%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer User Guide 20260828
@@ -108,9 +108,17 @@ This topic describes how to navigate to the Application Load Balancer (ALB) cons
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -123,8 +131,10 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top menu bar, click **Products > Network > Server Load Balancer (SLB)**.
 
 ## 2 Quick start
@@ -160,7 +170,7 @@ To ensure service availability, the following instance specifications are availa
 | Large II (slb.s3.medium) | 500,000 | 50,000 | 30,000 |
 | Super Large I (slb.s3.large) | 1,000,000 | 100,000 | 50,000 |
 
-The available specifications vary based on the actual scenario. The preceding table is for reference only.
+> **Note:** The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
 **Select a listener protocol**
 
@@ -300,9 +310,16 @@ a. Click **Add Backend Server** to open the **Add Backend Server** panel. b. In 
 **Step**.
 The server information includes **Instance ID/Name** and **IP Address**. You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** You can enter a server name for fuzzy search of the destination server.**Server Name** Click an ID in the **Instance ID/Name** column to view the details of the ECS instance. c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
 **Port**: Specify the backend port that the ECS instance uses to receive requests.
-You can configure multiple backend ports. Valid values: 1 to 65535.
+
+> **Note:** You can configure multiple backend ports. Valid values: 1 to 65535.
+
 **Weight**: Specify the percentage of requests that the ALB instance distributes to the
-backend server. Default value: 100. An ECS instance of a greater weight receives more requests. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive new requests.
+backend server. Default value: 100.
+
+> **Note:** An ECS instance of a greater weight receives more requests. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive new requests.
+
 **Description**: the description of the backend server.
 The value must be 2 to 256 characters in length and can contain letters. It cannot start with http:// or https://.
 
@@ -312,11 +329,22 @@ a. Click **Add IP Address** to open the **Add Backend Server** panel. b. In the 
 **IP Address**: Enter the IP address of the backend server.
 You can click **Add** to add an additional IP address. The format of the IP address, such as 192.168.0.0/16. To delete an IP address, click **Delete** in the **Actions** column.
 **Remote IP Address**: An ALB instance can be associated with backend servers that
-have IP addresses in different VPCs. If the specified IP address does not belong to the VPC of the current server group, select **Enable Remote IP Address**. You can specify multiple ports and weights for an IP address. If the remote IP address is disabled, the IP address to be added must fall into the CIDR block of the current VPC. If the remote IP address is enabled, you can add private IP addresses that fall into the CIDR block. c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
+have IP addresses in different VPCs. If the specified IP address does not belong to the VPC of the current server group, select **Enable Remote IP Address**.
+
+> **Note:** You can specify multiple ports and weights for an IP address. If the remote IP address is disabled, the IP address to be added must fall into the CIDR block of the current VPC. If the remote IP address is enabled, you can add private IP addresses that fall into the CIDR block.
+
+c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
 **Port**: Specify the backend port that the ECS instance uses to receive requests.
-You can configure multiple backend ports. Valid values: 1 to 65535.
+
+> **Note:** You can configure multiple backend ports. Valid values: 1 to 65535.
+
 **Weight**: Specify the percentage of requests that the ALB instance distributes to the
-backend server. Default value: 100. An ECS instance of a greater weight receives more requests. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive new requests.
+backend server. Default value: 100.
+
+> **Note:** An ECS instance of a greater weight receives more requests. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive new requests.
+
 **Description**: the description of the backend server.
 The value must be 2 to 256 characters in length and can contain letters. It cannot start with http:// or https://.
 7. Optional. On the **Backend Server** tab, you can view the list of backend servers that have
@@ -384,7 +412,10 @@ Enter the IP address of the ALB instance in the address bar of a browser to test
 
 ### 2.5 Release an ALB instance
 
-This topic describes how to release an Application Load Balancer (ALB) instance. The backend Elastic Compute Service (ECS) instances are not deleted or affected after you release an ALB instance. Before you release an ALB instance, you must disable deletion protection.
+This topic describes how to release an Application Load Balancer (ALB) instance. The backend Elastic Compute Service (ECS) instances are not deleted or affected after you release an ALB instance.
+
+> **Note:** Before you release an ALB instance, you must disable deletion protection.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -432,7 +463,7 @@ Apsara Stack provides Internet-facing and internal-facing ALB instances. You can
 | Large II (slb.s3.medium) | 500,000 | 50,000 | 30,000 |
 | Super Large I (slb.s3.large) | 1,000,000 | 100,000 | 50,000 |
 
-The available specifications vary based on the actual scenario. The preceding table is for reference only.
+> **Note:** The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
 #### 3.1.2 Create an ALB instance
 
@@ -528,7 +559,10 @@ You can release Application Load Balancer (ALB) instances based on your business
 
 **Prerequisites**
 
-An ALB instance is created. For more information, see Create an ALB instance. Deletion protection is disabled for the ALB instance. For more information, see Modify deletion protection. Before you release an ALB instance, you must disable deletion protection.
+An ALB instance is created. For more information, see Create an ALB instance. Deletion protection is disabled for the ALB instance. For more information, see Modify deletion protection.
+
+> **Note:** Before you release an ALB instance, you must disable deletion protection.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -615,7 +649,10 @@ An ALB instance is created. For more information, see Create an ALB instance.
 instances: **Instance ID/Name**, **Tag**, **Listener**, **Specifications**, **Network Type**, **Network**
 **Protocol**, **Status**, **Service Status**, **VPC**, **Deletion Protection**, **Configuration Read-**
 **only Mode**, **Organization/Resource Set**, and **Creator**.
-Up to 100 pages of records can be displayed in the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records. You can filter instances by keyword, **Instance ID**, **Instance Name**, **VPC ID**, **Status**,
+
+> **Note:** Up to 100 pages of records can be displayed in the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
+You can filter instances by keyword, **Instance ID**, **Instance Name**, **VPC ID**, **Status**,
 **Tag**, and **Creator**.
 Click the icon in the upper-right corner to show or hide items in the ALB instance list. You can also drag and drop the items to adjust their order. Click the icon next to the **Status** column to filter ALB instances by status. The available states include **Changing Configurations**, **Running**, **Creating**, **Stopped**, and **Create failed.**. Click the instance ID in the **VPC** column to view the details of the VPC to which the ALB instance belongs.
 5. Optional. On the **Instance Management** page, you can add tags to ALB instances for
@@ -907,7 +944,12 @@ You can configure whitelists or blacklists for different listeners.
 
 **Prerequisites**
 
-A listener is created. For more information, see Add listeners. Access control is disabled for the listener. For more information, see Disable access control. Access control may cause some business risks. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If you configure a whitelist but no IP addresses are added to the whitelist, the listener forwards all requests. If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you configure a blacklist but no IP addresses are added to the blacklist, the listener forwards all requests.
+A listener is created. For more information, see Add listeners. Access control is disabled for the listener. For more information, see Disable access control.
+
+> **Note:** Access control may cause some business risks.
+> If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If you configure a whitelist but no IP addresses are added to the whitelist, the listener forwards all requests.
+> If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you configure a blacklist but no IP addresses are added to the blacklist, the listener forwards all requests.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1012,7 +1054,9 @@ On the details page of an ALB instance a. On the **Instance Management** page, f
 **Listener** or **Modify Listener**.
 On the listener details page: In the listener list, find the target listener and click its ID in the **Listener ID/Name** column, or click **View Details** in the **Actions** column. In the upper-right corner of the **Listener** page, click **Modify**.
 5. On the **ALB Configuration Wizard** page, follow the on-screen instructions to modify the
-listener. For more information about the parameters, see Add listeners. The protocol and port of a listener cannot be modified. To modify them, create another listener.
+listener. For more information about the parameters, see Add listeners.
+
+> **Note:** The protocol and port of a listener cannot be modified. To modify them, create another listener.
 
 ###### 3.1.8.3.5 Change a server group
 
@@ -1182,7 +1226,10 @@ i. Click the **CA Certificate** tab. ii. Click **Add Additional Certificate**. i
 
 **Prerequisites**
 
-A listener is created. For more information, see Add listeners. We recommend that you renew your certificate before it expires to prevent adverse impacts on your services.
+A listener is created. For more information, see Add listeners.
+
+> **Note:** We recommend that you renew your certificate before it expires to prevent adverse impacts on your services.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1250,11 +1297,16 @@ You can create multiple forwarding rules for each listener of an ALB instance. F
 **Matching policy**
 
 **Matching policy:** Each client request is matched against each forwarding rule in the order of
-descending rule priority. A smaller rule number indicates a higher priority. Once a forwarding rule is matched, the traffic is immediately forwarded based on the rule and matching is stopped. Requests that do not match custom inbound forwarding rules are forwarded based on the default forwarding rule. Responses that fail to match custom outbound forwarding rules are directly returned to clients by ALB. If the forwarding path is set to `/*` , requests from all paths are matched. If you want to forward unexpected requests, you can set the path in the forwarding condition to `/*` , set the forwarding action to Return Fixed Responses, and set the status code to 404 or 403. After you configure the forwarding rule, drag and drop the rule to the second-to-last position in the rule list.
+descending rule priority. A smaller rule number indicates a higher priority. Once a forwarding rule is matched, the traffic is immediately forwarded based on the rule and matching is stopped. Requests that do not match custom inbound forwarding rules are forwarded based on the default forwarding rule. Responses that fail to match custom outbound forwarding rules are directly returned to clients by ALB.
+
+> **Note:** If the forwarding path is set to `/*` , requests from all paths are matched. If you want to forward unexpected requests, you can set the path in the forwarding condition to `/*` , set the forwarding action to Return Fixed Responses, and set the status code to 404 or 403. After you configure the forwarding rule, drag and drop the rule to the second-to-last position in the rule list.
+
 **Forwarding rule priority:** Requests are matched against forwarding rules in descending
 order of rule priority. A smaller number indicates a higher priority.
 **Default forwarding rule:** After you create a listener, the system automatically creates a
-default inbound forwarding rule. The forwarding condition is set to `-` , which indicates that all client requests are matched. The forwarding action is set to **Forward**. In this case, traffic is forwarded to the server group that is configured for the listener. You cannot delete the default forwarding rule. However, you can change the destination server group by configuring the forwarding action. The priority of the default forwarding rule is the lowest and cannot be adjusted.
+default inbound forwarding rule. The forwarding condition is set to `-` , which indicates that all client requests are matched. The forwarding action is set to **Forward**. In this case, traffic is forwarded to the server group that is configured for the listener.
+
+> **Note:** You cannot delete the default forwarding rule. However, you can change the destination server group by configuring the forwarding action. The priority of the default forwarding rule is the lowest and cannot be adjusted.
 
 **Matching rule description**
 
@@ -1280,41 +1332,108 @@ In the listener list, find the target listener and click **View/Modify Forwardin
 6. Click **Inbound Forwarding Rules**.
 7. Click **Add Rule**.
 8. In the **Add Forwarding Rule** section, configure the following parameters and click **OK**.
-You must add at least one forwarding condition and action. The logical operator among the actions for each condition is OR. If you specify multiple actions for a condition, requests that match one of the actions are forwarded. The logical operator among different conditions is AND. If you specify multiple conditions in a forwarding rule, a request is forwarded when all conditions are met.
+
+> **Note:** You must add at least one forwarding condition and action.
+> The logical operator among the actions for each condition is OR. If you specify multiple actions for a condition, requests that match one of the actions are forwarded.
+> The logical operator among different conditions is AND. If you specify multiple conditions in a forwarding rule, a request is forwarded when all conditions are met.
+
 **Priority**: Enter the priority of the forwarding rule. Valid values: 1 to 10000. A smaller
 value indicates a higher priority.
 **Rule Name**: Enter a name for the forwarding rule. If you do not specify this parameter, a
-name is automatically assigned. You can specify only one name for a forwarding rule.
+name is automatically assigned.
+
+> **Note:** You can specify only one name for a forwarding rule.
+
 **Forwarding Conditions**: Select a condition type and configure the forwarding condition.
-Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added. Click the or icon on the right of a forwarding condition to adjust the order of forwarding conditions. Click the icon next to a forwarding condition to delete the forwarding condition.
+
+> **Note:** Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added.
+> Click the
+> or
+> icon on the right of a forwarding condition to adjust the order
+> of forwarding conditions.
+> Click the
+> icon next to a forwarding condition to delete the forwarding
+> condition.
+
 **Domain Name**: Add a domain name. Example: `*.example.com` .
-By default, the exact match mode is used and wildcard characters are supported. You must specify a domain name. The value must be 3 to 128 characters in length and can contain lowercase letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. The value must contain at least one period (.) and cannot start or end with a period (.). The rightmost domain tag can contain only letters and wildcard characters. It cannot contain digits or hyphens (-). If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. You must specify a domain name in regular expression matching mode. In regular expression matching mode, the regular expression cannot start with an asterisk (*). You can click **Add Domain Name** to add multiple domain names. You can click the icon next to a domain name to delete the domain name.
+By default, the exact match mode is used and wildcard characters are supported. You must specify a domain name. The value must be 3 to 128 characters in length and can contain lowercase letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. The value must contain at least one period (.) and cannot start or end with a period (.). The rightmost domain tag can contain only letters and wildcard characters. It cannot contain digits or hyphens (-). If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. You must specify a domain name in regular expression matching mode. In regular expression matching mode, the regular expression cannot start with an asterisk (*).
+
+> **Note:** You can click **Add Domain Name** to add multiple domain names.
+> You can click the
+> icon next to a domain name to delete the domain name.
+
 **Path**: Add a path. For example, if the URL is www.example.com/test/test1?x=1&y=2 ,
-you can set the parameter to `/test/*` . By default, the exact match mode is used and wildcard characters are supported. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path. In non-regular expression matching mode, the value must start with a forward slash (/). In non-regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * ~ _ + $ & ' @ / ?. If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path in regular expression matching mode. In regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. You can click **Add Path** to add multiple paths. You can click the icon next to a path to delete the path.
+you can set the parameter to `/test/*` . By default, the exact match mode is used and wildcard characters are supported. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path. In non-regular expression matching mode, the value must start with a forward slash (/). In non-regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * ~ _ + $ & ' @ / ?. If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path in regular expression matching mode. In regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?.
+
+> **Note:** You can click **Add Path** to add multiple paths.
+> You can click the
+> icon next to a path to delete the path.
+
 **HTTP Header**: Add HTTP headers. For example, you can set the key to `user-agent`
 and the value to `*Mozilla/4.0*` .
 **Key:** Enter a name for the HTTP header.
 You must specify a key. It must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). You cannot set this parameter to Cookie or Host.
 **Value:** Enter a value for the HTTP header.
-You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks ("). You can click **Add Header Value** to add multiple header values. You can click the icon next to a header value to delete the header value.
+You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks (").
+
+> **Note:** You can click **Add Header Value** to add multiple header values.
+> You can click the
+> icon next to a header value to delete the header
+> value.
+
 **Query String**: Add key-value pairs of query strings. For example, if the URL is
 www.example.com/test/test1?x=1&y=2 , you can set the parameter to `x:1` or `y:2` .
 **Key**: Enter the key of a query string.
 You must specify a key. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | & " < >.
 **Value**: Enter the value of the query string.
-You must specify a value. The value must be 1 to 128 characters in length and can contain lowercase letters and printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < >. You can click **Add String** to add multiple key-value pairs. You can click the icon next to a key-value pair to delete the key-value pair.
+You must specify a value. The value must be 1 to 128 characters in length and can contain lowercase letters and printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < >.
+
+> **Note:** You can click **Add String** to add multiple key-value pairs.
+> You can click the
+> icon next to a key-value pair to delete the key-value
+> pair.
+
 **HTTP Request Method**: Add HTTP request methods.
-Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**. You can click **Add Method** to add multiple HTTP request methods. You can click the icon next to a request method to delete the request method.
+Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
+
+> **Note:** You can click **Add Method** to add multiple HTTP request methods.
+> You can click the
+> icon next to a request method to delete the request
+> method.
+
 **Cookie**: Add cookies. For example, you can set the key to `key` and the value to
 `value` .
 **Key**: Enter a key.
 You must specify a key. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | & " < > .
 **Value**: Enter the value.
-You must specify a value. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < > . You can click **Add Cookie** to add multiple key-value pairs. You can click the icon next to a key-value pair to delete the key-value pair.
+You must specify a value. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < > .
+
+> **Note:** You can click **Add Cookie** to add multiple key-value pairs.
+> You can click the
+> icon next to a key-value pair to delete the key-value
+> pair.
+
 **SourceIp**: Add an IP address or a CIDR block. Example: `192.168.1.1/32` .
-Standard IP addresses are supported. CIDR blocks of the 0.0.0.0/x type are not supported, where x indicates a digit. You can click **Add Source IP Address** to add multiple source IP addresses. You can click the icon next to a source IP address to delete the source IP address.
+Standard IP addresses are supported. CIDR blocks of the 0.0.0.0/x type are not supported, where x indicates a digit.
+
+> **Note:** You can click **Add Source IP Address** to add multiple source IP addresses.
+> You can click the
+> icon next to a source IP address to delete the source IP
+> address.
+
 **Forwarding Action**: Select an action type and configure **Execute**.
-A forwarding rule must contain one of the following actions: forward, redirect, and return fixed response. In a forwarding rule, the forward, redirect, or return fixed response action must be placed at the end. You can click **Add Action** to add multiple forwarding actions. You can add up to five forwarding actions. You can click the or icon on the right side of a forwarding action to adjust the order of forwarding actions. You can click the icon next to a forwarding action to delete the forwarding action.
+
+> **Note:** A forwarding rule must contain one of the following actions: forward, redirect, and return fixed response.
+> In a forwarding rule, the forward, redirect, or return fixed response action must be placed at the end.
+
+> **Note:** You can click **Add Action** to add multiple forwarding actions. You can add up to five forwarding actions.
+> You can click the
+> or
+> icon on the right side of a forwarding action to adjust
+> the order of forwarding actions.
+> You can click the
+> icon next to a forwarding action to delete the forwarding
+> action.
 
 **Forward**
 
@@ -1328,7 +1447,12 @@ You can enter server IDs to filter servers. Separate multiple server IDs with co
 **Session Persistence for Server Groups**: If you want to add multiple server
 groups, you must turn on this switch. You can enable or disable session persistence among server groups. After this feature is enabled, session persistence can be implemented among server groups by using cookies. Make sure that session persistence feature is enabled for all added server groups.
 **Session Persistence Timeout Period (s)**: the timeout period of session
-persistence. You can click **Add Server Group** to add multiple server groups. You can click the icon next to a server group to delete the server group. When you add multiple server groups, you can select server groups that use HTTP or HTTPS.
+persistence.
+
+> **Note:** You can click **Add Server Group** to add multiple server groups.
+> You can click the
+> icon next to a server group to delete the server group.
+> When you add multiple server groups, you can select server groups that use HTTP or HTTPS.
 
 **Redirect**
 
@@ -1342,7 +1466,10 @@ A value other than the default value must start with a forward slash (/). The va
 **Query**: Enter the destination query string.
 The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | " < >.
 **Status Code**: Select a status code. Valid values: **301**, **302**, **303**, **307**, and **308**.
-Default value: **301**. You must specify at least one parameter for a redirect action. The parameters specify the protocol, domain name, path, and query. Do not set them to the default values. If you specify ${x}, the value returned in the response is used. Otherwise, the default value specified in each request is used.
+Default value: **301**.
+
+> **Note:** You must specify at least one parameter for a redirect action. The parameters specify the protocol, domain name, path, and query. Do not set them to the default values.
+> If you specify ${x}, the value returned in the response is used. Otherwise, the default value specified in each request is used.
 
 **Return Fixed Response**
 
@@ -1360,7 +1487,12 @@ If the default value is used, it cannot be concatenated with other characters. T
 **Path**: Enter the destination path.
 A value other than the default value must start with a forward slash (/). The value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * ~ _ + $ & ' @ / ?.
 **Query**: Enter the destination query string.
-The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | " < >. You must specify at least one parameter for a rewrite action. The parameters specify the domain name, path, and query. Do not set them to the default values. The rewrite action must work with a forward action.The forward action must be placed at the end. If you specify ${x}, the value returned in the response is used. Otherwise, the default value specified in each request is used.
+The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | " < >.
+
+> **Note:** You must specify at least one parameter for a rewrite action. The parameters specify the domain name, path, and query. Do not set them to the default values.
+> The rewrite action must work with a forward action.The forward action must be placed at the end.
+> If you specify ${x}, the value returned in the response is used. Otherwise, the default value specified in each request is used.
+
 **Write Header**: Newly added headers overwrite the existing headers.
 **Content Type**: Select a content type. Valid values: **Custom**, **Reference**, and
 **System-defined**.
@@ -1369,18 +1501,28 @@ You must specify a key. It must be 1 to 40 characters in length, and can contain
 **Value:** Enter or select the header content.
 If you set **Content Type** to **Custom**, enter the header content. If you set **Content Type** to **Reference**, enter the header content. You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks ("). If you set **Content Type** to **System-defined**, you can set the Value parameter to
 **Client Port**, **Client IP Address**, **Client Request Protocol**, **ALB Instance ID**,
-and **ALB Listener Port**. The name is not case-sensitive. You cannot set a header name to one of the following values: slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, x-forwarded-host, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+and **ALB Listener Port**.
+
+> **Note:** The name is not case-sensitive. You cannot set a header name to one of the following values: slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, x-forwarded-host, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+
 **Delete Header**: Specify the key of the header that you want to remove. Then, the key
-and value of the specified header are both removed. The delete action must work with a forward action. You must specify a key. It must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name is not case-sensitive. You cannot set a header name to one of the following values: slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, x-forwarded-host, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+and value of the specified header are both removed. The delete action must work with a forward action. You must specify a key. It must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+
+> **Note:** The name is not case-sensitive. You cannot set a header name to one of the following values: slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, x-forwarded-host, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
 
 **Traffic Limit**
 
 **QPS (Global)**: Enter the number of requests per second. Default value: 6. Valid
 values: 1 to 1000000.
 **QPS (Per Client IP Address)** : Enter the queries per second (QPS) limit for an
-individual client IP address Valid values: 1 to 1000000. The throttle action must work with a forward action., and The forward action must be placed at the end. If you set both **Throttle and Forward**, requests are forwarded to the specified server group before the QPS reaches the threshold. Otherwise, the HTTP 503 status code is returned to the clients. If you set **Throttle, Redirect, and Forward**, requests are forwarded to the specified server group before the QPS reaches the threshold. If the QPS reaches the threshold, requests are redirected to another address. If you set **Throttle, Return Fixed Response, and Forward** , requests are forwarded to the specified server group before the QPS reaches the threshold. If the QPS reaches the threshold, the response defined by the user is returned to the clients. If you set both **QPS (Global)** and **QPS (Per Client IP Address)** , the value of QPS (Per Client IP Address) must be smaller than that of QPS (Global). If you want to set the match conditions in the forwarding rule to **SourceIp** and **QPS (Per Client IP Address)** , you must turn on **Retrieve Client IP**
-**Address** for the listener to allow ALB to retrieve client IP addresses from
-the X-Forwarded-For header.
+individual client IP address Valid values: 1 to 1000000.
+
+> **Note:** The throttle action must work with a forward action., and The forward action must be placed at the end.
+> If you set both **Throttle and Forward**, requests are forwarded to the specified server group before the QPS reaches the threshold. Otherwise, the HTTP 503 status code is returned to the clients.
+> If you set **Throttle, Redirect, and Forward**, requests are forwarded to the specified server group before the QPS reaches the threshold. If the QPS reaches the threshold, requests are redirected to another address.
+> If you set **Throttle, Return Fixed Response, and Forward** , requests are forwarded to the specified server group before the QPS reaches the threshold. If the QPS reaches the threshold, the response defined by the user is returned to the clients.
+> If you set both **QPS (Global)** and **QPS (Per Client IP Address)** , the value of QPS (Per Client IP Address) must be smaller than that of QPS (Global).
+> If you want to set the match conditions in the forwarding rule to **SourceIp** and **QPS (Per Client IP Address)** , you must turn on **Retrieve Client IP** **Address** for the listener to allow ALB to retrieve client IP addresses from the X-Forwarded-For header.
 
 **Mirror Traffic**
 
@@ -1393,13 +1535,29 @@ You can enter server IDs to filter servers. Separate multiple server IDs with co
 **Cross-origin**: If the response is returned from a URL, and the protocol, domain name,
 or port is different from the one requested by the client, cross-origin resource sharing (CORS) is enabled. Cross-origin requests are divided into simple requests and preflight requests.
 **Allowed Access Sources**: Specify the URLs that are allowed to access cross-region
-resources through a browser. It must start with http:// or https:// and can contain only one asterisk (*), followed by a valid domain name or top-level wildcard domain name. Example: http://*.test.abc.example.com. You can specify a port number in the range of 1 to 65535. You can click **Add Access Source** to add multiple access sources. You can click the icon next to an access source to delete the access source.
+resources through a browser. It must start with http:// or https:// and can contain only one asterisk (*), followed by a valid domain name or top-level wildcard domain name. Example: http://*.test.abc.example.com. You can specify a port number in the range of 1 to 65535.
+
+> **Note:** You can click **Add Access Source** to add multiple access sources.
+> You can click the
+> icon next to an access source to delete the access
+> source.
+
 **Allowed Methods**: Specify the HTTP methods that the specified URLs can use to
 access cross-origin resources. Valid values: **GET**, **POST**, **PUT**, **DELETE**, **HEAD**, **OPTIONS**, and **PATCH**. You can select multiple options.
 **Allowed Request Headers**: Specify the headers that can be carried in CORS
 requests aside from the built-in headers of browsers. The value must be 1 to 32 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start and end with a hyphen (-) or an underscore (_).
 **Allowed Response Headers**: Specify the response headers that can be parsed
-by a browser or JavaScript. The value must be 1 to 32 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start and end with a hyphen (-) or an underscore (_). You can click **Add Allowed Request Header** to add multiple request headers. You can click the icon next to a request header to delete the request header. You can click **Add Allowed Response Header** to add multiple response headers. You can click the icon next to a response header to delete the response header.
+by a browser or JavaScript. The value must be 1 to 32 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start and end with a hyphen (-) or an underscore (_).
+
+> **Note:** You can click **Add Allowed Request Header** to add multiple request headers.
+> You can click the
+> icon next to a request header to delete the request
+> header.
+> You can click **Add Allowed Response Header** to add multiple response headers.
+> You can click the
+> icon next to a response header to delete the response
+> header.
+
 **Allowed Credentials**: Specify whether to allow credentials in CORS requests. Valid
 values: **Allow** and **Disallow**.
 **Browser Cache Duration**: Specify the maximum period of time for which a preflight
@@ -1442,26 +1600,59 @@ In the listener list, find the target listener and click **View/Modify Forwardin
 6. Click **Outbound Forwarding Rules**.
 7. Click **Add Rule**.
 8. In the **Add Forwarding Rule** section, configure the following parameters and click **OK**.
-You must add at least one forwarding condition and action. The logical operator among the actions for each condition is OR. If you specify multiple actions for a condition, requests that match one of the actions are forwarded. The logical operator among different conditions is AND. If you specify multiple conditions in a forwarding rule, a request is forwarded when all conditions are met.
+
+> **Note:** You must add at least one forwarding condition and action.
+> The logical operator among the actions for each condition is OR. If you specify multiple actions for a condition, requests that match one of the actions are forwarded.
+> The logical operator among different conditions is AND. If you specify multiple conditions in a forwarding rule, a request is forwarded when all conditions are met.
+
 **Priority**: Enter the priority of the forwarding rule. Valid values: 1 to 10000. A smaller
 value indicates a higher priority.
 **Rule Name**: Enter a name for the forwarding rule. If you do not specify this parameter, a
-name is automatically assigned. You can specify only one name for a forwarding rule.
+name is automatically assigned.
+
+> **Note:** You can specify only one name for a forwarding rule.
 
 **Forwarding Conditions**
 
 **Inbound Forwarding Conditions (Optional):** Select a condition type and configure
-the inbound forwarding conditions. Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added. Click the or icon on the right of a forwarding condition to adjust the order of forwarding conditions. Click the icon next to a forwarding condition to delete the forwarding condition.
+the inbound forwarding conditions.
+
+> **Note:** Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added.
+> Click the
+> or
+> icon on the right of a forwarding condition to adjust the
+> order of forwarding conditions.
+> Click the
+> icon next to a forwarding condition to delete the forwarding
+> condition.
+
 **Domain Name**: Add a domain name. Example: `*.example.com` .
-By default, the exact match mode is used and wildcard characters are supported. You must specify a domain name. The value must be 3 to 128 characters in length and can contain lowercase letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. The value must contain at least one period (.) and cannot start or end with a period (.). The rightmost domain tag can contain only letters and wildcard characters. It cannot contain digits or hyphens (-). If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. You must specify a domain name in regular expression matching mode. In regular expression matching mode, the regular expression cannot start with an asterisk (*). You can click **Add Domain Name** to add multiple domain names. You can click the icon next to a domain name to delete the domain name.
+By default, the exact match mode is used and wildcard characters are supported. You must specify a domain name. The value must be 3 to 128 characters in length and can contain lowercase letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. The value must contain at least one period (.) and cannot start or end with a period (.). The rightmost domain tag can contain only letters and wildcard characters. It cannot contain digits or hyphens (-). If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. You must specify a domain name in regular expression matching mode. In regular expression matching mode, the regular expression cannot start with an asterisk (*).
+
+> **Note:** You can click **Add Domain Name** to add multiple domain names.
+> You can click the
+> icon next to a domain name to delete the domain
+> name.
+
 **Path**: Add a path. For example, if the URL is www.example.com/test/test1?x=1&y=2 ,
-you can set the parameter to `/test/*` . By default, the exact match mode is used and wildcard characters are supported. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path. In non-regular expression matching mode, the value must start with a forward slash (/). In non-regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * ~ _ + $ & ' @ / ?. If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path in regular expression matching mode. In regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?. You can click **Add Path** to add multiple paths. You can click the icon next to a path to delete the path.
+you can set the parameter to `/test/*` . By default, the exact match mode is used and wildcard characters are supported. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path. In non-regular expression matching mode, the value must start with a forward slash (/). In non-regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * ~ _ + $ & ' @ / ?. If the value starts with a tilde (~), the regular expression matching mode is used and the value is case-insensitive. If the value starts with a tilde plus an asterisk (~*), the regular expression matching mode is used and the value is case-sensitive. You must specify a path in regular expression matching mode. In regular expression matching mode, the value must be 1 to 128 characters in length and can contain letters, digits, and the following special characters: - . * = ~ _ + \ ^ ! $ & | ( ) [ ] ?.
+
+> **Note:** You can click **Add Path** to add multiple paths.
+> You can click the
+> icon next to a path to delete the path.
+
 **HTTP Header**: Add HTTP headers. For example, you can set the key to `user-agent`
 and the value to `*Mozilla/4.0*` .
 **Key:** Enter a name for the HTTP header.
 You must specify a key. It must be 1 to 40 characters in length, and can contain letters, digits, hyphens (- ), and underscores (_). You cannot set this parameter to Cookie or Host.
 **Value:** Enter a value for the HTTP header.
-You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks ("). You can click **Add Header Value** to add multiple header values. You can click the icon next to a header value to delete the header value.
+You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks (").
+
+> **Note:** You can click **Add Header Value** to add multiple header values.
+> You can click the
+> icon next to a header value to delete the header
+> value.
+
 **Query String**: Add key-value pairs of query strings. For example, if the URL is
 
 | www.example.com/test/test1?x=1&y=2 |   |
@@ -1472,28 +1663,86 @@ www.example.com/test/test1?x=1&y=2 , you can set the parameter to `x:1` or
 **Key**: Enter the key of a query string.
 You must specify a key. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | & " < >.
 **Value**: Enter the value of the query string.
-You must specify a value. The value must be 1 to 128 characters in length and can contain lowercase letters and printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < >. You can click **Add String** to add multiple key-value pairs. You can click the icon next to a key-value pair to delete the key-value pair.
+You must specify a value. The value must be 1 to 128 characters in length and can contain lowercase letters and printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < >.
+
+> **Note:** You can click **Add String** to add multiple key-value pairs.
+> You can click the
+> icon next to a key-value pair to delete the key-value
+> pair.
+
 **HTTP Request Method**: Add HTTP request methods.
-Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**. You can click **Add Method** to add multiple HTTP request methods. You can click the icon next to a request method to delete the request method.
+Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
+
+> **Note:** You can click **Add Method** to add multiple HTTP request methods.
+> You can click the
+> icon next to a request method to delete the request
+> method.
+
 **Cookie**: Add cookies. For example, you can set the key to `key` and the value to
 `value` .
 **Key**: Enter a key.
 You must specify a key. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain uppercase letters, spaces, and the following special characters: # [ ] { } \ | & " < > .
 **Value**: Enter the value.
-You must specify a value. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < > . You can click **Add Cookie** to add multiple key-value pairs. You can click the icon next to a key-value pair to delete the key-value pair.
+You must specify a value. The value must be 1 to 100 characters in length and can contain printable characters. It cannot contain spaces and the following special characters: # [ ] { } \ | & " < > .
+
+> **Note:** You can click **Add Cookie** to add multiple key-value pairs.
+> You can click the
+> icon next to a key-value pair to delete the key-value
+> pair.
+
 **SourceIp**: Add an IP address or a CIDR block. Example: `192.168.1.1/32` .
-Standard IP addresses are supported. CIDR blocks of the 0.0.0.0/x type are not supported, where x indicates a digit. You can click **Add Source IP Address** to add multiple source IP addresses. You can click the icon next to a source IP address to delete the source IP address.
+Standard IP addresses are supported. CIDR blocks of the 0.0.0.0/x type are not supported, where x indicates a digit.
+
+> **Note:** You can click **Add Source IP Address** to add multiple source IP addresses.
+> You can click the
+> icon next to a source IP address to delete the source
+> IP address.
+
 **Outbound Forwarding Conditions:** Select a condition type and configure outbound
-forwarding conditions. For a forwarding rule, you can add at most one outbound forwarding condition of the **Response Header** type. Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added. Click the or icon on the right of a forwarding condition to adjust the order of forwarding conditions. Click the icon next to a forwarding condition to delete the forwarding condition.
+forwarding conditions.
+
+> **Note:** For a forwarding rule, you can add at most one outbound forwarding condition of the **Response Header** type.
+
+> **Note:** Click **Add Inbound Forwarding Condition** to add multiple forwarding conditions. A maximum of nine forwarding conditions can be added.
+> Click the
+> or
+> icon on the right of a forwarding condition to adjust the
+> order of forwarding conditions.
+> Click the
+> icon next to a forwarding condition to delete the forwarding
+> condition.
+
 **Response Status Code**: the status code returned to the client in the response.
-You must specify the status code. The response status code must be a number in the range of 100 to 599 and can be a range. Example: 200-233. You can click **Add Status Code** to add an additional status code. You can click the icon to the right of a status code to delete the status code.
+You must specify the status code. The response status code must be a number in the range of 100 to 599 and can be a range. Example: 200-233.
+
+> **Note:** You can click **Add Status Code** to add an additional status code.
+> You can click the
+> icon to the right of a status code to delete the status
+> code.
+
 **Response Header**: Specify the HTTP headers carried in the response.
 **Key:**: Enter a name for the HTTP header.
 You must specify a key. It must be 1 to 40 characters in length, and can contain letters, digits, hyphens (- ), and underscores (_). You cannot set this parameter to Cookie or Host.
 **Value:**: Enter a value for the HTTP header.
-You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks ("). You can click **Add Response Header Value** to add an additional header value. You can click the icon to the right of a header value to delete the header value.
+You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks (").
+
+> **Note:** You can click **Add Response Header Value** to add an additional header value.
+> You can click the
+> icon to the right of a header value to delete the
+> header value.
+
 **Forwarding Action**: Select an action type and configure **Execute**.
-You can add only one forwarding action of the **Return Fixed Response** type for a forwarding rule. You can click **Add Action** to add multiple forwarding actions. You can add up to five forwarding actions. You can click the or icon on the right side of a forwarding action to adjust the order of forwarding actions. You can click the icon next to a forwarding action to delete the forwarding action.
+
+> **Note:** You can add only one forwarding action of the **Return Fixed Response** type for a forwarding rule.
+
+> **Note:** You can click **Add Action** to add multiple forwarding actions. You can add up to five forwarding actions.
+> You can click the
+> or
+> icon on the right side of a forwarding action to adjust
+> the order of forwarding actions.
+> You can click the
+> icon next to a forwarding action to delete the forwarding
+> action.
 
 **Return Fixed Response**
 
@@ -1511,9 +1760,14 @@ You must specify a key. It must be 1 to 40 characters in length, and can contain
 **Value:**: Enter or select the value of the header that you want to add to the response.
 If you set **Content Type** to **Custom**, enter the header content. If you set **Content Type** to **Reference**, enter the header content. You must specify a value. The value must be 1 to 128 characters in length and can contain printable characters. It cannot start with a space and end with a space or a backward slash (\). It cannot contain double quotation marks ("). If you set **Content Type** to **System-defined**, you can set the Value parameter to
 **Client Port**, **Client IP Address**, **Client Request Protocol**, **ALB Instance ID**,
-and **ALB Listener Port**. The name is not case-sensitive. You cannot set a header name to one of the following values: connection, upgrade, content-length, and transfer-encoding.
+and **ALB Listener Port**.
+
+> **Note:** The name is not case-sensitive. You cannot set a header name to one of the following values: connection, upgrade, content-length, and transfer-encoding.
+
 **Delete Header**: Specify the key of the header that you want to delete. Then, the key
-and value of the specified header are both deleted. The name is not case-sensitive. You cannot set a header name to one of the following values: connection, upgrade, content-length, and transfer-encoding.
+and value of the specified header are both deleted.
+
+> **Note:** The name is not case-sensitive. You cannot set a header name to one of the following values: connection, upgrade, content-length, and transfer-encoding.
 
 **Related operations**
 
@@ -1548,9 +1802,14 @@ An ALB instance is created. For more information, see Create an ALB instance.
 5. Use one of the following methods to view the monitoring data. By default, the monitoring
 data of all metrics of the ALB instance within the last three hours is displayed. For more information about monitoring metrics, see Description of monitoring metrics. View the monitoring data in the ALB instance list: a. On the **Instance Management** page, find the ALB instance that you want to manage and click in the **Monitoring** column. b. In the panel that appears, view the monitoring data that is provided by Cloud Monitor for the ALB instance. View the monitoring data on the details page of the ALB instance: a. On the **Instance Management** page, find the target instance and click its ID in the
 **Instance ID/Name** column.
-b. On the **Details** page, click the **Monitoring** tab to view the monitoring data that is provided by Cloud Monitor for the ALB instance. You can specify multiple metrics to view the corresponding monitoring data. You can customize the start and end time to display the monitoring data within a specific time range. You can click **Last Hour**, **Last 3 Hours**, **Last 6 Hours**, **Last 12 Hours**, **Last 1**
-**Day**, **Last 3 Days**, and **Last 7 Days** to query the monitoring data within the
-selected time range. Click **View more** in the upper-right corner. The **Cloud Monitoring** page appears. On this page, you can perform more monitoring-related operations, including managing alert rules and rule description. For more information, see Manage cloud service monitoring.
+b. On the **Details** page, click the **Monitoring** tab to view the monitoring data that is provided by Cloud Monitor for the ALB instance.
+
+> **Note:** You can specify multiple metrics to view the corresponding monitoring data.
+> You can customize the start and end time to display the monitoring data within a specific time range.
+> You can click **Last Hour**, **Last 3 Hours**, **Last 6 Hours**, **Last 12 Hours**, **Last 1** **Day**, **Last 3 Days**, and **Last 7 Days** to query the monitoring data within the selected time range.
+> Click **View more** in the upper-right corner. The **Cloud Monitoring** page appears. On this page, you can perform more monitoring-related operations, including managing alert rules and rule description.
+
+For more information, see Manage cloud service monitoring.
 
 **Description of monitoring metrics**
 
@@ -1599,7 +1858,9 @@ To create an HTTPS listener, you must configure an SSL certificate for identity 
 | Server certificate | A server certificate is used to authenticate the identity of a server. A client browser authenticates the identity of a server by checking whether the certificate sent by the server is issued by a trusted CA. | Yes You can purchase or upload a server certificate in the Certificate Management Service console. ALB obtains the certificate from Certificate Management Service and uses the certificate. | Yes You can purchase or upload a server certificate in the Certificate Management Service console. ALB obtains the certificate from Certificate Management Service and uses the certificate. |
 | CA certificate | A CA certificate is used by a server to verify the signature of a client certificate. If the signature is invalid, the connection request is denied. Note A client certificate is used to authenticate the identity of the client when the client communicates with the server. You need to install a client certificate only on the client. | No | Yes You can purchase or upload a CA certificate in the Certificate Management Service console. ALB obtains the certificate from Certificate Management Service and uses the certificate. |
 
-Since the process of uploading, loading, and verifying a new certificate takes some time, an instance that uses HTTPS also requires a certain amount of time to apply the new certificate. The typical activation time is 1 to 3 minutes. If you want to access multiple domain names or add multiple server certificates, you can add additional certificates to the HTTPS listener. For more information, see Add an additional certificate.
+> **Note:** Since the process of uploading, loading, and verifying a new certificate takes some time, an instance that uses HTTPS also requires a certain amount of time to apply the new certificate. The typical activation time is 1 to 3 minutes.
+
+If you want to access multiple domain names or add multiple server certificates, you can add additional certificates to the HTTPS listener. For more information, see Add an additional certificate.
 
 #### 3.2.2 Certificate requirements
 
@@ -1637,7 +1898,9 @@ When you upload a server certificate, you must upload the private key of the cer
 
 **EC private key formats**
 
-EC private keys are supported only in the UK (London) region. When you upload a server certificate, you must upload the private key of the certificate. An EC private key must meet the following format requirements: The private key must start with `-----BEGIN EC PARAMETERS-----` and end with -----END EC PARAMETERS-----, and these parts must also be uploaded. Blank lines are not allowed in the content. Each line (except the last line) must contain 64 characters. The last line can contain 64 or fewer characters. For more information, see RFC1421. You may use an encrypted private key. For example, the private key starts with `-----BEGIN`
+> **Note:** EC private keys are supported only in the UK (London) region.
+
+When you upload a server certificate, you must upload the private key of the certificate. An EC private key must meet the following format requirements: The private key must start with `-----BEGIN EC PARAMETERS-----` and end with -----END EC PARAMETERS-----, and these parts must also be uploaded. Blank lines are not allowed in the content. Each line (except the last line) must contain 64 characters. The last line can contain 64 or fewer characters. For more information, see RFC1421. You may use an encrypted private key. For example, the private key starts with `-----BEGIN`
 
 | EC PRIVATE KEY----- |   |
 |---|---|
@@ -1722,7 +1985,8 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 
 **Delete certificate**
 
-A certificate associated with a listener cannot be deleted.
+> **Note:** A certificate associated with a listener cannot be deleted.
+
 1. On the **Server Certificate** tab of the **Certificate Management** page, find the target
 certificate and click **Delete** in the **Actions** column.
 2. In the confirmation dialog box, click **OK**.
@@ -1776,7 +2040,8 @@ modify and click the icon next to its name in the **Certificate ID/Name** column
 
 **Delete certificate**
 
-You cannot delete a certificate if it is associated with a listener.
+> **Note:** You cannot delete a certificate if it is associated with a listener.
+
 1. On the **CA Certificate** tab of the **Certificate Management** page, find the target
 certificate and click **Delete** in the **Actions** column. 2.
 
@@ -1882,7 +2147,9 @@ On the **Server Group** page, find the target server group and click **Modify** 
 **Group ID/Name** column.
 b. On the **Details** page, click **Modify** in the upper-right corner.
 5. On the **Modify Server Group Attributes** page or in the **Modify** dialog box, modify the
-configurations of the server group and click **Submit**. For more information about the parameters, see Create a server group. The server group type, VPC, and backend protocol cannot be modified. To modify these parameters, create another server group.
+configurations of the server group and click **Submit**. For more information about the parameters, see Create a server group.
+
+> **Note:** The server group type, VPC, and backend protocol cannot be modified. To modify these parameters, create another server group.
 
 ##### 3.3.2.3 Delete a server group
 
@@ -1968,9 +2235,16 @@ a. Click **Add Backend Server** to open the **Add Backend Server** panel. b. In 
 **Step**.
 The server information includes **Instance ID/Name** and **IP Address**. You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** You can enter a server name for fuzzy search of the destination server.**Server Name** Click an ID in the **Instance ID/Name** column to view the details of the ECS instance. c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
 **Port**: Specify the backend port that the ECS instance uses to receive requests.
-You can configure multiple backend ports. Valid values: 1 to 65535.
+
+> **Note:** You can configure multiple backend ports. Valid values: 1 to 65535.
+
 **Weight**: Specify the percentage of requests that the ALB instance distributes to the
-backend server. Default value: 100. An ECS instance of a greater weight receives more requests. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive new requests.
+backend server. Default value: 100.
+
+> **Note:** An ECS instance of a greater weight receives more requests. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive new requests.
+
 **Description**: the description of the backend server.
 The value must be 2 to 256 characters in length and can contain letters. It cannot start with http:// or https://.
 
@@ -1980,11 +2254,22 @@ a. Click **Add IP Address** to open the **Add Backend Server** panel. b. In the 
 **IP Address**: Enter the IP address of the backend server.
 You can click **Add** to add an additional IP address. The format of the IP address, such as 192.168.0.0/16. To delete an IP address, click **Delete** in the **Actions** column.
 **Remote IP Address**: An ALB instance can be associated with backend servers that
-have IP addresses in different VPCs. If the specified IP address does not belong to the VPC of the current server group, select **Enable Remote IP Address**. You can specify multiple ports and weights for an IP address. If the remote IP address is disabled, the IP address to be added must fall into the CIDR block of the current VPC. If the remote IP address is enabled, you can add private IP addresses that fall into the CIDR block. c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
+have IP addresses in different VPCs. If the specified IP address does not belong to the VPC of the current server group, select **Enable Remote IP Address**.
+
+> **Note:** You can specify multiple ports and weights for an IP address. If the remote IP address is disabled, the IP address to be added must fall into the CIDR block of the current VPC. If the remote IP address is enabled, you can add private IP addresses that fall into the CIDR block.
+
+c. In the **Port and Weight** step, configure ports, weights, and descriptions for all backend servers, and click **OK**.
 **Port**: Specify the backend port that the ECS instance uses to receive requests.
-You can configure multiple backend ports. Valid values: 1 to 65535.
+
+> **Note:** You can configure multiple backend ports. Valid values: 1 to 65535.
+
 **Weight**: Specify the percentage of requests that the ALB instance distributes to the
-backend server. Default value: 100. An ECS instance of a greater weight receives more requests. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive new requests.
+backend server. Default value: 100.
+
+> **Note:** An ECS instance of a greater weight receives more requests. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive new requests.
+
 **Description**: the description of the backend server.
 The value must be 2 to 256 characters in length and can contain letters. It cannot start with http:// or https://.
 7. Optional. On the **Backend Server** tab, you can view the list of backend servers that have
@@ -2009,13 +2294,18 @@ business requirements.
 
 **Modify a port**
 
-a. Find the backend server that you want to manage, and click the icon in the **Port** column. b. In the **Change Port** dialog box, modify the value of the **Port** parameter and click **OK**. You can configure multiple backend ports. Valid values: 1 to 65535.
+a. Find the backend server that you want to manage, and click the icon in the **Port** column. b. In the **Change Port** dialog box, modify the value of the **Port** parameter and click **OK**.
+
+> **Note:** You can configure multiple backend ports. Valid values: 1 to 65535.
 
 **Modify a weight**
 
 a. Find the backend server that you want to manage, and click the icon in the **Weight** column. b. In the **Modify Weight** dialog box, modify the value of the **Weight** parameter and click
 **OK**.
-An ECS instance of a greater weight receives more requests. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive new requests.
+
+> **Note:** An ECS instance of a greater weight receives more requests. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive new requests.
 
 **Modify a description**
 
@@ -2071,7 +2361,11 @@ timeout period, the node matches the returned status code against the status cod
 
 **Health check time windows**
 
-The health check feature improves the availability of your services. However, frequent failovers caused by unhealthy backend servers may affect system availability. Health check time windows are introduced to control failovers. A failover is performed only if a backend server consecutively passes or fails a specific number of health checks within a time window. A health check time window is determined by the following factors: Health check interval: the interval at which health checks are performed. Response timeout period: the amount of time that a backend server takes to respond. Health check threshold: the number of consecutive times that a backend server passes or fails health checks. Health check time windows are calculated by using the following formulas: Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1) The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds. The health check result has the following impacts on request forwarding: If the backend ECS instance fails the health check, new requests are distributed to other backend ECS instances. The client can still access the application as normal. If the backend ECS instance passes the health check, new requests are distributed to the ECS instance. The client can access the application as normal. If an exception occurs on the backend ECS instance and a request arrives during the time window for health check failures, the request is still sent to the unhealthy backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (three times by default). In this case, the client fails to access the application.
+The health check feature improves the availability of your services. However, frequent failovers caused by unhealthy backend servers may affect system availability. Health check time windows are introduced to control failovers. A failover is performed only if a backend server consecutively passes or fails a specific number of health checks within a time window. A health check time window is determined by the following factors: Health check interval: the interval at which health checks are performed. Response timeout period: the amount of time that a backend server takes to respond. Health check threshold: the number of consecutive times that a backend server passes or fails health checks. Health check time windows are calculated by using the following formulas: Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1)
+
+> **Note:** The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds.
+
+The health check result has the following impacts on request forwarding: If the backend ECS instance fails the health check, new requests are distributed to other backend ECS instances. The client can still access the application as normal. If the backend ECS instance passes the health check, new requests are distributed to the ECS instance. The client can access the application as normal. If an exception occurs on the backend ECS instance and a request arrives during the time window for health check failures, the request is still sent to the unhealthy backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (three times by default). In this case, the client fails to access the application.
 
 **Examples of the health check response timeout period and the**
 
@@ -2087,7 +2381,11 @@ In this example, the following health check configurations are used:
 
 **Unhealthy threshold: 3 times**
 
-Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). In this example, the time window is 19 seconds based on the following formula: 5 × 3 + 2 × (3 - 1). If a backend server does not respond within 19 seconds, the backend server is considered unhealthy. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). In this example, the time window is 7 seconds based on the following formula: (1 × 3) + 2 × (3 - 1). If a backend server responds within 7 seconds, the backend server is considered healthy. The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds. The following figure shows the time window from an unhealthy status to a healthy status. In the following figure, the amount of time that is required for the server to respond to a health check request is 1 second.
+Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). In this example, the time window is 19 seconds based on the following formula: 5 × 3 + 2 × (3 - 1). If a backend server does not respond within 19 seconds, the backend server is considered unhealthy. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). In this example, the time window is 7 seconds based on the following formula: (1 × 3) + 2 × (3 - 1). If a backend server responds within 7 seconds, the backend server is considered healthy.
+
+> **Note:** The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds.
+
+The following figure shows the time window from an unhealthy status to a healthy status. In the following figure, the amount of time that is required for the server to respond to a health check request is 1 second.
 
 **Domain names for HTTP health checks**
 
@@ -2264,7 +2562,10 @@ a. Click **Add Entry**. b. In the **Add Entry** dialog box, configure the follow
 **CIDR Block**: Enter a CIDR block.
 The format of a CIDR block, such as 192.168.1.1 or 192.168.1.1/32.
 **Remarks**: Enter a description.
-Click **Add Entry** to add an additional entry. Click the icon in the **Actions** column of an entry to delete the entry.
+
+> **Note:** Click **Add Entry** to add an additional entry.
+> Click the
+> icon in the **Actions** column of an entry to delete the entry.
 
 **Remove an entry from an ACL**
 
@@ -2398,7 +2699,12 @@ b. On the **Instance Management** page, find the target instance and click its I
 c. On the **Details** page, click the **Operation Logs** tab to view the operation logs of the ALB instance. The operation event list includes the following information: **Operation Name**,
 **Operator**, **Execution Status**, **Operation Source**, **Operation Type**, **Operation**
 **Source IP Address**, and **Operation Time**.
-Operation logs are retained for seven days. To adjust the retention period, modify the logging configurations in Configurations > Log Storage Settings as an administrator. If you extend the retention period by modifying the logging configurations, the log data before the modification is not backfilled. Up to 100 pages of records can be displayed in the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records. Click **Advanced Filter** to filter operation logs that you want by specifying filter conditions such as **Operation Name** and **Operator**.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the logging configurations in Configurations > Log Storage Settings as an administrator.
+> If you extend the retention period by modifying the logging configurations, the log data before the modification is not backfilled.
+> Up to 100 pages of records can be displayed in the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
+Click **Advanced Filter** to filter operation logs that you want by specifying filter conditions such as **Operation Name** and **Operator**.
 
 | Filter condition | Description |
 |---|---|
@@ -2439,14 +2745,23 @@ move the pointer over the icon in the **Tag** column, and then click the icon in
 |---|---|
 | Tag Value | The value of the tag. You can select an existing value or enter a new valueS.elect an existing value or enter a new value It can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs: or aliyun. |
 
-You can click **Add** to add multiple tags. You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value. You can add up to 20 tags. System tags do not count toward the tag quantity limit. You can click the icon next to a tag to delete the tag.
+> **Note:** You can click **Add** to add multiple tags.
+> You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value.
+> You can add up to 20 tags. System tags do not count toward the tag quantity limit.
+> You can click the
+> icon next to a tag to delete the tag.
+
 6. In the **Edited** message, confirm the tag information and click **Close**.
 
 ### 4.3 Add tags to multiple ALB instances at a time
 
 **instances at a time**
 
-Application Load Balancer (ALB) allows you to add tags at a time. This topic describes how to add tags to multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances. Select at least two items. This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
+Application Load Balancer (ALB) allows you to add tags at a time. This topic describes how to add tags to multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
+
+> **Note:** Select at least two items.
+> This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -2460,14 +2775,23 @@ and click **Batch Add Tags** in the lower-left corner.
 | Tag Key | The key of the tag. You can select an existing key or enter a new keyS.elect an existing tag key or enter a new tag key A tag key can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . |
 | Tag Value | The value of the tag. You can select an existing value or enter a new valueS.elect an existing value or enter a new value It can be up to 128 characters in length and cannot contain http:// or https://. It cannot start with acs: or aliyun. |
 
-You can click **Add** to add multiple tags. You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value. You can add up to 20 tags. System tags do not count toward the tag quantity limit. You can click the icon next to a tag to delete the tag.
+> **Note:** You can click **Add** to add multiple tags.
+> You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value.
+> You can add up to 20 tags. System tags do not count toward the tag quantity limit.
+> You can click the
+> icon next to a tag to delete the tag.
+
 6. In the **Edited** message, confirm the tag information and click **Close**.
 
 ### 4.4 Remove tags from multiple ALB instances at a time
 
 **ALB instances at a time**
 
-Application Load Balancer (ALB) allows you to remove tags from multiple ALB instances at a time. This topic describes how to remove tags from multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances. Select at least two items. This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
+Application Load Balancer (ALB) allows you to remove tags from multiple ALB instances at a time. This topic describes how to remove tags from multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
+
+> **Note:** Select at least two items.
+> This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -2475,7 +2799,10 @@ Application Load Balancer (ALB) allows you to remove tags from multiple ALB inst
 4. On the **Instance Management** page, select the ALB instances that you want to manage
 and click **Batch Remove Tags** below the instance list.
 5. In the **Batch Remove Tags** dialog box, select **All** or the tags that you want to remove in
-the **Tags to Remove** section and click **OK**. Batch removal is performed based on tag keys. When you select a tag, all tags that have the same tag key are selected.
+the **Tags to Remove** section and click **OK**.
+
+> **Note:** Batch removal is performed based on tag keys. When you select a tag, all tags that have the same tag key are selected.
+
 6. In the **Edited** message, check the tag removal information and click **Close**.
 
 ### 4.5 Search for instances by tag

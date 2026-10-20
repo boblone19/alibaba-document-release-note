@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 69
 source_pdf: "cf584d602acc5f9e_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center User Guide 20260828
@@ -88,17 +88,16 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
-**Note**
-
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
 ## 3 云安全管理中心（SOC）
 
@@ -303,10 +302,8 @@ You can perform the following operations: Click the icon. On the **Attack Path C
 **Attack Path Filtering**.
 Click **Panorama View** to view the network topologies of all attack paths. Find the attack path that you want to manage and click its name or **View Attack Path** in the Actions column to view the network topology of the attack path.
 
-**Note**
+> **Note:** You can click **2D Mode** or **3D Mode** in the upper-right corner of the **Attack Surface** **Assessment** page or attack path page to switch the view.
 
-You can click **2D Mode** or **3D Mode** in the upper-right corner of the **Attack Surface**
-**Assessment** page or attack path page to switch the view.
 **Shadow IP Address Outside Cloud**: This tab displays the list of **shadow IP addresses**
 **outside the cloud**. You can perform the following operations:
 Click an IP address to view its details, including the **geographical location**, **cloud-**
@@ -335,9 +332,7 @@ You can use built-in security baselines to check and manage the security complia
 **Resource Set**. Select one or more organizations that you want to check and click **OK**.
 5. Specify search conditions to search for baselines.
 
-**Note**
-
-If you do not specify search conditions, all baselines of cloud services are displayed by default.
+> **Note:** If you do not specify search conditions, all baselines of cloud services are displayed by default.
 
 | Search condition | Description |
 |---|---|
@@ -350,9 +345,9 @@ The information includes baseline risk items, affected assets, enabled baseline 
 7. Perform a cloud service check.
 Manual check Click **Check Now**. The system starts a full check on the configurations of all services to detect risks and affected assets. During the check, you can click **View** to view the check progress in the **Check Item Detection** dialog box.
 
-**Note**
+> **Note:** Do not perform other operations until the check is complete.
 
-Do not perform other operations until the check is complete. Automatic check Click **Check Settings** to configure a check policy. The following table describes the required parameters.
+Automatic check Click **Check Settings** to configure a check policy. The following table describes the required parameters.
 
 | Parameter | Description |
 |---|---|
@@ -380,9 +375,7 @@ from the **Region** drop-down list and click **Access with Authorized Role**.
 
 You can specify search conditions to search for vulnerabilities.
 
-**Note**
-
-If you do not specify search conditions, all vulnerabilities are displayed by default.
+> **Note:** If you do not specify search conditions, all vulnerabilities are displayed by default.
 
 | Query condition | Description |
 |---|---|
@@ -398,11 +391,10 @@ If you do not specify search conditions, all vulnerabilities are displayed by de
 
 All search results are displayed in the vulnerability list. You can perform the following operations based on your business requirements: Click the icon to refresh the vulnerability list. Click the icon to export the vulnerability list. Find the vulnerability that you want to view and click its name or **Details** in the **Actions** column to view the vulnerability details and affected assets. The vulnerability details page displays information such as vulnerability fix suggestions and vulnerability announcements based on the vulnerability type. The Affected Assets page displays information about the assets affected by the vulnerability. You can click **Details** in the Actions column of the asset to go to the Asset Management page. You can also fix and handle asset vulnerabilities and record the entire lifecycle of asset vulnerabilities in real time.
 
-**Note**
+> **Note:** You can view the result of the asset type and vulnerability fixes on the **Affected Asset** tab.
+> If the asset type has container labels, you can click Details to go to the container asset details page. If the asset type has only ECS labels, you can go to the ECS asset details page.
 
-You can view the result of the asset type and vulnerability fixes on the
-**Affected Asset** tab.
-If the asset type has container labels, you can click Details to go to the container asset details page. If the asset type has only ECS labels, you can go to the ECS asset details page. Deliver a task: Find the vulnerability that you want to manage, click **More** in the **Actions** column, and then select **Deliver Handling Task**. In the **Create Task** panel, configure the parameters and click **OK**. Create a response policy: Find the vulnerability that you want to manage, click **More** in the Actions column, and then select **Create Response Policy**. In the **Create Policy** panel, configure the parameters and click **OK**. Add vulnerabilities to the whitelist: Select one or more vulnerabilities and click **Add to**
+Deliver a task: Find the vulnerability that you want to manage, click **More** in the **Actions** column, and then select **Deliver Handling Task**. In the **Create Task** panel, configure the parameters and click **OK**. Create a response policy: Find the vulnerability that you want to manage, click **More** in the Actions column, and then select **Create Response Policy**. In the **Create Policy** panel, configure the parameters and click **OK**. Add vulnerabilities to the whitelist: Select one or more vulnerabilities and click **Add to**
 **Whitelist**. In the **Prompt** dialog box, enter remarks and click **OK**.
 Click**Details**in the Actions column to view the vulnerability details and affected assets. On the Affected Assets tab, you can click **Verify** or **Ignore**. Fix multiple vulnerabilities at a time: Select one or more vulnerabilities and click **Batch**
 **Fix** below the vulnerability list. You can also click **Repair** in the Actions column of a
@@ -413,9 +405,7 @@ vulnerability. In the **Batch Fix** dialog box, select **I have understood the r
 
 You can specify search conditions to search for baselines.
 
-**Note**
-
-If you do not specify search conditions, all baselines are displayed by default.
+> **Note:** If you do not specify search conditions, all baselines are displayed by default.
 
 | Query condition | Description |
 |---|---|
@@ -430,9 +420,7 @@ If you do not specify search conditions, all baselines are displayed by default.
 
 All search results are displayed in the baseline list. You can perform the following operations based on your business requirements: Click the icon to refresh the baseline list. Click the icon to export the baseline list. Click the name of a baseline or click **Details** in the **Actions** column of a baseline to view the baseline details, including **Affected Assets**, **Resource Set**, and **Organization**. Click the name of an affected asset to go to the **Tenant Assets** page. On the Tenant Assets page, you can view information about the affected asset. Deliver a task: Find the baseline that you want to manage, click **More** in the **Actions** column, and then select **Deliver Handling Task**. In the **Create Task**panel, configure the parameters and click **OK**. Create a response policy: Find the baseline that you want to manage, click **More** in the Actions column, and then select **Create Response Policy**. In the **Create Policy** panel, configure the parameters and click **OK**.
 
-**Note**
-
-We recommend that you handle the risks based on the risk description provided by SOC.
+> **Note:** We recommend that you handle the risks based on the risk description provided by SOC.
 
 #### 3.3.6 View traffic analysis results
 
@@ -511,9 +499,8 @@ On the search page, enter an IP address, domain name, or file MD5 hash value in 
 
 You can view the assets of tenants on the Tenant Assets page. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs). This topic describes how to view the assets of tenants. You can also specify a search condition in a search box to search for an asset.
 
-**Note**
+> **Note:** If you do not specify a search condition, all assets are automatically displayed.
 
-If you do not specify a search condition, all assets are automatically displayed.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security** and choose **Global Platform Security >**
 **Security Operations Center (SOC)**. On the **Security Operations Center** page, select a
@@ -526,9 +513,9 @@ list. You can select Today, Last 24 Hours, Last 7 Days, or Last 30 Days from the
 **EIP**, **Active Internet IP Addresses**, **Tunnel**, **Server Outside Cloud**, and **Container**.
 You can specify search conditions to search for servers, assets, or instances.
 
-**Note**
+> **Note:** If you do not specify search conditions, all servers, assets, or instances are automatically displayed.
 
-If you do not specify search conditions, all servers, assets, or instances are automatically displayed. Configure asset importance tags and business types. Click a server or instance name to view the following details.
+Configure asset importance tags and business types. Click a server or instance name to view the following details.
 
 **Container**
 
@@ -721,9 +708,14 @@ Example 3:
 select count(*) as cnt from mytable where hostname like '%abc%'
 ```
 
-**Important**
+> **Important:** When you perform field-based queries, specify the logical operators AND, OR, and NOT in upper-case letters.
+> When you enter an SQL statement to query logs, set the name of the table name to **mytable**.
+> When you enter an SQL statement to query logs, user-defined functions (UDFs) and nested queries are not supported.
+> When you enter an SQL statement to query logs, the DISTINCT operations are not supported.
+> When you enter an SQL statement to query logs, you can use the count(*) as cnt function to rename the queried log fields cnt. You cannot use the src_ip as ip function to rename the queried IP addresses.
+> When you enter an SQL statement to query logs, only fields of the string type can be aggregated.
+> If a query times out when you use a wildcard character to query logs, you can narrow down the query scope and try again.
 
-When you perform field-based queries, specify the logical operators AND, OR, and NOT in upper-case letters. When you enter an SQL statement to query logs, set the name of the table name to **mytable**. When you enter an SQL statement to query logs, user-defined functions (UDFs) and nested queries are not supported. When you enter an SQL statement to query logs, the DISTINCT operations are not supported. When you enter an SQL statement to query logs, you can use the count(*) as cnt function to rename the queried log fields cnt. You cannot use the src_ip as ip function to rename the queried IP addresses. When you enter an SQL statement to query logs, only fields of the string type can be aggregated. If a query times out when you use a wildcard character to query logs, you can narrow down the query scope and try again.
 5. In the log list, select the fields that you want to query and view the logs about the fields.
 You can also expand a display field to view the top 5 values of the field.
 
@@ -783,9 +775,7 @@ from the **Region** drop-down list and click **Access with Authorized Role**.
 4. On the **Log Forwarding** tab, click **Create Forwarding Task**. In the panel that appears,
 configure the following parameters and click **OK**.
 
-**Note**
-
-You can set the Data Protocol parameter to Syslog or Kafka.
+> **Note:** You can set the Data Protocol parameter to Syslog or Kafka.
 
 **Syslog**
 
@@ -865,13 +855,10 @@ The created task is displayed in the task list. On the Tasks page, you can handl
 **Delivering Organization**, Task Type, Priority, Task Status, Handling Status, Task Name,
 and Handled By. Handle a task i. Find the task that you want to manage and click the task name or **Handling Details** in the **Actions** column. ii. On the task details page, turn on **Received. Start to Handle**. In the message that appears, click OK. iii. Handle the task based on suggestions provided in the **Handling Suggestion** section and record the handling process in the **Handling Records** field. The handling record must be 0 to 2,048 characters in length.
 
-**Note**
+> **Note:** After you enter and save a record, you can select **Synchronize to Handling** **Solutions**. If you encounter the same task later, you can directly reference the handling solution as the handling suggestion.
+> A handling record that is synchronized to the knowledge base of handling solutions becomes a handling solution and enters the **Pending Approval** state. In the **knowledge base of handling solutions** of SOC, set the **Solution Status** filter condition to **Pending Approval**, find the solution, and choose **More > Approve** or **More > Disable** in the **Actions** column.
 
-After you enter and save a record, you can select **Synchronize to Handling**
-**Solutions**. If you encounter the same task later, you can directly reference the
-handling solution as the handling suggestion. A handling record that is synchronized to the knowledge base of handling solutions becomes a handling solution and enters the **Pending Approval** state. In the **knowledge base of handling solutions** of SOC, set the
-**Solution Status** filter condition to **Pending Approval**, find the solution, and
-choose **More > Approve** or **More > Disable** in the **Actions** column. After a task is handled, the status of the task changes from **Handling** to **Completed**. In this case, you can no longer modify the task.
+After a task is handled, the status of the task changes from **Handling** to **Completed**. In this case, you can no longer modify the task.
 
 ### 3.8 Report management
 
@@ -1012,7 +999,7 @@ If one or more predefined rules are disabled, **the system prompts you to**
 
 **confirm whether to enable them.**
 
-The copied custom rules can be modified and deleted. The copied predefined rules can only be deleted.
+> The copied custom rules can be modified and deleted. The copied predefined rules can only be deleted.
 
 #### 3.9.2 Create a response policy
 
@@ -1120,6 +1107,4 @@ This topic describes how to enable global organization service-linked role autho
 4. Turn on the switch next to **Global Organization SLR Authorization**. In the message that
 appears, click **OK**. If Global Organization SLR Authorization is enabled, Security Operations Center (SOC) is automatically assigned the service-linked roles of all organizations, including organizations that are created in subsequent operations. SOC automatically collects information about the cloud assets and security data of all organizations. The global organization security administrator has the operations and management permissions on the cloud platform and cloud assets and security data of organizations. If Global Organization SLR Authorization is disabled, SOC is not assigned the servicelinked roles of the organizations. You must assign the service-linked role of at least one organization to SOC as an organization security administrator. Otherwise, the features of SOC are unavailable. After the service-linked role of the organization is assigned to SOC, SOC automatically collects information about the cloud assets and security data of the organization. The global organization security administrator has the operations and management permissions on the cloud platform and the organization.
 
-**Important**
-
-Organization service-linked role authorization has a higher priority than global organization service-linked role authorization. If the number of organizations for which global organization service-linked role authorization is enabled is different from the total number of organizations, you must modify the service-linked role authorization for the organizations.
+> **Important:** Organization service-linked role authorization has a higher priority than global organization service-linked role authorization. If the number of organizations for which global organization service-linked role authorization is enabled is different from the total number of organizations, you must modify the service-linked role authorization for the organizations.

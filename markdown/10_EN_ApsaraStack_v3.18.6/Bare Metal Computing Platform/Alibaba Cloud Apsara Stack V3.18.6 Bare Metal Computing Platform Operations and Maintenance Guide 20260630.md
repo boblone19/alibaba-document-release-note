@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 60
 source_pdf: "af4ed3ce02e41f0d_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Operations and Maintenance Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Bare Metal Computing Platform Operations and Maintenance Guide
@@ -86,9 +86,7 @@ This guide helps O&M engineers perform preventive maintenance to ensure the long
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, computer operations, and troubleshooting. O&M engineers must pass the pre-job training and learn the knowledge for the Apsara Stack system. The required knowledge for the system includes system principles, networking, features, and the usage of maintenance tools.
 
-**Important**
-
-During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
+> **Important:** During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
 
 **Precautions**
 
@@ -148,9 +146,12 @@ the browser.
 2. Enter your username and password.
 You can obtain the username and password from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+> The opsadmin account has full permissions. Proceed with caution when you use this acc ount.
 
-When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%) The opsadmin account has full permissions. Proceed with caution when you use this acc ount.
 3. Click **Agree to Private Policy and Log On** to log on to the Apsara Uni-manager
 Operations Console.
 4. In the top navigation bar, choose **Product Operation > Computing > BMCP**
@@ -177,25 +178,25 @@ Intelligent computing instances include only bare metal instances. Elastic Compu
 
 This section displays the usage of intelligent computing resources, supercomputing resources, and storage resources.
 
-**Note**
+> **Note:** Supercomputing resources do not include the CPU cores and memory of intelligent computing clusters.
+> Intelligent computing resources do not include the GPUs and GPU memory of supercomputing clusters.
 
-Supercomputing resources do not include the CPU cores and memory of intelligent computing clusters. Intelligent computing resources do not include the GPUs and GPU memory of supercomputing clusters. Intelligent computing resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **Nvidia** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
+Intelligent computing resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **Nvidia** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
 
-**Note**
+> **Note:** The actual GPU types that you can select on the page shall prevail.
 
-The actual GPU types that you can select on the page shall prevail. Displays allocated resources, unallocated resources, total resources, and distribution ratio. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Distribution ratio = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Supercomputing resources (number of CPU cores and memory) Select a CPU type from the drop-down list, such as **Intel** or **Hygon**, to view the CPU core quantity of the selected type and total memory.
+Displays allocated resources, unallocated resources, total resources, and distribution ratio. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Distribution ratio = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Supercomputing resources (number of CPU cores and memory) Select a CPU type from the drop-down list, such as **Intel** or **Hygon**, to view the CPU core quantity of the selected type and total memory.
 
-**Note**
+> **Note:** The actual CPU types that you can select on the page shall prevail.
 
-The actual CPU types that you can select on the page shall prevail. Displays allocated resources, unallocated resources, total resources, and distribution ratio. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Distribution ratio = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Storage resources Select a storage resource type from the drop-down list, such as **APFS** or **CPFS**, to view usage of storage resources of the selected type. Displays **used** storage resources, **allocated** storage resources, **total** storage resources, and the **usage** of storage resources.
+Displays allocated resources, unallocated resources, total resources, and distribution ratio. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Distribution ratio = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Storage resources Select a storage resource type from the drop-down list, such as **APFS** or **CPFS**, to view usage of storage resources of the selected type. Displays **used** storage resources, **allocated** storage resources, **total** storage resources, and the **usage** of storage resources.
 
 **Computational Power Board**
 
 This dashboard displays the usage of GPU computing power and CPU computing power. GPU computing power (unit: TFLOPS) Select a GPU type from the drop-down list to view the usage of GPU computing power of the selected type. The time range is not configurable. The dashboard displays the total computing power, allocated computing power, and distribution ratio within the last week and of the current day. CPU computing power (unit: TFLOPS) Select a CPU type from the drop-down list to view the usage of CPU computing power of the selected type. The time range is not configurable. The dashboard displays the total computing power, allocated computing power, and distribution ratio within the last week and of the current day.
 
-**Note**
-
-CPU computing power refers to the computing power of supercomputing CPUs, excluding the computing power of CPUs in intelligent computing clusters. GPU computing power refers to the computing power of intelligent computing GPUs, excluding the computing power of GPUs in supercomputing clusters.
+> **Note:** CPU computing power refers to the computing power of supercomputing CPUs, excluding the computing power of CPUs in intelligent computing clusters.
+> GPU computing power refers to the computing power of intelligent computing GPUs, excluding the computing power of GPUs in supercomputing clusters.
 
 **Control Service**
 
@@ -218,16 +219,19 @@ Only Hygon DCUK100-AI, APG PG1 A910E, and Kunlun P800 support job path analysis.
 The cluster in which the job is deployed has the ai-task-inspector component installed. If the component is not installed, go to **Bare Metal Computing Platform (BMCP) > Cluster**
 **Management > Software Instance** to install it.
 
-**Note**
+> **Note:** You can use different services to submit jobs, such as Platform for AI (PAI) or AI Studio. You can use the job path analysis feature if only the job uses the GPU resources of BMCP nodes.
 
-You can use different services to submit jobs, such as Platform for AI (PAI) or AI Studio. You can use the job path analysis feature if only the job uses the GPU resources of BMCP nodes.
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Job Path Analysis** below Visualized Monitoring.
 3. On the **Job Path Analysis** page, specify **Job ID** and click **Search**.
 
-**Note**
+> **Note:** Specify **Start And End Time** to select a time range. You can query historical jobs within at most the last 7 days.
+> The **Node ID** parameter is optional. If you specified **Node ID**, **Cluster ID** is automatically set to the ID of the cluster that contains the node.
+> The **Cluster ID** and **Namespace** parameters are required. Then, specify **Job ID**.
+> By default, **Job Information** is hidden. You can click the
+> icon on the left to
+> view the status of the job, resources occupied by the job, and the start time and end time of the job.
 
-Specify **Start And End Time** to select a time range. You can query historical jobs within at most the last 7 days. The **Node ID** parameter is optional. If you specified **Node ID**, **Cluster ID** is automatically set to the ID of the cluster that contains the node. The **Cluster ID** and **Namespace** parameters are required. Then, specify **Job ID**. By default, **Job Information** is hidden. You can click the icon on the left to view the status of the job, resources occupied by the job, and the start time and end time of the job.
 4. After you click **Job Details**, the **Basic Information** and **Monitoring** tabs are displayed in
 the right-side panel. The **Basic Information** tab displays the nodes occupied by the job, and the **Monitoring** tab displays the metrics of the occupied nodes, such as the average CPU utilization.
 5. In the **Job view** section, click a **time slice**. Then, the canvas displays the topology and
@@ -235,9 +239,7 @@ resource usage of the job within the selected time slice. The topology displays 
 **RDMA cards, and vSwitches**, and the connections among them. Resource usage metrics
 such as GPU utilization and RDMA network bandwidth usage are also displayed.
 
-**Note**
-
-Move the pointer over a GPU or RDMA card to view the name and resource usage of the resource.
+> **Note:** Move the pointer over a GPU or RDMA card to view the name and resource usage of the resource.
 
 ## 5 Alerts
 
@@ -249,9 +251,8 @@ This topic introduces the resource event alert module and how to create an event
 
 CloudMonitor is deployed and reaches the final state.
 
-**Note**
+> **Note:** The resource event alert module strongly relies on CloudMonitor. Make sure that CloudMonitor is deployed and reaches the final state before you start.
 
-The resource event alert module strongly relies on CloudMonitor. Make sure that CloudMonitor is deployed and reaches the final state before you start.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Alerts**.
 3. On the **Resource Event Alert** tab, view existing alerts.
@@ -259,28 +260,22 @@ By default, the **Calculation** tab is displayed.
 4. View **Calculation** alerts.
 i. You can filter alerts by **alert level, alert status, alert source, or alert ID**. You can also click **Advanced Filter** to select multiple filter conditions, including alert ID, alert name, and alert start time.
 
-**Note**
+> **Note:** The following alert severity levels are available: **emergency, serious, warning,** **and hint**.
+> Alerts can be in the following states: **Processed and Unprocessed**.
+> Alerts related to the following resources are generated: **Calculation (in-band),** **Calculation (out-of-band), and Network**.
 
-The following alert severity levels are available: **emergency, serious, warning,**
-**and hint**.
-Alerts can be in the following states: **Processed and Unprocessed**. Alerts related to the following resources are generated: **Calculation (in-band),**
-**Calculation (out-of-band), and Network**.
 ii. For alerts in the Unprocessed state, click **Add Event List** to handle the alerts. After the alerts are handled, their states change to Processed.
 
-**Note**
+> **Note:** You can handle an alert by selecting Ignore (the alert is ignored) or Fixed (the issue that triggers the alert is fixed).
 
-You can handle an alert by selecting Ignore (the alert is ignored) or Fixed (the issue that triggers the alert is fixed).
 5. Click the **Storage** tab to view **storage** alerts.
 You can filter alerts by **alert level, alert status, alert name, alert content** , or **alert**
 **start time**. You can also click **Advanced Filter** to select multiple filter conditions,
 including alert name, alert content, and alert start time.
 
-**Note**
-
-The following alert severity levels are available: **emergency, serious, warning, and**
-**hint**.
-Alerts can be in the following states: **Processed and Unprocessed**. Alerts related to the following resources are generated: **Calculation (in-band),**
-**Calculation (out-of-band), and Network**.
+> **Note:** The following alert severity levels are available: **emergency, serious, warning, and** **hint**.
+> Alerts can be in the following states: **Processed and Unprocessed**.
+> Alerts related to the following resources are generated: **Calculation (in-band),** **Calculation (out-of-band), and Network**.
 
 ### 5.2 Job event alerts
 
@@ -551,14 +546,13 @@ iii. In the **Image** section, specify the image type and image. iv. In the **Ne
 **gateway port**, **Subnet**, **Subnet IP**, and **Out-of-band information**.
 v. In the **Configure password** section, specify **Login Password** and **Confirm password**. The password must be 8 to 30 characters in length, and must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ( ) ` ~ ! @ # $ % ^ & * _ - + = | { } [ ] : ; ' < > , . ? /.
 
-**Important**
+> **Important:** Keep your password confidential. If you lost the password, you can log on to the BMCP Operations Console and reset the password.
 
-Keep your password confidential. If you lost the password, you can log on to the BMCP Operations Console and reset the password. vi. In the **Resource Name** section, specify **Resource Name**, **Hostname**, and **Resource**
+vi. In the **Resource Name** section, specify **Resource Name**, **Hostname**, and **Resource**
 **Description**.
 
-**Note**
+> **Note:** The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 
-The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 6. After you complete the configuration, click **OK**.
 
 ##### 7.1.1.6 Enable or disable servers
@@ -582,9 +576,8 @@ icon in the **Operation** column of the server.
 
 **Disable a server**
 
-**Important**
+> **Important:** After a server is disabled, it cannot be added to clusters.
 
-After a server is disabled, it cannot be added to clusters.
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab appears. This tab displays all existing physical servers.
@@ -703,9 +696,8 @@ Basic filtering: a. You can search ports by name or select a tag from the drop-d
 
 This topic describes how to diagnose a cluster or node.
 
-**Important**
+> **Important:** If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 
-If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Inspection and Diagnostics > Inspection.**
 3. On the **Cluster/node diagnosis** tab of the **Diagnosis** page, create a diagnostic task for a
@@ -792,9 +784,7 @@ The diagnostics feature provides cluster, node, and job diagnostics. This topic 
 
 **GPU diagnostics**
 
-**Note**
-
-GPU diagnostic items are related to graphics cards. For the supported diagnostic items, see those displayed in the console.
+> **Note:** GPU diagnostic items are related to graphics cards. For the supported diagnostic items, see those displayed in the console.
 
 | Diagnostic item | Description |
 |---|---|
@@ -979,9 +969,7 @@ This topic describes how to remove a model.
 3. Click **Delete** in the **Operation** column of the desired model.
 4. In the message that appears, click **OK**.
 
-**Warning**
-
-Before you remove a model, make sure that the model is not used by instances. This operation is irreversible.
+> **Warning:** Before you remove a model, make sure that the model is not used by instances. This operation is irreversible.
 
 ### 9.2 Images
 
@@ -1020,9 +1008,9 @@ By default, the **Custom image** tab is displayed.
 4. Manage the image:
 i. Delete the image a. Click **Delete image** in the **Operation** column of the image. b. In the message that appears, confirm the information and click **OK**.
 
-**Important**
+> **Important:** Before you delete an image, make sure that no instances use this image. The delete operation is irreversible.
 
-Before you delete an image, make sure that no instances use this image. The delete operation is irreversible. ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
+ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
 
 #### 9.2.2 Public images
 
@@ -1054,9 +1042,11 @@ By default, the **Custom image** tab is displayed.
  openssl dgst -sha256 -verify public.key -signature signature.bin imagefile
 ```
 
-**Note**
-
-Before you run the command, make sure that the public key, signature file, and image are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file.
+> **Note:** Before you run the command, make sure that the public key, signature file, and image are downloaded.
+> Set the following parameters to the actual values:
+> `public.key` indicates the public key.
+> `signature.bin` indicates the signature file.
+> `imagefile` indicates the image file.
 
 ### 9.3 GPU settings
 
@@ -1097,9 +1087,8 @@ This topic describes how to modify the information of a GPU.
 4. Modify the parameters. You can modify the GPU manufacturer (Chinese), GPU model
 (Chinese), GPU memory size, and TFLOPS parameters.
 
-**Note**
+> **Note:** You cannot modify the GPU manufacturer or GPU model parameter.
 
-You cannot modify the GPU manufacturer or GPU model parameter.
 5. Click **OK**.
 
 #### 9.3.4 Remove a GPU

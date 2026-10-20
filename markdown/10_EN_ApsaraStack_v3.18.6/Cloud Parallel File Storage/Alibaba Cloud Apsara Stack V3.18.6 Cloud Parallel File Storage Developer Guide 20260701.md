@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 38
 source_pdf: "aad42bd7b73d3cfe_Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8CPFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Parallel%20File%20Storage%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Parallel File Storage Developer Guide 20260701
@@ -62,9 +62,7 @@ AccessKey supports the RAM authorization pattern. This topic describes how to ob
 
 An AccessKey uses symmetric encryption with an AccessKey ID and an AccessKey secret to authenticate the identity of a request sender. The AccessKey ID identifies the user. The AccessKey secret is a string that the user uses to generate an encrypted signature. It is granted to a third-party requester through RAM authorization. The Apsara Uni-manager Management Console provides personal and organization AccessKeys. Only operations administrators and primary organization administrators can obtain organization AccessKeys. Use a personal account AccessKey to call the APIs of the Apsara Uni-manager Management Console and other cloud products. If you use a personal account AccessKey, add the following parameters to the header. Otherwise, an insufficient permissions error may occur:
 
-**Warning**
-
-A personal account AccessKey is a restricted AccessKey that is managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has greater permissions. An administrator must confirm the security of the operation.
+> **Warning:** A personal account AccessKey is a restricted AccessKey that is managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has greater permissions. An administrator must confirm the security of the operation.
 
 | Parameter Name | Description |
 |---|---|
@@ -81,9 +79,7 @@ You can obtain a personal account AccessKey as follows:
 then click **Personal Information**.
 3. In the **AccessKey** section, view the AccessKey information for the personal account.
 
-**Note**
-
-The AccessKey ID and AccessKey secret are keys for accessing cloud resources. They grant full permissions to the account. Keep them confidential.
+> **Note:** The AccessKey ID and AccessKey secret are keys for accessing cloud resources. They grant full permissions to the account. Keep them confidential.
 
 **Obtain an organization AccessKey**
 
@@ -288,9 +284,10 @@ parameter.
 
 `}` `}` `}`
 
-**Important**
+> **Important:** When you use HTTPS to access OpenAPI, the SDK validates SSL/TLS certificates by default. If your runtime environment does not support certificate validation, the SDK throws a certificate validation error.
+> To keep production traffic secure, leave certificate validation enabled. If you must disable it in a staging environment, use the following setting:
 
-When you use HTTPS to access OpenAPI, the SDK validates SSL/TLS certificates by default. If your runtime environment does not support certificate validation, the SDK throws a certificate validation error. To keep production traffic secure, leave certificate validation enabled. If you must disable it in a staging environment, use the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate validation clientConfig.setIgnoreSSLCerts(true)
@@ -343,9 +340,7 @@ es
 
 When you use the Apsara Stack SDK to access Apsara Stack services, you must provide credentials for identity verification. This topic describes how to set these credentials. The Java SDK supports identity verification using an AccessKey. For more information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, you must set the credential during client initialization.
 
-**Note**
-
-Ensure that code containing the AccessKey is not leaked, for example, by committing it to a publicly accessible GitHub project. Otherwise, your account security may be compromised.
+> **Note:** Ensure that code containing the AccessKey is not leaked, for example, by committing it to a publicly accessible GitHub project. Otherwise, your account security may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -354,17 +349,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace with your actual AccessKey secret
 ```
 
-**Note**
-
-In the preceding code example, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in the final code.
+> **Note:** In the preceding code example, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in the final code.
 
 #### 2.2.3 Request connection configuration
 
 This topic describes how to configure request connections (HttpClientConfig). Use the following code to configure HttpClientConfig. You can select and set the configuration items according to your requirements.
 
-**Note**
+> **Note:** In the following code sample, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in your code.
+> The variable parameters are described as follows:
+> <readTimeout>: Set the read timeout period in milliseconds (ms).
+> <connectionTimeout>: Set the connection timeout period in milliseconds (ms).
+> <maxRequestsPerHost>: Set the maximum number of concurrent requests for each server. The data type is integer.
+> <maxRequests>: Set the maximum number of concurrent requests across all servers. The data type is integer.
+> <http://192.168.XX.XX:33XX>: Replace this with your actual proxy IP address and port.
 
-In the following code sample, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in your code. The variable parameters are described as follows: <readTimeout>: Set the read timeout period in milliseconds (ms). <connectionTimeout>: Set the connection timeout period in milliseconds (ms). <maxRequestsPerHost>: Set the maximum number of concurrent requests for each server. The data type is integer. <maxRequests>: Set the maximum number of concurrent requests across all servers. The data type is integer. <http://192.168.XX.XX:33XX>: Replace this with your actual proxy IP address and port. es
+es
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore SSL certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Set the read timeout period in milliseconds (ms). clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Set the connection timeout period in milliseconds (ms). clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Set the maximum number of requests for each host. The data type is INT. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Set the maximum number of requests. The data type is INT. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Set the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Set a proxy as needed. The methods are as follows: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -414,9 +413,17 @@ For example, to call the `CreateFileSystem` API, use `CommonRequest` and set the
 
 es The following sample code shows how to call the CPFS DescribeFileSystems API to retrieve file system information.
 
-**Note**
-
-In the code below, replace all variable parameters with your actual values. Remove the angle brackets (<>) from the final code. Replace these parameters: <yourRegionID>: Replace with your actual region ID. <yourAccessKeyID>: Replace with your actual AccessKey ID. <yourAccessKeySecret>: Replace with your actual AccessKey secret. <Endpoint>: Replace with the actual endpoint for your product. <yourSecurityToken>: Replace with your actual SecurityToken. <yourResourceGroupID>: Replace with your actual resource group ID. <yourOrganizationID>: Replace with your actual organization ID. <yourInstanceID>: Replace with your actual instance ID. <http://192.168.XX.XX:33XX>: Replace with your actual proxy IP address and port.
+> **Note:** In the code below, replace all variable parameters with your actual values. Remove the angle brackets (<>) from the final code.
+> Replace these parameters:
+> <yourRegionID>: Replace with your actual region ID.
+> <yourAccessKeyID>: Replace with your actual AccessKey ID.
+> <yourAccessKeySecret>: Replace with your actual AccessKey secret.
+> <Endpoint>: Replace with the actual endpoint for your product.
+> <yourSecurityToken>: Replace with your actual SecurityToken.
+> <yourResourceGroupID>: Replace with your actual resource group ID.
+> <yourOrganizationID>: Replace with your actual organization ID.
+> <yourInstanceID>: Replace with your actual instance ID.
+> <http://192.168.XX.XX:33XX>: Replace with your actual proxy IP address and port.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -558,9 +565,7 @@ This topic describes how to install and use the Python SDK.
 
 The Apsara Stack Python SDK is compatible with Python 2.6.x, 2.7.x, and 3.x or later. You can install the SDK using pip.
 
-**Note**
-
-You must install the Alibaba Cloud Python SDK core library to use the SDK for any Alibaba Cloud product.
+> **Note:** You must install the Alibaba Cloud Python SDK core library to use the SDK for any Alibaba Cloud product.
 
 **Install the Python SDK core library**
 
@@ -580,9 +585,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 When you use the Apsara Stack software development kit (SDK) to access Apsara Stack services, you must provide credentials for identity verification. This topic describes how to set identity verification credentials. The Python SDK supports identity verification using an AccessKey. For more information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, set the credential when you initialize the Client.
 
-**Note**
-
-Ensure that code containing your AccessKey is not leaked, for example, by submitting it to a public GitHub project. Otherwise, your information security will be compromised.
+> **Note:** Ensure that code containing your AccessKey is not leaked, for example, by submitting it to a public GitHub project. Otherwise, your information security will be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(access_key, access_secret, region_id)
@@ -608,9 +611,18 @@ To make a CommonRequest call, obtain the following parameter values. You can fin
 
 The following Python code shows how to call the DescribeFileSystems operation to retrieve file system information.
 
-**Note**
+> **Note:** Replace all placeholder values in the code with your actual values. Do not include the angle brackets (<>) in your final code.
+> Replace these placeholders:
+> Replace <yourRegionID> with your actual region ID.
+> Replace <yourAccessKeyID> with your AccessKey ID.
+> Replace <yourAccessKeySecret> with your AccessKey secret.
+> Replace <yourSecurityToken> with your actual security token.
+> <yourResourceGroupID> with your actual resource group ID.
+> <yourOrganizationID> Replace this placeholder with your actual organization ID.
+> Replace <yourInstanceID> with your instance ID.
+> Replace <Endpoint> with the actual endpoint for your product.
 
-Replace all placeholder values in the code with your actual values. Do not include the angle brackets (<>) in your final code. Replace these placeholders: Replace <yourRegionID> with your actual region ID. Replace <yourAccessKeyID> with your AccessKey ID. Replace <yourAccessKeySecret> with your AccessKey secret. Replace <yourSecurityToken> with your actual security token. <yourResourceGroupID> with your actual resource group ID. <yourOrganizationID> Replace this placeholder with your actual organization ID. Replace <yourInstanceID> with your instance ID. Replace <Endpoint> with the actual endpoint for your product. mples
+mples
 
 ```xml
 #!/usr/bin/env python
@@ -711,9 +723,8 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use the Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for identity verification. This topic describes how to set up identity verification credentials. Currently, the Go SDK supports identity verification using an AccessKey. For information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, set the credential during client initialization. s
 
-**Note**
-
-Ensure that code containing an AccessKey does not leak (such as by being committed to a public GitHub project). Otherwise, your information security will be compromised. Replace the variable parameters in the code example with your actual information. The angle brackets (<>) are not retained in the final code.
+> **Note:** Ensure that code containing an AccessKey does not leak (such as by being committed to a public GitHub project). Otherwise, your information security will be compromised.
+> Replace the variable parameters in the code example with your actual information. The angle brackets (<>) are not retained in the final code.
 
 **Initialize client instance**
 
@@ -745,9 +756,18 @@ To make a CommonRequest call, obtain the values for the following parameters fro
 
 The following sample code shows how to use the DescribeFileSystems API to retrieve file system information: s
 
-**Note**
+> **Note:** In the following code sample, replace the variable parameters with your actual information. Do not include the angle brackets (<>) in the final code.
+> The variable parameters that you must replace are as follows:
+> <yourRegionID>: Replace with your actual region ID.
+> <yourAccessKeyID>: Replace with your actual AccessKey ID.
+> <yourAccessKeySecret>: Replace with your actual AccessKey secret.
+> <yourSecurityToken>: Replace with your actual SecurityToken.
+> <yourResourceGroupID>: Replace with your actual resource group ID.
+> <yourOrganizationID>: Replace with your actual organization ID.
+> <yourInstanceID>: Replace with your actual instance ID.
+> <Endpoint>: Replace with the actual endpoint of your product.
 
-In the following code sample, replace the variable parameters with your actual information. Do not include the angle brackets (<>) in the final code. The variable parameters that you must replace are as follows: <yourRegionID>: Replace with your actual region ID. <yourAccessKeyID>: Replace with your actual AccessKey ID. <yourAccessKeySecret>: Replace with your actual AccessKey secret. <yourSecurityToken>: Replace with your actual SecurityToken. <yourResourceGroupID>: Replace with your actual resource group ID. <yourOrganizationID>: Replace with your actual organization ID. <yourInstanceID>: Replace with your actual instance ID. <Endpoint>: Replace with the actual endpoint of your product. s
+s
 
 ```java
 package main import (
@@ -917,11 +937,7 @@ Every API requires common request parameters. Table 1. Common Request Parameters
 | x-acs-resourcegroupid | The resource group ID on the Apsara Uni-manager Management Console. For details, see Get Resource Group ID. |
 | x-acs-instanceid | The instance ID for the operation. For details, see Get Instance ID. |
 
-**Note**
-
-When you call cloud product APIs, add the actual values for parameters such as **x-acs-**
-**instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** to the request header
-in your code. This specifies the instance ID of the current instance (the instance ID does not exist when you create instances or query instance lists), and its organization and resource group. If you do not add the actual values for these header parameters, the call defaults to the root organization and root resource group.
+> **Note:** When you call cloud product APIs, add the actual values for parameters such as **x-acs-** **instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** to the request header in your code. This specifies the instance ID of the current instance (the instance ID does not exist when you create instances or query instance lists), and its organization and resource group. If you do not add the actual values for these header parameters, the call defaults to the root organization and root resource group.
 
 **Common Response Parameters**
 

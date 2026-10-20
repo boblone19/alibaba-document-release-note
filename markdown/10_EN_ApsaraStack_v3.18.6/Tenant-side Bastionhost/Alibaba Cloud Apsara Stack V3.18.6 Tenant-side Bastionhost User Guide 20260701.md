@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 149
 source_pdf: "cc94affd969b82c2_Alibaba Cloud Apsara Stack V3.18.6 Tenant-side Bastionhost User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%A7%9F%E6%88%B7%E4%BE%A7%E5%A0%A1%E5%9E%92%E6%9C%BA%EF%BC%88A%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tenant-side%C2%A0Bastionhost%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Tenant-side Bastionhost User Guide 20260701
@@ -236,9 +236,7 @@ The maximum internal bandwidth for the virtual IP address (VIP) of a single bast
 
 Concurrency performance limits vary based on the edition and specifications of a bastion host. To maintain stable operations, ensure that your concurrent sessions remain within the specified limits. Exceeding these thresholds may result in service lag, unavailability, or interruptions. For more information about the concurrency performance of specific instance specifications, see configurations in the console or submit a ticket.
 
-**Important**
-
-If a session contains multiple TCP connections, each TCP connection consumes a concurrent session quota. In RDP-based O&M, a single connection consumes more underlying resources than an SSH-based session.
+> **Important:** If a session contains multiple TCP connections, each TCP connection consumes a concurrent session quota. In RDP-based O&M, a single connection consumes more underlying resources than an SSH-based session.
 
 **Environment Limits for SSH O&M Auditing**
 
@@ -345,9 +343,7 @@ The following table lists supported client tools for the bastion host single sig
 | Windows | Windows Server 2016 Windows Server 2019 Datacenter |
 | Linux | UOS V20 Server (x86 and ARM versions) Kylin V10 (x86 and ARM versions) Anolis OS (x86 and ARM versions) |
 
-**Note**
-
-You need to prepare the system version and license of the application publishing server.
+> **Note:** You need to prepare the system version and license of the application publishing server.
 
 ### 1.3 User roles and permissions
 
@@ -386,24 +382,16 @@ Management Console and press Enter.
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
 operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
-
-For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
 
 ## 2 Create a bastion host
 
@@ -441,9 +429,7 @@ This topic describes how to create a bastion host.
 
 This topic describes how to log in to Bastionhost from the Apsara Uni-manager Management Console.
 
-**Important**
-
-After a bastion host is initialized, log in to the bastion host from a browser at your earliest opportunity to change the initial password of the admin user.
+> **Important:** After a bastion host is initialized, log in to the bastion host from a browser at your earliest opportunity to change the initial password of the admin user.
 
 **Procedure**
 
@@ -479,9 +465,9 @@ The client that you use can access Bastionhost. The access address of Bastionhos
 Enter key.
 3. Enter the username and password and click **Login**.
 
-**Note**
+> **Note:** The first time you use admin to log on to Bastionhost, you are redirected to the password change page. Before you can access Bastionhost, you must change your password. If password change upon next logon is configured for other users, the users must change passwords the first time they log on to Bastionhost.
+> The first time you log on to Bastionhost, we recommend that you specify an email address or a mobile phone number. If you forget your password, you can retrieve your password by using the email address or mobile phone number.
 
-The first time you use admin to log on to Bastionhost, you are redirected to the password change page. Before you can access Bastionhost, you must change your password. If password change upon next logon is configured for other users, the users must change passwords the first time they log on to Bastionhost. The first time you log on to Bastionhost, we recommend that you specify an email address or a mobile phone number. If you forget your password, you can retrieve your password by using the email address or mobile phone number.
 4. **Optional**. If two-factor authentication is configured, enter a verification code and click
 **Confirm**.
 
@@ -538,10 +524,7 @@ In the user information section, click the icon. In the pane that appears, view 
 
 In the user information section, click the icon to go to the **Logs > Internal Messages** page of the personal workbench. On the Internal Messages page, you can view internal messages about ticket review, alerts, and operation logs.
 
-**Note**
-
-If you cannot receive internal messages, check whether internal message delivery is enabled and recipients are configured on the **System > Monitor or Alert >**
-**Notifications** page in the management console.
+> **Note:** If you cannot receive internal messages, check whether internal message delivery is enabled and recipients are configured on the **System > Monitor or Alert >** **Notifications** page in the management console.
 
 ## 5 Management console
 
@@ -1408,9 +1391,8 @@ icon. In the **Create Discovery Task** panel, configure the parameters and click
 
 **Edit a discovery task**
 
-**Note**
+> **Note:** You cannot edit a discovery task that is in the pending or executing state.
 
-You cannot edit a discovery task that is in the pending or executing state.
 1. Move the pointer over the task that you want to manage and click **Edit**.
 2. In the **Modify Discovery Task** panel, edit the task.
 
@@ -1496,9 +1478,9 @@ and choose **Immediately Change Password** > **Create Plan**.
 
 After a password change task is started, if the task is in the pending state, you can manually stop the password change task.
 
-**Important**
+> **Important:** You cannot stop a password change task that is being executed.
 
-You cannot stop a password change task that is being executed. If you stop a password change task that is not in the pending state, the password may be lost.
+If you stop a password change task that is not in the pending state, the password may be lost.
 1. On the **Account for Password Change** tab, select the account whose password change
 task is in the **Pending** state and click **Stop**.
 2. In the message that appears, click **Confirm**.
@@ -2260,9 +2242,9 @@ After you install Bastionhost, a project named default is automatically created.
 
 You can create a cloud drive and authorize a user to use the cloud drive.
 
-**Note**
+> **Note:** In standalone mode, you can create a cloud drive of the local storage, SFTP storage, or NFS storage type.
+> In high availability mode, you can create a cloud drive of the SFTP storage or NFS storage type. The local storage type is not supported.
 
-In standalone mode, you can create a cloud drive of the local storage, SFTP storage, or NFS storage type. In high availability mode, you can create a cloud drive of the SFTP storage or NFS storage type. The local storage type is not supported.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
 3. In the left-side navigation pane, choose **Settings > Disk Management**.
@@ -2947,9 +2929,9 @@ After you enable the automatic backup feature, the system automatically creates 
 **Backup Configuration** panel, turn on the switch, specify the backup cycle, number of
 system backup files to be retained, and backup start time, and then click **Confirm**.
 
-**Note**
+> **Note:** We recommend that you set the backup start time to a point in time during off-peak hours to minimize the impact on your workloads.
 
-We recommend that you set the backup start time to a point in time during off-peak hours to minimize the impact on your workloads. In the **Backup List** section, you can manage system backup files. Click **Download** to download a system backup file to your computer. Click **Restore** to restore the system based on the configuration data in a system backup file. Select a system backup file and click **Delete** to delete the system backup file.
+In the **Backup List** section, you can manage system backup files. Click **Download** to download a system backup file to your computer. Click **Restore** to restore the system based on the configuration data in a system backup file. Select a system backup file and click **Delete** to delete the system backup file.
 
 **Restore the system based on the configuration data in a**
 
@@ -3152,9 +3134,9 @@ You can obtain the communication packets between the bastion host and the specif
 1. In the **TCPDUMP packet capture** section of the **Diagnostics Tool** tab, enter the host IP
 address, port, listening interface, and number of packets, and then click **Start**.
 
-**Note**
+> **Note:** If you do not specify a port, all communication packets between the bastion host and the host IP address are obtained.
+> If you specify a port, the communication packets between the bastion host and the host IP address over the specified port are obtained.
 
-If you do not specify a port, all communication packets between the bastion host and the host IP address are obtained. If you specify a port, the communication packets between the bastion host and the host IP address over the specified port are obtained.
 2. Click **End** and then click **Download** to download the obtained communication packets to
 your on-premises device. You can view the downloaded files by using tools such as network analyzers.
 
@@ -3210,9 +3192,8 @@ This topic describes how to configure O&M logon parameters for protocols such as
 
 **Procedure**
 
-**Important**
+> **Important:** Before you configure local client tools for protocols, make sure that Bastionhost Assistant is downloaded and installed on your computer.
 
-Before you configure local client tools for protocols, make sure that Bastionhost Assistant is downloaded and installed on your computer.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
 icon and click **Workbench**.
@@ -3223,9 +3204,8 @@ click **Confirm**.
 
 **Important**
 
-If Bastionhost Assistant can identify the path of the local client tool, the configuration is complete. If Bastionhost Assistant cannot identify the path of the local client tool, the
-**Bastionhost Assistant Configuration** dialog box appears. For more
-information, see Step 6.
+> If Bastionhost Assistant can identify the path of the local client tool, the configuration is complete.
+> If Bastionhost Assistant cannot identify the path of the local client tool, the **Bastionhost Assistant Configuration** dialog box appears. For more information, see Step 6.
 
 | Parameter | Description |
 |---|---|
@@ -3309,10 +3289,8 @@ In this topic, Xshell is used as an example.
 1. Start Xshell. Click the New icon on the File menu. In the Properties of New Session dialog
 box, click Connection in the left-side navigation pane and enter the IP address of Bastionhost and an SSH port number in the General section.
 
-**Note**
+> **Note:** The default SSH port is 20022. To view the port number, choose **Management** **Console** > **System > Service Management > Port Configuration**.
 
-The default SSH port is 20022. To view the port number, choose **Management**
-**Console** > **System > Service Management > Port Configuration**.
 2. In the left-side navigation pane, choose Connection > Authentication and configure the
 related parameters. i. If you select the Password authentication method, enter the username and password of Bastionhost. ii. If you select the Public Key authentication method, configure the public key of your SSH key pair on Bastionhost and select the private key.
 3. Click **Connect**. After Bastionhost is connected, authorized assets are displayed.
@@ -3489,9 +3467,9 @@ then click the icon. In the dialog box that appears, select a value from the Acc
 6. Select multiple assets and click **Batch Logon** to log on to the selected assets and perform
 O&M at a time.
 
-**Note**
-
-If you click Batch Logon in the **All Assets** directory and the selected assets that use the same protocol have the same accounts, the **Batch Logon** dialog box appears. You must configure the O&M method, logon protocol, and logon name. Then, you can click **Log On** to start O&M. Default Method: Use the default O&M method of each asset. Custom: Select the same logon protocol, logon name, and O&M method for the selected assets.
+> **Note:** If you click Batch Logon in the **All Assets** directory and the selected assets that use the same protocol have the same accounts, the **Batch Logon** dialog box appears. You must configure the O&M method, logon protocol, and logon name. Then, you can click **Log On** to start O&M.
+> Default Method: Use the default O&M method of each asset.
+> Custom: Select the same logon protocol, logon name, and O&M method for the selected assets.
 
 #### 6.2.8 Perform HTML5-based collaborative O&M
 
@@ -3518,11 +3496,7 @@ log on to Bastionhost. In the dialog box that appears, click **Join Collaboratio
 
 If you do not have the permissions on the asset on which you want to perform O&M, you can perform unauthorized logon O&M to access the asset.
 
-**Note**
-
-By default, the unauthorized logon feature is disabled. To use this feature, you must select **Allow Unauthorized Logons from Web** on the **ConfigureAsset**
-**ConfigurationO&M Configuration** tab. For more information, see Configure O&M
-settings.
+> **Note:** By default, the unauthorized logon feature is disabled. To use this feature, you must select **Allow Unauthorized Logons from Web** on the **ConfigureAsset** **ConfigurationO&M Configuration** tab. For more information, see Configure O&M settings.
 
 **Procedure**
 
@@ -3594,9 +3568,8 @@ select the group to which you want to add the removed asset, and then click **Co
 
 #### 6.3.1 Create a ticket
 
-**Note**
+> **Note:** If a ticket applicant and the ticket reviewer want to be notified by email, make sure that an email server is configured and email addresses are configured for the ticket applicant and ticket reviewer.
 
-If a ticket applicant and the ticket reviewer want to be notified by email, make sure that an email server is configured and email addresses are configured for the ticket applicant and ticket reviewer.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
 icon and click **Workbench**.
@@ -3628,9 +3601,9 @@ in the **Actions** column.
 
 #### 6.3.3 View the details of a ticket
 
-**Note**
-
-Users who have different permissions can view different types of tickets. Users who have the ticket review permissions can view the status, review process, and details of pending and handled tickets. Users who have the permissions to submit tickets can view the status, review process, and details of submitted tickets.
+> **Note:** Users who have different permissions can view different types of tickets.
+> Users who have the ticket review permissions can view the status, review process, and details of pending and handled tickets.
+> Users who have the permissions to submit tickets can view the status, review process, and details of submitted tickets.
 
 **Procedure**
 
@@ -3931,11 +3904,7 @@ icon and click **Workbench**.
 
 You can use an SSH private key to log on to an asset over SSH to perform O&M operations. Only RSA, DSA, ECDSA, and ED25519 private keys generated by ssh-keygen are supported.
 
-**Note**
-
-Make sure that the **Allow Logon to Host Using User SSH Private Key** option is selected in the SSH Logon section. To go to the SSH logon section, choose **Configure >**
-**Asset Configuration > O&M Configuration**. For more information, see Configure O&M
-settings.
+> **Note:** Make sure that the **Allow Logon to Host Using User SSH Private Key** option is selected in the SSH Logon section. To go to the SSH logon section, choose **Configure >** **Asset Configuration > O&M Configuration**. For more information, see Configure O&M settings.
 
 **Procedure**
 
@@ -3953,9 +3922,7 @@ icon and click **Workbench**.
 
 After you configure a Pretty Good Privacy (PGP) public key, the public key is used to encrypt files when you export assets or download historical passwords. This helps ensure data security.
 
-**Important**
-
-If PGP is not installed, click the link that is displayed in the PGP Public Key section to download and install PGP.
+> **Important:** If PGP is not installed, click the link that is displayed in the PGP Public Key section to download and install PGP.
 
 **Procedure**
 

@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 178
 source_pdf: "55f38d68ac5e7d76_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 User Guide 2026083"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 User Guide 20260831
@@ -150,33 +150,30 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter. g started
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
 
-**Note**
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
 
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
 
-**Note**
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
 the following scenarios:
 
-**Note**
-
-When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -412,9 +409,7 @@ sent in the **Message ID** field, and then click **Query** to query the sending 
 **Storage time** indicates the time when the message is stored on the ApsaraMQ for
 RocketMQ v5.0 broker. If the message appears in the search results, the message has been sent to the ApsaraMQ for RocketMQ v5.0 broker.
 
-**Important**
-
-This step demonstrates the situation where ApsaraMQ for RocketMQ v5.0 is used for the first time, and the consumer has never been started. Therefore, no consumption data is displayed in the message status information.
+> **Important:** This step demonstrates the situation where ApsaraMQ for RocketMQ v5.0 is used for the first time, and the consumer has never been started. Therefore, no consumption data is displayed in the message status information.
 
 **What to do next**
 
@@ -471,9 +466,8 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 Apsara Copilot is an intelligent tool provided by Alibaba Cloud to help you manage and maintain ApsaraMQ for RocketMQ v5.0 instances more efficiently. You can use Apsara Copilot to query resource information, trigger operations, diagnose instances, and request technical support. Apsara Copilot helps you improve the O&M efficiency and user experience. This topic describes how to use Apsara Copilot and provides some sample conversations. We recommend that you refer to the sample conversations based on your actual business scenario.
 
-**Important**
-
-The results generated by Apsara Copilot cannot be used as the basis for final technical support conclusions or business decisions. Alibaba Cloud shall not be liable for any direct or indirect losses caused by taking actions based on the output of Apsara Copilot. The query results returned by Apsara Copilot are automatically generated by AI models. The results may not be completely accurate and are for reference only. We recommend that you verify the accuracy of the results based on the actual situation.
+> **Important:** The results generated by Apsara Copilot cannot be used as the basis for final technical support conclusions or business decisions. Alibaba Cloud shall not be liable for any direct or indirect losses caused by taking actions based on the output of Apsara Copilot.
+> The query results returned by Apsara Copilot are automatically generated by AI models. The results may not be completely accurate and are for reference only. We recommend that you verify the accuracy of the results based on the actual situation.
 
 **Prerequisites**
 
@@ -501,10 +495,14 @@ g started
 | Resource Analysis | Tracks cloud resource usage, including utilization and performance metrics, to help you fully understand resource status and optimize resource allocation. |
 | Code Generation | Automatically generates code samples in multiple programming languages for OpenAPI and Terraform based on your requirements, improving development efficiency and code quality. |
 
-**Note**
+> **Note:** Apsara Copilot supports multiple models. You can switch between different models to ask questions. If the selected model supports deep thinking, you can enable or disable the deep thinking mode.
+> You can click the
+> icon in the input box to enable or disable Model Context
+> Protocol (MCP) and internal network-based search.
+> After you enable MCP and select cloud services (ApsaraMQ for RocketMQ v5.0) that you want to integrate, you can call the MCP services of the cloud services.
+> The switch for internal network-based search is displayed in the Apsara Copilot pane only after Intranet Search is turned on by an operations administrator on the Custom Settings page of Apsara Copilot. You can enable the internal network-based search feature only after you turn on Intranet Search on the Custom Settings page of Apsara Copilot.
+> For more information about how to use Apsara Copilot, see **Apsara Copilot** **User Guide**.
 
-Apsara Copilot supports multiple models. You can switch between different models to ask questions. If the selected model supports deep thinking, you can enable or disable the deep thinking mode. You can click the icon in the input box to enable or disable Model Context Protocol (MCP) and internal network-based search. After you enable MCP and select cloud services (ApsaraMQ for RocketMQ v5.0) that you want to integrate, you can call the MCP services of the cloud services. The switch for internal network-based search is displayed in the Apsara Copilot pane only after Intranet Search is turned on by an operations administrator on the Custom Settings page of Apsara Copilot. You can enable the internal network-based search feature only after you turn on Intranet Search on the Custom Settings page of Apsara Copilot. For more information about how to use Apsara Copilot, see **Apsara Copilot**
-**User Guide**.
 age types
 
 ## 3 Message types
@@ -738,11 +736,10 @@ tracing.
 **Dead Letter Queue**: allows you to query, export, and resend dead-letter messages that
 are sent to a dead-letter queue. For more information, see Manage dead-letter queues.
 
-**Note**
-
-Optional. In the upper-right corner of the **Instance details** page, you can click
-**Refresh**, **Create Topic**, **Create a Group**, or **More** to perform the related
-operation. Optional. You can also click the icon next to the instance name to select another instance from the drop-down list.
+> **Note:** Optional. In the upper-right corner of the **Instance details** page, you can click **Refresh**, **Create Topic**, **Create a Group**, or **More** to perform the related operation.
+> Optional. You can also click the
+> icon next to the instance name to select another
+> instance from the drop-down list.
 
 **Scale out an instance**
 
@@ -751,15 +748,18 @@ operation. Optional. You can also click the icon next to the instance name to se
 2. In the **Expansion** dialog box, modify the value of the Number of brokers parameter and
 click **OK**.
 
-**Note**
-
-The number of brokers must be an even number.
+> **Note:** The number of brokers must be an even number.
 
 **Delete an instance**
 
-**Important**
+> **Important:** Before you delete an ApsaraMQ for RocketMQ v5.0 instance, make sure that the following
 
-Before you delete an ApsaraMQ for RocketMQ v5.0 instance, make sure that the following le guide requirements are met: All resources in the instance are deleted, including topics and groups. No ApsaraMQ for MQTT instance is bound to the instance.
+le guide
+
+> requirements are met:
+> All resources in the instance are deleted, including topics and groups.
+> No ApsaraMQ for MQTT instance is bound to the instance.
+
 1. On the **Instance List** page, find the instance that you want to delete and click **Release** in
 the **Operation** column.
 2. In the message that appears, read the notes and click **Confirm order**.
@@ -816,9 +816,8 @@ On the **Instance details** page, click the **Topic Management** tab. On this ta
 
 When you create an ApsaraMQ for RocketMQ v5.0 instance, you must specify the maximum number of topics that can be created on the instance. If the number of created topics on the instance exceeds the specified threshold, you cannot create topics on the instance. If you no longer need to use a topic, we recommend that you delete the topic at the earliest opportunity.
 
-**Important**
+> **Important:** After you delete a topic, the producers stop sending messages to the topic, and the consumers stop consuming messages from the topic. In addition, the metadata and messages in the topic are deleted and cannot be restored. Proceed with caution.
 
-After you delete a topic, the producers stop sending messages to the topic, and the consumers stop consuming messages from the topic. In addition, the metadata and messages in the topic are deleted and cannot be restored. Proceed with caution.
 1. On the **Topic Management** tab, find the topic that you want to delete and click **Delete** in
 the **Operation** column.
 2. In the **Reminder** message, read the information and click **OK**.
@@ -838,9 +837,8 @@ about file templates, see the exported topic files.
 1. On the **Topic Management** tab, select the topics that you want to export and click the
 icon in the upper-right corner of the topic list.
 
-**Note**
+> **Note:** If you do not select topics and click the Download icon, all topics are exported by default.
 
-If you do not select topics and click the Download icon, all topics are exported by default.
 2. In the **Export** dialog box, configure the **Export Data by Scope** and **Columns to Export**
 parameters.
 
@@ -884,9 +882,8 @@ or **details** in the **actions** column to open the **instance details** page.
 4. On the **Instance details** page, click the **Group Management** tab.
 5. On the **Group Management** tab, click the **TCP protocol** tab.
 
-**Note**
+> **Note:** ApsaraMQ for RocketMQ 5.0 does not support using the HTTP client SDKs to send and subscribe to messages.
 
-ApsaraMQ for RocketMQ 5.0 does not support using the HTTP client SDKs to send and subscribe to messages.
 6. Click **Create Group ID**. In the **Create Group ID** dialog box, configure the parameters and
 click **OK**.
 
@@ -897,9 +894,7 @@ click **OK**.
 
 le guide
 
-**Note**
-
-A group ID can be used to identify producer instances of the same type. In this case, the group ID is a producer group ID. A group ID can also be used to identify consumer instances of the same type. In this case, the group ID is a consumer group ID.
+> **Note:** A group ID can be used to identify producer instances of the same type. In this case, the group ID is a producer group ID. A group ID can also be used to identify consumer instances of the same type. In this case, the group ID is a consumer group ID.
 
 **View group IDs**
 
@@ -907,9 +902,8 @@ On the **Instance details** page, click the **Group Management** tab. On this ta
 
 **Delete a group ID**
 
-**Important**
+> **Important:** After you delete a group ID, producers or consumers in the group fail authentication when they attempt to connect to the ApsaraMQ for RocketMQ instance. Producers or consumers that are already connected to the ApsaraMQ for RocketMQ instance are not affected.
 
-After you delete a group ID, producers or consumers in the group fail authentication when they attempt to connect to the ApsaraMQ for RocketMQ instance. Producers or consumers that are already connected to the ApsaraMQ for RocketMQ instance are not affected.
 1. In the group ID list, find the group ID that you want to delete, click the
 icon in the
 **Operation** column, and then select **Delete**.
@@ -929,9 +923,8 @@ information about the file template, see the exported group files.
 1. On the **Group Management** tab, select the group IDs that you want to export and click the
 icon in the upper-right corner of the group ID list.
 
-**Note**
+> **Note:** If you do not select group IDs and click the Download icon, all groups are exported by default.
 
-If you do not select group IDs and click the Download icon, all groups are exported by default.
 2. In the **Export** dialog box, configure the **Export Data by Scope** and **Columns to Export**
 parameters.
 
@@ -964,9 +957,7 @@ or **details** in the **actions** column to open the **instance details** page.
 5. On the Network Management tab, view the information in the **TCP client access point**
 section.
 
-**Important**
-
-Sensitive information is included in the endpoint. Make sure that your network is protected.
+> **Important:** Sensitive information is included in the endpoint. Make sure that your network is protected.
 
 ### 4.3 ACL account management
 
@@ -976,9 +967,7 @@ This topic describes how to create, view, modify, enable, disable, and delete an
 
 The ACL account management module is used to centrally manage the access credentials (usernames/passwords) of ApsaraMQ for RocketMQ instances. By creating and managing ACL accounts, you can control the read and write permissions of client applications on topics and groups to ensure the security of the messaging service.
 
-**Important**
-
-After you create an account, the account cannot access resources properly. You must use the ACL Rule module to configure specific authorization policies. For example, you can allow an account to publish or subscribe to specific topics.
+> **Important:** After you create an account, the account cannot access resources properly. You must use the ACL Rule module to configure specific authorization policies. For example, you can allow an account to publish or subscribe to specific topics.
 
 **Prerequisites**
 
@@ -1014,11 +1003,9 @@ click **Save**.
 
 **Enable and disable an ACL account**
 
-**Note**
+> **Note:** **Disable**: temporarily blocks all access requests from the account, but retains the account data and associated rule configurations.
+> **Enable**: restores normal access for the account.
 
-**Disable**: temporarily blocks all access requests from the account, but retains the
-account data and associated rule configurations.
-**Enable**: restores normal access for the account.
 le guide
 1. In the ACL account list, find the ACL account that you want to manage and click **Disable** or
 **Enable** in the **Operation** column.
@@ -1028,9 +1015,8 @@ le guide
 
 You can permanently remove an account and all its associated ACL rule configurations by deleting the ACL account.
 
-**Important**
+> **Important:** The delete operation is irreversible. Active clients using this account will be disconnected immediately. Make sure no business relies on this account before deletion.
 
-The delete operation is irreversible. Active clients using this account will be disconnected immediately. Make sure no business relies on this account before deletion.
 1. In the ACL account list, find the ACL account that you want to delete and click **Delete** in the
 **Operation** column.
 2. In the message that appears, click **OK**.
@@ -1084,9 +1070,8 @@ parameters, and then click **OK**.
 
 **Delete an ACL rule**
 
-**Important**
+> **Important:** After you delete an **Allow** rule, the account immediately loses access to the corresponding resources. After you delete a **Deny** rule, the account may regain access if no other Deny rules are in effect.
 
-After you delete an **Allow** rule, the account immediately loses access to the corresponding resources. After you delete a **Deny** rule, the account may regain access if no other Deny rules are in effect.
 1. In the ACL rule list, find the ACL rule that you want to delete and click **Delete** in the
 **Operation** column.
 2. In the message that appears, click **OK**.
@@ -1135,9 +1120,11 @@ column.
 
 ApsaraMQ for RocketMQ 5.0 creates an index for messages based on the message keys that you specify. When you enter a topic name and a message key to query messages, ApsaraMQ for RocketMQ 5.0 returns the matched messages based on the index.
 
-**Important**
+> **Important:** If you query messages by message key, take note of the following items:
+> The query condition is the specified message key.
+> Only the latest 64 messages that contain the specified key are returned. Therefore, we recommend that you set the key for each message to a unique and business-specific value.
 
-If you query messages by message key, take note of the following items: The query condition is the specified message key. Only the latest 64 messages that contain the specified key are returned. Therefore, we recommend that you set the key for each message to a unique and business-specific value. The following sample code provides an example on how to specify a message key:
+The following sample code provides an example on how to specify a message key:
 
 ```
 Message msg = new Message("Topic","*","Hello MQ".getBytes()); /**
@@ -1157,9 +1144,9 @@ msg.setKey("TestKey"+System.currentTimeMillis());
 
 If you cannot query messages by message ID or message key, query messages by topic. You can specify a topic and time range for message sending, retrieve messages in batches, and then find the data that you need. le guide
 
-**Important**
-
-If you query messages by topic, take note of the following items: This query method allows you to obtain all messages that are sent in a topic during a specific time range. We recommend that you narrow down the time range to locate the message that you want to query in an efficient manner. If you query messages by topic, a large number of messages are returned on multiple pages.
+> **Important:** If you query messages by topic, take note of the following items:
+> This query method allows you to obtain all messages that are sent in a topic during a specific time range. We recommend that you narrow down the time range to locate the message that you want to query in an efficient manner.
+> If you query messages by topic, a large number of messages are returned on multiple pages.
 
 #### 4.5.3 Message query results
 
@@ -1171,9 +1158,9 @@ This topic describes the results of message queries. You can view the message qu
 
 The **delivery status** in the **Message details** panel is calculated by ApsaraMQ for RocketMQ 5.0 based on the consumption progress of each group ID. For more information about the delivery status, see the Message delivery states table of this topic.
 
-**Note**
+> **Note:** The **delivery status** is calculated based on the consumption progress. To query the consumption details, view the **message trace**. The message trace displays the complete path of the message. For more information, see Query message traces.
 
-The **delivery status** is calculated based on the consumption progress. To query the consumption details, view the **message trace**. The message trace displays the complete path of the message. For more information, see Query message traces. Table 1. Message delivery states
+Table 1. Message delivery states
 
 | Delivery status | Possible cause |
 |---|---|
@@ -1193,9 +1180,7 @@ In the **Message details** panel, ApsaraMQ for RocketMQ 5.0 supports the **consu
 **verification** feature. You can push a specified message to a specified online consumer to
 check whether the consumer can consume the message based on the correct logic as expected.
 
-**Important**
-
-The consumption verification feature can be used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
+> **Important:** The consumption verification feature can be used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
 ### 4.6 Message traces
 
@@ -1255,9 +1240,9 @@ or **details** in the **actions** column to open the **instance details** page.
 6. In the **Create a query task** dialog box, configure query conditions based on your business
 requirements. Then, click **OK**.
 
-**Important**
+> **Important:** Set the **Time range** as accurately as possible to narrow down the query scope and speed up the query.
 
-Set the **Time range** as accurately as possible to narrow down the query scope and speed up the query. You can use one of the following methods and configure the required parameters to query the trace of a message.
+You can use one of the following methods and configure the required parameters to query the trace of a message.
 
 | Query method | Required parameter | Description |
 |---|---|---|
@@ -1417,9 +1402,8 @@ The following table describes the methods that you can use to query dead-letter 
 
 le guide You can batch query all the dead-letter messages of a group ID within a time range by specifying the group ID and time range.
 
-**Important**
+> **Important:** The production time of a dead-letter message refers to the time when a message is sent to the dead-letter queue after the maximum number of redelivery retries for this message is reached.
 
-The production time of a dead-letter message refers to the time when a message is sent to the dead-letter queue after the maximum number of redelivery retries for this message is reached.
 1. Log in to the RocketMQ v5.0 console.
 2. In the left-side navigation pane, click **instance list**.
 3. On the **instance list** page, find the target instance by name, and then click its instance ID
@@ -1474,9 +1458,9 @@ Export a single dead-letter message In the ApsaraMQ for RocketMQ v5.0 console, f
 
 If a message enters a dead-letter queue, the message cannot be consumed as expected for specific reasons. Therefore, you must process the message in a special way. After you troubleshoot the issues, you can resend the dead-letter messages for consumption in the ApsaraMQ for RocketMQ v5.0 console.
 
-**Important**
+> **Important:** After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days.
 
-After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. le guide Resend a single dead-letter message In the ApsaraMQ for RocketMQ v5.0 console, find the dead-letter message that you want to resend and click **Resend** in the **Operation** column to resend the dead-letter message. Resend multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ v5.0 console, search for the dead-letter messages that you want to resend by group ID, select the dead-letter messages, and then click **Batch resend** below the message list to resend the dead-letter messages.
+le guide Resend a single dead-letter message In the ApsaraMQ for RocketMQ v5.0 console, find the dead-letter message that you want to resend and click **Resend** in the **Operation** column to resend the dead-letter message. Resend multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ v5.0 console, search for the dead-letter messages that you want to resend by group ID, select the dead-letter messages, and then click **Batch resend** below the message list to resend the dead-letter messages.
 
 ### 4.10 Message routing
 
@@ -1517,9 +1501,7 @@ Specify the message source and the message destination, and configure relevant i
 4. In the **Create a message synchronization cloud** dialog box, configure the parameters
 that are described in the following table and click **OK**.
 
-**Note**
-
-Message routing task creation occupies the resources that are used to produce and consume messages in the message cluster. Carefully evaluate whether to perform the scale-out.
+> **Note:** Message routing task creation occupies the resources that are used to produce and consume messages in the message cluster. Carefully evaluate whether to perform the scale-out.
 
 | Parameter | Description | Example value |
 |---|---|---|
@@ -1588,9 +1570,8 @@ the value in the **Remarks** column, and then click the icon.
 
 **Modify a message routing task**
 
-**Important**
+> **Important:** After you modify the **filter rules** of a task, you must stop the task and then restart the task to make the modification take effect.
 
-After you modify the **filter rules** of a task, you must stop the task and then restart the task to make the modification take effect.
 1. On the **Replicator** page, click the **Task** tab.
 le guide
 2. On the Task tab, find the message routing task that you want to modify and click **Modify** in
@@ -1622,9 +1603,8 @@ the **Operation** column. On the page that appears, view the details of the task
 
 **Delete a message routing task**
 
-**Important**
+> **Important:** After a message routing task is deleted, the task stops running.
 
-After a message routing task is deleted, the task stops running.
 1. On the **Replicator** page, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to delete and click **Delete** in
 the **Operation** column.
@@ -1687,9 +1667,13 @@ An ApsaraMQ for RocketMQ 5.0 instance is created. For more information, see the 
 
 This operation is used to release instance resources that are no longer in use.
 
-**Important**
+> **Important:** Data interruption: If you delete a Connect instance, all synchronization tasks bound to the instance stop immediately, and messages are accumulated or lost.
 
-Note: Data interruption: If you delete a Connect instance, all synchronization tasks bound to the instance stop immediately, and messages are accumulated or lost. le guide Irreversibility: Once a Connect instance is deleted, its configurations and historical monitoring data cannot be restored. Pre-check: Do not directly delete the Connect instance that is supporting the core production business services.
+le guide
+
+> Irreversibility: Once a Connect instance is deleted, its configurations and historical monitoring data cannot be restored.
+> Pre-check: Do not directly delete the Connect instance that is supporting the core production business services.
+
 1. On the **Connect Instance** page, find the instance that you want to delete and click **Delete**
 in the **Operation** column.
 2. In the dialog box that appears, click **OK**.
@@ -1749,9 +1733,9 @@ Configure the MqConfig class and the common.xml file. i. Configure the MqConfig 
 public static final String TOPIC = “The topic that you created in the ApsaraMQ for RocketMQ 5.0 console." public static final String GROUP_ID = “The group ID that you created in the ApsaraM Q for RocketMQ 5.0 console." public static final String ACCESS_KEY = “The AccessKey ID that you created in the A psara Uni-manager Management Console for identity authentication." public static final String SECRET_KEY = “The AccessKey secret that you created in t he Apsara Uni-manager Management Console for identity authentication." public static final String NAMESRV_ADDR = “The TCP endpoint of your ApsaraMQ for Ro cketMQ 5.0 instance. You can obtain the endpoint in the ApsaraMQ for RocketMQ 5.0 console."
 ```
 
-**Note**
+> **Note:** You must use the AccessKey ID and AccessKey secret of the account that you use to create the topic.
 
-You must use the AccessKey ID and AccessKey secret of the account that you use to create the topic. ii. Configure the common.xml file.
+ii. Configure the common.xml file.
 
 ```xml
  <props>
@@ -1792,9 +1776,7 @@ On the Instance details page, click the **Group Management** tab. On the Group M
 
 Run the SimpleTransactionProducer class to send a message.
 
-**Note**
-
-The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages.
+> **Note:** The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages.
 
 **Send and receive ordered messages**
 
@@ -1977,9 +1959,7 @@ Versions earlier than SDK for Java 1.7.8.Final of ApsaraMQ for RocketMQ 5.0 supp
 <version>1.1.2</version> </dependency>
 ```
 
-**Note**
-
-If an application uses both Log4j and Logback as logging implementation dependencies, client logs cannot be properly printed due to logging conflicts. To properly print the logs of an ApsaraMQ for RocketMQ 5.0 client, make sure that you add only one dependency on one logging framework for the application. We recommend that you run the **mvn clean dependency:tree | grep log** command to check whether your application uses only one of the logging frameworks.
+> **Note:** If an application uses both Log4j and Logback as logging implementation dependencies, client logs cannot be properly printed due to logging conflicts. To properly print the logs of an ApsaraMQ for RocketMQ 5.0 client, make sure that you add only one dependency on one logging framework for the application. We recommend that you run the **mvn clean dependency:tree | grep log** command to check whether your application uses only one of the logging frameworks.
 
 **Configure logging for an ApsaraMQ for RocketMQ 5.0 client**
 
@@ -1999,9 +1979,9 @@ After you start an ApsaraMQ for RocketMQ 5.0 client, the client generates log fi
 
 **Custom configurations**
 
-**Note**
+> **Note:** To customize the logging configuration of an ApsaraMQ for RocketMQ 5.0 client, update SDK for Java to V1.2.5 or later.
 
-To customize the logging configuration of an ApsaraMQ for RocketMQ 5.0 client, update SDK for Java to V1.2.5 or later. To customize the logging configuration of an ApsaraMQ for RocketMQ 5.0 client in SDK for Java, configure the following system parameters: ons.client.logRoot: the path to store log files. ons.client.logFileMaxIndex: the maximum number of historical log files retained. ons.client.logLevel: the log level.
+To customize the logging configuration of an ApsaraMQ for RocketMQ 5.0 client in SDK for Java, configure the following system parameters: ons.client.logRoot: the path to store log files. ons.client.logFileMaxIndex: the maximum number of historical log files retained. ons.client.logLevel: the log level.
 
 **Examples**
 
@@ -2326,9 +2306,7 @@ ClassPathXmlApplicationContext("consumer.xml");
 
 In ApsaraMQ for RocketMQ 5.0, messages can be sent in reliable synchronous mode,reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
-**Note**
-
-Ordered messages can be sent only in reliable synchronous mode.
+> **Note:** Ordered messages can be sent only in reliable synchronous mode.
 
 ###### 5.2.4.5.2 Reliable synchronous transmission
 
@@ -3227,9 +3205,7 @@ The method for subscribing to scheduled messages is the same as that for subscri
 
 This topic describes how to subscribe to messages and provides sample code.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -3304,9 +3280,7 @@ Subscribe to messages with multiple tags.
 
 `}` `}`
 
-**Note**
-
-In broadcasting subscription mode, you cannot query message accumulation information in the ApsaraMQ for RocketMQ 5.0 console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
+> **Note:** In broadcasting subscription mode, you cannot query message accumulation information in the ApsaraMQ for RocketMQ 5.0 console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
 #### 5.2.5 C/C++ SDK
 
@@ -3316,9 +3290,8 @@ In broadcasting subscription mode, you cannot query message accumulation informa
 
 Before you use SDK for C or C++ to access ApsaraMQ for RocketMQ 5.0, make sure that the following preparations are made.
 
-**Note**
-
-Create the topics and group IDs that are referred to in the code of the TCP client SDK for C or C++ in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
+> **Note:** Create the topics and group IDs that are referred to in the code of the TCP client SDK for C or C++ in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources.
+> Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
 
 ###### 5.2.5.1.2 Download SDK for C or C++
 
@@ -3934,9 +3907,7 @@ For more information about how to subscribe to transactional messages and about 
 
 This topic describes how to subscribe to messages by using the TCP client SDK for C or C++ provided by ApsaraMQ for RocketMQ 5.0.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -4038,9 +4009,8 @@ sumer.
 
 This topic describes how to prepare the environment for accessing ApsaraMQ for RocketMQ 5.0 by using SDK for .NET so that you can use SDK for .NET to send and subscribe to messages.
 
-**Note**
-
-Create the topics and group IDs that are referred to in the code of SDK for .NET in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
+> **Note:** Create the topics and group IDs that are referred to in the code of SDK for .NET in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources.
+> Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
 
 ###### 5.2.6.1.2 Download SDK for .NET
 
@@ -4050,9 +4020,7 @@ SDK for .NET provided by ApsaraMQ for RocketMQ 5.0 is a managed wrapper of SDK f
 
 When Visual Studio is used to develop .NET applications and class libraries, the default destination platform is AnyCPU. This means that the x86 or x64 platform can be automatically selected based on the CPU type. This capability is provided because the assembly compiled by using .NET is based on the intermediate language (IL). At runtime, the just in-time (JIT) compiler in the common language runtime (CLR) of .NET converts the IL code into the x86 or x64 machine code. The DLL generated by the C or C++ compiler is the machine code. Therefore, a destination platform is selected during compilation. The C or C++ project is compiled as an x64 64-bit DLL by configuring compilation options. Therefore, the 64-bit DLL in release mode compiled by using Visual Studio 2015 is provided. The 64-bit DLL in release mode is also available to other Visual Studio versions.
 
-**Note**
-
-C++ DLL files require the installation package of the Virtual C++ 2015 runtime environment. If the Visual Studio 2015 runtime environment is not installed, run the vc_redist.x64.exe program provided in the SDK.
+> **Note:** C++ DLL files require the installation package of the Virtual C++ 2015 runtime environment. If the Visual Studio 2015 runtime environment is not installed, run the vc_redist.x64.exe program provided in the SDK.
 
 **Procedure**
 
@@ -4088,9 +4056,9 @@ Figure 2. .NET SDK-2
 4. Write and compile the test program, save the DLL file of the SDK to the directory of the
 executable file or to the system directory, and then run the program. Figure 3. .NET SDK-3
 
-**Note**
+> **Note:** The SDK provides a preconfigured demo project. You can open the project and compile it. When you run the project, copy the related DLL file to the directory of the executable file, as shown in the following figure.
 
-The SDK provides a preconfigured demo project. You can open the project and compile it. When you run the project, copy the related DLL file to the directory of the executable file, as shown in the following figure. Figure 4. .NET SDK-4
+Figure 4. .NET SDK-4
 
 **Configure ASP.NET in Visual Studio 2015 to use ApsaraMQ for RocketMQ v5.0 SDK**
 
@@ -4103,9 +4071,7 @@ Figure 6. .NET SDK-6
 interface directory of the downloaded SDK package. For more information about how to configure a common .NET project, see Step 2.
 8. Add the code for starting and stopping the SDK to the **Global.asax.cs** file.
 
-**Note**
-
-We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project.
+> **Note:** We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project.
 
 ```
 using System; using System.Collections.Generic; using System.Linq; using System.Web; using System.Web.Optimization; using System.Web.Routing; using System.Web.Security; using System.Web.SessionState; using ons; // The namespace where the SDK is located. using test; // The namespace where the class with the roughly encapsulated SDK is located. See the Example.cs file in the example directory of the SDK. namespace WebApplication4
@@ -4861,9 +4827,7 @@ For more information about how to subscribe to transactional messages and about 
 
 This topic describes how to subscribe to messages by using the TCP client SDK for .NET provided by ApsaraMQ for RocketMQ 5.0.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -5024,9 +4988,7 @@ If the broadcasting consumption mode is required for your business, you can crea
 
 This topic describes how ApsaraMQ for RocketMQ v5.0 consumers filter messages on the ApsaraMQ for RocketMQ v5.0 broker based on tags. A tag is used to classify messages in a topic in ApsaraMQ for RocketMQ v5.0 into different types. ApsaraMQ for RocketMQ v5.0 allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages, including order messages, payment messages, and logistics messages, are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, logistics system, analysis system for transaction success rate, and realtime computing system. Among these systems, the logistics system receives only logistics messages, and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. practices Figure 1. Message filtering
 
-**Note**
-
-To classify messages, you can create multiple topics, or create multiple tags in the same topic. In most cases, messages in one topic are irrelevant to those in another topic. Tags are used to distinguish between relevant messages in the same topic. For example, you can create different tags in the same topic to distinguish between a set and its subsets or distinguish between processes in sequence.
+> **Note:** To classify messages, you can create multiple topics, or create multiple tags in the same topic. In most cases, messages in one topic are irrelevant to those in another topic. Tags are used to distinguish between relevant messages in the same topic. For example, you can create different tags in the same topic to distinguish between a set and its subsets or distinguish between processes in sequence.
 
 **Examples**
 

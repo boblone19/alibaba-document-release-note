@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 18
 source_pdf: "2cc83aabe2c25036_Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E8%A1%8C%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8APFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraStack%20Parallel%20File%20System%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraStack Parallel File System Operations and Maintenance Guide
@@ -30,9 +30,7 @@ This guide helps O&M engineers perform preventive maintenance on APFS to ensure 
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, distributed storage operations, and troubleshooting. O&M engineers must pass the pre-job training and learn the knowledge of APFS. The required knowledge of APFS includes system principles, networking, features, and the usage of maintenance tools.
 
-**Important**
-
-During the maintenance, O&M engineers must comply with operation procedures to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
+> **Important:** During the maintenance, O&M engineers must comply with operation procedures to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
 
 **Usage notes**
 
@@ -56,11 +54,23 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. ager Operations Console You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. ager Operations Console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 
 ## 3 View cluster O&M information
@@ -82,7 +92,12 @@ Platform.
 1. In the left-side navigation pane, choose **Clusters**. On the page that appears, click the
 **Storage** tab.
 2. Click the **Storage Cluster** tab. In the cluster list, view the information of the cluster whose
-file system type is **APFS**. The cluster information includes cluster ID/name, health status, disk type, file system type, capacity (used/total) (GiB), number of nodes (healthy/total), and number of file systems. Click the icon in the **Monitoring** column of a cluster to view the monitoring data of the cluster on the **Monitoring** tab.
+file system type is **APFS**. The cluster information includes cluster ID/name, health status, disk type, file system type, capacity (used/total) (GiB), number of nodes (healthy/total), and number of file systems.
+
+> **Note:** Click the
+> icon in the **Monitoring** column of a cluster to view the monitoring data of
+> the cluster on the **Monitoring** tab.
+
 3. Click the ID or name of the cluster that you want to view or click **Details** in the **Operation**
 column to go to the Storage Cluster Details page. This page consists of the Cluster Details, Cluster Node, Service, and Monitoring tabs.
 
@@ -104,7 +119,9 @@ Click the icon in the **Monitoring** column of the desired node. On the **Monito
 
 **View the details of a service**
 
-On the **Service** tab, you can view the information about storage management services deployed in the cluster. You can search for a service by service name in fuzzy match mode. Click **Tianji O & M** in the **Operation** column of the desired service to manage the service on Apsara Infrastructure Management.
+On the **Service** tab, you can view the information about storage management services deployed in the cluster. You can search for a service by service name in fuzzy match mode.
+
+> **Note:** Click **Tianji O & M** in the **Operation** column of the desired service to manage the service on Apsara Infrastructure Management.
 
 **View monitoring data**
 
@@ -137,7 +154,11 @@ On the **Monitoring** tab, you can select a time range to view the monitoring da
 
 **View operation logs**
 
-On the **Operation Log** tab, select an operation type and a time range to view the operation logs of the node within the specified time period, including the operation type, target, operation status, and operation description. Click **Operation details** in the **Operation details** column of the desired log to open the operation details panel. In the panel, you can view the task type, sub-item, start time, and execution status of the operation. The operation log details vary depending on the operation type. The actual information displayed in the console prevails. on
+On the **Operation Log** tab, select an operation type and a time range to view the operation logs of the node within the specified time period, including the operation type, target, operation status, and operation description. Click **Operation details** in the **Operation details** column of the desired log to open the operation details panel. In the panel, you can view the task type, sub-item, start time, and execution status of the operation.
+
+> **Note:** The operation log details vary depending on the operation type. The actual information displayed in the console prevails.
+
+on
 
 ## 4 View resource O&M information
 
@@ -158,7 +179,10 @@ Platform.
 1. In the left-side navigation pane, click **Resource management**. On the page that appears,
 click the **Storage** tab. Click the **File system** tab to view the information about an APFS file system. The information of the file system includes the file system ID/name, status, file system type, storage cluster, client cluster, used/configured capacity (GiB), specifications, and creation time.
 2. Click Details in the **Operation** column to view the details of a specific file system, including
-the file system ID, file system name, status, and type. You cannot view the monitoring information of APFS.
+the file system ID, file system name, status, and type.
+
+> **Note:** You cannot view the monitoring information of APFS.
+
 3. Click the name of a cluster in the **Storage Cluster** column to view the information of the
 storage cluster. For more information, see the View the information of a storage cluster section of the View cluster O&M information topic.
 4. Click the name of a cluster in the **Client cluster** column to view the information of the

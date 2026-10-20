@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 50
 source_pdf: "03deb6b106b070a8_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 20260902
@@ -84,18 +84,29 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 **Procedure**
 
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -246,9 +257,8 @@ column.
 
 5. Click **Confirm Mount**.
 
-**Important**
+> **Important:** If a batch mount operation fails, the system does not automatically retry. A mount failure usually indicates a configuration error, such as the client's IP address not being added to the permission group. Troubleshoot the issue and then run the mount operation again.
 
-If a batch mount operation fails, the system does not automatically retry. A mount failure usually indicates a configuration error, such as the client's IP address not being added to the permission group. Troubleshoot the issue and then run the mount operation again.
 6. After the mount command is issued, the system displays a message that includes the
 command ID. You can click the link to view the command execution results on the Cloud Assistant page.
 
@@ -318,13 +328,17 @@ To mount the file system over IPv6 by using NFSv4.1:
 sudo mount -t nfs -o vers=4.1,async,rsize=1048576,wsize=1048576 [2001:db8::1]:/efsnas-xxxxx /mount_point
 ```
 
-The IPv6 address must be enclosed in square brackets ( `[]` ). To mount the file system over IPv6 by using NFSv3:
+> **Note:** The IPv6 address must be enclosed in square brackets ( `[]` ).
+
+To mount the file system over IPv6 by using NFSv3:
 
 ```python
 sudo mount -t nfs -o vers=3,nolock,async,proto=tcp6,mountproto=tcp6,rsize=1048576,wsize=1048576 [2001:db 8::1]:/efs-nas-xxxxx /mount_point
 ```
 
-For an IPv6 mount with NFSv3, you must set the `proto` and `mountproto` parameters to `tcp6` . Table 1. Mount command parameters
+> **Note:** For an IPv6 mount with NFSv3, you must set the `proto` and `mountproto` parameters to `tcp6` .
+
+Table 1. Mount command parameters
 
 | Parameter | Description |
 |---|---|
@@ -353,7 +367,8 @@ In the output, find the mount point path of the EFS-NAS file system, such as `/m
 sudo umount /mnt/nfs
 ```
 
-Replace `/mnt/nfs` with the actual path of your mount point.
+> **Note:** Replace `/mnt/nfs` with the actual path of your mount point.
+
 4. Run the following command to verify that the file system is successfully unmounted:
 
 ```
@@ -381,7 +396,11 @@ c. In the **Advanced TCP/IP Settings** dialog box, on the **WINS > Enable NetBIO
 **TCP/IP**.
 d. Navigate to **All Programs > Accessories > Run** or press `Win+R` . In the Run dialog box, enter `services.msc` and press Enter. e. In the Services window, find TCP/IP NetBIOS Helper and verify that its Status is **Started** and its Startup Type is **Automatic**. By default, the TCP/IP NetBIOS Helper service is running.
 3. Open a Command Prompt window and run the following command to mount the file system.
-Command format: `net use <target-drive-letter> <mount-command> /user:<user-name>` . `<target-drive-letter>` : The drive letter that you want to map on your Windows system. The drive letter must be available. `<mount-command>` : The mount point address that is automatically generated when you create the mount point. You can obtain this value from the EFS-NAS console. Find your file system, click **Details**, click the **SMB Share** tab, and then view the **Mount Command** for the target share. `<user-name>` : The user authorized to access the file system, which you specify when creating the SMB share. To view or edit this user in the EFS-NAS console, find your file system and click **Details**. On the **SMB Share** tab, find the target share, and in the
+Command format: `net use <target-drive-letter> <mount-command> /user:<user-name>` . `<target-drive-letter>` : The drive letter that you want to map on your Windows system.
+
+> **Note:** The drive letter must be available.
+
+`<mount-command>` : The mount point address that is automatically generated when you create the mount point. You can obtain this value from the EFS-NAS console. Find your file system, click **Details**, click the **SMB Share** tab, and then view the **Mount Command** for the target share. `<user-name>` : The user authorized to access the file system, which you specify when creating the SMB share. To view or edit this user in the EFS-NAS console, find your file system and click **Details**. On the **SMB Share** tab, find the target share, and in the
 **Operation** column, click **Edit > Add User (Group)**.
 IPv4 mount command example:
 
@@ -425,7 +444,10 @@ This topic explains how to increase the total capacity of a file system.
 2. In the file system list, find the file system you want to scale up, and in its **Operation**
 column, click the icon and then click **Capacity Expansion**.
 3. On the **Capacity Expansion** page, review the current total capacity and enter a new value
-in **New Total Capacity (GiB)**. The new total capacity must be greater than the current total capacity.
+in **New Total Capacity (GiB)**.
+
+> **Note:** The new total capacity must be greater than the current total capacity.
+
 4. Click **Submit**.
 
 ### 4.3 Delete a file system
@@ -438,9 +460,8 @@ The file system is unmounted from all clients. All sharing settings are deleted.
 
 **Procedure**
 
-**Warning**
+> **Warning:** Deleting a file system is an irreversible action. Ensure that you have backed up your data before you proceed.
 
-Deleting a file system is an irreversible action. Ensure that you have backed up your data before you proceed.
 1. Log on to the EFS-NAS console.
 2. In the file system list, select the file systems to delete.
 **Delete a single item**: In the **Operation** column of the target file system, click the
@@ -449,9 +470,8 @@ icon, and click **Delete**.
 **Deletion** below the list. In the **Batch Deletion** dialog box, confirm the list of file systems
 to be deleted.
 
-**Important**
+> **Important:** File systems in a frozen state cannot be deleted. If a batch deletion includes frozen file systems, a dialog box identifies the items that cannot be processed. After you confirm, only the eligible file systems are deleted.
 
-File systems in a frozen state cannot be deleted. If a batch deletion includes frozen file systems, a dialog box identifies the items that cannot be processed. After you confirm, only the eligible file systems are deleted.
 3. Click **OK**.
 
 ### 4.4 Share management
@@ -506,9 +526,8 @@ to the file system and the NFS versions that are used.
 
 **Delete an NFS share**
 
-**Important**
+> **Important:** Before you delete an NFS share, make sure that no client uses the share to connect to the corresponding file system.
 
-Before you delete an NFS share, make sure that no client uses the share to connect to the corresponding file system.
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. Click the ID of a file system or click **Details** in the Operation column to go to the details
 page of the file system.
@@ -562,9 +581,8 @@ user access permissions.
 
 **Delete an SMB share**
 
-**Important**
+> **Important:** Before you delete an SMB share, make sure that no client uses the share to connect to the corresponding file system.
 
-Before you delete an SMB share, make sure that no client uses the share to connect to the corresponding file system.
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. Click the ID of a file system or click **Details** in the Operation column to go to the details
 page of the file system.
@@ -588,7 +606,8 @@ When an EFS-NAS file system is frozen, you cannot delete it, expand it, or creat
 that you want to freeze.
 3. Click **Batch Freeze** at the bottom of the list.
 4. In the **Batch Freeze** dialog box, confirm the list of file systems to be frozen and click **OK**.
-If any selected file systems cannot be frozen (for example, because they are already frozen), a message appears listing them. After you confirm, the system freezes only the eligible file systems.
+
+> **Note:** If any selected file systems cannot be frozen (for example, because they are already frozen), a message appears listing them. After you confirm, the system freezes only the eligible file systems.
 
 **Batch thawing**
 
@@ -598,7 +617,8 @@ that you want to thawing.
 3. Click **Batch Thawing** at the bottom of the list.
 4. In the **Batch Thawing** dialog box, confirm the list of file systems to be unfrozen and click
 **OK**.
-If any selected file systems cannot be unfrozen (for example, because they are not frozen), a message appears listing them. After you confirm, the system unfreezes only the eligible file systems.
+
+> **Note:** If any selected file systems cannot be unfrozen (for example, because they are not frozen), a message appears listing them. After you confirm, the system unfreezes only the eligible file systems.
 
 ### 4.6 File system quotas
 
@@ -652,9 +672,8 @@ You have created a file system, and the file system is running. You have created
 | Time Limit For The Number Of Files | The duration of the grace period after the soft file count quota is exceeded, in days. The maximum value is 365. After the grace period expires, write operations are blocked. This parameter is required if you set a soft quota. |
 | Recommended File Quota | The recommended limit for the number of files in the directory. When the number of files reaches this recommended quota, the system triggers an alert, but write operations are not affected. If you enable Fixed file count ratio, this value is automatically calculated and cannot be manually modified. |
 
-**Important**
+> **Important:** You must enable at least the hard capacity quota or the hard file count quota.
 
-You must enable at least the hard capacity quota or the hard file count quota.
 5. Click **OK**.
 
 **View directory quotas**
@@ -673,9 +692,8 @@ count quota.
 
 **Delete a directory quota**
 
-**Warning**
+> **Warning:** Deleting a directory quota removes its capacity and file count limits.
 
-Deleting a directory quota removes its capacity and file count limits.
 1. On the **Directory Quota** tab of the file system details page, find the target directory and
 click **Delete** in the **Operation** column.
 2. In the confirmation dialog box, click **OK**.
@@ -723,9 +741,8 @@ column.
 
 **Delete a user**
 
-**Important**
+> **Important:** Before deleting a user, remove them from all SMB shares and user groups.
 
-Before deleting a user, remove them from all SMB shares and user groups.
 1. Log on to the EFS-NAS console.
 2. In the left-side navigation pane, click **User Group**.
 3. On the **User** page, find the target user and click **Delete** in the **Operation** column.
@@ -778,9 +795,8 @@ view the group's members and region.
 
 **Delete a user group**
 
-**Important**
+> **Important:** You must remove a user group from all associated SMB shares before you can delete it.
 
-You must remove a user group from all associated SMB shares before you can delete it.
 1. Log on to the EFS-NAS console.
 2. In the left navigation pane, click **User Group**.
 3. On the **User Group** tab, find the target user group and click **Delete** in the **Operation**
@@ -793,7 +809,9 @@ To prevent business disruption or permanent data loss from accidental file delet
 
 **Background information**
 
-When the Recycle Bin is enabled, deleted files or directories are moved to the Recycle Bin. Examples include: Files in an EFS-NAS file system that you manually delete from a client. For example, if you run the `rm -f test01.text` command to delete the filetest01.text, the filetest01.text is moved to the Recycle Bin. Files or directories in an EFS-NAS file system that are automatically deleted by an application on a client. For example, if a Python application uses `os.remove("test02.text")` to delete the filetest02.text, the filetest02.text is moved to the Recycle Bin. Files or directories that are deleted by a POSIX rename operation. For example, if a directory contains bothtest_a.txt andtest_b.txt, and you run the `mv test_a.txt test_b.txt` command, the originaltest_b.txt file is overwritten and moved to the Recycle Bin. Temporary files generated by applications using the EFS-NAS file system. For example, when you edit a file with the**vim** command, temporary files such as `.swp` and `.swpx` are moved to the Recycle Bin. Log files that are automatically rotated by an application. For example, if Nginx is configured to automatically rotate logs and keep a maximum of 20 log files, when the log filetest.log.19 is renamed totest.log.20, the originaltest.log.20 file is overwritten and moved to the Recycle Bin. Overwriting a file's content does not move the file to the Recycle Bin. For example, calling the open() function in w+ mode to write to a file does not move the file to the Recycle Bin.
+When the Recycle Bin is enabled, deleted files or directories are moved to the Recycle Bin. Examples include: Files in an EFS-NAS file system that you manually delete from a client. For example, if you run the `rm -f test01.text` command to delete the filetest01.text, the filetest01.text is moved to the Recycle Bin. Files or directories in an EFS-NAS file system that are automatically deleted by an application on a client. For example, if a Python application uses `os.remove("test02.text")` to delete the filetest02.text, the filetest02.text is moved to the Recycle Bin. Files or directories that are deleted by a POSIX rename operation. For example, if a directory contains bothtest_a.txt andtest_b.txt, and you run the `mv test_a.txt test_b.txt` command, the originaltest_b.txt file is overwritten and moved to the Recycle Bin. Temporary files generated by applications using the EFS-NAS file system. For example, when you edit a file with the**vim** command, temporary files such as `.swp` and `.swpx` are moved to the Recycle Bin. Log files that are automatically rotated by an application. For example, if Nginx is configured to automatically rotate logs and keep a maximum of 20 log files, when the log filetest.log.19 is renamed totest.log.20, the originaltest.log.20 file is overwritten and moved to the Recycle Bin.
+
+> **Note:** Overwriting a file's content does not move the file to the Recycle Bin. For example, calling the open() function in w+ mode to write to a file does not move the file to the Recycle Bin.
 
 ### 6.1 Enable the recycle bin feature
 
@@ -833,7 +851,11 @@ You can restore only one file or directory in a single restore operation. If you
 2. In the left-side navigation pane, click **Recycle Bin**.
 3. Click the ID of a file system to go to the **Recycle Bin Details** page.
 4. Find the file that you want to restore and click **Recovery** in the Actions column.
-The file list displays at most 100 data entries. If the file that you want to restore is not displayed in the list, enter the file name in the search box at the top of the page to search for the file. The current directory and the directory that starts with ~archive in the recycle bin are system directories that cannot be directly restored or deleted. Recycled files are stored in the current directory and then archived to the directory that starts with the ~archive for a period of time. You can select multiple files to be restored, click **Batch Recovery** in the lower part of the page, and then click **OK**.
+
+> **Note:** The file list displays at most 100 data entries. If the file that you want to restore is not displayed in the list, enter the file name in the search box at the top of the page to search for the file.
+> The current directory and the directory that starts with ~archive in the recycle bin are system directories that cannot be directly restored or deleted. Recycled files are stored in the current directory and then archived to the directory that starts with the ~archive for a period of time.
+
+You can select multiple files to be restored, click **Batch Recovery** in the lower part of the page, and then click **OK**.
 5. In the **Confirm recovery?** dialog box, turn on or turn off **Overwrite a file with the same**
 **name** and click **OK**.
 
@@ -1033,8 +1055,7 @@ The protection periods of WORM can only be extended. You cannot shorten the prot
 
 **Important**
 
-The value of **Default Retention Period** must be equal to or greater than the value of
-**Minimum Retention Period**, and it must be equal to or smaller than the value of
-**Maximum Retention Period**.
+> The value of **Default Retention Period** must be equal to or greater than the value of **Minimum Retention Period**, and it must be equal to or smaller than the value of **Maximum Retention Period**.
+
 5. Click **OK**.
 After the protection periods are extended, the changes take effect immediately on all files stored in the file system.

@@ -5,7 +5,7 @@ doc_version: "20250725"
 pdf_pages: 330
 source_pdf: "e226f0e9c1240392_Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guide 20250725.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Alibaba%20Cloud%20Message%20Queue%20User%20Guide%2020250725.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guide
@@ -211,9 +211,13 @@ Previously, Message Queue for Apache RocketMQ resources consisted of topics, pro
 **PropertyKeyConst.GROUP_ID** parameter of the code.
 Sample code
 
-**Note**
+> **Note:** We recommend that you update a RocketMQ client to the following latest versions for different programming languages:
 
-We recommend that you update a RocketMQ client to the following latest versions for different programming languages: Java: V1.8.7.1.Final C and C++: V2.0.0 .NET: V1.1.3 Existing producer IDs or consumer IDs can still be used and do not affect the current services. However, we recommend that you update your instance configuration to the recommended configuration. Recommended configuration: Integrate producer IDs and consumer IDs into group IDs.
+Java: V1.8.7.1.Final C and C++: V2.0.0 .NET: V1.1.3
+
+> Existing producer IDs or consumer IDs can still be used and do not affect the current services. However, we recommend that you update your instance configuration to the recommended configuration.
+
+Recommended configuration: Integrate producer IDs and consumer IDs into group IDs.
 
 ```
 // Set the PropertyKeyConst.GROUP_ID parameter. The original PropertyKeyConst.ProducerId and PropertyKeyConst.ConsumerId parameters are deprecat ed. properties.put(PropertyKeyConst.GROUP_ID, "The original CID-XXX or the GID-XXX");
@@ -276,17 +280,17 @@ the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you can use to log on to the console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Login**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for RocketMQ**.
 
 ### 3.3 Create resources
@@ -297,13 +301,13 @@ Before you use a client SDK to send and subscribe to messages, create the requir
 
 If you want to connect a new application to Message Queue for Apache RocketMQ, you must create the following resources for the application: Instance: a virtual machine that provides the Message Queue for Apache RocketMQ service. An instance stores topics and group IDs. Topic: a topic of messages. In Message Queue for Apache RocketMQ, a producer sends a message to a specified topic, and a consumer subscribes to the topic to consume the message. Group ID: a group ID that is used to identify a group of producers or consumers.
 
-**Important**
+> **Important:** A TCP client cannot share a group ID with an HTTP client. You must create a group for each of them. For example, if you want to use the TCP client SDK to send and subscribe to messages, you must use the group that is created only for TCP clients.
 
-A TCP client cannot share a group ID with an HTTP client. You must create a group for each of them. For example, if you want to use the TCP client SDK to send and subscribe to messages, you must use the group that is created only for TCP clients. Endpoint: an endpoint of the Message Queue for Apache RocketMQ broker. You can use an endpoint to connect producer or consumer clients to a specified Message Queue for Apache RocketMQ instance.
+Endpoint: an endpoint of the Message Queue for Apache RocketMQ broker. You can use an endpoint to connect producer or consumer clients to a specified Message Queue for Apache RocketMQ instance.
 
-**Important**
+> **Important:** A Message Queue for Apache RocketMQ instance has a TCP endpoint and an HTTP endpoint. Each endpoint can be used only for clients over the same protocol. For example, if you want to use the TCP client SDK to send and subscribe to messages, you must specify the TCP endpoint in the SDK. You cannot use the HTTP endpoint in the SDK.
 
-A Message Queue for Apache RocketMQ instance has a TCP endpoint and an HTTP endpoint. Each endpoint can be used only for clients over the same protocol. For example, if you want to use the TCP client SDK to send and subscribe to messages, you must specify the TCP endpoint in the SDK. You cannot use the HTTP endpoint in the SDK. AccessKey ID and AccessKey secret: the user credentials that are used to verify the identity of the user. For more information, see the **Obtain an **************** topic of **Message**
+AccessKey ID and AccessKey secret: the user credentials that are used to verify the identity of the user. For more information, see the **Obtain an **************** topic of **Message**
 **Queue for Apache RocketMQ Developer Guide**.
 
 **Obtain an endpoint**
@@ -723,9 +727,7 @@ ID returned after the message is sent, and click **Search** to query the sending
 **Storage Time** indicates the time when the Message Queue for Apache RocketMQ broker
 stores the message. If the message appears in the search results, the message has been sent to the Message Queue for Apache RocketMQ broker.
 
-**Important**
-
-This step demonstrates the situation where Message Queue for Apache RocketMQ is used for the first time and the consumer has never been started. Therefore, no consumption data appears in the message status information.
+> **Important:** This step demonstrates the situation where Message Queue for Apache RocketMQ is used for the first time and the consumer has never been started. Therefore, no consumption data appears in the message status information.
 
 **What to do next**
 
@@ -951,9 +953,8 @@ You can upgrade or downgrade the specification of an instance.
 3. On the **Update Specifications** page, configure the **Maximum Topics**, **Outbound**
 **Message TPS**, **Inbound Message TPS**, and **Description** parameters.
 
-**Note**
+> **Note:** The value that you specify for each parameter must be in the range that is displayed.
 
-The value that you specify for each parameter must be in the range that is displayed.
 4. Click **Submit**.
 5. In the message that appears, click **Back to Console**.
 On the **Instances** page, you can view the new configuration of the instance.
@@ -997,9 +998,11 @@ pane, click **Topics**.
 3. Click **Create Topic**.
 4. In the **Create Topic** dialog box, enter a name for the topic in the **Topic** field.
 
-**Important**
+> **Important:** The topic name must be unique in the instance where you create the topic and must comply with the following rules:
+> The topic name cannot start with CID or GID, because CID and GID are reserved fields for group IDs.
+> The topic name can contain only letters, digits, hyphens (-), and underscores (_).
+> The topic name must be 3 to 64 characters in length.
 
-The topic name must be unique in the instance where you create the topic and must comply with the following rules: The topic name cannot start with CID or GID, because CID and GID are reserved fields for group IDs. The topic name can contain only letters, digits, hyphens (-), and underscores (_). The topic name must be 3 to 64 characters in length.
 5. From the **Message Type** drop-down list, select a value. This value defines the type of
 message that this topic sends and receives. We recommend that you create different topics to send different types of messages. For example, create Topic A for normal messages, Topic B for transactional messages, and Topic C for scheduled messages or delayed messages. For more information about message types, see Message types.
 6. In the **Description** field, enter a description about the topic and click **OK**.
@@ -1024,9 +1027,8 @@ topics in the instance and the details about a specific topic. The details inclu
 
 **Delete a topic**
 
-**Note**
+> **Note:** After a topic is deleted, producers that send messages to the topic and consumers that subscribe to the topic immediately stop services and all resources are deleted within 10 minutes. Proceed with caution.
 
-After a topic is deleted, producers that send messages to the topic and consumers that subscribe to the topic immediately stop services and all resources are deleted within 10 minutes. Proceed with caution.
 1. Log on to the Message Queue for Apache RocketMQ console. In the left-side navigation
 pane, click **Topics**.
 2. In the upper part of the **Topics** page, select your instance.
@@ -1084,9 +1086,8 @@ Then, you can view all groups in the instance and the details of a specific grou
 
 **Delete a group**
 
-**Important**
+> **Important:** After a group is deleted, producers and consumers in the group fail authentication when they attempt to connect to the Message Queue for Apache RocketMQ instance. The producers and consumers that are connected to the Message Queue for Apache RocketMQ instance are not affected.
 
-After a group is deleted, producers and consumers in the group fail authentication when they attempt to connect to the Message Queue for Apache RocketMQ instance. The producers and consumers that are connected to the Message Queue for Apache RocketMQ instance are not affected.
 1. In the left-side navigation pane of the Message Queue for Apache RocketMQ console, click
 **Groups**.
 2. On the **Groups** page, click the name of the Message Queue for Apache RocketMQ instance
@@ -1137,9 +1138,11 @@ To obtain the sample code for other programming languages, click **Groups** in t
 
 Message Queue for Apache RocketMQ creates an index for messages based on the message keys that you specify. When you enter a topic name and a message key to query messages, Message Queue for Apache RocketMQ returns the matched messages based on the index.
 
-**Important**
+> **Important:** If you query messages by message key, take note of the following points:
+> The query condition is the specified message key.
+> Only the 64 messages that are most recently sent and contain the specified message key are returned. Therefore, we recommend that you specify a unique and business-distinctive key for each message.
 
-If you query messages by message key, take note of the following points: The query condition is the specified message key. Only the 64 messages that are most recently sent and contain the specified message key are returned. Therefore, we recommend that you specify a unique and business-distinctive key for each message. The following sample code provides an example on how to specify a message key:
+The following sample code provides an example on how to specify a message key:
 
 ```
 Message msg = new Message("Topic","*","Hello MQ".getBytes()); /**
@@ -1159,17 +1162,17 @@ msg.setKey("TestKey"+System.currentTimeMillis());
 
 If you cannot query messages by message ID or message key, query messages by topic. You can specify a topic and time range for message sending, retrieve messages in batches, and then find the data that you need.
 
-**Important**
-
-If you query messages by topic, take note of the following points: If you specify a topic and time range to query messages, range match is used to retrieve all messages that meet the time condition within the topic. The number of retrieved messages is large. Therefore, we recommend that you narrow down the time range. If you query messages by topic, a large number of messages are returned on multiple pages.
+> **Important:** If you query messages by topic, take note of the following points:
+> If you specify a topic and time range to query messages, range match is used to retrieve all messages that meet the time condition within the topic. The number of retrieved messages is large. Therefore, we recommend that you narrow down the time range.
+> If you query messages by topic, a large number of messages are returned on multiple pages.
 
 #### 5.2.3 Query results
 
 This topic describes the results returned when you query messages. You can view the queried messages on the **Message Query** page of the Message Queue for Apache RocketMQ console. The displayed information includes the message ID, tag, key, and storage time. In addition, click the corresponding buttons in the Actions column of a message to download the message content, Query message traces, and view the message details. The delivery status is calculated by Message Queue for Apache RocketMQ based on the consumption progress of each group ID. For more information about the delivery status, see Message delivery status.
 
-**Note**
+> **Note:** The delivery status is estimated based on the consumption progress. Use the message tracing feature to query the consumption details. The message tracing feature allows you to query the complete trace of a message. For more information, see Query message traces.
 
-The delivery status is estimated based on the consumption progress. Use the message tracing feature to query the consumption details. The message tracing feature allows you to query the complete trace of a message. For more information, see Query message traces. Table 1. Message delivery status
+Table 1. Message delivery status
 
 | Delivery status | Possible cause |
 |---|---|
@@ -1181,9 +1184,7 @@ The delivery status is estimated based on the consumption progress. Use the mess
 
 Message Queue for Apache RocketMQ provides the consumption verification feature. You can push a specified message to a specified online consumer to check whether the consumer can consume the message based on the correct logic as expected.
 
-**Important**
-
-The consumption verification feature is used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
+> **Important:** The consumption verification feature is used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
 ### 5.3 Message tracing
 
@@ -1235,9 +1236,9 @@ pane, click **Message Tracing**. On the page that appears, click **Create Query 
 2. In the **Create Query Task** dialog box, click the By Message ID, By Message Key, or By
 Topic tab and enter the information as prompted. Then, click **OK**.
 
-**Important**
+> **Important:** Specify a time range as accurate as possible to narrow the query scope and speed up the query.
 
-Specify a time range as accurate as possible to narrow the query scope and speed up the query. Message tracing supports the following three query methods. Select a query method and specify the query criteria. By message ID: You must specify the unique message ID, topic, and approximate sending time of a message. We recommend that you use this method because this method uses exact match and allows you to query message traces fast. By message key: You must specify the message key, topic, and approximate sending time of a message. This method uses fuzzy match. A maximum of 1,000 traces can be displayed for a query based on the specified message key. This method applies only to scenarios where the message ID is not recorded but a business-distinctive message key is specified. By topic: You must specify the topic and approximate sending time for batch query. This method uses range match and applies to scenarios where both the message ID and the message key are unavailable and the message volume is small. We do not recommend this query method, because a large volume of messages exist in a topic within the specified time range and you cannot find the message you want among these messages in this time range. After you create a query task, you can view the query task on the **Message Tracing** page. If the value of **Task Status** is **Querying**, you cannot view the message trace.
+Message tracing supports the following three query methods. Select a query method and specify the query criteria. By message ID: You must specify the unique message ID, topic, and approximate sending time of a message. We recommend that you use this method because this method uses exact match and allows you to query message traces fast. By message key: You must specify the message key, topic, and approximate sending time of a message. This method uses fuzzy match. A maximum of 1,000 traces can be displayed for a query based on the specified message key. This method applies only to scenarios where the message ID is not recorded but a business-distinctive message key is specified. By topic: You must specify the topic and approximate sending time for batch query. This method uses range match and applies to scenarios where both the message ID and the message key are unavailable and the message volume is small. We do not recommend this query method, because a large volume of messages exist in a topic within the specified time range and you cannot find the message you want among these messages in this time range. After you create a query task, you can view the query task on the **Message Tracing** page. If the value of **Task Status** is **Querying**, you cannot view the message trace.
 3. In the upper-right corner, click **Refresh** until the value of Task Status becomes **Query**
 **Completed**. You can click the **+** icon to view the brief trace information, including the
 message attributes and consumption status. If no data is found, verify whether the query information you entered is valid. If the trace is queried out, brief trace information appears, including the message attributes and consumption status.
@@ -1369,9 +1370,8 @@ Message Queue for Apache RocketMQ provides the following methods for you to quer
 
 You can batch query all the dead-letter messages of a group ID within a time range by specifying the group ID and time range.
 
-**Important**
+> **Important:** The production time of a dead-letter message refers to the time when a message is sent to the dead-letter queue after the maximum number of redelivery retries for this message is reached.
 
-The production time of a dead-letter message refers to the time when a message is sent to the dead-letter queue after the maximum number of redelivery retries for this message is reached.
 1. Log on to the Message Queue for Apache RocketMQ console.
 2. In the left-side navigation pane, click **Dead-letter Queues**.
 3. On the **Dead-letter Queues** page, click the **By Group ID** tab.
@@ -1418,9 +1418,9 @@ Export a single dead-letter message In the Message Queue for Apache RocketMQ con
 
 If a message enters a dead-letter queue, the message cannot be consumed as expected for specific reasons. Therefore, you must process the message in a special way. After you troubleshoot the problems, you can resend the message to the corresponding consumer in the Message Queue for Apache RocketMQ console.
 
-**Important**
+> **Important:** After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days.
 
-After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. Resend a single dead-letter message In the Message Queue for Apache RocketMQ console, query one dead-letter message by message ID or query dead-letter messages by group ID. Find the dead-letter message that you want to resend and click **Resend** in the **Actions** column. Resend dead-letter messages in batches In the Message Queue for Apache RocketMQ console, query dead-letter messages by group ID, select the dead-letter messages that you want to resend, and then click **Batch Resend**.
+Resend a single dead-letter message In the Message Queue for Apache RocketMQ console, query one dead-letter message by message ID or query dead-letter messages by group ID. Find the dead-letter message that you want to resend and click **Resend** in the **Actions** column. Resend dead-letter messages in batches In the Message Queue for Apache RocketMQ console, query dead-letter messages by group ID, select the dead-letter messages that you want to resend, and then click **Batch Resend**.
 
 ### 5.7 Resource statistics
 
@@ -1524,9 +1524,7 @@ permissions.
 5. From the **Authorization Type** drop-down list, select the permissions that you want to
 grant to the RAM user. Then, click **OK**.
 
-**Note**
-
-The RAM user to which you want to grant permissions must be an account that is used to access the Apsara Stack resources and is owned by the department to which the Apsara Stack tenant account belongs.
+> **Note:** The RAM user to which you want to grant permissions must be an account that is used to access the Apsara Stack resources and is owned by the department to which the Apsara Stack tenant account belongs.
 
 **View authorization information**
 
@@ -1536,9 +1534,11 @@ pane, click **Topics**.
 2. On the **Topics** page, find the topic that you want to view, click
 in the **Actions** column, and then select **View Authorization** from the drop-down list to view the authorization records and information of the topic.
 
-**Note**
-
-You do not need to authorize your account to manage the topics that you create. After you log on to the Message Queue for Apache RocketMQ console by using an authorized account, you can view the topic that the account is authorized to manage. Then, you must create a group ID. You cannot use the group ID of the Apsara Stack tenant account that is used to grant permissions to your account. A topic that an account is authorized to manage belongs to the Apsara Stack tenant account that is used to grant permissions. Therefore, you cannot use the authorized account to delete the topic. If you grant permissions to a RAM user, you cannot use the authorized RAM user to create topics. If you grant permissions to another Apsara Stack tenant account, you can use the authorized Apsara Stack tenant account to create topics. However, the created topics are not associated to the Apsara Stack tenant account that is used to grant permissions.
+> **Note:** You do not need to authorize your account to manage the topics that you create.
+> After you log on to the Message Queue for Apache RocketMQ console by using an authorized account, you can view the topic that the account is authorized to manage. Then, you must create a group ID. You cannot use the group ID of the Apsara Stack tenant account that is used to grant permissions to your account.
+> A topic that an account is authorized to manage belongs to the Apsara Stack tenant account that is used to grant permissions. Therefore, you cannot use the authorized account to delete the topic.
+> If you grant permissions to a RAM user, you cannot use the authorized RAM user to create topics.
+> If you grant permissions to another Apsara Stack tenant account, you can use the authorized Apsara Stack tenant account to create topics. However, the created topics are not associated to the Apsara Stack tenant account that is used to grant permissions.
 
 ### 5.9 Switch between different access modes
 
@@ -1614,9 +1614,9 @@ instances to which the VPC is bound.
 
 **Unbind a VPC from an instance**
 
-**Important**
+> **Important:** After a VPC is unbound from an RocketMQ instance, the endpoint for the VPC becomes invalid and cannot be used to access the instance. Proceed with caution when you unbind a VPC from an instance.
+> If a VPC is bound to multiple instances in a cluster and you want to prevent access requests that are sent over the VPC, you must unbind the VPC from all instances in the cluster.
 
-After a VPC is unbound from an RocketMQ instance, the endpoint for the VPC becomes invalid and cannot be used to access the instance. Proceed with caution when you unbind a VPC from an instance. If a VPC is bound to multiple instances in a cluster and you want to prevent access requests that are sent over the VPC, you must unbind the VPC from all instances in the cluster.
 1. Log on to the Message Queue for Apache RocketMQ console. For information about how to
 log on to the Message Queue for Apache RocketMQ console, see Log on to the Message Queue for Apache RocketMQ console.
 2. In the left-side navigation pane, click **Instances**.
@@ -1728,9 +1728,8 @@ and click the icon in the **Actions** column to start the task or click the icon
 
 **Modify a message routing task**
 
-**Important**
+> **Important:** After you modify the **filtering rule** of a task, you must stop the task and then restart the task to make the modification take effect.
 
-After you modify the **filtering rule** of a task, you must stop the task and then restart the task to make the modification take effect.
 1. On the **Message Route** page, click the **Task** tab.
 2. In the message routing task list, find the task that you want to modify and click the
 icon in the **Actions** column.
@@ -1753,9 +1752,8 @@ icon in the **Actions** column. The details of the task are displayed. The follo
 
 **Delete a message routing task**
 
-**Important**
+> **Important:** After a message routing task is deleted, the task stops running.
 
-After a message routing task is deleted, the task stops running.
 1. On the **Message Route** page, click the **Task** tab.
 2. In the message routing task list, find the task that you want to delete and click the
 icon in the **Actions** column.
@@ -1850,9 +1848,9 @@ Configure the MqConfig class and the common.xml file. i. The following sample co
 public static final String TOPIC = "The topic that you created in the Message Queue for Apache RocketMQ console." public static final String GROUP_ID = "The group ID that you created in the Message Queue for Apache RocketMQ console." public static final String ACCESS_KEY = "The AccessKey ID that you created in the A psara Uni-manager Management Console for identity authentication." public static final String SECRET_KEY = "The AccessKey secret that you created in t he Apsara Uni-manager Management Console for identity authentication." public static final String NAMESRV_ADDR = "The TCP endpoint of your Message Queue f or Apache RocketMQ instance. You can obtain the endpoint in the Message Queue for Apache RocketMQ console."
 ```
 
-**Note**
+> **Note:** You must use the AccessKey ID and AccessKey secret of the account that you use to create the topic.
 
-You must use the AccessKey ID and AccessKey secret of the account that you use to create the topic. ii. Configure the common.xml file.
+ii. Configure the common.xml file.
 
 ```xml
  <props>
@@ -1891,25 +1889,19 @@ Log on to the Message Queue for Apache RocketMQ console. In the left-side naviga
 
 Run the SimpleTransactionProducer class to send messages.
 
-**Note**
-
-The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages.
+> **Note:** The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages.
 
 **Send and receive ordered messages**
 
 Run the SimpleOrderConsumer class to receive messages. Run the SimpleOrderProducer class to send messages.
 
-**Note**
-
-Ordered messages are sent and consumed in first-in-first-out (FIFO) order. For more information, see Send and subscribe to ordered messages.
+> **Note:** Ordered messages are sent and consumed in first-in-first-out (FIFO) order. For more information, see Send and subscribe to ordered messages.
 
 **Send scheduled or delayed messages**
 
 Run the MQTimerProducer class to send messages. These messages are delivered after a delay of 3 seconds.
 
-**Note**
-
-You can specify an exact delay, which is up to 40 days. For more information, see Send and subscribe to scheduled messages.
+> **Note:** You can specify an exact delay, which is up to 40 days. For more information, see Send and subscribe to scheduled messages.
 
 #### 6.2.2 Client parameters
 
@@ -2085,9 +2077,7 @@ Message Queue for Apache RocketMQ SDK for Java versions earlier than 1.7.8.Final
 <version>1.1.2</version> </dependency>
 ```
 
-**Note**
-
-If an application uses both Log4j and Logback as logging frameworks, client logs cannot be properly printed due to logging conflicts. To properly print the logs of a Message Queue for Apache RocketMQ client, make sure that you add only one dependency on one logging framework for the application. We recommend that you run the **mvn clean dependency:tree | grep log** command to check whether your application uses only one of the logging frameworks.
+> **Note:** If an application uses both Log4j and Logback as logging frameworks, client logs cannot be properly printed due to logging conflicts. To properly print the logs of a Message Queue for Apache RocketMQ client, make sure that you add only one dependency on one logging framework for the application. We recommend that you run the **mvn clean dependency:tree | grep log** command to check whether your application uses only one of the logging frameworks.
 
 **Configure logging for a Message Queue for Apache RocketMQ**
 
@@ -2112,9 +2102,9 @@ After you start a Message Queue for Apache RocketMQ client, the client generates
 
 **Custom configuration**
 
-**Note**
+> **Note:** To customize the logging configuration of a Message Queue for Apache RocketMQ client, update the SDK for Java to V1.2.5 or later.
 
-To customize the logging configuration of a Message Queue for Apache RocketMQ client, update the SDK for Java to V1.2.5 or later. To customize the logging configuration of a Message Queue for Apache RocketMQ client in the SDK for Java, configure the following system parameters: ons.client.logRoot: the path to store log files ons.client.logFileMaxIndex: the maximum number of historical log files that are retained ons.client.logLevel: the log level
+To customize the logging configuration of a Message Queue for Apache RocketMQ client in the SDK for Java, configure the following system parameters: ons.client.logRoot: the path to store log files ons.client.logFileMaxIndex: the maximum number of historical log files that are retained ons.client.logLevel: the log level
 
 **Examples**
 
@@ -2436,9 +2426,7 @@ ClassPathXmlApplicationContext("consumer.xml");
 
 In Message Queue for Apache RocketMQ, messages can be sent in reliable synchronous mode, reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
-**Note**
-
-Ordered messages can be sent only in reliable synchronous mode.
+> **Note:** Ordered messages can be sent only in reliable synchronous mode.
 
 ###### 6.2.4.5.2 Reliable synchronous transmission
 
@@ -3182,9 +3170,7 @@ The method for subscribing to scheduled messages is the same as that for subscri
 
 This topic describes message subscription modes and provides sample code.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -3248,9 +3234,7 @@ Subscribe to all tags.
         System.out.println("Consumer Started");
 ```
 
-**Note**
-
-In broadcasting consumption mode, you cannot query message accumulation information in the Message Queue for Apache RocketMQ console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
+> **Note:** In broadcasting consumption mode, you cannot query message accumulation information in the Message Queue for Apache RocketMQ console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
 #### 6.2.5 SDK for C or C++
 
@@ -3260,9 +3244,8 @@ In broadcasting consumption mode, you cannot query message accumulation informat
 
 Make sure that the following prerequisites are met before you use SDK for C++ to access Message Queue for Apache RocketMQ:
 
-**Note**
-
-You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
+> **Note:** You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources.
+> Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
 ###### 6.2.5.1.2 Download SDK for C++
 
@@ -3886,9 +3869,7 @@ For more information about how to subscribe to transactional messages and about 
 
 This topic describes how to subscribe to messages by using SDK for C or C++ provided by Message Queue for Apache RocketMQ.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -3949,9 +3930,8 @@ onsumer.
 
 Before you use SDK for . NET to access Message Queue for Apache RocketMQ and send and subscribe to messages, make sure that the following prerequisites are met:
 
-**Note**
-
-You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
+> **Note:** You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources.
+> Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
 ###### 6.2.6.1.2 Download SDK for .NET
 
@@ -3961,9 +3941,7 @@ Message Queue for Apache RocketMQ SDK for .NET is a managed wrapper based on Apa
 
 If Visual Studio is used to develop .NET applications and class libraries, the default target platform is Any CPU. This means that x86 or x64 is automatically selected based on the CPU type at runtime. This capability is provided because the assembly compiled by using .NET is based on the intermediate language (IL). At runtime, the just in-time compiler (JIT) in the common language runtime (CLR) of .NET converts the IL code into the x86 or x64 machine code. The DLL generated by the C or C++ compiler is the machine code. Therefore, a target platform is selected during compilation. The C or C++ project is compiled as an x64 64-bit DLL by configuring compilation options. Therefore, the 64-bit DLL in release mode compiled by using Visual Studio 2015 is provided. The 64-bit DLL in release mode is also available to other Visual Studio versions.
 
-**Note**
-
-C++ DLL files require the installation package of the Virtual C++ 2015 runtime environment. If the Visual Studio 2015 runtime environment is not installed, run the vc_redist.x64.exe program provided in the SDK.
+> **Note:** C++ DLL files require the installation package of the Virtual C++ 2015 runtime environment. If the Visual Studio 2015 runtime environment is not installed, run the vc_redist.x64.exe program provided in the SDK.
 
 **Procedure**
 
@@ -3999,9 +3977,9 @@ Figure 2. .NET SDK-2
 4. Write and compile the test program, save the DLL file of the SDK to the directory of the
 executable file or to the system directory, and then run the program. Figure 3. .NET SDK-3
 
-**Note**
+> **Note:** The SDK provides a preconfigured demo project. You can directly open the project and compile it. When you run the project, copy the related DLL file to the directory of the executable file, as shown in the following figure.
 
-The SDK provides a preconfigured demo project. You can directly open the project and compile it. When you run the project, copy the related DLL file to the directory of the executable file, as shown in the following figure. Figure 4. .NET SDK-4
+Figure 4. .NET SDK-4
 
 **Configure ASP.NET in Visual Studio 2015 to use Message Queue for Apache**
 
@@ -4016,9 +3994,7 @@ Figure 6. .NET SDK-6
 interface directory of the downloaded SDK package. For more information about how to configure a common .NET project, see Step 2.
 8. Add the code for starting and stopping the SDK to the **Global.asax.cs** file.
 
-**Note**
-
-We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project.
+> **Note:** We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project.
 
 ```
 using System; using System.Collections.Generic; using System.Linq; using System.Web; using System.Web.Optimization; using System.Web.Routing; using System.Web.Security; using System.Web.SessionState; using ons; // The namespace where the SDK is located. using test; // The namespace where the class with the roughly encapsulated SDK is located. See the Example.cs file in the example directory of the SDK. namespace WebApplication4
@@ -4683,9 +4659,7 @@ For more information about how to subscribe to transactional messages and about 
 
 This topic describes how to use Message Queue for Apache RocketMQ SDK for .NET to subscribe to messages.
 
-**Note**
-
-The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
+> **Note:** The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency.
 
 **Subscription modes**
 
@@ -4884,9 +4858,8 @@ value to 2015-06-06.
 **CanonicalizedResource**: specifies the Uniform Resource Identifier (URI) of the resource
 requested by the HTTP request. For example, set the URI of a consumption request to /topics/abc/messages?consumer=GID_abc.
 
-**Note**
-
-The string-to-sign must be in the UTF-8 format. The HMAC-SHA1 method defined in RFC 2104 is used to calculate the signature. In this method, the AccessKey secret is used as an encryption key.
+> **Note:** The string-to-sign must be in the UTF-8 format.
+> The HMAC-SHA1 method defined in RFC 2104 is used to calculate the signature. In this method, the AccessKey secret is used as an encryption key.
 
 ##### 6.3.1.3 Operation for sending messages
 
@@ -5192,9 +5165,7 @@ Use Maven to import dependencies and add the following dependency to the pom.xml
 </dependency>
 ```
 
-**Note**
-
-For more information about the versions of the SDK for Java, see Overview.
+> **Note:** For more information about the versions of the SDK for Java, see Overview.
 
 ##### 6.3.2.2 Send and consume normal messages
 
@@ -7159,9 +7130,9 @@ This topic describes how to prepare the environment before you use the HTTP clie
 
 Install Python. For more information, visit the official website of Python. You must install an appropriate version of Python based on the following instructions: If the version of your SDK is V1.0.0, make sure that the version of Python you installed is 2.5 or is later than 2.5 but earlier than 3.0. If the version of your SDK is later than V1.0.0, make sure that the version of Python you installed is 2.5 or later. The pip tool is installed. For more information, see Install pip.
 
-**Note**
+> **Note:** The pip tool is provided in Python 3.4 or later by default. If the version of Python you installed is 3.4 or later, you do not need to install the pip tool.
 
-The pip tool is provided in Python 3.4 or later by default. If the version of Python you installed is 3.4 or later, you do not need to install the pip tool. After Python is installed, you can run the `python -V` command to view the version of Python that you installed.
+After Python is installed, you can run the `python -V` command to view the version of Python that you installed.
 
 **Install the SDK for Python**
 
@@ -10771,9 +10742,7 @@ This topic describes how to prepare the environment before you use the HTTP clie
 
 SCons is installed. For more information, visit the official website of SCons. Before you can use SCons, make sure that Python 3.5 or later is installed. For more information, visit the official website of Python. Visual Studio 2015 or later is installed. For more information, visit the official website of Visual Studio.
 
-**Note**
-
-Visual Studio is required only in Windows environments. In this topic, Visual Studio 2019 is used in the example.
+> **Note:** Visual Studio is required only in Windows environments. In this topic, Visual Studio 2019 is used in the example.
 
 **Install the SDK for C++ in a Windows environment**
 
@@ -10820,9 +10789,8 @@ icon to compile the project.
 
 **Install the SDK for C++ in a Linux environment**
 
-**Note**
+> **Note:** The following procedure provides an example on how to install the SDK for C++ in CentOS.
 
-The following procedure provides an example on how to install the SDK for C++ in CentOS.
 1. Download the SDK for C++ to your on-premises machine and decompress the package. For
 more information about the download link to the SDK, see Overview.
 
@@ -11969,9 +11937,7 @@ If the broadcasting consumption mode is required for your business, you can crea
 
 This topic describes how Message Queue for Apache RocketMQ consumers filter messages on the Message Queue for Apache RocketMQ broker based on tags. A tag is used to classify messages in a topic into different types. Message Queue for Apache RocketMQ allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages including order messages, payment messages, and logistics messages are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, analysis system for transaction success rate, and real-time computing system. Among these systems, the logistics system receives only logistics messages and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. Figure 1. Filter messages
 
-**Note**
-
-To classify messages, you can create multiple topics, or create multiple tags in the same topic. In most cases, messages in one topic are irrelevant to those in another topic. Tags are used to distinguish between relevant messages in the same topic. For example, you can create different tags in the same topic to distinguish between a set and its subsets or distinguish between processes in sequence.
+> **Note:** To classify messages, you can create multiple topics, or create multiple tags in the same topic. In most cases, messages in one topic are irrelevant to those in another topic. Tags are used to distinguish between relevant messages in the same topic. For example, you can create different tags in the same topic to distinguish between a set and its subsets or distinguish between processes in sequence.
 
 **Examples**
 
@@ -12665,9 +12631,10 @@ cat /tmp/pid.jstack|grep ConsumeMessageThread -A 10 --color
 
 The following figure shows an example of command output. For more information about the thread status, see official Java documentation.
 
-**Note**
-
-Message Queue for Apache RocketMQ can support 1 billion accumulated messages without compromising the performance. If the problem of compromised performance is not solved after you perform the preceding steps, contact O&M engineers and provide the following information: The heap.bin file. Run the jmap -dump:format=b,file=heap.bin [$PID] command to obtain this file. Then, run the `gzip heap.bin` command to generate a compressed package.[$PID] represents the PID of the Java process recorded in Step 2. The local ons.log file of the consumer client where messages are accumulated. The version of the consumer client.
+> **Note:** Message Queue for Apache RocketMQ can support 1 billion accumulated messages without compromising the performance. If the problem of compromised performance is not solved after you perform the preceding steps, contact O&M engineers and provide the following information:
+> The heap.bin file. Run the jmap -dump:format=b,file=heap.bin [$PID] command to obtain this file. Then, run the `gzip heap.bin` command to generate a compressed package.[$PID] represents the PID of the Java process recorded in Step 2.
+> The local ons.log file of the consumer client where messages are accumulated.
+> The version of the consumer client.
 
 #### 8.3.5 Application OOM due to message caching on the client
 

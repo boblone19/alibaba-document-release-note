@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 1018
 source_pdf: "7af995ad10f04a02_Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0%20DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataWorks%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 20260831
@@ -654,9 +654,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -673,9 +671,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -697,9 +693,7 @@ eway to call Apsara Stack API op erations
 
 This topic provides a complete Java SDK integration guide for calling Apsara Stack DataWorks API operations through the POP gateway. It includes the configuration of key parameters, such as the service endpoint, AccessKey pair, service name, region ID, and endpoint name, authentication logic, and call examples.
 
-**Important**
-
-The DataWorks HTTP API is deprecated. Migrate to the Java SDK as soon as possible.
+> **Important:** The DataWorks HTTP API is deprecated. Migrate to the Java SDK as soon as possible.
 
 **Service endpoint**
 
@@ -711,10 +705,7 @@ The endpoint that is used to access DataWorks. The endpoint consists of the pref
 
 Virtual private cloud (VPC) endpoint: The endpoint is prefixed with `dataworks-public-vpc` . The endpoint is `dataworks-public-vpc.envxxx.yyyyy.com` .
 
-**Note**
-
-The DataWorks POP gateway now supports IPv4/IPv6 dual-stack. To use the IPv4/IPv6 dual-stack capabilities of the service, contact Alibaba Cloud Technical Support to complete the platform-side IPv6 prerequisite transformation and enable the IPv6 feature for the service. For more information, see the **Network Changes > Feature**
-**Orchestration > IPv6 Dashboard** section in **Apsara Stack VPC O&M Guide**.
+> **Note:** The DataWorks POP gateway now supports IPv4/IPv6 dual-stack. To use the IPv4/IPv6 dual-stack capabilities of the service, contact Alibaba Cloud Technical Support to complete the platform-side IPv6 prerequisite transformation and enable the IPv6 feature for the service. For more information, see the **Network Changes > Feature** **Orchestration > IPv6 Dashboard** section in **Apsara Stack VPC O&M Guide**.
 
 *************************************
 
@@ -24545,7 +24536,9 @@ Sample success response `XML` format
 
 #### 4.10.19 AddSenRule
 
-Creates and configures a new data identification rule in DataWorks. This operation does not support creating self-generated model or sample library rules.
+Creates and configures a new data identification rule in DataWorks.
+
+> This operation does not support creating self-generated model or sample library rules.
 
 **Request headers**
 

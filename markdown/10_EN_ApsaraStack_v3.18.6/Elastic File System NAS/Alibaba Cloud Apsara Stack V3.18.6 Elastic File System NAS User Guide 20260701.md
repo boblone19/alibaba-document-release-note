@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 42
 source_pdf: "efc8fa3846efea39_Alibaba Cloud Apsara Stack V3.18.6 Elastic File System NAS User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%98%BF%E9%87%8C%E4%BA%91%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20EFS-NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20File%20System%20NAS%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Elastic File System NAS User Guide 20260701
@@ -78,18 +78,29 @@ This topic describes how to log in to the Elastic File Storage-File Storage NAS 
 
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -286,7 +297,11 @@ Command syntax: `net use <Letter of the destination drive> <Domain name of the m
 net use D: \\192.0.2.1\smb-share /user:test-user
 ```
 
-Letter of the destination drive: the letter of the drive on which you want to mount the SMB file system. Replace the value of the parameter with the letter of an actual destination drive. The letter of the destination drive must be different from the existing drive letters. Domain name of the mount target: When you create a mount target for a file system, the domain name of the mount target is automatically generated. You can replace the domain name based on your business requirements. In the EFS-NAS console, find the file system that you want to manage and click **Details** in the Operation column. On the details page of the file system, click the **SMB Share** tab to view the **Mount Command** column of a share. Username: the user who is authorized to access the file system when you create the SMB share. In the EFS-NAS console, find the file system that you want to manage, and click
+Letter of the destination drive: the letter of the drive on which you want to mount the SMB file system. Replace the value of the parameter with the letter of an actual destination drive.
+
+> **Note:** The letter of the destination drive must be different from the existing drive letters.
+
+Domain name of the mount target: When you create a mount target for a file system, the domain name of the mount target is automatically generated. You can replace the domain name based on your business requirements. In the EFS-NAS console, find the file system that you want to manage and click **Details** in the Operation column. On the details page of the file system, click the **SMB Share** tab to view the **Mount Command** column of a share. Username: the user who is authorized to access the file system when you create the SMB share. In the EFS-NAS console, find the file system that you want to manage, and click
 **Details** in the Operation column. On the details page of the file system, click the **SMB**
 **Share** tab, find the share that you want to view, and then choose **Edit > Add User**
 **(Group)** in the Operation column to view or edit the authorized users or user groups.
@@ -314,7 +329,10 @@ This topic describes how to resize a file system.
 2. In the file system list, click the
 icon in the Operation column of the target file system and click **Modify Total Capacity**.
 3. On the **Modify Total Capacity** page, you can view the current total capacity of the file
-system. Enter a value for **New Total Capacity (GiB)**. The new capacity must be greater than the current capacity.
+system. Enter a value for **New Total Capacity (GiB)**.
+
+> **Note:** The new capacity must be greater than the current capacity.
+
 4. Click **Submit**.
 
 ### 4.3 Delete a file system
@@ -325,9 +343,8 @@ This topic describes how to delete a file system.
 
 The file system that you want to delete is unmounted from the mount target of the corresponding computing node, such as an Elastic Compute Service (ECS) instance. All shares are deleted.
 
-**Warning**
+> **Warning:** After you delete a file system, the file system can no longer be restored. Proceed with caution and back up the data in the file system before you begin.
 
-After you delete a file system, the file system can no longer be restored. Proceed with caution and back up the data in the file system before you begin.
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the file system, click the
 icon in the Operation column of the target file system and click **Delete**.
@@ -382,7 +399,8 @@ to the file system and the NFS versions that are used.
 
 **Delete an NFS share**
 
-Before you delete an NFS share, make sure that no client uses the share to connect to the corresponding file system.
+> **Important:** Before you delete an NFS share, make sure that no client uses the share to connect to the corresponding file system.
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. Click the ID of a file system or click **Details** in the Operation column to go to the details
 page of the file system.
@@ -435,7 +453,8 @@ user access permissions.
 
 **Delete an SMB share**
 
-Before you delete an SMB share, make sure that no client uses the share to connect to the corresponding file system.
+> **Important:** Before you delete an SMB share, make sure that no client uses the share to connect to the corresponding file system.
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. Click the ID of a file system or click **Details** in the Operation column to go to the details
 page of the file system.
@@ -483,7 +502,8 @@ ment
 
 **Delete a user**
 
-Before you delete a user, you must remove the user from SMB shares and user groups.
+> **Important:** Before you delete a user, you must remove the user from SMB shares and user groups.
+
 1. Log in to the EFS-NAS console.
 2. In the left-side navigation pane, click **User Group**.
 3. On the **User** tab, find the target user and click **Delete** in the Operation column.
@@ -536,7 +556,8 @@ Operation column.
 
 **Delete a user group**
 
-Before you delete a user group, you must remove the user group from SMB shares.
+> **Important:** Before you delete a user group, you must remove the user group from SMB shares.
+
 1. Log in to the EFS-NAS console.
 2. In the left-side navigation pane, click **User Group**.
 3. Click the **User Group** tab, find the target user group, and click **Delete** in the Operation
@@ -551,7 +572,9 @@ If you accidentally delete files from an File Storage NAS (NAS) file system, you
 
 If you enable the recycle bin feature, the deleted files and directories are temporarily stored in the recycle bin, including the following files and directories: The files that you deleted from EFS-NAS file systems on compute nodes, such as Elastic Compute Service (ECS) instances and containers. For example, if you run the `rm -f` `test01.text` command to delete the test01.text file, the test01.text file is dumped to the recycle bin. The files or directories that are automatically deleted by applications from EFS-NAS file systems on compute nodes. For example, if an application runs the `os.remove("test02.text")` Python code to delete the test02.text file, the test02.text file is dumped to the recycle bin. The files or directories that are deleted when you call the POSIX rename function. For example, the test_a.txt file and the test_b.txt file reside in the same directory. If you run the `mv test_a.txt test_b.txt` command, the test_b.txt file is dumped to the recycle bin. The temporary files that are generated by EFS-NAS file systems. For example, if you run the
 **vim** command to edit a file, the `.swp` and `.swpx` temporary files are dumped to the
-recycle bin. The application log files that are automatically rotated. For example, if you use NGINX to configure automatic log rotation, up to 20 log files can be retained. If the test.log.19 log file is rotated to the test.log.20 log file, the original test.log.20 log file is dumped to the recycle bin. If you overwrite a file but do not delete the file, the file is not dumped to the recycle bin. For example, if you call the open() function to open a file and write data to the file in w+ mode, the original file is not dumped to the recycle bin.
+recycle bin. The application log files that are automatically rotated. For example, if you use NGINX to configure automatic log rotation, up to 20 log files can be retained. If the test.log.19 log file is rotated to the test.log.20 log file, the original test.log.20 log file is dumped to the recycle bin.
+
+> **Note:** If you overwrite a file but do not delete the file, the file is not dumped to the recycle bin. For example, if you call the open() function to open a file and write data to the file in w+ mode, the original file is not dumped to the recycle bin.
 
 ### 6.1 Enable the recycle bin feature
 
@@ -583,7 +606,11 @@ You can restore only one file or directory in a single restore operation. If you
 2. In the left-side navigation pane, click **Recycle Bin**.
 3. Click the ID of a file system to go to the **Recycle Bin Details** page.
 4. Find the file that you want to restore and click **Recovery** in the Actions column.
-The file list displays at most 100 data entries. If the file that you want to restore is not displayed in the list, enter the file name in the search box at the top of the page to search for the file. The current directory and the directory that starts with ~archive in the recycle bin are system directories that cannot be directly restored or deleted. Recycled files are stored in the current directory and then archived to the directory that starts with the ~archive for a period of time. You can select multiple files to be restored, click **Batch Recovery** in the lower part of the page, and then click **OK**.
+
+> **Note:** The file list displays at most 100 data entries. If the file that you want to restore is not displayed in the list, enter the file name in the search box at the top of the page to search for the file.
+> The current directory and the directory that starts with ~archive in the recycle bin are system directories that cannot be directly restored or deleted. Recycled files are stored in the current directory and then archived to the directory that starts with the ~archive for a period of time.
+
+You can select multiple files to be restored, click **Batch Recovery** in the lower part of the page, and then click **OK**.
 5. In the **Confirm recovery?** dialog box, turn on or turn off **Overwrite a file with the same**
 **name** and click **OK**.
 
@@ -634,7 +661,7 @@ A file system can have no more than 16 path levels. The path length of a normal 
 
 **Scheduled snapshot configuration**
 
-Before you create a scheduled snapshot, make sure that a scheduled snapshot policy is created. For more information, see Create a scheduled snapshot policy.
+> **Important:** Before you create a scheduled snapshot, make sure that a scheduled snapshot policy is created. For more information, see Create a scheduled snapshot policy.
 
 | Parameter | Description |
 |---|---|
@@ -768,8 +795,8 @@ The protection periods of WORM can only be extended. You cannot shorten the prot
 2. In the left-side navigation tree, click **WORM Strategy**.
 3. In the WORM policy list, click **Modify** in the **Operation** column of a file system.
 4. In the **Modify WORM** dialog box, extend the protection periods.
-The value of **Default Retention Period** must be equal to or greater than the value of
-**Minimum Retention Period**, and it must be equal to or smaller than the value of
-**Maximum Retention Period**.
+
+> The value of **Default Retention Period** must be equal to or greater than the value of **Minimum Retention Period**, and it must be equal to or smaller than the value of **Maximum Retention Period**.
+
 5. Click **OK**.
 After the protection periods are extended, the changes take effect immediately on all files stored in the file system.

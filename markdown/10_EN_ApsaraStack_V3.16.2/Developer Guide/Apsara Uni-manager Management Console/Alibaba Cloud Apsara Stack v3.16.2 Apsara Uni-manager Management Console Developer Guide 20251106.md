@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 607
 source_pdf: "469e7d0de43f2a54_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Management%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide
@@ -216,9 +216,7 @@ An AccessKey ID and an AccessKey secret are used to implement symmetric encrypti
 
 The Apsara Uni-manager Management Console provides two types of AccessKey pairs: those for personal accounts and those for organization accounts. We recommend that you use an AccessKey pair for personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-**Note**
-
-Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
+> **Note:** Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
 
 **Obtain an AccessKey pair for personal accounts**
 
@@ -239,15 +237,12 @@ rations
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain an AccessKey pair for organizations**
 
-**Warning**
+> **Warning:** An AccessKey pair for personal accounts is managed and controlled by the permission system of the Apsara Uni-manager Management Console. An AccessKey pair for organization accounts provides more permissions than an AccessKey pair for personal accounts. If you need to obtain an AccessKey pair for organizations, make sure that your operation is allowed by your administrator. This ensures security.
 
-An AccessKey pair for personal accounts is managed and controlled by the permission system of the Apsara Uni-manager Management Console. An AccessKey pair for organization accounts provides more permissions than an AccessKey pair for personal accounts. If you need to obtain an AccessKey pair for organizations, make sure that your operation is allowed by your administrator. This ensures security.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -282,17 +277,18 @@ when you use the SDK for Java to call API operations.
 
 rations
 
-**Note**
+| <x-acs- |   |
+|---|---|
+
+> **Note:** When you call API operations in Apsara Stack, you must use `<x-acs-`
+> `organizationid>` to add the organization ID to the request header. Otherwise, the call fails and an error message indicating that you do not have permissions to initiate calls is returned.
+> When you call API operations in Apsara Stack, we recommend that you use `<x-`
+> `acs-resourcegroupid>` to add the resource set ID to the request header. After you specify the organization ID and the resource set ID, you can narrow down the query scope when you query instance resources. If you do not use `<x-acs-`
 
 | <x-acs- |   |
 |---|---|
 
-When you call API operations in Apsara Stack, you must use `<x-acs-` `organizationid>` to add the organization ID to the request header. Otherwise, the call fails and an error message indicating that you do not have permissions to initiate calls is returned. When you call API operations in Apsara Stack, we recommend that you use `<x-` `acs-resourcegroupid>` to add the resource set ID to the request header. After you specify the organization ID and the resource set ID, you can narrow down the query
-
-| <x-acs- |   |
-|---|---|
-
-scope when you query instance resources. If you do not use `<x-acs-` `resourcegroupid>` to specify the resource set ID, the default resource set of the organization to which the user belongs is obtained.
+> `resourcegroupid>` to specify the resource set ID, the default resource set of the organization to which the user belongs is obtained.
 
 **Obtain a region ID**
 
@@ -382,9 +378,9 @@ DKs
 
 To call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain an SDK of your cloud service. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. SDKs for Java, Python, and Go are perfectly supported. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
 #### 2.1.3 Call examples for SDK for Java
 
@@ -408,9 +404,18 @@ To use an Apsara Stack SDK for Java, perform the following steps:
 3. Initiate the API request and process the response or exception.
 DKs
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code. Parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <Product>: Replace it with the name of the service. <Endpoint>: Replace it with the endpoint of the service. <readTimeout>: Replace it with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace it with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace it with the maximum number of requests that are supported by each host. <maxRequests>: Replace it with the maximum number of requests. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code.
+> Parameters:
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <Product>: Replace it with the name of the service.
+> <Endpoint>: Replace it with the endpoint of the service.
+> <readTimeout>: Replace it with a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Replace it with a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Replace it with the maximum number of requests that are supported by each host.
+> <maxRequests>: Replace it with the maximum number of requests.
+> <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -517,9 +522,7 @@ This topic describes how to install and use the SDK for Java of your cloud servi
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
-
-Do not disclose code containing your AccessKey pair (for example, do not commit AccessKey pair-related code to public GitHub projects). Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose code containing your AccessKey pair (for example, do not commit AccessKey pair-related code to public GitHub projects). Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -528,17 +531,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace it with your AccessKey secret.
 ```
 
-**Note**
-
-Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
+> **Note:** Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
 
 ###### 2.1.3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. DKs
 
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -687,7 +692,7 @@ The following code shows an example on how to use CommonRequest to call the Desc
 |---|---|---|---|
 |   |   | , |   |
 
-`<yourInstanceID>` , and `<http://192.168.XX.XX:33XX>` with the actual values. Delete the angle brackets (<>) in your code.
+> `<yourInstanceID>` , and `<http://192.168.XX.XX:33XX>` with the actual values. Delete the angle brackets (<>) in your code.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -845,7 +850,7 @@ The following code shows an example on how to use CommonRequest to call the Desc
 |---|---|---|
 |   |   | , |
 
-`<http://192.168.XX.XX:33XX>` , and `<yourSecurityToken>` with the actual values. Delete the angle brackets (<>) in your code.
+> `<http://192.168.XX.XX:33XX>` , and `<yourSecurityToken>` with the actual values. Delete the angle brackets (<>) in your code.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -965,9 +970,14 @@ AccessKey ID, and AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code.
+> Parameters:
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <ecs.aliyuns.com>: Replace it with the endpoint of the actual service.
 
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code. Parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <ecs.aliyuns.com>: Replace it with the endpoint of the actual service. DKs
+DKs
 
 ```python
 #!/usr/bin/env python
@@ -991,9 +1001,9 @@ response = clt.do_action_with_exception(request) print response # The print stat
 
 This topic describes how to install and use the SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the SDK core library for Python and ECS SDK for Python.
 
-To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the SDK core library for Python and ECS SDK for Python. If you use Python 2.x, run the following command to install the core library:
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -1023,9 +1033,7 @@ DKs
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. The SDKs for Python support AccessKey pair-based authentication. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
-
-Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 clt = AcsClient(access_key, access_secret, region_id)
@@ -1035,9 +1043,7 @@ clt = AcsClient(access_key, access_secret, region_id)
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -1148,7 +1154,9 @@ The following code provides an example on how to use CommonRequest to call the D
 | <yourAccessKeyID> |   |
 |---|---|
 
-`<yourInstanceID>` , and `<ecs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code. DKs
+> `<yourInstanceID>` , and `<ecs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code.
+
+DKs
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1208,7 +1216,7 @@ The following code provides an example on how to use CommonRequest to call the D
 | <yourAccessKeyID> |   |
 |---|---|
 
-`<yourInstanceID>` , and `<cs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code.
+> `<yourInstanceID>` , and `<cs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1286,9 +1294,12 @@ To use the SDK for Go, perform the following steps:
 3. Initiate the API request and process the response or exception.
 DKs
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code. Parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <Endpoint>: Replace it with the actual endpoint.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in your code.
+> Parameters:
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <Endpoint>: Replace it with the actual endpoint.
 
 ```java
 package main import (
@@ -1354,9 +1365,9 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDKs for Go support AccessKey pair-based authentication. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
+> **Important:** Do not disclose any code containing your AccessKey pair. For example, do not commit AccessKey-related code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose any code containing your AccessKey pair. For example, do not commit AccessKey-related code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize an ecsClient instance.
+The following code provides an example on how to initialize an ecsClient instance.
 
 ```
 // Initialize the ecsClient instance. ecsClient, err := ecs.NewClientWithAccessKey(
@@ -1365,9 +1376,7 @@ Do not disclose any code containing your AccessKey pair. For example, do not com
         "<yourAccessKeySecret>")        // Replace it with your AccessKey secret.
 ```
 
-**Note**
-
-Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
+> **Note:** Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
 
 ###### 2.1.5.2.3 Initiate a request
 
@@ -1380,9 +1389,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 
 2. Create an ECS client. The client includes all API operations of ECS.
 
-**Note**
-
-In the following code, replace the parameters with actual values. Delete the angle brackets <> in your code.
+> **Note:** In the following code, replace the parameters with actual values. Delete the angle brackets <> in your code.
 
 ```
 ecsClient,err := <ecs>.NewClientWithAccessKey( // Replace ecs with the name of the a ctual service.
@@ -1428,9 +1435,7 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following sample code shows how to determine and obtain the error message in a `ClientError` returned by ECS SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1442,7 +1447,9 @@ ame of the actual service.
     "fmt"
 ```
 
-`)` DKs
+> `)`
+
+DKs
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1460,9 +1467,7 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following sample code shows how to determine and obtain the error message in a ServerError and Response returned by ECS SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1474,7 +1479,7 @@ ame of the actual service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1506,7 +1511,9 @@ The following code shows an example on how to use CommonRequest to call the Desc
 | <yourAccessKeyID> |   |
 |---|---|
 
-`<yourInstanceID>` , and `<ecs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code. DKs
+> `<yourInstanceID>` , and `<ecs.aliyuncs.com>` with the actual values. Delete the angle brackets (<>) in your code.
+
+DKs
 
 ```java
 package main import (
@@ -1606,7 +1613,7 @@ The following code provides an example on how to use CommonRequest to call the D
 | <yourAccessKeyID> |   |
 |---|---|
 
-`<cs.aliyuncs.com>` , and `<yourSecurityToken>` with the actual values. Delete the angle brackets (<>) in your code.
+> `<cs.aliyuncs.com>` , and `<yourSecurityToken>` with the actual values. Delete the angle brackets (<>) in your code.
 
 ```java
 package main import (
@@ -1697,9 +1704,7 @@ ollowing method to pass parameters:
 
 This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). DKs The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Unimanager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Unimanager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. DKs
 
-**Note**
-
-If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
+> **Note:** If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
 #### 2.2.2 Obtain the endpoint of ASAPI
 
@@ -1740,9 +1745,7 @@ Only the HTTPS protocol is supported. The new endpoint is suffixed with `interne
  https://public.asapi.${global:region}.${global:internet-domain}/asapi/v3
 ```
 
-**Note**
-
-${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained.
+> **Note:** ${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained.
 
 **Verify that the new endpoint is available**
 
@@ -1754,9 +1757,9 @@ You can use the following code to verify whether the new endpoint is available. 
 
 DKs
 
-**Note**
+> **Note:** ${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained.
 
-${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained. Example of an available endpoint: Example of an unavailable endpoint:
+Example of an available endpoint: Example of an unavailable endpoint:
 
 **Historical endpoint**
 
@@ -1766,18 +1769,22 @@ Only the HTTP protocol is supported. The historical endpoint is suffixed with `i
  http://server.asapi.${global:region}.${global:intranet-domain}/asapi/v3
 ```
 
-**Note**
-
-${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained.
+> **Note:** ${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained.
 
 **Obtain the values of variables**
 
 To obtain the values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following steps: DKs
 1. Log on to the Apsara Uni-manager Operations Console.
 
-**Note**
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the logon page.
+> Obtain the username and password for logging on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
+> When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password as prompted.
+> To ensure security, your password must meet the following requirements:
+> It must contain uppercase and lowercase letters.
+> It must contain digits.
+> It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%).
+> It must be 10 to 20 characters in length.
 
-You can select a language from the drop-down list in the upper-right corner of the logon page. Obtain the username and password for logging on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password as prompted. To ensure security, your password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). It must be 10 to 20 characters in length.
 2. In the top navigation bar, choose **Products** > **Base/Platforms** > **Apsara Infrastructure**
 **Management Framework**.
 3. In the left-side navigation pane, choose **Operations** > **Cluster Operations**.
@@ -1794,17 +1801,18 @@ right window, and then press Ctrl+F. Search for region, internet-domain, and int
 
 intranet-domain value.
 
-**Note**
-
-Do not include ${global:} in the endpoint of ASAPI that you use.
+> **Note:** Do not include ${global:} in the endpoint of ASAPI that you use.
 
 #### 2.2.3 Obtain ASAPI SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can download the general package of ASAPI SDKs by using one of the following methods: Go to the **Other Resources** section at the lower part of the Apsara Stack documentation page. Click ASAPI SDK package. After the package is downloaded, select a language and version based on your local environment. DKs
 
-**Note**
-
-The general package of ASAPI SDKs includes ASAPI SDKs for Java, Python, and Node.js. ASAPI SDK for Java version 1.0.6.7-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+. ASAPI SDK for Java version 1.0.2.5-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5. ASAPI SDK for Python version 2.4.7.1-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+. ASAPI SDK for Python version 2.2.1.1-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5. ASAPI SDK for Node.js provides full version support for each edition.
+> **Note:** The general package of ASAPI SDKs includes ASAPI SDKs for Java, Python, and Node.js.
+> ASAPI SDK for Java version 1.0.6.7-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+.
+> ASAPI SDK for Java version 1.0.2.5-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5.
+> ASAPI SDK for Python version 2.4.7.1-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+.
+> ASAPI SDK for Python version 2.2.1.1-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5.
+> ASAPI SDK for Node.js provides full version support for each edition.
 
 #### 2.2.4 SDK for Java
 
@@ -1818,9 +1826,7 @@ You have obtained an AccessKey pair or an STS AccessKey 3-tuple. We recommend th
 
 ASAPI SDK for Java contains Maven project dependencies and JAR packages. After you install the SDK dependencies, you can write code to call Apsara Stack API operations by using ASAPI.
 
-**Note**
-
-In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used.
+> **Note:** In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used.
 
 **Install dependencies**
 
@@ -1884,9 +1890,8 @@ DKs
 </dependencies>
 ```
 
-**Note**
+> **Note:** Replace `1.0.6.7-RELEASE` with the actual version of ASAPI SDK for Java.
 
-Replace `1.0.6.7-RELEASE` with the actual version of ASAPI SDK for Java.
 6. On the right side of IntelliJ IDEA, view information in the Maven section.
 If the information in the following figure appears, the dependencies are added. DKs
 
@@ -1948,9 +1953,9 @@ DKs
 
 `}` `}` `}`
 
-**Note**
-
-1.0.6.7-RELEASE: uses HMAC-SHA256 as the default signature algorithm, and also supports HMAC-SHA1. 1.0.2.5-RELEASE: uses HMAC-SHA1 as the default signature algorithm, and also supports HMAC-SHA256. Use Parameter to set the signature algorithm that you want to use, for example,
+> **Note:** 1.0.6.7-RELEASE: uses HMAC-SHA256 as the default signature algorithm, and also supports HMAC-SHA1.
+> 1.0.2.5-RELEASE: uses HMAC-SHA1 as the default signature algorithm, and also supports HMAC-SHA256.
+> Use Parameter to set the signature algorithm that you want to use, for example,
 
 ```
  parameters.put("SignatureMethod","HMAC-SHA256"); .
@@ -2023,9 +2028,9 @@ An AccessKey pair or an STS AccessKey 3-tuple is obtained. We recommend that you
 
 After you download and decompress the package of Apsara Stack SDK for Python, run the following code in the directory where the package is stored to install the applicable version of SDK for Python.
 
-**Note**
+> **Note:** We recommend that you install Python 3.x.
 
-We recommend that you install Python 3.x. Install Apsara Stack SDK for Python 3.x.
+Install Apsara Stack SDK for Python 3.x.
 
 ```bash
 # Install the core library of Apsara Stack SDK.
@@ -2045,9 +2050,7 @@ pip install aliyun-python2-sdk-asapi-<The version number of the SDK for Python>.
 
 `z` DKs
 
-**Note**
-
-When you install the SDK for Python, the required resource packages are automatically downloaded. If you cannot connect to the Internet, follow the operations described in the Install the SDK for Python without Internet access section to install the SDK for Python.
+> **Note:** When you install the SDK for Python, the required resource packages are automatically downloaded. If you cannot connect to the Internet, follow the operations described in the Install the SDK for Python without Internet access section to install the SDK for Python.
 
 **Install the SDK for Python without Internet access**
 
@@ -2055,9 +2058,9 @@ If you cannot connect to the Internet, perform the following operations to insta
 
 **Step 1: Export the resource packages for the SDK for Python.**
 
-**Note**
+> **Note:** Only the resource packages for the X86-based SDK for Python are provided. For more information, obtain the **downloadPackage.tgz** of the SDK for Python from the Apsara Stack SDK package.
+> If the provided resource packages cannot meet your needs, perform Step 1 to export the resource packages you need.
 
-Only the resource packages for the X86-based SDK for Python are provided. For more information, obtain the **downloadPackage.tgz** of the SDK for Python from the Apsara Stack SDK package. If the provided resource packages cannot meet your needs, perform Step 1 to export the resource packages you need.
 1. If you can connect to the Internet, see the Install the SDK for Python over the Internet
 section to install the SDK.
 2. Run the following command to export the resource packages to the **downloadPackage**
@@ -2073,9 +2076,8 @@ pip freeze > requirements.txt & pip download -d downloadPackage -r requirements.
 
 1. Upload the **downloadPackage.tgz** package to your environment and decompress it.
 
-**Important**
+> **Important:** Decompress the **downloadPackage.tgz** package and store the **downloadPackage** folder in the directory in which the SDK for Python is stored.
 
-Decompress the **downloadPackage.tgz** package and store the **downloadPackage** folder in the directory in which the SDK for Python is stored.
 2. Run the following command to install the Apsara Stack SDK for Python:
 Replace `<The version number of the SDK for Python>` with the actual version number of the SDK for Python. Install Apsara Stack SDK for Python 3.x.
 
@@ -2125,9 +2127,9 @@ print(str(response, encoding='utf-8'))
 
 DKs
 
-**Note**
-
-2.4.7.1-RELEASE: HMAC-SHA256 is used as the default signature algorithm. HMAC- SHA1 is also supported. 2.2.1.1-RELEASE: HMAC-SHA1 is used as the default signature algorithm. HMAC- SHA256 is also supported. Run a command in the following format to specify the signature algorithm:
+> **Note:** 2.4.7.1-RELEASE: HMAC-SHA256 is used as the default signature algorithm. HMAC- SHA1 is also supported.
+> 2.2.1.1-RELEASE: HMAC-SHA1 is used as the default signature algorithm. HMAC- SHA256 is also supported.
+> Run a command in the following format to specify the signature algorithm:
 
 ```
  request.add_body_params("SignatureMethod", "<Your signature algorithm>") . For
@@ -2328,9 +2330,9 @@ requests
 
 This topic describes how to call Apsara Stack APIs registered with ASAPI by sending HTTP requests.
 
-**Note**
+> **Note:** We recommend that you use SDKs to call API operations instead of using HTTP requests. Currently, ASAPI provides SDKs for Node.js, Python, and Java, which save you from the signing process. If you use an SDK to initiate requests, you can skip this topic.
 
-We recommend that you use SDKs to call API operations instead of using HTTP requests. Currently, ASAPI provides SDKs for Node.js, Python, and Java, which save you from the signing process. If you use an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters but has a fixed request structure. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded, which makes them easy to read. Before you initiate a request, you must encode the request URL. After the request is verified, the results are returned. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message.
+The request URL consists of different parameters but has a fixed request structure. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded, which makes them easy to read. Before you initiate a request, you must encode the request URL. After the request is verified, the results are returned. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message.
 
 ### 3.2 Request syntax
 
@@ -2360,18 +2362,16 @@ API operation. For more information, see the related API reference documentation
 
 This topic describes how to sign HTTP API requests. Apsara Stack uses the request signature to verify the identity of the requester. Specifically, Apsara Stack uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console.
+> The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location.
 
 **Step 1: Create a canonicalized query string**
 
 1. Sort the request parameters in alphabetical order, including all common and operation-
 specific parameters except for `Signature` .
 
-**Note**
+> **Note:** If you use the GET method to send a request, the request parameters are included as part of the request URL. The parameters follow the question mark (?) and are connected by ampersands (&) in the URL.
 
-If you use the GET method to send a request, the request parameters are included as part of the request URL. The parameters follow the question mark (?) and are connected by ampersands (&) in the URL.
 2. Encode the names and values of the request parameters in UTF-8 based on RFC 3986. The
 following rules apply in the encoding process: Letters, digits, hyphens ( `-` ), underscores ( `_` ), and periods ( `.` ) do not need to be encoded. Other characters must be percent-encoded in the %XY format. `XY` represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks ( `"` ) are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 . Do not encode spaces as plus signs ( `+` ). The preceding encoding method is similar to but slightly different from the `application/x-www-form-urlencoded` MIME-type encoding algorithm. If you use `java.net.URLEncoder` in the Java standard library, use `percentEncode` to encode request parameters and their values. In the encoded query string, replace plus signs ( `+` ) with %20 , asterisks ( `*` ) with %2A , and %7E with tildes ( ~ ). This way, you can obtain an encoded string that matches the preceding encoding rules. requests
 
@@ -2408,9 +2408,9 @@ example, the Java Base64 encoding method is used.
 String signature = Base64.getEncoder().encodeToString(signData);
 ```
 
-**Note**
+> **Note:** When you calculate the signature, the key value specified by RFC 2104 is your
+> `AccessKey secret` plus an ampersand (&), which has an ASCII value of 38. For more information, see Obtain an AccessKey pair.
 
-When you calculate the signature, the key value specified by RFC 2104 is your `AccessKey secret` plus an ampersand (&), which has an ASCII value of 38. For more information, see Obtain an AccessKey pair.
 3. Encode the `Signature` parameter based on RFC 3986 and add the parameter to the
 canonicalized query string.
 
@@ -2617,9 +2617,9 @@ Common request parameters must be included in all API requests of the Apsara Uni
 | Timestamp | Strin g | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. For example, 2018-01-01T12:00:00Z specifies 20:00:00 on January 1, 2018 in UTC+8. |
 | Format | Strin g | No | The format in which to return the response. Set the value to JSON. |
 
-**Note**
+> **Note:** The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into SDK of the Apsara Uni- manager Management Console. You do not need to specify these parameters.
 
-The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into SDK of the Apsara Unimanager Management Console. You do not need to specify these parameters. You can obtain the values of the `Product` and `Version` parameters in the Apsara Unimanager Management Console. Perform the following steps:
+You can obtain the values of the `Product` and `Version` parameters in the Apsara Unimanager Management Console. Perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products > Others > API Tool**.
 3. In the left-side navigation pane, click **API Directory**.
@@ -2635,11 +2635,7 @@ information.
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see Obtain a resource set ID. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For more information about how to obtain an instance ID, see Obtain an instance ID. |
 
-**Note**
-
-When you call an operation of a cloud service, you must specify common request headers, such as **x-acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-**
-**instanceid**, in the request. x-acs-instanceid specifies the ID of the instance on which you
-want to perform the operation. x-acs-organizationid specifies the ID of the organization to which the instance belongs. x-acs-resourcegroupid specifies the ID of the resource group to which the instance belongs. If you call an operation to create an instance or query the list of instances, you do not need to specify x-acs-instanceid. If you do not specify specific request headers when you call an operation, the relevant data in the root organization and root resource set is used.
+> **Note:** When you call an operation of a cloud service, you must specify common request headers, such as **x-acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-** **instanceid**, in the request. x-acs-instanceid specifies the ID of the instance on which you want to perform the operation. x-acs-organizationid specifies the ID of the organization to which the instance belongs. x-acs-resourcegroupid specifies the ID of the resource group to which the instance belongs. If you call an operation to create an instance or query the list of instances, you do not need to specify x-acs-instanceid. If you do not specify specific request headers when you call an operation, the relevant data in the root organization and root resource set is used.
 
 **Common response parameters**
 
@@ -2695,9 +2691,9 @@ want to perform the operation. x-acs-organizationid specifies the ID of the orga
 
 Before you make ASAPI requests, you must obtain the AccessKey pair (an AccessKey ID and an AccessKey secret) of an organization account in the Apsara Uni-manager Management Console. The organization account grants access permissions on available resources. Then, you can use the AccessKey pair to access the resources and manage the resources. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials.
 
-**Important**
+> **Important:** If you use the AccessKey pair of a personal account to call an API operation, you must configure header parameters for access control. Otherwise, a message is prompted to indicate that you have insufficient permissions.
 
-If you use the AccessKey pair of a personal account to call an API operation, you must configure header parameters for access control. Otherwise, a message is prompted to indicate that you have insufficient permissions. Header parameters
+Header parameters
 
 | Parameter | Description |
 |---|---|
@@ -17178,9 +17174,9 @@ Common request parameters must be included in all Apsara Stack API requests. Tab
 | Timestamp | Strin g | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2018-01-01T12:00:00Z. |
 | Format | Strin g | No | The format of the response. Set the value to JSON. |
 
-**Note**
+> **Note:** The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into the SDK. You do not need to specify these parameters.
 
-The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into the SDK. You do not need to specify these parameters. You can obtain the values of the `Product` and `Version` parameters in the Apsara Unimanager Management Console by performing the following steps:
+You can obtain the values of the `Product` and `Version` parameters in the Apsara Unimanager Management Console by performing the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 Monitor API Reference
 2. In the top navigation bar, choose **Products > Others > API Tool**.
@@ -17197,11 +17193,7 @@ information.
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information about how to obtain resource set IDs, see Obtain the values of common header parameters. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For more information about how to obtain an instance ID, see Obtain the values of common header parameters. |
 
-**Note**
-
-When you call the API operations of cloud services, you must specify the **x-**
-**acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** parameters to
-identify the instance on which you want to perform the operation, and the organization and resource set to which the instance belongs. If you call an API operation to create an instance or query the information about one or more instances, you do not need to specify the x-acs-instanceid header. If you do not specify the headers when you call an API operation, the organization and resource set at the root level are used by default.
+> **Note:** When you call the API operations of cloud services, you must specify the **x-** **acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** parameters to identify the instance on which you want to perform the operation, and the organization and resource set to which the instance belongs. If you call an API operation to create an instance or query the information about one or more instances, you do not need to specify the x-acs-instanceid header. If you do not specify the headers when you call an API operation, the organization and resource set at the root level are used by default.
 
 **Common response parameters**
 
@@ -17232,9 +17224,7 @@ Monitor API Reference
 
 Set **Namespace** to **acs_ecs_dashboard**. Set **Period** to **60** or a multiple of 60. Unit: seconds.
 
-**Note**
-
-The following metrics are collected from the virtual host layer and are slightly different from metrics collected inside the operating system.
+> **Note:** The following metrics are collected from the virtual host layer and are slightly different from metrics collected inside the operating system.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -17252,9 +17242,9 @@ The following metrics are collected from the virtual host layer and are slightly
 
 Set **Namespace** to **acs_ecs_dashboard**. Set **Period** to **15** or a multiple of 15. Unit: seconds. Monitor API Reference
 
-**Note**
-
-For ECS instances, you must install a monitoring plug-in to collect metrics at the operating system level. Installation method: In the left-side navigation pane of the Cloud Monitor console, choose Cloud Service Monitoring and click **ECS**. In the **ECS** monitoring list, select the instances that you want to monitor, and click **Batch Install** in the lower part of the page. Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
+> **Note:** For ECS instances, you must install a monitoring plug-in to collect metrics at the operating system level.
+> Installation method: In the left-side navigation pane of the Cloud Monitor console, choose Cloud Service Monitoring and click **ECS**. In the **ECS** monitoring list, select the instances that you want to monitor, and click **Batch Install** in the lower part of the page.
+> Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -17791,9 +17781,9 @@ http(s)://[Endpoint]/? Action=DescribeProjectMeta &<Common request parameters>
 
 Sample success responses
 
-**Note**
+> **Note:** The response content varies with the services that are actually monitored.
 
-The response content varies with the services that are actually monitored. `JSON` format `{`
+`JSON` format `{`
 
 ```json
  "PageNumber":1,
@@ -18457,9 +18447,9 @@ http(s)://[Endpoint]/?Action=DescribeMetricMetaList &Namespace=acs_ecs_dashboard
 
 Sample success responses
 
-**Note**
+> **Note:** The response content varies with the services that are actually monitored.
 
-The response content varies with the services that are actually monitored. `XML` format
+`XML` format
 
 ```json
 <DescribeMetricMetaListResponse>

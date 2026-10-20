@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 172
 source_pdf: "eb51d3fb42b1e678_Alibaba Cloud Apsara Stack V3.18.6 Resource Orchestration Service Developer Guide 20260312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Resource%20Orchestration%20Service%20Developer%20Guide%2020260312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Resource Orchestration Service Developer Guide 20260312
@@ -129,17 +129,17 @@ You can still call API operations by using the ASAPI gateway if you are using an
 1. Obtain AccessKey credentials.
 Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account or a Security Token Service (STS) AccessKey 3-tuple to call the API operations of the Apsara Uni- manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account or a Security Token Service (STS) AccessKey 3-tuple to call the API operations of the Apsara Unimanager Management Console and cloud services.
 2. Obtain a region ID.
 Obtain a region ID that is required when you call an API operation. For more information, see Obtain the values of common header parameters.
 3. Obtain an organization ID and a resource set ID.
 You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Mana gement Console Developer Guide.
 
-**Note**
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained and the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set.
+> If you do not set the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used by default.
+> If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 
-When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained and the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not set the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used by default. If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 4. Obtain the API references.
 Obtain the developer guide of the cloud service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 5. Obtain the endpoint of the cloud service.
@@ -162,17 +162,17 @@ browser and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
 
-The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform operations based
 on your logon scenarios: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
@@ -206,9 +206,7 @@ An AccessKey credential can be assigned by Resource Access Management (RAM) or S
 
 The AccessKey ID and AccessKey secret contained in an AccessKey credential are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. An AccessKey credential can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, set the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -223,9 +221,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -256,9 +252,14 @@ organization that you want to use. i. Log on to the Apsara Uni-manager Managemen
 iii. Click **View Current Role Policy**. iv. In the **View Policies of Current Role** dialog box, select an organization and view the
 **RAM Role**.
 
-**Note**
-
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the parameter with the name of the current session.
+> <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role.
+> <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
 ```xml
 public static void main(String[] args) {
@@ -320,9 +321,14 @@ vious step.
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the DescribeRegions operation of Resource Orchestration Service (ROS):
 
-**Note**
-
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret.
+> <yourStsToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -439,9 +445,12 @@ If you use Apache Maven to manage a Java project, you need to only import the JA
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionId>: Replace the parameter with the region ID. <yourAccessKeyId>: Replace the parameter with your AccessKey ID. <yourAccessKeySecrect>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with the endpoint of ROS.
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionId>: Replace the parameter with the region ID.
+> <yourAccessKeyId>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecrect>: Replace the parameter with your AccessKey secret.
+> <Endpoint>: Replace the parameter with the endpoint of ROS.
 
 ```java
 package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliyun.tea.*; import com.aliyun.ros20190910.*; import com.aliyun.ros20190910.models.*; import com.aliyun.teaopenapi.*; import com.aliyun.teaopenapi.models.*; public class Sample {
@@ -608,9 +617,9 @@ When you install ROS SDK for Java, you must add the following dependencies to th
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance.
 
-**Warning**
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised. r Java
+r Java
 
 ```java
 private static String ACCESSKEYID = "<yourAccessKeyId>"; // Specify your AccessKey ID
@@ -622,17 +631,21 @@ private static String ACCESSKEYID = "<yourAccessKeyId>"; // Specify your AccessK
 private static String SECRET = "<yourAccessKeySecrect>"; // Specify your AccessKey s ecret. private static String REGIONID = "<yourRegionId>"; // Specify the region ID.
 ```
 
-**Note**
-
-In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. r Java
+r Java
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -754,9 +767,14 @@ an AccessKey ID, and an AccessKey secret.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
+> **Note:** In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <ros.aliyuncs.com>: Replace the parameter with the endpoint of ROS.
 
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ros.aliyuncs.com>: Replace the parameter with the endpoint of ROS. r Python
+r Python
 
 ```python
 #!/usr/bin/env python
@@ -807,9 +825,7 @@ pip3 install aliyun-python-sdk-ros
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair r Python as the credentials when you initialize a client instance.
 
-**Warning**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id, endpoint=endpoint)
@@ -819,9 +835,7 @@ from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, r
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -924,9 +938,14 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
+> **Note:** In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <Endpoint>: Replace the parameter with your ROS endpoint.
 
-In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with your ROS endpoint. r Go
+r Go
 
 ```java
 package main import (
@@ -990,17 +1009,13 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. r Go
 
-**Warning**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 // Initialize a client instance. client, err := sdk.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
-**Note**
-
-In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 5.2.3 Handle errors
 
@@ -1035,9 +1050,7 @@ When you send a request, if an error occurs on the client instance and cannot be
 
 r Go
 
-**Note**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Note:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1066,9 +1079,7 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
 
 `}`
 
-**Note**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Note:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1087,9 +1098,17 @@ package main import (
 
 r Go If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. The following sample code provides an example on how to query details of a stack by calling the GetStack operation of ROS.
 
-**Note**
+> **Note:** In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <ros.aliyuncs.com>: Replace the parameter with the endpoint of the service.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
 
-In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ros.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. r Go
+r Go
 
 ```java
 package main import (
@@ -1291,9 +1310,10 @@ e API calls
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -1407,9 +1427,9 @@ The default value is `false` .
 
 **Settings**
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following settings:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following settings: e API calls
+e API calls
 
 ```
 // If you specify the HTTPSInsecure parameter for the request, the setting takes effect only for the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter for the request to true. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -1500,9 +1520,8 @@ request = ListStacksRequest() request.set_protocol_type('https') # Use the HTTPS
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1634,9 +1653,9 @@ Signature = Base64( HMAC-SHA1( AccessKey Secret, UTF-8-Encoding-Of(StringToSign)
 1. Create a canonicalized query string by using the request parameters.
 i. Create a canonicalized query string by arranging the request parameters (including all common and operation-specific parameters except Signature) in alphabetical order.
 
-**Note**
+> **Note:** If you use the GET method to submit the request, these parameters are the part located after the question mark (?) and connected by the ampersands (&) in the request uniform resource identifier (URI).
 
-If you use the GET method to submit the request, these parameters are the part located after the question mark (?) and connected by the ampersands (&) in the request uniform resource identifier (URI). ii. Encode the names and values of the arranged request parameters in the request URL by using the unicode transformation format (UTF)-8 character set. The following table describes the encoding rules.
+ii. Encode the names and values of the arranged request parameters in the request URL by using the unicode transformation format (UTF)-8 character set. The following table describes the encoding rules.
 
 | Character | Encoding rule |
 |---|---|
@@ -1673,15 +1692,12 @@ query string based on the URL encoding rules.
 
 1. Calculate the HMAC value of the string-to-sign based on RFC 2104.
 
-**Note**
+> **Note:** Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) that follows the secret is used as the key for the HMAC calculation.
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) that follows the secret is used as the key for the HMAC calculation.
 2. Encode the HMAC value in Base64 to obtain the signature string.
 3. Add the signature string to the request as the **Signature** parameter.
 
-**Note**
-
-When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded that is similar to other parameters based on rules defined in RFC 3986.
+> **Note:** When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded that is similar to other parameters based on rules defined in RFC 3986.
 
 **Example**
 

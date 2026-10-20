@@ -5,7 +5,7 @@ doc_version: "20220719"
 pdf_pages: 69
 source_pdf: "41c76e344b6866e0_Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User Guide 20220719.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20Virtual%20Private%20Cloud%20User%20Guide%2020220719.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User Guide
@@ -401,8 +401,10 @@ You cannot directly deploy cloud resources in a virtual private cloud (VPC). You
 4. On the VSwit ches page, you can create the following cloud resources.
 Click Creat e ECS Inst ance in the Operat ion column, and then create an ECS instance on the Creat e Inst ance page. For more information about how to configure ECS instances, see the Creat e an ECS inst ance topic in the Quick st art chapter of ECS User Guide. In the Operat ion column, choose
 > Creat e SLB Inst ance, and then create an SLB instance
+
 on the Creat e SLB Inst ance page. For more information about how to configure SLB instances, see the Creat e an SLB inst ance topic in the Quick st art chapter of SLB User Guide. In the Operat ion column, choose
 > Creat e ApsaraDB RDS Inst ance, and then create an
+
 ApsaraDB RDS instance on the Creat e Inst ance page. For more information about how to configure ApsaraDB RDS instances, see the Creat e an ApsaraDB RDS inst ance topic in the Quick st art chapter of ApsaraDB RDS User Guide.
 
 #### 4.3.3 Modify the information about a vSwitch

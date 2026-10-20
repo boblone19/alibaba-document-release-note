@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 20
 source_pdf: "a8e3391c51657c7f_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831
@@ -75,9 +75,9 @@ Compared with third-party data migration or synchronization tools, Data Transmis
 
 DTS supports multiple data transmission modes, including data migration, data synchronization, and change tracking.
 
-**Note**
+> **Note:** In the change tracking and data synchronization modes, data is transmitted in real time.
 
-In the change tracking and data synchronization modes, data is transmitted in real time. In the data migration mode, data is migrated between databases without interrupting application operations. The application downtime during data migration is reduced to a few minutes.
+In the data migration mode, data is migrated between databases without interrupting application operations. The application downtime during data migration is reduced to a few minutes.
 
 **High performance**
 
@@ -99,9 +99,7 @@ Data Transmission Service (DTS) is applicable to scenarios such as interruption-
 
 Traditional migration tools have many disadvantages. For example, these tools cannot ensure data consistency, require that services be suspended for a long time, and even have a great impact on the business during data migration. DTS provides an interruption-free data migration solution that minimizes the service downtime to minutes. The interruption-free data migration process involves schema migration, full data migration, and incremental data migration. In the incremental data migration phase, data is synchronized between the source and destination instances in real time. You can validate the services in the destination instance, and switch your services to the destination instance after the validation is complete. The entire system is then eventually migrated.
 
-**Note**
-
-Throughout the migration process, you may experience service interruptions only when the services are switched from the source instance to the destination instance.
+> **Note:** Throughout the migration process, you may experience service interruptions only when the services are switched from the source instance to the destination instance.
 
 **Accelerated access to global services**
 

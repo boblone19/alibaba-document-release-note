@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 199
 source_pdf: "858fc6ba2397c2f7_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide 20260902
@@ -135,9 +135,7 @@ AccessKey uses symmetric encryption with the AccessKey ID and AccessKey secret t
 
 The Apsara Uni-manager Management Console provides personal AccessKey pairs and organization AccessKey pairs. We recommend that you use personal AccessKey pairs to call API operations.
 
-**Note**
-
-Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
+> **Note:** Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
 
 **When you obtain a personal AccessKey pair, make sure**
 
@@ -159,15 +157,12 @@ click **Personal Information**.
 3. In the **AccessKey**section, you can view the AccessKey information of your personal
 account.
 
-**Important**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Important:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain an organization AccessKey pair**
 
-**Warning**
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top menu bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resource Management**>**Organization**
@@ -193,9 +188,8 @@ icon in the **Resource Application Result** resource named `asrdr-api` and click
 
 If you want to call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) by using the POP gateway, you must obtain the SDK core library from SDK Center and integrate the SDK dependencies of ASR-DR. Obtain the SDK core library: Go to SDK Center and download the **SDK core library** for your programming language. Integrate the SDK dependencies of ASR-DR: For more information, see the documentation of Alibaba Cloud SDKs.
 
-**Note**
-
-We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. ASR-DR SDK supports Java.
+> **Note:** We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+> ASR-DR SDK supports Java.
 
 ## 3 Use the SDK for Java
 
@@ -233,9 +227,7 @@ If you use Apache Maven to manage a Java project, you need to only import the JA
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for identity verification. If you use the SDK for Java, you can use an AccessKey pair for identity verification. For more information about how to obtain an AccessKey ID and an AccessKey secret, an endpoint, and a region ID, see Obtain an AccessKey pair, Obtain an endpoint, and Obtain a region ID. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
 
 ```
 // Configure the endpoint of the API. DefaultProfile.addEndpoint(
@@ -256,9 +248,10 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 );
 
-**Note**
+> **Note:** In the preceding sample code, replace the variables `<yourRegionID>` ,
+> `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the code.
 
-In the preceding sample code, replace the variables `<yourRegionID>` , `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the code. You must call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) as a user that is assigned one of the following roles: operations administrator, organization administrator, global disaster recovery administrator, and organization disaster recovery administrator.
+You must call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) as a user that is assigned one of the following roles: operations administrator, organization administrator, global disaster recovery administrator, and organization disaster recovery administrator.
 
 ### 3.3 Initiate a request
 

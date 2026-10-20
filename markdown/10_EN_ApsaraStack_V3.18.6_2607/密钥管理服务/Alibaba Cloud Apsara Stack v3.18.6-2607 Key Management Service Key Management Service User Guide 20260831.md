@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 51
 source_pdf: "ea066775dc9dd523_Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Key%20Management%20Service%20Key%20Management%20Service%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service User Guide 20260831
@@ -67,9 +67,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -82,8 +90,9 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
 **What to do next**
 
@@ -91,7 +100,10 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 
 1. If you forget the login password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, enter the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+parameters, enter the verification code, and then click **Confirm**.
+
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ### 2.2 User roles and permissions
 
@@ -176,7 +188,10 @@ After you create a customer master key (CMK), you can view the details of the CM
 3. On the **Customer Master Key** page, search for a CMK by **Protection Level**, **Key Status**,
 **Key Usage**, **Key Type**, **Regional**, and **Alias**.
 4. Find the CMK that you want to view and click its alias or choose **More > Key Details** in the
-Actions column. In the CMK list, you can find a CMK and move the pointer over the value in the **Key ID** column. Then, the description of the CMK appears. This helps you distinguish CMKs.
+Actions column.
+
+> **Note:** In the CMK list, you can find a CMK and move the pointer over the value in the **Key ID** column. Then, the description of the CMK appears. This helps you distinguish CMKs.
+
 5. In the **Key Details** section, view the details of the CMK, such as the status, purpose, and
 creation time.
 
@@ -248,9 +263,9 @@ then click OK.
 
 You can change the primary region of only CMKs. Replica keys do not support this operation.
 
-**Warning**
+> **Warning:** Make sure that the CMK and replica keys are enabled before you change the primary region.
+> During the operation, you cannot perform other operations to manage the CMK or replica keys.
 
-Make sure that the CMK and replica keys are enabled before you change the primary region. During the operation, you cannot perform other operations to manage the CMK or replica keys.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products > Security > Key Management Service**.
 3. On the **Customer Master Key** page, find the CMK whose primary region you want to
@@ -278,7 +293,9 @@ column, choose **More > Schedule Key Deletion**.
 
 **Result**
 
-The key status changes to **Pending Deletion**. Before the pending deletion period ends, you can cancel the scheduled deletion by choosing **More > Cancel Key Deletion**.
+The key status changes to **Pending Deletion**.
+
+> **Note:** Before the pending deletion period ends, you can cancel the scheduled deletion by choosing **More > Cancel Key Deletion**.
 
 ### 3.8 Configure a rotation policy
 
@@ -305,7 +322,10 @@ Data keys can be used to encrypt and decrypt on-premises data. This topic descri
 2. In the top navigation bar, choose **Products > Security > Key Management Service**.
 3. On the **Customer Master Key** page, find an asymmetric CMK whose Key Usage is
 **Encrypt/Decrypt** and click its alias or choose **More > Key Details** in the **Actions**
-column. The key type for symmetric keys is Aliyun_AES_256.
+column.
+
+> **Note:** The key type for symmetric keys is Aliyun_AES_256.
+
 4. On the **Data Key Usage** tab, click the **Generate Data Key** tab, configure parameters, and
 click **Submit**. i. In the **Parameters to Generate Data Key** section, configure the **Key Type** and
 **Encryption Context** parameters.
@@ -315,8 +335,10 @@ ii. In the **Parameters to Generate Data Key** section, configure the **Encrypt 
 **Specify the export publicKey** section, configure the **Publickey Type**, **Public Key**,
 and **Key Algorithm** parameters.
 **No**: Export a data key without encrypting the data key by using a specific public key.
-This way, you can directly generate a data key. After the data key is generated, you can view the ciphertext of the data key in the
-**Data key export results** dialog box.
+This way, you can directly generate a data key.
+
+> **Note:** After the data key is generated, you can view the ciphertext of the data key in the **Data key export results** dialog box.
+
 5. Optional. On the **Data Key Usage** tab, click the **Data Key Re-encryption** tab, configure
 parameters, and click **Submit**.
 
@@ -328,7 +350,7 @@ parameters, and click **Submit**.
 |---|---|
 | Data key transfer protection across regions | i. In the Parameters to export dataKey section, configure the Data Key Ciphertext and Source EncryptionContext parameters. ii. In the Target key parameters section, configure the Target RegionId, Target Asymmetric KeyID, Target Asymmetric KeyVersionID, Target KeyId, and Target EncryptionContext parameters. |
 
-After transfer protection is configured for the data key, you can view the ciphertext of the data key in the **Data key transfer protection result** dialog box.
+> **Note:** After transfer protection is configured for the data key, you can view the ciphertext of the data key in the **Data key transfer protection result** dialog box.
 
 ### 3.10 Generate a CSR
 
@@ -340,7 +362,9 @@ To generate a certificate, you must submit a certificate signing request (CSR) t
 2. In the top navigation bar, choose **Products > Security > Key Management Service**.
 3. On the **Customer Master Key** page, find an asymmetric CMK whose Key Usage is
 **Sign/Verify** and click its alias or choose More > **Key Details** in the **Actions** column.
-The key type for asymmetric keys is RSA_2048, EC_P256, or EC_P256K.
+
+> **Note:** The key type for asymmetric keys is RSA_2048, EC_P256, or EC_P256K.
+
 4. On the **Key Version** tab, click **Generate CSR** in the **Actions** column.
 5. In the **Generate CSR** dialog box, configure the parameters as required.
 6. Click **Generate CSR**.
@@ -363,7 +387,11 @@ The following table describes all resource types and their Alibaba Cloud Resourc
 
 **Actions in KMS**
 
-KMS defines actions used in RAM policies for each API operation that requires access control. Actions must be in the kms:${api-name} format. The DescribeRegions operation does not require access control. It can be called by Apsara Stack tenant accounts, RAM users, or RAM roles after they pass RAM authentication. The following tables describe the RAM action and resource type that correspond to each KMS API operation. Key service operations
+KMS defines actions used in RAM policies for each API operation that requires access control. Actions must be in the kms:${api-name} format.
+
+> **Note:** The DescribeRegions operation does not require access control. It can be called by Apsara Stack tenant accounts, RAM users, or RAM roles after they pass RAM authentication.
+
+The following tables describe the RAM action and resource type that correspond to each KMS API operation. Key service operations
 
 | Operation | Action | Resource type |
 |---|---|---|
@@ -502,8 +530,10 @@ Aliases are optional to customer master keys (CMKs). Aliases must be unique with
 
 **Overview**
 
-Each alias is associated with a CMK. However, aliases are independent of the CMKs that are associated with them. Aliases have the following characteristics: You can call the UpdateAlias operation to associate an alias with another CMK. This operation does not affect the original CMK. If you delete an alias, the CMK associated with the alias is not deleted. Resource Access Management (RAM) users must be authorized before they can perform operations on an alias. For more information, see Use RAM for access control. Aliases cannot be modified. To change the alias of a CMK, you must delete the original alias and create another one for the CMK. You can replace the ID of a CMK with its alias in the request parameters of the following API operations: DescribeKey Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext For more information about the API operations, see the **API reference** topic of
-**Developer Guide**.
+Each alias is associated with a CMK. However, aliases are independent of the CMKs that are associated with them. Aliases have the following characteristics: You can call the UpdateAlias operation to associate an alias with another CMK. This operation does not affect the original CMK. If you delete an alias, the CMK associated with the alias is not deleted. Resource Access Management (RAM) users must be authorized before they can perform operations on an alias. For more information, see Use RAM for access control. Aliases cannot be modified. To change the alias of a CMK, you must delete the original alias and create another one for the CMK. You can replace the ID of a CMK with its alias in the request parameters of the following API operations: DescribeKey Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext
+
+> **Note:** For more information about the API operations, see the **API reference** topic of **Developer Guide**.
+
 To specify an alias instead of a CMK ID in the request parameters of the preceding API operations, a RAM user must have the relevant permissions on the CMK. The RAM user does not need to have permissions on the alias. When you use an alias, you must ensure that the alias is complete. Example:
 
 ```
@@ -535,7 +565,11 @@ An alias must contain the `alias/` prefix. An alias, excluding the prefix, can c
         "acs:kms:cn-hangzhou:123456:alias/example"
 ```
 
-`]` `}` `]` `}` A new alias created for a CMK does not affect the existing aliases of the CMK. You can use one of the following methods to create an alias: Console: i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Security > Key Management Service**. iii. On the **Customer Master Key** page, find the desired CMK, and click its alias or choose
+`]` `}` `]` `}`
+
+> **Note:** A new alias created for a CMK does not affect the existing aliases of the CMK.
+
+You can use one of the following methods to create an alias: Console: i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Security > Key Management Service**. iii. On the **Customer Master Key** page, find the desired CMK, and click its alias or choose
 **More > Key Details** in the **Actions** column.
 iv. On the **Aliases** tab, click **Create Alias**. v. In the **Create Alias** dialog box, configure the Alias parameter. vi. Click **OK**. API: Call the CreateAlias operation. Alibaba Cloud CLI: Run the `aliyun kms CreateAlias` command.
 
@@ -695,8 +729,10 @@ Typically, you are the owner of a customer master key in KMS. In this case, the 
 
 ### 7.1 Symmetric encryption
 
-Symmetric encryption is the most common method for data protection. Key Management Service (KMS) provides easy-to-use API operations to encrypt and decrypt data in the cloud. For details about API operations, see the **API Reference** chapter in the **Developer**
-**Guide**.
+Symmetric encryption is the most common method for data protection. Key Management Service (KMS) provides easy-to-use API operations to encrypt and decrypt data in the cloud.
+
+> **Note:** For details about API operations, see the **API Reference** chapter in the **Developer** **Guide**.
+
 If you do not specify a key specification (KeySpec), KMS creates a symmetric key by default. Alibaba Cloud supports mainstream symmetric key algorithms and provides robust security.
 
 **Types of symmetric keys**
@@ -766,8 +802,10 @@ This topic describes how to import and delete external key material.
 
 **Background information**
 
-A customer master key (CMK) is a fundamental resource in Key Management Service (KMS). A CMK consists of a key ID, basic metadata such as the key status, and the key material used to encrypt and decrypt data. By default, KMS generates the key material when you call the CreateKey operation to create a CMK. You can also create a key and specify its key material source as external. In this case, KMS does not generate key material for the CMK. You can import your own key material into the CMK. You can call the DescribeKey operation to check the key material source. For more information about API operations, see the **API Reference** and the **Developer**
-**Guide**.
+A customer master key (CMK) is a fundamental resource in Key Management Service (KMS). A CMK consists of a key ID, basic metadata such as the key status, and the key material used to encrypt and decrypt data. By default, KMS generates the key material when you call the CreateKey operation to create a CMK. You can also create a key and specify its key material source as external. In this case, KMS does not generate key material for the CMK. You can import your own key material into the CMK. You can call the DescribeKey operation to check the key material source.
+
+> **Note:** For more information about API operations, see the **API Reference** and the **Developer** **Guide**.
+
 Keys are classified as ordinary keys or external keys based on the key material source: When the **Origin** parameter of KeyMetadata is set to Aliyun_KMS, it means that the key material is generated by KMS and the key is called an **ordinary key**. When **Origin** is EXTERNAL, it indicates that the key material is imported from an external source, and the key is known as an **external key**. When using imported key material, note the following: Generate your key material from a random source that meets your security requirements. You are responsible for the durability of your key material. KMS ensures the high availability of imported key material, but cannot guarantee the same durability as KMS-generated key material. You can immediately delete imported key material by calling the DeleteKeyMaterial operation. You can also set an expiration time for the key material to delete it automatically (the CMK is not deleted). In contrast, key material generated by KMS cannot be deleted directly. You can only delete it along with its CMK after a 7- to 30-day waiting period by calling the ScheduleKeyDeletion operation. After imported key material is deleted, you can re-import the same key material to reactivate the CMK. Therefore, you are responsible for maintaining a secure copy of your key material. A CMK can be associated with only one specific key material. When you import key material into a CMK, the CMK is permanently bound to that key material. You cannot import different key material into the CMK, even if the original key material expires or is deleted. If you need to rotate a CMK that uses external key material, you must create a new CMK and import the new key material. CMKs are independent. For example, data encrypted by one CMK cannot be decrypted by another CMK, even if both CMKs use the same key material. You can import only a 256-bit symmetric key as key material.
 
 **Import key material**
@@ -787,7 +825,12 @@ The import parameters include a public key for encrypting your key material and 
 ```
 
 3. Import the key material.
-You can import key material into a new external key, or re-import key material that has expired or been deleted. You can also use this operation to reset the expiration time of the key material. An import token can only be used for the CMK it was generated for. The import token is valid for 24 hours. You can use it multiple times within this period. After it expires, you must request a new import token and public key. i. Encrypt your key material by using the public key. The public key is a 2048-bit RSA key. The encryption algorithm you use must match the one specified when you requested the import parameters. The API returns the public key in Base64-encoded format, so you must decode it before use. KMS currently supports the `RSAES_OAEP_SHA_256` , `RSAES_OAEP_SHA_1` , and `RSAES_PKCS1_V1_5` encryption algorithms. ii. Base64-encode the encrypted key material. iii. Call the ImportKeyMaterial operation with the Base64-encoded key material and the import token.
+
+> **Note:** You can import key material into a new external key, or re-import key material that has expired or been deleted. You can also use this operation to reset the expiration time of the key material.
+> An import token can only be used for the CMK it was generated for.
+> The import token is valid for 24 hours. You can use it multiple times within this period. After it expires, you must request a new import token and public key.
+
+i. Encrypt your key material by using the public key. The public key is a 2048-bit RSA key. The encryption algorithm you use must match the one specified when you requested the import parameters. The API returns the public key in Base64-encoded format, so you must decode it before use. KMS currently supports the `RSAES_OAEP_SHA_256` , `RSAES_OAEP_SHA_1` , and `RSAES_PKCS1_V1_5` encryption algorithms. ii. Base64-encode the encrypted key material. iii. Call the ImportKeyMaterial operation with the Base64-encoded key material and the import token.
 
 ```
 ./aliyun --skip-secure-verify --region ${please-replace-your-region} --endpoint $ {please-replace-your-endpoint} --access-key-id ${please-replace-your-access-key-id} --access-key-secret ${please-replace-your-access-key-secret} kms ImportKeyMaterial --KeyId 1339cb7d-54d3-47e0-b595-c7d3dba8**** --EncryptedKeyMaterial xxx --ImportTok en xxxx
@@ -1153,7 +1196,11 @@ aliyun kms CreateKey --KeySpec=EC_P256K --KeyUsage=SIGN/VERIFY --ProtectionLevel
 
 **Calculate the message digest**
 
-For both RSA and ECC signing, you must first calculate a digest of the message. The signing operation is then performed on this digest. The algorithm used to generate the digest must match the signing algorithm specified when you call KMS. For example, the ECDSA_SHA_256 signing algorithm requires a SHA- 256 digest. If you use the SHA-384 algorithm to create the digest, it will be incompatible with ECDSA_SHA_256. The examples in this topic use the SHA-256 digest algorithm.
+For both RSA and ECC signing, you must first calculate a digest of the message. The signing operation is then performed on this digest.
+
+> **Note:** The algorithm used to generate the digest must match the signing algorithm specified when you call KMS. For example, the ECDSA_SHA_256 signing algorithm requires a SHA- 256 digest. If you use the SHA-384 algorithm to create the digest, it will be incompatible with ECDSA_SHA_256.
+
+The examples in this topic use the SHA-256 digest algorithm.
 1. Save the message to be signed, "this is message", in the message-file.txt file:
 
 ```
@@ -1183,7 +1230,8 @@ uCx5YpLfBrqoYMP8Hf9H7j9/1zT+PPxq1qJRW6uQbos=
 ```
 
 2. Pass the Base64-encoded digest to KMS to generate the signature.
-The required parameters and resulting signature depend on the key and signing algorithm. In the following examples, each generated signature is saved to a separate file.
+
+> **Note:** The required parameters and resulting signature depend on the key and signing algorithm. In the following examples, each generated signature is saved to a separate file.
 
 **RSASSA-PSS**
 
@@ -1370,8 +1418,14 @@ This topic describes how to enable automatic rotation for a customer master key 
 
 **Key versions**
 
-A CMK in KMS supports multiple key versions. Each key version is generated independently, and different versions of the same CMK are not cryptographically related. KMS performs automatic rotation by creating a new key version. A CMK has two types of key versions: Primary key version A primary key version is the active encryption key of a CMK. At any point in time, each CMK has exactly one primary key version. When you call an encryption API, such as GenerateDataKey or Encrypt, KMS uses the primary key version of the specified CMK to encrypt the plaintext. You can view the **PrimaryKeyVersion** property in the response returned by DescribeKey. Non-primary key version A non-primary key version is an inactive encryption key of a CMK. A CMK can have zero or more non-primary key versions. A non-primary key version is a previous primary key version. When key rotation creates a new primary key version, KMS does not delete or disable the previous versions. These non-primary key versions are required to decrypt data that was previously encrypted. Encryption APIs use the primary key version of the specified CMK. Decryption APIs use the specific key version that corresponds to the provided ciphertext. There are two ways to generate a new key version: Create a CMK Call CreateKey to create a CMK. If you set the **Origin** parameter to Aliyun_KMS, KMS generates the initial key version and sets it as the primary key version. For more information about the CreateKey operation, see **API Reference > Key**
-**management > CreateKey** in the Key Management Service developer guide.
+A CMK in KMS supports multiple key versions. Each key version is generated independently, and different versions of the same CMK are not cryptographically related. KMS performs automatic rotation by creating a new key version. A CMK has two types of key versions: Primary key version A primary key version is the active encryption key of a CMK. At any point in time, each CMK has exactly one primary key version. When you call an encryption API, such as GenerateDataKey or Encrypt, KMS uses the primary key version of the specified CMK to encrypt the plaintext. You can view the **PrimaryKeyVersion** property in the response returned by DescribeKey. Non-primary key version A non-primary key version is an inactive encryption key of a CMK. A CMK can have zero or more non-primary key versions. A non-primary key version is a previous primary key version. When key rotation creates a new primary key version, KMS does not delete or disable the previous versions. These non-primary key versions are required to decrypt data that was previously encrypted.
+
+> **Note:** Encryption APIs use the primary key version of the specified CMK. Decryption APIs use the specific key version that corresponds to the provided ciphertext.
+
+There are two ways to generate a new key version: Create a CMK Call CreateKey to create a CMK. If you set the **Origin** parameter to Aliyun_KMS, KMS generates the initial key version and sets it as the primary key version.
+
+> **Note:** For more information about the CreateKey operation, see **API Reference > Key** **management > CreateKey** in the Key Management Service developer guide.
+
 Automatic rotation You can configure an automatic rotation policy for a CMK. KMS executes this policy at specified intervals to create new key versions.
 
 **Automatic rotation**
@@ -1402,9 +1456,7 @@ The parameters are described as follows:
 
 `LastRotationTime` : The time when the last key version was generated. You can query this value from the `LastRotationDate` field returned by the DescribeKey operation. `NextRotationTime` : The time for the next scheduled rotation. KMS creates a new key version after this time is reached. You can query this value from the `NextRotationDate` field returned by the DescribeKey operation.
 
-**Important**
-
-Updating the rotation period might cause the next scheduled rotation time to be in the past. This does not change the rotation behavior. If the scheduled time is in the past, KMS immediately rotates the key.
+> **Important:** Updating the rotation period might cause the next scheduled rotation time to be in the past. This does not change the rotation behavior. If the scheduled time is in the past, KMS immediately rotates the key.
 
 **How key state affects rotation**
 
@@ -1412,7 +1464,9 @@ Only a CMK with a **KeyState** of Enabled can be rotated. Do not call UpdateRota
 
 **Limitations**
 
-The following key types do not support multiple versions: Service-managed keys: Keys that other cloud services create and manage in KMS on your behalf. They provide a basic layer of encryption for your data in those services. Bring your own key (BYOK): Keys that you import into KMS. For this type of CMK, the **Origin** property is External. KMS does not generate key material for you and cannot automatically initiate rotation. Therefore, these two key types do not support version-based rotation, either automatic or manual. For BYOK keys, this is because managing them is already complex. You are responsible for the key lifecycle, which requires an on-premises key management system, keeping information synchronized with KMS, and understanding that deleting key material in the cloud has no buffer period. Adding multiple versions would greatly increase this complexity and the risk of misconfigurations that could put your data at risk. Additionally, since each version could become unavailable at a different time, it would be difficult to guarantee the availability of both the CMK and the data it protects. For keys that do not support version-based rotation, see **Manually rotate CMKs** for an alternative solution.
+The following key types do not support multiple versions: Service-managed keys: Keys that other cloud services create and manage in KMS on your behalf. They provide a basic layer of encryption for your data in those services. Bring your own key (BYOK): Keys that you import into KMS. For this type of CMK, the **Origin** property is External. KMS does not generate key material for you and cannot automatically initiate rotation. Therefore, these two key types do not support version-based rotation, either automatic or manual. For BYOK keys, this is because managing them is already complex. You are responsible for the key lifecycle, which requires an on-premises key management system, keeping information synchronized with KMS, and understanding that deleting key material in the cloud has no buffer period. Adding multiple versions would greatly increase this complexity and the risk of misconfigurations that could put your data at risk. Additionally, since each version could become unavailable at a different time, it would be difficult to guarantee the availability of both the CMK and the data it protects.
+
+> **Note:** For keys that do not support version-based rotation, see **Manually rotate CMKs** for an alternative solution.
 
 ### 9.3 Manually rotate a master key
 

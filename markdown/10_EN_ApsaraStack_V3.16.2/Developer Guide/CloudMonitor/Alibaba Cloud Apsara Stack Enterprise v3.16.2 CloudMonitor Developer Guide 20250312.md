@@ -5,7 +5,7 @@ doc_version: "20250312"
 pdf_pages: 174
 source_pdf: "288b8545e01fe1c4_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide 20250312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20Developer%20Guide%2020250312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide
@@ -56,7 +56,9 @@ Common request parameters must be included in all API requests of the Apsara Uni
 | Timestamp | Strin g | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2018-01-01T12:00:00Z. |
 | Format | Strin g | No | The format of the response. Set the value to JSON. |
 
-The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into the SDK. You do not need to specify these parameters. To obtain the values of the `Product` and `Version` parameters in the Apsara Uni-manager Management Console, perform the following steps:
+> **Note:** The Signature, SignatureMethod, SignatureVersion, SignatureNonce, Timestamp, and Format parameters are encapsulated into the SDK. You do not need to specify these parameters.
+
+To obtain the values of the `Product` and `Version` parameters in the Apsara Uni-manager Management Console, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products > Others > API Tool**.
 3. In the left-side navigation pane, click **API Directory**.
@@ -72,9 +74,7 @@ information.
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information, see the Obtain a resource set ID section of the Obtain the values of common request headers topic. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For more information, see the Obtain an instance ID section of the Obtain the values of common request headers topic. |
 
-When you call the API operations of cloud services, you must specify the **x-**
-**acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** headers to
-identify the instance on which you want to perform the operation, and the organization and resource set to which the instance belongs. If you call an API operation to create an instance or query the information about one or more instances, you do not need to specify the x-acs-instanceid header. If you do not specify the request headers when you call an API operation, the root organization and root resource set are used by default.
+> **Note:** When you call the API operations of cloud services, you must specify the **x-** **acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** headers to identify the instance on which you want to perform the operation, and the organization and resource set to which the instance belongs. If you call an API operation to create an instance or query the information about one or more instances, you do not need to specify the x-acs-instanceid header. If you do not specify the request headers when you call an API operation, the root organization and root resource set are used by default.
 
 **Common response parameters**
 
@@ -101,7 +101,11 @@ When you call an API operation provided by CloudMonitor, you must specify the
 
 **Basic metrics**
 
-Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds. The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
+Set the **Namespace** parameter to **acs_ecs_dashboard**.
+
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+
+The metrics described in the following table are collected from the virtual host layer and are slightly different from metrics collected in the operating system.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -119,9 +123,13 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** par
 
 **Operating system-related metrics**
 
-To collect operating system-related metrics of Elastic Compute Service (ECS) instances, you must install a monitoring plug-in. To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click Cloud Service Monitoring. On the Cloud product monitoring page, click **ECS**. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade**
-**plug-ins** below the instance list.
-Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed. Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
+> **Note:** To collect operating system-related metrics of Elastic Compute Service (ECS) instances, you must install a monitoring plug-in.
+> To install a monitoring plug-in, perform the following operations: In the left-side navigation pane of the CloudMonitor console, click Cloud Service Monitoring. On the Cloud product monitoring page, click **ECS**. On the **Host monitoring** page, select the instances that you want to monitor and click **Bulk install or upgrade** **plug-ins** below the instance list.
+> Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
+
+Set the **Namespace** parameter to **acs_ecs_dashboard**.
+
+> Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -267,7 +275,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS (New)**
 
-ApsaraDB RDS also supports a new link. Data is collected at 60-second intervals. ApsaraDB RDS (New) supports three types of engines: MySQL, PolarDB, and PostgreSQL.
+> **Note:** ApsaraDB RDS also supports a new link. Data is collected at 60-second intervals.
+> ApsaraDB RDS (New) supports three types of engines: MySQL, PolarDB, and PostgreSQL.
 
 **ApsaraDB RDS for MySQL**
 
@@ -546,7 +555,7 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 
 **Read/write splitting instances**
 
-ApsaraDB for Redis Standard Edition instances and ApsaraDB for Redis Read/write splitting instances share a set of metrics.
+> **Note:** ApsaraDB for Redis Standard Edition instances and ApsaraDB for Redis Read/write splitting instances share a set of metrics.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -860,7 +869,8 @@ Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to 
 
 **AnalyticDB for MySQL V3.0**
 
-Set the **Namespace** parameter to **acs_adb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_adb**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -896,7 +906,8 @@ Set the **Namespace** parameter to **acs_adb**. Set the **Period** parameter to 
 
 **PolarDB-X 1.0**
 
-Set the **Namespace** parameter to **acs_polarx_drds**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_polarx_drds**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -918,7 +929,8 @@ Set the **Namespace** parameter to **acs_polarx_drds**. Set the **Period** param
 
 **Compute node-related metrics**
 
-Set the **Namespace** parameter to **acs_drds**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_drds**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1060,7 +1072,8 @@ Set the **Namespace** parameter to **acs_nat_gateway**. Set the **Period** param
 
 **Elasticsearch on Kubernetes**
 
-Set the **Namespace** parameter to **acs_elasticsearch**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_elasticsearch**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Instance-related metrics**
 
@@ -1186,7 +1199,8 @@ Set the **Namespace** parameter to **acs_rocketmq_dashboard**. Set the **Period*
 
 **NAS**
 
-Set the **Namespace** parameter to **acs_nas**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_nas**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **File system-related metrics**
 
@@ -1278,7 +1292,9 @@ Set the **Namespace** parameter to **acs_blink**. Set the **Period** parameter t
 
 **MaxCompute**
 
-Set the **Namespace** parameter to **acs_maxcompute_prepay**. Set the **Period** parameter to an integer multiple of 300. Default value: 300. Unit: seconds.
+Set the **Namespace** parameter to **acs_maxcompute_prepay**.
+
+> Set the **Period** parameter to an integer multiple of 300. Default value: 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1289,7 +1305,9 @@ Set the **Namespace** parameter to **acs_maxcompute_prepay**. Set the **Period**
 
 **Realtime Compute for Apache Flink**
 
-Set the **Namespace** parameter to **acs_flink.** Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+Set the **Namespace** parameter to **acs_flink.**
+
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Overview**
 
@@ -1459,7 +1477,8 @@ Set the **Namespace** parameter to **acs_flink.** Set the **Period** parameter t
 
 **CSG**
 
-Set the **Namespace** parameter to **acs_csg_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_csg_dashboard**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
 |---|---|---|---|---|
@@ -1479,7 +1498,8 @@ Set the **Namespace** parameter to **acs_csg_dashboard**. Set the **Period** par
 
 **Lindorm**
 
-Set the **Namespace** parameter to **acs_lindorm**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_lindorm**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Wide table engine-related metrics**
 
@@ -1574,7 +1594,8 @@ Set the **Namespace** parameter to **acs_lindorm**. Set the **Period** parameter
 
 **Container Service Monitoring**
 
-Set the **Namespace** parameter to **acs_k8s**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
+> **Note:** Set the **Namespace** parameter to **acs_k8s**.
+> Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Cluster**
 
@@ -1742,7 +1763,11 @@ Sample requests
 http(s)://[Endpoint]/? Action=DescribeProjectMeta &<Common request parameters>
 ```
 
-Sample success responses The response content varies with the services that are actually monitored. `JSON` format `{`
+Sample success responses
+
+> **Note:** The response content varies with the services that are actually monitored.
+
+`JSON` format `{`
 
 ```json
  "PageNumber":1,
@@ -2371,7 +2396,11 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeMetricMetaList &Namespace=acs_ecs_dashboard &<Common request parameters>
 ```
 
-Sample success responses The response content varies with the services that are actually monitored. `XML` format
+Sample success responses
+
+> **Note:** The response content varies with the services that are actually monitored.
+
+`XML` format
 
 ```json
 <DescribeMetricMetaListResponse>

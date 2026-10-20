@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 299
 source_pdf: "b3e7cc31b1a88752_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Backup and Recovery User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%A4%87%E4%BB%BDASRBR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Backup%C2%A0and%C2%A0Recovery%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience ASR for Backup and Recovery User Guide 20260701
@@ -177,7 +177,10 @@ The following table describes the logon methods of different roles.
 
 **Permissions**
 
-The following table describes the permissions of different roles on the ASR for Backup and Recovery console. The operations administrator and resource auditor can perform operations on all organizations. The organization administrator and organization resource auditor can perform operations only on the organization to which they belong and the subordinate organizations.
+The following table describes the permissions of different roles on the ASR for Backup and Recovery console.
+
+> **Note:** The operations administrator and resource auditor can perform operations on all organizations.
+> The organization administrator and organization resource auditor can perform operations only on the organization to which they belong and the subordinate organizations.
 
 | Feature | Permissio n | Operations administrator | Organization administrator | Resource auditor | Organization resource auditor |
 |---|---|---|---|---|---|
@@ -253,13 +256,11 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. In the top navigation bar, select **Products**.
 5. In the left-side navigation pane, click **Disaster Recovery and Backup**.
@@ -349,7 +350,8 @@ Only operations administrators can create storage pool groups and storage pools.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**.
 3. On the **Manage Storage Pool Group** page, click **Create Storage Pool Group**.
 4. In the **Add Storage Pool Group** dialog box, configure the parameters and click **OK**.
-A maximum of 16 storage pool groups can be created.
+
+> **Note:** A maximum of 16 storage pool groups can be created.
 
 | Parameter | Description |
 |---|---|
@@ -369,7 +371,9 @@ A maximum of 16 storage pool groups can be created.
 
 5. In the storage pool group list, click the name of the storage pool group.
 6. On the page that appears, click **Create Storage Pool**. In the **Add Storage Pool** dialog
-box, configure the parameters. You can also click **Add Storage Pool** in the **Actions** column on the Manage Storage Pool Group page to create a storage pool.
+box, configure the parameters.
+
+> **Note:** You can also click **Add Storage Pool** in the **Actions** column on the Manage Storage Pool Group page to create a storage pool.
 
 | Parameter | Description |
 |---|---|
@@ -505,7 +509,8 @@ following table.
 | Storage Capacity | Customize the storage capacity of the backup vault. If you set this value to -1, no limit applies. The storage capacity is determined by the capacity of the specified bucket. Unit: GB. Note The storage size of the backup vault cannot exceed that of the storage pool to which it belongs. |
 
 5. Click **OK**.
-If the storage vault fails to be created, the storage resources may be insufficient. Scale out the storage resources before you can create a vault.
+
+> **Note:** If the storage vault fails to be created, the storage resources may be insufficient. Scale out the storage resources before you can create a vault.
 
 **Result**
 
@@ -524,7 +529,10 @@ You can view the information about the files in an Object Storage Service (OSS) 
 3. In the list of backup vaults, find the backup vault that you want to view and click **Preview**
 in the **Actions** column.
 4. In the message that appears, view the following information about files in the OSS bucket
-for the backup vault: names, sizes, and update time. If an OSS bucket contains folders, you can click the name of a folder to view the file directories in the folder.
+for the backup vault: names, sizes, and update time.
+
+> **Note:** If an OSS bucket contains folders, you can click the name of a folder to view the file directories in the folder.
+
 5. Click **OK**.
 
 **View backup vault details**
@@ -567,7 +575,13 @@ including Synchronization Progress, Vault Usage, and Storage Pool Proportion.
 
 **(Optional) Lock a backup vault**
 
-You can only lock storage and database (excluding PolarDB-X 1.0) backup vaults whose storage medium is Object Storage Service (OSS), CDS-OSS, or PanguStor. The backup lock feature cannot be disabled once enabled. You can only extend the backup lock duration. Before the lock duration of a backup vault expires, the data in the backup vault cannot be deleted. After submitting the lock request, the retention period for data from backup plans targeting this vault will be synchronized to match the configured backup lock duration. After the backup lock feature is enabled, you must configure retention policies for OSS buckets. The retention policies provide th Write Once Read Many (WORM) feature.
+You can only lock storage and database (excluding PolarDB-X 1.0) backup vaults whose storage medium is Object Storage Service (OSS), CDS-OSS, or PanguStor.
+
+> The backup lock feature cannot be disabled once enabled. You can only extend the backup lock duration.
+> Before the lock duration of a backup vault expires, the data in the backup vault cannot be deleted.
+> After submitting the lock request, the retention period for data from backup plans targeting this vault will be synchronized to match the configured backup lock duration.
+
+After the backup lock feature is enabled, you must configure retention policies for OSS buckets. The retention policies provide th Write Once Read Many (WORM) feature.
 1. Log in to the ASR for Backup and Recovery console.
 2. In the left-side navigation pane, choose **Backup Repository**.
 3. In the backup vault list, click **Backup Lock** in the **Actions** column.
@@ -615,7 +629,14 @@ parameters, and then click **Search**.
 6. Click **OK**.
 After the mirror vault is created, it is displayed in the list on the **Backup Vaults** page.
 7. Click the
-icon in the **Image Repository** column to display the mirror vault list. The number indicates the number of mirror vaults attached to the backup vault. View the basic information and synchronization status of a mirror vault: Click a mirror vault name or bucket name to view the basic information, operation records, backup vault association chart, and mirror vault. If the **Status** column indicates that the creation or synchronization failed, you can click **Retry** in the **Actions** column to create a mirror vault or synchronize data again. Modify a mirror vault: a. Click **Edit** in the **Actions** column. The Edit Mirror Vault dialog box appears. b. After you modify the parameter values, click **OK**. Disconnect the mirror vault from the backup vault: a. Click **Disconnect** in the **Actions** column. b. In the message that appears, click **OK**. If the disconnection fails, the possible reason may be that the data replication link fails to be disconnected due to source OSS exceptions. After the source OSS recovers, data may still be synchronized even though the disconnection in the ASR-BR console fails. If the disconnection succeeds, the availability of the backup sets of the mirror vault remains the same as that of the backup vault. When the backup records of the backup vault expire, the backup data of the mirror vault cannot be used for data restoration.
+icon in the **Image Repository** column to display the mirror vault list. The number indicates the number of mirror vaults attached to the backup vault. View the basic information and synchronization status of a mirror vault: Click a mirror vault name or bucket name to view the basic information, operation records, backup vault association chart, and mirror vault.
+
+> **Note:** If the **Status** column indicates that the creation or synchronization failed, you can click **Retry** in the **Actions** column to create a mirror vault or synchronize data again.
+
+Modify a mirror vault: a. Click **Edit** in the **Actions** column. The Edit Mirror Vault dialog box appears. b. After you modify the parameter values, click **OK**. Disconnect the mirror vault from the backup vault: a. Click **Disconnect** in the **Actions** column. b. In the message that appears, click **OK**.
+
+> **Note:** If the disconnection fails, the possible reason may be that the data replication link fails to be disconnected due to source OSS exceptions. After the source OSS recovers, data may still be synchronized even though the disconnection in the ASR-BR console fails.
+> If the disconnection succeeds, the availability of the backup sets of the mirror vault remains the same as that of the backup vault. When the backup records of the backup vault expire, the backup data of the mirror vault cannot be used for data restoration.
 
 ## 10 Backup plans
 
@@ -649,13 +670,28 @@ then click **Next**.
 | Backup Mode | Configure this parameter only for ECS instances. Snapshot Backup: backs up an ECS instance or specified disks of an ECS instance. File Backup: backs up ECS files. |
 
 5. On the **Select Instance** wizard page, select the instance to back up, and click **Next**.
-The instance to back up must be in the **In Use** state. A backup plan is created for only one instance. When the instance type is RDS, PolarDB, or PolarDB-X, you can add only one instance to one backup plan. You cannot select an instance whose protection status is **Protected**. You can add one Object Storage Service (OSS) bucket to multiple backup plans. You can add one Apsara File Storage NAS file system to multiple backup plans. You can add one ECS instance to both a file backup plan and a cloud disk backup plan. For ECS instances that use the file backup mode, you can add them to multiple backup plans. A Tablestore instance contains multiple tables. When the instance type is TableStore, you can view the number of tables under the instance in the
-**Tablestore Table** column.
+
+> **Note:** The instance to back up must be in the **In Use** state.
+> A backup plan is created for only one instance.
+> When the instance type is RDS, PolarDB, or PolarDB-X, you can add only one instance to one backup plan. You cannot select an instance whose protection status is **Protected**.
+> You can add one Object Storage Service (OSS) bucket to multiple backup plans.
+> You can add one Apsara File Storage NAS file system to multiple backup plans.
+> You can add one ECS instance to both a file backup plan and a cloud disk backup plan.
+> For ECS instances that use the file backup mode, you can add them to multiple backup plans.
+> A Tablestore instance contains multiple tables. When the instance type is TableStore, you can view the number of tables under the instance in the **Tablestore Table** column.
+
 6. (Optional) Select Tablestore tables. Perform this step only if you select **Tablestore** for
 **Instance Type** on the **Basic Information** page.
-i. In the left-side section, select the names of the tables that you want to back up. You can back up a maximum of two tables simultaneously per instance. If you select two or fewer tables, the system backs up both tables concurrently. If you select more than two tables, the system queues the additional tables for backup. ii. Click to add the selected Tablestore tables to the right-side section. iii. Click **Next**.
+i. In the left-side section, select the names of the tables that you want to back up.
+
+> **Note:** You can back up a maximum of two tables simultaneously per instance. If you select two or fewer tables, the system backs up both tables concurrently. If you select more than two tables, the system queues the additional tables for backup.
+
+ii. Click to add the selected Tablestore tables to the right-side section. iii. Click **Next**.
 7. (Optional) On the **Install Client** page, configure parameters for installing the Hybrid
-Backup Recovery (HBR) client and click **Next**. This step is applicable only to ECS instances that use the **File Backup** method. The ECS Cloud Assistant is used when installing the HBR client. Ensure that the ECS Cloud Assistant is installed on the ECS instance and is in the normal state.
+Backup Recovery (HBR) client and click **Next**.
+
+> **Note:** This step is applicable only to ECS instances that use the **File Backup** method.
+> The ECS Cloud Assistant is used when installing the HBR client. Ensure that the ECS Cloud Assistant is installed on the ECS instance and is in the normal state.
 
 | Instance type | Name | Description |
 |---|---|---|
@@ -668,7 +704,8 @@ Backup Recovery (HBR) client and click **Next**. This step is applicable only to
 |   | Client Installation Status (optional) | After configuring vCPUs on Client and Maximum Worker Threads on Client, click install to start installing the HBR client. Click Refresh to update the installation status in real time. After the installation status changes to The client is installed, you can perform the next step. The system automatically performs a connectivity test. Note After installation, you can uninstall the client or edit the settings for vCPUs on Client and Maximum Worker Threads on Client. The right-side section of the Install Client page displays the client installation information, including the installation status, client version, heartbeat keep-alive time, number of CPU cores used by client, and maximum number of worker threads for client. If keepalive does not time out, you can uninstall the client or perfor connectivity testing. If keepalive times out, you can uninstall or reinstall the client. If the ECS instance already has a client installed, the next time you create a backup plan for the ECS instance, the client installation status is displayed as The client is installed. |
 
 8. On the **Configure Instance** page, configure the relevant parameters and click **Next**.
-Skip this step when you create backup plans for ApsaraDB RDS, PolarDB, Tablestore, and PolarDB-X instances.
+
+> **Note:** Skip this step when you create backup plans for ApsaraDB RDS, PolarDB, Tablestore, and PolarDB-X instances.
 
 | Instance type | Name | Description |
 |---|---|---|
@@ -709,7 +746,10 @@ Skip this step when you create backup plans for ApsaraDB RDS, PolarDB, Tablestor
 
 9. On the **Backup Policy** configuration wizard page, configure the backup policy and click
 **Next**.
-Different instance types support different backup policy parameters. Configure the parameters based on the on-screen instructions and the following table. The following table describes the backup policy parameters.
+
+> **Note:** Different instance types support different backup policy parameters. Configure the parameters based on the on-screen instructions and the following table.
+
+The following table describes the backup policy parameters.
 
 | Parameter | Description |
 |---|---|
@@ -932,7 +972,9 @@ click **Next**. Perform this step only if you select **Logical Backup** for **Ba
 | Select Database and Table | Databases and Tables for Backup | Select the databases and tables that you want to back up. |
 
 6. On the **Backup Policy** configuration wizard page, configure the backup policy according to
-the following table, then click **Next**. Different instance types support different backup policy parameters. Configure the parameters based on UI prompts and the parameter descriptions in the following table.
+the following table, then click **Next**.
+
+> **Note:** Different instance types support different backup policy parameters. Configure the parameters based on UI prompts and the parameter descriptions in the following table.
 
 | Backup type | Para meter | Description |
 |---|---|---|
@@ -1191,7 +1233,9 @@ table and click **Next**.
 | Backup Estimation | The estimated backup speed, first full backup time, and subsequent incremental backup time are displayed. |
 
 6. In the **Backup Policy** step, configure the parameters that are described in the following
-table and click **Next**. You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
+table and click **Next**.
+
+> **Note:** You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -1272,7 +1316,10 @@ table and click **Next**.
 |   | (Optional) Traffic Threshold | An optional parameter for setting traffic throttling for a specific period of time when you back up data from a production center to a backup vault. For more information, see the tooltip on the actual page. You can set different traffic thresholds for peak hours and off-peak hours based on your business requirements. For example, you can set a high traffic threshold for off-peak hours and a low traffic threshold for peak hours to maximize the use of your bandwidth. |
 
 6. In the **Backup Policy** step, configure the parameters that are described in the following
-table and click **Next**. If you set the **Backup Mode** parameter to **File Backup**, enable the local or remote backup feature based on your business requirements. Make sure that at least one backup policy is enabled. If you set the **Backup Mode** parameter to **Snapshot Backup**, enable the local or remote backup feature based on your business requirements. Only one backup policy can be enabled.
+table and click **Next**.
+
+> **Note:** If you set the **Backup Mode** parameter to **File Backup**, enable the local or remote backup feature based on your business requirements. Make sure that at least one backup policy is enabled.
+> If you set the **Backup Mode** parameter to **Snapshot Backup**, enable the local or remote backup feature based on your business requirements. Only one backup policy can be enabled.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -1311,7 +1358,9 @@ This topic describes how to create a backup plan for File Storage NAS (NAS) file
 
 **Prerequisites**
 
-For versions earlier than V3.18, organization administrators, organization backup operators, organization backup administrators, and organization backup and restoration operators can create backup plans. For V3.18.6 and later versions, users with custom roles that have the ASR-BR product permissions and management permissions on the specified organization and its subordinate organizations can create backup plans. However, operations administrators cannot create backup plans. A backup vault is created. For more information, see Create a backup vault. ASR-BR allows you to back up NAS file systems that use the Network File System (NFS) protocol or Server Message Block (SMB) protocol.
+For versions earlier than V3.18, organization administrators, organization backup operators, organization backup administrators, and organization backup and restoration operators can create backup plans. For V3.18.6 and later versions, users with custom roles that have the ASR-BR product permissions and management permissions on the specified organization and its subordinate organizations can create backup plans. However, operations administrators cannot create backup plans. A backup vault is created. For more information, see Create a backup vault.
+
+> **Note:** ASR-BR allows you to back up NAS file systems that use the Network File System (NFS) protocol or Server Message Block (SMB) protocol.
 
 **Procedure**
 
@@ -1341,7 +1390,9 @@ table and click **Next**.
 |   | Number of Concurrent Backups | The number of concurrent backups. When you create a backup plan for NAS file systems, you can specify the maximum number of concurrent reads from the source and concurrent writes to the destination. Specify the number of concurrent backups based on the number and average size of NAS files. |
 
 6. In the **Backup Policy** step, configure the parameters that are described in the following
-table and click **Next**. You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
+table and click **Next**.
+
+> **Note:** You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -1411,7 +1462,9 @@ table and click **Next**.
 | Filter Method | The filtering method. This parameter is optional. It is required if you set the Source Resource parameter to Project Backup. You can specify the tables, resources, and functions that you want to back up by configuring a whitelist or blacklist. |
 
 6. In the **Backup Policy** step, configure the parameters that are described in the following
-table and click **Next**. You can enable the local or remote backup feature based on your business requirements. Make sure that at least one backup policy is enabled.
+table and click **Next**.
+
+> **Note:** You can enable the local or remote backup feature based on your business requirements. Make sure that at least one backup policy is enabled.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -1471,7 +1524,9 @@ table and click **Next**.
 | Backup Content | Currently, two backup modes are supported: All Indexes and Specified Index. When utilizing the selective Specified Index backup method, click the browse button adjacent to the index selection text field to designate target indices for backup. |
 
 6. In the **Backup Policy** step, configure the parameters that are described in the following
-table and click **Next**. You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
+table and click **Next**.
+
+> **Note:** You can enable local backup, remote backup, or both, based on your requirements. You must enable at least one backup policy.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -1633,7 +1688,8 @@ search conditions to search for the backup plan.
 5. In the **Instance Information** section of the **Backup Information** tab, find the instance
 that you want to manage and click **Configure** in the Actions column.
 6. In the dialog box that appears, configure the parameters for the instance and click **OK**.
-The parameters of the backup information vary based on the instance type. You can configure the parameters based on the on-screen instructions.
+
+> **Note:** The parameters of the backup information vary based on the instance type. You can configure the parameters based on the on-screen instructions.
 
 ### 10.7 Modify a backup policy
 
@@ -1662,7 +1718,8 @@ search conditions to search for the backup plan.
 5. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup**
 **Policy**.
 6. Modify the parameter settings of the backup policy and click **Save**.
-The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions.
+
+> **Note:** The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions.
 
 ### 10.8 View log backup files
 
@@ -1670,7 +1727,9 @@ You can view the log files of ApsaraDB RDS instances and PolarDB clusters that a
 
 **Background information**
 
-The **Log Backup** tab is only available on the backup plan details page of ApsaraDB RDS instances, PolarDB Shared Storage Edition instances, and PolarDB Local Disk Edition instances. Data is available on the Log Backup tab only when you create a backup plan for an ApsaraDB RDS instance and turn on **Enable Log Backup** in the Backup Policy step of the Create Backup Plan page. The log backup feature is only available for organization administrators. If you log in to the ASR-BR console as an operations administrator, this feature is not displayed.
+The **Log Backup** tab is only available on the backup plan details page of ApsaraDB RDS instances, PolarDB Shared Storage Edition instances, and PolarDB Local Disk Edition instances. Data is available on the Log Backup tab only when you create a backup plan for an ApsaraDB RDS instance and turn on **Enable Log Backup** in the Backup Policy step of the Create Backup Plan page.
+
+> **Note:** The log backup feature is only available for organization administrators. If you log in to the ASR-BR console as an operations administrator, this feature is not displayed.
 
 **Procedure**
 
@@ -1702,15 +1761,12 @@ This status is displayed when an event is canceled.
 An event in a **Failed** or **Stop** state cannot be retried. An event in a **Timeout** or **Sub-**
 **events failed** state can be retried.
 
-**Important**
+> **Important:** This operation is an event O&M operation. If the most recent event is successfully executed, do not perform the retry operation for the previous event.
 
-This operation is an event O&M operation. If the most recent event is successfully executed, do not perform the retry operation for the previous event.
 **Pending**, **Execute sub-events**, and **Synchronizing**
 If an event is in one of the preceding states, you can click **Cancel** in the Actions column to cancel the event.
 
-**Important**
-
-This operation is an event O&M operation. This operation is irreversible. Proceed with caution.
+> **Important:** This operation is an event O&M operation. This operation is irreversible. Proceed with caution.
 
 ## 11 Backup records
 
@@ -1727,9 +1783,17 @@ Operations administrators can view backup record details and the corresponding b
 1. Log in to the ASR-BR console.
 2. In the left-side navigation pane, click **Backup Records**.
 3. On the **Backup Record** page, view backup records of backup plans and instances.
-To view the backup records of a backup plan, perform the following steps: a. In the Backup History section of the Backup Record page, click Plan View. On the Plan View tab, configure the Organization, Resource Set, and Plan Name parameters and click **Search**. b. Find the backup plan that you want to view and click its name to go to the Backup Information tab. c. On the Plan View tab, find the backup plan that you want to view and click the icon next to the backup plan name. Then, click **View Details** in the Actions column to go to the Backup Record tab. To view the backup records of an instance, perform the following steps: a. In the Backup History section of the Backup Record page, click Instance Perspective. b. On the Instance Perspective tab, configure the Organization, Resource Set, Instance Type, and Instance ID parameters. c. Click Search. d. Find the instance that you want to view and click the icon next to the instance ID to view all backup records of the instance. e. Click **Details** in the **Actions** column to view the details of the backup record, including the backup configurations. You can browse the backup file size or delete a backup record only when
-**Successful** or **Partially Successful** is displayed in the **Record Status** column of
-an instance. f. Click **Browse** in the Actions column to view the corresponding backup set and the size of backup files stored in the backup set. g. Click **Delete** in the Actions column to delete the backup record and the data stored in backup sets. Locked backup records cannot be deleted. In the **Record Preview** dialog box of an OSS instance, a NAS file system, or an ECS instance that adopts file backup, the first and last backup files of each backup set are displayed. You can click the names of the files to view all files in the backup set. The Browse operation is not supported by NAS file systems or ECS instances that adopt file backup if they have more than 3 million files and more than 900 GB of backup records. In the Record Preview dialog box of an ECS instance that adopts instance backup, the metadata of each disk is displayed. In the Record Preview dialog box of a MaxCompute instance, the information about the tables, resources, and functions stored in the backup set is displayed. In the Record Preview dialog box of an Elasticsearch on Kubernetes instance, the index information stored in the backup set is displayed.
+To view the backup records of a backup plan, perform the following steps: a. In the Backup History section of the Backup Record page, click Plan View. On the Plan View tab, configure the Organization, Resource Set, and Plan Name parameters and click **Search**. b. Find the backup plan that you want to view and click its name to go to the Backup Information tab. c. On the Plan View tab, find the backup plan that you want to view and click the icon next to the backup plan name. Then, click **View Details** in the Actions column to go to the Backup Record tab. To view the backup records of an instance, perform the following steps: a. In the Backup History section of the Backup Record page, click Instance Perspective. b. On the Instance Perspective tab, configure the Organization, Resource Set, Instance Type, and Instance ID parameters. c. Click Search. d. Find the instance that you want to view and click the icon next to the instance ID to view all backup records of the instance. e. Click **Details** in the **Actions** column to view the details of the backup record, including the backup configurations.
+
+> **Note:** You can browse the backup file size or delete a backup record only when **Successful** or **Partially Successful** is displayed in the **Record Status** column of an instance.
+
+f. Click **Browse** in the Actions column to view the corresponding backup set and the size of backup files stored in the backup set. g. Click **Delete** in the Actions column to delete the backup record and the data stored in backup sets. Locked backup records cannot be deleted.
+
+> In the **Record Preview** dialog box of an OSS instance, a NAS file system, or an ECS instance that adopts file backup, the first and last backup files of each backup set are displayed. You can click the names of the files to view all files in the backup set.
+> The Browse operation is not supported by NAS file systems or ECS instances that adopt file backup if they have more than 3 million files and more than 900 GB of backup records.
+> In the Record Preview dialog box of an ECS instance that adopts instance backup, the metadata of each disk is displayed.
+> In the Record Preview dialog box of a MaxCompute instance, the information about the tables, resources, and functions stored in the backup set is displayed.
+> In the Record Preview dialog box of an Elasticsearch on Kubernetes instance, the index information stored in the backup set is displayed.
 
 ## 12 Data restoration
 
@@ -1761,17 +1825,21 @@ click **Next**.
 
 5. On the **Configure Recovery Resources** wizard page, click **Add Instance**.
 i. Click **Add Instance** on the left side of the page. ii. In the **Add Instance** dialog box, set **Instance Type** and **Instance**.
-**Original Instance Backup Mode**: Select Logical Backup or Physical Backup.
-This field appears only when the selected instance type supports both logical backup and physical backup.
-**Restore Method**: Configure this parameter only when **Instance Type** is
-**Elastic Compute Service** or **ECS VMware**.
-For Elastic Compute Service, you can select **Snapshot Recovery** or
-**File Recovery**.
-For ECS VMware, you can select **Local Recovery** or **Cloud Recovery**. You can add multiple instance types and multiple instances to one recovery plan. iii. Click **OK**.
+
+> **Note:** **Original Instance Backup Mode**: Select Logical Backup or Physical Backup. This field appears only when the selected instance type supports both logical backup and physical backup.
+> **Restore Method**: Configure this parameter only when **Instance Type** is **Elastic Compute Service** or **ECS VMware**.
+> For Elastic Compute Service, you can select **Snapshot Recovery** or **File Recovery**.
+> For ECS VMware, you can select **Local Recovery** or **Cloud Recovery**.
+> You can add multiple instance types and multiple instances to one recovery plan.
+
+iii. Click **OK**.
 6. After adding instances, on the **Configure Recovery Resources** wizard, configure the
 recovery settings according to each instance type. For detailed instructions, see Resource recovery configuration parameter description. i. On the left side of the page, select the instance to configure. ii. After completing the recovery configuration based on the instance type, click **Next**.
 7. In the **OK** phase, set **Execution Mode** and **Priority** for the recovery plan. After confirming
-that all information is correct, click **Submit**. After you create a recovery plan, you can immediately execute it. For more information, see Start a recovery plan. After you create a recovery plan, you can associate a restore policy with it. Then, the system automatically executes the recovery based on the cycle configured in the restore policy.
+that all information is correct, click **Submit**.
+
+> **Note:** After you create a recovery plan, you can immediately execute it. For more information, see Start a recovery plan.
+> After you create a recovery plan, you can associate a restore policy with it. Then, the system automatically executes the recovery based on the cycle configured in the restore policy.
 
 | Parameter |   | Description |
 |---|---|---|
@@ -2477,7 +2545,9 @@ View the recovery history of restored instances on the Recovery History tab.
 3. On the **Recovery History** tab, expand **Advanced Filter**, set your query conditions, and
 then click **Search**. View the recovery history of instances in the list.
 4. Click **Details** in the **Operation** column of a recovery record to view its details.
-Click the next to an instance backup record ID to view backup record details.
+
+> **Note:** Click the
+> next to an instance backup record ID to view backup record details.
 
 #### 12.2.2 View recovery events
 
@@ -2496,15 +2566,12 @@ instance. Click **Log** in the Actions column of an event to view detailed log i
 **Failed**, **Timeout**, **Stop**: When a sub-event is in one of these three states, click the
 icon next to the sub-event to retry it.
 
-**Important**
+> **Important:** This operation is an event O&M action. Do not perform this operation unless necessary. If a subsequent execution of the same event succeeds, do not retry the older one.
 
-This operation is an event O&M action. Do not perform this operation unless necessary. If a subsequent execution of the same event succeeds, do not retry the older one.
 **Pending**, **In Progress**, **Synchronizing**: When a sub-event is in one of these three
 states, click the icon next to the sub-event to cancel it. After cancellation, the subevent status changes to **Canceled**.
 
-**Important**
-
-This operation is an event O&M action. Do not perform this operation unless necessary. This operation is irreversible. Proceed with caution.
+> **Important:** This operation is an event O&M action. Do not perform this operation unless necessary. This operation is irreversible. Proceed with caution.
 
 ### 12.3 Restore policy
 
@@ -2543,15 +2610,15 @@ View the restore policies you created and their associated recovery plans.
 3. On the **Restore Policy** tab, enter a policy name to quickly find a restore policy.
 4. In the restore policy list, view the restore policies you created.
 5. (Optional) If a restore policy has an associated recovery plan, click the
-icon next to the restore policy to view the associated recovery plan. Click **View Recovery Plan** in the Operation column to go to the details page of the recovery plan.
+icon next to the restore policy to view the associated recovery plan.
+
+> **Note:** Click **View Recovery Plan** in the Operation column to go to the details page of the recovery plan.
 
 #### 12.3.3 Modify a restore policy
 
 You can modify a restore policy when you need to change it.
 
-**Important**
-
-After you modify a restore policy, the system updates the execution configurations of all associated recovery plans. Proceed with caution.
+> **Note:** After you modify a restore policy, the system updates the execution configurations of all associated recovery plans. Proceed with caution.
 
 **Procedure**
 
@@ -2583,9 +2650,9 @@ Do not delete a restore policy that is associated with a recovery plan. You can 
 
 ## 13 Archiving management
 
-**Important**
+> **Important:** If the archiving management menu and the submenus are not displayed in the Apsara Stack Resilience for Backup and Recovery (ASR-BR) console, contact the backup development team for assistance.
 
-If the archiving management menu and the submenus are not displayed in the Apsara Stack Resilience for Backup and Recovery (ASR-BR) console, contact the backup development team for assistance. The following figure shows the backup and recovery procedure.
+The following figure shows the backup and recovery procedure.
 1. Currently, only ApsaraDB RDS, Object Storage Service (OSS), and PolarDB that uses local
 disks are supported. Therefore, you must create the corresponding instances in the ASR-BR console for these services.
 2. Create a backup vault with the Backup + Archive label.
@@ -2620,11 +2687,15 @@ i. Log on to the AISHU platform by using a system administrator account. ii. In 
 | AccessSecretKey | Enter the AccessSecretKey obtained in Step 1. |
 
 5. Click **OK**.
-An organization can bind only one AISHU platform service account. The preceding steps are described by using the root organization (operations administrator) as an example. For other organization administrators, you must create the corresponding tenant on the AISHU platform first, and then perform the preceding steps to complete service authorization.
+
+> **Note:** An organization can bind only one AISHU platform service account. The preceding steps are described by using the root organization (operations administrator) as an example. For other organization administrators, you must create the corresponding tenant on the AISHU platform first, and then perform the preceding steps to complete service authorization.
 
 **Related operations**
 
-After the service authorization is created, you can modify the authorization. For more information, see the following steps: If you need to modify the AK/SK, the old and new AK/SK must belong to the same tenant on the AISHU platform. Otherwise, the modification cannot be completed.
+After the service authorization is created, you can modify the authorization. For more information, see the following steps:
+
+> **Note:** If you need to modify the AK/SK, the old and new AK/SK must belong to the same tenant on the AISHU platform. Otherwise, the modification cannot be completed.
+
 1. On the **Service Authorization List** page, click **Modify** in the **Actions** column.
 2. In the dialog box that appears, complete the modification and click **OK**.
 
@@ -2662,7 +2733,10 @@ The AISHU platform has information about media sets and tape libraries, which al
 
 **Related operations**
 
-After the media set is created, you can perform the following operations: Only operations administrators have the permissions to create and modify media sets. Organization administrators cannot grant or revoke permissions on their own organizations. They can only grant or revoke permissions on subordinate organizations.
+After the media set is created, you can perform the following operations:
+
+> **Note:** Only operations administrators have the permissions to create and modify media sets.
+> Organization administrators cannot grant or revoke permissions on their own organizations. They can only grant or revoke permissions on subordinate organizations.
 
 | Operation | Procedure |
 |---|---|
@@ -2693,7 +2767,10 @@ An ApsaraDB RDS instance, an OSS instance, and a PolarDB Local Disk Edition inst
 | Backup Vault | Select the backup vault to be archived. You can select only one backup vault. |
 
 5. In the **Configure Object** step, select multiple one or more objects and click **Next**.
-The archiving granularity for ApsaraDB RDS is at the instance level. This is why you must manually select the instances to be archived, and then click **Next**. The archiving granularity for OSS is at the backup vault level. By default, all instances in the specified backup vault are selected. Click **Next**.
+
+> **Note:** The archiving granularity for ApsaraDB RDS is at the instance level. This is why you must manually select the instances to be archived, and then click **Next**.
+> The archiving granularity for OSS is at the backup vault level. By default, all instances in the specified backup vault are selected. Click **Next**.
+
 6. Configure an archive policy and click **Next**. The following table describes the parameters.
 
 | Policy type | Policy model | Parameter | Description |
@@ -2708,7 +2785,10 @@ The archiving granularity for ApsaraDB RDS is at the instance level. This is why
 |   |   | Retention period | After you select a media set, the retention period is automatically populated. |
 
 7. Review and confirm whether the parameter values set in the preceding steps are correct.
-To immediately execute the archive plan, select **Start Now** and click **Submit**. If the parameters are configured correctly, click **Submit**. If the parameters are invalid, click **Return and Modify** in the upper-right corner of the page. Modify the settings, click **Next**, and then click **Submit**.
+
+> **Note:** To immediately execute the archive plan, select **Start Now** and click **Submit**.
+
+If the parameters are configured correctly, click **Submit**. If the parameters are invalid, click **Return and Modify** in the upper-right corner of the page. Modify the settings, click **Next**, and then click **Submit**.
 
 **What to do next**
 
@@ -2757,7 +2837,9 @@ i. On the Archive Restore Task page, click **Create**. ii. In the **Basic Inform
 |   | Instance Type | The type of the instance. Valid values: ApsaraDB RDS Object Storage Service PolarDB Local Disk |
 | Select Instance | Instance | The instance to be restored. You can select only one instance. |
 
-iii. In the **Select Record** step, select an archive record of the instance and click **Next**. iv. In the **Configure Instance** step, configure the parameters and click **Next**. The following tables describe the parameters that you need to configure. Parameters that are not described in the tables can retain their default values.
+iii. In the **Select Record** step, select an archive record of the instance and click **Next**. iv. In the **Configure Instance** step, configure the parameters and click **Next**.
+
+> **Note:** The following tables describe the parameters that you need to configure. Parameters that are not described in the tables can retain their default values.
 
 **OSS parameters**
 
@@ -2808,7 +2890,9 @@ iii. In the **Select Record** step, select an archive record of the instance and
 |   |   | vSwitch | The vSwitch to which the new instance to be restored belongs. |
 | Specificati on Parameter s | Chip Architecture |   | The chip architecture that you want to use. |
 
-v. In the **Configure Intermediate Bucket** step, configure the parameters that are described in the following table and click **Next**. If the system detects that the data required for the archive restoration job exists in the backup vault or existing intermediate bucket, the data is automatically reused without the need for manual configurations.
+v. In the **Configure Intermediate Bucket** step, configure the parameters that are described in the following table and click **Next**.
+
+> **Note:** If the system detects that the data required for the archive restoration job exists in the backup vault or existing intermediate bucket, the data is automatically reused without the need for manual configurations.
 
 | Parameter |   |   | Description |
 |---|---|---|---|
@@ -2895,7 +2979,8 @@ VMware VMs
 | Host Port | The IP Port that you obtained from the View Activation Code dialog box. |
 | Activation Code | The Activation Code that you obtained from the View Activation Code dialog box. |
 
-If DNS is not configured for vCenter Server or Apsara Stack, you must enter an IP address for Host Address.
+> **Note:** If DNS is not configured for vCenter Server or Apsara Stack, you must enter an IP address for Host Address.
+
 3. Click **OK**.
 
 ### 14.3 Create a vCenter
@@ -2961,7 +3046,8 @@ VMware VMs
 | Snapshot Type | Standard Snapshot: uses VMware software snapshots to perform common backup. System Silent Snapshot (default): uses VMware Tools to perform silent backup. Note If VMware Tools cannot be mounted or is not installed, the system automatically switches to the standard snapshot mode for backups. |
 
 6. In the **Backup Policy** step, configure the parameters in the following table and click **Next**.
-Only geo-redundancy is supported.
+
+> **Note:** Only geo-redundancy is supported.
 
 | Parameter | Description |
 |---|---|
@@ -3020,7 +3106,8 @@ parameters include ****************,********************,**Storage Pool Name**,*
 
 **Delete a storage pool**
 
-Only storage pools that are not associated with backup vaults can be deleted. Therefore, to delete a storage pool, you must first delete the backup plan, then delete the backup vault, and finally delete the storage pool.
+> **Note:** Only storage pools that are not associated with backup vaults can be deleted. Therefore, to delete a storage pool, you must first delete the backup plan, then delete the backup vault, and finally delete the storage pool.
+
 1. Log on to the ASR for Backup and Recovery console as an operations administrator.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**.
 3. On the page that appears, click the name of a storage pool group.
@@ -3030,14 +3117,16 @@ Only storage pools that are not associated with backup vaults can be deleted. Th
 
 **Cross-region/Cross-cloud replication authorization**
 
-If a backup vault requires the creation of an associated mirror vault, authorization is necessary.
+> **Note:** If a backup vault requires the creation of an associated mirror vault, authorization is necessary.
+
 1. Log on to the ASR for Backup and Recovery console as an operations administrator.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**.
 3. On the page that appears, find the storage pool group that you want to manage, click the
 icon, and then click **Cross-region/Cross-cloud Replication Authorization** in the
 **Actions** column.
 4. In the dialog box that appears, configure the following parameters and click **OK**.
-Obtain the cloud parameters in advance from Object Storage Service (OSS) O&M System. For more information, see Initialization in the console.
+
+> **Note:** Obtain the cloud parameters in advance from Object Storage Service (OSS) O&M System. For more information, see Initialization in the console.
 
 | Parameter | Description |
 |---|---|
@@ -3057,7 +3146,8 @@ of the storage pool group and click **OK**.
 
 **Delete a storage pool group**
 
-Only storage pool groups that do not contain storage pools can be deleted.
+> **Note:** Only storage pool groups that do not contain storage pools can be deleted.
+
 1. Log on to the ASR for Backup and Recovery console as an operations administrator.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**.
 3. On the Manage Storage Pool Group page, find the storage pool group that you want to
@@ -3094,7 +3184,9 @@ operations administrator.
 3. On the Self-backup Management page, click the **Backup Records** tab. On the Backup
 Records tab, you can view the details of the backup records of metadata. The details include the time when the backup started and ended, the expiration time of the backup data, the status of the backup task, the size of the backup set, and the name of the backup file.
 4. (Optional). If you want to delete a backup record and its backup set, find the backup record
-and click **Delete** in the **Actions** column. In the message that appears, click **OK**. You can perform the deletion operation only when you log on to the console as an operations administrator.
+and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
+
+> **Note:** You can perform the deletion operation only when you log on to the console as an operations administrator.
 
 ### 15.3 Create a disaster recovery job
 
@@ -3120,11 +3212,23 @@ vi. After the metadata is recovered, the **step** changes from **ASR-BR Metadata
 2. Revise the organization.
 i. When the step is **Revise Organization**, click the icon in the **Actions** column and select **Revise Organization**. ii. In the **Revise Organization** dialog box, select the desired organization from the **New**
 **Organization Name** drop-down list.
-By default, the organization with the same name is matched. The source and destination organizations must fully match each other. iii. Click **OK**. The **step** changes from **Revise Organization** to **Metadata Revision** and the status changes to **Queuing**. iv. When the metadata revision starts, the status changes to **Running**. When the metadata revision is complete, the **step** changes from **Metadata Revision** to **User Data**
+By default, the organization with the same name is matched.
+
+> **Note:** The source and destination organizations must fully match each other.
+
+iii. Click **OK**. The **step** changes from **Revise Organization** to **Metadata Revision** and the status changes to **Queuing**. iv. When the metadata revision starts, the status changes to **Running**. When the metadata revision is complete, the **step** changes from **Metadata Revision** to **User Data**
 **Disaster Recovery**.
 v. Then the organization administrator of each organization needs to perform data disaster recovery.
 3. Perform data disaster recovery for each organization.
-i. Log on to the ASR for Backup and Recovery console as an organization administrator. ii. In the left-side navigation pane, click **Recovery Jobs**. iii. On the **Restore Task** page, click **Create**. iv. In the **Basic Information** step, configure the name of the recovery job, select the instance type to be recovered, and set Restore Task Type to **Disaster Recovery**. Then, click **Next**. v. In the **Select Instance** step, select an instance from the instance list, click the icon, and then click **Next**. The left-side section shows only the instances that have been backed up. vi. In the **Select Record** step, select **By Backup Record** and click **Proceed**. Click the Select Backup Record tab. In the Actions column, click Select to select the desired backup records. During disaster recovery, data recovery may fail if the storage location of backup records is Local. vii. In the **Configure Instance** step, click **Configure** in the **Actions** column to configure the required parameters. For more information, see Create a standard recovery plan. Click
+i. Log on to the ASR for Backup and Recovery console as an organization administrator. ii. In the left-side navigation pane, click **Recovery Jobs**. iii. On the **Restore Task** page, click **Create**. iv. In the **Basic Information** step, configure the name of the recovery job, select the instance type to be recovered, and set Restore Task Type to **Disaster Recovery**. Then, click **Next**. v. In the **Select Instance** step, select an instance from the instance list, click the icon, and then click **Next**.
+
+> **Note:** The left-side section shows only the instances that have been backed up.
+
+vi. In the **Select Record** step, select **By Backup Record** and click **Proceed**. Click the Select Backup Record tab. In the Actions column, click Select to select the desired backup records.
+
+> **Note:** During disaster recovery, data recovery may fail if the storage location of backup records is Local.
+
+vii. In the **Configure Instance** step, click **Configure** in the **Actions** column to configure the required parameters. For more information, see Create a standard recovery plan. Click
 **OK** and then click **Next**.
 viii. Specify whether to immediately start the recovery job based on your business requirements, confirm your recovery settings, and then click **Submit**. If you select **Start Now**, the recovery job is immediately started after it is created. If you clear **Start Now**, the recovery job does not start immediately after it is created. You can manually start the recovery job. For more information, see Start a recovery plan.
 4. Complete the disaster recovery job.
@@ -3193,7 +3297,11 @@ An operations administrator can view all alert records in Apsara Stack Resilienc
 1. Log on to the ASR for Backup and Recovery console.
 2. In the left-side navigation pane, choose **O&M Management > Alerts**.
 3. (Optional) You can click the
-icon in the top navigation bar to view the latest five alerts. Click **View More** to view more alert records on the **Alert List** page. A red dot in the icon indicates that you have unread alert records.
+icon in the top navigation bar to view the latest five alerts. Click **View More** to view more alert records on the **Alert List** page.
+
+> **Note:** A red dot in the
+> icon indicates that you have unread alert records.
+
 4. On the **Alert List** page, query alert records by **Alert Level**, **Alert Object**, **Business Type**,
 and **Organization**. View the alert content in the **Alert Content** column.
 
@@ -3249,7 +3357,9 @@ then click **Submit**.
 4. Click the
 icon in the upper-right corner of the Throttling Threshold Configuration section to hide the throttling settings. Click the icon in the upper-right corner again to display the Throttling Threshold Configuration section.
 5. After you click **Modify configuration**, a
-icon appears next to the time period. You can click the icon to modify an existing time period. You can also click **Add Time Period** to add a new time period. After you complete the configurations, click **OK** to view the throttling information of each time period. The throttling configurations for different time periods do not affect each other. The throttling configurations of different storage pools do not affect each other.
+icon appears next to the time period. You can click the icon to modify an existing time period. You can also click **Add Time Period** to add a new time period. After you complete the configurations, click **OK** to view the throttling information of each time period.
+
+> **Note:** The throttling configurations for different time periods do not affect each other. The throttling configurations of different storage pools do not affect each other.
 
 | Parameter | Description |
 |---|---|
@@ -3282,9 +3392,10 @@ icon appears next to the time period. You can click the icon to modify an existi
 You can use the engine monitoring feature to view traffic, CPU, memory, and load statistics. This way, you can adjust your cloud services at the earliest opportunity when traffic spikes occur.
 1. Log on to the ASR for Backup and Recovery console as an operations administrator.
 2. In the left-side navigation pane, choose **O&M Management** > **Engine Monitoring**.
-The Engine Monitoring page displays the monitoring data of the previous hour. If **Enable Auto Refresh** is turned on in the upper-left corner, the system automatically refreshes monitoring data every 60 seconds. If Enable Auto Refresh is turned off, you can select a time range and a host and then click
-**Submit** to query the monitoring data of the host of a backup engine in the
-specified time range.
+
+> **Note:** The Engine Monitoring page displays the monitoring data of the previous hour.
+> If **Enable Auto Refresh** is turned on in the upper-left corner, the system automatically refreshes monitoring data every 60 seconds. If Enable Auto Refresh is turned off, you can select a time range and a host and then click **Submit** to query the monitoring data of the host of a backup engine in the specified time range.
+
 3. On the **Traffic Monitoring** tab, view the inbound and outbound traffic of the hosts for the
 HBR-agent and Gulltoppr backup engines.
 4. On the **CPU Monitoring** tab, view the average and maximum CPU usage of the backup
@@ -3374,7 +3485,7 @@ You must have the permissions of an operations administrator to configure parame
 
 **HBR Backend Expiration Part Cleanup**
 
-This feature applies only to storage vaults, PolarDB Cluster Edition storage vaults, Tablestore vaults, and container storage vaults.
+> **Note:** This feature applies only to storage vaults, PolarDB Cluster Edition storage vaults, Tablestore vaults, and container storage vaults.
 
 | Configuration item | Description |
 |---|---|
@@ -3387,7 +3498,7 @@ This feature applies only to storage vaults, PolarDB Cluster Edition storage vau
 
 **HBR-Storage Expired Fragment Cleanup**
 
-This feature applies only to deduplication storage vaults.
+> **Note:** This feature applies only to deduplication storage vaults.
 
 | Configuration item | Description |
 |---|---|
@@ -3425,15 +3536,14 @@ This status is displayed when a sub-event is canceled.
 **Failed**, **Timeout**, and **Stop**
 If a sub-event is in one of the preceding states, you can click the icon to the right of the sub-event to retry the sub-event.
 
-**Important**
+> **Important:** This operation is an event O&M operation. If the most recent event is successfully executed, do not perform the retry operation for the previous event.
 
-This operation is an event O&M operation. If the most recent event is successfully executed, do not perform the retry operation for the previous event.
 **Pending**, **In Progress**, and **Synchronizing**
 If a sub-event is in one of the preceding states, you can click the icon to the right of the sub-event to cancel it. If you cancel the sub-event, its status changes to **Canceled**.
 
-**Important**
+> **Important:** This operation is an event O&M operation. This operation is irreversible. Proceed with caution.
 
-This operation is an event O&M operation. This operation is irreversible. Proceed with caution. ackup
+ackup
 
 ## 17 Best practices of data backup
 
@@ -3449,11 +3559,21 @@ This topic describes the backup policies and speed of ApsaraDB RDS.
 
 **Backup policies**
 
-ApsaraDB RDS supports the following types of backup policies: The full backup mode allows you to recover data only to the points in time when a backup is created. You can select a mode based on your business requirements. The full backup plus log backup mode allows you to recover data to a specific point in time. We recommend that you select the full backup plus log backup mode for ApsaraDB RDS and specify two days a week to execute a full backup. This helps you save bandwidth and storage capacity and ensure utmost data security.
+ApsaraDB RDS supports the following types of backup policies: The full backup mode allows you to recover data only to the points in time when a backup is created. You can select a mode based on your business requirements. The full backup plus log backup mode allows you to recover data to a specific point in time.
+
+> **Note:** We recommend that you select the full backup plus log backup mode for ApsaraDB RDS and specify two days a week to execute a full backup. This helps you save bandwidth and storage capacity and ensure utmost data security.
 
 **Backup time**
 
-If you want to back up multiple ApsaraDB RDS instances, we recommend that you do not specify the backup time of all ApsaraDB RDS instances to the same day. You can perform 5 to 6 backup tasks at the same time to maximize bandwidth utilization. We recommend that you back up your ApsaraDB RDS instance during off-peak hours. ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances are backed up from secondary databases. ApsaraDB RDS for SQL Server instances are backed up from primary databases. If you want to perform a backup on the current day, set the start time of the backup task to at least 10 minutes later than the current time.
+If you want to back up multiple ApsaraDB RDS instances, we recommend that you do not specify the backup time of all ApsaraDB RDS instances to the same day.
+
+> **Note:** You can perform 5 to 6 backup tasks at the same time to maximize bandwidth utilization.
+
+We recommend that you back up your ApsaraDB RDS instance during off-peak hours.
+
+> **Note:** ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances are backed up from secondary databases. ApsaraDB RDS for SQL Server instances are backed up from primary databases.
+
+If you want to perform a backup on the current day, set the start time of the backup task to at least 10 minutes later than the current time.
 
 **Data retention time**
 
@@ -3479,11 +3599,17 @@ This topic describes the backup policies and speed of PolarDB for Xcale (PolarDB
 
 **Backup policies**
 
-PolarDB-X 1.0 supports the following backup modes: Fast Backup and Consistent Backup. Fast Backup: This mode ensures data consistency only in a single database. Consistent Backup: In this mode, the system locks distributed transactions within seconds, which may cause sub-second response time. Therefore, we recommend that you perform this operation during off-peak hours. The Consistent Backup mode only supports backup from data sets. The Fast Backup mode is suitable for regular backup and restoration. The Consistent Backup mode is suitable for core online transaction scenarios and other scenarios that have high requirements for data consistency.
+PolarDB-X 1.0 supports the following backup modes: Fast Backup and Consistent Backup. Fast Backup: This mode ensures data consistency only in a single database. Consistent Backup: In this mode, the system locks distributed transactions within seconds, which may cause sub-second response time. Therefore, we recommend that you perform this operation during off-peak hours. The Consistent Backup mode only supports backup from data sets.
+
+> **Note:** The Fast Backup mode is suitable for regular backup and restoration. The Consistent Backup mode is suitable for core online transaction scenarios and other scenarios that have high requirements for data consistency.
 
 **Backup time**
 
-For data security purposes, we recommend that you back up your data at least twice a week to ensure that you have recoverable data sets. If you want to perform a backup on the current day, set the start time of the backup task at least 10 minutes later than the current time. ackup
+For data security purposes, we recommend that you back up your data at least twice a week to ensure that you have recoverable data sets.
+
+> **Note:** If you want to perform a backup on the current day, set the start time of the backup task at least 10 minutes later than the current time.
+
+ackup
 
 **Data retention time**
 
@@ -3593,7 +3719,9 @@ An Alibaba Cloud public cloud account is created. A virtual private cloud (VPC) 
 
 **Configure resolution for public endpoints**
 
-When the system backs up data from Apsara Stack to the public cloud, ASR-BR, which is deployed in the classic network, calls OSS API operations through the endpoint of public cloud OSS to write the data to OSS. Therefore, resolution for public endpoints needs to be enabled on OpsDNS. By default, this feature is not enabled on OpsDNS. You need to contact technical support, who will evaluate the security risks and determine whether to enable this feature on your cloud system.
+When the system backs up data from Apsara Stack to the public cloud, ASR-BR, which is deployed in the classic network, calls OSS API operations through the endpoint of public cloud OSS to write the data to OSS. Therefore, resolution for public endpoints needs to be enabled on OpsDNS.
+
+> **Note:** By default, this feature is not enabled on OpsDNS. You need to contact technical support, who will evaluate the security risks and determine whether to enable this feature on your cloud system.
 
 **Border protection for Apsara Stack**
 
@@ -3623,7 +3751,9 @@ An Alibaba Cloud account is created. A virtual private cloud (VPC) in Alibaba Cl
 
 **Background information**
 
-After you connect Apsara Uni-manager to Alibaba Cloud public cloud, the following capabilities are available: The Apsara Stack DNS server forwards the domain name of a public cloud service to a private zone in the public cloud VPC for resolution. Apsara Uni-manager accesses the API endpoint in the public cloud VPC tby using Express Connect circuits. The IP addresses in this topic are provided only for reference. You can specify the IP addresses based on your business requirements.
+After you connect Apsara Uni-manager to Alibaba Cloud public cloud, the following capabilities are available: The Apsara Stack DNS server forwards the domain name of a public cloud service to a private zone in the public cloud VPC for resolution. Apsara Uni-manager accesses the API endpoint in the public cloud VPC tby using Express Connect circuits.
+
+> **Note:** The IP addresses in this topic are provided only for reference. You can specify the IP addresses based on your business requirements.
 
 **Operations in Alibaba Cloud public cloud**
 
@@ -3680,7 +3810,11 @@ Only backup operations administrators can create storage pools.
 1. Log on to the ASR for Backup and Recovery console.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**.
 3. Click **Create Storage Pool Group**. In the **Add Storage Pool Group** dialog box, configure
-the parameters and click **OK**. A maximum of 16 storage pool groups can be created. ackup
+the parameters and click **OK**.
+
+> **Note:** A maximum of 16 storage pool groups can be created.
+
+ackup
 
 | Parameter | Description |   |   |   |
 |---|---|---|---|---|
@@ -3758,7 +3892,8 @@ ackup
 | Storage Capacity | The storage size of the backup vault. Unit: GB. Note The storage size of the backup vault cannot exceed that of the storage pool that it belongs to. |
 
 5. Then, click **OK**.
-If the backup vault fails to be created, the storage resources may be insufficient. Expand the storage repository in a timely manner before creating it again.
+
+> **Note:** If the backup vault fails to be created, the storage resources may be insufficient. Expand the storage repository in a timely manner before creating it again.
 
 **Execution result**
 
@@ -3792,13 +3927,29 @@ then click **Next**.
 | Backup Mode | Configure this parameter only for ECS instances. Snapshot Backup: backs up an ECS instance or specified disks of an ECS instance. File Backup: backs up ECS files. |
 
 5. On the **Select Instance** wizard page, select the instance to back up, and click **Next**.
-ackup The instance to back up must be in the **In Use** state. A backup plan is created for only one instance. When the instance type is RDS, PolarDB, or PolarDB-X, you can add only one instance to one backup plan. You cannot select an instance whose protection status is **Protected**. You can add one Object Storage Service (OSS) bucket to multiple backup plans. You can add one Apsara File Storage NAS file system to multiple backup plans. You can add one ECS instance to both a file backup plan and a cloud disk backup plan. For ECS instances that use the file backup mode, you can add them to multiple backup plans. A Tablestore instance contains multiple tables. When the instance type is TableStore, you can view the number of tables under the instance in the
-**Tablestore Table** column.
+ackup
+
+> **Note:** The instance to back up must be in the **In Use** state.
+> A backup plan is created for only one instance.
+> When the instance type is RDS, PolarDB, or PolarDB-X, you can add only one instance to one backup plan. You cannot select an instance whose protection status is **Protected**.
+> You can add one Object Storage Service (OSS) bucket to multiple backup plans.
+> You can add one Apsara File Storage NAS file system to multiple backup plans.
+> You can add one ECS instance to both a file backup plan and a cloud disk backup plan.
+> For ECS instances that use the file backup mode, you can add them to multiple backup plans.
+> A Tablestore instance contains multiple tables. When the instance type is TableStore, you can view the number of tables under the instance in the **Tablestore Table** column.
+
 6. (Optional) Select Tablestore tables. Perform this step only if you select **Tablestore** for
 **Instance Type** on the **Basic Information** page.
-i. In the left-side section, select the names of the tables that you want to back up. You can back up a maximum of two tables simultaneously per instance. If you select two or fewer tables, the system backs up both tables concurrently. If you select more than two tables, the system queues the additional tables for backup. ii. Click to add the selected Tablestore tables to the right-side section. iii. Click **Next**.
+i. In the left-side section, select the names of the tables that you want to back up.
+
+> **Note:** You can back up a maximum of two tables simultaneously per instance. If you select two or fewer tables, the system backs up both tables concurrently. If you select more than two tables, the system queues the additional tables for backup.
+
+ii. Click to add the selected Tablestore tables to the right-side section. iii. Click **Next**.
 7. (Optional) On the **Install Client** page, configure parameters for installing the Hybrid
-Backup Recovery (HBR) client and click **Next**. This step is applicable only to ECS instances that use the **File Backup** method. The ECS Cloud Assistant is used when installing the HBR client. Ensure that the ECS Cloud Assistant is installed on the ECS instance and is in the normal state.
+Backup Recovery (HBR) client and click **Next**.
+
+> **Note:** This step is applicable only to ECS instances that use the **File Backup** method.
+> The ECS Cloud Assistant is used when installing the HBR client. Ensure that the ECS Cloud Assistant is installed on the ECS instance and is in the normal state.
 
 | Instance type | Name | Description |
 |---|---|---|
@@ -3816,7 +3967,8 @@ ackup
 |---|---|---|
 
 8. On the **Configure Instance** page, configure the relevant parameters and click **Next**.
-Skip this step when you create backup plans for ApsaraDB RDS, PolarDB, Tablestore, and PolarDB-X instances.
+
+> **Note:** Skip this step when you create backup plans for ApsaraDB RDS, PolarDB, Tablestore, and PolarDB-X instances.
 
 | Instance type | Name | Description |
 |---|---|---|
@@ -3868,7 +4020,10 @@ ackup
 
 9. On the **Backup Policy** configuration wizard page, configure the backup policy and click
 **Next**.
-Different instance types support different backup policy parameters. Configure the parameters based on the on-screen instructions and the following table. The following table describes the backup policy parameters.
+
+> **Note:** Different instance types support different backup policy parameters. Configure the parameters based on the on-screen instructions and the following table.
+
+The following table describes the backup policy parameters.
 
 | Parameter | Description |
 |---|---|
@@ -4034,11 +4189,15 @@ Because many platform data reside in OSS, you must subtract the space consumed b
 **capacity** section.
 iv. The preceding figure shows that the total logical usage of OSS is 46.2 TiB (47308.8 GiB). During backup, you only need to back up customer data. Therefore, subtract the backup data written by Alibaba Cloud into OSS. ackup You must subtract the storage usage for UIDs 1000000021 and 999999999. v. In the left-side navigation pane, select **User and bucket O&M > User data query**. Search for storage usage associated with UIDs 1000000021 and 999999999. vi. Select **UID** from the drop-down list, enter 1000000021 in the input box, and click
 **Search**.
-Customer file occupancy in OSS = 47308.8 - 960 - 7701.9 = 38646.9 GiB If multiple regions exist, query the usage for the specific region.
+Customer file occupancy in OSS = 47308.8 - 960 - 7701.9 = 38646.9 GiB
+
+> **Note:** If multiple regions exist, query the usage for the specific region.
 
 **ECS (Elastic Compute Service): Elastic Compute Service**
 
-Because you also view ECS metrics in the Apsara Uni-Manager Operations Console, follow these steps. i. In the top navigation bar of the Apsara Uni-Manager Operations Console, select **Platform** ii. In the left-side navigation pane, select **Resource usage > Platform resource usage**. iii. On the Product Usage tab, view the used capacity and growth rate of Pangu. iv. The preceding figure shows that Pangu has a total capacity of 30236 GB, with 6036 GB used and a growth rate of 0.38%. calculate logical storage capacity, divide by the corresponding factor based on whether Pangu uses triplicate or erasure coding (EC).
+Because you also view ECS metrics in the Apsara Uni-Manager Operations Console, follow these steps. i. In the top navigation bar of the Apsara Uni-Manager Operations Console, select **Platform** ii. In the left-side navigation pane, select **Resource usage > Platform resource usage**. iii. On the Product Usage tab, view the used capacity and growth rate of Pangu. iv. The preceding figure shows that Pangu has a total capacity of 30236 GB, with 6036 GB used and a growth rate of 0.38%.
+
+> **Note:** The SRE Technology Support System·Tongque displays physical storage capacity. To calculate logical storage capacity, divide by the corresponding factor based on whether Pangu uses triplicate or erasure coding (EC).
 
 **NAS (Apsara File Storage): File Storage**
 
@@ -4085,7 +4244,7 @@ ackup
 
 **Set a backup policy**
 
-Select a backup policy based on different cloud services. The policy includes the backup cycle, backup time, and retention period.
+> **Note:** Select a backup policy based on different cloud services. The policy includes the backup cycle, backup time, and retention period.
 
 **Set an ECS backup policy**
 
@@ -4116,7 +4275,10 @@ Configure a backup policy. i. Log on to the Apsara Uni-Manager Management Consol
 
 **Set a cloud storage system backup policy**
 
-Usage notes for storage class backup vaults: Sharding: The backup data of the storage class is stored in the backup vault as shards. Data smaller than 512 KB is not sharded. Data larger than 512 KB is sharded, with an average shard size of approximately 1 MB. Delete expired data: When deleting expired shards from the backup vault, the system checks shard references against Snapshots corresponding to the backup datasets stored in the vault. The system retains shards that have references. The system moves shards without references to the recycle bin and waits for cleanup. The process of deleting expired data relies on the "/data" directory of the backup engine physical machine as cache. For every 100 million shards in the backup vault, the "/data" directory requires 20 GB of capacity. Under normal conditions, the backup engine performs incremental deletion of expired data once per day and full deletion of expired data every 15 days. Estimate the upper limit of shard data volume that can be stored in the backup vault based on the size of the "/data" directory on the backup engine physical machine. For large-data-volume storage product instance backups, we recommend storing up to 2 billion shards per vault. This allows full deletion of expired data to complete within one day. If this value is exceeded, back up different instances to different backup vaults to reduce the pressure of expired data cleanup on a single backup vault.
+Usage notes for storage class backup vaults: Sharding: The backup data of the storage class is stored in the backup vault as shards. Data smaller than 512 KB is not sharded. Data larger than 512 KB is sharded, with an average shard size of approximately 1 MB. Delete expired data: When deleting expired shards from the backup vault, the system checks shard references against Snapshots corresponding to the backup datasets stored in the vault. The system retains shards that have references. The system moves shards without references to the recycle bin and waits for cleanup. The process of deleting expired data relies on the "/data" directory of the backup engine physical machine as cache. For every 100 million shards in the backup vault, the "/data" directory requires 20 GB of capacity. Under normal conditions, the backup engine performs incremental deletion of expired data once per day and full deletion of expired data every 15 days.
+
+> **Note:** Estimate the upper limit of shard data volume that can be stored in the backup vault based on the size of the "/data" directory on the backup engine physical machine.
+> For large-data-volume storage product instance backups, we recommend storing up to 2 billion shards per vault. This allows full deletion of expired data to complete within one day. If this value is exceeded, back up different instances to different backup vaults to reduce the pressure of expired data cleanup on a single backup vault.
 
 **OSS backup**
 
@@ -4193,9 +4355,7 @@ A storage pool is a physical cluster that stores backup data and cannot be direc
 
 Only storage pools that are not associated with backup vaults can be deleted. Therefore, to delete a storage pool, you must first delete the backup plan and backup records, then delete the backup vaults, and finally delete the storage pool.
 
-**Important**
-
-After you delete a storage pool, all features related to this storage pool become unavailable. Proceed with caution.
+> **Important:** After you delete a storage pool, all features related to this storage pool become unavailable. Proceed with caution.
 
 **Procedure**
 
@@ -4208,7 +4368,9 @@ i. Log in to the ASR for Backup and Recovery console as an operations administra
 **Management**.
 iii. Enter the name of the storage pool group where the target storage pool resides in the Storage Pool Group Name field. Click **Search**. iv. Click the name of the storage pool group in the **Storage Pool Group** column to go to the
 **Storage Pool Management** page.
-v. Click in the Actions column for the target storage pool. Then, click **Delete**. vi. In the dialog box that appears, click **OK**. To delete a storage pool group, ensure that all storage pools in the group have been deleted.
+v. Click in the Actions column for the target storage pool. Then, click **Delete**. vi. In the dialog box that appears, click **OK**.
+
+> **Note:** To delete a storage pool group, ensure that all storage pools in the group have been deleted.
 
 ### 18.2 How do I view ECS snapshot sizes?
 
@@ -4256,7 +4418,10 @@ the name of the common user in the search box, and then click .
 5. Find the common user, click
 in the **Actions** column, and select **Authorize**.
 6. Select a role for the common user and grant the corresponding permissions to the common
-user. For more information, see Roles and Permissions. You can select multiple roles for the common user.
+user. For more information, see Roles and Permissions.
+
+> **Note:** You can select multiple roles for the common user.
+
 7. Click **OK**.
 
 **Verification**
@@ -4282,11 +4447,14 @@ A storage pool fails to be created after you log in to the ASR for Backup and Re
 
 **Possible cause**
 
-The **************** or ******************** entered when you create the storage pool is incorrect. You must enter the **************** and ******************** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, softwaredefined storage (SDS), and S3.
+The **************** or ******************** entered when you create the storage pool is incorrect.
+
+> **Note:** You must enter the **************** and ******************** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, software- defined storage (SDS), and S3.
 
 **Solution**
 
-If you use a storage medium that supports the OSS protocol, you can use ossutil to verify whether the entered AccessKey ID and AccessKey secret have read/write permissions on OSS.
+> **Note:** If you use a storage medium that supports the OSS protocol, you can use ossutil to verify whether the entered AccessKey ID and AccessKey secret have read/write permissions on OSS.
+
 1. Download ossutil from the official OSS website and install it. For more information, see
 Install ossutil.
 2. Upload ossutil to the asrbr-backup container on the asrbr-backup.Backup# VM in
@@ -4321,7 +4489,8 @@ If no error is returned, the AccessKey ID and AccessKey secret meet the permissi
 
 **Authentication method**
 
-The following steps assume you have already created a storage pool group. If no storage pool group exists, create one first. For more information, see Create a storage pool.
+> **Note:** The following steps assume you have already created a storage pool group. If no storage pool group exists, create one first. For more information, see Create a storage pool.
+
 1. Log in to the ASR-BR console as an operations administrator.
 2. In the left-side navigation pane, choose **System Management** > **Storage Pool Group**
 **Management**.
@@ -4511,7 +4680,8 @@ icon next to a sub-event. In the panel that appears, view the logs of the subeve
 cd /alidata/logs/asrbr-backup/ grep -r "d1b14ebf-4d96-43f1-9b9c-12b547fa405c" asrbr-backup.log
 ```
 
-Replace the keyword after the grep -r command with the request ID or event ID that you obtained.
+> **Note:** Replace the keyword after the grep -r command with the request ID or event ID that you obtained.
+
 8. View the error logs.
 9. Run the vi or vim command to open the corresponding log file to view a specific error
 message. Sample code:
@@ -4520,7 +4690,12 @@ message. Sample code:
 vi asrbr-backup.log To search for d1b14ebf-4d96-43f1-9b9c-12b547fa405c, enter /d1b14ebf-4d96-43f1-9b9c-12 b547fa405c. Enter N to find the next matched result until you find the error message.
 ```
 
-You need to query the details of an error based on the request ID or event ID. The asrbr-backup file stores the logs that are generated within the previous 14 days in the /alidata/logs/asrbr-backup/bak directory. You can query log files based on the date on which the logs are generated. You can also run the `cd /alidata/logs/asrbr-backup/bak` command to query log files. HBR reports an error.
+> **Note:** You need to query the details of an error based on the request ID or event ID.
+
+> **Note:** The asrbr-backup file stores the logs that are generated within the previous 14 days in the /alidata/logs/asrbr-backup/bak directory. You can query log files based on the date on which the logs are generated.
+> You can also run the `cd /alidata/logs/asrbr-backup/bak` command to query log files.
+
+HBR reports an error.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management** > Resources to go to the Apsara Infrastructure Management console.
@@ -4660,13 +4835,24 @@ cloud. In Linux, run the following command to download the installation package:
 curl -O --basic -u guest:guest http://<hbr_resource_host>/download/<hbragent_filename>
 ```
 
-Replace the value of hbr_resource_host with the value of **asr.resource.domain** that you obtained in Step 1. Replace the value of hbragent_filename with the name of the installation package of the HBR agent. Package name in a 32-bit operating system: hbr-install-2.0.0-linux-32bit.tar.gz Package name in a 64-bit operating system: hbr-install-2.0.0-linux-64bit.tar.gz In Windows, enter the following URL in the address bar of your browser to download the installation package:
+> **Note:** Replace the value of hbr_resource_host with the value of **asr.resource.domain** that you obtained in Step 1.
+> Replace the value of hbragent_filename with the name of the installation package of the HBR agent.
+> Package name in a 32-bit operating system: hbr-install-2.0.0-linux-32bit.tar.gz
+> Package name in a 64-bit operating system: hbr-install-2.0.0-linux-64bit.tar.gz
+
+In Windows, enter the following URL in the address bar of your browser to download the installation package:
 
 ```xml
 <hbr_resource_host>/download/<hbragent_filename>
 ```
 
-In the dialog box that appears, enter the username and password. In this example, the username is guest and the password is guest. Replace the value of hbr_resource_host with the value of **asr.resource.domain** that you obtained in Step 1. Replace the value of hbragent_filename with the name of the installation package of the HBR agent. Package name in a 32-bit operating system: hbr-install-2.0.0-windows-32bit.zip Package name in a 64-bit operating system: hbr-install-2.0.0-windows-64bit.zip
+In the dialog box that appears, enter the username and password. In this example, the username is guest and the password is guest.
+
+> **Note:** Replace the value of hbr_resource_host with the value of **asr.resource.domain** that you obtained in Step 1.
+> Replace the value of hbragent_filename with the name of the installation package of the HBR agent.
+> Package name in a 32-bit operating system: hbr-install-2.0.0-windows-32bit.zip
+> Package name in a 64-bit operating system: hbr-install-2.0.0-windows-64bit.zip
+
 3. Decompress the installation package.
 4. Install the HBR agent.
 In Linux, run the following command:
@@ -4681,7 +4867,11 @@ In Windows, run the following command:
 <hbragent_filename> /TYPE=ApsaraStack /host= <hbr_amqp_host>/SUPPRESSMSGBOXES /VERY SILENT
 ```
 
-Replace the value of hbr_amqp_host with the value of **hbr.rabbitmq.domain** that you obtained in Step 1. Replace the value of hbragent_filename with the name of the installation package of the HBR agent. Package name in a 32-bit operating system: hbr-install-2.0.0-windows-32bit.zip Package name in a 64-bit operating system: hbr-install-2.0.0-windows-64bit.zip
+> **Note:** Replace the value of hbr_amqp_host with the value of **hbr.rabbitmq.domain** that you obtained in Step 1.
+> Replace the value of hbragent_filename with the name of the installation package of the HBR agent.
+> Package name in a 32-bit operating system: hbr-install-2.0.0-windows-32bit.zip
+> Package name in a 64-bit operating system: hbr-install-2.0.0-windows-64bit.zip
+
 5. Check whether the HBR service runs as expected.
 In Linux, run the following command to check the status of the HBR service:
 
@@ -4768,7 +4958,8 @@ After you enable the feature, only new instances will be backed up by ASR-BR. To
 select * from resource where res_key = 'POLARDBX_GLOBAL_CONFIG'\G update resource set real_value = '{"polardbx.xdb.logger":true,"polardbx.dbs.service.enable.users": ["UID"],"polardbx.dbs.sync":"true"}' where res_key = 'POLARDBX_GLOBAL_CONFIG';
 ```
 
-If multiple tenants exist, separate their UIDs with commas and add all tenants.
+> **Note:** If multiple tenants exist, separate their UIDs with commas and add all tenants.
+
 4. Configure synchronization instances in the polarc_biz database. If multiple instances exist,
 run the command multiple times. i. Log in to OPS1 and run the following command to find the polarx-engine-api pod:
 
@@ -4788,7 +4979,11 @@ iii. Run the following command to obtain the polarx_biz connection information:
 env| grep mysql
 ```
 
-iv. Run the exit command to exit the pod. v. Log in to the ApsaraDB Operations and Maintenance System console. In the left-side navigation pane, click **Instances**. vi. On the instance details page, select the **Basic Information** tab. custins_id: The instance ID. custins_name: The instance name. vii. Run the following command to insert the instance:
+iv. Run the exit command to exit the pod. v. Log in to the ApsaraDB Operations and Maintenance System console. In the left-side navigation pane, click **Instances**. vi. On the instance details page, select the **Basic Information** tab.
+
+> **Note:** custins_id: The instance ID. custins_name: The instance name.
+
+vii. Run the following command to insert the instance:
 
 ```
 insert into backup_history_sync_record(custins_id,custins_name,sync_status)values('968','pxc-un r8fn9oac8n9g',0)
@@ -4823,7 +5018,10 @@ To ensure that data can be synchronized from a backup vault to a mirror vault, y
 **Initialization at the destination end (mirror vault)**
 
 1. Create a proxy user and grant permissions at the destination end.
-This step is required only for cross-cloud replication. i. Log on to the Apsara Uni-manager Management Console at the destination end. ii. In the top navigation bar, choose **Enterprise > Permissions > Role Permissions**. iii. Click **Create Custom Role**. iv. Enter a role name. Keep the default values for other parameters. v. Expand Advanced Settings and click **Create RAM Authorization**. vi. Enter a role name and retain the default values for other parameters. Then, click **Create**
+
+> **Note:** This step is required only for cross-cloud replication.
+
+i. Log on to the Apsara Uni-manager Management Console at the destination end. ii. In the top navigation bar, choose **Enterprise > Permissions > Role Permissions**. iii. Click **Create Custom Role**. iv. Enter a role name. Keep the default values for other parameters. v. Expand Advanced Settings and click **Create RAM Authorization**. vi. Enter a role name and retain the default values for other parameters. Then, click **Create**
 **and Configure RAM Authorization**.
 vii. Click the **Permissions** tab. Then, click **Add Policy**. viii. Click **Create Policy**. In the Create Policy dialog box, specify a policy name and copy the following content to the Policy Content field. `{`
 
@@ -4843,11 +5041,17 @@ vii. Click the **Permissions** tab. Then, click **Add Policy**. viii. Click **Cr
 
 `]` `}` `]` `}` ix. Then, click **OK**. x. Select the policy that you created in the previous step and click **OK**.
 2. Create a user group.
-Skip the following steps for PanguStor because PanguStor has only users and no user groups. i. In the left-side navigation pane, choose **Users > User Groups**. ii. On the User Groups page, click **Create a user group**. iii. Specify the user group name and organization. The values of the Role Permissions parameter must include the RAM role created in the previous step. iv. Click **OK**.
+
+> **Note:** Skip the following steps for PanguStor because PanguStor has only users and no user groups.
+
+i. In the left-side navigation pane, choose **Users > User Groups**. ii. On the User Groups page, click **Create a user group**. iii. Specify the user group name and organization. The values of the Role Permissions parameter must include the RAM role created in the previous step. iv. Click **OK**.
 3. Create a proxy user.
 i. In the left-side navigation pane, choose **Users > Users**. ii. On the Users page, click **Create a user**. iii. Select the organization that is selected in the previous step. Specify other parameters based on your business requirements. iv. Click **OK**. The system creates an AccessKey pair. Record the AccessKey pair, which will be used later. v. Click **View Details** in the **Actions** column of the created user. vi. View and record the UID of the user, which will be used later. vii. Find the user, click in the **Actions** column, and then select **User Group**
 **Management**. On the page that appears, click **Add to User Group**.
-Skip the following steps for PanguStor because PanguStor has only users and no user groups. viii. Select the user group created in the previous step and click **OK**.
+
+> **Note:** Skip the following steps for PanguStor because PanguStor has only users and no user groups.
+
+viii. Select the user group created in the previous step and click **OK**.
 4. Configure permissions for the proxy user.
 i. Log on to the Apsara Uni-manager Operations Console at the destination end. ii. In the top navigation bar, choose **Product Operation > Storage > OSS Storage**
 **Operations and Maintenance System**.
@@ -4857,7 +5061,10 @@ iv. Click **Add**. In the Add list dialog box, enter the UID of the proxy user s
 5. Obtain the cloud parameters.
 i. In the left-side navigation pane, choose **Service O&M - OSS > Synchronization**
 **Management > Cross-Cloud Synchronization**.
-ii. Select a cluster and click **View Parameters of the Current Cloud** . iii. Copy and save the values of the following four parameters for each cluster: Name of Ben Duo Yun, Ben Duo Cloud Region, Ben Duoyun Region domain name, and Location. You need to record the parameter values for each cluster.
+ii. Select a cluster and click **View Parameters of the Current Cloud** . iii. Copy and save the values of the following four parameters for each cluster: Name of Ben Duo Yun, Ben Duo Cloud Region, Ben Duoyun Region domain name, and Location.
+
+> **Note:** You need to record the parameter values for each cluster.
+
 6. Configure cross-region and cross-cloud replication authorization in the ASR-BR console.
 i. Log on to the Apsara Uni-manager Management Console at the destination end. ii. In the top navigation bar, choose **Products > Disaster Recovery > ASR for Backup**
 **and Recovery**.
@@ -4875,7 +5082,10 @@ v. Enter the cloud name, cloud region, location, and the UID of the proxy user a
 3. In the left-side navigation pane, choose **Service O&M - OSS > Synchronization**
 **Management > Cross-Cloud Synchronization**.
 4. Click **Create**. In the dialog box that appears, enter the values of Name of Ben Duo Yun, Ben
-Duo Cloud Region, Ben Duoyun Region domain name, and Location of each cluster and the AccessKey pair saved at the destination end. The parameter values of each cluster obtained at the destination end must be added at the source end.
+Duo Cloud Region, Ben Duoyun Region domain name, and Location of each cluster and the AccessKey pair saved at the destination end.
+
+> **Note:** The parameter values of each cluster obtained at the destination end must be added at the source end.
+
 5. Log on to the Apsara Uni-manager Management Console at the source end.
 6. In the top navigation bar, choose **Products > Disaster Recovery > ASR for Backup**
 **and Recovery**.
@@ -4923,7 +5133,9 @@ ASR for Backup and Recovery backs up data of cloud services at specified interva
 2. In the top navigation bar, choose **Operations > Resource Operations**.
 3. In the left-side navigation pane, click **Metering Management**.
 4. Select **ASR for Backup and Recovery** from the Cloud Service drop-down list, set the
-organization, resource set, and other search conditions, and then click **Search**. Usage statistics are collected by tenant. The principle of least privilege is employed. Unauthorized access to usage statistics of other tenants is not allowed.
+organization, resource set, and other search conditions, and then click **Search**.
+
+> **Note:** Usage statistics are collected by tenant. The principle of least privilege is employed. Unauthorized access to usage statistics of other tenants is not allowed.
 
 ### 19.8 Use the SMB protocol to back up and restore NAS files
 

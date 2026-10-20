@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 16
 source_pdf: "b02c58be144e61bb_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Cloud%20Parallel%20File%20Storage%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide 20260827
@@ -39,18 +39,29 @@ CPFS is a high-performance parallel file system of Apsara Stack, which meets the
 
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
-manager Management Console and press Enter. You can click the current language in the upper-right corner to switch to another language.
+manager Management Console and press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User**
-**Agreement** are displayed only if they have been published. If none of these
-agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of
-the following scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+the following scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -115,7 +126,8 @@ Before you delete a CPFS file system, the file system is unmounted from the moun
 1. On the CPFS File Systems page, find the file system that you want to delete and click
 **Delete** in the Operations column.
 2. In the message that appears, click **OK**.
-After you unmount a file system, your business may be affected. We recommend that you exercise caution when you unmount a file system.
+
+> **Note:** After you unmount a file system, your business may be affected. We recommend that you exercise caution when you unmount a file system.
 
 **Modify the description of a CPFS file system**
 
@@ -123,7 +135,8 @@ After you unmount a file system, your business may be affected. We recommend tha
 description, move the pointer over the **File System ID/Name** column, and then click the icon.
 2. In the dialog box that appears, enter a new description.
 3. Click **OK**.
-The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
+
+> **Note:** The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
 
 **Add a tag to a file system**
 
@@ -139,7 +152,10 @@ This topic describes how to scale up a Cloud Parallel File Storage (CPFS) file s
 2. On the CPFS File Systems page, find the file system that you want to scale up and click
 **Expand** in the Operations column.
 3. On the File system expansion page, specify a value for the **New Total Capacity (TiB)**
-parameter. The new total capacity cannot be lower than the current total capacity and cannot exceed the maximum total capacity. The maximum total capacity of a Performance-oriented CPFS file system is 1 PiB, and the scale-up granularity is 10 TiB.
+parameter.
+
+> **Note:** The new total capacity cannot be lower than the current total capacity and cannot exceed the maximum total capacity. The maximum total capacity of a Performance-oriented CPFS file system is 1 PiB, and the scale-up granularity is 10 TiB.
+
 5. Click **Confirm Order** to complete the scale-up.
 
 ### 3.3 Resource monitoring
@@ -166,7 +182,10 @@ Replicate the data in a CPFS file system to an OSS bucket: The data stored in a 
 **Configurations** in **Apsara Uni-manager Management Console User Guide** .
 1. Log in to the CPFS console.
 2. On the CPFS File Systems page, click the ID or name of the file system for data replication
-or click **Details** in the **Operations** column to go to the File System Details page. On the page that appears, click the **Data flow** tab to go to the data flow task page. If the system detects that the current organization is not granted the RAM role AliyunOSSPrivateCloudDrsSyncRole, the **Authorize Access to Cloud Resources** dialog box appears when you go to the data flow task page. In this case, you can select an organization in the dialog box to complete the authorization.
+or click **Details** in the **Operations** column to go to the File System Details page. On the page that appears, click the **Data flow** tab to go to the data flow task page.
+
+> **Note:** If the system detects that the current organization is not granted the RAM role AliyunOSSPrivateCloudDrsSyncRole, the **Authorize Access to Cloud Resources** dialog box appears when you go to the data flow task page. In this case, you can select an organization in the dialog box to complete the authorization.
+
 3. Click **Create a data flow task** . In the Create a data flow task dialog box, configure the
 following parameters.
 
@@ -179,7 +198,8 @@ following parameters.
 | Destinatio n path |   |
 | Descriptio n | Enter the description of the data replication task. |
 
-The amount of data for a single data flow task cannot exceed 100 TiB.
+> **Note:** The amount of data for a single data flow task cannot exceed 100 TiB.
+
 4. Click **OK** to submit the data replication task.
 5. After a replication task is created, you can view relevant information of the replication task,
 such as task status, task type, task result, data source, destination path, description, and creation time, in the data flow task list.

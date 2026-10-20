@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 326
 source_pdf: "402c50fdf42da1eb_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Developer Guide 20260828
@@ -183,17 +183,17 @@ Apsara Stack allows you to call API operations through the point of presence (PO
 1. Obtain an AccessKey pair.
 Obtain the AccessKey parameters required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account or an AccessKey pair assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account or an AccessKey pair assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain a region ID.
 Obtain the region ID parameter required for the call. For more information, see Obtain common header parameters.
 3. Obtain the organization ID and resource set ID.
 You must obtain the organization ID by using an API operation. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-m anager Management Console Developer Guide. You must obtain the resource set ID by using an API operation. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-ma nager Management Console Developer Guide.
 
-**Note**
+> **Note:** When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This allows you to perform isolated queries on instances.
+> If you do not specify the organization ID `<x-acs-organizationid>` , the organization to which the current user belongs is used by default.
+> If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
 
-When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This allows you to perform isolated queries on instances. If you do not specify the organization ID `<x-acs-organizationid>` , the organization to which the current user belongs is used by default. If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
 4. Obtain the developer guide for reference.
 You need to review the developer guide of the cloud service that you want to use to learn about the features and usage of the API operations. For more information about how to obtain the developer guide, see Instructions for using developer documentation.
 5. Obtain the endpoint of the cloud service.
@@ -216,18 +216,17 @@ Management Console and press Enter.
 2. Enter your username and password.
 You can obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters:
+> Letters (A to Z and a to z)
+> Digits (0 to 9)
+> Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
 
-The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters: Letters (A to Z and a to z) Digits (0 to 9) Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
 operations based on your scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to bind and enable an MFA device, see the **Bind and** **enable a virtual MFA device** section in the **Apsara Uni-manager Management** **Console User Guide**.
 
-For more information about how to bind and enable an MFA device, see the **Bind and**
-**enable a virtual MFA device** section in the **Apsara Uni-manager Management**
-**Console User Guide**.
 5. In the top menu bar, choose **Products > Application Services > OpenAPI Explorer**.
 
 ### 2.2 Obtain API information and its endpoint
@@ -260,9 +259,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -278,9 +275,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -309,9 +304,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, you can obtain information about the `RAM role` that is assigned to the current user.
 2. Obtain the STS credentials.
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the name of the current session. <yourRoleArn>: Replace it with your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace it with the region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with the name of the current session.
+> <yourRoleArn>: Replace it with your RAM role.
+> "sts.aliyuns.com": Replace it with the endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -376,9 +376,14 @@ endpoint is in the following format: sts-vpc.${global:region}.${global:internet-
 3. The following sample code shows how to use STS credentials to call the
 DescribeLoadBalancers operation of the Server Load Balancer (SLB) API:
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace it with the region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>. Replace it with your STS security token. <yourRegionID>: Replace it with the actual resource set ID. <yourRegionID>: Replace it with the actual organization ID.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace it with the region ID.
+> <yourStsAccesskeyID>: Replace it with your STS AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your STS AccessKey secret.
+> <yourStsToken>. Replace it with your STS security token.
+> <yourRegionID>: Replace it with the actual resource set ID.
+> <yourRegionID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -488,9 +493,9 @@ The SLB SDK encapsulates the API released on May 15, 2014. The SDK identifies ca
 
 Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. e API calls
+e API calls
 
 ## 3 Use POP to make API calls
 
@@ -697,9 +702,10 @@ the x-acs-security-token field to the header
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java e API calls
+Java e API calls
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
@@ -853,9 +859,7 @@ The default value is `false` .
 
 **Settings**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
 
 ```
 // Configure HTTPSInsecure for the request (affects only the current request) request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the HTTPSInsecure sett ing for the request.
@@ -983,9 +987,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use ht
 
 **Ignore certificate**
 
-**Important**
-
-When accessing OpenAPI using HTTPS protocol, the SDK will verify SSL/TLS certificate validity by default. If your code environment does not have a certificate environment, it will report a certificate verification failure error. To ensure communication security in production environments, we recommend keeping verification enabled. If you must ignore certificate verification in a test environment, you can set it through the `verify` parameter.
+> **Important:** When accessing OpenAPI using HTTPS protocol, the SDK will verify SSL/TLS certificate validity by default. If your code environment does not have a certificate environment, it will report a certificate verification failure error.
+> To ensure communication security in production environments, we recommend keeping verification enabled. If you must ignore certificate verification in a test environment, you can set it through the `verify` parameter.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1028,9 +1031,11 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.alibaba.fastjson.JSON; import java.util.*; import com.aliyuncs.slb.model.v20140515.*;
@@ -1137,9 +1142,7 @@ This topic describes how to install Server Load Balancer (SLB) SDK for Java and 
 
 When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
-**Note**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Note:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -1148,9 +1151,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace it with your AccessKey secret.
 ```
 
-**Note**
-
-Replace the preceding variables with your actual information. Remove the angle brackets (<>) when you specify the parameters.
+> **Note:** Replace the preceding variables with your actual information. Remove the angle brackets (<>) when you specify the parameters.
 
 #### 4.2.3 Call SLB SDK for Java
 
@@ -1264,9 +1265,12 @@ your AccessKey ID, and your AccessKey secret.
 3. Initiate the API request and process the response or exception.
 r Python to make API calls
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <your-endpoint>: Replace the value of this parameter with the endpoint of the service.
 
 ```
 #!/usr/bin/env python
@@ -1294,9 +1298,9 @@ print(str(response, encoding='utf-8'))
 
 This topic describes how to install and use Server Load Balancer (SLB) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use SLB SDK for Python, you must install the SDK core library for Python and SLB SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use SLB SDK for Python, you must install the SDK core library for Python and SLB SDK for Python. If you use Python 2.x, run the following command to install the core library:
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -1324,9 +1328,7 @@ pip3 install aliyun-python-sdk-slb==3.3.8
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
-**Important**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -1338,9 +1340,7 @@ r Python to make API calls
 
 SDK for Python allows you to send API requests by using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or set a global default protocol.
 
-**Note**
-
-The default protocol of the service takes precedence over the global default protocol.
+> **Note:** The default protocol of the service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -1457,9 +1457,12 @@ To call SLB SDK for Go, perform the following steps:
 2. Create an API request and set the required parameters.
 3. Initiate the API request and manage the response or exceptions.
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets <> in the final code. The following list describes the parameters: <yourRegionID>: Replace the variable with the region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <Endpoint>: Replace the variable with the endpoint.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets <> in the final code.
+> The following list describes the parameters:
+> <yourRegionID>: Replace the variable with the region ID.
+> <yourAccessKeyID>: Replace the variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with your AccessKey secret.
+> <Endpoint>: Replace the variable with the endpoint.
 
 ```java
 package main import (
@@ -1595,17 +1598,13 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
-
-Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 client, err := slb.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
-**Note**
-
-In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 6.2.3 Call SLB SDK for Go
 
@@ -1621,9 +1620,7 @@ import (
 `)`
 2. Create a client that includes all of the API operations.
 
-**Note**
-
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 ```
 client, err := slb.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<yo urAccessKeySecret>")
@@ -1739,9 +1736,7 @@ You can use the following code to handle errors:
 
 When you make a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to identify and obtain the error message in the `ClientError` : r Go to make API calls
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
@@ -1750,7 +1745,7 @@ package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/a
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := client.DescribeLoadBalancers(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1768,9 +1763,7 @@ response, err := client.DescribeLoadBalancers(request) if clientError, ok := err
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to identify and obtain the error message in ServerError and Response:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
@@ -1819,9 +1812,7 @@ to query created SLB instances.
 **Parameters**: The request parameters. Separate multiple parameters with ampersands (&).
 Request parameters include common parameters and operation-specific parameters. Common parameters include the API version number and authentication information. For more information, see Common parameters. The following example shows how to call the DescribeLoadBalancers operation to query created SLB instances:
 
-**Note**
-
-The sample request is formatted to improve readability.
+> **Note:** The sample request is formatted to improve readability.
 
 ```
 https://slb.example.com/?Action=DescribeLoadBalancers &Format=xml &Version=2014-05-15 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &TimeStamp=2016-02-23T12:46:24Z
@@ -2606,9 +2597,7 @@ lhCh
 
 Deletes a listener.
 
-**Note**
-
-You can delete only listeners that are in the **stopped** or **running** state.
+> **Note:** You can delete only listeners that are in the **stopped** or **running** state.
 
 **Request parameters**
 
@@ -2654,9 +2643,7 @@ Sample success responses `XML` format
 
 Disables a listener. When you call this operation, take note of the following items: If the operation is successful, the listener switches to the Stopped state. You cannot perform the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state.
 
-**Note**
-
-After a listener is disabled, it stops forwarding requests to the associated backend servers. This may cause service interruptions. Proceed with caution.
+> **Note:** After a listener is disabled, it stops forwarding requests to the associated backend servers. This may cause service interruptions. Proceed with caution.
 
 **Request parameters**
 
@@ -3217,9 +3204,7 @@ Sample success responses `XML` format
 
 Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
 
-**Note**
-
-After you delete an SLB instance, the listeners configured for the SLB instance and the tags added to the SLB instance are deleted.
+> **Note:** After you delete an SLB instance, the listeners configured for the SLB instance and the tags added to the SLB instance are deleted.
 
 **Request parameters**
 
@@ -4126,9 +4111,8 @@ Sample success responses `XML` format
 
 Creates a TCP listener.
 
-**Note**
-
-Newly created listeners are in the stopped state. After creation, you can call the `StartLoadBalancerListener` operation to start the listener to forward traffic.
+> **Note:** Newly created listeners are in the stopped state. After creation, you can call the
+> `StartLoadBalancerListener` operation to start the listener to forward traffic.
 
 **Request parameters**
 
@@ -4425,9 +4409,7 @@ Sample success responses `XML` format
 
 Creates a UDP listener.
 
-**Note**
-
-You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the **stopped** state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic.
+> **Note:** You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the **stopped** state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic.
 
 **Request parameters**
 
@@ -4658,9 +4640,9 @@ Sample success responses `XML` format
 
 Creates an HTTP listener.
 
-**Note**
+> **Note:** Newly created listeners are in the **stopped** state.
 
-Newly created listeners are in the **stopped** state. After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic.
+After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic.
 
 **Request parameters**
 
@@ -4968,9 +4950,7 @@ Sample success responses `XML` format
 
 Creates an HTTPS listener.
 
-**Note**
-
-Newly created listeners are in the stopped state. After a listener is created, call the `StartLoadBalancerListener` operation to enable the listener to forward network traffic.
+> **Note:** Newly created listeners are in the stopped state. After a listener is created, call the `StartLoadBalancerListener` operation to enable the listener to forward network traffic.
 
 **Request parameters**
 
@@ -6147,9 +6127,7 @@ Sample success responses `XML` format
 
 Deletes a server certificate.
 
-**Note**
-
-You cannot delete a server certificate that is in use.
+> **Note:** You cannot delete a server certificate that is in use.
 
 **Request parameters**
 
@@ -6194,9 +6172,7 @@ Sample success responses `XML` format
 
 Queries server certificates in a specified region.
 
-**Note**
-
-For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+> **Note:** For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
 
 **Request parameters**
 
@@ -6427,9 +6403,7 @@ Sample success responses `XML` format
 
 Deletes a CA certificate.
 
-**Note**
-
-You cannot delete a CA certificate that is in use.
+> **Note:** You cannot delete a CA certificate that is in use.
 
 **Request parameters**
 
@@ -6476,9 +6450,7 @@ Sample success responses `XML` format
 
 Queries CA certificates.
 
-**Note**
-
-For security reasons, only fingerprints and names of the CA certificates are returned, the content of the CA certificates is not returned.
+> **Note:** For security reasons, only fingerprints and names of the CA certificates are returned, the content of the CA certificates is not returned.
 
 **Request parameters**
 
@@ -6682,9 +6654,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 Adds backend servers.
 
-**Note**
-
-If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+> **Note:** If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
 
 **Request parameters**
 
@@ -6801,9 +6771,7 @@ Sample success responses `XML` format
 
 Removes backend servers.
 
-**Note**
-
-If the backend server that you want to remove does not belong to the specified Server Load Balancer (SLB) instance, the request fails. However, the system does not report an error.
+> **Note:** If the backend server that you want to remove does not belong to the specified Server Load Balancer (SLB) instance, the request fails. However, the system does not report an error.
 
 **Request parameters**
 
@@ -7291,9 +7259,7 @@ Sample success responses `XML` format
 
 Removes a backend server from a specified vServer group.
 
-**Note**
-
-If one or more backend servers specified by **BackendServers** do not exist in the vServer group, the backend servers are ignored and no error message is returned.
+> **Note:** If one or more backend servers specified by **BackendServers** do not exist in the vServer group, the backend servers are ignored and no error message is returned.
 
 **Request parameters**
 

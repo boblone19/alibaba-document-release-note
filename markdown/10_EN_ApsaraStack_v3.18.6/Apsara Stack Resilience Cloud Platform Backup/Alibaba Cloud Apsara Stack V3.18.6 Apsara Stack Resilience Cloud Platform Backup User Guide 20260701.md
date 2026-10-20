@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 13
 source_pdf: "196ad3890ce7f961_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience Cloud Platform Backup User Guide 20260701"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%B9%B3%E5%8F%B0%E5%A4%87%E4%BB%BD/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20Cloud%20Platform%20Backup%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience Cloud Platform Backup User Guide 20260701
@@ -32,11 +32,23 @@ agement page
 This topic describes how to go to the platform backup management page in the Apsara Unimanager Operations Console. The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. agement page You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. agement page
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, click **System Config**.
 6. In the left-side navigation pane, click **Platform Backup Management**.
@@ -98,7 +110,8 @@ This topic describes how to configure a backup policy for miniRDS. A backup arch
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 3. Click the **MiniRDS Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -118,7 +131,8 @@ This topic describes how to configure a backup policy for the PANGU master. A ba
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 3. Click the **PANGU Master Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -178,7 +192,8 @@ This topic describes how to configure a backup policy for in-cloud Object Storag
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 3. Click the **In-cloud OSS Bucket Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -197,4 +212,5 @@ This topic describes how to view the archive details after the backup is archive
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 **Backup Records**.
 3. On the Archiving Details page, view the backup archive details.
-Archive details are not displayed one week after the backup is deleted.
+
+> **Note:** Archive details are not displayed one week after the backup is deleted.

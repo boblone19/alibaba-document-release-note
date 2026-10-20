@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 84
 source_pdf: "27a40a99aac0bfab_Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis User Guide 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tracing%20Analysis%20User%20Guide%2020260313.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Tracing Analysis User Guide 20260313
@@ -58,9 +58,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -73,8 +81,10 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top menu bar, choose **Products > Middleware > Cloud Native Observability >**
 **Application Real-Time Monitoring Service (ARMS)**.
 6. On the **Application Real-Time Monitoring Service** page, select an organization and a
@@ -1158,7 +1168,10 @@ The following figure shows how to report data by using Zipkin.
 
 **Manually instrument a Java application**
 
-If you want to manually instrument a Java application, you must write instrumentation code. Click to download the demo project. Then, go to the **manualDemo** directory and follow the instructions in the README.md file to run the program.
+If you want to manually instrument a Java application, you must write instrumentation code.
+
+> **Note:** Click to download the demo project. Then, go to the **manualDemo** directory and follow the instructions in the README.md file to run the program.
+
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1256,9 +1269,10 @@ ii. Call the Extract method on the server to extract the context information.
 
 **application**
 
-You can use Spring 2.5 MVC or Spring 3.0 MVC to instrument a Java application. Click to download the demo project. Then, go to the
-**springMvcDemo\webmvc3|webmvc25** directory and follow the instructions in the
-README.md file to run the program.
+You can use Spring 2.5 MVC or Spring 3.0 MVC to instrument a Java application.
+
+> **Note:** Click to download the demo project. Then, go to the **springMvcDemo\webmvc3|webmvc25** directory and follow the instructions in the README.md file to run the program.
+
 1. Configure the tracing object in the **applicationContext.xml** file.
 
 ```xml
@@ -1336,9 +1350,10 @@ class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMa
 
 **application**
 
-You can use Spring 4.0 MVC or Spring Boot to instrument a Java application. Click to download the demo project. Then, go to the **springMvcDemo\webmvc4-**
-**boot|webmv4** directory and follow the instructions in the README.md file to run the
-program.
+You can use Spring 4.0 MVC or Spring Boot to instrument a Java application.
+
+> **Note:** Click to download the demo project. Then, go to the **springMvcDemo\webmvc4-** **boot|webmv4** directory and follow the instructions in the README.md file to run the program.
+
 1. Configure the tracing and filter objects.
 
 ```
@@ -1447,7 +1462,10 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\ brave.webmvc.Tr
 
 **Use Dubbo to instrument a Java application**
 
-You can use Dubbo to instrument a Java application. Click to download the demo project. Then, go to the **dubboDem** directory and follow the instructions in the README.md file to run the program.
+You can use Dubbo to instrument a Java application.
+
+> **Note:** Click to download the demo project. Then, go to the **dubboDem** directory and follow the instructions in the README.md file to run the program.
+
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1517,7 +1535,10 @@ You can use Dubbo to instrument a Java application. Click to download the demo p
 
 **Use Spring Sleuth to instrument a Java application**
 
-You can use Spring Sleuth to instrument a Java application. Click to download the demo project. Then, go to the **sleuthDemo** directory and follow the instructions in the README.md file to run the program.
+You can use Spring Sleuth to instrument a Java application.
+
+> **Note:** Click to download the demo project. Then, go to the **sleuthDemo** directory and follow the instructions in the README.md file to run the program.
+
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1549,7 +1570,8 @@ You can use Spring Sleuth to instrument a Java application. Click to download th
 ```
 
 2. Configure the application.yml file.
-You must replace `<endpoint_short>` with the endpoint for your client and region. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the public endpoint that ends with api/v2/spans on the Access point information tab of the **Cluster Configurations** page.
+
+> **Note:** You must replace `<endpoint_short>` with the endpoint for your client and region. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the public endpoint that ends with api/v2/spans on the Access point information tab of the **Cluster Configurations** page.
 
 ```bash
 spring:
@@ -1645,7 +1667,9 @@ $rootSpan = $tracer->newTrace(); $rootSpan->setName('encode') $rootSpan->start()
   $rootSpan->finish();
 ```
 
-`}` You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Example:
+`}`
+
+> **Note:** You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Example:
 
 ```
 $span = $tracer->newChild($parentSpan->getContext()); $span->setName('encode'); $span->start(); try {
@@ -1654,7 +1678,8 @@ $span = $tracer->newChild($parentSpan->getContext()); $span->setName('encode'); 
   $span->finish();
 ```
 
-`}`
+> `}`
+
 4. **Optional.** To troubleshoot issues in an efficient manner, you can add custom tags to a
 record. For example, you can add custom tags to a request to indicate whether an error occurs or describe the returned values of the request.
 
@@ -1780,7 +1805,7 @@ sender := transport.NewHTTPTransport(
 go run main.go http done grpc done
 ```
 
-The following errors indicate that the specified account and password are invalid. Specify a valid account and password and try again.
+> **Note:** The following errors indicate that the specified account and password are invalid. Specify a valid account and password and try again.
 
 ```
 go run main.go http done 2018/09/17 21:11:54 ERROR: error when flushing the buffer: error from collector:
@@ -1889,7 +1914,7 @@ hz.aliyuncs.com/adapt_aokcdqnxyz@123456ff_abcdef123@abcdef123/api/v2/spans")
 // tracer can now be used to create spans. span := tracer.StartSpan("some_operation") // ... do some work ... span.Finish() // Output:
 ```
 
-You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Sample code:
+> **Note:** You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Sample code:
 
 ```
 childSpan := tracer.StartSpan("some_operation2", zipkin.Parent(span.Context()))
@@ -1912,7 +1937,9 @@ data. Trace data contains the values of the TraceId, ParentSpanId, SpanId, and S
 ┌──────────────────┐ ┌──────────────────┐ │ │ │ │ │ TraceContext │ Http Request Headers │ TraceContext │ │ ┌──────────────┐ │ ┌───────────────────┐ │ ┌──────────────┐ │ │ │ TraceId │ │ │ X-B3-TraceId │ │ │ TraceId │ │ │ │ │ │ │ │ │ │ │ │ │ │ ParentSpanId │ │ Inject │ X-B3-ParentSpanId │Extract │ │ ParentSpanId │ │ │ │ ├─┼─────────>│ ├────────┼>│ │ │ │ │ SpanId │ │ │ X-B3-SpanId │ │ │ SpanId │ │ │ │ │ │ │ │ │ │ │ │ │ │ Sampled │ │ │ X-B3-Sampled │ │ │ Sampled │ │ │ └──────────────┘ │ └───────────────────┘ │ └──────────────┘ │ │ │ │ │ └──────────────────┘ └──────────────────┘
 ```
 
-Zipkin allows you to pass through context information over HTTP or Google Remote Procedure Call (gRPC). i. Call the Inject method on the client to specify the context information.
+> **Note:** Zipkin allows you to pass through context information over HTTP or Google Remote Procedure Call (gRPC).
+
+i. Call the Inject method on the client to specify the context information.
 
 ```
 req, _ := http.NewRequest("GET", "/", nil) // configure a function that injects a trace context into a reques injector := b3.InjectHTTP(req) injector(sp.Context())
@@ -2072,7 +2099,10 @@ The following figure shows how to report data without using the Jaeger agent.
 
 **application**
 
-Use ASP.NET Core to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can go to the webapi.dotnetcore directory and perform the steps in the README.md file to run the demo program.
+Use ASP.NET Core to instrument an application by performing the following steps:
+
+> **Note:** You can click here to download the demo project. Then, you can go to the webapi.dotnetcore directory and perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2117,7 +2147,10 @@ RemoteReporter.Builder().WithSender(senderConfiguration.GetSender()).Build())
 
 **Use gRPC to automatically instrument a .NET application**
 
-Use gRPC to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Use gRPC to instrument an application by performing the following steps:
+
+> **Note:** You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2181,7 +2214,10 @@ ILoggerFactory loggerFactory = new LoggerFactory().AddConsole(); ITracer tracer 
 
 **Manually instrument a .NET application**
 
-The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Jaeger to report the trace data of the applications to the ARMS console. You can click here to download the demo project. Then, you can go to the ManualDemo directory and perform the steps in the README.md file to run the demo program.
+The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Jaeger to report the trace data of the applications to the ARMS console.
+
+> **Note:** You can click here to download the demo project. Then, you can go to the ManualDemo directory and perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2229,7 +2265,9 @@ GlobalTracer.Register(InitTracer("dotnetManualDemo", loggerFactory ));
 ITracer tracer = GlobalTracer.Instance; ISpan span = tracer.BuildSpan("parentSpan").WithTag("mytag","parentSapn").Start(); tracer.ScopeManager.Activate(span, false); // ... do something span.Finish();
 ```
 
-You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the AsChildOf method. Sample code:
+> **Note:** You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the AsChildOf method.
+
+Sample code:
 
 ```
 ITracer tracer = GlobalTracer.Instance; ISpan parentSpan = tracer.ActiveSpan; ISpan childSpan =tracer.BuildSpan("childSpan").AsChildOf(parentSpan).WithTag("mytag", "spanSecond").Start(); tracer.ScopeManager.Activate(childSpan, false); // ... do something childSpan.Finish();
@@ -2295,7 +2333,10 @@ The following figure shows how to report data by using Zipkin.
 
 **application**
 
-Perform the following steps to use ASP.NET Core to instrument an application: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Perform the following steps to use ASP.NET Core to instrument an application:
+
+> **Note:** You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2337,7 +2378,10 @@ licationName"]));
 
 **Use OWIN to automatically instrument a .NET application**
 
-Use Open Web Interface for .NET (OWIN) to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Use Open Web Interface for .NET (OWIN) to instrument an application by performing the following steps:
+
+> **Note:** You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2386,7 +2430,10 @@ using (var httpClient = new HttpClient(new TracingHandler(applicationName)))
 
 **Manually instrument a .NET application**
 
-The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Zipkin to report the trace data of the applications to the ARMS console. You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Zipkin to report the trace data of the applications to the ARMS console.
+
+> **Note:** You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+
 1. Install the NuGet packages.
 
 ```
@@ -2405,7 +2452,7 @@ TraceManager.SamplingRate = 1.0f; var logger = new ConsoleLogger(); // Obtain th
 var trace = Trace.Create(); Trace.Current = trace; trace.Record(Annotations.ClientSend()); trace.Record(Annotations.Rpc("client")); trace.Record(Annotations.Tag("mytag", "spanFrist")); trace.Record(Annotations.ServiceName("dotnetManual")); // ...do something testCall(); trace.Record(Annotations.ClientRecv());
 ```
 
-You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the ChildOf method. Sample code:
+> **Note:** You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the ChildOf method. Sample code:
 
 ```
 var trace = Trace.Current.Child(); Trace.Current = trace; trace.Record(Annotations.ServerRecv()); trace.Record(Annotations.Rpc("server")); trace.Record(Annotations.Tag("mytag", "spanSecond")); trace.Record(Annotations.ServiceName("dotnetManual")); // ...do something trace.Record(Annotations.ServerSend());
@@ -2569,14 +2616,20 @@ sed on your business requirements.
       opentracing_propagate_context;
 ```
 
-`}` `}` `}` For more information, see the configuration in opentracing-contrib. iii. Configure the Zipkin parameters in the /etc/zipkin-config.json file. `{`
+`}` `}` `}`
+
+> **Note:** For more information, see the configuration in opentracing-contrib.
+
+iii. Configure the Zipkin parameters in the /etc/zipkin-config.json file. `{`
 
 ```json
   "service_name": "nginx",
   "collector_host": "zipkin"
 ```
 
-`}` If you use the Zipkin service that is managed by Alibaba Cloud, set thecollector_hostparameter to an endpoint of Zipkin. Enter the V1 endpoint of Zipkin that you obtain, but remove http:// and add a question mark (?) to the value as the suffix.
+`}` If you use the Zipkin service that is managed by Alibaba Cloud, set thecollector_hostparameter to an endpoint of Zipkin.
+
+> **Note:** Enter the V1 endpoint of Zipkin that you obtain, but remove http:// and add a question mark (?) to the value as the suffix.
 
 ```json
 "collector_host": "tracing-analysis-dchz.aliyuncs.com/adapt_abc123@abc456_abc123@abc356/api/v1/spans?"
@@ -2632,9 +2685,8 @@ icon in the **Labels** column, and then select **Manage Labels**.
 3. In the **Manage Application Labels** dialog box, click the
 icon and enter a custom tag. Then, click **Determine**. In the **Success** message, click **Determine**.
 
-**Important**
+> **Important:** If you delete a tag in the **Manage Application Labels** dialog box, the tag is removed from all applications to which the tag is previously added.
 
-If you delete a tag in the **Manage Application Labels** dialog box, the tag is removed from all applications to which the tag is previously added.
 4. Return to the **Applications** page. Find the application to which you want to add a tag, click
 the icon in the **Labels** column, and then select the tag that you specify.
 
@@ -2673,7 +2725,11 @@ The topology of service calls for the application in the specified time range. T
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 1 Date and time picker
 
 ### 2.3 View application details
 
@@ -2686,13 +2742,19 @@ On the **Application Details** page of an application, the **Overview** tab disp
 2. In the left-side navigation pane, choose **Tracing > Applications**.
 3. On the **Applications** page, click the name of your application.
 4. In the left-side navigation pane, click **Application Details**. Then, click **All** or select a
-server from the server list on the left. Then, you can view the call topology and key metrics on the **Overview** tab. To sort the servers where the application is deployed, you can click the **Response**
-**Time**, **Requests**, or **Exceptions** tab, and then click the upward or downward arrow
-next to the name of the tab. To filter the servers, you can enter a keyword in the search box and click the search icon. If you want to switch to a different application, select the new application from the Application Name drop-down list in the upper-left corner of the page.
+server from the server list on the left. Then, you can view the call topology and key metrics on the **Overview** tab.
+
+> **Note:** To sort the servers where the application is deployed, you can click the **Response** **Time**, **Requests**, or **Exceptions** tab, and then click the upward or downward arrow next to the name of the tab. To filter the servers, you can enter a keyword in the search box and click the search icon.
+
+> **Note:** If you want to switch to a different application, select the new application from the Application Name drop-down list in the upper-left corner of the page.
 
 **View traces**
 
-The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces tab In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Generation Time** or **Status** to sort the traces in descending or ascending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
+The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces tab
+
+> **Note:** In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` .
+
+On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Generation Time** or **Status** to sort the traces in descending or ascending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
 
 **View the waterfall chart of a trace**
 
@@ -2700,7 +2762,11 @@ The **Traces** tab displays the following information about a trace: start time,
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 2 Date and time picker
 
 ### 2.4 View the details of span calls
 
@@ -2723,7 +2789,11 @@ This feature is not supported by the current version.
 
 **View traces**
 
-The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces page In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Consumed Time** or **Status** to sort the traces in ascending or descending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
+The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces page
+
+> **Note:** In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` .
+
+On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Consumed Time** or **Status** to sort the traces in ascending or descending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
 
 **View the waterfall chart of a trace**
 
@@ -2731,7 +2801,11 @@ The **Traces** tab displays the following information about a trace: start time,
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 2 Date and time picker
 
 ### 2.5 View database calls
 
@@ -2750,7 +2824,11 @@ Click **Call Statistics** in the **Actions** column. The number of times that th
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 1 Date and time picker
 
 ### 2.6 Perform diagnosis
 
@@ -2773,7 +2851,11 @@ traces of the exception.
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 1 Date and time picker
 
 ### 2.7 Configure application settings
 
@@ -2800,9 +2882,7 @@ Alternatively, click the name of your application and click **Application Settin
 6. In the **Manage Application Labels** dialog box, perform the following operations based on
 your business requirements and click **Determine**. To create a tag, click the Plus icon and enter a tag in the field. To delete a tag, move the pointer over the tag and click the X icon on the left.
 
-**Important**
-
-If you delete a tag in the **Manage Application Labels** dialog box, the tag is removed from all applications to which the tag is previously added.
+> **Important:** If you delete a tag in the **Manage Application Labels** dialog box, the tag is removed from all applications to which the tag is previously added.
 
 **Delete an application**
 
@@ -2814,9 +2894,7 @@ Alternatively, click the name of your application and click **Application Settin
 5. In the **Delete Application** section, click **Delete**.
 6. In the **Delete an application** dialog box, click **Delete**.
 
-**Important**
-
-After an application is deleted, all monitoring data of the application is cleared. The deleted data cannot be restored.
+> **Important:** After an application is deleted, all monitoring data of the application is cleared. The deleted data cannot be restored.
 
 ### 2.8 Run a multidimensional query
 
@@ -2827,14 +2905,21 @@ This topic describes how to use the multidimensional query feature to query trac
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.
 2. In the left-side navigation pane, choose **Tracing > Multidimensional Query**.
 3. On the **Advanced Query** page, configure the following parameters based on your business
-requirements and click **Search**: Required query parameters TraceID Takes Longer Than (ms) Application Name Span Name Date Optional query parameter: Tag Key Enter a value in the **Tag Key** field and then enter a value in the **Tag Value** field. To add more tag keys and tag values as query conditions, click the blue plus sign to the right of the Tag Value field. In the search results, click the ID of a trace to go to the **Traces** tab and view the trace details.
+requirements and click **Search**: Required query parameters TraceID Takes Longer Than (ms) Application Name Span Name Date Optional query parameter: Tag Key Enter a value in the **Tag Key** field and then enter a value in the **Tag Value** field. To add more tag keys and tag values as query conditions, click the blue plus sign to the right of the Tag Value field.
+
+> **Note:** In the search results, click the ID of a trace to go to the **Traces** tab and view the trace details.
+
 4. To save the current configuration of query parameters, click **Favorite** and specify an alias.
 5. To delete the favorite configuration of query parameters, click the Delete icon to the right
 of the configuration alias.
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+
+> **Note:** The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format.
+
+Figure 1 Date and time picker
 
 ### 2.9 Global topology
 

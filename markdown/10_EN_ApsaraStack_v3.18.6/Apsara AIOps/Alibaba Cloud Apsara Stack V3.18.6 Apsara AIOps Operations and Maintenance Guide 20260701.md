@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 22
 source_pdf: "8eb32685fdfd3230_Alibaba Cloud Apsara Stack V3.18.6 Apsara AIOps Operations and Maintenance Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%BB%B4%E5%B0%8F%E6%99%BA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20AIOps%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara AIOps Operations and Maintenance Guide 20260701
@@ -36,11 +36,23 @@ The endpoint, username, and password of the Apsara Uni-manager O&M console are o
 
 1. Open the browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations console and
-press the Enter key. Management Console You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+press the Enter key. Management Console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password must be 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password must be 10 to 20 characters in length.
+
 4. Click **Agree and Log On**.
 5. In the top navigation bar, choose**Platform Operation > Management and Control**
 **Service O&M > AIOps Management Console**.
@@ -116,7 +128,9 @@ manage terminals. On the **Terminal Management** page, you can go to the termina
 1. On the **Application Management** page, find the application that you want to manage and
 click
 **> Edit** in the Actions column.
-Platform built-in applications do not support editing.
+
+> **Note:** Platform built-in applications do not support editing.
+
 2. In the dialog box that appears, modify the application information and click **OK**.
 
 **Delete an application**
@@ -124,7 +138,10 @@ Platform built-in applications do not support editing.
 1. On the **Application Management** page, find the application that you want to delete and
 click
 **> Delete** in the Actions column.
-The built-in applications of the platform cannot be deleted. This operation is irreversible, please operate with caution!
+
+> **Note:** The built-in applications of the platform cannot be deleted.
+> This operation is irreversible, please operate with caution!
+
 2. In the message that appears, click **OK**.
 nt
 
@@ -167,7 +184,8 @@ icon corresponding to the target folder.
 1. Click the
 icon corresponding to the target folder.
 2. In the dialog box that appears, click **Delete**.
-After you delete a folder, all knowledge base in the folder are moved to the default folder. Exercise caution when you delete the folder.
+
+> **Note:** After you delete a folder, all knowledge base in the folder are moved to the default folder. Exercise caution when you delete the folder.
 
 **Create knowledge base**
 
@@ -206,7 +224,10 @@ for a document by file name.
 knowledge base details page.
 2. Click **Add Document**.
 3. In the **Upload File** step, click or drag the file to upload it to the dotted box. After the file is
-uploaded, click **Next**. Support doc,docx,pdf,txt,md,html,xls,xlsx,csv and other types of files.
+uploaded, click **Next**.
+
+> **Note:** Support doc,docx,pdf,txt,md,html,xls,xlsx,csv and other types of files.
+
 4. In the **Segment&Cleansing** step, select and configure the document segmentation
 parameters. Intelligent segmentation: the optimal segmentation method for common documents. The document is segmented based on the segment identifier. If the maximum segment length is exceeded, the document is processed based on the maximum segment length and the overlapping length of the segments. Parent-child segmentation: A two-layer parent-child segmentation structure is used to balance retrieval accuracy and context information. The parent block is used to provide context, and the child block is used for precise retrieval.
 5. Click **Preview** to check whether the document is segmented as expected. Then, click **Next**.
@@ -238,12 +259,16 @@ parameters.
 
 1. Click
 **> Edit** in the Actions column corresponding to the target knowledge base.
-Platform built-in knowledge base do not support editing.
+
+> **Note:** Platform built-in knowledge base do not support editing.
+
 2. In the dialog box that appears, modify the parameters and click **OK**.
 
 **Delete knowledge base**
 
-Platform built-in knowledge base cannot be deleted. Deleted can not be withdrawn, please operate with caution!
+> **Note:** Platform built-in knowledge base cannot be deleted.
+> Deleted can not be withdrawn, please operate with caution!
+
 1. Click
 **> Delete** in the Actions column corresponding to the target knowledge base.
 2. In the dialog box that appears, click **Delete**.
@@ -264,7 +289,9 @@ LLM: the inference model. The default inference model is used by the application
 2. In the left-side navigation pane, choose **System Settings > Model Management**.
 3. In the **Model List** section, you can view the **Built-in Model Services**, including the model
 type, number, and name.
-**Built-in Model Service** does not allow you to add, edit, or delete models.
+
+> **Note:** **Built-in Model Service** does not allow you to add, edit, or delete models.
+
 4. In the lower part of the page, you can view and configure the external inference service.
 Add model a. Click **Add Model**. b. Set the following parameters and click **OK**.
 
@@ -279,7 +306,14 @@ Add model a. Click **Add Model**. b. Set the following parameters and click **OK
 |---|---|
 | Vector dimension | This field takes effect only when you set Model Type to Embedding. The dimension of the input vector. |
 
-API-KEY settings a. Click **API-KEY Settings**. b. In the dialog box that appears, configure the **API Key** and click **OK**. Edit Model a. Click **Edit** in the Actions column corresponding to the target model. b. In the dialog box that appears, modify the model parameters and click **OK**. You cannot change the **Model Type**. Delete a model a. Click **Delete** in the Actions column corresponding to the target model. b. In the message that appears, click **OK**. Deleted can not be withdrawn, please operate with caution!
+API-KEY settings a. Click **API-KEY Settings**. b. In the dialog box that appears, configure the **API Key** and click **OK**. Edit Model a. Click **Edit** in the Actions column corresponding to the target model. b. In the dialog box that appears, modify the model parameters and click **OK**.
+
+> **Note:** You cannot change the **Model Type**.
+
+Delete a model a. Click **Delete** in the Actions column corresponding to the target model. b. In the message that appears, click **OK**.
+
+> **Note:** Deleted can not be withdrawn, please operate with caution!
+
 5. In the upper-right corner of the page, click **System Model Settings**.
 6. Configure the default models of built-in applications and user-created applications. You can
 configure the **Inference Model**, **Embedding Model**, and **Rerank Model** parameters. Then, click **OK**. and solutions

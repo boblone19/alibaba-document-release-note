@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 9
 source_pdf: "b4fc0b1a37dd4d32_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Product Introduction 20251030.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Firewall%20Product%20Introduction%2020251030.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Firewall Product Introduction 20251030

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 37
 source_pdf: "b6399df375395deb_Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Defined%20Storage%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Defined Storage Product Introduction 20260629
@@ -183,9 +183,7 @@ LogHub: Data can be immediately consumed after the data is written to Log Servic
 
 Log Service provides high throughput after Log Service software is optimized. If Log Service is deployed on a single server, the throughput performance can reach the following levels: Data write: Raw logs can be written to Simple Log Service at a speed that exceeds 400 MB/s, and indexed logs can be written to Simple Log Service at a speed that exceeds 150 MB/s. Real-time consumption: Data can be consumed in real time at a speed that exceeds 400 MB/s. QPS: The queries per second (QPS) can exceed 10,000. Original query: If you set five or more query conditions for hundreds of billions of data records, 100 data entries that meet the query conditions are returned within 10 seconds. Real-time analysis: Billions of data records are returned within seconds. If you set five or more query conditions for tens of billions of data records, the data is returned within 5 seconds.
 
-**Note**
-
-The throughput performance varies based on the hardware of a server.
+> **Note:** The throughput performance varies based on the hardware of a server.
 
 **Scalability**
 

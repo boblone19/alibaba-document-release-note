@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 90
 source_pdf: "6d798e0979e2f8f0_Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%20AnalyticDB%20PostgreSQL%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20AnalyticDB%20for%20PostgreSQL%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # AnalyticDB for PostgreSQL Developer Guide 20260630
@@ -116,17 +116,17 @@ You can continue to use the ASAPI gateway to call API operations in Apsara Stack
 1. Obtain AccessKey credentials.
 Obtain the AccessKey credentials that are required for calling an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use an AccessKey pair or an STS AccessKey 3-tuple of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use an AccessKey pair or an STS AccessKey 3-tuple of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For more information, see Obtain common header parameters.
 3. Obtain the organization ID and resource set ID.
 You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Develope r Guide.
 
-**Note**
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set.
+> If you do not set the `<x-acs-organizationid>` parameter, the ID of the organization to which the current user belongs is used by default.
+> If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is left empty by default. If you specify a resource set, you must also specify an organization ID.
 
-When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not set the `<x-acs-organizationid>` parameter, the ID of the organization to which the current user belongs is used by default. If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is left empty by default. If you specify a resource set, you must also specify an organization ID.
 4. View the developer guide of the cloud service that you want to use to learn how to make
 the API call. View the developer guide of the cloud service that you want to use. This way, you can learn the features of API operations and how to call the API operations. For more information, see Usage notes on development documentation.
 5. Obtain the endpoint of the cloud service.
@@ -149,17 +149,17 @@ press Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 2.2 Obtain the information and the endpoint of an API operation
@@ -193,9 +193,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -212,9 +210,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -245,9 +241,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the STS AccessKey 3-tuple.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code. Parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
+> **Note:** In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code.
+> Parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the parameter with the name of the current session.
+> <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role.
+> "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -298,9 +299,14 @@ tep for the RAM role.
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code. Parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
+> **Note:** In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code.
+> Parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourStsToken>. Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -499,13 +505,13 @@ AnalyticDB for PostgreSQLThe service authenticates every request. Therefore, whe
 1. Use the request parameters to construct a canonicalized query string.
 i. Sort all request parameters (including common request parameters described in the documentation and custom parameters specific to the requested API operation, but excluding the Signature parameter itself mentioned in common request parameters) in lexicographic order by parameter name.
 
-**Note**
+> **Note:** If you use the GET method to submit the request, these parameters constitute the parameter part of the request URI (the part after ? connected by &).
 
-If you use the GET method to submit the request, these parameters constitute the parameter part of the request URI (the part after ? connected by &). ii. Encode the name and value of each request parameter. Use the UTF-8 character set for URL encoding. The URL encoding rules are as follows: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal representation of the ASCII code of the character. For example, encode the double quotation mark (") as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that you must encode the space character as %20, not as a plus sign (+).
+ii. Encode the name and value of each request parameter. Use the UTF-8 character set for URL encoding. The URL encoding rules are as follows: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal representation of the ASCII code of the character. For example, encode the double quotation mark (") as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that you must encode the space character as %20, not as a plus sign (+).
 
-**Note**
+> **Note:** Libraries that support URL encoding (such as java.net.URLEncoder in Java) typically follow the rules of the application/x-www-form-urlencoded MIME type. To comply with the preceding encoding rules, you can directly use such libraries for encoding and then replace the plus sign (+) with %20, the asterisk (*) with %2A, and %7E with the tilde (~) in the encoded string.
 
-Libraries that support URL encoding (such as java.net.URLEncoder in Java) typically follow the rules of the application/x-www-form-urlencoded MIME type. To comply with the preceding encoding rules, you can directly use such libraries for encoding and then replace the plus sign (+) with %20, the asterisk (*) with %2A, and %7E with the tilde (~) in the encoded string. iii. Connect the encoded parameter name and value with an equal sign (=). iv. Concatenate the strings connected by equal signs in lexicographic order by parameter name, using ampersands (&) as separators. This produces the canonicalized query string.
+iii. Connect the encoded parameter name and value with an equal sign (=). iv. Concatenate the strings connected by equal signs in lexicographic order by parameter name, using ampersands (&) as separators. This produces the canonicalized query string.
 2. Use the canonicalized string constructed in the previous step to construct a string for
 calculating the signature by following this rule:
 
@@ -517,29 +523,28 @@ HTTPMethod is the HTTP method used to submit the request, such as GET. percentEn
 3. Calculate the HMAC value of the signature by using the string constructed for signature
 calculation, as defined in RFC2104.
 
-**Note**
+> **Note:** When you calculate the signature, use the AccessKey Secret held by the user appended with an ampersand (&) (ASCII: 38) as the key, and use the SHA-1 hash algorithm.
 
-When you calculate the signature, use the AccessKey Secret held by the user appended with an ampersand (&) (ASCII: 38) as the key, and use the SHA-1 hash algorithm.
 4. Encode the HMAC value into a string by using Base64 encoding. This produces the
 signature value.
 5. Add the obtained signature value as the Signature parameter to the request parameters.
 This completes the request signing process.
 
-**Note**
-
-When you submit the signature value as the final request parameter value to the GPDB server, encode it according to the rules specified in RFC3986, just like other parameters. For example, before signing, the request URL for DescribeDBInstances is:
+> **Note:** When you submit the signature value as the final request parameter value to the GPDB server, encode it according to the rules specified in RFC3986, just like other parameters. For example, before signing, the request URL for DescribeDBInstances is:
 
 ```
 http://gpdb.example.com/?Timestamp=2013-06-01T10:33:56Z&Format=XML&Acce ssKeyId=testid&Action=DescribeDBInstances&SignatureMethod=HMAC-SHA1&Regi onId=reg ion1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2014-08-15&Signatur eVersion=1.0
 ```
 
-The StringToSign is:
+> The StringToSign is:
 
 ```
 GET&%2F&AccessKeyId%3Dtestid%26Action%DescribeDBInstances%26Format%3DXML %26RegionId%3Dregion1%26SignatureMethod%3DHMAC-SHA1%26SignatureNonce%3DN wDAxvLU6tFE0DVb%26SignatureVersion%3D1.0%26Timestamp%3D2013-06-01T10%253 A33%253A56Z%26Version%3D2014-08-15
 ```
 
-Assume that the AccessKey ID is testid and the AccessKey Secret is testsecret. The key used to calculate the HMAC value is testsecret&. The calculated signature value is: GfQRtWbwdE8sp7q9lBgZyutVht8= The signed request URL is (note the added Signature parameter):
+> Assume that the AccessKey ID is testid and the AccessKey Secret is testsecret. The key used to calculate the HMAC value is testsecret&. The calculated signature value is:
+> GfQRtWbwdE8sp7q9lBgZyutVht8=
+> The signed request URL is (note the added Signature parameter):
 
 ```
 http://gpdb.example.com/?Timestamp=2012-12-26T10%3A33%3A56Z&Format=XML& AccessKeyId=testid&Action=DescribeDBInstances&SignatureMethod=HMAC-SHA1& RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2012-09-13&Sign atureVersion=1.0&Signature= Gfxxxxxxxxxxxxxxxxxxxx
@@ -551,9 +556,7 @@ http://gpdb.example.com/?Timestamp=2012-12-26T10%3A33%3A56Z&Format=XML& AccessKe
 
 All instances you create by using your Alibaba Cloud Account are resources owned by that account. By default, the account has full operation permissions on its own resources. You can use Alibaba Cloud Resource Access Management (RAM) to grant RAM users access and management permissions to resources under your Alibaba Cloud Account.
 
-**Note**
-
-Skip this section if you do not need to use RAM.
+> **Note:** Skip this section if you do not need to use RAM.
 
 #### 3.5.2 Resources that can be authorized in RAM
 
@@ -565,9 +568,9 @@ Only one type of AnalyticDB for PostgreSQL resource can be authorized in RAM: DB
 |---|---|
 | DBInstance | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid acs:gpdb:$regionid:$accountid:dbinstance/* acs:gpdb:* : *:dbinstance/* |
 
-**Note**
-
-$regionid: the ID of a region. Use an asterisk (*) to indicate the ID of any region. $dbinstanceid: the ID of a DBInstance. Use an asterisk (*) to indicate the ID of any instance. $accoutid: the userid of the resource owner. Use an asterisk (*) to indicate the ID of any account.
+> **Note:** $regionid: the ID of a region. Use an asterisk (*) to indicate the ID of any region.
+> $dbinstanceid: the ID of a DBInstance. Use an asterisk (*) to indicate the ID of any instance.
+> $accoutid: the userid of the resource owner. Use an asterisk (*) to indicate the ID of any account.
 
 #### 3.5.3 Operations that can be authorized in RAM
 

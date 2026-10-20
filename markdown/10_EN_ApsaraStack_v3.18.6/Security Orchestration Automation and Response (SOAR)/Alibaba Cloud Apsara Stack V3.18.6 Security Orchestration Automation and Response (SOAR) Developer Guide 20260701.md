@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 46
 source_pdf: "7a7962c7c6077bd0_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) Developer G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Security Orchestration Automation and Response (SOAR) Developer Guide 20260701
@@ -55,25 +55,25 @@ You can continue to use the ASAPI gateway to call Apsara Stack API operations in
 1. Obtain an AccessKey pair.
 For more information about how to obtain the AccessKey pair, see Obtain an AccessKey pair or Obtain an AccessKey pair from STS.
 
-**Note**
+> **Note:** If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 
-If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 2. Obtain the region ID.
 For more information about how to obtain the value of the RegionID parameter, see Obtain header parameters.
 3. Obtain the organization ID and resource set ID.
 You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Develope r Guide.
 
-**Note**
-
 | <x-acs- |   |
 |---|---|
 
-When you call an operation, specify the `<x-acs-organizationid>` and `<x-acs-`
+> **Note:** When you call an operation, specify the `<x-acs-organizationid>` and `<x-acs-`
 
 |   | resourcegroupid>, |
 |---|---|
 
-`resourcegroupid>,` header parameters. The organization ID <x-acs-organizationid> and resource set ID <x-acs-resourcegroupid> specify the organization and resource set to which a resource belong. This implements isolated query of instance resources. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is obtained by default. If you do not specify the `<x-acs-resourcegroupid>` parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID.
+> `resourcegroupid>,` header parameters. The organization ID <x-acs-organizationid> and resource set ID <x-acs-resourcegroupid> specify the organization and resource set to which a resource belong. This implements isolated query of instance resources.
+> If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is obtained by default.
+> If you do not specify the `<x-acs-resourcegroupid>` parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID.
+
 4. Obtain the API reference of a service.
 For more information about how to view, use, and obtain the developer guide of a specific service, and understand the features and usage methods of operations, see Usage notes.
 5. Obtain the endpoint of the service.
@@ -96,17 +96,17 @@ press Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 2.2 View the information about an operation
@@ -135,9 +135,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
 | Parameter | Description |
 |---|---|
@@ -154,9 +152,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -187,9 +183,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with your current session name.
+> In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role.
+> "sts.aliyuns.com": Replace it with the actual endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -252,9 +254,14 @@ e that is obtained in the previous step.
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
 following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with the actual region ID.Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourResourceGroupID>: Replace it with the actual organization ID.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with the actual region ID.Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS.
+> <yourResourceGroupID>: Replace it with the actual resource set ID.
+> <yourResourceGroupID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -361,9 +368,14 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> The following section describes the variables:
+> <your-region-id>: Replace this variable with the region ID.
+> <your-access-key-id>: Replace this variable with your AccessKey ID.
+> <your-access-key-secret>: Replace this variable with your AccessKey secret.
+> <your-endpoint>: Replace this variable with the endpoint of the service.
+> <API-version>: Replace this variable with the version of the API.
+> <your-action>: Replace this variable with the name of the API operation.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -410,9 +422,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 
 ##### 3.1.2.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of a service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of a service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 
@@ -494,9 +504,14 @@ When you create a client instance, you must obtain a region ID, AccessKey ID, an
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your_region_id>: Replace the value of this parameter with the region ID. <your_access_key_id>: Replace the the value of this parameter with your AccessKey ID. <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace the value of this parameter with the name of the API operation.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> The following section describes the variables:
+> <your_region_id>: Replace the value of this parameter with the region ID.
+> <your_access_key_id>: Replace the the value of this parameter with your AccessKey ID.
+> <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret.
+> <your-endpoint>: Replace the value of this parameter with the endpoint of the service.
+> <API-version>: Replace the value of this parameter with the version of the API.
+> <your-action>: Replace the value of this parameter with the name of the API operation.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>')// The endpoint of the service. request.set_version('<API-version>')// The version of the API. request.set_action_name('<your-action>')// The name of the API operation.
@@ -511,9 +526,9 @@ CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<y
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. If you use Python 2.x, run the following command to install the core library:
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -527,9 +542,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 ##### 3.2.2.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 
@@ -580,9 +593,14 @@ To use the SDK for Go, perform the following steps:
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your_region_id>: Replace the value of this parameter with the region ID. <your_access_key_id>: Replace the value of this parameter with your AccessKey ID. <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace the value of this parameter with the name of the API operation.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> The following section describes the variables:
+> <your_region_id>: Replace the value of this parameter with the region ID.
+> <your_access_key_id>: Replace the value of this parameter with your AccessKey ID.
+> <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret.
+> <your-endpoint>: Replace the value of this parameter with the endpoint of the service.
+> <API-version>: Replace the value of this parameter with the version of the API.
+> <your-action>: Replace the value of this parameter with the name of the API operation.
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
@@ -619,9 +637,7 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 ##### 3.3.2.2 Use CommonRequest to call API operations
 
-**Note**
-
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+> **Note:** If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
 
 **Benefits**
 

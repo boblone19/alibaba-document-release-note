@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 29
 source_pdf: "d26e6798bf4e3495_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Operation%20Apsara%20AIOps%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Operations and Maintenance Guide 20260902
@@ -39,11 +39,26 @@ You have obtained the endpoint, username, and password of the Apsara Uni-manager
 
 1. Open a browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console and
-press Enter. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+press Enter.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter the correct username and password.
-Management Console Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator. If you enter an incorrect password for three consecutive times, the system enables image Completely Automated Public Turing Test to tell Computers and Humans Apart (CAPTCHA) verification. After five consecutive incorrect attempts, the account will be locked. Contact the administrator to unlock it. When you log in to the Apsara Uni-manager Operations Console for the first time, you must change the password of the login account. Follow the prompts to complete the password change. To improve security, the password must: contain uppercase and lowercase letters. contain digits (0 to 9). contain special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). be 10 to 20 characters in length.
+Management Console
+
+> **Note:** Obtain the username and password for logging in to the Apsara Uni-manager Operations Console from the deployment engineer or administrator.
+> If you enter an incorrect password for three consecutive times, the system enables image Completely Automated Public Turing Test to tell Computers and Humans Apart (CAPTCHA) verification. After five consecutive incorrect attempts, the account will be locked. Contact the administrator to unlock it.
+> When you log in to the Apsara Uni-manager Operations Console for the first time, you must change the password of the login account. Follow the prompts to complete the password change.
+> To improve security, the password must:
+> contain uppercase and lowercase letters.
+> contain digits (0 to 9).
+> contain special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%).
+> be 10 to 20 characters in length.
+
 4. Click **Log In**.
-If a privacy policy has been configured, click **Agree to Privacy Policy and Log In** .
+
+> **Note:** If a privacy policy has been configured, click **Agree to Privacy Policy and Log In** .
+
 5. In the top navigation bar, choose **Platform Operation > Management and Control**
 **Service O&M > AIBase Management Console**.
 agement
@@ -54,7 +69,8 @@ You can centrally create, configure, and manage Q&A and process-orchestrated int
 
 **Create an application**
 
-1. Log in to AIBase Management Console.
+## 1 Log in to AIBase Management Console.
+
 2. In the left-side navigation pane, select **Application Management**.
 3. Click **Create an application**.
 4. Configure the following parameters and click **OK**.
@@ -126,14 +142,19 @@ the application. agement Under **Terminal Management**, you can go to the termin
 
 1. On the **Application Management** page, click
 **> Edit** for the target application.
-The platform does not support editing built-in applications.
+
+> **Note:** The platform does not support editing built-in applications.
+
 2. In the pop-up dialog box, modify the application information and click **OK**.
 
 **Delete an application**
 
 1. On the **Application Management** page, click
 **> Delete** for the target application.
-The platform does not support deleting built-in applications. This operation is irreversible. Proceed with caution.
+
+> **Note:** The platform does not support deleting built-in applications.
+> This operation is irreversible. Proceed with caution.
+
 2. In the pop-up dialog box, click **OK**.
 nt
 
@@ -166,7 +187,6 @@ Before creating a knowledge base, you can perform the following operations on fo
 
 **Create a folder**
 
-1. Log in to AIBase Management Console.
 2. In the left-side navigation pane, select **Knowledge Base**.
 3. On the **User-created** tab, click **Create a folder**.
 4. Enter a **folder name** and click **OK**.
@@ -182,7 +202,8 @@ icon next to the target folder.
 1. Click the
 icon next to the target folder.
 2. In the pop-up dialog box, click **Delete**.
-After you delete a folder, the system moves all knowledge bases in the folder to the default folder. Proceed with caution.
+
+> **Note:** After you delete a folder, the system moves all knowledge bases in the folder to the default folder. Proceed with caution.
 
 **Create a knowledge base**
 
@@ -215,7 +236,9 @@ knowledge base details page.
 2. Click **Add document**.
 3. In the **Upload file** step, click or drag a file into the dashed box to upload it, and then click
 **Next** after the upload completes.
-The system supports file types such as doc, docx, pdf, txt, md, html, xls, xlsx, and csv.
+
+> **Note:** The system supports file types such as doc, docx, pdf, txt, md, html, xls, xlsx, and csv.
+
 4. In the **Segmentation & Cleaning** step, select and configure the document segmentation
 parameters. Intelligent segmentation: This is the optimal segmentation method for general documents. The system splits the document by segmentation marker first. If a segment exceeds the maximum segment length, the system splits it by the maximum segment length and appends the segment overlap length. Parent-child segmentation: This method uses a two-level parent-child structure to balance retrieval accuracy and context information. Parent blocks provide context, and child blocks enable precise retrieval.
 5. Click **Segment preview** to check whether the document segmentation meets your
@@ -256,14 +279,18 @@ viewing.
 
 **Edit a knowledge base**
 
-You cannot edit built-in knowledge bases on the platform.
+> **Note:** You cannot edit built-in knowledge bases on the platform.
+
 1. Click
 **> Edit** in the **Operation** column of the target knowledge base.
 2. Modify the parameters in the pop-up dialog box, and then click **OK**.
 
 **Share a knowledge base**
 
-This feature takes effect only in multi-region deployments. You cannot share built-in knowledge bases on the platform. You can share knowledge bases only from the primary region to unit regions. Sharing from unit regions to the primary region is not supported.
+> **Note:** This feature takes effect only in multi-region deployments.
+> You cannot share built-in knowledge bases on the platform.
+> You can share knowledge bases only from the primary region to unit regions. Sharing from unit regions to the primary region is not supported.
+
 1. Click
 **> Share** in the **Operation** column of the target knowledge base.
 2. Sharing a knowledge base takes a long time. When the knowledge base displays **Sharing**,
@@ -273,7 +300,9 @@ the sharing succeeds.
 
 **Delete a knowledge base**
 
-You cannot delete built-in knowledge bases on the platform. This operation is irreversible. Proceed with caution.
+> **Note:** You cannot delete built-in knowledge bases on the platform.
+> This operation is irreversible. Proceed with caution.
+
 1. Click
 **> Delete** in the **Operation** column of the target knowledge base.
 2. In the pop-up dialog box, click **Delete**.
@@ -290,7 +319,6 @@ Waited: Corpus tasks that require processing by the current logged-in user. Laun
 
 **Add corpus**
 
-1. Log in to AIBase Management Console.
 2. In the left-side navigation pane, select **Corpus System > Corpus Task**.
 3. Click **Create Corpus**.
 4. Configure the following parameters and click **Submit**.
@@ -310,8 +338,9 @@ the reception operation, see Receive corpus.
 1. In the corpus list, find the target corpus task in the **To be Received** status.
 2. Click **Receive** in the **Operation** column of the target corpus task.
 3. Configure the **annotator** in the pop-up dialog box.
-**Receive** indicates that the corpus has passed preliminary screening and is confirmed
-as content that the current system needs to refine. After reception, the corpus flows to annotators for labeling.
+
+> **Note:** **Receive** indicates that the corpus has passed preliminary screening and is confirmed as content that the current system needs to refine. After reception, the corpus flows to annotators for labeling.
+
 4. Click **OK**. The corpus **status** then changes to **To be Annotated**. For information about the
 annotation operation, see Annotate corpus.
 
@@ -370,7 +399,8 @@ The status of approved corpus changes to **Published**. The **Status** of reject
 
 **Feedback details**
 
-This feature takes effect after you receive thumbs-down feedback from users.
+> **Note:** This feature takes effect after you receive thumbs-down feedback from users.
+
 1. Click **Feedback Details** in the **Operation** column of the target corpus task.
 2. In the pop-up panel, view the corpus task preview, including **Original Corpus**, **Feedback**
 **Information**, and **Reference Materials**.
@@ -388,7 +418,8 @@ and **Corpus Content** for the corresponding workflow on the right side.
 1. Select the target corpus task.
 2. Click **Archive** below the corpus list.
 3. In the pop-up dialog box, click **OK**.
-You cannot perform operations on the corpus after archiving it.
+
+> **Note:** You cannot perform operations on the corpus after archiving it.
 
 ## 6 System Settings
 
@@ -406,7 +437,9 @@ LLM: the inference model. The default inference model is used by the application
 2. In the left-side navigation pane, choose **System Settings > Model Management**.
 3. In the **Model List** section, you can view the **Built-in Model Services**, including the model
 type, number, and name.
-**Built-in Model Service** does not allow you to add, edit, or delete models.
+
+> **Note:** **Built-in Model Service** does not allow you to add, edit, or delete models.
+
 4. In the lower part of the page, you can view and configure the external inference service.
 Add model a. Click **Add Model**. b. Set the following parameters and click **OK**.
 
@@ -421,7 +454,14 @@ Add model a. Click **Add Model**. b. Set the following parameters and click **OK
 |---|---|
 | Vector dimension | This field takes effect only when you set Model Type to Embedding. The dimension of the input vector. |
 
-API-KEY settings a. Click **API-KEY Settings**. b. In the dialog box that appears, configure the **API Key** and click **OK**. Edit Model a. Click **Edit** in the Actions column corresponding to the target model. b. In the dialog box that appears, modify the model parameters and click **OK**. You cannot change the **Model Type**. Delete a model a. Click **Delete** in the Actions column corresponding to the target model. b. In the message that appears, click **OK**. Deleted can not be withdrawn, please operate with caution!
+API-KEY settings a. Click **API-KEY Settings**. b. In the dialog box that appears, configure the **API Key** and click **OK**. Edit Model a. Click **Edit** in the Actions column corresponding to the target model. b. In the dialog box that appears, modify the model parameters and click **OK**.
+
+> **Note:** You cannot change the **Model Type**.
+
+Delete a model a. Click **Delete** in the Actions column corresponding to the target model. b. In the message that appears, click **OK**.
+
+> **Note:** Deleted can not be withdrawn, please operate with caution!
+
 5. In the upper-right corner of the page, click **System Model Settings**.
 6. Configure the default models of built-in applications and user-created applications. You can
 configure the **Inference Model**, **Embedding Model**, and **Rerank Model** parameters. Then, click **OK**. and solutions

@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 321
 source_pdf: "c0c84e8a2872a180_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security User Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20Stack%20Security%20User%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security User Guide
@@ -593,6 +593,7 @@ Management section, click T hreat Det ect ion.
 4. On the Server(s) tab of the page that appears, enable or disable server protection for specified
 servers. Enable server prot ect ion Select one or more servers where the agent is in the Close state, and choose More Operat ions
 > T urn on prot ect ion.
+
 After server protection is enabled, the status in the Agent column changes to Enable. Disable server prot ect ion If you confirm that a server does not require protection from Apsara Stack Security, you can disable protection for the server. Select one or more servers where the agent is in the Enable state, and choose More Operat ions > Suspend Prot ect ion. After server protection is disabled, Apsara Stack Security stops protecting your servers. For example, Apsara Stack Security no longer detects vulnerabilities or generates alerts for detected risks. We recommend that you proceed with caution. After server protection is disabled, the status of the agent on your servers changes to Close.
 
 #### 4.6.5 Perform a quick security check
@@ -1946,6 +1947,7 @@ and turn on the switch in the Prot ect ion column to enable tamper protection fo
 
 This topic describes how to view the status of tamper protection for your assets. Context The tamper protection feature monitors changes to the files in website directories in real time and blocks suspicious file changes. To view the status of and details about the tamper protection feature, you must log on to Apsara Stack Security Center and choose Server Securit y > Int rusion Prevent ion
 > File T amper Prot ect ion. The following information is displayed:
+
 Tamper protection overview You can view the numbers of files that are changed on the current day and in the last 15 days, the number of protected servers, and the number of protected directories. Distribution of protected file types Protected file types include TXT, PNG, MSI, and ZIP. You can also add more types of files for tamper protection based on your business requirements. All types of files for tamper protection can be added. Top five files This section shows the names and paths of the top five files that are ranked based on the number of changes to files in descending order in the last 15 days. Tamper protection alerts This section lists the alerts generated for blocked suspicious changes to files for your assets. You can view details about the alerts, including the severity, alert name, affected assets, paths of files with suspicious changes, and protection status. If an alert is reported more than 100 times, we recommend that you handle the alert at your earliest opportunity. Only alerts at the Medium level are displayed in the console. Only alerts in the Def ended state are displayed. These alerts are triggered when the tamper protection feature blocks suspicious processes that attempt to modify files without authorization.
 
 #### 6.4.3 Configure the antivirus feature

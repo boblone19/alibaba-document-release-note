@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 22
 source_pdf: "c536ef598a4fe1e1_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage Operations"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Cloud%20Parallel%20File%20Storage%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage Operations and Maintenance Guide 20260827
@@ -35,9 +35,7 @@ This guide helps O&M engineers perform preventive maintenance on CPFS to ensure 
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, distributed storage operations, and troubleshooting. O&M engineers must pass the pre-job training and learn the knowledge of CPFS. The required knowledge of CPFS includes system principles, networking, features, and the use of maintenance tools.
 
-**Important**
-
-During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
+> **Important:** During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
 
 **Usage notes**
 
@@ -61,11 +59,23 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. in to the Apsara Uni-manager Op erations Console You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. in to the Apsara Uni-manager Op erations Console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 
 ## 3 Query CPFS O&M metrics
@@ -89,7 +99,10 @@ choose **Resource Management > Machines**.
 5. Select a login username and click **OK** to log in to the operating system of the CPFS storage
 host.
 6. Run the `mmhealth cluster show` command in the operating system to check the overall
-status of the cluster. If the value 0 is displayed in the Failed and Degraded columns, the status is normal.
+status of the cluster.
+
+> **Note:** If the value 0 is displayed in the Failed and Degraded columns, the status is normal.
+
 7. Run the `mmgetstate -Lsa` command to check the CPFS status.
 
 |   | Note CPFS status description: UNKNOWN: The operating system where CPFS resides is being restarted or is shut down, or the operating system network is abnormal. ACTIVE: The CPFS service is in the normal state. ARBITRATING: CPFS is being started or undergoing fault diagnostics. Check whether an error or warning occurs based on the results of the tail -f /var/mmfs/gen/mmfslog command. If the issue persists, contact Alibaba Cloud technical support. DOWN: CPFS is shut down. |   |   |
@@ -118,7 +131,10 @@ choose **Resource Management > Machines**.
 5. Select a login username and click **OK** to log in to the operating system of the CPFS storage
 host.
 6. Run the `mmlsnode -N waiters -L` command to check the return value.
-i. Success code: c25a02005_ext.cloud.a02.amtest38: Waiting 0.0034 sec since 2024-06-26_11:43:09, monitored, thread 329701 ReadmitWorkThread: onThCond 0x7FAD24025A98 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0021 sec since 2024-06-26_11:43:09, monitored, thread 276130 ReadmitWorkThread: onThCond 0x7FAD24027D78 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0019 sec since 2024-06-26_11:43:09, monitored, thread 2275926 ReadmitWorkThread: on ThCond 0x7FAD24026C50 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' ii. Error codes for moderate-severity latency: Waiting 95.0805 sec since 2024-06-26_11:43:01, monitored, thread 3932937 ReadmitWorkThread: on ThCond 0x557F293C9130 (PdiskAvailabilityCondvar), reason 'Until disk availability stabilizes' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 2711607 ReadmitWorkThread: on ThCond 0x7F24041146A8 (VLogIOCondvar), reason 'wait for another thread to do log write' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 3782474 ReadmitWorkThread: on ThCond 0x7F2404114628 (VLogIOCondvar), reason 'wait for another thread to do log write' Under idle conditions, return values of 0.00XX sec are normal. Sporadic latency spikes below 2 seconds constitute low-severity latency. Irregular intervals of sub-2-second latencies can be ignored for I/O-insensitive services. Sustained waiters latencies between 2 seconds and 10 seconds cause file system responsiveness degradation (such as slow ls command execution), while CPFS remains operational under redundancy mechanisms if not persistent. Sustained I/O latencies that exceed 15 seconds trigger persistent system stuttering for CPFS file systems. For general business systems, system stuttering can be solved by restarting CPFS. For key business nodes where disk/node loss tolerance is paramount, real-time dump analysis can be performed to troubleshoot the issue. In deadlock scenarios, CPFS automatically captures diagnostic dumps and traces during exception windows. In emergency situations, you can reboot the node where long waiters are located to solve the issue.
+i. Success code: c25a02005_ext.cloud.a02.amtest38: Waiting 0.0034 sec since 2024-06-26_11:43:09, monitored, thread 329701 ReadmitWorkThread: onThCond 0x7FAD24025A98 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0021 sec since 2024-06-26_11:43:09, monitored, thread 276130 ReadmitWorkThread: onThCond 0x7FAD24027D78 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0019 sec since 2024-06-26_11:43:09, monitored, thread 2275926 ReadmitWorkThread: on ThCond 0x7FAD24026C50 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' ii. Error codes for moderate-severity latency: Waiting 95.0805 sec since 2024-06-26_11:43:01, monitored, thread 3932937 ReadmitWorkThread: on ThCond 0x557F293C9130 (PdiskAvailabilityCondvar), reason 'Until disk availability stabilizes' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 2711607 ReadmitWorkThread: on ThCond 0x7F24041146A8 (VLogIOCondvar), reason 'wait for another thread to do log write' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 3782474 ReadmitWorkThread: on ThCond 0x7F2404114628 (VLogIOCondvar), reason 'wait for another thread to do log write'
+
+> **Note:** Under idle conditions, return values of 0.00XX sec are normal. Sporadic latency spikes below 2 seconds constitute low-severity latency. Irregular intervals of sub-2-second latencies can be ignored for I/O-insensitive services. Sustained waiters latencies between 2 seconds and 10 seconds cause file system responsiveness degradation (such as slow ls command execution), while CPFS remains operational under redundancy mechanisms if not persistent. Sustained I/O latencies that exceed 15 seconds trigger persistent system stuttering for CPFS file systems. For general business systems, system stuttering can be solved by restarting CPFS. For key business nodes where disk/node loss tolerance is paramount, real-time dump analysis can be performed to troubleshoot the issue. In deadlock scenarios, CPFS automatically captures diagnostic dumps and traces during exception windows.
+> In emergency situations, you can reboot the node where long waiters are located to solve the issue.
 
 ### 3.3 CPFS pdisk metrics
 
@@ -157,9 +173,9 @@ This topic describes how to handle Cloud Parallel File Storage (CPFS) downtime m
 
 This topic describes how to perform Cloud Parallel File Storage (CPFS) downtime maintenance.
 
-**Important**
-
-The following steps are general and subject to actual scenarios. Before downtime maintenance, you must stop the upper-layer business and stop the read and write operations on the shared file storage. In the following descriptions, ${fs_id} is the file system ID displayed on the frontend, and the bmcpfs prefix, such as 019bebd3, is removed from the ID.
+> **Important:** The following steps are general and subject to actual scenarios.
+> Before downtime maintenance, you must stop the upper-layer business and stop the read and write operations on the shared file storage.
+> In the following descriptions, ${fs_id} is the file system ID displayed on the frontend, and the bmcpfs prefix, such as 019bebd3, is removed from the ID.
 
 **Procedure for downtime maintenance of a CPFS cluster**
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 8
 source_pdf: "f12c64a1a965aa8f_Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis Product Introduction 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tracing%20Analysis%20Product%20Introduction%2020260313.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Tracing Analysis Product Introduction 20260313

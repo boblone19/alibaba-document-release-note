@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 426
 source_pdf: "80ed8eab3e21b0f4_Alibaba Cloud Apsara Stack V3.18.6 Lindorm Developer Guide 20250825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Lindorm%20Developer%20Guide%2020250825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Lindorm Developer Guide 20250825
@@ -373,15 +373,13 @@ The following result is returned:
 +-----+-------+---------+ 1 rows in set (24 ms)
 ```
 
-You can configure the format of the returned data. For more information, see the Format of returned data section of this topic.
+> **Note:** You can configure the format of the returned data. For more information, see the Format of returned data section of this topic.
 
 **Format of returned data**
 
 Returned data can be output in various formats, such as a table, a CSV file, or vertical columns. By default, data is returned as a table. You can use the `format` command to specify the format of the returned data. Data queried by SELECT statements is returned in the specified format.
 
-**Important**
-
-The `format` command is supported only in Lindorm-cli.
+> **Important:** The `format` command is supported only in Lindorm-cli.
 
 **Specify to output returned data as a table**
 
@@ -460,7 +458,8 @@ Java Development Kit (JDK) V1.8 or later is installed. The endpoint that is requ
 
 **Procedure**
 
-You can directly use the sample code provided in the following procedure, or download sample code from GitHub to your on-premises machine for compiling and running. The sample code provided in this topic is included in the `com.aliyun.lindorm.sql.demo.BasicDemo` class.
+> **Note:** You can directly use the sample code provided in the following procedure, or download sample code from GitHub to your on-premises machine for compiling and running. The sample code provided in this topic is included in the `com.aliyun.lindorm.sql.demo.BasicDemo` class.
+
 1. Download a Lindorm client. For example, you can add the following dependencies to the `pom.xml` file
 in your Maven project. The following example shows how to add dependencies to the configuration file in a Maven project:
 
@@ -494,14 +493,13 @@ the description in the following table.
 // Obtain the established connection. Connection connection = DriverManager.getConnection(url, properties);
 ```
 
-**Important**
-
-If a connection between the Lindorm client and server is idle for more than 10 minutes, the server closes the connection to improve resource utilization. If you use a connection after it is closed, the
+> **Important:** If a connection between the Lindorm client and server is idle for more than 10 minutes, the server closes the connection to improve resource utilization. If you use a connection after it is closed, the
 
 | com.aliyun.lindorm.client.shaded.org.apache.calcite.avatica.http.ConnectionDisconnectedException |   |
 |---|---|
 
-error is returned. To fix the issue, establish a new connection.
+> error is returned. To fix the issue, establish a new connection.
+
 4. After the connection is established, call Java API operations for LindormTable SQL to access Lindorm
 wide tables. The following example shows how to call Java API operations for LindormTable SQL to access Lindorm wide tables.
 
@@ -624,7 +622,8 @@ If you want to use druid-spring-boot-starter to start Druid, you must first excl
 
 **Procedure**
 
-You can download the sample code and then directly compile and run the code on your local computer or develop your project based on the sample code.
+> **Note:** You can download the sample code and then directly compile and run the code on your local computer or develop your project based on the sample code.
+
 1. Configure parameters for Druid. In the src/main/resources path of your Maven project, create a
 druid.properties file and add the following configurations to the file:
 
@@ -657,10 +656,11 @@ bled. We recommend that you keep these configurations unchanged.
 poolPreparedStatements=false maxOpenPreparedStatements=-1 druid.maxPoolPreparedStatementPerConnectionSize=-1
 ```
 
-Adjust or replace the values of the following parameters in actual use: `url` : The endpoint that is required when you use Druid to connect to LindormTable. For more information about how to obtain the endpoint, see the **View endpoints** topic of **Instance management** in **Lindorm User Guide**. `username` : The username that is used to connect to LindormTable. You can view the username in the cluster management system of LindormTable. For more information, see the **User management** topic of **Instance management** in **Lindorm User**
-**Guide**.
-`password` : The password that is used to connect to LindormTable. If you forget your password, you can change the password in the cluster management system of LindormTable. For more information about how to change a password that is used to connect to LindormTable, see the **User management** topic of **Instance**
-**management** in **Lindorm User Guide**.
+> **Note:** Adjust or replace the values of the following parameters in actual use:
+> `url` : The endpoint that is required when you use Druid to connect to LindormTable. For more information about how to obtain the endpoint, see the **View endpoints** topic of **Instance management** in **Lindorm User Guide**.
+> `username` : The username that is used to connect to LindormTable. You can view the username in the cluster management system of LindormTable. For more information, see the **User management** topic of **Instance management** in **Lindorm User** **Guide**.
+> `password` : The password that is used to connect to LindormTable. If you forget your password, you can change the password in the cluster management system of LindormTable. For more information about how to change a password that is used to connect to LindormTable, see the **User management** topic of **Instance** **management** in **Lindorm User Guide**.
+
 For more information about the parameters that you can configure, see DruidDataSource parameter configurations.
 2. Load the parameter configurations of Druid and initialize the connection pool.
 
@@ -869,7 +869,9 @@ _, err = db.Exec("delete from user_test where id=1") if err != nil {
     return
 ```
 
-`}` For the complete sample code, visit Sample code and Write and query data by specifying parameters.
+`}`
+
+> **Note:** For the complete sample code, visit Sample code and Write and query data by specifying parameters.
 
 ##### 1.1.3.5 Use Python DB-API to develop applications
 
@@ -965,7 +967,7 @@ y(c1))"
 connection.close()
 ```
 
-For information about the complete sample code, see GitHub.
+> **Note:** For information about the complete sample code, see GitHub.
 
 **Syntax reference**
 
@@ -1106,9 +1108,8 @@ ssword used to connect to LindormTable in the LindormTable cluster management sy
     print(rows)
 ```
 
-**Important**
-
-You can run the ping command to test the connectivity of connections established by using DBUtils. However, this method is not applicable to connections established by using phoenixdb. If a connection has not been used for more than 10 minutes, a NoSuchConnection exception is returned. In this case, you must obtain a new connection from the connection pool.
+> **Important:** You can run the ping command to test the connectivity of connections established by using DBUtils. However, this method is not applicable to connections established by using phoenixdb.
+> If a connection has not been used for more than 10 minutes, a NoSuchConnection exception is returned. In this case, you must obtain a new connection from the connection pool.
 
 #### 1.1.4 Use the HBase API to connect to and use LindormTable
 
@@ -1140,12 +1141,20 @@ We recommend that you deploy your client in a Linux or macOS environment when yo
 
 **Preparations**
 
-If HBaseue Shell is deployed on an Elastic Compute Service (ECS) instance, make sure that the Lindorm instance and the ECS instance meet the following requirements to ensure network connectivity: The Lindorm instance and the ECS instance are deployed in the same region. We recommend that you also deploy the two instances in the same zone to reduce network latency. The network types of your Lindorm instance and ECS instance are the same. We recommend that you deploy the two instances in a virtual private cloud (VPC) for better security. If you select **VPC** as the network type, make sure that you specify the same VPC ID for the two instances. The LindormTable endpoint that is displayed after **Access by Using HBase Java API** on the Wide Table Engine tab of the Lindorm console is obtained. For more information, see the "View endpoints" topic of "Instance management" in Lindorm User Guide.
+If HBaseue Shell is deployed on an Elastic Compute Service (ECS) instance, make sure that the Lindorm instance and the ECS instance meet the following requirements to ensure network connectivity: The Lindorm instance and the ECS instance are deployed in the same region. We recommend that you also deploy the two instances in the same zone to reduce network latency. The network types of your Lindorm instance and ECS instance are the same.
+
+> **Note:** We recommend that you deploy the two instances in a virtual private cloud (VPC) for better security.
+> If you select **VPC** as the network type, make sure that you specify the same VPC ID for the two instances.
+
+The LindormTable endpoint that is displayed after **Access by Using HBase Java API** on the Wide Table Engine tab of the Lindorm console is obtained. For more information, see the "View endpoints" topic of "Instance management" in Lindorm User Guide.
 
 **Procedure**
 
 1. Download HBaseue Shell.
-You can download the TAR file of the Apache HBase client version that you need from the HBase official site and then import a JAR file to the HBase client to upgrade it to an ApsaraDB for HBase client. i. Log on to the Lindorm console. ii. In the upper-left corner of the page, select the region where your Lindorm instance is located. iii. On the **Instances** page, find the Lindorm instance that you want to manage and click its ID. iv. In the left-side navigation pane, click **Database Connections**. On the page that appears, click the
+
+> **Note:** You can download the TAR file of the Apache HBase client version that you need from the HBase official site and then import a JAR file to the HBase client to upgrade it to an ApsaraDB for HBase client.
+
+i. Log on to the Lindorm console. ii. In the upper-left corner of the page, select the region where your Lindorm instance is located. iii. On the **Instances** page, find the Lindorm instance that you want to manage and click its ID. iv. In the left-side navigation pane, click **Database Connections**. On the page that appears, click the
 **Wide Table Engine** tab.
 v. In the **HBase Compatibility Address** section, click **Download Lindorm Shell** to download the package of HBaseue Shell.
 2. Run the following command to decompress the downloaded package of HBaseue Shell to the target
@@ -1185,7 +1194,9 @@ ii. Specify the endpoint, username, and password that you can to use to connect 
 </configuration>
 ```
 
-Replace **hbase.zookeeper.quorum** with the LindormTable endpoint that is displayed after **Access by Using HBase Java API** on the Wide Table Engine tab of the Lindorm console. Replace **hbase.client.username** and **hbase.client.password** with the username and password that you can use to connect to LindormTable. If you forget the password, you can change the password in the **cluster management system** of LindormTable. For more information about how to change a password that is used to connect to LindormTable, see the "User management" topic of "LindormTable" in Lindorm User Guide.
+> **Note:** Replace **hbase.zookeeper.quorum** with the LindormTable endpoint that is displayed after **Access by Using HBase Java API** on the Wide Table Engine tab of the Lindorm console.
+> Replace **hbase.client.username** and **hbase.client.password** with the username and password that you can use to connect to LindormTable. If you forget the password, you can change the password in the **cluster management system** of LindormTable. For more information about how to change a password that is used to connect to LindormTable, see the "User management" topic of "LindormTable" in Lindorm User Guide.
+
 4. Use HBaseue Shell to connect to LindormTable. Go to the alihbase-2.0.18/bin path and then run the
 following command:
 
@@ -1199,7 +1210,7 @@ If the following result is returned, your client is connected to LindormTable.
 Version 2.0.18, r08b8d58a9d6ce89765d5ebe2ddff425aed644c16, Mon Feb 1 12:46:39 CST 2021 Took 0.0034 seconds
 ```
 
-After you use HBaseue Shell to connect to LindormTable, you can only perform simple DDL operations, data reading operations, and data writing operations. For more information, see Limits.
+> **Note:** After you use HBaseue Shell to connect to LindormTable, you can only perform simple DDL operations, data reading operations, and data writing operations. For more information, see Limits.
 
 ##### 1.1.4.4 Limits
 
@@ -1225,9 +1236,9 @@ The version of LindormTable is 2.4.3 or later. Your application is deployed on a
 
 You can connect to Lindorm instances **only by using virtual private clouds (VPCs)**.
 
-**Important**
+> **Important:** To connect to a Lindorm instance **over the classic network**, you must upgrade your SDK and change the configurations before you perform the operations described in this topic. For more information, see Use the ApsaraDB for HBase API for Java to connect to and use LindormTable.
 
-To connect to a Lindorm instance **over the classic network**, you must upgrade your SDK and change the configurations before you perform the operations described in this topic. For more information, see Use the ApsaraDB for HBase API for Java to connect to and use LindormTable. If your application is deployed on an ECS instance and you want to connect to a Lindorm instance over a VPC, make sure that your Lindorm instance and the ECS instance meet the following requirements in advance to ensure network connectivity: Your Lindorm instance and ECS instance are deployed in the same region. We recommend that you also deploy the two instances in the same zone to reduce network latency. Your Lindorm instance and ECS instance are deployed in the same VPC.
+If your application is deployed on an ECS instance and you want to connect to a Lindorm instance over a VPC, make sure that your Lindorm instance and the ECS instance meet the following requirements in advance to ensure network connectivity: Your Lindorm instance and ECS instance are deployed in the same region. We recommend that you also deploy the two instances in the same zone to reduce network latency. Your Lindorm instance and ECS instance are deployed in the same VPC.
 
 **Add configurations for accessing LindormTable**
 
@@ -1360,7 +1371,12 @@ You can use DataX to synchronize data by using one of the following methods: Use
   "lindorm.rpc.only.use.seedserver": "true"
 ```
 
-`}` lindorm.client.namespace: the namespace of the tables that you want to access in the Lindorm instance. Lindorm.client.seedserver: the endpoint of the API for Java that is displayed in the Lindorm console. For more information, see Connect to a cluster. Lindorm.client.username/Lindorm.client.password: the username and password that you specified for logging on to your Lindorm instance. The default username and password are both root. Make sure that the account has the read and write permissions on the tables that are stored in the Lindorm instance. The default root account has the read and write permissions on all tables that are stored in the Lindorm instance.
+`}`
+
+> **Note:** lindorm.client.namespace: the namespace of the tables that you want to access in the Lindorm instance.
+> Lindorm.client.seedserver: the endpoint of the API for Java that is displayed in the Lindorm console. For more information, see Connect to a cluster.
+> Lindorm.client.username/Lindorm.client.password: the username and password that you specified for logging on to your Lindorm instance. The default username and password are both root. Make sure that the account has the read and write permissions on the tables that are stored in the Lindorm instance. The default root account has the read and write permissions on all tables that are stored in the Lindorm instance.
+
 5. Configure a resource group for the synchronization task.
 
 **Use open source DataX to configure synchronization tasks (you can use**
@@ -1386,9 +1402,12 @@ For more information about how to configure the plug-in, see hbase11xreader. The
   "lindorm.rpc.only.use.seedserver": "true"
 ```
 
-`}` hbase.client.connection.impl: You do not need to modify this parameter. hbase.client.endpoint: the endpoint for the HBase mode. You can view the endpoint on the
-**Database Connections** page of the Lindorm console.
-Lindorm.client.username/Lindorm.client.password: the username and password that you specified for logging on to your Lindorm instance. The default username and password are root. Make sure that the account has the read and write permissions on the tables that are stored in the Lindorm instance. The default root account has the read and write permissions on all tables that are stored in the Lindorm instance.
+`}`
+
+> **Note:** hbase.client.connection.impl: You do not need to modify this parameter.
+> hbase.client.endpoint: the endpoint for the HBase mode. You can view the endpoint on the **Database Connections** page of the Lindorm console.
+> Lindorm.client.username/Lindorm.client.password: the username and password that you specified for logging on to your Lindorm instance. The default username and password are root. Make sure that the account has the read and write permissions on the tables that are stored in the Lindorm instance. The default root account has the read and write permissions on all tables that are stored in the Lindorm instance.
+
 4. Use DataX to migrate data.
 
 #### 1.2.2 Import data from ApsaraDB for MongoDB
@@ -1401,7 +1420,10 @@ DataWorks is an end-to-end big data development and governance platform that pro
 
 **Usage notes**
 
-To migrate offline data from ApsaraDB for MongoDB to LindormTable, unnest the nested JSON fields in the offline data. Take note that you do not need to convert the data. Perform the following steps if you want to process data during the migration process. For example, perform the following steps if you want to perform MD5 hashing on the primary key of MongoDB data during the migration process:
+To migrate offline data from ApsaraDB for MongoDB to LindormTable, unnest the nested JSON fields in the offline data. Take note that you do not need to convert the data.
+
+> **Note:** Perform the following steps if you want to process data during the migration process. For example, perform the following steps if you want to perform MD5 hashing on the primary key of MongoDB data during the migration process:
+
 1. Use DataWorks to migrate the data from ApsaraDB for MongoDB to MaxCompute.
 2. Execute SQL statements to process data in MaxCompute.
 3. Use DataWorks to migrate data from MaxCompute to LindormTable.
@@ -1446,7 +1468,15 @@ Use the Data Integration service of DataWorks to configure DataX tasks.
 
 1. Add an ApsaraDB for MongoDB data source to the DataWorks console.
 2. Configure an offline data synchronization task in script mode.
-i. Create a workflow. a. Log on to the DataWorks console. b. In the upper-left corner of the console, click the **More** icon. c. In the left-side navigation pane, choose All Products > Data Development and O&M > **DataStudio**. d. On the **DataStudio** page, move the pointer over the icon and click **Create Workflow**. e. In the **Create Workflow** dialog box, specify **Workflow Name** and **Description**. The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and periods (.). f. Click **Create**. ii. Create a batch synchronization node. a. Click the newly created workflow and right-click **Data Integration**. b. Choose **Create Node > Batch Synchronization**. c. In the **Create Node** dialog box, specify **Name** and **Path**. The node name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and periods (.). d. Click **Confirm**. iii. Configure the reader and writer of the batch synchronization node. a. After the batch synchronization node is created, click **Switch to Code Editor** in the toolbar. b. In the **Confirm** dialog box, click **OK** to open the code editor. c. The code editor has generated basic reader and writer settings. You can manually configure the data sources of the reader and writer for the batch synchronization node and specify the information about the tables to be synchronized. Example: `{`
+i. Create a workflow. a. Log on to the DataWorks console. b. In the upper-left corner of the console, click the **More** icon. c. In the left-side navigation pane, choose All Products > Data Development and O&M > **DataStudio**. d. On the **DataStudio** page, move the pointer over the icon and click **Create Workflow**. e. In the **Create Workflow** dialog box, specify **Workflow Name** and **Description**.
+
+> **Note:** The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and periods (.).
+
+f. Click **Create**. ii. Create a batch synchronization node. a. Click the newly created workflow and right-click **Data Integration**. b. Choose **Create Node > Batch Synchronization**. c. In the **Create Node** dialog box, specify **Name** and **Path**.
+
+> **Note:** The node name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and periods (.).
+
+d. Click **Confirm**. iii. Configure the reader and writer of the batch synchronization node. a. After the batch synchronization node is created, click **Switch to Code Editor** in the toolbar. b. In the **Confirm** dialog box, click **OK** to open the code editor. c. The code editor has generated basic reader and writer settings. You can manually configure the data sources of the reader and writer for the batch synchronization node and specify the information about the tables to be synchronized. Example: `{`
 
 ```json
     "type": "job",
@@ -1631,9 +1661,9 @@ Data in dynamic columns in LindormTable is of the VARBINARY type. You must conve
 
 **Enable dynamic columns**
 
-**Important**
+> **Important:** Dynamic columns cannot be disabled after they are enabled for a table.
 
-Dynamic columns cannot be disabled after they are enabled for a table. You can use one of the following methods to enable dynamic columns: Enable dynamic columns by using the WITH clause when you create a table.
+You can use one of the following methods to enable dynamic columns: Enable dynamic columns by using the WITH clause when you create a table.
 
 ```
 CREATE TABLE tablename (p1 INT, c1 INT, c2 VARCHAR, PRIMARY KEY(p1)) WITH (DYNAMIC_COLUMNS='true');
@@ -1645,19 +1675,23 @@ Modify the attributes of an existing table to enable dynamic columns.
 ALTER TABLE tablename SET 'DYNAMIC_COLUMNS' = 'true';
 ```
 
-After dynamic columns are enabled for a table, you can modify the attributes of the table to add new columns to the schema of the table. For example, you can execute the following statement to add the c3 column of the INT data type to the schema of the table.
+> **Note:** After dynamic columns are enabled for a table, you can modify the attributes of the table to add new columns to the schema of the table. For example, you can execute the following statement to add the c3 column of the INT data type to the schema of the table.
 
 ```
 ALTER TABLE t_dynamic_columns ADD COLUMN c3 int;
 ```
 
-If you write data to a dynamic column named c3 before you add the c3 column to the schema of the table, an `IllegalDataException` exception is returned when you insert INT data to or query INT data in c3 because the type of data written to c3 is VARBINARY. This exception is not returned if the data type of the c3 column that you add to the schema of the table is VARBINARY. Therefore, take note of the data types when you change the schema of a table for which dynamic columns are enabled.
+> If you write data to a dynamic column named c3 before you add the c3 column to the schema of the table, an `IllegalDataException` exception is returned when you insert INT data to or query INT data in c3 because the type of data written to c3 is VARBINARY. This exception is not returned if the data type of the c3 column that you add to the schema of the table is VARBINARY. Therefore, take note of the data types when you change the schema of a table for which dynamic columns are enabled.
 
 **Write data to dynamic columns**
 
 **Directly write data to dynamic columns by using SQL statements**
 
-The syntax that is used to write data to a table for which dynamic columns are enabled is the same as the syntax that is used to write data to a table for which dynamic columns are not enabled. After dynamic columns are enabled for a table, you can write data to columns that are not defined in the table schema. However, the type of data in dynamic columns can only be VARBINARY, which indicates byte arrays. You can execute SQL statements in Lindorm-cli to write data to dynamic columns. The value that you want to write to dynamic columns by using an UPSERT statement must be converted into a hexadecimal string (**hex string**). A byte can be represented by a decimal number between 0 and 255, or two hexadecimal digits from 0x00 to 0xFF. The hex string for a byte array {0x00, 0xFF} is 00FF. For more information about how to convert a byte array to a hex string, see the Convert a byte array to a hex string section of this topic. The following examples show how to write data to dynamic columns: The following statement is executed to write data to the c3 column in the `t_dynamic_columns` table. The c3 column is a dynamic column. The write operation is successful.
+The syntax that is used to write data to a table for which dynamic columns are enabled is the same as the syntax that is used to write data to a table for which dynamic columns are not enabled. After dynamic columns are enabled for a table, you can write data to columns that are not defined in the table schema. However, the type of data in dynamic columns can only be VARBINARY, which indicates byte arrays. You can execute SQL statements in Lindorm-cli to write data to dynamic columns. The value that you want to write to dynamic columns by using an UPSERT statement must be converted into a hexadecimal string (**hex string**).
+
+> **Note:** A byte can be represented by a decimal number between 0 and 255, or two hexadecimal digits from 0x00 to 0xFF. The hex string for a byte array {0x00, 0xFF} is 00FF. For more information about how to convert a byte array to a hex string, see the Convert a byte array to a hex string section of this topic.
+
+The following examples show how to write data to dynamic columns: The following statement is executed to write data to the c3 column in the `t_dynamic_columns` table. The c3 column is a dynamic column. The write operation is successful.
 
 ```
 UPSERT INTO t_dynamic_columns (p1, c2, c3) VALUES (1, '1', '41');
@@ -1738,9 +1772,9 @@ The following result is returned:
 +-----+-------+---------+-------+------------+ 2 rows in set (141 ms)
 ```
 
-**Important**
+> **Important:** If you use a `SELECT *` statement with the LIMIT clause specified to query data in a table for which dynamic columns are enabled, the default maximum value of LIMIT is 5,000. You can specify a maximum value. If the queried value exceeds the maximum value, an error is returned.
 
-If you use a `SELECT *` statement with the LIMIT clause specified to query data in a table for which dynamic columns are enabled, the default maximum value of LIMIT is 5,000. You can specify a maximum value. If the queried value exceeds the maximum value, an error is returned. Dynamic columns are used in `WHERE` conditions. To ensure query performance, you must include the primary key or index key columns in `WHERE` conditions. If you use Lindorm-cli or SQL statements to query data in dynamic columns, the values in dynamic columns in WHERE conditions must be hex strings. For example, if the c4 column in the table t_dynamic_columns is a dynamic column, the following statement can be executed to perform a successful query:
+Dynamic columns are used in `WHERE` conditions. To ensure query performance, you must include the primary key or index key columns in `WHERE` conditions. If you use Lindorm-cli or SQL statements to query data in dynamic columns, the values in dynamic columns in WHERE conditions must be hex strings. For example, if the c4 column in the table t_dynamic_columns is a dynamic column, the following statement can be executed to perform a successful query:
 
 ```
 SELECT p1, c4 FROM t_dynamic_columns WHERE p1 >= 1 AND p1 < 3 AND c4 = 'ef0011';
@@ -1814,7 +1848,11 @@ Server: A Lindorm instance is used. Client: For more information, see Install Li
 | MUTABLE LATEST _ | Data can be updated and deleted. | 4 | The system reads data from the base table, deletes historical data from the index table, writes data to the index table, and writes data to the base table. |
 | MUTABLE ALL _ | No limits are imposed. You can use custom timestamps to write data. | 4 | The system reads data from the base table, deletes historical data from the index table, writes data to the index table, and writes data to the base table. |
 
-If you set the mutability attribute to IMMUTABLE or IMMUTABLE_ROWS, no update operation is performed. As a result, no write amplification occurs, and the costs are minimized. These two mutability types are suitable for high-throughput data write scenarios, such as logging and monitoring. If you set the mutability attribute to IMMUTABLE, no delete operation is performed. This way, you can fully use the multi-data center deployment capability provided by Lindorm to implement active-active data access. If you set the mutability attribute to IMMUTABLE or IMMUTABLE_ROWS, the write latency can be decreased and the overall throughput can be improved for tables that have indexes. In an actual business scenario for which the IMMUTABLE type is not suitable, you can configure data redundancy to reform your business scenario. Index updates based on custom timestamps: Lindorm allows you to write data based on custom timestamps and update data based on a specific timestamp. The system determines that the update operation takes effect only on the data that is associated with the largest timestamp. The custom timestamp feature is important for managing data TTL and processing out-of-order data and idempotent operations. This feature is widely used in HBase databases. Lindorm supports column-level timestamps. You can write data to base tables based on custom timestamps. In NoSQL systems that support secondary indexes and timestamps, you can hardly update indexes based on custom timestamps. If data is not written in sequence based on timestamps, the update and delete operations that are performed on index data are difficult to manage. Lindorm provides the global secondary index (GSI) feature to resolve this issue. You can use GSIs to update data based on column-level custom timestamps. The following business scenarios are examples of using custom timestamps: Import historical data and update real-time data in one task: If you want to update real-time data and import historical data at the same time, you can specify the current timestamp for real-time data and specify 23:59:59 on the previous day for historical data. This way, the import operation updates the data that has not been updated on the day and does not overwrite the data that has been updated. Clear message accumulation: A business system uses messages to trigger a series of processing logic. When message accumulation occurs, the system skips the accumulated messages and directly processes the most recent message if the custom timestamp feature is used. After the most recent message is processed, the system processes the accumulated historical messages to handle the previous tasks. Alternatively, if an issue related to the business logic occurs, the system can also skip some messages to bypass the issue and process these messages after the issue is fixed. In this case, your business system can use the timestamps of messages to write data to ensure that the historical messages are correctly overwritten by the real-time messages. Covering indexes that contain all columns in base tables: In most cases, a covering index is created based on specific columns in a base table to prevent the base table from being scanned after the index is scanned. A common redundancy solution is to create a covering index that contains all the columns in a base table. Lindorm supports three redundancy modes. If the schema of a base table changes or a base table contains dynamic columns, you can create covering indexes for the base table to implement full redundancy. Create a covering index that contains specified columns in the base table: You can explicitly specify the columns in the base table as included columns. Create a covering index that contains all columns in the schema of a base table: When you create a covering index that contains all columns in a base table, you do not need to explicitly specify each column in the CREATE INDEX statement. Instead, you can use a constant to specify to include all the columns in the index. After the covering index is created, a column is automatically added to the covering index when the column is added to the base table. You do not need to rebuild the index. This also eliminates the need to scan the base table if you want to query the data in the newly added column. Create a covering index that contains dynamic columns in the base table: Lindorm supports fixed schemas and loose schemas. A loose schema refers to dynamic columns. If the DYNAMIC redundancy mode is used, the index table can automatically include all dynamic columns in the base table and all columns in the schema of the base table.
+> **Note:** If you set the mutability attribute to IMMUTABLE or IMMUTABLE_ROWS, no update operation is performed. As a result, no write amplification occurs, and the costs are minimized. These two mutability types are suitable for high-throughput data write scenarios, such as logging and monitoring.
+> If you set the mutability attribute to IMMUTABLE, no delete operation is performed. This way, you can fully use the multi-data center deployment capability provided by Lindorm to implement active-active data access.
+> If you set the mutability attribute to IMMUTABLE or IMMUTABLE_ROWS, the write latency can be decreased and the overall throughput can be improved for tables that have indexes. In an actual business scenario for which the IMMUTABLE type is not suitable, you can configure data redundancy to reform your business scenario.
+
+Index updates based on custom timestamps: Lindorm allows you to write data based on custom timestamps and update data based on a specific timestamp. The system determines that the update operation takes effect only on the data that is associated with the largest timestamp. The custom timestamp feature is important for managing data TTL and processing out-of-order data and idempotent operations. This feature is widely used in HBase databases. Lindorm supports column-level timestamps. You can write data to base tables based on custom timestamps. In NoSQL systems that support secondary indexes and timestamps, you can hardly update indexes based on custom timestamps. If data is not written in sequence based on timestamps, the update and delete operations that are performed on index data are difficult to manage. Lindorm provides the global secondary index (GSI) feature to resolve this issue. You can use GSIs to update data based on column-level custom timestamps. The following business scenarios are examples of using custom timestamps: Import historical data and update real-time data in one task: If you want to update real-time data and import historical data at the same time, you can specify the current timestamp for real-time data and specify 23:59:59 on the previous day for historical data. This way, the import operation updates the data that has not been updated on the day and does not overwrite the data that has been updated. Clear message accumulation: A business system uses messages to trigger a series of processing logic. When message accumulation occurs, the system skips the accumulated messages and directly processes the most recent message if the custom timestamp feature is used. After the most recent message is processed, the system processes the accumulated historical messages to handle the previous tasks. Alternatively, if an issue related to the business logic occurs, the system can also skip some messages to bypass the issue and process these messages after the issue is fixed. In this case, your business system can use the timestamps of messages to write data to ensure that the historical messages are correctly overwritten by the real-time messages. Covering indexes that contain all columns in base tables: In most cases, a covering index is created based on specific columns in a base table to prevent the base table from being scanned after the index is scanned. A common redundancy solution is to create a covering index that contains all the columns in a base table. Lindorm supports three redundancy modes. If the schema of a base table changes or a base table contains dynamic columns, you can create covering indexes for the base table to implement full redundancy. Create a covering index that contains specified columns in the base table: You can explicitly specify the columns in the base table as included columns. Create a covering index that contains all columns in the schema of a base table: When you create a covering index that contains all columns in a base table, you do not need to explicitly specify each column in the CREATE INDEX statement. Instead, you can use a constant to specify to include all the columns in the index. After the covering index is created, a column is automatically added to the covering index when the column is added to the base table. You do not need to rebuild the index. This also eliminates the need to scan the base table if you want to query the data in the newly added column. Create a covering index that contains dynamic columns in the base table: Lindorm supports fixed schemas and loose schemas. A loose schema refers to dynamic columns. If the DYNAMIC redundancy mode is used, the index table can automatically include all dynamic columns in the base table and all columns in the schema of the base table.
 
 **Syntax reference**
 
@@ -1822,7 +1860,10 @@ For more information about how to use the SQL syntax supported by LindormTable, 
 
 **Create a secondary index**
 
-After you create a base table in a Lindorm instance, you can create a secondary index based on specified columns in the base table. The following procedure provides an example of how to create a secondary index for a base table: After you create a base table in a Lindorm instance, you can create a secondary index based on specified columns in the base table. The following procedure provides an example on how to create a secondary index for a base table: You can create indexes in a synchronous or asynchronous manner. If a base table contains a small amount of data, you can use the synchronous method to create an index. In other cases, we recommend that you use the asynchronous method. For more information about the syntax, see CREATE INDEX. When you execute the **CREATE_INDEX** statement to create an index for a base table that contains data, the statement also synchronizes the existing data in the base table to the index table. If the base table contains large amounts of data, the execution of the **CREATE_INDEX** statement requires a long period of time to complete. The data synchronization task is executed on the server. Even if the Lindorm Shell process is deleted, the data synchronization task is not affected.
+After you create a base table in a Lindorm instance, you can create a secondary index based on specified columns in the base table. The following procedure provides an example of how to create a secondary index for a base table: After you create a base table in a Lindorm instance, you can create a secondary index based on specified columns in the base table. The following procedure provides an example on how to create a secondary index for a base table:
+
+> **Note:** You can create indexes in a synchronous or asynchronous manner. If a base table contains a small amount of data, you can use the synchronous method to create an index. In other cases, we recommend that you use the asynchronous method. For more information about the syntax, see CREATE INDEX.
+> When you execute the **CREATE_INDEX** statement to create an index for a base table that contains data, the statement also synchronizes the existing data in the base table to the index table. If the base table contains large amounts of data, the execution of the **CREATE_INDEX** statement requires a long period of time to complete. The data synchronization task is executed on the server. Even if the Lindorm Shell process is deleted, the data synchronization task is not affected.
 
 **View secondary indexes**
 
@@ -1832,7 +1873,7 @@ You can use Lindorm SQL to view the status of all secondary indexes that are cre
 show index from shop_item_relation;
 ```
 
-In this example, the statement returns the name and type of each secondary index that is created for the shop_item_relation base table.
+> **Note:** In this example, the statement returns the name and type of each secondary index that is created for the shop_item_relation base table.
 
 **Change the status of a secondary index**
 
@@ -1842,7 +1883,7 @@ After a secondary index is created for a base table, you must rebuild the index 
 alter index idxs1 on shop_item_relation ACTIVE; alter index idxs1 on shop_item_relation DISABLED;
 ```
 
-If you directly change the status of a secondary index from DISABLED to ACTIVE, data may be lost. Therefore, you must rebuild the index in advance.
+> **Note:** If you directly change the status of a secondary index from DISABLED to ACTIVE, data may be lost. Therefore, you must rebuild the index in advance.
 
 **Delete a secondary index**
 
@@ -1852,7 +1893,7 @@ You can execute the DROP INDEX statement to delete a secondary index for a speci
 drop index idxs1 on shop_item_relation;
 ```
 
-Before you delete an index, make sure that your account is granted the TRASH permission.
+> **Note:** Before you delete an index, make sure that your account is granted the TRASH permission.
 
 **Optimize queries based on secondary indexes**
 
@@ -1862,7 +1903,10 @@ When you perform a query, Lindorm selects a secondary index based on the rule-ba
 -- Create a base table, and then create indexes for the base table. create table dt (rowkey varchar, c1 varchar, c2 varchar, c3 varchar, c4 varchar, c5 varchar, constr aint pk primary key(rowkey)); create index idx1 on dt (c1); create index idx2 on dt (c2, c3, c4); create index idx3 on dt (c3) include (c1, c2, c4); create index idx4 on dt (c5) 'INDEX_COVERED_TYPE'='COVERED_ALL_COLUMNS_IN_SCHEMA'; -- Execute the following statements to execute optimized queries: select rowkey from dt where c1 = 'a'; select rowkey from dt where c2 = 'b' and c4 = 'd'; select * from dt where c2 = 'b' and c3 >= 'c' and c3 < 'f'; select * from dt where c5 = 'c';
 ```
 
-When Lindorm executes the select rowkey from dt where c1 = 'a' statement, Lindorm selects the idx1 index to run this query. When Lindorm executes the select rowkey from dt where c2 = 'b' and c4 = 'd' statement, Lindorm selects the idx2 index to run this query. This statement queries all rows that match the c2=b condition and then filters the rows based on the c4=d condition row by row. Although c4 is specified as an index key column, the query fails to match the prefix of idx2 because column c3 is not defined in the WHERE condition. When Lindorm executes the select * from dt where c2 = 'b' and c3 >= 'c' and c3 < 'f' statement, Lindorm selects the idx2 index to run this query. All the columns in the base table are selected in the query, and the index table does not contain all the columns. As a result, a table scan is required after the index is scanned. When the system scans the base table, the system may make several remote procedure calls (RPCs) because the row key columns may be dispersed in the base table. If large amounts of data need to be scanned, the response time is long. When Lindorm executes the select * from dt where c5 = 'c' statement, Lindorm selects the idx4 index to run this query. This query does not need to scan the base table because the idx4 index contains all the columns in the base table.
+> **Note:** When Lindorm executes the select rowkey from dt where c1 = 'a' statement, Lindorm selects the idx1 index to run this query.
+> When Lindorm executes the select rowkey from dt where c2 = 'b' and c4 = 'd' statement, Lindorm selects the idx2 index to run this query. This statement queries all rows that match the c2=b condition and then filters the rows based on the c4=d condition row by row. Although c4 is specified as an index key column, the query fails to match the prefix of idx2 because column c3 is not defined in the WHERE condition.
+> When Lindorm executes the select * from dt where c2 = 'b' and c3 >= 'c' and c3 < 'f' statement, Lindorm selects the idx2 index to run this query. All the columns in the base table are selected in the query, and the index table does not contain all the columns. As a result, a table scan is required after the index is scanned. When the system scans the base table, the system may make several remote procedure calls (RPCs) because the row key columns may be dispersed in the base table. If large amounts of data need to be scanned, the response time is long.
+> When Lindorm executes the select * from dt where c5 = 'c' statement, Lindorm selects the idx4 index to run this query. This query does not need to scan the base table because the idx4 index contains all the columns in the base table.
 
 ### 1.4 Lindorm SQL statements
 
@@ -1995,7 +2039,9 @@ The avg function returns the average of all the values in a specified column.
 
 ###### 1.4.4.3.1 Overview
 
-This topic describes the spatio-temporal functions supported by Lindorm GanosBase. The following table describes the spatio-temporal functions that are supported by Lindorm GanosBase. The names of the spatio-temporal functions are case-insensitive.
+This topic describes the spatio-temporal functions supported by Lindorm GanosBase. The following table describes the spatio-temporal functions that are supported by Lindorm GanosBase.
+
+> **Note:** The names of the spatio-temporal functions are case-insensitive.
 
 | Category | Documentation | Description |
 |---|---|---|
@@ -2041,7 +2087,8 @@ string ST_AsText(geometry g);
 |---|---|
 | g | The geometry object whose information you want to output. |
 
-The specified geometry object can be a point, LineString, or polygon object. By default, the returned results support DOUBLE values with up to 16 decimal places.
+> **Note:** The specified geometry object can be a point, LineString, or polygon object.
+> By default, the returned results support DOUBLE values with up to 16 decimal places.
 
 **Examples**
 
@@ -2079,7 +2126,7 @@ geometry ST_Centroid(geometry g);
 |---|---|
 | g | The geometry object whose centroid you want to obtain. |
 
-If the object is an empty geometry, the corresponding empty geometry is returned.
+> **Note:** If the object is an empty geometry, the corresponding empty geometry is returned.
 
 **Examples**
 
@@ -2132,7 +2179,7 @@ geometry ST_EndPoint(geometry g);
 |---|---|
 | g | The geometry object whose last point you want to obtain. |
 
-If the specified geometry object is not a LineString object, this function returns NULL.
+> **Note:** If the specified geometry object is not a LineString object, this function returns NULL.
 
 **Example**
 
@@ -2198,7 +2245,7 @@ geometry ST_StartPoint(geometry g);
 |---|---|
 | g | The geometry object whose start point you want to obtain. |
 
-If the specified geometry object is not a LineString object, this function returns NULL.
+> **Note:** If the specified geometry object is not a LineString object, this function returns NULL.
 
 **Example**
 
@@ -2232,7 +2279,7 @@ double ST_X(geometry a_point);
 |---|---|
 | a point _ | The geometry object whose x coordinate you want to obtain. |
 
-The specified geometry object must be a point object. If you set this parameter to EMPTY or NULL, this function returns NULL.
+> **Note:** The specified geometry object must be a point object. If you set this parameter to EMPTY or NULL, this function returns NULL.
 
 **Example**
 
@@ -2266,7 +2313,8 @@ double ST_XMax(geometry g);
 |---|---|
 | g | The geometry object whose maximum x coordinate on the bounding box you want to obtain. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. If you set this parameter to EMPTY, this function returns -1.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> If you set this parameter to EMPTY, this function returns -1.
 
 **Example**
 
@@ -2300,7 +2348,8 @@ double ST_XMin(geometry g);
 |---|---|
 | g | The geometry object whose minimum x coordinate on the bounding box you want to obtain. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. If you set this parameter to EMPTY, this function returns 0.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> If you set this parameter to EMPTY, this function returns 0.
 
 **Example**
 
@@ -2334,7 +2383,7 @@ double ST_Y(geometry a_point);
 |---|---|
 | a point _ | The geometry object whose y coordinate you want to obtain. |
 
-The specified geometry object must be a point object. If you set this parameter to EMPTY or NULL, this function returns NULL.
+> **Note:** The specified geometry object must be a point object. If you set this parameter to EMPTY or NULL, this function returns NULL.
 
 **Example**
 
@@ -2368,7 +2417,8 @@ double ST_YMax(geometry g);
 |---|---|
 | g | The geometry object whose maximum y coordinate on the bounding box you want to obtain. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. If you set this parameter to EMPTY, this function returns -1.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> If you set this parameter to EMPTY, this function returns -1.
 
 **Example**
 
@@ -2402,7 +2452,8 @@ double ST_YMin(geometry g);
 |---|---|
 | g | The geometry object whose minimum y coordinate on the bounding box you want to obtain. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. If you set this parameter to EMPTY, this function returns 0.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> If you set this parameter to EMPTY, this function returns 0.
 
 **Example**
 
@@ -2452,7 +2503,8 @@ boolean ST_Contains(geometry g, double x, double y);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-If all points of geomB are contained in the interior or on the boundary of geomA, geomA contains geomB. `ST_Contains` is the inverse function of `ST_Within` . The returned results of ST_Contains(A,B) and ST_Within(B,A) are the same.
+> **Note:** If all points of geomB are contained in the interior or on the boundary of geomA, geomA contains geomB.
+> `ST_Contains` is the inverse function of `ST_Within` . The returned results of ST_Contains(A,B) and ST_Within(B,A) are the same.
 
 **Examples**
 
@@ -2549,7 +2601,7 @@ boolean ST_DWithin(geometry g, double x, double y, double distanceOfSrid);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
 
 **Examples**
 
@@ -2614,7 +2666,8 @@ boolean ST_DWithinSPhere(geometry g, double x, double y, double distance);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. The function may have an error of centimeters when it determines the spherical distance.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> The function may have an error of centimeters when it determines the spherical distance.
 
 **Examples**
 
@@ -2676,7 +2729,7 @@ boolean ST_ Intersects(geometry g, double x, double y);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
 
 **Examples**
 
@@ -2772,7 +2825,7 @@ boolean ST_Overlaps(geometry g, double x, double y);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
 
 **Examples**
 
@@ -2852,7 +2905,8 @@ bboolean ST_Within(double x, double y, geometry g);
 | x | The longitude of the point object. |
 | y | The latitude of the point object. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. If true is returned by both `ST_Within(A,B)` and `ST_Within(B,A)` , A and B are geometry objects that are spatially equal.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> If true is returned by both `ST_Within(A,B)` and `ST_Within(B,A)` , A and B are geometry objects that are spatially equal.
 
 **Examples**
 
@@ -2909,7 +2963,9 @@ ST_Buffer(geometry g, double radius);
 | g | The source geometry object based on which the spherical distance of points is calculated. |
 | radius | The 2D distance from the source geometry object to the points of the buffer geometry object. Unit: degree. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If you specify a positive value for **radius**, the buffer geometry object rings away from the center of the source geometry object. If you specify a negative value for **radius**, the buffer geometry object rings towards the center of the source geometry object. The returned geometry may be empty. Only the default buffer style is supported. By default, the value of quadrantSegments is 8, and the value of endCapStyle is round.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If you specify a positive value for **radius**, the buffer geometry object rings away from the center of the source geometry object. If you specify a negative value for **radius**, the buffer geometry object rings towards the center of the source geometry object. The returned geometry may be empty.
+> Only the default buffer style is supported. By default, the value of quadrantSegments is 8, and the value of endCapStyle is round.
 
 **Examples**
 
@@ -3094,7 +3150,9 @@ ST_BufferSphere(geometry g, double radius);
 | g | The source geometry object based on which the spherical distance of points is calculated. |
 | radius | The spherical distance from the source geometry object to the points of the buffer geometry object. Unit: meter. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If you specify a positive value for **radius**, the buffer geometry object rings away from the center of the source geometry object. If you specify a negative value for **radius**, the buffer geometry object rings towards the center of the source geometry object. The returned geometry may be empty. Only the default buffer style is supported. By default, the value of quadrantSegments is 8, and the value of endCapStyle is round.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If you specify a positive value for **radius**, the buffer geometry object rings away from the center of the source geometry object. If you specify a negative value for **radius**, the buffer geometry object rings towards the center of the source geometry object. The returned geometry may be empty.
+> Only the default buffer style is supported. By default, the value of quadrantSegments is 8, and the value of endCapStyle is round.
 
 **Examples**
 
@@ -3298,7 +3356,12 @@ ST_Collect(geometry geomA, geometry geomB); ST_Collect(geometry geomA, geometry 
 | geomB | The second geometry object that you want to specify. |
 | geomN | The Nth geometry object that you want to specify. |
 
-The `ST_Collect` function returns a MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection object. These types of objects can only be read, but cannot be written by Lindorm GanosBase SQL. The `ST_Collect` function and `ST_Union` can be interchanged in usage. However, the two functions have the following differences: The `ST_Collect` function returns a MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection object. The `ST_Union` may return a single geometry object. The `ST_Union` function splits a LineString object at the intersection of nodes, while the `ST_Collect` function returns a MultiLineString object. In general, the computing performance of `ST_Collect` is superior to `ST_Union` . This is because `ST_Collect` does not split the boundary of the specified geometry objects or check whether the specified MultiPolygon objects overlap. ST_Collect combines multiple geometry objects into a MultiPoint, MultiLineString, or MultiPolygon object or combines multiple MultiPoint, MultiLineString, or MultiPolygon objects into a GeometryCollection object.
+> **Note:** The `ST_Collect` function returns a MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection object. These types of objects can only be read, but cannot be written by Lindorm GanosBase SQL.
+> The `ST_Collect` function and `ST_Union` can be interchanged in usage. However, the two functions have the following differences:
+> The `ST_Collect` function returns a MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection object. The `ST_Union` may return a single geometry object.
+> The `ST_Union` function splits a LineString object at the intersection of nodes, while the
+> `ST_Collect` function returns a MultiLineString object.
+> In general, the computing performance of `ST_Collect` is superior to `ST_Union` . This is because `ST_Collect` does not split the boundary of the specified geometry objects or check whether the specified MultiPolygon objects overlap. ST_Collect combines multiple geometry objects into a MultiPoint, MultiLineString, or MultiPolygon object or combines multiple MultiPoint, MultiLineString, or MultiPolygon objects into a GeometryCollection object.
 
 **Examples**
 
@@ -3352,7 +3415,10 @@ ST_Difference(geometry geomA, geometry geomB);
 | geomA | The first geometry object that you want to specify. |
 | geomB | The second geometry object that you want to specify. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If the first geometry object that you specify is empty or is fully contained by the second geometry object that you specify, an empty object is returned. If you specify a polygon that has intersecting edges, this function may not return a result. The order of the input geometry objects affects the output geometry object.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If the first geometry object that you specify is empty or is fully contained by the second geometry object that you specify, an empty object is returned.
+> If you specify a polygon that has intersecting edges, this function may not return a result.
+> The order of the input geometry objects affects the output geometry object.
 
 **Examples**
 
@@ -3386,7 +3452,7 @@ ST_MinimumBoundingCircle(geometry g);
 |---|---|
 | g | The geometry object that is fully contained by the returned cycle. |
 
-The `ST_MinimumBoundingCircle` function is commonly used for MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection objects. This function is not an aggregate function. However, you can use this function together with the `ST_Collect` function to obtain the smallest bounding circle of a set of geometry objects. Example:
+> **Note:** The `ST_MinimumBoundingCircle` function is commonly used for MultiPoint, MultiLineString, MultiPolygon, or GeometryCollection objects. This function is not an aggregate function. However, you can use this function together with the `ST_Collect` function to obtain the smallest bounding circle of a set of geometry objects. Example:
 
 ```
  ST_MinimumBoundingCircle(ST_Collect(geometry geomA, geometry geomB, geometry geomC, ...)) .
@@ -3487,7 +3553,8 @@ ST_MinimumBoundingRadius(geometry g);
 |---|---|
 | g | The geometry object that is fully contained by the returned cycle. |
 
-By default, the returned results support DOUBLE values with up to 16 decimal places. You can use this function together with the `ST_Collect` function to obtain the radius of the smallest bounding circle of a set of geometry objects.
+> **Note:** By default, the returned results support DOUBLE values with up to 16 decimal places.
+> You can use this function together with the `ST_Collect` function to obtain the radius of the smallest bounding circle of a set of geometry objects.
 
 **Examples**
 
@@ -3522,7 +3589,9 @@ ST_Intersection(geometry geomA, geometry geomB);
 | geomA | The first geometry object that you want to specify. |
 | geomB | The second geometry object that you want to specify. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If one of the specified geometry objects is empty, an empty object is returned. If you specify a polygon that has intersecting edges, this function may not return a result.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If one of the specified geometry objects is empty, an empty object is returned.
+> If you specify a polygon that has intersecting edges, this function may not return a result.
 
 **Examples**
 
@@ -3550,7 +3619,7 @@ You can call the `ST_Union` function to obtain a geometry object representing th
 ST_Union(geometry g1, geometry g2, ..., geometry gn);
 ```
 
-This function can return a single geometry object, a MultiPoint, MultiLineString, or MultiPolygon object, or a GeometryCollection object.
+> **Note:** This function can return a single geometry object, a MultiPoint, MultiLineString, or MultiPolygon object, or a GeometryCollection object.
 
 **Parameters**
 
@@ -3560,7 +3629,13 @@ This function can return a single geometry object, a MultiPoint, MultiLineString
 | g2 | The second geometry object that you want to specify. |
 | gn | The Nth geometry object that you want to specify. |
 
-Geometry objects supported by this function include point, LineString, and polygon objects. The type of geometry objects returned by this function varies based on the input parameters that you specify: If you specify two geometry objects, this function returns a single geometry object, a MultiPoint, MultiLineString, or MultiPolygon object, or a GeometryCollection object. If one of the two geometry objects that you specify is NULL, this function returns NULL. If one of the two geometry objects that you specify is an empty object, this function returns the other geometry object. If you specify two or more geometry objects, this function returns a single geometry object or a MultiPoint, MultiLineString, or MultiPolygon object. The `ST_Collect` function and the `ST_Union` function can be interchanged in usage. In general, the computing performance of `ST_Collect` is superior to `ST_Union` . This is because `ST_Collect` does not split the boundary of the specified geometry objects or check whether the specified MultiPolygon objects overlap. If you specify a polygon that has intersecting edges, this function may not return a result.
+> **Note:** Geometry objects supported by this function include point, LineString, and polygon objects.
+> The type of geometry objects returned by this function varies based on the input parameters that you specify:
+> If you specify two geometry objects, this function returns a single geometry object, a MultiPoint, MultiLineString, or MultiPolygon object, or a GeometryCollection object. If one of the two geometry objects that you specify is NULL, this function returns NULL. If one of the two geometry objects that you specify is an empty object, this function returns the other geometry object.
+> If you specify two or more geometry objects, this function returns a single geometry object or a MultiPoint, MultiLineString, or MultiPolygon object.
+> The `ST_Collect` function and the `ST_Union` function can be interchanged in usage. In general, the computing performance of `ST_Collect` is superior to `ST_Union` . This is because
+> `ST_Collect` does not split the boundary of the specified geometry objects or check whether the specified MultiPolygon objects overlap.
+> If you specify a polygon that has intersecting edges, this function may not return a result.
 
 **Examples**
 
@@ -3594,7 +3669,9 @@ geometry ST_MakeValid(geometry g);
 |---|---|
 | g | The geometry object that you want to specify. |
 
-You can call the `ST_MakeValid` function to convert a self-intersecting Polygon object into a MultiPolygon object that consists of multiple Polygon objects. For a MultiPolygon object that consists of multiple overlapping Polygon objects, you can call the `ST_MakeValid` function to calculate the union of the overlapping Polygon objects and merge the objects into one Polygon object.
+> **Note:** You can call the `ST_MakeValid` function to convert a self-intersecting Polygon object into a MultiPolygon object that consists of multiple Polygon objects.
+> For a MultiPolygon object that consists of multiple overlapping Polygon objects, you can call the
+> `ST_MakeValid` function to calculate the union of the overlapping Polygon objects and merge the objects into one Polygon object.
 
 **Examples**
 
@@ -3655,7 +3732,10 @@ double ST_Area(geometry g);
 |---|---|
 | g | The geometry object. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If you specify a geometry object, this function returns the 2D Cartesian area of the geometry object in the unit that is specified by the spatial reference system of the geometry object. Lindorm GanosBase SQL uses the spatial reference system with the SRID 4326. In this system, distances are measured in degrees. If the points of the specified polygon object enclose multiple closed figures, this function calculates the difference between the areas of the closed figures enclosed by the points clockwise and counterclockwise, and returns the absolute value of the difference. If you do not specify a polygon object, the value 0 is returned.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If you specify a geometry object, this function returns the 2D Cartesian area of the geometry object in the unit that is specified by the spatial reference system of the geometry object. Lindorm GanosBase SQL uses the spatial reference system with the SRID 4326. In this system, distances are measured in degrees.
+> If the points of the specified polygon object enclose multiple closed figures, this function calculates the difference between the areas of the closed figures enclosed by the points clockwise and counterclockwise, and returns the absolute value of the difference.
+> If you do not specify a polygon object, the value 0 is returned.
 
 **Examples**
 
@@ -3708,7 +3788,8 @@ double ST_Distance(geometry geomA, geometry geomB);
 | geomA | The first geometry object. |
 | geomB | The second geometry object. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If one of the geometry objects is empty, the value 0 is returned.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If one of the geometry objects is empty, the value 0 is returned.
 
 **Examples**
 
@@ -3761,7 +3842,9 @@ double ST_DistanceSphere(geometry geomA, geometry geomB);
 | geomA | The first geometry object. |
 | geomB | The second geometry object. |
 
-You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If one of the geometry objects is empty, the value 0 is returned. If one of the specified geometry objects is a polygon or LineString object, the result may have an error of centimeters.
+> **Note:** You can specify a geometry object of the following types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection.
+> If one of the geometry objects is empty, the value 0 is returned.
+> If one of the specified geometry objects is a polygon or LineString object, the result may have an error of centimeters.
 
 **Examples**
 
@@ -3813,7 +3896,8 @@ double ST_Length(geometry g);
 |---|---|
 | g | The geometry object. |
 
-If the specified geometry object is a LineString object, the 2D length of the object in a Cartesian coordinate system is returned. If the specified geometry object is a polygon object, the value 0 is returned.
+> **Note:** If the specified geometry object is a LineString object, the 2D length of the object in a Cartesian coordinate system is returned.
+> If the specified geometry object is a polygon object, the value 0 is returned.
 
 **Examples**
 
@@ -3865,7 +3949,8 @@ double ST_LengthSphere(geometry g);
 |---|---|
 | g | The geometry object. |
 
-If the specified geometry object is a LineString object, the spherical length of the object is returned. If the specified geometry object is a polygon object, the value 0 is returned.
+> **Note:** If the specified geometry object is a LineString object, the spherical length of the object is returned.
+> If the specified geometry object is a polygon object, the value 0 is returned.
 
 **Examples**
 
@@ -3903,7 +3988,9 @@ The following result is returned:
 
 **ST_IsValid**
 
-The ST_IsValid function checks whether a geometry object is valid. Invalid geometry objects include self-intersecting polygons, MultiPolygon objects that include overlapped polygons, and other objects that do not comply with their definitions.
+The ST_IsValid function checks whether a geometry object is valid.
+
+> **Note:** Invalid geometry objects include self-intersecting polygons, MultiPolygon objects that include overlapped polygons, and other objects that do not comply with their definitions.
 
 **Syntax**
 
@@ -3945,9 +4032,7 @@ This topic describes the aggregate functions that are supported by Lindorm Ganos
 
 This function sorts out-of-order points by time, aggregates the points into a trajectory, and then returns the spherical length of the trajectory in meters. You can use the `ST_Length_Rows` function together with the `GROUP BY` clause to obtain the spherical length of the trajectory that is aggregated by the points in the specified column.
 
-**Important**
-
-You must use the primary keys to make sure that the points are aggregated in the correct order. Otherwise, the returned length may not be as expected. For example, you can use the vehicle ID column and the timestamp column as primary keys in Internet of Vehicles (IoV) scenarios to make sure that points are aggregated in the correct order.
+> **Important:** You must use the primary keys to make sure that the points are aggregated in the correct order. Otherwise, the returned length may not be as expected. For example, you can use the vehicle ID column and the timestamp column as primary keys in Internet of Vehicles (IoV) scenarios to make sure that points are aggregated in the correct order.
 
 **Syntax**
 
@@ -4031,7 +4116,9 @@ In a table named test, aggregate the points collected by multiple devices within
 SELECT device_code, st_trajectoryprofile(lon, lat, collect_time, 30000) FROM test WHERE st_dwithinsphere(st_geomfromtext('POINT (120.20495 30.187485810)'), lon, lat, 1000.0) and collect_t ime >= 1660673959000 and collect_time <= 1660750359000 group by device_code;
 ```
 
-If a secondary index is used in the query, all columns that are used in the query, including the aggregation key, filter condition columns, and function parameter columns, must be added to the index as redundant columns. This way, the query does not need to scan the data in the base table. For example, in the preceding statement, the device_code, lon, lat, and collect_time columns must be added to the secondary index as redundant columns. Returned result:
+> **Note:** If a secondary index is used in the query, all columns that are used in the query, including the aggregation key, filter condition columns, and function parameter columns, must be added to the index as redundant columns. This way, the query does not need to scan the data in the base table. For example, in the preceding statement, the device_code, lon, lat, and collect_time columns must be added to the secondary index as redundant columns.
+
+Returned result:
 
 ```
 +--------------+------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------+
@@ -4130,7 +4217,8 @@ You can execute the DROP DATABASE statement to delete a Lindorm database.
 drop_database_statement ::= DROP DATABASE [ IF EXISTS ] database_name
 ```
 
-Note: By default, in Lindorm versions earlier than 2.2.16, you need to specify the schema name of a database when you use this statement to delete the database. This statement is equivalent to drop schema [if exists] schema_name.
+> **Note:** By default, in Lindorm versions earlier than 2.2.16, you need to specify the schema name of a database when you use this statement to delete the database. This statement is equivalent to drop schema [if exists] schema_name.
+
 
 **Examples**
 
@@ -4156,7 +4244,7 @@ You can execute the CREATE TABLE statement to create a Lindorm wide table.
 |---|---|---|
 | DYNAMIC COLUMNS _ | String | Specifies whether to enable dynamic columns. Valid values: True: Enable dynamic columns for the table. False: Disable dynamic columns for the table. This is the default value. Note Dynamic columns support only the VARBINARY data type. For more information about dynamic columns, see Dynamic columns. |
 
-In Lindorm 2.2.16 and later versions, you can use multiple keywords to configure table attributes. In Lindorm versions earlier than 2.2.16, you do not need to add the `WITH` keyword when you configure table attributes. In addition, you must enclose the keys of table attributes in single quotation marks (') when you configure table attributes. If the value of a table attribute is a string, you must also enclose the value in single quotation marks ('). Lindorm 2.2.16 and later versions support all syntax rules in earlier versions. In Lindorm 2.2.16 and later versions, you can add the `WITH` keyword before table attributes. You do not need to use single quotation marks (') to enclose the keys of table attributes. However, you must use single quotation marks (') to enclose the values of table attributes. The sample statements described in the following section can be directly executed.
+> **Note:** In Lindorm 2.2.16 and later versions, you can use multiple keywords to configure table attributes. In Lindorm versions earlier than 2.2.16, you do not need to add the `WITH` keyword when you configure table attributes. In addition, you must enclose the keys of table attributes in single quotation marks (') when you configure table attributes. If the value of a table attribute is a string, you must also enclose the value in single quotation marks ('). Lindorm 2.2.16 and later versions support all syntax rules in earlier versions. In Lindorm 2.2.16 and later versions, you can add the `WITH` keyword before table attributes. You do not need to use single quotation marks (') to enclose the keys of table attributes. However, you must use single quotation marks (') to enclose the values of table attributes. The sample statements described in the following section can be directly executed.
 
 **Examples**
 
@@ -4244,7 +4332,8 @@ alter_table_statement ::= ALTER TABLE table_name alter_table_instruction alter_t
                              | COMPACT (idcName)?
 ```
 
-For more information about `table_options` , see the Usage notes section of the CREATE TABLE topic. The major_compact operation is applicable only to LindormTable V2.3.4 and later.
+> **Note:** For more information about `table_options` , see the Usage notes section of the CREATE TABLE topic.
+> The major_compact operation is applicable only to LindormTable V2.3.4 and later.
 
 **Supported predicates**
 
@@ -4316,7 +4405,9 @@ If your database is deployed in two zones, you can perform the major_compact ope
 ALTER TABLE test COMPACT 'idc2';
 ```
 
-By default, if you do not specify a data center in the statement, the major_compact operation is performed on the data in idc1. You can execute the following statement to perform the major_compact operation on a table named test in both idc1 and idc2:
+> **Note:** By default, if you do not specify a data center in the statement, the major_compact operation is performed on the data in idc1.
+
+You can execute the following statement to perform the major_compact operation on a table named test in both idc1 and idc2:
 
 ```
 ALTER TABLE test COMPACT 'idc1,idc2';
@@ -4332,7 +4423,7 @@ You can use the TRUNCATE TABLE syntax to clear data from a specified table. In L
 truncate_table_statement ::= TRUNCATE TABLE table_name
 ```
 
-**table_name** specifies the name of the destination table.
+> **Note:** **table_name** specifies the name of the destination table.
 
 **Examples**
 
@@ -4381,7 +4472,9 @@ index_identifier ::= '('column_name1 [desc],...,column_namen [desc]')' include_i
 | ENDKEY | String | The end key of the index table. |
 | NUMREGIONS | String | The estimated number of partitions of the index table. |
 
-An index table can contain columns of the base table for redundant storage. This eliminates the need for scanning data in the corresponding columns from the base table and accelerates your queries. If you want to include only a few columns of the base table in the index table, you can use INCLUDE in your statement. For example, when you use INCLUDE (c1, c2), columns c1 and c2 are included in the index table. By default, indexes are created in a synchronous manner. If you want to use the ASYNC keyword to create an index in an asynchronous manner, you must execute the BUILD INDEX statement. A maximum of five index tables can be created. If you create an excessive number of index tables, the storage costs and response time for write requests are increased.
+> **Note:** An index table can contain columns of the base table for redundant storage. This eliminates the need for scanning data in the corresponding columns from the base table and accelerates your queries. If you want to include only a few columns of the base table in the index table, you can use INCLUDE in your statement. For example, when you use INCLUDE (c1, c2), columns c1 and c2 are included in the index table.
+> By default, indexes are created in a synchronous manner. If you want to use the ASYNC keyword to create an index in an asynchronous manner, you must execute the BUILD INDEX statement.
+> A maximum of five index tables can be created. If you create an excessive number of index tables, the storage costs and response time for write requests are increased.
 
 **Examples**
 
@@ -4602,7 +4695,9 @@ Specify index key columns and the search index state, and configure specific col
 CREATE SEARCH INDEX IF NOT EXISTS idx on tbn(col1, col2(type=text,analyzer=ik), col3) WITH (ind exState=ACTIVE, numShards=4);
 ```
 
-When you configure `column_options` , the type option and analyzer option must be specified together. Create a search index by using the time range partitioning policy and specify index columns. The following statement specifies that the first partition is created based on 30 days before the point in time when you create the index, sets the interval at which a new partition is created to 7 days, sets the retention period of your data in a partition to 90 days, and performs time range partitioning by the col4 column.
+> **Note:** When you configure `column_options` , the type option and analyzer option must be specified together.
+
+Create a search index by using the time range partitioning policy and specify index columns. The following statement specifies that the first partition is created based on 30 days before the point in time when you create the index, sets the interval at which a new partition is created to 7 days, sets the retention period of your data in a partition to 90 days, and performs time range partitioning by the col4 column.
 
 ```
 CREATE SEARCH INDEX idx ON tbn (col1, col2, col3, col4) partition by range time(col4) partitions 16 with (indexState=ACTIVE, RANGE_TIME_PARTITION_START='30', RANGE_TIME_PARTITION_INTERVAL='7', RA NGE_TIME_PARTITION_TTL='90', RANGE_TIME_PARTITION_MAX_OVERLAP='90');
@@ -4802,7 +4897,9 @@ SHOW SEARCH INDEX FROM tbn;
 
 ##### 1.4.6.1 SELECT
 
-You can execute the SELECT statement to query the data of rows from one or more tables. This topic describes how to execute the SELECT statement to query the data of rows from one or more tables.
+You can execute the SELECT statement to query the data of rows from one or more tables.
+
+> **Note:** This topic describes how to execute the SELECT statement to query the data of rows from one or more tables.
 
 **Syntax**
 
@@ -4881,7 +4978,9 @@ upsert_statement ::= UPSERT INTO table_name
 columns ::= column_name, columns values ::= term, values,'(' values ')' update_column ::= column_name update_value ::= term
 ```
 
-The UPSERT statement can insert multiple rows in a batch. You must specify the columns to which the values are inserted. You can use the Values keyword to determine the number of rows that you want to insert. The UPSERT ON DUPLICATE KEY operation is supported. This operation is similar to the CHECK AND PUT operation. Make sure that the specified values can identify a row. If you specify the column that you want to update and the new value after ON DUPLICATE KEY, and the column exists in the table, an exception is thrown. This is because ON DUPLICATE KEY cannot update values by checking whether the specified column exists. ON DUPLICATE KEY IGNORE is used to skip the duplicate column check and directly insert rows. You can use standard Java Database Connectivity (JDBC) to submit regular SQL statements or prepared statements to Lindorm. You can submit prepared statements by using standard JDBC to perform standard batch insert operations only in Lindorm 2.2.16 and later versions.
+> **Note:** The UPSERT statement can insert multiple rows in a batch. You must specify the columns to which the values are inserted. You can use the Values keyword to determine the number of rows that you want to insert.
+> The UPSERT ON DUPLICATE KEY operation is supported. This operation is similar to the CHECK AND PUT operation. Make sure that the specified values can identify a row. If you specify the column that you want to update and the new value after ON DUPLICATE KEY, and the column exists in the table, an exception is thrown. This is because ON DUPLICATE KEY cannot update values by checking whether the specified column exists. ON DUPLICATE KEY IGNORE is used to skip the duplicate column check and directly insert rows.
+> You can use standard Java Database Connectivity (JDBC) to submit regular SQL statements or prepared statements to Lindorm. You can submit prepared statements by using standard JDBC to perform standard batch insert operations only in Lindorm 2.2.16 and later versions.
 
 **Examples**
 
@@ -4902,7 +5001,9 @@ delete_statement ::= DELETE FROM table_name
                       WHERE where_clause
 ```
 
-When you use the WHERE clause, you must specify a condition that can be used to identify a unique row of data. In the WHERE clause of the DELETE statement, you must specify a primary key condition to scan only one row of data for the operation. Each DELETE statement can delete only one row of data. After you execute a DELETE statement, Lindorm adds a delete marker to the data that you want to delete, instead of querying the data before the delete operation. Therefore, the delete operation is successful regardless of whether the row that you want to delete exists. You can specify a timestamp in the DELETE statement. In this case, the statement deletes the columns whose timestamps are earlier than or equal to the specified timestamp from the row that you want to delete.
+> **Note:** When you use the WHERE clause, you must specify a condition that can be used to identify a unique row of data.
+
+In the WHERE clause of the DELETE statement, you must specify a primary key condition to scan only one row of data for the operation. Each DELETE statement can delete only one row of data. After you execute a DELETE statement, Lindorm adds a delete marker to the data that you want to delete, instead of querying the data before the delete operation. Therefore, the delete operation is successful regardless of whether the row that you want to delete exists. You can specify a timestamp in the DELETE statement. In this case, the statement deletes the columns whose timestamps are earlier than or equal to the specified timestamp from the row that you want to delete.
 
 **Examples**
 
@@ -5025,7 +5126,7 @@ grant_permission_statement ::= GRANT privilege_definition ON [GLOBAL|SCHEMA sche
                                | table_name
 ```
 
-You can revoke permissions on different levels of resources. The following permission levels from high to low are supported: GLOBAL, DATABASE (SCHEMA), and TABLE.
+> **Note:** You can revoke permissions on different levels of resources. The following permission levels from high to low are supported: GLOBAL, DATABASE (SCHEMA), and TABLE.
 
 **Parameters**
 
@@ -5063,7 +5164,7 @@ revoke_permission_statement ::= REVOKE privilege_definition ON [GLOBAL | SCHEMA 
 |---|---|
 | resource | The resources on which you want to grant permissions. Valid values: ALL , SCHEMA , and TABLE . |
 
-You can revoke permissions on different levels of resources. The following permission levels from high to low are supported: GLOBAL, DATABASE (SCHEMA), and TABLE.
+> **Note:** You can revoke permissions on different levels of resources. The following permission levels from high to low are supported: GLOBAL, DATABASE (SCHEMA), and TABLE.
 
 **Examples**
 
@@ -5103,13 +5204,16 @@ Hints are supported by LindormTable 2.3.1 and later. For more information about 
 hintExpression ::= /*+ hintItems */ hintItems ::= hintItem (',' hintItem )* hintItem ::= identifier ('(' hintOption ( ',' hintOption)* ')')? hintOption ::= expression
 ```
 
-Hints are used in the `/*+ hintItems */` format, in which `hintItems` indicates operationspecific hints. Multiple `hintItems` are separated by commas (,). Hints are enclosed by `/*+` and `*/` . Hints can be used only after the INSERT, UPSERT, and SELECT keywords in LindormTable SQL statements. Example:
+> **Note:** Hints are used in the `/*+ hintItems */` format, in which `hintItems` indicates operation- specific hints. Multiple `hintItems` are separated by commas (,).
+> Hints are enclosed by `/*+` and `*/` .
+
+Hints can be used only after the INSERT, UPSERT, and SELECT keywords in LindormTable SQL statements. Example:
 
 ```
 UPSERT /*+ _l_ts_(3000) */ INTO t_test_ts(c1, c3) VALUES (1, 'c3'); SELECT /*+ _l_versions_(1) */ c1, c3, c3_l_ts FROM t_test_ts;
 ```
 
-Hints cannot be used after other keywords. For example, hints in the following statements are invalid: UPSERT INTO /*+ _l_ts_(3000) */ t_test_ts(c1, c3) VALUES (1, 'c3'); .
+> **Note:** Hints cannot be used after other keywords. For example, hints in the following statements are invalid: UPSERT INTO /*+ _l_ts_(3000) */ t_test_ts(c1, c3) VALUES (1, 'c3'); .
 
 ##### 1.4.9.2 Use hints to implement data versioning
 
@@ -5242,9 +5346,7 @@ This topic describes how to use the ORDER BY clause in SQL statements for Lindor
 
 The ORDER BY clause in Lindorm SQL statements is commonly used in the following scenarios: If the number of result entries is less than 100,000, ORDER BY can be used to query data in the memory without limits. In these scenarios, you must enable in-memory computing. To enable this feature, submit a ticket. If the number of result entries is greater than or equal to 100,000, Lindorm imposes limits on the use of ORDER BY. The limits are affected by the data storage rules in Lindorm. When you execute the ORDER BY clause, result entries are not sorted by the SQL engine. If you want to sort result entries based on a specific column, you can specify the column as the single-equivalent prefix column.
 
-**Warning**
-
-If a large number of result entries are returned after in-memory computing is enabled, your client may stop responding.
+> **Warning:** If a large number of result entries are returned after in-memory computing is enabled, your client may stop responding.
 
 **Solutions**
 
@@ -5294,13 +5396,21 @@ Q: Are primary key values unique? A: Different versions of a row use the same pr
 userid='abc' AND orderid=123 .
 ```
 
-To use the GET method, you must specify all primary key columns. The values in all primary key columns must be explicit. SCAN method: Data is queried based on the primary key range. Example: `SELECT * FROM table WHERE`
+> **Note:** To use the GET method, you must specify all primary key columns. The values in all primary key columns must be explicit.
+
+SCAN method: Data is queried based on the primary key range. Example: `SELECT * FROM table WHERE`
 
 ```
 userid='abc' AND 123<orderid<456 .
 ```
 
-To use the SCAN method, you must specify the range that you want to scan in the first primary key column. By default, if you do not specify the range, Lindorm rejects queries that must scan all data in the table because full table scans are inefficient. For more information, see SELECT. Best practice: How do I submit complex queries by using the preceding query methods? Solution: Create an index table. Specify the columns that you want to scan other than the primary key columns in the query conditions. Lindorm automatically filters out the irrelevant data. Use secondary indexes. Use `ORDER BY` to sort the data in descending order. This way, new records are sorted to the top rows of the table. Example: `SELECT * FROM table WHERE userid='abc' AND 123<orderid<456 ORDER BY orderid` `DESC` . In scenarios in which most queries are submitted to retrieve the up-to-date data, you can design the primary key as `[userid][orderid DESC]` to sort the data in descending order. Q: Do stacked hot spots exist if the data is distributed? A: No, hot spots do not exist if the data is distributed. The hash method is used to distribute data to different partitions. This prevents a server from being overloaded due to hot spots when other servers are idle. This can help you gain the benefits of distributed computing and parallel computing. Best practices: Design a MD5 hash algorithm. The primary key is `[md5(userid).subStr(0,4)][userId][orderid]` . Design a reverse index. The primary key is `[reverse(userid)][orderid]` . Design the modulo operation. The primary key is [bucket][timestamp][hostname][log-event]; long
+> **Note:** To use the SCAN method, you must specify the range that you want to scan in the first primary key column. By default, if you do not specify the range, Lindorm rejects queries that must scan all data in the table because full table scans are inefficient. For more information, see SELECT.
+
+Best practice: How do I submit complex queries by using the preceding query methods? Solution: Create an index table. Specify the columns that you want to scan other than the primary key columns in the query conditions. Lindorm automatically filters out the irrelevant data. Use secondary indexes. Use `ORDER BY` to sort the data in descending order. This way, new records are sorted to the top rows of the table. Example: `SELECT * FROM table WHERE userid='abc' AND 123<orderid<456 ORDER BY orderid` `DESC` .
+
+> **Note:** In scenarios in which most queries are submitted to retrieve the up-to-date data, you can design the primary key as `[userid][orderid DESC]` to sort the data in descending order.
+
+Q: Do stacked hot spots exist if the data is distributed? A: No, hot spots do not exist if the data is distributed. The hash method is used to distribute data to different partitions. This prevents a server from being overloaded due to hot spots when other servers are idle. This can help you gain the benefits of distributed computing and parallel computing. Best practices: Design a MD5 hash algorithm. The primary key is `[md5(userid).subStr(0,4)][userId][orderid]` . Design a reverse index. The primary key is `[reverse(userid)][orderid]` . Design the modulo operation. The primary key is [bucket][timestamp][hostname][log-event]; long
 
 ```
 bucket = timestamp % numBuckets .
@@ -5355,9 +5465,7 @@ Query data based on order IDs. Design the primary key as `[order_number]` . Join
 
 ## 2 LindormTSDB
 
-**Important**
-
-Beginning September 1, 2024, LindormTSDB is **no longer available for purchase**. Users who purchased LindormTSDB or migrated from TSDB databases before this date can continue using LindormTSDB.
+> **Important:** Beginning September 1, 2024, LindormTSDB is **no longer available for purchase**. Users who purchased LindormTSDB or migrated from TSDB databases before this date can continue using LindormTSDB.
 
 ### 2.1 Connection guide
 
@@ -5367,9 +5475,7 @@ Beginning September 1, 2024, LindormTSDB is **no longer available for purchase**
 
 This topic describes how to use Lindorm-cli to connect to and use LindormTSDB.
 
-**Important**
-
-Beginning September 1, 2024, LindormTSDB is **no longer available for purchase**. Users who purchased LindormTSDB or migrated from TSDB databases before this date can continue using LindormTSDB.
+> **Important:** Beginning September 1, 2024, LindormTSDB is **no longer available for purchase**. Users who purchased LindormTSDB or migrated from TSDB databases before this date can continue using LindormTSDB.
 
 **Prerequisites**
 
@@ -5481,7 +5587,11 @@ The following result is returned:
 +-------------+-----------+------------+------------+
 ```
 
-iv. Write data to the time series table. If two rows of data have the same primary key value and the same value in the time column, the two rows of data are considered the same data record. In this case, the row of data that is written later overwrites the other row of data. Write single rows of data into a time series table in sequence.
+iv. Write data to the time series table.
+
+> **Note:** If two rows of data have the same primary key value and the same value in the time column, the two rows of data are considered the same data record. In this case, the row of data that is written later overwrites the other row of data.
+
+Write single rows of data into a time series table in sequence.
 
 ```
 INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES('F07A1260','northcn','2021-04-22 15:33:00',12.1,45); INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES('F07A1260','northcn','2021-04-22 15:33:10',13.2,47); INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES('F07A1260','northcn','2021-04-22 15:33:20',10.6,46); INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES('F07A1261','southcn','2021-04-22 15:33:00',18.1,44); INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES('F07A1261','southcn','2021-04-22 15:33:10',19.7,44);
@@ -5499,11 +5609,10 @@ INSERT INTO sensor (device_id, region, time, temperature, humidity) VALUES ('F07
 
 v. Query data in a time series table by condition.
 
-**Important**
+> **Important:** If no result is returned when you query data that has been written to a table, execute the
+> **DESCRIBE DATABASE <Database name>** statement to query whether a Time to Live (TTL) is configured for the database. Data that is retained for a period longer than the TTL is automatically cleared and cannot be queried.
 
-If no result is returned when you query data that has been written to a table, execute the
-**DESCRIBE DATABASE <Database name>** statement to query whether a Time to Live (TTL) is
-configured for the database. Data that is retained for a period longer than the TTL is automatically cleared and cannot be queried. Query data by condition. Query data that was generated by the `F07A1260` device from `2021-04-22 15:33:00` to `2021-04-`
+Query data by condition. Query data that was generated by the `F07A1260` device from `2021-04-22 15:33:00` to `2021-04-`
 
 ```
 22 15:33:20 . SELECT device_id,region,time,temperature,humidity FROM sensor WHERE device_id = 'F07A1260' AN D time >= '2021-04-22 15:33:00' AND time <= '2021-04-22 15:33:20';
@@ -5568,13 +5677,13 @@ Run the following command to import a CSV file into a time series table named `s
 ./lindorm-cli -url http://ld-bp1y919033x1k****-proxy-tsdb-pub.lindorm.rds.aliyuncs.com:8242/ -f ormat=csv -input /path/of/data.csv -table sensor
 ```
 
-**Important**
+> **Important:** You can import only one CSV file into a time series table at a time.
+> Make sure that the columns in the CSV file correspond to those in the time series table. Otherwise, errors may occur.
+> You can specify the following parameters to import multiple rows of data in a batch or import data by using multiple concurrent threads:
+> **-batch**: the number of rows of data that are imported to the table in each import operation. Default value: 2000.
+> **-concurrent**: the number of concurrent threads are used to import data to the table. Default value: 10.
 
-You can import only one CSV file into a time series table at a time. Make sure that the columns in the CSV file correspond to those in the time series table. Otherwise, errors may occur. You can specify the following parameters to import multiple rows of data in a batch or import data by using multiple concurrent threads:
-**-batch**: the number of rows of data that are imported to the table in each import
-operation. Default value: 2000.
-**-concurrent**: the number of concurrent threads are used to import data to the table.
-Default value: 10. Execute the following statement to export a CSV file from a time series table named `sensor` :
+Execute the following statement to export a CSV file from a time series table named `sensor` :
 
 ```
 ./lindorm-cli -url http://ld-bp1y919033x1k****-proxy-tsdb-pub.lindorm.rds.aliyuncs.com:8242/ -e xecute 'select * from sensor' -format=csv -output /path/of/data.csv
@@ -5716,7 +5825,7 @@ Sample results:
 before create, db list: [default] create database:true after create, db list: [default, demo] before create, table list: [] create table: true after create, table list: [sensor] ------------ describe table ------------------columns: [columnName, typeName, columnKind] metadata: [VARCHAR, VARCHAR, VARCHAR] column #0 : [device_id, VARCHAR, TAG] column #1 : [region, VARCHAR, TAG] column #2 : [time, TIMESTAMP, TIMESTAMP] column #3 : [temperature, DOUBLE, FIELD] column #4 : [humidity, DOUBLE, FIELD] ------------ describe table ------------------drop table: true after drop, table list: [] drop database:true after drop, db list : [default]
 ```
 
-Other management-related operations, such as DDL operations performed to create and delete continuous queries, are not described in this section. You can refer to the SQL syntax supported by LindormTSDB to perform these operations. For more information about the SQL statements supported by LindormTSDB, see SQL syntax reference.
+> **Note:** Other management-related operations, such as DDL operations performed to create and delete continuous queries, are not described in this section. You can refer to the SQL syntax supported by LindormTSDB to perform these operations. For more information about the SQL statements supported by LindormTSDB, see SQL syntax reference.
 
 **Write interfaces**
 
@@ -5793,9 +5902,7 @@ Lindorm TSDB, "
 });
 ```
 
-**Important**
-
-Do not use the whenComplete method of the CompletableFuture object to perform complex and timeconsuming calculation. Otherwise, the calculation may become stuck. If you want to perform complex and time-consuming calculation, submit the calculation task to other independent thread pools. For more information about the error codes, see Common error codes.
+> **Important:** Do not use the whenComplete method of the CompletableFuture object to perform complex and time- consuming calculation. Otherwise, the calculation may become stuck. If you want to perform complex and time-consuming calculation, submit the calculation task to other independent thread pools. For more information about the error codes, see Common error codes.
 
 **Interfaces that use callback functions to process asynchronous write**
 
@@ -5838,9 +5945,9 @@ Callback callback = new Callback() {
 
 `}` `}` `}` };
 
-**Important**
+> **Important:** Do not use the onCompletion method of the callback to perform complex and time-consuming calculation. Otherwise, the calculation may become stuck. If you want to perform complex and time- consuming calculation, submit the calculation task to other independent thread pools. For more information about the error codes, see Common error codes.
 
-Do not use the onCompletion method of the callback to perform complex and time-consuming calculation. Otherwise, the calculation may become stuck. If you want to perform complex and timeconsuming calculation, submit the calculation task to other independent thread pools. For more information about the error codes, see Common error codes. Submit only one write operation record each time.
+Submit only one write operation record each time.
 
 ```
 // Write data to the default database. lindormTSDBClient.write(record, callback); // Write data to a specified database. String database = "demo"; lindormTSDBClient.write(database, record, callback);
@@ -5896,9 +6003,9 @@ t to release the occupied input and output resources.
 
 `}`
 
-**Important**
+> **Important:** Regardless of whether a query is successful, you must explicitly call the close() method of ResultSet to release input and output resources after the query is complete. Otherwise, a connection leak occurs.
 
-Regardless of whether a query is successful, you must explicitly call the close() method of ResultSet to release input and output resources after the query is complete. Otherwise, a connection leak occurs. LindormTSDB SDKs also provide multiple implementations for overloading the query interface. You can choose one of the following implementations based on your business requirements.
+LindormTSDB SDKs also provide multiple implementations for overloading the query interface. You can choose one of the following implementations based on your business requirements.
 
 ```
 // The SQL statement. String sql = "xxxx"; // 1. Execute a SQL statement to query the default database. By default, 1,000 rows are returned in each batch. ResultSet resultSet = lindormTSDBClient.query(sql); String database = "demo"; // 2. Execute a SQL statement to query a specified database. By default, 1,000 rows are returned in each batch. ResultSet resultSet = lindormTSDBClient.query(database, sql);
@@ -5950,7 +6057,9 @@ TSDB, "
 
 ##### 2.1.2.4 Release notes
 
-This topic describes the release notes for LindormTSDB Native SDK for Java. You can obtain all versions of LindormTSDB Native SDK for Java from the Maven repository. For more information, visit Maven repository.
+This topic describes the release notes for LindormTSDB Native SDK for Java.
+
+> **Note:** You can obtain all versions of LindormTSDB Native SDK for Java from the Maven repository. For more information, visit Maven repository.
 
 **V1.0.4**
 
@@ -5993,9 +6102,14 @@ Before you use LindormTSDB SDK for Java to connect to LindormTSDB, you must inst
 |---|---|---|
 | <dependency> <groupId>com.aliyun.lindorm</groupId> <artifactId>lindorm-tsdb-client</artifactId> <version>1.0.4</version> </dependency> |   |   |
 
-LindormTSDB SDK for Java provides a Maven-based sample project. You can download the demo of the sample project, and compile and run the sample project on your on-premises machine. You can also develop a new project based on the sample project. Method 2: Import the JAR files of LindormTSDB SDK to an Eclipse project. i. Download the JAR files of LindormTSDB SDK. ii. Extract files from the package. iii. Import the files that are extracted to the Eclipse project. a. In Eclipse, open the project in which you want to run LindormTSDB SDK for Java, right-click the project name, and then click **Properties** from the shortcut menu. b. In the dialog box that appears, choose **Java Build Path > Libraries > Add JARs** and select the lindorm-tsdb-client-1.0.0.jar file and JAR files in the lib folder. c. Click **Apply and Close**. Method 3: Import the JAR files of LindormTSDB SDK to an IntelliJ IDEA project i. Download the JAR files of LindormTSDB SDK. ii. Extract files from the package. iii. Import the files to the IntelliJ IDEA project. a. In IntelliJ IDEA, open the project in which you want to run LindormTSDB SDK for Java. In the menu bar, choose **File > Project Structure**. b. On the left-side navigation pane of the **Project Structure** dialog box, choose **Project Structure >**
+> **Note:** LindormTSDB SDK for Java provides a Maven-based sample project. You can download the demo of the sample project, and compile and run the sample project on your on-premises machine. You can also develop a new project based on the sample project.
+
+Method 2: Import the JAR files of LindormTSDB SDK to an Eclipse project. i. Download the JAR files of LindormTSDB SDK. ii. Extract files from the package. iii. Import the files that are extracted to the Eclipse project. a. In Eclipse, open the project in which you want to run LindormTSDB SDK for Java, right-click the project name, and then click **Properties** from the shortcut menu. b. In the dialog box that appears, choose **Java Build Path > Libraries > Add JARs** and select the lindorm-tsdb-client-1.0.0.jar file and JAR files in the lib folder. c. Click **Apply and Close**. Method 3: Import the JAR files of LindormTSDB SDK to an IntelliJ IDEA project i. Download the JAR files of LindormTSDB SDK. ii. Extract files from the package. iii. Import the files to the IntelliJ IDEA project. a. In IntelliJ IDEA, open the project in which you want to run LindormTSDB SDK for Java. In the menu bar, choose **File > Project Structure**. b. On the left-side navigation pane of the **Project Structure** dialog box, choose **Project Structure >**
 **Modules**.
-c. Click the icon and click **JARs or directories**. d. In the dialog box that appears, select the lindorm-tsdb-client-1.0.0.jar file and the JAR files in the lib folder, and click **OK**. e. Click **Apply**. f. Click **OK**. You can obtain each version of LindormTSDB SDK for Java from the Maven repository. For more information, see Maven Repository. For more information about the versions of LindormTSDB SDK for Java, see Release notes.
+c. Click the icon and click **JARs or directories**. d. In the dialog box that appears, select the lindorm-tsdb-client-1.0.0.jar file and the JAR files in the lib folder, and click **OK**. e. Click **Apply**. f. Click **OK**.
+
+> **Note:** You can obtain each version of LindormTSDB SDK for Java from the Maven repository. For more information, see Maven Repository.
+> For more information about the versions of LindormTSDB SDK for Java, see Release notes.
 
 **Procedure**
 
@@ -6014,7 +6128,9 @@ lindormTSDBClient.execute("CREATE DATABASE demo"); lindormTSDBClient.execute("de
 ```
 
 3. Write data to a table.
-By default, the LindormTSDB client asynchronously writes data in batches to a table to improve the write performance. If you want to write data synchronously, you can call the `write()` method to write data, use `CompletableFuture<WriteResult>` to process the data, and then call the `join()` method to join the results.
+
+> **Note:** By default, the LindormTSDB client asynchronously writes data in batches to a table to improve the write performance. If you want to write data synchronously, you can call the `write()` method to write data, use `CompletableFuture<WriteResult>` to process the data, and then call the
+> `join()` method to join the results.
 
 ```
 int numRecords = 10; List<Record> records = new ArrayList<>(numRecords); long currentTime = System.currentTimeMillis(); for (int i = 0; i < numRecords; i++) {
@@ -6226,7 +6342,8 @@ Manually install the JDBC driver Download the Lindorm-all-client JAR package to 
 </dependency>
 ```
 
-Specify the version of lindorm-all-client based on your business requirements.
+> **Note:** Specify the version of lindorm-all-client based on your business requirements.
+
 2. Access LindormTSDB. For more information about the sample code, see Tutorial: Use the JDBC driver for
 Lindorm to connect to and use LindormTSDB. i. Establish a connection between LindormTSDB and your client.
 
@@ -6234,13 +6351,10 @@ Lindorm to connect to and use LindormTSDB. i. Establish a connection between Lin
 String url = "jdbc:lindorm:tsdb:url=http://<host:port>"; Connection conn = DriverManager.getConnection(url);
 ```
 
-`host:port` : specifies the endpoint and port that are used to connect to LindormTSDB,
+> **Note:** `host:port` : specifies the endpoint and port that are used to connect to LindormTSDB, such as `ld-bp17j28j2y7pm****-proxy-tsdb.lindorm.rds.aliyuncs.com:8242` .
+> `jdbc:lindorm:tsdb:url=http://<host:port>` : specifies the URL of the JDBC driver. For information about the syntax and connection parameters, see URL of the JDBC driver.
 
-```
-such as ld-bp17j28j2y7pm****-proxy-tsdb.lindorm.rds.aliyuncs.com:8242 .
-```
-
-`jdbc:lindorm:tsdb:url=http://<host:port>` : specifies the URL of the JDBC driver. For information about the syntax and connection parameters, see URL of the JDBC driver. ii. Create a time series database and a table.
+ii. Create a time series database and a table.
 
 ```
 Statement stmt = conn.createStatement(); stmt.execute("CREATE DATABASE test"); stmt.execute("USE test"); stmt.execute("CREATE TABLE sensor (device_id VARCHAR TAG,region VARCHAR TAG,time TIMESTAMP,temperature DOUBLE,humidity DOUBLE,PRIMARY KEY(device_id))");
@@ -6278,7 +6392,9 @@ ResultSet rs = stmt.executeQuery("select device_id, region,time,temperature,humi
     System.out.printf("%s %s %d %f %d\n", device_id, region, time, temperature, humidity);
 ```
 
-`}` The following table describes the API operations and methods that are supported when you use the JDBC driver to access LindormTSDB. API operations that are not described in the following table are partially compatible with the upperlayer framework and return the default values. If you have any questions, submit a ticket.
+`}` The following table describes the API operations and methods that are supported when you use the JDBC driver to access LindormTSDB.
+
+> **Note:** API operations that are not described in the following table are partially compatible with the upper- layer framework and return the default values. If you have any questions, submit a ticket.
 
 | API operation | Supported method |
 |---|---|
@@ -6295,11 +6411,7 @@ The URL of the JDBC driver is important when applications call the Connection op
 jdbc:lindorm:tsdb:url=http://${host:port}[;${connection_parameter}=${connection_value}]...
 ```
 
-`host:port` : This field specifies the endpoint and port that are used to connect to LindormTSDB, such
-
-```
-as ld-bp17j28j2y7pm****-proxy-tsdb.lindorm.rds.aliyuncs.com:8242 .
-```
+> **Note:** `host:port` : This field specifies the endpoint and port that are used to connect to LindormTSDB, such as `ld-bp17j28j2y7pm****-proxy-tsdb.lindorm.rds.aliyuncs.com:8242` .
 
 The following table describes the connection parameters that are included in the URL of the JDBC driver.
 
@@ -6313,9 +6425,7 @@ The following table describes the connection parameters that are included in the
 | lindorm.tsdb.driver.socket.timeout | The maximum interval between socket read and write operations. Unit: milliseconds. The default value is -1, which indicates that no interval is specified. |
 |---|---|
 
-**Important**
-
-If a connection between the Lindorm client and server is idle for 60 minutes, the server closes the connection to improve resource utilization. If you use a connection closed by the server, the
+> **Important:** If a connection between the Lindorm client and server is idle for 60 minutes, the server closes the connection to improve resource utilization. If you use a connection closed by the server, the
 
 ```
  com.aliyun.lindorm.client.shaded.org.apache.calcite.avatica.http.ConnectionDisconnectedException
@@ -6350,7 +6460,9 @@ dataSource.setDriver(DriverManager.getDriver("jdbc:lindorm:tsdb:url=http://<host
             throwables.printStackTrace();
 ```
 
-`}` `host:port` : the endpoint and port used to access LindormTSDB. Example: `ld-bp17j28j2y7pm****-`
+`}`
+
+> **Note:** `host:port` : the endpoint and port used to access LindormTSDB. Example: `ld-bp17j28j2y7pm****-`
 
 ```
 proxy-tsdb.lindorm.rds.aliyuncs.com:8242 .
@@ -6439,7 +6551,9 @@ pub.lindorm.rds.aliyuncs.com:8242");
 
 ##### 2.1.3.1 Supported API operations and methods
 
-This topic describes the API operations and methods that are supported when you use the Java Database Connectivity (JDBC) driver to access LindormTSDB. API operations that are not described in the following table are partially compatible with the upperlayer framework and return the default values. If you have questions, contact the technical support of LindormTSDB (DingTalk ID: s0s3eg3).
+This topic describes the API operations and methods that are supported when you use the Java Database Connectivity (JDBC) driver to access LindormTSDB.
+
+> **Note:** API operations that are not described in the following table are partially compatible with the upper- layer framework and return the default values. If you have questions, contact the technical support of LindormTSDB (DingTalk ID: s0s3eg3).
 
 | Supported API operation | Supported method |
 |---|---|
@@ -6471,9 +6585,7 @@ jdbc:lindorm:tsdb:url=http://${host:port}[;${connection_parameter}=${connection_
 |   | lindorm.tsdb .driver.conn ect.timeout | 60 | The timeout period of connections created to the server of LindormTSDB. Unit: milliseconds. The default value is 60,000, which is equal to 60 seconds. |
 |   | lindorm.tsdb .driver.socke t.timeout | 60 | The maximum interval between socket read and write operations. Unit: milliseconds. The default value is -1, which indicates that no interval is specified. |
 
-**Important**
-
-If a connection is idle for more than 90 seconds, the LindormTSDB server closes the connection to save resources. If you use a connection that is closed by the server, the
+> **Important:** If a connection is idle for more than 90 seconds, the LindormTSDB server closes the connection to save resources. If you use a connection that is closed by the server, the
 
 ```
  com.aliyun.lindorm.client.shaded.org.apache.calcite.avatica.http.ConnectionDisconnectedException
@@ -6521,7 +6633,8 @@ Manually install the JDBC driver Download the Lindorm-all-client JAR package to 
 </dependency>
 ```
 
-Specify the version of lindorm-all-client based on your business requirements.
+> **Note:** Specify the version of lindorm-all-client based on your business requirements.
+
 3. Create a DataSource object, establish a JDBC connection based on the DataSource object, and then
 connect to LindormTSDB. Sample code:
 
@@ -6601,7 +6714,9 @@ ndorm.rds.aliyuncs.com:8242");// Specify the endpoint of LindormTSDB that you ob
         app.close();
 ```
 
-`}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver. The default username and password are both root.
+`}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
+
+> The default username and password are both root.
 
 ##### 2.1.3.4 Tutorial: Use the JDBC driver for Lindorm to connect to and use LindormTSDB
 
@@ -6627,7 +6742,8 @@ Manually install the JDBC driver. Download the Lindorm-all-client JAR package to
 </dependency>
 ```
 
-Specify the version of lindorm-all-client based on your business requirements.
+> **Note:** Specify the version of lindorm-all-client based on your business requirements.
+
 2. Access LindormTSDB. The following code block shows an example:
 
 ```java
@@ -6714,7 +6830,11 @@ ty);
                 e.printStackTrace();
 ```
 
-`}` `}` `}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver. For more information about the API operations and methods that are supported when you use the JDBC driver to access LindormTSDB, see Supported API operations and methods. For more information about the SQL syntax supported by LindormTSDB, see SQL syntax reference.
+`}` `}` `}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
+
+> For more information about the API operations and methods that are supported when you use the JDBC driver to access LindormTSDB, see Supported API operations and methods.
+
+For more information about the SQL syntax supported by LindormTSDB, see SQL syntax reference.
 
 #### 2.1.4 HTTP-based SQL API
 
@@ -6722,7 +6842,9 @@ This topic describes the definition of the HTTP-based SQL API provided by Lindor
 
 **Usage notes**
 
-For applications that are not developed by using Java, you can directly use the API described in this topic to send SQL statements to LindormTSDB. For Java applications, we recommend that you use the Java Database Connectivity (JDBC) driver to connect your applications to LindormTSDB. For more information, see Java JDBC driver. Single-node Lindorm instances do not support the HTTP-based SQL API.
+For applications that are not developed by using Java, you can directly use the API described in this topic to send SQL statements to LindormTSDB. For Java applications, we recommend that you use the Java Database Connectivity (JDBC) driver to connect your applications to LindormTSDB. For more information, see Java JDBC driver.
+
+> **Note:** Single-node Lindorm instances do not support the HTTP-based SQL API.
 
 **Request path and method**
 
@@ -6745,7 +6867,7 @@ else:
     print(r.content)
 ```
 
-LindormTSDB allows you to use semicolons (;) as the terminator of SQL statements based on the SQL- 92 standard. However, when you call the `/api/v2/sql` API to pass an SQL statement, semicolons (;) cannot be used as the terminator of the SQL statement. Otherwise, the request throws an error.
+> **Note:** LindormTSDB allows you to use semicolons (;) as the terminator of SQL statements based on the SQL- 92 standard. However, when you call the `/api/v2/sql` API to pass an SQL statement, semicolons (;) cannot be used as the terminator of the SQL statement. Otherwise, the request throws an error.
 
 **Supported query parameters**
 
@@ -6771,7 +6893,11 @@ If user authentication is enabled for LindormTSDB, you must include the authenti
 BASIC {Base64-encoded authentication information}
 ```
 
-The **Base64-encoded authentication information** is in the following format: ${username}:${password} . The username and password are separated by a colon (:). For more information about how to encode and specify user credentials for basic authentication by using different programming languages, see the documentation for relevant class libraries of the programming languages. For example, if you use the default username and password (which are both root) as the credential for basic authentication, the Base64-encoded value of the **Authorization** field in the HTTP header is Basic cm9vdDpyb290, as shown in the following example:
+The **Base64-encoded authentication information** is in the following format: ${username}:${password} . The username and password are separated by a colon (:).
+
+> **Note:** For more information about how to encode and specify user credentials for basic authentication by using different programming languages, see the documentation for relevant class libraries of the programming languages.
+
+For example, if you use the default username and password (which are both root) as the credential for basic authentication, the Base64-encoded value of the **Authorization** field in the HTTP header is Basic cm9vdDpyb290, as shown in the following example:
 
 ```
 Authorization: Basic cm9vdDpyb290
@@ -6797,7 +6923,7 @@ If an SQL execution error occurs, the HTTP status code in the response is 400, a
 | sqlstate | String | The returned SQL status code. |
 | message | String | The returned error message. |
 
-For more information about the error codes, see Common error codes.
+> **Note:** For more information about the error codes, see Common error codes.
 
 **Examples**
 
@@ -6826,7 +6952,7 @@ If user authentication is enabled, use an account whose username is `tsdbuser` t
 curl -X POST -u tsdbuser:password http://ld-xxxxxxxxx-proxy-tsdbpub.lindorm.rds.aliyuncs.com:8242/api/v2/sql?database=DB1 -d 'SELECT device_id, region, time, MAX (temperature) as max_t FROM SENSOR WHERE time >= 1619076780000 AND time <= 1619076800000 SAMPLE B Y 20s'
 ```
 
-Make sure that tsdbuser is granted the required permissions on the SENSOR time series table.
+> **Note:** Make sure that tsdbuser is granted the required permissions on the SENSOR time series table.
 
 #### 2.1.5 Use the InfluxDB® line protocol to write data
 
@@ -6875,7 +7001,8 @@ You can use the InfluxDB line protocol to write data to LindormTSDB in the follo
 | field set _ | Yes | The field of the data point that you want to write. |
 | timestamp | No | The timestamp of the data point that you want to write. By default, the current time is specified. Default unit: nanoseconds. Note If you want to change the precision of timestamps, specify the precision parameter. |
 
-Separate multiple data points with line feeds (\n). When you use the InfluxDB line protocol to write data points to LindormTSDB, the schema constraints used by the engine are weak constraints.
+> **Note:** Separate multiple data points with line feeds (\n).
+> When you use the InfluxDB line protocol to write data points to LindormTSDB, the schema constraints used by the engine are weak constraints.
 
 **Examples**
 
@@ -7634,9 +7761,8 @@ For an existing database, you can change its partition interval by modifying the
 ALTER DATABASE DB4 WITH (partition_interval=60);
 ```
 
-**Important**
-
-After you change the partition interval of a database, the new partition interval does not immediately take effect. After the partition interval is changed, LindormTSDB specifies the last day when data is written to the current partition as the end time of the partition and creates a new partition to store data that is written to the database after the day. The new partition interval takes effect only on the partition created after the interval is changed. The partition interval of existing partitions remains unchanged. For example, the partition interval of the database DB4 is changed from 30 days to 60 days. When the interval is changed, data within 50 days has been separately stored in two partitions named Partition1 and Partition2 in DB4. Partition1 stores data written to DB4 from day 1 to day 30. Partition2 stores data written to DB4 from day 31 to day 50. After the partition interval is changed, data written to DB4 from day 51 is written to the new partition whose partition interval is 60 days. The partition interval of Partition1 and Partition2 remains unchanged.
+> **Important:** After you change the partition interval of a database, the new partition interval does not immediately take effect. After the partition interval is changed, LindormTSDB specifies the last day when data is written to the current partition as the end time of the partition and creates a new partition to store data that is written to the database after the day. The new partition interval takes effect only on the partition created after the interval is changed. The partition interval of existing partitions remains unchanged.
+> For example, the partition interval of the database DB4 is changed from 30 days to 60 days. When the interval is changed, data within 50 days has been separately stored in two partitions named Partition1 and Partition2 in DB4. Partition1 stores data written to DB4 from day 1 to day 30. Partition2 stores data written to DB4 from day 31 to day 50. After the partition interval is changed, data written to DB4 from day 51 is written to the new partition whose partition interval is 60 days. The partition interval of Partition1 and Partition2 remains unchanged.
 
 **Create a time series table**
 
@@ -7776,9 +7902,7 @@ Lindorm TSDB, "
 
 LindormTSDB allows you to use the InfluxDB line protocol to write data. If your application is not developed by using Java, we recommend that you use the InfluxDB line protocol to write data to LindormTSDB. You can configure the schema constraint policy when you use the InfluxDB line protocol to write data. By default, the schema constraint policy is weak constraint. For more information, see Write data by using InfluxDB line protocol.
 
-**Important**
-
-When you use the InfluxDB line protocol to write data to LindormTSDB, the written data is accurate to milliseconds. Therefore, precision loss occurs when data with a time precision higher than milliseconds is written to LindormTSDB by using the InfluxDB line protocol.
+> **Important:** When you use the InfluxDB line protocol to write data to LindormTSDB, the written data is accurate to milliseconds. Therefore, precision loss occurs when data with a time precision higher than milliseconds is written to LindormTSDB by using the InfluxDB line protocol.
 
 **Examples**
 
@@ -7832,7 +7956,7 @@ Perform downsampling to reduce the time precision of data, and then aggregate th
 SELECT device_id, max(avg_humidity) AS max_humidity FROM (SELECT device_id,region,time,avg(humidity) AS avg_humidity FROM sensor sample by 8h) group by device_id;
 ```
 
-The SAMPLE BY clause is used to downsample a single time series. The GROUP BY clause is used to aggregate the data of multiple time series. If you want to use the SAMPLE BY and GROUP BY clauses in the same SQL statement, you must use a subquery in the statement.
+> **Note:** The SAMPLE BY clause is used to downsample a single time series. The GROUP BY clause is used to aggregate the data of multiple time series. If you want to use the SAMPLE BY and GROUP BY clauses in the same SQL statement, you must use a subquery in the statement.
 
 **Access methods supported by SQL queries**
 
@@ -7869,7 +7993,9 @@ By using the Alibaba Cloud Lindorm data source plug-in provided by Grafana, you 
 
 **Use the Grafana plug-in for OpenTSDB to query data**
 
-LindormTSDB provides API operations that are compatible with OpenTSDB to query data. You can use the OpenTSDB data source plug-in provided by Grafana to query data. If you want to query data that is inserted by using SQL statements, LindormTSDB SDK for Java, and the InfluxDB, or multi-value data inserted by using API operations that are compatible with TSDB, you must set metrics in the metric@field format to adapt the query to multi-value data. In this format, set metric to the name of the table and field to the name of the column that stores the data you want to query.
+LindormTSDB provides API operations that are compatible with OpenTSDB to query data. You can use the OpenTSDB data source plug-in provided by Grafana to query data.
+
+> **Note:** If you want to query data that is inserted by using SQL statements, LindormTSDB SDK for Java, and the InfluxDB, or multi-value data inserted by using API operations that are compatible with TSDB, you must set metrics in the metric@field format to adapt the query to multi-value data. In this format, set metric to the name of the table and field to the name of the column that stores the data you want to query.
 
 **Methods to improve query performance**
 
@@ -7894,9 +8020,9 @@ LindormTSDB allows you to use SQL to manage CQs in your databases. Create a CQ Y
 
 CQs use the timestamps of local LindormTSDB nodes to determine the time when to perform calculations and use these timestamps as a reference to calculate time windows. A CQ automatically runs to calculate data that is written within the previous window each time a new time window starts. For example, if the specified time window for a CQ is 1 hour, the CQ calculates data at the beginning of each hour. If a calculation is triggered at 20:00, the time range of the data to be calculated is **[19:00:00,20:00:00)**.
 
-**Important**
-
-Although a CQ starts to calculate data immediately after the end of the defined time window, it may take a period of time to save the calculation results to the destination table. The latency varies based on the amount of data that you want to query and the real-time loads on the instance in which the data is stored. The accuracy of the results of a CQ depends on whether the data is written in chronological order. In some cases, LindormTSDB still writes data that belongs to the previous time window when a new time window starts. In these cases, these data records are out of order and cannot be queried or calculated during the previous time window. When a database is deleted, all CQs that are created for the database are deleted.
+> **Important:** Although a CQ starts to calculate data immediately after the end of the defined time window, it may take a period of time to save the calculation results to the destination table. The latency varies based on the amount of data that you want to query and the real-time loads on the instance in which the data is stored.
+> The accuracy of the results of a CQ depends on whether the data is written in chronological order. In some cases, LindormTSDB still writes data that belongs to the previous time window when a new time window starts. In these cases, these data records are out of order and cannot be queried or calculated during the previous time window.
+> When a database is deleted, all CQs that are created for the database are deleted.
 
 **Common scenarios and examples**
 
@@ -8086,13 +8212,17 @@ You can use the SQL statements in the following examples to delete pre-downsampl
 DROP PREDOWNSAMPLE `1h` AGGREGATORS (`sum`, `max`) ON sensor;
 ```
 
-**Important**
+> **Important:** After you delete a pre-downsampling rule, data that has been pre-downsampled based on the rule is not immediately deleted. However, the deleted pre-downsampling rule is not returned when you query pre-downsampling rules.
 
-After you delete a pre-downsampling rule, data that has been pre-downsampled based on the rule is not immediately deleted. However, the deleted pre-downsampling rule is not returned when you query pre-downsampling rules. For more information about the syntax, see DROP PREDOWNSAMPLE.
+For more information about the syntax, see DROP PREDOWNSAMPLE.
 
 **Matching rules for pre-downsampled data**
 
-If pre-downsampling rules are configured for a database and a table in the database at the same time, the rules configured for the table prevail in pre-downsampling queries. If the downsampling ratio specified in a query does not exactly match that of the pre-downsampled data, the pre-downsampled data whose pre-downsampling ratio best matches the specified downsampling ratio is queried. We recommend that you set the time intervals based on which predownsampling is performed to 1m, 10m, 1h, and 1d to meet the requirements of most downsampling queries. If the pre-downsampling ratio of the pre-downsampled data is the maximum value that can divide the downsampling ratio specified in the query, the pre-downsampling ratio best matches the downsampling ratio specified in the query. For example, if the original data is pre-downsampled based on 1m, 5m, 8m, and 15m and the downsampling ratio specified in a query is 10m, the predownsampling ratio that best matches the specified downsampling ratio is 5m. In no pre-downsampling ratio matches the downsampling ratio specified in a query, the original data is queried.
+If pre-downsampling rules are configured for a database and a table in the database at the same time, the rules configured for the table prevail in pre-downsampling queries. If the downsampling ratio specified in a query does not exactly match that of the pre-downsampled data, the pre-downsampled data whose pre-downsampling ratio best matches the specified downsampling ratio is queried. We recommend that you set the time intervals based on which predownsampling is performed to 1m, 10m, 1h, and 1d to meet the requirements of most downsampling queries.
+
+> **Note:** If the pre-downsampling ratio of the pre-downsampled data is the maximum value that can divide the downsampling ratio specified in the query, the pre-downsampling ratio best matches the downsampling ratio specified in the query. For example, if the original data is pre-downsampled based on 1m, 5m, 8m, and 15m and the downsampling ratio specified in a query is 10m, the pre- downsampling ratio that best matches the specified downsampling ratio is 5m.
+
+In no pre-downsampling ratio matches the downsampling ratio specified in a query, the original data is queried.
 
 **Query pre-downsampled data**
 
@@ -8266,11 +8396,15 @@ LindormTSDB strictly verifies the name of the table to which data is written, th
 
 **Weak constraint**
 
-When the table to which data is written does not exist, LindormTSDB does not throw an error. Instead, LindormTSDB automatically creates a table. When a tag or field is added to the data that is written, LindormTSDB does not report an error. Instead, LindormTSDB automatically adds a TAG or FIELD column to the time series table. If the data type of a field to which data is written changes, the data fails to be written because LindormTSDB detects that the data type of the field is inconsistent with the predefined data type. In this case, you must execute the ALTER TABLE statement to manually modify the data type of the field. When a weak constraint policy is used, some verification operations are still performed. For example, if you try to write a non-string value to the TAG column or write data of a non-timestamp type to the timestamp column, the verification fails.
+When the table to which data is written does not exist, LindormTSDB does not throw an error. Instead, LindormTSDB automatically creates a table. When a tag or field is added to the data that is written, LindormTSDB does not report an error. Instead, LindormTSDB automatically adds a TAG or FIELD column to the time series table. If the data type of a field to which data is written changes, the data fails to be written because LindormTSDB detects that the data type of the field is inconsistent with the predefined data type. In this case, you must execute the ALTER TABLE statement to manually modify the data type of the field.
+
+> **Note:** When a weak constraint policy is used, some verification operations are still performed. For example, if you try to write a non-string value to the TAG column or write data of a non-timestamp type to the timestamp column, the verification fails.
 
 **No constraint**
 
-No constraints are applied. If you use this policy, no error is thrown when the table to which you want to write data does not exist. You can call interfaces that are compatible with Time Series Database (TSDB) to query the written data. If you manually create a table when the table to which you want to write data does not exist, you can execute SQL statements to query the written data. However, no error is thrown for inconsistent field data types. The no constraint policy is reserved by the system to ensure the compatibility with TSDB. We recommend that you do not use the no constraint policy.
+No constraints are applied. If you use this policy, no error is thrown when the table to which you want to write data does not exist. You can call interfaces that are compatible with Time Series Database (TSDB) to query the written data. If you manually create a table when the table to which you want to write data does not exist, you can execute SQL statements to query the written data. However, no error is thrown for inconsistent field data types.
+
+> **Note:** The no constraint policy is reserved by the system to ensure the compatibility with TSDB. We recommend that you do not use the no constraint policy.
 
 **Select a schema constraint policy based on the data writing method**
 
@@ -8328,7 +8462,9 @@ This topic describes the data types that are supported by LindormTSDB. The follo
 1. When you create a time series table, you can specify only one column of the timestamp data type.
 2. LindormTSDB encodes and parses timestamps based on Beijing Time (GMT+8).
 3. The UNIX timestamps in outdated systems are still parsed to 32-bit values. We recommend that you
-multiply these timestamps by 1000 before you insert the timestamps to LindormTSDB. If you insert the timestamps to LindormTSDB without converting the timestamps, LindormTSDB cannot parse the timestamps as normal. For example, the **1641009600** timestamp is parsed as `2022-01-01 12:00:00` in an outdated system. LindormTSDB parses the timestamp as `1970-01-20 07:50:09(GMT+8)` .
+multiply these timestamps by 1000 before you insert the timestamps to LindormTSDB. If you insert the timestamps to LindormTSDB without converting the timestamps, LindormTSDB cannot parse the timestamps as normal.
+
+> For example, the **1641009600** timestamp is parsed as `2022-01-01 12:00:00` in an outdated system. LindormTSDB parses the timestamp as `1970-01-20 07:50:09(GMT+8)` .
 
 #### 2.4.2 Common time series functions
 
@@ -8376,9 +8512,10 @@ You can call this function to obtain the current system time.
 CURRENT_TIMESTAMP
 ```
 
-**Important**
-
-You do not need to specify parameters when you call the `CURRENT_TIMESTAMP` function. The timestamp returned by the CURRENT_TIMESTAMP function is accurate to the millisecond. Example: `2023-04-23T21:13:15.819+08:00` . The CURRENT_TIMESTAMP function returns the system time of the server on which the Lindorm instance is running. Therefore, make sure that the time data generated by this function can meet your business requirements. Do not use the timestamps generated by this function when you write data **in your business**. We recommend that you use this function to generate large amounts of test data for testing and development.
+> **Important:** You do not need to specify parameters when you call the `CURRENT_TIMESTAMP` function.
+> The timestamp returned by the CURRENT_TIMESTAMP function is accurate to the millisecond. Example: `2023-04-23T21:13:15.819+08:00` .
+> The CURRENT_TIMESTAMP function returns the system time of the server on which the Lindorm instance is running. Therefore, make sure that the time data generated by this function can meet your business requirements.
+> Do not use the timestamps generated by this function when you write data **in your business**. We recommend that you use this function to generate large amounts of test data for testing and development.
 
 **Examples**
 
@@ -8398,7 +8535,7 @@ You can call this function to calculate the sum of values in a field column.
 SUM(field_name)
 ```
 
-The SUM function returns DOUBLE or BIGINT values.
+> **Note:** The SUM function returns DOUBLE or BIGINT values.
 
 **Parameters**
 
@@ -8470,7 +8607,7 @@ You can call this function to calculate the average value of values in a field c
 AVG(field_name)
 ```
 
-The AVG function returns DOUBLE values.
+> **Note:** The AVG function returns DOUBLE values.
 
 **Parameters**
 
@@ -8542,7 +8679,7 @@ You can call this function to count the number of values in a field column.
 COUNT(field_name)
 ```
 
-The COUNT function returns BIGINT values.
+> **Note:** The COUNT function returns BIGINT values.
 
 **Parameters**
 
@@ -8616,7 +8753,7 @@ You can call this function to query the minimum value of values in a field colum
 MIN(field_name)
 ```
 
-The MIN function returns DOUBLE or BIGINT values.
+> **Note:** The MIN function returns DOUBLE or BIGINT values.
 
 **Parameters**
 
@@ -8688,7 +8825,7 @@ You can call this function to query the maximum value of values in a field colum
 MAX(field_name)
 ```
 
-The MAX function returns DOUBLE or BIGINT values.
+> **Note:** The MAX function returns DOUBLE or BIGINT values.
 
 **Parameters**
 
@@ -8760,7 +8897,7 @@ You can call this function to query the first value of values in a field column.
 FIRST(field_name)
 ```
 
-The FIRST function returns data whose type is the same as that of data in the specified field column.
+> **Note:** The FIRST function returns data whose type is the same as that of data in the specified field column.
 
 **Parameters**
 
@@ -8816,7 +8953,7 @@ You can call this function to query the last value of values in a field column.
 LAST(field_name)
 ```
 
-The LAST function returns data whose type is the same as that of data in the specified field column.
+> **Note:** The LAST function returns data whose type is the same as that of data in the specified field column.
 
 **Parameters**
 
@@ -8872,7 +9009,7 @@ You can call this function to query the specified percentile of values in a fiel
 PERCENTILE(field_name,P)
 ```
 
-The PERCENTILE function returns DOUBLE values.
+> **Note:** The PERCENTILE function returns DOUBLE values.
 
 **Parameters**
 
@@ -8933,7 +9070,9 @@ Assume that the following data points are stored in a time series: `(t` 1 `,v` 1
 | (t | 2 | ,v | 2 | ) ... (t | N | ,v | N | ) |
 |---|---|---|---|---|---|---|---|---|
 
-`(t` 2 `,v` 2 `) ... (t` N `,v` N `)` . If you use the RATE function to calculate the slope of the data points, N-1 data points are returned, whose timestamps and values are calculated by using the following formula: The `interval` parameter in the preceding formula indicates the specified interval used to calculate the slope. The value of this parameter is measured in seconds.
+`(t` 2 `,v` 2 `) ... (t` N `,v` N `)` . If you use the RATE function to calculate the slope of the data points, N-1 data points are returned, whose timestamps and values are calculated by using the following formula:
+
+> **Note:** The `interval` parameter in the preceding formula indicates the specified interval used to calculate the slope. The value of this parameter is measured in seconds.
 
 **Syntax**
 
@@ -8941,7 +9080,8 @@ Assume that the following data points are stored in a time series: `(t` 1 `,v` 1
 RATE(field_name, 'interval units')
 ```
 
-The RATE function returns DOUBLE values. The RATE operator must be separately used in an SQL statement.
+> **Note:** The RATE function returns DOUBLE values.
+> The RATE operator must be separately used in an SQL statement.
 
 **Parameters**
 
@@ -9043,7 +9183,8 @@ Assume that the following data points are stored in a time series: `(t` 1 `,v` 1
 DELTA(field_name)
 ```
 
-The DELTA function returns DOUBLE values. The DELTA operator must be separately used in an SQL statement.
+> **Note:** The DELTA function returns DOUBLE values.
+> The DELTA operator must be separately used in an SQL statement.
 
 **Parameters**
 
@@ -9108,7 +9249,8 @@ You can call this function to query the latest N values in a field column.
 LATEST(field_name, N)
 ```
 
-The LATEST function returns data whose type is the same as that of data in the specified field column. The LATEST operator must be separately used in an SQL statement.
+> **Note:** The LATEST function returns data whose type is the same as that of data in the specified field column.
+> The LATEST operator must be separately used in an SQL statement.
 
 **Parameters**
 
@@ -9171,7 +9313,7 @@ You can call this function to detect anomalies in a specified field column.
 ANOMALY_DETECT(field_name, [algo_name | model_name], options)
 ```
 
-The ANOMALY_DETECT function returns BOOLEAN values.
+> **Note:** The ANOMALY_DETECT function returns BOOLEAN values.
 
 **Parameters**
 
@@ -9274,7 +9416,7 @@ You can call this function to perform feature binning on the data in the specifi
 BINS(field_name, options)
 ```
 
-The BINS function returns VARCHAR values.
+> **Note:** The BINS function returns VARCHAR values.
 
 **Parameters**
 
@@ -9403,7 +9545,11 @@ tag_definition ::= tag_name [ VARCHAR ] TAG time_definition ::= time_column_name
 | time column name _ _ | The name of the timestamp column. You must set the data type of the column to TIMESTAMP. Timestamps supported by LindormTSDB are accurate to milliseconds. |
 | field name _ | The names of the field columns. The following data types are supported: BIGINT, DOUBLE, VARCHAR, and BOOLEAN. |
 
-Before you write data to LindormTSDB, create a table and specify the data types of the columns. For more information, see Design a time series table. A primary key in a database of LindormTSDB is used for a different purpose than a primary key in a relational database. A primary key in LindormTSDB is used to specify a data sharding rule for a time series table. The column names that you specify for PRIMARY KEY must be included in the tag column names that you specify for `tag_definition` . PRIMARY KEY is introduced in the syntax of LindormTSDB V3.4.9 or later. Single-node Lindorm instances do not support primary keys. To use primary keys, use Lindorm clusters. A column that stores unique identifiers (UIDs) of a data source is commonly used as a primary key. For example, a column that stores device IDs is commonly used as a primary key in IoT scenarios, a column that stores vehicle IDs is commonly used as a primary key in Internet of vehicles (IoV) scenarios, and a column that stores application IDs or ip:port is commonly used in monitoring scenarios. For more information, see the Best practice for designing primary keys section of the Design a time series table topic.
+Before you write data to LindormTSDB, create a table and specify the data types of the columns. For more information, see Design a time series table. A primary key in a database of LindormTSDB is used for a different purpose than a primary key in a relational database. A primary key in LindormTSDB is used to specify a data sharding rule for a time series table. The column names that you specify for PRIMARY KEY must be included in the tag column names that you specify for `tag_definition` . PRIMARY KEY is introduced in the syntax of LindormTSDB V3.4.9 or later.
+
+> **Note:** Single-node Lindorm instances do not support primary keys. To use primary keys, use Lindorm clusters.
+
+A column that stores unique identifiers (UIDs) of a data source is commonly used as a primary key. For example, a column that stores device IDs is commonly used as a primary key in IoT scenarios, a column that stores vehicle IDs is commonly used as a primary key in Internet of vehicles (IoV) scenarios, and a column that stores application IDs or ip:port is commonly used in monitoring scenarios. For more information, see the Best practice for designing primary keys section of the Design a time series table topic.
 
 **Examples**
 
@@ -9436,9 +9582,7 @@ create_user_statement ::= CREATE USER [IF NOT EXISTS] user_name IDENTIFIED BY pa
 | user name _ | The username. The value can be an SQL constant or identifier. |
 | password definition _ | The password. The value must be an SQL constant of the VARCHAR type. |
 
-**Important**
-
-If the username already exists and IF NOT EXISTS is not specified in the statement, the system throws an error. When IF NOT EXISTS is specified in the statement, the system does not throw an error but aborts the creation process.
+> **Important:** If the username already exists and IF NOT EXISTS is not specified in the statement, the system throws an error. When IF NOT EXISTS is specified in the statement, the system does not throw an error but aborts the creation process.
 
 **Examples**
 
@@ -9473,9 +9617,7 @@ The name of the continuous query that you want to perform. The attributes of the
 | interval | Specifies the interval at which queries are continuously performed. The interval is accurate to seconds. The interval must be in the following format: %d%h%m%s. For example, a value of 1h30s specifies an interval of 1 hour and 30 seconds, and a value of 1d specifies an interval of 1 hour. Where: d: days h: hours m: minutes s: seconds |
 | window | The time window of the data that is queried each time. This attribute is optional. If you do not specify this attribute, the value is the same as the value of the interval attribute. The format of this attribute is the same as that of the interval attribute. For example, if you set the interval attribute to 10m and the window attribute to 20m, continuous queries are performed every 10 minutes and data within the previous 20 minutes is queried each time. The time window is a left-closed and right-open interval. |
 
-**Important**
-
-When you specify insert_select_statement, you do not need to specify a time range for your query. In this case, LindormTSDB queries data within the specified time window.
+> **Important:** When you specify insert_select_statement, you do not need to specify a time range for your query. In this case, LindormTSDB queries data within the specified time window.
 
 **Examples**
 
@@ -9507,9 +9649,7 @@ alter_database_statement ::= ALTER DATABASE database_name [ WITH attribute_state
 
 For more information about the database attributes that are supported by this statement, see CREATE DATABASE.
 
-**Important**
-
-You can use the ALTER DATABASE statement to modify only database attributes. You cannot use this statement to modify database names.
+> **Important:** You can use the ALTER DATABASE statement to modify only database attributes. You cannot use this statement to modify database names.
 
 **Examples**
 
@@ -9539,7 +9679,11 @@ alter_table_statement ::= ALTER TABLE table_name alter_option ( ',' alter_option
 **Important**
 
 1. You can use the ALTER TABLE statement to perform the following operations:
-i. Add columns. You can add only tag or field columns. ii. Change the data type of field columns. The data type of tag and timestamp columns cannot be changed.
+
+> i. Add columns. You can add only tag or field columns.
+> ii. Change the data type of field columns. The data type of tag and timestamp columns cannot be
+> changed.
+
 2. A tag column that is added to a table cannot be specified as the primary key.
 3. After you change the data type of a field column, the type of the existing data in the column
 remains unchanged. However, the system considers that all data in the column is converted to the specified data type. As a result, the system may fail to retrieve the existing data in the column when the system processes queries.
@@ -9655,9 +9799,7 @@ This topic describes the syntax that is used to drop a database.
 drop_database_statement ::= DROP DATABASE database_name;
 ```
 
-**Important**
-
-You cannot drop the `default` database.
+> **Important:** You cannot drop the `default` database.
 
 **Examples**
 
@@ -9685,9 +9827,9 @@ drop_table_statement ::= DROP TABLE [IF EXISTS] table_name;
 | table name _ | The name of the time series table that you want to delete. The value can be an SQL constant or identifier. |
 |---|---|
 
-**Important**
-
-After a table is deleted by using the DROP TABLE syntax, the storage space occupied by the table is not immediately released. You can configure a TTL for the database to permanently delete a table. For more information about how to configure a TTL for a database, see ALTER DATABASE. Before you permanently delete data by setting the TTL attribute, take note of the following items: In LindormTSDB, TTLs can be specified only for databases but not for tables. Therefore, when you configure a TTL for a database to permanently delete a table, make sure that other data in the database are not deleted due to the TTL setting.
+> **Important:** After a table is deleted by using the DROP TABLE syntax, the storage space occupied by the table is not immediately released. You can configure a TTL for the database to permanently delete a table. For more information about how to configure a TTL for a database, see ALTER DATABASE.
+> Before you permanently delete data by setting the TTL attribute, take note of the following items:
+> In LindormTSDB, TTLs can be specified only for databases but not for tables. Therefore, when you configure a TTL for a database to permanently delete a table, make sure that other data in the database are not deleted due to the TTL setting.
 
 **Examples**
 
@@ -9713,9 +9855,7 @@ drop_user_statement ::= DROP USER [IF EXISTS] user_name;
 |---|---|
 | user name _ | The username. The username can be an SQL constant or identifier. |
 
-**Important**
-
-If the name of the user that you want to delete does not exist and IF EXISTS is not specified in the statement, the system throws an error. When IF EXISTS is specified in the statement, the system does not throw an error but aborts the deletion process.
+> **Important:** If the name of the user that you want to delete does not exist and IF EXISTS is not specified in the statement, the system throws an error. When IF EXISTS is specified in the statement, the system does not throw an error but aborts the deletion process.
 
 **Examples**
 
@@ -9801,6 +9941,7 @@ After the DESCRIBE TABLE statement is executed, the result set is returned in a 
 
 ```
 > DESCRIBE TABLE sensor;
+
 +-------------+-----------+------------+
 | columnName  | typeName  | columnKind |
 +-------------+-----------+------------+
@@ -9823,7 +9964,12 @@ show_statement ::= SHOW target_statement target_statement ::= { DATABASES | TABL
 ```
 
 1. The following objects are supported by the SHOW statement:
-DATABASES: query all databases in the current Lindorm cluster. TABLES: query all time series tables in the current Lindorm cluster. USERS: query all users of the current Lindorm cluster. PRIVILEGES: query the permissions of the users of the current Lindorm cluster.
+
+> DATABASES: query all databases in the current Lindorm cluster.
+> TABLES: query all time series tables in the current Lindorm cluster.
+> USERS: query all users of the current Lindorm cluster.
+> PRIVILEGES: query the permissions of the users of the current Lindorm cluster.
+
 2. The permissions that are required to execute the SHOW statement vary based on the object that is
 specified in the statement.
 
@@ -9857,7 +10003,12 @@ The result sets of SHOW statements are organized in tables and returned. The fol
 | table privileges | VARCHAR | This column stores the names of the users that have table-level permissions. |
 
 1. The data in the permission columns is displayed in JSON format. This way, applications can directly
-process the data. JSON data is stored as key-value pairs. key: the name of the object that is queried, such as a database name or table name. The key for global permissions is fixed to `GLOBAL` . value: the list of permissions. The Example section shows the details. If the queried users do not have the permissions of the specified level, an empty JSON string is returned.
+process the data. JSON data is stored as key-value pairs.
+
+> key: the name of the object that is queried, such as a database name or table name. The key for global permissions is fixed to `GLOBAL` .
+> value: the list of permissions. The Example section shows the details.
+> If the queried users do not have the permissions of the specified level, an empty JSON string is returned.
+
 2. LindormTSDB does not support table-level permission control.
 
 **Examples**
@@ -9866,6 +10017,7 @@ The following example shows how to query all databases in the current Lindorm cl
 
 ```
 > SHOW DATABASES;
+
 +----------+
 | database |
 +----------+
@@ -9878,6 +10030,7 @@ The following example shows how to query all time series tables in the current L
 
 ```
 > SHOW TABLES;
+
 +-------------+------------+
 | tableSchema | tableName  |
 +-------------+------------+
@@ -9891,6 +10044,7 @@ The following example shows how to query all users of the current Lindorm cluste
 
 ```
 > SHOW USERS;
+
 +-----------+
 |   name    |
 +-----------+
@@ -9904,6 +10058,7 @@ The following example shows how to query the permissions of the users of the cur
 
 ```
 > SHOW PRIVILEGES;
+
 +------------+-------------------------------------+--------------------------------------+---------- ------+
 |    user    |          global privileges          |         database privileges          | table pri
 vileges | +------------+-------------------------------------+--------------------------------------+---------- ------+
@@ -9949,6 +10104,7 @@ The following sample code provides an example on how to query the value of USER_
 
 ```
 > SHOW PARAMETER USER_AUTH;
+
 +-----------+
 | USER_AUTH |
 +-----------+
@@ -9967,7 +10123,7 @@ show_cq_statement
     ::=  SHOW CONTINUOUS QUERIES
 ```
 
-This statement displays all existing continuous queries that run on the current database. If you want to query the continuous queries that run on a different database, execute the USE statement to switch to the database.
+> **Note:** This statement displays all existing continuous queries that run on the current database. If you want to query the continuous queries that run on a different database, execute the USE statement to switch to the database.
 
 **Result sets**
 
@@ -10013,7 +10169,8 @@ use_statement
 |---|---|
 | database name _ | The name of the destination database to which you want to switch. The following requirements must be met: The destination database exists. The name of the destination database must be an SQL constant or identifier. |
 
-After you explicitly specify the destination database in the USE statement, if you do not explicitly specify the name of the database to which a database object, such as a time series table, belongs when you specify the database object in an SQL query, the database object is searched from the database in the current context by default. When you use Lindorm-cli or Java Database Connectivity (JDBC) to establish a connection to access LindormTSDB, you need to specify a database name in the connection string. This way, the database can be accessed by default. In this case, if you execute the USE statement, the database is switched based on the context of the current connection.
+> **Note:** After you explicitly specify the destination database in the USE statement, if you do not explicitly specify the name of the database to which a database object, such as a time series table, belongs when you specify the database object in an SQL query, the database object is searched from the database in the current context by default.
+> When you use Lindorm-cli or Java Database Connectivity (JDBC) to establish a connection to access LindormTSDB, you need to specify a database name in the connection string. This way, the database can be accessed by default. In this case, if you execute the USE statement, the database is switched based on the context of the current connection.
 
 ##### 2.4.3.19 SHOW PROCESSLIST
 
@@ -10121,7 +10278,7 @@ By default, when you query pre-downsampled data, the original data before pre-do
 | max | Returns the maximum value of the pre-downsampled data points. |
 | sum | Returns the sum of the values of pre-downsampled data points. |
 
-The avg function is not supported in pre-downsampling. You can calculate the average of pre-downsampled data based on the results of the count and sum functions. However, if data is overwritten, the average may be inaccurate.
+> **Note:** The avg function is not supported in pre-downsampling. You can calculate the average of pre-downsampled data based on the results of the count and sum functions. However, if data is overwritten, the average may be inaccurate.
 
 **Examples**
 
@@ -10247,9 +10404,8 @@ insert_statement ::= INSERT INTO table_name'('
 | time | The time when the data is written. The value of this parameter must be a positive integer. Unit: milliseconds. This parameter is required. |
 | field name _ | The name of the column to which data is written. We recommend that you specify a column whose data type is the same as that specified in the CREATE TABLE statement. Otherwise, the type of the data that is most recently written to the column prevails. If a column is not specified, the value in this column is set to null by default. |
 
-**Important**
-
-In LindormTSDB, existing data is overwritten when new data with the same timestamp is written to the table. When you execute the INSERT statement to write a row of data, if the time series of the row exists in the table and the timestamp of the data is the same as the timestamp of the existing data in the time series, the existing row is overwritten by the inserted row.
+> **Important:** In LindormTSDB, existing data is overwritten when new data with the same timestamp is written to the table.
+> When you execute the INSERT statement to write a row of data, if the time series of the row exists in the table and the timestamp of the data is the same as the timestamp of the existing data in the time series, the existing row is overwritten by the inserted row.
 
 **Examples**
 
@@ -10356,7 +10512,10 @@ select_sample_by_statement ::= SELECT ( select_clause | '*' )
 fill_option ] select_clause ::= selector [ AS identifier ] ( ',' selector [ AS identifier ] ) selector ::= tag_name | time | function_name '(' field_name [ ',' function_args ] ')' where_clause ::= relation ( AND relation )* (OR relation)* relation ::= ( field_name | tag_name ) operator term operator ::= '=' | '<' | '>' | '<=' | '>=' | '!=' | IN | CONTAINS | CONTAINS KEY time_interval ::= interval units | 0 offset_interval ::= interval units
 ```
 
-The following fields can be specified for the `time_interval` parameter: `interval:` an exponential value that is an integer, such as 5 and 60. The value of the interval parameter specifies the time window in which a time series is aggregated. `units:` the unit of the interval. The following units are supported: s (second), m (minute), h (hour), d (day), n (month), and y (year). By default, modulo operations are performed to align timestamps. Timestamps are aligned based on the following formula: Aligned timestamp = Timestamp when data is generated - (Timestamp when data is generated % Value of interval). You can downsample data based on a calendar time interval. To specify a calendar time interval, append `c` to the value of **units**. For example, `1dc` specifies the 24-hour period from 00:00:00 on the current day to 00:00:00 on the next day, and 1nc specifies the calendar month from 00:00:00 on the first day of the current month to 00:00:00 on the first day of the next month.
+The following fields can be specified for the `time_interval` parameter: `interval:` an exponential value that is an integer, such as 5 and 60. The value of the interval parameter specifies the time window in which a time series is aggregated. `units:` the unit of the interval. The following units are supported: s (second), m (minute), h (hour), d (day), n (month), and y (year).
+
+> **Note:** By default, modulo operations are performed to align timestamps. Timestamps are aligned based on the following formula: Aligned timestamp = Timestamp when data is generated - (Timestamp when data is generated % Value of interval).
+> You can downsample data based on a calendar time interval. To specify a calendar time interval, append `c` to the value of **units**. For example, `1dc` specifies the 24-hour period from 00:00:00 on the current day to 00:00:00 on the next day, and 1nc specifies the calendar month from 00:00:00 on the first day of the current month to 00:00:00 on the first day of the next month.
 
 **Aggregate functions supported for downsampling queries**
 
@@ -10401,7 +10560,9 @@ SELECT * FROM sensor; +-----------+----------+---------------------------+------
 
 **subqueries**
 
-Subqueries are not supported in downsampling queries. However, downsampling queries can be used as subqueries in other types of queries. Downsampling is performed at an interval that is specified based on the Coordinated Universal Time (UTC) time. The following statement is executed to aggregate time series based on an 8-hour interval and return the number of values that are collected in the humidity column within each time window.
+> **Note:** Subqueries are not supported in downsampling queries. However, downsampling queries can be used as subqueries in other types of queries.
+
+Downsampling is performed at an interval that is specified based on the Coordinated Universal Time (UTC) time. The following statement is executed to aggregate time series based on an 8-hour interval and return the number of values that are collected in the humidity column within each time window.
 
 ```
 SELECT device_id,region,time,count(humidity) AS count_humidity FROM sensor WHERE device_id='F07A1260' sample by 8h; +-----------+----------+---------------------------+----------------+
@@ -10545,7 +10706,11 @@ select_latest_by_statement ::= SELECT ( select_clause )
 select_clause ::= selector [ AS identifier ] ( ',' selector [ AS identifier ] ) selector ::= tag_name | time | latest '(' field_name [ ',' integer ] ')' where_clause ::= relation ( AND relation )* (OR relation)* relation ::= ( field_name | tag_name ) operator term operator ::= '=' | '<' | '>' | '<=' | '>=' | '!=' | IN
 ```
 
-Latest-value queries are used to query the values of the latest time points in time series. You can use `latest(field_name, N)` to query the latest N records of data. A latest-value query must be used together with `SAMPLE BY 0` to query the latest values of each time series. Latest-value queries cannot be used together with other aggregate functions such as RATE, DELTA, MAX, or MIN. For example, if you execute the `select time, latest(f1), max(f2) from` `sensor sample by 0` statement, a syntax error occurs. For information about the `LATEST` function, see the LATEST section of the Common time series functions topic.
+> **Note:** Latest-value queries are used to query the values of the latest time points in time series. You can use `latest(field_name, N)` to query the latest N records of data.
+> A latest-value query must be used together with `SAMPLE BY 0` to query the latest values of each time series.
+> Latest-value queries cannot be used together with other aggregate functions such as RATE, DELTA, MAX, or MIN. For example, if you execute the `select time, latest(f1), max(f2) from`
+> `sensor sample by 0` statement, a syntax error occurs.
+> For information about the `LATEST` function, see the LATEST section of the Common time series functions topic.
 
 **Examples**
 
@@ -10595,7 +10760,9 @@ lindorm> select device_id,region,time,latest(temperature, 2) as temperature from
 +-----------+----------+---------------------------+-------------+
 ```
 
-Latest-value queries cannot be directly used with clauses such as OFFSET, LIMIT, or GROUP BY. You can use a latest-value query as a subquery in an SQL statement that contains these clauses. Use the LATEST function together with the GROUP BY clause to group returned data records.
+> **Note:** Latest-value queries cannot be directly used with clauses such as OFFSET, LIMIT, or GROUP BY. You can use a latest-value query as a subquery in an SQL statement that contains these clauses.
+
+Use the LATEST function together with the GROUP BY clause to group returned data records.
 
 ```
 lindorm> select device_id, max(temperature) as max_temperature from (select device_id, region,time, latest(temperature,2) as temperature from sensor sample by 0) group by device_id; +-----------+-----------------+
@@ -10620,9 +10787,9 @@ lindorm> select device_id, region, temperature from (select device_id, region, t
 
 This topic describes the algorithms and syntax that are used to detect time series anomalies. The time series anomaly detection syntax must be used together with the `SAMPLE BY` clause. Time series anomaly detection supports the online anomaly detection algorithms developed by DAMO Academy to detect abnormal points in the specified time series. During detection, these algorithms continuously learn the characteristics of time series data, such as data trends or periods, to detect anomalies in time series points that are newly inserted. For example, if the value of a newly added time series point is significantly different from other points, the algorithm assumes that this point may be abnormal. You can use time series anomaly detection with the `SAMPLE BY` clause by using the following methods: Use the `SAMPLE BY 0` clause to detect each data point in all time series. For more information about how to use the clause, see Example 1, Example 2, and Example 3. Use the `SAMPLE BY INTERVAL` clause to specify the downsampling interval and use nested downsampling operators, such as MIN, MAX, AVG, COUNT, and SUM.
 
-**Important**
+> **Important:** The value of **INTERVAL** cannot be 0.
 
-The value of **INTERVAL** cannot be 0. For more information about how to use the clause, see Example 4. Use the `SAMPLE BY 0` clause and nested downsampling operators, such as LATEST, DELTA, and RATE, to query different data. For more information about how to use the clause, see Example 5.
+For more information about how to use the clause, see Example 4. Use the `SAMPLE BY 0` clause and nested downsampling operators, such as LATEST, DELTA, and RATE, to query different data. For more information about how to use the clause, see Example 5.
 
 **Syntax**
 
@@ -10662,7 +10829,11 @@ The following table describes the anomaly detection algorithms supported by Lind
 
 **Parameters**
 
-You can configure parameters for the anomaly detection algorithms that you use. These parameters can be categorized into common parameters, training parameters, and inference parameters. You can specify the optional parameter named options to adjust the detection performance of the anomaly detection algorithm. Common parameters, training parameters, and inference parameters are configured in the same parameter list. For example, you can configure parameters for the ttest algorithm in the following format: `lenDetectWindow=100,adhoc_stat=true` . For more information about how to configure parameters for ideal detection results, see Parameter tuning for statistical algorithms and Parameter tuning for decomposition algorithms.
+You can configure parameters for the anomaly detection algorithms that you use. These parameters can be categorized into common parameters, training parameters, and inference parameters. You can specify the optional parameter named options to adjust the detection performance of the anomaly detection algorithm.
+
+> **Note:** Common parameters, training parameters, and inference parameters are configured in the same parameter list. For example, you can configure parameters for the ttest algorithm in the following format: `lenDetectWindow=100,adhoc_stat=true` .
+
+For more information about how to configure parameters for ideal detection results, see Parameter tuning for statistical algorithms and Parameter tuning for decomposition algorithms.
 
 **Common parameters**
 
@@ -10751,7 +10922,12 @@ You can configure common parameters to control the debugging, diagnosis, and oth
 
 **Training parameters**
 
-You can specify an algorithm and configure the training parameters to determine the model used to detect anomalies. The values of training parameters are cleared after you restart LindormTSDB. In this case, you must configure the training parameters again to train the model. The model is trained in real time during detection to adapt to learn and adapt the characteristics of the time series data. Take note of the following items when you configure training parameters: The names of the parameters are not case-sensitive. The values of training parameters can be digits and strings and cannot be NULL. The values of the parameters must be within the specific ranges.
+You can specify an algorithm and configure the training parameters to determine the model used to detect anomalies. The values of training parameters are cleared after you restart LindormTSDB. In this case, you must configure the training parameters again to train the model. The model is trained in real time during detection to adapt to learn and adapt the characteristics of the time series data.
+
+> **Note:** Take note of the following items when you configure training parameters:
+> The names of the parameters are not case-sensitive.
+> The values of training parameters can be digits and strings and cannot be NULL.
+> The values of the parameters must be within the specific ranges.
 
 | Algori thm | Paramete r | Type | Value | Description |
 |---|---|---|---|---|
@@ -10925,9 +11101,9 @@ grant_statement ::= GRANT privilege_definition ON resource_definition TO user_na
 **Important**
 
 1. The permissions on the GLOBAL scope take precedence over the permissions on the DATABASE
-scope. If you are granted the READ permission on the GLOBAL scope, you can query time series tables in all databases. If you are granted the READ permission on the DATABASE scope, you can query time series tables in only the database. **We recommend that you do not grant permissions on the**
+scope.
 
-**GLOBAL scope, particularly the ALL PRIVILEGES permission on the GLOBAL scope.**
+> If you are granted the READ permission on the GLOBAL scope, you can query time series tables in all databases. If you are granted the READ permission on the DATABASE scope, you can query time series tables in only the database. **We recommend that you do not grant permissions on the** **GLOBAL scope, particularly the ALL PRIVILEGES permission on the GLOBAL scope.**
 
 2. The ADMIN permission is independent of the READ and WRITE permissions. Even if you are granted
 the ADMIN permission on a specific database, you may be unable to read data from and write data to time series tables in the database.
@@ -10985,10 +11161,7 @@ revoke_statement ::= REVOKE privilege_definition ON resource_definition FROM use
 | resource definition _ | The scope of resources on which the permissions are revoked. Valid values: GLOBAL The specified permission on all resources is revoked. DATABASE The specified permission on the specified database is revoked. |
 | database name _ | The name of the database on which the permission is revoked. This parameter is required if resource definition is set to DATABASE. The value _ must be an SQL identifier. |
 
-**Important**
-
-Whether the REVOKE statement can be executed successfully depends on the permissions that are granted to the user who executes the statement. For more information, see the **User and**
-**permission management** topic of **Instance management** in **Lindorm User Guide**.
+> **Important:** Whether the REVOKE statement can be executed successfully depends on the permissions that are granted to the user who executes the statement. For more information, see the **User and** **permission management** topic of **Instance management** in **Lindorm User Guide**.
 
 **Examples**
 
@@ -11104,11 +11277,17 @@ You can also execute the following INSERT statement to write multiple records in
 INSERT INTO aqm (city, district, id, time, pm2_5, pm10, so2, no2) VALUES ('hangzhou', 'yuhang', 'HY00001', '2019-04-18 10:02:00', 31.3, 66.0, 10.0, 42.9), ('hangzhou', 'yuhang', 'HY00001', '2019-04-18 10:03:00', 31.2, 66.4, 10.3, 43.0);
 ```
 
-The **TAG** keyword is a syntax extension of SQL. This keyword is used to specify a column in a table as a tag. When you create a time series table, we recommend that you define columns as tags based on the following rules: Make sure that the column that is defined as a tag can uniquely identify an attribute of the data source. We recommend that you do not use attributes whose values frequently change as tags. For example, we recommend that you do not use process IDs and time-related attributes as tags. We recommend that you define these attributes as fields even if the data type of these attributes is STRING. If these attributes are used as tags, the number of time series increases. As a result, the size of the time series index increases. This affects data queries in a negative manner.
+> **Note:** The **TAG** keyword is a syntax extension of SQL. This keyword is used to specify a column in a table as a tag. When you create a time series table, we recommend that you define columns as tags based on the following rules:
+> Make sure that the column that is defined as a tag can uniquely identify an attribute of the data source.
+> We recommend that you do not use attributes whose values frequently change as tags. For example, we recommend that you do not use process IDs and time-related attributes as tags. We recommend that you define these attributes as fields even if the data type of these attributes is STRING. If these attributes are used as tags, the number of time series increases. As a result, the size of the time series index increases. This affects data queries in a negative manner.
 
 **Best practice for designing primary keys**
 
-Databases perform storage sharding and query optimization based on primary keys. If primary keys are specified in queries, the query efficiency is increased. We recommend that you specify a primary key when you create a table. Single-node Lindorm instances do not support primary keys. In most cases, we recommend that you use the unique identifier of the data source as the primary key based on actual scenarios. In Internet of Things (IoT) and Industrial Internet of Things (IIoT) scenarios, you can use the device ID as the primary key. In Internet of Vehicles (IoV) scenarios, you can use the unique identifier of vehicles as the primary key. In monitoring scenarios, you can use an identifier such as the app ID or host:port as the primary key. In the time series table aqm that is used in the preceding example, you can use the ID as the primary key to obtain optimal query performance if a large number of queries are performed based on IDs.
+Databases perform storage sharding and query optimization based on primary keys. If primary keys are specified in queries, the query efficiency is increased. We recommend that you specify a primary key when you create a table.
+
+> **Note:** Single-node Lindorm instances do not support primary keys.
+
+In most cases, we recommend that you use the unique identifier of the data source as the primary key based on actual scenarios. In Internet of Things (IoT) and Industrial Internet of Things (IIoT) scenarios, you can use the device ID as the primary key. In Internet of Vehicles (IoV) scenarios, you can use the unique identifier of vehicles as the primary key. In monitoring scenarios, you can use an identifier such as the app ID or host:port as the primary key. In the time series table aqm that is used in the preceding example, you can use the ID as the primary key to obtain optimal query performance if a large number of queries are performed based on IDs.
 
 ```
 CREATE TABLE aqm (
@@ -11126,9 +11305,7 @@ Lindorm instance is a single-node Lindorm instance, delete this row.
 
 );
 
-**Important**
-
-Time series tables are different from tables in traditional relational databases. Time series tables do not require the values in primary key columns to be unique. If you want to specify a column as the primary key column, make sure that the column is labeled as a tag.
+> **Important:** Time series tables are different from tables in traditional relational databases. Time series tables do not require the values in primary key columns to be unique. If you want to specify a column as the primary key column, make sure that the column is labeled as a tag.
 
 **Best practice for selecting data types**
 
@@ -11184,7 +11361,10 @@ l variables that are used to associate with parameters:
     // Query the number of written data records from results. The remaining code is skipped.
 ```
 
-`}` When you use JDBC in LindormTSDB, you can use a `PreparedStatement` object to configure parameters only by using the question mark (?) placeholder. When you call the API operations that are provided by `PreparedStatement` to associate with parameters, make sure that the value that corresponds to a parameter index specified for `setXXX()` is consistent with the column parameter that corresponds to the placeholder. If the input parameters are associated in batches before the `executeBatch()` method is called for the `PreparedStatement` object, a larger number of batches does not indicate better database performance. The database performance varies based on the definition of the table into which data is inserted. If the table contains only one field column and at most five tag columns, and the `batchSize` variable in the `PreparedStatement` object is set to **5000**, the database provides optimal write performance.
+`}`
+
+> **Note:** When you use JDBC in LindormTSDB, you can use a `PreparedStatement` object to configure parameters only by using the question mark (?) placeholder. When you call the API operations that are provided by `PreparedStatement` to associate with parameters, make sure that the value that corresponds to a parameter index specified for `setXXX()` is consistent with the column parameter that corresponds to the placeholder.
+> If the input parameters are associated in batches before the `executeBatch()` method is called for the `PreparedStatement` object, a larger number of batches does not indicate better database performance. The database performance varies based on the definition of the table into which data is inserted. If the table contains only one field column and at most five tag columns, and the `batchSize` variable in the `PreparedStatement` object is set to **5000**, the database provides optimal write performance.
 
 #### 2.5.3 Query time series data in an efficient manner
 
@@ -11200,9 +11380,7 @@ The following suggestions are provided based on the index mechanism of LindormTS
 
 **Common scenarios and operations for time series queries**
 
-**Important**
-
-If you want to reproduce the results of the following query scenarios, download the SQL script and use sample data recorded in the SQL script. For more information about the SQL script, see SQL script.
+> **Important:** If you want to reproduce the results of the following query scenarios, download the SQL script and use sample data recorded in the SQL script. For more information about the SQL script, see SQL script.
 
 **Query values of a field reported within a specified time range**
 
@@ -11222,7 +11400,9 @@ When data that is generated by the devices of the same type is written to one ti
 SELECT DISTINCT(id) FROM aqm;
 ```
 
-The following figure shows the query result. If values in a tag column of a table are queried, you do not need to worry about performance issues due to a full table scan. This is because LindormStore queries the values based on the indexes that are created for all tag columns in the table by default. Take note that an index-based query can be time-consuming when the data of excessive devices is stored in your time series table.
+The following figure shows the query result.
+
+> **Note:** If values in a tag column of a table are queried, you do not need to worry about performance issues due to a full table scan. This is because LindormStore queries the values based on the indexes that are created for all tag columns in the table by default. Take note that an index-based query can be time-consuming when the data of excessive devices is stored in your time series table.
 
 **Query data based on downsampling**
 
@@ -11232,7 +11412,9 @@ Execute the following statement to query average PM2.5 and SO2 values based on P
 SELECT id, time, avg(pm2_5) AS avg_pm2_5, avg(so2) AS avg_so2 FROM aqm WHERE district='yuhang' AND time >= '2019-04-18 10:00:00' AND time < '2019-04-18 10:30:00' SAMPLE BY 5m;
 ```
 
-The following figure shows the query result. Downsampling is used to aggregate data in a time series based on the time dimension.
+The following figure shows the query result.
+
+> **Note:** Downsampling is used to aggregate data in a time series based on the time dimension.
 
 **Use aggregation functions to query data across devices**
 
@@ -11284,7 +11466,9 @@ Specify the domain name and port of the Lindorm cluster. The following code bloc
  port = 3242
 ```
 
-The endpoint must be prefixed with http://. Port 3242 is the default public port of a Lindorm cluster on Alibaba Cloud. Configure an HTTP API to report data. To collect data to Telegraph, specify http_path = "/api/put". You can also set the http_batch_size parameter to specify the number of data points to be written in each batch. Specify a delimiter that is used to separate the metrics. You can set the separator parameter to specify a delimiter. You can use only the delimiters that are supported by LindormTSDB. For more information, see Write single-value data points. For more information about other configuration items, see Configuration options.
+> **Note:** The endpoint must be prefixed with http://. Port 3242 is the default public port of a Lindorm cluster on Alibaba Cloud.
+
+Configure an HTTP API to report data. To collect data to Telegraph, specify http_path = "/api/put". You can also set the http_batch_size parameter to specify the number of data points to be written in each batch. Specify a delimiter that is used to separate the metrics. You can set the separator parameter to specify a delimiter. You can use only the delimiters that are supported by LindormTSDB. For more information, see Write single-value data points. For more information about other configuration items, see Configuration options.
 4. Start Telegraf to collect data. After Telegraf starts to collect data, you can view the collected data on the
 Instance Monitoring page of the Lindorm cluster. To go to the Instance Monitoring page, **log on to the**
 
@@ -11300,7 +11484,11 @@ This topic describes how to create a time series table in Realtime Compute for A
 
 **Prerequisites**
 
-Realtime Compute for Apache Flink is activated, or a self-managed Flink service is created. The version of Ververica Runtime (VVR) used by Realtime Compute for Apache Flink must be 4.0.13 or later. VVR 4.0.13 is developed based on Apache Flink V1.13. LindormTSDB is activated for your Lindorm instance. The version of LindormTSDB is 3.4.7 or later. The Lindorm instance and the Realtime Compute for Apache Flink workspace reside in the same virtual private cloud (VPC). This ensures network connectivity.
+Realtime Compute for Apache Flink is activated, or a self-managed Flink service is created.
+
+> **Note:** The version of Ververica Runtime (VVR) used by Realtime Compute for Apache Flink must be 4.0.13 or later. VVR 4.0.13 is developed based on Apache Flink V1.13.
+
+LindormTSDB is activated for your Lindorm instance. The version of LindormTSDB is 3.4.7 or later. The Lindorm instance and the Realtime Compute for Apache Flink workspace reside in the same virtual private cloud (VPC). This ensures network connectivity.
 
 **Background information**
 
@@ -11460,7 +11648,14 @@ Click the icon in upper-right corner of the **A** section and switch the editor 
 SELECT region,time,avg(temperature) FROM sensor WHERE time >= $from AND time <= $to SAMPLE BY $ interval
 ```
 
-For more information about how to use Lindorm SQL, see Basic syntax of the SELECT statement. time >= $from AND time <= $to specifies a time condition. This condition is required in the statement. If you do not specify it, the query result is not returned. The variables in the condition are automatically replaced with the time range selected on the dashboard page. You can click **Query options** and specify the **Min interval** and **Max data points** parameters to adjust the value of **Interval**. You can use **ALIAS BY** to rename the tags of time series. The alias of a time series is in the $tag_<tag_name> format. For example, you can set the tag of a time series to $tag_host . In this case, the tag of the time series is the hostname. You can use **OFFSET** to configure a time offset. This allows you to compare data that is generated within different time periods.
+For more information about how to use Lindorm SQL, see Basic syntax of the SELECT statement.
+
+> time >= $from AND time <= $to specifies a time condition. This condition is required in the statement. If you do not specify it, the query result is not returned. The variables in the condition are automatically replaced with the time range selected on the dashboard page.
+> You can click **Query options** and specify the **Min interval** and **Max data points** parameters to adjust the value of **Interval**.
+> You can use **ALIAS BY** to rename the tags of time series. The alias of a time series is in the
+> $tag_<tag_name> format. For example, you can set the tag of a time series to
+> $tag_host . In this case, the tag of the time series is the hostname.
+> You can use **OFFSET** to configure a time offset. This allows you to compare data that is generated within different time periods.
 
 **Template-based query editor**
 
@@ -11501,7 +11696,9 @@ i. Connect to an ECS instance. ii. Run the following command to download Grafana
 wget https://dl.grafana.com/enterprise/release/grafana-enterprise-8.2.2-1.x86_64.rpm
 ```
 
-In this example, Grafana 8.2.2-1 is used. You can choose the version of Grafana that you want to install based on your requirements. For more information about how to download other versions of Grafana, visit the Grafana official website. iii. Run the following command to install Grafana:
+> **Note:** In this example, Grafana 8.2.2-1 is used. You can choose the version of Grafana that you want to install based on your requirements. For more information about how to download other versions of Grafana, visit the Grafana official website.
+
+iii. Run the following command to install Grafana:
 
 ```python
 sudo yum install grafana-enterprise-8.2.2-1.x86_64.rpm
@@ -11538,9 +11735,7 @@ sudo nano -w /etc/grafana/grafana.ini
 
 parameter, press `CTRL + O` to save the change and press Enter to exit the edit mode.
 
-**Important**
-
-When you modify the grafana.ini file, you must delete the semicolon (;) in
+> **Important:** When you modify the grafana.ini file, you must delete the semicolon (;) in
 
 ```
  ;allow_loading_unsigned_plugins .
@@ -11578,7 +11773,14 @@ Click the icon in upper-right corner of the **A** section and switch the editor 
 SELECT region,time,avg(temperature) FROM sensor WHERE time >= $from AND time <= $to SAMPLE BY $ interval
 ```
 
-For more information about how to use Lindorm SQL, see Basic syntax of the SELECT statement. time >= $from AND time <= $to specifies a time condition. This condition is required in the statement. If you do not specify it, the query result is not returned. The variables in the condition are automatically replaced with the time range selected on the dashboard page. You can click **Query options** and specify the **Min interval** and **Max data points** parameters to adjust the value of **Interval**. You can use **ALIAS BY** to rename the tags of time series. The alias of a time series is in the $tag_<tag_name> format. For example, you can set the tag of a time series to $tag_host . In this case, the tag of the time series is the host name. You can use **OFFSET** to configure a time offset. This allows you to compare data that is generated within different time periods.
+For more information about how to use Lindorm SQL, see Basic syntax of the SELECT statement.
+
+> time >= $from AND time <= $to specifies a time condition. This condition is required in the statement. If you do not specify it, the query result is not returned. The variables in the condition are automatically replaced with the time range selected on the dashboard page.
+> You can click **Query options** and specify the **Min interval** and **Max data points** parameters to adjust the value of **Interval**.
+> You can use **ALIAS BY** to rename the tags of time series. The alias of a time series is in the
+> $tag_<tag_name> format. For example, you can set the tag of a time series to
+> $tag_host . In this case, the tag of the time series is the host name.
+> You can use **OFFSET** to configure a time offset. This allows you to compare data that is generated within different time periods.
 
 **Template-based query editor**
 
@@ -11651,7 +11853,11 @@ The OS used in the test is Alibaba Cloud Linux 3.2104 64-bit. The stress testing
 
 **Specifications of LindormTSDB clusters**
 
-Four LindormTSDB clusters of the following specifications are used for testing. All the four clusters use the Standard storage type. Cluster 1: 3-node LindormTSDB cluster in which the specification of each node is 4 cores and 16 GB of memory Cluster 2: 3-node LindormTSDB cluster in which the specification of each node is 8 cores and 32 GB of memory Cluster 3: 3-node LindormTSDB cluster in which the specification of each node is 16 cores and 64 GB of memory Cluster 4: 3-node LindormTSDB cluster in which the specification of each node is 32 cores and 128 GB of memory The preceding specifications are available to the public. The storage type of the clusters is Standard. You can use the Performance storage type for better performance. The version of LindormTSDB that is used for the clusters is 3.4.9.
+Four LindormTSDB clusters of the following specifications are used for testing. All the four clusters use the Standard storage type. Cluster 1: 3-node LindormTSDB cluster in which the specification of each node is 4 cores and 16 GB of memory Cluster 2: 3-node LindormTSDB cluster in which the specification of each node is 8 cores and 32 GB of memory Cluster 3: 3-node LindormTSDB cluster in which the specification of each node is 16 cores and 64 GB of memory Cluster 4: 3-node LindormTSDB cluster in which the specification of each node is 32 cores and 128 GB of memory
+
+> **Note:** The preceding specifications are available to the public.
+> The storage type of the clusters is Standard. You can use the Performance storage type for better performance.
+> The version of LindormTSDB that is used for the clusters is 3.4.9.
 
 **Introduction to the test tool**
 
@@ -11659,7 +11865,9 @@ The test tool is developed to adapt Lindorm based on influxdb-comparisons that i
 
 **Download the test tool**
 
-You can click the download link to download the compressed file of the stress testing tool. Before you perform stress testing, upload the file to your machine on which your stress testing client runs and decompress the file. For more information about how to use the tool, see influxdb-comparisons. You can use the tool in the way similar to influxdb-comparisons.
+You can click the download link to download the compressed file of the stress testing tool. Before you perform stress testing, upload the file to your machine on which your stress testing client runs and decompress the file.
+
+> **Note:** For more information about how to use the tool, see influxdb-comparisons. You can use the tool in the way similar to influxdb-comparisons.
 
 **Data write test**
 
@@ -11737,9 +11945,10 @@ This section describes the metrics that are collected to monitor the write perfo
 
 **Test results**
 
-**Important**
+> **Important:** In this test, data points are inserted in batches. Each write request is sent to write a batch of data points.
+> During the test, no queries are performed on LindormTSDB.
 
-In this test, data points are inserted in batches. Each write request is sent to write a batch of data points. During the test, no queries are performed on LindormTSDB. Figure 1 Write TPS of Lindorm clusters that use different specifications when the batch size is 500 in different concurrency scenarios
+Figure 1 Write TPS of Lindorm clusters that use different specifications when the batch size is 500 in different concurrency scenarios
 
 **Table 1 Cluster 1 (3 nodes with a specification of 4 cores and 16 GB of memory)**
 
@@ -11923,9 +12132,9 @@ This section describes the performance metrics that are monitored for the querie
 
 **Test results**
 
-**Important**
+> **Important:** The following query results are separately measured when only the test is run on LindormTSDB. No other workload is run on LindormTSDB.
 
-The following query results are separately measured when only the test is run on LindormTSDB. No other workload is run on LindormTSDB. Figure 1. Queries per second (QPS) of Lindorm clusters that use different specifications when different types of queries are performed at a concurrency of 200
+Figure 1. Queries per second (QPS) of Lindorm clusters that use different specifications when different types of queries are performed at a concurrency of 200
 
 **Table 1. Cluster 1 (3 nodes with a specification of 4 cores and 16 GB memory)**
 
@@ -12132,6 +12341,7 @@ show_tables_statement ::= SHOW TABLES
 
 ```
 > show tables;
+
 +-------------+------------+
 | tableSchem  | tableName  |
 +-------------+------------+
@@ -12155,6 +12365,7 @@ describe_table_statement ::= DESCRIBE TABLE table_name
 
 ```
 > describe table sensor;
+
 +--------------+-----------+
 |  columnName  | typeName  |
 +--------------+-----------+
@@ -12199,6 +12410,7 @@ To count the number of data records generated for the device whose ID is `1234AB
 
 ```
 > select count(*) from sensor where device_id = '1234ABC' and time >= 1619076780000 and time <= 1
+
 619076800000; +---------+
 | EXPR$0  |
 +---------+
@@ -12210,6 +12422,7 @@ To query all metrics of the device whose ID is `1234ABC` within a time period, e
 
 ```
 > select * from sensor where device_id = '1234ABC' and time >= 1619076780000 and time <= 16190768
+
 00000; +------------+-----------+----------------+--------------+-----------+
 | device_id  |  region   |      time      | temperature  | humidity  |
 +------------+-----------+----------------+--------------+-----------+
@@ -12223,6 +12436,7 @@ To query the temperature and humidity of the device whose ID is `1234ABC` within
 
 ```
 > select region,time,temperature,humidity from sensor where device_id = '1234ABC' and time >= 161
+
 9076780000 and time <= 1619076800000; +-----------+----------------+--------------+-----------+
 |  region   |      time      | temperature  | humidity  |
 +-----------+----------------+--------------+-----------+
@@ -12236,6 +12450,7 @@ To query the maximum temperature of the device whose ID is `1234ABC` within a ti
 
 ```
 > select max(temperature) from sensor where device_id = '1234ABC' and time >= 1619076780000 and t
+
 ime <= 1619076800000; +---------+
 | EXPR$0  |
 +---------+
@@ -12280,6 +12495,7 @@ The SAMPLE BY clause cannot be used together with the GROUP BY or LIMIT OFFSET c
 
 ```
 > select region, max(avg_temperature) from (select device_id,region,time,avg(temperature) as avg_te
+
 mperature from sensor where time >= 1619076780000 and time <= 1619076800000 sample by 20s) group by region; +-----------+---------------------+
 |  region   |       EXPR$1        |
 +-----------+---------------------+
@@ -12292,6 +12508,7 @@ When you include the LIMIT OFFSET clause in SQL statements, we recommend that yo
 
 ```
 > select device_id,region, avg_temperature from (select device_id,region,time,avg(temperature) as a
+
 vg_temperature from sensor where time >= 1619076780000 and time <= 1619076800000 sample by 20s) lim it 1 offset 1; +------------+-----------+------------------+
 | device_id  |  region   | avg_temperature  |
 +------------+-----------+------------------+
@@ -12303,6 +12520,7 @@ Interpolate a specified value based on a specified time interval:
 
 ```
 > select device_id,region,time,avg(temperature) from sensor where time >= 1619076780000 and time <=
+
 1619076800000 sample by 20s fill 1; +------------+-----------+----------------+---------------------+
 | device_id  |  region   |      time      |       EXPR$3        |
 +------------+-----------+----------------+---------------------+
@@ -12319,6 +12537,7 @@ Interpolate the value that is collected within the previous time window:
 
 ```
 > select device_id,region,time,avg(temperature) from sensor where time >= 1619076780000 and time <=
+
 1619076800000 sample by 20s fill previous; +------------+-----------+----------------+---------------------+
 | device_id  |  region   |      time      |       EXPR$3        |
 +------------+-----------+----------------+---------------------+
@@ -12379,7 +12598,10 @@ select_latest_by_statement ::= SELECT ( select_clause )
 select_clause ::= selector [ AS identifier ] ( ',' selector [ AS identifier ] ) selector ::= tag_name | time | latest '(' field_name [ ',' integer ] ')' where_clause ::= relation ( AND relation )* (OR relation)* relation ::= ( field_name | tag_name ) operator term operator ::= '=' | '<' | '>' | '<=' | '>=' | '!=' | IN
 ```
 
-Latest-value queries are used to query the values of the latest time points in time series. You can use `latest(field_name, N)` to query the latest N records of data. A latest-value query must be used together with `SAMPLE BY 0` to query the latest values of each time series. Latest-value queries cannot be used together with other aggregate functions such as RATE, DELTA, MAX, or MIN. For example, if you execute the `select time, latest(f1), max(f2) from` `sensor sample by 0` statement, a syntax error occurs.
+> **Note:** Latest-value queries are used to query the values of the latest time points in time series. You can use `latest(field_name, N)` to query the latest N records of data.
+> A latest-value query must be used together with `SAMPLE BY 0` to query the latest values of each time series.
+> Latest-value queries cannot be used together with other aggregate functions such as RATE, DELTA, MAX, or MIN. For example, if you execute the `select time, latest(f1), max(f2) from`
+> `sensor sample by 0` statement, a syntax error occurs.
 
 **Examples**
 
@@ -12429,7 +12651,9 @@ lindorm> select device_id,region,time,latest(temperature, 2) as temperature from
 +-----------+----------+---------------------------+-------------+
 ```
 
-Latest-value queries cannot be directly used with clauses such as OFFSET, LIMIT, or GROUP BY. You can use a latest-value query as a subquery in an SQL statement that contains these clauses. Use the LATEST function together with the GROUP BY clause to group returned data records.
+> **Note:** Latest-value queries cannot be directly used with clauses such as OFFSET, LIMIT, or GROUP BY. You can use a latest-value query as a subquery in an SQL statement that contains these clauses.
+
+Use the LATEST function together with the GROUP BY clause to group returned data records.
 
 ```
 lindorm> select device_id, max(temperature) as max_temperature from (select device_id, region,time, latest(temperature,2) as temperature from sensor sample by 0) group by device_id; +-----------+-----------------+
@@ -12613,9 +12837,8 @@ This topic describes the signature method of LindormTSDB. LindormTSDB does not p
 | sync timeout _ | Integer | No | The timeout period. Unit: milliseconds. A value of 0 specifies that the request never times out. | 0 | /api/put/? sync&sync time _ out=60000 |
 |---|---|---|---|---|---|
 
-**Important**
-
-The system determines that the value of an untyped parameter is true if the parameter is specified. For example, the system determines that the value of the summary parameter is true regardless of whether you set the parameter to true or false. If you specify both the details parameter and the summary parameter, the API operation returns the details.
+> **Important:** The system determines that the value of an untyped parameter is true if the parameter is specified. For example, the system determines that the value of the summary parameter is true regardless of whether you set the parameter to true or false.
+> If you specify both the details parameter and the summary parameter, the API operation returns the details.
 
 **Request content**
 
@@ -12887,9 +13110,7 @@ The multi-value data model is created based on data sources. Each data entry is 
 |---|---|
 | POST | Writes multiple data points at the same time. |
 
-**Important**
-
-The request path that you use to insert a single-value data point is different from that you use to insert a multi-value data point. To write a single-value data point, call the /api/put operation. To query multi-value data points, call the /api/mquery operation. To write single-value data points, call the /api/query operation.
+> **Important:** The request path that you use to insert a single-value data point is different from that you use to insert a multi-value data point. To write a single-value data point, call the /api/put operation. To query multi-value data points, call the /api/mquery operation. To write single-value data points, call the /api/query operation.
 
 **Request parameters**
 
@@ -12899,9 +13120,8 @@ The request path that you use to insert a single-value data point is different f
 | details | Untyped | No | Specifies whether to return the details. | false | /api/put? details |
 | sync timeout _ | Integer | No | The timeout period. Unit: milliseconds. A value of 0 specifies that the request never times out. | 0 | /api/put/? sync&sync ti _ meout=6000 0 |
 
-**Important**
-
-The system determines that the value of an untyped parameter is true if the parameter is specified. For example, the system determines that the value of the summary parameter is true regardless of whether you set the parameter to true or false. If you specify both the details parameter and the summary parameter, the API operation returns the details.
+> **Important:** The system determines that the value of an untyped parameter is true if the parameter is specified. For example, the system determines that the value of the summary parameter is true regardless of whether you set the parameter to true or false.
+> If you specify both the details parameter and the summary parameter, the API operation returns the details.
 
 **Request content**
 
@@ -13016,9 +13236,7 @@ You can write two data points that contain values of different data types only i
 | tupleLimit | Long | No | The maximum number of tuples. This parameter only takes effect when the tupleFormat parameter is set to true. | 0 | 100 |
 |---|---|---|---|---|---|
 
-**Important**
-
-You can use /api/query/mlast to query only the latest data point from a multi-value model time series. If you want to query the latest data point from a single-value model time series, use /api/query/last.
+> **Important:** You can use /api/query/mlast to query only the latest data point from a multi-value model time series. If you want to query the latest data point from a single-value model time series, use /api/query/last.
 
 **Subqueries in the JSON format**
 
@@ -13068,9 +13286,7 @@ If the HTTP status code 200 is returned, the query is successful. In this case, 
 | tags | The set of tag key-value pairs associated with the data points. |
 | values | The values of the metric fields. The order of the values is the same as the order of the columns. |
 
-**Important**
-
-If you set the tupleFormat parameter to false in the request, the format of the response is the same as that of the response format for single-value metrics.
+> **Important:** If you set the tupleFormat parameter to false in the request, the format of the response is the same as that of the response format for single-value metrics.
 
 **Sample response in the JSON format**
 
@@ -13113,9 +13329,7 @@ This topic describes how to call HTTP API operations to query data points from a
 |---|---|---|
 | /api/mquery | POST | Queries data points from a multi- value time series. |
 
-**Important**
-
-The request path that you use to insert a multi-value data point is different from that you use to insert a multi-value data point. To write single-value data points, call the /api/put operation. To query multivalue data points, call the /api/mquery operation. To write single-value data points, call the /api/query operation.
+> **Important:** The request path that you use to insert a multi-value data point is different from that you use to insert a multi-value data point. To write single-value data points, call the /api/put operation. To query multi- value data points, call the /api/mquery operation. To write single-value data points, call the /api/query operation.
 
 **Request content**
 
@@ -13132,7 +13346,9 @@ The request path that you use to insert a multi-value data point is different fr
 
 **Timestamp units**
 
-Timestamps can be measured in seconds or milliseconds. LindormTSDB determines the unit of a timestamp based on the numeric value of the timestamp. The following rules apply: If a timestamp is in the range of [4284768,9999999999], LindormTSDB determines that the timestamp is in seconds. In this case, the corresponding date and time range is [1970-02-20 00:59:28,2286-11-21 01:46:39]. If the timestamp is in the range of [10000000000,9999999999999], LindormTSDB determines that the timestamp is in milliseconds. In this case, the corresponding date and time range is [1970-04-27 01:46:40.000, 2286-11-21 01:46:39.999]. If the timestamp is in the range of (-∞,4284768) or (9999999999999,+∞), LindormTSDB determines that the timestamp is invalid. This section describes the rules for determining the unit of a timestamp. These rules apply to the following API operations: `/api/put` , `/api/mput` , `/api/query` , and `/api/mquery` . /api/put and /api/mput are used to write data. /api/query and /api/mquery are used to query data.
+Timestamps can be measured in seconds or milliseconds. LindormTSDB determines the unit of a timestamp based on the numeric value of the timestamp. The following rules apply: If a timestamp is in the range of [4284768,9999999999], LindormTSDB determines that the timestamp is in seconds. In this case, the corresponding date and time range is [1970-02-20 00:59:28,2286-11-21 01:46:39]. If the timestamp is in the range of [10000000000,9999999999999], LindormTSDB determines that the timestamp is in milliseconds. In this case, the corresponding date and time range is [1970-04-27 01:46:40.000, 2286-11-21 01:46:39.999]. If the timestamp is in the range of (-∞,4284768) or (9999999999999,+∞), LindormTSDB determines that the timestamp is invalid.
+
+> **Note:** This section describes the rules for determining the unit of a timestamp. These rules apply to the following API operations: `/api/put` , `/api/mput` , `/api/query` , and `/api/mquery` . /api/put and /api/mput are used to write data. /api/query and /api/mquery are used to query data.
 
 **Query data points at a single point in time**
 
@@ -13151,7 +13367,9 @@ LindormTSDB allows you to query data points at a single point in time. To query 
 | filters | List | No | The filtering condition. This parameter conflicts with the tags parameter. | None |
 |---|---|---|---|---|
 
-You can specify a maximum of 200 fields in each query. Example: In this example, three subqueries are specified in a query. Three fields are specified in the first query. Two fields are specified in the second subquery. Six fields are specified in the third subquery. Therefore, the total number of fields in the query equals 11. Before you run the query, make sure that the total number of fields in the query does not exceed 200. If you specify the tags and filters parameters in a query, the parameter that you specify in the latter position takes effect.
+> **Note:** You can specify a maximum of 200 fields in each query. Example:
+> In this example, three subqueries are specified in a query. Three fields are specified in the first query. Two fields are specified in the second subquery. Six fields are specified in the third subquery. Therefore, the total number of fields in the query equals 11. Before you run the query, make sure that the total number of fields in the query does not exceed 200.
+> If you specify the tags and filters parameters in a query, the parameter that you specify in the latter position takes effect.
 
 **Parameters for field queries in the JSON format**
 
@@ -13214,9 +13432,7 @@ default value is 0, which specifies that the number of data points to return is 
 **offset**: the offset from which LindormTSDB starts to return the data points for a subquery. The default
 value is 0, which specifies that the returned data points are not skipped.
 
-**Important**
-
-You cannot set the Limit or Offset parameter to a negative value. The Limit and Offset parameters take effect on the multi-value data points to return for a paged query. You cannot use the two parameters for a single-field query.
+> **Important:** You cannot set the Limit or Offset parameter to a negative value. The Limit and Offset parameters take effect on the multi-value data points to return for a paged query. You cannot use the two parameters for a single-field query.
 
 **Example**
 
@@ -13271,9 +13487,7 @@ If you want to obtain the data points whose rankings are 1001 to 1500, set the l
 
 The dpValue parameter specifies the limit on field values. You can use this parameter to filter the data points to return. Valid operators: >, <, =, <=, >=, and ! =.
 
-**Important**
-
-The dpValue relationship between different fields is OR. The AND relationship is not supported.
+> **Important:** The dpValue relationship between different fields is OR. The AND relationship is not supported.
 
 **Example**
 
@@ -13330,7 +13544,10 @@ Take note of the following items:
 **interval**: the interval time across which LindormTSDB aggregates the data points. For example, you can
 set interval to 5 or 60. The 0all value specifies that LindormTSDB aggregates all the data points in a time series into a data point.
 **units**: the unit of the interval time. Valid values: s, m, h, d, n, and y. s specifies seconds, m specifies
-minutes, h specifies hours, d specifies days, n specifies months, and y specifies years. You can downsample data based on a calendar time interval. To use the calendar time interval, append `c` to the **units** value. For example, `1dc` specifies the 24-hour period from 00:00 of the current day to 00:00 of the next day.
+minutes, h specifies hours, d specifies days, n specifies months, and y specifies years.
+
+> **Note:** You can downsample data based on a calendar time interval. To use the calendar time interval, append `c` to the **units** value. For example, `1dc` specifies the 24-hour period from 00:00 of the current day to 00:00 of the next day.
+
 **aggregator**: the operator for downsampling. The following table describes the operators.
 
 | Operator | Description |
@@ -13350,7 +13567,7 @@ minutes, h specifies hours, d specifies days, n specifies months, and y specifie
 | rmin | The same as the min operator. However, this operator returns the data point at the original timestamp instead of the aligned timestamp. The timestamps of data points are aligned after data is downsampled. |
 | rmax | The same as the max operator. However, this operator returns the data point at the original timestamp instead of the aligned timestamp. The timestamps of data points are aligned after data is downsampled. |
 
-If you use rfirst, rlast, rmin, or rmax for downsampling, you cannot specify a fill policy.
+> **Note:** If you use rfirst, rlast, rmin, or rmax for downsampling, you cannot specify a fill policy.
 
 **Fill policy**
 
@@ -13384,17 +13601,13 @@ To emit a pre-defined value, append the pre-defined value to the number sign (#)
 
 Examples: 1m-avg, 1h-sum-zero, and 1h-sum-near
 
-**Important**
-
-The downsample parameter is optional for field queries. You can set this parameter to null or leave this parameter empty: {"downsample": null} or {"downsample": ""}. In this case, data points are not downsampled. If you specify the downsample parameter in a field query, specify this parameter in the other field queries that belong to the same subquery. You must specify the same interval time to downsample field data in all the field queries that belong to the same subquery.
+> **Important:** The downsample parameter is optional for field queries. You can set this parameter to null or leave this parameter empty: {"downsample": null} or {"downsample": ""}. In this case, data points are not downsampled. If you specify the downsample parameter in a field query, specify this parameter in the other field queries that belong to the same subquery. You must specify the same interval time to downsample field data in all the field queries that belong to the same subquery.
 
 **Parameter: aggregator**
 
 After data is downsampled, values along multiple time series are obtained and the timestamps of these time series are aligned. You can merge these time series into one time series by aggregating the values at each aligned timestamp. Aggregation is not performed if only one time series exists. During aggregation, each time series must have a value at each aligned timestamp. If no value can be found at an aligned timestamp, interpolation is performed. For more information, see the following "Interpolation" section.
 
-**Important**
-
-In field queries, the aggregator parameter is required. You can set this parameter to none. This specifies that data is not aggregated. If you specify the aggregator parameter in a field query, you must also specify this parameter in other field queries that belong to the same subquery. Lindorm TSDB does not allow you to aggregate only part of field data in a subquery.
+> **Important:** In field queries, the aggregator parameter is required. You can set this parameter to none. This specifies that data is not aggregated. If you specify the aggregator parameter in a field query, you must also specify this parameter in other field queries that belong to the same subquery. Lindorm TSDB does not allow you to aggregate only part of field data in a subquery.
 
 **Interpolation**
 
@@ -13777,9 +13990,8 @@ The value of val is the TTL. The unit is seconds.
 | start | Integer | Yes | The beginning of the timestamp range to delete data. Unit: seconds. | None | 1499308591 |
 | end | Integer | No | The end of the timestamp range to delete data. Unit: seconds. | The current time. | 1499508591 |
 
-**Important**
-
-If you leave the fields parameter empty, LindormTSDB deletes all the time series data for the metric. For example, LindormTSDB deletes all the single-value data or all the field data for the metric. If a time series contains the metric and tags that are specified in the request body, the time series is deleted, regardless of whether the time series contains other tags.
+> **Important:** If you leave the fields parameter empty, LindormTSDB deletes all the time series data for the metric. For example, LindormTSDB deletes all the single-value data or all the field data for the metric.
+> If a time series contains the metric and tags that are specified in the request body, the time series is deleted, regardless of whether the time series contains other tags.
 
 **Sample requests in the JSON format**
 
@@ -13884,9 +14096,8 @@ cup metric and have the "host: 192.168.0.2" and "appName: hitsdb" tags. **Reques
 
 This topic describes how to clear data from LindormTSDB. You can use this operation to efficiently clear test data.
 
-**Important**
-
-After you call this operation to clear data, all data in your LindormTSDB database is cleared can cannot be restored. Proceed with caution. Alibaba Cloud does not proactively clear your data. When you call /api/truncate to clear data from LindormTSDB, all nodes in the LindormTSDB cluster reject data writes. Proceed with caution.
+> **Important:** After you call this operation to clear data, all data in your LindormTSDB database is cleared can cannot be restored. Proceed with caution. Alibaba Cloud does not proactively clear your data.
+> When you call /api/truncate to clear data from LindormTSDB, all nodes in the LindormTSDB cluster reject data writes. Proceed with caution.
 
 **Request path and method**
 
@@ -13984,9 +14195,8 @@ Lindorm Tunnel Service (LTS) is a tunnel service developed by Alibaba Cloud for 
 
 **Log on to the LTS web UI**
 
-**Important**
+> **Important:** After you purchase an LTS instance, the status of the instance is **Creating** in the console. You can log on to the LTS web UI only after the instance status becomes **Running**.
 
-After you purchase an LTS instance, the status of the instance is **Creating** in the console. You can log on to the LTS web UI only after the instance status becomes **Running**.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-left corner of the page that appears, select the organization to which the instance belongs.
 3. On the **Instances** page, find the instance that you want to manage and click the ID of the instance or
@@ -14266,7 +14476,9 @@ Clients of version 1.x are used to manage ApsaraDB for HBase clusters of version
 
 **Other scenarios**
 
-If your client is reliant on the client of the community edition and you cannot upgrade the client to the preceding recommended versions, follow these methods to upgrade: Modify Maven dependencies to upgrade your ApsaraDB for HBase clients so that the clients correspond to the HBase community edition. For more information, see Modify Maven dependencies to upgrade your clients of earlier versions. Replace JAR files to upgrade your ApsaraDB for HBase clients so that the clients correspond to the HBase community edition. For more information, see Replace JAR files to upgrade your clients of earlier versions.
+> **Note:** If your client is reliant on the client of the community edition and you cannot upgrade the client to the preceding recommended versions, follow these methods to upgrade:
+
+Modify Maven dependencies to upgrade your ApsaraDB for HBase clients so that the clients correspond to the HBase community edition. For more information, see Modify Maven dependencies to upgrade your clients of earlier versions. Replace JAR files to upgrade your ApsaraDB for HBase clients so that the clients correspond to the HBase community edition. For more information, see Replace JAR files to upgrade your clients of earlier versions.
 
 ##### 4.1.1.2 Install and upgrade HBase SDK for a non-Java programming language
 
@@ -14606,9 +14818,7 @@ Simple example
 
 ### 4.2 LindormTSDB
 
-**Important**
-
-Starting September 1, 2024, you can **no longer purchase LindormTSDB**. Users who purchased LindormTSDB and migrated data from TSDB to LindormTSDB before September 1, 2024 can still use LindormTSDB as expected.
+> **Important:** Starting September 1, 2024, you can **no longer purchase LindormTSDB**. Users who purchased LindormTSDB and migrated data from TSDB to LindormTSDB before September 1, 2024 can still use LindormTSDB as expected.
 
 #### 4.2.1 Usage details
 
@@ -16391,7 +16601,9 @@ public void setTags(Map<String,String> tags)
 
 **data**
 
-This topic describes how to use the multi-value model to write data and provides sample code. Only LindormTSDB SDK V0.2.0 and later support the multi-value model. For more information about the latest SDK version and download link, see Release notes.
+This topic describes how to use the multi-value model to write data and provides sample code.
+
+> **Note:** Only LindormTSDB SDK V0.2.0 and later support the multi-value model. For more information about the latest SDK version and download link, see Release notes.
 
 **Use the multi-value model to write data**
 
@@ -16435,7 +16647,7 @@ MultiFieldPoint multiValuedPoint = MultiFieldPoint.metric("wind").timestamp(1346
 
 **Use the multi-value model to asynchronously write data**
 
-Only LindormTSDB SDK V0.2.1 and later support the multi-value model. For more information about the latest SDK version and download link, see Release notes.
+> **Note:** Only LindormTSDB SDK V0.2.1 and later support the multi-value model. For more information about the latest SDK version and download link, see Release notes.
 
 **Do not use a callback method**
 

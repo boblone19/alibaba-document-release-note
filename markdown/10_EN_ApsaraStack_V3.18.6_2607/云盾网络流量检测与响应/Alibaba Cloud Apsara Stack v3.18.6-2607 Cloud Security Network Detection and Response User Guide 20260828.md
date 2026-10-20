@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 33
 source_pdf: "95aec4d006082c28_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 20260828
@@ -79,17 +79,16 @@ press the Enter key.
 2. Enter your username and password.
 You must obtain the username and password from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform corresponding
 operations in the following scenarios: It is the first time that you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password that you entered in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
-
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
 ## 3 Network Detection and Response
 
@@ -330,9 +329,8 @@ If you no longer require the specified query conditions, click **Reset** to clea
 Add a tag to an attack: Find the attack that you want to manage and click **Label** in the Actions column to add a custom tag to the attack. Select a handling method for an attack: Find the attack that you want to manage and click **Handle** in the Actions column to select a handling method for the attack. The following handling methods are supported: **Block**, **Threat Detection Whitelist**, and
 **Ignore**.
 
-**Note**
+> **Note:** If the detection object is elastic network interfaces (ENIs), you cannot handle the detected attack in the Actions column.
 
-If the detection object is elastic network interfaces (ENIs), you cannot handle the detected attack in the Actions column.
 **Block**: blocks the source IP address of the attack and XFF header by using a network-
 layer access control policy.
 
@@ -390,10 +388,8 @@ following table describes the query conditions.
 6. Click **Query** to view the query results.
 The bar chart in the **Source IP | Destination IP Top 5** section that is labeled as 1 in the preceding figure displays the top five source IP addresses and destination IP addresses of attacks and the number of attacks. The line chart in the **RST Packet Statistics (Global)** section that is labeled as 2 in the preceding figure displays the numbers of reset (RST) packets at different points in time. The chart in the **Protection Statistics (Count)** section that is labeled as 3 in the preceding figure displays the number of times that attacks are blocked within the specified time range. The log list that is labeled as 4 in the preceding figure in the lower part of the Blocking Log tab displays the details of the logs for blocked traffic. You can perform the following operations in the log list: Export logs of blocked traffic: Click **Export All Records** above the log list to export all returned logs of blocked traffic. You can click **Download Task Management** in the upper-right corner of the Threat Detection page to view export results. Change the action of the blocking policy that a log of blocked traffic matches: Find a log of blocked traffic and click **Block**, **Add to Whitelist**, or **Monitor** in the **Actions** column. This way, if traffic that matches the blocking policy is detected, the corresponding action is performed. This setting does not change the action in existing logs. Instead, it changes the action of the matched blocking policy. The new action applies to all future traffic that matches this blocking policy.
 
-**Note**
+> **Note:** You can configure only the **Monitor** action for blocked traffic whose **Source** is **Port spoofing**.
 
-You can configure only the **Monitor** action for blocked traffic whose **Source** is
-**Port spoofing**.
 **Block**: When the system detects traffic that matches a blocking policy, the system
 generates an alert and blocks the detected traffic.
 **Monitor**: When the system detects traffic that matches a blocking policy, the system
@@ -689,9 +685,8 @@ After you create an IDS rule, you can manage the rule in the IDS rule list. View
 
 Network Detection and Response (NDR) allows you to configure CIDR blocks for the traffic security monitoring module. Security administrators can modify the CIDR blocks configured for traffic monitoring based on business requirements. The settings of CIDR blocks apply only to a data center that is deployed in the region to which the CIDR blocks belong. This topic describes how to add and manage internal CIDR blocks for traffic monitoring.
 
-**Note**
-
-Changes to CIDR block settings immediately take effect without the need for intervention of security administrators. If you configure the same CIDR block in the traffic security monitoring module and the region settings, make sure that you select the same region.
+> **Note:** Changes to CIDR block settings immediately take effect without the need for intervention of security administrators.
+> If you configure the same CIDR block in the traffic security monitoring module and the region settings, make sure that you select the same region.
 
 **Procedure**
 
@@ -708,9 +703,8 @@ organization to view the full menu.
 6. In the **New** dialog box, configure the following parameters and click **OK**.
 **CIDR Block**: the CIDR block for traffic monitoring.
 
-**Note**
+> **Note:** You must enter a valid CIDR block. You cannot enter a CIDR block that is already configured for the region.
 
-You must enter a valid CIDR block. You cannot enter a CIDR block that is already configured for the region.
 **Region**: the region in which the data center resides.
 After you complete the preceding configurations, you can manage the internal CIDR block in the CIDR block list. View the internal CIDR block for traffic monitoring and region information Select a **region**, enter the internal CIDR block that you want to manage, and then click
 **Query**.

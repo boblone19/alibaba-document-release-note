@@ -5,7 +5,7 @@ doc_version: "20260731"
 pdf_pages: 73
 source_pdf: "f589b963a018349c_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Operations%20and%20Maintenance%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Operations and Maintenance Guide 20260731
@@ -104,9 +104,7 @@ This guide helps O&M engineers perform preventive maintenance to ensure the long
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, computer operations, and troubleshooting. O&M engineers must pass the pre-job training and learn the knowledge for the Apsara Stack system. The required knowledge for the system includes system principles, networking, features, and the usage of maintenance tools.
 
-**Important**
-
-During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
+> **Important:** During the maintenance, O&M engineers must follow operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
 
 **Precautions**
 
@@ -165,16 +163,19 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 3. Enter the correct username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log in to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
 
-Obtain the username and password that are used to log in to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 5. In the menu bar at the top of the page, select **Product Operation > Computing > BMCP**
 **Operation platform**.
@@ -195,29 +196,29 @@ This section displays resource data related to intelligent computing clusters, s
 
 This section displays the usage of intelligent computing resources, supercomputing resources, and storage resources.
 
-**Note**
+> **Note:** Supercomputing resources do not include the CPU cores and memory of intelligent computing clusters.
+> Intelligent computing resources do not include the GPUs and GPU memory of supercomputing clusters.
 
-Supercomputing resources do not include the CPU cores and memory of intelligent computing clusters. Intelligent computing resources do not include the GPUs and GPU memory of supercomputing clusters. Intelligent computing resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **NVIDIA** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
+Intelligent computing resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **NVIDIA** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
 
-**Note**
+> **Note:** The available GPU types are subject to those displayed on the page.
 
-The available GPU types are subject to those displayed on the page. View the data for Allocated, Not Allocated, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Converged resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **NVIDIA** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
+View the data for Allocated, Not Allocated, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Converged resources (number of GPUs and GPU memory) Select a GPU type from the drop-down list, such as **NVIDIA** or **Hygon**, to view the GPU quantity of the selected type and total GPU memory.
 
-**Note**
+> **Note:** The available GPU types are subject to those displayed on the page.
 
-The available GPU types are subject to those displayed on the page. View the data for Allocated, Not Aallocated resources, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation Rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Supercomputing resources (number of CPU cores and memory) Select a CPU type from the drop-down list, such as **Intel** or **Hygon**, to view the CPU core quantity of the selected type and total memory.
+View the data for Allocated, Not Aallocated resources, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation Rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Supercomputing resources (number of CPU cores and memory) Select a CPU type from the drop-down list, such as **Intel** or **Hygon**, to view the CPU core quantity of the selected type and total memory.
 
-**Note**
+> **Note:** The available CPU types are subject to those displayed on the page.
 
-The available CPU types are subject to those displayed on the page. View data for Allocated, Not Aallocated, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation Rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Storage resources Select a storage resource type from the drop-down list, such as **APFS** or **CPFS**, to view the utilization of storage resources of the selected type. View the data for **Used**, **Allocated**, **Total**, and **Utilization** of storage resources.
+View data for Allocated, Not Aallocated, Total, and Allocation Rate. The amount of allocated resources indicates the resources that are allocated to tenants. The amount of unallocated resources indicates the resources in the resource pool. The total amount of resources equals the sum of resources allocated to tenants and resources in the resource pool. Allocation Rate = Resources in the resource pool/(Resources allocated to tenants + Resources in the resource pool) × 100%. Storage resources Select a storage resource type from the drop-down list, such as **APFS** or **CPFS**, to view the utilization of storage resources of the selected type. View the data for **Used**, **Allocated**, **Total**, and **Utilization** of storage resources.
 
 **Computing power dashboard**
 
 This dashboard displays data for GPU Computing Power and CPU Computing Power. GPU Computing Power (Unit: TFLOPS) Select a GPU type from the drop-down list to view the data of GPU computing power of the selected type. The time range is not configurable. The dashboard displays the total computing power, allocated computing power, and distribution rate within the last week and of the current day. CPU Computing Power (Unit: TFLOPS) Select a CPU type from the drop-down list to view the data of CPU computing power of the selected type. The time range is not configurable. The dashboard displays the total computing power, allocated computing power, and distribution rate within the last week and of the current day.
 
-**Note**
-
-CPU computing power refers to the computing power of supercomputing CPUs, excluding the computing power of CPUs in intelligent computing clusters. GPU computing power refers to the computing power of intelligent computing GPUs, excluding the computing power of GPUs in supercomputing clusters.
+> **Note:** CPU computing power refers to the computing power of supercomputing CPUs, excluding the computing power of CPUs in intelligent computing clusters.
+> GPU computing power refers to the computing power of intelligent computing GPUs, excluding the computing power of GPUs in supercomputing clusters.
 
 **Control services**
 
@@ -238,22 +239,20 @@ Only Hygon DCUK100-AI, ZW810E, Kunlun P800, METAX C550, Moore Threads S5000, and
 The cluster running the task must have the ai-task-inspector component installed. If it is not installed, install **Container O&M Service** via **BMCP > Cluster Management > Software**
 **Instances**.
 
-**Note**
+> **Note:** You can initiate tasks through many products, such as PAI or AI Studio. As long as the task consumes GPU resources on BMCP nodes, you can use the job path analysis feature.
 
-You can initiate tasks through many products, such as PAI or AI Studio. As long as the task consumes GPU resources on BMCP nodes, you can use the job path analysis feature.
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Visualized Monitoring > Job Path Analysis**.
 3. On the **Job Path Analysis** page, use filters to locate a **Job ID**. After selection, click
 **Search**.
 
-**Note**
+> **Note:** First, select**Start And End Time**. You can query tasks up to seven days before the current time.
+> **Node ID** is optional. If you select a **Node ID**, the system automatically populates the **Cluster ID** field with the cluster where that node resides.
+> **Cluster ID** and **Namespace** are required. Finally, select a **Job ID**.
+> **Job Information** is collapsed by default. Click the
+> icon on the left to expand
+> it. Job information includes job status, occupied resources, and job start/end times.
 
-First, select**Start And End Time**. You can query tasks up to seven days before the current time.
-**Node ID** is optional. If you select a **Node ID**, the system automatically populates
-the **Cluster ID** field with the cluster where that node resides.
-**Cluster ID** and **Namespace** are required. Finally, select a **Job ID**.
-**Job Information** is collapsed by default. Click the
-icon on the left to expand it. Job information includes job status, occupied resources, and job start/end times.
 4. Click **Job Details**. The right panel expands to show **Basic Information** and node runtime
 information. On the **Basic Information** page, view the **Job status**, **Number of nodes**, **Number of**
 **GPU cards**, **CPU resources**, **Memory resources**, and the job lifecycle.
@@ -261,9 +260,7 @@ Node runtime information includes **Node ID/Name**, **Online Status**, **Node Ty
 5. In the **Job view** area, select a **time slice**. The canvas below displays the job’s topology and
 resource utilization for that time slice. Topology includes components such as GPU cards, RDMA cards, switches, and their interconnections. Resource metrics include GPU utilization and RDMA NIC bandwidth usage.
 
-**Note**
-
-When you hover your mouse over a GPU card, RDMA card, or other component, the system displays its specific name and resource utilization.
+> **Note:** When you hover your mouse over a GPU card, RDMA card, or other component, the system displays its specific name and resource utilization.
 
 ## 5 Alerts
 
@@ -275,9 +272,8 @@ The resource event alert monitors stability metrics for computing resources, inc
 
 Deploy CloudMonitor (CMS) and ensure it reaches the desired state.
 
-**Note**
+> **Note:** Resource event alert depends heavily on CMS. Confirm that CMS is deployed and has reached the desired state before use.
 
-Resource event alert depends heavily on CMS. Confirm that CMS is deployed and has reached the desired state before use.
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Alerts**.
 3. On the **Resource Event Alert** page, view the alert list within the site.
@@ -286,28 +282,23 @@ By default, you enter the **Calculation** tab.
 i. You can filter alerts by **Alert Level**, **Alert Status**, **Alert Source**, and **Alert ID**. Click
 **Advanced filter** to combine filters using **Alert ID**, **Alert Name**, and **Alert Start Time**.
 
-**Note**
-
-Alert levels include: **P1 emergency, P2 is serious, P3 Warning, P4 hint.** Alert statuses include **: Processed, Unprocessed.** Alert sources include: **Calculation (in-band), Calculation (out-of-band),**
-
-**Network.**
+> **Note:** Alert levels include: **P1 emergency, P2 is serious, P3 Warning, P4 hint.**
+> Alert statuses include **: Processed, Unprocessed.**
+> Alert sources include: **Calculation (in-band), Calculation (out-of-band),** **Network.**
 
 ii. For alerts with status **Unprocessed**, click **Add event ticket** to handle them. When you click **Add event ticket**, select **Processing Method**, enter **Handler** and
 **Reason for closing**, then click **OK**.
 
-**Note**
+> **Note:** Processing methods include Ignore (the alert requires no action) and Fixed (the fault corresponding to the alert has been resolved).
 
-Processing methods include Ignore (the alert requires no action) and Fixed (the fault corresponding to the alert has been resolved).
 5. Click the **Storage** tab to view and handle **Storage** alerts.
 i. You can filter alerts by **Alert Level**, **Alert Status**, **Alert Name**, **Alarm Content**, and
 **Alert Start Time**. You can also click **Advanced filtering** to combine filters using **Alert**
 **Name**, **Alarm Content**, and **Alert Start Time**.
 
-**Note**
-
-Alert levels include: **P1 emergency, P2 is serious, P3 Warning, P4 hint.** Alert statuses include **: Processed, Unprocessed.** Alert sources include: **Calculation (in-band), Calculation (out-of-band),**
-
-**Network.**
+> **Note:** Alert levels include: **P1 emergency, P2 is serious, P3 Warning, P4 hint.**
+> Alert statuses include **: Processed, Unprocessed.**
+> Alert sources include: **Calculation (in-band), Calculation (out-of-band),** **Network.**
 
 ii. Click an alert ID to go to the **Alert details** page to view detailed alert information and handle the alert according to business needs. For more alert information, see the section **Alert list** in **Apsara Uni-manager**
 **Operations Console User Guide**.
@@ -527,11 +518,7 @@ vi. In the **Resource Name** section, configure the parameters described in the 
 
 7. After you complete the configurations, click **OK**.
 
-**Note**
-
-If change authorization is enabled, you must contact the authorization administrator of the Apsara Uni-manager Operations Console to complete the approval in **Platform**
-**Operation > Task Center > Task List** before the resource can be successfully
-registered.
+> **Note:** If change authorization is enabled, you must contact the authorization administrator of the Apsara Uni-manager Operations Console to complete the approval in **Platform** **Operation > Task Center > Task List** before the resource can be successfully registered.
 
 ##### 7.1.1.3 Manage servers
 
@@ -556,10 +543,7 @@ You can start, restart, stop, delete, or release a single resource.
 5. Select one or more servers, then click **Delete Resource** or **Initialize Resource** at the
 bottom of the server list.
 
-**Note**
-
-If change authorization is enabled, you must contact the authorization administrator of the Apsara Uni-manager Operations Console to complete the approval in **Platform**
-**Operation > Task Center > Task List** before the resource can be successfully deleted.
+> **Note:** If change authorization is enabled, you must contact the authorization administrator of the Apsara Uni-manager Operations Console to complete the approval in **Platform** **Operation > Task Center > Task List** before the resource can be successfully deleted.
 
 ##### 7.1.1.4 Remotely log on to a server
 
@@ -592,14 +576,13 @@ iii. In the **Image** section, specify the image type and image. iv. In the **Ne
 **gateway port**, **Subnet**, **Subnet IP**, and **Out-of-band information**.
 v. In the **Configure password** section, specify **Login Password** and **Confirm password**. The password must be 8 to 30 characters in length, and must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ( ) ` ~ ! @ # $ % ^ & * _ - + = | { } [ ] : ; ' < > , . ? /.
 
-**Important**
+> **Important:** Keep your password confidential. If you lost the password, you can log on to the BMCP Operations Console and reset the password.
 
-Keep your password confidential. If you lost the password, you can log on to the BMCP Operations Console and reset the password. vi. In the **Resource Name** section, specify **Resource Name**, **Hostname**, and **Resource**
+vi. In the **Resource Name** section, specify **Resource Name**, **Hostname**, and **Resource**
 **Description**.
 
-**Note**
+> **Note:** The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 
-The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 6. After you complete the configuration, click **OK**.
 
 ##### 7.1.1.6 Enable or disable servers
@@ -626,9 +609,8 @@ icon in the **Actions** column of the server, choose
 
 **Disable servers**
 
-**Important**
+> **Important:** After a server is disabled, it cannot be added to clusters.
 
-After a server is disabled, it cannot be added to clusters.
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Computing** > **Server**s tab appears. This tab displays all existing physical servers within the site.
@@ -775,9 +757,8 @@ This topic describes how to diagnose a cluster or node.
 
 Cluster/node diagnostics is supported only for bare metal-intelligent computing clusters (intelligent computing high-bandwidth network instances), ACK-intelligent computing clusters (intelligent computing high-bandwidth network instances and intelligent computing training and inference optimization instances), and converged computing clusters (high-bandwidth network converged instances and basic converged instances) that contain bare metal nodes.
 
-**Important**
+> **Important:** If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 
-If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 1. Log on to the BMCP Operations Platform.
 2. Choose **Inspection and Diagnostics > Inspection**.
 The **Clutser/Node Diagnostics** tab is displayed by fault.
@@ -791,11 +772,9 @@ On the **Cluster/Node Diagnostics** page, you can query and manage clutser/node 
 1. Query clutser/node diagnostics tasks.
 In the list, select a filter and enter the relevant information in the search box. The task list will automatically display tasks that match the search conditions.
 
-**Note**
+> **Note:** You can search for diagnostic tasks by **Task ID**, **Task Name**, and **Start and End** **Time**.
+> You can also click **Advanced Filter** to specify multiple filter criteria for progressive filtering, which allows you to quickly locate the target diagnostic tasks.
 
-You can search for diagnostic tasks by **Task ID**, **Task Name**, and **Start and End**
-**Time**.
-You can also click **Advanced Filter** to specify multiple filter criteria for progressive filtering, which allows you to quickly locate the target diagnostic tasks.
 2. Cancel a diagnostics task.
 Locate a diagnostics task in the **Running** state and click **Cancel** in the **Actions** column.
 3. View diagnostics details.
@@ -812,9 +791,8 @@ Job diagnosis supports only **Bare Metal** node-based **Container-intelligent Co
 
 **Create a job diagnostic task**
 
-**Important**
+> **Important:** If this detection includes time-consuming diagnostic items or stress tests, it occupies GPU resources. Make sure that this operation does not affect your business.
 
-If this detection includes time-consuming diagnostic items or stress tests, it occupies GPU resources. Make sure that this operation does not affect your business.
 1. Log in to the BMCP O&M platform.
 2. In the left-side navigation pane, select Inspection and Diagnostics**Inspection and**
 **Diagnostics > Inspection**.
@@ -886,9 +864,7 @@ The diagnosis feature provides cluster, node, and job diagnostics. This document
 
 **Gpu diagnostic**
 
-**Note**
-
-Diagnostic items relate to the graphics card. Refer to the interface display for the specific supported diagnostic items.
+> **Note:** Diagnostic items relate to the graphics card. Refer to the interface display for the specific supported diagnostic items.
 
 | Diagnostic item | Description |
 |---|---|
@@ -1060,11 +1036,8 @@ The machine type information includes **Specifications**, **Model Name**, **Mach
 4. In the filter list, select filter options and enter corresponding information in the search bar.
 The machine type list automatically displays machine types that match your search criteria.
 
-**Note**
-
-You can find target machine types by using information such as **Model Name**, **CPU**
-**vendor**, **CPU model**, **GPU manufacturer**, and **GPU model**.
-You can also click **Advanced Filter** to select multiple filter items progressively for faster machine type lookup.
+> **Note:** You can find target machine types by using information such as **Model Name**, **CPU** **vendor**, **CPU model**, **GPU manufacturer**, and **GPU model**.
+> You can also click **Advanced Filter** to select multiple filter items progressively for faster machine type lookup.
 
 #### 9.1.3 Modify model
 
@@ -1078,9 +1051,8 @@ This topic describes how to modify a model.
 
 This topic describes how to delete a model.
 
-**Warning**
+> **Warning:** Before you delete a model, make sure that no instances are using this model. The deletion is irreversible.
 
-Before you delete a model, make sure that no instances are using this model. The deletion is irreversible.
 1. Log on to the BMCP Operations Platform.
 2. Click **Basic Configuration > Models**.
 3. Click **Delete** in the **Operation** column of the target model.
@@ -1125,9 +1097,9 @@ By default, the **Custom image** tab is displayed.
 4. Manage the image:
 i. Delete the image a. Click **Delete image** in the **Operation** column of the image. b. In the message that appears, confirm the information and click **OK**.
 
-**Important**
+> **Important:** Before you delete an image, make sure that no instances use this image. The delete operation is irreversible.
 
-Before you delete an image, make sure that no instances use this image. The delete operation is irreversible. ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
+ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
 
 #### 9.2.2 Public images
 
@@ -1159,9 +1131,11 @@ By default, the **Custom image** tab is displayed.
  openssl dgst -sha256 -verify public.key -signature signature.bin imagefile
 ```
 
-**Note**
-
-Before you run the command, make sure that the public key, signature file, and image are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file.
+> **Note:** Before you run the command, make sure that the public key, signature file, and image are downloaded.
+> Set the following parameters to the actual values:
+> `public.key` indicates the public key.
+> `signature.bin` indicates the signature file.
+> `imagefile` indicates the image file.
 
 ### 9.3 GPU settings
 
@@ -1203,9 +1177,8 @@ This topic describes how to modify the information of a GPU.
 4. Modify the parameters. You can modify the GPU manufacturer (Chinese), GPU model
 (Chinese), GPU memory size, and TFLOPS parameters.
 
-**Note**
+> **Note:** You cannot modify the GPU manufacturer or GPU model parameter.
 
-You cannot modify the GPU manufacturer or GPU model parameter.
 5. Click **OK**.
 
 #### 9.3.4 Remove a GPU
@@ -1227,9 +1200,8 @@ The **Clutser/Node Logs** tab is displayed by default.
 3. Click **Create Task**. Specify **Task Name**, **Log Type**, **Resource Scope**, and **Time Range**.
 Click **OK**.
 
-**Note**
+> **Note:** When **Log Type** is **Cluster**, the cluster must be a bare metal-intelligent computing cluster, bare metal-supercomputing cluster, converged computing cluster, or ACK- intelligent computing cluster that contains bare metal nodes.
 
-When **Log Type** is **Cluster**, the cluster must be a bare metal-intelligent computing cluster, bare metal-supercomputing cluster, converged computing cluster, or ACKintelligent computing cluster that contains bare metal nodes.
 4. Locate the task and click **Details** in the **Actions** column to view task details.
 5. When the **Log Collection Status** of the task is **Complete**, select the task and click
 **Export Logs** to download the compressed log package.

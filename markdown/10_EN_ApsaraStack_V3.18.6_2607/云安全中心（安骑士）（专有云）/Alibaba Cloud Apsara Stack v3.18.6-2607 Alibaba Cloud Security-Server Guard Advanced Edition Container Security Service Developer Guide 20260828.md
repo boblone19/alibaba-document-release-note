@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 189
 source_pdf: "92e5294fcfeb1cee_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Developer Guide 20260828
@@ -121,16 +121,16 @@ Obtain API information Obtain an AccessKey pair or STS Make prepara access crede
 1. Obtain an AccessKey pair.
 Obtain the AccessKey credential that is required for calling an API operation. For more information, see Obtain an AccessKey pair or Obtain an AccessKey pair assigned by STS.
 
-**Note**
+> **Note:** We recommend that you use an AccessKey pair or STS access credentials of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use an AccessKey pair or STS access credentials of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 3. Obtain the organization ID and the resource set ID.
 You must call an API operation to obtain an organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. You must call an API operation to obtain a resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide.
 
-**Note**
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set.
+> If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used.
+> If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set, you must also specify an organization ID.
 
-When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used. If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set, you must also specify an organization ID.
 4. View the developer guide of the cloud service that you want to use to learn how to make the API call.
 To learn the features of API operations and how to call the API operations, obtain the developer guide of the Apsara Stack service that you want to use. For more information, see Apsara Stack documentation.
 5. Obtain the endpoint of the cloud service.
@@ -146,9 +146,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An access credential that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -164,9 +162,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -195,9 +191,15 @@ Alibaba Cloud STS allows you to manage temporary credentials to your Alibaba Clo
 i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click **User Information**. iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with your current session name.
+> In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role.
+> "sts.aliyuns.com": Replace it with the endpoint of STS.
 
 ```
 public static void main(String[] args) {
@@ -260,9 +262,14 @@ ned in the previous step.
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The following sample code
 provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourStsAccesskeyID>: Replace it with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret.
+> <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS.
+> <yourResourceGroupID>: Replace it with the actual resource set ID.
+> <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -348,9 +355,14 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and manage the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. Variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> Variables:
+> <your-region-id>: Replace this variable with the region ID.
+> <your-access-key-id>: Replace this variable with your AccessKey ID.
+> <your-access-key-secret>: Replace this variable with your AccessKey secret.
+> <your-endpoint>: Replace this variable with the endpoint of the service.
+> <API-version>: Replace this variable with the version of the API.
+> <your-action>: Replace this variable with the name of the API operation.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -541,9 +553,10 @@ x-acs-security-token field to the header.
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
@@ -581,9 +594,14 @@ Before you create a client instance, you must obtain a region ID, an AccessKey I
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and manage the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <your_region_id>: Replace this variable with the region ID.
+> <your_access_key_id>: Replace this variable with your AccessKey ID.
+> <your_access_key_secret>: Replace this variable with your AccessKey secret.
+> <your-endpoint>: Replace this variable with the endpoint of the service.
+> <API-version>: Replace this variable with the version of the API.
+> <your-action>: Replace this variable with the name of the API operation.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}','{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>') # The endpoint of the service. request.set_version('<API-version>') # The version of the API. request.set_action_name('<your-action>') # The name of the API operation.
@@ -597,9 +615,9 @@ tion>') request.add_query_param('PageNumber', '1') request.add_query_param('Page
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. If you use Python 2.x, run the following command to install the core library:
+If you use Python 2.x, run the following command to install the core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -722,9 +740,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HT
 
 **Ignore certificates**
 
-**Important**
-
-When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported. To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
+> **Important:** When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported.
+> To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -769,9 +786,14 @@ To use Apsara Stack SDK for Go, perform the following steps:
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and manage the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. Variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
+> Variables:
+> <your_region_id>: Replace this variable with the region ID.
+> <your_access_key_id>: Replace this variable with your AccessKey ID.
+> <your_access_key_secret>: Replace this variable with your AccessKey secret.
+> <your-endpoint>: Replace this variable with the endpoint of the service.
+> <API-version>: Replace this variable with the version of the API.
+> <your-action>: Replace this variable with the name of the API operation.
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
@@ -959,9 +981,7 @@ The default value is `false` .
 
 **Settings**
 
-**Important**
-
-When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation by default. If your code environment does not have a certificate, a validation error occurs. To ensure secure communication in a production environment, keep this validation enabled. To ignore certificate validation in a test environment, use the following settings.
+> **Important:** When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation by default. If your code environment does not have a certificate, a validation error occurs. To ensure secure communication in a production environment, keep this validation enabled. To ignore certificate validation in a test environment, use the following settings.
 
 ```
 // Set HTTPSInsecure for the request (affects only the current request). request.SetHTTPSInsecure(true) // Set HTTPSInsecure for the request to true. isInsecure := request.GetHTTPSInsecure() // Get the HTTPSInsecure setting for the requ est.

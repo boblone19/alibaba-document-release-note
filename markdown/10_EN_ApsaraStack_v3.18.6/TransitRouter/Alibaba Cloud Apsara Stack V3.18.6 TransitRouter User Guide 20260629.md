@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 60
 source_pdf: "6dc3670ae2d75242_Alibaba Cloud Apsara Stack V3.18.6 TransitRouter User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20TransitRouter%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # TransitRouter User Guide 20260629
@@ -50,22 +50,24 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. sole
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Networking > CEN**.
 
 ## 2 CEN instances
@@ -78,7 +80,8 @@ Cloud Enterprise Network (CEN) instances are basic network resources that are us
 
 **Create a CEN instance**
 
-1. Log in to the CEN console.
+## 1 Log in to the CEN console.
+
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, click **Create a CEN instance**.
@@ -91,16 +94,22 @@ table.
 | Cloud Enterprise Network Name | Enter a name for the CEN instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), and hyphens (-). It must start with a letter. _ |
 | Description | Enter a description for the CEN instance. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://. |
 
-Before you click Submit to create the instance, you can view and check the configuration of the instance in the right-side **Configuration overview** pane. You can click a field to go to the corresponding parameter location and modify the parameter setting required to create the instance based on your business requirements. You can click **Quota Management** (the organization/resource set does not have quotas) or click **Management** (the organization/resource set has quotas) in the
-**Quota** section to manage quotas for cloud services.
-For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+> **Note:** Before you click Submit to create the instance, you can view and check the configuration of the instance in the right-side **Configuration overview** pane.
+> You can click a field to go to the corresponding parameter location and modify the parameter setting required to create the instance based on your business requirements.
+> You can click **Quota Management** (the organization/resource set does not have quotas) or click **Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services.
+> For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+
 6. Click **Submit**.
 
 **What to do next**
 
 **View CEN instances**
 
-On the **CEN Instance** page, you can click the ID of a CEN instance to view its information. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. Enter a keyword or specify **advanced filter conditions** to search for a specific CEN instance. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click the icon next to the name in the **Cen ID/name** column to modify the name of a CEN instance. Click the icon next to the description in the **Description** column to modify the description of a CEN instance. Click the number in the **Forwarding router** column to manage the transfer routers connected to a CEN instance.
+On the **CEN Instance** page, you can click the ID of a CEN instance to view its information.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+Enter a keyword or specify **advanced filter conditions** to search for a specific CEN instance. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click the icon next to the name in the **Cen ID/name** column to modify the name of a CEN instance. Click the icon next to the description in the **Description** column to modify the description of a CEN instance. Click the number in the **Forwarding router** column to manage the transfer routers connected to a CEN instance.
 
 **Manage tags**
 
@@ -108,7 +117,9 @@ On the **Cen instance** page, you can add tags to CEN instances to mark and grou
 
 **Delete CEN instances**
 
-Before you delete a CEN instance, make sure that the following prerequisites are met: No network instance is attached to the CEN instance. For more information, see Delete a network instance connection. No custom route tables exist on the transit router. For more information, see Delete a custom route table. The transit router is not associated with a multicast domain. For more information, see Delete a multicast domain.
+> **Note:** Before you delete a CEN instance, make sure that the following prerequisites are met:
+
+No network instance is attached to the CEN instance. For more information, see Delete a network instance connection. No custom route tables exist on the transit router. For more information, see Delete a custom route table. The transit router is not associated with a multicast domain. For more information, see Delete a multicast domain.
 1. On the **CEN Instance** page, find the CEN instance that you want to delete and click **Delete**
 in the **Actions** column.
 2. In the **Delete a CEN instance** message, check the CEN instance ID and click **OK**.
@@ -136,7 +147,6 @@ A CEN instance is created. For more information, see Create a CEN instance.
 
 **Create a transit router**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -162,11 +172,21 @@ following table describes the parameters.
 
 **View transit routers**
 
-On the **Basic information** tab of the **CEN instance details** page, you can view transit routers in the list. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use the **Advanced Filter** to filter instances by **instance ID**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click the icon next to the name in the **Instance ID/name** column to modify the name of a transit router. Click the icon next to the description in the **Description** column to modify the description of the transit router.
+On the **Basic information** tab of the **CEN instance details** page, you can view transit routers in the list.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use the **Advanced Filter** to filter instances by **instance ID**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click the icon next to the name in the **Instance ID/name** column to modify the name of a transit router. Click the icon next to the description in the **Description** column to modify the description of the transit router.
 
 **Delete a transit router**
 
-Before you delete a transit router, make sure that the following prerequisites are met: No network instance connections are created on the transit router. For more information about how to delete a network instance connection, see Manage network instance connections. No custom route tables exist on the transit router. For more information about how to delete an added custom route table, see Manage route tables of a transfer router. The default route table of the transit router does not contain custom routes. For more information about how to delete custom routes, see Delete a custom route. The transit router is not associated with a multicast domain. For more information about how to delete a multicast domain, see Manage multicast domains.
+> **Note:** Before you delete a transit router, make sure that the following prerequisites are met:
+
+No network instance connections are created on the transit router. For more information about how to delete a network instance connection, see Manage network instance connections. No custom route tables exist on the transit router. For more information about how to delete an added custom route table, see Manage route tables of a transfer router.
+
+> The default route table of the transit router does not contain custom routes. For more information about how to delete custom routes, see Delete a custom route.
+> The transit router is not associated with a multicast domain. For more information about how to delete a multicast domain, see Manage multicast domains.
+
 1. On the **Cen instance details** page, click the **Basic information** tab.
 2. In the list below the **Basic information** section, find the transit router that you want to
 delete and click **Delete** in the **Actions** column.
@@ -180,7 +200,12 @@ you want to manage and click its ID in the **Instance ID/name** column.
 3. On the **transit router details** page, you can manage transit routers.
 On the **Basic information** tab, you can view and manage the basic information about the transit router. In the **Forwarding router Basic information** section, find the **Instance name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the transit router. In the **Forwarding router Basic information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the transit router. In the **Forwarding router Basic information** section, click **Edit** below the **TR**
 **address segment** parameter. In the **Edit TR address segment** dialog box, modify
-the CIDR block of the transit router. Click **Add** to add CIDR blocks. You can add at most five CIDR blocks. Click the icon on the right of the field to modify the CIDR block of the transit router. Click the icon on the right side of the field to delete the CIDR block. CIDR blocks that already have IP addresses allocated to network connections cannot be modified. If you want to modify a CIDR block with an IP address allocated to a Connect peer, you must first delete the Connect peer that uses the IP address. For more information about how to delete a Connect peer, see Manage Connect peers. Click the **Intra-region connection management** tab to manage the network instance connections on the current transit router. For more information, see Intra-region connection management. Click the **Forwarding router routing table** tab to manage the route tables of the transit router. For more information, see Transit router route tables. Click the **Multicast** tab to manage multicast resources on the transit router. For more information, see Multicast management.
+the CIDR block of the transit router. Click **Add** to add CIDR blocks. You can add at most five CIDR blocks. Click the icon on the right of the field to modify the CIDR block of the transit router. Click the icon on the right side of the field to delete the CIDR block.
+
+> **Note:** CIDR blocks that already have IP addresses allocated to network connections cannot be modified.
+> If you want to modify a CIDR block with an IP address allocated to a Connect peer, you must first delete the Connect peer that uses the IP address. For more information about how to delete a Connect peer, see Manage Connect peers.
+
+Click the **Intra-region connection management** tab to manage the network instance connections on the current transit router. For more information, see Intra-region connection management. Click the **Forwarding router routing table** tab to manage the route tables of the transit router. For more information, see Transit router route tables. Click the **Multicast** tab to manage multicast resources on the transit router. For more information, see Multicast management.
 
 #### 2.2.2 Intra-region connections
 
@@ -214,7 +239,6 @@ You can connect a transit router to a VPC that belongs to the same or a differen
 
 **Procedure**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -253,12 +277,12 @@ following table describes the parameters.
 
 **Change the vSwitches of a VPC connection**
 
-After you create a VPC connection, you can change the vSwitches of the VPC connection. Before you change the vSwitches of a VPC connection, make sure that the VPC does not contain a route entry whose next hop points to the ENI of the transit router. If such route entries exist, delete them from the VPC first. For more information, see **Route tables >**
-**Manage custom route entries** in **VPC User Guide**.
+After you create a VPC connection, you can change the vSwitches of the VPC connection.
 
-**Warning**
+> **Note:** Before you change the vSwitches of a VPC connection, make sure that the VPC does not contain a route entry whose next hop points to the ENI of the transit router. If such route entries exist, delete them from the VPC first. For more information, see **Route tables >** **Manage custom route entries** in **VPC User Guide**.
 
-If you change the vSwitch of a VPC connection, the connection may be interrupted for up to 15 seconds. Proceed with caution.
+> **Warning:** If you change the vSwitch of a VPC connection, the connection may be interrupted for up to 15 seconds. Proceed with caution.
+
 1. On the **details page of the transit router** , click the **Intra-region connection**
 **management** tab and click the ID of the VPC connection that you want to manage.
 2. In the **Connection details** panel, click **Edit zone/Subnet** in the **Associate network**
@@ -277,7 +301,6 @@ The VBRs that you want to connect are created. For more information, see **Creat
 
 **Procedure**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -339,9 +362,10 @@ The system creates a Connect attachment between a transit router and an on-premi
 
 The system creates a Connect attachment between a transit router and an on-premises network based on the VBR connections. Therefore, the system creates a virtual route table that is not displayed in the console. The virtual route table contains the routes that are learned by all the VBRs in the region from the on-premises network. Then, the transit router queries the virtual route table and the network tunnel before the transit router forwards network traffic from Alibaba Cloud to the on-premises network. For network traffic that goes from the on-premises network to Alibaba Cloud, the system queries the route table of the VBR and the route table that is associated with the VBR connection when network traffic reaches the Express Connect circuit. Then, network traffic is forwarded to the destination cloud resource. If the transit router is connected to multiple VBRs and the VBRs learn the same routes from the on-premises network, the virtual route table contains routes that have the same destination CIDR block but different next hops. Equal-cost multi-path (ECMP) routing is automatically enabled based on the routes.
 
-**Important**
-
-In a scenario where the transit router is connected to multiple VBRs (active/standby Express Connect circuits are deployed): If the VBRs and the on-premises network use BGP dynamic routing, and one of the Express Connect circuits fails, network traffic is automatically switched to a healthy Express Connect circuit. If the VBRs and the on-premises network use static routes, health checks are enabled for the VBRs, and one of the Express Connect circuits fails, network traffic is automatically switched to a healthy Express Connect circuit. If the VBRs and the on-premises network use static routes, health checks are disabled for the VBRs, and one of the Express Connect circuits fails, network traffic is still forwarded to the faulty Express Connect circuits because the system cannot detect Express Connect errors. In this case, your services may be interrupted.
+> **Important:** In a scenario where the transit router is connected to multiple VBRs (active/standby Express Connect circuits are deployed):
+> If the VBRs and the on-premises network use BGP dynamic routing, and one of the Express Connect circuits fails, network traffic is automatically switched to a healthy Express Connect circuit.
+> If the VBRs and the on-premises network use static routes, health checks are enabled for the VBRs, and one of the Express Connect circuits fails, network traffic is automatically switched to a healthy Express Connect circuit.
+> If the VBRs and the on-premises network use static routes, health checks are disabled for the VBRs, and one of the Express Connect circuits fails, network traffic is still forwarded to the faulty Express Connect circuits because the system cannot detect Express Connect errors. In this case, your services may be interrupted.
 
 **Limits**
 
@@ -353,7 +377,6 @@ A transit router is deployed in the region where you want to create a Connect at
 
 **Create a Connect attachment**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -413,7 +436,6 @@ This topic describes how to manage network instance connections.
 
 **Procedure**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -424,13 +446,28 @@ you want to manage and click its ID in the **Instance ID/name** column.
 7. On the **Forwarding router details** page, click the **Intra-region connection**
 **management** tab.
 8. On the **Intra-region connection management** tab, you can perform the following
-operations: View the information about network instance connections in the list Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can click **Advanced Filter** to filter instances by **instance ID** or **instance type**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click an instance ID in the **Instance ID/name** column to view the **basic connection**
+operations: View the information about network instance connections in the list
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can click **Advanced Filter** to filter instances by **instance ID** or **instance type**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click an instance ID in the **Instance ID/name** column to view the **basic connection**
 **information** and **associated network instances**.
 In the **Connection details** panel, click the ID of the network instance in the **Associate**
 **network instances**section to view the details of the network instance.
-Delete a network instance connection After a network connection is deleted, the network associated with the network instance connection cannot communicate with other networks by using the transit router. Before you delete a network instance connection, make sure that the following requirements are met: The network instance connection is not associated with a custom route table. For more information about how to disassociate a custom route table from a network instance connection, see Disassociate a network instance from the route table of a transit router. No route learning policy is associated with the network instance connection. For more information about how to disassociate from route learning policies, see Delete a route learning policy. The route tables of the transit router do not contain a custom route entry whose next hop is the network instance connection. For more information about how to delete a custom route entry from the route table of a transfer router, see Delete a custom route entry. The network instance connection is not associated with the following resources: To delete a virtual private cloud (VPC) connection, make sure that the route tables of the VPC do not contain a route entry whose next hop is the transit router. For more information about how to delete a VPC route, see **Route tables > Manage custom route entries** in **VPC**
-**User Guide**.
-To delete a Connect attachment, make sure that the Connect attachment is not specified as a multicast source or member, and the Connect attachment does not have a Connect peer. For more information about how to remove multicast sources and members, see Delete a multicast group. For more information about how to delete a Connect peer, see Manage Connect peers. a. Find the network instance connection that you want to delete and click **Uninstall** in the
+Delete a network instance connection
+
+> **Note:** After a network connection is deleted, the network associated with the network instance connection cannot communicate with other networks by using the transit router.
+> Before you delete a network instance connection, make sure that the following requirements are met:
+
+The network instance connection is not associated with a custom route table. For more information about how to disassociate a custom route table from a network instance connection, see Disassociate a network instance from the route table of a transit router.
+
+> No route learning policy is associated with the network instance connection. For more information about how to disassociate from route learning policies, see Delete a route learning policy.
+> The route tables of the transit router do not contain a custom route entry whose next hop is the network instance connection. For more information about how to delete a custom route entry from the route table of a transfer router, see Delete a custom route entry.
+> The network instance connection is not associated with the following resources:
+> To delete a virtual private cloud (VPC) connection, make sure that the route tables of the VPC do not contain a route entry whose next hop is the transit router. For more information about how to delete a VPC route, see **Route tables > Manage custom route entries** in **VPC** **User Guide**.
+> To delete a Connect attachment, make sure that the Connect attachment is not specified as a multicast source or member, and the Connect attachment does not have a Connect peer.
+
+For more information about how to remove multicast sources and members, see Delete a multicast group. For more information about how to delete a Connect peer, see Manage Connect peers. a. Find the network instance connection that you want to delete and click **Uninstall** in the
 **Actions** column.
 b. Perform the following operations based on the instance type: To delete a VPC connection, delete the resources on the **VPC route entry**,
 **Associated forwarding**, **Route learning**, and **CEN route entry** tabs in the
@@ -451,7 +488,6 @@ A transit router supports one default route table created by the system and cust
 
 **Create a custom route table**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -481,7 +517,16 @@ tab.
 1. In the left-side list on the **Forwarding router routing table** tab, click the ID of the route
 table that you want to manage. You can enter an ID to perform fuzzy match.
 2. In the **Basic routing table information** section, you can view and manage the basic
-information about the route table. In the **Basic information** section, find the **Instance name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the route table. In the **Basic information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the route table. If the **type** of the route table is **Custom route table,** you can click **Delete** in the upperright corner of the **Basic routing table information** section to delete the route table. The default system route table cannot be deleted. You can delete a custom route table that you no longer use. Before you delete a custom route table, make sure that the following requirements are met: The custom route table does not contain associated forwarding correlations. For more information about how to delete associated forwarding correlations, see Delete an associated forwarding correlation. The custom route table does not contain route learning policies. For more information about how to delete route learning correlations, see Delete a route learning policy. The custom route table does not contain custom routes. For more information about how to delete custom routes, see Delete a custom route. Click the **Route entry** tab to manage route entries. For more information, see Route entries. Click the **Associate forwarding** tab to manage association forwarding correlations. For more information, see Associated forwarding. Click the **Route learning** tab to manage route learning policies. For more information, see Route learning. Click the **Routing Policy** tab to manage routing policies. For more information, see Routing policies.
+information about the route table. In the **Basic information** section, find the **Instance name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the route table. In the **Basic information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the route table. If the **type** of the route table is **Custom route table,** you can click **Delete** in the upperright corner of the **Basic routing table information** section to delete the route table.
+
+> **Note:** The default system route table cannot be deleted. You can delete a custom route table that you no longer use.
+> Before you delete a custom route table, make sure that the following requirements are met:
+
+The custom route table does not contain associated forwarding correlations. For more information about how to delete associated forwarding correlations, see Delete an associated forwarding correlation. The custom route table does not contain route learning policies. For more information about how to delete route learning correlations, see Delete a route learning policy.
+
+> The custom route table does not contain custom routes. For more information about how to delete custom routes, see Delete a custom route.
+
+Click the **Route entry** tab to manage route entries. For more information, see Route entries. Click the **Associate forwarding** tab to manage association forwarding correlations. For more information, see Associated forwarding. Click the **Route learning** tab to manage route learning policies. For more information, see Route learning. Click the **Routing Policy** tab to manage routing policies. For more information, see Routing policies.
 
 ##### 2.2.3.2 Route entries
 
@@ -489,7 +534,6 @@ Route tables of transit routers support custom route entries. This topic describ
 
 **Add a custom route entry**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -517,7 +561,11 @@ following table describes the parameters.
 
 **View route entries**
 
-On the **Routing entry** tab, view the information about your routing entries in the route entry list. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use the **Advanced Filter** to search for route entries by **destination CIDR block**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. If the **route type** of a route entry is **Static route**, you can click the icon in the
+On the **Routing entry** tab, view the information about your routing entries in the route entry list.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use the **Advanced Filter** to search for route entries by **destination CIDR block**. Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. If the **route type** of a route entry is **Static route**, you can click the icon in the
 **Description** column to modify the description of the route entry.
 **Route states**:
 **Available**: The route is available.
@@ -532,7 +580,8 @@ can be transmitted through the standby route.
 
 **Delete custom route entries**
 
-Routes that are automatically learned by the transit router cannot be deleted. If you no longer need to use a custom route, you can delete the custom route.
+> **Note:** Routes that are automatically learned by the transit router cannot be deleted. If you no longer need to use a custom route, you can delete the custom route.
+
 1. On the **Route entry** tab, find the custom route that you want to delete and click **Delete** in
 the **Actions** column.
 2. In the **Delete Route Entry** message, click **OK**.
@@ -562,7 +611,6 @@ Each network instance connection can have an associated forwarding correlation w
 
 **Create an associated forwarding correlation**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -587,15 +635,18 @@ parameters and click **OK**. The following table describes the parameters.
 
 **View associated forwarding correlations**
 
-On the **Associated forwarding** tab, view the associated forwarding correlation of the route table. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use the **Advanced Filter** to search for associated forwarding correlations by
+On the **Associated forwarding** tab, view the associated forwarding correlation of the route table.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use the **Advanced Filter** to search for associated forwarding correlations by
 **network instance ID**.
 Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order.
 
 **Delete associated forwarding correlations**
 
-**Warning**
+> **Warning:** After the associated forwarding correlation between a network instance connection and a transit router route table is deleted, the network instance can no longer use the transit router to communicate with other networks. Proceed with caution.
 
-After the associated forwarding correlation between a network instance connection and a transit router route table is deleted, the network instance can no longer use the transit router to communicate with other networks. Proceed with caution.
 1. On the **Associated forwarding** tab, find the network instance connection that you want to
 manage and click **Disassociate a forwarding relationship** in the **Actions** column.
 2. In the **Prompt** message, click **OK**.
@@ -606,7 +657,6 @@ This topic describes how to create a route learning policy for a network instanc
 
 **Creates a route learning policy**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -634,7 +684,11 @@ information about the routes whose **route type** is **Automatic learning**.
 
 **View route learning policies**
 
-On the **Routing learning** tab, view the information about your route learning policies. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use the **Advanced Filter** to search for route learning policies by **network**
+On the **Routing learning** tab, view the information about your route learning policies.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use the **Advanced Filter** to search for route learning policies by **network**
 **instance ID**.
 Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order.
 
@@ -713,7 +767,6 @@ You can create routing policies to filter and modify routes. This allows you to 
 
 **Create a routing policy**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -748,13 +801,19 @@ following table describes the parameters.
 
 **View route entries**
 
-On the **Routing Policy** tab, view the information about your routing policies in the policy list. Up to 100 pages of policies can be displayed in the list, and up to 100 policies can be displayed on each page. If more than 10,000 policies exist, specify filter conditions to filter the policies. You can use the **advanced filter** to search for specific routing policies by **routing policy**
+On the **Routing Policy** tab, view the information about your routing policies in the policy list.
+
+> **Note:** Up to 100 pages of policies can be displayed in the list, and up to 100 policies can be displayed on each page. If more than 10,000 policies exist, specify filter conditions to filter the policies.
+
+You can use the **advanced filter** to search for specific routing policies by **routing policy**
 **ID** or **associated route table ID**.
 Click the icon in the upper-right corner of the list to specify the columns that you want to display in the list. You can also drag and drop the items to adjust their order. Click the icon to view the match conditions of a routing policy in the **Match Rules** column.
 
 **Modify a routing policy**
 
-You cannot change the route table that is associated with the routing policy or the direction in which the routing policy applies. The routing policy created by the system cannot be modified. The priority of a routing policy created by the system is higher than 1000. If you do not want the default routing policy to take effect, you must add a custom routing policy that has a higher priority than the default routing policy.
+> **Note:** You cannot change the route table that is associated with the routing policy or the direction in which the routing policy applies.
+> The routing policy created by the system cannot be modified. The priority of a routing policy created by the system is higher than 1000. If you do not want the default routing policy to take effect, you must add a custom routing policy that has a higher priority than the default routing policy.
+
 1. On the **Routing Policy** tab, find the routing policy that you want to modify and click **Edit** in
 the **Actions** column.
 2. On the **Edit Route Map** page, modify the **Policy Priority**, **Description**, **Match**
@@ -780,7 +839,11 @@ Multicast is a type of group communication where the same data packet is transmi
 
 **Benefits**
 
-Compared with unicast and broadcast, multicast can reduce workloads on servers and increase bandwidth utilization in one-to-many network communication scenarios. In the following example, live streaming is used to show the differences between unicast and multicast, and the benefits of multicast. The differences between broadcast and multicast are not discussed in this topic. You can research the differences if needed. How unicast works In unicast scenarios, the live streaming server must transmit two packets: Unicast Packet 1 and Unicast Packet 2. The router then forwards Unicast Packet 1 to Client 3 and Unicast Packet 2 to Client 4, as shown in the following figure. How multicast works In multicast scenarios, you can add the live streaming server and the clients to the same multicast group. When the server transmits a data packet to Client 3 and Client 4, only one data packet (Multicast Packet 1) needs to be transmitted to the multicast group. The packet is forwarded by the multicast routers and replicated on the multicast routers that are nearest to the clients. The number of replicas is determined by the number of clients in the multicast group. After the packet is replicated, the multicast routers forward the replicas to the clients, as shown in the following figure. In unicast scenarios, the live streaming server must transmit a packet to every client. The routers must forward every packet. The workloads on the server and the bandwidth usage greatly increase as the number of clients grows. In multicast scenarios, the live streaming server and the clients can be added to the same multicast group. The server needs to transmit only one packet to the multicast group. The multicast routers need to forward only one packet. The packet is replicated on the multicast routers that are nearest to the clients. Multicast can reduce server workloads and bandwidth usage even if the number of clients is large.
+Compared with unicast and broadcast, multicast can reduce workloads on servers and increase bandwidth utilization in one-to-many network communication scenarios. In the following example, live streaming is used to show the differences between unicast and multicast, and the benefits of multicast.
+
+> **Note:** The differences between broadcast and multicast are not discussed in this topic. You can research the differences if needed.
+
+How unicast works In unicast scenarios, the live streaming server must transmit two packets: Unicast Packet 1 and Unicast Packet 2. The router then forwards Unicast Packet 1 to Client 3 and Unicast Packet 2 to Client 4, as shown in the following figure. How multicast works In multicast scenarios, you can add the live streaming server and the clients to the same multicast group. When the server transmits a data packet to Client 3 and Client 4, only one data packet (Multicast Packet 1) needs to be transmitted to the multicast group. The packet is forwarded by the multicast routers and replicated on the multicast routers that are nearest to the clients. The number of replicas is determined by the number of clients in the multicast group. After the packet is replicated, the multicast routers forward the replicas to the clients, as shown in the following figure. In unicast scenarios, the live streaming server must transmit a packet to every client. The routers must forward every packet. The workloads on the server and the bandwidth usage greatly increase as the number of clients grows. In multicast scenarios, the live streaming server and the clients can be added to the same multicast group. The server needs to transmit only one packet to the multicast group. The multicast routers need to forward only one packet. The packet is replicated on the multicast routers that are nearest to the clients. Multicast can reduce server workloads and bandwidth usage even if the number of clients is large.
 
 **Features**
 
@@ -788,7 +851,22 @@ This section describes the use scenarios and terms of multicast.
 
 **Scenarios**
 
-After you enable multicast for a transit router, you can create and manage multicast networks in the following scenarios: Create a multicast network in a virtual private cloud (VPC), as shown in Multicast Network 1 in Figure 1. Create a multicast network among VPCs that are deployed in the same region, as shown in Multicast Network 2 in Figure 1. Create a multicast network between an on-premises network and a VPC, as shown in Figure 2. Figure 1: Figure 1_Create a multicast network on Apsara Stack Figure 2: Figure 2_Create a multicast network between an on-premises network and a VPC The multicast feature across cloud and on-premises environments relies on the peer device (on-premises switch) in the following scenarios: Multicast with multicast sources in the cloud and multicast members onpremises The on-premises switch must support Layer 3 multicast and static IGMP joining. The on-premises switch must support the GRE tunnel feature. GRE tunnels must support PIM DM/SM/SSM. The on-premises switch must support RPF checking, and the rpfroute-static entry can point to the GRE tunnel. Multicast with multicast sources on-premises and multicast members in the cloud The on-premises switch must support Layer 3 multicast and static IGMP joining. The on-premises switch must support the GRE tunnel feature. GRE tunnels must support PIM DM/SM/SSM. The on-premises switch must support RPF checking, and the rpfroute-static entry can point to the GRE tunnel. GRE tunnels can be configured with static IGMP groups.
+After you enable multicast for a transit router, you can create and manage multicast networks in the following scenarios: Create a multicast network in a virtual private cloud (VPC), as shown in Multicast Network 1 in Figure 1. Create a multicast network among VPCs that are deployed in the same region, as shown in Multicast Network 2 in Figure 1. Create a multicast network between an on-premises network and a VPC, as shown in Figure 2. Figure 1: Figure 1_Create a multicast network on Apsara Stack Figure 2: Figure 2_Create a multicast network between an on-premises network and a VPC
+
+> **Note:** The multicast feature across cloud and on-premises environments relies on the peer device (on-premises switch) in the following scenarios:
+> Multicast with multicast sources in the cloud and multicast members on- premises
+> The on-premises switch must support Layer 3 multicast and static IGMP joining.
+> The on-premises switch must support the GRE tunnel feature.
+> GRE tunnels must support PIM DM/SM/SSM.
+
+The on-premises switch must support RPF checking, and the rpfroute-static entry can point to the GRE tunnel.
+
+> Multicast with multicast sources on-premises and multicast members in the cloud
+> The on-premises switch must support Layer 3 multicast and static IGMP joining.
+> The on-premises switch must support the GRE tunnel feature.
+> GRE tunnels must support PIM DM/SM/SSM.
+
+The on-premises switch must support RPF checking, and the rpfroute-static entry can point to the GRE tunnel. GRE tunnels can be configured with static IGMP groups.
 
 **Terms**
 
@@ -838,7 +916,6 @@ This topic describes how to use a transit router to create and manage a multicas
 
 **Create a multicast domain**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -866,7 +943,13 @@ following table describes the parameters.
 1. On the **Multicast** tab, click the ID of the multicast domain that you want to manage in the
 left-side multicast domain list. You can perform fuzzy match to search for multicast domains by ID.
 2. In the **Basic multicast domain information** section, view the basic information about the
-multicast domain and manage the multicast domain. In the **Basic multicast domain information** section, find the **Multicast Domain name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the multicast domain. In the **Basic multicast domain information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the multicast domain. In the **Basic multicast domain information** section, click **Delete** in the upper-right corner to delete the multicast domain. Before you delete a multicast domain, make sure that the following requirements are met: The multicast domain is disassociated from all vSwitches. For more information about how to disassociate a vSwitch, see the "Disassociate a vSwitch" section in the Manage vSwitches topic. All multicast sources and members are removed from the multicast domain. For more information about how to remove multicast sources and members, see Delete a multicast group. Click the **Switch** tab to manage the multicast domain and its vSwitches. For more information, see Manage vSwitches. Click the **Multicast group** tab to manage multicast sources and members in the multicast domain. For more information, see Crate and manage a multicast group.
+multicast domain and manage the multicast domain. In the **Basic multicast domain information** section, find the **Multicast Domain name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the multicast domain. In the **Basic multicast domain information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the multicast domain. In the **Basic multicast domain information** section, click **Delete** in the upper-right corner to delete the multicast domain.
+
+> **Note:** Before you delete a multicast domain, make sure that the following requirements are met:
+> The multicast domain is disassociated from all vSwitches. For more information about how to disassociate a vSwitch, see the "Disassociate a vSwitch" section in the Manage vSwitches topic.
+> All multicast sources and members are removed from the multicast domain. For more information about how to remove multicast sources and members, see Delete a multicast group.
+
+Click the **Switch** tab to manage the multicast domain and its vSwitches. For more information, see Manage vSwitches. Click the **Multicast group** tab to manage multicast sources and members in the multicast domain. For more information, see Crate and manage a multicast group.
 
 ##### 2.2.4.3 Manage vSwitches
 
@@ -875,7 +958,6 @@ After you create a multicast domain, you can associate it with one or more vSwit
 **Associate with a vSwitch**
 
 You can repeat the following steps to associate the multicast domain with vSwitches of different virtual private clouds (VPCs).
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -900,7 +982,8 @@ table describes the parameters.
 
 **Disassociate from a vSwitch**
 
-Before you disassociate a multicast domain from a vSwitch, make sure that the vSwitch does not contain a multicast source or a multicast member. For more information about how to remove multicast sources and members, see Delete a multicast group.
+> **Note:** Before you disassociate a multicast domain from a vSwitch, make sure that the vSwitch does not contain a multicast source or a multicast member. For more information about how to remove multicast sources and members, see Delete a multicast group.
+
 1. On the **Switch** tab, find the vSwitch from which you want to disassociate the multicast
 domain and click **Unbind** in the **Actions** column.
 2. In the **Unbind Switch** message, click **OK**.
@@ -911,7 +994,6 @@ This topic describes how to create and manage multicast sources and multicast me
 
 **Add a multicast source**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -936,7 +1018,6 @@ manage.
 
 **Add a multicast member**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **Cen instance** page, find the CEN instance that you want to manage and click its ID
@@ -983,7 +1064,6 @@ As the number of CEN instances increases, management of CEN instances becomes mo
 
 **Add tags to a CEN instance**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. The following steps show how to add tags to CEN instances on the **CEN Instance** page:
@@ -998,7 +1078,6 @@ c. In the **Edited** message, confirm the tag information and click **Close**. A
 
 **Remove tags from CEN instances**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **CEN Instance** page, perform the following steps to remove tags from CEN
@@ -1009,7 +1088,6 @@ c. In the **Edited** message, confirm the tag information and click **Close**.
 **Search for CEN instances by tag**
 
 After you add tags to CEN instances, you can search CEN instances by tag.
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **CEN Instance**.
 4. On the **CEN Instance** page, choose **Advanced Filter > Tag**.
@@ -1028,9 +1106,8 @@ After you enable health checks for a VBR, a ping packet is transmitted from the 
 **consecutive ping packets, or the ping packets are returned from other routes**, the
 Express Connect circuit is declared unhealthy.
 
-**Warning**
-
-Make sure that the destination IP address of health checks is reachable and the data center does not throttle or block ping packets. If a throttling mechanism, such as Control Plane Policing (CoPP) or local attack defense, is enabled for the gateway devices in the data center, ping packets may be dropped. As a result, the system may frequently switch between Express Connect circuits. We recommend that you disable throttling for the gateway devices in the data center.
+> **Warning:** Make sure that the destination IP address of health checks is reachable and the data center does not throttle or block ping packets.
+> If a throttling mechanism, such as Control Plane Policing (CoPP) or local attack defense, is enabled for the gateway devices in the data center, ping packets may be dropped. As a result, the system may frequently switch between Express Connect circuits. We recommend that you disable throttling for the gateway devices in the data center.
 
 **Usage notes on standby Express Connect circuits**
 
@@ -1043,7 +1120,6 @@ The VBR that is associated with an Express Connect circuit is connected to a tra
 
 **Step 1: Configure health checks in the console**
 
-1. Log in to the CEN console.
 2. In the top navigation bar, select the region in which the CEN instance resides.
 3. In the left-side navigation pane, click **Health Check**.
 4. On the **Health Check** page, click **Set health check**.
@@ -1067,9 +1143,10 @@ table describes the parameters.
 You also need to configure health checks in the data center to ensure that health checks can run as expected.
 1. Add a backhaul route for health check ping packets in the data center.
 
-**Important**
+> **Important:** If the VBR uses Border Gateway Protocol (BGP), Apsara Stack automatically advertises the source IP address of the health check as a route whose subnet mask is 32 bits in length to the data center after the health check is configured. In this case, you do not need to add a backhaul route.
+> If the VBR uses static routes, you must manually add a route whose destination CIDR block is the source IP address of the health check, subnet mask is 32 bits in length in the data center, and next hop points to the Express Connect circuit. Otherwise, the ping packets cannot be returned through the Express Connect circuit, which will be declared unhealthy.
 
-If the VBR uses Border Gateway Protocol (BGP), Apsara Stack automatically advertises the source IP address of the health check as a route whose subnet mask is 32 bits in length to the data center after the health check is configured. In this case, you do not need to add a backhaul route. If the VBR uses static routes, you must manually add a route whose destination CIDR block is the source IP address of the health check, subnet mask is 32 bits in length in the data center, and next hop points to the Express Connect circuit. Otherwise, the ping packets cannot be returned through the Express Connect circuit, which will be declared unhealthy. The following example shows how to add a backhaul route. The example is for reference only. For more information about the configuration commands, consult the vendor of your gateway device.
+The following example shows how to add a backhaul route. The example is for reference only. For more information about the configuration commands, consult the vendor of your gateway device.
 
 ```
 #Configure a backhaul route for probe packets.

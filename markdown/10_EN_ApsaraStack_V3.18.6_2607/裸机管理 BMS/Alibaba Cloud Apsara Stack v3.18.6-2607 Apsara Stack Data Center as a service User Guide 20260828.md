@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 60
 source_pdf: "9b755361f8418f9b_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service User Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service User Guide 20260828
@@ -168,9 +168,12 @@ Console and press the Enter key.
 2. Enter the username and password.
 You must obtain the username and password from the operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To improve security, the password must be 8 to 20 characters in length and contain at least two of the following types:
+> English uppercase or lowercase letters (A to Z, a to z)
+> Arabic numerals (0 to 9)
+> special character (such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%))
+> The admin account has all permissions and allows you to perform unlimited operations. Exercise caution when performing operations.
 
-The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To improve security, the password must be 8 to 20 characters in length and contain at least two of the following types: English uppercase or lowercase letters (A to Z, a to z) Arabic numerals (0 to 9) special character (such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)) The admin account has all permissions and allows you to perform unlimited operations. Exercise caution when performing operations.
 3. Click Log On to go to the Apsara Uni-manager Operations Console page.
 4. In the top navigation bar, choose **Products > Computing > Bare Metal**
 **ManagementBMS**.
@@ -269,24 +272,20 @@ For more information about the template format, see the following table or downl
 | bms | x86 _ 64 | test- mt | 123 456 | install os _ | publi c | C e n t o s- 7 . 9 - x 8 6 _ 6 4 | te st - v p c- 0 1 | t e st - s u b n e t- 0 1 | X X X . X X X . X X X . X X X | n a m e | p a s s w o r d | t e st - a p p ly - 0 1 | t e st - a p pl y- 0 1 |   |
 | no clone _ | x86 _ 64 | test- mt | 654 321 | install os _ | custo mize | A n ol is O S - 8 . 6 | te st - v p c- 0 1 | t e st - s u b n e t- 0 1 | X X X . X X X . X X X . X X X | n a m e | p a s s w o r d | t e st - a p p ly - 0 2 | t e st - a p pl y- 0 2 |   |
 
-**Note**
-
-The relevant main parameters in the template are annotated as follows (parameter values are not case-sensitive):
-**Architecture**: the CPU architecture. Valid values: x86_64/aarch64/sw_64.
-**Model**: the model.
-**SN**: Serial number.
-**Creation Type**: specifies whether to use the initial image. Valid values:
-origin_image. Use the initial image. Install_os.
-**Image Type**: the image type. You can set this parameter to public or customize.
-**Virtual Private Cloud**: Virtual Private Cloud ID.
-**VSwitch**: the ID of the VSwitch.
-**Virtual Private Cloud IP**: Virtual Private Cloud IP specified by the user. If no IP is
-specified, the system will automatically assign an IP address.
-**Logon Name**: the username that is used to log on to the system.
-**Logon Password**: the password of the system logon user.
-**Host Name**: the hostname.
-**Instance Name**: the name of the instance.
-**Instance Description**: the description of the instance.
+> **Note:** The relevant main parameters in the template are annotated as follows (parameter values are not case-sensitive):
+> **Architecture**: the CPU architecture. Valid values: x86_64/aarch64/sw_64.
+> **Model**: the model.
+> **SN**: Serial number.
+> **Creation Type**: specifies whether to use the initial image. Valid values: origin_image. Use the initial image. Install_os.
+> **Image Type**: the image type. You can set this parameter to public or customize.
+> **Virtual Private Cloud**: Virtual Private Cloud ID.
+> **VSwitch**: the ID of the VSwitch.
+> **Virtual Private Cloud IP**: Virtual Private Cloud IP specified by the user. If no IP is specified, the system will automatically assign an IP address.
+> **Logon Name**: the username that is used to log on to the system.
+> **Logon Password**: the password of the system logon user.
+> **Host Name**: the hostname.
+> **Instance Name**: the name of the instance.
+> **Instance Description**: the description of the instance.
 
 #### 3.2.3 Re-apply for an instance
 
@@ -429,9 +428,8 @@ the **Batch Mount Storage** page.
 5. On the **Batch Mount Storage** page, select a **storage type** and configure the parameters
 based on the storage type**.** For example, ISCSI contains the following parameters: server IP address /domain name, server IQN, client IQN, client mount path, LumID, and CHAP verification.
 
-**Note**
+> **Note:** Currently, three storage types are supported: ISCSI, NFS, and Direct Mount.
 
-Currently, three storage types are supported: ISCSI, NFS, and Direct Mount.
 6. After you configure the preceding parameters, you can click **Add Storage** in the lower part
 of the page to add a storage, or click **Submit** to mount the storage.
 
@@ -446,9 +444,8 @@ Label column.
 4. In the **Edit Tag** dialog box, select an existing tag or enter a new **tag key** and **tag value**.
 5. Click **OK**.
 
-**Note**
-
-You can create up to 20 tags and bind them to resources at the same time. A tag key must be unique.
+> **Note:** You can create up to 20 tags and bind them to resources at the same time.
+> A tag key must be unique.
 
 #### 3.2.12 Deletes a tag.
 
@@ -585,11 +582,8 @@ select an image platform and system architecture.
 5. Select a local image file. Supported image formats are tgz and qcow2.
 6. Click **OK**.
 
-**Note**
+> **Note:** The certificate of the logon environment affects the image upload. Check the validity period of the certificate of the logon environment. If the certificate expires, the **Image** **Upload Failed** message appears when you upload an image. You can contact the environment administrator or troubleshoot the issue by yourself.
 
-The certificate of the logon environment affects the image upload. Check the validity period of the certificate of the logon environment. If the certificate expires, the **Image**
-**Upload Failed** message appears when you upload an image. You can contact the
-environment administrator or troubleshoot the issue by yourself.
 1. After an error is reported when you upload the image file, enable the browser developer
 mode.
 2. Find the error message in the developer console and copy the "https…" error link.
@@ -602,9 +596,8 @@ redirected to the new page.
 
 This topic describes how to use public images. The environment in which you are logged on already has the relevant image resources. Currently, the platform provides two public images in the tgz and qcow2 formats. By default, some adapted public images are provided on the platform. If the image information on the Public Images page is empty or the public image is not in the Available state, contact developers. If the public image is in the Disable state, you cannot view the image information on the bare metal creation page. You need to change the image status to Enabled on the Image Management page. Some public images are only used to migrate products that are compatible with earlier versions. You cannot export images.
 
-**Note**
+> **Note:** Public images do not provide the delete operation.
 
-Public images do not provide the delete operation.
 1. Log on to the BMS console.
 2. In the left-side navigation pane, choose **Bare-Metal Instance Management****>****Images**.
 3. On the **Images** page, click the **Public Images** tab in the upper-left corner.
@@ -738,7 +731,7 @@ provide feedback to the relevant O&M personnel, the processing method can be set
 
 ### 3.6 Key pairs
 
-Key pairs are a secure and convenient login authentication method provided by Apsara Stack. A key pair consists of a public key and a private key. Key pairs can be used to log in to only Linux instances.
+> Key pairs are a secure and convenient login authentication method provided by Apsara Stack. A key pair consists of a public key and a private key. Key pairs can be used to log in to only Linux instances.
 
 **Advantages**
 
@@ -774,19 +767,15 @@ i. Find the key pair whose sharing settings you want to modify. In the Actions c
 **> Sharing Settings**.
 ii. In the Sharing Settings dialog box, modify the Sharing Scope parameter.
 
-**Note**
+> **Note:** Valid values: **Current Organization and Subordinate Organizations** , **Current** **Resource Set**, and **Current Organization**.
 
-Valid values: **Current Organization and Subordinate Organizations** , **Current**
-**Resource Set**, and **Current Organization**.
 iii. Then, click **OK**.
 
 **Verify the result**
 
 After the key pair is created, your browser downloads the private key file to your computer.
 
-**Important**
-
-The private key file is automatically downloaded to your computer only if you select Automatically Create Key Pair. The private key file is not stored in the BMS console. Keep the private key file confidential. If the file is lost, it cannot be restored.
+> **Important:** The private key file is automatically downloaded to your computer only if you select Automatically Create Key Pair. The private key file is not stored in the BMS console. Keep the private key file confidential. If the file is lost, it cannot be restored.
 
 **What to do next**
 
@@ -795,9 +784,7 @@ tags, and click **OK**.
 **Batch remove tags**: Select multiple key pairs, click **Bulk unbind tags** below the list,
 specify the tags that you want to remove, and click **OK**.
 
-**Note**
-
-Multiple tags are removed at a time based on tag keys. After you select a tag key, all tags with the same tag key are selected.
+> **Note:** Multiple tags are removed at a time based on tag keys. After you select a tag key, all tags with the same tag key are selected.
 
 #### 3.6.2 Bind a key pair to an ECS bare metal instance
 
@@ -809,9 +796,8 @@ This topic describes how to bind a key pair to an Elastic Compute Service (ECS) 
 3. Select a filter condition, such as **Key Pair Name**, from the drop-down list and enter the
 relevant information into the search box. The key pairs that meet the specified filter condition are automatically displayed.
 
-**Note**
+> **Note:** You can specify multiple filter conditions to narrow down the search results.
 
-You can specify multiple filter conditions to narrow down the search results.
 4. In the Actions column of the desired key pair, click **Bind Key Pair**.
 5. In the dialog box that appears, select ECS bare metal instances in the **Select Bare Metal**
 **Instance** list and click **OK**.
@@ -826,9 +812,8 @@ This topic describes how to unbind a key pair from an Elastic Compute Service (E
 3. Select a filter condition, such as **Key Pair Name**, from the drop-down list and enter the
 relevant information into the search box. The key pairs that meet the specified filter condition are automatically displayed.
 
-**Note**
+> **Note:** You can specify multiple filter conditions to narrow down the search results.
 
-You can specify multiple filter conditions to narrow down the search results.
 4. In the Actions column of the desired key pair, click **Unbind Key Pair**.
 5. In the dialog box that appears, select ECS bare metal instances in the **Select Bare Metal**
 **Instance** list and click **OK**.
@@ -990,9 +975,8 @@ This topic describes how to query out-of-band managed instances and view the det
 into the search box, and then click **Search** to search for instances that meet the filter condition. The following filter conditions are supported: **Instance Name**, **Instance ID**, **SN**,
 **BMC IP Address**, and **Tag**.
 
-**Note**
+> **Note:** You can select **Automatic Identification** to automatically identify the keyword you entered.
 
-You can select **Automatic Identification** to automatically identify the keyword you entered.
 4. After you find the desired instance, click its name in the **Instance Name** column or click
 **Manage** in the Actions column to go to the **Instance Details** page. On the page that
 appears, you can view information such as the instance name, SN, region, online status, power status, agent status, creation time, data center and room, and network.
@@ -1206,9 +1190,7 @@ Bare Metal Cloud Assistant is developed based on Elastic Compute Service (ECS) C
 
 After instances that have the Cloud Assistant client installed enter the **Running** state, you can use Cloud Assistant to perform the following operations on the instances by using the BMS console or by calling API operations: Run batch and PowerShell scripts on Windows instances, or run shell scripts on Linux instances. Run the same script on multiple instances. The execution of the script on one instance does not affect that on other instances. Specify custom parameters in Cloud Assistant commands to adapt to different scenarios.
 
-**Note**
-
-Cloud Assistant does not initiate any operations on its own. You have full control over all Cloud Assistant operations.
+> **Note:** Cloud Assistant does not initiate any operations on its own. You have full control over all Cloud Assistant operations.
 
 **Use scenarios**
 
@@ -1218,9 +1200,9 @@ Cloud Assistant helps you perform deployment and O&M tasks on ECS bare metal ins
 
 You can configure recurring Cloud Assistant tasks only by calling API operations. The interval at which a command is run cannot be less than 10 seconds. For files or commands that consist of batch, PowerShell, or shell scripts with custom parameters, the following limits apply to their sizes after Base64 encoding: If a command is created not by using the immediate execution feature, the command cannot exceed 18 KB in size after Base64 encoding. If a command is created and run simultaneously by using the immediate execution feature and is saved, the command cannot exceed 18 KB in size after Base64 encoding. If a command is created and run simultaneously by using the immediate execution feature but is not saved, the command cannot exceed 24 KB in size after Base64 encoding. A file that you want to upload cannot exceed 32 KB in size after Base64 encoding. Each command can contain up to 20 custom parameters. Cloud Assistant commands can be run only on instances that use the following OSs: Alibaba Cloud Linux CentOS 7, CentOS 8, and later
 
-**Note**
+> **Note:** CentOS 8 reached end of life (EOL) and is no longer maintained by the Linux community. We recommend that you migrate from CentOS 8 to Anolis or Alibaba Cloud Linux.
 
-CentOS 8 reached end of life (EOL) and is no longer maintained by the Linux community. We recommend that you migrate from CentOS 8 to Anolis or Alibaba Cloud Linux. Debian 9 OpenSUSE SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later Ubuntu 14, Ubuntu 16, Ubuntu 18, and later Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
+Debian 9 OpenSUSE SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later Ubuntu 14, Ubuntu 16, Ubuntu 18, and later Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
 
 **Terms**
 
@@ -1314,9 +1296,8 @@ You can use Cloud Assistant commands to quickly perform routine tasks on bare me
 OF=/backup/my-backup-$(date +%Y%m%d).tgz tar -cf $OF {{file}}
 ```
 
-**Note**
+> **Note:** In the preceding example command, `{{file}}` is a custom parameter. You can set this parameter to the target object file that you want to archive when you run the command, such as /app/usrcredential. Custom parameters support dynamic values and value reuse across scenarios. We recommend that you use custom parameters for security-sensitive data and environment-specific data, such as AccessKey pairs, instance IDs, authorization codes, time parameters, and critical system files.
 
-In the preceding example command, `{{file}}` is a custom parameter. You can set this parameter to the target object file that you want to archive when you run the command, such as /app/usrcredential. Custom parameters support dynamic values and value reuse across scenarios. We recommend that you use custom parameters for security-sensitive data and environment-specific data, such as AccessKey pairs, instance IDs, authorization codes, time parameters, and critical system files.
 1. Log on to the Bare Metal Management BMS console.
 2. In the left-side navigation pane, select **O&M and Monitoring > Bare Metal Cloud**
 **Assistant**.
@@ -1354,9 +1335,9 @@ command.
 
 After you create a Cloud Assistant command, you can run the command on one or more bare metal instances. The execution status and results of the command on multiple instances do not affect each other. Before you run the Cloud Assistant command, the target instance must meet the following conditions: The instances are in the **Running** ( `Running` ) state. The Cloud Assistant client is installed on the instances.
 
-**Important**
+> **Important:** Only operations administrators, organization administrators, and resource set administrators can run Cloud Assistant commands.
 
-Only operations administrators, organization administrators, and resource set administrators can run Cloud Assistant commands. You can call an API operation to run a command on up to 50 instances each time. If the number of instances on which command operations are executed at a time through the bare metal management BMS console is greater than 50, the system automatically executes commands in batches.
+You can call an API operation to run a command on up to 50 instances each time. If the number of instances on which command operations are executed at a time through the bare metal management BMS console is greater than 50, the system automatically executes commands in batches.
 1. Log on to the BMS console.
 2. In the left-side navigation pane, choose **Maintenance&Monitoring > Bare Metal Cloud**
 **Assistant**.
@@ -1387,9 +1368,8 @@ ii. In the **Select Servers** section, select one or more servers on which you w
 
 You can clone an existing Cloud Assistant command to create another command. You can retain all information of the original command (cloned command), or modify the name, description, type, content, execution path, or timeout period for the new command (command clone).
 
-**Important**
+> **Important:** Only operations administrators, organization administrators, and resource set administrators can clone commands.
 
-Only operations administrators, organization administrators, and resource set administrators can clone commands.
 1. Log on to the BMS console.
 2. In the left-side navigation pane, choose **Maintenance&Monitoring > Bare Metal Cloud**
 **Assistant**.
@@ -1444,9 +1424,8 @@ view the command execution results.
 
 The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
 
-**Important**
+> **Important:** Only operations administrators, organization administrators, and resource set administrators can delete commands.
 
-Only operations administrators, organization administrators, and resource set administrators can delete commands.
 1. Log on to the BMS console.
 2. In the left-side navigation pane, choose **Maintenance&Monitoring > Bare Metal Cloud**
 **Assistant**.

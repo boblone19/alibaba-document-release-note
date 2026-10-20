@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 167
 source_pdf: "16145930a1b16f69_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console User Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Management%20Console%20User%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console User Guide
@@ -321,17 +321,17 @@ press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 ntroduction
 
 ## 4 Web page introduction
@@ -416,9 +416,8 @@ If your homepage is the default homepage, you can customize the dashboards for t
 
 If Default Homepage is selected on the Menu Permissions tab of your role, no dashboards are displayed in the workbench on the homepage. You can manually configure a URL to be displayed on the homepage.
 
-**Note**
+> **Note:** This URL supports only domain names of the oneconsole type. You can view and access a URL only by using the account and the role that are used to specify the URL. For more information, see Create a menu.
 
-This URL supports only domain names of the oneconsole type. You can view and access a URL only by using the account and the role that are used to specify the URL. For more information, see Create a menu.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Home.
 3. Click **Configure Iframe**.
@@ -439,9 +438,7 @@ This topic describes the metrics available for each service. CloudMonitor checks
 
 **Basic metrics**
 
-**Note**
-
-The following metrics are collected from the virtual host layer and are slightly different from metrics collected inside the operating system.
+> **Note:** The following metrics are collected from the virtual host layer and are slightly different from metrics collected inside the operating system.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -459,9 +456,9 @@ The following metrics are collected from the virtual host layer and are slightly
 
 **Operating system metrics**
 
-**Note**
-
-For ECS instances, you must install a monitoring plug-in to collect metrics at the operating system level. Installation method: In the left-side navigation pane of the Cloud Monitor console, choose Cloud Service Monitoring and click **ECS**. In the **ECS** monitoring list, select the instances that you want to monitor, and click **Batch Install** in the lower part of the page. Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
+> **Note:** For ECS instances, you must install a monitoring plug-in to collect metrics at the operating system level.
+> Installation method: In the left-side navigation pane of the Cloud Monitor console, choose Cloud Service Monitoring and click **ECS**. In the **ECS** monitoring list, select the instances that you want to monitor, and click **Batch Install** in the lower part of the page.
+> Metric data is displayed in the monitoring chart in 5 to 10 minutes after the monitoring plug-in is installed.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -928,9 +925,9 @@ You can view alert information to stay up to date on the running status of Elast
 
 Alert information contains information for all items that do not comply with your configured alert rules.
 
-**Note**
+> **Note:** The system can retain up to one million alert items generated within the last three months.
+> This topic describes how to view alert information for ECS. You can view the alert information for other cloud resources in a similar manner.
 
-The system can retain up to one million alert items generated within the last three months. This topic describes how to view alert information for ECS. You can view the alert information for other cloud resources in a similar manner.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud Monitor**.
 3. In the left-side navigation pane of the Cloud Monitor page, choose **Alerts > Alert History**.
@@ -976,9 +973,8 @@ For Elastic Compute Service (ECS) instances, you must install a monitoring plug-
 4. In the ECS instance list, select the instances that you want to monitor and click **Batch**
 **Install**.
 
-**Note**
+> **Note:** The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plug- in is installed.
 
-The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plugin is installed.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud Monitor**.
 3. In the left-side navigation pane of the Cloud Monitor page, click **Cloud Service**
@@ -986,9 +982,8 @@ The monitoring chart displays monitoring data 5 to 10 minutes after the monitori
 4. Click a cloud service.
 5. Click **Alert Rules** in the **Actions** column corresponding to an instance.
 
-**Note**
+> **Note:** You can also use the search feature to query specific instances for which you want to create alert rules.
 
-You can also use the search feature to query specific instances for which you want to create alert rules.
 6. On the **Alert Rules** page, click **Create Alert Rule**.
 Table 1. Parameters for creating an alert rule
 
@@ -1076,14 +1071,15 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key. ud on Alibaba Cloud
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
 
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4.
 5. In the top navigation bar, choose **Products > Elastic Computing > VMware Cloud on**
@@ -1117,17 +1113,16 @@ Before you use VMware Cloud on Alibaba Cloud virtual machine (VM) templates, you
 
 You must select appropriate operating systems for VMware Cloud on Alibaba Cloud VM templates. The following operating systems are confirmed to be supported and available in the Apsara Uni-manager Management Console: CentOS8.2.2004 CentOS7.2003 CentOS6.10 Ubuntu-20.04.1 Ubuntu-18.04.5 Ubuntu-16.04.7 WindowsServer2016 WindowsServer2019 The Apsara Uni-manager Management Console supports VMware vSphere 6.x. Other versions of VMware vSphere such as 5.x or 7.x can be supported in theory. However, whether or not specific versions are supported depends on the compatibility of the VMware Cloud on Alibaba Cloud API and must be evaluated by the R&D team of the Apsara Unimanager Management Console. The Apsara Uni-manager Management Console does not support the import of existing VMware instances. You must install VMware Tools. For more information, see the VMware documentation. Select Full Installation in the installation process. You must modify network interface controller (NIC) configurations in the operating system of the VM. When you create a VM in the Apsara Uni-manager Management Console, you can specify the IP address of the operating system. This feature is supported by valid NIC configurations. ud on Alibaba Cloud Operating systems of VM templates must be in Dynamic Host Configuration Protocol (DHCP) mode. Information such as the MAC address and universally unique identifier (UUID) in the NIC configurations must be removed. The following information can be retained.
 
-**Note**
-
-Some additional configurations are required for the following operating systems: CentOS 6: You must clear the content in the NIC configuration file named 70persistent-net.rules. The file is stored in the /etc/udev/rules.d/ directory. CentOS 7: The system generates the name for a NIC, such as ifcfg-ens160. You must modify the name to ifcfg-eth0 to make the name take effect. Ubuntu 18.04, 20.04, and later: You must run the `sudo rm /etc/netplan/*.yaml` command to remove the NIC configurations.
+> **Note:** Some additional configurations are required for the following operating systems:
+> CentOS 6: You must clear the content in the NIC configuration file named 70- persistent-net.rules. The file is stored in the /etc/udev/rules.d/ directory.
+> CentOS 7: The system generates the name for a NIC, such as ifcfg-ens160. You must modify the name to ifcfg-eth0 to make the name take effect.
+> Ubuntu 18.04, 20.04, and later: You must run the `sudo rm /etc/netplan/*.yaml` command to remove the NIC configurations.
 
 ##### 7.1.3.2 Suggestions
 
 Before you use VMware Cloud on Alibaba Cloud virtual machine (VM) templates, take note of the following operation suggestions: Select the latest version of VM hardware. Select thin provision for VM disks. Disk replication is required when you create VMs based on templates. Files of disks of the thin provision type are small in size. This helps accelerate the creation of VMs.
 
-**Note**
-
-Large sizes of disk files in VM templates or slow storage write speeds may cause VM creation to time out and fail. The maximum timeout period supported by the Apsara Unimanager Management Console is 10 minutes.
+> **Note:** Large sizes of disk files in VM templates or slow storage write speeds may cause VM creation to time out and fail. The maximum timeout period supported by the Apsara Uni- manager Management Console is 10 minutes.
 
 #### 7.1.4 Instances
 
@@ -1222,9 +1217,9 @@ column.
 5. Enter the username and password.
 For a Linux instance, enter the username root and the logon password. ud on Alibaba Cloud
 
-**Note**
+> **Note:** When you log on to the Linux instance, the password is not displayed as you enter it. Press the Enter key after you enter the password.
 
-When you log on to the Linux instance, the password is not displayed as you enter it. Press the Enter key after you enter the password. For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the page and select the corresponding composite key from the drop-down list. Enter the username and password, and click the Log On icon.
+For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click the List icon in the upper-right corner of the page and select the corresponding composite key from the drop-down list. Enter the username and password, and click the Log On icon.
 
 ##### 7.1.4.5 Stop an instance
 
@@ -1329,9 +1324,7 @@ You can perform the following steps to create a custom image.
 
 You can create a custom image from an instance to replicate the data of all disks on the instance. ud on Alibaba Cloud
 
-**Note**
-
-To avoid data security risks, we recommend that you delete sensitive data from an instance before you use the instance to create a custom image.
+> **Note:** To avoid data security risks, we recommend that you delete sensitive data from an instance before you use the instance to create a custom image.
 
 **Create a custom image from an instance**
 
@@ -1466,9 +1459,8 @@ box, and then click **Search**. You can select multiple filter options to narrow
 
 You can detach data disks. System disks cannot be detached.
 
-**Warning**
+> **Warning:** Resources are released after disks are detached. Make sure that the data of a disk is backed up before you detach it.
 
-Resources are released after disks are detached. Make sure that the data of a disk is backed up before you detach it.
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1589,9 +1581,7 @@ This topic describes how to sort organizations that belong to the same parent or
 3. In the left-side navigation pane of the Enterprise page, click **Organizations**.
 4. In the left-side organization tree, drag an organization to adjust its position in the tree.
 
-**Note**
-
-You can adjust the position only among organizations of the same level.
+> **Note:** You can adjust the position only among organizations of the same level.
 
 #### 8.1.3 View organization information
 
@@ -1747,9 +1737,8 @@ Administrators can delete organizations that are no longer needed.
 
 Before you delete an organization, make sure that the organization does not contain users, resource sets, or subordinate organizations. Otherwise, the organization cannot be deleted.
 
-**Warning**
+> **Warning:** After the organization is deleted, the data of the organization cannot be recovered. Proceed with caution.
 
-After the organization is deleted, the data of the organization cannot be recovered. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1832,9 +1821,9 @@ You can delete resource sets that are no longer needed as an administrator.
 
 The resource set to be deleted does not contain resources, users, or user groups.
 
-**Important**
+> **Important:** A resource set cannot be deleted if it contains resources, users, or user groups.
+> The default resource set cannot be deleted.
 
-A resource set cannot be deleted if it contains resources, users, or user groups. The default resource set cannot be deleted.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Resource Sets**.
@@ -1917,12 +1906,12 @@ Operations on the **Role authorization** page are the same as those for creating
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
 4. In the role list, choose
 > **Copy** in the **Actions** column corresponding to a role.
+
 5. On the **Create Custom Role** page, set the new role name, sharing scope, and
 management permissions.
 
-**Note**
+> **Note:** The role name must be unique.
 
-The role name must be unique.
 6. Complete the basic configurations of the new role, Click **Next**.
 7. In the **Manage permissions** step, select the operation permissions that the new role has
 on the Apsara Uni-manager Management Console, Click **Next**.
@@ -1964,6 +1953,7 @@ Default or preset roles cannot be deleted. Before you delete a role, you must un
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
 4. In the role list, find the role that you want to delete and choose
 > **Delete** in the **Actions**
+
 column.
 5. In the message that appears, click **OK**.
 
@@ -2041,6 +2031,7 @@ You can add, change, and delete roles for a user.
 4. Click the **System Users** tab.
 5. Find the user that you want to modify and choose
 > **Authorize** in the **Actions** column.
+
 6. In the **Role** field, add, delete, or change user roles.
 You can enter role names in this field. Fuzzy match is supported.
 7. Click **OK**.
@@ -2058,9 +2049,8 @@ icon to the left of the organization that you want to manage and click **Users**
 7. In the **Organization to Change** dialog box, select the original or a new organization and
 select the role to be added or removed from the **Assigned Roles** drop-down list.
 
-**Note**
+> **Note:** If you change only roles without changing the organization, select the original organization.
 
-If you change only roles without changing the organization, select the original organization.
 8. Click **Modify**.
 
 ##### 8.4.1.5 Modify the information about a user group
@@ -2091,6 +2081,7 @@ A logon policy is created. For more information, see Create an access policy.
 5. Modify one or more user logon policies.
 If you modify only one user logon policy, perform the following steps: a. Find the user whose logon policy that you want to modify and choose
 > **Configure**
+
 **Logon Policy** in the **Actions** column.
 b. In the **Assign Logon Policy** dialog box, select a new logon policy and click **OK**. If you modify multiple user logon policies at the same time, perform the following steps: a. Select users whose logon policies that you want to modify. b. In the lower-left corner of the page, click **Configure Logon Policy**. c. In the **Batch Assign Logon Policy** dialog box, select a new logon policy and click **OK**.
 
@@ -2107,11 +2098,10 @@ Organization administrators can view the initial passwords of all users in the o
 4. Click the **System Users** tab.
 5. Find the user that you want to manage and choose
 > **View Initial Password** in the
+
 **Actions** column.
 
-**Note**
-
-After the initial password is changed, the initial password is not displayed.
+> **Note:** After the initial password is changed, the initial password is not displayed.
 
 ##### 8.4.1.8 Reset the password of a user
 
@@ -2152,6 +2142,7 @@ You can delete a specific user as an administrator.
 4. Click the **System Users** tab.
 5. Find the user that you want to delete and choose
 > **Delete** in the **Actions** column.
+
 6. In the dialog box prompting you the risks of deleting, select the **I have known the risks**
 **and confirm this delete operation** check box and click **Delete**.
 
@@ -2269,9 +2260,8 @@ The access policy to be deleted is not bound to users. If an access policy is bo
 
 **Background information**
 
-**Note**
+> **Note:** The default policy cannot be deleted.
 
-The default policy cannot be deleted.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2365,6 +2355,7 @@ Before you delete a user group, you must unbind the user group from all roles. O
 3. In the left-side navigation pane, choose **Users > User Groups**.
 4. Find the user group that you want to delete and choose
 > **Delete** in the **Actions**
+
 column.
 5. In the message that appears, click **OK**.
 
@@ -2447,9 +2438,7 @@ information of a secondary node and click **OK**.
 | AccessKey ID | The AccessKey ID of the operations administrator that manages the secondary node. For more information, see View the AccessKey pair of your Apsara Stack tenant account. |
 | AccessKey Secret | The AccessKey secret of the operations administrator that manages the secondary node. For more information, see View the AccessKey pair of your Apsara Stack tenant account. |
 
-**Important**
-
-You must create an operations administrator account in the secondary node. This account is for dedicated use by the primary node and cannot be the default operations administrator account.
+> **Important:** You must create an operations administrator account in the secondary node. This account is for dedicated use by the primary node and cannot be the default operations administrator account.
 
 ##### 8.9.1.3 View managed cloud instances
 
@@ -2895,13 +2884,13 @@ This topic describes the authentication modes. Authentication modes are classifi
 
 In token mode, Resource Access Management (RAM) and Security Token Service (STS) are required. Temporary STS tokens are issued to users and cloud services to assist in permission management. In token mode, all cloud services use STS tokens to authenticate users. Cloud services that do not support STS may be affected. For example, only operations administrators and level- 1 organization administrators can log on to the console of a cloud service.
 
-**Note**
+> **Note:** On the **Authentication Mode** page, you can view the cloud services that support the token mode.
 
-On the **Authentication Mode** page, you can view the cloud services that support the token mode. After you enable the token mode, authentication of northbound APIs may be affected. For example, if you use the AccessKey pair of a RAM user to call an API operation to add, delete, modify, or query specified resources in a specified organization and resource set, and the required RAM policies are not attached to the RAM user, an error may be returned.
+After you enable the token mode, authentication of northbound APIs may be affected. For example, if you use the AccessKey pair of a RAM user to call an API operation to add, delete, modify, or query specified resources in a specified organization and resource set, and the required RAM policies are not attached to the RAM user, an error may be returned.
 
-**Warning**
+> **Warning:** Before you enable the token mode, we recommend that you contact Alibaba Cloud to evaluate the situation. If an error occurs when you call an API operation, disable the token mode.
 
-Before you enable the token mode, we recommend that you contact Alibaba Cloud to evaluate the situation. If an error occurs when you call an API operation, disable the token mode. ons
+ons
 
 **Hybrid mode**
 
@@ -2916,9 +2905,8 @@ You can select an appropriate authentication mode for different scenarios.
 4. Select **Token Mode** or **Hybrid** based on the scenario.
 If you select **Hybrid**, you can specify a cloud service to use token-based authentication by selecting the checkboxes.
 
-**Important**
+> **Important:** After token-based authentication is enabled, the authentication mode of northbound API operations is affected. We recommend that you contact the Alibaba Cloud service team for evaluation before you enable token-based authentication. If an error occurs when an API operation is called, roll back and disable token-based authentication for the service.
 
-After token-based authentication is enabled, the authentication mode of northbound API operations is affected. We recommend that you contact the Alibaba Cloud service team for evaluation before you enable token-based authentication. If an error occurs when an API operation is called, roll back and disable token-based authentication for the service.
 5. In the lower part of the page, click **Save**.
 
 ### 9.5 Message center
@@ -3236,9 +3224,7 @@ By viewing alerts, you can understand the usage of resource quotas and obtain ex
 history.
 5. Click the alert name to view the alert information.
 
-**Note**
-
-The quota alert history is updated once a day.
+> **Note:** The quota alert history is updated once a day.
 
 ### 10.2 Usage statistics
 
@@ -3260,9 +3246,7 @@ icon to specify a period of time and click **Search**. You can also search for i
 6. **Optional:**Click the
 icon to save the displayed information to your computer as an XLS file. The exported file is named <Resource type name>.xls. Find the downloaded file from the download path in the browser setting.
 
-**Note**
-
-In the console, you can view or export up to 500 statistical records to an XLS file. If you want more statistical data, you can call the MeteringQuery operation.
+> **Note:** In the console, you can view or export up to 500 statistical records to an XLS file. If you want more statistical data, you can call the MeteringQuery operation.
 
 ### 10.3 Statistical analysis
 
@@ -3349,13 +3333,13 @@ This topic describes how to create a tag and add the tag to resources.
 4. On the **Tag management** page, click **Create tags**.
 i. In the **Create tags and bind resources** dialog box, select an existing tag key and tag value or enter a new tag key or tag value. Click **Next**.
 
-**Note**
+> **Note:** You can create up to 20 tags and add the tags to resources at a time. A tag key must be unique.
 
-You can create up to 20 tags and add the tags to resources at a time. A tag key must be unique. ii. In the **Create tags and bind resources** dialog box, select the organization and resource set to which the resource belongs, select the region where the resource resides, select the cloud service to which the resource belongs, and then click **Next**.
+ii. In the **Create tags and bind resources** dialog box, select the organization and resource set to which the resource belongs, select the region where the resource resides, select the cloud service to which the resource belongs, and then click **Next**.
 
-**Note**
+> **Note:** You can select up to 50 cloud resources at a time.
 
-You can select up to 50 cloud resources at a time. iii. Confirm the information about the tag and resource, and click **OK**.
+iii. Confirm the information about the tag and resource, and click **OK**.
 
 ### 10.5 Billing management
 
@@ -3433,9 +3417,7 @@ in the **Operation** column.
 6. In the **Modify billing items** panel, modify parameters of the billable item.
 7. Click **Determine**.
 
-**Warning**
-
-If you modify billing items that are in use, billing data may change. This change cannot be undone. Proceed with caution.
+> **Warning:** If you modify billing items that are in use, billing data may change. This change cannot be undone. Proceed with caution.
 
 ##### 10.5.2.4 Delete a billable item
 
@@ -3445,9 +3427,8 @@ You can delete billable items that are incorrect or no longer needed.
 
 At least one billable item is retained in a billing rule.
 
-**Warning**
+> **Warning:** If you delete billable items, billing data may change. This change cannot be undone. Proceed with caution.
 
-If you delete billable items, billing data may change. This change cannot be undone. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Rules**.
@@ -3490,9 +3471,8 @@ Select a cloud service associated with billing rules from the service drop-down 
 **Search** to view all billing rules in the corresponding state.
 Enter a billing rule name in the search box and click **Search** to search for the billing rule. Fuzzy search is supported.
 
-**Note**
+> **Note:** These filter methods can be used individually or in combination to more easily view and classify existing billing rules.
 
-These filter methods can be used individually or in combination to more easily view and classify existing billing rules.
 5. On the Billing rules page, view **Rule NAME/Status**, **Associated cloud products**, **Rule**
 **description**, **Number of associated policies** , **Included billing items**, and **Fee**.
 6. Click the name of the billing rule that you want to view.
@@ -3531,9 +3511,7 @@ i. In the **Billing item** section, find the billable item that you want to modi
 **Editing** in the **Operation** column.
 ii. In the **Modify billing items** panel, modify related parameters and click **Determine**. For more information about billable item parameters, see Create a billable item.
 
-**Warning**
-
-If you modify billing rules that are in use, billing data may change. This change cannot be undone. Proceed with caution.
+> **Warning:** If you modify billing rules that are in use, billing data may change. This change cannot be undone. Proceed with caution.
 
 ##### 10.5.3.5 Delete a billing rule
 
@@ -3543,9 +3521,8 @@ You can delete billing rules that are incorrect or no longer needed.
 
 A billing rule is preconfigured for each service. This rule is used as the default billing rule and cannot be deleted. Default billable items in the default billing rule cannot be deleted. You can create other billable items.
 
-**Warning**
+> **Warning:** If you delete a billing rule, billing data may change. This change cannot be undone. Proceed with caution.
 
-If you delete a billing rule, billing data may change. This change cannot be undone. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billings Management** > **Billing Rules**.
@@ -3569,9 +3546,8 @@ Select **All statuses**, **Not used**, **In use**, or **Used** from the status d
 **Search** to view all billing policies in the corresponding state.
 Enter a billing policy name in the search box and click **Search** to search for the billing policy. Fuzzy search is supported.
 
-**Note**
+> **Note:** These filtering methods can be used individually or in combination to more easily view and classify existing billing policies.
 
-These filtering methods can be used individually or in combination to more easily view and classify existing billing policies.
 5. On the Billing Policy page, view **Policy name/Status**, **Include rules**, **Association plan**,
 and **Associated organizations**. Move the pointer over the number of rules in the **Include rules** column to view the list of rule names. You can click a rule name to view its details. Move the pointer over the number of plans in the **Association plan** column to view the list of plan names. You can click a plan name to view its details.
 6. Click the name of the billing policy that you want to view.
@@ -3634,9 +3610,7 @@ ii. Click **Save**.
 6. Modify the billing rules and discount rates for each service.
 i. In the **Billing rules** section, click **Editing**. ii. Separately modify the billing rules and discount rates. Select the desired billing rule in the **Rule name** column corresponding to the service that you want to manage. Enter the expected discount rate in the **Discount rate** column corresponding to the service that you want to manage. iii. Click **Save**.
 
-**Warning**
-
-If you modify billing rules that are in use, billing data may change. This change cannot be undone. Proceed with caution.
+> **Warning:** If you modify billing rules that are in use, billing data may change. This change cannot be undone. Proceed with caution.
 
 ##### 10.5.4.5 Delete a billing policy
 
@@ -3646,9 +3620,8 @@ You can delete billing policies that are incorrect or no longer needed.
 
 A billing policy is preconfigured in the system. This policy is used as the default billing policy and cannot be deleted.
 
-**Warning**
+> **Warning:** If you delete a billing policy, billing data may change. This change cannot be undone. Proceed with caution.
 
-If you delete a billing policy, billing data may change. This change cannot be undone. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Policies**.
@@ -3672,9 +3645,8 @@ Select **All statuses**, **Not used**, **In use**, or **Used** from the status d
 **Search** to view all billing plans in the corresponding state.
 Set **Start Date** and **End Date** from the date picker and click **Search** to view all billing plans that are in effect within the specified period of time.
 
-**Note**
+> **Note:** These filtering methods can be used individually or in combination to more easily view and classify existing billing plans.
 
-These filtering methods can be used individually or in combination to more easily view and classify existing billing plans.
 5. On the Billing plan page, view **Plan NAME/Status**, **Billing Policy**, **Billing rules**, **Priority**,
 and **Effective time** of a billing plan. Move the pointer over the number of policies in the **Billing Policy** column to view the list of policy names. You can click a policy name to view its details. Move the pointer over the number of rules in the **Billing rules** column to view the list of rule names. You can click a rule name to view its details. The greater the number in the **Priority** column, the higher the priority of the plan.
 6. Click the name of the billing plan that you want to view.
@@ -3715,9 +3687,7 @@ To simplify billing configurations and avoid unexpected charges due to excessive
 
 6. Click **Determine**.
 
-**Note**
-
-Each billing policy in a billing plan has a priority. When metering data is matched to a billing plan, billing policies in the billing plan are selected based on their priorities. When a billing policy is selected, bills are generated only based on this policy.
+> **Note:** Each billing policy in a billing plan has a priority. When metering data is matched to a billing plan, billing policies in the billing plan are selected based on their priorities. When a billing policy is selected, bills are generated only based on this policy.
 
 ##### 10.5.5.3 Clone a billing plan
 
@@ -3742,19 +3712,17 @@ i. In the **Basic information** section, click **Editing**. You can change **Pla
 6. Change **Effective time**, **Priority**, and **Discount rate** of the billing policy or delete the
 billing policy i. In the **Billing Policy list** section, click **Editing**. ii. Separately change the effective time, priority, and discount rate of a billing policy or delete the billing policy. Select a new effective time from the date picker in the **Effective time** column.
 
-**Note**
+> **Note:** The effective time of the default billing policy cannot be changed.
 
-The effective time of the default billing policy cannot be changed. Enter a desired discount rate in the **Discount rate** column corresponding to the billing policy. Drag and drop the icon corresponding to the billing policy to prioritize it. The closer to the top of the list, the higher the priority. Click **Delete** in the **Operation** column. In the **Do you want to delete the policy?** message, click Delete.
+Enter a desired discount rate in the **Discount rate** column corresponding to the billing policy. Drag and drop the icon corresponding to the billing policy to prioritize it. The closer to the top of the list, the higher the priority. Click **Delete** in the **Operation** column. In the **Do you want to delete the policy?** message, click Delete.
 
-**Note**
+> **Note:** The default billing policy cannot be deleted.
 
-The default billing policy cannot be deleted. iii. Click **Save**.
+iii. Click **Save**.
 7. Add a billing policy.
 i. Click **Add a billing policy**. ii. (Optional) Select a state from the **All statuses** drop-down list and click **Search**. iii. Select the billing policies that you want to add. iv. Click **Determine**. v. Set **Effective time** and **Discount rate** for each billing policy.
 
-**Warning**
-
-If you modify billing plans that are in use, billing data may change. This change cannot be undone. Proceed with caution.
+> **Warning:** If you modify billing plans that are in use, billing data may change. This change cannot be undone. Proceed with caution.
 
 ##### 10.5.5.5 Delete a billing plan
 
@@ -3764,9 +3732,8 @@ You can delete billing plans that are incorrect or no longer needed.
 
 A billing plan is preconfigured in the system. This policy is used as the default billing policy and cannot be deleted.
 
-**Warning**
+> **Warning:** If you delete a billing plan, billing data may change. This change cannot be undone. Proceed with caution.
 
-If you delete a billing plan, billing data may change. This change cannot be undone. Proceed with caution.
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3850,9 +3817,10 @@ The logs that meet the filter conditions are displayed. Alternatively, you can c
 | Details | A brief description of the operation. |
 | Time | The time when the operation started. |
 
-**Note**
+> **Note:** You can click the
+> icon and select the fields that you want to show in
+> the query result from the drop-down list.
 
-You can click the icon and select the fields that you want to show in the query result from the drop-down list.
 4. **Optional:**Click the
 icon to save the logs displayed on the current page to your computer as a CSV file.
 
@@ -3960,9 +3928,9 @@ Description: The current policy version is 1. The policy can have multiple state
 
 Each statement can have its own conditions.
 
-**Note**
+> **Note:** A condition block can contain multiple conditions with different operators and logical combinations of these conditions.
 
-A condition block can contain multiple conditions with different operators and logical combinations of these conditions. You can attach multiple policies to a RAM user. If policies that apply to a request include an `Allow` statement and a `Deny` statement, the Deny statement overrides the Allow statement. Element value: If an element value is a number or Boolean value, it must be enclosed in double quotation marks ("") in the same way as strings. If an element value is a string, characters such as the asterisk ( `*` ) and question mark ( ? ) can be used for fuzzy matching.
+You can attach multiple policies to a RAM user. If policies that apply to a request include an `Allow` statement and a `Deny` statement, the Deny statement overrides the Allow statement. Element value: If an element value is a number or Boolean value, it must be enclosed in double quotation marks ("") in the same way as strings. If an element value is a string, characters such as the asterisk ( `*` ) and question mark ( ? ) can be used for fuzzy matching.
 
 | The asterisk ( * ) indicate example, ecs:Describe* |   | * | ) indicate |   |
 |---|---|---|---|---|
@@ -4013,9 +3981,8 @@ click **OK**.
 **Add Policy** button. In the **Add Policy** dialog box, select a policy or create a new policy,
 and then click **OK**.
 
-**Note**
+> **Note:** You can select a maximum of five policies for a RAM-based batch authorization role.
 
-You can select a maximum of five policies for a RAM-based batch authorization role.
 9. Click **OK**.
 
 #### 12.3.3 Create a permission policy
@@ -4050,9 +4017,9 @@ click **Modify** in the **Actions** column.
 **content** and modify the content based on your business requirements. Then, click **Save**
 **Changes** and **OK**.
 
-**Important**
+> **Important:** The modification affects the roles that reference this policy. Proceed with caution.
 
-The modification affects the roles that reference this policy. Proceed with caution. For more information about how to modify the content of a policy, see Permission policy structure and syntax.
+For more information about how to modify the content of a policy, see Permission policy structure and syntax.
 
 #### 12.3.5 Modify the name of a permission policy attached to a RAM-based batch authorization role
 
@@ -4105,9 +4072,7 @@ If no policy is available, you must create one. In the **Add Policy** dialog box
 **Policy**. For more information about how to enter the policy content, see Permission policy
 structure and syntax.
 
-**Note**
-
-You can select a maximum of five policies for a RAM-based batch authorization role.
+> **Note:** You can select a maximum of five policies for a RAM-based batch authorization role.
 
 #### 12.3.8 Detach a permission policy from a RAM-based batch authorization role
 
@@ -4188,14 +4153,14 @@ section, click Create RAM Role & Attach Policy.
 6. In the **Create RAM Role & Attach Policy** wizard, perform the following steps.
 i. Enter a **Role name** and **Description**, and set the **Sharing Scope**. The description is optional. The value of **Sharing Scope** is **Global** by default, which indicates that the role is visible to and can be used by all organizations. Click **Next**. ii. Select one or more policies or create a new policy. Click **Next**.
 
-**Note**
+> **Note:** You can select a maximum of five policies for a RAM role-based batch authorization role.
 
-You can select a maximum of five policies for a RAM role-based batch authorization role. iii. Select a **Trust Organization** and **Trust Cloud Service** from the drop-down lists. Click
+iii. Select a **Trust Organization** and **Trust Cloud Service** from the drop-down lists. Click
 **Next**.
 
-**Note**
+> **Note:** You can select multiple trust organizations and trust cloud services at a time for a RAM role-based batch authorization role.
 
-You can select multiple trust organizations and trust cloud services at a time for a RAM role-based batch authorization role. iv. In the Preview Policy step, check the content of the selected permission policies and trust policies, and click **Create**.
+iv. In the Preview Policy step, check the content of the selected permission policies and trust policies, and click **Create**.
 
 #### 12.4.3 Modify the content of a permission policy or a trust policy for a RAM role-based batch authorization role
 
@@ -4212,15 +4177,15 @@ policy or trust policy, and click **Modify** in the **Actions** column.
 5. Modify the policy content.
 Modify the content of a custom permission policy
 
-**Important**
+> **Important:** The modification affects the roles that reference this policy. Proceed with caution.
 
-The modification affects the roles that reference this policy. Proceed with caution. a. Click the **Custom Policy** tab and click **Policies**. In the **Policies** panel, click the name of the policy whose content you want to modify. b. The Policy Details panel is displayed. Click the **Policy Content** tab. Click **Modify**
+a. Click the **Custom Policy** tab and click **Policies**. In the **Policies** panel, click the name of the policy whose content you want to modify. b. The Policy Details panel is displayed. Click the **Policy Content** tab. Click **Modify**
 **Policy content** and modify the content based on your business requirements. Then,
 click **Save Changes** and **OK**. For more information about how to modify the policy content, see Permission policy structure and syntax. Modify the content of a trust policy
 
-**Important**
+> **Important:** The modification affects the trust entities of the role. Proceed with caution.
 
-The modification affects the trust entities of the role. Proceed with caution. a. Click the **Trust Policy** tab and click **Modify**. b. (Optional) Select one or more organizations from the **Trust Organization** drop-down list. c. (Optional) Select one or more cloud services from the **Trust Cloud Service** drop-down list. d. In the **Trust Policy** section, modify the content of the policy. Click **Save Changes**. For more information about how to modify the policy content, see Permission policy structure and syntax.
+a. Click the **Trust Policy** tab and click **Modify**. b. (Optional) Select one or more organizations from the **Trust Organization** drop-down list. c. (Optional) Select one or more cloud services from the **Trust Cloud Service** drop-down list. d. In the **Trust Policy** section, modify the content of the policy. Click **Save Changes**. For more information about how to modify the policy content, see Permission policy structure and syntax.
 
 #### 12.4.4 Modify the name of a permission policy for a RAM role-based batch authorization role
 
@@ -4385,9 +4350,7 @@ choose **User Information** from the shortcut menu.
 3. In the **Apsara Stack AccessKey Pair** section, view your AccessKey pair.
 ormation management
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 ### 13.6 Create an AccessKey pair
 
@@ -4398,9 +4361,7 @@ choose **User Information** from the shortcut menu.
 3. In the upper-right corner of the **Apsara Stack AccessKey Pair** section, click **Create**
 **AccessKey Pair**.
 
-**Note**
-
-Each user can have up to two AccessKey pairs.
+> **Note:** Each user can have up to two AccessKey pairs.
 
 ### 13.7 Delete an AccessKey pair
 
@@ -4426,9 +4387,7 @@ choose **User Information** from the shortcut menu.
 disable and click **Disable** in the **Actions** column. ormation management Each user can disable only its own AccessKey pairs. The administrator cannot disable the AccessKey pairs of users.
 4. In the message that appears, click **OK**.
 
-**Note**
-
-Make sure that at least one AccessKey pair is in the Enable state.
+> **Note:** Make sure that at least one AccessKey pair is in the Enable state.
 
 ### 13.9 Enable an AccessKey pair
 
@@ -4440,9 +4399,7 @@ choose **User Information** from the shortcut menu.
 enable and click **Enable** in the **Actions** column.
 4. In the message that appears, click **OK**.
 
-**Note**
-
-Make sure that at least one AccessKey pair is in the Enable state.
+> **Note:** Make sure that at least one AccessKey pair is in the Enable state.
 
 ### 13.10 MFA
 
@@ -4499,9 +4456,9 @@ ormation management
 and choose **MFA Status**. You can select an organization or enter a username to search for a user.
 6. In the **MFA Status** message, click **OK**.
 
-**Note**
-
-After MFA is forcibly enabled for a user, the user must go to the Bind Virtual MFA Device page to bind a virtual MFA device before the user can log on to the Apsara Uni-manager Management Console. MFA can be forcibly enabled for users, but cannot be forcibly disabled. Before MFA is enabled, the MFA status of the user is **Not Enabled**. After MFA is enabled, the MFA status of the user is **Enabled but Not Bound**.
+> **Note:** After MFA is forcibly enabled for a user, the user must go to the Bind Virtual MFA Device page to bind a virtual MFA device before the user can log on to the Apsara Uni-manager Management Console.
+> MFA can be forcibly enabled for users, but cannot be forcibly disabled. Before MFA is enabled, the MFA status of the user is **Not Enabled**.
+> After MFA is enabled, the MFA status of the user is **Enabled but Not Bound**.
 
 #### 13.10.5 Reset MFA
 

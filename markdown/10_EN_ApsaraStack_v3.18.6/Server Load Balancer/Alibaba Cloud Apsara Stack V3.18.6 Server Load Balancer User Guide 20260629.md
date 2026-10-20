@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 126
 source_pdf: "b2058ce27d761781_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Server Load Balancer User Guide 20260629
@@ -105,22 +105,24 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. sole
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Networking > Server Load Balancer**.
 
 ## 3 Quick start
@@ -154,7 +156,7 @@ Apsara Stack provides high-performance SLB instances that use exclusive resource
 | Large II (slb.s3.medium) | 500,000 | 50,000 | 30,000 |
 | Super Large I (slb.s3.large) | 1,000,000 | 100,000 | 50,000 |
 
-The available specifications vary based on the actual scenario. The preceding table is for reference only.
+> **Note:** The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
 **Select a listener protocol**
 
@@ -217,7 +219,11 @@ table.
 |---|---|
 | Elastic Public IP EIP | The EIP. Note This parameter is required only if you set the Instance Type parameter to Intranet and the Network type parameter to VPC and turn on Enable Associated EIP. You can click Create an EIP to create an EIP. The EIP is available after you refresh the list. |
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements. You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services. For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services.
+> For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+
 6. Create the SLB instance
 If a service is created on the Service Management page and **Server Load Balancer**
 **(SLB)** is displayed in the **Cloud resources** column of the service, confirm the
@@ -257,7 +263,10 @@ requests than backend servers with lower weights.
 **Source IP Address**: specifies consistent hashing that is based on source IP
 addresses. Requests from the same source IP address are distributed to the same backend server.
 **Four-element**: specifies consistent hashing that is based on the following
-factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server. Only high-performance SLB instances support consistent hashing.
+factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
+
+> **Note:** Only high-performance SLB instances support consistent hashing.
+
 **Bandwidth Throttling**: specifies whether to enable bandwidth throttling. Applications
 that run on backend ECS instances provide external services. You can set bandwidth caps to limit the service capabilities of applications. In this example, Bandwidth Throttling is turned on.
 **Maximum Bandwidth**: the maximum bandwidth. Valid values: 0 to 1000. Unit:
@@ -354,7 +363,10 @@ An elastic network interface (ENI) is a network interface that can be associated
 
 **Background information**
 
-If multiple ENIs are associated with the ECS instance that you want to add to an SLB instance, you can add both the primary and secondary ENIs of the ECS instance. You can add the primary and secondary ENIs of ECS instances only for highperformance SLB instances. You can add only secondary ENIs in the console. To add primary ENIs, make an API request.
+If multiple ENIs are associated with the ECS instance that you want to add to an SLB instance, you can add both the primary and secondary ENIs of the ECS instance.
+
+> **Note:** You can add the primary and secondary ENIs of ECS instances only for high- performance SLB instances.
+> You can add only secondary ENIs in the console. To add primary ENIs, make an API request.
 
 **Procedure**
 
@@ -366,7 +378,9 @@ is located.
 **ID/Instance Name** column, or click **Manage** in the **Actions** column.
 5. On the instance management details page, click the **vServer Groups**, **Default Server**
 **Group**, or **Primary/Secondary Server Groups** tab.
-You can add ECS instances and their associated primary and secondary ENIs to the default server group, a vServer group, or a primary/secondary server group. A vServer group is used in this example.
+
+> **Note:** You can add ECS instances and their associated primary and secondary ENIs to the default server group, a vServer group, or a primary/secondary server group. A vServer group is used in this example.
+
 6. On the **vServer Groups** tab, click **Create vServer Group**.
 7. On the Create vServer Group page, configure the **vServer Group Name** parameter.
 8. Click **Add** to open the **Servers** panel.
@@ -375,12 +389,17 @@ You can add ECS instances and their associated primary and secondary ENIs to the
 1. In the **Configure Weight** step, configure the **Port** and **Weight** parameters and click **Add**.
 Specify the Port and Weight parameters based on the following information:
 **Port**: The backend port opened on an ECS instance to receive requests.
-You can specify the same port on multiple backend servers for the same SLB instance. In addition, you can click **Add Port** to specify multiple ports on a backend server.
+
+> **Note:** You can specify the same port on multiple backend servers for the same SLB instance.
+> In addition, you can click **Add Port** to specify multiple ports on a backend server.
+
 **Weight**: An ECS instance with a higher weight receives more requests.
 
-**Important**
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests. After you add backend servers to the server group of the listener, you can view the server group that contains the primary and secondary ENIs on the **Instances** page. : indicates an ECS instance. : indicates the primary and secondary ENIs.
+After you add backend servers to the server group of the listener, you can view the server group that contains the primary and secondary ENIs on the **Instances** page. : indicates an ECS instance. : indicates the primary and secondary ENIs.
 2. Select the ECS instances that you want to add and click **Create**. In the **Confirm** message,
 click **OK**.
 
@@ -421,9 +440,9 @@ When you create an Internet-facing SLB instance, the system automatically assign
 
 An internal-facing SLB instance is assigned a private IP address to distribute requests from the internal network of Apsara Stack to backend servers based on the forwarding rules that you configure on listeners. If you want an internal-facing SLB instance to process requests from the Internet, you can associate an elastic IP address (EIP) with the SLB instance. Features of an internal-facing SLB instance when it serves Internet-facing applications: An internal-facing SLB instance can use the associated EIP to provide services over the Internet. You can disassociate the EIP from the SLB instance if you no longer need the EIP. You can associate an EIP with an Internet Shared Bandwidth instance. An EIP that is associated with an Internet Shared Bandwidth instance supports the subscription, pay-asyou-go, and pay-by-95th-percentile-bandwidth billing methods. The network types supported by an internal-facing SLB instance vary based on the billing method of the internal-facing SLB instance. Subscription internal-facing SLB instances support the following network types: classic network and virtual private cloud (VPC). VPC If an internal-facing SLB instance is deployed in a VPC, the private IP address of the SLB instance is allocated from the CIDR block of the specified vSwitch in the VPC. The internal-facing SLB instance can be accessed only by Elastic Compute Service (ECS) instances in the VPC. Classic network If an internal-facing SLB instance is deployed on the classic network, the private IP address of the SLB instance is allocated and managed by Apsara Stack. The internalfacing SLB instance can be accessed only by ECS instances on the classic network.
 
-**Important**
+> **Important:** Internal-facing SLB instances of the classic network type are no longer available for purchase.
 
-Internal-facing SLB instances of the classic network type are no longer available for purchase. Pay-as-you-go internal-facing SLB instances support only the VPC network type.
+Pay-as-you-go internal-facing SLB instances support only the VPC network type.
 
 **Instance specifications**
 
@@ -438,7 +457,7 @@ High-performance SLB instances have the following key metrics: Maximum number of
 | Large II (slb.s3.medium) | 500,000 | 50,000 | 30,000 |
 | Super Large I (slb.s3.large) | 1,000,000 | 100,000 | 50,000 |
 
-The available specifications vary based on the actual scenario. The preceding table is for reference only.
+> **Note:** The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
 #### 4.2.2 Create and manage SLB instances
 
@@ -489,7 +508,11 @@ table.
 |---|---|
 | Elastic Public IP EIP | The EIP. Note This parameter is required only if you set the Instance Type parameter to Intranet and the Network type parameter to VPC and turn on Enable Associated EIP. You can click Create an EIP to create an EIP. The EIP is available after you refresh the list. |
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements. You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services. For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services.
+> For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+
 6. Create the SLB instance
 If a service is created on the Service Management page and **Server Load Balancer**
 **(SLB)** is displayed in the **Cloud resources** column of the service, confirm the
@@ -502,7 +525,11 @@ icon in the upper-right corner of the **Instance Management** page. In the Expor
 
 **View and manage SLB instances**
 
-On the **Instance Management** page, you can view the information about the existing SLB instances. Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records. Enter a keyword or specify a filter condition to filter SLB instances. Click the icon in the upper-right corner of the Instance Management page to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon to the right of a specific column name to sort SLB instances. Click the icon next to **Status** and select an instance state to filter SLB instances. Click the icon next to **Service Address** and select a service address type to filter SLB instances. Find the SLB instance whose monitoring information you want to view and click the icon in the **Monitoring** column to view the information on the Instance, Port, and Fine-grained Monitoring tabs of the Monitoring panel. Find the SLB instance whose name you want to modify, move the pointer over the instance name in the **Instance ID/Name** column, and then click the icon to modify the name of the SLB instance. Find the SLB instance that you want to manage and click the VPC ID, vSwitch ID, or EIP in the **Service Address** column to view the details of the VPC, vSwitch, or EIP. Find the SLB instance whose listener information you want to view and click a port in the
+On the **Instance Management** page, you can view the information about the existing SLB instances.
+
+> **Note:** Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
+Enter a keyword or specify a filter condition to filter SLB instances. Click the icon in the upper-right corner of the Instance Management page to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon to the right of a specific column name to sort SLB instances. Click the icon next to **Status** and select an instance state to filter SLB instances. Click the icon next to **Service Address** and select a service address type to filter SLB instances. Find the SLB instance whose monitoring information you want to view and click the icon in the **Monitoring** column to view the information on the Instance, Port, and Fine-grained Monitoring tabs of the Monitoring panel. Find the SLB instance whose name you want to modify, move the pointer over the instance name in the **Instance ID/Name** column, and then click the icon to modify the name of the SLB instance. Find the SLB instance that you want to manage and click the VPC ID, vSwitch ID, or EIP in the **Service Address** column to view the details of the VPC, vSwitch, or EIP. Find the SLB instance whose listener information you want to view and click a port in the
 **Port/Health Check/Backend Server** column to view the listener information.
 Find the SLB instance whose server group information you want to view and click the backend server state in the **Port/Health Check/Backend Server** column to view the server group information. Click an ECS instance name below a server group to view the details of the ECS instance added to the server group. You can turn on or off **Release Protection** in the Instance Protection column. For more information, see the Configure release protection section of this topic.
 
@@ -526,7 +553,10 @@ instances: Start or stop a single SLB instance: Find the SLB instance that you w
 
 **Release SLB instances**
 
-You can release SLB instances based on your business requirements. Before you release an SLB instance, you must disable release protection.
+You can release SLB instances based on your business requirements.
+
+> **Note:** Before you release an SLB instance, you must disable release protection.
+
 1. On the **Instance Management** page, use one of the following methods to release SLB
 instances: Release a single SLB instance: Find the SLB instance that you want to release, move the pointer over the More icon in the **Actions** column, and then select **Delete** to release the SLB instance. Release multiple SLB instances at a time: Select the SLB instances that you want to release and click **Delete** below the list to release the SLB instances.
 2. In the **Delete** dialog box, click **Release**.
@@ -547,9 +577,9 @@ Copilot to recommend specifications that best suit your business. Click **Choose
 
 You can change the IP address of an SLB instance based on your business requirements.
 
-**Warning**
+> **Warning:** If you change the IP address (VIP) of an SLB instance, your business may be interrupted or request forwarding may be affected. It takes about 5 minutes to change the IP address. Proceed with caution.
+> Before you change the IP address of an SLB instance, make sure that release protection is disabled for the SLB instance and the new IP address is not assigned to another instance.
 
-If you change the IP address (VIP) of an SLB instance, your business may be interrupted or request forwarding may be affected. It takes about 5 minutes to change the IP address. Proceed with caution. Before you change the IP address of an SLB instance, make sure that release protection is disabled for the SLB instance and the new IP address is not assigned to another instance.
 1. On the **Instance Management** page, find the SLB instance whose IP address you want to
 change, move the pointer over the icon in the **Actions** column, and then select **Change**
 **IP Address**.
@@ -633,7 +663,11 @@ In the **Protocol & Listener** step, configure the parameters that are described
 
 **Step 3: Add backend servers**
 
-In the **Backend Servers** step, add backend servers to process requests received by the SLB instance and click **Next**. The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default. If you need to use the primary/secondary vServer group feature, contact Apsara Stack technical support to enable this feature.
+In the **Backend Servers** step, add backend servers to process requests received by the SLB instance and click **Next**.
+
+> **Note:** The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default.
+> If you need to use the primary/secondary vServer group feature, contact Apsara Stack technical support to enable this feature.
+
 **Enable Primary/Secondary Failover**: specifies whether to enable the primary/secondary
 failover feature. If the primary/secondary vServer group feature is enabled, you must turn on this switch. If you turn on Enable Primary/Secondary Failover, configure a primary/secondary vServer group for the listener. For more information, see Primary/secondary vServer groups. If the primary/secondary vServer group feature is disabled or is enabled but Enable Primary/Secondary Failover is turned off, perform the following operations to configure backend servers for the listener. For more information, see Backend server overview. Configure the **Server Group Type** parameter to process requests forwarded by SLB.
 **vServer Groups**: If you set the Server Group Type parameter to vServer Groups, select
@@ -645,7 +679,9 @@ Primary/Secondary Server Groups, select an existing primary/secondary server gro
 
 **Step 4: Configure health checks**
 
-The health check feature cannot be disabled for a listener that is associated with a primary/secondary server group. In the **Health Check** step, configure health checks and click **Next**.
+> **Note:** The health check feature cannot be disabled for a listener that is associated with a primary/secondary server group.
+
+In the **Health Check** step, configure health checks and click **Next**.
 1. Turn on **Health Check**. By default, Health Check is turned on. This switch cannot be turned
 off.
 2. Optional. Click **Modify** next to **Advanced Settings** to modify the advanced configurations
@@ -685,7 +721,9 @@ On the Listeners tab, find the listener that you want to manage and click the na
 
 **Modify the configurations of a listener**
 
-When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed. If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+> **Note:** When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed.
+> If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+
 1. On the Listeners tab, find the listener that you want to manage and click **Modify Listener**
 in the **Actions** column.
 2. On the **Configure Listener** page, refer to the preceding configuration steps to check and
@@ -693,9 +731,8 @@ modify the configurations and click **Next** until you submit the modified confi
 
 **Change the states of listeners**
 
-**Warning**
+> **Warning:** After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 
-After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 1. Change the state of a single listener: On the Listeners tab, find the listener that you want to
 manage and click **Enable** or **Disable** in the **Actions** column. Change the states of multiple listeners at a time: On the Listeners tab, select the listeners that you want to manage and click **Enable** or **Disable** in the lower-left corner.
 2. In the **Confirm** message, click **OK**.
@@ -708,7 +745,11 @@ move the pointer over the icon in the **Actions** column, and then select **Dele
 
 **Configure access control**
 
-You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+> **Note:** You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks.
+> If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+> If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener.
+> If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+
 1. On the Listeners tab, find the listener that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **Configure Access Control**. You can also click **Configure** in the **Access Control** column.
 2. In the **Configure Access Control** panel, configure the parameters that are described in
@@ -765,7 +806,11 @@ On the **Protocol & Listener** wizard page, configure parameters as described in
 
 **Step 3: Add backend servers**
 
-In the **Backend Servers** step, add backend servers to process requests received by the SLB instance and click **Next**. The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default. If you need to use the primary/secondary vServer group feature, contact Apsara Stack technical support to enable this feature.
+In the **Backend Servers** step, add backend servers to process requests received by the SLB instance and click **Next**.
+
+> **Note:** The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default.
+> If you need to use the primary/secondary vServer group feature, contact Apsara Stack technical support to enable this feature.
+
 **Enable Primary/Secondary Failover**: specifies whether to enable the primary/secondary
 failover feature. If the primary/secondary vServer group feature is enabled, you must turn on this switch. If you turn on Enable Primary/Secondary Failover, configure a primary/secondary vServer group for the listener. For more information, see Primary/secondary vServer groups. If the primary/secondary vServer group feature is disabled or is enabled but Enable Primary/Secondary Failover is turned off, perform the following operations to configure backend servers for the listener. For more information, see Backend server overview. Configure the **Server Group Type** parameter to process requests forwarded by SLB.
 **vServer Groups**: If you set the Server Group Type parameter to vServer Groups, select
@@ -777,7 +822,9 @@ Primary/Secondary Server Groups, select an existing primary/secondary server gro
 
 **Step 4: Configure health checks**
 
-The health check feature cannot be disabled for a listener that is associated with a primary/secondary server group. In the **Health Check** step, configure health checks and click **Next**.
+> **Note:** The health check feature cannot be disabled for a listener that is associated with a primary/secondary server group.
+
+In the **Health Check** step, configure health checks and click **Next**.
 1. Turn on **Health Check**. By default, Health Check is turned on. This switch cannot be turned
 off.
 2. Optional. Click **Modify** next to **Advanced Settings** to modify the advanced configurations
@@ -817,7 +864,9 @@ On the Listeners tab, find the listener that you want to manage and click the na
 
 **Modify the configurations of a listener**
 
-When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed. If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+> **Note:** When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed.
+> If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+
 1. On the Listeners tab, find the listener that you want to manage and click **Modify Listener**
 in the **Actions** column.
 2. On the **Configure Listener** page, refer to the preceding configuration steps to check and
@@ -825,9 +874,8 @@ modify the configurations and click **Next** until you submit the modified confi
 
 **Change the states of listeners**
 
-**Warning**
+> **Warning:** After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 
-After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 1. Change the state of a single listener: On the Listeners tab, find the listener that you want to
 manage and click **Enable** or **Disable** in the **Actions** column. Change the states of multiple listeners at a time: On the Listeners tab, select the listeners that you want to manage and click **Enable** or **Disable** in the lower-left corner.
 2. In the **Confirm** message, click **OK**.
@@ -840,7 +888,11 @@ move the pointer over the icon in the **Actions** column, and then select **Dele
 
 **Configure access control**
 
-You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+> **Note:** You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks.
+> If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+> If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener.
+> If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+
 1. On the Listeners tab, find the listener that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **Configure Access Control**. You can also click **Configure** in the **Access Control** column.
 2. In the **Configure Access Control** panel, configure the parameters that are described in
@@ -899,9 +951,9 @@ On the **Protocol & Listener** wizard page, configure parameters as described in
 
 On the **Backend Servers** wizard page, add backend servers to process requests forwarded by SLB and click **Next**.
 
-**Important**
+> **Important:** HTTP listeners do not support primary/secondary server groups.
 
-HTTP listeners do not support primary/secondary server groups. Set **Server Group Type** to process requests forwarded by SLB, and configure parameters as described in the following table.
+Set **Server Group Type** to process requests forwarded by SLB, and configure parameters as described in the following table.
 **vServer Groups**: If you set the Server Group Type parameter to vServer Groups, select an
 existing vServer group from the **Server Group** drop-down list. You can also select **Create vServer Group** from the Server Group drop-down list to create a vServer group and select backend servers. For more information, see Create a vServer group.
 **Default Server Group**: If you set the Server Group Type parameter to Default Server
@@ -948,7 +1000,9 @@ On the Listeners tab, find the listener that you want to manage and click the na
 
 **Modify the configurations of a listener**
 
-When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed. If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+> **Note:** When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed.
+> If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+
 1. On the Listeners tab, find the listener that you want to manage and click **Modify Listener**
 in the **Actions** column.
 2. On the **Configure Listener** page, refer to the preceding configuration steps to check and
@@ -956,9 +1010,8 @@ modify the configurations and click **Next** until you submit the modified confi
 
 **Change the states of listeners**
 
-**Warning**
+> **Warning:** After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 
-After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 1. Change the state of a single listener: On the Listeners tab, find the listener that you want to
 manage and click **Enable** or **Disable** in the **Actions** column. Change the states of multiple listeners at a time: On the Listeners tab, select the listeners that you want to manage and click **Enable** or **Disable** in the lower-left corner.
 2. In the **Confirm** message, click **OK**.
@@ -971,7 +1024,11 @@ move the pointer over the icon in the **Actions** column, and then select **Dele
 
 **Configure access control**
 
-You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+> **Note:** You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks.
+> If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+> If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener.
+> If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+
 1. On the Listeners tab, find the listener that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **Configure Access Control**. You can also click **Configure** in the **Access Control** column.
 2. In the **Configure Access Control** panel, configure the parameters that are described in
@@ -1052,7 +1109,16 @@ suites that are available for HTTPS. The following security policies are support
 
 **tls_cipher_policy_1_2_strict_with_1_3**
 
-Before you upload a certificate, take note of the following items: SLB supports the following public key algorithms: RSA 1024, RSA 2048, RSA 4096, ECDSA P-256, ECDSA P-384, and ECDSA P-521. The format of the certificate must be NGINX. After you upload a certificate to SLB, SLB can manage the certificate. You do not need to associate the certificate with backend servers. It may take a few minutes to upload, load, and verify the certificate. Therefore, an HTTPS listener is not available immediately after it is created. It requires about 1 to 3 minutes to enable an HTTPS listener. The Elliptic-curve Diffie–Hellman (ECDH) cipher suite used by HTTPS listeners supports perfect forward secrecy (PFS). You cannot upload security hardening parameters required by ECDH as a file. In other words, you cannot specify the petameters as a string in `BEGIN DH PARAMETERS` . HTTPS listeners do not support Server Name Indication (SNI). You can choose TCP listeners and configure SNI on backend servers. By default, the timeout period of session tickets for HTTPS listeners is 300 seconds. The actual amount of data transfer on an HTTPS listener is greater than the billed amount because a portion of data is used for handshaking. Therefore, the amount of data transfer greatly increases when a large number of connections are established.
+> **Note:** Before you upload a certificate, take note of the following items:
+> SLB supports the following public key algorithms: RSA 1024, RSA 2048, RSA 4096, ECDSA P-256, ECDSA P-384, and ECDSA P-521.
+> The format of the certificate must be NGINX.
+> After you upload a certificate to SLB, SLB can manage the certificate. You do not need to associate the certificate with backend servers.
+> It may take a few minutes to upload, load, and verify the certificate. Therefore, an HTTPS listener is not available immediately after it is created. It requires about 1 to 3 minutes to enable an HTTPS listener.
+> The Elliptic-curve Diffie–Hellman (ECDH) cipher suite used by HTTPS listeners supports perfect forward secrecy (PFS). You cannot upload security hardening parameters required by ECDH as a file. In other words, you cannot specify the petameters as a string in `BEGIN DH PARAMETERS` .
+> HTTPS listeners do not support Server Name Indication (SNI). You can choose TCP listeners and configure SNI on backend servers.
+> By default, the timeout period of session tickets for HTTPS listeners is 300 seconds.
+> The actual amount of data transfer on an HTTPS listener is greater than the billed amount because a portion of data is used for handshaking.
+> Therefore, the amount of data transfer greatly increases when a large number of connections are established.
 
 **Step 4: Add backend servers**
 
@@ -1103,7 +1169,9 @@ On the Listeners tab, find the listener that you want to manage and click the na
 
 **Modify the configurations of a listener**
 
-When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed. If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+> **Note:** When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed.
+> If a listener is already associated with a server group, you cannot associate the listener with the default server group.
+
 1. On the Listeners tab, find the listener that you want to manage and click **Modify Listener**
 in the **Actions** column.
 2. On the **Configure Listener** page, refer to the preceding configuration steps to check and
@@ -1111,9 +1179,8 @@ modify the configurations and click **Next** until you submit the modified confi
 
 **Change the states of listeners**
 
-**Warning**
+> **Warning:** After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 
-After a listener is disabled, the listener stops forwarding requests. This may cause service interruptions. Proceed with caution.
 1. Change the state of a single listener: On the Listeners tab, find the listener that you want to
 manage and click **Enable** or **Disable** in the **Actions** column. Change the states of multiple listeners at a time: On the Listeners tab, select the listeners that you want to manage and click **Enable** or **Disable** in the lower-left corner.
 2. In the **Confirm** message, click **OK**.
@@ -1126,7 +1193,11 @@ move the pointer over the icon in the **Actions** column, and then select **Dele
 
 **Configure access control**
 
-You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+> **Note:** You can configure access control for each listener of an SLB instance. Enabling access control may bring business risks.
+> If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+> If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener.
+> If you enable a whitelist or blacklist but do not add an IP address to the whitelist or blacklist, all requests are forwarded.
+
 1. On the Listeners tab, find the listener that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **Configure Access Control**. You can also click **Configure** in the **Access Control** column.
 2. In the **Configure Access Control** panel, configure the parameters that are described in
@@ -1150,7 +1221,8 @@ You can add multiple forwarding rules to a listener. Each forwarding rule is ass
 
 **Configure domain name-based or URL-based forwarding rules**
 
-You can configure domain name-based or URL-based forwarding rules only for HTTP and HTTPS listeners.
+> **Note:** You can configure domain name-based or URL-based forwarding rules only for HTTP and HTTPS listeners.
+
 1. Log on to the SLB console.
 2. In the top navigation bar, select the region where the Classic Load Balancer (CLB) instance
 is located.
@@ -1166,7 +1238,18 @@ find the listener that you want to manage and click **Configure Forwarding Rule*
 **URL**: the requested URL.
 **vServer Groups**: the vServer group that you want to associate with the forwarding rule.
 **Description**: the description.
-Naming conventions of domain names: Example of a wildcard domain name: *.test.com. A domain name must start with an asterisk (*) in the *. or *aaa. format, and cannot end with an asterisk (*). Example of a standard domain name: www.test.com. Naming conventions of URLs: A URL must be 2 to 80 characters in length, and can contain only letters, digits, and the following special characters: - / . % ? # & The URL must start with a forward slash (/) and cannot be a forward slash (/). If the URL of a request contains special characters, you must use URL escape codes to convert the special characters. For example, if the URL of a request contains a number sign (#), the number sign must be converted into the escape code (%23). This way, the system can match the URL of the request against URL-based forwarding rules. You must specify at least one of the domain name and URL for each forwarding rule. You can click **Add Domain Name** to add a domain name-based forwarding rule, or click
+
+> **Note:** Naming conventions of domain names:
+> Example of a wildcard domain name: *.test.com. A domain name must start with an asterisk (*) in the *. or *aaa. format, and cannot end with an asterisk (*).
+> Example of a standard domain name: www.test.com.
+> Naming conventions of URLs:
+> A URL must be 2 to 80 characters in length, and can contain only letters, digits, and the following special characters: - / . % ? # &
+> The URL must start with a forward slash (/) and cannot be a forward slash (/).
+> If the URL of a request contains special characters, you must use URL escape codes to convert the special characters.
+> For example, if the URL of a request contains a number sign (#), the number sign must be converted into the escape code (%23). This way, the system can match the URL of the request against URL-based forwarding rules.
+> You must specify at least one of the domain name and URL for each forwarding rule.
+
+You can click **Add Domain Name** to add a domain name-based forwarding rule, or click
 **Add Rule** to add a URL-based forwarding rule.
 Configure a domain name-based forwarding rule When you configure a domain name-based forwarding rule, leave the URL field empty. You do not need to enter a forward slash (/) in this field. The domain name can contain only letters, digits, hyphens (-), and periods (.). If a request matches multiple domain name-based forwarding rules, exact match prevails over wildcard match, as described in the following table. Table 1: Domain name-based forwarding rules
 
@@ -1199,7 +1282,9 @@ find the listener that you want to manage and click **Configure Forwarding Rule*
 3. In the **Modify Forwarding Rule** panel, modify the description or change the vServer
 group. You can click **Show Server Groups** to view the list of available virtual servers.
 4. Optional. Turn on or off **Advanced Setting** based on your business requirements. If you
-turn on this switch, you can configure the parameters that are described in the following table. If Advanced Setting is turned on, you can configure a scheduling algorithm, session persistence, and health checks for the forwarding rule. If Advanced Setting is turned off, the configurations of the listener are used.
+turn on this switch, you can configure the parameters that are described in the following table.
+
+> **Note:** If Advanced Setting is turned on, you can configure a scheduling algorithm, session persistence, and health checks for the forwarding rule. If Advanced Setting is turned off, the configurations of the listener are used.
 
 | Parameter | Description |
 |---|---|
@@ -1249,7 +1334,8 @@ An SLB instance is created, and an HTTPS listener is configured for the SLB inst
 
 **Add an additional domain name**
 
-You can add additional domain names only for HTTPS listeners.
+> **Note:** You can add additional domain names only for HTTPS listeners.
+
 1. Log on to the SLB console.
 2. In the top navigation bar, select the region where the Classic Load Balancer (CLB) instance
 is located.
@@ -1264,7 +1350,9 @@ find the HTTPS listener that you want to manage, move the pointer over the
 **> Manage Additional Certificate**
 
 6. In the **Manage Additional Certificate** panel, click **Add Additional Certificate** and
-configure the following parameters: i. **Additional Domain**: the additional domain name. Domain name-based forwarding rules support exact match and wildcard match. a. You can specify a specific domain name such as www.aliyun.com in a forwarding rule. b. You can also specify a wildcard domain name such as *.aliyun.com or *.market.aliyun.com in a forwarding rule. If a request matches multiple domain name-based forwarding rules, exact match prevails over wildcard match. If a request matches multiple wildcard domain names, a higher-level wildcard domain name prevails over a lower-level wildcard domain name. In the following table, "✓" indicates that the domain name of the request matches the domain name specified in the forwarding rule. "×" indicates that the domain name of the request does not match the domain name specified in the forwarding rule.
+configure the following parameters: i. **Additional Domain**: the additional domain name. Domain name-based forwarding rules support exact match and wildcard match. a. You can specify a specific domain name such as www.aliyun.com in a forwarding rule. b. You can also specify a wildcard domain name such as *.aliyun.com or *.market.aliyun.com in a forwarding rule. If a request matches multiple domain name-based forwarding rules, exact match prevails over wildcard match. If a request matches multiple wildcard domain names, a higher-level wildcard domain name prevails over a lower-level wildcard domain name.
+
+> **Note:** In the following table, "✓" indicates that the domain name of the request matches the domain name specified in the forwarding rule. "×" indicates that the domain name of the request does not match the domain name specified in the forwarding rule.
 
 | Match mode | Requested URL | Domain name-based forwarding rule |   |   |
 |---|---|---|---|---|
@@ -1273,10 +1361,16 @@ configure the following parameters: i. **Additional Domain**: the additional dom
 | Wildcard match | market.aliyun.com | × | √ | × |
 | Wildcard match | info.market.aliyun.co m | × | × | √ |
 
-ii. **Server Certificate**: the server certificate that you want to associate with the domain name. The domain name of the certificate must be the same as the additional domain name that you add. If you add multiple wildcard-domain certificates, requests match only the first wildcard-domain certificate.
+ii. **Server Certificate**: the server certificate that you want to associate with the domain name.
+
+> **Note:** The domain name of the certificate must be the same as the additional domain name that you add.
+> If you add multiple wildcard-domain certificates, requests match only the first wildcard-domain certificate.
+
 7. Click **OK**.
 8. **Optional.** Perform the following steps to configure a forwarding rule. You must configure a
-forwarding rule based on the additional domain name for the additional domain name to take effect. i. On the **Note** page, click **Configure Rule**. You can also click the ID of the SLB instance on the **Instance Management** page and click the **Listeners** tab. Find the HTTPS listener that you want to manage and click **Configure Forwarding Rule** in the **Actions** column. ii. In the **Forwarding Rule** panel, enter a domain name and a URL to configure a forwarding rule, and click **Add Forwarding Rule**. Make sure that the domain name configured in the forwarding rule is the same as the additional domain name that you added.
+forwarding rule based on the additional domain name for the additional domain name to take effect. i. On the **Note** page, click **Configure Rule**. You can also click the ID of the SLB instance on the **Instance Management** page and click the **Listeners** tab. Find the HTTPS listener that you want to manage and click **Configure Forwarding Rule** in the **Actions** column. ii. In the **Forwarding Rule** panel, enter a domain name and a URL to configure a forwarding rule, and click **Add Forwarding Rule**.
+
+> **Note:** Make sure that the domain name configured in the forwarding rule is the same as the additional domain name that you added.
 
 **What to do next**
 
@@ -1302,7 +1396,9 @@ Before you use a Server Load Balancer (SLB) instance, you must add Elastic Compu
 
 **Introduction**
 
-After you add ECS instances that are deployed in the same region to an SLB instance, SLB uses virtual IP addresses to combine the ECS instances into a high-performance, highavailability backend server pool. You can also use vServer groups to manage backend servers. You can associate listeners with different server groups. This way, SLB can distribute requests to backend servers that use different ports in different server groups. If you associate a listener with a vServer group, the listener distributes requests to the ECS instances in the vServer group instead of the ECS instances in the default server group.
+After you add ECS instances that are deployed in the same region to an SLB instance, SLB uses virtual IP addresses to combine the ECS instances into a high-performance, highavailability backend server pool. You can also use vServer groups to manage backend servers. You can associate listeners with different server groups. This way, SLB can distribute requests to backend servers that use different ports in different server groups.
+
+> **Note:** If you associate a listener with a vServer group, the listener distributes requests to the ECS instances in the vServer group instead of the ECS instances in the default server group.
 
 **Limits**
 
@@ -1318,7 +1414,11 @@ Each SLB instance can have multiple vServer groups. You can associate listeners 
 
 **Primary/secondary server groups**
 
-You cannot associate a Layer 7 listener with a primary/secondary server group. You can associate only TCP and UDP listeners with primary/secondary server groups. A primary/secondary server group contains only two ECS instances. One ECS instance serves as the primary server, and the other ECS instance serves as the secondary server. SLB does not perform health checks on the secondary server in a primary/secondary server group. If the primary server is down, network traffic is automatically distributed to the secondary server. When the primary server recovers, network traffic is switched back to the primary server. For more information, see Add ECS instances to a primary/secondary server group.
+You cannot associate a Layer 7 listener with a primary/secondary server group.
+
+> **Note:** You can associate only TCP and UDP listeners with primary/secondary server groups.
+
+A primary/secondary server group contains only two ECS instances. One ECS instance serves as the primary server, and the other ECS instance serves as the secondary server. SLB does not perform health checks on the secondary server in a primary/secondary server group. If the primary server is down, network traffic is automatically distributed to the secondary server. When the primary server recovers, network traffic is switched back to the primary server. For more information, see Add ECS instances to a primary/secondary server group.
 
 ##### 4.2.4.2 vServer groups
 
@@ -1348,29 +1448,46 @@ use one of the following methods to add a backend server to the vServer group.
 
 **Add ECS instances to a vServer group**
 
-i. Click **Add** to go to the **Servers** panel. ii. On the **Select Servers** wizard page, select the ECS instances that you want to add and click **Next**. You can select multiple ECS instances at a time. iii. On the **Configure Weight** wizard page, specify **Port** and **Weight** for each ECS instance and click **Add**. Specify the Port and Weight parameters based on the following information:
+i. Click **Add** to go to the **Servers** panel. ii. On the **Select Servers** wizard page, select the ECS instances that you want to add and click **Next**.
+
+> **Note:** You can select multiple ECS instances at a time.
+
+iii. On the **Configure Weight** wizard page, specify **Port** and **Weight** for each ECS instance and click **Add**. Specify the Port and Weight parameters based on the following information:
 **Port**: The backend port opened on an ECS instance to receive requests.
-You can specify the same port on multiple backend servers for the same SLB instance. In addition, you can click **Add Port** to specify multiple ports on a backend server.
+
+> **Note:** You can specify the same port on multiple backend servers for the same SLB instance.
+> In addition, you can click **Add Port** to specify multiple ports on a backend server.
+
 **Weight**: An ECS instance with a higher weight receives more requests.
 
-**Important**
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests. Click **Remove** to remove the selected backend servers.
+Click **Remove** to remove the selected backend servers.
 
 **Add on-premises servers to a vServer group**
 
 i. Click **Add On-premises Server** to open the **Servers** panel. ii. On the **Select Servers** wizard page, click **Add**, set the **VPC Connected to Data**
 **Center**, **On-premises Server Name**, and **On-premises Server IP Address**
-parameters, and then click **Next**. You can add multiple on-premises servers. Make sure that the on-premises servers specified in **On-premises Server IP**
-**Address** can communicate with virtual private clouds (VPCs).
+parameters, and then click **Next**.
+
+> **Note:** You can add multiple on-premises servers.
+> Make sure that the on-premises servers specified in **On-premises Server IP** **Address** can communicate with virtual private clouds (VPCs).
+
 iii. On the **Configure Weight** wizard page, specify **Port** and **Weight** for each on-premises server and click **Add**. Specify the Port and Weight parameters based on the following information:
 **Port**: The backend port opened on an on-premises server to receive requests. Multiple
-ports can be opened on an on-premises server. You can specify the same port on multiple backend servers for the same SLB instance. In addition, you can click **Add Port** to specify multiple ports on a backend server.
+ports can be opened on an on-premises server.
+
+> **Note:** You can specify the same port on multiple backend servers for the same SLB instance.
+> In addition, you can click **Add Port** to specify multiple ports on a backend server.
+
 **Weight**: An on-premises server with a higher weight receives more requests.
 
-**Important**
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
 6. Confirm the **Port** and **Weight** settings for the selected servers and click **Add**.
 7. In the **Confirm** message, click **OK**.
 
@@ -1403,9 +1520,10 @@ On the **Instance Management** page, find the SLB instance, click **Add Backend 
 6. On the **Modify vServer Group** page, change the ports and weights of the ECS instances or
 on-premises servers, and click **Save**.
 
-**Important**
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
 7. In the message that appears, click **OK**.
 
 ###### 4.2.4.2.3 Delete a vServer group
@@ -1414,7 +1532,8 @@ If you no longer use a vServer group to receive requests, you can delete the vSe
 
 **Procedure**
 
-Before you delete a vServer group, make sure that no listener is associated with the vServer group. If a listener is associated with the vServer group, disassociate the listener first.
+> **Note:** Before you delete a vServer group, make sure that no listener is associated with the vServer group. If a listener is associated with the vServer group, disassociate the listener first.
+
 1. Log on to the SLB console.
 2. In the top navigation bar, select the region where the Classic Load Balancer (CLB) instance
 is located.
@@ -1455,9 +1574,9 @@ i. Click **Add** to open the **Servers** panel. ii. On the **Select Servers** wi
 **Next**.
 iii. On the **Configure Weight** wizard page, specify the weight of each ECS instance and click **Add**.
 
-**Important**
-
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
 **Add on-premises servers to the default server group**
 
@@ -1465,9 +1584,10 @@ i. Click **Add On-premises Server** to open the **Servers** panel. ii. On the **
 **Center**, **On-premises Server Name**, and **On-premises Server IP Address**
 parameters, then click **Next**. iii. On the **Configure Ports and Weights** wizard page, specify the weight of each onpremises server and click **Add**.
 
-**Important**
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
 6. In the **Servers to Add** panel, select the servers that you want and click **OK**.
 7. In the message that appears, click **OK**.
 
@@ -1493,9 +1613,9 @@ Change the weight of a backend server i. On the Default Server Group tab, find t
 **OK**.
 Change the weights of multiple backend servers at a time i. On the Default Server Group tab, select the backend servers that you want to manage and click **Modify Weight** in the lower-left corner. ii. In the **Modify Weight** panel, set the weights based on one of the following conditions and click **OK**: a. If you select **Set Same Weight**, set the same weight for the selected backend servers. b. If you select **Set Different Weights**, separately set the weights in the **Weight** column for the selected backend servers. iii. In the **Confirm** message, click **OK**. An Elastic Compute Service (ECS) instance or an on-premises server with a higher weight receives more requests.
 
-**Important**
-
-A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
+> **Important:** A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100.
+> If session persistence is enabled, requests may not be evenly distributed to backend servers.
+> If you set the weight of a server to 0, the server does not receive requests.
 
 ###### 4.2.4.3.3 Remove backend servers
 
@@ -1587,7 +1707,15 @@ This topic describes the primary/secondary vServer group feature. A Server Load 
 
 **Architecture**
 
-The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default. Primary/secondary vServer groups can be associated only with TCP and UDP listeners. After you enable the primary/secondary vServer group feature, the feature takes effect only for new listeners. The existing listeners that are previously associated with backend servers in primary/secondary vServer groups are not affected. After you enable the primary/secondary vServer group feature, applications that use persistent connections cannot be switched to use the new feature immediately due to business requirements. In automatic switchover scenarios, the policies of Linux virtual server (LVS) nodes are inconsistent when the number of real server nodes changes. If the status of real servers is constantly changing, which makes the real server failure rate of the primary vServer group oscillate about the failover threshold, the system may frequently switch between the primary and secondary clusters. A real server cannot be added to both the primary vServer group and the secondary vServer group. To enable the primary/secondary vServer group feature, you must enable the health check feature. The number of virtual servers that can be added to a primary/secondary vServer group is not limited. However, we recommend that you add no more than 200 Layer 4 backend servers for a single SLB instance.
+> **Note:** The primary/secondary vServer group feature is provided for Layer 4 SLB listeners and disabled by default.
+> Primary/secondary vServer groups can be associated only with TCP and UDP listeners.
+> After you enable the primary/secondary vServer group feature, the feature takes effect only for new listeners. The existing listeners that are previously associated with backend servers in primary/secondary vServer groups are not affected.
+> After you enable the primary/secondary vServer group feature, applications that use persistent connections cannot be switched to use the new feature immediately due to business requirements.
+> In automatic switchover scenarios, the policies of Linux virtual server (LVS) nodes are inconsistent when the number of real server nodes changes.
+> If the status of real servers is constantly changing, which makes the real server failure rate of the primary vServer group oscillate about the failover threshold, the system may frequently switch between the primary and secondary clusters.
+> A real server cannot be added to both the primary vServer group and the secondary vServer group.
+> To enable the primary/secondary vServer group feature, you must enable the health check feature.
+> The number of virtual servers that can be added to a primary/secondary vServer group is not limited. However, we recommend that you add no more than 200 Layer 4 backend servers for a single SLB instance.
 
 **Prerequisites**
 
@@ -1617,7 +1745,22 @@ click **Configure Listener** in the Actions column.
 
 **Switch between the primary and secondary vServer groups**
 
-After you configure a listener, if you set the Failover Policy parameter to Manual Failover, you must manually switch between the primary and secondary vServer groups when needed. The switchover operation does not change the role of a vServer group. It changes only the vServer group that is providing services. The interval between two switchover operations cannot be shorter than 1 minute. Conditions for switching services from the primary vServer group to the secondary vServer group: The real server failure rate of the primary vServer group exceeds the failover threshold. The time elapsed since the last switchover operation is greater than or equal to the minimum interval between switchover operations. The secondary vServer group has available real servers. In the following scenario, you can switch services from the primary vServer group to the secondary vServer group without any considerations: The primary vServer group has no available real servers, whereas the secondary vServer group has available real servers. Conditions for switching services from the secondary vServer group to the primary vServer group: The real server failure rate of the primary vServer group drops below the failover threshold. The time elapsed since the last switchover operation is greater than or equal to the minimum interval between switchover operations. The secondary vServer group has no available real servers. In the following scenario, you can switch services from the secondary vServer group back to the primary vServer group without any considerations: The secondary vServer group has no available real servers. A vServer group with no available real servers: The vServer group contains real servers, but all have failed health checks and are declared unhealthy. Alternatively, the vServer group has real servers, but their weights are all set to 0. Or, you may not have added any real servers to the vServer group.
+After you configure a listener, if you set the Failover Policy parameter to Manual Failover, you must manually switch between the primary and secondary vServer groups when needed.
+
+> **Note:** The switchover operation does not change the role of a vServer group. It changes only the vServer group that is providing services.
+> The interval between two switchover operations cannot be shorter than 1 minute.
+> Conditions for switching services from the primary vServer group to the secondary vServer group:
+> The real server failure rate of the primary vServer group exceeds the failover threshold.
+> The time elapsed since the last switchover operation is greater than or equal to the minimum interval between switchover operations.
+> The secondary vServer group has available real servers.
+> In the following scenario, you can switch services from the primary vServer group to the secondary vServer group without any considerations: The primary vServer group has no available real servers, whereas the secondary vServer group has available real servers.
+> Conditions for switching services from the secondary vServer group to the primary vServer group:
+> The real server failure rate of the primary vServer group drops below the failover threshold.
+> The time elapsed since the last switchover operation is greater than or equal to the minimum interval between switchover operations.
+> The secondary vServer group has no available real servers.
+> In the following scenario, you can switch services from the secondary vServer group back to the primary vServer group without any considerations: The secondary vServer group has no available real servers.
+> A vServer group with no available real servers: The vServer group contains real servers, but all have failed health checks and are declared unhealthy. Alternatively, the vServer group has real servers, but their weights are all set to 0. Or, you may not have added any real servers to the vServer group.
+
 1. On the Listeners tab, find the listener that you want to manage and click **Switch Primary**
 **and Secondary Server Groups** under the primary/secondary vServer group name in the
 **Server Group** column.
@@ -1668,7 +1811,13 @@ packet if the ECS port on which SLB listens is normal.
 3. If the LVS node does not receive a response from the backend ECS instance within the
 specified timeout period, the backend ECS instance is considered unhealthy. Then, the node sends an RST packet to the backend ECS instance to terminate the TCP session.
 4. If the LVS node receives a response from the backend ECS instance within the specified
-timeout period, the node considers the ECS instance healthy and then sends an RST packet to the backend ECS instance to terminate the TCP session. A TCP three-way handshake is performed to establish TCP sessions. After the LVS node receives the SYN-ACK packet from the backend ECS instance, the node sends an ACK packet, and then immediately sends an RST packet to terminate the TCP session. Due to the three-way handshake mechanism, the backend ECS instances may take TCP session terminations as connectivity errors. Then, the ECS instances may record an error, such as `Connection reset by peer` , in application logs, such as Java connection pool logs. Solutions: Configure HTTP health checks for TCP listeners. Enable Proxy Protocol to pass client IP addresses to backend ECS instances. This enables the ECS instances to ignore connectivity errors that are caused by access from the CIDR block of SLB.
+timeout period, the node considers the ECS instance healthy and then sends an RST packet to the backend ECS instance to terminate the TCP session.
+
+> **Note:** A TCP three-way handshake is performed to establish TCP sessions. After the LVS node receives the SYN-ACK packet from the backend ECS instance, the node sends an ACK packet, and then immediately sends an RST packet to terminate the TCP session.
+> Due to the three-way handshake mechanism, the backend ECS instances may take TCP session terminations as connectivity errors. Then, the ECS instances may record an error, such as `Connection reset by peer` , in application logs, such as Java connection pool logs.
+> Solutions:
+> Configure HTTP health checks for TCP listeners.
+> Enable Proxy Protocol to pass client IP addresses to backend ECS instances. This enables the ECS instances to ignore connectivity errors that are caused by access from the CIDR block of SLB.
 
 **Layer 4 health checks on UDP listeners**
 
@@ -1689,7 +1838,11 @@ within the specified timeout period, the ECS instance is considered healthy.
 
 **Health check time windows**
 
-The health check feature improves the availability of your services. However, frequent failovers caused by unhealthy backend servers may affect system availability. Health check time windows are introduced to control failovers. A failover is performed only if a backend server consecutively passes or fails a specific number of health checks within a time window. A health check time window is determined by the following factors: Health check interval: the interval at which health checks are performed. Response timeout period: the amount of time that a backend server takes to respond. Health check threshold: the number of consecutive times that a backend server passes or fails health checks. Health check time windows are calculated based on the following formulas: Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1) The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds. The health check result has the following impacts on request forwarding: If the backend ECS instance fails the health check, new requests are distributed to other backend ECS instances. The client can still access the application as normal. If the backend ECS instance passes the health check, new requests are distributed to the ECS instance. The client can access the application as normal. If an exception occurs on the backend ECS instance and a request arrives during the time window for health check failures, the request is still sent to the unhealthy backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (three times by default). In this case, the client fails to access the application.
+The health check feature improves the availability of your services. However, frequent failovers caused by unhealthy backend servers may affect system availability. Health check time windows are introduced to control failovers. A failover is performed only if a backend server consecutively passes or fails a specific number of health checks within a time window. A health check time window is determined by the following factors: Health check interval: the interval at which health checks are performed. Response timeout period: the amount of time that a backend server takes to respond. Health check threshold: the number of consecutive times that a backend server passes or fails health checks. Health check time windows are calculated based on the following formulas: Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1)
+
+> **Note:** The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds.
+
+The health check result has the following impacts on request forwarding: If the backend ECS instance fails the health check, new requests are distributed to other backend ECS instances. The client can still access the application as normal. If the backend ECS instance passes the health check, new requests are distributed to the ECS instance. The client can access the application as normal. If an exception occurs on the backend ECS instance and a request arrives during the time window for health check failures, the request is still sent to the unhealthy backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (three times by default). In this case, the client fails to access the application.
 
 **Examples of the health check response timeout period and the**
 
@@ -1705,7 +1858,11 @@ In this example, the following health check configurations are used:
 
 **Unhealthy threshold: 3 times**
 
-Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). In this example, the time window is 19 seconds based on the following formula: 5 × 3 + 2 × (3 - 1). If a backend server does not respond within 19 seconds, the backend server is considered unhealthy. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). In this example, the time window is 7 seconds based on the following formula: (1 × 3) + 2 × (3 - 1). If a backend server responds within 7 seconds, the backend server is considered healthy. The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds. The following figure shows the time window from an unhealthy status to a healthy status. In the following figure, the amount of time that is required for the server to respond to a health check request is 1 second.
+Time window for health check failures = Response timeout period × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). In this example, the time window is 19 seconds based on the following formula: 5 × 3 + 2 × (3 - 1). If a backend server does not respond within 19 seconds, the backend server is considered unhealthy. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). In this example, the time window is 7 seconds based on the following formula: (1 × 3) + 2 × (3 - 1). If a backend server responds within 7 seconds, the backend server is considered healthy.
+
+> **Note:** The response time of a successful health check is the duration from the time when a health check request is sent to the time when a response is received. When TCP health checks are configured, the response time is short and almost negligible because the only check item is whether the probed port is alive. When HTTP health checks are configured, the response time varies based on the performance and load of the application server and is typically within a few seconds.
+
+The following figure shows the time window from an unhealthy status to a healthy status. In the following figure, the amount of time that is required for the server to respond to a health check request is 1 second.
 
 **Domain names for HTTP health checks**
 
@@ -1745,7 +1902,7 @@ This topic describes how to disable the health check feature for a Server Load B
 
 **Background information**
 
-You can disable the health check feature only for HTTP and HTTPS listeners. The health check feature for UDP and TCP listeners cannot be disabled.
+> **Note:** You can disable the health check feature only for HTTP and HTTPS listeners. The health check feature for UDP and TCP listeners cannot be disabled.
 
 **Procedure**
 
@@ -1794,7 +1951,9 @@ is located.
 
 **Disassociate the EIP from the SLB instance**
 
-After you disassociate the EIP from the SLB instance, the SLB instance can no longer forward requests from the Internet. If the data is not updated after you perform this operation, refresh the page.
+> **Note:** After you disassociate the EIP from the SLB instance, the SLB instance can no longer forward requests from the Internet.
+> If the data is not updated after you perform this operation, refresh the page.
+
 1. Log on to the SLB console.
 2. In the top navigation bar, select the region where the Classic Load Balancer (CLB) instance
 is located.
@@ -2006,7 +2165,11 @@ following table and click **Submit**.
 
 **View certificates**
 
-On the **Certificate Management** page, you can view information about certificates in the certificate list. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. Enter a keyword or click **Advanced Filter** and enter a search condition to search for certificates. Click the icon in the upper-right corner of the list to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon next to the **Certificate Status** column and select **Normal** or **Expired** to filter certificates. Click the icon next to the **Certificate Type** column and select a certificate type to filter certificates. Click the icon next to the **Sharing Scope** column and select an item to filter certificates. Find a certificate and click the icon next to the name in the **Certificate ID/Name** column to modify its name. The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+On the **Certificate Management** page, you can view information about certificates in the certificate list.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+Enter a keyword or click **Advanced Filter** and enter a search condition to search for certificates. Click the icon in the upper-right corner of the list to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon next to the **Certificate Status** column and select **Normal** or **Expired** to filter certificates. Click the icon next to the **Certificate Type** column and select a certificate type to filter certificates. Click the icon next to the **Sharing Scope** column and select an item to filter certificates. Find a certificate and click the icon next to the name in the **Certificate ID/Name** column to modify its name. The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 
 **Configure the sharing settings**
 
@@ -2027,7 +2190,8 @@ SLB instance.
 
 **Remove certificates**
 
-If a certificate is associated with a listener, the certificate cannot be removed.
+> **Note:** If a certificate is associated with a listener, the certificate cannot be removed.
+
 1. Method 1: On the **Certificate Management** page, find the certificate that you want to
 remove and click **Delete** in the **Actions** column. Method 2: On the **Certificate Management** page, select the certificates that you want to remove and click **Batch Delete** in the lower-left corner.
 2. In the message that appears, click **OK**.
@@ -2039,7 +2203,8 @@ remove and click **Delete** in the **Actions** column. Method 2: On the **Certif
 We recommend that you replace certificates before they expire to avoid impacts on your service.
 1. On the **Certificate Management** page, click **Delete All Expired Certificates**.
 2. In the message that appears, click **OK**. All expired certificates are removed.
-If a certificate is associated with a listener, the certificate cannot be removed.
+
+> **Note:** If a certificate is associated with a listener, the certificate cannot be removed.
 
 #### 4.3.4 Generate a CA certificate
 
@@ -2099,7 +2264,8 @@ the Enter key to generate a .csr file.
 sudo openssl req -new -key private/ca.key -out private/ca.csr
 ```
 
-Common Name: the domain name of the Server Load Balancer (SLB) instance.
+> **Note:** Common Name: the domain name of the Server Load Balancer (SLB) instance.
+
 5. Run the following command to generate a .crt file:
 
 ```python
@@ -2147,14 +2313,18 @@ sudo mkdir users
 sudo openssl genrsa -des3 -out /root/ca/users/client.key 1024
 ```
 
-When you create the key, enter a passphrase as the key password to prevent unauthorized use if the key leaks. Enter the same password twice.
+> **Note:** When you create the key, enter a passphrase as the key password to prevent unauthorized use if the key leaks. Enter the same password twice.
+
 3. Run the following command to create a .csr file for the client key:
 
 ```python
 sudo openssl req -new -key /root/ca/users/client.key -out /root/ca/users/client.csr
 ```
 
-Enter the passphrase used in the previous step and other required information as prompted. A challenge password is the password of the client certificate. Take note that the challenge password is not the password of the client key.
+Enter the passphrase used in the previous step and other required information as prompted.
+
+> **Note:** A challenge password is the password of the client certificate. Take note that the challenge password is not the password of the client key.
+
 4. Run the following command to use the CA key to sign the client key:
 
 ```python
@@ -2246,7 +2416,8 @@ project from the drop-down list.
 **Create Project**: If you set the **Project** parameter to Create Project, enter the project
 name and configure the **Organization** and **Resource Set** parameters to create a project.
 **Logstore**: the unit that is used to collect, store, and query log data in SLS.
-Make sure that the name of the project is unique and the region of the project is the same as that of the SLB instance.
+
+> **Note:** Make sure that the name of the project is unique and the region of the project is the same as that of the SLB instance.
 
 **What to do next**
 
@@ -2379,9 +2550,22 @@ The name must be 1 to 80 characters in length, and can contain letters, digits, 
 2. On the page that appears, add IP entries to the ACL.
 If you add an entry for an IP address or a CIDR block that already exists, the entry is ignored. Click **Add Entry**. In the **Add ACL Entry** dialog box, configure the **IP Address/CIDR**
 **Block** and **Description** parameters and click **OK**.
-You can add a single IP address, such as 192.168.1.1 or 192.168.1.1/32. You can add a single CIDR block, such as 192.168.1.0/24. Click **Add ACL Entries**. In the **Add Multiple Entries** dialog box, configure the **Add**
+
+> **Note:** You can add a single IP address, such as 192.168.1.1 or 192.168.1.1/32.
+> You can add a single CIDR block, such as 192.168.1.0/24.
+
+Click **Add ACL Entries**. In the **Add Multiple Entries** dialog box, configure the **Add**
 **Multiple Addresses/CIDR Blocks and Descriptions** parameter and click **OK**.
-Enter one entry per line. Press the Enter key to start a new line. In each entry, separate the IP address or CIDR block and its description with a vertical bar (**|**). Example: **192.168.1.0/24|Description**. You can add at most 20 entries at a time. ACL entries cannot contain space characters or carriage returns. Click **Import**. In the **Import** dialog box, click **Download Template**, specify the template information, and then click **Next**. You can add at most 20 entries at a time. ACL entries cannot contain space characters or carriage returns.
+
+> **Note:** Enter one entry per line. Press the Enter key to start a new line.
+> In each entry, separate the IP address or CIDR block and its description with a vertical bar (**|**). Example: **192.168.1.0/24|Description**.
+> You can add at most 20 entries at a time.
+> ACL entries cannot contain space characters or carriage returns.
+
+Click **Import**. In the **Import** dialog box, click **Download Template**, specify the template information, and then click **Next**.
+
+> **Note:** You can add at most 20 entries at a time.
+> ACL entries cannot contain space characters or carriage returns.
 
 **Export IP entries from an ACL**
 
@@ -2443,7 +2627,11 @@ the value of the **dns** parameter, which is the **openapi.endpoint**.
 1. In the address bar of your browser, enter the **openapi.endpoint**, append the suffix
 **/ruleConfig**, and then press the Enter key to go to the **rule configuration center**.
 2. To quickly find the quota parameter that you want to modify, enter the quota parameter in
-the **action** search box and click **Search**. The default quota parameters are not displayed. If you cannot find the quota parameter that you want to modify, you must add the quota first. After you add the quota, you can modify the parameters. For more information, see Step 4: Add a quota.
+the **action** search box and click **Search**.
+
+> **Note:** The default quota parameters are not displayed.
+> If you cannot find the quota parameter that you want to modify, you must add the quota first. After you add the quota, you can modify the parameters. For more information, see Step 4: Add a quota.
+
 3. Find the **action** and click **Modify** in the **Actions** column.
 4. On the Modify Configurations page, modify the **configuration** parameters and click
 **Modify**. For more information about the **configuration** parameters, see Limits.
@@ -2488,7 +2676,12 @@ View the operation logs of a single SLB instance on the instance management deta
 **Instances**.
 b. On the **Instances** page, find the target instance, then click its instance ID in the
 **Instance ID/Instance Name** column, or click **Manage** in the **Actions** column.
-c. On the instance management details page, click the **Operation Logs** tab. Operation logs are retained for seven days. To adjust the retention period, modify the logging configurations in Configurations > Log Storage Settings as an administrator. If you extend the retention period by modifying the logging configurations, the log data before the modification is not backfilled. Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+c. On the instance management details page, click the **Operation Logs** tab.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the logging configurations in Configurations > Log Storage Settings as an administrator.
+> If you extend the retention period by modifying the logging configurations, the log data before the modification is not backfilled.
+> Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
 4. **Optional.** You can filter operation records by filter conditions such as **Operation Name**
 and **Operator**. The following table describes the filter conditions.
 

@@ -5,7 +5,7 @@ doc_version: "20251105"
 pdf_pages: 56
 source_pdf: "9f800665a68e7cd3_Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guide 20251105.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20ApsaraDB%20RDS%20for%20SQL%20Server%20User%20Guide%2020251105.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guide
@@ -99,7 +99,7 @@ The maximum IOPS of a standard SSD or an ESSD varies based on the instance type 
 min{1800 + 30 × Storage capacity, 25000}
 ```
 
-If the throughput of an RDS instance reaches the upper limit, the IOPS of the instance also decreases.
+> **Note:** If the throughput of an RDS instance reaches the upper limit, the IOPS of the instance also decreases.
 
 **Primary instance**
 
@@ -193,11 +193,19 @@ RDS console
 
 This topic describes how to log on to the ApsaraDB RDS console. Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
 1. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> **Note:** The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 2. Click **Log On**.
 3. If your account has multi-factor authentication (MFA) enabled, perform corresponding
-operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**. For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
 ## 5 Quick Start
@@ -252,9 +260,18 @@ After you create an ApsaraDB RDS instance, you must add the IP addresses or CIDR
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
-If you want to connect an ECS instance to an ApsaraDB RDS instance by using an internal endpoint, make sure that the two instances are in the same region and have the same network type. Otherwise, the connection fails. You can also click **Create Whitelist** to create an IP address whitelist.
+
+> **Note:** If you want to connect an ECS instance to an ApsaraDB RDS instance by using an internal endpoint, make sure that the two instances are in the same region and have the same network type. Otherwise, the connection fails.
+> You can also click **Create Whitelist** to create an IP address whitelist.
+
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
-access the instance and click **OK**. Limits for IP address whitelists: You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added. Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits. If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
+access the instance and click **OK**.
+
+> **Note:** Limits for IP address whitelists:
+> You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added.
+> Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits.
+> If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution.
+> If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
 ### 5.4 Connect to an instance
 
@@ -265,8 +282,9 @@ This topic describes how to use Data Management (DMS) to connect to an ApsaraDB 
 4. Click **Log On to DB** in the upper-right corner of the page.
 5.
 6. Click **Login**.
-If you want the browser to remember the password, select **Remember**
-**password** and click **Login**.
+
+> **Note:** If you want the browser to remember the password, select **Remember** **password** and click **Login**.
+
 If you cannot connect to the instance, check the IP address whitelist settings. For more information, see Configure an IP address whitelist for an ApsaraDB RDS instance.
 
 ### 5.5 Create an account
@@ -360,7 +378,9 @@ This topic describes how to manually restart an ApsaraDB RDS instance. This appl
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. Click **Restart Instance** in the upper-right corner.
-When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
+
+> **Note:** When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
+
 4. In the Restart Instance message, click **Confirm**.
 
 ### 6.4 Change the specifications of an instance
@@ -388,7 +408,8 @@ An instance enters the **Maintaining Instance** state before the maintenance win
 4. In the **Configuration Information** section, click **Configure** to the right of **Maintenance**
 **Window**.
 5. Select a maintenance window and click **Save**.
-The maintenance window is displayed in UTC+8.
+
+> **Note:** The maintenance window is displayed in UTC+8.
 
 ### 6.6 Configure primary/secondary switchover
 
@@ -400,9 +421,10 @@ ApsaraDB RDS provides the primary/secondary switchover feature to ensure the hig
 
 An ApsaraDB RDS for SQL Server instance has a secondary instance. Data is synchronized in real time between the primary and secondary instances. You can access only the primary instance. The secondary instance serves only as a backup and does not allow external access. If the primary instance cannot be accessed, your workloads are automatically switched over to the secondary instance. After the switchover, the primary instance becomes the secondary instance.
 
-**Important**
+> **Important:** You may encounter a network interruption during a switchover. Make sure that your application is configured to automatically reconnect to the instance.
+> During a switchover, a 1-minute data quality protection mechanism is enabled for data synchronization. If the primary and secondary database states are incorrect or if the latency for data synchronization exceeds 1 minute due to SQL Server errors, the HA system does not automatically perform the primary/secondary switchover. You must determine whether to perform the switchover.
+> If an instance is intermittently unavailable due to excessive mirroring event waits, the switchover is not performed. The instance automatically becomes available again.
 
-You may encounter a network interruption during a switchover. Make sure that your application is configured to automatically reconnect to the instance. During a switchover, a 1-minute data quality protection mechanism is enabled for data synchronization. If the primary and secondary database states are incorrect or if the latency for data synchronization exceeds 1 minute due to SQL Server errors, the HA system does not automatically perform the primary/secondary switchover. You must determine whether to perform the switchover. If an instance is intermittently unavailable due to excessive mirroring event waits, the switchover is not performed. The instance automatically becomes available again.
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
@@ -435,7 +457,12 @@ This topic provides an overview of read-only ApsaraDB RDS for SQL Server instanc
 
 **Overview**
 
-When a read-only instance is created, the data is replicated from the secondary instance. The data is consistent with that of the primary instance. Data updates of the primary instance are synchronized to all read-only instances. Only ApsaraDB RDS instances that run SQL Server 2017 EE support read-only instances. Each read-only instance works in a single-node architecture, where no instances are provided as backups. The following figure shows the topology of read-only instances.
+When a read-only instance is created, the data is replicated from the secondary instance. The data is consistent with that of the primary instance. Data updates of the primary instance are synchronized to all read-only instances.
+
+> **Note:** Only ApsaraDB RDS instances that run SQL Server 2017 EE support read-only instances.
+> Each read-only instance works in a single-node architecture, where no instances are provided as backups.
+
+The following figure shows the topology of read-only instances.
 
 **Features**
 
@@ -539,7 +566,12 @@ You can use the ApsaraDB RDS console to reset the password of your database acco
 3. In the left-side navigation pane, click **Accounts**.
 4. Find an account and click **Reset Password** in the **Actions** column.
 5. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
-The password must meet the following requirements: The password is 8 to 32 characters in length. The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
+
+> **Note:** The password must meet the following requirements:
+> The password is 8 to 32 characters in length.
+> The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+> Special characters include
+> ! @ # $ % ^ & * ( ) _ + - =
 
 ## 8 Databases
 
@@ -583,8 +615,9 @@ This topic describes how to delete a database from an ApsaraDB RDS for SQL Serve
 | Database password | The password of the account used to connect to the database. |
 
 6. Click **Login**.
-If you want the browser to remember the password, select **Remember**
-**password** and click **Login**.
+
+> **Note:** If you want the browser to remember the password, select **Remember** **password** and click **Login**.
+
 If you cannot connect to the instance, check the IP address whitelist settings. For more information, see Configure an IP address whitelist for an ApsaraDB RDS instance.
 7. The **SQLConsole** page appears after you log on to the instance. Execute a statement in the
 following format to delete a database:
@@ -593,7 +626,7 @@ following format to delete a database:
 drop database <database name>;
 ```
 
-If the instance runs SQL Server 2012 or later on RDS High-availability Edition, you can also use the following stored procedure. This stored procedure deletes the specified database, removes the associated image, and closes the connection to the database.
+> **Note:** If the instance runs SQL Server 2012 or later on RDS High-availability Edition, you can also use the following stored procedure. This stored procedure deletes the specified database, removes the associated image, and closes the connection to the database.
 
 ```
 EXEC sp_rds_drop_database 'database name'
@@ -607,7 +640,9 @@ EXEC sp_rds_drop_database 'database name'
 
 **system databases**
 
-This topic describes how to change the character set collation and the time zone of system databases. System databases include master, msdb, tempdb, and model. The instance runs SQL Server 2012, 2016, or 2017. No database other than system databases exists on the instance. If you have just deleted databases from the instance, the deletion task may be pending in the secondary instance. Before you change the character set collation and the time zone, make sure that the primary and secondary instances do not contain databases.
+This topic describes how to change the character set collation and the time zone of system databases. System databases include master, msdb, tempdb, and model. The instance runs SQL Server 2012, 2016, or 2017. No database other than system databases exists on the instance.
+
+> **Note:** If you have just deleted databases from the instance, the deletion task may be pending in the secondary instance. Before you change the character set collation and the time zone, make sure that the primary and secondary instances do not contain databases.
 
 **Precautions**
 
@@ -617,7 +652,9 @@ The default character set collation is Chinese_PRC_CI_AS. The default time zone 
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
 4. In the left-side navigation pane, click **Databases**.
 5. On the Databases page, click **Change Character Set Collation and Time Zone** .
-If you fail to find this button on the page, make sure that the requirements in Prerequisites are met.
+
+> **Note:** If you fail to find this button on the page, make sure that the requirements in Prerequisites are met.
+
 6. In the dialog box that appears, select **Time Zone**, **Character Set Collation**, or both of
 them, and click **OK**.
 
@@ -723,7 +760,9 @@ This topic describes how to change a vSwitch for an ApsaraDB RDS instance that i
 4. In the upper-right corner of the Database Connection section, click **Switch vSwitch**.
 5. In the dialog box that appears, select a vSwitch and click **OK**.
 6. In the message that appears, click **Switch**.
-You may encounter a network interruption of about 30 seconds during the change process. Make sure that your application is configured to automatically reconnect to the instance. We recommend that you clear the cache immediately after the instance is switched to a new VPC and vSwitch. Otherwise, data can only be read but cannot be written.
+
+> **Note:** You may encounter a network interruption of about 30 seconds during the change process. Make sure that your application is configured to automatically reconnect to the instance.
+> We recommend that you clear the cache immediately after the instance is switched to a new VPC and vSwitch. Otherwise, data can only be read but cannot be written.
 
 ### 9.2 Change the endpoint and port number of an instance
 
@@ -745,7 +784,9 @@ numbers.
 3. In the left-side navigation pane, click **Database Connection**.
 4. In the upper-right corner of the Database Connection section, click **Change Endpoint**.
 5. In the dialog box that appears, set Connection Type, Endpoint, and Port, and then click **OK**.
-The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be a value within the range of 1000 to 5999.
+
+> **Note:** The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter.
+> The port number must be a value within the range of 1000 to 5999.
 
 ### 9.3 Apply for or release a public endpoint
 
@@ -782,8 +823,9 @@ This topic describes how to use Data Management (DMS) to connect to an ApsaraDB 
 4. Click **Log On to DB** in the upper-right corner of the page.
 5.
 6. Click **Login**.
-If you want the browser to remember the password, select **Remember**
-**password** and click **Login**.
+
+> **Note:** If you want the browser to remember the password, select **Remember** **password** and click **Login**.
+
 If you cannot connect to the instance, check the IP address whitelist settings. For more information, see Configure an IP address whitelist for an ApsaraDB RDS instance.
 
 ## 10 Monitoring and alerting
@@ -840,9 +882,18 @@ After you create an ApsaraDB RDS instance, you must add the IP addresses or CIDR
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
-If you want to connect an ECS instance to an ApsaraDB RDS instance by using an internal endpoint, make sure that the two instances are in the same region and have the same network type. Otherwise, the connection fails. You can also click **Create Whitelist** to create an IP address whitelist.
+
+> **Note:** If you want to connect an ECS instance to an ApsaraDB RDS instance by using an internal endpoint, make sure that the two instances are in the same region and have the same network type. Otherwise, the connection fails.
+> You can also click **Create Whitelist** to create an IP address whitelist.
+
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
-access the instance and click **OK**. Limits for IP address whitelists: You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added. Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits. If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
+access the instance and click **OK**.
+
+> **Note:** Limits for IP address whitelists:
+> You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added.
+> Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits.
+> If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution.
+> If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
 ### 11.2 Configure SSL encryption
 
@@ -863,13 +914,16 @@ An SSL CA certificate is valid for one year. You must update the validity period
 7. In the **Configure SSL** dialog box, select the endpoint for which you want to enable SSL
 encryption and click **OK**.
 8. Click **Download CA Certificate** to download the SSL CA certificate files in a compressed
-package. The downloaded package contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: contains the server CA certificate that can be imported into an operating system rather than Windows or an application that is not Windows-based. JKS file: contains the server CA certificate that is stored in a Java-supported truststore. You can use the file to import the CA certificate chain into a Java-based application. The default password is apsaradb. When the JKS file is used in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. Open the `/jre/lib/security/java.security` file on the host where your application resides, and modify the following configurations:
+package. The downloaded package contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: contains the server CA certificate that can be imported into an operating system rather than Windows or an application that is not Windows-based. JKS file: contains the server CA certificate that is stored in a Java-supported truststore. You can use the file to import the CA certificate chain into a Java-based application. The default password is apsaradb.
+
+> **Note:** When the JKS file is used in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. Open the
+> `/jre/lib/security/java.security` file on the host where your application resides, and modify the following configurations:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 224 jdk.certpath.dis abledAlgorithms=MD2, RSA keySize < 1024
 ```
 
-If you do not modify the JDK security configuration, the following error is reported. Similar errors are also caused by the Java security configuration.
+> If you do not modify the JDK security configuration, the following error is reported. Similar errors are also caused by the Java security configuration.
 
 ```
 javax.net.ssl.SSLHandshakeException: DHPublicKey does not comply to algorithm c onstraints
@@ -892,13 +946,16 @@ After you enable SSL encryption, configure the SSL CA certificate on your applic
 3. Click the **SSL** tab. Select the path of the PEM-formatted CA certificate, as shown in the
 following figure.
 4. Click **OK**.
-If the `connection is being used` error is reported, the previous session is still connected. Restart Navicat.
+
+> **Note:** If the `connection is being used` error is reported, the previous session is still connected. Restart Navicat.
+
 5. Double-click the database to test whether the database is connected.
 
 **Update the validity period of an SSL CA certificate**
 
-**Update Validity** causes the ApsaraDB RDS instance to restart. Proceed with
-caution. After you perform the **Update Validity period** operation, you must download and configure the SSL CA certificate again.
+> **Note:** **Update Validity** causes the ApsaraDB RDS instance to restart. Proceed with caution.
+> After you perform the **Update Validity period** operation, you must download and configure the SSL CA certificate again.
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
@@ -919,7 +976,9 @@ This topic describes how to switch workloads between a primary ApsaraDB RDS inst
 
 **Background information**
 
-Automatic switchover: By default, the automatic switchover feature is enabled. If the primary RDS instance becomes faulty, ApsaraDB RDS automatically switches workloads to the secondary instance. Manual switchover: You can manually switch workloads between the primary and secondary RDS instances even when the automatic switchover feature is enabled. Data is synchronized in real time between the primary and secondary RDS instances. You can access only the primary instance. The secondary instance serves only as a standby and does not allow external access.
+Automatic switchover: By default, the automatic switchover feature is enabled. If the primary RDS instance becomes faulty, ApsaraDB RDS automatically switches workloads to the secondary instance. Manual switchover: You can manually switch workloads between the primary and secondary RDS instances even when the automatic switchover feature is enabled.
+
+> **Note:** Data is synchronized in real time between the primary and secondary RDS instances. You can access only the primary instance. The secondary instance serves only as a standby and does not allow external access.
 
 **Precautions**
 
@@ -931,11 +990,12 @@ During a switchover, your service may be interrupted. Make sure that your applic
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, click **Service Availability**.
 4. Click **Switch Primary/Secondary Instance** on the right side of the page.
-You may encounter a service interruption during a switchover. Make sure that your application is configured to automatically reconnect to the instance.
+
+> **Note:** You may encounter a service interruption during a switchover. Make sure that your application is configured to automatically reconnect to the instance.
+
 5. In the dialog box that appears, click **OK**.
-In the dialog box, you can also select **Switch Within Maintenance**
-**Window** and click **OK**. Then, the system performs the primary/secondary switchover
-within the maintenance window. For more information about how to set the maintenance window, see Set a maintenance window. You can also click **Change** on the right to change the maintenance window.
+
+> **Note:** In the dialog box, you can also select **Switch Within Maintenance** **Window** and click **OK**. Then, the system performs the primary/secondary switchover within the maintenance window. For more information about how to set the maintenance window, see Set a maintenance window. You can also click **Change** on the right to change the maintenance window.
 
 **FAQ**
 
@@ -976,11 +1036,11 @@ This topic describes how to manually back up an ApsaraDB RDS instance. estoratio
 4. On the **Basic Information** page, click **Back Up Instance** in the upper-right corner.
 5. In the **Back Up Instance** dialog box, select **Automatic Backup** or **Full Backup** from the
 **Select Backup Mode** drop-down list.
-ApsaraDB RDS supports the following backup methods:
-**Automatic Backup**: After you select Automatic Backup, the system immediately
-performs an incremental or full backup based on the instance.
-**Full Backup**: After you select Full Backup, the system immediately performs a
-full backup.
+
+> **Note:** ApsaraDB RDS supports the following backup methods:
+> **Automatic Backup**: After you select Automatic Backup, the system immediately performs an incremental or full backup based on the instance.
+> **Full Backup**: After you select Full Backup, the system immediately performs a full backup.
+
 6. Click **OK**.
 
 **Result**
@@ -996,7 +1056,11 @@ ApsaraDB RDS for SQL Server allows you to shrink transaction logs to reduce the 
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
 4. In the left-side navigation pane, click **Backup and Restoration**.
 5. In the upper-right corner of the page, click **Shrink Transaction Log**. In the message that
-appears, click **OK**. The shrinkage takes about 20 minutes to complete. ApsaraDB RDS for SQL Server shrinks transaction logs during each backup. to ApsaraDB RDS for SQL Server
+appears, click **OK**.
+
+> **Note:** The shrinkage takes about 20 minutes to complete. ApsaraDB RDS for SQL Server shrinks transaction logs during each backup.
+
+to ApsaraDB RDS for SQL Server
 
 ## 14 Migrate full backup data to ApsaraDB RDS for SQL Server
 
@@ -1004,7 +1068,9 @@ appears, click **OK**. The shrinkage takes about 20 minutes to complete. ApsaraD
 
 **Server**
 
-This topic describes how to migrate the full backup data of a self-managed SQL Server database from an Object Storage Service (OSS) bucket to an ApsaraDB RDS for SQL Server instance. The available storage of the RDS instance is sufficient. If the available storage is insufficient, you must expand the storage capacity of the RDS instance before you start the migration. The names of existing databases on the RDS instance are different from the name of the self-managed database. A privileged account is created on the RDS instance. For more information, see Create an account. An OSS bucket is created in the region where the RDS instance resides. For more information, see Create buckets in the **OSS User Guide**. The DBCC CHECKDB statement is executed, and the return result indicates that no allocation or consistency errors occur. If no allocation or consistency errors occur, the following execution result is returned:
+This topic describes how to migrate the full backup data of a self-managed SQL Server database from an Object Storage Service (OSS) bucket to an ApsaraDB RDS for SQL Server instance. The available storage of the RDS instance is sufficient. If the available storage is insufficient, you must expand the storage capacity of the RDS instance before you start the migration. The names of existing databases on the RDS instance are different from the name of the self-managed database. A privileged account is created on the RDS instance. For more information, see Create an account. An OSS bucket is created in the region where the RDS instance resides. For more information, see Create buckets in the **OSS User Guide**. The DBCC CHECKDB statement is executed, and the return result indicates that no allocation or consistency errors occur.
+
+> **Note:** If no allocation or consistency errors occur, the following execution result is returned:
 
 ```
 ... CHECKDB found 0 allocation errors and 0 consistency errors in database 'xxx'. DBCC execution completed. If DBCC printed error messages, contact your system adm inistrator.
@@ -1016,7 +1082,8 @@ The migration from a later SQL Server version to an earlier SQL Server version i
 
 **Back up the self-managed database**
 
-Before you perform a full backup, you must stop all data writes to the selfmanaged database. The data that is written to the self-managed database during the full backup process cannot be backed up.
+> **Note:** Before you perform a full backup, you must stop all data writes to the self- managed database. The data that is written to the self-managed database during the full backup process cannot be backed up.
+
 1. Download the backup script. Then, open the file by using Microsoft SQL Server Management
 Studio (SSMS).
 2. Configure the parameters described in the following table.
@@ -1074,7 +1141,9 @@ to ApsaraDB RDS for SQL Server If you want to view the details of the migration 
 
 **Common errors**
 
-Each migration task record on the Backup Data Upload History tab of the Backup and Restoration page contains a task description. If the migration task fails or an error is reported, you can troubleshoot the failure or error based on the task description. The following common errors may occur: An existing database on the RDS instance has the same name as the self-managed database. Error message: The database (xxx) is already exist on RDS, please backup and drop it, then try again. Cause: If an existing database on the RDS instance has the same name as the selfmanaged database, the migration is not supported. This mechanism is designed to ensure the security of your data. Solution: If you want to overwrite an existing database on the RDS instance, back up the database, delete the database from the RDS instance, and then create and run a migration task again. A differential backup file is used. Error message: Backup set (xxx.bak) is a Database Differential backup, we only accept a FULL Backup. Cause: The file that you upload is a differential backup file rather than a full backup file. The migration method in this topic supports only full backup files. A log backup file is used. Error message: Backup set (xxx.trn) is a Transaction Log backup, we only accept a FULL Backup. Cause: The file that you upload is a log backup file rather than a full backup file. The migration method in this topic supports only full backup files. The full backup file fails the verification. Error message: Failed to verify xxx.bak, backup file was corrupted or newer edition than RDS. Cause: The full backup file is corrupted, or the self-managed database runs an SQL Server version later than the RDS instance. For example, this error occurs if the self-managed database runs SQL Server 2016 and the RDS instance runs SQL Server 2012. Solution: If the full backup file is corrupted, perform a full backup on the self-managed database again. Then, create and run a new migration task. If the self-managed database runs an SQL Server version later than the RDS instance, select a different RDS instance that runs the same version as or a later version than the self-managed database. The DBCC CHECKDB statement fails. Error message: DBCC checkdb failed. Cause: The self-managed database encounters allocation or consistency errors. Solution: Execute the following statement on the self-managed database to fix the error. Then, create and run a migration task again. If you execute the following statement, your data may be lost.
+Each migration task record on the Backup Data Upload History tab of the Backup and Restoration page contains a task description. If the migration task fails or an error is reported, you can troubleshoot the failure or error based on the task description. The following common errors may occur: An existing database on the RDS instance has the same name as the self-managed database. Error message: The database (xxx) is already exist on RDS, please backup and drop it, then try again. Cause: If an existing database on the RDS instance has the same name as the selfmanaged database, the migration is not supported. This mechanism is designed to ensure the security of your data. Solution: If you want to overwrite an existing database on the RDS instance, back up the database, delete the database from the RDS instance, and then create and run a migration task again. A differential backup file is used. Error message: Backup set (xxx.bak) is a Database Differential backup, we only accept a FULL Backup. Cause: The file that you upload is a differential backup file rather than a full backup file. The migration method in this topic supports only full backup files. A log backup file is used. Error message: Backup set (xxx.trn) is a Transaction Log backup, we only accept a FULL Backup. Cause: The file that you upload is a log backup file rather than a full backup file. The migration method in this topic supports only full backup files. The full backup file fails the verification. Error message: Failed to verify xxx.bak, backup file was corrupted or newer edition than RDS. Cause: The full backup file is corrupted, or the self-managed database runs an SQL Server version later than the RDS instance. For example, this error occurs if the self-managed database runs SQL Server 2016 and the RDS instance runs SQL Server 2012. Solution: If the full backup file is corrupted, perform a full backup on the self-managed database again. Then, create and run a new migration task. If the self-managed database runs an SQL Server version later than the RDS instance, select a different RDS instance that runs the same version as or a later version than the self-managed database. The DBCC CHECKDB statement fails. Error message: DBCC checkdb failed. Cause: The self-managed database encounters allocation or consistency errors. Solution: Execute the following statement on the self-managed database to fix the error. Then, create and run a migration task again.
+
+> **Note:** If you execute the following statement, your data may be lost.
 
 ```
 DBCC CHECKDB (DBName, REPAIR_ALLOW_DATA_LOSS) WITH NO_INFOMSGS, ALL_ERRORMSGS

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 49
 source_pdf: "693c8e03adad4fca_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) User Guide "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Security Orchestration Automation and Response (SOAR) User Guide 20260701
@@ -99,13 +99,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -164,9 +162,14 @@ After you create a case, you can investigate, analyze, and collect evidence on a
 2. On the Case Details page, view and configure the basic information of the case.
 You can view information such as the organization, case status, priority, user who assigned the case, case ID, case source, creator, case UUID, update time, and remarks. You can configure information such as the case name, case status, priority, user who assigned the case, and remarks.
 3. On the **Entities** tab, configure the entities that you want to extract.
-You can also automatically add entities from a playbook to the entity list by using the EventHouse component in the playbook and executing the playbook. For more information about how to view components, see Manage components. For more information about how to create a playbook, see Manage playbooks. Click **Create** and configure the **Monitored Entity**, **Entity Type**, and **processStatus** parameters. An entity is a fixed type of data. The following entity types are supported:
-**IP**, **hostname**, **appname**, **domain**, **db_name**, **cna**, **file_hash**, **process**,
-**AccesskeyID**, **email**, **aegis_file**, and **file_md5**.
+
+> **Note:** You can also automatically add entities from a playbook to the entity list by using the EventHouse component in the playbook and executing the playbook. For more information about how to view components, see Manage components. For more information about how to create a playbook, see Manage playbooks.
+
+Click **Create** and configure the **Monitored Entity**, **Entity Type**, and **processStatus** parameters.
+
+> **Note:** An entity is a fixed type of data. The following entity types are supported:
+> **IP**, **hostname**, **appname**, **domain**, **db_name**, **cna**, **file_hash**, **process**, **AccesskeyID**, **email**, **aegis_file**, and **file_md5**.
+
 Click **Settings**, and configure the **Automatically Generate Associated Entity**and
 **Entity Type** parameters.
 4. On the **Elements** tab, click **Add Element**. In the **Add Element** dialog box, configure the
@@ -177,14 +180,26 @@ parameters and click **OK**.
 | Element Content | The content of the element. Specify the added entities as the element content. Only the JSON format is supported. |
 | Tag | The tag of the element. |
 
-You can view the element in the element list and perform the following operations: View the element in the table or JSON format. Modify the element. If you modify the element content, the modification is synchronized to the **Entities** tab. Add the element as an evidence. You can view or modify the evidence on the **Evidences** tab. You can also view the information added as the evidence on the **Joint War Room** tab. Click **Configure Headers** and select keys to add as headers. The default header cannot be removed. Select multiple elements, click **Batch Operation**, and then select **Add to Case**, **Change**
+You can view the element in the element list and perform the following operations: View the element in the table or JSON format. Modify the element. If you modify the element content, the modification is synchronized to the **Entities** tab. Add the element as an evidence. You can view or modify the evidence on the **Evidences** tab. You can also view the information added as the evidence on the **Joint War Room** tab. Click **Configure Headers** and select keys to add as headers.
+
+> **Note:** The default header cannot be removed.
+
+Select multiple elements, click **Batch Operation**, and then select **Add to Case**, **Change**
 **Tag**, or **Delete**.
-Click **Add to Case** to add the element to an existing case. If the element has been added to another case, move the pointer over the message icon in the **Source** column to view the case and go to its details page. After the element is added, when a security event that meets the requirements of a case occurs, the system adds the security event to the joint war room at the earliest opportunity within the case retention period and the period for entity-based case merging, and investigates and handles the case. The case information is displayed in the joint war room. A security analyst can add the indicators of compromise (IOCs) in the event to the intelligence library for continuous monitoring, and view the records of all operations performed during event investigation and response on the **Operation History** tab. You can also automatically add elements from a playbook to the element list by using the EventHouse component in the playbook and executing the playbook. If an automatically added element is the same as a manually added element, the system automatically performs deduplication. For more information about how to view components, see Manage components. For more information about how to create a playbook, see Manage playbooks.
+Click **Add to Case** to add the element to an existing case. If the element has been added to another case, move the pointer over the message icon in the **Source** column to view the case and go to its details page. After the element is added, when a security event that meets the requirements of a case occurs, the system adds the security event to the joint war room at the earliest opportunity within the case retention period and the period for entity-based case merging, and investigates and handles the case. The case information is displayed in the joint war room. A security analyst can add the indicators of compromise (IOCs) in the event to the intelligence library for continuous monitoring, and view the records of all operations performed during event investigation and response on the **Operation History** tab.
+
+> **Note:** You can also automatically add elements from a playbook to the element list by using the EventHouse component in the playbook and executing the playbook. If an automatically added element is the same as a manually added element, the system automatically performs deduplication. For more information about how to view components, see Manage components. For more information about how to create a playbook, see Manage playbooks.
+
 5. On the **Joint War Room** tab, find the case that you want to manage, enter **@Jarvis** and a
 command in the message field, and then press the Enter key. Alternatively, click **Run**
 **Playbook/Action**, select and configure an in-cloud action and a playbook, and then click
 **OK**.
-You are navigated to the joint war room with parameters passed and converted to a message that contains @Jarvis. In this case, the final text of the message to be sent is constructed through a series of interactions before you enter the joint war room. You can also mention other members by using the at sign (@) to send messages to them. Multiple group members can work together in the joint war room by sending messages and sharing security alert information and event investigation results, to collaboratively handle security events. The system returns the execution result in a message.
+You are navigated to the joint war room with parameters passed and converted to a message that contains @Jarvis. In this case, the final text of the message to be sent is constructed through a series of interactions before you enter the joint war room.
+
+> **Note:** You can also mention other members by using the at sign (@) to send messages to them.
+> Multiple group members can work together in the joint war room by sending messages and sharing security alert information and event investigation results, to collaboratively handle security events.
+
+The system returns the execution result in a message.
 6. On the **Operation History** tab, view the records of all operations performed during case
 investigation and response.
 7. On the **Evidences** tab, enter, edit, and delete evidences.
@@ -242,9 +257,8 @@ To create a playbook from scratch, refer to the detailed tutorial in Create a pl
 **Built-in** playbooks are system-preset. You can also create custom playbooks by copying
 built-in ones.
 
-**Important**
+> **Important:** We recommend using playbook templates to create custom playbooks. Built-in playbooks will no longer be maintained.
 
-We recommend using playbook templates to create custom playbooks. Built-in playbooks will no longer be maintained.
 **Global Sharing** playbooks can only be created on the SOAR platform side. When the
 application scope of a **Global Sharing** playbook is set to **Tenant**, it automatically syncs to the tenant-side public playbook list after creation.
 **Custom Playbook** supports only the **Private** type.
@@ -281,7 +295,10 @@ description.
 **Tenant Cloud Service Components**: Search for standard actions by action name,
 description, or API Chinese name.
 **Tenant Cloud Security Service Components**: Search for cloud-native actions by
-action name, description, or API Chinese name. The system automatically runs a connectivity test every 30 minutes to update the online status of cloud-native components.
+action name, description, or API Chinese name.
+
+> **Note:** The system automatically runs a connectivity test every 30 minutes to update the online status of cloud-native components.
+
 **Playbooks**: Search all playbooks by action name or description.
 2. Select each element in the flowchart. On the right-side **Basic Information** tab under **Edit**,
 view and configure its name, description, and actions. Click **Advanced Settings** to configure whether the component must **Run at Least Once**, define the action to take when **OnError** occurs, and set **Conditions to Return True for**
@@ -293,7 +310,10 @@ execution methods. : Indicates start. : Indicates end. : Indicates single-path o
 text and click **Run** to execute in debug mode. The **Execution Logs** tab displays the debug results. If any node fails, you can modify the JSON text on the **Input Parameters (Debug)** tab, or click **Input Parameters Wizard** to adjust parameters for further debugging.
 5. Click **Check** in the upper-left corner of the canvas. If no anomalies are detected, click **Save**
 **and Publish**. The system saves and enables the automated orchestration workflow.
-If you click **Save** in the upper-left corner of the canvas, the system saves the workflow without enabling it. The playbook’s **Status** in the playbook list becomes **Disabled**. After successful publishing, the playbook’s **Status** in the playbook list becomes **Enabled**. You can perform the following operations: Click **More** above the canvas to perform the following actions:
+
+> **Note:** If you click **Save** in the upper-left corner of the canvas, the system saves the workflow without enabling it. The playbook’s **Status** in the playbook list becomes **Disabled**.
+
+After successful publishing, the playbook’s **Status** in the playbook list becomes **Enabled**. You can perform the following operations: Click **More** above the canvas to perform the following actions:
 **Import XML**: Create an automation orchestration flowchart by importing an XML file.
 **Export XML**: Export the created automation orchestration flowchart as an XML file.
 **Save As Image**: Save the created automation orchestration flowchart as an image.
@@ -408,7 +428,17 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 3. In the left-side navigation pane,Click **SOAR > List Group**.
 4. In the left-side pane of the List Group page, click the target list to import.
 5. Click **Import** on the right side of the page. On the **Import List** page, click Import Template
-to automatically download the template. The system provides different import templates based on the type. It supports both keyvalue two-dimensional table templates and value-only templates. On the **List Group** page, click different lists in the left-side pane to select different types. Each template has different restrictions. For example, for the key-value twodimensional table, follow these rules: i. You can import up to 10,000 entries at a time. The maximum number of entries in a single list is 1 million. For key-value tables, the system updates the value based on the key. ii. If the system already contains a key, it updates the corresponding value during import. iii. If Permanent Validity is set to Yes, the expiration time does not take effect. iv. The key length cannot exceed 512 characters. v. The key and value fields cannot be empty. vi. Keys must be unique within the same table.
+to automatically download the template. The system provides different import templates based on the type. It supports both keyvalue two-dimensional table templates and value-only templates. On the **List Group** page, click different lists in the left-side pane to select different types.
+
+> **Note:** Each template has different restrictions. For example, for the key-value two- dimensional table, follow these rules:
+> i. You can import up to 10,000 entries at a time. The maximum number of entries in a
+> single list is 1 million. For key-value tables, the system updates the value based on the key.
+> ii. If the system already contains a key, it updates the corresponding value during
+> import.
+> iii. If Permanent Validity is set to Yes, the expiration time does not take effect.
+> iv. The key length cannot exceed 512 characters.
+> v. The key and value fields cannot be empty.
+> vi. Keys must be unique within the same table.
 
 | Parameter | Description |
 |---|---|
@@ -566,7 +596,9 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 4. On the **SOAR Settings** page, select the **Streaming Data Source Configuration** tab to
 view the creation time, last modified time, status, and other details for **SOC alert**
 **messages**.
-**SOC alert messages** cannot be deleted.
+
+> **Note:** **SOC alert messages** cannot be deleted.
+
 5. Manually create a streaming data source.
 i. On the **Streaming Data Source Configuration** page, click **Create**. ii. After you complete the following configuration, click **OK**.
 
@@ -672,13 +704,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -739,7 +769,10 @@ thresholds for traffic redirection. i. Find the rule whose thresholds you want t
 **Solution** column.
 ii. In the **Modify Threshold** dialog box, specify custom thresholds and click **OK**. iii. **Optional.** Click **Automatic DDoS Traffic Redirection and Scrubbing**. In the **Enable**
 **Automatic Redirection** message, click **OK**.
-By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
+
+> **Note:** By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off.
+
+If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
 #### 4.2.3 Manage Server Guard rules
 
@@ -770,9 +803,8 @@ You can create custom Web Application Firewall (WAF) rules based on your busines
 
 **Procedure**
 
-**Important**
+> **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
-WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -858,9 +890,7 @@ disable the attack blocking feature. After you disable the attack blocking featu
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
-**Important**
-
-All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
+> **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
 
 **Procedure**
 
@@ -917,11 +947,23 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Product Operation > Security O&M > Cloud Shield**
 **Operations Center**.
@@ -960,7 +1002,7 @@ detection rule and silence threshold for high-risk command audit and click **Sav
 
 **Important**
 
-If you modify the global brute-force attack detection rule, the detection rules for bruteforce attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
+> If you modify the global brute-force attack detection rule, the detection rules for brute- force attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
 
 | Parameter | Description |
 |---|---|
@@ -1012,8 +1054,10 @@ configuration tab, configure the Upgrade Package Import parameter.
 
 If your Apsara Stack environment is inaccessible over the Internet, you can manually import update packages to update the feature libraries or versions of Apsara Stack Security services. a. Set the Upgrade Package Import parameter to **Offline Manual Import** and click
 **Generate Upgrade Identifier**. Then, use the generated upgrade identifier to obtain
-and download update packages. b. Click Import Upgrade Package. In the Manually Import offline upgrade packages dialog box, drag the downloaded update packages to the dotted box. Alternatively, click the icon to upload the update packages. Before you upload the update packages, click the link in the **Manually Import**
-**offline upgrade packages** dialog box and trust the certificate.
+and download update packages. b. Click Import Upgrade Package. In the Manually Import offline upgrade packages dialog box, drag the downloaded update packages to the dotted box. Alternatively, click the icon to upload the update packages.
+
+> **Note:** Before you upload the update packages, click the link in the **Manually Import** **offline upgrade packages** dialog box and trust the certificate.
+
 After you import the update packages, you can view the update packages on the Feature Library Upgrade and Version Upgrade tabs and perform updates.
 
 **Online Automatic Import**

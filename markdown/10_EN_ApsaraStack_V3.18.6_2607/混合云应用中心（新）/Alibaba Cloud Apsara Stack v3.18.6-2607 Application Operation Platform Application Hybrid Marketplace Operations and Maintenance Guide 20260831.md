@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 13
 source_pdf: "726e2da7f732532d_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Operations and Maintenance Guide 20260831
@@ -159,11 +159,7 @@ previous step and click **Inspect Now** or **Scheduled Inspection** to inspect A
 5. On the **Inspection Records** page, find the inspection scenario and click **Inspection**
 **Report** in the Operation column to view the inspection details.
 
-**Note**
-
-If a large number of inspection tasks fail, you can select each inspection task and click
-**Inspect Now** to manually run the inspection task to check whether the inspection
-results are as expected.
+> **Note:** If a large number of inspection tasks fail, you can select each inspection task and click **Inspect Now** to manually run the inspection task to check whether the inspection results are as expected.
 
 ### 5.2 Inspection through command line
 
@@ -181,9 +177,7 @@ Execute the kubectl -nahm -l trident.apsara-stack.alibaba-inc.com/task-name=ahm-
 
 `autotest get opsinstance` command to view the execution status of all inspection task instances.
 
-**Note**
-
-If the status is Duplicate, it might be repeated execution because the execution cycle of the inspection task is too short.
+> **Note:** If the status is Duplicate, it might be repeated execution because the execution cycle of the inspection task is too short.
 
 ```
 Execute the kubectl -nahm get opsinstance <Inspection Task Instance ID> -oyaml
@@ -191,6 +185,4 @@ Execute the kubectl -nahm get opsinstance <Inspection Task Instance ID> -oyaml
 
 command to view the detailed execution status of a single inspection task instance. Execute the `kubectl -n ahm get opstask ahm-autotest -oyaml` command to view the detailed information of the inspection task. When the inspection result is abnormal, you can use this command to view detailed error messages.
 
-**Note**
-
-If the inspection task returns a dial up or timeout mark, it is generally an internal call timeout issue in the PaaS environment. You can ignore it and continue to observe the next inspection result.
+> **Note:** If the inspection task returns a dial up or timeout mark, it is generally an internal call timeout issue in the PaaS environment. You can ignore it and continue to observe the next inspection result.

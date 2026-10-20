@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 71
 source_pdf: "c04636321de5cabf_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Apsara%20Copilot%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot User Guide 20260901
@@ -215,7 +215,8 @@ This topic describes how to create an evaluation task. You are an operations adm
 **Automatic evaluation task**
 
 7. Click **Create Evaluation Task**.
-After you create an evaluation task, the system does not automatically start the task. You must click **Start Evaluation** in the **Actions** column to start the evaluation task.
+
+> **Note:** After you create an evaluation task, the system does not automatically start the task. You must click **Start Evaluation** in the **Actions** column to start the evaluation task.
 
 ##### 2.2.3.2 Manage an evaluation task
 
@@ -342,7 +343,10 @@ Adjusting chunking parameters controls how the system splits text, which affects
 in the upper-right corner of the target knowledge base card and select **Configure**
 **Chunking Policy**.
 5. In the **Chunking Policy** dialog box, adjust the chunking policy for the knowledge base. For
-detailed descriptions of chunking policies, see Create a knowledge base. The preset policies align with the followingRAGFlow chunking policies: General, QA, Book, and Laws. If you leave this parameter blank, the system uses the default policy of the knowledge base.
+detailed descriptions of chunking policies, see Create a knowledge base.
+
+> **Note:** The preset policies align with the followingRAGFlow chunking policies: General, QA, Book, and Laws. If you leave this parameter blank, the system uses the default policy of the knowledge base.
+
 6. Click **OK**.
 
 #### 2.4.4 Delete a knowledge base
@@ -368,7 +372,9 @@ Import files into a knowledge base. The operator is an operations administrator 
 4. Click the name of a knowledge base to go to its details page.
 5. On the **Knowledge Base Details** page, click **Import File**.
 6. In the **Import File** dialog box, select or drag a file into the dashed box to upload it.
-Supported file types include txt, md, doc, docx, pdf, pptx, csv, xlsx, and html.
+
+> **Note:** Supported file types include txt, md, doc, docx, pdf, pptx, csv, xlsx, and html.
+
 7. Click **OK**.
 
 #### 2.4.6 View file details
@@ -421,7 +427,22 @@ View the generated knowledge graph in a graph-type knowledge base. The operator 
 5. On the **Knowledge Base Details** page, click
 in the upper-right corner of the list.
 6. On the **Knowledge Graph** tab, view the generated knowledge graph. If no knowledge
-graph exists, click **Generate Now**. The knowledge graph displays nodes and their relationships. Enter a node name in the drop-down list at the top to search for and view the specific node. Click a node in the graph to display its description, network metrics, tags, and associations. Control the knowledge graph view. Click in the upper-right corner of the knowledge graph to zoom in. Click in the upper-right corner of the knowledge graph to zoom out. Click in the upper-right corner of the knowledge graph to enter fullscreen mode. Click in the upper-right corner of the knowledge graph to restore the default view.
+graph exists, click **Generate Now**.
+
+> **Note:** The knowledge graph displays nodes and their relationships.
+> Enter a node name in the drop-down list at the top to search for and view the specific node.
+> Click a node in the graph to display its description, network metrics, tags, and associations.
+> Control the knowledge graph view.
+> Click
+> in the upper-right corner of the knowledge graph to zoom in.
+> Click
+> in the upper-right corner of the knowledge graph to zoom out.
+> Click
+> in the upper-right corner of the knowledge graph to enter full-
+> screen mode.
+> Click
+> in the upper-right corner of the knowledge graph to restore the
+> default view.
 
 #### 2.4.10 View the mind map
 
@@ -434,7 +455,21 @@ View the generated mind map. The operator is an operations administrator by defa
 5. On the **Knowledge Base Details** page, click
 in the upper-right corner of the list.
 6. On the **Mind Map** tab, view the generated mind map.
-Click **Regenerate** above the mind map to regenerate the mind map. Enter a node name above the mind map to search by node. Control the display of the mind map. Enter a percentage in the upper-right corner of the mind map to adjust the display scale. Click in the upper-right corner of the mind map to zoom in. Click in the upper-right corner of the mind map to zoom out. Click in the upper-right corner of the mind map to enter full-screen mode. Click in the upper-right corner of the mind map to restore the default view.
+
+> **Note:** Click **Regenerate** above the mind map to regenerate the mind map.
+> Enter a node name above the mind map to search by node.
+> Control the display of the mind map.
+> Enter a percentage in the upper-right corner of the mind map to adjust the display scale.
+> Click
+> in the upper-right corner of the mind map to zoom in.
+> Click
+> in the upper-right corner of the mind map to zoom out.
+> Click
+> in the upper-right corner of the mind map to enter full-screen
+> mode.
+> Click
+> in the upper-right corner of the mind map to restore the default
+> view.
 
 #### 2.4.11 Retrieval configuration and retrieval testing
 
@@ -452,9 +487,17 @@ in the upper-right corner of the list.
 i. Click **Retrieval Configurations**. ii. In the **Retrieval Configurations** dialog box, set **Query Mode (query_mode)**,
 **Retieved Entity Relationships (top_k)**, **Retrieval Chunks (chunk_top_k)**, and
 **Enable Reranking (enable_rerank)**.
-Query mode supports **hybrid** or **mix**. iii. Click **OK**.
+
+> **Note:** Query mode supports **hybrid** or **mix**.
+
+iii. Click **OK**.
 7. Perform retrieval testing. Enter search content in the text box and click **Search**.
-Query Mode: The right side displays the currently configured query mode. Advanced Keywords: advanced keywords extracted from the search content. Basic Keywords: basic keywords extracted from the search content. The section below displays the retrieved information.
+
+> **Note:** Query Mode:
+> The right side displays the currently configured query mode.
+> Advanced Keywords: advanced keywords extracted from the search content.
+> Basic Keywords: basic keywords extracted from the search content.
+> The section below displays the retrieved information.
 
 ### 2.5 AI-assisted cloud resource management
 
@@ -540,7 +583,15 @@ Management Console.
 2. In the top navigation bar or the floating menu of the console, click
 to go to Apsara Copilot.
 3. In the **Apsara Copilot** dialog box or page, describe the task and click
-. ation of Apsara Copilot If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default. If from the floating menu, the system opens it in the window mode by default. Window mode: The top area displays the New Task, Historical Task, Full Screen, and Close icons in sequence. Full-screen mode: The left side displays navigation items such as Create New Task, Skills, Experts, Memory, and Cron Job, along with the task list. Apsara Copilot supports multiple models. You can switch between different models to ask questions. Click the icon to upload an attachment. Enter "/" in the input box to quickly invoke experts and skills.
+. ation of Apsara Copilot
+
+> **Note:** If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default. If from the floating menu, the system opens it in the window mode by default.
+> Window mode: The top area displays the New Task, Historical Task, Full Screen, and Close icons in sequence.
+> Full-screen mode: The left side displays navigation items such as Create New Task, Skills, Experts, Memory, and Cron Job, along with the task list.
+> Apsara Copilot supports multiple models. You can switch between different models to ask questions.
+> Click the
+> icon to upload an attachment.
+> Enter "/" in the input box to quickly invoke experts and skills.
 
 | Capability domain | Description |
 |---|---|
@@ -563,7 +614,11 @@ Install and manage skills to extend the capabilities of Apsara Copilot in conver
 2. In the top navigation bar or the floating menu of the console, click
 to go to Apsara Copilot.
 3. On the full-screen page of **Apsara Copilot**, click **Skills** in the left navigation pane.
-ation of Apsara Copilot If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default. If you enter Apsara Copilot from the floating menu, the system opens it in the window mode by default. To switch to the full-screen mode, click the full-screen icon at the top of the window.
+ation of Apsara Copilot
+
+> **Note:** If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default.
+> If you enter Apsara Copilot from the floating menu, the system opens it in the window mode by default. To switch to the full-screen mode, click the full-screen icon at the top of the window.
+
 4. On the **Skills** page, view and manage skills by the **All**, **Official**, and **Custom** categories.
 ation of Apsara Copilot
 
@@ -581,7 +636,11 @@ ation of Apsara Copilot An expert is a preset domain-specific agent on the Apsar
 2. In the top navigation bar or the floating menu of the console, click
 to go to Apsara Copilot.
 3. On the **Apsara Copilot** full-screen page, click **Experts** in the left-side navigation pane.
-If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default. If you enter Apsara Copilot from the floating menu, the system opens it in the window mode by default. To switch to the full-screen mode, click the full-screen button at the top of the window. ation of Apsara Copilot
+
+> **Note:** If you enter Apsara Copilot from the top navigation bar, the system opens it in the full-screen mode by default.
+> If you enter Apsara Copilot from the floating menu, the system opens it in the window mode by default. To switch to the full-screen mode, click the full-screen button at the top of the window.
+
+ation of Apsara Copilot
 4. On the **Experts** page, you can view the capabilities of each expert agent and enable or
 disable expert agents.
 
@@ -598,7 +657,10 @@ ation of Apsara Copilot
 2. In the top navigation bar or the floating menu of the console, click
 to go to Apsara Copilot.
 3. On the full-screen page of **Apsara Copilot**, click **Memory** in the left navigation pane.
-If you enter Apsara Copilot from the top navigation bar, the system opens it in full-screen mode by default. If you enter Apsara Copilot from the floating menu, the system opens it in window mode by default. To switch to the full-screen mode, click the full-screen button at the top of the window.
+
+> **Note:** If you enter Apsara Copilot from the top navigation bar, the system opens it in full-screen mode by default.
+> If you enter Apsara Copilot from the floating menu, the system opens it in window mode by default. To switch to the full-screen mode, click the full-screen button at the top of the window.
+
 4. On the **Memory** page, you can view and manage memories.
 ation of Apsara Copilot
 
@@ -620,7 +682,11 @@ A cron job is a task that runs automatically on a schedule and that you can also
 2. In the top navigation bar or the floating menu of the console, click
 to open Apsara Copilot.
 3. On the **Apsara Copilot** full-screen page, click **Cron Jobs** in the left-side navigation pane.
-If you open Apsara Copilot from the top navigation bar, it opens in full-screen mode by default. If you open Apsara Copilot from the floating menu, it opens in window mode by default. To switch to full-screen mode, click the full-screen button at the top of the window. ation of Apsara Copilot
+
+> **Note:** If you open Apsara Copilot from the top navigation bar, it opens in full-screen mode by default.
+> If you open Apsara Copilot from the floating menu, it opens in window mode by default. To switch to full-screen mode, click the full-screen button at the top of the window.
+
+ation of Apsara Copilot
 4. On the **Cron Jobs** page, you can view and manage cron jobs.
 
 | Operation | Description |
@@ -668,6 +734,7 @@ Guide. ation of Apsara Copilot
 
 For detailed operations of AI-based bill Aanalysis by organization, see the **Bill management**
 > **AI-based bill analysis by organization** section in Apsara Uni-manager Management
+
 Console User Guide. ation of Apsara Copilot
 
 **AI-based bill analysis by bill detail**
@@ -791,8 +858,10 @@ This topic describes how to view the operation logs of Apsara Copilot.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Operation Log**.
 4. On the **Operation Log** page, configure filter conditions such as Organization, Product Type,
-Resource Type, Event Type, Resource ID, Source IP, Event ID, and Start/End Time, and then click **Search**. Select **Apsara Uni-manager** from the Product Type drop-down list and **Apsara**
-**Copilot** from the Resource Type drop-down list.
+Resource Type, Event Type, Resource ID, Source IP, Event ID, and Start/End Time, and then click **Search**.
+
+> **Note:** Select **Apsara Uni-manager** from the Product Type drop-down list and **Apsara** **Copilot** from the Resource Type drop-down list.
+
 5. View the displayed operation logs.
 6. Find the operation log whose details you want to view and click **View** in the **Details**
 column. peration logs dix
@@ -805,9 +874,16 @@ column. peration logs dix
 
 This topic describes how to log in to the Apsara Uni-manager Management Console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-dix Obtain the username and password from an operations administrator. If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+dix
+
+> **Note:** Obtain the username and password from an operations administrator.
+> If you log in to the Apsara Uni-manager Management Console for the first time, you must follow the on-screen instructions to change the password of your account. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -820,7 +896,9 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to enable MFA and bind an MFA device, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to enable MFA and bind an MFA device, see Manage MFA.
 
 **What to do next**
 
@@ -828,4 +906,7 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the login password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. dix You can use the username of your account and the email address that was used to create the account. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**. dix
+
+> **Note:** You can use the username of your account and the email address that was used to create the account.
+> The system sends a link for resetting the password to the email address that you specify.

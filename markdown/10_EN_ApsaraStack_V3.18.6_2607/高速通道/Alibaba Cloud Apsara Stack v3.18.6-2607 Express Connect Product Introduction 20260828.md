@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 10
 source_pdf: "e32cd51c4010d822_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduction 20260828

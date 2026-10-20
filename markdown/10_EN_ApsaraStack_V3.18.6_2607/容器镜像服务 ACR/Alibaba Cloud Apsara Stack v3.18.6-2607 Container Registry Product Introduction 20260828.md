@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 13
 source_pdf: "0eacc0e2d43bac8b_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Product Introduction 20260828
@@ -100,9 +100,7 @@ This topic describes the core features of Container Registry and how different e
 |   | Deployment selection | During deployment in the ACK console, you can visually select image repositories and versions from Container Registry. | Supported | Supported | Supported |
 |---|---|---|---|---|---|
 
-**Note**
-
-Container Registry fully supports the IPv4/IPv6 dual-stack network mode.
+> **Note:** Container Registry fully supports the IPv4/IPv6 dual-stack network mode.
 
 ### 1.4 Scenarios
 

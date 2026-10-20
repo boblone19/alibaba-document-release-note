@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 118
 source_pdf: "0b932e6f7aeda293_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Developer "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%90%8C%E5%9F%8E%E5%AE%B9%E7%81%BEASR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%20for%20Zone-disaster%20Recovery%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience ASR for Zone-disaster Recovery Developer Guide 20260701
@@ -82,9 +82,7 @@ An AccessKey authenticates the identity of a request sender. It uses symmetric e
 
 The Apsara Uni-manager Management Console provides personal AccessKeys and organization AccessKeys. Personal account AccessKeys are used to call APIs.
 
-**Note**
-
-Only operations administrators and primary organization administrators can obtain organization AccessKeys.
+> **Note:** Only operations administrators and primary organization administrators can obtain organization AccessKeys.
 
 **Before you obtain a personal account AccessKey, ensure**
 
@@ -100,15 +98,12 @@ click**Personal Information**.
 3. In the**AccessKey**section, you can view the AccessKey information for the personal
 account.
 
-**Important**
-
-The AccessKey ID and AccessKey secret are the keys to access your cloud resources. They grant full permissions to your account. You must keep them secure.
+> **Important:** The AccessKey ID and AccessKey secret are the keys to access your cloud resources. They grant full permissions to your account. You must keep them secure.
 
 **Obtain an organization AccessKey**
 
-**Warning**
+> **Warning:** Personal account AccessKeys are restricted by the permission system of the Apsara Uni- manager Management Console. In contrast, organization AccessKeys have higher permissions. Therefore, an administrator must confirm that the operation is secure.
 
-Personal account AccessKeys are restricted by the permission system of the Apsara Unimanager Management Console. In contrast, organization AccessKeys have higher permissions. Therefore, an administrator must confirm that the operation is secure.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top menu bar, click**Enterprise**.
 3. In the navigation pane on the left, choose**Resource Management**>**Organization**

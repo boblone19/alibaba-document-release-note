@@ -5,7 +5,7 @@ doc_version: "20240702"
 pdf_pages: 61
 source_pdf: "281790d88d7df8fe_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1).pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Object%20Storage%20Service%20User%20Guide%2020240702%20%281%29.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1) User Guide
@@ -88,9 +88,7 @@ OSS is an object storage service based on key-value pairs. Files uploaded to OSS
 
 The basic unit for data operations in OSS. Objects are also known as OSS files. An object is composed of object metadata, object content, and a key. A key can uniquely identify an object in a bucket. Object metadata is a group of key-value pairs that define the properties of an object, such as the last modification time and the object size. You can also assign user metadata to the object. The lifecycle of an object starts when the object is uploaded and ends when it is deleted. During the lifecycle, the object cannot be modified. OSS does not support modifying objects. If you want to modify an object, you must upload a new object with the same name as the existing object to replace it.
 
-**Note**
-
-Unless otherwise stated, objects and files mentioned in OSS documents are collectively called objects.
+> **Note:** Unless otherwise stated, objects and files mentioned in OSS documents are collectively called objects.
 
 **Bucket**
 
@@ -210,9 +208,7 @@ You can configure a lifecycle rule to regularly delete objects that are no longe
 
 Number of lifecycle rules You can configure up to 100 lifecycle rules for each bucket in the OSS console and up to 1,000 lifecycle rules for each bucket by using OSS SDKs for a variety of programming languages. Effective time After a lifecycle rule is configured, OSS loads the rule within 24 hours. After the lifecycle rule is loaded, OSS runs the rule every day at 08:00:00 (UTC+8) and completes the actions triggered by the rule within 24 hours. The interval between the last modified time of an object and the time when the lifecycle rule is run must be longer than 24 hours. For example, if you configure a lifecycle rule for a bucket to delete objects one day after they are uploaded, objects that are uploaded on July 20, 2020 are deleted on a different date based on the specific time when the objects are uploaded. Objects uploaded before 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 21, 2020 to 08:00:00 (UTC+8) on July 22, 2020. Objects uploaded after 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 22, 2020 to 08:00:00 (UTC+8) on July 23, 2020.
 
-**Important**
-
-When you update a lifecycle rule, tasks performed based on the rule on the current day are suspended. We recommend that you do not frequently update lifecycle rules.
+> **Important:** When you update a lifecycle rule, tasks performed based on the rule on the current day are suspended. We recommend that you do not frequently update lifecycle rules.
 
 **Component elements**
 
@@ -365,9 +361,9 @@ You can authorize RAM users to manage object tags. You can also authorize RAM us
 
 `]` `}` `}` `}` `]` `}`
 
-**Important**
+> **Important:** After the RAM user is authorized to configure a specified tag for objects, the user can configure the tag only for existing objects. However, the user cannot configure the tag for objects when the user uploads the objects.
 
-After the RAM user is authorized to configure a specified tag for objects, the user can configure the tag only for existing objects. However, the user cannot configure the tag for objects when the user uploads the objects. Authorize RAM users to manage objects that have specific tags You can authorize RAM users to manage all objects that have specific tags. For example, you can authorize User A to access all objects that have the tagging configuration of allow=yes. The following code provides an example on how to configure the corresponding RAM policy: `{`
+Authorize RAM users to manage objects that have specific tags You can authorize RAM users to manage all objects that have specific tags. For example, you can authorize User A to access all objects that have the tagging configuration of allow=yes. The following code provides an example on how to configure the corresponding RAM policy: `{`
 
 ```json
   "Version": "1",
@@ -482,9 +478,8 @@ In client-side encryption, a random data key is generated for each object to per
 
 To use this method for client-side encryption, you must generate and manage CMKs by yourself. When you implement client-side encryption on an object to upload, you must upload a symmetric or asymmetric CMK to the client. The following figure shows the specific encryption process. Encrypt and upload an object i. You must provide the client with a symmetric or asymmetric CMK. ii. The client uses the CMK to generate a one-time symmetric data key that is used only to encrypt the current object to upload. The client generates a random and unique data key for each object to upload. iii. The client uses the data key to encrypt the object to upload and uses the CMK to encrypt the data key. iv. The encrypted data key is included in the metadata of the uploaded object in OSS. Download and decrypt an object i. The client downloads an encrypted object. The encrypted data key is included in the metadata of the object. ii. The client uses the object metadata information to determine the CMK used to generate the data key and uses this CMK to decrypt the encrypted data key. Then, the client uses the decrypted data key to decrypt the object.
 
-**Important**
-
-CMKs and unencrypted data are not sent to OSS. Therefore, keep your CMKs secure. If a CMK is lost, objects encrypted by using the data keys generated by this CMK cannot be decrypted. Data keys are randomly generated by the client.
+> **Important:** CMKs and unencrypted data are not sent to OSS. Therefore, keep your CMKs secure. If a CMK is lost, objects encrypted by using the data keys generated by this CMK cannot be decrypted.
+> Data keys are randomly generated by the client.
 
 **Usage notes**
 
@@ -574,22 +569,18 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
 
-You can click the current language in the upper-right corner to switch to another language. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击右上角的**浏览**
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击右上角的**浏览**
 **器证书安装**，可打开浏览器证书安装指南。
 2. Enter your username and password.
 Obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -604,10 +595,8 @@ a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the usernam
 
 Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For information about how to bind and enable MFA, see **Manage MFA** in **Apsara** **Uni-manager Management Console User Guide**.
 
-For information about how to bind and enable MFA, see **Manage MFA** in **Apsara**
-**Uni-manager Management Console User Guide**.
 5. In the top navigation pane, choose **Products > Object Storage Service**.
 
 ### 3.2 Create buckets
@@ -663,9 +652,7 @@ want to upload objects.
 6. In the **Upload Tasks** panel, wait until the upload task is completed.
 During the upload process, you can click **Cancel All** to cancel the task. After the task is completed, click **Removed** to remove the task.
 
-**Important**
-
-Do not refresh or close the **Upload Tasks** panel when objects are being uploaded. Otherwise, the upload tasks are interrupted.
+> **Important:** Do not refresh or close the **Upload Tasks** panel when objects are being uploaded. Otherwise, the upload tasks are interrupted.
 
 ### 3.4 Obtain object URLs
 
@@ -706,9 +693,8 @@ You can delete a bucket in the Object Storage Service (OSS) console.
 
 All objects and parts in the bucket are deleted. For more information, see Delete objects and Manage parts.
 
-**Warning**
+> **Warning:** Deleted objects, parts, and buckets cannot be recovered. Exercise caution when you delete objects, parts, and buckets.
 
-Deleted objects, parts, and buckets cannot be recovered. Exercise caution when you delete objects, parts, and buckets.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -727,9 +713,8 @@ A bucket is created. For more information, see Create buckets.
 
 You can set the ACL of a bucket to one of the following values: Private: Only the owner or authorized users of this bucket can read and write objects in the bucket. Other users, including anonymous users, cannot access the objects in the bucket without authorization. Public Read: Only the owner or authorized users of this bucket can write objects in the bucket. Other users, including anonymous users, can only read the objects in the bucket. Public Read/Write: Any users, including anonymous users, can read and write the objects in the bucket.
 
-**Warning**
+> **Warning:** If you set the ACL of a bucket to Public Read or Public Read/Write, other users can read the data in the bucket without authentication, which may result in security risks. To ensure the security of your data, we recommend that you set the ACL of your bucket to private.
 
-If you set the ACL of a bucket to Public Read or Public Read/Write, other users can read the data in the bucket without authentication, which may result in security risks. To ensure the security of your data, we recommend that you set the ACL of your bucket to private.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -777,9 +762,8 @@ which you want to upload objects.
 4. Click **Configure** and configure the following parameters:
 Enter domain names or IP addresses in the **Referer Whitelist** field. Separate multiple Referers by using line feed. You can use asterisks (*) and question marks (?) as wildcards. Examples: If you add www.example.com to the Referer whitelist, requests sent from URLs that start with www.example.com, such as www.example.com/123 and www.example.com.cn are allowed. If you add *www.example.com/ to the Referer whitelist, requests sent from http://www.example.com/ and https://www.example.com/ are allowed. An asterisk (*) can be used as a wildcard to indicate zero or more characters. For example, if you add *.example.com to the Referer whitelist, requests sent from URLs such as help.example.com and www.example.com are allowed. A question mark (?) can be used as a wildcard to indicate a single character. For example, if you add example?.com to the Referer whitelist, requests sent from URLs such as examplea.com and exampleb.com are allowed. You can add domain names or IP addresses that include a port number, such as www.example.com:8080 and 10.10.10.10:8080, to the Referer whitelist. Select whether to turn on **Allow Empty Referer** to allow requests in which the Referer field is empty. An HTTP or HTTPS request with an empty Referer field indicates that the request does not contain the Referer field or the value of the Referer field is empty. If you do not allow empty Referers fields, only HTTP or HTTPS requests which include an allowed Referer field can access the objects in the bucket.
 
-**Note**
+> **Note:** By default, if you use the bucket endpoint to preview an MP4 object, the browser sends a request that contains the Referer field and a request that does not contain the Referer field at the same time. Therefore, to allow access to the MP4 objects in your bucket, you must not only add the bucket endpoint to the Referer whitelist but also allow empty Referer fields. To preview a non-MP4 object by using the bucket domain name, you need only to allow empty Referer fields.
 
-By default, if you use the bucket endpoint to preview an MP4 object, the browser sends a request that contains the Referer field and a request that does not contain the Referer field at the same time. Therefore, to allow access to the MP4 objects in your bucket, you must not only add the bucket endpoint to the Referer whitelist but also allow empty Referer fields. To preview a non-MP4 object by using the bucket domain name, you need only to allow empty Referer fields.
 5. Click **Save**.
 
 ### 4.6 Configure CORS
@@ -811,9 +795,8 @@ the parameters in the following table.
 | Exposed Headers | No | Specify the response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. Exposed headers cannot include asterisks (*). |
 | Cache Timeout (Seconds) | No | Specify the period of time within which the browser can cache the response for an OPTIONS preflight request to a specific resource. Unit: seconds. |
 
-**Note**
+> **Note:** You can configure up to 10 CORS rules for each bucket.
 
-You can configure up to 10 CORS rules for each bucket.
 5. Click **OK**.
 
 ### 4.7 Configure lifecycle rules
@@ -932,9 +915,8 @@ keys. The CMKs used to encrypt the data keys are rotated regularly.
 **Key ID**: This parameter can be configured when you select **KMS** for **Server-Side**
 **Encryption**. OSS uses the specified CMK to encrypt objects in the bucket.
 
-**Note**
+> **Note:** To select a CMK ID for server-side encryption, you must create the CMK in the KMS console.
 
-To select a CMK ID for server-side encryption, you must create the CMK in the KMS console.
 4. Click **Submit**.
 
 **Method 2: Enable server-side encryption on the Basic Settings**
@@ -953,14 +935,11 @@ bucket for which you want to configure server-side encryption.
 **CMK**: This parameter can be configured when you select **KMS** for **Encryption Method**.
 OSS uses the specified CMK to encrypt objects in the bucket.
 
-**Note**
+> **Note:** To select a CMK ID for server-side encryption, you must create the CMK in the KMS console.
 
-To select a CMK ID for server-side encryption, you must create the CMK in the KMS console.
 5. Click **Save**.
 
-**Important**
-
-The configurations of the default encryption method for a bucket do not affect the encryption configurations of existing objects within the bucket.
+> **Important:** The configurations of the default encryption method for a bucket do not affect the encryption configurations of existing objects within the bucket.
 
 ### 4.12 Bind a bucket to a VPC
 
@@ -1010,9 +989,9 @@ in the following table.
 
 5. Click **Confirm**.
 
-**Note**
-
-After you configure a CRR rule, the replication task starts in 3 to 5 minutes. Then, you can view the replication progress. In CRR, data is asynchronously replicated in near real time. The period of time that is required to replicate data from the source bucket to the destination bucket may range from a few minutes to a few hours, depending on the data size. If you want to replicate an object encrypted based on KMS from the source bucket to the destination bucket, KMS must be configured for the destination bucket. Otherwise, data replication fails.
+> **Note:** After you configure a CRR rule, the replication task starts in 3 to 5 minutes. Then, you can view the replication progress.
+> In CRR, data is asynchronously replicated in near real time. The period of time that is required to replicate data from the source bucket to the destination bucket may range from a few minutes to a few hours, depending on the data size.
+> If you want to replicate an object encrypted based on KMS from the source bucket to the destination bucket, KMS must be configured for the destination bucket. Otherwise, data replication fails.
 
 ### 4.14 Configure cross-cloud replication
 
@@ -1111,9 +1090,9 @@ Log Service is activated and is authorized to access OSS.
 
 **Enable real-time log query**
 
-**Important**
+> **Important:** After you enable real-time log query for a bucket for the first time, you must wait for about one minute and then refresh the page to use this feature.
+> When you enable real-time log query, the system creates Log Service projects.
 
-After you enable real-time log query for a bucket for the first time, you must wait for about one minute and then refresh the page to use this feature. When you enable real-time log query, the system creates Log Service projects.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -1164,9 +1143,8 @@ downloads and uploads over the Internet, the performance of transmission over di
 
 **Disable real-time log query**
 
-**Important**
+> **Important:** If you disable real-time log query, the system does not delete Log Service projects. Delete these projects before you disable real-time log query.
 
-If you disable real-time log query, the system does not delete Log Service projects. Delete these projects before you disable real-time log query.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -1202,9 +1180,8 @@ to process an image. The format is:
 
 Example: `image/resize,p_63/quality,q_90` indicates that the image is scaled down to 63% of the source image, and then the relative quality of the image is set to 90%.
 
-**Note**
+> **Note:** If you want to add image and text watermarks to images at the same time by using a style, use **Advanced Edit** to create the style.
 
-If you want to add image and text watermarks to images at the same time by using a style, use **Advanced Edit** to create the style.
 5. Click **OK**.
 After you create a style, you can click **Export** to export the style to a specified local path.
 
@@ -1316,9 +1293,8 @@ A bucket is created. For more information, see Create buckets.
 
 OSS does not use a hierarchical structure for objects, but instead uses a flat structure. All elements are stored in buckets as objects. To facilitate object grouping and to simplify management, the OSS console displays objects whose names end with a forward slash (/) as folders. These objects can be uploaded and downloaded. You can use OSS folders in the OSS console in the same manner as you use folders in Windows.
 
-**Note**
+> **Note:** The OSS console displays objects whose names end with a forward slash (/) as folders, regardless of whether these objects contain data. The objects can only be downloaded by calling an API operation or by using OSS SDKs.
 
-The OSS console displays objects whose names end with a forward slash (/) as folders, regardless of whether these objects contain data. The objects can only be downloaded by calling an API operation or by using OSS SDKs.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket in which you want to create folders.
@@ -1474,9 +1450,8 @@ You can delete uploaded objects in the OSS console when they are no longer neede
 
 You can delete a single object or batch delete multiple objects. You can batch delete up to 100 objects. To delete specific objects or batch delete more than 100 objects, we recommend that you use API operations or OSS SDKs.
 
-**Important**
+> **Important:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
 
-Deleted objects cannot be recovered. Exercise caution when you delete objects.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket in which the objects you want to delete are stored.

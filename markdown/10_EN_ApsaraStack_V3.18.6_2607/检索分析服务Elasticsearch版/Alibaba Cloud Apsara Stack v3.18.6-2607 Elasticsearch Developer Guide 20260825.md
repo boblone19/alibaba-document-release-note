@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 177
 source_pdf: "42c3cf441a6bfee2_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Developer%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825
@@ -116,17 +116,15 @@ Client access supports only the HTTP and TCP methods. Use the official Elasticse
 
 Elasticsearch provides built-in clients for Java users, including TransportClient and Java REST Client. TransportClient was deprecated in Elasticsearch 7.0 and completely removed in 8.0. Therefore, use the Java REST Client for development. For more information about the Java API, see the official Java API documentation and the Java API usage guide.
 
-**Note**
-
-The Elasticsearch version of the Java client must match the version of the Elasticsearch cluster. Otherwise, compatibility issues may occur.
+> **Note:** The Elasticsearch version of the Java client must match the version of the Elasticsearch cluster. Otherwise, compatibility issues may occur.
 
 **REST API (HTTP) request parameters**
 
 Use a RESTful API or the curl command to communicate with Elasticsearch on port 9200.
 
-**Note**
+> **Note:** Elasticsearch provides official clients for many programming languages, such as Groovy, JavaScript, .NET, PHP, Perl, Python, and Ruby. Many community-provided clients and plugins are also available. Find them in Community Contributed Clients.
 
-Elasticsearch provides official clients for many programming languages, such as Groovy, JavaScript, .NET, PHP, Perl, Python, and Ruby. Many community-provided clients and plugins are also available. Find them in Community Contributed Clients. A curl command (HTTP) consists of the following parts.
+A curl command (HTTP) consists of the following parts.
 
 ```bash
 curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
@@ -552,9 +550,8 @@ Take Elasticsearch 7.10 as an example. The following table lists the Maven depen
   </dependency>
 ```
 
-**Important**
-
-The version of the elasticsearch-rest-high-level-client used by the Java client must be the same as the version of the Elasticsearch cluster. elasticsearch-rest-high-level-client version 5.5.3 is unavailable. If you want to access a Elasticsearch cluster of version 5.5.3, you can use the elasticsearch-restclient of version 5.6.2.
+> **Important:** The version of the elasticsearch-rest-high-level-client used by the Java client must be the same as the version of the Elasticsearch cluster.
+> elasticsearch-rest-high-level-client version 5.5.3 is unavailable. If you want to access a Elasticsearch cluster of version 5.5.3, you can use the elasticsearch-rest- client of version 5.6.2.
 
 **Code example**
 
@@ -598,9 +595,7 @@ This topic describes how to create an index by using the Java API.
 
 The following example creates an index by High Level REST Client. This example is applicable only to non-Elasticsearch 5.5.3 versions.
 
-**Note**
-
-High Level REST Client is not supported in Elasticsearch 5.5.3.
+> **Note:** High Level REST Client is not supported in Elasticsearch 5.5.3.
 
 **Code example**
 
@@ -635,9 +630,7 @@ createIndexRequest.mapping (7.0 and later versions
 
 7.0 the following versions
 
-**Note**
-
-7.0 versions later support mapping types. You must add the type type and level to the mapping.
+> **Note:** 7.0 versions later support mapping types. You must add the type type and level to the mapping.
 
 ```
 createIndexRequest.mapping(
@@ -822,9 +815,7 @@ SearchSourceBuilder sourceBuilder=new SearchSourceBuilder(); // Run an aggregate
 sourceBuilder.aggregation(aggregation); SearchRequest request = new SearchRequest("index_name"); request.source(sourceBuilder); SearchResponse search = restHighLevelClient.search(request,RequestOptions.DEFAULT);
 ```
 
-**Important**
-
-You can aggregate only fields of the Keyword type. If you aggregate fields of other types, an error illegal_argument_exception is reported.
+> **Important:** You can aggregate only fields of the Keyword type. If you aggregate fields of other types, an error illegal_argument_exception is reported.
 
 #### 2.6.5 Delete an index
 
@@ -834,9 +825,7 @@ This topic describes how to use the Java API to delete an index.
 
 The following example deletes an index by High Level REST Client. This is applicable only to non-Elasticsearch 5.5.3 versions.
 
-**Note**
-
-High Level REST Client is not supported in Elasticsearch 5.5.3.
+> **Note:** High Level REST Client is not supported in Elasticsearch 5.5.3.
 
 ```
 DeleteIndexRequest request = new DeleteIndexRequest("index_name"); // For versions earlier than 7.x, you must specify the type parameter. //request.type("doc"); // In V6.3.2 and later, the RequestOptions.DEFAULT parameter is not required. AcknowledgedResponse response = restHighLevelClient.indices().delete(request, RequestOp tions.DEFAULT);
@@ -895,9 +884,8 @@ You can continue to use the ASAPI gateway to call Apsara Stack API operations in
 1. Obtain an AccessKey pair.
 For more information about how to obtain the AccessKey pair, see Obtain an AccessKey pair or Obtain an AccessKey pair from STS.
 
-**Note**
+> **Note:** If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 
-If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 2. Obtain the region ID.
 For more information about how to obtain the value of the RegionID parameter, see Obtain header parameters.
 3. Obtain the organization ID and resource set ID.
@@ -945,9 +933,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 | Header | Description |
 |---|---|
@@ -963,9 +949,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the avatar in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -994,9 +978,14 @@ Apsara Stack STS allows you to manage temporary access credentials for your Apsa
 iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM Role` .
 2. Obtain the access credential assigned by STS.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the name of the current session. Replace <yourRoleArn> with your actual RAM role. Replace "sts.aliyuns.com" with the actual STS endpoint.
+> **Note:** Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
+> The following section describes the variables:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the name of the current session.
+> Replace <yourRoleArn> with your actual RAM role.
+> Replace "sts.aliyuns.com" with the actual STS endpoint.
 
 ```java
 public static void main(String[] args) {
@@ -1053,9 +1042,14 @@ code provides an example on how to call an API operation of a Elasticsearch
  UpdateDescription .
 ```
 
-**Note**
-
-In the following sample code, you must replace the variable parameters with your actual information. The angle brackets (<>) are not retained in the final code. The variable parameters involved in substitution are as follows: <yourRegionID>. Replace it with your actual region ID. Replace <yourStsAccesskeyID> with your actual STS Accesskey ID. Replace <yourStsAccessKeySecret> with your actual STS Accesskey Secret. <yourStsToken>. Replace it with the security token in the STS triplet. <yourResourceGroupID>. Replace it with your actual resource set ID. Replace <yourOrganizationID> with your actual organization ID.
+> **Note:** In the following sample code, you must replace the variable parameters with your actual information. The angle brackets (<>) are not retained in the final code.
+> The variable parameters involved in substitution are as follows:
+> <yourRegionID>. Replace it with your actual region ID.
+> Replace <yourStsAccesskeyID> with your actual STS Accesskey ID.
+> Replace <yourStsAccessKeySecret> with your actual STS Accesskey Secret.
+> <yourStsToken>. Replace it with the security token in the STS triplet.
+> <yourResourceGroupID>. Replace it with your actual resource set ID.
+> Replace <yourOrganizationID> with your actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -1136,16 +1130,14 @@ You can obtain the ID of the Alibaba Cloud Elasticsearch instance from the insta
 2. In the top navigation bar, choose **Products** > **Big Data** > **Elasticsearch on Kubernetes**.
 3. Select the **organization** and **region** where the Elasticsearch instance resides.
 
-**Note**
+> **Note:** If you are an operations administrator, select the root organization to log on.
+> If you are an organization administrator, select the organization to which you belong to log on.
 
-If you are an operations administrator, select the root organization to log on. If you are an organization administrator, select the organization to which you belong to log on.
 4. Click **Role Authorized Access** or **Administrator Access**.
 
-**Note**
+> **Note:** **Role-based Authorized Access**: The RAM user is used as the RAM user to access the console.
+> **Administrator Access**: You can access the console as a product administrator.
 
-**Role-based Authorized Access**: The RAM user is used as the RAM user to
-access the console.
-**Administrator Access**: You can access the console as a product administrator.
 5. In the left-side navigation pane, click **Elasticsearch****Instances**.
 6. View the **Instance ID** in the instance list.
 
@@ -1349,9 +1341,10 @@ application/json,
             e.printStackTrace();
 ```
 
-**Important**
+> **Important:** When you use HTTPS to access OpenAPI operations, the SDK enables SSL/TLS certificate verification by default. If your code environment does not have a certificate environment, the certificate verification fails.
+> To ensure communication security in the production environment, we recommend that you keep it enabled. If certificate verification must be ignored in the test environment, you can set the following parameters:
 
-When you use HTTPS to access OpenAPI operations, the SDK enables SSL/TLS certificate verification by default. If your code environment does not have a certificate environment, the certificate verification fails. To ensure communication security in the production environment, we recommend that you keep it enabled. If certificate verification must be ignored in the test environment, you can set the following parameters: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify that the server certificate is not verified. clientConfig.setIgnoreSSLCerts(true)
@@ -1516,7 +1509,7 @@ You can configure SSL certificate verification for requests. If you set the HTTP
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following settings:
+> By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following settings:
 
 ```
 // If you specify the HTTPSInsecure parameter for the request, the setting takes effect only for the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter for the request to true. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -1630,9 +1623,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(

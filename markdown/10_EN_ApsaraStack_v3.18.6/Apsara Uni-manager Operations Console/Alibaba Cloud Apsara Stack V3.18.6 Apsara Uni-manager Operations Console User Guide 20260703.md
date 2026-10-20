@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 710
 source_pdf: "e2474c0d9f5defc9_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console User Guide 20260703.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20User%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Uni-manager Operations Console User Guide 20260703
@@ -382,7 +382,9 @@ information about how to create a role, see Role management.
 3. The role administrator creates a department to be assigned to the operations account. For
 more information about how to create a department, see Department management.
 4. The role administrator creates an operations account and assigns the created role to the
-account. For more information, see User management. If the role administrator wants to perform a more fine-grained permission control on the operations role, the role administrator can create a basic role as specified in **OAM**, grant specific permissions to the role, and then assign the role to the corresponding operations account.
+account. For more information, see User management.
+
+> **Note:** If the role administrator wants to perform a more fine-grained permission control on the operations role, the role administrator can create a basic role as specified in **OAM**, grant specific permissions to the role, and then assign the role to the corresponding operations account.
 
 ### 2.2 Log in to the Apsara Uni-manager
 
@@ -395,11 +397,23 @@ This topic provides instructions on how operations engineers and other users can
 You have obtained the endpoint, username, and password for logging in to Apsara Unimnager from the deployment personnel or administrator. The endpoint format for Apsara Uni-manager is region-id.ops.console.intranet-domain-id. We recommend that you use the Google Chrome browser.
 1. Open your browser.
 2. In the address bar, enter the endpoint of Apsara Uni-manager and press Enter.
-You can click the current language in the upper-right corner to switch to another one. Currently, Simplified Chinese and English are supported.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another one. Currently, Simplified Chinese and English are supported.
+
 3. Enter the correct username and password.
-Obtain your username and password for logging in to Apsara Uni-manager from the deployment personnel or administrator. If you enter an incorrect password three consecutive times, the system will activate the image verification code login feature. If you enter an incorrect password five consecutive times, your account will be locked. Contact the administrator to unlock it. Upon your first login, you will be required to change your password. Follow the on-screen instructions to complete the process. To enhance security, your password must meet the following requirements: Contain both uppercase and lowercase letters. Contain numerals (0 to 9). Contain special characters, including exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%). Be 10 to 20 characters in length.
+
+> **Note:** Obtain your username and password for logging in to Apsara Uni-manager from the deployment personnel or administrator.
+> If you enter an incorrect password three consecutive times, the system will activate the image verification code login feature. If you enter an incorrect password five consecutive times, your account will be locked. Contact the administrator to unlock it.
+> Upon your first login, you will be required to change your password. Follow the on-screen instructions to complete the process.
+> To enhance security, your password must meet the following requirements:
+> Contain both uppercase and lowercase letters.
+> Contain numerals (0 to 9).
+> Contain special characters, including exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%).
+> Be 10 to 20 characters in length.
+
 4. Click **Log In**.
-If a privacy policy is configured, click **Agree to Privacy Policy and Log In** .
+
+> **Note:** If a privacy policy is configured, click **Agree to Privacy Policy and Log In** .
 
 ### 2.3 Top navigation bar
 
@@ -443,7 +457,9 @@ This topic describes the features displayed on the Operation Platform page of th
 
 **Operation platform**
 
-In a single-region scenario, the Operation Platform page displays the following content by default for regular users. Click **Modify Layout and Card** to customize the Operation Platform page. You can add, remove, and move cards, or resize cards. The following table lists the supported content. Click **Restore to Default Layout** to restore the default view of the Operation Platform page.
+In a single-region scenario, the Operation Platform page displays the following content by default for regular users. Click **Modify Layout and Card** to customize the Operation Platform page. You can add, remove, and move cards, or resize cards. The following table lists the supported content.
+
+> **Note:** Click **Restore to Default Layout** to restore the default view of the Operation Platform page.
 
 | Category | Name | Description |
 |---|---|---|
@@ -580,13 +596,18 @@ A larger color block indicates more alerts of the corresponding level. When you 
 | Alert Distribution in the Last 3 Days | i. On the Alert Overview page, click the Active P1 Alerts, Full Active Alerts, or Full Alert History tab. ii. Click a colored area with a number that corresponds to a service and time range. Then, you are navigated to the Alerts page that displays the corresponding alerts. |
 | Pending P1 alert | i. On the Alert Overview page, find the Pending P1 Alerts section and click a category tab. ii. Click a service. Then, you are navigated to the Alerts page that displays the corresponding alerts. |
 
-On the **Alerts** page, you can filter alerts by one of the preceding categories. You can also filter alerts by alert ID or alert status, or by multiple filter conditions.
+> **Note:** On the **Alerts** page, you can filter alerts by one of the preceding categories. You can also filter alerts by alert ID or alert status, or by multiple filter conditions.
+
 5. Query the details of an alert.
 On the **Alert List** page, click the **Real-time Alert** tab. On this tab, you can query the basic information about alerts, including **Alert Level**, **Alert Item ID**, **Resource Owner**,
 **Alert Information**, **Alert Status**, **Alert Start Time**, **Last Alert Time/Duration**,
 **Alerts**, **Extended Attributes**, **Alert Object Name/ID**, **Object Type**, and **Alert**
 **Source**.
-Click the **ID** of an alert to obtain the details of the alert. In the **Basic Information** section, view the basic information about the alert. In the **Extended Information** section, view the extended information about the alert. Move the pointer over **Details** next to **Alert Details**. The details of the alert are displayed. In the **State timing diagram** section, view the alert metrics in a chart.
+Click the **ID** of an alert to obtain the details of the alert. In the **Basic Information** section, view the basic information about the alert. In the **Extended Information** section, view the extended information about the alert.
+
+> **Note:** Move the pointer over **Details** next to **Alert Details**. The details of the alert are displayed.
+
+In the **State timing diagram** section, view the alert metrics in a chart.
 **1 Day**: shows the alert metrics of the day before the alert is triggered.
 **1 Week**: shows the alert metrics of the week before the alert is triggered.
 In the **Alert Impact** section, view the impacts of the alert. You can view the service roles that may be affected and the corresponding status. In addition, the services, clusters, services, and physical machines to which the service roles belong are displayed. On the **Metrics** tab, view the trend charts of metrics in the specified time range.
@@ -630,7 +651,9 @@ inspection is complete, view the inspection results. In the upper part of the pa
 **suggestion**.
 In the **Inspection overview** section, you can view the inspection pass rate, number of inspected items, number of failed items, number of errors, number of warnings, and number of passed items. Click the data that corresponds to an inspection state to view the detailed inspection results of that state. In the **Overview of inspection results completed** section, you can view the inspection results of each inspected service, including the number of errors, number of warnings, and number of passed items. You can click a service to view its inspection result in detail. In the lower part of the page, you can click **Advanced Filter** to view inspection results by **Inspection item type**, **Inspection Status**, **Inspection item name**, and **Inspection**
 **item description**.
-You can move the pointer over **Inspection parameters** in the **Operation** column that corresponds to an inspection item to view its inspection parameters. You can move the pointer over **Inspection content** in the **Operation** column that corresponds to an inspection item to view its inspection content. You can click a number in the **Inspection results** column that corresponds to an inspection item to view the result in detail in the dialog box that appears. You can click **View report receiving mailbox** in the upper-right corner to view the email address that receives the inspection report. You can click **Export Report** in the upper-right corner to download the inspection report to your on-premises computer. You can export the inspection report in the JSON format or as an Excel table.
+You can move the pointer over **Inspection parameters** in the **Operation** column that corresponds to an inspection item to view its inspection parameters. You can move the pointer over **Inspection content** in the **Operation** column that corresponds to an inspection item to view its inspection content. You can click a number in the **Inspection results** column that corresponds to an inspection item to view the result in detail in the dialog box that appears. You can click **View report receiving mailbox** in the upper-right corner to view the email address that receives the inspection report. You can click **Export Report** in the upper-right corner to download the inspection report to your on-premises computer.
+
+> **Note:** You can export the inspection report in the JSON format or as an Excel table.
 
 ### 3.3 Security administrator
 
@@ -712,7 +735,11 @@ You have obtained the permissions of a security auditor.
 **Audit**.
 3. In the left-side navigation pane, click **Console-based Audit**.
 4. On the **Console-based Audit** page, perform the following operations based on your
-business requirements: View GUI-based operation records. Specify the **Username** and **Time Range** parameters to filter operation records. Export GUI-based operation records. By default, you can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported. Batch export: Select the operation records that you want to export and click **Batch**
+business requirements: View GUI-based operation records. Specify the **Username** and **Time Range** parameters to filter operation records. Export GUI-based operation records.
+
+> **Note:** By default, you can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported.
+
+Batch export: Select the operation records that you want to export and click **Batch**
 **Export** below the list to export the selected records.
 Export all reports: Click **Export** above the list to export all the operation records that are displayed in the list.
 
@@ -734,7 +761,10 @@ You have obtained the permissions of a role administrator for the Apsara Uni-man
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **User Authorities**.
 3. Create a department.
-i. In the left-side navigation pane, click **Department Management**. ii. In the catalog tree on the left side, select the department to which you want to add a subdepartment and click **Add Department**. iii. In the Add Department dialog box, enter a new department name and click **OK**. After the department is added, you can view the department in the catalog tree. The department name can be up to 64 characters in length and can contain lowercase letters, uppercase letters, digits, underscores (_), and hyphens (-).
+i. In the left-side navigation pane, click **Department Management**. ii. In the catalog tree on the left side, select the department to which you want to add a subdepartment and click **Add Department**. iii. In the Add Department dialog box, enter a new department name and click **OK**. After the department is added, you can view the department in the catalog tree.
+
+> **Note:** The department name can be up to 64 characters in length and can contain lowercase letters, uppercase letters, digits, underscores (_), and hyphens (-).
+
 4. Create a user.
 i. In the left-side navigation pane, click **User Management.** ii. On the **Users** tab, click **Add**. iii. Specify the parameters described in the following table and click **OK**. After the user is added, you can view the user in the user list.
 
@@ -757,7 +787,11 @@ i. In the left-side navigation pane, click **User Group Management**. ii. In the
 | Role | Select the role that you want to add for the user group. Note You can add multiple roles for a user group. |
 
 6. Manage the user.
-i. On the **User Group management** page, find the user group that you created in Step 5 and click **Manage Users** in the **Actions** column. ii. Click **Add**. In the **Add** dialog box, select the user that you created in Step 4 and click **OK**. If the user group role and the user role are inconsistent, the permissions of both roles are granted to the user. iii. In the **Manage Users** dialog box, click **OK**. After the user is added to the user group, the added user is displayed in the **Users** column that corresponds to the user group.
+i. On the **User Group management** page, find the user group that you created in Step 5 and click **Manage Users** in the **Actions** column. ii. Click **Add**. In the **Add** dialog box, select the user that you created in Step 4 and click **OK**.
+
+> **Note:** If the user group role and the user role are inconsistent, the permissions of both roles are granted to the user.
+
+iii. In the **Manage Users** dialog box, click **OK**. After the user is added to the user group, the added user is displayed in the **Users** column that corresponds to the user group.
 
 ## 4 General O&M
 
@@ -840,27 +874,33 @@ The access configurations of the cloud service or service are displayed on the r
 
 1. On the Access Configuration page, click **Import Configuration** in the upper part.
 2. In the Import Configuration dialog box, click **Upload File**.
-You can export access configurations to a file to view the format of the file that you can upload.
+
+> **Note:** You can export access configurations to a file to view the format of the file that you can upload.
+
 3. Select a configuration file and click **Open**.
 4. Click **Confirm Import**.
 
 **Modify configurations**
 
-The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be modified.
+> **Note:** The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be modified.
+
 1. Find the access configuration that you want to modify and click **Edit** in the **Operation**
 column.
 2. On the **Edit Access Configuration** page, modify the configurations and click **Submit**.
 
 **Copy configurations**
 
-The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be copied.
+> **Note:** The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be copied.
+
 1. Find the access configuration that you want to copy and click **Copy** in the **Operation**
 column.
 2. On the **Copy Access Configuration** page, confirm the configurations and click **Submit**.
 
 **Export configurations**
 
-The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be exported. Export a single access configuration
+> **Note:** The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be exported.
+
+Export a single access configuration
 1. On the Access Configuration page, find the access configuration that you want to export,
 move the pointer over the icon in the **Operation** column, and then select **Export**.
 2. In the dialog box that appears, click **Download**.
@@ -871,7 +911,9 @@ left corner of the page.
 
 **Delete configurations**
 
-The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be deleted. Delete a single access configuration
+> **Note:** The default access configurations that are generated when you update the baseline version of a cloud service, including hotfixes, cannot be deleted.
+
+Delete a single access configuration
 1. On the Access Configuration page, find the access configuration that you want to delete,
 move the pointer over the icon in the **Operation** column, and then select **Delete**.
 2. In the message that appears, click **Delete**.
@@ -934,7 +976,9 @@ the number in the **Effective Cluster** column to see the specific cluster names
 
 **Disable an alert rule**
 
-You can disable an alert rule only when its **Enabled** status is **Enabling**. Disable a single alert rule:
+> **Note:** You can disable an alert rule only when its **Enabled** status is **Enabling**.
+
+Disable a single alert rule:
 1. In the **Actions** column of the target alert rule, click **Disable**.
 2. In the dialog box that appears, click **OK**.
 Disable multiple alert rules:
@@ -943,7 +987,9 @@ Disable multiple alert rules:
 
 **Enable an alert rule**
 
-You can enable an alert rule only when its **Enabled** status is **Deactivated**. Enable a single alert rule:
+> **Note:** You can enable an alert rule only when its **Enabled** status is **Deactivated**.
+
+Enable a single alert rule:
 1. In the **Actions** column of the target alert rule, click **Enable**.
 2. In the dialog box that appears, click **OK**.
 Enable multiple alert rules:
@@ -980,7 +1026,10 @@ Method 1 i. In the left-side navigation pane, select **Cloud Product Business Mo
 ii. Select the **System Rules** tab and click **Modify Rule**. iii. In the **Modify Alert Rule** dialog box, select the target rule and click **Next Step**. Set
 **Alert execution cycle**, **Effective Cluster**, **Alert Trigger Type**, **Alert rule**s, **Effective**
 **time**, and **Channel Silence Period**. Click **Modify** to complete the rule modification.
-You can view the modified rule in the Custom Rules tab. Method 2 i. In the **Actions** column of the target alert rule, click **Custom Modification**. ii. In the **Modify Alert Rule** dialog box, set the **Alert execution cycle**, **Effective Cluster**,
+
+> **Note:** You can view the modified rule in the Custom Rules tab.
+
+Method 2 i. In the **Actions** column of the target alert rule, click **Custom Modification**. ii. In the **Modify Alert Rule** dialog box, set the **Alert execution cycle**, **Effective Cluster**,
 **Alert Trigger Type**, **Alert rules**, **Effective time**, and **Channel Silence Period**. Click
 **Modify**.
 
@@ -1006,7 +1055,11 @@ Alert Templates allows you to manage system templates and custom templates of cl
 3. In the left-side navigation pane, choose **Cloud Product Business Monitoring** > **Alert**
 **Templates**.
 4. On the **System Template** tab, click **Import Configuration**. In the dialog box that
-appears, upload the template file and click **OK**. Only .zip files are supported. The following table describes the main parameters of the template.
+appears, upload the template file and click **OK**.
+
+> **Note:** Only .zip files are supported.
+
+The following table describes the main parameters of the template.
 
 | Parameter | Description |
 |---|---|
@@ -1058,11 +1111,14 @@ version of the template.
 3. In the left-side navigation pane, choose **Cloud Product Business Monitoring** > **Alert**
 **Templates**.
 4. Select the **Custom Template** tab and click **Import Configuration**. In the Upload Plug-in
-dialog box that appears, upload the template file, and then click **OK**. Only ZIP files are supported.
+dialog box that appears, upload the template file, and then click **OK**.
+
+> **Note:** Only ZIP files are supported.
 
 **Modify template**
 
-You can verify custom template modifications by checking the deployment status of system templates.
+> **Note:** You can verify custom template modifications by checking the deployment status of system templates.
+
 1. On the **Custom Template** tab, select the target template and click **Modify** in the **Actions**
 column.
 2. Edit the template in the Update Version pane on the right, click **Modify**, and then view the
@@ -1098,12 +1154,19 @@ The namespace provides basic monitoring metrics and lifecycle management for phy
 **Indicator Repository**.
 4. On the **Indicator Repository** page, filter metrics by **Metric Name**, **Metric Category**, and
 **Status**.
-Supported categories: SR, cluster, process, machine, SR instance, docker, default. Supported statuses: No data, Normal, Metric undefined, Detection error. You can view the following information about each metric: **Metric Name**, **dimensions**,
+
+> **Note:** Supported categories: SR, cluster, process, machine, SR instance, docker, default.
+> Supported statuses: No data, Normal, Metric undefined, Detection error.
+
+You can view the following information about each metric: **Metric Name**, **dimensions**,
 **Field**, **Metric Category**, **Metric Attribution**, **Collection Granularity**, and **Status**.
 5. Manage lifecycle.
 Click **Lifecycle Management**. In the dialog box that appears, set **Data Storage**
 **Duration (Days)** to configure the data retention period for monitoring metrics.
-The system retains monitoring metric data for up to 730 days. After you complete the configuration, click **OK**.
+
+> **Note:** The system retains monitoring metric data for up to 730 days.
+
+After you complete the configuration, click **OK**.
 
 **Data dump**
 
@@ -1144,13 +1207,15 @@ The API monitoring dashboard allows you to monitor the metrics for APIs register
 **namespace**, and **API name** parameters.
 5. On the dashboard, view charts in the **API Requests**, **Average visits**, **Average Total**
 **Time**, **Availability**, and **Success Rate** sections.
-In the upper-right corner of the page, you can click **Live View** to specify a time range for the views. Valid values: **Last 3 hours**, **Last 6 hours**, **Last 24 hours**,
-**Last 3 days**, **Last 7 days**, and **Custom View**.
-You can click the icon above the list to set the automatic refresh interval or perform manual refresh.
+
+> **Note:** In the upper-right corner of the page, you can click **Live View** to specify a time range for the views. Valid values: **Last 3 hours**, **Last 6 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Custom View**.
+> You can click the
+> icon above the list to set the automatic refresh interval or
+> perform manual refresh.
 
 ###### 4.1.1.2.2 API alert
 
-View and manage alarm rules and alert history for cloud product API monitoring.
+> View and manage alarm rules and alert history for cloud product API monitoring.
 
 **Create an alarm rule**
 
@@ -1190,7 +1255,10 @@ The following table describes the parameters.
 On the API Alarm page, view the following information about alarm rules: **Rule Name**, **Rule**
 **Status**, **Rule Description**, **Cloud Products**, **Alarm level**, **API type**, **API name**, and **Alarm**
 **Conditions**.
-Click **Core APIs** in the **API name** column to view the following information about core APIs: **API name**, **core**, **Namespace**, and **Version**. Hover over the information in the **Rule Description** column. A pop-up window appears and displays the complete rule description.
+
+> **Note:** Click **Core APIs** in the **API name** column to view the following information about core APIs: **API name**, **core**, **Namespace**, and **Version**.
+
+Hover over the information in the **Rule Description** column. A pop-up window appears and displays the complete rule description.
 
 **Modify an alarm rule**
 
@@ -1214,9 +1282,8 @@ about configuration items, see Create an alarm rule.
 
 Disable an alarm rule when you temporarily do not need to monitor indicators configured in it.
 
-**Important**
+> **Important:** Before disabling an alarm rule, make sure that its **Rule Status** is **Enabled**.
 
-Before disabling an alarm rule, make sure that its **Rule Status** is **Enabled**.
 1. On the **API Alarm** page, click
 in the Actions column of the target alarm rule and choose
 **Disable**.
@@ -1226,17 +1293,16 @@ in the Actions column of the target alarm rule and choose
 
 Enable an alarm rule when you need to resume monitoring indicators configured in it.
 
-**Important**
+> **Important:** Before enabling an alarm rule, make sure that its **Rule Status** is **Disabled**.
 
-Before enabling an alarm rule, make sure that its **Rule Status** is **Disabled**. On the **API Alarm** page, click **Enable** in the Actions column of the target alarm rule.
+On the **API Alarm** page, click **Enable** in the Actions column of the target alarm rule.
 
 **Delete an alarm rule**
 
 Delete the alarm rule when you no longer need it.
 
-**Important**
+> **Important:** This operation cannot be undone. Proceed with caution.
 
-This operation cannot be undone. Proceed with caution.
 1. On the **API Alarm** page, click
 in the Actions column of the target alarm rule and choose
 **Delete**.
@@ -1446,7 +1512,8 @@ i. In the **Basic configuration** step, configure the parameters in the followin
 
 ii. In the **Alert Settings** step, configure the parameters in the following table and click
 **Next Step**.
-Click **Add entry** in the lower part of the page to configure multiple alert settings.
+
+> **Note:** Click **Add entry** in the lower part of the page to configure multiple alert settings.
 
 | Parameter | Description |
 |---|---|
@@ -1468,17 +1535,26 @@ After the task is created, you can view the details of the task, including the b
 1. In the list on the **Site Monitoring** page, view the information in the **Task Name**, **Target**,
 **Task Status**, **Task type**, **Monitoring frequency**, **Associated cloud products**,
 **Associated Services**, **Associated components**, and **Associated cluster** columns.
-You can click **Advanced Filter** to filter monitoring tasks by **task name**, **task**
-**status**, **task type**, **associated cloud products**, **associated services**,
-**associated components**, and **associated cluster**.
-You can click the icon above the list to refresh the list. You can click the icon above the list to adjust its layout between **Default** and
-**Compact**.
-You can click the icon above the list to select the columns to be displayed. If you clear a column, the column is not displayed.
+
+> **Note:** You can click **Advanced Filter** to filter monitoring tasks by **task name**, **task** **status**, **task type**, **associated cloud products**, **associated services**, **associated components**, and **associated cluster**.
+> You can click the
+> icon above the list to refresh the list.
+> You can click the
+> icon above the list to adjust its layout between **Default** and
+> **Compact**.
+> You can click the
+> icon above the list to select the columns to be displayed. If
+> you clear a column, the column is not displayed.
+
 2. In the task list, click the name of the created task.
 3. On the **Task details** page, view the details of the task.
 In the upper part of the page, you can view the basic information about task, including the **task type**, **target**, **monitoring frequency**, **associated cloud products**,
 **associated services**, **associated components**, and **associated cluster**.
-You can click **Disable** in the upper-right corner to disable the task. You can click **Edit** in the upper-right corner to modify the task. For more information about the related parameters, see Create a site monitoring task. On the **Monitoring Metrics** tab, view the trend chart of metrics. You can switch between
+
+> **Note:** You can click **Disable** in the upper-right corner to disable the task.
+> You can click **Edit** in the upper-right corner to modify the task. For more information about the related parameters, see Create a site monitoring task.
+
+On the **Monitoring Metrics** tab, view the trend chart of metrics. You can switch between
 **Real-time View**, **View of recent day**, **View of Previous Week**, and **Custom View**.
 On the **Configuration Information** tab, view the information about **HTTP advanced**
 **settings** and **Alarm settings**.
@@ -1495,9 +1571,7 @@ click **Edit** in the Operation column.
 2. On the **Modify a task** page, modify the parameters based on your business requirements.
 For more information about the parameters, see Create a site monitoring task.
 
-**Important**
-
-You cannot modify the **task name**.
+> **Important:** You cannot modify the **task name**.
 
 **Copy a site monitoring task**
 
@@ -1511,17 +1585,17 @@ business requirements. For more information about the parameters, see Create a s
 
 If you do not need to monitor a site, you can disable the corresponding task.
 
-**Important**
+> **Important:** Before you disable a task, make sure that the **task status** is **Enabled**.
 
-Before you disable a task, make sure that the **task status** is **Enabled**. Disable a single task i. On the**Site Monitoring**page, find the task that you want to disable and click **Disable** in the Actions column. ii. In the message that appears, click **OK**. Disable multiple tasks at a time i. On the Site Monitoring page, select the check boxes on the left side of the tasks that you want to disable. ii. Click **Batch disable** in the lower-left corner of the task list. iii. In the message that appears, click **OK**.
+Disable a single task i. On the**Site Monitoring**page, find the task that you want to disable and click **Disable** in the Actions column. ii. In the message that appears, click **OK**. Disable multiple tasks at a time i. On the Site Monitoring page, select the check boxes on the left side of the tasks that you want to disable. ii. Click **Batch disable** in the lower-left corner of the task list. iii. In the message that appears, click **OK**.
 
 **Enable site monitoring tasks**
 
 You can enable a disabled task if you want to monitor the corresponding site again.
 
-**Important**
+> **Important:** Before you enable a task, make sure that the **task status** is **Disabled**.
 
-Before you enable a task, make sure that the **task status** is **Disabled**. Enable a single a task i. On the**Site Monitoring**page, find the task that you want to enable and click **Enable** in the Actions column. ii. In the message that appears, click **OK**. Enable multiple tasks at a time i. On the**Site Monitoring** page, select the check boxes on the left side of the tasks that you want to enable. ii. Click **Batch enable** in the lower-left corner of the task list. iii. In the message that appears, click **OK**.
+Enable a single a task i. On the**Site Monitoring**page, find the task that you want to enable and click **Enable** in the Actions column. ii. In the message that appears, click **OK**. Enable multiple tasks at a time i. On the**Site Monitoring** page, select the check boxes on the left side of the tasks that you want to enable. ii. Click **Batch enable** in the lower-left corner of the task list. iii. In the message that appears, click **OK**.
 
 **Delete site monitoring tasks**
 
@@ -1637,7 +1711,7 @@ You only need to take note of the metrics of Layer 4 protocol for SLB. You do no
 
 ###### 4.1.1.4.4 Cloud instance alerts
 
-Cloud instance alerts allow you to configure alert rules for cloud instances and view aggregated alerts.
+> Cloud instance alerts allow you to configure alert rules for cloud instances and view aggregated alerts.
 
 **Create an alert rule**
 
@@ -1671,7 +1745,8 @@ The following table describes the parameters.
 On theCloud Instance Alarm page, view the following information about the alert rule: **Rule**
 **name**, **Rule status**, **Rule description**, **Cloud products**, **Alarm Level**, **Instance type**,
 **Instance Range**, and **Alert condition**.
-You can click the data in the **Instance Range** column to view the range of resources associated with the alert rule.
+
+> **Note:** You can click the data in the **Instance Range** column to view the range of resources associated with the alert rule.
 
 **Modify an alert rule**
 
@@ -1681,9 +1756,7 @@ and click **Edit** in the Operation column.
 2. On the **Edit alarm rules** page, modify the parameters based on your business
 requirements. For more information, see Create an alert rule.
 
-**Important**
-
-You cannot change the rule name.
+> **Important:** You cannot change the rule name.
 
 **Copy an alert rule**
 
@@ -1697,9 +1770,8 @@ requirements. For more information, see Create an alert rule.
 
 If you do not need to monitor a metric, you can disable the corresponding alert rule.
 
-**Important**
+> **Important:** Before you disable an alert rule, make sure that **Rule status** is **Enabled**.
 
-Before you disable an alert rule, make sure that **Rule status** is **Enabled**.
 1. In the list of the **Cloud Instance Alarm** page, find the alert rule that you want to disable
 and click the icon in the Operation column.
 2. Click **Disable**.
@@ -1708,17 +1780,16 @@ and click the icon in the Operation column.
 
 If you need to monitor a metric again, you can re-enable the alert rule.
 
-**Important**
+> **Important:** Before you enable an alert rule, make sure that **Rule status** is **Disabled**.
 
-Before you enable an alert rule, make sure that **Rule status** is **Disabled**. In the list of the **Cloud Instance Alarm** page, find the alert rule that you want to enable and click **Enable**.
+In the list of the **Cloud Instance Alarm** page, find the alert rule that you want to enable and click **Enable**.
 
 **Delete an alert rule**
 
 You can delete an alert rule if you no longer need it.
 
-**Important**
+> **Important:** This operation is irreversible. Proceed with caution.
 
-This operation is irreversible. Proceed with caution.
 1. In the list of the **Cloud Instance Alarm** page, find the alert rule that you want to delete
 and click the icon in the Operation column.
 2. Click **Delete**.
@@ -1767,10 +1838,11 @@ data writes. This section displays the name, monitoring system, and number of da
 1. On the Read/Write Dashboard page, click **Throttle control** in the upper-right corner.
 2. In the Throttle control panel, click **Edit** and modify the settings in the Cloud Product Control
 and **Monitoring indicator blacklist** sections. Modify the cloud service control setting Select **Allow adding monitoring metrics** or **Do not add monitoring indicators**. You cannot specify the cloud service to which the throttling policy applies. The throttling policy applies to all cloud services. The setting in the Cloud Product Control section takes effect for all TianjiMon metrics. By default, Allow adding monitoring metrics is selected. If you select Do not add monitoring indicators, the metrics of cloud services can no longer be added to Tablestore. The metrics that are already added to Tablestore are not affected. Add a metric to the metric blacklist If a metric is added to the metric blacklist in the throttling policy, the data of this metric is no longer written to Tablestore. a. Click **Add Indicator**. The **Add indicator blacklist** dialog box appears. b. Configure the **Monitoring Platform** and **Project** parameters and select a metric.
-**Monitoring Platform**: the monitoring platform whose metrics you want to
-add to the metric blacklist. Valid values: CMS and TIANJIMON.
-**Project**: the project in the monitoring platform whose metrics you want to
-add to the metric blacklist. Example: tjm_tianji. After you select a project, the metrics of the project are displayed. Then, you can select a metric based on the current traffic of metrics. c. Click **OK**. The selected metric is added to the metric blacklist. Remove a metric from the metric blacklist a. In the metric blacklist, find the metric that you want to remove and click **Remove** in the Operation column. b. In the message that appears, click **Remove**.
+
+> **Note:** **Monitoring Platform**: the monitoring platform whose metrics you want to add to the metric blacklist. Valid values: CMS and TIANJIMON.
+> **Project**: the project in the monitoring platform whose metrics you want to add to the metric blacklist. Example: tjm_tianji. After you select a project, the metrics of the project are displayed. Then, you can select a metric based on the current traffic of metrics.
+
+c. Click **OK**. The selected metric is added to the metric blacklist. Remove a metric from the metric blacklist a. In the metric blacklist, find the metric that you want to remove and click **Remove** in the Operation column. b. In the message that appears, click **Remove**.
 3. Click **Save**.
 
 **Capacity planning**
@@ -1808,9 +1880,8 @@ The system provides the following preset dashboards: Stability Dashboard AI Infr
 
 **Modify a directory name**
 
-**Important**
+> **Important:** You cannot modify the name of a preset directory.
 
-You cannot modify the name of a preset directory.
 1. On the **Custom Dashboard** page, click
 next to the directory.
 2. In the input box, enter a new directory name.
@@ -1818,9 +1889,11 @@ next to the directory.
 
 **Delete a directory**
 
-**Important**
+> **Important:** You cannot delete a preset directory.
 
-You cannot delete a preset directory. p y If you delete a directory, the system also deletes all dashboards under that directory. Proceed with caution.
+> p y
+> If you delete a directory, the system also deletes all dashboards under that directory. Proceed with caution.
+
 1. On the **Custom Dashboard** page, click
 next to the directory.
 2. In the dialog box, click **OK**.
@@ -1846,38 +1919,67 @@ a. Click **Create Panel** and select **Create Panel**. b. On the New Panel page,
 
 **Data Configuration**
 
-If you select **default** for **Card type**, select an option for **Data source** and configure **service name** and **promQL statement**. The following data sources are supported: Tianjimon MetricStore SelfMonitor[TimeSeries] Cms MetricMaster[Api] Tianjimon Metadata[SQL] onTianji TianjimonData[TimeSeries] onPaaS TianjimonData[TimeSeries] Tianjimon Diagnosis[Api] Tianjimon MetricMeta[Api] PanguMonitor[Api] MetaCloudProduct[Api] Tianjimon Monitor[Api] Charts based on API data sources support trend visualization. Dashboards support virtual metrics. If you select **AsoReportCard** for **Card type**, select server header fields. You can select all fields to display basic server information.
+If you select **default** for **Card type**, select an option for **Data source** and configure **service name** and **promQL statement**.
+
+> **Note:** The following data sources are supported:
+> Tianjimon MetricStore SelfMonitor[TimeSeries]
+> Cms MetricMaster[Api]
+> Tianjimon Metadata[SQL]
+> onTianji TianjimonData[TimeSeries]
+> onPaaS TianjimonData[TimeSeries]
+> Tianjimon Diagnosis[Api]
+> Tianjimon MetricMeta[Api]
+> PanguMonitor[Api]
+> MetaCloudProduct[Api]
+> Tianjimon Monitor[Api]
+
+Charts based on API data sources support trend visualization. Dashboards support virtual metrics. If you select **AsoReportCard** for **Card type**, select server header fields. You can select all fields to display basic server information.
 
 **Data Transformation**
 
 Click **Add Data Transformation > Filter fields by name** to selectively remove parts of the query results. Click **Add Data Transformation > Organize fields by name** to flexibly rename, reorder, or hide fields returned by a single query in the panel. This transformation applies only to panels containing a single query. Click **Add Data Transformation > Filter data by values** to selectively filter data points directly in the visualization interface. This transformation allows you to include or exclude data based on one or more conditions applied to selected fields. Click **Add Data Transformation > Series to Rows** to merge the results of multiple time-series data queries into a single result.
 
-**Important**
-
-You must configure **Data Configuration** before configuring Data Transformation.
+> **Important:** You must configure **Data Configuration** before configuring Data Transformation.
 
 **JSON Model**
 
 JSON Model displays chart configuration information in JSON format. You can also edit the configuration in JSON format.
 **Chart Configuration**: On the right-side **Chart Configuration** tab, configure **Chart**
 **type**, **Chart elements**, and other settings.
-c. After completing the configuration, click **Apply to Dashboard** above the chart to save it. Click **Cancel** above the chart to cancel saving the chart. Hover over the drop-down list next to **Last 1 Hour** above the chart to select or customize the monitoring time range.
+c. After completing the configuration, click **Apply to Dashboard** above the chart to save it.
+
+> **Note:** Click **Cancel** above the chart to cancel saving the chart.
+> Hover over the drop-down list next to **Last 1 Hour** above the chart to select or customize the monitoring time range.
 
 **Create a row container**
 
-a. On the dashboard page, click **Create Panel** and select **Create Row**. b. Hover over the row container, click , edit the row name, and then click **OK**. Hover over the row container and click to delete the row container.
+a. On the dashboard page, click **Create Panel** and select **Create Row**. b. Hover over the row container, click , edit the row name, and then click **OK**.
+
+> **Note:** Hover over the row container and click
+> to delete the row container.
+
 3. After you add panels and row containers, customize the dashboard layout.
 In the drop-down list in the upper-right corner of the canvas area, click **Layout**
 **Template** to select **1 panel per row**, **2 panels per row**, **3 panels per row**, or **4**
 **panels per row**.
 Drag panels and row containers with your mouse to adjust their positions. Click in the upper-right corner of a panel to perform operations such as **Edit**, **Copy**,
 **Delete**, or **View**.
-Click the drop-down list next to **Last 1 Hour** at the top of the dashboard to select or customize the monitoring time range for the dashboard. The time range set on the panel editing page applies only during the editing session (allowing you to temporarily preview the panel's data for a different time period). After you return to the dashboard, it uses its global time settings. Click the drop-down list to the right of to set the auto-refresh interval for the dashboard. If you set this to off, auto-refresh is disabled. Click at the top of the dashboard to view or edit the dashboard's **Basic**
+Click the drop-down list next to **Last 1 Hour** at the top of the dashboard to select or customize the monitoring time range for the dashboard.
+
+> **Note:** The time range set on the panel editing page applies only during the editing session (allowing you to temporarily preview the panel's data for a different time period). After you return to the dashboard, it uses its global time settings.
+
+Click the drop-down list to the right of to set the auto-refresh interval for the dashboard.
+
+> **Note:** If you set this to off, auto-refresh is disabled.
+
+Click at the top of the dashboard to view or edit the dashboard's **Basic**
 **configuration**, **Variable**, and **JSON Model**.
 
 **Basic configuration**
 
-In Basic configuration, you can view or modify the dashboard name and the editable switch. If you turn on the Editable switch, you can add or delete charts and row containers and customize the dashboard layout. Otherwise, you cannot perform these operations.
+In Basic configuration, you can view or modify the dashboard name and the editable switch.
+
+> **Note:** If you turn on the Editable switch, you can add or delete charts and row containers and customize the dashboard layout. Otherwise, you cannot perform these operations.
 
 **Variable**
 
@@ -1891,9 +1993,8 @@ to save the dashboard. The dashboard is now created.
 
 **Modify dashboard content and layout**
 
-**Important**
+> **Important:** You cannot modify the content or layout of preset dashboards.
 
-You cannot modify the content or layout of preset dashboards.
 1. On the **Custom Dashboard** page, click the target directory. In the list of dashboards
 displayed on the right, click the dashboard name.
 2. On the dashboard details page, modify panels, row containers, and layout as needed. For
@@ -1901,9 +2002,8 @@ more information, see Create a dashboard.
 
 **Rename a dashboard**
 
-**Important**
+> **Important:** You cannot rename preset dashboards.
 
-You cannot rename preset dashboards.
 1. On the **Custom Dashboard** page, click the target directory. In the list of dashboards
 displayed on the right, click **Edit** in the Operation column.
 2. In the **Edit dashboard** dialog box, enter a new dashboard name.
@@ -1911,9 +2011,7 @@ displayed on the right, click **Edit** in the Operation column.
 
 **Move a dashboard**
 
-**Important**
-
-You cannot move preset dashboards.
+> **Important:** You cannot move preset dashboards.
 
 **Move a single dashboard**
 
@@ -1934,9 +2032,7 @@ destination directory.
 
 **Delete a dashboard**
 
-**Important**
-
-You cannot delete preset dashboards.
+> **Important:** You cannot delete preset dashboards.
 
 **Delete a single dashboard**
 
@@ -1993,7 +2089,10 @@ You can extend monitoring capabilities by using custom scripts or executable com
 3. In the left-side navigation pane, choose **Custom Monitoring** > **Script Management**.
 4. Click **Upload plug-in**. In the **Upload plug-in** dialog box, click or drag a file to the **Upload**
 **plug-in** box and click **OK**.
-ZIP, TAR, and GZ files are supported. After the plug-in is uploaded, the **Unpublish** and **Publish** buttons are dimmed.
+
+> **Note:** ZIP, TAR, and GZ files are supported.
+
+After the plug-in is uploaded, the **Unpublish** and **Publish** buttons are dimmed.
 
 **Test the plug-in**
 
@@ -2004,14 +2103,16 @@ the **Operation** column.
 
 **Publish a plug-in**
 
-If the plug-in fails the test, the Publish button is dimmed.
+> **Note:** If the plug-in fails the test, the Publish button is dimmed.
+
 1. On the **Script Management** page, find the plug-in that has passed the test and click
 **Publish** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Withdraw a plug-in**
 
-You can withdraw published plug-ins. The Unpublish button is dimmed for unpublished plug-ins.
+> **Note:** You can withdraw published plug-ins. The Unpublish button is dimmed for unpublished plug-ins.
+
 1. On the **Script Management** page, find the published plug-in and click **Unpublish** in the
 **Operation** column.
 2. In the message that appears, click **OK**.
@@ -2022,9 +2123,7 @@ You can withdraw published plug-ins. The Unpublish button is dimmed for unpublis
 **Delete** in the **Operation** column.
 2. Click **OK**.
 
-**Important**
-
-After the plug-in is deleted, all tasks related to the plug-in are deleted. Proceed with caution.
+> **Important:** After the plug-in is deleted, all tasks related to the plug-in are deleted. Proceed with caution.
 
 **View plug-in details**
 
@@ -2054,7 +2153,8 @@ Operation column. You can switch between **Real-Time View**, **View of recent da
 
 **Create a script execution task**
 
-A task can be created only after the plug-in is published. If the plug-in is not published, the Create Task button is dimmed.
+> **Note:** A task can be created only after the plug-in is published. If the plug-in is not published, the Create Task button is dimmed.
+
 1. In the plug-in list, click the name of the plug-in that you want to manage.
 2. On the **Execution History** tab, click **Create a task**.
 3. In the **Create a task** panel, configure the parameters and click **OK**. The following table
@@ -2067,9 +2167,8 @@ describes the parameters.
 
 **Enable a script execution task**
 
-**Important**
+> **Important:** Before you enable a task, make sure that the **task status** is **Disabled**.
 
-Before you enable a task, make sure that the **task status** is **Disabled**.
 1. In the plug-in list, click the name of the plug-in that you want to manage.
 2. On the **Execution History** tab, find the plug-in that you want to manage and click **Enable**
 in the Operation column.
@@ -2077,9 +2176,8 @@ in the Operation column.
 
 **Disable a script execution task**
 
-**Important**
+> **Important:** Before you disable a task, make sure that the **task status** is **Enabled**.
 
-Before you disable a task, make sure that the **task status** is **Enabled**.
 1. In the plug-in list, click the name of the plug-in that you want to manage.
 2. On the **Execution History** tab, find the plug-in that you want to manage and click **Disable**
 in the Operation column.
@@ -2108,9 +2206,17 @@ This topic describes how to view the cloud service performance baseline dashboar
 2. In the top navigation bar, choose **Monitor&Alert** > **Monitor Management** > **Product**
 **Dashboard**.
 3. On the **Cloud Product Performance Baseline Dashboard** page, click the **Last 6 Hours**
-drop-down list to specify a time range. The page displays the monitoring information of performance baselines for cloud services. Click the downward arrow next to the icon in the upper-right corner and select a refresh interval for the dashboard from the drop-down list. If you select off, automatic refresh is disabled for the dashboard. Click the icon in the upper-right corner. In the Settings panel, view the **basic**
-**configurations**, **variables**, and **JSON mode** of the dashboard.
-Click the icon in the upper-right corner of the card and click **View** to view the information about the card.
+drop-down list to specify a time range. The page displays the monitoring information of performance baselines for cloud services.
+
+> **Note:** Click the downward arrow next to the
+> icon in the upper-right corner and
+> select a refresh interval for the dashboard from the drop-down list. If you select off, automatic refresh is disabled for the dashboard.
+> Click the
+> icon in the upper-right corner. In the Settings panel, view the **basic**
+> **configurations**, **variables**, and **JSON mode** of the dashboard.
+> Click the
+> icon in the upper-right corner of the card and click **View** to view the
+> information about the card.
 
 #### 4.1.3 Cloud service dashboards
 
@@ -2130,7 +2236,11 @@ You have obtained the permissions of the cloud platform monitoring administrator
 2. In the top navigation bar, choose **Monitor&Alert** > **Monitor Management** > **Cloud**
 **Platform Monitoring Dashboard**.
 3. View the data on the cloud platform dashboard.
-Click **Project** in the upper-right corner to enter the full screen mode. Press **Esc** to exit the full screen mode. The data on the cloud platform dashboard is automatically refreshed every 1 minute. In the upper-right corner of the cloud platform dashboard, view the current time. In the left-side **Week Overview** section, view the total number of pending events and the average event processing duration. Total Pending Events: the total number of uncompleted events in the Apsara Unimanager Operations Console within the previous seven days. Average Event Processing Duration: the average processing duration of completed events within the previous seven days. Unit: hour. Click an area in this section to go to the **Event List** page. On the Event List page, view the unclosed events at L1 to L5 levels. In the left-side **Pending Events** section, view the number of pending events at L1 to L5 levels. Pending Events: the number of uncompleted events within the previous seven days. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events at the corresponding level. In the left-side **Recent Event List** section, view the events that are displayed by generation time in descending order. The information about an event includes the event level, event title, processing status, event object, object type, start time, and user who handled the event. If no user handles an event, the username is not displayed. Click an event to go to the details page of the event. In the middle part of the cloud platform dashboard, view the monitoring and event data in the **Cloud Service Instance**, **Cloud Product**, and **Infrastructure** layers. Infrastructure includes network devices and servers. Cloud Service Instance: displays the data of cloud service instances of the cloud product that is selected in the **Cloud Product**layer. If a cloud product has cloud service instances, the number of abnormal cloud service instances and the total number of cloud service instances are displayed in this layer. If a cloud product has a service but has no instances, the data of the cloud service is displayed in this layer. If a cloud product has no service, no data is displayed in this layer. Cloud Product: displays the number of abnormal cloud products and the total number of cloud products. The data of abnormal cloud products is displayed in a 15-second rotating cycle. A red icon indicates the current product whose data is being displayed. You can click the icon of a cloud product to display the data of the cloud product on the right side of the cloud platform dashboard. Infrastructure: displays the number of abnormal servers and total number of servers of the cloud product that is selected in the **Cloud Product**layer. In the right-side **Cloud Service Instance** section, view the average event processing duration, number of effective events, total number of events, and trend chart of P1 and P2 alerts of the cloud service instances of the selected cloud product. If a cloud product has no cloud service instance, no data is displayed in this section. Average Event Processing Duration: the average processing duration of completed events of the cloud service instances of the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the cloud service instances of the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the cloud service instances of the selected cloud product at L1 to L5 levels. Alert Trend Chart: the trend chart that shows the number of P1 and P2 alerts of the selected cloud product within the previous 24 hours. Click the alert trend chart to go to the **Alerts** page. On the Alerts page, view the unclosed cloud product alerts whose object type is a cloud instance. In the right-side **Cloud Product** section, view the average event processing duration, number of effective events, total number of events, and desired state of the selected cloud product. Average Event Processing Duration: the average processing duration of completed events of the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the selected cloud product at L1 to L5 levels. Cloud Product Desired State: Cluster Ratio at Desired State: the ratio of the number of clusters at desired state to the total number of clusters of the selected cloud product. Component Ratio at Desired State: the ratio of the number of server roles at desired state to the total number of server roles of the selected cloud product. Click data in this section to go to the **Product & Cluster O&M** page. On the Product & Cluster O&M page, view the cluster details of the selected cloud product. For more information, see Product and cluster O&M. In the right-side **Infrastructure** section, view the average event processing duration, number of effective events, total number of events, and overall capacity data of the top 3 clusters of the machine group associated with the selected cloud product. If a cloud product has no infrastructure, no data is displayed in this section. Average Event Processing Duration: the average processing duration of completed events of the machine group associated with the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the machine group associated with the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the machine group associated with the selected cloud product at L1 to L5 levels. Overall Capacity Data of Top 3 Clusters: the names and overall capacity data of the top 3 clusters that are associated with the selected cloud product. The overall capacity data includes the CPU utilization, memory usage, and disk usage.
+Click **Project** in the upper-right corner to enter the full screen mode. Press **Esc** to exit the full screen mode. The data on the cloud platform dashboard is automatically refreshed every 1 minute. In the upper-right corner of the cloud platform dashboard, view the current time. In the left-side **Week Overview** section, view the total number of pending events and the average event processing duration. Total Pending Events: the total number of uncompleted events in the Apsara Unimanager Operations Console within the previous seven days. Average Event Processing Duration: the average processing duration of completed events within the previous seven days. Unit: hour. Click an area in this section to go to the **Event List** page. On the Event List page, view the unclosed events at L1 to L5 levels. In the left-side **Pending Events** section, view the number of pending events at L1 to L5 levels. Pending Events: the number of uncompleted events within the previous seven days. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events at the corresponding level. In the left-side **Recent Event List** section, view the events that are displayed by generation time in descending order. The information about an event includes the event level, event title, processing status, event object, object type, start time, and user who handled the event.
+
+> **Note:** If no user handles an event, the username is not displayed.
+
+Click an event to go to the details page of the event. In the middle part of the cloud platform dashboard, view the monitoring and event data in the **Cloud Service Instance**, **Cloud Product**, and **Infrastructure** layers. Infrastructure includes network devices and servers. Cloud Service Instance: displays the data of cloud service instances of the cloud product that is selected in the **Cloud Product**layer. If a cloud product has cloud service instances, the number of abnormal cloud service instances and the total number of cloud service instances are displayed in this layer. If a cloud product has a service but has no instances, the data of the cloud service is displayed in this layer. If a cloud product has no service, no data is displayed in this layer. Cloud Product: displays the number of abnormal cloud products and the total number of cloud products. The data of abnormal cloud products is displayed in a 15-second rotating cycle. A red icon indicates the current product whose data is being displayed. You can click the icon of a cloud product to display the data of the cloud product on the right side of the cloud platform dashboard. Infrastructure: displays the number of abnormal servers and total number of servers of the cloud product that is selected in the **Cloud Product**layer. In the right-side **Cloud Service Instance** section, view the average event processing duration, number of effective events, total number of events, and trend chart of P1 and P2 alerts of the cloud service instances of the selected cloud product. If a cloud product has no cloud service instance, no data is displayed in this section. Average Event Processing Duration: the average processing duration of completed events of the cloud service instances of the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the cloud service instances of the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the cloud service instances of the selected cloud product at L1 to L5 levels. Alert Trend Chart: the trend chart that shows the number of P1 and P2 alerts of the selected cloud product within the previous 24 hours. Click the alert trend chart to go to the **Alerts** page. On the Alerts page, view the unclosed cloud product alerts whose object type is a cloud instance. In the right-side **Cloud Product** section, view the average event processing duration, number of effective events, total number of events, and desired state of the selected cloud product. Average Event Processing Duration: the average processing duration of completed events of the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the selected cloud product at L1 to L5 levels. Cloud Product Desired State: Cluster Ratio at Desired State: the ratio of the number of clusters at desired state to the total number of clusters of the selected cloud product. Component Ratio at Desired State: the ratio of the number of server roles at desired state to the total number of server roles of the selected cloud product. Click data in this section to go to the **Product & Cluster O&M** page. On the Product & Cluster O&M page, view the cluster details of the selected cloud product. For more information, see Product and cluster O&M. In the right-side **Infrastructure** section, view the average event processing duration, number of effective events, total number of events, and overall capacity data of the top 3 clusters of the machine group associated with the selected cloud product. If a cloud product has no infrastructure, no data is displayed in this section. Average Event Processing Duration: the average processing duration of completed events of the machine group associated with the selected cloud product. Unit: hour. Effective Events/Total Events: the number of uncompleted events and total number of events of the machine group associated with the selected cloud product. Click a number in this section to go to the **Event List** page. On the Event List page, view the unclosed events of the machine group associated with the selected cloud product at L1 to L5 levels. Overall Capacity Data of Top 3 Clusters: the names and overall capacity data of the top 3 clusters that are associated with the selected cloud product. The overall capacity data includes the CPU utilization, memory usage, and disk usage.
 
 ### 4.2 Alert management
 
@@ -2183,20 +2293,43 @@ You have obtained system administrator permissions.
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alert** > **Alert Management** > **Alert List**.
-Click **Handle Now** in the upper-right corner to go to the **Events** page. Event Center aggregates all alert data and provides response levels to help organize emergency handling and improve O&M efficiency.
+
+> **Note:** Click **Handle Now** in the upper-right corner to go to the **Events** page. Event Center aggregates all alert data and provides response levels to help organize emergency handling and improve O&M efficiency.
+
 3. On the **Real-time Alert** tab, view the real-time alert list. By default, the system displays
 alerts that are not disabled. The list includes **Alert Level**, **Alert Item ID/Name**, **Resource**
 **Owner**, **Alert Information**, **Alert Status**, **Alert Start Time**, **Last Alert Time/Duration**,
 **Alerts**, **Extended Attributes**, **Alert Object Name/ID**, **Object Type**, and **Alert Source**.
-Switch to the **Disabled** tab to view the list of disabled alerts. The alert list supports sorting by **Alert Level** or **Last Alert Time/Duration**. Click to set the auto-refresh interval for the alert list. Manual refresh is also supported. Click to configure custom list items.
+
+> **Note:** Switch to the **Disabled** tab to view the list of disabled alerts.
+> The alert list supports sorting by **Alert Level** or **Last Alert Time/Duration**.
+> Click
+> to set the auto-refresh interval for the alert list. Manual refresh is also
+> supported.
+> Click
+> to configure custom list items.
+
 4. Above the list, search by **Resource Owner** or alert keywords. Keywords cover alert item
 ID, alert information, and extended attribute keywords. Alternatively, click **Advanced**
 **Filter** to combine filters based on **Alert Item ID**, , **Alert Start Time**, **Alert Level**, **Alert**
 **Status**, **Alert Source**, **Object Type**, **Alert Object Name**, **Status**, and **Alert Attributes**
-to retrieve target alert data. On the **Not Disabled** tab, the system does not display disabled alerts by default. However, you can use **Advanced Filter** to filter and display disabled alerts. Similarly, on the **Disabled** tab, the system does not display enabled alerts by default, but you can use **Advanced Filter** to filter and display them.
-**Alert Level**, **Alert Status**, and **Alert Source** support multi-selection.
+to retrieve target alert data.
+
+> **Note:** On the **Not Disabled** tab, the system does not display disabled alerts by default. However, you can use **Advanced Filter** to filter and display disabled alerts. Similarly, on the **Disabled** tab, the system does not display enabled alerts by default, but you can use **Advanced Filter** to filter and display them.
+> **Alert Level**, **Alert Status**, and **Alert Source** support multi-selection.
+
 5. Click the **Alert Item ID** of the target alert to go to the Alert Details page to obtain alert
-details. Perform the following operations in the upper-right corner of the page. Click to copy the link to the alert details. Click **Event Details** to go to the related Event Details page. For more information, see Event list. Click **Mark**, configure parameters, and then click **Confirm**to mark the alert. You can mark repeatedly. The system uses the latest mark content. Click **Close**, configure parameters, and then click **Confirm** to close the current alert. View basic alert information in the **Basic Information** section. View extended alert information in the **Extended Information** section. Hover your mouse over **Details** under **Alert Details**. The system displays detailed alert information. View the alert metric diagram in the **State timing diagram** section. To view the diagram for the last day: Click **1 Day** to view the alert metric diagram from the day before the alert occurred. To view the diagram for the last week: Click **1 Week** to view the alert metric diagram from the week before the alert occurred. View the scope of impact of the alert on the **Alert Impact** tab. You can view the service roles that may be affected and their corresponding statuses. If the owner of a service role is determined, the service, cluster, products, and physical machine to which the service role belongs will also be displayed. On the **Monitoring Metrics** tab, view the metric trend chart during the target time period. This feature takes effect only when the alert type is metric, prometheus, or event.
+details. Perform the following operations in the upper-right corner of the page. Click to copy the link to the alert details. Click **Event Details** to go to the related Event Details page. For more information, see Event list. Click **Mark**, configure parameters, and then click **Confirm**to mark the alert.
+
+> **Note:** You can mark repeatedly. The system uses the latest mark content.
+
+Click **Close**, configure parameters, and then click **Confirm** to close the current alert. View basic alert information in the **Basic Information** section. View extended alert information in the **Extended Information** section.
+
+> **Note:** Hover your mouse over **Details** under **Alert Details**. The system displays detailed alert information.
+
+View the alert metric diagram in the **State timing diagram** section. To view the diagram for the last day: Click **1 Day** to view the alert metric diagram from the day before the alert occurred. To view the diagram for the last week: Click **1 Week** to view the alert metric diagram from the week before the alert occurred. View the scope of impact of the alert on the **Alert Impact** tab. You can view the service roles that may be affected and their corresponding statuses. If the owner of a service role is determined, the service, cluster, products, and physical machine to which the service role belongs will also be displayed. On the **Monitoring Metrics** tab, view the metric trend chart during the target time period.
+
+> **Note:** This feature takes effect only when the alert type is metric, prometheus, or event.
 
 **Mark alerts**
 
@@ -2234,20 +2367,27 @@ You have deployed SLS and configured data dump. For more information about how t
 SLS. The list includes the following columns: **Alert Level**, **Alert Item ID/Name**, **Resource**
 **Owner**, **Alert Information**, **Alert Start Time**, **Last Alert Time/Duration**, **Alerts**,
 **Extended Attributes**, **Alert Object Name/ID**, **Object Type**, and **Alert Source**.
-You can sort the alert list by **Alert Level** or **Last Alert Time/Duration**.
+
+> **Note:** You can sort the alert list by **Alert Level** or **Last Alert Time/Duration**.
+
 2. Above the list, search by **Resource Owner**. Alternatively, click **Advanced Filter** to
 combine filters based on **Alert Item ID**, **Alert Start Time**, **Alert Level**, **Alert Source**,
 **Object Type**, **Alert Object Name**, and **Alert Attributes** to retrieve target alert data.
-**Alert Level** and **Alert Source** support multiple selections.
+
+> **Note:** **Alert Level** and **Alert Source** support multiple selections.
+
 3. Click the **Alert Item ID/Name** of a target alert to go to the Alert Details page. View
-detailed alert information, including **Basic Information** and **Extended Information**. Hover your mouse over **Details** under **Alert Details**. The system displays the detailed alert information.
+detailed alert information, including **Basic Information** and **Extended Information**.
+
+> **Note:** Hover your mouse over **Details** under **Alert Details**. The system displays the detailed alert information.
+
 4. At the top of the page, click **Export Report** to export the alert report as a table.
 
 #### 4.2.3 Alert rules
 
-You can view and manage the monitoring templates of all services and alert rules of all cloud products. Monitoring and form-based configuration capabilities are also provided. If the version of Tianjimon in your environment is 3.18.6 or earlier, perform the procedures described in this topic to manage alert rule. Otherwise, go to the
-**Monitor&Alert > Cloud Product Business Monitoring > Alert Rules** page to
-manage alert rules. For more information, see Alert rules.
+You can view and manage the monitoring templates of all services and alert rules of all cloud products. Monitoring and form-based configuration capabilities are also provided.
+
+> **Note:** If the version of Tianjimon in your environment is 3.18.6 or earlier, perform the procedures described in this topic to manage alert rule. Otherwise, go to the **Monitor&Alert > Cloud Product Business Monitoring > Alert Rules** page to manage alert rules. For more information, see Alert rules.
 
 ##### 4.2.3.1 Monitoring templates
 
@@ -2282,7 +2422,8 @@ following table describes the parameters of a monitoring template.
 
 1. On the **Monitoring Templates** tab, click **Import Configuration**.
 2. Drag the configuration file to the **Upload File** box and click **OK**.
-You can import only ZIP files.
+
+> **Note:** You can import only ZIP files.
 
 **Retry a monitoring template**
 
@@ -2342,7 +2483,7 @@ in the Operation column.
 | Trigger Rule | The alert triggering rule. To prevent the alert rule from becoming invalid, you can change only thresholds and can enter only numbers, including integers and decimals. |
 |---|---|
 
-After you modify the rule, the verification takes 3 to 5 minutes. Refresh the list to check whether the rule has taken effect.
+> **Note:** After you modify the rule, the verification takes 3 to 5 minutes. Refresh the list to check whether the rule has taken effect.
 
 #### 4.2.4 Alert settings
 
@@ -2485,11 +2626,14 @@ For Ant Financial Service products that are deployed on the PaaS platform, you c
 4. In the upper-left corner of the page that appears, select a service from the **Service** drop-
 down list. You can view detailed information about the service in the lower part of the page. Then, click the template in the Associated Template column to view detailed information about the template.
 5. Download alert templates.
-For Ant Financial Service products that are deployed on the PaaS platform, use the simple_template.json template.
+
+> **Note:** For Ant Financial Service products that are deployed on the PaaS platform, use the simple_template.json template.
+
 6. Find the service that you want to manage and click **Import** in the **Operation**. In the
 **Import Templates** dialog box, click **Upload and Parse File**. Select the template and click
 **Open**. After the template is uploaded, click **OK**.
-You can also export alert templates.
+
+> **Note:** You can also export alert templates.
 
 ##### 4.2.4.3 Alert notification
 
@@ -2540,7 +2684,8 @@ push records.
 1. Find the notification channel that you want to manage, and click **Modify** in the **Operation**
 column.
 2. In the dialog box that appears, modify the parameters and click **OK**.
-Turn on or turn off the switch in the **Push Switch** column to enable or disable the notification channel.
+
+> **Note:** Turn on or turn off the switch in the **Push Switch** column to enable or disable the notification channel.
 
 **Check the connectivity of a notification channel**
 
@@ -2632,7 +2777,8 @@ The dynamic muting feature dynamically mutes alerts of Apsara Infrastructure Man
 3. In the left-side navigation pane, choose Alert Settings > **Alert Shield**.
 4. On the **Dynamic Shield** tab, turn on **Dynamic shielding**.
 5. In the message that appears, click **OK**.
-If you enable dynamic muting, the system dynamically mutes policies of Apsara Infrastructure Management servers that are in the scaling, maintenance, or O&M state. Proceed with caution. Dynamic alert muting policies will be generated within 1 minute.
+
+> **Note:** If you enable dynamic muting, the system dynamically mutes policies of Apsara Infrastructure Management servers that are in the scaling, maintenance, or O&M state. Proceed with caution. Dynamic alert muting policies will be generated within 1 minute.
 
 **What to do next**
 
@@ -2683,7 +2829,10 @@ Upload the latest alert list data package. By default, only the most recent data
 5. After the alert inventory is uploaded, click the
 icon in the upper-right corner of the page to view the change history. The history includes **List Version**, **Operated By**, **Operated**
 **At**, **Source**, and **Status**.
-You can cancel the alert inventory import before it completes. An import is also considered abnormal if it contains fewer than 12,000 entries.
+
+> **Note:** You can cancel the alert inventory import before it completes.
+> An import is also considered abnormal if it contains fewer than 12,000 entries.
+
 6. The Alert Inventory page supports fuzzy search by alert ID or alert item name. You can also
 click **Advanced Filter** to combine the following filters to retrieve target alert items: **Alert**
 **Item ID**, **Alert Source**, **Cloud Service**, **Service**, **Software**, **Object Type**, and **Stability**
@@ -2698,7 +2847,8 @@ details.
 
 1. Click **Import Alert Document**.
 2. Enter the file path for a .zip file. Then click **OK**.
-After the next product upgrade, the latest documentation in the product package will overwrite the currently uploaded documentation.
+
+> **Note:** After the next product upgrade, the latest documentation in the product package will overwrite the currently uploaded documentation.
 
 ### 4.3 Inspections
 
@@ -2730,9 +2880,14 @@ The system administrator permissions of the Apsara Uni-manager Operations Consol
 3. Select an inspection scenario. The system supports quick checks for a variety of inspection
 scenarios, including preset scenarios and custom scenarios. After you select an inspection scenario, you can view the inspection items of the selected scenario. Move the pointer over **Inspection Parameters** in the **Actions** column to view the inspection parameters. Move the pointer over **Inspection Content** in the **Actions** column to view the inspection content.
 4. Click **Inspect Now**.
-When ANS components are deployed in an environment, the following features are supported: If you are prompted that notifications cannot be sent because notification channels are not configured, you can configure a notification channel on the
-**Inspection Notifications** page. If you do not want to receive notifications, you
-can directly click **Inspect** to trigger an inspection. On the **Inspection Now** page, set the following information and click **OK**. Send Email: Select whether to send an email. Email Addresses: Enter email addresses. Separate multiple email addresses with semicolons (;). Email Language: Select the language in which emails are displayed. Simplified Chinese and English are supported.
+
+> **Note:** When ANS components are deployed in an environment, the following features are supported:
+> If you are prompted that notifications cannot be sent because notification channels are not configured, you can configure a notification channel on the **Inspection Notifications** page. If you do not want to receive notifications, you can directly click **Inspect** to trigger an inspection.
+> On the **Inspection Now** page, set the following information and click **OK**.
+> Send Email: Select whether to send an email.
+> Email Addresses: Enter email addresses. Separate multiple email addresses with semicolons (;).
+> Email Language: Select the language in which emails are displayed. Simplified Chinese and English are supported.
+
 5. Wait for the inspection to complete. The progress is displayed on the page. If you want to
 terminate the inspection, click **Terminate**. In the message that appears, click **Terminate**.
 6. After the inspection is complete, view the inspection results.
@@ -2740,7 +2895,9 @@ In the upper part of the page, view basic information such as **Inspection Scena
 **Start Time**, **End Time**, **Initiated By**, **Inspection Policy**, and **Result Suggestion**.
 In the **Inspection Overview** section, you can view the inspection pass rate, number of inspected items, number of failed items, number of errors, number of warnings, and number of passed items. Click the data that corresponds to an inspection state to view the detailed inspection results of that state. In the **Overview of Inspection Results** section, you can view the inspection results of each inspected service, including the number of errors, number of warnings, and number of passed items. You can click a service to view its inspection result in detail. In the lower part of the page, you can click **Advanced Filter** to view inspection results by **Inspection Item Type**, **Inspection Status**, **Inspection Item Name**, and
 **Inspection Item Description**.
-Move the pointer over **Inspection Parameters** in the **Actions** column to view the inspection parameters. Move the pointer over **Inspection Content** in the **Actions** column to view the inspection content. You can click a number in the **Inspection Result** column of an inspection item to view the result in detail in the dialog box that appears. You can click **View Report Receiving Email Address** in the upper-right corner to view the email address that receives the inspection report. You can click **Export Report** in the upper-right corner to download the inspection report to your on-premises computer. You can export inspection reports in the JSON format or as an Excel table.
+Move the pointer over **Inspection Parameters** in the **Actions** column to view the inspection parameters. Move the pointer over **Inspection Content** in the **Actions** column to view the inspection content. You can click a number in the **Inspection Result** column of an inspection item to view the result in detail in the dialog box that appears. You can click **View Report Receiving Email Address** in the upper-right corner to view the email address that receives the inspection report. You can click **Export Report** in the upper-right corner to download the inspection report to your on-premises computer.
+
+> **Note:** You can export inspection reports in the JSON format or as an Excel table.
 
 **Related operations**
 
@@ -2820,14 +2977,16 @@ You can move the pointer over **Inspection parameters** in the **Operation** col
 
 **Edit an inspection scenario**
 
-Preset inspection scenarios cannot be modified.
+> **Note:** Preset inspection scenarios cannot be modified.
+
 1. Find the inspection scenario that you want to modify and click **Edit** in the **Operation**
 column.
 2. In the dialog box that appears, modify the parameters and click **OK**.
 
 **Delete an inspection scenario**
 
-Preset inspection scenarios cannot be deleted.
+> **Note:** Preset inspection scenarios cannot be deleted.
+
 1. Click **Delete** in the **Operation** column of the desired inspection scenario.
 2. In the dialog box that appears, click **OK**.
 
@@ -2852,7 +3011,10 @@ by **Inspection scenario**, **Preset or not**, **Task Status**, **Start executio
 **execution time**.
 4. Find the inspection record that you want to view and click **Inspection Report** in the
 **Operation** column. On the **Inspection Report** page, you can view the detailed inspection
-report. If the **Execution status** column of an inspection record displays **Canceled** or **Failed**, you cannot view the report of the inspection record.
+report.
+
+> **Note:** If the **Execution status** column of an inspection record displays **Canceled** or **Failed**, you cannot view the report of the inspection record.
+
 5. On the **Inspection Report** page, you can view all recent inspection reports. By default, the
 system displays the inspection report of the most recent inspection. You can also filter inspection reports by time after the inspection scenario.
 6. In the upper part of the page, view basic information such as **Inspection scenario**, **Start**
@@ -2868,7 +3030,9 @@ You can move the pointer over **Inspection parameters** in the **Operation** col
 0. You can click **View report receiving mailbox** in the upper-right corner to view the email
 address that receives the inspection report.
 1. You can click **Export Report** in the upper-right corner to download the inspection report to
-your on-premises computer. You can export inspection reports in the JSON format or as an Excel table.
+your on-premises computer.
+
+> **Note:** You can export inspection reports in the JSON format or as an Excel table.
 
 #### 4.3.5 Inspection notifications
 
@@ -3027,8 +3191,9 @@ Click **View Event Details** in the **Actions** column of a VM. You are navigate
 4. Filter diagnosis records by combining criteria such as **Diagnostic object**, **Initiator**, **Task**
 **Status**, and **Task time**.
 5. Click **View Report** in the **Operation** column of the target diagnosis record to access the
-diagnosis summary and details. Click **Get Latest Report** in the upper-right corner. The page redirects you to **Product**
-**Diagnosis > Details** to trigger a new diagnosis.
+diagnosis summary and details.
+
+> **Note:** Click **Get Latest Report** in the upper-right corner. The page redirects you to **Product** **Diagnosis > Details** to trigger a new diagnosis.
 
 ### 4.6 Event center
 
@@ -3058,7 +3223,8 @@ Event overview provides multi-dimensional statistics, including the total number
 Events Pending Response Total Events Unclosed Events Event Handling Rate Today MTTA MTTR
 4. In the **View Tree** section, click **Create** > **View**, configure the parameters, and then click
 **OK**. The following table describes the parameters.
-Click **Create** > **Directory** to create a view directory.
+
+> **Note:** Click **Create** > **Directory** to create a view directory.
 
 | Parameter | Description |
 |---|---|
@@ -3076,9 +3242,10 @@ Click **Create** > **Directory** to create a view directory.
 5. In the right section of the page, you can view the list of custom events. You can filter
 events by**Event Title**,**Product**, **Event Level**, **Status**, **Event Description**,**Alert Item**
 **ID**, and **Start Time**.
-You can select multiple options from the **Product**, **Event Level**, **Processing**
-**Status**, and **Alert Item ID** drop-down lists.
-Click the up-and-down arrow next to **Event Level** or **Start Time** to sort events in ascending or descending order.
+
+> **Note:** You can select multiple options from the **Product**, **Event Level**, **Processing** **Status**, and **Alert Item ID** drop-down lists.
+> Click the up-and-down arrow next to **Event Level** or **Start Time** to sort events in ascending or descending order.
+
 6. Find the event that you want to view and click the event name to go to the details page of
 the event. For more information, see Event list.
 
@@ -3086,7 +3253,8 @@ the event. For more information, see Event list.
 
 **Create a view directory**
 
-View directories support up to three levels.
+> **Note:** View directories support up to three levels.
+
 1. In the **View Tree** section, choose **Create** > **Directory**.
 2. In the dialog box that appears, configure the parameters and click **OK**. The following table
 describes the parameters.
@@ -3098,35 +3266,41 @@ describes the parameters.
 
 **Modify a view directory**
 
-The default view directories cannot be modified.
+> **Note:** The default view directories cannot be modified.
+
 1. In the **View Tree** section, move the pointer over the view directory that you want to modify
 and click the icon.
 2. In the dialog box that appears, modify the parameters and click **OK**.
 
 **Delete a view directory**
 
-The default view directories cannot be deleted. If subdirectories or subviews exist in the view directory that you want to delete, you cannot delete the directory.
+> **Note:** The default view directories cannot be deleted.
+> If subdirectories or subviews exist in the view directory that you want to delete, you cannot delete the directory.
+
 1. In the **View Tree** section, move the pointer over the view directory that you want to delete
 and click the icon.
 2. In the message that appears, click **OK**.
 
 **Modify a view**
 
-The default views cannot be modified.
+> **Note:** The default views cannot be modified.
+
 1. In the **View Tree** section, move the pointer over the view that you want to modify and click
 the icon.
 2. In the dialog box that appears, modify the parameters and click **OK**.
 
 **Delete a view**
 
-The default views cannot be deleted.
+> **Note:** The default views cannot be deleted.
+
 1. In the **View Tree** section, move the pointer over the view that you want to delete and click
 the icon.
 2. In the message that appears, click **OK**.
 
 **Update a view**
 
-The default views cannot be updated.
+> **Note:** The default views cannot be updated.
+
 1. Click **Update View** in the upper right corner of the custom event list.
 2. In the message that appears, click **OK**.
 
@@ -3144,12 +3318,16 @@ Event Center serves only as a management tool for cloud product alert informatio
 The event list allows you to filter events by **Event Level** and **Processing Status**. You can select multiple values for both **Event Level** and Processin**g Status**. Click **Advanced Filter** to filter events by **Event ID**, **Event Name**, **Event Description**,
 **Start Time**, **Recovery Time**, **Project**, **Alert item ID**, **Event Object**, **Object Type**,
 **Event Type**, **Alert Status**, and **Cluster**.
-**Project**, **Object Type**, and **Event Type** support multi-selection.
-If Apsara AIOPS is deployed in your environment, hover over the **Event**
-**Description** column of the target event and click the
-icon to view its intelligent summary.
+
+> **Note:** **Project**, **Object Type**, and **Event Type** support multi-selection.
+> If Apsara AIOPS is deployed in your environment, hover over the **Event** **Description** column of the target event and click the
+> icon to view its
+> intelligent summary.
+
 4. Click the **Event Name** of the target event to view its details.
-In the upper-right corner of the page, click to copy the event details link. In the upper-right corner of the page, click **Mark**, configure the following parameters, then click **Confirm** to classify and mark the event. You can mark an event repeatedly. The system uses the latest mark.
+In the upper-right corner of the page, click to copy the event details link. In the upper-right corner of the page, click **Mark**, configure the following parameters, then click **Confirm** to classify and mark the event.
+
+> **Note:** You can mark an event repeatedly. The system uses the latest mark.
 
 | Parameter | Description |
 |---|---|
@@ -3261,15 +3439,25 @@ object to generate a new event.
 **Management**.
 3. In the left-side navigation pane, click **Event Grading**.
 4. Select an object from the **Object** drop-down list for event grading.
-If you select grading rules for a cloud service, the importance level of the cloud service is also displayed.
+
+> **Note:** If you select grading rules for a cloud service, the importance level of the cloud service is also displayed.
+
 5. In the **Map an Alert to an Event** step, click the policy that you want to manage.
 i. In the policy details panel, view the details of the event into which the alert is converted. The details include **Basic Information** and **Grading rules**. Move the pointer over the Note icon next to the Importance level of cloud product: A, Importance level of cloud product: B, or Importance level of cloud product: C column. The names of services in the non-sales area under the corresponding level are displayed. Click **View Details** to view the importance levels of cloud services. ii. Click **Modify** to modify the stability metrics and non-stability metrics that correspond to cloud service importance levels and alert levels. Then, click **Save**.
 6. In the **Determine the Level of Instance-grade Events** step, click the policy that you
 want to manage. i. In the policy details panel, view proportion-based correlation details. The details include
 **Basic Information** and **Grading rules**.
-If the number of instances is 1, the architecture is considered not highly available and the scaling policy is skipped. ii. Click **Modify** to add, remove, or modify demarcations between the proportion ranges of abnormal instances. You can also click Modify to change the event level that corresponds to a given abnormal instance proportion range. Then, click **Save**.
+
+> **Note:** If the number of instances is 1, the architecture is considered not highly available and the scaling policy is skipped.
+
+ii. Click **Modify** to add, remove, or modify demarcations between the proportion ranges of abnormal instances. You can also click Modify to change the event level that corresponds to a given abnormal instance proportion range. Then, click **Save**.
 7. In the **Finalize the Event Level** step, click the policy that you want to manage.
-i. In the policy details panel, view the details of comprehensive event grading. The details include **Basic Information** and **Grading rules**. High availability grading is based on the instance proportion grading result. You can adjust the event level based on the high availability role of abnormal instances in this service and the importance level of the cloud service. If the current service is deployed in a single zone, the high availability grading setting is not supported. ii. Click **Modify** to modify the high availability grading rule and software importance grading rule. Then, click **Save**.
+i. In the policy details panel, view the details of comprehensive event grading. The details include **Basic Information** and **Grading rules**.
+
+> **Note:** High availability grading is based on the instance proportion grading result. You can adjust the event level based on the high availability role of abnormal instances in this service and the importance level of the cloud service.
+> If the current service is deployed in a single zone, the high availability grading setting is not supported.
+
+ii. Click **Modify** to modify the high availability grading rule and software importance grading rule. Then, click **Save**.
 
 ##### 4.6.4.2 Custom grading
 
@@ -3323,19 +3511,25 @@ column.
 1. Find the custom grading policy that you want to delete and click **Delete** in the **Operation**
 column.
 2. In the message that appears, click **OK**.
-A deleted policy cannot be recovered. Proceed with caution.
+
+> **Note:** A deleted policy cannot be recovered. Proceed with caution.
 
 **Enable a policy**
 
 1. Find the custom grading policy that you want to enable and click **Enable** in the **Operation**
-column. You can enable a policy that is disabled.
+column.
+
+> **Note:** You can enable a policy that is disabled.
+
 2. In the message that appears, click **OK**.
 
 **Disable a policy**
 
 1. Find the custom grading policy that you want to disable and click **Disable** in the
 **Operation** column.
-You can disable a policy that is enabled.
+
+> **Note:** You can disable a policy that is enabled.
+
 2. In the message that appears, click **OK**.
 
 #### 4.6.5 Configuration management
@@ -3425,19 +3619,23 @@ click **OK**.
 
 **Delete a notification policy**
 
-A deleted notification policy cannot be recovered. Proceed with caution. A notification policy that is in the **Enabled** state cannot be deleted.
+> **Note:** A deleted notification policy cannot be recovered. Proceed with caution.
+> A notification policy that is in the **Enabled** state cannot be deleted.
+
 1. Find the policy that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Enable a notification policy**
 
-A notification policy that is in the **Closed** state can be enabled.
+> **Note:** A notification policy that is in the **Closed** state can be enabled.
+
 1. Find the policy that you want to enable and click **Enable** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Disable a notification policy**
 
-A notification policy that is in the **Enabled** state can be disabled.
+> **Note:** A notification policy that is in the **Enabled** state can be disabled.
+
 1. Find the policy that you want to disable and click **Close** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
@@ -3495,7 +3693,8 @@ and **Modifier** columns.
 
 **Delete a service group**
 
-A deleted service group cannot be recovered. Proceed with caution.
+> **Note:** A deleted service group cannot be recovered. Proceed with caution.
+
 1. Find the service group that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
@@ -3549,19 +3748,22 @@ You can configure notification channels for users to receive event notifications
 
 **Delete a channel**
 
-A deleted channel cannot be recovered. Proceed with caution.
+> **Note:** A deleted channel cannot be recovered. Proceed with caution.
+
 1. Find the channel that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Enable a channel**
 
-You can enable a channel that is in the **Disabled** state.
+> **Note:** You can enable a channel that is in the **Disabled** state.
+
 1. Find the channel that you want to enable and click **Open** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Disable a channel**
 
-You can disable a channel that is in the **Enabled** state.
+> **Note:** You can disable a channel that is in the **Enabled** state.
+
 1. Find the channel that you want to disable and click **Close** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
@@ -3715,9 +3917,17 @@ The Machine Management module allows you to view the basic information about mac
 **Management > Resources**.
 3. In the left-side navigation pane, choose Resources > **Machine Management**.
 4. The Machines page displays all physical machines and VMs managed by Apsara
-Infrastructure Management. Click **Advanced Filter** and specify the Hostname/IP Address, Status, Product, and Cluster parameters. The system filters machines that meet the specified filter conditions. Optional. Click **Publish/Unpublish** above the machine list. On the page that appears, you can deploy or remove a machine. Deploy a machine a. Click the **Machine Publishing** tab. b. Select a product and bucket from the **Product** and **Bucket** drop-down lists. c. Click **Download Schema** to download the machine_list.xlsx file. Enter the machine information based on the requirements in the file. nodename, Sn, and Ip are the required fields. d. Click **Select File**. The **Upload Schema** dialog box appears. e. Click **Upload and Parse File** to upload the machine_list.xlsx file. f. After the file is parsed, click **Import**. View the information about the machine on the
+Infrastructure Management. Click **Advanced Filter** and specify the Hostname/IP Address, Status, Product, and Cluster parameters. The system filters machines that meet the specified filter conditions. Optional. Click **Publish/Unpublish** above the machine list. On the page that appears, you can deploy or remove a machine. Deploy a machine a. Click the **Machine Publishing** tab. b. Select a product and bucket from the **Product** and **Bucket** drop-down lists. c. Click **Download Schema** to download the machine_list.xlsx file. Enter the machine information based on the requirements in the file.
+
+> **Note:** nodename, Sn, and Ip are the required fields.
+
+d. Click **Select File**. The **Upload Schema** dialog box appears. e. Click **Upload and Parse File** to upload the machine_list.xlsx file. f. After the file is parsed, click **Import**. View the information about the machine on the
 **Machine Publishing** tab, including the hostname, IP address, serial number (SN),
-and status. Click **Clear** in the Actions column of the machine that you want to manage to remove the machine from the machine list on the page. Click **Details** in the Actions column of the machine that you want to manage to view the details of the machine, such as the data center, rack, and room where the machine resides. g. Click **Batch Publish** in the lower-right corner of the page to deploy multiple machines at a time. Remove a machine You can remove only machines in the default cluster. a. Click the **Machine Unpublishing** tab. b. In the **Machines** field, enter the hostname or IP address of the machine that you want to remove. The information about the machine is displayed on the right side of the page. Find the machine that you want to remove and click **Clear** in the Actions column. c. Click **Batch Unpublish** in the lower-right corner of the page to remove multiple machines at a time. Select **Hostname/IP**, **Status**, **Product**, or **Cluster** from the drop-down list, and enter a value in the field to filter the machines that you want to manage.
+and status. Click **Clear** in the Actions column of the machine that you want to manage to remove the machine from the machine list on the page. Click **Details** in the Actions column of the machine that you want to manage to view the details of the machine, such as the data center, rack, and room where the machine resides. g. Click **Batch Publish** in the lower-right corner of the page to deploy multiple machines at a time. Remove a machine
+
+> **Note:** You can remove only machines in the default cluster.
+
+a. Click the **Machine Unpublishing** tab. b. In the **Machines** field, enter the hostname or IP address of the machine that you want to remove. The information about the machine is displayed on the right side of the page. Find the machine that you want to remove and click **Clear** in the Actions column. c. Click **Batch Unpublish** in the lower-right corner of the page to remove multiple machines at a time. Select **Hostname/IP**, **Status**, **Product**, or **Cluster** from the drop-down list, and enter a value in the field to filter the machines that you want to manage.
 
 | Parameter | Description |
 |---|---|
@@ -3738,9 +3948,18 @@ The machine details page lets you view basic machine information and the list of
 5. On the machine details page, view Status Overview, and check Basic Information,
 Components, and other tabs. In the upper-right area of the page, you can perform the following operations: Click **Terminal** to go to the terminal page and log in to the machine. Click **Machine Status Dashboard** to view machine information, the service process list, App details, and more. Click **Machine Metrics** to go to the Cloud Monitor platform and view the machine monitoring overview. This feature is unavailable for virtual machines. Click the drop-down list next to **Machine Management**. The list includes **Restart**,
 **Repair and Clone**, and **Power Off and Repair**. These operations are only supported
-for physical machines. For detailed steps, see Machine operations. Click **Follow** or **Unfollow** to follow or unfollow the machine. After you follow a machine, you can view it on the Resource Tags page. Click to export basic machine information as an XLS file to your local device. This feature is unavailable for virtual machines. Click to refresh the current page. In the **Status Overview** section, the system displays Machine Status, Kubernetes Node Status, and Event. Click a number under **Event** to go to the event list page. When Machine Status is Normal, Kubernetes Node Status is Ready, and no events exist, the background displays a green gradient. When Machine Status is Scaling Out, Scaling In, or In O&M, the background displays a blue gradient. When either Machine Status is Status Abnormal or Kubernetes Node Status is NotReady, or events exist, the background displays an orange gradient. The machine details section contains the following tabs: **Basic Information**,
+for physical machines. For detailed steps, see Machine operations. Click **Follow** or **Unfollow** to follow or unfollow the machine. After you follow a machine, you can view it on the Resource Tags page. Click to export basic machine information as an XLS file to your local device. This feature is unavailable for virtual machines. Click to refresh the current page. In the **Status Overview** section, the system displays Machine Status, Kubernetes Node Status, and Event. Click a number under **Event** to go to the event list page.
+
+> **Note:** When Machine Status is Normal, Kubernetes Node Status is Ready, and no events exist, the background displays a green gradient.
+> When Machine Status is Scaling Out, Scaling In, or In O&M, the background displays a blue gradient.
+> When either Machine Status is Status Abnormal or Kubernetes Node Status is NotReady, or events exist, the background displays an orange gradient.
+
+The machine details section contains the following tabs: **Basic Information**,
 **Component Deployment Topology**, **Components**, **VM**, **Taints**, and **Labels**.
-The system displays the **VM** tab only when virtual machines exist on the machine. The system displays the **Taints** and **Labels** tabs only when the machine is a Kubernetes node.
+The system displays the **VM** tab only when virtual machines exist on the machine.
+
+> The system displays the **Taints** and **Labels** tabs only when the machine is a Kubernetes node.
+
 **Basic Information**: display basic machine information.
 
 | Parameter | Description |
@@ -3769,15 +3988,21 @@ services and components directly affected by VMs or machines, grouped by product
 **Components**: The system displays the list of components deployed on the machine,
 including the component status, action, and component metrics. When the machine serves as a Kubernetes node, the system displays pods running components deployed via PaaS. At the top of the list, filter components by selecting status, action, action status, or entering instance keywords. Click **View** in the Component Metrics column for the target component to view Component Metrics, Machine Metrics, and System Service Metrics. Click **Restart** in the Actions column of the target component to restart the component. Click **Approval** in the Actions column to execute the restart task. Click
 **Cancel** in the Actions column to clear the restart task.
-Only Tianji components support restart. If Disable approval operation is configured for a product, service, or server role, the **Approval** button appears grayed out and the approval operation is not supported. Click **Details** in the Actions column of the target component to go to the component details page and view component information.
+
+> **Note:** Only Tianji components support restart.
+> If Disable approval operation is configured for a product, service, or server role, the **Approval** button appears grayed out and the approval operation is not supported.
+
+Click **Details** in the Actions column of the target component to go to the component details page and view component information.
 **VM**: The system displays the list of virtual machines started on the host, as well as the
 virtual machine status and product information. This tab appears only when the machine is a host. At the top of the list, select a status to quickly filter virtual machines. Click **Details** in the Actions column of the target virtual machine to go to its details page and view virtual machine information.
 **Taints**: The system displays taint information for Kubernetes nodes and allows you to
 add or delete taints. This tab appears only when the machine is a Kubernetes node. Query taints: Enter a taint key or taint value in the filter box above the taint list. Then the page displays filtered taint information. Add a taint: Click **Add** in the upper-left corner of the tab. In the **Create Taint** dialog box, enter a custom taint key and value, select a taint effect, and click **OK**.
-**PreferNoSchedule**: Prefer not to schedule pods onto this node.
-**NoSchedule**: Do not allow pods to be scheduled onto this node.
-**NoExecute**: Do not allow pods to be scheduled onto this node and evict
-any pods already running on this node. Delete a taint: Click **Delete** in the Actions column of the target taint. In the **Confirm**
+
+> **Note:** **PreferNoSchedule**: Prefer not to schedule pods onto this node.
+> **NoSchedule**: Do not allow pods to be scheduled onto this node.
+> **NoExecute**: Do not allow pods to be scheduled onto this node and evict any pods already running on this node.
+
+Delete a taint: Click **Delete** in the Actions column of the target taint. In the **Confirm**
 **Deletion** dialog box, click **OK**.
 **Labels**: The system displays label information for Kubernetes nodes and allows you to
 add or delete labels. This tab appears only when the machine is a Kubernetes node. Query labels: Enter a label key or label value in the filter box above the label list. Then the page displays filtered label information. Add a label: Click **Add** in the upper-left corner of the tab. In the **Create Label** dialog box, enter a label key amd label value, and click **OK**. Delete a label: Click **Delete** in the Actions column of the target label. In the **Confirm**
@@ -3805,13 +4030,16 @@ The system automatically powers on the machine and checks whether the machine st
 
 ##### 5.1.1.3 Resource tags
 
-The Resource Tags module allows you to use tags to view and manage resources that you The check items vary with host machines of different services. pay attention to in a centralized manner. Refer to the actual UI. Click **View details** to go to the **Execution History Report** page ( **O&M Change > O&M Resources > Execution History**) page
+The Resource Tags module allows you to use tags to view and manage resources that you The check items vary with host machines of different services. pay attention to in a centralized manner. Refer to the actual UI.
+
+> Click **View details** to go to the **Execution History Report** page ( **O&M Change > O&M Resources > Execution History**) page and view the check details.
+
 1. Log on to the Apsara Uni-manager Operations Console.
-and view the check details.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
-If the check fails, click **Retry** to perform the check again, or click
+
+> If the check fails, click **Retry** to perform the check again, or click **Skip**, set **Skip reason**, and ignore this check item.
+
 **Management > Resources**.
-**Skip**, set **Skip reason**, and ignore this check item.
 3. In the left-side navigation pane, choose Resources > **Resource Tags**.
 4. View the resources that are added to favorites in the Watchlist section.
 To add a machine to favorites, choose **Platform Operation > Apsara Infrastructure**
@@ -3961,15 +4189,16 @@ Success, and Failed. The following table describes the supported operations in e
 
 Related operations: Cancel the disk replacement task: Click **Cancel**. In the message that appears, click **OK**. You can view the canceled task on the **History** tab.
 
-**Important**
+> **Important:** After you cancel a task, it cannot be restored. Proceed with caution.
 
-After you cancel a task, it cannot be restored. Proceed with caution. Approve the disk replacement task: Click **Approve**. In the message that appears, click
+Approve the disk replacement task: Click **Approve**. In the message that appears, click
 **OK**.
 View approval details: After the task is approved, click **Approval details**. In the panel that appears, you can view the approval details. View repair details: Click **Maintenance details** to go to the Maintenance details page to view the current repair steps.
 
 **Maintenance**
 
-After the preparations of the disk replacement task is ready, the task enters the maintenance stage.
+> **Note:** After the preparations of the disk replacement task is ready, the task enters the maintenance stage.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Hardware O&M** to go to the **Disk Repair** page.
@@ -4019,7 +4248,14 @@ The disk replacement task enters the **Tainji Approval** step after the task pas
 | Whether the disk information is complete | Automatic | \ |
 | Whether the disk is repairable |   |   |
 
-Precheck failures occur in the following scenarios: The system fails to obtain the disk replacement information. For example, if the disk of this machine is dropped, the system runs the `df -h` command, but the data disk is not found. As a result, the system fails to initialize the disk information, and the repair process is canceled. The task does not meet some of the limits posed by Apsara Distributed File System. To view the cause of failure, click **View details** to view the execution log. Possible causes: The disk is not a data disk. The disk contains data other than Apsara Distributed File System data. The system kernel is U5. The disk has multiple partitions attached.
+> **Note:** Precheck failures occur in the following scenarios:
+> The system fails to obtain the disk replacement information. For example, if the disk of this machine is dropped, the system runs the `df -h` command, but the data disk is not found. As a result, the system fails to initialize the disk information, and the repair process is canceled.
+> The task does not meet some of the limits posed by Apsara Distributed File System. To view the cause of failure, click **View details** to view the execution log. Possible causes:
+> The disk is not a data disk.
+> The disk contains data other than Apsara Distributed File System data.
+> The system kernel is U5.
+> The disk has multiple partitions attached.
+
 2. Tianji Approval
 You can view the action and review status of the action on each component. The system performs the **Pre-processing** step only after the Decider program reviews the actions of all components.
 
@@ -4035,9 +4271,8 @@ The task enters the **IDC Operation** step after the following operations are co
 | Check the Apsara Infrastructure Management disk status |   |   |
 | Remove the faulty disk |   |   |
 
-You can click **View details** to go to the **O&M Change** > **Operation Resources** >
-**Execution History** > **Execution History Report** page. On this page, you can view
-the execution details.
+> **Note:** You can click **View details** to go to the **O&M Change** > **Operation Resources** > **Execution History** > **Execution History Report** page. On this page, you can view the execution details.
+
 4. IDC Operation
 The task enters the **Service Online** step after the following operations are completed.
 
@@ -4070,9 +4305,7 @@ The disk repair process is complete after the following performed are complete.
 | Notify the Panshi module to enable the disk | Automatic | \ |
 |---|---|---|
 
-You can click **View details** to go to the **O&M Change** > **Operation Resources** >
-**Execution History** > **Execution History Report** page. On this page, you can view
-the execution details.
+> **Note:** You can click **View details** to go to the **O&M Change** > **Operation Resources** > **Execution History** > **Execution History Report** page. On this page, you can view the execution details.
 
 ##### 5.1.3.2 Machine repair
 
@@ -4375,13 +4608,52 @@ Select a server role name from the **Server Role** drop-down list. Fuzzy search 
 **Log on to the vm host** : allows you to log on to the host of the VM where the server
 role is deployed.
 **Log on to the docker**:
-a. Click the icon in the Docker column to refresh the column and try to obtain the docker ID. If **Log on to docker** appears next to the docker ID., the docker ID is obtained. If the docker ID does not appear after the refresh, the docker ID fails to be obtained. This may occur for the following reasons: The status of the container is abnormal. The server role is in the process form and does not have a docker container. b. Click **Log on to docker** to log on to the docker. In the **Docker** column, click **docker logs** and **docker inspection report** to view the logs and inspection report of the container. Log on to the web terminal page and click the node to which you want to log on. You can also click the icon and select an account in the dialog box. By default, the ops account is selected. If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message. If no account meets your permission requirements, you can apply for a temporary account. a. Select an account type and apply for an account. b. After you submit an account application, wait for the application to be approved. After the application is approved, the account takes effect and can be used to log on to the server. Click **View Review Progress** to go to the **Workflow details** page and view the approval progress. To go to the Workflow details page, choose **Platform**
-**Operation > O&M Change > Process Approval** in the top navigation bar. On
-the My Submission page, click the workflow that you want to view. Enter Linux commands in the CLI window to perform related operations. You cannot log on to a server that has a region different from that of the web terminal page. After you switch the region, an error message appears on the web terminal page. Troubleshoot the issue by following the instructions on the page. Click **File Actions** to upload and download files. Click **Upload**. You can use one of the following methods: Click the dashed box. In the dialog box that appears, select the file that you want to upload and click **Open**. In the **File Upload** dialog box, click **Upload**. Drag the file to the dotted box and click **Upload**. Click **Download File**. In the **File Download** dialog box, enter the corresponding parameters in the **File Directory** and **File Name** fields and click **Download** to download the file to the default download folder of your local browser. The size of the uploaded or downloaded object cannot exceed 200 MB. Click the icon of a node and click **OK** in the Delete Node dialog box to disconnect the node. The node disconnection operation cannot be undone. You need to manually add a node connection again.
+a. Click the icon in the Docker column to refresh the column and try to obtain the docker ID. If **Log on to docker** appears next to the docker ID., the docker ID is obtained.
+
+> **Note:** If the docker ID does not appear after the refresh, the docker ID fails to be obtained. This may occur for the following reasons:
+> The status of the container is abnormal.
+> The server role is in the process form and does not have a docker container.
+
+b. Click **Log on to docker** to log on to the docker. In the **Docker** column, click **docker logs** and **docker inspection report** to view the logs and inspection report of the container. Log on to the web terminal page and click the node to which you want to log on. You can also click the icon and select an account in the dialog box. By default, the ops account is selected.
+
+> **Note:** If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message.
+
+If no account meets your permission requirements, you can apply for a temporary account. a. Select an account type and apply for an account. b. After you submit an account application, wait for the application to be approved. After the application is approved, the account takes effect and can be used to log on to the server.
+
+> **Note:** Click **View Review Progress** to go to the **Workflow details** page and view the approval progress. To go to the Workflow details page, choose **Platform** **Operation > O&M Change > Process Approval** in the top navigation bar. On the My Submission page, click the workflow that you want to view.
+
+Enter Linux commands in the CLI window to perform related operations.
+
+> **Note:** You cannot log on to a server that has a region different from that of the web terminal page. After you switch the region, an error message appears on the web terminal page. Troubleshoot the issue by following the instructions on the page.
+
+Click **File Actions** to upload and download files. Click **Upload**. You can use one of the following methods: Click the dashed box. In the dialog box that appears, select the file that you want to upload and click **Open**. In the **File Upload** dialog box, click **Upload**. Drag the file to the dotted box and click **Upload**. Click **Download File**. In the **File Download** dialog box, enter the corresponding parameters in the **File Directory** and **File Name** fields and click **Download** to download the file to the default download folder of your local browser.
+
+> **Note:** The size of the uploaded or downloaded object cannot exceed 200 MB.
+
+Click the icon of a node and click **OK** in the Delete Node dialog box to disconnect the node.
+
+> **Note:** The node disconnection operation cannot be undone. You need to manually add a node connection again.
+
 5. Change to the**MachineGroup Logon**tab.
-Select a cluster name from the **Cluster** drop-down list. Fuzzy search is supported. Select a machine name from the drop-down list and click **Log On** to log on to the machine. Log on to the web terminal page, click the logon node or icon, and select an account in the pop-up window. By default, the ops account is selected. If no certificate dialog box is installed on the page, install the certificate of the corresponding region according to the installation guide in the prompt first. If you do not have a logon account that meets the required permissions, you can apply for a temporary account. a. Select an account type and apply. b. After you submit an account application, wait for the application to be approved. After the application is approved, it takes effect when you log on to the server again. Click **View Approval Progress** to go to the **O&M Change > Process Approval**
-**> My Submission > Workflow Details** page to view the approval progress.
-Enter Linux commands on the black screen to perform related operations. The terminal page does not support cross-region connections. You need to log on to the server that belongs to the same region on the page of the corresponding region. After you switch the region, an error message appears on the terminal page. Troubleshoot the error by following the instructions on the page. Click **File Actions** to upload and download files. Click **Upload**. You can use one of the following methods: Click the dashed box. In the dialog box that appears, select the file that you want to upload and click **Open**. In the **File Upload** dialog box, click **Upload**. Drag the file to the dotted box and click **Upload**. Click **Download File**. In the **File Download** dialog box, enter the file directory and file name, and click **Download** to download the file to the default download folder of your local browser. The size of the uploaded or downloaded object cannot exceed 200 MB. Click the icon of a node and click **OK** in the Delete Node dialog box to disconnect the node. The node disconnection operation cannot be undone. You need to manually add a node connection again.
+Select a cluster name from the **Cluster** drop-down list. Fuzzy search is supported. Select a machine name from the drop-down list and click **Log On** to log on to the machine. Log on to the web terminal page, click the logon node or icon, and select an account in the pop-up window. By default, the ops account is selected.
+
+> **Note:** If no certificate dialog box is installed on the page, install the certificate of the corresponding region according to the installation guide in the prompt first.
+
+If you do not have a logon account that meets the required permissions, you can apply for a temporary account. a. Select an account type and apply. b. After you submit an account application, wait for the application to be approved. After the application is approved, it takes effect when you log on to the server again.
+
+> **Note:** Click **View Approval Progress** to go to the **O&M Change > Process Approval** **> My Submission > Workflow Details** page to view the approval progress.
+
+Enter Linux commands on the black screen to perform related operations.
+
+> **Note:** The terminal page does not support cross-region connections. You need to log on to the server that belongs to the same region on the page of the corresponding region. After you switch the region, an error message appears on the terminal page. Troubleshoot the error by following the instructions on the page.
+
+Click **File Actions** to upload and download files. Click **Upload**. You can use one of the following methods: Click the dashed box. In the dialog box that appears, select the file that you want to upload and click **Open**. In the **File Upload** dialog box, click **Upload**. Drag the file to the dotted box and click **Upload**. Click **Download File**. In the **File Download** dialog box, enter the file directory and file name, and click **Download** to download the file to the default download folder of your local browser.
+
+> **Note:** The size of the uploaded or downloaded object cannot exceed 200 MB.
+
+Click the icon of a node and click **OK** in the Delete Node dialog box to disconnect the node.
+
+> **Note:** The node disconnection operation cannot be undone. You need to manually add a node connection again.
 
 ###### 5.1.5.1.2 Log in to a database
 
@@ -4394,9 +4666,18 @@ Log in to the database used by a server role within a service and perform relate
 5. The lower part of the page displays databases used by all server roles within the selected
 service. Select one database and click **Log In** in the corresponding **Actions** column.
 6. On the web terminal page, click an available node or the
-icon. If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message. Enter SQL statements on the command-line interface to perform related operations. The terminal page does not support cross-region connections. You must log in to databases within the same region. After you switch regions, the terminal page may display an error message. Follow the instructions on the page to troubleshoot.
+icon.
+
+> **Note:** If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message.
+
+Enter SQL statements on the command-line interface to perform related operations.
+
+> **Note:** The terminal page does not support cross-region connections. You must log in to databases within the same region. After you switch regions, the terminal page may display an error message. Follow the instructions on the page to troubleshoot.
+
 7. Click the
-icon of a logged-in node and then click **Confirm** in the dialog box to disconnect from the current node. This operation cannot be undone. To reconnect, you must manually add the node again.
+icon of a logged-in node and then click **Confirm** in the dialog box to disconnect from the current node.
+
+> **Note:** This operation cannot be undone. To reconnect, you must manually add the node again.
 
 ###### 5.1.5.1.3 vSwitch Login
 
@@ -4406,11 +4687,22 @@ Log in to the switch to perform related operations.
 **Management > Web Terminal > Web Client Logon**.
 3. In the left-side navigation pane, choose **Switch Login**.
 4. In the **Action** column of the target switch, click **Log In** to log in to the switch.
-If the target switch has not been assigned an IP address, login is not supported and the button is grayed out. Hover over the Log In button to view the specific reason.
+
+> **Note:** If the target switch has not been assigned an IP address, login is not supported and the button is grayed out. Hover over the Log In button to view the specific reason.
+
 5. On the web terminal page, click an accessible node or the
-icon. A pop-up prompts you to enter a username. Confirm it and log in. If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message. Manually enter the password as prompted. You can access the switch only after entering the correct password. If you enter an incorrect password, you are returned to the jump server as the ops user. After accessing the switch, enter Linux commands in the terminal to perform related operations. The terminal page does not support cross-region connections. You must log in to switches within the same region. After switching regions, an error message will appear on the terminal page. Follow the instructions on the page to troubleshoot.
+icon. A pop-up prompts you to enter a username. Confirm it and log in.
+
+> **Note:** If a message that indicates that you have not installed the required certificate pops up, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message.
+
+Manually enter the password as prompted. You can access the switch only after entering the correct password. If you enter an incorrect password, you are returned to the jump server as the ops user. After accessing the switch, enter Linux commands in the terminal to perform related operations.
+
+> **Note:** The terminal page does not support cross-region connections. You must log in to switches within the same region. After switching regions, an error message will appear on the terminal page. Follow the instructions on the page to troubleshoot.
+
 6. Click the
-icon of the logged-in node, and click **Confirm** in the dialog box to disconnect the current logged-in node. Node disconnection is irreversible. To reconnect, you must manually add the node again.
+icon of the logged-in node, and click **Confirm** in the dialog box to disconnect the current logged-in node.
+
+> **Note:** Node disconnection is irreversible. To reconnect, you must manually add the node again.
 
 ##### 5.1.5.2 Account authorization
 
@@ -4609,7 +4901,9 @@ service console.
 | MigrateTask | Click View to go to the Computing Server O&M page. On the Computing Servers tab, you can click Migrate All Insatances. |
 
 5. Click **Execute** in the **Operation** column of the target service. Configure the following
-parameters, then execute the service. If the **Service type** is **Jump**, you cannot execute the service.
+parameters, then execute the service.
+
+> **Note:** If the **Service type** is **Jump**, you cannot execute the service.
 
 | Category | Parameter | Description |
 |---|---|---|
@@ -4718,7 +5012,10 @@ the following table.
 **commands. Do you want to continue?** message appears, check whether the script
 content is correct. If the script content is correct, click **OK** and proceed to the next step. If the script content is incorrect, modify the script and perform the test again.
 6. In the **Script Test** dialog box, select **Host Resources** or **Docker Resources**, select one
-or more host resources or Docker resources, and then click **Execute**. The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+or more host resources or Docker resources, and then click **Execute**.
+
+> **Note:** The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+
 7. In the test result dialog box, view the test result of the script.
 Click **OK** to exit the dialog box. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
 8. Click **Save** to save the script.
@@ -4737,13 +5034,17 @@ Search. Fuzzy search is supported.
 
 1. Click **Import Script**.
 2. In the **Upload Script File** dialog box, click **Click Here to Upload** to upload an on-
-premises script. Only JSON files that are not larger than 500 KB in size can be uploaded.
+premises script.
+
+> **Note:** Only JSON files that are not larger than 500 KB in size can be uploaded.
 
 **Export a script**
 
 1. Select the script that you want to export.
 2. Click **Export Script** in the lower part of the page to export the script to your on-premises
-computer. If you export multiple scripts at a time, the content of the scripts is stored in a single JSON file.
+computer.
+
+> **Note:** If you export multiple scripts at a time, the content of the scripts is stored in a single JSON file.
 
 **Modify a script**
 
@@ -4753,14 +5054,19 @@ Built-in scripts cannot be edited and saved.
 **The script has high-risk commands. Do you want to continue?** message appears,
 check whether the script content is correct. Yes: Click **OK** and proceed to the next step. No: Modify the script and perform the test again.
 3. In the **Script Test** dialog box, select **Host Resources** or **Docker Resources**, select one
-or more host resources or Docker resources, and then click **Execute**. The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+or more host resources or Docker resources, and then click **Execute**.
+
+> **Note:** The SSH protocol is used to copy files to the host or Docker container. Therefore, the test execution process may be slow.
+
 4. In the test result dialog box, view the test result of the script.
 Click **OK** to exit the dialog box. Click **Re-select Resources** to select other hosts or Docker containers to test the script.
 5. Click **Save** to save the script.
 
 **Delete a script**
 
-Default scripts cannot be deleted. Delete a single script i. Find the script that you want to delete and click **Delete** in the **Actions** column. ii. In the message that appears, click **OK**. Delete multiple scripts i. Select multiple scripts that you want to delete and click **Delete Script** in the lower part of the page. ii. In the message that appears, click **OK**.
+> **Note:** Default scripts cannot be deleted.
+
+Delete a single script i. Find the script that you want to delete and click **Delete** in the **Actions** column. ii. In the message that appears, click **OK**. Delete multiple scripts i. Select multiple scripts that you want to delete and click **Delete Script** in the lower part of the page. ii. In the message that appears, click **OK**.
 
 ##### 5.3.5.4 Software repositories
 
@@ -4784,7 +5090,7 @@ When an O&M job is executed in an on-site environment, software is downloaded fr
 | Description | Enter the description of the software. |
 | Upload File | Click Click Here to Upload to upload a local file. The size of the file cannot exceed 500 MB. |
 
-To save storage space, delete software that is no longer needed after O&M jobs are executed.
+> **Note:** To save storage space, delete software that is no longer needed after O&M jobs are executed.
 
 **Related operations**
 
@@ -4801,7 +5107,9 @@ Find the software that you want to download and click **Download** in the **Acti
 
 **Delete software**
 
-You cannot delete the default software. Delete single software
+> **Note:** You cannot delete the default software.
+
+Delete single software
 1. Find the software that you want to delete and click **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
 Delete multiple software
@@ -4865,13 +5173,17 @@ name, O&M scenario, description, execution method, modification time, execution 
 
 1. Click **Import O&M Job** in the upper part of the page.
 2. In the **Upload O&M Job** dialog box, click **Click Here to Upload** to upload an existing O&M
-Job. The uploaded O&M job must be a JSON file and cannot exceed 500 KB. An imported O&M job cannot be directly executed. You must select a host before you can execute the job.
+Job.
+
+> **Note:** The uploaded O&M job must be a JSON file and cannot exceed 500 KB.
+> An imported O&M job cannot be directly executed. You must select a host before you can execute the job.
 
 **Export an O&M job**
 
 1. Select the O&M job to be exported.
 2. Click **Export O&M Job** below the list to export the O&M job to your on-premises machine.
-If you export multiple O&M jobs at a time, the content of the jobs is stored in a single JSON file.
+
+> **Note:** If you export multiple O&M jobs at a time, the content of the jobs is stored in a single JSON file.
 
 **Modify an O&M job**
 
@@ -4890,7 +5202,9 @@ The information includes **O&M Job Name**, **Start At**, **End At**, and **Resul
 
 **Delete an O&M job**
 
-Built-in jobs cannot be deleted. Delete an O&M job i. Find the O&M job that you want to delete and click **Delete** in the **Actions** column. ii. In the message that appears, click **OK**. Delete multiple O&M jobs i. Select multiple O&M jobs that you want to delete and click **Delete Job** in the lower part of the page. ii. In the message that appears, click **OK**.
+> **Note:** Built-in jobs cannot be deleted.
+
+Delete an O&M job i. Find the O&M job that you want to delete and click **Delete** in the **Actions** column. ii. In the message that appears, click **OK**. Delete multiple O&M jobs i. Select multiple O&M jobs that you want to delete and click **Delete Job** in the lower part of the page. ii. In the message that appears, click **OK**.
 
 ##### 5.3.5.6 Manage execution history
 
@@ -4924,7 +5238,8 @@ You can proceed with execution of an O&M job that is executed in batches.
 The execution result of the O&M job is **Failed**. When you created the O&M job and set phased script execution, you selected the rule that implements batch execution.
 1. Find the O&M job that you want to manage and click **Proceed** in the **Details** column.
 2. In the dialog box that appears, click **OK**.
-If no subsequent batches can be executed, a prompt message is displayed.
+
+> **Note:** If no subsequent batches can be executed, a prompt message is displayed.
 
 **Delete execution history**
 
@@ -4974,7 +5289,10 @@ You have obtained the permissions of a service catalog administrator.
 2. In the top navigation bar, choose **Platform Operation > Operation and Maintenance**
 **Services > Execution Record**.
 3. On the Execution record page, view the list of all service execution records. You can filter
-execution records by **Service name** and **Process status**. Click a service name to go to the service details page.
+execution records by **Service name** and **Process status**.
+
+> **Note:** Click a service name to go to the service details page.
+
 4. Find the execution record that you want to view, and click **Details** in the **Operation**
 column to view the details of the execution record. On the **Parameter form** tab, view the information about the instance parameters to be changed. On the **Instance execution records** tab, you can view the execution records of the instance, including **Instance process name** and **Instance process status**. You can search for instance execution records by **Instance process status**. Find the instance execution record that you want to view and click **View** in the
 **Operation** column to go to the **Instance record details** page.
@@ -5012,7 +5330,9 @@ connected to the current environment, including **Total Services**, **Current No
 **Cloud Service Capacity Overview**: displays the numbers of clusters that have
 exceptions and clusters that are predicted to have exceptions for custom cloud services. In the upper-right corner of the Capacity Overview page, you can click **Custom Cloud**
 **Services** to specify custom cloud services to be displayed.
-You must specify at least one custom cloud service and can specify up to five custom cloud services.
+
+> **Note:** You must specify at least one custom cloud service and can specify up to five custom cloud services.
+
 **Product Capacity Overview**: displays the capacity overview of all cloud services in the
 cluster and capacity dimensions. If clusters that have exceptions or clusters that are predicted to have exceptions exist in a cloud service, **Cluster Capacity Alert** appears in the upper-right corner of the service card. You can click **All Clusters**, **Current Capacity Alert (Clusters)**, or **Forecast**
 **Capacity Alert (Clusters)** to view details of the relevant clusters.
@@ -5082,7 +5402,11 @@ You can view the IP address capacity data of Server Load Balancer (SLB) to obtai
 **Allocation Rate Trend** sections.
 In the **Capacity Overview** section, you can view the capacity data of **Control Domain**
 **VIP**, **O&M Domain VIP**, **Public VIP**, and **Business Domain VIP** in the specified zone,
-including the total capacity, allocated capacity, and capacity allocation rate. In the **Cluster Allocation Rate Trend** section, you can view the trend chart that shows the **Control Domain VIP**, **O&M Domain VIP**, **Public VIP**, and **Business Domain VIP** allocation rates of the specified cluster within different time periods. Move the pointer over a specific point to view the corresponding data. The clusters that have **slbCluster** in their names are default clusters. The clusters that have **slbExtraCluster** in their names are expanded clusters.
+including the total capacity, allocated capacity, and capacity allocation rate. In the **Cluster Allocation Rate Trend** section, you can view the trend chart that shows the **Control Domain VIP**, **O&M Domain VIP**, **Public VIP**, and **Business Domain VIP** allocation rates of the specified cluster within different time periods. Move the pointer over a specific point to view the corresponding data.
+
+> **Note:** The clusters that have **slbCluster** in their names are default clusters.
+> The clusters that have **slbExtraCluster** in their names are expanded clusters.
+
 5. On the **Capacity Details** tab of the page, search for capacity data by **Cluster** and **Zone**.
 If the allocation rate exceeds the water level warning threshold (80%), the value is highlighted. You cannot specify a custom water level warning threshold. Click **Export** to export the capacity data to your on-premises machine.
 6. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
@@ -5101,7 +5425,11 @@ You can view the performance capacity data of Server Load Balancer (SLB) to obta
 **Allocation Rate Trend** sections.
 In the **Capacity Overview** section, you can view the capacity data of **ACL**, **Health**
 **Check Task**, **Listener**, **RealServer**, and **Session** in the specified zone, including the
-total capacity, allocated capacity, and capacity allocation rate. In the **Cluster Allocation Rate Trend** section, you can view the trend chart that shows the **ACL**, **Health Check Task**, **Listener**, **RealServer**, and **Session** allocation rates of the specified cluster within different time periods. Move the pointer over a specific point to view the corresponding data. The clusters that have **slbCluster** in their names are default clusters. The clusters that have **slbExtraCluster** in their names are expanded clusters.
+total capacity, allocated capacity, and capacity allocation rate. In the **Cluster Allocation Rate Trend** section, you can view the trend chart that shows the **ACL**, **Health Check Task**, **Listener**, **RealServer**, and **Session** allocation rates of the specified cluster within different time periods. Move the pointer over a specific point to view the corresponding data.
+
+> **Note:** The clusters that have **slbCluster** in their names are default clusters.
+> The clusters that have **slbExtraCluster** in their names are expanded clusters.
+
 5. On the **Capacity Details** tab of the page, click **Advanced Filter** and search for capacity
 data by **Cluster** and **Zone**. If the allocation rate exceeds the water level warning threshold (80%), the value is highlighted. You cannot specify a custom water level warning threshold. Click **Export** to export the capacity data to your on-premises machine.
 6. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
@@ -5251,7 +5579,12 @@ combine the following filters to obtain target capacity details: **Cluster**, **
 **Type**, **Specification**, and **CPU**.
 Click the **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity**
 **Allocation Rate** column header to sort the list in ascending or descending order.
-Physical capacity: the sum of physical capacities reported by Apsara Distributed File System. Logical capacity: the maximum data capacity that users can actually write. Inventory capacity: the total capacity of cloud disks that users can create. When the usage exceeds the capacity threshold (80%), the value will be highlighted. This threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
+Physical capacity: the sum of physical capacities reported by Apsara Distributed File System.
+
+> Logical capacity: the maximum data capacity that users can actually write.
+> Inventory capacity: the total capacity of cloud disks that users can create.
+
+When the usage exceeds the capacity threshold (80%), the value will be highlighted. This threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5272,7 +5605,11 @@ View the capacity of Object Storage Service (OSS) to understand the current reso
 **Cluster Capacity Usage Trend** shows the capacity usage trend of the target cluster
 over the selected time period. Hover over a data point to view the capacity data at that specific time.
 6. On the **Capacity Details** tab at the lower part the page, click **Advanced Filter** to filter
-and query target capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the total physical capacities reported by Apsara Distributed File System. Logical capacity: the maximum data capacity users can actually write. When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column for the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
+and query target capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the total physical capacities reported by Apsara Distributed File System.
+
+> Logical capacity: the maximum data capacity users can actually write.
+
+When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column for the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5293,7 +5630,11 @@ View the capacity of Tablestore to understand the current resource usage and rem
 **Cluster Capacity Usage Trend** shows the capacity usage trend of the target cluster
 over the selected time period. Hover over a data point to view the capacity data at that specific time.
 6. On the **Capacity Details** tab at the lower part of the page, click **Advanced Filter** to filter
-and query target capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the total physical capacity reported by Apsara Distributed File System. Logical capacity: the maximum data capacity users can actually write. When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
+and query target capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the total physical capacity reported by Apsara Distributed File System.
+
+> Logical capacity: the maximum data capacity users can actually write.
+
+When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5314,7 +5655,11 @@ for **Hybrid Clusters** in the target zone.
 **Cluster Capacity Usage Trend** displays the trend of cluster capacity usage over the
 specified time range. Hover over a node to view the capacity data at that specific time point.
 6. On the **Capacity Details** tab at the lower part of the page, click **Advanced Filter**. You can
-combine filters by **Cluster**, **Zone**, **Storage Type**, and **CPU** to query target capacity details. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the sum of physical capacities reported by Apsara Distributed File System. Logical capacity: the maximum data volume users can actually write. When the usage exceeds the alert threshold (80%), the value will be highlighted. This alert threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
+combine filters by **Cluster**, **Zone**, **Storage Type**, and **CPU** to query target capacity details. Click the **Physical Capacity Usage** or **Logical Capacity Usage** column header to sort the list in ascending or descending order. Physical capacity: the sum of physical capacities reported by Apsara Distributed File System.
+
+> Logical capacity: the maximum data volume users can actually write.
+
+When the usage exceeds the alert threshold (80%), the value will be highlighted. This alert threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5362,7 +5707,12 @@ target capacity details by combing the following filters: **Cluster**, **Zone**,
 **CPU**.
 Click the **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity**
 **Allocation Rate** column header to sort the list in ascending or descending order.
-Physical capacity: the sum of available hardware capacity. Logical capacity: the maximum amount of data users can actually write. Inventory capacity: the total capacity of cloud disks users can create. When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
+Physical capacity: the sum of available hardware capacity.
+
+> Logical capacity: the maximum amount of data users can actually write.
+> Inventory capacity: the total capacity of cloud disks users can create.
+
+When the usage exceeds the capacity threshold (80%), the value will be highlighted. This capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity details data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5385,7 +5735,12 @@ the target cluster over different time periods. Hover over a node to view the ca
 6. On the **Capacity Details** tab at the lower part of the page, click **Advanced Filter** to filter
 and query target capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity**
 **Allocation Rate** column header to sort the list in ascending or descending order.
-Physical capacity: the total sum of available hardware capacity. Logical capacity: the maximum amount of data users can actually write. Inventory capacity: the total capacity of cloud disks users can create. When the usage rate exceeds the capacity threshold (80%), the value will be highlighted. The capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity detail data to your local device.
+Physical capacity: the total sum of available hardware capacity.
+
+> Logical capacity: the maximum amount of data users can actually write.
+> Inventory capacity: the total capacity of cloud disks users can create.
+
+When the usage rate exceeds the capacity threshold (80%), the value will be highlighted. The capacity threshold cannot be customized. Click **Details** in the **Capacity Planning Formula** column of the target cluster to view the detailed capacity planning formula. Click **Export** to download capacity detail data to your local device.
 7. On the **Alert Configurations** tab, configure alert rules on capacity usage. This way, you
 can receive alert notifications when the specified trigger conditions are met. Create an alert rule a. Click **Create**. b. In the Create Alert Rule dialog box, configure the parameters described in the following table and click **OK**. Rule Name: Enter a name for the alert rule. Rule Description: Enter the description of the alert rule. Alert Severity: Select the level at which alerts are generated based on the rule. Trigger Condition: Specify the conditions for generating alerts. Modify an alert rule: Find the alert rule that you want to modify and click **Edit** in the
 **Actions** column. Modify the parameters as needed and click **OK**.
@@ -5403,7 +5758,10 @@ View the capacity of EFS-NAS to understand the current resource usage and remain
 **Capacity Overview** displays information for **SSD Clusters** in the target zone, including
 **Total**, **Used**, and **Capacity Usage**.
 **Capacity Allocation Rate Trend** displays the capacity usage trend of the target cluster
-over time. Hover over a node to view data for that specific point in time. Depending on your environment deployment, data for hybrid clusters may also be available.
+over time. Hover over a node to view data for that specific point in time.
+
+> **Note:** Depending on your environment deployment, data for hybrid clusters may also be available.
+
 6. On the **Capacity Details** tab at the lower part of the page, click **Advanced Filter**. You can
 then filter capacity details by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity**
 **Usage** column header to sort the list in ascending or descending order.
@@ -5493,7 +5851,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5531,7 +5891,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5567,7 +5929,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5602,7 +5966,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5637,7 +6003,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5672,7 +6040,9 @@ cluster in the upper-right corner to view the corresponding **Capacity Overview*
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5706,7 +6076,9 @@ upper-right corner to view the corresponding **Capacity Overview** and **Cluster
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -5741,7 +6113,9 @@ cluster in the upper-right corner to view the corresponding **Capacity Overview*
 **Capacity**, **Dedicated Storage Capacity**, **Shared CPU Capacity**, **Shared Memory**
 **Capacity** and **Shared Storage Capacity**, including **Capacity**, **Assigned** and **Capacity**
 **Allocation (%)** of all clusters or a single cluster.
-The shared CPU capacity allocation rate does not have an alert threshold.
+
+> **Note:** The shared CPU capacity allocation rate does not have an alert threshold.
+
 **Cluster Inventory Capacity Allocation Rate Trend** displays the capacity allocation
 rate trends of **Dedicated Memory**, **Dedicated CPU**, **Dedicated Storage**, **Shared**
 **Memory**, **Shared CPU**, and **Shared Storage** across different time periods for all
@@ -6237,7 +6611,9 @@ to import and click **Open** to import log cleanup rules. Upon importing rules, 
 You can export multiple log cleanup rules from both containers and physical servers in a single batch operation.
 1. Click the **Container** tab or the **Physical Machines** tab.
 2. To export log cleanup rules from containers or physical servers, perform the following
-operations: Export all rules: Click **Export** to export all log cleanup rules. Export a portion of rules: Click **Advanced Filter** to search for the log cleanup rules that you want to export by **Product**, **Service**, or **Server Roles**. Select the log cleanup rules and click **Export** to export them. By default, the Product, Service, and Server Roles dropdown menus appear empty. Upon your first use, you must input a product, a service, or a server role, and then proceed to choose the relevant cleanup rules based on the conducted search. In subsequent search queries, the system will automatically present all viable choices within the Product, Service, and Server Roles dropdown menus.
+operations: Export all rules: Click **Export** to export all log cleanup rules. Export a portion of rules: Click **Advanced Filter** to search for the log cleanup rules that you want to export by **Product**, **Service**, or **Server Roles**. Select the log cleanup rules and click **Export** to export them.
+
+> **Note:** By default, the Product, Service, and Server Roles dropdown menus appear empty. Upon your first use, you must input a product, a service, or a server role, and then proceed to choose the relevant cleanup rules based on the conducted search. In subsequent search queries, the system will automatically present all viable choices within the Product, Service, and Server Roles dropdown menus.
 
 **Modify log cleanup rules**
 
@@ -6245,11 +6621,15 @@ You can modify log cleanup rules to suit your business needs.
 1. Click the **Container** tab or the **Physical Machines** tab.
 2. Find the log cleanup rule that you want to modify and click **Modify** in the **Actions** column.
 3. In the **Modify Log Cleanup Rule** dialog box, configure the **Maximum Disk Usage**
-parameter and specify whether to enable **Whether to automatically delete**. The range for maximum disk usage spans from 0% to 100%. The number preceding the percentage sign (%) must be an integer. We recommend that you set the Maximum Disk Usage parameter to 75%. To enable or disable the auto-delete feature for a log cleanup rule, simply toggle the switch in the **Automatic Deletion** column of the rule on the Rule Management page. Alternatively, you can click Enable Automatic Clearance or Turn off automatic cleanup to enable or disable a log cleanup rule.
+parameter and specify whether to enable **Whether to automatically delete**.
+
+> **Note:** The range for maximum disk usage spans from 0% to 100%. The number preceding the percentage sign (%) must be an integer. We recommend that you set the Maximum Disk Usage parameter to 75%.
+> To enable or disable the auto-delete feature for a log cleanup rule, simply toggle the switch in the **Automatic Deletion** column of the rule on the Rule Management page. Alternatively, you can click Enable Automatic Clearance or Turn off automatic cleanup to enable or disable a log cleanup rule.
+
 4. Click **OK**.
-To simultaneously enable or disable the auto-delete feature for multiple log cleanup rules, select those rules and click **Enable Automatic Clearance** or **Turn off**
-**automatic cleanup** in the lower part of the Rule Management page.
-After you modify a log cleanup rule, the system does not automatically adjust the corresponding execution plans associated with the rule. The execution plans stay as previously set. Every day at precisely 02:00:00, the system conducts a cleanup of previous execution plans and creates new plans based on the current settings of your log cleanup rules.
+
+> **Note:** To simultaneously enable or disable the auto-delete feature for multiple log cleanup rules, select those rules and click **Enable Automatic Clearance** or **Turn off** **automatic cleanup** in the lower part of the Rule Management page.
+> After you modify a log cleanup rule, the system does not automatically adjust the corresponding execution plans associated with the rule. The execution plans stay as previously set. Every day at precisely 02:00:00, the system conducts a cleanup of previous execution plans and creates new plans based on the current settings of your log cleanup rules.
 
 **Delete log cleanup rules**
 
@@ -6257,7 +6637,8 @@ You can delete log cleanup rules that are no longer required.
 1. Click the **Container** tab or the **Physical Machines** tab.
 2. Find the log cleanup rule that you want to delete and click **Delete** in the **Actions** column.
 3. Confirm the message that appears and click **OK**.
-When a log cleanup rule is deleted, the execution plans related to that rule are not removed concurrently. Every day at precisely 02:00:00, the system conducts a cleanup of previous execution plans and creates new plans based on the current settings of your log cleanup rules.
+
+> **Note:** When a log cleanup rule is deleted, the execution plans related to that rule are not removed concurrently. Every day at precisely 02:00:00, the system conducts a cleanup of previous execution plans and creates new plans based on the current settings of your log cleanup rules.
 
 **Obtain execution plans**
 
@@ -6274,13 +6655,18 @@ This topic describes the execution plans of log cleanup rules, including how to 
 3. In the left-side navigation pane, click **Plans**.
 4. Click the **Containers** or **Physical Machines** tab.
 5. In the upper part of the page, filter execution plans by **Product**, **Service**, or **Service Role**.
-By default, no options are available in the Product, Service, and Service role drop-down lists. The first time you specify the fields, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system displays all available options in the drop-down lists.
+
+> **Note:** By default, no options are available in the Product, Service, and Service role drop-down lists. The first time you specify the fields, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system displays all available options in the drop-down lists.
+
 6. Perform the following operations to query the disk usage of containers or physical
 machines: Find the execution plan that you want to manage and click **Query Usage** in the **Actions** column. In the message that appears, click **OK**. Then, refresh the page and view the disk usage in the **Disk Usage** column. Select the execution plans that you want to manage and click **Batch Query Usage** in the lower-left part of the page. In the message that appears, click **OK**. Then, refresh the page and view the disk usage in the **Disk Usage** column.
 7. Perform the following operations to clear logs in execution plans:
 Find the execution plan that you want to manage and click **Execute Clearance** in the
 **Actions** column. In the message that appears, click **OK**.
-Select the execution plans that you want to manage and click **Batch Clear**. In the message that appears, click **OK**. The log cleanup operation is an asynchronous operation. If you want to view the log cleanup results, go to the **Records** page.
+Select the execution plans that you want to manage and click **Batch Clear**. In the message that appears, click **OK**.
+
+> **Note:** The log cleanup operation is an asynchronous operation. If you want to view the log cleanup results, go to the **Records** page.
+
 8. Find the execution plan that you want to manage and click **Cleanup Records** in the
 **Actions** column. The **Records** page appears.
 
@@ -6295,7 +6681,9 @@ Each time you perform a log cleanup operation, the values of **Clear Operations*
 **Roles**, and **Machines** are increased by one.
 The value of **Log Files to clear** shows the number of log files that match all the available cleanup rules and that can be cleaned up, rather than the number of log files that have been cleaned up. The value of **Cleared Capacity (GB)** shows the accumulated available space after you clean up logs.
 5. Filter cleanup records by a combination of **Product**, **Service**, and **Service Role**.
-By default, no options are available in the Product, Service, and Service role drop-down lists. The first time you specify the fields, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system displays all available options in the drop-down lists.
+
+> **Note:** By default, no options are available in the Product, Service, and Service role drop-down lists. The first time you specify the fields, you must enter a product, service, and server role and select the corresponding search result. In subsequent queries, the system displays all available options in the drop-down lists.
+
 6. Click **View Details** in the **View Details** column of the desired cleanup record to view the
 detailed cleanup information.
 
@@ -6311,7 +6699,9 @@ This topic describes the features of plan management.
 
 ##### 5.6.2.1 Base plans
 
-The Base Plans page displays the preset O&M actions that can be initiated and executed on the base. The following types of base plans are supported: Workflow: For more information, see Workflow types. Link: For more information, see Link types.
+> The Base Plans page displays the preset O&M actions that can be initiated and executed on the base.
+
+The following types of base plans are supported: Workflow: For more information, see Workflow types. Link: For more information, see Link types.
 
 ###### 5.6.2.1.1 Workflow types
 
@@ -6327,9 +6717,15 @@ i. Find the plan that you want to query and click **Details** in the **Actions**
 **Description**, **Workflow**, **Input Parameters**, **Output Result**, and **Workflow YAML**
 tabs. iii. On the **Workflow** tab, find **Container Task** and click **Task YAML** to obtain the YAML information of the task.
 6. Disable a plan.
-Before you disable a plan, make sure that the plan status is **Enabled**. i. On the Plan Details page, click **Disable** in the upper-right corner. ii. In the message that appears, click **OK**.
+
+> **Note:** Before you disable a plan, make sure that the plan status is **Enabled**.
+
+i. On the Plan Details page, click **Disable** in the upper-right corner. ii. In the message that appears, click **OK**.
 7. Enable a plan.
-Before you enable a plan, make sure that the plan status is **Disabled**. i. On the Plan Details page, click **Enable** in the upper-right corner. ii. In the message that appears, click **OK**.
+
+> **Note:** Before you enable a plan, make sure that the plan status is **Disabled**.
+
+i. On the Plan Details page, click **Enable** in the upper-right corner. ii. In the message that appears, click **OK**.
 8. Execute a plan.
 Method 1 a. On the Plan List tab, find the plan that you want to execute and click **Execute** in the
 **Actions** column.
@@ -6387,15 +6783,44 @@ the Plan Details page.
 6. On the **Plan Details** page, view information in the Basic information and Operation and
 Maintenance sections. In the upper-right corner of the page, click**Execution History**. In the Plan execution history panel, you can view the**basic information**and**execution history**of the plan. You can click**Details**in the Operation column to go to the current step of the plan. The Basic Information section displays the following parameters: **Plan ID**, **Plan Name**,
 **Plan type**,**Risk level**,**Version**, and **Scene description**.
-Operation and Maintenance: a. In the upper-right corner, click **Execution plan**. In the **Execute** dialog box, configure the **SOURCE host** and **VM to be migrated** parameters and click **Confirm**. b. Perform a precheck. You can click **Termination** in the lower part of the page to stop the migration. a. In the **Pre-Check** step, click **Perform pre-check**. In the message that appears, click
+Operation and Maintenance: a. In the upper-right corner, click **Execution plan**. In the **Execute** dialog box, configure the **SOURCE host** and **VM to be migrated** parameters and click **Confirm**. b. Perform a precheck.
+
+> **Note:** You can click **Termination** in the lower part of the page to stop the migration.
+
+a. In the **Pre-Check** step, click **Perform pre-check**. In the message that appears, click
 **OK**.
-If the check status is **Failed**, move the pointer over the icon to view the cause of failure. Click **Retry** in the Operation column to check again. In the **Supports cross-ASW migration** column, move the pointer over the icon to view components that are running in the VM and cannot be migrated across aggregation switches (ASWs). b. After the precheck is complete, click **Next Step**. If a VM does not pass the precheck, the **Operation confirmation** dialog box appears. You can select the VM that you want to ignore and click **OK**. c. Confirm the VM You can click **Termination** in the lower part of the page to stop the migration. a. Click **Scheduling trial**. In the **Prompt** dialog box, specify **Whether to allow**
+
+> **Note:** If the check status is **Failed**, move the pointer over the
+> icon to view the
+> cause of failure.
+> Click **Retry** in the Operation column to check again.
+> In the **Supports cross-ASW migration** column, move the pointer over the
+
+icon to view components that are running in the VM and cannot be migrated across aggregation switches (ASWs). b. After the precheck is complete, click **Next Step**.
+
+> **Note:** If a VM does not pass the precheck, the **Operation confirmation** dialog box appears. You can select the VM that you want to ignore and click **OK**.
+
+c. Confirm the VM
+
+> **Note:** You can click **Termination** in the lower part of the page to stop the migration.
+
+a. Click **Scheduling trial**. In the **Prompt** dialog box, specify **Whether to allow**
 **recommend of the destination host to be equal to the source host**,
 **Recommend Destination Host Across ASWs**, and **Requires recommend VMS**
 **across ASW target hosts**. Then, click **OK**.
-If the trial calculation status is **Failed**, move the pointer over the icon to view the cause of the failure. To change the destination host, click **Replace the target host** in the Operation column. In the dialog box that appears, select a host from the
-**Destination host** drop-down list, and click **Confirm**.
-b. Click **Next Step**. d. Perform the migration. Before the migration starts, you can click **Termination** in the lower part of the page to stop the migration. After the migration starts, you cannot stop the migration. You must wait until the migration is complete. a. In the **Perform migration** step, click **Perform migration**. In the message that appears, click **OK**. If the migration is in the **Failed** state, move the pointer over the icon to view the cause of the migration failure, and click **Retry** in the Operation column to perform the migration again. b. When the migration is in the **Passed** state, click **Complete**.
+
+> **Note:** If the trial calculation status is **Failed**, move the pointer over the
+> icon to
+> view the cause of the failure.
+> To change the destination host, click **Replace the target host** in the Operation column. In the dialog box that appears, select a host from the **Destination host** drop-down list, and click **Confirm**.
+
+b. Click **Next Step**. d. Perform the migration. Before the migration starts, you can click **Termination** in the lower part of the page to stop the migration. After the migration starts, you cannot stop the migration. You must wait until the migration is complete. a. In the **Perform migration** step, click **Perform migration**. In the message that appears, click **OK**.
+
+> **Note:** If the migration is in the **Failed** state, move the pointer over the
+> icon to view
+> the cause of the migration failure, and click **Retry** in the Operation column to perform the migration again.
+
+b. When the migration is in the **Passed** state, click **Complete**.
 
 ###### 5.6.2.1.2.2 Docker host switchover
 
@@ -6425,7 +6850,14 @@ go to the Plan Details page.
 6. The Plan Details page includes two sections: Basic Information and Operation and
 Maintenance. The Basic Information section includes the following fields: **Plan ID**, **Plan Name**, **Plan**
 **Type**,**Risk Grade**,**Version**, and **Scene Description**.
-In the Operation and Maintenance section a. Select the destination cluster and destination SRG, select the machines that you want to scale in from the Available Machines list, and click the icon to add them to the Selected Machines list. The destination SRG must meet the following requirements: It is defined in the cluster desired state file machine_group.conf. scalable == true The machine group must contain machines other than Docker hosts. b. Click **Submit** and then confirm the operation. c. The physical machine scale-out task is submitted. To view the scale-in task, choose **Platform Operation > Apsara Infrastructure**
+In the Operation and Maintenance section a. Select the destination cluster and destination SRG, select the machines that you want to scale in from the Available Machines list, and click the icon to add them to the Selected Machines list.
+
+> **Note:** The destination SRG must meet the following requirements:
+> It is defined in the cluster desired state file machine_group.conf.
+> scalable == true
+> The machine group must contain machines other than Docker hosts.
+
+b. Click **Submit** and then confirm the operation. c. The physical machine scale-out task is submitted. To view the scale-in task, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resource Management > Machines**. On the Machines page,
 click **Advanced Filter**, select **Scaling In** from the **Status** drop-down list, and then click Search to check the scale-in information.
 
@@ -6531,7 +6963,8 @@ information in the **Basic information** and **Approval progress** sections.
 
 **Cancel an O&M workflow**
 
-You can cancel an O&M workflow only when the workflow is in the **Pending approval** state.
+> **Note:** You can cancel an O&M workflow only when the workflow is in the **Pending approval** state.
+
 1. On the My Submission page, find the O&M workflow that you want to cancel and click
 **Revoke** in the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -6552,10 +6985,8 @@ page, view the details of the O&M workflow, including the information in the **B
 **information** and **Approval progress** sections.
 6. In the **Approval progress** section, approve the O&M workflow.
 
-**Important**
+> **Important:** You can approve an O&M workflow only when the workflow is in the **Pending** **approval** state.
 
-You can approve an O&M workflow only when the workflow is in the **Pending**
-**approval** state.
 Approve the O&M workflow: Click **Agree**. In the message that appears, click **OK**. Reject the O&M workflow: Enter your approval comments and click **Reject**. In the message that appears, click **OK**. Transfer the O&M workflow: Enter your approval comments and click **Transfer**. In the dialog box that appears, select the user to whom you want to transfer the workflow and click **OK**.
 
 #### 5.6.4 Version management
@@ -6572,7 +7003,9 @@ following operations: View the product package information, including **Exact ve
 **Cloud products**, **Support architecture**, **Deployment form**, and **Import time**.
 Specify values for the **Cloud products** and **Median version** parameters to search for a product package. Find the product package that you want to view and click **Details** in the **Operation** column. The details page of the product package appears, including the **Basic**
 **information**, **Dependency information**, and **Component details** sections.
-In the **Dependency information** section, turn on **Strong Dependency** in the upper-right corner. Then, only the information about strong dependencies is displayed.
+
+> **Note:** In the **Dependency information** section, turn on **Strong Dependency** in the upper-right corner. Then, only the information about strong dependencies is displayed.
+
 5. On the **Patch Package List** tab of the Package management page, perform the following
 operations: View the patch package information, including **Patch version**, **Cloud products**,
 **Product Version**, **Target service**, **Target component**, **Edited version**, **Support**
@@ -6591,7 +7024,9 @@ Add a product package: Click **New product compressed package**, set the followi
 
 View product decompression details: Find the product package and click **Details** in the
 **Operation** column. The **Execution History Report** page appears.
-Delete a product decompression record: Find the product decompression record that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**. The files and decompressed directories are not deleted.
+Delete a product decompression record: Find the product decompression record that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**.
+
+> **Note:** The files and decompressed directories are not deleted.
 
 ##### 5.6.4.2 Product version management
 
@@ -6642,7 +7077,11 @@ This page is hidden by default. If needed, you can edit it for display under **M
 3. In the left-side navigation pane, choose **Version Task**.
 4. Click **Create a Change Task**.
 5. Under the **Mirror Warehouse Water Level Assessment** step, obtain the current image
-repository status. After confirming it is correct, click **Next step**. Mirror slimming advice Reduce storage footprint, free up disk space, improve image pull speed, speed up deployment efficiency, reduce security vulnerabilities, and improve system security.
+repository status. After confirming it is correct, click **Next step**.
+
+> **Note:** Mirror slimming advice
+> Reduce storage footprint, free up disk space, improve image pull speed, speed up deployment efficiency, reduce security vulnerabilities, and improve system security.
+
 6. Under the **Import Task Package** step, configure the following parameters and then click
 **Next**.
 
@@ -6655,9 +7094,13 @@ repository status. After confirming it is correct, click **Next step**. Mirror s
 |   | asu deployment package path | Enter the path of the asu deployment package on OPS1. (The package does not need to be decompressed.) Example: /apsarapangu/disk9/asu-deploy.tar.gz |
 |   | Agreement Signing | Read the agreement and click Add Signature. Enter a name and click OK. |
 
-After you proceed to the **Configuration Information** page, you cannot edit this page.
+> **Note:** After you proceed to the **Configuration Information** page, you cannot edit this page.
+
 7. In the dialog box that appears for **Task Package Importing**, click **OK**. The system
-automatically redirects you to the **Configuration Information** step and waits for the import to succeed. Under the **Configuration Information** step, click **View Details** to go to the execution history page. For more information, see Manage execution history.
+automatically redirects you to the **Configuration Information** step and waits for the import to succeed.
+
+> **Note:** Under the **Configuration Information** step, click **View Details** to go to the execution history page. For more information, see Manage execution history.
+
 8. Under the **Configuration Information** step, configure the following parameters and then
 click **Complete Creation**.
 
@@ -6672,7 +7115,8 @@ click **Complete Creation**.
 | Change Information | Change Task Name | Enter a name for the change task. |
 |   | Change Description | Enter a description for the change task. |
 
-Each product can have only one change task.
+> **Note:** Each product can have only one change task.
+
 9. Return to the version change task list. Click **Details** in the **Operation** column of the target
 change task. The page redirects to the change task execution page.
 0. Get the execution content based on the change type.
@@ -6693,13 +7137,16 @@ change task. The page redirects to the change task execution page.
 1. On the change task execution details page, click **Terminate** in the upper-right corner.
 You can also click **Termination** in the **Operation** column of the target change task in the change task list.
 2. In the dialog box that appears, click **Termination**.
-If the change task has entered the change execution phase, ensure that manual rollback does not affect subsequent operations.
+
+> **Note:** If the change task has entered the change execution phase, ensure that manual rollback does not affect subsequent operations.
 
 **Upload a tool package**
 
 1. Above the change task list, click **Upload Decompression Tool**.
 2. In the dialog box that appears, click **Click here to upload a file** and select the target tool
-package. You can upload only .tar.gz files.
+package.
+
+> **Note:** You can upload only .tar.gz files.
 
 ### 5.7 Log center
 
@@ -6790,7 +7237,9 @@ You have obtained read/write permissions for the Log Center.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Query**.
 3. On the **Platform Logs** tab, filter logs by combining **Products**, **Log Type**, **Log Name**,
 **Time Range**, and **Query Conditions**.
-**Products**, **Log Type**, and **Log Name** all support multi-selection.
+
+> **Note:** **Products**, **Log Type**, and **Log Name** all support multi-selection.
+
 **Query Conditions**support keyword queries with syntax such as and, or, and
 not. Example: (44 or http) and error not fatal.
 4. View log information at the bottom of the page.
@@ -6804,9 +7253,11 @@ not. Example: (44 or http) and error not fatal.
 5. On the **Local Logs** tab, filter logs by combining **Products**, **Service**, **Component**, and **Log**
 **Path**.
 6. After selecting the target machine at the bottom of the page, view the log content on the
-right. Filter target log content by combining **Time Range**, **Keyword**, and **Maximum**
-**Rows**.
-Click **Export Logs** to export log content to your local device for viewing. Intelligent analysis of exception logs is supported to automatically summarize the exception overview for the current query.
+right.
+
+> **Note:** Filter target log content by combining **Time Range**, **Keyword**, and **Maximum** **Rows**.
+> Click **Export Logs** to export log content to your local device for viewing.
+> Intelligent analysis of exception logs is supported to automatically summarize the exception overview for the current query.
 
 #### 5.7.3 Log dump
 
@@ -6826,11 +7277,15 @@ Pub. This offers a highly efficient solution ideal for archiving logs over exten
 **Real-time Synchronization**: This type facilitates the real-time synchronization of
 product logs from SLS-Inner to SLS-Pub. However, if the immediate synchronization of desired logs is not required, we recommend that you use the offline dump method instead. Once real-time synchronization is configured, tasks are automatically created based on individual Logstores. These tasks can be viewed and managed on the Task Management tab.
 **OSS Archive**: This type involves dumping logs from SLS-Inner to OSS in an offline mode,
-where the logs are securely archived in OSS. Once OSS archive is configured, tasks are automatically created based on individual Logstores. These tasks can be viewed and managed on the Task Management tab. The **Offline Dump** and **OSS Archive** methods generate tasks daily to dump logs from the previous 24 hours, based on their respective configurations. The **Real-time Synchronization** method generates two log dump tasks immediately upon configuration submission. These tasks concurrently run on two separate nodes to dump logs in real time.
+where the logs are securely archived in OSS. Once OSS archive is configured, tasks are automatically created based on individual Logstores. These tasks can be viewed and managed on the Task Management tab.
+
+> **Note:** The **Offline Dump** and **OSS Archive** methods generate tasks daily to dump logs from the previous 24 hours, based on their respective configurations.
+> The **Real-time Synchronization** method generates two log dump tasks immediately upon configuration submission. These tasks concurrently run on two separate nodes to dump logs in real time.
+
 4. Click **Create Log Dump Task**.
-For any given Logstore, you can create only log dump tasks of identical type to maintain consistency in log management operations. The setup processes for **Offline**
-**Dump**, **Real-time Synchronization**, and **OSS Archive** are alike, featuring similar
-configuration steps for ease of use.
+
+> **Note:** For any given Logstore, you can create only log dump tasks of identical type to maintain consistency in log management operations. The setup processes for **Offline** **Dump**, **Real-time Synchronization**, and **OSS Archive** are alike, featuring similar configuration steps for ease of use.
+
 5. In the **Select Log** step, search for logs by **Products**, **Log Type**, and **Dump Status**. Select
 the desired logs and click **Next step**.
 6. In the **Configure Authorization** step, configure the following parameters and click **Next**
@@ -6882,7 +7337,10 @@ configurations and search for desired tasks by **Products**, **Log Type**, **Tim
 **Appendix: Grant permissions to a RAM role**
 
 1. Log in to the Apsara Uni-manager Management Console by using an account that assumes
-the organization administrator role. If you are not authorized to perform this operation, contact an administrator of the destination organization (level-1 organization) for assistance.
+the organization administrator role.
+
+> **Note:** If you are not authorized to perform this operation, contact an administrator of the destination organization (level-1 organization) for assistance.
+
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
 4. Click **Create Custom Role** in the upper-left corner. On the page that appears, click
@@ -6923,12 +7381,16 @@ their respective storage sizes. For every log entry, the following information i
 **Date**, **Geography**, **Products**, **Used**, **Product available**, and **Utilization rate**.
 4. On the **Log Traffic** tab, view the following information:
 **Total Flow Trend**: This chart displays the trend of the total traffic within the specified
-period of time. You can query only data within the last seven days.
+period of time.
+
+> **Note:** You can query only data within the last seven days.
+
 **Traffic Details**: In this section, you can click **Advanced Filter** and search for logs by
 **Products**, **Log Type**, and **Time** to view their respective traffic details.
 For every log entry, the following information is displayed: **SlsProject**, **LogStore**,
 **Related Products**, **Log Type**, and **Log Traffic**.
-Concurrent base logs are stored exclusively in either SLS-Inner or SLS-Pub. Prior to transitioning to the SLS-Pub deployment mode, only the sls-inner tab is displayed.
+
+> **Note:** Concurrent base logs are stored exclusively in either SLS-Inner or SLS-Pub. Prior to transitioning to the SLS-Pub deployment mode, only the sls-inner tab is displayed.
 
 ### 5.8 Task center
 
@@ -6968,14 +7430,18 @@ You can create and manage platform tasks (tasks that require manual assignment a
 **Task source**, **Task Type**, **Task Status**, **Priority**, **Creator**, **Assigned**, **Creation time**,
 and **Expiration Time**. For the **Assigned** field, you can search by designee or assigned role. When you search for a designee, the system automatically associates the corresponding roles.
 2. Click **Details** in the **Operation** column of the target task to view its details.
-If the task has a **Redirect Link**, click **Redirect** to navigate to the associated page.
+
+> **Note:** If the task has a **Redirect Link**, click **Redirect** to navigate to the associated page.
 
 **Manage notification tasks**
 
 You can manage notification tasks by completing, terminating, extending, or adding remarks to them.
 1. Click **Details** in the **Operation** column of the target notification task.
 2. On the task details page, you can perform the following management operations.
-These operations are available only when **Status** is **In progress** and you have the required permissions. Complete: Click **Complete** to complete the task. The **Status** then changes to
+
+> **Note:** These operations are available only when **Status** is **In progress** and you have the required permissions.
+
+Complete: Click **Complete** to complete the task. The **Status** then changes to
 **Completed**.
 Terminate: Click **Termination** to end the task. The **Status** then changes to **Terminated**. Extend: Click **Extension**, select a **new extension time**, and then click **OK** to extend the task. Add remarks: Click **Add remarks**, enter your remarks, and click OK to add remarks to the notification task.
 
@@ -6984,7 +7450,10 @@ Terminate: Click **Termination** to end the task. The **Status** then changes to
 You can manage approval tasks by approving or rejecting them.
 1. Click **Details** in the **Operation** column of the target approval task.
 2. On the task details page, you can perform the following management operations.
-These operations are available only when **Status** is **Pending Approval** and you have the required permissions. Approve: Click **Approve** to approve the task. The **Status** then changes to **Approval**
+
+> **Note:** These operations are available only when **Status** is **Pending Approval** and you have the required permissions.
+
+Approve: Click **Approve** to approve the task. The **Status** then changes to **Approval**
 **Granted**.
 Reject: Click **Reject** to reject the task. The **Status** then changes to **Approval Rejected**.
 
@@ -7002,7 +7471,9 @@ Click **Advanced Filter** to search for target tasks by combining **Task ID**, *
 **Assigned** supports searching by assignee and assigned role. When you search for an
 assignee, the system automatically associates the corresponding role.
 4. Click **Details** in the **Operation** column of the target task to view details of the task.
-If **Redirect Link** is available, click **Jump** to navigate to the associated page.
+
+> **Note:** If **Redirect Link** is available, click **Jump** to navigate to the associated page.
+
 5. The following management operations are available on the task details page.
 
 | Task type | Task management |
@@ -7039,7 +7510,10 @@ and click **OK**.
 7. You are redirected to the report details page. On this page, configure a card by using one of
 the following methods: Create a card: Choose **Create Panel** > **Create Panel** and configure the card settings. For more information, see Create a card. Select a card: Choose **Create Panel** > **Select card**, select the required card, and click
 **OK**.
-When you select a card, you can filter cards by card name and statistical dimension. To add card options, perform the following steps: Click **System Config** in the top navigation bar. In the System Config console, click **Card management** in the left-side navigation pane. Then, create cards on the Card Management page.
+
+> **Note:** When you select a card, you can filter cards by card name and statistical dimension.
+> To add card options, perform the following steps: Click **System Config** in the top navigation bar. In the System Config console, click **Card management** in the left-side navigation pane. Then, create cards on the Card Management page.
+
 8. Click the
 icon to save the report.
 
@@ -7065,20 +7539,26 @@ icon to save the report.
 
 1. Find the report that you want to share and click **Share** in the **Operation** column.
 2. In the dialog box that appears, click **Copy Link** to copy the link for sharing the report.
-Other users that use the link can only view the report and do not have permissions to modify the report.
+
+> **Note:** Other users that use the link can only view the report and do not have permissions to modify the report.
 
 **Publish a report**
 
-You can publish a report that is in the **Unpublished** state. After you publish a report, you cannot change its public directory. To change the directory, contact the report administrator.
+> **Note:** You can publish a report that is in the **Unpublished** state.
+> After you publish a report, you cannot change its public directory. To change the directory, contact the report administrator.
+
 1. Find the report that you want to publish and choose
 > **Public** in the **Operation** column.
+
 2. In the dialog box that appears, select a directory for **Public Directory** and click **OK**.
 
 **Unpublish a report**
 
-You can unpublish a report that is in the **Published** state.
+> **Note:** You can unpublish a report that is in the **Published** state.
+
 1. Find the report that you want to unpublish and choose
 > **Unpublic** in the **Operation**
+
 column.
 2. In the message that appears, click **OK**.
 
@@ -7086,6 +7566,7 @@ column.
 
 1. Find the report that you want to copy and choose
 > **Copy** in the **Operation** column.
+
 2. In the dialog box that appears, configure the following parameters and click **OK**.
 
 | Parameter | Description |
@@ -7098,6 +7579,7 @@ column.
 Move a single report:
 1. Find the report that you want to move and choose
 > **Mobile** in the **Operation** column.
+
 2. In the dialog box that appears, select a directory for **Location** and click **OK**.
 Move multiple reports at a time:
 1. Select the destination report directory, select multiple reports, and then click **Move** below
@@ -7109,6 +7591,7 @@ the list.
 Delete a single report:
 1. Find the report that you want to delete and choose
 > **Delete** in the **Operation** column.
+
 2. In the message that appears, click **OK**.
 Delete multiple reports at a time:
 1. Select the destination report directory, select multiple reports, and then click **Delete** below
@@ -7152,7 +7635,9 @@ Create a report download task. The supported report formats include Excel and HT
 |---|---|
 
 5. After the report download task completes, click **Download reports** in the **Operation**
-column of the target task to download the report to your local device for viewing. You cannot download the report if **Download status** of the task is **Download failed**.
+column of the target task to download the report to your local device for viewing.
+
+> **Note:** You cannot download the report if **Download status** of the task is **Download failed**.
 
 **More actions**
 
@@ -7213,13 +7698,17 @@ You can view and configure report push rules, including the report content and p
 **Disable a rule**
 
 1. Find the rule that you want to disable and click **Disable** in the **Operation** column.
-You can disable a rule that has been enabled.
+
+> **Note:** You can disable a rule that has been enabled.
+
 2. In the message that appears, click **OK**.
 
 **Enable a rule**
 
 1. Find the rule that you want to enable and click **Enable** in the **Operation** column.
-You can enable a rule that has been disabled.
+
+> **Note:** You can enable a rule that has been disabled.
+
 2. In the message that appears, click **OK**.
 
 #### 5.9.4 Push configuration
@@ -7234,8 +7723,9 @@ The ANS component is added and a notification channel is configured.
 **Config**.
 3. In the **Email notification** section, click **Configuration**.
 4. In the dialog box that appears, configure the **Token** parameter and click **OK**.
-Only email notifications are supported. To obtain the token, click **System Config** in the top navigation bar and choose
-**Notification Management** > **Channel Management**.
+
+> **Note:** Only email notifications are supported.
+> To obtain the token, click **System Config** in the top navigation bar and choose **Notification Management** > **Channel Management**.
 
 **What to do next**
 
@@ -7310,7 +7800,11 @@ You can query the records of operations that are performed in the console by use
 **Audit**.
 3. In the left-side navigation pane, click **Console-based Audit**.
 4. On the **Console-based Audit** page, perform the following operations based on your
-business requirements: View operation records Specify the **Username** and **Time Range** parameters to filter operation records. Export operation records You can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported. Batch Export: Select the operation records that you want to export and click **Batch**
+business requirements: View operation records Specify the **Username** and **Time Range** parameters to filter operation records. Export operation records
+
+> **Note:** You can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported.
+
+Batch Export: Select the operation records that you want to export and click **Batch**
 **export** below the list to export the selected records.
 Export All: Select the check box next to Time and click **Export** above the list to export all the operation records that are displayed on the current page.
 
@@ -7322,7 +7816,9 @@ t You can view the records of operations that are performed in the CLI by users 
 **Audit**.
 3. In the left-side navigation pane, click **CLI-based Audit**.
 4. On the **CLI-based Audit** page, perform the following operations based on your business
-requirements: Query operation records Select **Log source**, **Linux account**, **Machine/container**, or **Operation Time** and specify a value to view records. You can also click Advanced Filter and specify a combination of the preceding parameters to filter records. Export operation records Select the records that you want to export and click **Export List** to export the selected records. Alternatively, select the check box next to Log source and click Export List to export all records that are displayed on the current page. You can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported.
+requirements: Query operation records Select **Log source**, **Linux account**, **Machine/container**, or **Operation Time** and specify a value to view records. You can also click Advanced Filter and specify a combination of the preceding parameters to filter records. Export operation records Select the records that you want to export and click **Export List** to export the selected records. Alternatively, select the check box next to Log source and click Export List to export all records that are displayed on the current page.
+
+> **Note:** You can export a maximum of 10,000 records. If you select more than 10,000 records, only the first 10,000 records are exported.
 
 ##### 7.1.1.3 Smart audit
 
@@ -7474,7 +7970,11 @@ task_uuid=2d88f05c-2d07-4d16-b26b-48b396a60de3"
 ./docker_sign -dockerSignConfPath=docker_sign.json dockerInfoConfPath=docker_info.json
 ```
 
-docker_sign is the file obtained in Step 2. docker_info.json is the file created in Step 3.b. docker_sign.json is the file created in Step 3.c. t v. Obtain the signature file sig.txt.
+> **Note:** docker_sign is the file obtained in Step 2.
+> docker_info.json is the file created in Step 3.b.
+> docker_sign.json is the file created in Step 3.c.
+
+t v. Obtain the signature file sig.txt.
 
 ```json
 {"Sig":"Bye68ji6t********3hJW0ZRRAy1PAvz9wTlD5iSznbyNC5BC+X3GN4Fk7nm/mUosdVuxZo89Nzj6 5e5Yt3pn2sGYvS/0xOJhSyJHI4EIkBTrebqjGT/874zt/POsOAAucwvjbBVOo9eQqiwiTEvOnfeA1R1Yz+eZH L+BUQSBqWn4ZSgxiGUDefXQqPq6eDqDgB6jtj8yJUQkF8wqdck2jWbvlLViL4gZo09Kod5wzqED+1ozvHltlH HycE66ICYEHgh9SjpqwLKPEEsqZTFRMVpwWyJUk3kgs8o8/bqn5nFx9/qCyOrIS3bqtUvhNWLuTGbpDMw==", ersion":"1","Annotations":{"cicd_task_uuid":"http://cicd.alibabainc.com/system/systemTask?task_uuid=2d88f05c-2d07-4d16-b26b- 48b396a60de3","cpu_type":"x86","product":"yundun-cfw","product_commit":"1264f603-bf 00-4a76-bf22-190672af7f54","serverrole":"yundunicfw/ServiceTest","service":"yundun-icfw"}}
@@ -7555,7 +8055,10 @@ section, including **Product**, **Service**, **Server Role**, and **Number of al
 6. Click the
 icon next to a service and view the information about the agent sublist, including **IP**, **Application Language**, **Process path**, **Process Command**, **Status**, and
 **Rule Statistics**.
-Click the icon to hide the sublist.
+
+> **Note:** Click the
+> icon to hide the sublist.
+
 7. Find the sublist that you want to manage and click **Protection Policy** in the **Actions**
 column to view the rule information. Perform the operations that are described in the following table based on your business requirements.
 
@@ -7570,9 +8073,15 @@ t
 | Enable the blocking mode | Note You can enable the blocking mode for only the rules whose value in the Protection Mode column is Monitor. i. Find the rule that you want to manage and clickS witch to Intercept in the Actions column. ii. In the message that appears, click OK. |
 | Enable the observation mode | Note You can enable the observation mode for only the rules whose value in the Protection Mode column is Intercept. i. Find the rule that you want to manage and clickS witch to Monitor in the Actions column. ii. In the message that appears, click OK. |
 
-The preceding operations change rules. You must perform these operations based on change policies. Rule changes are performed asynchronously in the background. A rule change takes more than 10 minutes to complete. You can view the result after 10 minutes or click the Refresh icon to view the changed rule information. t
+> **Note:** The preceding operations change rules. You must perform these operations based on change policies. Rule changes are performed asynchronously in the background. A rule change takes more than 10 minutes to complete. You can view the result after 10 minutes or click the Refresh icon to view the changed rule information.
+
+t
 8. Find the sublist that you want to manage and click **Install Rule** in the **Actions** column. In
-the dialog box that appears, configure the **Rule list** parameter and click **Install** to deliver the rule. Only one rule can be delivered. The newly delivered rule overwrites the existing rule in the agent. Delivering a rule takes 5 to 10 minutes to complete. If a service exception occurs after a rule is delivered, you must disable the delivered rule.
+the dialog box that appears, configure the **Rule list** parameter and click **Install** to deliver the rule.
+
+> **Note:** Only one rule can be delivered. The newly delivered rule overwrites the existing rule in the agent.
+> Delivering a rule takes 5 to 10 minutes to complete.
+> If a service exception occurs after a rule is delivered, you must disable the delivered rule.
 
 ##### 7.4.1.2 Rule management
 
@@ -7605,7 +8114,8 @@ t
 
 1. In the upper part of the Rule Management page, click **Import rules**.
 2. In the dialog box that appears, click **Import rules** to upload a rule file. Then, click **OK**.
-The ID of the rule that you want to import must be unique. Otherwise, the upload fails.
+
+> **Note:** The ID of the rule that you want to import must be unique. Otherwise, the upload fails.
 
 ##### 7.4.1.3 Attack alerts
 
@@ -7822,7 +8332,9 @@ Security Reinforce Service (SRS) is a security hardening component for internal 
 
 **Configuration management**
 
-t Security Reinforce Service (SRS) provides the security isolation feature. On the Configuration Management tab of the SRS Management page, you can configure the SRS security isolation status, SRS disconnection hold, IP address whitelists for SRS, IP address blacklists for SRS, SRS isolation-free products, and SRS bypass baselines. SRS provides security isolation capabilities for the hybrid cloud platform instead of for tenants. Therefore, contact Apsara Stack engineers to perform SRS-related operations, especially the operation to enable SRS security isolation. Otherwise, service interruptions may occur.
+t Security Reinforce Service (SRS) provides the security isolation feature. On the Configuration Management tab of the SRS Management page, you can configure the SRS security isolation status, SRS disconnection hold, IP address whitelists for SRS, IP address blacklists for SRS, SRS isolation-free products, and SRS bypass baselines.
+
+> **Note:** SRS provides security isolation capabilities for the hybrid cloud platform instead of for tenants. Therefore, contact Apsara Stack engineers to perform SRS-related operations, especially the operation to enable SRS security isolation. Otherwise, service interruptions may occur.
 
 **Configure the SRS security isolation status**
 
@@ -7872,11 +8384,19 @@ If the SRS security isolation status is set to Observation Mode and unexpected p
 
 **Important**
 
-t Before you enable SRS security isolation, make sure that the following requirements are met. If one of the following requirements is not met, your business may be impacted after you enable SRS security isolation. We recommend that you set the SRS security isolation status to Observation Mode before you enable SRS security isolation. SRS is deployed and at desired state. All products are deployed and at desired state. The following upstream products are deployed and at desired state: Skyline (BaseServiceAll): deployed in the central region in multi-region scenarios. Networkbase (BaseServiceAll): deployed in general regions in multi-region scenarios. Metadatasync (BaseServiceAll): deployed in the central region in multi-region scenarios. Dependencies required for SRS to stably run: The version of Apsara Stack for all products must be the same as that of Apsara Infrastructure Management. In multi-region scenarios, the version of Apsara Stack in all regions must be the same as that of Apsara Infrastructure Management. In zone-disaster recovery scenarios, the version of Apsara Stack and the SRS version must be consistent in the primary and secondary data centers. Networkbase can collect the IP addresses of your network devices such as the Inter- Connection Switch (ISW), Distribution Switch (DSW), and LVS Switch (LSW). Dependencies required for SRS to properly run: The upstream products and services, including the Apsara Uni-manager Operations Console, Apsara Infrastructure Management, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The operating systems of the master and SRS clients run as expected. The version of Alibaba Cloud Linux 7U is 4.19, and the version of the Linux kernel is 3.10. The kernel module named slb-kernel-modules or kernel-modules-ctk is installed. For scenarios in which existing sites are upgraded to the current version, the networks of existing sites may involve various non-standard scenarios. Therefore, you must contact Apsara Stack engineers to execute the pre-check script for SRS security isolation. You can enable SRS security isolation only after the pre-check is passed.
+t
+
+> Before you enable SRS security isolation, make sure that the following requirements are met. If one of the following requirements is not met, your business may be impacted after you enable SRS security isolation. We recommend that you set the SRS security isolation status to Observation Mode before you enable SRS security isolation.
+
+SRS is deployed and at desired state. All products are deployed and at desired state. The following upstream products are deployed and at desired state: Skyline (BaseServiceAll): deployed in the central region in multi-region scenarios. Networkbase (BaseServiceAll): deployed in general regions in multi-region scenarios. Metadatasync (BaseServiceAll): deployed in the central region in multi-region scenarios. Dependencies required for SRS to stably run: The version of Apsara Stack for all products must be the same as that of Apsara Infrastructure Management. In multi-region scenarios, the version of Apsara Stack in all regions must be the same as that of Apsara Infrastructure Management. In zone-disaster recovery scenarios, the version of Apsara Stack and the SRS version must be consistent in the primary and secondary data centers. Networkbase can collect the IP addresses of your network devices such as the Inter- Connection Switch (ISW), Distribution Switch (DSW), and LVS Switch (LSW). Dependencies required for SRS to properly run: The upstream products and services, including the Apsara Uni-manager Operations Console, Apsara Infrastructure Management, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The operating systems of the master and SRS clients run as expected. The version of Alibaba Cloud Linux 7U is 4.19, and the version of the Linux kernel is 3.10. The kernel module named slb-kernel-modules or kernel-modules-ctk is installed. For scenarios in which existing sites are upgraded to the current version, the networks of existing sites may involve various non-standard scenarios. Therefore, you must contact Apsara Stack engineers to execute the pre-check script for SRS security isolation. You can enable SRS security isolation only after the pre-check is passed.
 
 **Usage notes**
 
-SRS sets security rules for the service ports on the cloud platform and manages the internal VIPs. After SRS security isolation is enabled, you must disable SRS security isolation at the earliest opportunity if traffic exceptions occur. Traffic exceptions include but are not limited to the following cases: A service port or a VIP of a management domain on the cloud platform cannot be accessed but echo reply messages are returned. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. The packet loss dashboard of SRS displays a large number of lost packets with valid IP addresses in the cloud. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. t The issues of tenant access to cloud products are not related to SRS. For example, tenants may fail to access cloud products by using public VIPs, VIPs of the business domain, or VIPs of the O&M domain. These issues are not related to SRS. Change the SRS security isolation status to **Automatic Mode**
+SRS sets security rules for the service ports on the cloud platform and manages the internal VIPs. After SRS security isolation is enabled, you must disable SRS security isolation at the earliest opportunity if traffic exceptions occur. Traffic exceptions include but are not limited to the following cases: A service port or a VIP of a management domain on the cloud platform cannot be accessed but echo reply messages are returned. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. The packet loss dashboard of SRS displays a large number of lost packets with valid IP addresses in the cloud. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. t
+
+> **Note:** The issues of tenant access to cloud products are not related to SRS. For example, tenants may fail to access cloud products by using public VIPs, VIPs of the business domain, or VIPs of the O&M domain. These issues are not related to SRS.
+
+Change the SRS security isolation status to **Automatic Mode**
 
 **Background information**
 
@@ -7886,13 +8406,16 @@ security isolation status is automatically switched to **Enable**. If the SRS se
 
 **Prerequisites**
 
-**Important**
+> **Important:** Make sure that the following requirements are met. If one of the following requirements is not met, your business may be impacted after you enable SRS security isolation.
 
-Make sure that the following requirements are met. If one of the following requirements is not met, your business may be impacted after you enable SRS security isolation. You can change the SRS security isolation status to **Automatic Mode** only when the SRS security isolation status is set to **Observation Mode** or **Enable**. SRS is deployed and at desired state. All products are deployed and at desired state. The following upstream products are deployed and at desired state: Skyline (BaseServiceAll): deployed in the central region in multi-region scenarios. Networkbase (BaseServiceAll): deployed in general regions in multi-region scenarios. Metadatasync (BaseServiceAll): deployed in the central region in multi-region scenarios. Dependencies required for SRS to stably run: The version of Apsara Stack for all products must be the same as that of Apsara Infrastructure Management. In multi-region scenarios, the version of Apsara Stack in all regions must be the same as that of Apsara Infrastructure Management. In zone-disaster recovery scenarios, the version of Apsara Stack and the SRS version must be consistent in the primary and secondary data centers. Networkbase can collect the IP addresses of your network devices such as the ISW, DSW, and LSW. t Dependencies required for SRS to properly run: The upstream products and services, including the Apsara Uni-manager Operations Console, Apsara Infrastructure Management, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The operating systems of the master and SRS clients run as expected. The version of Alibaba Cloud Linux 7U is 4.19, and the version of the Linux kernel is 3.10. The kernel module named slb-kernel-modules or kernel-modules-ctk is installed. For scenarios in which existing sites are upgraded to the current version, the networks of existing sites may involve various non-standard scenarios. Therefore, you must contact Apsara Stack engineers to execute the pre-check script for SRS security isolation. You can enable SRS security isolation only after the pre-check is passed.
+You can change the SRS security isolation status to **Automatic Mode** only when the SRS security isolation status is set to **Observation Mode** or **Enable**. SRS is deployed and at desired state. All products are deployed and at desired state. The following upstream products are deployed and at desired state: Skyline (BaseServiceAll): deployed in the central region in multi-region scenarios. Networkbase (BaseServiceAll): deployed in general regions in multi-region scenarios. Metadatasync (BaseServiceAll): deployed in the central region in multi-region scenarios. Dependencies required for SRS to stably run: The version of Apsara Stack for all products must be the same as that of Apsara Infrastructure Management. In multi-region scenarios, the version of Apsara Stack in all regions must be the same as that of Apsara Infrastructure Management. In zone-disaster recovery scenarios, the version of Apsara Stack and the SRS version must be consistent in the primary and secondary data centers. Networkbase can collect the IP addresses of your network devices such as the ISW, DSW, and LSW. t Dependencies required for SRS to properly run: The upstream products and services, including the Apsara Uni-manager Operations Console, Apsara Infrastructure Management, Networkbase, Metadatasync, Skyline, and Hostservice, run as expected. The operating systems of the master and SRS clients run as expected. The version of Alibaba Cloud Linux 7U is 4.19, and the version of the Linux kernel is 3.10. The kernel module named slb-kernel-modules or kernel-modules-ctk is installed. For scenarios in which existing sites are upgraded to the current version, the networks of existing sites may involve various non-standard scenarios. Therefore, you must contact Apsara Stack engineers to execute the pre-check script for SRS security isolation. You can enable SRS security isolation only after the pre-check is passed.
 
 **Usage notes**
 
-SRS sets security rules for the service ports on the cloud platform and manages the internal VIPs. After SRS security isolation is enabled, you must disable SRS security isolation at the earliest opportunity if traffic exceptions occur. Traffic exceptions include but are not limited to the following cases: A service port or a VIP of a management domain on the cloud platform cannot be accessed but echo reply messages are returned. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. The packet loss dashboard of SRS displays a large number of lost packets with valid IP addresses in the cloud. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. The issues of tenant access to cloud products are not related to SRS. For example, tenants may fail to access cloud products by using public VIPs, VIPs of the business domain, or VIPs of the O&M domain. These issues are not related to SRS.
+SRS sets security rules for the service ports on the cloud platform and manages the internal VIPs. After SRS security isolation is enabled, you must disable SRS security isolation at the earliest opportunity if traffic exceptions occur. Traffic exceptions include but are not limited to the following cases: A service port or a VIP of a management domain on the cloud platform cannot be accessed but echo reply messages are returned. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity. The packet loss dashboard of SRS displays a large number of lost packets with valid IP addresses in the cloud. In this case, you must disable SRS security isolation and troubleshoot issues at the earliest opportunity.
+
+> **Note:** The issues of tenant access to cloud products are not related to SRS. For example, tenants may fail to access cloud products by using public VIPs, VIPs of the business domain, or VIPs of the O&M domain. These issues are not related to SRS.
+
 6. Click **Submit**. In the message that appears, click **OK**.
 7. If you change the SRS security isolation status to **Enable** or **Observation Mode**, the
 system initiates the checking process for enabling SRS security isolation or Observation Mode. After the check is complete, click **Status in All Regions**. In the **SRS Status in All**
@@ -7920,9 +8443,7 @@ After you enable the disconnection hold feature for a general region, the genera
 By default, the **Configuration Management** tab appears.
 4. In the **Whether Enable SRS Disconnection Hold** section, turn on or off **Status**.
 
-**Important**
-
-By default, the disconnection hold feature is disabled. In this case, if the network between a general region and the central region is disconnected, the rules cannot be synchronized to SRS. As a result, the timestamp expires and all rules are cleared.
+> **Important:** By default, the disconnection hold feature is disabled. In this case, if the network between a general region and the central region is disconnected, the rules cannot be synchronized to SRS. As a result, the timestamp expires and all rules are cleared.
 
 **Configure IP address whitelists for SRS**
 
@@ -7957,7 +8478,10 @@ SRS is deployed and at desired state. All products are deployed and at desired s
 
 **Usage notes**
 
-To save platform resources, SRS does not further detect IP addresses in the blacklist. The information about IP addresses in the blacklist is not recorded in the packet loss logs or displayed in the alert dashboard. If an IP address exists in both the blacklist and the whitelist, the blacklist rules take effect and the whitelist rules are ignored.
+To save platform resources, SRS does not further detect IP addresses in the blacklist. The information about IP addresses in the blacklist is not recorded in the packet loss logs or displayed in the alert dashboard.
+
+> **Note:** If an IP address exists in both the blacklist and the whitelist, the blacklist rules take effect and the whitelist rules are ignored.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Network Security** >
 **Network Security Management Center**.
@@ -8071,9 +8595,8 @@ By default, the **Dynamic Allow Settings** tab appears.
 4. Click **Add Dynamic Allow Settings**. In the dialog box that appears, configure the
 **Product Name** parameter.
 
-**Important**
+> **Important:** Creating dynamic allow configurations for products is a high-risk operation. Before you perform this operation, you must carefully evaluate the impacts. Do not perform this operation unless necessary.
 
-Creating dynamic allow configurations for products is a high-risk operation. Before you perform this operation, you must carefully evaluate the impacts. Do not perform this operation unless necessary.
 5. Click **Add Entry**. In the section that appears, configure the parameters and click **OK**.
 The following table describes the parameters. t
 
@@ -8090,7 +8613,13 @@ t
 | CPU Architecture | The CPU architecture. Valid values: x86 64 _ aarch64 |
 | Remarks | The remarks for the configuration. |
 
-t To add multiple server role configurations, continue to click **Add Entry**. You can click the icon to delete a server role configuration of the product. If the new product name and server role are the same as those in an existing configuration, the existing configuration is overwritten. If the product name and server role are the same as those in the configuration where the remarks are "ASRDR Rule, DO NOT delete!", the configuration is not overwritten. The configuration applies to products required by Apsara Stack Resilience for Disaster Recovery.
+t
+
+> **Note:** To add multiple server role configurations, continue to click **Add Entry**.
+> You can click the
+> icon to delete a server role configuration of the product.
+> If the new product name and server role are the same as those in an existing configuration, the existing configuration is overwritten.
+> If the product name and server role are the same as those in the configuration where the remarks are "ASRDR Rule, DO NOT delete!", the configuration is not overwritten. The configuration applies to products required by Apsara Stack Resilience for Disaster Recovery.
 
 **What to do next**
 
@@ -8157,7 +8686,9 @@ If isolation rules are configured in SRS, unexpected connections generate packet
 3. In the left-side navigation pane, choose **Network Micro-segmentation Management** >
 **Inbound Protection For Tianji Service** > **srsClientStatus**.
 4. Switch from the **Clients** tab that appears by default to the **Packet Loss Dashboard** tab
-and view cloud hosts with packet loss and related projects, services, and server roles. You can also configure the **SR** parameter to view the packet loss information about a specific server role. When you enter server role information, do not include the number sign (#) in the server role information.
+and view cloud hosts with packet loss and related projects, services, and server roles. You can also configure the **SR** parameter to view the packet loss information about a specific server role.
+
+> **Note:** When you enter server role information, do not include the number sign (#) in the server role information.
 
 ###### 7.4.2.2.2 Inbound protection for PaaS services: Donghuangzhong
 
@@ -8192,9 +8723,7 @@ By default, the host network isolation feature is enabled. After the feature is 
 **Isolation**. In the message that appears, click **OK** to enable or disable the host network
 isolation feature. t
 
-**Important**
-
-If you disable host network isolation, the network of the clusters cannot be isolated, which may result in security risks. To ensure the network security of the platform, we recommend that you do not disable host network isolation. If you disable host network isolation in scenarios such as platform changes, enable host network isolation again after you complete the changes.
+> **Important:** If you disable host network isolation, the network of the clusters cannot be isolated, which may result in security risks. To ensure the network security of the platform, we recommend that you do not disable host network isolation. If you disable host network isolation in scenarios such as platform changes, enable host network isolation again after you complete the changes.
 
 **Configure blacklisted CIDR blocks**
 
@@ -8253,9 +8782,10 @@ You can use the feature of node debugging logs to query the requests of hosts ou
 4. On the dhzNodeDebugLog page, select **Start and End Time** and specify the start time and
 end time to query the requests of hosts outside the cloud platform accessing the host network of the cloud platform. You can also click **Advanced Filter** and configure the following parameters to query the requests of hosts outside the cloud platform accessing the host network of the cloud platform: **Start and End Time**, **Node**, **Source IP Address**, **Destination IP Address**,
 **Destination Port**, and **Protocol**.
-t The list displays aggregated request data of hosts outside the cloud platform accessing the host network of the cloud platform. If you want to view unaggregated request data, find the unaggregated request data that you want to view and click **Aggregation Failure Details** in the
-**Actions** column. In the panel that appears, view the unaggregated request data
-of hosts outside the cloud platform accessing the host network of the cloud platform.
+t
+
+> **Note:** The list displays aggregated request data of hosts outside the cloud platform accessing the host network of the cloud platform.
+> If you want to view unaggregated request data, find the unaggregated request data that you want to view and click **Aggregation Failure Details** in the **Actions** column. In the panel that appears, view the unaggregated request data of hosts outside the cloud platform accessing the host network of the cloud platform.
 
 ###### 7.4.2.2.2.3 VIP list
 
@@ -8378,7 +8908,9 @@ t
 
 **Delete a rule**
 
-The default rules cannot be deleted. Delete a single rule: Click **Delete** in the **Operation** column of the desired rule. In the dialog box that appears, click **OK**. Batch delete: Select multiple rules and click **Delete** below the list.
+> **Note:** The default rules cannot be deleted.
+
+Delete a single rule: Click **Delete** in the **Operation** column of the desired rule. In the dialog box that appears, click **OK**. Batch delete: Select multiple rules and click **Delete** below the list.
 
 **View the logs**
 
@@ -8396,7 +8928,10 @@ For hosts that do not require outbound connections, you can configure only speci
 3. In the left-side navigation pane, choose **Network Micro-segmentation Management** >
 **Host Route Control**.
 4. In the upper part of the Host Routing Control page, turn on or turn off **Status**.
-If **Status** is turned on, you can enable or disable routing control for all hosts. You can also enable or disable routing control for multiple hosts at a time. Otherwise, you cannot enable or disable routing control for hosts. By default, **Status** is turned off. If suspicious outbound connections are detected on hosts and the issue cannot be quickly resolved in cloud service software, you can turn on **Status** and enable routing control for the hosts on which the related service component is deployed following the confirmation of the R&D department.
+
+> **Note:** If **Status** is turned on, you can enable or disable routing control for all hosts. You can also enable or disable routing control for multiple hosts at a time. Otherwise, you cannot enable or disable routing control for hosts.
+> By default, **Status** is turned off. If suspicious outbound connections are detected on hosts and the issue cannot be quickly resolved in cloud service software, you can turn on **Status** and enable routing control for the hosts on which the related service component is deployed following the confirmation of the R&D department.
+
 5. On the **Route Configuration Status** tab, view the routing configurations of hosts. The
 following table describes the key parameters displayed on this tab.
 
@@ -8487,13 +9022,16 @@ t
 6. On the **Apply Policy** tab of the Host DNS Control page, view the information about
 application policies. Search for an application policy by **Hostname**, **IP**, and **Policies Used**.
 
-**Important**
+> **Important:** The **DNS Filter Status** parameter specifies whether the host can enable host DNS control. If **Not Running** is displayed in the DNS Filter Status column, host DNS control fails to be enabled due to host software conflicts. In this case, no control policies are sent to the hosts of this type or only preset system whitelist policies are sent.
+> After you attach a policy to a host and enable the DNS filtering feature, DNS resolution pipelines of the host are affected. Make sure that you understand the risks and perform these operations in change windows. For multiple hosts of the same server role of a cloud product cluster, you must apply the same DNS policy. Otherwise, the DNS resolution behavior of different nodes in the cloud product cluster may be inconsistent. This results in intermittent unavailability of some cloud product features.
 
-The **DNS Filter Status** parameter specifies whether the host can enable host DNS control. If **Not Running** is displayed in the DNS Filter Status column, host DNS control fails to be enabled due to host software conflicts. In this case, no control policies are sent to the hosts of this type or only preset system whitelist policies are sent. After you attach a policy to a host and enable the DNS filtering feature, DNS resolution pipelines of the host are affected. Make sure that you understand the risks and perform these operations in change windows. For multiple hosts of the same server role of a cloud product cluster, you must apply the same DNS policy. Otherwise, the DNS resolution behavior of different nodes in the cloud product cluster may be inconsistent. This results in intermittent unavailability of some cloud product features. t
+t
 7. Find the application policy that you want to manage and click **Bind Policy** in the **Actions**
 column. In the dialog box that appears, configure the **Policies to Bind** parameter and click
 **OK**.
-If you do not configure the **Policies to Bind** parameter, the attached policy is canceled.
+
+> **Note:** If you do not configure the **Policies to Bind** parameter, the attached policy is canceled.
+
 8. On the DNS Configuration Status tab, view the information about DNS servers.
 Click **Advanced Filter** and search for a DNS server by **Base Type**, **Network Type**, **Host**
 **Type**, **Cloud Service**, **Hostname**, **Host IP**, **Service IP Address**, and **DNS Filtering**.
@@ -8535,7 +9073,10 @@ t
 |---|---|
 | CIDR Block Type | The type of the CIDR block. Only ipv4 is supported. |
 
-View the CIDR block whitelist: Click **Advanced Filter** and filter CIDR blocks by configuring the **Network segment** and **IP address** parameters. Remove a CIDR block from the whitelist: Find the CIDR block that you want to remove and click **Delete** in the **Operation** column. In the message that appears, click **OK**. You can remove only custom CIDR blocks.
+View the CIDR block whitelist: Click **Advanced Filter** and filter CIDR blocks by configuring the **Network segment** and **IP address** parameters. Remove a CIDR block from the whitelist: Find the CIDR block that you want to remove and click **Delete** in the **Operation** column. In the message that appears, click **OK**.
+
+> **Note:** You can remove only custom CIDR blocks.
+
 5. On the **VPC Whitelist** tab, perform the following operations:
 Add a VPC to the whitelist: Click **Add VPC whitelist**. In the dialog box that appears, configure the parameters and click **OK**. The following table describes the parameters.
 
@@ -8559,9 +9100,12 @@ t
 6. On the **SLB backend Mount range whitelist** tab, perform the following operations:
 View the scope of backend servers that can be attached to the SLB instance on the tenant side. Manage the scope of backend servers that can be attached to the SLB instance on the tenant side: Find the policy that you want to manage and click **Edit** in the **Operation** column. In the dialog box that appears, modify the policy content, and click **OK**.
 
-**Important**
+> **Important:** This operation is risky. Check with the on-site security manager before you modify the policy.
 
-This operation is risky. Check with the on-site security manager before you modify the policy. t The format of the policy attribute is {"$AliUid":["cidr1", "cidr2"]}. By default, you can attach only resources that belong to the tenant, such as Elastic Compute Service (ECS) resources. After more CIDR blocks are added, you can attach user resources such as offline data centers and server node controller (NC). You cannot add the internal address of the cloud platform or CIDR blocks such as 0.0.0.0 or X.0.0.0/8 to the whitelist.
+t The format of the policy attribute is {"$AliUid":["cidr1", "cidr2"]}.
+
+> By default, you can attach only resources that belong to the tenant, such as Elastic Compute Service (ECS) resources. After more CIDR blocks are added, you can attach user resources such as offline data centers and server node controller (NC).
+> You cannot add the internal address of the cloud platform or CIDR blocks such as 0.0.0.0 or X.0.0.0/8 to the whitelist.
 
 ###### 7.4.2.2.8 Host trusted certificate status
 
@@ -8587,7 +9131,9 @@ This topic describes how to manage device network access to Apsara Stack. The Ap
 3. In the left-side navigation pane, click **Network Device Access Controller**.
 4. On the Device Network Access Management page, turn on or turn off **Illegal equipment**
 **check**.
-By default, **Illegal equipment check** feature is enabled. If you want to disable this feature to perform specific operations, contact the security manager. Enable this feature again after the operations are completed. After you disable the illegal equipment check feature, the following operations are not supported:
+
+> **Note:** By default, **Illegal equipment check** feature is enabled. If you want to disable this feature to perform specific operations, contact the security manager. Enable this feature again after the operations are completed. After you disable the illegal equipment check feature, the following operations are not supported:
+
 5. On the **Switch port mapping device information** tab, view the switch port mapping
 devices. Click **Advanced Filter** and search for a switch port mapping device by **Switch name**,
 **Port Name**, **Vlan status**, **Port status**, and **Inspection results**.
@@ -8723,9 +9269,9 @@ t
 3. If an application that has previously applied to PCM for a derived AccessKey pair of an
 initAK no longer requires the initAK due to reasons such as application discontinuation and version degradation, delete the corresponding application record on the AK application details tab. This prevents PCM from flagging the request link of the application as abnormal due to prolonged inactivity. An abnormal link will cause the rotation process for the entire derived AccessKey queue to halt.
 
-**Important**
+> **Important:** This is a high-risk operation. Fully evaluate the risks before you proceed.
 
-This is a high-risk operation. Fully evaluate the risks before you proceed. i. Find the application record that you want to delete and click **Delete** in the **Operation** column. ii. In the message that appears, click **OK**.
+i. Find the application record that you want to delete and click **Delete** in the **Operation** column. ii. In the message that appears, click **OK**.
 4. Click **Application log** in the **Operation** column. In the panel that appears, view the
 detailed requests for the corresponding initAK.
 
@@ -8820,15 +9366,19 @@ the Apsara Stack environment. The list includes **Product**, **Server Name**, **
 t
 5. Click **Advanced Filter** to filter target machines by combining **Product, Server Name**, **IP**,
 **Password Status**, and **Manage**.
-When the **Password Status** of a machine is **Abnormal**, **Rotation Period**, **Next**
-**Rotation Time**, and **Password Update Time** do not take effect.
-Click the icon in the **Password** column. The password will be displayed as plain text for 10 seconds and then automatically masked again.
+
+> **Note:** When the **Password Status** of a machine is **Abnormal**, **Rotation Period**, **Next** **Rotation Time**, and **Password Update Time** do not take effect.
+> Click the
+> icon in the **Password** column. The password will be displayed as
+> plain text for 10 seconds and then automatically masked again.
+
 6. Click the
 icon in the upper-right corner of the list to export passwords for all physical machines and KVMs. The exported file includes Product, Server Name, IP, Manage, Password Status, and Password.
 
 **Configure password rotation periods**
 
-You can configure the rotation period for a password only when **NORMAL** is displayed for Server Name and **Password Status** is **Matched**.
+> **Note:** You can configure the rotation period for a password only when **NORMAL** is displayed for Server Name and **Password Status** is **Matched**.
+
 1. Select the target machine or machines.
 To configure the password rotation period for a single machine, click **Configure**
 **Rotation Period** in the **Actions** column of the target machine.
@@ -8978,15 +9528,15 @@ keys. This is a high-risk operation.
 **Observation mode**: The system no longer automatically disables untrusted users,
 passwords, or keys. This increases platform security risks.
 
-**Important**
+> **Important:** If you fail to switch from **Observation mode** to **Interception mode**, untrusted users, passwords, or keys still exist in the platform. You must manually disable them in canary mode before switching modes.
 
-If you fail to switch from **Observation mode** to **Interception mode**, untrusted users, passwords, or keys still exist in the platform. You must manually disable them in canary mode before switching modes.
 5. On the **Full Users** tab, view all user information.
 Click **Advanced Filter** and filter by **Machine**, **Product**, **service**, **sr**, **System User**, **Key**
 **fingerprint**, **Key status**, **User trust source**, **Password trust source**, or **Key Trust**
 **Source** to obtain information about target system users.
-In the **User status** and **Password status** columns, you can filter users by status:
-**Disable**, **Untrusted**, or **Enable**.
+
+> **Note:** In the **User status** and **Password status** columns, you can filter users by status: **Disable**, **Untrusted**, or **Enable**.
+
 6. You can also perform the following operations:
 
 | Operation | Description |
@@ -9077,8 +9627,9 @@ described in the following table, and then click **Next Step**.
 
 t
 5. In the **Configure task phase** section, select a task phase.
-If you set **Trigger mode** to **Manual trigger**, you can specify whether to select the
-**Grayscale remove the original private key** phase.
+
+> **Note:** If you set **Trigger mode** to **Manual trigger**, you can specify whether to select the **Grayscale remove the original private key** phase.
+
 6. In the **Task template preview** section, check the template information and click **Create**.
 
 **Related operations**
@@ -9100,7 +9651,8 @@ and click **Edit** in the **Operation** column.
 t
 3. Modify the parameters in the **Configure task phase** section. In the **Task template**
 **preview** section, check the template information and click **Update**.
-You cannot modify preset rotation task templates.
+
+> **Note:** You cannot modify preset rotation task templates.
 
 **Execute a rotation task**
 
@@ -9142,41 +9694,41 @@ column. In the panel that appears, view the details of the task execution record
 
 **Pause a rotation task**
 
-If the execution status of a rotation task is **Running** in the **Task execution status** column, you can pause the rotation task.
+> **Note:** If the execution status of a rotation task is **Running** in the **Task execution status** column, you can pause the rotation task.
+
 1. Find the rotation task that you want to pause and click **Pause** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
 **Resume a rotation task**
 
-If the execution status of a rotation task is **Pause** in the **Task execution status** column, you can resume the rotation task.
+> **Note:** If the execution status of a rotation task is **Pause** in the **Task execution status** column, you can resume the rotation task.
+
 1. Find the rotation task that you want to resume and click **Continue** in the **Operation**
 column.
 2. In the message that appears, click **OK**.
 
 **Roll back a rotation task**
 
-If the type of a rotation task is **SSH key rotation** (including cross-region tasks) or **Global**
-**password-free removal** (including cross-region tasks), you can roll back the rotation
-task.
+> **Note:** If the type of a rotation task is **SSH key rotation** (including cross-region tasks) or **Global** **password-free removal** (including cross-region tasks), you can roll back the rotation task.
+
 1. Find the rotation task that you want to roll back and click **Rollback** in the **Operation**
 column.
 2. In the dialog box that appears, configure the **Rollback type** parameter and click **OK**. A
-new task for rolling back the key to the destination key pair is generated. t You can set the **Rollback type** parameter to **This rollback** or **Initialize**
-**Rollback**.
-After the rollback, the cloud will have more global access root account keys, which may cause the cloud platform to be in an insecure state. Recycle the root account key at the earliest opportunity.
+new task for rolling back the key to the destination key pair is generated. t
+
+> **Note:** You can set the **Rollback type** parameter to **This rollback** or **Initialize** **Rollback**.
+> After the rollback, the cloud will have more global access root account keys, which may cause the cloud platform to be in an insecure state. Recycle the root account key at the earliest opportunity.
 
 **Configure canary release for a rotation task**
 
-If the type of a rotation task is **SSH key rotation** and the **Remove the original private**
-**key in grayscale** phase is selected, you can configure canary release for the rotation
-task. For more information, see Task template management.
+> **Note:** If the type of a rotation task is **SSH key rotation** and the **Remove the original private** **key in grayscale** phase is selected, you can configure canary release for the rotation task. For more information, see Task template management.
+
 1. Find the rotation task that you want to manage and click **Grayscale configuration** in the
 **Operation** column.
 2. In the dialog box that appears, configure the following parameters and click **OK**.
 
-**Important**
-
-The parameters take effect in sequence from top to bottom. The current parameters are configured only when the number of machines that have been phased out is the same as the total number.
+> **Important:** The parameters take effect in sequence from top to bottom.
+> The current parameters are configured only when the number of machines that have been phased out is the same as the total number.
 
 **Query a task execution instance**
 
@@ -9236,10 +9788,11 @@ including **Account ID/name**, **Number of products used**, **Number of account 
 **Number of assets**.
 Click Advanced Filter to filter cloud product accounts by **Account name**, **Account ID**, and
 **Product**.
-**Number of products used**: indicates the number of products within the current
-account.
-**Number of assets**: indicates the number of assets created with the current
-account. t
+
+> **Note:** **Number of products used**: indicates the number of products within the current account.
+> **Number of assets**: indicates the number of assets created with the current account.
+
+t
 5. Click **Details** in the **Operation** column of an account. In the panel that appears, view the
 account details on the tabs described in the following table.
 
@@ -9277,13 +9830,19 @@ information about the desired virtual private cloud (VPC). t
 
 **platform accounts**
 
-You can disable the access control policy for the AccessKey pair of a platform account if the policy is in the enabled state. If you disable the access control policy for the AccessKey pair of a platform account, no security control policy is imposed on the AccessKey pair. The system cannot limit the AccessKey pair based on request sources. This incurs security risks. To disable an access control policy for an account, perform the following operations: i. Find the account and click **Disable** in the **Operation** column. ii. In the message that appears, confirm the values of the **Account name** and **AK** parameters and click **OK**. To disable access control policies for multiple accounts at a time, select the accounts and click **Disable** below the list.
+> **Note:** You can disable the access control policy for the AccessKey pair of a platform account if the policy is in the enabled state.
+> If you disable the access control policy for the AccessKey pair of a platform account, no security control policy is imposed on the AccessKey pair. The system cannot limit the AccessKey pair based on request sources. This incurs security risks.
+
+To disable an access control policy for an account, perform the following operations: i. Find the account and click **Disable** in the **Operation** column. ii. In the message that appears, confirm the values of the **Account name** and **AK** parameters and click **OK**. To disable access control policies for multiple accounts at a time, select the accounts and click **Disable** below the list.
 
 **Enable access control policies for the AccessKey pairs of**
 
 **platform accounts**
 
-You can enable the access control policy for the AccessKey pair of a platform account if the policy is in the disabled state. If you enable the access control policy for the AccessKey pair of a platform account, the AccessKey pair can be used only within the range specified by the network whitelist. To enable an access control policy for an account, perform the following operations: i. Find the account and click **Enable** in the **Operation** column. ii. In the message that appears, confirm the values of the **Account name** and **AK** parameters and click **OK**. To enable access control policies for multiple accounts at a time, select the accounts and click **Enable** below the list.
+> **Note:** You can enable the access control policy for the AccessKey pair of a platform account if the policy is in the disabled state.
+> If you enable the access control policy for the AccessKey pair of a platform account, the AccessKey pair can be used only within the range specified by the network whitelist.
+
+To enable an access control policy for an account, perform the following operations: i. Find the account and click **Enable** in the **Operation** column. ii. In the message that appears, confirm the values of the **Account name** and **AK** parameters and click **OK**. To enable access control policies for multiple accounts at a time, select the accounts and click **Enable** below the list.
 
 **Obtain the logs of blocked requests**
 
@@ -9296,9 +9855,8 @@ includes **Call Source**, **Client observation mode**, **Authentication method**
 
 **Disable existing access control policies for AccessKey pairs**
 
-**Important**
+> **Important:** You can click a button to disable existing access control policies for AccessKey pairs. After the existing access control policies are disabled, the security control capability for the request sources of platform accounts becomes unavailable. This incurs security risks. If you want to enable the account ACL control feature after the existing access control policies are disabled, you must enable the feature for the AccessKey pairs one by one. Therefore, exercise caution before you click the button.
 
-You can click a button to disable existing access control policies for AccessKey pairs. After the existing access control policies are disabled, the security control capability for the request sources of platform accounts becomes unavailable. This incurs security risks. If you want to enable the account ACL control feature after the existing access control policies are disabled, you must enable the feature for the AccessKey pairs one by one. Therefore, exercise caution before you click the button.
 1. Click the button on the left of the Account ID drop-down list above the account list.
 2. In the message that appears, click **OK**.
 
@@ -9313,7 +9871,9 @@ number of platform assets and the number of assets for each cloud base. Move the
 5. In the lower part of the Platform assets page, view the cloud resources created for each
 cloud base. You can click **Advanced Filter** to filter resources by **Resource instance ID**, **Resource**
 **instance name**, **Home Region**, **Exact attribution**, **Product**, **Cluster**, and **Service**.
-t On the **Object Storage service OSS** tab, you can enable or disable logging for one or more Object Storage Service (OSS) buckets within cloud platform accounts.
+t
+
+> **Note:** On the **Object Storage service OSS** tab, you can enable or disable logging for one or more Object Storage Service (OSS) buckets within cloud platform accounts.
 
 ##### 7.5.3.5 Service boundary
 
@@ -9476,20 +10036,24 @@ You can query the information about a logon policy by **policy name**.
 
 1. Find the logon policy that you want to delete and click **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
-t A logon policy that is bound to a user cannot be deleted. You must unbind the policy before you delete it.
+t
+
+> **Note:** A logon policy that is bound to a user cannot be deleted. You must unbind the policy before you delete it.
 
 **Disable a policy**
 
 1. Find the logon policy that you want to disable and click **Disable** in the **Actions** column.
 2. In the message that appears, click **OK**.
-After you disable a logon policy, users that are bound to the policy are not allowed for logon. You can disable a logon policy only when **Enable** is displayed in the **Enable**
-**status** column corresponding to the policy.
+
+> **Note:** After you disable a logon policy, users that are bound to the policy are not allowed for logon.
+> You can disable a logon policy only when **Enable** is displayed in the **Enable** **status** column corresponding to the policy.
 
 **Enable an anti-ransomware policy**
 
 1. Find the logon policy that you want to enable and click **Enable** in the **Actions** column.
 2. In the message that appears, click **OK**.
-You can enable a logon policy only when **Disable** is displayed in the **Enable status** column corresponding to the policy.
+
+> **Note:** You can enable a logon policy only when **Disable** is displayed in the **Enable status** column corresponding to the policy.
 
 #### 7.6.3 Two-factor authentication
 
@@ -9505,7 +10069,12 @@ The Apsara Uni-manager Operations Console currently supports only **MFA**. After
 
 **MFA**
 
-Add a key. a. Click **Add Key**. b. In the dialog box, set **Username** and click **OK**. The added user appears in the user list. t Enable MFA. a. Above the user list, filter users by combining **Username** and **Status**. b. Click **Enable MFA** in the **Actions** column of the target user. If the system displays **Succeeded**, MFA is enabled. Enable MFA in batch. a. Select multiple target users. b. At the bottom of the list, click **Batch Enable MFA**. c. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is enabled in batch. Show or hide the key. a. After MFA is enabled for a user, the **Show Key** button appears in the **Actions** column. b. Click **Show Key** to display the key in plaintext. c. Click **Hide Key** to display the key in ciphertext. Disable MFA. a. Click **Disable MFA** in the **Actions** column of the target user. b. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is disabled. Disable MFA in batch. a. Select multiple target users. b. At the bottom of the list, click **Batch Disable MFA**. c. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is disabled in batch. Download a key. a. Click the icon in the upper-right corner of the list. b. In the dialog box that appears, set **Password** and click **Confirm Download**. The downloaded package is encrypted and requires a password to decrypt. The generated package is valid for one hour. After you download it, distribute the key file separately. Do not send them at a time. The password must be at least 8 characters in length and must contain at least three of the following: uppercase letters, lowercase letters, digits, and special characters. t
+Add a key. a. Click **Add Key**. b. In the dialog box, set **Username** and click **OK**. The added user appears in the user list. t Enable MFA. a. Above the user list, filter users by combining **Username** and **Status**. b. Click **Enable MFA** in the **Actions** column of the target user. If the system displays **Succeeded**, MFA is enabled. Enable MFA in batch. a. Select multiple target users. b. At the bottom of the list, click **Batch Enable MFA**. c. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is enabled in batch. Show or hide the key. a. After MFA is enabled for a user, the **Show Key** button appears in the **Actions** column. b. Click **Show Key** to display the key in plaintext. c. Click **Hide Key** to display the key in ciphertext. Disable MFA. a. Click **Disable MFA** in the **Actions** column of the target user. b. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is disabled. Disable MFA in batch. a. Select multiple target users. b. At the bottom of the list, click **Batch Disable MFA**. c. In the dialog box that appears, click **OK**. If the system displays **Succeeded**, MFA is disabled in batch. Download a key. a. Click the icon in the upper-right corner of the list. b. In the dialog box that appears, set **Password** and click **Confirm Download**.
+
+> **Note:** The downloaded package is encrypted and requires a password to decrypt. The generated package is valid for one hour. After you download it, distribute the key file separately. Do not send them at a time.
+> The password must be at least 8 characters in length and must contain at least three of the following: uppercase letters, lowercase letters, digits, and special characters.
+
+t
 
 **No Authentication**
 
@@ -9541,7 +10110,10 @@ On the Configuration Management page, you can configure encryption algorithms fo
 **Center** > **Platform Encryption Management**.
 3. In the left-side navigation pane, click **Configuration Control**.
 4. Enable or disable encryption algorithms in the Static Data Encryption and Integrity
-Protection sections based on your business requirements. t For business in the Chinese mainland, the ShangMi (SM) algorithm, Advanced Encryption Standard (AES) algorithm, and Rivest-Shamir-Adleman (RSA) algorithm are supported by default. For business outside China, the AES algorithm and RSA algorithm are supported by default.
+Protection sections based on your business requirements. t
+
+> **Note:** For business in the Chinese mainland, the ShangMi (SM) algorithm, Advanced Encryption Standard (AES) algorithm, and Rivest-Shamir-Adleman (RSA) algorithm are supported by default. For business outside China, the AES algorithm and RSA algorithm are supported by default.
+
 5. If the **Modified.** prompt appears, the modification is complete.
 
 ##### 7.7.1.2 Storage encryption
@@ -9571,8 +10143,9 @@ When you enable or disable encryption, the service control business of the relat
 6. In the dialog box that appears, confirm the usage notes, select an encryption algorithm and
 a protection level, select **I have read the preceding notes and want to perform the**
 **operation.**, and then click **Enable**.
-You can configure the supported encryption algorithms on the **Configuration**
-**Management** page.
+
+> **Note:** You can configure the supported encryption algorithms on the **Configuration** **Management** page.
+
 t
 7. Find the database table that you want to view and click **View** in the **Key Information**
 column.
@@ -9590,8 +10163,10 @@ column.
 1. Find the database table that you want to view and click **Execution History** in the **Actions**
 column.
 2. In the panel that appears, view the execution records.
-t Click **Details** in the **Actions** column of an execution record to view the encryption progress. If the execution result of an execution record is abnormal, click **Retry** in the
-**Actions** column of the execution record to retry the encryption.
+t
+
+> **Note:** Click **Details** in the **Actions** column of an execution record to view the encryption progress.
+> If the execution result of an execution record is abnormal, click **Retry** in the **Actions** column of the execution record to retry the encryption.
 
 ###### 7.7.1.2.2 Log encryption at rest
 
@@ -9612,8 +10187,9 @@ This feature depends on the KmsIdcVirtualCluster or KmsIdcCluster. After you ena
 5. Enable log encryption at rest.
 i. Find the project that you want to manage and click **Enable Encryption** in the **Actions** column. Alternatively, select multiple projects and click **Batch Enable** below the list. t ii. In the dialog box that appears, confirm the usage notes, select an encryption algorithm and a protection level, select **I have read the preceding notes and want to perform**
 **the operation**, and then click **OK**.
-You can configure the supported encryption algorithms on the **Configuration**
-**Management** page.
+
+> **Note:** You can configure the supported encryption algorithms on the **Configuration** **Management** page.
+
 6. Click **View** in the **Key Information** column of the project to view the key information.
 
 **What to do next**
@@ -9661,15 +10237,22 @@ t
 5. On the ECS Snapshots page, find the snapshot that you want to encrypt and click **Enable**
 **Encryption** in the **Actions** column.
 6. Select an encryption algorithm and a protection level, and click **OK**. Encryption is enabled
-for the ECS snapshot. You can configure the supported encryption algorithms on the **Configuration**
-**Management** page.
+for the ECS snapshot.
+
+> **Note:** You can configure the supported encryption algorithms on the **Configuration** **Management** page.
+
 7. Click View in the Key Information column of the snapshot to view the key information.
 
 **What to do next**
 
 **Disable encryption**
 
-t You can disable encryption for a snapshot that is encrypted. After you disable encryption, newly written data is no longer encrypted. However, the data that has been encrypted can no longer be decrypted. Before you disable encryption, check whether the data needs to be decrypted.
+t
+
+> **Note:** You can disable encryption for a snapshot that is encrypted.
+> After you disable encryption, newly written data is no longer encrypted. However, the data that has been encrypted can no longer be decrypted.
+> Before you disable encryption, check whether the data needs to be decrypted.
+
 1. Find the snapshot that you want to manage and click **Disable Encryption** in the **Actions**
 column.
 2. If a success message appears, encryption is disabled for the ECS snapshot.
@@ -9733,7 +10316,9 @@ details page of the task template appears. If the detection task template has ne
 **Information**, **Latest Detection Overview**, and **Image Detection Details** sections.
 3. In the **Image Detection Details** section, find the image that you want to view and click
 **View** in the **Detection Log** column to view the logs.
-If the image integrity detection is not passed, the public image may have been tampered with, which poses security risks. In this case, avoid using this image to create ECS instances, and contact Apsara Stack technical support to update the image.
+
+> **Note:** If the image integrity detection is not passed, the public image may have been tampered with, which poses security risks. In this case, avoid using this image to create ECS instances, and contact Apsara Stack technical support to update the image.
+
 4. In the upper-right corner of the page, click **Detection History** to view the detection history
 of the task template. t
 
@@ -9741,13 +10326,15 @@ of the task template. t
 
 1. Find the task template that you want to modify and click **Modify** in the **Actions** column.
 2. In the dialog box that appears, modify the task template description and click **OK**.
-A task template for which the detection is in progress cannot be modified.
+
+> **Note:** A task template for which the detection is in progress cannot be modified.
 
 **Delete a detection task template**
 
 1. Find the task template that you want to delete and click **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
-A task template for which the detection is in progress cannot be deleted.
+
+> **Note:** A task template for which the detection is in progress cannot be deleted.
 
 ##### 7.7.1.4 Confidential computing
 
@@ -9775,7 +10362,8 @@ If the Enable Encryption task is in the **Executing** state, the encryption is b
 1. Find the instance that you want to manage and click **Disable Encryption** in the **Actions**
 column.
 2. In the message that appears, click **OK**.
-After you disable column-level encryption for an instance, the encryption for a specific column of data is disabled. Proceed with caution.
+
+> **Note:** After you disable column-level encryption for an instance, the encryption for a specific column of data is disabled. Proceed with caution.
 
 ###### 7.7.1.4.2 Column-level encryption
 
@@ -9817,7 +10405,11 @@ Manage certificate assets displayed on the platform.
 
 **Overview**
 
-Tianji tab: displays certificate assets hosted via Tianji. Network scan tab: displays certificate assets detected through network asset scanning. The scan covers only detected network assets that support TLS. Some certificates may be missed by network scanning. Certificate asset identification and governance remain ongoing. PASS tab: displays certificate assets hosted via PASS. minirds tab: displays certificate assets hosted via minirds. TianjiCli tab: displays certificate assets hosted via TianjiClient.
+Tianji tab: displays certificate assets hosted via Tianji. Network scan tab: displays certificate assets detected through network asset scanning.
+
+> **Note:** The scan covers only detected network assets that support TLS. Some certificates may be missed by network scanning. Certificate asset identification and governance remain ongoing.
+
+PASS tab: displays certificate assets hosted via PASS. minirds tab: displays certificate assets hosted via minirds. TianjiCli tab: displays certificate assets hosted via TianjiClient.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Data Security** > **Platform**
 **Cert Manager**.
@@ -9829,7 +10421,11 @@ dimension: **Tianji**, **Network scan**, **PAAS**, **minirds**, and **TianjiCli*
 **Validity period**.
 Click the **Validity period (days)** column to sort the certificate list in ascending or descending order.
 6. Click **Details** in the **Operation** column of a target certificate to view its details, including
-the certificate chain. t Certificate assets from different dimensions may partially overlap. Asset information is obtained through periodic scans and is not updated in real time.
+the certificate chain. t
+
+> **Note:** Certificate assets from different dimensions may partially overlap.
+
+Asset information is obtained through periodic scans and is not updated in real time.
 
 **More operations**
 
@@ -9851,11 +10447,17 @@ then click **Next Step**. Theme: The DN must include the CN field and may includ
 **Party issuance** method and click **Generate and download CSR**.
 t If you select Platform issuance, the certificate **Status** becomes **To be bound**. If you select Third-Party issuance, the certificate **Status** becomes **To be issued**.
 3. In the **Issue/upload certificates** step, click **Upload files**, select the third-party issued
-certificate file and upload it, then click **Next Step**. This step is available only when the **Certificate issuing type** is **Third-Party**
-**issuance**.
+certificate file and upload it, then click **Next Step**.
+
+> **Note:** This step is available only when the **Certificate issuing type** is **Third-Party** **issuance**.
+
 The certificate **Status** now becomes **To be bound**.
 4. In the **Bind associated services** step, select the services to bind with the certificate, then
-click **OK**. The certificate **Status** now becomes **To be delivered**. t By default, the certificate is bound to the service where the update is initiated, so explicit binding is not required. You can bind a certificate to multiple services. Once confirmed, the system will create a separate issuance task for each bound service. These tasks must be triggered manually. The execution process involves a rolling update to replace the existing certificate, so please proceed with caution.
+click **OK**. The certificate **Status** now becomes **To be delivered**. t
+
+> **Note:** By default, the certificate is bound to the service where the update is initiated, so explicit binding is not required.
+> You can bind a certificate to multiple services. Once confirmed, the system will create a separate issuance task for each bound service. These tasks must be triggered manually. The execution process involves a rolling update to replace the existing certificate, so please proceed with caution.
+
 5. In the left-side navigation pane, select **Certificate Update Tasks** to perform certificate
 issuance. For details, see Certificate update tasks.
 
@@ -9880,7 +10482,11 @@ Click **Turn off alert** in the **Operation** column of the target certificate t
 
 **Important**
 
-t By default, the alert remains disabled for 7 days, after which it is automatically turned on. This duration cannot be modified in the console. To change it, contact Alibaba Cloud technical support for assistance. You can also select multiple certificates and click **Turn off alerts** or **Enable alert** at the bottom of the page to disable or enable alerts in batch.
+t
+
+> By default, the alert remains disabled for 7 days, after which it is automatically turned on. This duration cannot be modified in the console. To change it, contact Alibaba Cloud technical support for assistance.
+
+You can also select multiple certificates and click **Turn off alerts** or **Enable alert** at the bottom of the page to disable or enable alerts in batch.
 
 **Scan based on current filter conditions**
 
@@ -9888,8 +10494,9 @@ t By default, the alert remains disabled for 7 days, after which it is automatic
 
 For non-baseline-declared certificates, the updated version will only appear in your assets after one scanning cycle. Since a full scan can be time-consuming, you can manually trigger a targeted scan using filter conditions. The updated certificate will be visible in your assets once the scan completes.
 1. Click **Advanced Filter** and select filter conditions.
-**Product** and **Service** are required. **Certificate ID**, **Certificate type**, **Certificate**
-**issuing type**, and **Validity period** are optional.
+
+> **Note:** **Product** and **Service** are required. **Certificate ID**, **Certificate type**, **Certificate** **issuing type**, and **Validity period** are optional.
+
 2. Click **Scan by current filter condition**.
 3. Wait until the scan task completes and then view the updated certificate list.
 
@@ -9923,7 +10530,10 @@ t
 5. Find the certificate update task that you want to view and click **Details** in the **Operation**
 column. The **Update Details** page appears. Update operations vary based on the certificate status. For more information, see the "Update a certificate" section of the Platform certificate assets topic.
 6. Deliver certificates. If the state of certificates is **To be delivered**, you can deliver the
-certificates. Deliver a single certificate: On the Certificate Update task page, find the certificate update task and click **Issue** in the **Operation** column. Deliver multiple certificates at a time: On the Certificate Update task page, select multiple certificate update tasks and click **Issue** in the lower part. During certificate delivery, rolling updates are performed. Proceed with caution.
+certificates. Deliver a single certificate: On the Certificate Update task page, find the certificate update task and click **Issue** in the **Operation** column. Deliver multiple certificates at a time: On the Certificate Update task page, select multiple certificate update tasks and click **Issue** in the lower part.
+
+> **Note:** During certificate delivery, rolling updates are performed. Proceed with caution.
+
 7. In the message that appears, click **OK**.
 The state of the certificates becomes **Issued**.
 
@@ -9931,7 +10541,9 @@ The state of the certificates becomes **Issued**.
 
 **Delete certificate update tasks**
 
-If you delete certificate update tasks, the certificates that are configured in the corresponding services are not affected and rolling updates are not performed. t Delete a single certificate update task: On the Certificate Update task page, find the certificate update task that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**. Delete multiple certificate update tasks at a time: On the Certificate Update task page, select multiple certificate update tasks and click **Delete** in the lower part. In the message that appears, click **OK**.
+> **Note:** If you delete certificate update tasks, the certificates that are configured in the corresponding services are not affected and rolling updates are not performed.
+
+t Delete a single certificate update task: On the Certificate Update task page, find the certificate update task that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**. Delete multiple certificate update tasks at a time: On the Certificate Update task page, select multiple certificate update tasks and click **Delete** in the lower part. In the message that appears, click **OK**.
 
 ##### 7.8.1.3 Platform root certificate
 
@@ -9958,7 +10570,10 @@ the system trusted certificate store. After installation, you can click **Revoke
 **Micro-segmentation Management** to check which hosts have successfully installed
 the certificate. Only **international standard certificates** can be pushed and revoked. You can select multiple target names and click **Push** or **Revoke** at the bottom of the page to perform batch operations.
 9. Click **Delete** in the **Operation** column of the target name to delete an uploaded third-party
-certificate. Only third-party certificates can be deleted. If the status of a third-party certificate is **Pushed**, you cannot delete it directly. You must first revoke the certificate, and then delete it..
+certificate.
+
+> **Note:** Only third-party certificates can be deleted.
+> If the status of a third-party certificate is **Pushed**, you cannot delete it directly. You must first revoke the certificate, and then delete it..
 
 ## 8 System settings
 
@@ -10004,13 +10619,21 @@ i. At the top of the page, view the counts for **Total Text**, **In Draft**, and
 
 1. In the application list, click **Export** in the **Actions** column of the target application.
 2. In the dialog box that appears, click **Export** to download the text for local viewing.
-Export format: The exported ZIP archive contains a JSON array. Each record includes appName (application name), key (text identifier), and i18n (an array of languagecontent pairs, where each item contains language and content, such as zh_CN and en_US).
+
+> **Note:** Export format: The exported ZIP archive contains a JSON array. Each record includes appName (application name), key (text identifier), and i18n (an array of language- content pairs, where each item contains language and content, such as zh_CN and en_US).
 
 **Import copy**
 
 1. Click **Import Texy** in the upper-right corner.
 2. In the dialog box that appears, select a ZIP file to import.
-Import format requirements: The file must be a ZIP archive no larger than 20 MB. The ZIP file must contain a JSON array. Each record must include appName (application name), key (copy identifier), and i18n (an array of language-content pairs, where each item contains language and content, such as zh_CN and en_US). This feature supports multiple appName values, allowing you to import texts into multiple applications simultaneously. `[` `{`
+
+> **Note:** Import format requirements:
+> The file must be a ZIP archive no larger than 20 MB.
+> The ZIP file must contain a JSON array.
+> Each record must include appName (application name), key (copy identifier), and i18n (an array of language-content pairs, where each item contains language and content, such as zh_CN and en_US).
+> This feature supports multiple appName values, allowing you to import texts into multiple applications simultaneously.
+> `[`
+> `{`
 
 ```json
     "appName": "my-app",
@@ -10020,7 +10643,10 @@ Import format requirements: The file must be a ZIP archive no larger than 20 MB.
       { "language": "zh_CN", "content": "保存成功" }
 ```
 
-`]` `}` `]`
+`]`
+
+> `}`
+> `]`
 
 ### 8.3 Card management
 
@@ -10145,14 +10771,16 @@ type, chart elements, axes, legend, auxiliary lines, and auxiliary areas, and th
 
 **Modify a card**
 
-You cannot modify preset cards.
+> **Note:** You cannot modify preset cards.
+
 1. Find the card that you want to modify and click **Edit**.
 2. Modify the settings of the card and click **Save Card**.
 3. In the message that appears, click **Yes**.
 
 **Delete a card**
 
-You cannot delete preset cards.
+> **Note:** You cannot delete preset cards.
+
 1. Find the card that you want to delete and click **Delete**.
 2. In the message that appears, click **OK**.
 
@@ -10187,8 +10815,9 @@ Apsara Stack environment. The following table describes each item of authorizati
 |---|---|
 
 6. View authorization issuance information for each cloud product in the region. The following
-table describes the specific authorization details. Click **Advanced Filter** to filter and retrieve target authorization information by combining **Product Name**, **Product Specification Name**, and **Product**
-**Specification Code**.
+table describes the specific authorization details.
+
+> **Note:** Click **Advanced Filter** to filter and retrieve target authorization information by combining **Product Name**, **Product Specification Name**, and **Product** **Specification Code**.
 
 | Item | Description |
 |---|---|
@@ -10223,9 +10852,9 @@ Apsara Stack environment. The following table describes each item of authorizati
 | Created At | The time when the authorization started. |
 
 2. Click **Show**to view authorization usage information for cloud products in the region. The
-following table describes the specific authorization information. Click **Advanced Filter** to filter and obtain target authorization information by combining the following criteria: **Hide Unreported Specifications**, **Product Name**,
-**Product Specification Code**, **Product Specification Name**, **Authorized**
-**Specification Dimensions**, and **Expired**.
+following table describes the specific authorization information.
+
+> **Note:** Click **Advanced Filter** to filter and obtain target authorization information by combining the following criteria: **Hide Unreported Specifications**, **Product Name**, **Product Specification Code**, **Product Specification Name**, **Authorized** **Specification Dimensions**, and **Expired**.
 
 | Item | Description |
 |---|---|
@@ -10303,10 +10932,11 @@ authorization specifications for the product by date within the selected time pe
 new authorization data packages.
 2. The authorization import list includes **File Information**, **Version Information**, **Time**
 **Information**, **Package Size**, and **Product Specification Quantity**.
-**Version Information** includes **Commercial Version** and **License Package**
-**Version**.
-**Time Information** includes **Effective Time** and **First Import Time**.
-Files marked with **Current Version** are the currently effective authorization data packages.
+
+> **Note:** **Version Information** includes **Commercial Version** and **License Package** **Version**.
+> **Time Information** includes **Effective Time** and **First Import Time**.
+> Files marked with **Current Version** are the currently effective authorization data packages.
+
 3. Click **Import Package**.
 i. In the **Select File** step, click to select a file or drag and drop the file into the dashed box to add an authorization data package. You can upload .tar files. After successful upload, click **Start Verification**. ii. In the **License Package Verification** step, the system automatically performs the following checks: Cloud Instance ID Match Check Content Parse Check Package Format Check After verification passes, click **Resume Data Comparison**. iii. In the **License Data Comparison** step, the system displays a comparison analysis between the imported data package and existing system data. After confirming the accuracy, click **Start Data Import**. iv. In the **Import Data** step, wait for the data package to be successfully imported.
 4. You can perform the following operations on successfully imported data packages.
@@ -10403,7 +11033,8 @@ You can configure a proxy to allow outbound messages.
 
 #### 8.5.2 Push history
 
-You can view the message push records of the platform.
+> You can view the message push records of the platform.
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Notification Management** > **Push History**.
@@ -10496,7 +11127,7 @@ following table describes the parameters.
 | Resolution Path for Obtaining Authenticated Username | This parameter takes effect when Protocol Type is set to OAuth 2.0. Enter the parsing path of the verified username. The objects returned from the service must be JSON objects. Note Use periods (.) to indicate the level of the username in the object. For example, user indicates that the username is at the root level, and ascm.user indicates that the username is at the second level. |
 |---|---|
 
-Click **Restore Factory Settings**. All data will be cleared after the factory settings are restored. Exercise caution when you perform this operation.
+> **Note:** Click **Restore Factory Settings**. All data will be cleared after the factory settings are restored. Exercise caution when you perform this operation.
 
 ### 8.8 Platform backup management
 
@@ -10511,11 +11142,23 @@ This topic describes how to go to the platform backup management page in the Aps
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, click **System Config**.
 6. In the left-side navigation pane, click **Platform Backup Management**.
@@ -10575,7 +11218,8 @@ A backup archive storage is created. For more information, see . A database inst
 **Backup Config**.
 3. Click the **MiniRDS Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -10598,7 +11242,8 @@ A backup archive storage is created. For more information, see . A PANGU cluster
 **Backup Config**.
 3. Click the **PANGU Master Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -10669,7 +11314,8 @@ A backup archive storage is created. For more information, see .
 **Backup Config**.
 3. Click the **In-cloud OSS Bucket Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
-The preset backup policy is used. You need to only specify storage settings.
+
+> **Note:** The preset backup policy is used. You need to only specify storage settings.
 
 | Parameter | Description |
 |---|---|
@@ -10689,7 +11335,8 @@ Platform backup is archived.
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 **Backup Records**.
 3. On the Archiving Details page, view the backup archive details.
-Archive details are not displayed one week after the backup is deleted.
+
+> **Note:** Archive details are not displayed one week after the backup is deleted.
 
 ## 9 User permissions
 
@@ -10747,29 +11394,38 @@ Export all users: Click **Export** in the upper-right corner of the Users tab to
 
 1. In the upper-right corner of the Users tab, click **Import**.
 2. In the Import dialog box, click **Click Here to Upload File** , select the user list file that you
-want to upload, and then upload the file. The imported users are imported to a level-1 department.
+want to upload, and then upload the file.
+
+> **Note:** The imported users are imported to a level-1 department.
 
 **Modify a user**
 
 1. Find the user that you want to modify and click **Modify** in the **Actions** column.
 2. In the **Modify user** dialog box, modify the parameters and click **OK**.
-If you change the department of the user, the user is removed from all user groups that the user is added to, and the roles assigned to the users by the user groups are removed.
+
+> **Note:** If you change the department of the user, the user is removed from all user groups that the user is added to, and the roles assigned to the users by the user groups are removed.
 
 **Delete a user**
 
 1. Find the user that you want to delete and click **Delete** in the **Actions** column.
 2. In the dialog box that appears, select **I have read the above prompts and confirmed**
 **the operation.** and click **OK**. The user is deleted.
-Deleted users are moved to the recycle bin. The AccessKey pairs of the users are disabled. Services or applications that use the AccessKey pairs of the users cannot run as expected. After you delete a user, all roles assigned to the user are removed and the user is deleted from all user groups that the user is added to.
+
+> **Note:** Deleted users are moved to the recycle bin. The AccessKey pairs of the users are disabled. Services or applications that use the AccessKey pairs of the users cannot run as expected.
+> After you delete a user, all roles assigned to the user are removed and the user is deleted from all user groups that the user is added to.
+
 3. On the **Recycle Bin** tab, view the information about deleted users.
-If you want to restore a user, find the user on the Recycle Bin tab and click **Recover** in the **Actions** column. In the message that appears, click **OK**. After the user is restored, the AccessKey pair of the user is disabled by default and can be enabled again.
+
+> **Note:** If you want to restore a user, find the user on the Recycle Bin tab and click **Recover** in the **Actions** column. In the message that appears, click **OK**. After the user is restored, the AccessKey pair of the user is disabled by default and can be enabled again.
 
 **Extend the validity period of an account**
 
 1. Find the user whose account validity period needs to be extended and click **Extend**
 **Account Validity** in the **Actions** column.
 2. In the dialog box that appears, configure the **Extend Account Validity** parameter and
-click **OK**. The value you set here cannot exceed the current validity period.
+click **OK**.
+
+> **Note:** The value you set here cannot exceed the current validity period.
 
 **Activate a user**
 
@@ -10786,7 +11442,8 @@ If your account is locked because you enter an incorrect login password for five
 1. Select the users for which you want to modify the login policies and click **Modify Logon**
 **Policy** below the user list.
 2. In the dialog box that appears, configure the **Logon Policy** parameter and click **OK**.
-The login policy of the opsadmin user cannot be modified.
+
+> **Note:** The login policy of the opsadmin user cannot be modified.
 
 ### 9.2 User group management
 
@@ -10836,7 +11493,10 @@ following table describes the parameters:
 2. In the dialog box that appears, you can add users to or remove users from the user group.
 Add: Click **Add**. In the dialog box that appears, select one or more usernames and click
 **OK**.
-You can add only users under the department to which the user group belongs. Delete: Click **Delete** in the **Actions** column to delete the username.
+
+> **Note:** You can add only users under the department to which the user group belongs.
+
+Delete: Click **Delete** in the **Actions** column to delete the username.
 3. Click **OK**.
 
 **Add a role**
@@ -10845,7 +11505,8 @@ If the user group has no roles, you can add roles to the group.
 1. In the list of user groups, find the user group whose role you want to modify and click **Add**
 **role** in the **Actions** column.
 2. In the dialog box that appears, select a role and click **OK**.
-You can add multiple roles to a user group.
+
+> **Note:** You can add multiple roles to a user group.
 
 **Modify the role of a user group**
 
@@ -10897,12 +11558,16 @@ following table and click **Next Step: Console Permissions**.
 
 6. In the **Console Permissions** step, configure console permissions for the role. Then, click
 **Next Step: Product Permissions**.
-You can search for permissions by using the search box in the upper part of this step. You can also select View Authorized Users to view only authorized menus. In the upper-right corner of this step, you can click **Select All: Read/Write** or
-**Select All: Read-only**.
+
+> **Note:** You can search for permissions by using the search box in the upper part of this step. You can also select View Authorized Users to view only authorized menus.
+> In the upper-right corner of this step, you can click **Select All: Read/Write** or **Select All: Read-only**.
+
 7. In the **Product Permissions** step, configure product permissions for the role. Then, click
 **Next Step: Menu Permissions**.
-You can search for permissions by using the search box in the upper part of this step. You can also select View Authorized Users to view only authorized menus. In the upper-right corner of this step, you can click **Select All: Read/Write** or
-**Select All: Read-only**.
+
+> **Note:** You can search for permissions by using the search box in the upper part of this step. You can also select View Authorized Users to view only authorized menus.
+> In the upper-right corner of this step, you can click **Select All: Read/Write** or **Select All: Read-only**.
+
 8. In the **Menu Permissions** step, configure menu permissions for the role and click **Create**.
 
 **Related operations**
@@ -10913,14 +11578,17 @@ You can search for permissions by using the search box in the upper part of this
 2. Find the role and click the role name. On the **Role Details** page, view the basic
 information about the role and the information on the **Console Permissions**, **Product**
 **Permissions**, **Menu Permissions**, and **Authorized User** tabs.
-If you want to modify a custom role, you can click **Edit** in the upper-right corner of the Role Details page.
+
+> **Note:** If you want to modify a custom role, you can click **Edit** in the upper-right corner of the Role Details page.
+
 3. On the **Authorized User** tab, view the users that are associated with the role.
 If you want to associate a user with the role, click **Add Authorized Users**. In the dialog box that appears, enter a username in the **Username** field, select the user, and then click **OK**. If you want to disassociate a user from the role, find the user and click **Remove** in the
 **Actions** column. In the message that appears, click **Remove**.
 
 **Modify a custom role**
 
-Preset roles cannot be modified.
+> **Note:** Preset roles cannot be modified.
+
 1. On the Roles page, find the custom role that you want to modify and click **Edit** in the
 **Actions** column.
 2. Modify the role permissions by following the same steps for creating a role. Then, click
@@ -10928,7 +11596,9 @@ Preset roles cannot be modified.
 
 **Delete a role**
 
-Preset roles cannot be deleted. Before you delete a role, make sure that the role is not associated with a user. Otherwise, the role cannot be deleted.
+> **Note:** Preset roles cannot be deleted.
+> Before you delete a role, make sure that the role is not associated with a user. Otherwise, the role cannot be deleted.
+
 1. On the Roles page, find the custom role that you want to delete and click **Delete** in the
 **Actions** column.
 2. In the message that appears, click **Delete**.
@@ -10961,7 +11631,8 @@ department and click **Add Department** in the right section. In the Add Departm
 
 **Delete a department**
 
-Before you delete a department, make sure that no sub-departments, users, or user groups exist in the department. Otherwise, the department cannot be deleted.
+> **Note:** Before you delete a department, make sure that no sub-departments, users, or user groups exist in the department. Otherwise, the department cannot be deleted.
+
 1. In the catalog tree on the left, select the department that you want to delete and click
 **Delete Department** in the right section.
 2. In the message that appears, click **OK**. Then, the department is deleted.
@@ -11042,7 +11713,10 @@ are described in the following table and click **OK**.
 1. In the menu list, find the menu that you want to modify and click **Modify** in the **Actions**
 column.
 2. In the Modify Menu panel, modify the parameters and click **OK**.
-If **Show** cannot be turned on, the page displays the reason why the menu cannot be displayed. You cannot modify the **URL** of a preset menu.
+
+> **Note:** If **Show** cannot be turned on, the page displays the reason why the menu cannot be displayed.
+> You cannot modify the **URL** of a preset menu.
+
 3. In the **Actions** column, click **Move Up** or **Move Down** to change the order of the menu.
 
 **Delete a menu**
@@ -11050,7 +11724,8 @@ If **Show** cannot be turned on, the page displays the reason why the menu canno
 1. In the menu list, find the menu that you want to delete and click **Delete** in the **Actions**
 column.
 2. In the message that appears, click **OK**.
-Built-in menus of the system cannot be deleted.
+
+> **Note:** Built-in menus of the system cannot be deleted.
 
 ## 10 Emergency response
 
@@ -11063,7 +11738,9 @@ This topic describes the scenarios in which the emergency response is triggered.
 following figure.
 3. Click **Enable emergency mode**.
 4. Enter a valid username and password, and click **Log In**.
-The username and password used to log on to the Apsara Uni-manager Operations Console are the same as those used to switch to the emergency mode of the console.
+
+> **Note:** The username and password used to log on to the Apsara Uni-manager Operations Console are the same as those used to switch to the emergency mode of the console.
+
 5. After the Apsara Uni-manager Operations Console switches to the emergency mode, the
 emergency response page appears.
 
@@ -11073,7 +11750,8 @@ emergency response page appears.
 
 Some global faults in Apsara Stack, such as MiniRDS faults, faults of the physical network, and OpsDNS faults, may cause exceptions in the Apsara Uni-manager Management Console. This topic describes **watchdog monitoring and alerting**, which is used to monitor and alert the global availability. Watchdog monitoring and alerting can be used to monitor faults that may cause global faults or invalidate the original alert list. Watchdog monitoring and alerting displays**Overview of final state of key products (exception/All SR)** , **Monitoring**
 **Status**, and **Alert status** for faults.
-The Monitoring Alarm page displays only watchdog monitoring and alerting items. To view other monitoring and alerting items, choose **Monitor&Alarms** > **Alerts** > **Alerts** in the Apsara Uni-manager Operations Console.
+
+> **Note:** The Monitoring Alarm page displays only watchdog monitoring and alerting items. To view other monitoring and alerting items, choose **Monitor&Alarms** > **Alerts** > **Alerts** in the Apsara Uni-manager Operations Console.
 
 **Features**
 

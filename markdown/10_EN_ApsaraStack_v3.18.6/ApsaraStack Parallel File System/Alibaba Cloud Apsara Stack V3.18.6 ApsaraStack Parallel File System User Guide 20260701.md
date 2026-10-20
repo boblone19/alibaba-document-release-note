@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 14
 source_pdf: "15ec2af985e548d4_Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E8%A1%8C%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8APFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraStack%20Parallel%20File%20System%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraStack Parallel File System User Guide 20260701
@@ -40,17 +40,17 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**. For more information about how to bind and enable MFA, see **Security Center** >
-**MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**.
+
+> **Note:** For more information about how to bind and enable MFA, see **Security Center** > **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+
 5. In the top navigation bar, choose **Products > Storage > APFS** to go to the ApsaraStack
 Parallel File System (APFS) console.
 
@@ -115,7 +115,8 @@ Before you delete an APFS file system, the file system is unmounted from the mou
 the pointer over the **File System ID/Name** column, and click the icon.
 2. In the dialog box that appears, enter a new description.
 3. Then, click **OK**.
-The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
+
+> **Note:** The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
 
 ### 3.2 Scale up an APFS file system
 
@@ -126,7 +127,10 @@ Create an APFS file system.
 2. On the APFS page, find the file system that you want to scale up and click **Scale Up** in the
 Actions column.
 3. On the File system expansion page, select a value for the **Total new capacity (TiB)**
-parameter. The new total capacity cannot be lower than the current total capacity and cannot exceed the maximum total capacity. The maximum total capacity of a Performance APFS file system is 1 PiB.
+parameter.
+
+> **Note:** The new total capacity cannot be lower than the current total capacity and cannot exceed the maximum total capacity. The maximum total capacity of a Performance APFS file system is 1 PiB.
+
 4. Click **Submit** to complete the scale-up.
 
 ### 3.3 Resource monitoring
@@ -154,7 +158,10 @@ Data replication from APFS to OSS: The data stored in an APFS file system is rep
 1. Log on to the APFS console.
 2. On the APFS page, click the ID or name of the file system for data replication or click
 **Details** in the **Actions** column to go to the File System Details page. On the page that
-appears, click the **Data Flow** tab to go to the data flow task page. If the system detects that the current organization is not granted the RAM role AliyunOSSPrivateCloudDrsSyncRole, the **Authorize Access to Cloud Resources** dialog box appears when you go to the data flow task page. In this case, you can select an organization in the dialog box to complete the authorization.
+appears, click the **Data Flow** tab to go to the data flow task page.
+
+> **Note:** If the system detects that the current organization is not granted the RAM role AliyunOSSPrivateCloudDrsSyncRole, the **Authorize Access to Cloud Resources** dialog box appears when you go to the data flow task page. In this case, you can select an organization in the dialog box to complete the authorization.
+
 3. Click **Create Data Flow Task**. In the Create Data Flow Task dialog box, configure the
 parameters. The following table describes the parameters.
 
@@ -167,7 +174,8 @@ parameters. The following table describes the parameters.
 | Destinatio n Path |   |
 | Descriptio n | Enter the description of the data replication task. |
 
-The amount of data for a single data flow task cannot exceed 100 TiB.
+> **Note:** The amount of data for a single data flow task cannot exceed 100 TiB.
+
 4. Click **OK** to submit the data replication task.
 5. After a replication task is created, you can view relevant information of the replication task,
 such as task status, task type, task result, data source, destination path, description, and creation time, in the data flow task list.

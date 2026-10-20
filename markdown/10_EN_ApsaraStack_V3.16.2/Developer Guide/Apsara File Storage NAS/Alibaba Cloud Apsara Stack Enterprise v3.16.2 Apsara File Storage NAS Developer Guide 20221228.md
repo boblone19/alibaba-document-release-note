@@ -5,7 +5,7 @@ doc_version: "20221228"
 pdf_pages: 95
 source_pdf: "a1c92bd8586d6963_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230602/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20File%20Storage%20NAS%20Developer%20Guide%2020221228.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228
@@ -91,16 +91,17 @@ Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 
-For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 1.2 View the information about API operations
@@ -130,9 +131,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 An AccessKey ID and an AccessKey secret are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. AccessKey credentials can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -149,9 +148,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Personal Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -180,15 +177,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer ove
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your RAM role .
 2. Obtain the STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code. public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. // Specify the region ID, AccessKey ID, and AccessKey secret. DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccess KeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); String assumeRole = callAssumeRole(client); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // Obtain the STS AccessKey 3-tuple. String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); } private static String callAssumeRole(IAcsClient client) { CommonRequest request = new CommonRequest(); // Replace sts.aliyuns.com with the endpoint of STS. The endpoint of STS is in the sts-vpc.${global:regio n}.${global:internet-domain} format. request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // Replace <yourRoleSessionName> with the name of the current session. request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // Replace "<yourRoleArn>" with the actual ARN that you obtained for the RAM role in the preceding ste p. request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); return response.getData(); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } return null; }
+public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. // Specify the region ID, AccessKey ID, and AccessKey secret. DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccess KeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); String assumeRole = callAssumeRole(client); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // Obtain the STS AccessKey 3-tuple. String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); } private static String callAssumeRole(IAcsClient client) { CommonRequest request = new CommonRequest(); // Replace sts.aliyuns.com with the endpoint of STS. The endpoint of STS is in the sts-vpc.${global:regio n}.${global:internet-domain} format. request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // Replace <yourRoleSessionName> with the name of the current session. request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // Replace "<yourRoleArn>" with the actual ARN that you obtained for the RAM role in the preceding ste p. request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); return response.getData(); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } return null; }
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample
 code provides an example on how to call the DescribeRegions operation of Apsara File Storage NAS.
 
-**Note**
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code. public static void main(String[] args) { // Replace "<yourRegionID>" with the actual region ID. // Replace "<yourStsAccessKeyID>" and "<yourStsAccessKeySecret>" with the AccessKey ID and AccessK ey secret of the 3-tuple obtained in the preceding step. DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourStsAccesskey>", "<yourStsAcc essSecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); CommonRequest request = new CommonRequest(); request.setSysDomain("nas.aliyuns.com"); request.setSysProduct("NAS"); request.setSysAction("DescribeRegions"); request.setSysVersion("2017-06-26"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // Replace "<yourRegionID>" with the actual region ID. request.putHeadParameter("x-acs-regionid", "<yourRegionID>"); // Replace "<yourStsToken>" with the security token of the 3-tuple obtained in the preceding step. request.putQueryParameter("SecurityToken", "<yourStsToken>"); // Optional. Replace "<yourResourceGroupID>" with the actual resource set ID. // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>"); // Required. Replace "<yourOrganizationID>" with the actual organization ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>"); try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } }
+public static void main(String[] args) { // Replace "<yourRegionID>" with the actual region ID. // Replace "<yourStsAccessKeyID>" and "<yourStsAccessKeySecret>" with the AccessKey ID and AccessK ey secret of the 3-tuple obtained in the preceding step. DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourStsAccesskey>", "<yourStsAcc essSecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); CommonRequest request = new CommonRequest(); request.setSysDomain("nas.aliyuns.com"); request.setSysProduct("NAS"); request.setSysAction("DescribeRegions"); request.setSysVersion("2017-06-26"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // Replace "<yourRegionID>" with the actual region ID. request.putHeadParameter("x-acs-regionid", "<yourRegionID>"); // Replace "<yourStsToken>" with the security token of the 3-tuple obtained in the preceding step. request.putQueryParameter("SecurityToken", "<yourStsToken>"); // Optional. Replace "<yourResourceGroupID>" with the actual resource set ID. // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>"); // Required. Replace "<yourOrganizationID>" with the actual organization ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>"); try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } }
 
 ### 1.5 Obtain the values of common header parameters
 
@@ -271,9 +268,9 @@ On the **Details** page, view the **nas.openapi.endpoint** value, which is the e
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain Apsara File Storage NAS SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Apsara Stack SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java or Python. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java or Python. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. The following table provides links to the references and GitHub source code of NAS SDKs for different programming languages.
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. The following table provides links to the references and GitHub source code of NAS SDKs for different programming languages.
 
 | Programming language | GitHub source code |
 |---|---|
@@ -296,9 +293,7 @@ An authorized account and an AccessKey pair are obtained. The AccessKey pair con
 
 If you use Apache Maven to manage a Java project, you need to only import the JAR file of Apsara Stack SDK for Java to the pom.xml file of the project.
 
-**Note**
-
-To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2.
+> **Note:** To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2.
 
 **Use NAS SDK for Java**
 
@@ -307,9 +302,9 @@ To use NAS SDK for Java, perform the following steps:
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exceptions.
 
-**Note**
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code. import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsRequest; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsResponse; public class Main { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>" // Replace the parameter with the region ID SDK for Java <yourRegionID>, // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. // Specify the endpoint of the service. Replace the variables with the actual values. profile.addEndpoint("<yourRegionID>", "<Product>", "<Endpoint>"); // Configure the request parameters. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true);// Ignore the certificate. clientConfig.setReadTimeoutMillis(<readTimeout>);// Optional. Specify the read timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// Optional. Specify the connection ti meout period. Unit: milliseconds. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// Optional. Specify the maximum num ber of requests for each host. clientConfig.setMaxRequests(<maxRequests>);// Optional. Specify the maximum number of requests. clientConfig.setProtocolType(ProtocolType.HTTP); // Optional. Specify the request protocol. Default v alue: HTTP. /* Optional. Specify the IP address and port of the proxy. clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); or clientConfig.setHttpsProxy("https://192.168.XX.XX:33XX"); */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. DescribeFileSystemsRequest request = new DescribeFileSystemsRequest(); // Business parameters. request.setPageSize(10); request.setPageNumber(1); // The header parameters that are used for resource isolation. Replace the values with your actual or ganization ID and resource set ID. request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter("x-acs-resourcegroupid", "11"); // Initiate the request and handle the response or exceptions. DescribeFileSystemsResponse response; try { response = client.getAcsResponse(request); for (DescribeFileSystemsResponse.FileSystem fileSystem:rsp.getFileSystems()) { System.out.println(fileSystem.getFileSystemId()); } } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { e.printStackTrace(); } } }
+import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsRequest; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsResponse; public class Main { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>" // Replace the parameter with the region ID SDK for Java <yourRegionID>, // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. // Specify the endpoint of the service. Replace the variables with the actual values. profile.addEndpoint("<yourRegionID>", "<Product>", "<Endpoint>"); // Configure the request parameters. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true);// Ignore the certificate. clientConfig.setReadTimeoutMillis(<readTimeout>);// Optional. Specify the read timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// Optional. Specify the connection ti meout period. Unit: milliseconds. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// Optional. Specify the maximum num ber of requests for each host. clientConfig.setMaxRequests(<maxRequests>);// Optional. Specify the maximum number of requests. clientConfig.setProtocolType(ProtocolType.HTTP); // Optional. Specify the request protocol. Default v alue: HTTP. /* Optional. Specify the IP address and port of the proxy. clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); or clientConfig.setHttpsProxy("https://192.168.XX.XX:33XX"); */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. DescribeFileSystemsRequest request = new DescribeFileSystemsRequest(); // Business parameters. request.setPageSize(10); request.setPageNumber(1); // The header parameters that are used for resource isolation. Replace the values with your actual or ganization ID and resource set ID. request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter("x-acs-resourcegroupid", "11"); // Initiate the request and handle the response or exceptions. DescribeFileSystemsResponse response; try { response = client.getAcsResponse(request); for (DescribeFileSystemsResponse.FileSystem fileSystem:rsp.getFileSystems()) { System.out.println(fileSystem.getFileSystemId()); } } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { e.printStackTrace(); } } }
 
 ### 2.2 Use SDK
 
@@ -321,21 +316,25 @@ SDK for Java This topic describes how to install NAS SDK for Java. Apsara Stack 
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
+> **Note:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>", // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. SDK for Java
+DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>", // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. SDK for Java
 
-**Note**
-
-In the preceding sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
+> **Note:** In the preceding sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
 #### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. SDK for Java // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported da ta type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following c ode is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>"); Or clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.168.XX.XX:33XX with the actual IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig);
+SDK for Java // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported da ta type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following c ode is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>"); Or clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.168.XX.XX:33XX with the actual IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig);
 
 #### 2.2.4 Initiate a request
 
@@ -376,9 +375,18 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 This example shows how to call the DescribeFileSystems operation to query file systems.
 
-**Note**
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> You need to configure the following variables:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
+> <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. You need to configure the following variables: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy. import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; class DescribeFileSystems { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>", // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setProtocolType(ProtocolType.HTTP); /** Optional. Configure the HTTP proxy based on your business requirements. Format: clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); Specify the IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. CommonRequest request = new CommonRequest(); // Specify the endpoint of the service. request.setSysDomain("nas.cn-hangzhou.com"); request.setSysProduct("NAS"); request.setSysVersion("2017-06-26"); SDK for Java q y ( ) request.setSysAction("DescribeFileSystems"); request.putQueryParameter("PageNumber", "1"); request.putQueryParameter("PageSize", "10"); request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");// Optional. Specify th e resource set ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");// Required. Specify the o rganization ID. request.putHeadParameter("x-acs-caller-sdk-source","ApiTestDemo");// Required. Specify the source o f the API call. request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// Optional. Specify the region ID. If yo u use Apsara Stack Enterprise V3.15.0 or earlier, this parameter is required. request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// Optional Specify the instance ID . If you need to delete, modify, or query an instance, this parameter is required. /** When you use an STS AccessKey 3-tuple to call an API operation, you must add the SecurityToken field i n the request parameters. Format: request.putQueryParameter("SecurityToken", "<yourSecurityToken>"); Specify your security token. */ try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { System.out.println("ErrCode:" + e.getErrCode()); System.out.println("ErrMsg:" + e.getErrMsg()); System.out.println("RequestId:" + e.getRequestId()); } } } SDK for Python
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; class DescribeFileSystems { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>", // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setProtocolType(ProtocolType.HTTP); /** Optional. Configure the HTTP proxy based on your business requirements. Format: clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); Specify the IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. CommonRequest request = new CommonRequest(); // Specify the endpoint of the service. request.setSysDomain("nas.cn-hangzhou.com"); request.setSysProduct("NAS"); request.setSysVersion("2017-06-26"); SDK for Java q y ( ) request.setSysAction("DescribeFileSystems"); request.putQueryParameter("PageNumber", "1"); request.putQueryParameter("PageSize", "10"); request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");// Optional. Specify th e resource set ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");// Required. Specify the o rganization ID. request.putHeadParameter("x-acs-caller-sdk-source","ApiTestDemo");// Required. Specify the source o f the API call. request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// Optional. Specify the region ID. If yo u use Apsara Stack Enterprise V3.15.0 or earlier, this parameter is required. request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// Optional Specify the instance ID . If you need to delete, modify, or query an instance, this parameter is required. /** When you use an STS AccessKey 3-tuple to call an API operation, you must add the SecurityToken field i n the request parameters. Format: request.putQueryParameter("SecurityToken", "<yourSecurityToken>"); Specify your security token. */ try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { System.out.println("ErrCode:" + e.getErrCode()); System.out.println("ErrMsg:" + e.getErrMsg()); System.out.println("RequestId:" + e.getRequestId()); } } } SDK for Python
 
 ## 3 Call examples for SDK for Python
 
@@ -429,9 +437,9 @@ This topic describes how to install Alibaba Cloud SDK for Python and Apsara File
 1. Install Alibaba Cloud SDK for Python.
 Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use NAS SDK for Python, you must install the SDK core library for Python and NAS SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use NAS SDK for Python, you must install the SDK core library for Python and NAS SDK for Python. If you use Python 2.x, run the following command to install the SDK core library: pip install aliyun-python-sdk-core If you use Python 3.x, run the following command to install the SDK core library: pip3 install aliyun-python-sdk-core-v3
+If you use Python 2.x, run the following command to install the SDK core library: pip install aliyun-python-sdk-core If you use Python 3.x, run the following command to install the SDK core library: pip3 install aliyun-python-sdk-core-v3
 2. Install NAS SDK for Python.
 If you use Python 2.x, run the following command to install NAS SDK for Python: pip install aliyun-python-sdk-nas If you use Python 3.x, run the following command to install NAS SDK for Python: SDK for Python pip3 install aliyun-python-sdk-nas
 
@@ -439,17 +447,15 @@ If you use Python 2.x, run the following command to install NAS SDK for Python: 
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. NAS SDK for Python supports authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Important**
+> **Important:** Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
-Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. clt = client.AcsClient(access_key, access_secret, region_id)
+clt = client.AcsClient(access_key, access_secret, region_id)
 
 #### 3.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -510,9 +516,17 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 This example shows how to call the DescribeFileSystems operation to query file systems. SDK for Python
 
-**Note**
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> You need to configure the following variables:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. You need to configure the following variables: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Python from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
+SDK for Python from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 # Specify the AccessKey ID, AccessKey secret, and region ID.
 client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('NAS') request.set_action_name('DescribeFileSystems') request.set_version('2017-06-26') request.set_domain('<nas.aliyuncs.com>') # Specify the endpoint of the service.
 # or:
@@ -1308,17 +1322,17 @@ Before you use ASAPI to call an API operation, you must obtain the ASAPI SDK. Fo
 3. Obtain an AccessKey pair.
 Obtain the AccessKey pair that is required for calling an API operation.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 4. Obtain the region ID.
 Obtain the region ID that is required for calling an API operation.
 5. Obtain the organization ID and resource set ID.
 You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer G uide.
 
-**Note**
+> **Note:** When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources.
+> If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default.
+> If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 
-When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 6. Refer to the API reference.
 Obtain the developer guide of the Apsara Stack service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 7. Use ASAPI SDK to call API operations.
@@ -1372,17 +1386,15 @@ the root domain, contact Apsara Stack O&M personnel. Take note of this point: Us
 
 Enter the following code. If you cannot access the endpoint, the endpoint is unavailable. You can use the historical endpoint. curl https://public.asapi.${global:region}.${global:internet-domain}/api/version -k
 
-**Note**
+> **Note:** ${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained.
 
-${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained. Available endpoint example: Unavailable endpoint example:
+Available endpoint example: Unavailable endpoint example:
 
 **Historical endpoint**
 
 Only the HTTP protocol is supported. The historical endpoint is suffixed with intranet-domain and in the following format: http://server.asapi.${global:region}.${global:intranet-domain}/asapi/v3
 
-**Note**
-
-${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained.
+> **Note:** ${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained.
 
 **Procedure**
 
@@ -1390,14 +1402,13 @@ To obtain the actual values of the variables ${global:region}, ${global:internet
 1. In the address bar, enter the region-id.aso.intranet-domain-id.com URL and press the Enter
 key.
 
-**Note**
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
 
-You can select a language from the drop-down list in the upper-right corner of the page.
 2. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
 
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 3. Click **Log On** to log on to the **Apsara Uni-manager Operations Console**.
 4. In the top navigation bar, choose **Products** > **Platforms** > **Apsara Infrastructure Management**
 **Framework** to go to Apsara Infrastructure Management.
@@ -1415,9 +1426,7 @@ file content in the right window, and then press Ctrl + F. Search for region, in
 
 domain value.
 
-**Note**
-
-${global:} is not included in the endpoint of ASAPI that you can use.
+> **Note:** ${global:} is not included in the endpoint of ASAPI that you can use.
 
 #### 5.2.2 Obtain Apsara Stack SDKs
 
@@ -1464,9 +1473,7 @@ Apsara Stack SDK for Python
 | requests | 2.26.0 |
 | urllib3 | 1.26.6 |
 
-**Note**
-
-You can use the version for each package listed in the preceding table or a later version.
+> **Note:** You can use the version for each package listed in the preceding table or a later version.
 
 ### 5.3 STS overview
 

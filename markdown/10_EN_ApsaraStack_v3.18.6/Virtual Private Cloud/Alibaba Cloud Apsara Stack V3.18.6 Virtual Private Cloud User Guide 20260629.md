@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 163
 source_pdf: "61d5165a378dbc5e_Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9CVPC/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Virtual%20Private%20Cloud%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Virtual Private Cloud User Guide 20260629
@@ -124,22 +124,25 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. nsole
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**.
 
 ## 3 Quick start
@@ -205,7 +208,12 @@ You can plan vSwitches by referring to the following information: When you use a
 
 **CIDR block planning**
 
-When you create a VPC and vSwitch, you need to specify the VPC CIDR block and the vSwitch CIDR block. The size of the CIDR block determines the amount of resources that can be deployed. Proper CIDR block planning avoids address conflicts and ensures the network scalability, whereas improper planning may incur high costs for network reconstruction. After you specify a vSwitch CIDR block, you cannot modify it. If the available IP addresses are insufficient due to improper planning, you can add secondary CIDR blocks to provide more IP addresses. You cannot modify secondary CIDR blocks. We provide the following suggestions for planning VPC CIDR blocks and vSwitch CIDR blocks: We recommend that you use private IPv4 CIDR blocks defined by Request for Comments (RFC) 1918 and the /16 network mask for VPC. To expand a VPC CIDR block, you can add secondary CIDR blocks to the VPC. If you deploy your services in one VPC, we recommend that you specify a large CIDR block to reserve sufficient IP addresses for later use. When you plan multiple VPCs, we recommend that you specify non-overlapping CIDR blocks for your VPCs. When you plan multiple zones, we recommend that you specify non-overlapping CIDR blocks for your vSwitches.
+When you create a VPC and vSwitch, you need to specify the VPC CIDR block and the vSwitch CIDR block. The size of the CIDR block determines the amount of resources that can be deployed. Proper CIDR block planning avoids address conflicts and ensures the network scalability, whereas improper planning may incur high costs for network reconstruction.
+
+> **Note:** After you specify a vSwitch CIDR block, you cannot modify it.
+> If the available IP addresses are insufficient due to improper planning, you can add secondary CIDR blocks to provide more IP addresses. You cannot modify secondary CIDR blocks.
+
+We provide the following suggestions for planning VPC CIDR blocks and vSwitch CIDR blocks: We recommend that you use private IPv4 CIDR blocks defined by Request for Comments (RFC) 1918 and the /16 network mask for VPC. To expand a VPC CIDR block, you can add secondary CIDR blocks to the VPC. If you deploy your services in one VPC, we recommend that you specify a large CIDR block to reserve sufficient IP addresses for later use. When you plan multiple VPCs, we recommend that you specify non-overlapping CIDR blocks for your VPCs. When you plan multiple zones, we recommend that you specify non-overlapping CIDR blocks for your vSwitches.
 
 **VPC CIDR block planning**
 
@@ -329,7 +337,9 @@ The networks are planned. This allows you to deploy cloud resources in a VPC. Fo
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
-The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
+> **Note:** The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
 4. On the **Virtual Private Clouds** page, click **Create VPC**.
 5. On the **Create VPC** page, configure the parameters and click **Submit**.
 The following section describes only some of the parameters. Use default values for other parameters. For more information about the parameters, see the "Create a VPC" section of the Create and manage a VPC topic.
@@ -405,7 +415,9 @@ Before you deploy cloud resources in a VPC, you must plan your networks. For mor
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
-The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
+> **Note:** The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
 4. On the **Virtual Private Clouds** page, click **Create VPC**.
 5. On the **Create VPC** page, configure the parameters and click **Confirm Order**.
 The following parameters are ones to which you need to pay attention in this topic. Parameters not listed below use the default values. For more information about the parameters, see the "Create a VPC" section of the Create and manage a VPC topic.
@@ -508,7 +520,9 @@ table.
 | Name | The name of the route table. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start with a letter _ and cannot start with http:// or https:// . |
 | Description | The description of the route table. The description must be 2 to 256 characters in length, and cannot start with http:// or https:// . |
 
-After you complete the configuration, you can view and check the configuration of the route table in the right-side **Configuration overview** section. Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, you can view and check the configuration of the route table in the right-side **Configuration overview** section.
+> Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+
 6. Creates the custom route table.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **Route Table** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **Route Table** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the topics below **Service**
 **management** in **Apsara Uni-manager Management Console User Guide** .
@@ -592,8 +606,11 @@ In this example, an ECS instance that is deployed in a VPC and is not associated
 |---|---|
 | Name | The name of the NAT gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), hyphens (-), and periods (.). It must start with a _ letter and cannot start with http:// or https:// . |
 
-After you complete the configuration, view and check the configuration of the NAT gateway displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, view and check the configuration of the NAT gateway displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 6. Create the NAT gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **NAT Gateway** is displayed in the **Cloud resources** column of the service. If the service whose **Cloud resources** value is **NAT Gateway** does not exist on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the topics below **Service**
 **management** in **Apsara Uni-manager Management Console User Guide** .
@@ -694,8 +711,11 @@ An ECS instance is created. For more information, see the **Create an ECS instan
 |---|---|
 | Maximum Bandwidth | The maximum bandwidth of the EIP. Unit: Mbit/s. |
 
-After you complete the configuration, you can view and check the configuration of the EIP in the right-side **Configuration overview** section. Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, you can view and check the configuration of the EIP in the right-side **Configuration overview** section.
+> Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 4. Create the EIP.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **EIP** is displayed in the **Cloud**
 **resources** column of the service.
@@ -714,8 +734,9 @@ following information and click **Confirm** to associate the EIP with an ECS ins
 
 **Associate the EIP with an ECS instance**
 
-After an Elastic Compute Service (ECS) instance is associated with an EIP, the ECS instance can communicate with the Internet. Make sure that an ECS instance is created. For more information, see the **Create an**
-**ECS instance** topic in **Quick start** of **ECS User Guide**.
+After an Elastic Compute Service (ECS) instance is associated with an EIP, the ECS instance can communicate with the Internet.
+
+> **Note:** Make sure that an ECS instance is created. For more information, see the **Create an** **ECS instance** topic in **Quick start** of **ECS User Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -776,8 +797,9 @@ In the **Instance Overview** section, you can view **VPC**, **Route Table**, **v
 **ACL**, and **Elastic IP Address**.
 Detailed information about all VPCs and Elastic IP Addresses can be found in the **VPC** and
 **Elastic IP Address** sections, respectively.
-The **VPC Organization Quota Usage** section shows the VPC quota consumption over the past 7, 15, or 30 days. The **EIP Organization Quota Usage** section displays the EIP quota consumption for the last 7, 15, or 30 days. Click the VPC in the **VPC Topology** section to view its network topology. You can enter the instance ID of the target VPC in the upper right corner of **VPC**
-**Topology**.
+The **VPC Organization Quota Usage** section shows the VPC quota consumption over the past 7, 15, or 30 days. The **EIP Organization Quota Usage** section displays the EIP quota consumption for the last 7, 15, or 30 days. Click the VPC in the **VPC Topology** section to view its network topology.
+
+> **Note:** You can enter the instance ID of the target VPC in the upper right corner of **VPC** **Topology**.
 
 ## 5 VPCs
 
@@ -822,7 +844,9 @@ Before you create a VPC, you must plan your networks. For more information, see 
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
-The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
+> **Note:** The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
 4. On the **Virtual Private Clouds** page, click **Create VPC**.
 5. On the **Create VPC** page, configure the parameters described in the following table.
 
@@ -852,8 +876,11 @@ The VPC and the cloud resources that you want to deploy in the VPC must reside i
 | Switch | Click Add to configure the vSwitch that you want to create. You can create up to 10 vSwitches at a time. Zone: Select the zone in which you want to create the vSwitch. In a VPC, a vSwitch can be created only in one zone. You cannot create a vSwitch across zones. You can deploy cloud resources in vSwitches in different zones to implement cross-zone disaster recovery. Note An instance can be deployed in only one vSwitch. Switch Name: Enter a name for the vSwitch. IPv4 CIDR Block: Enter the IPv4 CIDR block of the vSwitch. You must specify the IP address range of the vSwitch in CIDR notation. The subnet mask must be 16 to 29 bits in length, which specifies that 8 to 65,536 IP addresses are available. The CIDR block of a vSwitch must be a proper subset of the CIDR block of the VPC to which the vSwitch belongs. The first IP address and last three IP addresses of a vSwitch CIDR block are reserved. For example, if the CIDR block of the vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved. The CIDR block of a vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC to which the vSwitch belongs. However, the CIDR block of the vSwitch can be a subset of the destination CIDR block of a route entry. IPv6 CIDR Block: Enter the IPv6 CIDR block of the vSwitch. If an IPv6 CIDR block is assigned to the VPC to which the vSwitch belongs, you must configure the IPv6 CIDR block for the vSwitch. The mask of the IPv6 CIDR block can be modified. You must check whether IPv6 is enabled for your VPC. If IPv6 is not enabled for your VPC, you cannot assign an IPv6 CIDR block to the vSwitch. If the valid subnet mask of the IPv6 CIDR block used by the VPC is [56, 63], the valid subnet mask of the IPv6 CIDR block used by the vSwitch is [57, 64]. You can enter a valid decimal number to specify an IPv6 CIDR block for your vSwitch. For example, if the IPv6 CIDR block of the VPC is 2020:66:2:1f0::/61, you can enter the decimal number 7 to specify 2020:66:2:1f7::/64 as the IPv6 CIDR block of the vSwitch. Note You must configure this parameter if you set the IPv6 CIDR Block parameter to Auto-Assign or Manual Specification. |
 |---|---|
 
-After you complete the configuration, view and check the configuration of the VPC displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, view and check the configuration of the VPC displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 6. Create the VPC.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **VPC** is displayed in the
 **Cloud resources** column of the service.
@@ -868,7 +895,11 @@ such as Instance ID, Organization, and Resource Set, and click **OK** to export 
 
 **Manage VPCs**
 
-On the **Virtual Private Clouds** page, you can view the information about the created VPCs. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon in the upper-right corner of the Virtual Private Clouds page to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon next to the **Sharing Scope** column to filter VPCs by sharing scope. Click an IPv4 CIDR block in the **IPv4 CIDR Block** column of a VPC to view the IPv4 CIDR blocks that are assigned to the VPC. Click **Enable IPv6** in the **IPv6 CIDR Block** column of a VPC to enable IPv6 CIDR block for the VPC. Click **Disable IPv6** in the **IPv6 CIDR Block** column of a VPC to disable IPv6 CIDR block for the VPC. Click **Manage** in the **IPv6 CIDR Block** column of a VPC to manage the IPv6 CIDR blocks that are assigned to the VPC. Click the number in the **Route Table** column of a VPC to view the route tables that belong to the VPC. Click the number in the **vSwitch** column of a VPC to view the vSwitches that belong to the VPC. Click the number in the **ECS Instance** column of a VPC to view the ECS instances in the VPC. Click the icon next to a VPC name in the **VPC ID/Name** column to modify the VPC name.
+On the **Virtual Private Clouds** page, you can view the information about the created VPCs.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon in the upper-right corner of the Virtual Private Clouds page to select the columns that you want to show or hide. You can also drag the columns to adjust the order. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon next to the **Sharing Scope** column to filter VPCs by sharing scope. Click an IPv4 CIDR block in the **IPv4 CIDR Block** column of a VPC to view the IPv4 CIDR blocks that are assigned to the VPC. Click **Enable IPv6** in the **IPv6 CIDR Block** column of a VPC to enable IPv6 CIDR block for the VPC. Click **Disable IPv6** in the **IPv6 CIDR Block** column of a VPC to disable IPv6 CIDR block for the VPC. Click **Manage** in the **IPv6 CIDR Block** column of a VPC to manage the IPv6 CIDR blocks that are assigned to the VPC. Click the number in the **Route Table** column of a VPC to view the route tables that belong to the VPC. Click the number in the **vSwitch** column of a VPC to view the vSwitches that belong to the VPC. Click the number in the **ECS Instance** column of a VPC to view the ECS instances in the VPC. Click the icon next to a VPC name in the **VPC ID/Name** column to modify the VPC name.
 
 **Perform AI diagnostics to analyze VPC usage**
 
@@ -897,11 +928,12 @@ select **Automatically Enable IPv6 for All vSwitches in VPC** , and then click *
 | ISP Address Pool | The type of the address pool. |
 | IPv6 CIDR Block | The custom IPv6 CIDR block based on the type of the address pool that you specify. Note You must configure this parameter if you set the IPv6 CIDR Block parameter to Manually Specify. |
 
-If you do not select **Automatically Enable IPv6 for All vSwitches in VPC** , you must enable IPv6 for each vSwitch in the VPC. For more information, see the Enable IPv6 for a vSwitch section of the Create and manage vSwitches topic.
+> **Note:** If you do not select **Automatically Enable IPv6 for All vSwitches in VPC** , you must enable IPv6 for each vSwitch in the VPC. For more information, see the Enable IPv6 for a vSwitch section of the Create and manage vSwitches topic.
 
 **Disable IPv6 for a VPC**
 
-Before you disable IPv6 for a VPC, make sure that IPv6 is disabled for the vSwitches in the VPC.
+> **Note:** Before you disable IPv6 for a VPC, make sure that IPv6 is disabled for the vSwitches in the VPC.
+
 1. On the **Virtual Private Clouds** page, find the VPC for which you want to disable IPv6 and
 click **Disable IPv6** in the **IPv6 CIDR Block** column.
 2. In the **Disable IPv6** message, click **OK**.
@@ -915,7 +947,10 @@ You can modify the sharing scope of a VPC.
 
 **Delete a VPC**
 
-You can delete a VPC that is no longer needed. After a VPC is deleted, the vRouters and route tables that are associated with the VPC are also deleted. Make sure that the VPC that you want to delete does not contain resources such as vSwitches, IPv6 gateways, NAT gateways, and network access control lists (ACLs). All dependent resources must be released before you delete the VPC.
+You can delete a VPC that is no longer needed. After a VPC is deleted, the vRouters and route tables that are associated with the VPC are also deleted.
+
+> **Note:** Make sure that the VPC that you want to delete does not contain resources such as vSwitches, IPv6 gateways, NAT gateways, and network access control lists (ACLs). All dependent resources must be released before you delete the VPC.
+
 1. On the **Virtual Private Clouds** page, find the VPC that you want to delete, and choose **...**
 **> Delete** in the **Actions** column.
 2. In the **Delete** dialog box, click **Release**.
@@ -960,7 +995,8 @@ The IPv4 CIDR block that you configure when you create a VPC is the primary IPv4
 
 **Add a secondary IPv4 CIDR block**
 
-You can add up to five secondary IPv4 CIDR blocks to a VPC and cannot increase the quota.
+> **Note:** You can add up to five secondary IPv4 CIDR blocks to a VPC and cannot increase the quota.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
@@ -983,7 +1019,9 @@ and click **OK**.
 
 **Delete a secondary IPv4 CIDR block**
 
-Before you delete a secondary IPv4 CIDR block, make sure that the vSwitches created within the secondary IPv4 CIDR block are deleted. For more information, see the "Delete a vSwitch" section of the Create and manage a vSwitch topic. You can delete secondary IPv4 CIDR blocks of a VPC. However, you cannot delete the primary IPv4 CIDR block of a VPC.
+> **Note:** Before you delete a secondary IPv4 CIDR block, make sure that the vSwitches created within the secondary IPv4 CIDR block are deleted. For more information, see the "Delete a vSwitch" section of the Create and manage a vSwitch topic.
+> You can delete secondary IPv4 CIDR blocks of a VPC. However, you cannot delete the primary IPv4 CIDR block of a VPC.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
@@ -1005,7 +1043,9 @@ A VPC is created. For more information, see the "Create a VPC" section of the Cr
 
 **Add a secondary IPv6 CIDR block**
 
-By default, you can add up to four secondary IPv6 CIDR blocks to a VPC. Before you add a secondary IPv6 CIDR block to a VPC, make sure that IPv6 is enabled for the VPC. For more information, see the "Enable IPv6 for a VPC" section of the Create and manage VPCs topic.
+> **Note:** By default, you can add up to four secondary IPv6 CIDR blocks to a VPC.
+> Before you add a secondary IPv6 CIDR block to a VPC, make sure that IPv6 is enabled for the VPC. For more information, see the "Enable IPv6 for a VPC" section of the Create and manage VPCs topic.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
@@ -1027,7 +1067,8 @@ in the following table and click **OK**.
 
 **Remove a secondary IPv6 CIDR block**
 
-Before you remove a secondary IPv6 CIDR block, make sure that the vSwitches created within the secondary IPv6 CIDR block are deleted. For more information, see the "Delete a vSwitch" section of the Create and manage vSwitches topic.
+> **Note:** Before you remove a secondary IPv6 CIDR block, make sure that the vSwitches created within the secondary IPv6 CIDR block are deleted. For more information, see the "Delete a vSwitch" section of the Create and manage vSwitches topic.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
@@ -1069,8 +1110,8 @@ in the following table and click **OK**.
 
 **Revoke permission on a VPC**
 
-Before you revoke the permissions of a transit router on a VPC, close the connections between the VPC and the transit router. For more information, see **Delete a network**
-**instance connection** in **Transit Router User Guide**.
+> **Note:** Before you revoke the permissions of a transit router on a VPC, close the connections between the VPC and the transit router. For more information, see **Delete a network** **instance connection** in **Transit Router User Guide**.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Virtual Private Clouds**.
 3. In the top navigation bar, select the region in which you want to deploy a VPC.
@@ -1094,7 +1135,11 @@ After you create a virtual private cloud (VPC), the system creates a system rout
 
 **Custom route tables**
 
-You can create custom route tables in a VPC, associate custom route tables with vSwitches, and then set vSwitch CIDR blocks as destination CIDR blocks. This way, cloud services in vSwitches can communicate with each other. This facilitates network management. For more information, see Add subnet routes to a route table. Each VPC can contain only one system route table. A vSwitch can be associated with only one route table. When you associate a vSwitch with a custom route table, the vSwitch is automatically disassociated from the system route table.
+You can create custom route tables in a VPC, associate custom route tables with vSwitches, and then set vSwitch CIDR blocks as destination CIDR blocks. This way, cloud services in vSwitches can communicate with each other. This facilitates network management. For more information, see Add subnet routes to a route table.
+
+> **Note:** Each VPC can contain only one system route table.
+> A vSwitch can be associated with only one route table.
+> When you associate a vSwitch with a custom route table, the vSwitch is automatically disassociated from the system route table.
 
 **Route entries**
 
@@ -1110,7 +1155,9 @@ After you create a VPC, the system automatically adds the following system route
 | 192.168.1.0/24 | - | System route |
 | 192.168.0.0/24 | - | System route |
 
-If IPv6 is enabled for your VPC, the following routes are automatically added to the system route table of the VPC: A custom route whose destination CIDR block is ::/0 and whose next hop is the IPv6 gateway. Cloud resources deployed in the VPC use this route to access the Internet by using IPv6 addresses. System routes whose destination CIDR blocks are the same as the IPv6 CIDR blocks of the vSwitches in the VPC. These routes are used for communication among cloud resources within the vSwitches. If you create a custom route table and associate the custom route table with a vSwitch for which IPv6 CIDR block is enabled, you must add a custom route whose destination CIDR block is ::/0 and whose next hop is the IPv6 gateway.
+If IPv6 is enabled for your VPC, the following routes are automatically added to the system route table of the VPC: A custom route whose destination CIDR block is ::/0 and whose next hop is the IPv6 gateway. Cloud resources deployed in the VPC use this route to access the Internet by using IPv6 addresses. System routes whose destination CIDR blocks are the same as the IPv6 CIDR blocks of the vSwitches in the VPC. These routes are used for communication among cloud resources within the vSwitches.
+
+> **Note:** If you create a custom route table and associate the custom route table with a vSwitch for which IPv6 CIDR block is enabled, you must add a custom route whose destination CIDR block is ::/0 and whose next hop is the IPv6 gateway.
 
 **Custom routes**
 
@@ -1243,7 +1290,9 @@ table.
 | Name | The name of the route table. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start with a letter _ and cannot start with http:// or https:// . |
 | Description | The description of the route table. The description must be 2 to 256 characters in length, and cannot start with http:// or https:// . |
 
-After you complete the configuration, you can view and check the configuration of the route table in the right-side **Configuration overview** section. Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, you can view and check the configuration of the route table in the right-side **Configuration overview** section.
+> Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+
 6. Creates the custom route table.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **Route Table** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **Route Table** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the topics below **Service**
 **management** in **Apsara Uni-manager Management Console User Guide** .
@@ -1252,7 +1301,11 @@ Confirm the parameters and click **Confirm Order** if the following requirements
 
 **View route tables**
 
-On the **Route Tables** page, you can view the information about the route tables. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon in the **Route Table Type** column to filter route tables. Click the VPC ID in the **VPC ID/Name** column of a route table to view the basic information about the VPC to which the route table belongs. Click the vSwitch ID in the **Associated vSwitch ID/Name** column of a route table to view the basic information about the vSwitch to which the route table belongs. Click the icon next to the name of a route table in the **Route Table ID/Name** column to modify the route table name. Click the icon next to the username in the **Creator** column to change the creator of the route table.
+On the **Route Tables** page, you can view the information about the route tables.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon in the **Route Table Type** column to filter route tables. Click the VPC ID in the **VPC ID/Name** column of a route table to view the basic information about the VPC to which the route table belongs. Click the vSwitch ID in the **Associated vSwitch ID/Name** column of a route table to view the basic information about the vSwitch to which the route table belongs. Click the icon next to the name of a route table in the **Route Table ID/Name** column to modify the route table name. Click the icon next to the username in the **Creator** column to change the creator of the route table.
 
 **Manage tags**
 
@@ -1260,7 +1313,9 @@ On the **Route Tables** page, you can add tags to route tables to simply route t
 
 **Delete custom route tables**
 
-You can delete custom route tables but you cannot delete system route tables. If the custom route table that you want to delete is associated with a vSwitch, you must disassociate the custom route table from the vSwitch before you can delete the custom route table.
+> **Note:** You can delete custom route tables but you cannot delete system route tables.
+> If the custom route table that you want to delete is associated with a vSwitch, you must disassociate the custom route table from the vSwitch before you can delete the custom route table.
+
 1. On the **Route Tables** page, find the route table that you want to delete and click **Delete** in
 the **Actions** column.
 2. In the **Delete** message, click **Release**.
@@ -1315,7 +1370,10 @@ table and click **OK**.
 
 **Export route entries**
 
-You can export route entries from a route table for backup. The route entries are exported to a .csv file on your computer.
+You can export route entries from a route table for backup.
+
+> **Note:** The route entries are exported to a .csv file on your computer.
+
 1. On the **Basic Information** tab of the route table details page, click the **Routing Entry**
 **List** tab.
 2. Click **Export**.
@@ -1329,7 +1387,10 @@ You can search for route entries by **destination CIDR block**. Find the route e
 
 **Delete custom route entries**
 
-You can delete custom route entries but you cannot delete system route entries. A custom route entry can be deleted only when it has only one next hop. Before you delete a route entry, check whether bare metal resources exist in the VPC.
+> **Note:** You can delete custom route entries but you cannot delete system route entries.
+> A custom route entry can be deleted only when it has only one next hop.
+> Before you delete a route entry, check whether bare metal resources exist in the VPC.
+
 1. On the **Basic Information** tab of the route table details page, click the **Routing Entry**
 **List** tab.
 2. On the Routing Entry List tab, find the route entry that you want to delete and click **Delete**
@@ -1350,7 +1411,10 @@ A custom route table is created. For more information, see the "Create a custom 
 
 **Associate a custom route table with a vSwitch**
 
-You can associate a route table with multiple vSwitches. Each vSwitch can be associated with only one system route table or one custom route table. After a custom route table is associated with a vSwitch, the system route table is automatically disassociated from the vSwitch. If a route table contains a custom route whose CIDR block is the same as that of a vSwitch, the route table cannot be associated with the vSwitch.
+> **Note:** You can associate a route table with multiple vSwitches. Each vSwitch can be associated with only one system route table or one custom route table.
+> After a custom route table is associated with a vSwitch, the system route table is automatically disassociated from the vSwitch.
+> If a route table contains a custom route whose CIDR block is the same as that of a vSwitch, the route table cannot be associated with the vSwitch.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **Route Tables**.
 3. In the top navigation bar, select the region in which you want to create a custom route
@@ -1386,7 +1450,13 @@ A vSwitch is a network switching device in a virtual private cloud (VPC) and sup
 
 **vSwitches and VPCs**
 
-Your VPCs are dedicated for your use. You can deploy cloud resources in vSwitches in your VPC. A vSwitch in a VPC serves as a subnet of the VPC. You cannot directly deploy cloud resources in a VPC. You must deploy cloud resources in the vSwitches of a VPC. A vSwitch is a basic network device in a VPC and provides network isolation and connection capabilities for cloud resources in the VPC. You can deploy a VPC only in one region and cannot deploy a VPC across regions. However, a VPC covers all zones of the region to which the VPC belongs. When you create a VPC, you must create at least one vSwitch. You can create one or more vSwitches in a zone to create one or more subnets for the VPC. You can deploy cloud resources of different security levels or features in different subnets. This enhances the flexibility, security, and efficiency of network management. By default, the subnets in a VPC can communicate with each other.
+Your VPCs are dedicated for your use. You can deploy cloud resources in vSwitches in your VPC. A vSwitch in a VPC serves as a subnet of the VPC.
+
+> **Note:** You cannot directly deploy cloud resources in a VPC. You must deploy cloud resources in the vSwitches of a VPC.
+
+A vSwitch is a basic network device in a VPC and provides network isolation and connection capabilities for cloud resources in the VPC. You can deploy a VPC only in one region and cannot deploy a VPC across regions. However, a VPC covers all zones of the region to which the VPC belongs. When you create a VPC, you must create at least one vSwitch. You can create one or more vSwitches in a zone to create one or more subnets for the VPC.
+
+> **Note:** You can deploy cloud resources of different security levels or features in different subnets. This enhances the flexibility, security, and efficiency of network management. By default, the subnets in a VPC can communicate with each other.
 
 ### 7.2 Create and manage vSwitches
 
@@ -1426,7 +1496,9 @@ vSwitches in the same VPC can communicate with each other. Cloud resources must 
 | vSwitch IPv6 CIDR Block | The IPv6 CIDR block of the vSwitch. If your VPC is assigned an IPv6 CIDR block, you must configure the IPv6 CIDR block of the vSwitch. You can modify the subnet mask of the IPv6 CIDR block. You must check whether IPv6 is enabled for your VPC. If IPv6 is not enabled for your VPC, you cannot assign an IPv6 CIDR block to the vSwitch. If the valid subnet mask of the IPv6 CIDR block used by the VPC is [56, 63], the valid subnet mask of the IPv6 CIDR block used by the vSwitch is [57, 64]. You can enter a valid decimal number to specify an IPv6 CIDR block for your vSwitch. For example, if the IPv6 CIDR block of the VPC is 2020:66:2:1f0::/61, you can enter the decimal number 7 to specify 2020:66:2:1f7::/64 as the IPv6 CIDR block of the vSwitch. |
 | Description | The description of the vSwitch. The description must be 2 to 256 characters in length and cannot start with http:// or https:// . |
 
-After you complete the configuration, view and check the configuration of the vSwitch displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, view and check the configuration of the vSwitch displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+
 6. Create the vSwitch.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **vSwitch** is displayed in the
 **Cloud resources** column of the service.
@@ -1457,7 +1529,8 @@ in the **IPv6 CIDR Block** column.
 | ISP Address Pool | Select the type of the address pool. |
 | IPv6 CIDR Block | Configure a custom IPv6 CIDR block based on the type of the address pool that you specify. Note This parameter is required only if you set the IPv6 CIDR Block parameter to Manually Specify. |
 
-This operation is required only if IPv6 is disabled for the VPC to which the vSwitch belongs. If you do not select **Automatically Enable IPv6 for All vSwitches** when you enable IPv6 for the vSwitch, you can click **Assign IPv6** in the **IPv6 CIDR Block** column to assign an IPv6 CIDR block to the vSwitch.
+> **Note:** This operation is required only if IPv6 is disabled for the VPC to which the vSwitch belongs.
+> If you do not select **Automatically Enable IPv6 for All vSwitches** when you enable IPv6 for the vSwitch, you can click **Assign IPv6** in the **IPv6 CIDR Block** column to assign an IPv6 CIDR block to the vSwitch.
 
 **Associate a network ACL with a vSwitch**
 
@@ -1475,7 +1548,12 @@ click **Associate** in the **Network ACL ID/Name** column.
 
 **Delete a vSwitch**
 
-You can delete a vSwitch that you no longer need. After you delete a vSwitch, you cannot deploy cloud resources in it. Before you delete a vSwitch, make sure that the following requirements are met: Cloud resources created in the vSwitch are deleted, such as Elastic Compute Service (ECS), Server Load Balancer (SLB), and ApsaraDB RDS instances. All resources associated with the vSwitch are deleted, such as high-availability virtual IP addresses (HAVIPs) and SNAT entries.
+You can delete a vSwitch that you no longer need. After you delete a vSwitch, you cannot deploy cloud resources in it.
+
+> **Note:** Before you delete a vSwitch, make sure that the following requirements are met:
+> Cloud resources created in the vSwitch are deleted, such as Elastic Compute Service (ECS), Server Load Balancer (SLB), and ApsaraDB RDS instances.
+> All resources associated with the vSwitch are deleted, such as high-availability virtual IP addresses (HAVIPs) and SNAT entries.
+
 1. On the **vSwitches** page, find the vSwitch that you want to delete and click **Delete** in the
 Actions column.
 2. In the **Delete** message, click **Release**.
@@ -1597,7 +1675,9 @@ table.
 |---|---|
 | VPC | The VPC for which you want to create the network ACL. Note The VPC and network ACL must be deployed in the same region. You can also click Create VPC to create a VPC. |
 
-After you complete the configuration, view and check the configuration of the network ACL displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, view and check the configuration of the network ACL displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+
 6. Create the network ACL.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **Network ACL** is displayed in the **Cloud resources** column of the service. If the service whose **Cloud resources** value is **Network ACL** does not exist on the Service Management page, confirm the parameters and click **Submit**.
 
@@ -1613,7 +1693,10 @@ On the **Network ACLs** page, you can add tags to network ACLs for management. F
 
 **Delete a network ACL**
 
-You can delete a network ACL that is no longer needed. Make sure that the network ACL to be deleted is not associated with a vSwitch. If the network ACL is associated with a vSwitch, disassociate the network ACL from the vSwitch first. For more information, see the "Disassociate a network ACL from a vSwitch" section of the Manage associated resources topic.
+You can delete a network ACL that is no longer needed.
+
+> **Note:** Make sure that the network ACL to be deleted is not associated with a vSwitch. If the network ACL is associated with a vSwitch, disassociate the network ACL from the vSwitch first. For more information, see the "Disassociate a network ACL from a vSwitch" section of the Manage associated resources topic.
+
 1. On the **Network ACLs** page, find the network ACL that you want to delete and click **Delete**
 in the **Actions** column.
 2. In the **Delete** message, click **Release**.
@@ -1650,7 +1733,9 @@ Before you associate a network ACL with a vSwitch, make sure that the following 
 **Resource** tab.
 6. Click **Associated Resources**.
 7. In the **Associated Resources** dialog box, select a vSwitch and click **OK**.
-The network ACL and vSwitch must belong to the same VPC. A vSwitch can be associated only with one network ACL. You can also click **Create vSwitch** to create a vSwitch and associate the vSwitch with the network ACL.
+
+> **Note:** The network ACL and vSwitch must belong to the same VPC. A vSwitch can be associated only with one network ACL.
+> You can also click **Create vSwitch** to create a vSwitch and associate the vSwitch with the network ACL.
 
 **Disassociate a network ACL from a vSwitch**
 
@@ -1695,7 +1780,11 @@ The following table lists the ports and the services that use these ports.
 
 **Custom network ACLs**
 
-Inbound rules and Outbound rules describe a network ACL example for VPCs that support IPv4 addresses only. The inbound rules in effective order 1, 2, 3, and 4 respectively allow HTTP, HTTPS, SSH, and RDP traffic to the vSwitch. Outbound response rules are those in effective order 3. The outbound rules in effective order 1 and 2 respectively allow HTTP and HTTPS traffic from the vSwitch. Outbound response rules are those in effective order 5. The inbound rule in effective order 6 denies all inbound IPv4 traffic. This rule ensures that packets that do not match any other rules are denied. The outbound rule in effective order 4 denies all outbound IPv4 traffic. This rule ensures that packets that do not match any other rules are denied. An inbound or outbound rule must correspond to an inbound or outbound rule that allows response traffic. Table 1. Inbound rules
+Inbound rules and Outbound rules describe a network ACL example for VPCs that support IPv4 addresses only. The inbound rules in effective order 1, 2, 3, and 4 respectively allow HTTP, HTTPS, SSH, and RDP traffic to the vSwitch. Outbound response rules are those in effective order 3. The outbound rules in effective order 1 and 2 respectively allow HTTP and HTTPS traffic from the vSwitch. Outbound response rules are those in effective order 5. The inbound rule in effective order 6 denies all inbound IPv4 traffic. This rule ensures that packets that do not match any other rules are denied. The outbound rule in effective order 4 denies all outbound IPv4 traffic. This rule ensures that packets that do not match any other rules are denied.
+
+> **Note:** An inbound or outbound rule must correspond to an inbound or outbound rule that allows response traffic.
+
+Table 1. Inbound rules
 
 | Effecti ve order | Protoc ol | Source IP addres ses | Destin ation port range | Action | Description |
 |---|---|---|---|---|---|
@@ -1849,22 +1938,25 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter the correct username and password.
 EIPs) Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. Method 1: In the top navigation bar, choose **Products > Networking > Elastic IP**
 **Address**.
 Method 2: i. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**. ii. In the left-side navigation pane, click .
@@ -1920,8 +2012,11 @@ EIPs)
 | Service IP Address | The IP address of the EIP. Make sure that you enter an idle IPv4 address. If the IPv4 address is already used, the EIP fails to be created. Note If you do not specify an IPv4 address, a random IPv4 address is allocated. |
 | Maximum Bandwidth | The maximum bandwidth of the EIP. Unit: Mbit/s. |
 
-After you complete the configuration, you can view and check the configuration of the EIP in the right-side **Configuration overview** section. Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, you can view and check the configuration of the EIP in the right-side **Configuration overview** section.
+> Click the value of a parameter to quickly navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 4. Create the EIP.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **EIP** is displayed in the **Cloud**
 **resources** column of the service.
@@ -1936,7 +2031,11 @@ EIPs)
 
 **Manage EIPs**
 
-On the **EIP** page, you can view the information about the existing EIPs. Up to 100 pages of EIPs can be displayed on the EIP page, and the information about up to 100 EIPs can be displayed on each page. If more than 10,000 EIPs are created, specify filter conditions to filter the EIPs. You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **IP Status** column to filter EIPs by status. You can select one or more filter conditions. Click the instance ID in the **Associated Instance Type/ID** column of an EIP. On the page that appears, view the basic information about the instance with which the EIP is associated. Click the icon in the **Monitoring** column of an EIP to view the monitoring information about the EIP. Click the icon next to a EIP name in the **EIP ID/Name** column to modify the EIP name.
+On the **EIP** page, you can view the information about the existing EIPs.
+
+> **Note:** Up to 100 pages of EIPs can be displayed on the EIP page, and the information about up to 100 EIPs can be displayed on each page. If more than 10,000 EIPs are created, specify filter conditions to filter the EIPs.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **IP Status** column to filter EIPs by status. You can select one or more filter conditions. Click the instance ID in the **Associated Instance Type/ID** column of an EIP. On the page that appears, view the basic information about the instance with which the EIP is associated. Click the icon in the **Monitoring** column of an EIP to view the monitoring information about the EIP. Click the icon next to a EIP name in the **EIP ID/Name** column to modify the EIP name.
 
 **Manage tags**
 
@@ -1985,8 +2084,9 @@ you want to associate with the EIP, configure the parameters, and then click **C
 
 **Associate the EIP with an ECS instance**
 
-After an Elastic Compute Service (ECS) instance is associated with an EIP, the ECS instance can communicate with the Internet. EIPs) Make sure that an ECS instance is created. For more information, see the **Create an**
-**ECS instance** topic in **Quick start** of **ECS User Guide**.
+After an Elastic Compute Service (ECS) instance is associated with an EIP, the ECS instance can communicate with the Internet. EIPs)
+
+> **Note:** Make sure that an ECS instance is created. For more information, see the **Create an** **ECS instance** topic in **Quick start** of **ECS User Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -1996,9 +2096,9 @@ After an Elastic Compute Service (ECS) instance is associated with an EIP, the E
 
 **Associate the EIP with an SLB instance**
 
-After you associate an EIP with a Server Load Balancer (SLB) instance, the SLB instance can forward requests from the Internet. Make sure that an SLB instance is created. For more information, see the **Create an**
-**SLB instance** topic in the **Quick start** chapter of **Server Load Balancer User**
-**Guide**.
+After you associate an EIP with a Server Load Balancer (SLB) instance, the SLB instance can forward requests from the Internet.
+
+> **Note:** Make sure that an SLB instance is created. For more information, see the **Create an** **SLB instance** topic in the **Quick start** chapter of **Server Load Balancer User** **Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -2011,7 +2111,9 @@ EIPs)
 
 **Associate the EIP with a NAT gateway**
 
-After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries. Make sure that a NAT gateway is created. For more information, see the "Create a NAT gateway" section of the Create and manage a NAT gateway topic.
+After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries.
+
+> **Note:** Make sure that a NAT gateway is created. For more information, see the "Create a NAT gateway" section of the Create and manage a NAT gateway topic.
 
 | Parameter | Description |
 |---|---|
@@ -2020,8 +2122,9 @@ After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT o
 
 **Associate the EIP with a secondary ENI**
 
-EIPs) After you associate an EIP with a secondary elastic network interface (ENI) in normal mode, the public and private IP addresses of the ENI are available for use. In this case, the EIP is not displayed on the secondary ENI. Make sure that a secondary ENI is created. For more information, see the **Create an**
-**ENI** topic in the **ENI** chapter of**Elastic Compute Service User Guide**.
+EIPs) After you associate an EIP with a secondary elastic network interface (ENI) in normal mode, the public and private IP addresses of the ENI are available for use. In this case, the EIP is not displayed on the secondary ENI.
+
+> **Note:** Make sure that a secondary ENI is created. For more information, see the **Create an** **ENI** topic in the **ENI** chapter of**Elastic Compute Service User Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -2031,7 +2134,10 @@ EIPs) After you associate an EIP with a secondary elastic network interface (ENI
 
 **Associate the EIP with an HAVIP**
 
-After you associate an EIP with a high-availability virtual IP address (HAVIP), the HAVIP can communicate with the Internet. EIPs) Make sure that a VPC and a vSwitch are created. For more information see Create an HAVIP. The HAVIP and the EIP must belong to the same region. The HAVIP must be in the Available or Allocated state.
+After you associate an EIP with a high-availability virtual IP address (HAVIP), the HAVIP can communicate with the Internet. EIPs) Make sure that a VPC and a vSwitch are created. For more information see Create an HAVIP.
+
+> The HAVIP and the EIP must belong to the same region.
+> The HAVIP must be in the Available or Allocated state.
 
 | Parameter | Description |
 |---|---|
@@ -2048,7 +2154,11 @@ This topic describes how to disassociate an elastic IP address (EIP) from a clou
 
 1. Log in to the EIP console.
 2. On the **EIP** page, disassociate one or more EIPs from a cloud resource.
-To disassociate one EIP from a cloud resource, click **Unbind** in the **Actions** column. To disassociate multiple EIPs from a cloud resource at the same time, select the EIPs and click **Disassociate** at the bottom of the page. If you want to disassociate an EIP from a NAT gateway, make sure that the EIP is not specified in a DNAT or SNAT entry. If you click **Forcibly Disassociate from NAT Gateway** in the **Actions** column, the system automatically deletes the DNAT or SNAT entry that is associated with the EIP and disassociates the EIP from the NAT gateway.
+To disassociate one EIP from a cloud resource, click **Unbind** in the **Actions** column. To disassociate multiple EIPs from a cloud resource at the same time, select the EIPs and click **Disassociate** at the bottom of the page.
+
+> **Note:** If you want to disassociate an EIP from a NAT gateway, make sure that the EIP is not specified in a DNAT or SNAT entry.
+> If you click **Forcibly Disassociate from NAT Gateway** in the **Actions** column, the system automatically deletes the DNAT or SNAT entry that is associated with the EIP and disassociates the EIP from the NAT gateway.
+
 3. In the message that appears, click **OK**.
 EIPs)
 
@@ -2060,7 +2170,9 @@ You can monitor the status of an elastic IP address (EIP) to find abnormal monit
 
 1. Log on to the EIP console.
 2. On the **Elastic IP Addresses** page, find the EIP that you want to view and use one of the
-following methods to view the monitoring data. View the monitoring data on the **EIP** page a. Click the icon in the **Monitor** column. b. The **Monitoring** panel appears. You can view the monitoring data on this panel. View the monitoring data on the **EIP Details** page a. Click the ID of the EIP. b. On the **EIP Details** page, click the **Monitoring** tab to view the monitoring data. By default, the system displays monitoring data collected within the previous hour. You can select other time ranges or click **Custom** to specify a custom time range.
+following methods to view the monitoring data. View the monitoring data on the **EIP** page a. Click the icon in the **Monitor** column. b. The **Monitoring** panel appears. You can view the monitoring data on this panel. View the monitoring data on the **EIP Details** page a. Click the ID of the EIP. b. On the **EIP Details** page, click the **Monitoring** tab to view the monitoring data.
+
+> **Note:** By default, the system displays monitoring data collected within the previous hour. You can select other time ranges or click **Custom** to specify a custom time range.
 
 ## 10 NAT gateways
 
@@ -2079,7 +2191,11 @@ A NAT gateway works as expected only after an elastic IP address (EIP) is associ
 
 **SNAT**
 
-You can add SNAT entries to an SNAT table to allow ECS instances to access the Internet. Each SNAT entry consists of the following items: vSwitches or ECS instances: the vSwitch or ECS instances that require access to the Internet by using SNAT. Public IP address: the public IP address used to access the Internet. SNAT entries can be created based on the following granularity to enable ECS instances in a VPC to access the Internet. vSwitch If you create an SNAT entry for a vSwitch, the ECS instances attached to the vSwitch access the Internet by using the public IP address specified in the SNAT entry and based on the NAT gateway on which the SNAT entry is created. By default, all ECS instances attached to the vSwitch can use the specified public IP address to access the Internet. If an ECS instance is assigned a public IP address, such as a static public IP address, an EIP, or a public IP address mapped by DNAT, the ECS instance uses the public IP address to access the Internet instead of the SNAT feature. ECS instance If you create an SNAT entry for an ECS instance, the ECS instance can access the Internet by using the specified public IP address. The ECS instance accesses the Internet by using the public IP address specified in the SNAT entry and based on the NAT gateway on which the SNAT entry is created.
+You can add SNAT entries to an SNAT table to allow ECS instances to access the Internet. Each SNAT entry consists of the following items: vSwitches or ECS instances: the vSwitch or ECS instances that require access to the Internet by using SNAT. Public IP address: the public IP address used to access the Internet. SNAT entries can be created based on the following granularity to enable ECS instances in a VPC to access the Internet. vSwitch If you create an SNAT entry for a vSwitch, the ECS instances attached to the vSwitch access the Internet by using the public IP address specified in the SNAT entry and based on the NAT gateway on which the SNAT entry is created. By default, all ECS instances attached to the vSwitch can use the specified public IP address to access the Internet.
+
+> **Note:** If an ECS instance is assigned a public IP address, such as a static public IP address, an EIP, or a public IP address mapped by DNAT, the ECS instance uses the public IP address to access the Internet instead of the SNAT feature.
+
+ECS instance If you create an SNAT entry for an ECS instance, the ECS instance can access the Internet by using the specified public IP address. The ECS instance accesses the Internet by using the public IP address specified in the SNAT entry and based on the NAT gateway on which the SNAT entry is created.
 
 **DNAT**
 
@@ -2145,8 +2261,11 @@ A virtual private cloud (VPC) and a vSwitch are created. For more information, s
 | Name | The name of the NAT gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), hyphens (-), and periods (.). It must start with a _ letter and cannot start with http:// or https:// . |
 |---|---|
 
-After you complete the configuration, view and check the configuration of the NAT gateway displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, view and check the configuration of the NAT gateway displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 6. Create the NAT gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **NAT Gateway** is displayed in the **Cloud resources** column of the service. If the service whose **Cloud resources** value is **NAT Gateway** does not exist on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the topics below **Service**
 **management** in **Apsara Uni-manager Management Console User Guide** .
@@ -2155,7 +2274,11 @@ Confirm the parameters and click **Confirm Order** if the following requirements
 
 **View NAT gateways**
 
-On the **NAT Gateways** page, you can view the information about the NAT gateways that are created. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon in the **Specification/Type** column to filter NAT gateways by specifications. Click the VPC ID in the **VPC ID/Name** column of a NAT gateway to view the basic information about the VPC to which the NAT gateway belongs. Click **Associate** in the **EIP** column of a NAT gateway to associate an elastic IP address (EIP) with the NAT gateway. Click an IP address in the **EIP** column of a NAT gateway to view the basic information about the EIP that is associated with the NAT gateway. Click the icon in the **Monitoring** column of a NAT gateway to view the monitoring information about the NAT gateway. Click the icon next to the name of a NAT gateway in the **NAT Gateway ID/Name** column of a NAT gateway to modify the NAT gateway name. Click the icon next to the sharing scope in the **Sharing Scope** column of a NAT gateway to modify the sharing scope of the NAT gateway. Click **Purchase NAT Bandwidth Package** in the **Bandwidth Package** column to purchase a bandwidth plan for the NAT gateway or click the bandwidth plan ID to manage the bandwidth plan for NAT gateway.
+On the **NAT Gateways** page, you can view the information about the NAT gateways that are created.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the icon in the **Specification/Type** column to filter NAT gateways by specifications. Click the VPC ID in the **VPC ID/Name** column of a NAT gateway to view the basic information about the VPC to which the NAT gateway belongs. Click **Associate** in the **EIP** column of a NAT gateway to associate an elastic IP address (EIP) with the NAT gateway. Click an IP address in the **EIP** column of a NAT gateway to view the basic information about the EIP that is associated with the NAT gateway. Click the icon in the **Monitoring** column of a NAT gateway to view the monitoring information about the NAT gateway. Click the icon next to the name of a NAT gateway in the **NAT Gateway ID/Name** column of a NAT gateway to modify the NAT gateway name. Click the icon next to the sharing scope in the **Sharing Scope** column of a NAT gateway to modify the sharing scope of the NAT gateway. Click **Purchase NAT Bandwidth Package** in the **Bandwidth Package** column to purchase a bandwidth plan for the NAT gateway or click the bandwidth plan ID to manage the bandwidth plan for NAT gateway.
 
 **Manage tags**
 
@@ -2169,9 +2292,16 @@ On the **NAT Gateways** page, you can add tags to NAT gateways to simplify NAT g
 
 **Delete NAT gateways**
 
-You can delete a NAT gateway that you no longer need. Before you delete a NAT gateway, make sure that the following requirements are met: No EIP is associated with the NAT gateway. If an EIP is associated with the NAT gateway, disassociate the EIP from the NAT gateway. For more information, see the Disassociate an EIP from a NAT gateway section of the Manage EIPs and NAT gateways topic. No NAT service plan is associated with the NAT gateway. If a NAT service plan is associated with the NAT gateway, delete the NAT service plan. For more information, see the Delete a NAT service plan section of the Create and manage a NAT service plan topic. The DNAT table does not contain DNAT entries. If the DNAT table contains DNAT entries, delete them. For more information, see the Delete a DNAT entry section of the Create and manage DNAT entries topic. The SNAT table does not contain SNAT entries. If the SNAT table contains SNAT entries, delete them. For more information, see the Delete an SNAT entry section of the Create and manage SNAT entries topic. You can also forcibly delete a NAT gateway. After a NAT gateway is forcibly deleted, the DNAT and SNAT entries of the NAT gateway are automatically deleted, and the EIP associated with the NAT gateway is automatically disassociated from the NAT gateway. The system automatically performs these operations, and you do not need to manually perform them in advance. To forcibly delete a NAT gateway, you must select **Delete NAT Gateway and Its**
-**Associated Resources** in the **Force Delete** section in the **Delete** dialog box,
-and then click **Release**.
+You can delete a NAT gateway that you no longer need.
+
+> **Note:** Before you delete a NAT gateway, make sure that the following requirements are met:
+> No EIP is associated with the NAT gateway. If an EIP is associated with the NAT gateway, disassociate the EIP from the NAT gateway. For more information, see the Disassociate an EIP from a NAT gateway section of the Manage EIPs and NAT gateways topic.
+> No NAT service plan is associated with the NAT gateway. If a NAT service plan is associated with the NAT gateway, delete the NAT service plan. For more information, see the Delete a NAT service plan section of the Create and manage a NAT service plan topic.
+> The DNAT table does not contain DNAT entries. If the DNAT table contains DNAT entries, delete them. For more information, see the Delete a DNAT entry section of the Create and manage DNAT entries topic.
+> The SNAT table does not contain SNAT entries. If the SNAT table contains SNAT entries, delete them. For more information, see the Delete an SNAT entry section of the Create and manage SNAT entries topic.
+> You can also forcibly delete a NAT gateway. After a NAT gateway is forcibly deleted, the DNAT and SNAT entries of the NAT gateway are automatically deleted, and the EIP associated with the NAT gateway is automatically disassociated from the NAT gateway. The system automatically performs these operations, and you do not need to manually perform them in advance.
+> To forcibly delete a NAT gateway, you must select **Delete NAT Gateway and Its** **Associated Resources** in the **Force Delete** section in the **Delete** dialog box, and then click **Release**.
+
 1. On the **NAT Gateways** page, find the NAT gateway that you want to delete and choose
 **> Delete** in the **Actions** column.
 2. In the dialog box that appears, click **Release**.
@@ -2218,7 +2348,10 @@ Click **Bind Immediately** in the **EIP** column.
 
 **Disassociate an EIP from a NAT gateway**
 
-If you do not want a NAT gateway to communicate with the Internet by using an EIP, you can disassociate the EIP from the NAT gateway. Make sure that the EIP to be disassociated is not used in a source network address translation (SNAT) entry or a destination network address translation (DNAT) entry. If the EIP is used in an SNAT or a DNAT entry, delete the SNAT or DNAT entry before you dissociate the EIP. For more information, see the "Delete a DNAT entry" section of the Create and manage a DNAT entry topic and the "Delete an SNAT entry" section of the Create and manage an SNAT entry topic.
+If you do not want a NAT gateway to communicate with the Internet by using an EIP, you can disassociate the EIP from the NAT gateway.
+
+> **Note:** Make sure that the EIP to be disassociated is not used in a source network address translation (SNAT) entry or a destination network address translation (DNAT) entry. If the EIP is used in an SNAT or a DNAT entry, delete the SNAT or DNAT entry before you dissociate the EIP. For more information, see the "Delete a DNAT entry" section of the Create and manage a DNAT entry topic and the "Delete an SNAT entry" section of the Create and manage an SNAT entry topic.
+
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **NAT Gateways**.
 3. In the top navigation bar, select the region in which you want to create a NAT gateway.
@@ -2284,9 +2417,8 @@ your business requirements. Then, click **OK**.
 
 If the ECS instances in your VPC do not need to receive requests from external private networks, you can delete the DNAT entries that are created for the ECS instances.
 
-**Warning**
+> **Warning:** If you delete a DNAT entry, the ECS instance configured with the DNAT entry cannot access the Internet and the DNAT entry cannot be restored. Proceed with caution.
 
-If you delete a DNAT entry, the ECS instance configured with the DNAT entry cannot access the Internet and the DNAT entry cannot be restored. Proceed with caution.
 1. Method 1: On the **DNAT** tab of the **NAT Gateway Details** page, find the DNAT entry that
 you want to delete and click **Delete** in the **Actions** column. Method 2: On the **DNAT** tab of the **NAT Gateway Details** page, select the DNAT entries that you want to delete and click **Delete** below the list.
 2. In the message that appears, click **OK**.
@@ -2417,7 +2549,10 @@ addresses that you want in the NAT service plan and click **Submit**.
 
 **Release an IP address from a NAT service plan**
 
-You can release IP addresses from a NAT service plan. The NAT service plan must contain at least one IP address. Before you release an IP address from the NAT service plan, make sure that the IP address is not specified in SNAT or DNAT entries. If the IP address is specified in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see the "Delete DNAT entries" section of the Create and manage DNAT entries topic and the "Delete one or more SNAT entries" section of the Create and manage an SNAT entry topic.
+You can release IP addresses from a NAT service plan. The NAT service plan must contain at least one IP address.
+
+> **Note:** Before you release an IP address from the NAT service plan, make sure that the IP address is not specified in SNAT or DNAT entries. If the IP address is specified in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see the "Delete DNAT entries" section of the Create and manage DNAT entries topic and the "Delete one or more SNAT entries" section of the Create and manage an SNAT entry topic.
+
 1. In the **Bandwidth Packet Details** section of the **NAT Bandwidth Package** tab, select
 the NAT service plan that you want to manage.
 2. In the **Public IP List** section, find the public IP address that you want to release and click
@@ -2426,7 +2561,10 @@ the NAT service plan that you want to manage.
 
 **Delete a NAT service plan**
 
-You can delete a NAT service plan that you no longer need. Before you delete a NAT service plan, make sure that the IP addresses in the NAT service plan are not specified in DNAT or SNAT entries. If an IP address is specified in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see the "Delete DNAT entries" section of the Create and manage DNAT entries topic and the "Delete one or more SNAT entries" section of the Create and manage an SNAT entry topic.
+You can delete a NAT service plan that you no longer need.
+
+> **Note:** Before you delete a NAT service plan, make sure that the IP addresses in the NAT service plan are not specified in DNAT or SNAT entries. If an IP address is specified in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see the "Delete DNAT entries" section of the Create and manage DNAT entries topic and the "Delete one or more SNAT entries" section of the Create and manage an SNAT entry topic.
+
 1. In the **Bandwidth Packet Details** section of the **NAT Bandwidth Package** tab, find the
 NAT service plan that you want to delete and click **Delete**.
 2. In the **Delete Bandwidth Package** message, click **OK**.
@@ -2441,7 +2579,9 @@ This topic describes how to monitor Virtual Private Cloud (VPC) resources by usi
 2. In the top navigation bar, select the region where the desired VPC is deployed.
 3. In the left-side navigation pane, click **NAT Gateways**.
 4. You can use the following methods to view the monitoring data of a VPN gateway.
-View the monitoring data on the VPN Gateways page. a. On the **NAT Gateways** page, click the icon in the **Monitor** column of the desired VPN gateway. b. The **Monitor** panel appears. You can view the monitoring information on this page. View the monitoring data on the details page. a. On the **NAT Gateways** page, find the instance that you want to manage and click its ID or click **Manage** in the **Actions** column. b. On the page that appears, click the **Instance Monitoring** tab. By default, the system displays the monitoring data within the last hour. You can also choose 3 hours, 6 hours, or 12 hours or specify a **custom** time period.
+View the monitoring data on the VPN Gateways page. a. On the **NAT Gateways** page, click the icon in the **Monitor** column of the desired VPN gateway. b. The **Monitor** panel appears. You can view the monitoring information on this page. View the monitoring data on the details page. a. On the **NAT Gateways** page, find the instance that you want to manage and click its ID or click **Manage** in the **Actions** column. b. On the page that appears, click the **Instance Monitoring** tab.
+
+> **Note:** By default, the system displays the monitoring data within the last hour. You can also choose 3 hours, 6 hours, or 12 hours or specify a **custom** time period.
 
 **What to do next**
 
@@ -2451,8 +2591,8 @@ In the **Monitor** panel, you can create threshold-triggered alert rules. When t
 1. On the **Monitor** page, click
 next to a metric.
 2. In the **Create Alert Rule** dialog box, configure parameters and click **OK**.
-The following table describes only the parameters that are related to this topic. For other parameters, see **Alert rules** > **Create an alert rule** in **Alerting service** of
-**CloudMonitor CMS User Guide**.
+
+> **Note:** The following table describes only the parameters that are related to this topic. For other parameters, see **Alert rules** > **Create an alert rule** in **Alerting service** of **CloudMonitor CMS User Guide**.
 
 | Parameter | Description |
 |---|---|
@@ -2541,7 +2681,9 @@ table.
 | Sharing Scope | The sharing scope of the IPv6 gateway. Valid values: Current Resource Set: Only the administrators of the current resource set can share the IPv6 gateway. Current Organization and Subordinate Organizations: Only the administrators of the current organization and its subordinate organizations can share the IPv6 gateway. Current Organization: Only the administrators of the current organization can share the IPv6 gateway. |
 | Specifications | The specifications of the IPv6 gateway. IPv6 gateways have the following specifications: Basic Edition Enterprise Edition Enhanced Enterprise Edition Custom specifications: custom specifications created for IPv6 gateways based on business and environment requirements. When you use an IPv6 gateway to communicate with the Internet, the throughput capacity, the maximum bandwidth of each IPv6 address, and the maximum number of egress-only rules vary based on the specifications. |
 
-After you complete the configuration, view and check the configuration of the IPv6 gateway displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, view and check the configuration of the IPv6 gateway displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+
 6. Create the IPv6 gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **NAT Gateway** is displayed in the **Cloud resources** column of the service. If the service whose **Cloud resources** value is **NAT Gateway** does not exist on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the topics below **Service**
 **management** in **Apsara Uni-manager Management Console User Guide** .
@@ -2550,7 +2692,11 @@ Confirm the parameters and click **Confirm Order** if the following requirements
 
 **Manage IPv6 gateways**
 
-On the **IPv6 Gateways** page, you can view details of IPv6 gateways. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the value in the **VPC ID/Name** column of an IPv6 gateway to view the basic information about the VPC to which the IPv6 gateway belongs. Click the icon next to the value in the **IPv6 Gateway ID/Name** column of an IPv6 gateway to modify the name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `http://` or `https://` .
+On the **IPv6 Gateways** page, you can view details of IPv6 gateways.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the value in the **VPC ID/Name** column of an IPv6 gateway to view the basic information about the VPC to which the IPv6 gateway belongs. Click the icon next to the value in the **IPv6 Gateway ID/Name** column of an IPv6 gateway to modify the name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `http://` or `https://` .
 
 **Manage tags**
 
@@ -2564,7 +2710,10 @@ On the **IPv6 Gateways** page, you can add tags to IPv6 gateways for management.
 
 **Delete an IPv6 gateway**
 
-If a VPC no longer needs to access or be accessed by IPv6 clients, you can delete the IPv6 gateway associated with the VPC. Before you delete an Enterprise Edition or Enhanced Enterprise Edition IPv6 gateway, you must delete the egress-only rules configured for the IPv6 gateway. For more information, see the Delete an egress-only rule section of the Manage egress-only rules topic.
+If a VPC no longer needs to access or be accessed by IPv6 clients, you can delete the IPv6 gateway associated with the VPC.
+
+> **Note:** Before you delete an Enterprise Edition or Enhanced Enterprise Edition IPv6 gateway, you must delete the egress-only rules configured for the IPv6 gateway. For more information, see the Delete an egress-only rule section of the Manage egress-only rules topic.
+
 1. On the **IPv6 Gateways** page, find the IPv6 gateway that you want to delete and click
 **Delete** in the **Actions** column.
 2. In the **Delete** dialog box, click **Release**.
@@ -2641,9 +2790,8 @@ An IPv6 gateway of Free Edition does not support egress-only rules. An IPv6 gate
 
 **Create an egress-only rule**
 
-**Warning**
+> **Warning:** If an IPv6 gateway is accepting inbound traffic, the inbound traffic is denied after an egress-only rule is created for the Pv6 gateway. In addition, the ECS instance specified in the egress-only rule denies access from IPv6 clients over the Internet. Proceed with caution.
 
-If an IPv6 gateway is accepting inbound traffic, the inbound traffic is denied after an egress-only rule is created for the Pv6 gateway. In addition, the ECS instance specified in the egress-only rule denies access from IPv6 clients over the Internet. Proceed with caution.
 1. Log in to the VPC console.
 2. In the left-side navigation pane, click **IPv6 Gateways**.
 3. In the top navigation bar, select the region in which you want to create an IPv6 gateway.
@@ -2681,7 +2829,11 @@ High-availability virtual IP addresses (HAVIPs) are private IP addresses that ca
 
 **Features**
 
-Each Elastic Compute Service (ECS) instance is assigned a private IP address as the primary IP address. You can associate HAVIPs with an ECS instance to increase the number of private IP addresses available for the ECS instance. Both the primary IP address and HAVIPs of an ECS instance can be used to access networks. In addition, you can use HAVIPs with highavailability software such as Keepalived to provide services in active/standby mode. This improves the availability of your services. An HAVIP can be associated with 10 different ECS instances or the secondary elastic network interfaces (ENIs) of 10 ECS instances at the same time. This way, these ECS instances can announce an HAVIP over Address Resolution Protocol (ARP). Then, one of the ECS instances serves as the primary instance, and the other ECS instances serve as secondary instances. If the primary ECS instance is down, a secondary ECS instance takes over to provide services. You can associate an HAVIP with ECS instances by using the following methods: Directly associate an HAVIP with ECS instances. Associate a secondary ENI with an ECS instance and associate an HAVIP with the ENI. Before you associate an HAVIP with secondary ENIs, make sure that each secondary ENI is associated with an ECS instance. HAVIPs provide the following features: HAVIPs are floating private IP addresses and are not statically assigned to ECS instances. HAVIPs can be associated with or disassociated from ECS instances by using ARP announcements. An HAVIP can be associated only with ECS instances or ENIs that belong to the same vSwitch. An HAVIP can be associated with 10 ECS instances or 10 secondary ENIs. However, an HAVIP cannot be associated with ECS instances and secondary ENIs at the same time.
+Each Elastic Compute Service (ECS) instance is assigned a private IP address as the primary IP address. You can associate HAVIPs with an ECS instance to increase the number of private IP addresses available for the ECS instance. Both the primary IP address and HAVIPs of an ECS instance can be used to access networks. In addition, you can use HAVIPs with highavailability software such as Keepalived to provide services in active/standby mode. This improves the availability of your services. An HAVIP can be associated with 10 different ECS instances or the secondary elastic network interfaces (ENIs) of 10 ECS instances at the same time. This way, these ECS instances can announce an HAVIP over Address Resolution Protocol (ARP). Then, one of the ECS instances serves as the primary instance, and the other ECS instances serve as secondary instances. If the primary ECS instance is down, a secondary ECS instance takes over to provide services. You can associate an HAVIP with ECS instances by using the following methods: Directly associate an HAVIP with ECS instances. Associate a secondary ENI with an ECS instance and associate an HAVIP with the ENI.
+
+> **Note:** Before you associate an HAVIP with secondary ENIs, make sure that each secondary ENI is associated with an ECS instance.
+
+HAVIPs provide the following features: HAVIPs are floating private IP addresses and are not statically assigned to ECS instances. HAVIPs can be associated with or disassociated from ECS instances by using ARP announcements. An HAVIP can be associated only with ECS instances or ENIs that belong to the same vSwitch. An HAVIP can be associated with 10 ECS instances or 10 secondary ENIs. However, an HAVIP cannot be associated with ECS instances and secondary ENIs at the same time.
 
 **Scenarios**
 
@@ -2721,8 +2873,11 @@ Virtual private clouds (VPCs) and vSwitches are created. For more information, s
 |---|---|
 | Description | Enter a description for the HAVIP. The description must be 2 to 255 characters in length. It must start with a letter and cannot start with http:// or https:// . |
 
-After you complete the configuration, view and check the configuration of the HAVIP displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements. Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas. For more information about quota management, see the **Quotas** topic in **Apsara**
-**Uni-manager Operations Console User Guide**.
+> **Note:** After you complete the configuration, view and check the configuration of the HAVIP displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> Click **Quota Management** to manage the quotas of cloud services if the organization or resource set has no quotas, or click **Manage** in the **Quota** section to manage the quotas of cloud services if the organization or resource set has quotas.
+> For more information about quota management, see the **Quotas** topic in **Apsara** **Uni-manager Operations Console User Guide**.
+
 6. Create the HAVIP.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **HAVIP** is displayed in the
 **Cloud resources** column of the service.
@@ -2733,7 +2888,11 @@ If the service whose **Cloud resources** value is **HAVIP** does not exist on th
 
 **Manage HAVIPs**
 
-On the **HAVIP** page, you can view the information about the existing HAVIPs. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the VPC ID in the **VPC ID/Name** column of an HAVIP to view the basic information about the VPC to which the HAVIP belongs. Click the vSwitch ID in the **vSwitch ID/Name** column of an HAVIP to view the basic information about the vSwitch to which the HAVIP belongs. Click an instance ID in the **Associated Instance** column of an HAVIP to view the information about the instance associated with the HAVIP. Click the IP address in the **IP Address** column of an HAVIP to view the basic information about the elastic IP address (EIP) associated with the HAVIP. Click **Bind EIP** in the **Actions** column of an HAVIP to associate the HAVIP with an EIP. Click **Unbind EIP** in the **Actions** column of an HAVIP to disassociate the HAVIP from an EIP. Click the icon next to an HAVIP name in the **HAVIP ID/Name** column to modify the name of the HAVIP.
+On the **HAVIP** page, you can view the information about the existing HAVIPs.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon to the right of a specific column name to sort VPCs. Click the icon next to the **Status** column to filter VPCs by status. Click the VPC ID in the **VPC ID/Name** column of an HAVIP to view the basic information about the VPC to which the HAVIP belongs. Click the vSwitch ID in the **vSwitch ID/Name** column of an HAVIP to view the basic information about the vSwitch to which the HAVIP belongs. Click an instance ID in the **Associated Instance** column of an HAVIP to view the information about the instance associated with the HAVIP. Click the IP address in the **IP Address** column of an HAVIP to view the basic information about the elastic IP address (EIP) associated with the HAVIP. Click **Bind EIP** in the **Actions** column of an HAVIP to associate the HAVIP with an EIP. Click **Unbind EIP** in the **Actions** column of an HAVIP to disassociate the HAVIP from an EIP. Click the icon next to an HAVIP name in the **HAVIP ID/Name** column to modify the name of the HAVIP.
 
 **Manage tags**
 
@@ -2741,7 +2900,12 @@ On the **HAVIP** page, you can add tags to HAVIPs. For more information, see Man
 
 **Delete an HAVIP**
 
-You can delete an HAVIP that is no longer needed. Before you delete an HAVIP, make sure that the HAVIP is not associated with an EIP, an Elastic Compute Service (ECS) instance, or an elastic network interface (ENI). If the HAVIP is associated with an EIP, disassociate the HAVIP from the EIP before you delete the HAVIP. For more information, see Disassociate an HAVIP from an EIP. If the HAVIP is associated with an ECS instance, disassociate the HAVIP from the ECS instance before you delete the HAVIP. For more information, see Disassociate an HAVIP from an ECS instance. If the HAVIP is associated with an ENI, disassociate the HAVIP from the ENI before you delete the HAVIP. For more information, see Disassociate an HAVIP from an ENI.
+You can delete an HAVIP that is no longer needed.
+
+> **Note:** Before you delete an HAVIP, make sure that the HAVIP is not associated with an EIP, an Elastic Compute Service (ECS) instance, or an elastic network interface (ENI).
+> If the HAVIP is associated with an EIP, disassociate the HAVIP from the EIP before you delete the HAVIP. For more information, see Disassociate an HAVIP from an EIP.
+
+If the HAVIP is associated with an ECS instance, disassociate the HAVIP from the ECS instance before you delete the HAVIP. For more information, see Disassociate an HAVIP from an ECS instance. If the HAVIP is associated with an ENI, disassociate the HAVIP from the ENI before you delete the HAVIP. For more information, see Disassociate an HAVIP from an ENI.
 1. On the **HAVIP** page, find the HAVIP that you want to delete and click **Delete** in the **Actions**
 column.
 2. In the **Delete** message, click **Release**.
@@ -2775,7 +2939,10 @@ An EIP is created. For more information, see the "Apply for an EIP" section of t
 5. On the **Basic Information** tab of the **High-availability virtual IP details** page, click
 **Associate Now** in the **EIP** node in the **Associate With Resource** section.
 6. In the **Associate EIP** dialog box, select an EIP and click **OK**.
-The EIP must meet the following requirements: The EIP and the HAVIP are deployed in the same region. The EIP is in the Available state.
+
+> **Note:** The EIP must meet the following requirements:
+> The EIP and the HAVIP are deployed in the same region.
+> The EIP is in the Available state.
 
 #### 12.3.2 Disassociate an HAVIP from an EIP
 
@@ -2894,14 +3061,20 @@ messages to the secondary instance ECS2. The heartbeat interval is determined by
 
 **Keepalived installation example**
 
-In this example, two ECS instances are deployed in primary/secondary mode, and the ECS instances run CentOS. We recommend that you use Keepalived version 1.2.15 or later. If you have multiple secondary ECS instances, you must declare the IP addresses of all peer instances in the `unicast_peer` field of each ECS instance. For more information, visit Keepalived GitHub.
+In this example, two ECS instances are deployed in primary/secondary mode, and the ECS instances run CentOS. We recommend that you use Keepalived version 1.2.15 or later.
+
+> **Note:** If you have multiple secondary ECS instances, you must declare the IP addresses of all peer instances in the `unicast_peer` field of each ECS instance.
+
+For more information, visit Keepalived GitHub.
 
 **Primary instance configuration**
 
 1. Log in to the primary ECS instance.
 2. Run the `yum install keepalived` command to install Keepalived.
 3. Run the `vim /etc/keepalived/keepalived.conf` command to modify the keepalived.conf
-file. This example shows only the parameters that need to be modified. Modify the keepalived.conf file based on your business requirements. Do not directly copy the content in this example to the keepalived.conf file.
+file.
+
+> **Note:** This example shows only the parameters that need to be modified. Modify the keepalived.conf file based on your business requirements. Do not directly copy the content in this example to the keepalived.conf file.
 
 ```
 ! Configuration File for keepalived vrrp_instance VI_1 {
@@ -2953,7 +3126,9 @@ the IP address is 192.168.0.24.
 1. Log in to the secondary ECS instance.
 2. Run the `yum install keepalived` command to install Keepalived.
 3. Run the `vim /etc/keepalived/keepalived.conf` command to modify the keepalived.conf
-file. This example shows only the parameters that need to be modified. Modify the keepalived.conf file based on your business requirements. Do not directly copy the content in this example to the keepalived.conf file.
+file.
+
+> **Note:** This example shows only the parameters that need to be modified. Modify the keepalived.conf file based on your business requirements. Do not directly copy the content in this example to the keepalived.conf file.
 
 ```
 ! Configuration File for keepalived vrrp_instance VI_1 {
@@ -3005,7 +3180,11 @@ this example, eth0 is used.
 
 After you attach the HAVIP to the ECS instances, test whether high availability is enabled for the ECS instances.
 1. Run the following commands on the primary and secondary instances to create a test web
-service. Different results are returned. Run netstat -an | grep 8000 to query the availability of the port. If port 8000 is unavailable, use another port. Primary instance:
+service. Different results are returned.
+
+> **Note:** Run netstat -an | grep 8000 to query the availability of the port. If port 8000 is unavailable, use another port.
+
+Primary instance:
 
 ```
 echo "ECS 1" > index.html #The primary instance returns "ECS 1". python3 -m http.server 8000
@@ -3018,7 +3197,9 @@ echo "ECS 2" > index.html #The secondary instance returns "ECS 2". python3 -m ht
 ```
 
 2. Run `curl <havip_private_ip>:8000` on other ECS instances in the VPC. `ECS 1` is
-returned. If the primary instance is down, `ECS 2` is returned. Make sure that the security group of the primary and secondary instances allows HTTP requests in the VPC to access port 8000.
+returned. If the primary instance is down, `ECS 2` is returned.
+
+> **Note:** Make sure that the security group of the primary and secondary instances allows HTTP requests in the VPC to access port 8000.
 
 #### 12.3.4 Disassociate HAVIPs from backend cloud resources
 
@@ -3110,7 +3291,9 @@ following table describes the parameters.
 | DNS Server IP Address | Enter DNS server IP addresses. Example: 192.168.1.1. By default, the default IP addresses of Apsara Stack DNS servers are used. This ensures that you can access basic services deployed on Apsara Stack. You can specify up to two custom DNS server IP addresses based on your business requirements. You can specify at most two custom IP addresses. Important Before you specify custom DNS server IP addresses, take note of the following items: The default IP addresses of Apsara Stack DNS servers are automatically specified. If you change the default IP addresses, you may be unable to access Apsara Stack services. Proceed with caution. You must create rules in the security groups of your ECS instances to enable access to the specified custom DNS server IP addresses. Otherwise, the services deployed on your ECS instances cannot be resolved. For more information about how to configure security group rules, see the Add a security group rule topic in the Security groups chapter of ECS User Guide. If network access control lists (ACLs) are created for your VPC, you must create network ACL rules to enable access to the specified custom DNS server IP addresses. Otherwise, the services deployed in your VPC cannot be resolved. For more information, see Manage network ACL rules. |
 |---|---|
 
-After you complete the configuration, view and check the configuration of the DHCP options set displayed in the right-side **Configuration overview** section. You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+> **Note:** After you complete the configuration, view and check the configuration of the DHCP options set displayed in the right-side **Configuration overview** section.
+> You can click the value of a parameter to navigate to the parameter and modify the value based on your business requirements.
+
 6. In the message that appears, click **OK**.
 
 **What to do next**
@@ -3119,7 +3302,11 @@ After a DHCP options set is created, you can perform operations such as modifyin
 
 **View the information about DHCP options sets**
 
-On the **DHCP Options Sets** page, you can view the information about the created DHCP options sets. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries. You can use a keyword or a specific filter condition to filter VPCs. Click the icon next to the **Status** column to filter VPCs by status. In the **Associated VPC** column, click the number to view the VPCs associated with the DHCP options set. In the **Instance ID/Name** column, click the icon next to the name of the DHCP options set to modify the name. The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+On the **DHCP Options Sets** page, you can view the information about the created DHCP options sets.
+
+> **Note:** Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+You can use a keyword or a specific filter condition to filter VPCs. Click the icon next to the **Status** column to filter VPCs by status. In the **Associated VPC** column, click the number to view the VPCs associated with the DHCP options set. In the **Instance ID/Name** column, click the icon next to the name of the DHCP options set to modify the name. The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
 
 **Manage tags**
 
@@ -3195,10 +3382,16 @@ Virtual Private Cloud (VPC) allows you to view the operation logs of all VPC res
 
 1. Log in to the VPC console.
 2. In the top navigation bar, select the region in which you want to deploy a VPC.
-The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
+> **Note:** The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
 3. In the left-side navigation pane, click **Operation Logs**.
 4. On the Operation Logs page, view operation logs.
-Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator. If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator.
+> If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded.
+> Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
 5. **Optional.** Click **Advanced Filter** to search for operation logs by specifying filter
 conditions. The following table describes the filter conditions.
 
@@ -3224,11 +3417,18 @@ column. In the **View Operation Details** panel, view information in the **Basic
 
 1. Log in to the VPC console.
 2. In the top navigation bar, select the region in which you want to deploy a VPC.
-The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
+> **Note:** The VPC and the cloud resources that you want to deploy in the VPC must reside in the same region.
+
 3. View the operation logs of a single instance on the instance details page.
 i. In the left-side navigation pane, click **Virtual Private Clouds**, **Route Tables**,
 **VSwitches**, **Network ACLs**, **Elastic IP Addresses**, **NAT Gateways**, **IPv6 Gateways**,
-or **High-availability Virtual IP Address**. ii. On the page that appears, find the instance that you want to manage and click its ID or click **Manage** in the **Actions** column. iii. On the instance details page, click the **Operations Logs** tab. Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator. If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded. Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+or **High-availability Virtual IP Address**. ii. On the page that appears, find the instance that you want to manage and click its ID or click **Manage** in the **Actions** column. iii. On the instance details page, click the **Operations Logs** tab.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator.
+> If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded.
+> Up to 100 pages of entries can be displayed in the list, and up to 100 entries can be displayed on each page. If more than 10,000 entries exist, specify filter conditions to filter the entries.
+
 4. **Optional.** Search for operation logs by specifying filter conditions, such as **Operation**
 **Name** and **Operator**. The following table describes the filter conditions.
 

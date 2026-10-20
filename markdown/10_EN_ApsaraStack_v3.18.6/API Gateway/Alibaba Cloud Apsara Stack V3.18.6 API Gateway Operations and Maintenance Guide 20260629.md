@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 11
 source_pdf: "b0c891296a2a6191_Alibaba Cloud Apsara Stack V3.18.6 API Gateway Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20API%20Gateway%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # API Gateway Operations and Maintenance Guide
@@ -31,9 +31,7 @@ This guide helps maintenance personnel perform preventive maintenance on API Gat
 
 Maintenance personnel must have professional IT skills, including knowledge of computer networks, experience with distributed storage, and problem analysis and troubleshooting skills. Maintenance personnel must complete the Alibaba Cloud pre-job training for system roles. This training covers essential knowledge of Alibaba Cloud API Gateway, including but not limited to its system principles, networking, feature usage, and O&M tools.
 
-**Important**
-
-During O&M, maintenance personnel must follow all operational procedures to ensure their safety and system security. Keep all user data strictly confidential. Do not copy or distribute user data without written permission from the user.
+> **Important:** During O&M, maintenance personnel must follow all operational procedures to ensure their safety and system security. Keep all user data strictly confidential. Do not copy or distribute user data without written permission from the user.
 
 **Precautions**
 
@@ -91,9 +89,10 @@ kubectl get pod -n apigateway-system
 2. Run `cd /home/admin/cop-console/logs` to enter the log directory.
 3. Run `ls` to view the log files.
 
-**Note**
-
-debug.log: Business log. import.log: Data migration log. remoting.log: Network connection log. scheduler_task.log: Scheduled task log.
+> **Note:** debug.log: Business log.
+> import.log: Data migration log.
+> remoting.log: Network connection log.
+> scheduler_task.log: Scheduled task log.
 
 **Gateway data plane logs**
 

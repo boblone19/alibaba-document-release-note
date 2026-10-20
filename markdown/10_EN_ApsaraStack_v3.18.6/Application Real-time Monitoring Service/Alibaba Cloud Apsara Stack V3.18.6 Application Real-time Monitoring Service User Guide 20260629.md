@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 153
 source_pdf: "bd89e7e420f1d51d_Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1%20ARMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Real-time%20Monitoring%20Service%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Application Real-time Monitoring Service User Guide 20260629
@@ -182,9 +182,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -197,14 +205,18 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Middleware > Cloud-native**
 **Observability > Application Real-Time Monitoring Service** to go to the ARMS console.
 6. In the lower-right corner of the page, click **Switch Account** and configure the
 **Organization** and **Region** parameters.
 7. Click **Access as Administrator** or **Access with Authorized Role** to go to the **Overview**
-page. If you use an administrator account, click **Access as Administrator**. If you use a nonadministrator account, click **Access with Authorized Role**.
+page.
+
+> **Note:** If you use an administrator account, click **Access as Administrator**. If you use a non- administrator account, click **Access with Authorized Role**.
 
 ### 3.2 Create a template-based monitoring task
 
@@ -228,9 +240,15 @@ the **Application Information** section.
 **Instance List** page, click **Create Mapping Table**.
 3. In the **Create Mapping Table** dialog box, configure all the required parameters, and click
 **OK**.
-i. Set the **Resource Region** parameter to the region in which you want to create a mapping table. ii. Enter a custom resource name in the **Resource Name** field. iii. Enter the `appId` and `appName` in the **Schema** field. iv. Set the **Resource Type** parameter to **TEXT**. v. Enter text content in the appId=appName format in the **Text Content** field. The mapping between the appId and appName is the application relationship of the user that you configured in EDAS. You can log on to the EDAS console in Apsara Stack to query the information. For more information, see Obtain the appId and appName. The text content of the ARMS mapping table is in the JSON array format. The mapping table is created. The mapping table appears in the list on the **Mapping**
+i. Set the **Resource Region** parameter to the region in which you want to create a mapping table. ii. Enter a custom resource name in the **Resource Name** field. iii. Enter the `appId` and `appName` in the **Schema** field. iv. Set the **Resource Type** parameter to **TEXT**. v. Enter text content in the appId=appName format in the **Text Content** field.
+
+> **Note:** The mapping between the appId and appName is the application relationship of the user that you configured in EDAS. You can log on to the EDAS console in Apsara Stack to query the information. For more information, see Obtain the appId and appName.
+> The text content of the ARMS mapping table is in the JSON array format.
+
+The mapping table is created. The mapping table appears in the list on the **Mapping**
 **Tables** page.
-Record the resource ID of the mapping table. This resource ID is required in subsequent operations.
+
+> **Note:** Record the resource ID of the mapping table. This resource ID is required in subsequent operations.
 
 **Create a monitoring task**
 
@@ -250,7 +268,9 @@ In the **Data Source Configuration** step that appears after you create a monito
 Compute Service (ECS) instances.
 3. Paste the IP addresses of the ECS instances obtained from the EDAS IP URL to the
 **Collection Target** field.
-Enter the IP addresses of the monitored instances. If multiple Apsara Stack environments exist, such as the staging and production environments, you can edit the IP addresses based on the actual situation. If only one environment exists, you can access http://{TLog domain name of EDAS in the actual environment}/api/EdasIp, such as http://tlog-internal.console.xxx.cn/api/EdasIp, and copy the page content to obtain all IP addresses. For the domain name of EDAS TLog, consult the on-site staff of the Apsara Stack environment or the EDAS team.
+
+> **Note:** Enter the IP addresses of the monitored instances. If multiple Apsara Stack environments exist, such as the staging and production environments, you can edit the IP addresses based on the actual situation. If only one environment exists, you can access http://{TLog domain name of EDAS in the actual environment}/api/EdasIp, such as http://tlog-internal.console.xxx.cn/api/EdasIp, and copy the page content to obtain all IP addresses. For the domain name of EDAS TLog, consult the on-site staff of the Apsara Stack environment or the EDAS team.
+
 4. Select **Auto-Detect** from the **Encoding** drop-down list.
 
 **Configure the mapping table**
@@ -311,7 +331,7 @@ Log on to the ARMS container.
 env |grep arms_pop_domain curl -v http://arms_pop_domain/trace/Ipv6ConfigService -dregionId="" -dipv6Status=""
 ```
 
-Set dipv6Status to true to enable IPv6, or false to disable it.
+> **Note:** Set dipv6Status to true to enable IPv6, or false to disable it.
 
 **Page Validation**
 
@@ -392,7 +412,8 @@ decompress the installation package to a working directory:
 unzip ArmsAgent.zip -d /{user.workspace}/
 ```
 
-{user.workspace} is a sample directory. Replace the sample directory with the actual directory.
+> **Note:** {user.workspace} is a sample directory. Replace the sample directory with the actual directory.
+
 7. Copy the license key in the upper part of the **Add Application** page.
 8. Add the **AppName** and **LicenseKey** parameters by using either of the following methods,
 and then click **Next**.
@@ -401,7 +422,10 @@ and then click **Next**.
 |---|---|
 | {AppName} |   |
 
-Replace `{LicenseKey}` in the sample code with your license key. Replace `{AppName}` with your application name, which cannot contain Chinese characters. Replace `{user.workspace}` with the directory to which the installation package of the ARMS agent is decompressed. Replace demoApp.jar with the address of the JAR package. Method 1: Modify the Java Virtual Machine (JVM) parameters based on the runtime environment of your application.
+> **Note:** Replace `{LicenseKey}` in the sample code with your license key. Replace
+> `{AppName}` with your application name, which cannot contain Chinese characters. Replace `{user.workspace}` with the directory to which the installation package of the ARMS agent is decompressed. Replace demoApp.jar with the address of the JAR package.
+
+Method 1: Modify the Java Virtual Machine (JVM) parameters based on the runtime environment of your application.
 
 | Runtime environmen t | Procedure |
 |---|---|
@@ -438,7 +462,9 @@ b. Append the following parameter to the startup script of the Java application:
 
 **Verify the result**
 
-After about one minute, if your application is displayed in the application list and some data records are sent, your application is monitored by ARMS. The **Applications** page displays all the monitored applications in multiple pages, with each page displaying at most 20 applications.
+After about one minute, if your application is displayed in the application list and some data records are sent, your application is monitored by ARMS.
+
+> **Note:** The **Applications** page displays all the monitored applications in multiple pages, with each page displaying at most 20 applications.
 
 **Uninstall the ARMS agent**
 
@@ -705,7 +731,9 @@ pane, and then click the **JVM monitoring** tab on the right side.
 
 On the **JVM monitoring** tab, you can view the time series curves for the instantaneous GC count, instantaneous GC time consumption, heap memory details, metaspace details, nonheap memory details, direct buffer details, and JVM thread count. You can click **Instantaneous** or **Accumulated** in the upper-right corner of the
 **Instantaneous Count** and **Instantaneous Duration** charts to switch between different
-curves. You can view the time series curves for the instantaneous GC count, accumulated GC count, instantaneous GC time consumption, and accumulated GC time consumption. You can click the name of a metric such as FullGC Count on a chart to show or hide the metric. Each chart must contain at least one visible metric. If only one metric is displayed in a chart, you cannot hide the metric.
+curves. You can view the time series curves for the instantaneous GC count, accumulated GC count, instantaneous GC time consumption, and accumulated GC time consumption. You can click the name of a metric such as FullGC Count on a chart to show or hide the metric.
+
+> **Note:** Each chart must contain at least one visible metric. If only one metric is displayed in a chart, you cannot hide the metric.
 
 **Metrics**
 
@@ -725,9 +753,7 @@ click the **Custom Configuration** tab.
 5. On the **Custom Configuration** tab, turn on **Thread pool monitoring** in the **Advanced**
 **Settings** section.
 
-**Important**
-
-You can use the thread pool monitoring feature to monitor the thread pools in frameworks such as Apache Tomcat, Apache Dubbo, and High-speed Service Framework (HSF). To enable this feature, you must update the ARMS agent to the latest version. This feature takes effect after you restart your application.
+> **Important:** You can use the thread pool monitoring feature to monitor the thread pools in frameworks such as Apache Tomcat, Apache Dubbo, and High-speed Service Framework (HSF). To enable this feature, you must update the ARMS agent to the latest version. This feature takes effect after you restart your application.
 
 **View metrics for thread pool monitoring**
 
@@ -743,7 +769,11 @@ displays the time series curves of the following metrics: the number of core thr
 | Number of active threads | The number of active threads that are processing tasks. |
 | Queue size | The maximum number of tasks allowed in the task queue. |
 
-A thread is created to process a newly submitted task in the following scenarios: 1. The number of existing threads in a thread pool is less than that of core threads. In this case, a thread is created even if idle threads exist. 2. The number of existing threads in a thread pool is greater than that of core threads but less than the maximum number allowed. The number of tasks in the task queue reaches the upper limit. The number of existing threads in a thread pool cannot exceed the maximum number of threads allowed in the thread pool. On the **Thread pool monitoring** tab, you can perform the following operations: Move the pointer over a chart to view the detailed statistics. Click the name of a metric, such as the number of core threads, on a chart to show or hide the metric. Each chart must contain at least one visible metric. Therefore, if only one metric is displayed in a chart, you cannot hide this metric.
+> **Note:** A thread is created to process a newly submitted task in the following scenarios: 1. The number of existing threads in a thread pool is less than that of core threads. In this case, a thread is created even if idle threads exist. 2. The number of existing threads in a thread pool is greater than that of core threads but less than the maximum number allowed. The number of tasks in the task queue reaches the upper limit. The number of existing threads in a thread pool cannot exceed the maximum number of threads allowed in the thread pool.
+
+On the **Thread pool monitoring** tab, you can perform the following operations: Move the pointer over a chart to view the detailed statistics. Click the name of a metric, such as the number of core threads, on a chart to show or hide the metric.
+
+> **Note:** Each chart must contain at least one visible metric. Therefore, if only one metric is displayed in a chart, you cannot hide this metric.
 
 ##### 4.3.3.4 Host monitoring
 
@@ -760,7 +790,11 @@ pane, and then click the **HOST Monitoring** tab on the right side.
 
 **View host monitoring metrics**
 
-On the **HOST Monitoring** tab, you can view the time series curves of metrics that are related to the CPU, memory, disks, load, network traffic, and network packets. You can click the name of a metric, such as the system CPU utilization, in a chart to show or hide the metric. Each chart must contain at least one visible metric. If only one metric is displayed in a chart, you cannot hide the metric. You can click the line chart icon in the upper-right corner of a chart to view the metric trend in a specific time range, or compare metric trends in two time ranges. Click the icon to create an alert for the metric. For more information, see Create an alert rule.
+On the **HOST Monitoring** tab, you can view the time series curves of metrics that are related to the CPU, memory, disks, load, network traffic, and network packets. You can click the name of a metric, such as the system CPU utilization, in a chart to show or hide the metric.
+
+> **Note:** Each chart must contain at least one visible metric. If only one metric is displayed in a chart, you cannot hide the metric.
+
+You can click the line chart icon in the upper-right corner of a chart to view the metric trend in a specific time range, or compare metric trends in two time ranges. Click the icon to create an alert for the metric. For more information, see Create an alert rule.
 
 **Metrics**
 
@@ -837,9 +871,10 @@ Move the pointer over a chart to view the detailed statistics. Select a time ran
 
 **Exception list**
 
-The exception list displays all exceptions of the application in the specified time period. To filter exceptions, perform the following steps: In the left-side navigation pane, click
-**Application Settings**. On the page that appears, click the **Custom Configuration** tab.
-In the **Advanced Settings** section, configure the **Whitelist** field.
+The exception list displays all exceptions of the application in the specified time period.
+
+> **Note:** To filter exceptions, perform the following steps: In the left-side navigation pane, click **Application Settings**. On the page that appears, click the **Custom Configuration** tab. In the **Advanced Settings** section, configure the **Whitelist** field.
+
 **Optional:** In the exception list, you can perform the following operations:
 Click **Invocation Statistics** in the **Actions** column of an exception to view the stacked column chart of the exception. Click **Interface Snapshot** in the **Actions** column of an exception to view the snapshots of the operations that are called when the exception occurs. For more information, see API call snapshots. Click **Details** in the **Actions** column of an exception to view the details of the exception.
 
@@ -920,7 +955,9 @@ Enter the operation name in the search box and click the icon to view the snapsh
 
 #### 4.3.4 Scheduled tasks
 
-A scheduled task can be created to automatically run a program or command on a one-time or recurring basis. You can query the details of a scheduled application monitoring task in the Application Real-Time Monitoring Service (ARMS) console. The details include the task overview, SQL and NoSQL analysis, exception analysis, error analysis, downstream services, and traces. Application Monitoring of ARMS supports only scheduled tasks of the XXL-JOB type.
+A scheduled task can be created to automatically run a program or command on a one-time or recurring basis. You can query the details of a scheduled application monitoring task in the Application Real-Time Monitoring Service (ARMS) console. The details include the task overview, SQL and NoSQL analysis, exception analysis, error analysis, downstream services, and traces.
+
+> **Note:** Application Monitoring of ARMS supports only scheduled tasks of the XXL-JOB type.
 
 **Procedure**
 
@@ -1019,7 +1056,11 @@ Click the **Overview** tab to view the general information about the database ca
 
 The **Overview** tab displays the information about the database of the application. You can view the call topology and time series curves for the number of requests, response time, and number of errors.
 **Optional.** On the **Overview** tab, you can perform the following operations:
-Click the icon to configure the display settings of the topology. The settings are stored in the browser and remain effective the next time you go to the Overview tab. Click the plus icon or scroll the mouse wheel forward to zoom in the topology. Click the minus icon or scroll the mouse wheel backward to zoom out the topology. Click the RESET icon to restore the topology to the default size. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click the icon to create an alert for the metric. For more information, see Create an alert.
+Click the icon to configure the display settings of the topology.
+
+> **Note:** The settings are stored in the browser and remain effective the next time you go to the Overview tab.
+
+Click the plus icon or scroll the mouse wheel forward to zoom in the topology. Click the minus icon or scroll the mouse wheel backward to zoom out the topology. Click the RESET icon to restore the topology to the default size. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click the icon to create an alert for the metric. For more information, see Create an alert.
 
 **SQL analysis**
 
@@ -1032,9 +1073,10 @@ Move the pointer over a chart to view the detailed statistics. Select a time ran
 
 The **Exception Analysis** tab displays information about the exceptions of the database.
 **Optional.** On the **Exception Analysis** tab, you can perform the following operations:
-To filter exceptions, perform the following steps: In the left-side navigation pane, click
-**Application Settings**. On the page that appears, click the **Custom Configuration** tab.
-In the **Advanced Settings** section, configure the **Whitelist** field. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click **Invocation Statistics** in the **Actions** column of an exception to view the statistics of the exception. To view the details of an exception, click **Details** in the **Actions** column of the exception.
+
+> **Note:** To filter exceptions, perform the following steps: In the left-side navigation pane, click **Application Settings**. On the page that appears, click the **Custom Configuration** tab. In the **Advanced Settings** section, configure the **Whitelist** field.
+
+Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click **Invocation Statistics** in the **Actions** column of an exception to view the statistics of the exception. To view the details of an exception, click **Details** in the **Actions** column of the exception.
 
 **Call sources**
 
@@ -1070,7 +1112,11 @@ Click the **Overview** tab to view the general information about NoSQL calls of 
 
 The **Overview** tab displays the information about the NoSQL database of the application. You can view the call topology and time series curves for the number of requests, response time, and number of errors.
 **Optional.** On the **Overview** tab, you can perform the following operations:
-Move the pointer over the icon to configure the display settings of the topology. The settings are stored in the browser and remain effective the next time you go to the Overview tab. Click the plus icon or scroll the mouse wheel forward to zoom in the topology. Click the minus icon or scroll the mouse wheel backward to zoom out the topology. Click the Reset icon to restore the topology to the default size. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click a legend to hide or show the data. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click the icon to create an alert for the metric. For more information, see Create an alert.
+Move the pointer over the icon to configure the display settings of the topology.
+
+> **Note:** The settings are stored in the browser and remain effective the next time you go to the Overview tab.
+
+Click the plus icon or scroll the mouse wheel forward to zoom in the topology. Click the minus icon or scroll the mouse wheel backward to zoom out the topology. Click the Reset icon to restore the topology to the default size. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click a legend to hide or show the data. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click the icon to create an alert for the metric. For more information, see Create an alert.
 
 **NoSQL analysis**
 
@@ -1082,7 +1128,10 @@ Move the pointer over a chart to view the detailed statistics. Select a time ran
 
 The **Exception Analysis** tab displays the exceptions of NoSQL calls.
 **Optional.** On the **Exception Analysis** tab, you can perform the following operations:
-To filter exceptions, perform the following operations: In the left-side navigation pane, click **Application Settings**. On the page that appears, click the **Custom Configuration** tab, and configure the **Whitelist** field in the Advanced Settings section. For more information, see Customize application settings. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click **Invocation Statistics** in the **Actions** column of an exception to view the statistics of the exception. Click **Interface Snapshot** in the **Actions** column of an exception to view the snapshots of the operations that are called when the exception occurs. Click **Details** in the **Actions** column of an exception to view the details of the exception.
+
+> **Note:** To filter exceptions, perform the following operations: In the left-side navigation pane, click **Application Settings**. On the page that appears, click the **Custom Configuration** tab, and configure the **Whitelist** field in the Advanced Settings section. For more information, see Customize application settings.
+
+Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days. Click **Invocation Statistics** in the **Actions** column of an exception to view the statistics of the exception. Click **Interface Snapshot** in the **Actions** column of an exception to view the snapshots of the operations that are called when the exception occurs. Click **Details** in the **Actions** column of an exception to view the details of the exception.
 
 **API call snapshots**
 
@@ -1132,15 +1181,17 @@ The continuous performance profiling feature of Application Real-Time Monitoring
 
 **Prerequisites**
 
-**Important**
+> **Important:** Continuous performance profiling data can be retained for only seven days.
 
-Continuous performance profiling data can be retained for only seven days. Your application is monitored by ARMS. For more information, see Overview. An Object Storage Service (OSS) bucket is specified in the access control policy of the virtual private cloud (VPC) where the application resides. The OSS bucket is used to store profiling data. If the bucket is not specified in the policy, the data cannot be collected. The name of the OSS bucket is in the format of arms-profiling-<regionId>. Replace <regionId> with the actual region ID. For example, if your application is deployed in the China (Hangzhou) region, the bucket name is arms-profiling-cn-hangzhou. The continuous performance profiling feature supports only OpenJDK and Oracle JDK. IBM OpenJ9 and Oracle GraalVM JDK are not supported.
+Your application is monitored by ARMS. For more information, see Overview. An Object Storage Service (OSS) bucket is specified in the access control policy of the virtual private cloud (VPC) where the application resides. The OSS bucket is used to store profiling data. If the bucket is not specified in the policy, the data cannot be collected. The name of the OSS bucket is in the format of arms-profiling-<regionId>. Replace <regionId> with the actual region ID. For example, if your application is deployed in the China (Hangzhou) region, the bucket name is arms-profiling-cn-hangzhou. The continuous performance profiling feature supports only OpenJDK and Oracle JDK. IBM OpenJ9 and Oracle GraalVM JDK are not supported.
 
 **Limits**
 
 **Operating system kernel**
 
-The operating system kernel must be Linux 2.6.32-431.23.3.el6.x86_64 or later. You can run the `uname -r` command to query the kernel version.
+The operating system kernel must be Linux 2.6.32-431.23.3.el6.x86_64 or later.
+
+> **Note:** You can run the `uname -r` command to query the kernel version.
 
 **JDK version**
 
@@ -1247,9 +1298,9 @@ The thread profiling feature provides statistics on the CPU time consumption at 
 
 The **Threads Profiling** page displays all threads of the application in the left-side pane. You can detect abnormal threads based on statistics in the **CPU Time Consumption (ms)** section. Select an abnormal thread and analyze the changes of the graphs for **CPU Time**
 **Consumption (ms)** and **Thread Count**. For example, you can analyze whether the total
-number of threads per minute is overlarge. You can also click **Method Stack** of an abnormal thread to view the method stack that is running within a specified period of time. For example, by viewing the methods in the BLOCKED state of the thread, you can optimize the specified code block to reduce CPU utilization. If no data is displayed after you click **Method Stack**, click **Application Settings** in the left-side navigation pane, click the **Custom Configuration** tab, and check whether
-**Thread Profiling Method Stack** is enabled in the **Thread settings** section. If Thread
-Profiling Method Stack is disabled, method stack information cannot be recorded. After Thread Profiling Method Stack is enabled, method stack information is collected every 5 minutes.
+number of threads per minute is overlarge. You can also click **Method Stack** of an abnormal thread to view the method stack that is running within a specified period of time. For example, by viewing the methods in the BLOCKED state of the thread, you can optimize the specified code block to reduce CPU utilization.
+
+> **Note:** If no data is displayed after you click **Method Stack**, click **Application Settings** in the left-side navigation pane, click the **Custom Configuration** tab, and check whether **Thread Profiling Method Stack** is enabled in the **Thread settings** section. If Thread Profiling Method Stack is disabled, method stack information cannot be recorded. After Thread Profiling Method Stack is enabled, method stack information is collected every 5 minutes.
 
 ##### 4.3.11.3 Arthas diagnostics
 
@@ -1257,7 +1308,9 @@ Arthas helps developers diagnose issues in the production environments of Java a
 
 **Prerequisites**
 
-We recommend that you enable the Arthas diagnostic feature only for troubleshooting and disable the Arthas diagnostic feature during routine operations. Your application is monitored by ARMS. For more information, see Overview.
+> **Note:** We recommend that you enable the Arthas diagnostic feature only for troubleshooting and disable the Arthas diagnostic feature during routine operations.
+
+Your application is monitored by ARMS. For more information, see Overview.
 
 **Background information**
 
@@ -1303,13 +1356,21 @@ On the Method execution analysis tab, you can view the information such as time 
 1. On the Method execution analysis tab, enter a keyword in the search box and click the
 icon.
 2. Find the class on which you want to perform diagnostics from the displayed classes. Select
-a method of the class in the drop-down list on the right side and then click **OK**. ARMS captures a random execution record of the method. The execution information is displayed. Perform the following steps to set conditions for capturing a method execution record: i. Select an overloaded method and click **Set the filtering criteria**. ii. Select a key type from the **Set the initial filtering condition** and click the icon. Key types: params[n]: the nth parameter of the method. returnObj: the returned value of the method. Perform time-consuming: the duration of the method. Whether an exception is thrown: specifies whether an exception is thrown during the method execution. If a nested key is selected, you need to continue specifying the field of the nested key until a base field is selected. iii. Select a filter condition. iv. Enter a filter value. v. Click **Add**. The conditions for selecting the method execution records are displayed in the **Current**
+a method of the class in the drop-down list on the right side and then click **OK**. ARMS captures a random execution record of the method. The execution information is displayed. Perform the following steps to set conditions for capturing a method execution record: i. Select an overloaded method and click **Set the filtering criteria**. ii. Select a key type from the **Set the initial filtering condition** and click the icon. Key types: params[n]: the nth parameter of the method. returnObj: the returned value of the method. Perform time-consuming: the duration of the method. Whether an exception is thrown: specifies whether an exception is thrown during the method execution.
+
+> **Note:** If a nested key is selected, you need to continue specifying the field of the nested key until a base field is selected.
+
+iii. Select a filter condition. iv. Enter a filter value. v. Click **Add**. The conditions for selecting the method execution records are displayed in the **Current**
 **filter condition** section.
 vi. Click **OK**, and then click the icon on the right. The system crawls the method again based on the specified conditions. The following table describes the execution of the queried method. The internal execution records of the method that you select are displayed in the **Time-**
 **consuming details** section on the left side.
 To drill down to an internal method, find the internal method and click **Drill in** in the
 **Actions** column.
-The call source of the current method is displayed in the **Call source** section. The execution duration of each internal method is displayed in the **Method source code** section. You can add custom observations in the **Add a custom observation item** section. a. Select a key type from the **Please select the initial item to be observed** drop-down list and click the icon. Key types: params[n]: the nth input parameter of the method. returnObj: the returned value of the method. target: the instance of the class that executes the method. This field is empty for static methods. If a nested key is selected, you need to continue specifying the field of the nested key until a base field is selected. b. Click **Add**. The added filter conditions are displayed in the **Current custom observation item** section. You click the icon to delete the conditions. c. In the **Default observation item** section, you can view the observations of the current method, including params, returnObj, throwExp, and target.
+The call source of the current method is displayed in the **Call source** section. The execution duration of each internal method is displayed in the **Method source code** section. You can add custom observations in the **Add a custom observation item** section. a. Select a key type from the **Please select the initial item to be observed** drop-down list and click the icon. Key types: params[n]: the nth input parameter of the method. returnObj: the returned value of the method. target: the instance of the class that executes the method. This field is empty for static methods.
+
+> **Note:** If a nested key is selected, you need to continue specifying the field of the nested key until a base field is selected.
+
+b. Click **Add**. The added filter conditions are displayed in the **Current custom observation item** section. You click the icon to delete the conditions. c. In the **Default observation item** section, you can view the observations of the current method, including params, returnObj, throwExp, and target.
 
 **Object viewer**
 
@@ -1381,17 +1442,13 @@ page, click the **Custom Configurations** tab.
 
 In the **Call Chain Sampling Settings** area, enable or disable the call chain sampling switch and set the sampling rate. In the **Sampling Rate Setting** field, enter the percentage as a number. For example, enter `10` for 10% sampling.
 
-**Important**
-
-Changes take effect immediately. You do not need to restart the application. If you disable sampling, the system will not collect call chain data. Proceed with caution.
+> **Important:** Changes take effect immediately. You do not need to restart the application. If you disable sampling, the system will not collect call chain data. Proceed with caution.
 
 **Configure Agent (Probe) Switch and Log Level**
 
 In the **Agent Switch Configuration** area, enable or disable the probe master switch and individual plugin switches. Configure the log level.
 
-**Important**
-
-Changes to the probe master switch and log level take effect immediately. You do not need to restart the application. If you disable the probe master switch, the system cannot monitor your application. Proceed with caution. To apply changes to individual plugin switches, manually restart the application.
+> **Important:** Changes to the probe master switch and log level take effect immediately. You do not need to restart the application. If you disable the probe master switch, the system cannot monitor your application. Proceed with caution. To apply changes to individual plugin switches, manually restart the application.
 
 **Configure Threshold Settings**
 
@@ -1510,9 +1567,8 @@ clear the tags to be disabled for the application.
 3. In the **Manage Tags** dialog box, move the pointer over the tag that you want to modify or
 delete. To modify a tag, click the icon on the right side of the tag and enter a new tag name. To delete a tag, click the icon on the left side of the tag.
 
-**Important**
+> **Important:** If you delete a tag in the **Manage Tags** dialog box, the tag is deleted for all applications to which this tag is added.
 
-If you delete a tag in the **Manage Tags** dialog box, the tag is deleted for all applications to which this tag is added.
 4. In the message that appears, click **Confirm**.
 5. In the **Success** message, click **Confirm**. Then, click **Save** on the Tags tab.
 
@@ -1615,7 +1671,9 @@ After a custom method is added for monitoring, it is automatically displayed in 
 
 ##### 4.3.13.5 Delete an application
 
-If you no longer use Application Real-Time Monitoring Service (ARMS) to monitor your application, you can delete the application on the Application Settings page. ARMS automatically deletes applications that have no data reported in the last 60 days.
+If you no longer use Application Real-Time Monitoring Service (ARMS) to monitor your application, you can delete the application on the Application Settings page.
+
+> **Note:** ARMS automatically deletes applications that have no data reported in the last 60 days.
 
 **Procedure**
 
@@ -1627,16 +1685,14 @@ click the **Custom Configuration** tab.
 5. On the **Custom Configuration** tab, turn off **Probe Master Switch** in the **Agent Switch**
 **Settings** section. Then, click **Save** in the lower-left corner of the tab.
 
-**Important**
+> **Important:** The modification takes effect immediately without the need to restart the application. After you turn off Probe Master Switch, your application is no longer monitored by ARMS, and no fees are incurred. Proceed with caution when you perform this operation.
 
-The modification takes effect immediately without the need to restart the application. After you turn off Probe Master Switch, your application is no longer monitored by ARMS, and no fees are incurred. Proceed with caution when you perform this operation.
 6. Uninstall the ARMS agent. For more information, see FAQ about application monitoring.
 7. After the ARMS agent is uninstalled, click the **Delete** tab on the **Application Settings**
 page.
 
-**Warning**
+> **Warning:** This operation clears all monitoring data of the application, and the monitoring data cannot be restored.
 
-This operation clears all monitoring data of the application, and the monitoring data cannot be restored.
 8. On the **Delete** tab, click **Delete Application**. In the message that appears, click **Confirm**.
 
 **Result**
@@ -1668,7 +1724,10 @@ i. Right-click a node to view the upstream nodes, downstream nodes, and details 
 
 **Edit or delete a view**
 
-You can edit or delete a custom topology. The default view cannot be modified or deleted.
+You can edit or delete a custom topology.
+
+> **Note:** The default view cannot be modified or deleted.
+
 1. Log in to the ARMS console.
 2. In the left-side navigation pane, choose **Application Monitoring > Global Topology**.
 3. Select the view that you want to edit from the drop-down list on the right of **Create View**,
@@ -1814,7 +1873,9 @@ The statistics of application exceptions are insufficient for locating the cause
 1. On the **Exception Analysis** tab, find the type of exception that you want to diagnose, and
 click **Interface Snapshot** in the **Actions** column. On the **Interface Snapshot** tab, the call trace information related to this exception type is displayed.
 2. On the **Interface Snapshot** tab, click the trace ID of a problematic call.
-For information about how to query a trace, see Trace query.
+
+> **Note:** For information about how to query a trace, see Trace query.
+
 3. On the page that appears, view the trace information related to the exception. In the
 **Method Stack** column, click the magnifier icon to view the method stack that is called.
 This way, you can obtain the context information about the exception. At this point, the causes of the exception are found. This effectively helps you with the subsequent code optimization. You can also return to the **Interface Invocation** tab to view other exceptions in the list and resolve them one by one.
@@ -1865,7 +1926,11 @@ On the **Interface Snapshot** tab, all snapshots of the API operation are displa
 2. On the **Interface Snapshot** tab, click the trace ID of a problematic call.
 3. On the page that appears, view the trace information related to the exception. In the
 **Method Stack** column, click the magnifier icon to view the method stack that is called.
-This way, you can obtain the context information about the exception. For information about how to query a trace, see Trace query. At this point, the causes of a specific slow call are revealed. This way, you can optimize the code later. You can also return to the **Interface Invocation** page to view other slow calls in the list and resolve them one by one.
+This way, you can obtain the context information about the exception.
+
+> **Note:** For information about how to query a trace, see Trace query.
+
+At this point, the causes of a specific slow call are revealed. This way, you can optimize the code later. You can also return to the **Interface Invocation** page to view other slow calls in the list and resolve them one by one.
 
 **What to do next**
 
@@ -1894,9 +1959,14 @@ click the name of your application on the **Applications** page.
 click the **Custom Configuration** tab.
 4. On the **Custom Configuration** tab, turn on **Link Business Logs with TraceId** in the
 **Business Log Linking Settings** section.
-If you enable Link Business Logs with TraceId, trace IDs are automatically generated in the business logs.
+
+> **Note:** If you enable Link Business Logs with TraceId, trace IDs are automatically generated in the business logs.
+
 5. Add %X{EagleEye-TraceID} to the pattern property of the business log layout. The
-following figure shows how to add this configuration for the Logback component. For information about how to obtain {EagleEye-TraceID} in the code, see ARMS SDKs.
+following figure shows how to add this configuration for the Logback component.
+
+> **Note:** For information about how to obtain {EagleEye-TraceID} in the code, see ARMS SDKs.
+
 6. Restart the application.
 If trace IDs are displayed in the business logs of the application, the business logs are associated with the trace IDs, as shown in the following figure.
 
@@ -1948,7 +2018,9 @@ the China (Hangzhou) region.
 java -jar arms-gateway-1.7.0.jar
 ```
 
-The version of Java Development Kit (JDK) must be later than JDK 1.7. By default, Gateway connects to the ARMS service in the China (Hangzhou) region. To connect Gateway to the ARMS service in another region, you can specify the region by using the -D parameter in the following way:
+> **Note:** The version of Java Development Kit (JDK) must be later than JDK 1.7.
+
+By default, Gateway connects to the ARMS service in the China (Hangzhou) region. To connect Gateway to the ARMS service in another region, you can specify the region by using the -D parameter in the following way:
 
 ```
 java -jar -Darms.server.endpoint=arms-dc-bj.aliyuncs.com arms-gateway-1.7.0.jar
@@ -1996,9 +2068,8 @@ click the **Custom Configuration** tab.
 5. On the **Custom Configuration** tab, turn off **Probe Master Switch** in the **Agent Switch**
 **Settings** section, and click **Save** at the bottom of the page.
 
-**Important**
+> **Important:** The modification takes effect immediately without the need to restart the application. After you turn off Probe Master Switch, your application is not monitored anymore, and no fees are incurred. Proceed with caution when you perform this operation.
 
-The modification takes effect immediately without the need to restart the application. After you turn off Probe Master Switch, your application is not monitored anymore, and no fees are incurred. Proceed with caution when you perform this operation.
 6. Click **Save** at the bottom of the page.
 If you want to turn off Probe Master Switch for multiple applications, you can click **Bulk**
 **copy to other applications**.
@@ -2311,7 +2382,9 @@ Becomes:
 aliyun-instrument gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 ap p:app
 ```
 
-The aliyun-instrument command initializes the ARMS Python agent and enables nonintrusive instrumentation. If your application uses uWSGI, follow the instructions in Connect Django or Flask projects launched with uWSGI to the Python agent. If your application uses gevent coroutines, set the environment variable
+> **Note:** The aliyun-instrument command initializes the ARMS Python agent and enables non- intrusive instrumentation.
+
+If your application uses uWSGI, follow the instructions in Connect Django or Flask projects launched with uWSGI to the Python agent. If your application uses gevent coroutines, set the environment variable
 
 ```
  GEVENT_ENABLE=true .
@@ -2345,9 +2418,9 @@ Go to the directory where the agent ZIP file is located and extract it to any wo
 unzip aliyun-python-agent.zip -d /{user.workspace}/
 ```
 
-**Important**
+> **Important:** "{user.workspace}" is an example path. Replace it with the correct path for your environment.
 
-"{user.workspace}" is an example path. Replace it with the correct path for your environment. After extracting the agent, go to the target/ directory. Then, choose an installation method based on whether your environment has Internet access: Internet access available: i. Run the following command to configure a PyPI mirror for faster installation:
+After extracting the agent, go to the target/ directory. Then, choose an installation method based on whether your environment has Internet access: Internet access available: i. Run the following command to configure a PyPI mirror for faster installation:
 
 ```
 pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && pip con fig set install.trusted-host mirrors.aliyun.com
@@ -2379,8 +2452,7 @@ Add the following environment variables to your Python application:
 export ARMS_APP_NAME=my-service # Your app name. Change it before use. export ARMS_REGION_ID=<REGION ID> export ARMS_LICENSE_KEY=<License Key> export ARMS_ENDPOINT=<Xtrace Endpoint>
 ```
 
-You can find these variables in the ARMS console. Go to **LLM Application Monitoring >**
-**Integration Settings**.
+> **Note:** You can find these variables in the ARMS console. Go to **LLM Application Monitoring >** **Integration Settings**.
 
 **Step 4: Launch your application using the ARMS Python agent**
 
@@ -2590,7 +2662,9 @@ curl -fsSLk https://<arms-console-domain>/download/openclaw/install.sh | bash -s
   --serviceName "my-openclaw"
 ```
 
-The endpoint URL is derived from the access point in the console by removing **v1/traces**. In addition, you need to replace serviceName and <arms-console-domain> with the actual values. The following figure shows a successful installation.
+> **Note:** The endpoint URL is derived from the access point in the console by removing **v1/traces**. In addition, you need to replace serviceName and <arms-console-domain> with the actual values.
+
+The following figure shows a successful installation.
 
 **Verify the installation**
 
@@ -2619,7 +2693,9 @@ Run the following command to uninstall OpenClaw:
 curl -fsSLk https://<arms-console-domain>/download/openclaw/uninstall.sh | bash
 ```
 
-You need to replace <arms-console-domain> with the actual value. The following figure shows a successful uninstallation.
+> **Note:** You need to replace <arms-console-domain> with the actual value.
+
+The following figure shows a successful uninstallation.
 
 ### 5.4 Overview
 
@@ -2726,9 +2802,9 @@ A probe has been installed for the LLM application. For specific operations, see
 2. In the navigation pane on the left, choose **LLM Application Monitoring > Application**
 **List**. Then click the name of your target application.
 3. After you enter the application page, click **Performance Analytics** in the navigation pane
-on the left. The App Performance Analytics page does not include metrics for EMBEDDING or RERANKER model calls. To view EMBEDDING model call metrics, go to the **LLM**
-**Operations > Embedding Analytics** page. RERANKER model call metrics are not
-available yet.
+on the left.
+
+> **Note:** The App Performance Analytics page does not include metrics for EMBEDDING or RERANKER model calls. To view EMBEDDING model call metrics, go to the **LLM** **Operations > Embedding Analytics** page. RERANKER model call metrics are not available yet.
 
 | Panel | Description |
 |---|---|
@@ -2762,7 +2838,9 @@ Install the probe for your LLM application. For more information, see LLM applic
 2. In the left navigation pane, choose **LLM Application Monitoring > Application List**.
 Then click the name of the target application.
 3. On the application page, click **Token Analysis** in the left navigation pane.
-oring The Token Analysis page does not currently support token consumption statistics for EMBEDDING and RERANKER model calls.
+oring
+
+> **Note:** The Token Analysis page does not currently support token consumption statistics for EMBEDDING and RERANKER model calls.
 
 | Panel | Description |
 |---|---|
@@ -2817,7 +2895,11 @@ oring
 
 **Retrieval augmentation**
 
-In LLM applications, retrieval-augmented generation (RAG) is a technique that combines retrieval and reranking to improve the relevance and accuracy of content that the LLM generates. Monitoring retrieval metrics lets you evaluate the performance, stability, and effectiveness of the retrieval augmentation feature. This provides data to support the optimization of your LLM application. Reranking metrics are not supported. oring
+In LLM applications, retrieval-augmented generation (RAG) is a technique that combines retrieval and reranking to improve the relevance and accuracy of content that the LLM generates. Monitoring retrieval metrics lets you evaluate the performance, stability, and effectiveness of the retrieval augmentation feature. This provides data to support the optimization of your LLM application.
+
+> **Note:** Reranking metrics are not supported.
+
+oring
 
 | Panel | Description |
 |---|---|
@@ -2935,7 +3017,12 @@ for the dashboard.
 5. Add a dataset.
 i. On the **Dashboards** page, find the dashboard and click **Edit** in the **Actions** column. ii. In the upper-right corner of the page, choose **Interactive Control > APM Monitoring**
 **Graph**.
-To display the application topology, select **APM Monitoring Topology**. To add custom monitoring data, select **Custom Monitoring Graph**. To add texts, select **Add Text**. iii. In the **New Interactive Chart** dialog box, enter a **chart name**, select an **application** and **metrics**, select a **chart type**, and configure other parameters as needed. Then, click **OK**.
+
+> **Note:** To display the application topology, select **APM Monitoring Topology**.
+> To add custom monitoring data, select **Custom Monitoring Graph**.
+> To add texts, select **Add Text**.
+
+iii. In the **New Interactive Chart** dialog box, enter a **chart name**, select an **application** and **metrics**, select a **chart type**, and configure other parameters as needed. Then, click **OK**.
 6. Add a navigation tree.
 i. On the edit page of the dashboard, choose **Interactive Control > Navigation Tree**
 **Components** in the upper-right corner of the page.
@@ -2947,7 +3034,16 @@ You can select different dimensions in the navigation tree to view the data of t
 9. In the time module, select **Today**, **This Week**, or **This Month** to view data within the
 specified time period. You can also specify the start time and end time to view data.
 0. After the dashboard is configured, click **Save** in the upper-right corner to save the
-configuration. ARMS automatically saves the configuration every 10 seconds to prevent data loss during editing. To prevent data loss during editing, ARMS automatically saves the configuration every 10 seconds. The size and position of the chart in the dashboard can be adjusted. Adjust the size of a chart In edit mode, drag the handle in the lower-right corner of a chart to adjust the size. Adjust the position of a chart element In edit mode, drag a chart to change its position.
+configuration. ARMS automatically saves the configuration every 10 seconds to prevent data loss during editing.
+
+> **Note:** To prevent data loss during editing, ARMS automatically saves the configuration every 10 seconds.
+
+> **Note:** The size and position of the chart in the dashboard can be adjusted.
+> Adjust the size of a chart
+> In edit mode, drag the handle in the lower-right corner of a chart to adjust the size.
+> Adjust the position of a chart element
+
+> In edit mode, drag a chart to change its position.
 
 ### 6.3 Manage a dashboard
 
@@ -2968,7 +3064,9 @@ B. Configure full-screen playback
 upper-right corner.
 6. In the **Full-screen Settings** dialog box, select the tab to view in full screen mode and click
 **OK**.
-The dashboard is played back in full screen mode. By default, the data is refreshed once every minute. If you have specific requirements, please contact Apsara Stack.
+The dashboard is played back in full screen mode.
+
+> **Note:** By default, the data is refreshed once every minute. If you have specific requirements, please contact Apsara Stack.
 
 ## 7 Alerts
 
@@ -2982,7 +3080,9 @@ A contact group is created. Only contact groups can be specified as alert recipi
 
 **Background information**
 
-Default alert conditions: To avoid alert notification flooding, the same alert is sent only twice within half an hour. If no repeated alerts are generated within 5 minutes, the system sends a recovery email to notify you that the alert is cleared. After a recovery email is sent, the system resets the alert status. If this alert is triggered again, it is treated as a new one. An alert control is a method to display data in datasets. When you create an alert control, a dataset is also created to store the underlying data of the alert control. Alerts support integration with ANS. If you need to use the ANS channel, contact the administrator to activate it.
+Default alert conditions: To avoid alert notification flooding, the same alert is sent only twice within half an hour. If no repeated alerts are generated within 5 minutes, the system sends a recovery email to notify you that the alert is cleared. After a recovery email is sent, the system resets the alert status. If this alert is triggered again, it is treated as a new one. An alert control is a method to display data in datasets. When you create an alert control, a dataset is also created to store the underlying data of the alert control.
+
+> **Note:** Alerts support integration with ANS. If you need to use the ANS channel, contact the administrator to activate it.
 
 **Create an application monitoring alert rule**
 
@@ -2991,7 +3091,11 @@ Default alert conditions: To avoid alert notification flooding, the same alert i
 3. On the **Alarm Policies** page, choose **Create Alarm > Application Monitoring Alarm** in
 the upper-right corner.
 4. In the **Create Alarm** dialog box, configure the required parameters and click **Save**.
-i. Enter a name for the alert rule, such as JVM-GC comparison. ii. Select an application from the **Application Site** drop-down list. Select an application group from the **Application Group** drop-down list. iii. Select a metric type from the **Type** drop-down list, such as **JVM_Monitoring**. iv. Set the Dimension parameter to **Traverse**. v. Configure the alert rule. a. Select **Meet All of the Following Criteria** or **Meet Any of the Following Criteria**. b. Edit the alert rule. For example, the alert is triggered when the value of N is 5 and the average value of JVM_FullGC increases by 100% compared with that in the previous hour. To add more alert rules, click the plus sign on the right of the first alert rule. vi. Select one or more notification methods. For example, select **Email**. vii. Select the alert recipient. In the **Contact Groups** list, click the name of a contact group. If the contact group appears in the **Selected Groups** list, the contact group is selected.
+i. Enter a name for the alert rule, such as JVM-GC comparison. ii. Select an application from the **Application Site** drop-down list. Select an application group from the **Application Group** drop-down list. iii. Select a metric type from the **Type** drop-down list, such as **JVM_Monitoring**. iv. Set the Dimension parameter to **Traverse**. v. Configure the alert rule. a. Select **Meet All of the Following Criteria** or **Meet Any of the Following Criteria**. b. Edit the alert rule. For example, the alert is triggered when the value of N is 5 and the average value of JVM_FullGC increases by 100% compared with that in the previous hour.
+
+> **Note:** To add more alert rules, click the plus sign on the right of the first alert rule.
+
+vi. Select one or more notification methods. For example, select **Email**. vii. Select the alert recipient. In the **Contact Groups** list, click the name of a contact group. If the contact group appears in the **Selected Groups** list, the contact group is selected.
 
 **Basic fields**
 
@@ -3101,7 +3205,8 @@ When you configure an alert rule, you can select only contact groups as alert co
 4. In the **New contact** dialog box, enter the contact name, phone number, and email
 address, and click OK. To allow the contact to receive system notifications, select **Whether**
 **to receive system notifications**. By default, this check box is not selected. Click **OK**.
-Each mobile phone number or email address can be used for only one contact. You can add a maximum of 100 contacts.
+
+> **Note:** Each mobile phone number or email address can be used for only one contact. You can add a maximum of 100 contacts.
 
 **Create a webhook**
 
@@ -3138,11 +3243,19 @@ a **group name**, select a **contact**, and then click **OK**.
 
 **What to do next**
 
-To search for a contact group, enter the contact group name or keywords of the name in the search box, and then click the Search icon. The keywords are case-sensitive. To modify a contact group, click the Edit icon on the right side of the contact group name. In the **Edit Contact Group** dialog box, modify the parameters and click OK. To view the contacts in a contact group, click the downwards arrow on the left side of the contact group name to display the contacts. You can remove one or more contacts from a contact group. To delete a contact group, click the Delete icon on the right side of the contact group name.
+To search for a contact group, enter the contact group name or keywords of the name in the search box, and then click the Search icon.
 
-**Warning**
+> **Note:** The keywords are case-sensitive.
 
-Proceed with caution when you delete a contact group. Before you delete a contact group, make sure that no task is running. Otherwise, the alerting feature may fail. description
+To modify a contact group, click the Edit icon on the right side of the contact group name. In the **Edit Contact Group** dialog box, modify the parameters and click OK. To view the contacts in a contact group, click the downwards arrow on the left side of the contact group name to display the contacts.
+
+> **Note:** You can remove one or more contacts from a contact group.
+
+To delete a contact group, click the Delete icon on the right side of the contact group name.
+
+> **Warning:** Proceed with caution when you delete a contact group. Before you delete a contact group, make sure that no task is running. Otherwise, the alerting feature may fail.
+
+description
 
 ## 8 Integration scenario description
 
@@ -3213,9 +3326,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. ent You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. ent
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -3228,8 +3349,9 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 
 **What to do next**
 
@@ -3237,7 +3359,10 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 
 1. If you forget the login password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, enter the verification code, and then click **Confirm**. ent Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+parameters, enter the verification code, and then click **Confirm**. ent
+
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ### 9.2 Create users and user groups
 
@@ -3439,9 +3564,9 @@ View and edit Application Monitoring ent Authorized users can view and edit all 
 
 `}` `]` `}` Delete Application Monitoring Authorized users can delete the Application Monitoring named arms-console-2 in the cnqingdao-env66-d01 environment.
 
-**Important**
+> **Important:** When deleting Application Monitoring, you also need to grant the permission to view monitoring so that you can find the monitoring that needs to be deleted.
 
-When deleting Application Monitoring, you also need to grant the permission to view monitoring so that you can find the monitoring that needs to be deleted. `{`
+`{`
 
 ```json
   "Version": "1",
@@ -3491,9 +3616,9 @@ View and edit custom monitoring Authorized users can view and edit all custom mo
 
 `}` `]` `}` Delete custom monitoring Authorized users can delete custom monitoring with the prefix "test" in the cn-qingdaoenv66-d01 environment.
 
-**Important**
+> **Important:** When deleting custom monitoring, you also need to grant the permission to view monitoring so that you can find the monitoring that needs to be deleted.
 
-When deleting custom monitoring, you also need to grant the permission to view monitoring so that you can find the monitoring that needs to be deleted. `{`
+`{`
 
 ```json
   "Version": "1",
@@ -3539,9 +3664,9 @@ When deleting custom monitoring, you also need to grant the permission to view m
 
 `}` `]` `}` Delete dashboard Authorized users can delete dashboards with the prefix "arms" in all environments.
 
-**Important**
+> **Important:** When deleting dashboards, you also need to grant the permission to view dashboards so that you can find the dashboard that needs to be deleted.
 
-When deleting dashboards, you also need to grant the permission to view dashboards so that you can find the dashboard that needs to be deleted. `{`
+`{`
 
 ```json
   "Version": "1",
@@ -3605,7 +3730,9 @@ The ARMS agent is incompatible with the agents of other application performance 
 
 **I start an application after the ARMS agent is installed?**
 
-Add the corresponding heap memory parameters to the start command to increase the memory of the Java virtual machine (JVM). In the following example, the initial size (Xms) of the heap memory is 512 MB, and the maximum size (Xmx) of the heap memory is 2 GB. You can adjust the sizes based on your actual requirement. In other environments such as Tomcat, add this parameter to **JAVA_OPTS** in the configuration file.
+Add the corresponding heap memory parameters to the start command to increase the memory of the Java virtual machine (JVM). In the following example, the initial size (Xms) of the heap memory is 512 MB, and the maximum size (Xmx) of the heap memory is 2 GB.
+
+> **Note:** You can adjust the sizes based on your actual requirement. In other environments such as Tomcat, add this parameter to **JAVA_OPTS** in the configuration file.
 
 ```
    -Xms512M
@@ -3630,7 +3757,9 @@ If the `OutOfMemoryError: metaspace` error is reported, append the following par
 
 **How do I test network connectivity?**
 
-Before you install the ARMS agent, make sure that ports 9994, 9995, and 9996 are accessible. You can run the **Telnet** command to check whether the host on which your application is deployed is connected to the ARMS server. For example, if you want to test the accessibility of port 9994, log in to the host on which the application is deployed and run the following commands: In the following example, ****** indicates the domain name or virtual IP address (VIP) of the collector in the current environment.
+Before you install the ARMS agent, make sure that ports 9994, 9995, and 9996 are accessible. You can run the **Telnet** command to check whether the host on which your application is deployed is connected to the ARMS server. For example, if you want to test the accessibility of port 9994, log in to the host on which the application is deployed and run the following commands:
+
+> **Note:** In the following example, ****** indicates the domain name or virtual IP address (VIP) of the collector in the current environment.
 
 ```
 telnet ****** 9994
@@ -3692,7 +3821,11 @@ agent may fail to be installed. We recommend that you update the JDK or contact 
 1. Run the **ifconfig -a** command to check the network configuration of the current host. If the
 host uses multiple network interface controllers (NICs), the IP address obtained by the ARMS agent may be inconsistent with the actual IP address due to network configurations.
 2. You can resolve the error by using one of the following methods:
-Configure the `-DEAGLEEYE.LOCAL.IP=10.XX.XX.XX` parameter of the JVM. Replace `10.XX.XX.XX` with the actual IP address. Configure the ARMS agent to obtain the value of the `-DNETWORK.INTERFACE=eth0` parameter, in which `eth0` indicates the NIC name. [Back to Top]
+Configure the `-DEAGLEEYE.LOCAL.IP=10.XX.XX.XX` parameter of the JVM.
+
+> **Note:** Replace `10.XX.XX.XX` with the actual IP address.
+
+Configure the ARMS agent to obtain the value of the `-DNETWORK.INTERFACE=eth0` parameter, in which `eth0` indicates the NIC name. [Back to Top]
 
 **How do I troubleshoot errors included in the logs of the ARMS**
 
@@ -3718,7 +3851,10 @@ java -javaagent:/{user.workspace}/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar -D
 
 **ARMS agent is manually installed?**
 
-Common Java applications refer to the Java applications that are not deployed on ECS instances. If you manually install the ARMS agent on the application, the directory of the agent is specified by you during the installation. You can check the version of the ARMS agent by viewing the version file in the directory of the agent. For example, `2.5.8_cf020486_20190816150025` indicates that the agent version is 2.5.8. If the version of the ARMS agent is earlier than 2.5.8.1, uninstall the agent and install it again. You can specify a new application name when you re-install the agent. For more information about how to uninstall the ARMS agent that is manually installed, see How do I uninstall the ARMS agent that is manually installed? If the version of the ARMS agent is 2.5.8.1 or later, you can perform the following steps to modify the name of the Java application without reinstalling the ARMS agent. By default, all agents that are downloaded after August 20, 2019 support the feature.
+Common Java applications refer to the Java applications that are not deployed on ECS instances. If you manually install the ARMS agent on the application, the directory of the agent is specified by you during the installation. You can check the version of the ARMS agent by viewing the version file in the directory of the agent. For example, `2.5.8_cf020486_20190816150025` indicates that the agent version is 2.5.8. If the version of the ARMS agent is earlier than 2.5.8.1, uninstall the agent and install it again. You can specify a new application name when you re-install the agent. For more information about how to uninstall the ARMS agent that is manually installed, see How do I uninstall the ARMS agent that is manually installed? If the version of the ARMS agent is 2.5.8.1 or later, you can perform the following steps to modify the name of the Java application without reinstalling the ARMS agent.
+
+> **Note:** By default, all agents that are downloaded after August 20, 2019 support the feature.
+
 1. Run one of the following commands to download and decompress Supervisor from the
 Internet or a VPC. Download URL over the Internet
 
@@ -3766,7 +3902,11 @@ cluster, delete the content of the Dockerfile that you modified based on the Ins
 
 **component incomplete in ARMS?**
 
-After your application that uses the OpenFeign component is connected to ARMS Application Monitoring, the application data may be incomplete, and the data of downstream applications may fail to be displayed. This issue may occur because the OpenFeign component enables Hystrix that uses the RxJava asynchronous framework by default. However, ARMS does not support asynchronous frameworks. This topic applies to scenarios in which the version of the ARMS agent for Java applications is earlier than 2.6.0. The ARMS agent of version 2.6.0 or later that is provided for Java applications supports asynchronous frameworks. You can disable Hystrix and enable the OkHttp request class to resolve this issue.
+After your application that uses the OpenFeign component is connected to ARMS Application Monitoring, the application data may be incomplete, and the data of downstream applications may fail to be displayed. This issue may occur because the OpenFeign component enables Hystrix that uses the RxJava asynchronous framework by default. However, ARMS does not support asynchronous frameworks.
+
+> **Note:** This topic applies to scenarios in which the version of the ARMS agent for Java applications is earlier than 2.6.0. The ARMS agent of version 2.6.0 or later that is provided for Java applications supports asynchronous frameworks.
+
+You can disable Hystrix and enable the OkHttp request class to resolve this issue.
 1. Add the following dependency to the pom.xml file:
 
 ```xml

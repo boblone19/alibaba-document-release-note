@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 98
 source_pdf: "73db1cb82506c174_Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Database%20Security%20Audit%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Database Security Audit Developer Guide 20260701
@@ -83,17 +83,17 @@ press Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Log On**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
 ### 1.2 Obtain the information and the endpoint of an API operation
@@ -129,9 +129,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign access credentials for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain access credentials assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts. To use the AccessKey pair of a personal account, you must configure the headers in the following table. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions.
 
 | Header | Description |
 |---|---|
@@ -147,9 +145,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
 
 ### 1.4 Obtain access credentials assigned by STS
 
@@ -169,9 +165,15 @@ Apsara Stack STS allows you to manage temporary access credentials for your Apsa
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your RAM role.
 2. Obtain the access credentials assigned by STS.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the actual session name. You can customize the session name. We recommend that you set the session name to your identity information such as username. This way, users who assume the same RAM role to perform operations can be distinguished based on the value of the `RoleSessionName` variable. This facilitates user-specific audit. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace this variable with the actual ARN of your RAM role. "sts.aliyuns.com": Replace this variable with the actual endpoint of STS.
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourRoleSessionName>: Replace this variable with the actual session name.
+> You can customize the session name. We recommend that you set the session name to your identity information such as username. This way, users who assume the same RAM role to perform operations can be distinguished based on the value of the `RoleSessionName` variable. This facilitates user-specific audit. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+> <yourRoleArn>: Replace this variable with the actual ARN of your RAM role.
+> "sts.aliyuns.com": Replace this variable with the actual endpoint of STS.
 
 ```xml
 public static void main(String[] args) {
@@ -234,9 +236,14 @@ evious step.
 3. Use the access credentials assigned by STS to call an API operation of a service. The
 following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS. <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS. <yourStsToken>: Replace this variable with the security token assigned by STS. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID.
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace this variable with the actual region ID.
+> <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS.
+> <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS.
+> <yourStsToken>: Replace this variable with the security token assigned by STS.
+> <yourResourceGroupID>: Replace this variable with the actual resource set ID.
+> <yourOrganizationID>: Replace this variable with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -353,9 +360,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
-**Note**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -364,17 +369,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace this variable with your AccessKey secret.
 ```
 
-**Note**
-
-Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
+> **Note:** Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
 ##### 2.1.1.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following list describes the variables: <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port number of the proxy that you use.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // Optional. Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The supported data type is INTEGER
@@ -641,9 +648,9 @@ u must add the x-acs-security-token field to the header.
 
 This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python.
 
-To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. If you use Python 2.x, run the following command to install the core library of Apsara Stack SDK for Python:
+If you use Python 2.x, run the following command to install the core library of Apsara Stack SDK for Python:
 
 ```
 pip install aliyun-python-sdk-core
@@ -659,9 +666,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
-**Important**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -671,9 +676,7 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -864,9 +867,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HT
 
 **Ignore certificates**
 
-**Important**
-
-When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported. To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
+> **Important:** When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported.
+> To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -902,9 +904,9 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Go supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
-**Important**
+> **Important:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised. The following sample code provides an example on how to initialize an ecsClient instance:
+The following sample code provides an example on how to initialize an ecsClient instance:
 
 ```
 // Initialize the ecsClient instance. ecsClient, err := ecs.NewClientWithAccessKey(
@@ -920,9 +922,7 @@ n ID.
 secret.
 ```
 
-**Note**
-
-Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
+> **Note:** Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
 ##### 2.3.1.3 Initiate a request
 
@@ -935,9 +935,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 
 2. Create an ecsClient instance that contains all the API operations of ECS.
 
-**Note**
-
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
+> **Note:** Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code.
 
 ```
 ecsClient,err := <ecs>.NewClientWithAccessKey( // Replace the <ecs> variable with th e name of the service.
@@ -982,9 +980,7 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` response. The following sample code provides an example on how to identify and obtain the error message in a `ClientError` response returned by ECS SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -996,7 +992,7 @@ ame of the actual service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1014,9 +1010,7 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
 
 When the server returns an error message, the SDK wraps the message into the `ServerError` response and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following sample code provides an example on how to identify and obtain the error message in a ServerError response and the response returned by ECS SDK for Go:
 
-**Important**
-
-When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you need to add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1028,7 +1022,7 @@ ame of the actual service.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1191,9 +1185,7 @@ The default value is `false` .
 
 **Settings**
 
-**Important**
-
-When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation by default. If your code environment does not have a certificate, a validation error occurs. To ensure secure communication in a production environment, keep this validation enabled. To ignore certificate validation in a test environment, use the following settings.
+> **Important:** When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation by default. If your code environment does not have a certificate, a validation error occurs. To ensure secure communication in a production environment, keep this validation enabled. To ignore certificate validation in a test environment, use the following settings.
 
 ```
 // Set HTTPSInsecure for the request (affects only the current request). request.SetHTTPSInsecure(true) // Set HTTPSInsecure for the re quest to true. isInsecure := request.GetHTTPSInsecure() // Get the HTTPSInsecure settin g for the request.

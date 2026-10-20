@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 189
 source_pdf: "b31c4db27bc437fa_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Service Developer Guide 2022091"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Resource%20Orchestration%20Service%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Service Developer Guide
@@ -103,13 +103,30 @@ PDF.
 
 ### 1.2 Call an API operation
 
-Apsara Stack allows you to call API operations by using the point of presence (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway. Not e You can still call API operations by using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise. For more information, see Call API operations by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Flowchart Procedure
+Apsara Stack allows you to call API operations by using the point of presence (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway.
+
+> Not e
+
+You can still call API operations by using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise. For more information, see Call API operations by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Flowchart Procedure
 1. Obtain AccessKey credentials.
-Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple. Not e We recommend that you use the AccessKey pair of a personal account or a Security Token Service (STS) AccessKey 3-tuple to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
+
+> Not e We recommend that you use the AccessKey pair of a personal account or a Security Token Service (STS) AccessKey 3-tuple to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+
 2. Obtain a region ID.
 Obtain a region ID that is required when you call an API operation. For more information, see Obtain the values of common header parameters.
 3. Obtain an organization ID and a resource set ID.
-You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide. Not e When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained and the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not set the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used by default. If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is empty by default. If you specify a resource set ID, you must also specify an organization ID.
+You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide.
+
+> Not e
+> When you call an API operation, set the `<x-acs-organizationid>` parameter to the
+> organization ID that you obtained and the `<x-acs-resourcegroupid>` parameter to the
+> resource set ID that you obtained. This way, you can query resources in the specified organization and resource set.
+> If you do not set the `<x-acs-organizationid>` parameter, the organization to which
+> the current user belongs is used by default.
+> If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is empty
+> by default. If you specify a resource set ID, you must also specify an organization ID.
+
 4. Obtain the API references.
 Obtain the developer guide of the cloud service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 5. Obtain the endpoint of the cloud service.
@@ -123,7 +140,13 @@ You can log on to the API Tool console from the Apsara Uni-manager Management Co
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+> Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
@@ -138,7 +161,9 @@ operation name in the search box, and then click the search icon.
 
 ### 2.3 Obtain an AccessKey pair
 
-An AccessKey credential can be assigned by Resource Access Management (RAM) or STS. You can use one of the services to obtain an AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context The AccessKey ID and AccessKey secret contained in an AccessKey credential are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. An AccessKey credential can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, set the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+An AccessKey credential can be assigned by Resource Access Management (RAM) or STS. You can use one of the services to obtain an AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context The AccessKey ID and AccessKey secret contained in an AccessKey credential are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. An AccessKey credential can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, set the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
+
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -153,7 +178,10 @@ Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of 
 1. Log on to the Apsara Uni-manager Management Console.
 2. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion.
 3. In the AccessKey Pair section, view the AccessKey pair of your account.
-Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
+
+> Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+
+Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Resources > Organizat ions.
@@ -166,7 +194,17 @@ to obtain.
 
 This topic describes how to use STS to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. All the three elements are required when you use STS to call API operations in Apsara Stack. For more information, see What is STS? Procedure
 1. Obtain the Alibaba Cloud Resource Name (ARN) of the RAM role that is assumed by the
-organization that you want to use. i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion. iii. Click View Current Role Policy. iv. In the View Policies of Current Role dialog box, select an organization and view the RAM Role. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
+organization that you want to use. i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion. iii. Click View Current Role Policy. iv. In the View Policies of Current Role dialog box, select an organization and view the RAM Role.
+
+> Not e
+> In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the parameter with the name of the current session.
+> <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role.
+> <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
 ```
 public static void main(String[] args) {
@@ -226,7 +264,17 @@ ous step.
 
 `}`
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following sample
-code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the DescribeRegions operation of Resource Orchestration Service (ROS): Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
+code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the DescribeRegions operation of Resource Orchestration Service (ROS):
+
+> Not e
+> In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret.
+> <yourStsToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -303,7 +351,11 @@ Obtain an organization ID You must call an API operation to obtain an organizati
 
 This topic describes how to obtain the endpoint of ROS. Background information To use the POP gateway to call API operations in Apsara Stack, you must specify the endpoint of the corresponding cloud service. You can contact an Alibaba Cloud on-site O&M engineer to obtain the endpoint. You can also perform the following steps to obtain the endpoint. Procedure
 1. Log on to Apsara Infrastructure Management.
-i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose Product s > Base/Cloud Plat f orm > Apsara Inf rast ruct ure Management Framework. Not e The following steps describe how to obtain the endpoint in the new version of Apsara Infrastructure Management Framework.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose Product s > Base/Cloud Plat f orm > Apsara Inf rast ruct ure Management Framework.
+
+> Not e
+> The following steps describe how to obtain the endpoint in the new version of Apsara Infrastructure Management Framework.
+
 2. In the left-side navigation pane, click Report s.
 3. On the All Report s page, search for Regist rat ion Vars of Services and click the report name.
 4. On the Regist rat ion Vars of Services page, move the pointer over Service, click the
@@ -333,7 +385,14 @@ This topic describes how to get started with ROS SDK for Java. Prerequisites An 
 1. Create and initialize a com.aliyun.ros20190910.Client instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
-Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionId>: Replace the parameter with the region ID. <yourAccessKeyId>: Replace the parameter with your AccessKey ID. <yourAccessKeySecrect>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with the endpoint of ROS.
+
+> Not e
+> In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionId>: Replace the parameter with the region ID.
+> <yourAccessKeyId>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecrect>: Replace the parameter with your AccessKey secret.
+> <Endpoint>: Replace the parameter with the endpoint of ROS.
 
 ```java
 package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliyun.tea.*; import com.aliyun.ros20190910.*; import com.aliyun.ros20190910.models.*; import com.aliyun.teaopenapi.*; import com.aliyun.teaopenapi.models.*; public class Sample {
@@ -496,7 +555,11 @@ This topic describes the two steps that are required to install ROS SDK for Java
 
 #### 3.2.2 Configure authentication credentials
 
-When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised. va
+When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance.
+
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+
+va
 
 ```java
 private static String ACCESSKEYID = "<yourAccessKeyId>"; // Specify your AccessKey ID. private static String SECRET = "<yourAccessKeySecrect>"; // Specify your AccessKey secre
@@ -508,11 +571,23 @@ private static String ACCESSKEYID = "<yourAccessKeyId>"; // Specify your AccessK
 private static String REGIONID = "<yourRegionId>"; // Specify the region ID.
 ```
 
-Not e In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> Not e
+> In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 3.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. va
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
+
+> Not e
+> You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+
+va
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -614,7 +689,15 @@ Step 2: Use ROS SDK for Python
 AccessKey ID, and an AccessKey secret.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
-Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ros.aliyuncs.com>: Replace the parameter with the endpoint of ROS. thon
+
+> Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <ros.aliyuncs.com>: Replace the parameter with the endpoint of ROS.
+
+thon
 
 ```python
 #!/usr/bin/env python
@@ -663,7 +746,9 @@ pip3 install aliyun-python-sdk-ros
 
 #### 4.2.2 Configure authentication credentials
 
-When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. thon If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. thon If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance.
+
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id, endpoint=endpoint)
@@ -671,7 +756,11 @@ from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, r
 
 #### 4.2.3 Set HTTPS requests
 
-The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
+The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
+
+> Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
+
+Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
 
 | the | python -c "import ssl" | comm |
 |---|---|---|
@@ -764,7 +853,15 @@ Step 2: Use ROS SDK for Go
 1. Initialize a client instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
-Not e In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with your ROS endpoint. o
+
+> Not e In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <Endpoint>: Replace the parameter with your ROS endpoint.
+
+o
 
 ```java
 package main import (
@@ -824,13 +921,15 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 #### 5.2.2 Configure authentication credentials
 
-When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. o Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. o
+
+> **Warning:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 // Initialize a client instance. client, err := sdk.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<yourAcce ssKeySecret>")
 ```
 
-Not e In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> Not e In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
 #### 5.2.3 Handle errors
 
@@ -854,7 +953,10 @@ client, err := sdk.NewClientWithAccessKey("cn-hangzhou-ste4-d01", "<accessKeyId>
     clientError.OriginError()
 ```
 
-`}` o Not e When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}` o
+
+> Not e When you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -877,7 +979,10 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
     response.GetOriginHttpResponse()
 ```
 
-`}` Not e When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}`
+
+> Not e When you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -888,11 +993,23 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 #### 5.2.4 Use CommonRequest to call API operations
 
-o If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. The following sample code provides an example on how to query details of a stack by calling the GetStack operation of ROS. Not e In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ros.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. o
+o If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. The following sample code provides an example on how to query details of a stack by calling the GetStack operation of ROS.
+
+> Not e In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the variable parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <ros.aliyuncs.com>: Replace the parameter with the endpoint of the service.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+
+o
 
 ```java
 package main import (
@@ -1045,7 +1162,9 @@ The following table describes the parameters in the request syntax.
 | Action | The name of the operation being performed. For example, to query the list of stacks, set the value to ListStacks. |
 | Parameters | The request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include information such as the API version number and authentication information. For more information, see Common parameters. |
 
-Sample requests The following example demonstrates how to call the ListStacks operation to query the list of stacks: Not e The sample requests in this topic are formatted for better readability.
+Sample requests The following example demonstrates how to call the ListStacks operation to query the list of stacks:
+
+> Not e The sample requests in this topic are formatted for better readability.
 
 ```
 http(s)://ros.aliyuncs.com/? Action=ListStacks &RegionId=cn-hangzhou &Format=JSON &Version=2019-09-10 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &TimeStamp=2020-05-01T12:00:00Z
@@ -1069,7 +1188,11 @@ Signature = Base64( HMAC-SHA1( AccessKey Secret, UTF-8-Encoding-Of(StringToSign)
 
 Step 1: Compose and encode a string-to-sign
 1. Create a canonicalized query string by using the request parameters.
-i. Create a canonicalized query string by arranging the request parameters (including all common and operation-specific parameters except Signature) in alphabetical order. Not e If you use the GET method to submit the request, these parameters are the part located after the question mark (?) and connected by the ampersands (&) in the request uniform resource identifier (URI). ii. Encode the names and values of the arranged request parameters in the request URL by using the unicode transformation format (UTF)-8 character set. The following table describes the encoding rules.
+i. Create a canonicalized query string by arranging the request parameters (including all common and operation-specific parameters except Signature) in alphabetical order.
+
+> Not e If you use the GET method to submit the request, these parameters are the part located after the question mark (?) and connected by the ampersands (&) in the request uniform resource identifier (URI).
+
+ii. Encode the names and values of the arranged request parameters in the request URL by using the unicode transformation format (UTF)-8 character set. The following table describes the encoding rules.
 
 | Character | Encoding rule |
 |---|---|
@@ -1097,10 +1220,13 @@ StringToSign=
 
 A string-to-sign contains the following parameters: HTTPMethod: the HTTP method used to submit a request, such as GET. percentEncode("/"): specifies the encoded value (%2F) of a forward slash (/). The encoding follows the URL encoding rules. percentEncode(CanonicalizedQueryString): specifies the encoded canonicalized query string based on the URL encoding rules. Step 2: Calculate the signature string
 1. Calculate the HMAC value of the string-to-sign based on RFC 2104.
-Not e Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) that follows the secret is used as the key for the HMAC calculation.
+
+> Not e Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The combination of your AccessKey secret and an ampersand (&) (ASCII code 38) that follows the secret is used as the key for the HMAC calculation.
+
 2. Encode the HMAC value in Base64 to obtain the signature string.
 3. Add the signature string to the request as the Signature parameter.
-Not e When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded that is similar to other parameters based on rules defined in RFC 3986.
+
+> Not e When the obtained signature value is submitted as the final request parameter value, the value must be URL-encoded that is similar to other parameters based on rules defined in RFC 3986.
 
 | DescribeRegions |   |   |
 |---|---|---|
@@ -4991,11 +5117,21 @@ You can use the Apsara Stack API (ASAPI) gateway to call API operations of most 
 Before you use ASAPI to call an API operation, you must obtain ASAPI SDK. For more information, see Obtain ASAPI SDK.
 2. Obtain the endpoint of ASAPI. For more information, see Obtain the endpoint of ASAPI .
 3. Obtain an AccessKey pair.
-Obtain the AccessKey pair that is required when you call an API operation. Not e We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey pair that is required when you call an API operation.
+
+> Not e
+> We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+
 4. Obtain the region ID.
 Obtain the region ID that is required when you call an API operation.
 5. Obtain the organization ID and resource set ID.
-You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide. Not e When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
+You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide.
+
+> Not e
+> When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources.
+> If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default.
+> If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
+
 6. Refer to API references.
 Obtain the developer guide of the cloud service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 7. Use ASAPI SDK to call API operations.
@@ -5078,7 +5214,8 @@ Method 3: Concatenate strings to generate an endpoint You can also concatenate s
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
 
-Not e
+> Not e
+
 1. Replace <region> with the actual region ID.
 2. Replace <internet-domain> with the root domain of your Apsara Stack service. To obtain the
 root domain, contact Apsara Stack O&M personnel. Take note of this point: Use the internetdomain parameter instead of the intranet-domain parameter. If the region value is `cn-****-****-d01` and the int ernet -domain value is `inter.****.****.com` , the following endpoint is used:
@@ -5093,17 +5230,32 @@ Verify the endpoint Enter the following code. If you cannot access the endpoint,
  curl https://public.asapi.${global:region}.${global:internet-domain}/api/version -k
 ```
 
-Not e ${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained. Available endpoint example: Unavailable endpoint example: Historical endpoint Only the HTTP protocol is supported. The historical endpoint is suffixed with `intranet-domain` and in the following format:
+> Not e
+> ${global:region} and ${global:internet-domain} are variables. You must replace them with
+> the actual values that you obtained.
+
+Available endpoint example: Unavailable endpoint example: Historical endpoint Only the HTTP protocol is supported. The historical endpoint is suffixed with `intranet-domain` and in the following format:
 
 ```
  http://server.asapi.${global:region}.${global:intranet-domain}/asapi/v3
 ```
 
-Not e ${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained. Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following operations:
+> Not e
+> ${global:region} and ${global:intranet-domain} are variables. You must replace them with
+> the actual values that you obtained.
+
+Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following operations:
 1. In the address bar, enter the region-id.aso.intranet-domain-id.com URL and press the Enter key.
-Not e You can select a language from the drop-down list in the upper-right corner of the page.
+
+> Not e
+> You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-Not e Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+
+> Not e
+> Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
+
+When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 3. Click Log On to log on to the Apsara Uni-manager Operat ions Console.
 4. In the top navigation bar, choose Product s > Plat f orms > Apsara Inf rast ruct ure Management
 Framework to go to Apsara Infrastructure Management.
@@ -5112,7 +5264,10 @@ Framework to go to Apsara Infrastructure Management.
 name.
 7. On the Clust er Dashboard page, click Operat ions Menu > Conf igurat ion Files.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
-file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
+file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value.
+
+> Not e
+> ${global:} is not included in the endpoint of ASAPI that you can use.
 
 #### 7.2.2 Obtain Apsara Stack SDKs
 
@@ -5153,7 +5308,7 @@ Apsara Stack SDK for Python
 | requests | 2.26.0 |
 | urllib3 | 1.26.6 |
 
-Not e You can use the version for each package listed in the preceding table or a later version.
+> Not e You can use the version for each package listed in the preceding table or a later version.
 
 ### 7.3 STS overview
 

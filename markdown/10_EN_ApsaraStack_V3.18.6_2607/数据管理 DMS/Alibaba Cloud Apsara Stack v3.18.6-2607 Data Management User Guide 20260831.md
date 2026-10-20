@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 242
 source_pdf: "a6853104df2ca1d7_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%20DMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Management%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management User Guide 20260831
@@ -181,14 +181,25 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, which include ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**. For more information about how to bind and enable MFA, see **Security Center** >
-**MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**.
+
+> **Note:** For more information about how to bind and enable MFA, see **Security Center** > **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+
 5. In the top navigation bar, choose **Products > Database Services > Data Management**.
 6. Configure the **Organization** and **Region** parameters and click **Access as Administrator**.
-If you log on to the DMS console as a DMS administrator and your account is added to multiple tenants, you can move the pointer over the icon in the upper-right corner and select **Switch tenant** to switch to another tenant.
+
+> **Note:** If you log on to the DMS console as a DMS administrator and your account is added to multiple tenants, you can move the pointer over the
+> icon in the upper-right corner
+> and select **Switch tenant** to switch to another tenant.
 
 ### 3.2 Register a database instance
 
@@ -238,7 +249,10 @@ example, an ApsaraDB RDS for MySQL instance is registered with DMS.
 |   | Enable Data Asset Managemen t | Specifies whether to enable the data asset management feature. |
 
 5. After you configure the preceding parameters, click the **Basic Information** tab, and then
-click **Test Connection** in the lower-left corner of the dialog box to perform a connectivity test. If the connectivity test fails, check the connection address, account password, and whitelist settings based on the error message.
+click **Test Connection** in the lower-left corner of the dialog box to perform a connectivity test.
+
+> **Note:** If the connectivity test fails, check the connection address, account password, and whitelist settings based on the error message.
+
 6. Click **Submit**.
 
 **Results**
@@ -275,7 +289,7 @@ DMS provides three control modes for you to manage instances: Flexible Managemen
 | Stable change | This control mode provides multiple solutions to ensure database reliability. These solutions allow you to change data without the need to lock the related table or schema. All features that are included in the flexible management control mode are available. | Database instances require a high level of availability. This ensures that these database instances function as expected for an extended period of time. Database instances are used by a small-sized group that includes multiple users. | A database account and the related password. |
 | Security collaboration | This control mode provides multiple solutions to ensure data security. These solutions include fine-grained access control at the database, table, or field level and sensitive data management. This control mode allows you to produce enterprise- specific database DevOps solutions through custom design specifications and approval processes. All features that are included in the flexible management and stable change control modes are available. | Ensure the data security of database instances. Implement strict access control over development or change workflows. Manage compliance for enterprises. | Logon-free through authorization. |
 
-The instances that are managed in Stable Change mode consume the billing quota of the instances that are managed in Security Collaboration mode.
+> **Note:** The instances that are managed in Stable Change mode consume the billing quota of the instances that are managed in Security Collaboration mode.
 
 ### 3.5 Supported database types and features
 
@@ -287,7 +301,9 @@ DMS provides five roles: general user, DBA, security administrator, administrato
 
 **Cloud databases**
 
-MySQL SQL Server PostgreSQL MongoDB Tair/Redis PolarDB-X PolarDB for MySQL PolarDB for PostgreSQL (Oracle-compatible) AnalyticDB for MySQL 2.0 AnalyticDB for MySQL 3.0 AnalyticDB for PostgreSQL Graph Database PolarDB for MongoDB The underlying architecture is based on a PolarDB for MySQL cluster that uses local disks and is compatible with MongoDB syntax.
+MySQL SQL Server PostgreSQL MongoDB Tair/Redis PolarDB-X PolarDB for MySQL PolarDB for PostgreSQL (Oracle-compatible) AnalyticDB for MySQL 2.0 AnalyticDB for MySQL 3.0 AnalyticDB for PostgreSQL Graph Database PolarDB for MongoDB
+
+> The underlying architecture is based on a PolarDB for MySQL cluster that uses local disks and is compatible with MongoDB syntax.
 
 **Public databases**
 
@@ -365,14 +381,21 @@ Data Management (DMS) provides the global search feature to allow you to quickly
 
 **Usage notes**
 
-When you search for a table in the global search box, make sure that the control mode of the database to which the table belongs is Secure Collaboration. Otherwise, the table cannot be found. You can search for instances and databases in any control mode. If the global search feature fails to locate a data asset, such as an instance, database, or table, you need to manually perform data dictionary synchronization for the data asset.
+When you search for a table in the global search box, make sure that the control mode of the database to which the table belongs is Secure Collaboration. Otherwise, the table cannot be found.
+
+> **Note:** You can search for instances and databases in any control mode.
+
+If the global search feature fails to locate a data asset, such as an instance, database, or table, you need to manually perform data dictionary synchronization for the data asset.
 
 **Procedure**
 
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Data Assets > Global Search**.
-If you use the DMS console in simple mode, move the pointer over the icon in the upper-left corner of the DMS console and choose **All Features > Data Assets >**
-**Global Search**.
+
+> **Note:** If you use the DMS console in simple mode, move the pointer over the
+> icon in the
+> upper-left corner of the DMS console and choose **All Features > Data Assets >** **Global Search**.
+
 3. Enter a keyword, such as a database or table name, into the search box and click
 .
 
@@ -391,7 +414,10 @@ A relational database or data warehouse is used. For more information, see What 
 **> Category**.
 3. On the tab that appears, click **Create Category**.
 4. In the **Category Name** field of the dialog box that appears, enter the name of a category
-and click **OK**. The created category is displayed in the left-side category tree. By default, DMS creates the **Uncategorized** category. All the tables that are not added to categories belong to this category.
+and click **OK**. The created category is displayed in the left-side category tree.
+
+> **Note:** By default, DMS creates the **Uncategorized** category. All the tables that are not added to categories belong to this category.
+
 5. On the right side of a category, move the pointer over the
 icon and perform an operation to manage the category. You can perform the following operations:
 
@@ -408,7 +434,9 @@ You can create up to four category levels. If a table is added to a category, yo
 
 **Delete a category**
 
-To delete a category, move the pointer over the icon and select **Delete**. If a subcategory is created in this category or tables are added to this category, this category cannot be deleted.
+To delete a category, move the pointer over the icon and select **Delete**.
+
+> **Note:** If a subcategory is created in this category or tables are added to this category, this category cannot be deleted.
 
 **Add a table to a category**
 
@@ -417,11 +445,20 @@ Each table can be added to only one category. If you add a table to another cate
 2. In the top navigation bar, move the pointer over the **More** icon and choose **Data Factory**
 **> Category**.
 3. Click the category to which you want to add a table.
-To view subcategories, you can click the icon on the left side of the category.
+
+> **Note:** To view subcategories, you can click the
+> icon on the left side of the
+> category.
+
 4. On the page of the category, click **Quick Add** in the upper-right corner of the page.
-You can also use the following method to add a table to a category. On the page of the **Uncategorized** category, find the table that you want to manage and click **Associate Category** in the Actions column.
+
+> **Note:** You can also use the following method to add a table to a category.
+> On the page of the **Uncategorized** category, find the table that you want to manage and click **Associate Category** in the Actions column.
+
 5. In the dialog box that appears, search for and select the table that you want to add, and
-then click **OK**. You can add multiple tables to a category at a time.
+then click **OK**.
+
+> **Note:** You can add multiple tables to a category at a time.
 
 **Remove a table from a category**
 
@@ -434,16 +471,46 @@ Data Management (DMS) allows you to manage database instances. For example, you 
 
 **Prerequisites**
 
-You are a database administrator (DBA) or a DMS administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console.
+You are a database administrator (DBA) or a DMS administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
 
 **Procedure**
 
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Data Assets > Instances**.
 3. Perform the following operations based on your business requirements. To manage one or
-more registered database instances at a time, select the instances on the **Instance List** tab and click a button as required. You can click **Expand filter** to show more filter conditions. Register an instance Click **New** and register a database instance with DMS. For more information, see Register a database instance. Modify the information about multiple instances at a time Click **Batch edit**. In the dialog box that appears, modify the instance information and click **OK**. The database instances that you select must be of the same database type, such as MySQL. Synchronize the data dictionary Click **Sync dictionary**. In the message that appears, click **OK**. If you change schemas for a database instance by using DMS, DMS automatically synchronizes the data dictionary of the instance. If you change schemas for a database instance by using a service other than DMS, you must manually synchronize the data dictionary of the instance. Disable or enable one or more instances Choose More > **Forbidden instance** or More > **Enable instance**. In the message that appears, click **OK**. After you disable a database instance, the instance is removed from the instance list in the left-side navigation pane on the Home page of the DMS console. DMS users can no longer find databases or tables in this instance in the DMS console. After you enable a database instance, the instance appears in the instance list. Databases in this instance become available. Relevant permissions that have been granted to DMS users on this instance also become valid. Remove one or more instances Choose More > **Delete Instance**. In the message that appears, click **OK**. After you remove a database instance, the instance is removed from the instance list. DMS users can no longer use databases in this instance in the DMS console. Relevant permissions that have been granted to DMS users on this instance also become invalid and are revoked. On the **Instance List** tab, you can find database instances in the Delete state and enable these instances to recover them. Export configuration information Choose More > **Export config**. The browser automatically downloads a CSV file named instances. You can use Excel or a text editor to view this file. Enable access control Choose More > **Access control**. In the Metadata access control dialog box, turn on
+more registered database instances at a time, select the instances on the **Instance List** tab and click a button as required.
+
+> **Note:** You can click **Expand filter** to show more filter conditions.
+
+Register an instance Click **New** and register a database instance with DMS. For more information, see Register a database instance. Modify the information about multiple instances at a time Click **Batch edit**. In the dialog box that appears, modify the instance information and click **OK**.
+
+> **Note:** The database instances that you select must be of the same database type, such as MySQL.
+
+Synchronize the data dictionary Click **Sync dictionary**. In the message that appears, click **OK**.
+
+> **Note:** If you change schemas for a database instance by using DMS, DMS automatically synchronizes the data dictionary of the instance.
+> If you change schemas for a database instance by using a service other than DMS, you must manually synchronize the data dictionary of the instance.
+
+Disable or enable one or more instances Choose More > **Forbidden instance** or More > **Enable instance**. In the message that appears, click **OK**.
+
+> **Note:** After you disable a database instance, the instance is removed from the instance list in the left-side navigation pane on the Home page of the DMS console. DMS users can no longer find databases or tables in this instance in the DMS console.
+> After you enable a database instance, the instance appears in the instance list. Databases in this instance become available. Relevant permissions that have been granted to DMS users on this instance also become valid.
+
+Remove one or more instances Choose More > **Delete Instance**. In the message that appears, click **OK**. After you remove a database instance, the instance is removed from the instance list. DMS users can no longer use databases in this instance in the DMS console. Relevant permissions that have been granted to DMS users on this instance also become invalid and are revoked.
+
+> **Note:** On the **Instance List** tab, you can find database instances in the Delete state and enable these instances to recover them.
+
+Export configuration information Choose More > **Export config**. The browser automatically downloads a CSV file named instances. You can use Excel or a text editor to view this file. Enable access control Choose More > **Access control**. In the Metadata access control dialog box, turn on
 **Metadata access control** and click **OK**. After you enable access control for an instance,
-only users that have the required permissions can view this instance and the databases in this instance. Only the database instances that are managed in Security Collaboration mode support this operation. Other operations Find a database instance and click **Database list** in the **Actions** column to view the details of the databases and tables in this instance. You can also move the pointer over
+only users that have the required permissions can view this instance and the databases in this instance.
+
+> **Note:** Only the database instances that are managed in Security Collaboration mode support this operation.
+
+Other operations Find a database instance and click **Database list** in the **Actions** column to view the details of the databases and tables in this instance. You can also move the pointer over
 **More** and select an option to perform the corresponding operation on the instance. For
 example, you can log on to the instance or modify the instance information.
 
@@ -457,7 +524,15 @@ On the Database List tab, you can manage databases. For example, you can specify
 2. In the top navigation bar, choose **Data Assets > Instances**.
 3. On the Instances page, click the **Database List** tab.
 4. Set filter conditions and select one or more databases that you want to manage. Then, you
-can perform the following operations based on your business requirements: You can click **Expand filter** to show more filter conditions. Specify database owners Specify one or more owners for the selected databases. Transfer the ownership Transfer the ownership of the selected databases to a user. If you transfer the ownership of multiple databases at a time, you can select only users who own all of the databases from the Original Owner drop-down list. Revoke owner permissions Revoke owner permissions from one or more owners of the selected databases. Grant permissions to users Grant the query, export, or change permissions on the selected databases to one or more users. You can also specify a validity period for the granted permissions. The database instances that are managed in Flexible Management mode do not support this operation. Revoke permissions from users Revoke the query, export, or change permissions on the selected databases from one or more users. If a user does not have the preceding permissions, the following message
+can perform the following operations based on your business requirements:
+
+> **Note:** You can click **Expand filter** to show more filter conditions.
+
+Specify database owners Specify one or more owners for the selected databases. Transfer the ownership Transfer the ownership of the selected databases to a user. If you transfer the ownership of multiple databases at a time, you can select only users who own all of the databases from the Original Owner drop-down list. Revoke owner permissions Revoke owner permissions from one or more owners of the selected databases. Grant permissions to users Grant the query, export, or change permissions on the selected databases to one or more users. You can also specify a validity period for the granted permissions.
+
+> **Note:** The database instances that are managed in Flexible Management mode do not support this operation.
+
+Revoke permissions from users Revoke the query, export, or change permissions on the selected databases from one or more users. If a user does not have the preceding permissions, the following message
 
 | No corresponding permissions. You do not need to recycle or release |   |
 |---|---|
@@ -469,7 +544,11 @@ permissions .
 
 Export configuration information Export the configurations of the selected databases to an Excel file. The configurations include the instance status, environment, database administrator (DBA), and owner. Export permission information Export the permission information of the selected databases to an Excel file. The permission information includes the database information, users, permissions, and users who grant the permissions. Enable access control Choose More > **Access control**. In the Metadata access control dialog box, turn on
 **Metadata access control** and click **OK**. After the access control feature is enabled for a
-database, only users who have permissions on the database can find the database. Only the database instances that are managed in Security Collaboration mode support this operation. Perform other operations You can find a database and click Tables in the Actions column to view the details about tables in the database. You can also move the pointer over **More** and select the operation that you want to perform. For example, you can query data in a single database, manage permissions, view the details of the instance to which the database belongs, and find the instance on the Instance List tab.
+database, only users who have permissions on the database can find the database.
+
+> **Note:** Only the database instances that are managed in Security Collaboration mode support this operation.
+
+Perform other operations You can find a database and click Tables in the Actions column to view the details about tables in the database. You can also move the pointer over **More** and select the operation that you want to perform. For example, you can query data in a single database, manage permissions, view the details of the instance to which the database belongs, and find the instance on the Instance List tab.
 
 ### 4.6 Enable metadata access control
 
@@ -479,13 +558,21 @@ DMS provides the metadata access control feature. You can use this feature to al
 
 **Background information**
 
-As a centralized data management service, DMS provides different roles that are assigned different permissions. This helps you manage data in your enterprise in a secure manner. After you enable metadata access control for a database instance or database, only users who have permissions on the database instance or database can view and access the instance or database. This way, users can view and access only databases on which they have permissions. This further enhances data security. In DMS, permissions on a database include the query, export, and change permissions. If you have one of these permissions on a database, you can view the following information about the database: Information about the database. You can search for the database by entering a keyword in the search box that appears on the Home page of Data Assets or in the top navigation bar of the DMS console. Alternatively, you can search for the database in the Select the databases, tables, or columns on which you want to apply for permissions field on the Permission Application Ticket page. You can query the data in the database only if you have the query permission on the database. Information about the database instance to which the database belongs. To view the information about other databases in this database instance, you must have permissions on the other databases. You can enable metadata control access for the following objects: A user: The user can view and access only databases on which the user has permissions. A database: Only users who have permissions on the database can view and access the database. An instance: Only users who have permissions on the instance can view and access the instance and the databases in this instance.
+As a centralized data management service, DMS provides different roles that are assigned different permissions. This helps you manage data in your enterprise in a secure manner. After you enable metadata access control for a database instance or database, only users who have permissions on the database instance or database can view and access the instance or database. This way, users can view and access only databases on which they have permissions. This further enhances data security.
+
+> **Note:** In DMS, permissions on a database include the query, export, and change permissions. If you have one of these permissions on a database, you can view the following information about the database:
+> Information about the database. You can search for the database by entering a keyword in the search box that appears on the Home page of Data Assets or in the top navigation bar of the DMS console. Alternatively, you can search for the database in the Select the databases, tables, or columns on which you want to apply for permissions field on the Permission Application Ticket page. You can query the data in the database only if you have the query permission on the database.
+> Information about the database instance to which the database belongs. To view the information about other databases in this database instance, you must have permissions on the other databases.
+
+You can enable metadata control access for the following objects: A user: The user can view and access only databases on which the user has permissions. A database: Only users who have permissions on the database can view and access the database. An instance: Only users who have permissions on the instance can view and access the instance and the databases in this instance.
 
 **Enable metadata access control for a user**
 
 1. Log on to the DMS console.
 2. In the top navigation bar, click **O&M**. In the left-side navigation pane, click **Users**.
-To enable metadata access control for a user, you must be a DMS administrator.
+
+> **Note:** To enable metadata access control for a user, you must be a DMS administrator.
+
 3. Find the user for whom you want to enable metadata access control, move the pointer over
 **More** in the **Actions** column, and then select **Access control**.
 4. In the User access control dialog box, turn on **Metadata access control** and click **OK**.
@@ -495,9 +582,14 @@ To enable metadata access control for a user, you must be a DMS administrator.
 1. Log on to the DMS console.
 2. In the top navigation bar, click **Data Assets**. In the left-side navigation pane, click
 **Instances**.
-To enable metadata access control for an instance, you must be a DBA or a DMS administrator.
+
+> **Note:** To enable metadata access control for an instance, you must be a DBA or a DMS administrator.
+
 3. On the **Instance List** tab of the Instances page, find the instance for which you want to
-enable metadata access control, move the pointer over **More** in the **Actions** column, and then select **Access control**. To enable metadata access control for multiple instances at a time, select multiple instances and click **Access control** in the upper part of this tab.
+enable metadata access control, move the pointer over **More** in the **Actions** column, and then select **Access control**.
+
+> **Note:** To enable metadata access control for multiple instances at a time, select multiple instances and click **Access control** in the upper part of this tab.
+
 4. In the Metadata access control dialog box, turn on **Metadata access control** and click
 **OK**.
 
@@ -506,11 +598,15 @@ enable metadata access control, move the pointer over **More** in the **Actions*
 1. Log on to the DMS console.
 2. In the top navigation bar, click **Data Assets**. In the left-side navigation pane, click
 **Instances**.
-To enable metadata access control for a database, you must be a DBA or a DMS administrator.
+
+> **Note:** To enable metadata access control for a database, you must be a DBA or a DMS administrator.
+
 3. On the **Database List** tab, find the database for which you want to enable metadata
 access control. Move the pointer over **More** in the **Actions** column and select **Access**
 **control**.
-To enable metadata access control for multiple databases at a time, select multiple databases and click **Access control** in the upper part of this tab.
+
+> **Note:** To enable metadata access control for multiple databases at a time, select multiple databases and click **Access control** in the upper part of this tab.
+
 4. In the Metadata access control dialog box, turn on **Metadata access control** and click
 **OK**.
 
@@ -563,17 +659,33 @@ You can use the cross-database query feature of Data Management (DMS) to efficie
 
 **Prerequisites**
 
-The type of each involved database instance is MySQL, SQL Server, PostgreSQL, PolarDB-X, or Redis. Physical databases are created in each involved database instance. A physical database is a specific database. A logical database consists of one or more physical databases and supports sharding. The cross-database query feature is enabled for each involved database instance. If this feature is not enabled for a database instance, you can choose **Data**
-**Assets > Instances** in the top navigation bar of the DMS console as a DMS
-administrator or a database administrator (DBA) to modify the advanced information of the instance. You must enable cross-database query and customize a database link name.
+The type of each involved database instance is MySQL, SQL Server, PostgreSQL, PolarDB-X, or Redis. Physical databases are created in each involved database instance.
+
+> **Note:** A physical database is a specific database.
+> A logical database consists of one or more physical databases and supports sharding.
+
+The cross-database query feature is enabled for each involved database instance.
+
+> **Note:** If this feature is not enabled for a database instance, you can choose **Data** **Assets > Instances** in the top navigation bar of the DMS console as a DMS administrator or a database administrator (DBA) to modify the advanced information of the instance. You must enable cross-database query and customize a database link name.
 
 **Procedure**
 
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **SQL Console > Cross-database Query**.
 3. Check whether you are authorized to access the involved database instances.
-Parameters in the left-side navigation pane: Permission: Authorized: the database instances for which the cross-database query feature is enabled and that you are authorized to access, and the databases in the database instances. If you are a DMS administrator or a DBA, you are authorized to access all database instances. All: all database instances for which the cross-database query feature is enabled and the databases in the database instances within the current tenant. Object: DBLink: the database links that are filtered based on the value of the Permission parameter. A database link is established for each database instance. Database: the databases that are filtered based on the value of the Permission parameter. In the left-side navigation pane, right-click the database instance whose data you want to query and select **View Database Permissions**. In the **Information** message, check whether you are authorized to access the database instance. If the "You have access to the database" message appears, you are authorized to access the database instance and you can perform the next step. If the "You do not have permission for this database. Do you want to apply for permission now?" message appears, you are not authorized to access the database instance. Perform the following steps to apply for access permissions on the database instance: a. Click **Apply for Database Permission**. b. In the **Access apply** dialog box, select the permissions for which you want to apply. c. Select a period of time from the **Duration** drop-down list based on your business requirements. d. In the **Permission** field, enter the reason and background for your application to reduce unnecessary communication and simplify the approval process. By default, **You are not authorized to use SQL Console to query**
-**data. Click to submit a ticket.** is used.
+
+> **Note:** Parameters in the left-side navigation pane:
+> Permission:
+> Authorized: the database instances for which the cross-database query feature is enabled and that you are authorized to access, and the databases in the database instances. If you are a DMS administrator or a DBA, you are authorized to access all database instances.
+> All: all database instances for which the cross-database query feature is enabled and the databases in the database instances within the current tenant.
+> Object:
+> DBLink: the database links that are filtered based on the value of the Permission parameter. A database link is established for each database instance.
+> Database: the databases that are filtered based on the value of the Permission parameter.
+
+In the left-side navigation pane, right-click the database instance whose data you want to query and select **View Database Permissions**. In the **Information** message, check whether you are authorized to access the database instance. If the "You have access to the database" message appears, you are authorized to access the database instance and you can perform the next step. If the "You do not have permission for this database. Do you want to apply for permission now?" message appears, you are not authorized to access the database instance. Perform the following steps to apply for access permissions on the database instance: a. Click **Apply for Database Permission**. b. In the **Access apply** dialog box, select the permissions for which you want to apply. c. Select a period of time from the **Duration** drop-down list based on your business requirements. d. In the **Permission** field, enter the reason and background for your application to reduce unnecessary communication and simplify the approval process.
+
+> **Note:** By default, **You are not authorized to use SQL Console to query** **data. Click to submit a ticket.** is used.
+
 e. Click **OK**. After your application is approved, you are authorized to access the database instance and you can perform the next step.
 4. In the SQLConsole section, enter the SQL statement that is used to query data across
 database instances and click **Execute**. Sample SQL statement:
@@ -584,9 +696,11 @@ SELECT * FROM dblink1.db1.table1 t1,
 where t1.id= t2.id
 ```
 
-In the Execution History section, view the results of the SQL statement. You can also choose **Security and Specifications (DBS) > Operation Audit** in the top navigation bar and click the tab to view the operation logs of crossdatabase queries.**Operation Logs** By default, up to 100 rows can be returned for a cross-database query. To view more rows of data, choose **O&M > Configuration Management** in the top navigation bar. Find the **Maximum number of returned rows for cross-**
-**database queries** parameter and click **Change** in the **Actions** column. In the
-dialog box that appears, specify the maximum number of rows that can be returned for a cross-database query. The maximum number cannot exceed 3,000. If you want to view more than 3,000 rows for a cross-database query, you can use the task orchestration feature to configure a cross-database Spark SQL node, write the result set of the SQL statement to a temporary table, and then perform a single-database query on the temporary table.
+In the Execution History section, view the results of the SQL statement.
+
+> **Note:** You can also choose **Security and Specifications (DBS) > Operation Audit** in the top navigation bar and click the tab to view the operation logs of cross- database queries.**Operation Logs**
+> By default, up to 100 rows can be returned for a cross-database query. To view more rows of data, choose **O&M > Configuration Management** in the top navigation bar. Find the **Maximum number of returned rows for cross-** **database queries** parameter and click **Change** in the **Actions** column. In the dialog box that appears, specify the maximum number of rows that can be returned for a cross-database query. The maximum number cannot exceed 3,000.
+> If you want to view more than 3,000 rows for a cross-database query, you can use the task orchestration feature to configure a cross-database Spark SQL node, write the result set of the SQL statement to a temporary table, and then perform a single-database query on the temporary table.
 
 ### 5.3 Manage schema versions
 
@@ -623,7 +737,9 @@ to manage. The following table describes the operations that you can perform.
 
 **Save new schema versions**
 
-New schema versions are saved when the following operations are performed in DMS: SQL statements are executed on the SQLConsole tab to change schemas. SQL statements are executed to change schemas when you submit tickets for normal data change, lock-free data change, schema design, or schema synchronization. SQL statements are executed to change schemas by a DMS administrator. If the schema of a table in a database is changed in environments other than DMS, you can synchronize and save the latest schema of the database in DMS.
+New schema versions are saved when the following operations are performed in DMS: SQL statements are executed on the SQLConsole tab to change schemas. SQL statements are executed to change schemas when you submit tickets for normal data change, lock-free data change, schema design, or schema synchronization. SQL statements are executed to change schemas by a DMS administrator.
+
+> **Note:** If the schema of a table in a database is changed in environments other than DMS, you can synchronize and save the latest schema of the database in DMS.
 
 ### 5.4 Generate a risk audit report
 
@@ -653,9 +769,16 @@ Only DMS administrators, security administrators, database administrators (DBAs)
 
 1. Log on to the DMS console.
 2. In the left-side database instance list , right-click the instance for which you want to
-generate a risk audit report and choose **Audit > Risk Audit**. On the SQL Console tab of the database, move the pointer over the icon and select **Risk Audit**.
+generate a risk audit report and choose **Audit > Risk Audit**.
+
+> **Note:** On the SQL Console tab of the database, move the pointer over the
+> icon
+> and select **Risk Audit**.
+
 3. Click **Real-time Diagnostics**.
-By default, DMS does not automatically diagnose an instance. If this is the first time for the instance to be diagnosed, you can click **Diagnose**.
+
+> **Note:** By default, DMS does not automatically diagnose an instance. If this is the first time for the instance to be diagnosed, you can click **Diagnose**.
+
 4. In the dialog box that appears, select the risk audit items and click **Diagnose**.
 Wait until the status of the report that is being generated changes to **Completed**.
 5. After the report is generated, you can view the diagnosis details of each database in the
@@ -681,9 +804,9 @@ To improve the security and stability of database instances, DMS administrators 
 4. In the upper-right corner of the SQL Console tab, click the
 icon. In the dialog box that appears, click **OK**. Then, the outside borders of the SQL Console page for the database instance turn orange. This indicates that the **super SQL mode** feature is enabled. Then, the SQL statements that you enter on the SQLConsole tab are executed.
 
-**Important**
-
-After you enable this feature as a DMS administrator or a DBA, all SQL statements that you enter on the SQLConsole tab are executed without being affected by security rules. If you want to disable the **super SQL mode** feature, click the icon. The orange borders of the SQL Console page disappear, and the super SQL mode is disabled.
+> **Important:** After you enable this feature as a DMS administrator or a DBA, all SQL statements that you enter on the SQLConsole tab are executed without being affected by security rules.
+> If you want to disable the **super SQL mode** feature, click the icon. The
+> orange borders of the SQL Console page disappear, and the super SQL mode is disabled.
 
 ## 6 Data plans
 
@@ -727,12 +850,25 @@ and click **Submit**.
 | Change Stakeholder | The stakeholders involved in the schema design. All the specified stakeholders can view the ticket details and take part in the approval process. Other users aside from DMS administrators and database administrators (DBAs) are not allowed to view the ticket details. |
 
 5. Change a schema based on your business requirements.
-i. Click **Create Physical Table**. ii. Configure the parameters on the Basic Info, Column Info, and Index Info tabs based on your business requirements. iii. Click **Save**. After you click Save, DMS verifies the specified information based on design specifications. If the information does not comply with the design specifications, a message appears. iv. After the information passes the precheck, click **Confirm Changes and Submit to**
+i. Click **Create Physical Table**. ii. Configure the parameters on the Basic Info, Column Info, and Index Info tabs based on your business requirements. iii. Click **Save**.
+
+> **Note:** After you click Save, DMS verifies the specified information based on design specifications. If the information does not comply with the design specifications, a message appears.
+
+iv. After the information passes the precheck, click **Confirm Changes and Submit to**
 **Save**.
 6. Apply the schema to the base database.
-i. Click **Perform Changes to Base Database**. ii. In the Perform Changes to Base Database dialog box, set the Execution Strategy parameter to **Execute Now** or **Schedule**. iii. Click **OK**. iv. After the ticket is approved, click **Go to Next Node**. After the ticket is approved, DMS performs the changes at the scheduled time. If you do not specify the execution time, the changes are automatically performed after the ticket is approved on the last approval node. You can view the execution status and operation logs. After all changes are performed, you can repeat the preceding procedure to change the schema again. If no additional changes are required for the schema, click Go to Next Node. After the ticket is submitted to the next node, whether you can go back to the previous node is subject to the predefined design specifications. v. In the Go to Next Node message, click **Go to Next Node**.
+i. Click **Perform Changes to Base Database**. ii. In the Perform Changes to Base Database dialog box, set the Execution Strategy parameter to **Execute Now** or **Schedule**. iii. Click **OK**. iv. After the ticket is approved, click **Go to Next Node**.
+
+> **Note:** After the ticket is approved, DMS performs the changes at the scheduled time. If you do not specify the execution time, the changes are automatically performed after the ticket is approved on the last approval node. You can view the execution status and operation logs. After all changes are performed, you can repeat the preceding procedure to change the schema again. If no additional changes are required for the schema, click Go to Next Node.
+> After the ticket is submitted to the next node, whether you can go back to the previous node is subject to the predefined design specifications.
+
+v. In the Go to Next Node message, click **Go to Next Node**.
 7. Apply the schema changes to the destination database.
-i. Click **Perform Changes to Target Database** . ii. In the Perform Changes to Target Database dialog box, configure the Target Database and Execution Strategy parameters and click **OK**. The destination database must be in an online environment. iii. After the ticket is approved, click **Go to Next Node**. The schema design process ends, and the ticket is closed.
+i. Click **Perform Changes to Target Database** . ii. In the Perform Changes to Target Database dialog box, configure the Target Database and Execution Strategy parameters and click **OK**.
+
+> **Note:** The destination database must be in an online environment.
+
+iii. After the ticket is approved, click **Go to Next Node**. The schema design process ends, and the ticket is closed.
 
 #### 6.1.2 Schema synchronization
 
@@ -765,10 +901,13 @@ You can use the schema synchronization feature to synchronize schemas and ensure
 
 4. Click **Submit**. DMS starts to analyze the schemas.
 5. Check the comparison results.
-If the schemas are changed when the system analyzes the schemas, click Re-analyze in the Schema Analysis step.
+
+> **Note:** If the schemas are changed when the system analyzes the schemas, click Re-analyze in the Schema Analysis step.
+
 6. Verify the script that is used to synchronize schemas and click **Submit and Synchronize**
 **to Target Database**.
-If the schemas of the source database and destination database are the same, you do not need to submit the script, and the schema synchronization ticket is closed.
+
+> **Note:** If the schemas of the source database and destination database are the same, you do not need to submit the script, and the schema synchronization ticket is closed.
 
 #### 6.1.3 Create shadow tables for synchronization
 
@@ -796,10 +935,13 @@ following table.
 
 4. Click **Submit**. DMS starts to analyze the schemas.
 5. Check the analysis results.
-If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
+> **Note:** If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
 6. Verify the script that is used to synchronize schemas and click **Submit and Synchronize**
 **to Target Database**.
-If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
+
+> **Note:** If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
 
 **Crontab expressions**
 
@@ -853,10 +995,13 @@ ticket. The following table describes the parameters.
 
 4. Click **Submit**. DMS starts to analyze the schemas.
 5. Check the analysis results.
-If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
+> **Note:** If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
 6. Verify the script that is used to synchronize schemas and click **Submit and Synchronize**
 **to Target Database**.
-If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
+
+> **Note:** If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
 
 #### 6.1.5 Repair table inconsistency
 
@@ -864,7 +1009,9 @@ The table inconsistency repair feature of Data Management (DMS) allows you to co
 
 **Prerequisites**
 
-The source and destination databases are MySQL or OceanBase databases. You have logged on to the destination database in the DMS console if the database instance to which the destination database belongs is managed in Flexible Management or Stable Change mode. If the database instance to which the destination database belongs is not managed in Security Collaboration mode, you must log on to the destination database.
+The source and destination databases are MySQL or OceanBase databases. You have logged on to the destination database in the DMS console if the database instance to which the destination database belongs is managed in Flexible Management or Stable Change mode.
+
+> **Note:** If the database instance to which the destination database belongs is not managed in Security Collaboration mode, you must log on to the destination database.
 
 **Scenarios**
 
@@ -888,10 +1035,13 @@ following table for the Table Consistency Repairing ticket.
 
 4. Click **Submit**. DMS starts to analyze the schemas.
 5. Check the analysis results.
-If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
+> **Note:** If the schemas are changed during schema analysis, click Re-analyze in the Schema Analysis step.
+
 6. Verify the script that is used to synchronize schemas and click **Submit and Synchronize**
 **to Target Database**.
-If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
+
+> **Note:** If the schemas of the source database and destination database are the same, you do not need to submit the script. The schema synchronization ticket is closed.
 
 ### 6.2 Change data
 
@@ -941,7 +1091,10 @@ The following table describes the parameters for a **Normal Data Modify** ticket
 appears, click **OK**.
 6. After the ticket is approved, click **Execute Change**.
 7. Configure the Execution Strategy parameter and click **Confirm Execution**.
-By default, the Execution Strategy parameter is set to Running immediately. You can also set the **Execution Strategy** parameter to Schedule and specify a point in time to run the ticket. DMS automatically runs the ticket at the specified point in time. Wait until the ticket is run.
+
+> **Note:** By default, the Execution Strategy parameter is set to Running immediately. You can also set the **Execution Strategy** parameter to Schedule and specify a point in time to run the ticket. DMS automatically runs the ticket at the specified point in time.
+
+Wait until the ticket is run.
 
 ### 6.3 Import data
 
@@ -955,7 +1108,9 @@ Self-managed MySQL databases and ApsaraDB RDS for MySQL databases PolarDB-X data
 
 TXT format. SQL script. By default, you can execute only the INSERT and REPLACE statements to import data to database instances that are managed in Security Collaboration mode. If you want to execute other SQL statements to import data, modify the security rules for data import as a database administrator (DBA) or DMS administrator. You can modify the security rules by performing the following operations: Go to the **Details** page of the security rule set that is applied to the database instance and click the **SQL Correct** tab. In the list below the **Batch**
 **Data import rules** checkpoint, modify the security rules based on your business
-requirements. CSV format. Values in a CSV file must be separated by commas (,). The first row must be field names. The file size cannot exceed 5 GB.
+requirements. CSV format. Values in a CSV file must be separated by commas (,). The first row must be field names.
+
+> **Note:** The file size cannot exceed 5 GB.
 
 **Usage notes**
 
@@ -987,7 +1142,10 @@ following table for the Large Data Import ticket.
 appears, click **OK**.
 6. After the ticket is approved, click **Execute Change**.
 7. Configure the Execution Strategy parameter and click **Confirm Execution**.
-By default, the Execution Strategy parameter is set to Running immediately. You can also set the **Execution Strategy** parameter to Schedule and specify a point in time to run the ticket. DMS automatically runs the ticket at the specified point in time. Wait until the ticket is run.
+
+> **Note:** By default, the Execution Strategy parameter is set to Running immediately. You can also set the **Execution Strategy** parameter to Schedule and specify a point in time to run the ticket. DMS automatically runs the ticket at the specified point in time.
+
+Wait until the ticket is run.
 
 ### 6.4 Export data
 
@@ -1030,7 +1188,9 @@ The following table describes the parameters for a Database Export ticket.
 | Attachments | The images or files that provide more information about this export operation. |
 
 4. After you set the parameters, click **Submit**.
-If you export an SQL result set, DMS prechecks the SQL statements. After the SQL statements pass the precheck, click **Submit for Approval**. In the message that appears, click **OK**.
+
+> **Note:** If you export an SQL result set, DMS prechecks the SQL statements. After the SQL statements pass the precheck, click **Submit for Approval**. In the message that appears, click **OK**.
+
 5. After your ticket is approved, go to the **Home** page and click **Submitted Tickets**.
 6. Find the data export ticket that is submitted and click the ticket number.
 7. In the **Download** section, click **Download Exported File**.
@@ -1069,13 +1229,21 @@ describes the parameters.
 
 4. Click **Submit**.
 5. View the result of the SQL review.
-If the SQL statements conform to database development standards and use indexes, the result indicates that the SQL review succeeds and no recommended indexes are provided. If the SQL statements conform to database development standards but do not use indexes, the result indicates that the SQL review succeeds and recommended indexes are provided. If the SQL statements do not conform to database development standards, the result indicates that the SQL review fails.
+
+> **Note:** If the SQL statements conform to database development standards and use indexes, the result indicates that the SQL review succeeds and no recommended indexes are provided.
+> If the SQL statements conform to database development standards but do not use indexes, the result indicates that the SQL review succeeds and recommended indexes are provided.
+> If the SQL statements do not conform to database development standards, the result indicates that the SQL review fails.
+
 6. If an SQL statement fails the SQL review, click **View reason** to check the reason. You can
 also find the review record in the Check Result step and click **Details**, **Adjust SQL**, or
 **More** in the **Operation** column to perform the required operations.
-After you modify the SQL statements, click **Confirm** to allow the system to review the SQL statements again. For dynamic SQL statements in XML files, you must enumerate each combination of SQL statements.
+
+> **Note:** After you modify the SQL statements, click **Confirm** to allow the system to review the SQL statements again. For dynamic SQL statements in XML files, you must enumerate each combination of SQL statements.
+
 7. After all SQL statements pass the SQL review, click **Submit for Approval** in the **Approval**
-step. The approval process of the ticket varies based on the security rules that are configured for the current database instance.
+step.
+
+> **Note:** The approval process of the ticket varies based on the security rules that are configured for the current database instance.
 
 ### 6.6 Clone databases
 
@@ -1184,7 +1352,17 @@ Data Management (DMS) provides the DevOps iteration feature that allows you to a
 
 6. Click the name of the iteration that you create. The **Iteration Details** page appears.
 7. Advance the iteration.
-i. Move the pointer over **Create Ticket** and select a ticket type. The available types of tickets in each iterative stage are specified by the iteration template. When you create a ticket, the Database drop-down list displays only the databases that meet the following conditions: The database is available for the iteration. The type of the environment to which the database belongs meets the requirements of the iteration template. ii. After all required tickets of an iterative stage are executed, click **Enter Next Stage**. In the dialog box that appears, click **OK** to advance the iteration to the next stage. If a ticket fails the status check, the iteration cannot be advanced to the next stage. The conditions that must be met before an iteration can be advanced to the next stage are specified by the iteration template. After the iteration is advanced to the next stage, you cannot create tickets in the previous stage.
+i. Move the pointer over **Create Ticket** and select a ticket type. The available types of tickets in each iterative stage are specified by the iteration template.
+
+> **Note:** When you create a ticket, the Database drop-down list displays only the databases that meet the following conditions:
+> The database is available for the iteration.
+> The type of the environment to which the database belongs meets the requirements of the iteration template.
+
+ii. After all required tickets of an iterative stage are executed, click **Enter Next Stage**. In the dialog box that appears, click **OK** to advance the iteration to the next stage.
+
+> **Note:** If a ticket fails the status check, the iteration cannot be advanced to the next stage. The conditions that must be met before an iteration can be advanced to the next stage are specified by the iteration template.
+> After the iteration is advanced to the next stage, you cannot create tickets in the previous stage.
+
 8. Repeat Step 7 until the iteration is complete or closed.
 
 #### 6.8.2 Manage projects
@@ -1229,9 +1407,7 @@ Manage the project. To create a similar project, click **Create As** in the uppe
 **Project** dialog box, set the **Name** and **Description** parameters. Then, click **OK**.
 To view the operation records of the project, click **Operation History** in the upperright corner. You can view the operation time, operator, and logs of each operation performed on the project. To close the project, click **Close Project** in the upper-right corner. In the message that appears, click **OK**.
 
-**Important**
-
-After the project is closed, you cannot open the project again. Proceed with caution.
+> **Important:** After the project is closed, you cannot open the project again. Proceed with caution.
 
 #### 6.8.3 Create an iteration template
 
@@ -1254,7 +1430,18 @@ The iteration template feature of Data Management (DMS) allows you to customize 
 6. Click the name of the iteration template that you created. The **Template Details** page
 appears.
 7. Manage iterative stages based on your development requirements.
-To create an iterative stage, click **Add** in the left-side pane and enter a name in the field. If the current template has been associated with an iteration, you are not allowed to create an iteration stage. To modify the name of an iterative stage, click the icon next to it. By default, a new iteration template contains two iterative stages: **Dev** and **Product**. These two stages can be modified and deleted. To delete an iterative stage, click the icon next to its name. In the dialog box that appears, click **OK**. At least one iterative stage must be retained. If there is only one iterative stage left, you cannot delete it.
+To create an iterative stage, click **Add** in the left-side pane and enter a name in the field.
+
+> **Note:** If the current template has been associated with an iteration, you are not allowed to create an iteration stage.
+
+To modify the name of an iterative stage, click the icon next to it.
+
+> **Note:** By default, a new iteration template contains two iterative stages: **Dev** and **Product**. These two stages can be modified and deleted.
+
+To delete an iterative stage, click the icon next to its name. In the dialog box that appears, click **OK**.
+
+> **Note:** At least one iterative stage must be retained. If there is only one iterative stage left, you cannot delete it.
+
 8. Configure stage rules. Click an iterative stage and configure rules for the stage. Repeat this
 step for each stage. i. Click the **Basic Rule Configuration** tab and configure the following rules.
 
@@ -1270,7 +1457,11 @@ change, Data Import, and Programmable Object tickets.
 **Schema Design**: schema design tickets.
 **SQL Review**: SQL review tickets.
 **Library table synchronization**: database and table synchronization tickets,
-including the Schema Synchronization and Empty Database Initialization tickets. You can specify the types of tickets that can be created in the iterative stage. Click a value in the **Required (Click Value to Modify)** column to select **Yes** or **No** from the drop-down list.
+including the Schema Synchronization and Empty Database Initialization tickets.
+
+> **Note:** You can specify the types of tickets that can be created in the iterative stage.
+
+Click a value in the **Required (Click Value to Modify)** column to select **Yes** or **No** from the drop-down list.
 **Yes**: You must create a ticket of the specific type in the iterative stage. Otherwise,
 the iteration cannot advance to the next stage.
 **No**: The iteration can advance to the next stage regardless of whether you create a
@@ -1285,7 +1476,9 @@ ticket of the specific type in the iterative stage. Click a value in the **Stage
 | SQL Review | Do not check: You do not need to check the status of the ticket, and the iteration can advance to the next stage. Audit successful: The SQL review is complete, and the iteration can advance to the next stage. |
 | Library table synchronization | Do not check: You do not need to check the status of the ticket, and the iteration can advance to the next stage. Successful execution: The synchronization is performed, and the iteration can advance to the next stage. Closed: The ticket is closed, and the iteration can advance to the next stage. |
 
-You can select multiple ticket states that allow the iteration to advance to the next stage based on your requirements. To delete a ticket rule, click **Delete** in the Actions column. iii. Click the **Procedure and Approval** tab and configure rules for approval processes.
+> **Note:** You can select multiple ticket states that allow the iteration to advance to the next stage based on your requirements.
+
+To delete a ticket rule, click **Delete** in the Actions column. iii. Click the **Procedure and Approval** tab and configure rules for approval processes.
 
 | Rule Name | Description | Operation |
 |---|---|---|
@@ -1313,7 +1506,8 @@ i. Click **Create Task Flow**. ii. In the **New Task Flow** dialog box, configur
 4. In the **Task Type** list on the left side of the canvas, drag a task node to the blank area on
 the canvas.
 5. Double-click the task node. On the tab that appears, configure the parameters.
-In this example, an SQL Assignment for Single Instance node is used.
+
+> **Note:** In this example, an SQL Assignment for Single Instance node is used.
 
 | Parame ter or setting | Description |
 |---|---|
@@ -1329,11 +1523,17 @@ In this example, an SQL Assignment for Single Instance node is used.
 6. Connect the task node to its upstream and downstream nodes.
 Move the pointer over an upstream node, click and hold the circle on the right side of the upstream node, and then draw a line from the circle to a downstream node. In the following example, a **Check Whether Data Exists in Table After Specified Time** node is connected to a **Single Instance SQL** node. Move the pointer over the **Check**
 **Whether Data Exists in Table After Specified Time** node, click and hold the circle on
-the right side of the **Check Whether Data Exists in Table After Specified Time** node, and then draw a line from the circle to the **Single Instance SQL** node. In the task flow shown in the preceding figure, the Check Whether Data Exists in Table After Specified Time node is run before the Single Instance SQL node.
+the right side of the **Check Whether Data Exists in Table After Specified Time** node, and then draw a line from the circle to the **Single Instance SQL** node.
+
+> **Note:** In the task flow shown in the preceding figure, the Check Whether Data Exists in Table After Specified Time node is run before the Single Instance SQL node.
+
 7. **Optional:** Click the blank area of the canvas to configure the task flow.
 i. Configure basic properties. Click the **Task Flow Information** tab. In the **Properties** section, modify the parameters such as **Task Flow Name**, **Owner**, and **Stakeholders**. ii. In the **Scheduling Settings** section, turn on **Enable Scheduling** to configure the scheduling properties for the task flow. For more information, see the Scheduling settings section of this topic.
 8. Click **Try Run**.
-If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails. If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails.
+
+> **Note:** If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+
 9. **Optional:** Publish the task flow. For more information, see Publish a task flow.
 
 **Task node types**
@@ -1376,7 +1576,10 @@ If `status SUCCEEDED` appears in the last line of run logs, the test run is succ
 5. Click **OK**.
 After you create a transaction market, you can modify the transaction market name, delete the transaction market, and view transaction calendar details.
 6. Click **Upload Transaction Calendar**. In the dialog box that appears, configure the
-following parameters: **Year**, **Time Column**, **Effective Column**, and **File**. For the Time Column parameter, enter a name for the time column, in the YYYY-MM-DD or YYYY/MM/DD format. If you upload a transaction calendar of the same year as an existing calendar, the existing calendar is overwritten.
+following parameters: **Year**, **Time Column**, **Effective Column**, and **File**. For the Time Column parameter, enter a name for the time column, in the YYYY-MM-DD or YYYY/MM/DD format.
+
+> **Note:** If you upload a transaction calendar of the same year as an existing calendar, the existing calendar is overwritten.
+
 7. Click **OK**.
 
 #### 7.1.2 Run a script by using SSH after you configure a machine or machine cluster
@@ -1467,7 +1670,10 @@ parameter is set to 7, 8, and 9 in sequence for the three nodes. You can use the
 |---|---|
 |   | appears in run logs, the nodes in the task flow are run in sequence based on the |
 
-priority. If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails. If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+priority. If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails.
+
+> **Note:** If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+
 5. **Optional:**Publish the task flow. For more information, see Publish a task flow.
 
 #### 7.1.4 Configure an Impala SQL node
@@ -1476,7 +1682,9 @@ You can submit Impala SQL statements by using Single Instance SQL or Impala SQL 
 
 **Prerequisites**
 
-An Impala database is created. The Impala database is registered with Data Management (DMS). For more information, see Register a database instance. If you want to register an Impala database with DMS and select Kerberos as the authentication method, you must prepare the krb5.conf and keytab files to be uploaded to DMS before you register the database.
+An Impala database is created. The Impala database is registered with Data Management (DMS). For more information, see Register a database instance.
+
+> **Note:** If you want to register an Impala database with DMS and select Kerberos as the authentication method, you must prepare the krb5.conf and keytab files to be uploaded to DMS before you register the database.
 
 **Procedure**
 
@@ -1494,7 +1702,10 @@ create table if not exists abcd(id int);
 ```
 
 6. Click **Try Run**.
-If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails. If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+If `status SUCCEEDED` appears in the last line of run logs, the test run is successful. If `status FAILED` appears in the last line of run logs, the test run fails.
+
+> **Note:** If the test run fails, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again.
+
 7. **Optional:** Publish the task flow. For more information, see Publish a task flow.
 
 #### 7.1.5 Configure a data flow
@@ -1503,18 +1714,30 @@ Data Management (DMS) provides the batch integration feature that allows you to 
 
 **Limits**
 
-The databases to be used in a data flow must be of the following types: MySQL: ApsaraDB RDS for MySQL, PolarDB for MySQL, MyBase for MySQL, , AnalyticDB for MySQL V3.0, and MySQL databases that are not on Alibaba Cloud SQL Server: ApsaraDB RDS for SQL Server, MyBase for SQL Server, and SQL Server databases that are not on Alibaba Cloud PostgreSQL: ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, MyBase for PostgreSQL, AnalyticDB for PostgreSQL, and PostgreSQL databases that are not on Alibaba Cloud Oracle Db2 MaxCompute Hologres Hologres databases can be used only to configure Data Import nodes. OSS OSS buckets can be used only to configure Data Output nodes.
+The databases to be used in a data flow must be of the following types: MySQL: ApsaraDB RDS for MySQL, PolarDB for MySQL, MyBase for MySQL, , AnalyticDB for MySQL V3.0, and MySQL databases that are not on Alibaba Cloud SQL Server: ApsaraDB RDS for SQL Server, MyBase for SQL Server, and SQL Server databases that are not on Alibaba Cloud PostgreSQL: ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, MyBase for PostgreSQL, AnalyticDB for PostgreSQL, and PostgreSQL databases that are not on Alibaba Cloud Oracle Db2 MaxCompute Hologres
+
+> **Note:** Hologres databases can be used only to configure Data Import nodes.
+
+OSS
+
+> **Note:** OSS buckets can be used only to configure Data Output nodes.
 
 **Procedure**
 
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Data+AI > Data Integration > Batch Integration**.
-If you use the DMS console in simple mode, move the pointer over the icon in the upper-left corner and choose **All Features > Data+AI > Data Integration > Batch**
-**Integration**.
+
+> **Note:** If you use the DMS console in simple mode, move the pointer over the
+> icon in the
+> upper-left corner and choose **All Features > Data+AI > Data Integration > Batch** **Integration**.
+
 3. Click the name of the data flow that you want to configure to go to the details page of the
 data flow.
 4. Configure a Data Import node.
-The first node of the data flow must be a **Data Import** node, which specifies the source table from which the data flow reads data. i. In the **Task Type** list on the left side of the canvas, drag the **Data Import** node to the blank area on the canvas. ii. Click the **Data Import** node on the canvas. On the **Source of data** tab in the lower part, configure the parameters that are described in the following table.
+
+> **Note:** The first node of the data flow must be a **Data Import** node, which specifies the source table from which the data flow reads data.
+
+i. In the **Task Type** list on the left side of the canvas, drag the **Data Import** node to the blank area on the canvas. ii. Click the **Data Import** node on the canvas. On the **Source of data** tab in the lower part, configure the parameters that are described in the following table.
 
 | Parameter | Description |
 |---|---|
@@ -1523,9 +1746,19 @@ The first node of the data flow must be a **Data Import** node, which specifies 
 | Table | The name of the table from which the data flow reads data. |
 
 5. Configure a data processing node. In this example, a Data Filtering node is configured to
-filter data in the data source. All nodes except **Data Import** and **Data Output** nodes can be configured as data processing nodes. i. In the **Task Type** list on the left side of the canvas, drag the **Data Filtering** node to the blank area on the canvas. ii. Move the pointer over the **Data Import** node, click the hollow circle on the right side of the Data Import node, and then drag the connection line to the **Data Filtering** node. iii. Click the **Data Filtering** node on the canvas. On the **Data Filtering** tab in the lower part, configure the **Filter Expressions** parameter. For example, you can enter `name='Jack'` in the field as a filter condition. You can also double-click a function on the right side of the Data Filtering tab to specify filter conditions.
+filter data in the data source.
+
+> **Note:** All nodes except **Data Import** and **Data Output** nodes can be configured as data processing nodes.
+
+i. In the **Task Type** list on the left side of the canvas, drag the **Data Filtering** node to the blank area on the canvas. ii. Move the pointer over the **Data Import** node, click the hollow circle on the right side of the Data Import node, and then drag the connection line to the **Data Filtering** node. iii. Click the **Data Filtering** node on the canvas. On the **Data Filtering** tab in the lower part, configure the **Filter Expressions** parameter. For example, you can enter `name='Jack'` in the field as a filter condition.
+
+> **Note:** You can also double-click a function on the right side of the Data Filtering tab to specify filter conditions.
+
 6. Configure a Data Output node.
-The last node of the data flow must be a **Data Output** node, which specifies the destination table to which the processed data is written. i. In the **Task Type** list on the left side of the canvas, drag the **Data Output** node to the blank area on the canvas. ii. Click the **Data Output** node on the canvas. On the **Data Output** tab in the lower part, configure the parameters based on your business requirements. The following table describes the parameters that you can configure if the data output is a database.
+
+> **Note:** The last node of the data flow must be a **Data Output** node, which specifies the destination table to which the processed data is written.
+
+i. In the **Task Type** list on the left side of the canvas, drag the **Data Output** node to the blank area on the canvas. ii. Click the **Data Output** node on the canvas. On the **Data Output** tab in the lower part, configure the parameters based on your business requirements. The following table describes the parameters that you can configure if the data output is a database.
 
 | Parameter | Description |
 |---|---|
@@ -1557,7 +1790,11 @@ This topic describes the variables that are used in the task orchestration featu
 
 **Overview**
 
-When you configure a task node in a task flow, you can configure some or all of the following types of variables on the **Variable Setting** tab: Node variables are time variables that can be used only on the current node. Task flow variables are time variables that can be used on all nodes of the current task flow. You can configure task flow variables on one of the task nodes in a task flow. Then, the configuration of task flow variables is synchronized to other task nodes in the task flow. Input variables are automatically obtained by Data Management (DMS). You can use ${var_name} to reference an input variable in SQL statements for the current node. You can also use an input variable as a filter condition for a conditional branch node. The following variables are considered as input variables: Upstream variables: the output variables from upstream nodes. Status variables: For more information, see the Status variables section of this topic. System variables: For more information, see the System variables section of this topic. Output variables: the variables that are defined and have their values assigned on the current node. Output variables can be accessed and referenced by the downstream nodes of the current node. For example, if you configure an output variable on a Script node, the output variable can be referenced in the SQL statements of a downstream node. Script output variables: If the last line of the script file is a JSON string in the format of `{` key1: value1, key2: value2, … } for a Script node, the script task parses the key-value pairs in the JSON string to obtain output variables. For each variable, the name is key and value is the value of the key parameter. You can reference a script output variable in the format of ${key} in the SQL statements of a downstream node. For example, if the last line of the script file is `echo {"hello": "world"}` , the script task parses the key-value pair to obtain an output variable whose name is hello and value is world.
+When you configure a task node in a task flow, you can configure some or all of the following types of variables on the **Variable Setting** tab: Node variables are time variables that can be used only on the current node. Task flow variables are time variables that can be used on all nodes of the current task flow.
+
+> **Note:** You can configure task flow variables on one of the task nodes in a task flow. Then, the configuration of task flow variables is synchronized to other task nodes in the task flow.
+
+Input variables are automatically obtained by Data Management (DMS). You can use ${var_name} to reference an input variable in SQL statements for the current node. You can also use an input variable as a filter condition for a conditional branch node. The following variables are considered as input variables: Upstream variables: the output variables from upstream nodes. Status variables: For more information, see the Status variables section of this topic. System variables: For more information, see the System variables section of this topic. Output variables: the variables that are defined and have their values assigned on the current node. Output variables can be accessed and referenced by the downstream nodes of the current node. For example, if you configure an output variable on a Script node, the output variable can be referenced in the SQL statements of a downstream node. Script output variables: If the last line of the script file is a JSON string in the format of `{` key1: value1, key2: value2, … } for a Script node, the script task parses the key-value pairs in the JSON string to obtain output variables. For each variable, the name is key and value is the value of the key parameter. You can reference a script output variable in the format of ${key} in the SQL statements of a downstream node. For example, if the last line of the script file is `echo {"hello": "world"}` , the script task parses the key-value pair to obtain an output variable whose name is hello and value is world.
 
 **Configure time variables**
 
@@ -1608,7 +1845,7 @@ The following table describes the sample time formats that use multiple time var
 |---|---|
 | one failed _ | A task of the current task flow fails to be run. |
 
-You can use status variables on a conditional branch node to make a conditional evaluation in a task flow. The subsequent tasks in the task flow can be run only if the conditional branch node meets the specified conditions.
+> **Note:** You can use status variables on a conditional branch node to make a conditional evaluation in a task flow. The subsequent tasks in the task flow can be run only if the conditional branch node meets the specified conditions.
 
 **System variables**
 
@@ -1642,8 +1879,9 @@ i. In the upper-left corner of the canvas, click **Try Run**. ii. In the **Alert
 | Note If the task flow fails to be run, view the node on which the failure occurs and the reason for the failure in the logs. Then, modify the configurations of the node and try again. |   |   |
 
 5. Publish the task flow.
-Before you publish a task flow, move the pointer over **Publish** in the upper-left corner of the canvas to check whether the task flow is modified. If the task flow is modified, the **The task flow is modified. You must republish the task flow**
-**to make the modification take effect** message appears.
+
+> **Note:** Before you publish a task flow, move the pointer over **Publish** in the upper-left corner of the canvas to check whether the task flow is modified. If the task flow is modified, the **The task flow is modified. You must republish the task flow** **to make the modification take effect** message appears.
+
 i. In the upper-left corner of the canvas, click **Publish**. ii. In the **Publish** dialog box, perform the following operations based on your business requirements: Enter the description of the task flow in the **Remarks** field and click **Publish** to publish the task flow. Click **Display differences** to view the differences between the unpublished version and published version of the task flow, including properties, node configurations, and SQL statements.
 6. **Optional:**Unpublish the task flow.
 If you do not need to schedule a task flow on a scheduled or periodic basis, you can unpublish the task flow. i. In the upper-left corner of the canvas, click **Unpublish**. ii. In the **Unpublish** message, click **Unpublish**.
@@ -1805,7 +2043,9 @@ After you create an API, you can test the API to verify whether the API meets yo
 2. In the top navigation bar, choose **DTS > Data Service**.
 3. Click the **API Test** tab on the left side.
 4. On the APITest tab, test an API.
-i. Select the API that you want to test from the drop-down list. ii. Enter values in the Parameter value column. iii. Click **Test**. After the test is complete, the execution information and return results appear on the right side. You can evaluate whether the API meets your business requirements based on the information. You can click the **JSON** tab in the **ReturnResults** section so that the return results are displayed in the JSON format.
+i. Select the API that you want to test from the drop-down list. ii. Enter values in the Parameter value column. iii. Click **Test**. After the test is complete, the execution information and return results appear on the right side. You can evaluate whether the API meets your business requirements based on the information.
+
+> **Note:** You can click the **JSON** tab in the **ReturnResults** section so that the return results are displayed in the JSON format.
 
 #### 7.3.5 Call an API
 
@@ -1826,7 +2066,8 @@ is suitable for calling APIs by using URLs. This authentication method has a low
 **Encrypted signature identity authentication**: requires an AppKey and an AppSecret,
 which are used to dynamically generate an encrypted signature for calling an API. This authentication method has a high security level.
 5. Call the API in an application by using an SDK.
-For more information about how to call an API in an application by using an SDK, see the documentation of **API Gateway**.
+
+> **Note:** For more information about how to call an API in an application by using an SDK, see the documentation of **API Gateway**.
 
 ### 7.4 Data visualization
 
@@ -1840,11 +2081,17 @@ DMS allows you to manage databases and query data in the SQLConsole where result
 
 **Basic concepts**
 
-The data visualization feature provides a three-layer model for you to visualize data in various forms, including datasets, charts, and dashboards or big screens. You can execute SQL statements in the SQLConsole to obtain datasets and convert the datasets to common charts such as line charts, pie charts, column charts, circular charts, table charts, dual Y-axis charts, and funnel charts. Then, on a dashboard or big screen, you can freely combine and lay out these charts based on your analysis logic or methodology to visually present your business data. For example, you can use indicator cards to display the overall metrics of your business, such as a transaction volume and unique visitors (UVs). Then, you can use a line chart to present the growth trend of the transaction volume and a column chart to compare transactions in all regions. Finally, you can use a table chart with a filter to query region-specific data.
+The data visualization feature provides a three-layer model for you to visualize data in various forms, including datasets, charts, and dashboards or big screens. You can execute SQL statements in the SQLConsole to obtain datasets and convert the datasets to common charts such as line charts, pie charts, column charts, circular charts, table charts, dual Y-axis charts, and funnel charts. Then, on a dashboard or big screen, you can freely combine and lay out these charts based on your analysis logic or methodology to visually present your business data.
+
+> **Note:** For example, you can use indicator cards to display the overall metrics of your business, such as a transaction volume and unique visitors (UVs). Then, you can use a line chart to present the growth trend of the transaction volume and a column chart to compare transactions in all regions. Finally, you can use a table chart with a filter to query region-specific data.
 
 **Design philosophy**
 
-Two core concepts of data visualization are datasets and charts. Datasets are also called data views, and charts are also called visualization components. Datasets represent the structured form of data. Data logic, permissions, and services are all based on this form. Charts represent the visual form of data. Data presentation, interaction, and guidance are all based on this form. Datasets and charts complement each other to provide the same data in two different forms and help you better understand data. Dashboards or big screens are used for quick data analysis and custom data visualization. You can combine charts on dashboards or big screens as needed. This can satisfy the data visualization needs of most users.
+Two core concepts of data visualization are datasets and charts. Datasets are also called data views, and charts are also called visualization components. Datasets represent the structured form of data. Data logic, permissions, and services are all based on this form. Charts represent the visual form of data. Data presentation, interaction, and guidance are all based on this form.
+
+> **Note:** Datasets and charts complement each other to provide the same data in two different forms and help you better understand data.
+
+Dashboards or big screens are used for quick data analysis and custom data visualization. You can combine charts on dashboards or big screens as needed. This can satisfy the data visualization needs of most users.
 
 **Scenarios**
 
@@ -1934,7 +2181,8 @@ tab.
 3. On the **Dataset management** tab, find the dataset that you want to delete and click the
 icon in the **Operation** column.
 4. In the message that appears, click **OK**.
-Before a dataset is deleted, DMS checks whether the dataset is referenced by a chart. If the dataset is referenced, you cannot delete the dataset. To delete the dataset, you must go to the chart editing page to cancel the reference or delete the chart that references the dataset.
+
+> **Note:** Before a dataset is deleted, DMS checks whether the dataset is referenced by a chart. If the dataset is referenced, you cannot delete the dataset. To delete the dataset, you must go to the chart editing page to cancel the reference or delete the chart that references the dataset.
 
 **Grant permissions on a dataset**
 
@@ -1985,7 +2233,9 @@ Only fields of the NUMERIC type can be placed in the Measure area. Values of eac
 
 **Filter**
 
-Both dimension and measure fields can be placed in the Filter area. Values of fields in this area will be used to specify filter conditions in the SQL statement to be generated. Data can be filtered by values, conditions, and dates. Filter methods applicable to each field in this area correspond to the visualization type that you specified for the field when you configure the dataset model.
+Both dimension and measure fields can be placed in the Filter area. Values of fields in this area will be used to specify filter conditions in the SQL statement to be generated. Data can be filtered by values, conditions, and dates.
+
+> **Note:** Filter methods applicable to each field in this area correspond to the visualization type that you specified for the field when you configure the dataset model.
 
 | Filter method | Description | Visualization type |
 |---|---|---|
@@ -1995,7 +2245,9 @@ Both dimension and measure fields can be placed in the Filter area. Values of fi
 
 **Grouping**
 
-You can place only one dimension field in the Grouping area. Values of the field in this area will be grouped in the new SQL statement to be generated. In the chart to be generated, values of the field will be grouped. Each group has a distinct color. The legend of the chart will help you differentiate groups with different colors. If you want measures of a dimension to be displayed as several groups in a chart, you can use color settings to differentiate the groups. For example, a dataset model contains the trade_date, zone, and price fields, respectively representing the transaction date, transaction region, and transaction volume. You want a bar chart to show aggregated transaction volumes of each region by day. In this case, you can place the trade_date field in the Dimension area, the zone field in the Grouping area, and the price field in the Measure area. When you generate a pie chart, you require a dimension field whose values are to be grouped. In this case, you must place the dimension field in the Grouping area instead of the Dimension area.
+You can place only one dimension field in the Grouping area. Values of the field in this area will be grouped in the new SQL statement to be generated. In the chart to be generated, values of the field will be grouped. Each group has a distinct color. The legend of the chart will help you differentiate groups with different colors. If you want measures of a dimension to be displayed as several groups in a chart, you can use color settings to differentiate the groups. For example, a dataset model contains the trade_date, zone, and price fields, respectively representing the transaction date, transaction region, and transaction volume. You want a bar chart to show aggregated transaction volumes of each region by day. In this case, you can place the trade_date field in the Dimension area, the zone field in the Grouping area, and the price field in the Measure area.
+
+> **Note:** When you generate a pie chart, you require a dimension field whose values are to be grouped. In this case, you must place the dimension field in the Grouping area instead of the Dimension area.
 
 **General settings for fields**
 
@@ -2014,11 +2266,23 @@ Size: If you are configuring a scatter chart, you must place a field of the NUME
 
 **Chart configuration**
 
-After you configure fields, you can select a chart type by clicking the corresponding icon at the top of the chart configuration section. You can move the pointer over an icon to check the prerequisites of the chart type. If your data configuration does not meet all the prerequisites, the icon is dimmed. Only after all the prerequisites are met does the icon become highlighted. Click the icon and a chart appears in the chart display section. On the **Style** tab of the chart configuration section, you can customize the chart display style.
+After you configure fields, you can select a chart type by clicking the corresponding icon at the top of the chart configuration section.
+
+> **Note:** You can move the pointer over an icon to check the prerequisites of the chart type. If your data configuration does not meet all the prerequisites, the icon is dimmed. Only after all the prerequisites are met does the icon become highlighted. Click the icon and a chart appears in the chart display section.
+
+On the **Style** tab of the chart configuration section, you can customize the chart display style.
 
 **Functionality settings**
 
-On the **Settings** tab of the chart configuration section, you can configure a filter and cache and specify whether to automatically load data. Filter You can create a filter or edit an existing filter by clicking **Settings** next to Filter. To configure a filter, you must have defined **variables** when you configure the dataset. After you add a chart with a filter to a dashboard, you can click the button in the upper-left corner of the dashboard card. In the filter panel that appears, specify filter conditions and then click **Query** in the lower-right corner of the panel. Conditions that you specified in the chart filter and conditions that you specified in the global filter of the dashboard take effect at the same time. Cache You can enable or disable caching for a chart. You can also specify a validity period for the cached data. If you enable caching for a chart, the result of the first query for the chart on a dashboard or big screen will be stored in the cache. The SQL query statement will be used as a key. Within the validity period, DMS returns the cached result for the same SQL query statement with no need to access the data source. Automatically load data In scenarios where data query is frequent, you may not want data to be loaded immediately when you open a dashboard. In this case, you can set **Automatically load data** to **No**. This parameter is set to **Yes** by default.
+On the **Settings** tab of the chart configuration section, you can configure a filter and cache and specify whether to automatically load data. Filter You can create a filter or edit an existing filter by clicking **Settings** next to Filter.
+
+> **Note:** To configure a filter, you must have defined **variables** when you configure the dataset.
+
+After you add a chart with a filter to a dashboard, you can click the button in the upper-left corner of the dashboard card. In the filter panel that appears, specify filter conditions and then click **Query** in the lower-right corner of the panel. Conditions that you specified in the chart filter and conditions that you specified in the global filter of the dashboard take effect at the same time. Cache You can enable or disable caching for a chart. You can also specify a validity period for the cached data.
+
+> **Note:** If you enable caching for a chart, the result of the first query for the chart on a dashboard or big screen will be stored in the cache. The SQL query statement will be used as a key. Within the validity period, DMS returns the cached result for the same SQL query statement with no need to access the data source.
+
+Automatically load data In scenarios where data query is frequent, you may not want data to be loaded immediately when you open a dashboard. In this case, you can set **Automatically load data** to **No**. This parameter is set to **Yes** by default.
 
 **Create a chart**
 
@@ -2095,7 +2359,11 @@ supported: Manual refresh: You must click the **Synchronize data** icon in the u
 
 **Configure a chart**
 
-To refresh data in a chart, click the icon in the upper-right corner of the chart to trigger a query and synchronize data. If cache is enabled for the chart, the cached content is also refreshed when you click this icon. To edit a chart, click the icon in the upper-right corner of the chart. To view a chart in full screen, click the icon in the upper-right corner of the chart. To change the data refresh mode of a chart or delete a chart, click the icon in the upperright corner of the chart and select Basic information or Delete as required.
+To refresh data in a chart, click the icon in the upper-right corner of the chart to trigger a query and synchronize data.
+
+> **Note:** If cache is enabled for the chart, the cached content is also refreshed when you click this icon.
+
+To edit a chart, click the icon in the upper-right corner of the chart. To view a chart in full screen, click the icon in the upper-right corner of the chart. To change the data refresh mode of a chart or delete a chart, click the icon in the upperright corner of the chart and select Basic information or Delete as required.
 
 **Use the auto layout feature**
 
@@ -2103,7 +2371,11 @@ You can drag the lower-right corner of a chart to adjust its size. You can drag 
 
 **Configure filter interactions**
 
-You can configure filter interactions between charts in the same dashboard. Click the icon in the upper-right corner of a dashboard. The Linkage relationship settings dialog box appears. You can configure multiple filter interactions for a dashboard. For each filter interaction, you need to specify a trigger, an associated field, and a mapping relationship between the trigger and the associated field. A trigger is a field that triggers a filter interaction. This field can be a dimension or an aggregated measure. Only fields that are used in the selected chart, instead of all fields in the dataset model that corresponds to the selected chart, can be specified as triggers. An associated field can be any field or variable in the dataset model that corresponds to the selected chart. The data type of a trigger must be the same as the data type of its associated field. You can configure multiple filter interactions that have the same trigger. This way, one trigger is associated with multiple charts. A relationship diagram is displayed on the right of the Linkage relationship settings dialog box, showing the filter interactions between charts. You can also configure multiple filter interactions whose associated fields belong to the same chart. All filter conditions, which are the mapping relationships defined in these filter interactions, take effect at the same time. After you configure filter interactions, each chart to which a trigger belongs has an icon in the upper-left corner. Move the pointer over the icon and an action prompt appears.
+You can configure filter interactions between charts in the same dashboard. Click the icon in the upper-right corner of a dashboard. The Linkage relationship settings dialog box appears. You can configure multiple filter interactions for a dashboard. For each filter interaction, you need to specify a trigger, an associated field, and a mapping relationship between the trigger and the associated field. A trigger is a field that triggers a filter interaction. This field can be a dimension or an aggregated measure. Only fields that are used in the selected chart, instead of all fields in the dataset model that corresponds to the selected chart, can be specified as triggers. An associated field can be any field or variable in the dataset model that corresponds to the selected chart. The data type of a trigger must be the same as the data type of its associated field. You can configure multiple filter interactions that have the same trigger. This way, one trigger is associated with multiple charts. A relationship diagram is displayed on the right of the Linkage relationship settings dialog box, showing the filter interactions between charts.
+
+> **Note:** You can also configure multiple filter interactions whose associated fields belong to the same chart. All filter conditions, which are the mapping relationships defined in these filter interactions, take effect at the same time.
+
+After you configure filter interactions, each chart to which a trigger belongs has an icon in the upper-left corner. Move the pointer over the icon and an action prompt appears.
 
 **Configure global filters**
 
@@ -2134,7 +2406,13 @@ Drop-down lists can be set only for global filters whose associated fields are d
 
 **Date selection**
 
-Date selection can be set only for global filters whose associated fields are dimensions. The selected date can be converted to one of the following formats: Date. Example: 2019-01-01. Date and time, accurate to seconds. Example: 2019-01-01 12:00:00. Date and time, accurate to minutes. Example: 2019-01-01 12:00. Month. Example: 2019-01. Week. Example: 2019-5th week. Year. Example: 2019. You can set a default value for a date filter. The default value can be a specified date, whether the date is fixed on the timeline or moves on the timeline. You can set default values only for date filters. If you select Multiple choice for a date filter, you can set the Date format parameter only to Date, Month, or Year. To specify multiple months or years as default values, you must select dates in the corresponding months or years. Similar to drop-down list filters, if you select associated variables in the Category section and select Multiple choice for a date filter, you also need to modify the SQL statement to ensure correct execution.
+Date selection can be set only for global filters whose associated fields are dimensions. The selected date can be converted to one of the following formats: Date. Example: 2019-01-01. Date and time, accurate to seconds. Example: 2019-01-01 12:00:00. Date and time, accurate to minutes. Example: 2019-01-01 12:00. Month. Example: 2019-01. Week. Example: 2019-5th week. Year. Example: 2019. You can set a default value for a date filter. The default value can be a specified date, whether the date is fixed on the timeline or moves on the timeline.
+
+> **Note:** You can set default values only for date filters.
+
+If you select Multiple choice for a date filter, you can set the Date format parameter only to Date, Month, or Year. To specify multiple months or years as default values, you must select dates in the corresponding months or years.
+
+> **Note:** Similar to drop-down list filters, if you select associated variables in the Category section and select Multiple choice for a date filter, you also need to modify the SQL statement to ensure correct execution.
 
 **Date range**
 
@@ -2163,7 +2441,19 @@ button appear on the right of the global filter bar. To trigger a query, select 
 
 **Perform drilling in a chart**
 
-To perform drilling in a chart, select the chart elements that you want to drill on, right-click, and then select the dimension that you want to drill to. If a chart contains a trigger configured for filter interactions, you cannot perform drilling in the chart. Each chart that allows drilling has an icon in the upper-left corner. If you move the pointer over the icon, an action prompt appears. If a chart allows drilling, its drilling path is displayed in the lower-left corner. You can drill to a level by clicking the level name in the drilling path. For example, you can select the Shanghai, Shenzhen and Guangzhou chart elements to drill to the `education` field. This way, the chart displays the education level and salary distribution in Shanghai, Shenzhen, and Guangzhou. The drilling feature is implemented differently in charts configured by using the pivotdriven mode and in charts configured by using the chart-driven mode. Pivot-driven mode In charts configured by using the pivot-driven mode, drilling is implemented by adding dimensions to or removing dimensions from filter conditions. Pivot tables support roll-up or drill-down operations. A roll-up operation is to remove a dimension from a filter condition. A drill-down operation is to add a dimension to a filter condition. Pivot tables also allow you to drill down to a row or a column. Chart-driven mode In table charts configured by using the chart-driven mode, drilling is implemented in a similar way it is implemented in pivot tables. In other charts configured by using the chart-driven mode, a drilling operation replaces an existing dimension in a filter condition with the dimension you want to drill to. This way, data changes are presented from another perspective. You can perform drilling in the following types of charts configured by using the chartdriven mode: Table chart Column chart Line chart Scatter chart Pie chart Funnel chart Secondary Y-axis chart
+To perform drilling in a chart, select the chart elements that you want to drill on, right-click, and then select the dimension that you want to drill to.
+
+> **Note:** If a chart contains a trigger configured for filter interactions, you cannot perform drilling in the chart.
+
+Each chart that allows drilling has an icon in the upper-left corner. If you move the pointer over the icon, an action prompt appears. If a chart allows drilling, its drilling path is displayed in the lower-left corner. You can drill to a level by clicking the level name in the drilling path.
+
+> **Note:** For example, you can select the Shanghai, Shenzhen and Guangzhou chart elements to drill to the `education` field. This way, the chart displays the education level and salary distribution in Shanghai, Shenzhen, and Guangzhou.
+
+The drilling feature is implemented differently in charts configured by using the pivotdriven mode and in charts configured by using the chart-driven mode. Pivot-driven mode In charts configured by using the pivot-driven mode, drilling is implemented by adding dimensions to or removing dimensions from filter conditions.
+
+> **Note:** Pivot tables support roll-up or drill-down operations. A roll-up operation is to remove a dimension from a filter condition. A drill-down operation is to add a dimension to a filter condition. Pivot tables also allow you to drill down to a row or a column.
+
+Chart-driven mode In table charts configured by using the chart-driven mode, drilling is implemented in a similar way it is implemented in pivot tables. In other charts configured by using the chart-driven mode, a drilling operation replaces an existing dimension in a filter condition with the dimension you want to drill to. This way, data changes are presented from another perspective. You can perform drilling in the following types of charts configured by using the chartdriven mode: Table chart Column chart Line chart Scatter chart Pie chart Funnel chart Secondary Y-axis chart
 
 **Edit a dashboard collection**
 
@@ -2237,7 +2527,8 @@ DMS provides four types of auxiliary graphics. You can click the **Auxiliary gra
 | Redo |   |   |   |
 | Delete | You can click this icon to delete a chart or an auxiliary graphic. | Delete | Backspace or Delete |
 
-You can click the **Copy**, **Paste**, or **Delete** icon to copy, paste, or delete multiple layers at a time. To select multiple layers, press and hold the Cmd or Alt key on the keyboard and click the layers.
+> **Note:** You can click the **Copy**, **Paste**, or **Delete** icon to copy, paste, or delete multiple layers at a time.
+> To select multiple layers, press and hold the Cmd or Alt key on the keyboard and click the layers.
 
 **Preview**
 
@@ -2245,7 +2536,11 @@ After you create a big screen, you can click the **Preview** icon in the toolbar
 
 **Canvas**
 
-Each chart or auxiliary graphic that is added to the canvas can be viewed as a **layer**. On the canvas, you can perform the following operations: You can drag a layer to adjust its position. You can also select a layer and use the arrow keys on the keyboard to fine-tune the position of the layer. When you are dragging a layer, a prompt appears to the right of the layer to show the current position of the layer in the form of coordinates. Guides are also displayed on the canvas to help you align the layer. When you edit a part of the canvas, you can adjust the slider of the zoom tool to zoom in or zoom out on the canvas. You can press and hold the Cmd or Alt key on the keyboard, click multiple layers to select them, and then copy, delete, or align the layers at a time. To deselect one or more selected layers, click the blank area on the canvas. To edit a chart, click the **Edit** icon in the upper-right corner of the chart.
+Each chart or auxiliary graphic that is added to the canvas can be viewed as a **layer**. On the canvas, you can perform the following operations: You can drag a layer to adjust its position. You can also select a layer and use the arrow keys on the keyboard to fine-tune the position of the layer.
+
+> **Note:** When you are dragging a layer, a prompt appears to the right of the layer to show the current position of the layer in the form of coordinates. Guides are also displayed on the canvas to help you align the layer.
+
+When you edit a part of the canvas, you can adjust the slider of the zoom tool to zoom in or zoom out on the canvas. You can press and hold the Cmd or Alt key on the keyboard, click multiple layers to select them, and then copy, delete, or align the layers at a time. To deselect one or more selected layers, click the blank area on the canvas. To edit a chart, click the **Edit** icon in the upper-right corner of the chart.
 
 **Layer panel**
 
@@ -2357,7 +2652,9 @@ b. Grant the permissions to query data from the source database to the eoa_user 
 grant connect,resource,select_catalog_role,select any dictionary to eoa_user;
 ```
 
-c. Grant the permissions on the DBMS_LOGMNR package to the eoa_user user. If the source database is an Oracle 10g database, run the following command before you grant the permissions on the DBMS_LOGMNR package to the eoa_user user:
+c. Grant the permissions on the DBMS_LOGMNR package to the eoa_user user.
+
+> **Note:** If the source database is an Oracle 10g database, run the following command before you grant the permissions on the DBMS_LOGMNR package to the eoa_user user:
 
 ```
 create or replace public synonym DBMS_LOGMNR for sys.dbms_logmnr; grant execute on DBMS_LOGMNR to eoa_user;
@@ -2413,7 +2710,9 @@ ID (SID) of the source Oracle database. Select **TERADATA** or **Db2_LUW** as th
 **Database Name**: the name of the source database.
 iii. **Source Database Network Type**: Select **Database with Public IP Address**. iv. Enter other information about the source database.
 **Host IP**: the IP address of the source database.
-Add the IP addresses of ADAM servers to the whitelist of the source database to ensure that ADAM can collect data from the source database online.
+
+> **Note:** Add the IP addresses of ADAM servers to the whitelist of the source database to ensure that ADAM can collect data from the source database online.
+
 **Port Number**: the port that is used to connect to the source database.
 **Username**: the username of the account that you created to collect database
 information.
@@ -2435,7 +2734,14 @@ page.
 2. In the **SQL Periodic Collection** section, click **Download** to download the Database
 Collector client.
 3. In the Download Database Collector panel, download the Database Collector client based on
-the operating system of your on-premises machine. Then, decompress the package and install the Database Collector client. We recommend that you do not install the Database Collector client on the server of the source database. The on-premises machine on which you want to install the Database Collector client must meet the following requirements: Network: The source database is accessible from the on-premises machine. CPU: 2 cores. Memory: 8 GB. Hard disk: 100 GB free space.
+the operating system of your on-premises machine. Then, decompress the package and install the Database Collector client.
+
+> **Note:** We recommend that you do not install the Database Collector client on the server of the source database. The on-premises machine on which you want to install the Database Collector client must meet the following requirements:
+> Network: The source database is accessible from the on-premises machine.
+> CPU: 2 cores.
+> Memory: 8 GB.
+> Hard disk: 100 GB free space.
+
 4. Create an account and authorize the account to collect database information.
 i. Log on to the source database. ii. Create a temporary user by using the credentials of a user that is granted the SYSDBA permission, and then grant the required permissions to the temporary user. If an existing user of the source database is granted the required permissions, you can use the credentials of the existing user to collect the information about the source database. If the source database is an Oracle 10g database, Oracle 11g database, or Oracle 12c non-CDB, create a local user. a. Create a user named eoa_user and set the password to eoaPASSW0RD****.
 
@@ -2449,7 +2755,9 @@ b. Grant the permissions to query data from the source database to the eoa_user 
 grant connect,resource,select_catalog_role,select any dictionary to eoa_user;
 ```
 
-c. Grant the permissions on the DBMS_LOGMNR package to the eoa_user user. If the source database is an Oracle 10g database, run the following command before you grant the permissions on the DBMS_LOGMNR package to the eoa_user user:
+c. Grant the permissions on the DBMS_LOGMNR package to the eoa_user user.
+
+> **Note:** If the source database is an Oracle 10g database, run the following command before you grant the permissions on the DBMS_LOGMNR package to the eoa_user user:
 
 ```
 create or replace public synonym DBMS_LOGMNR for sys.dbms_logmnr; grant execute on DBMS_LOGMNR to eoa_user;
@@ -2515,7 +2823,11 @@ Oracle 11g R2
 collect_11gR2[.sh|.bat] -h -u -p -d <service_name>;
 ```
 
-c. Oracle 12c You can use the `collect_11gR2` script to collect the information about a pluggable database (PDB) in Oracle 12c. collect_12c[.sh|.bat] -h <host> -u <username> -p <password> -P <port> -d <service_name> -s <sid> d. Teradata 13, 14, or 15
+c. Oracle 12c
+
+> **Note:** You can use the `collect_11gR2` script to collect the information about a pluggable database (PDB) in Oracle 12c. collect_12c[.sh|.bat] -h <host> -u <username> -p <password> -P <port> -d <service_name> -s <sid>
+
+d. Teradata 13, 14, or 15
 
 ```
 collect_td[.sh] -h ip -p password -u username;
@@ -2561,11 +2873,17 @@ A database profile is used to evaluate a source database in Advanced Database & 
 2. In the DB Evaluation Process wizard, click the **Source DB Profile** step.
 3. On the tab that appears, click **Create Profile**.
 4. In the **Create Profile** panel, configure the **Profile Name**, Type, and Report Language Type
-parameters, and then click **Upload** to upload a file of data collected from the source database. After the file is uploaded, click **Create**. The database profile can be created in 1 to 30 minutes. The duration depends on the size of the data collected from the source database.
+parameters, and then click **Upload** to upload a file of data collected from the source database. After the file is uploaded, click **Create**.
+
+> **Note:** The database profile can be created in 1 to 30 minutes. The duration depends on the size of the data collected from the source database.
 
 **View the database profile**
 
-After the state of the database profile changes to **Complete**, click **Details** in the **Actions** column to view the profile. Basic information statistics The basic information statistics feature is available only for the profile of an Oracle database. On the **Overview** tab, view the basic information of the source database. Session: the connection status of the database. A higher value indicates that more sessions are established to the database. Complexity: the complexity of the database evaluated based on the collected information about the source database, such as scenarios and features. Risk: the risk level of the database. A higher value indicates that the database is more likely to be exposed to performance risks related to SQL statements or objects. Hotspot: indicates whether the database contains objects that are frequently accessed. A higher value indicates that more objects are frequently accessed. Scale: the scale of database resources. A higher value indicates a larger database scale. Load: the performance of the database. A higher value indicates a larger load of the database. Distribution of main objects On the **Overview** tab, view the distribution of object types in the source database. Details of profile analysis results On the **Details** tab, view the multi-dimensional analysis results of the source database. Performance This metric shows the transactions per second (TPS), queries per second (QPS), CPU utilization, and load of the database. Capacity This metric shows the capacity rankings of database schemas and the capacity proportions of different object types such as table, index, and large object (LOB). External Dependency This metric shows database links and link details. You must revise schemas when you transform databases that contain external dependencies. Other Dimensions This metric shows special tables and SQL statements, such as tables without primary keys, high growth tables, and SQL statements with aggregate functions. You can click
+After the state of the database profile changes to **Complete**, click **Details** in the **Actions** column to view the profile. Basic information statistics
+
+> **Note:** The basic information statistics feature is available only for the profile of an Oracle database.
+
+On the **Overview** tab, view the basic information of the source database. Session: the connection status of the database. A higher value indicates that more sessions are established to the database. Complexity: the complexity of the database evaluated based on the collected information about the source database, such as scenarios and features. Risk: the risk level of the database. A higher value indicates that the database is more likely to be exposed to performance risks related to SQL statements or objects. Hotspot: indicates whether the database contains objects that are frequently accessed. A higher value indicates that more objects are frequently accessed. Scale: the scale of database resources. A higher value indicates a larger database scale. Load: the performance of the database. A higher value indicates a larger load of the database. Distribution of main objects On the **Overview** tab, view the distribution of object types in the source database. Details of profile analysis results On the **Details** tab, view the multi-dimensional analysis results of the source database. Performance This metric shows the transactions per second (TPS), queries per second (QPS), CPU utilization, and load of the database. Capacity This metric shows the capacity rankings of database schemas and the capacity proportions of different object types such as table, index, and large object (LOB). External Dependency This metric shows database links and link details. You must revise schemas when you transform databases that contain external dependencies. Other Dimensions This metric shows special tables and SQL statements, such as tables without primary keys, high growth tables, and SQL statements with aggregate functions. You can click
 **View** in the Actions column to view details.
 Object Details This metric shows object information from different dimensions, such as object feature tags, relationships such as association and dependency, and features contained in objects. This metric allows you to view the object information without the need to query the source database. You can click **View Object Details** in the **Actions** column to view the details of an object. In the Basic Information section of the View Object Details dialog box, you can view the basic information and DDL statements of the object. In the Details section, you can view the analysis data provided by ADAM, such as the referenced objects, dependent objects, and features of the object.
 
@@ -2590,7 +2908,9 @@ Various types of databases are available on Alibaba Cloud. Advanced Database & A
 
 1. Log on to the DMS console.
 2. In the left-side navigation pane, click **Evaluate DB**.
-You can also log on to the Data Management (DMS) console. In the top navigation bar, choose **DTS > Database Evaluation**.
+
+> **Note:** You can also log on to the Data Management (DMS) console. In the top navigation bar, choose **DTS > Database Evaluation**.
+
 3. In the DB Evaluation Process wizard, click the **Select Destination DB** step. In the profile
 list, select the database profile that you want to evaluate.
 4. Click **Next: Select Destination Database**.
@@ -2628,10 +2948,14 @@ Advanced Database & Application Migration (ADAM) allows you to evaluate the comp
 profile and click **Next: Select Destination Database**.
 3. In the **Select Destination DB** step, click **Next: Create Destination DB Evaluation**
 **Project** and then click **Create Project**.
-You can also click **Create Project** in the **Evaluate Dest. DB** step to create a database evaluation project.
+
+> **Note:** You can also click **Create Project** in the **Evaluate Dest. DB** step to create a database evaluation project.
+
 4. To create a database evaluation project, configure the following parameters:
-Project Name: required. The name of the project. Source Database Profile: the database profile. Project Type: the type of the destination database. Destination Database Version: required. The version of the destination database. Are you sure that you want to evaluate invalid objects? Yes: evaluates invalid objects in the source database profile. No: does not evaluate invalid objects in the source database profile. Kernel Version: This parameter is required if you set the Project Type parameter to POLARDB-O. This parameter is displayed only if you set the Project Type parameter to **POLARDB-**
-**O**.
+Project Name: required. The name of the project. Source Database Profile: the database profile. Project Type: the type of the destination database. Destination Database Version: required. The version of the destination database. Are you sure that you want to evaluate invalid objects? Yes: evaluates invalid objects in the source database profile. No: does not evaluate invalid objects in the source database profile. Kernel Version: This parameter is required if you set the Project Type parameter to POLARDB-O.
+
+> **Note:** This parameter is displayed only if you set the Project Type parameter to **POLARDB-** **O**.
+
 Evaluate invalid objects: specifies whether to evaluate invalid objects in the source database profile. Select Yes or No based on your business requirements. Invalid objects refer to the objects such as packages, procedures, functions, and views that may become invalid during the O&M or data migration of the source database. Report Language: the language of the evaluation report.
 5. Click **Create**. The project is created and automatically started.
 
@@ -2639,13 +2963,19 @@ Evaluate invalid objects: specifies whether to evaluate invalid objects in the s
 
 1. Log on to the ADAM console.
 2. In the left-side navigation pane, click **Evaluate DB**.
-You can also log on to the Data Management (DMS) console. In the top navigation bar, choose **DTS > Database Evaluation**.
+
+> **Note:** You can also log on to the Data Management (DMS) console. In the top navigation bar, choose **DTS > Database Evaluation**.
+
 3. Click the **Evaluate Dest. DB** step.
 4. In the project list, find a project and click **Details** in the **Actions** column to go to the
-evaluation details page of the destination database. You can view the evaluation status and progress of projects in the project list. You can go to the evaluation details page only if the evaluation state of the project is
-**Complete**.
+evaluation details page of the destination database.
+
+> **Note:** You can view the evaluation status and progress of projects in the project list. You can go to the evaluation details page only if the evaluation state of the project is **Complete**.
+
 5. View the evaluation overview.
-The Specifications and Risks evaluation items are displayed only if the source database type is Oracle.
+
+> **Note:** The Specifications and Risks evaluation items are displayed only if the source database type is Oracle.
+
 **Compatibility**: the compatibility between the source and destination databases. Higher
 compatibility indicates that fewer SQL statements and objects need to be transformed.
 **Transformation**: the focus areas of database transformation.
@@ -2664,7 +2994,8 @@ database.
 **Overall Compatibility**: the overall compatibility between the source and destination
 databases.
 6. View the evaluation details.
-The Destination Database Solution, Migration Risk, and Project Dependency (Schema) evaluation items are displayed only if the source database type is Oracle.
+
+> **Note:** The Destination Database Solution, Migration Risk, and Project Dependency (Schema) evaluation items are displayed only if the source database type is Oracle.
 
 **Object Compatibility**
 
@@ -2701,7 +3032,9 @@ Advanced Database & Application Migration (ADAM) provides the intelligent databa
 
 **Supported database types**
 
-ADAM allows you to migrate data from on-premises databases to ApsaraDB. The destination databases must be of the following types: PolarDB for Oracle ApsaraDB RDS for MySQL ApsaraDB RDS for PostgreSQL PolarDB-X AnalyticDB for PostgreSQL You must configure an IP address whitelist when you create a destination database. For more information, see Configure an IP address whitelist.
+ADAM allows you to migrate data from on-premises databases to ApsaraDB. The destination databases must be of the following types: PolarDB for Oracle ApsaraDB RDS for MySQL ApsaraDB RDS for PostgreSQL PolarDB-X AnalyticDB for PostgreSQL
+
+> **Note:** You must configure an IP address whitelist when you create a destination database. For more information, see Configure an IP address whitelist.
 
 **Procedure**
 
@@ -2784,7 +3117,10 @@ After you create a migration project, ADAM automatically runs a precheck. A prec
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **DTS > Database Transformation and Migration**.
 3. On the Transform and Migrate DB page, find your migration project. After the state of the
-project changes to `ACTIVE` , click **Details** in the Actions column. If the state of the project is ACTIVE and the font color of ACTIVE is yellow, you can click Details and fix issues based on the precheck results. If the font color of ACTIVE remains yellow after you fix the issues, ignore these issues.
+project changes to `ACTIVE` , click **Details** in the Actions column.
+
+> **Note:** If the state of the project is ACTIVE and the font color of ACTIVE is yellow, you can click Details and fix issues based on the precheck results. If the font color of ACTIVE remains yellow after you fix the issues, ignore these issues.
+
 4. Click the **Precheck** step to view the precheck results.
 
 **What to do next**
@@ -2802,7 +3138,9 @@ You can verify whether major changes have been performed on the data and schemas
 3. On the Transform and Migrate DB page, find your migration project and click **Details** in the
 **Actions** column.
 4. Click the **Verify Source DB** step to view the changes in the source database.
-Init: the initial number of objects in the project. Unchanged: the number of objects that remain unchanged in the project. Changed: the number of objects that are changed in the project. Deleted: the number of objects that are deleted from the project. New: the number of new objects in the project. If the source database is disconnected, ADAM can only process the data collected from the source database during database transformation and cannot obtain the DDL operations that are performed on the source database.
+Init: the initial number of objects in the project. Unchanged: the number of objects that remain unchanged in the project. Changed: the number of objects that are changed in the project. Deleted: the number of objects that are deleted from the project. New: the number of new objects in the project.
+
+> **Note:** If the source database is disconnected, ADAM can only process the data collected from the source database during database transformation and cannot obtain the DDL operations that are performed on the source database.
 
 **What to do next**
 
@@ -2821,16 +3159,21 @@ Advanced Database & Application Migration (ADAM) allows you to manage the permis
 4. Click the **Revise & Migrate Schemas** step.
 5. Configure users to migrate schemas. On the **Rule Configuration** tab, configure the **User-**
 **specific Schema Migration** parameter based on your business requirements.
-Unified User (default): All schemas belong to a user. Separate Users: Each schema belongs to a user. To configure a user, perform the following steps: a. Enter a password for the user. If you have created a user, enter the password specified for the user. If you have not created a user, ADAM automatically creates a user in the destination database. Then, you must specify a password. Otherwise, the password used to log on to the destination database is specified for the user by default. b. Add or remove schemas for the user as needed. c. Click **Save**. d. In the message that appears, click **OK**. If you configure separate users, you must make sure that these users are consistent with the users of the source database and specify corresponding schemas for the users.
+Unified User (default): All schemas belong to a user. Separate Users: Each schema belongs to a user. To configure a user, perform the following steps: a. Enter a password for the user. If you have created a user, enter the password specified for the user. If you have not created a user, ADAM automatically creates a user in the destination database. Then, you must specify a password. Otherwise, the password used to log on to the destination database is specified for the user by default. b. Add or remove schemas for the user as needed. c. Click **Save**. d. In the message that appears, click **OK**.
+
+> **Note:** If you configure separate users, you must make sure that these users are consistent with the users of the source database and specify corresponding schemas for the users.
+
 6. **Optional:** Configure conversion rules. On the **Rule Configuration** tab, click **Configure**
 **Conversion Rules** and select whether to enable the **Convert DECFLOAT to DOUBLE**
 feature based on your business requirements.
 7. Click the **Schema Migration** tab to migrate schemas.
 i. Click **Migrate All Schemas** to migrate all DDL statements again. In the message that appears, click **OK**.
 
-**Important**
+> **Important:** If you start schema migration, all schemas in the destination database are deleted. Make sure that no important schemas exist in the destination database in advance.
+> If you migrate schemas to a PolarDB-X database, the migration of FOREIGN KEY constraints may require an extended period of time.
+> If the schema migration fails, you can download the details to view the information about the schema migration failure.
 
-If you start schema migration, all schemas in the destination database are deleted. Make sure that no important schemas exist in the destination database in advance. If you migrate schemas to a PolarDB-X database, the migration of FOREIGN KEY constraints may require an extended period of time. If the schema migration fails, you can download the details to view the information about the schema migration failure. ii. **Optional:** Perform other operations as required. Click **Re-migrate upon Failures** to migrate the DDL statements that fail to be migrated. Click **Start** to migrate the paused DDL statements. Click **Pause** to stop migrating the current DDL statements. Click **Export Objects to Be Revised** to export a list of data to be revised after migration. Click **Customize Schema Migration** to customize schema migration operations. To meet different schema migration requirements, ADAM allows you to customize schema migration operations. You can migrate schemas by configuring the Object Type, Schema, or Status parameter.
+ii. **Optional:** Perform other operations as required. Click **Re-migrate upon Failures** to migrate the DDL statements that fail to be migrated. Click **Start** to migrate the paused DDL statements. Click **Pause** to stop migrating the current DDL statements. Click **Export Objects to Be Revised** to export a list of data to be revised after migration. Click **Customize Schema Migration** to customize schema migration operations. To meet different schema migration requirements, ADAM allows you to customize schema migration operations. You can migrate schemas by configuring the Object Type, Schema, or Status parameter.
 8. Click the **Schema Revision** tab. On the tab that appears, find a schema and click **Revise**
 in the **Actions** column.
 **Transformation**: View the current DDL statements that ADAM transforms. You must
@@ -2878,13 +3221,19 @@ Schema migration and revision are complete. For more information, see Migrate an
 **Actions** column.
 4. Click the **Migrate Data** step.
 5. Exclude schemas.
-Before you migrate data, you must exclude schemas, such as triggers, constraints, and indexes. After data is migrated, you can include the schemas. In the Excluded Schemas section, you can select the schemas that you want to temporarily exclude. i. Click the **Excluded Schemas** tab and click **Start**. ii. In the message that appears, click **OK**.
 
-**Warning**
+> **Note:** Before you migrate data, you must exclude schemas, such as triggers, constraints, and indexes. After data is migrated, you can include the schemas. In the Excluded Schemas section, you can select the schemas that you want to temporarily exclude.
 
-After you enable the schema exclusion feature, the schemas in the destination database are deleted. Proceed with caution. iii. Click the **Schema Details** tab to view the details of the schemas that are excluded.
+i. Click the **Excluded Schemas** tab and click **Start**. ii. In the message that appears, click **OK**.
+
+> **Warning:** After you enable the schema exclusion feature, the schemas in the destination database are deleted. Proceed with caution.
+
+iii. Click the **Schema Details** tab to view the details of the schemas that are excluded.
 6. Include schemas.
-After data is migrated, you can include the schemas that are excluded, such as triggers, constraints, and indexes. i. Click the **Included Schemas** tab and click **Start**. ii. In the message that appears, click **OK**. iii. Click the **Schema Details** tab to view the details of the schemas that are included.
+
+> **Note:** After data is migrated, you can include the schemas that are excluded, such as triggers, constraints, and indexes.
+
+i. Click the **Included Schemas** tab and click **Start**. ii. In the message that appears, click **OK**. iii. Click the **Schema Details** tab to view the details of the schemas that are included.
 
 #### 7.5.4 Application evaluation and transformation
 
@@ -2900,7 +3249,7 @@ Provides application transformation items such as call stacks and SQL statements
 
 **Procedure**
 
-If you perform dynamic application evaluation and transformation, complete Steps 1, 2, 3, and 4. If you perform static application evaluation and transformation, skip to Step 5.
+> **Note:** If you perform dynamic application evaluation and transformation, complete Steps 1, 2, 3, and 4. If you perform static application evaluation and transformation, skip to Step 5.
 
 ##### 7.5.4.2 Collect application information
 
@@ -2931,7 +3280,11 @@ Basic technical knowledge is required before you deploy Application Collector. M
 |   |   | chmod -R 775 |   |
 |   | collector/ |   |   |
 
-The Collector acts as a server and can be deployed to serve 1 to 20 Agents. An Agent is deployed on a single application server. You can deploy Agents on a few machines of a distributed application based on load balancing. Deploy the Collector, and then deploy the Agent. The applications whose data is to be collected must be accessible to the Collector for centralized processing such as data masking. The machine on which the Collector is deployed must use JDK 1.6 or later and have a Java Virtual Machine (JVM) memory size of more than 4 GB. The disk volume is determined by the number of monitored applications, the monitoring duration, business activities, and the number and size of SQL statements. If data does not explode, you can estimate the data volume based on the data collected within half a day. In most cases, the data volume of a monitored application is less than 1 GB within seven days. Each application must be deployed on a server that uses JDK 1.6 or later. The JVM heap size of the application must be at least 300 MB. Supported containers include Tomcat, JBoss, WebLogic, and WebSphere. Docker images can be deployed to a Container Service for Kubernetes (ACK) cluster. The Agent monitors the SQL statements and call stacks that are used to access Oracle databases. Make sure that all the operations are monitored during the monitoring period of the Agent. An application must be monitored when recurring tasks are running. Otherwise, the collected data is incomplete.
+The Collector acts as a server and can be deployed to serve 1 to 20 Agents. An Agent is deployed on a single application server.
+
+> **Note:** You can deploy Agents on a few machines of a distributed application based on load balancing.
+
+Deploy the Collector, and then deploy the Agent. The applications whose data is to be collected must be accessible to the Collector for centralized processing such as data masking. The machine on which the Collector is deployed must use JDK 1.6 or later and have a Java Virtual Machine (JVM) memory size of more than 4 GB. The disk volume is determined by the number of monitored applications, the monitoring duration, business activities, and the number and size of SQL statements. If data does not explode, you can estimate the data volume based on the data collected within half a day. In most cases, the data volume of a monitored application is less than 1 GB within seven days. Each application must be deployed on a server that uses JDK 1.6 or later. The JVM heap size of the application must be at least 300 MB. Supported containers include Tomcat, JBoss, WebLogic, and WebSphere. Docker images can be deployed to a Container Service for Kubernetes (ACK) cluster. The Agent monitors the SQL statements and call stacks that are used to access Oracle databases. Make sure that all the operations are monitored during the monitoring period of the Agent. An application must be monitored when recurring tasks are running. Otherwise, the collected data is incomplete.
 
 **What to do next**
 
@@ -3009,7 +3362,11 @@ If you use a Windows-based server, run the following command:
 java -cp "%JAVA_HOME%\lib\tools.jar;%cd%\javaagent-bootstrap.jar" com.alibaba.adam.javaagent.bootstrap.AgentAttacher -p ${pid}
 ```
 
-If the log file in the javaagent directory contains a success message, the agent has been started. If inbound traffic is received by the application and the collector directory contains a subdirectory that contains data, the agent has been started and has sent data to the collector. Make sure that the obtained process ID of the application is correct. Make sure that the account used to start the agent is the same as the account used to start the application. Make sure that the agent and the application have identical system operation permissions. Otherwise, the agent cannot monitor the application. If the application is started by viewing Windows Registry as a system user, the agent cannot be started by using Method 1 due to inconsistent account permissions. Method 2: (Recommended) Start monitoring when an application starts Replace ${javaagent_path} with the javaagent directory in the configuration file, and then restart the application. UNIX-based server Tomcat: Add the following code to the last CATALINA_OPTS configuration item in the catalina.sh startup file:
+If the log file in the javaagent directory contains a success message, the agent has been started. If inbound traffic is received by the application and the collector directory contains a subdirectory that contains data, the agent has been started and has sent data to the collector. Make sure that the obtained process ID of the application is correct. Make sure that the account used to start the agent is the same as the account used to start the application. Make sure that the agent and the application have identical system operation permissions. Otherwise, the agent cannot monitor the application.
+
+> **Note:** If the application is started by viewing Windows Registry as a system user, the agent cannot be started by using Method 1 due to inconsistent account permissions.
+
+Method 2: (Recommended) Start monitoring when an application starts Replace ${javaagent_path} with the javaagent directory in the configuration file, and then restart the application. UNIX-based server Tomcat: Add the following code to the last CATALINA_OPTS configuration item in the catalina.sh startup file:
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:${javaagent_path}/javaagent-bootstrap.ja
@@ -3084,7 +3441,9 @@ When the application stops, the agent also stops regardless of which method was 
 
 **Collect data**
 
-Go to the directory in which the collector is installed, compress the files in the data/ directory in the ZIP format by application name, and then separately upload each application profile. Each application corresponds to one profile. You can compress the data collected for an application from different IP addresses into one ZIP file. However, you cannot compress data collected for different applications into one ZIP file. Otherwise, an upload error occurs. In most cases, data of one to seven days is collected.
+Go to the directory in which the collector is installed, compress the files in the data/ directory in the ZIP format by application name, and then separately upload each application profile. Each application corresponds to one profile. You can compress the data collected for an application from different IP addresses into one ZIP file. However, you cannot compress data collected for different applications into one ZIP file. Otherwise, an upload error occurs.
+
+> **Note:** In most cases, data of one to seven days is collected.
 
 **What to do next**
 
@@ -3118,7 +3477,13 @@ An application profile consists of the following four parts: Summary Complexity 
 **Append**: To add a static or dynamic data file to the profile, find the profile that you want to
 manage and click **Append** in the Actions column.
 **Authorize**: To authorize other ADAM users to access the profile, find the profile that you
-want to manage and click **Authorize** in the Actions column. When other ADAM users are authorized to access a profile, these ADAM users are also authorized to access the project associated with the profile. Authorized users have the permissions to authorize other users to access the profile, view the profile, and view the associated project. The authorization is valid for one month. You can revoke the authorization during the validity period. Use the authorization feature properly. You are responsible for profile disclosures caused by improper authorization if you authorize other users to access a profile.
+want to manage and click **Authorize** in the Actions column.
+
+> **Note:** When other ADAM users are authorized to access a profile, these ADAM users are also authorized to access the project associated with the profile.
+> Authorized users have the permissions to authorize other users to access the profile, view the profile, and view the associated project.
+> The authorization is valid for one month. You can revoke the authorization during the validity period.
+> Use the authorization feature properly. You are responsible for profile disclosures caused by improper authorization if you authorize other users to access a profile.
+
 **Delete**: To delete the profile, find the profile that you want to delete, click the
 icon in the Actions column, and then select **Delete**.
 
@@ -3149,7 +3514,10 @@ Application evaluation details contain the evaluation results, project overview,
 **Migration Overview**: This metric shows the overall migration and transformation of
 applications and databases.
 **Migration Score**: ADAM scores the difficulty of migration and transformation tasks. A
-higher score indicates lower transformation costs for applications. The migration score is subject to the integrity of collected data. We recommend that you estimate the migration costs based on your business needs.
+higher score indicates lower transformation costs for applications.
+
+> **Note:** The migration score is subject to the integrity of collected data. We recommend that you estimate the migration costs based on your business needs.
+
 **Overall Compatibility**: This metric shows the compatibility of SQL statements
 collected from applications and database objects. SQL statements collected from databases are subject to the database system. Therefore, the compatibility of SQL statements collected from databases is not used for reference.
 **Application Transformation**: This metric shows the number of application
@@ -3179,7 +3547,10 @@ The type of the source database is Oracle or Db2 for LUW.
 5. In the **Create Transformation Project** panel, configure the **Source Database Type**,
 **Destination Database Type**, **Kernel Version**, **Destination Database Version**, and
 **Architecture** parameters and click **Upload** to upload data files. Then, click **Create**. The
-Kernel Version parameter is displayed only when you set the Destination Database Type parameter to PolarDB_O. The Destination Database Version parameter is displayed when you set the Destination Database Type parameter to other values. When you create a transformation project, the built-in analysis program of ADAM is automatically run. This process takes 1 to 10 minutes. The files in the ZIP, WAR, or XML format are supported. You do not need to upload all source code. You need to upload only the files that contain SQL statements.
+Kernel Version parameter is displayed only when you set the Destination Database Type parameter to PolarDB_O. The Destination Database Version parameter is displayed when you set the Destination Database Type parameter to other values.
+
+> **Note:** When you create a transformation project, the built-in analysis program of ADAM is automatically run. This process takes 1 to 10 minutes.
+> The files in the ZIP, WAR, or XML format are supported. You do not need to upload all source code. You need to upload only the files that contain SQL statements.
 
 **Details of static application transformation**
 
@@ -3215,7 +3586,9 @@ This topic describes how to periodically and continuously collect information ab
 
 **Background information**
 
-The periodic SQL collection feature allows you to continuously collect information about SQL statements from Oracle databases based on a custom collection interval and automatically merges the information about SQL statements. You can periodically collect information about SQL statements only by using an offline collector.
+The periodic SQL collection feature allows you to continuously collect information about SQL statements from Oracle databases based on a custom collection interval and automatically merges the information about SQL statements.
+
+> **Note:** You can periodically collect information about SQL statements only by using an offline collector.
 
 **Procedure**
 
@@ -3236,7 +3609,15 @@ If the source Oracle database is a container database (CDB) and its version is 1
 sh collect_12c_cycle.sh -h <ip> -u <username> -p <password> -d <service_name> -s <s id> -c <cron>
 ```
 
-Parameter description: -h: the IP address of the source database. -u: the name of the account that is used for collection. In this example, the account name is eoa_user. -p: the password of the account. In this example, the password is eoaPASSW0RD. -P: the port that you want to use to collect the information about the source database. Example: 1521. -d: the service name of the source database. If the source database is an Oracle 12c database, specify the service name of the specified pluggable database (PDB). -s: the name of the Oracle database instance. This option is required only for Oracle 12c. -c: the CRON expression that is used to specify the collection interval.
+> **Note:** Parameter description:
+> -h: the IP address of the source database.
+> -u: the name of the account that is used for collection. In this example, the account name is eoa_user.
+> -p: the password of the account. In this example, the password is eoaPASSW0RD.
+> -P: the port that you want to use to collect the information about the source database. Example: 1521.
+> -d: the service name of the source database. If the source database is an Oracle 12c database, specify the service name of the specified pluggable database (PDB).
+> -s: the name of the Oracle database instance. This option is required only for Oracle 12c.
+> -c: the CRON expression that is used to specify the collection interval.
+
 5. Return to the Migration Lab page. In the **Periodic SQL Collection** section, click **Details**.
 6. Click **Create Project**.
 7. In the **Create Periodic Collection Project** panel, enter the project name, select the
@@ -3288,7 +3669,10 @@ ii. After you configure the destination database information, click **Test Conne
 
 Database Name: Enter the name of the destination database. Port: Enter the port number of the destination database. Database Account: Enter the username that is used to log on to the destination database. Database Password: Enter the password that is used to log on to the destination database. iii. Select a database evaluation project. The database evaluation project is created in the Evaluate Dest. DB step on the Database Evaluation page. iv. Specify the mode of SQL statement collection. Select Periodic Collection and Adapter. v. Click **Create**.
 6. Create an SQL test task.
-i. On the **SQL Test Sets** page, find the test set and click **Details** in the **Actions** column to view the SQL statements in the test set. ii. On the **SQL Test Set Details** page, select the SQL statements on which you want to perform a comparison test. Check whether the SQL statements are compatible based on the information in the **Compatible** column. Do not select incompatible SQL statements. iii. Click **Create SQL Test Task**. In the dialog box that appears, enter the task name, number of threads, and number of times that a loop needs to be repeated, and set the Test Type parameter to **Comparison Test**. Click **Create**. The maximum number of threads allowed is 10,000, and the maximum number of times that a loop can be repeated is 10,000. If a number that you specify exceeds the corresponding limit, the task fails to be created.
+i. On the **SQL Test Sets** page, find the test set and click **Details** in the **Actions** column to view the SQL statements in the test set. ii. On the **SQL Test Set Details** page, select the SQL statements on which you want to perform a comparison test. Check whether the SQL statements are compatible based on the information in the **Compatible** column. Do not select incompatible SQL statements. iii. Click **Create SQL Test Task**. In the dialog box that appears, enter the task name, number of threads, and number of times that a loop needs to be repeated, and set the Test Type parameter to **Comparison Test**. Click **Create**.
+
+> **Note:** The maximum number of threads allowed is 10,000, and the maximum number of times that a loop can be repeated is 10,000. If a number that you specify exceeds the corresponding limit, the task fails to be created.
+
 7. Run the SQL test task. Find the created SQL test task and click **Start** in the **Actions**
 column. The task enters the **Running** state. After the task is complete, the state of the task changes to **Successful** or **Failed**.
 8. View the results.
@@ -3317,7 +3701,9 @@ tar -xvf adam-adapter.tar.gz
 ```
 
 4. Configure the source database and destination PolarDB database.
-If multiple accounts are used to log on to the application that you want to migrate, you can use target.databases.2 to add configuration items.
+
+> **Note:** If multiple accounts are used to log on to the application that you want to migrate, you can use target.databases.2 to add configuration items.
+
 5. Start SQL Adapter by running the following command:
 
 ```
@@ -3424,13 +3810,18 @@ Query permissions: the permissions to execute SQL statements in the SQL Console 
 
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Security and Specifications > Permission Tickets**.
-You can also enter a database name or a table name in the top search box to search for a database or table. On the Global Search page, find the database or table and click **Access apply** in the **Actions** column.
+
+> **Note:** You can also enter a database name or a table name in the top search box to search for a database or table. On the Global Search page, find the database or table and click **Access apply** in the **Actions** column.
+
 3. Click **Access apply** and select a permission category. For more information about different
 permission categories, see the Permission categories that are supported by different control modes section of this topic.
 4. Configure the parameters of the ticket to apply for permissions.
 i. Add objects on which you want to apply for permissions, such as databases, tables, or columns. You can enter a keyword to search for objects by name, select the objects on which you want to apply for permissions, and then click **Add** to add the objects to the **Selected**
 **Databases/Tables/Columns** section.
-The keywords that you enter can contain percent signs (%) as wildcards. ii. Select the permissions for which you want to apply and specify the duration for which you want to have the permissions. Then, enter the reason for your application.
+
+> **Note:** The keywords that you enter can contain percent signs (%) as wildcards.
+
+ii. Select the permissions for which you want to apply and specify the duration for which you want to have the permissions. Then, enter the reason for your application.
 5. Click **Submit** and wait for approval.
 You can view the status of the ticket in the My Tickets section on the Home page of the
 **DMS console**.
@@ -3442,9 +3833,7 @@ You can view the status of the ticket in the My Tickets section on the Home page
 | Active management | Release permissions | On the Home page of the DMS console, click Accessible Assets. Select the object on which you want to release permissions and click Release Permission. |
 | Passive management | N/A | The owner of an object can view and assess the rationality of permission assignments at any time and manage the permissions that are granted to users. |
 
-All the operations that you perform to apply for, release, revoke, and grant permissions are recorded in operation logs. To view the operation logs, choose **Security**
-**and Specifications > Operation Audit** in the top navigation bar. Then, click the
-Operation Logs tab.
+> **Note:** All the operations that you perform to apply for, release, revoke, and grant permissions are recorded in operation logs. To view the operation logs, choose **Security** **and Specifications > Operation Audit** in the top navigation bar. Then, click the Operation Logs tab.
 
 #### 8.1.2 Create a permission template
 
@@ -3463,23 +3852,40 @@ You are a database administrator (DBA), a DMS administrator, or a security admin
 4. In the **Create Permission Template** dialog box, configure the **Template Name** and
 **Description** parameters and click **Confirm**.
 5. Add resources to the created permission template.
-You can use one of the following methods to add resources to the permission template: On the **Permission template** page, find the permission template that you want to manage and click the template name or **Manage** in the **Operation** column. On the details page of the permission template, click the **Resource management** tab. On the right side of the tab, click **Add Resource**. In the dialog box that appears, search for and select one or more database instances, databases, and tables, specify permissions on the selected resources, and then click Confirm. You must select a database before you can select tables. You can select databases and tables only in database instances that are managed in Security Collaboration mode. To add resources to the permission template on the Instances page, perform the following steps: a. In the top navigation bar, choose **Data Assets > Instances**. b. Search for and select one or more database instances or databases, and then click **Add**
+You can use one of the following methods to add resources to the permission template: On the **Permission template** page, find the permission template that you want to manage and click the template name or **Manage** in the **Operation** column. On the details page of the permission template, click the **Resource management** tab. On the right side of the tab, click **Add Resource**. In the dialog box that appears, search for and select one or more database instances, databases, and tables, specify permissions on the selected resources, and then click Confirm.
+
+> **Note:** You must select a database before you can select tables.
+> You can select databases and tables only in database instances that are managed in Security Collaboration mode.
+
+To add resources to the permission template on the Instances page, perform the following steps: a. In the top navigation bar, choose **Data Assets > Instances**. b. Search for and select one or more database instances or databases, and then click **Add**
 **to Permission Template**.
-c. In the dialog box that appears, select the permission template to which you want to add the database instances or databases and click **Save**. You can also click Add Permission Template to create a permission template and then add the database instances or databases to the permission template. To remove a resource from the permission template, perform the following operations: On the details page of the permission template, click the **Resource management** tab, find the resource that you want to manage, and then click **Remove** in the Operation column. In the message that appears, click OK.
+c. In the dialog box that appears, select the permission template to which you want to add the database instances or databases and click **Save**. You can also click Add Permission Template to create a permission template and then add the database instances or databases to the permission template.
+
+> **Note:** To remove a resource from the permission template, perform the following operations: On the details page of the permission template, click the **Resource management** tab, find the resource that you want to manage, and then click **Remove** in the Operation column. In the message that appears, click OK.
+
 6. Authorize one or more users to manage the resources in the permission template.
-You can use one of the following methods: On the details page of the permission template, click **Authorize**. In the dialog box that appears, select one or more users who you want to authorize to manage the resources, specify the validity period of the authorization, and then click Confirm. On the **Authorization Records** tab, you can view the authorization information such as the authorized users and the validity period of the authorization. To authorize users to manage the resources on the Users page, perform the following steps: a. In the top navigation bar, choose **O&M > Users**. b. Select one or more users who you want to authorize to manage the resources and click
+You can use one of the following methods: On the details page of the permission template, click **Authorize**. In the dialog box that appears, select one or more users who you want to authorize to manage the resources, specify the validity period of the authorization, and then click Confirm.
+
+> **Note:** On the **Authorization Records** tab, you can view the authorization information such as the authorized users and the validity period of the authorization.
+
+To authorize users to manage the resources on the Users page, perform the following steps: a. In the top navigation bar, choose **O&M > Users**. b. Select one or more users who you want to authorize to manage the resources and click
 **Authorize User**.
-c. Select **Authorize Permission Template** from the drop-down list. In the dialog box that appears, select the permission template that you want to manage, specify the validity period of the authorization, and then click **OK**. After you authorize a user to manage the resources in a permission template, you can continue to authorize the user to manage the resources in the same permission template. In this case, the validity period of the new authorization prevails.
+c. Select **Authorize Permission Template** from the drop-down list. In the dialog box that appears, select the permission template that you want to manage, specify the validity period of the authorization, and then click **OK**.
+
+> **Note:** After you authorize a user to manage the resources in a permission template, you can continue to authorize the user to manage the resources in the same permission template. In this case, the validity period of the new authorization prevails.
 
 **Related operations**
 
 **Modify the basic information of a permission template**
 
-On the details page of a permission template, click Edit in the Basic information section. In the dialog box that appears, modify the name and description of the permission template. If you modify the basic information of a permission template, the authorized users of the permission template can still manage the resources in the permission template.
+On the details page of a permission template, click Edit in the Basic information section. In the dialog box that appears, modify the name and description of the permission template.
+
+> **Note:** If you modify the basic information of a permission template, the authorized users of the permission template can still manage the resources in the permission template.
 
 **Create a similar permission template**
 
-DMS allows you to create a similar permission template based on an existing permission template. The number of resources in the new permission template is the same as that in the existing permission template.
+> **Note:** DMS allows you to create a similar permission template based on an existing permission template. The number of resources in the new permission template is the same as that in the existing permission template.
+
 1. On the **Permission template** page, find the permission template that you want to manage
 and click **Create As** in the **Operation** column.
 2. In the Create As dialog box, configure the **Template Name** and **Description** parameters.
@@ -3506,11 +3912,18 @@ You are a database administrator (DBA) or a Data Management (DMS) administrator.
 3. Perform one of the following operations based on your business requirements:
 Create a rule set Click **Create Rule Set**. In the Create Rule Set dialog box, configure the Engine Type, Rule Set Name, and Remarks parameters, and click **Submit**. Modify a rule set a. Find the rule set that you want to manage and click **Edit** in the **Actions** column. b. In the left-side pane, click the rule subset that you want to manage, such as **SQL**
 **Console**. On the right side of the page, select a checkpoint.
-c. Find the rule that you want to manage and click **Edit** in the Actions column. For more information about the related syntax, see DSL syntax for security rules. You can also delete, enable, or disable a rule. Create a similar rule set a. Find the rule set that you want to manage and click **Create As** in the **Actions** column. b. In the Clone Rule Set dialog box, configure the Rule Set Name and Remarks parameters. c. Click **Submit**. The system copies the configurations of the original rule set to the new rule set. Delete a rule set Find the rule set that you want to manage and click **Delete** in the **Actions** column. In the message that appears, click **OK**. A deleted rule set cannot be recovered. Proceed with caution. You can delete only custom rule sets. You cannot delete built-in rule sets. Set a rule set as the default rule set Find the rule set that you want to manage and click **Set as Default** in the Default Engine column. In the message that appears, click **OK**. Then, the rule set is used as the default rule set for the related database engine.
+c. Find the rule that you want to manage and click **Edit** in the Actions column. For more information about the related syntax, see DSL syntax for security rules.
 
-**Important**
+> **Note:** You can also delete, enable, or disable a rule.
 
-This operation is risky. Proceed with caution.
+Create a similar rule set a. Find the rule set that you want to manage and click **Create As** in the **Actions** column. b. In the Clone Rule Set dialog box, configure the Rule Set Name and Remarks parameters. c. Click **Submit**. The system copies the configurations of the original rule set to the new rule set. Delete a rule set Find the rule set that you want to manage and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
+
+> **Note:** A deleted rule set cannot be recovered. Proceed with caution.
+> You can delete only custom rule sets. You cannot delete built-in rule sets.
+
+Set a rule set as the default rule set Find the rule set that you want to manage and click **Set as Default** in the Default Engine column. In the message that appears, click **OK**. Then, the rule set is used as the default rule set for the related database engine.
+
+> **Important:** This operation is risky. Proceed with caution.
 
 #### 8.2.2 DSL syntax for security rules
 
@@ -3518,7 +3931,11 @@ DMS provides a domain-specific language (DSL) to describe security rules. You ca
 
 **Overview**
 
-The DSL syntax can include one or more conditions and related actions that are specified by an IF-ELSE statement. The if clause is required. Zero or more elseif clauses can be specified. Zero or one else clause can be specified. Example 1: If Condition 1 is met, DMS performs Action 1. `if`
+The DSL syntax can include one or more conditions and related actions that are specified by an IF-ELSE statement.
+
+> **Note:** The if clause is required. Zero or more elseif clauses can be specified. Zero or one else clause can be specified.
+
+Example 1: If Condition 1 is met, DMS performs Action 1. `if`
 
 ```
     Condition 1
@@ -3527,7 +3944,11 @@ then
 end
 ```
 
-Example 2: If Condition 1 is met, DMS performs Action 1. If Condition 2 is met, DMS performs Action 2. If Condition 1 and Condition 2 are not met, DMS performs Action 3. If the `else Action 3` clause is removed and Condition 1 and Condition 2 are not met, DMS performs no action. `if`
+Example 2: If Condition 1 is met, DMS performs Action 1. If Condition 2 is met, DMS performs Action 2. If Condition 1 and Condition 2 are not met, DMS performs Action 3.
+
+> **Note:** If the `else Action 3` clause is removed and Condition 1 and Condition 2 are not met, DMS performs no action.
+
+`if`
 
 ```
     Condition 1
@@ -3577,19 +3998,21 @@ expression and the result of the `1 == 1` expression. Then, DMS evaluates the re
 |---|---|---|
 | isNotBlank | Evaluates whether a value is not empty. | '' isNotBlank |
 
-If you need to use a backslash (\) in a regular expression, you must add another backslash (\) as an escape character before the backslash that you want to use. For example, if you want to write the idx_\w+ expression, you must enter
+> **Note:** If you need to use a backslash (\) in a regular expression, you must add another backslash (\) as an escape character before the backslash that you want to use. For example, if you want to write the idx_\w+ expression, you must enter
 
 ```
  idx_\\w+ .
 ```
 
-If a conditional clause includes nested expressions, we recommend that you enclose the required expressions in parentheses (). For example, a conditional
+> If a conditional clause includes nested expressions, we recommend that you enclose the required expressions in parentheses (). For example, a conditional clause is `1 <= 2 == true` . To specify the priority, you can change the clause to
 
 |   | 1 <= 2 == true |
 |---|---|
 | (1 <= 2) == true |   |
 
-clause is `1 <= 2 == true` . To specify the priority, you can change the clause to `(1 <= 2) == true` . DMS first evaluates the result of the `1 <= 2` expression in the parentheses. Factors A factor is a predefined variable in DMS. You can use factors to obtain the context to be validated by security rules. The context includes command categories and the number of affected rows. A factor name is prefixed by `@fac.` .Each tab of the Security Rules tab includes different factors for different checkpoints. The following table describes the factors that are supported by DMS.
+> `(1 <= 2) == true` . DMS first evaluates the result of the `1 <= 2` expression in the parentheses.
+
+Factors A factor is a predefined variable in DMS. You can use factors to obtain the context to be validated by security rules. The context includes command categories and the number of affected rows. A factor name is prefixed by `@fac.` .Each tab of the Security Rules tab includes different factors for different checkpoints. The following table describes the factors that are supported by DMS.
 
 | Factor | Description |
 |---|---|
@@ -3609,7 +4032,9 @@ clause is `1 <= 2 == true` . To specify the priority, you can change the clause 
 | @fac.risk level _ | The risk level that is identified. |
 | @fac.risk reason _ | The reason based on which the operation is identified as this risk level. |
 
-You can use factors in conditional clauses. For example, you can write `@fac.sql_type == 'DML'` to evaluate whether an SQL statement is a DML statement. Action clauses An action indicates an operation that is performed when the if clause evaluates to true. For example, DMS can disable the submission of a ticket, select an approval process, approve a ticket, or reject a ticket. An action indicates the usage of a security rule. An action name is prefixed by `@act.` .Each tab of the Security Rules tab includes different actions for different checkpoints. The following table describes the actions that are supported by DMS.
+> **Note:** You can use factors in conditional clauses. For example, you can write `@fac.sql_type == 'DML'` to evaluate whether an SQL statement is a DML statement.
+
+Action clauses An action indicates an operation that is performed when the if clause evaluates to true. For example, DMS can disable the submission of a ticket, select an approval process, approve a ticket, or reject a ticket. An action indicates the usage of a security rule. An action name is prefixed by `@act.` .Each tab of the Security Rules tab includes different actions for different checkpoints. The following table describes the actions that are supported by DMS.
 
 | Action | Description |
 |---|---|
@@ -3689,9 +4114,16 @@ requirements. For example, click **SQL Console** on the left side of the page, a
 **Quantity Criteria**.
 For more information about the tabs and checkpoints, see Overview of security rule sets. You can click **Create Rule** to create a security rule. For more information about the syntax, see DSL syntax for security rules.
 5. Find the security rule that you want to manage and click **Edit** in the **Actions** column.
-You can also click **Disable** to disable a security rule, click **Enable** to enable a security rule, or click **Delete** to delete a security rule. After a security rule is deleted, it cannot be recovered. Proceed with caution.
+You can also click **Disable** to disable a security rule, click **Enable** to enable a security rule, or click **Delete** to delete a security rule.
+
+> **Note:** After a security rule is deleted, it cannot be recovered. Proceed with caution.
+
 6. In the Change Rule - SQL Console dialog box, modify the domain-specific language (DSL)
-statements of the security rule based on your business requirements. For more information about the syntax, see DSL syntax for security rules. For example, change the maximum number of SQL statements that can be executed at a time from 1,000 to 500. A large number of security rule templates are provided for each checkpoint. You can click **Load from Template Database** to use a template. For more information about factors and actions, see Overview of security rule sets.
+statements of the security rule based on your business requirements. For more information about the syntax, see DSL syntax for security rules. For example, change the maximum number of SQL statements that can be executed at a time from 1,000 to 500.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can click **Load from Template Database** to use a template.
+
+For more information about factors and actions, see Overview of security rule sets.
 7. Click **Submit**.
 
 ##### 8.2.3.3 SQL Console for relational databases
@@ -3721,7 +4153,7 @@ section of this topic.
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -3806,7 +4238,7 @@ statements that are executed for queries can be exported from the SQL Console.
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -3877,7 +4309,7 @@ DMS allows you to manage relational and non-relational databases on the SQLConso
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -3956,7 +4388,7 @@ DMS provides a domain-specific language (DSL) to describe security rules. You ca
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -4034,7 +4466,9 @@ The following table describes the basic configuration items that are supported o
 
 **Supported checkpoints**
 
-When a user submits a ticket to apply for permissions, DMS checks whether the ticket conforms to the rules that are specified under checkpoints. The ticket can be submitted only after DMS determines that the ticket conforms to all rules that are specified under checkpoints. A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+When a user submits a ticket to apply for permissions, DMS checks whether the ticket conforms to the rules that are specified under checkpoints. The ticket can be submitted only after DMS determines that the ticket conforms to all rules that are specified under checkpoints.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -4086,7 +4520,7 @@ you do not set different approval processes for data export tickets at different
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -4151,7 +4585,9 @@ Data Management (DMS) allows you to configure security rules on the Schema Desig
 
 **Supported checkpoints**
 
-A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements. The Schema Design tab contains the following two processes: Process of saving changes: DMS provides the following three checkpoints for this process. The checkpoints validate the table headings, fields, and indexes.
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+
+The Schema Design tab contains the following two processes: Process of saving changes: DMS provides the following three checkpoints for this process. The checkpoints validate the table headings, fields, and indexes.
 
 **Save Changes and Validate Header**
 
@@ -4367,7 +4803,9 @@ Data Management (DMS) allows you to configure security rules on the Table Sync t
 
 **Supported checkpoints**
 
-The Table Sync tab contains checkpoints that correspond to database and table synchronization features. The checkpoints are independent of each other. For example, when you submit a Schema Synchronization ticket, only the basic configuration items and the security rules that are specified under the Schema Synchronization Validation checkpoint are used to validate the ticket. A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+The Table Sync tab contains checkpoints that correspond to database and table synchronization features. The checkpoints are independent of each other. For example, when you submit a Schema Synchronization ticket, only the basic configuration items and the security rules that are specified under the Schema Synchronization Validation checkpoint are used to validate the ticket.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 | Checkpoint | Description |
 |---|---|
@@ -4411,7 +4849,9 @@ effect if you do not set approval processes for tickets that apply to change the
 **Supported checkpoints**
 
 **Approval Rule Validation**: When a user submits a ticket to change the security level of a
-sensitive field, DMS checks whether the ticket conforms to the rules that are specified under the Approval Rule Validation checkpoint. A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+sensitive field, DMS checks whether the ticket conforms to the rules that are specified under the Approval Rule Validation checkpoint.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 **Supported factors**
 
@@ -4449,7 +4889,9 @@ effect if you do not configure different approval processes for test data genera
 **Supported checkpoints**
 
 **Approval rule validation**: When a user submits a ticket to generate test data, Data
-Management (DMS) checks whether the ticket conforms to the rules that are specified under the Approval rule validation checkpoint. A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+Management (DMS) checks whether the ticket conforms to the rules that are specified under the Approval rule validation checkpoint.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 **Supported factors**
 
@@ -4488,7 +4930,9 @@ effect if you do not set approval processes for database clone tickets under the
 **Supported checkpoints**
 
 **Approval rule validation**: When a user submits a database clone ticket, DMS checks
-whether the ticket conforms to the rules that are specified under the Approval rule validation checkpoint. A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
+whether the ticket conforms to the rules that are specified under the Approval rule validation checkpoint.
+
+> **Note:** A large number of security rule templates are provided for each checkpoint. You can configure security rules based on these templates or create custom security rules based on your business requirements.
 
 **Supported actions**
 
@@ -4570,7 +5014,11 @@ This example shows how to apply the approval process to the security rule for me
 **Security Rules**.
 ii. Find the security rule set that you want to manage and click **Edit** in the **Actions** column. iii. In the left-side pane, click the **SQL Correct** tab. iv. Select **Risk Approval Rules** as the checkpoint. v. Find the security rule for medium-level risk approval processes and click **Edit** in the
 **Actions** column.
-vi. In the **Rule DSL** field, change the template ID. In this example, the template ID is changed from `3` to `9` , as shown in the preceding figure. The template ID 9 is the ID of the approval template that is created in Step 4. vii. Click **Submit**.
+vi. In the **Rule DSL** field, change the template ID.
+
+> **Note:** In this example, the template ID is changed from `3` to `9` , as shown in the preceding figure. The template ID 9 is the ID of the approval template that is created in Step 4.
+
+vii. Click **Submit**.
 
 **Result**
 
@@ -4592,7 +5040,15 @@ You are a DMS administrator.
 2. In the top navigation bar, click **Security and Specifications**. In the left-side navigation
 pane, click **Access IP Whitelists**.
 3. Perform one or more of the following operations based on your business requirements:
-Enableordisablethewhitelistcontrolfeature Enable or disable the whitelist control feature Click **Click to Open** or **Click to Close** to enable or disable the whitelist control feature. Create a whitelist a. Click **Create Whitelist**. b. In the dialog box that appears, enter the IP addresses and description. Separate IP addresses with semicolons (;). Make sure that each IP address in a whitelist is unique. You can specify IP addresses such as 10.23.12.24 or CIDR blocks such as 10.23.12.24/24, where /24 indicates the length of the IP address prefix in the CIDR block. The IP address prefix can be 1 to 32 bits in length. A value of 0.0.0.0/0 indicates that all IP addresses are allowed. c. Click **Submit**. Modify a whitelist a. Find the IP address whitelist that you want to modify and click **Edit** in the **Actions** column. b. In the dialog box that appears, modify the IP address information. c. Click **Submit**. Delete a whitelist a. Find the IP address whitelist that you want to delete and click **Delete** in the **Actions** column. b. In the message that appears, click **OK**. You cannot delete all IP address whitelists. At least one IP address whitelist must be retained.
+Enableordisablethewhitelistcontrolfeature Enable or disable the whitelist control feature Click **Click to Open** or **Click to Close** to enable or disable the whitelist control feature. Create a whitelist a. Click **Create Whitelist**. b. In the dialog box that appears, enter the IP addresses and description.
+
+> **Note:** Separate IP addresses with semicolons (;). Make sure that each IP address in a whitelist is unique.
+> You can specify IP addresses such as 10.23.12.24 or CIDR blocks such as 10.23.12.24/24, where /24 indicates the length of the IP address prefix in the CIDR block. The IP address prefix can be 1 to 32 bits in length.
+> A value of 0.0.0.0/0 indicates that all IP addresses are allowed.
+
+c. Click **Submit**. Modify a whitelist a. Find the IP address whitelist that you want to modify and click **Edit** in the **Actions** column. b. In the dialog box that appears, modify the IP address information. c. Click **Submit**. Delete a whitelist a. Find the IP address whitelist that you want to delete and click **Delete** in the **Actions** column. b. In the message that appears, click **OK**.
+
+> **Note:** You cannot delete all IP address whitelists. At least one IP address whitelist must be retained.
 
 ### 8.5 Use the operation audit feature
 
@@ -4611,7 +5067,8 @@ The following table describes the two modules of the operation audit feature in 
 | Operation Audit | Displays all the operations that are performed on the databases in DMS. Note This module provides a user interface (UI) for you to audit operations in a centralized manner. This also helps you troubleshoot database issues with ease. | Includes SQL statements that are used in the SQLConsole, tickets, and logon information. Note Only DMS administrators, database administrators (DBAs), ticket submitters, and stakeholders involved in the ticket approval process are allowed to view the ticket details. |
 |---|---|---|
 
-If the control mode of an instance is **Stable Change** or **Security Collaboration**, the log data of the instance is permanently retained in DMS. You can access and view the log data at any time. If the control mode of an instance is **Flexible Management**, you can view the log data only within seven days.
+> **Note:** If the control mode of an instance is **Stable Change** or **Security Collaboration**, the log data of the instance is permanently retained in DMS. You can access and view the log data at any time.
+> If the control mode of an instance is **Flexible Management**, you can view the log data only within seven days.
 
 **Procedure and supported roles**
 
@@ -4635,7 +5092,9 @@ pane, click **Operation Audit**.
 4. Set the **Time** parameter to **Last One Month** and click **Search**.
 Then, DMS returns the search results.
 5. Click the
-icon to download the results. Then, DMS exports an XLSX file that contains the search results displayed on the current page. To preview and export more results, you can set the **Items per page** parameter to **100**.
+icon to download the results. Then, DMS exports an XLSX file that contains the search results displayed on the current page.
+
+> **Note:** To preview and export more results, you can set the **Items per page** parameter to **100**.
 
 ### 8.6 Manage sensitive data
 
@@ -4657,7 +5116,14 @@ The sensitive data management feature applies only to relational databases such 
 
 1. Log on to the DMS console.
 2. Specify security levels for fields in the required table.
-If security levels are specified for the fields, skip this step. i. In the left-side database instance list, click the icon next to the required database instance to show the databases in the instance. ii. Find the required database, right-click the database, and then select **Tables**. iii. Click the icon next to the table name to show the table details. iv. Click **Adjust**. v. In the Adjust Security Level dialog box, change the security levels of fields. vi. Click **Submit for Security Department Approval**. The application to increase the security level of a field is automatically approved. The application to decrease the security level of a field is approved based on the approval process specified by an administrator or DBA. vii. In the message that appears, click **OK**.
+
+> **Note:** If security levels are specified for the fields, skip this step.
+
+i. In the left-side database instance list, click the icon next to the required database instance to show the databases in the instance. ii. Find the required database, right-click the database, and then select **Tables**. iii. Click the icon next to the table name to show the table details. iv. Click **Adjust**. v. In the Adjust Security Level dialog box, change the security levels of fields. vi. Click **Submit for Security Department Approval**.
+
+> **Note:** The application to increase the security level of a field is automatically approved. The application to decrease the security level of a field is approved based on the approval process specified by an administrator or DBA.
+
+vii. In the message that appears, click **OK**.
 3. In the top navigation bar, choose **More > System > Sensitive Data**.
 4. Find the required field and click **Add Algorithm** in the **Actions** column of the field.
 5. In the dialog box that appears, configure a masking algorithm.
@@ -4690,7 +5156,18 @@ Sensitive data dashboard: DMS provides a sensitive data dashboard that helps an 
 
 **Terms**
 
-Sensitivity level: Certain business data, such as mobile numbers and ID card numbers, is sensitive. The fields that store sensitive data must be encrypted before they are displayed during regular queries. DMS supports the following three sensitivity levels based on the sensitivity of the data: Low Sensitivity For a database instance that is managed in Secure Collaboration mode, the security level of the data stored in the database instance is Low Sensitivity by default. Moderate Sensitivity High Sensitivity After you set the sensitivity levels for data, take note of the following rules: When you query data in the SQLConsole, the Moderate Sensitivity and High Sensitivity fields on which you have no permissions are displayed as strings of asterisks (*) or in a custom manner. To query, export, or change Moderate Sensitivity or High Sensitivity fields, you must apply for the permissions on these fields. A database administrator (DBA) or DMS administrator can configure special approval processes for exporting or changing data that contains Moderate Sensitivity or High Sensitivity fields. Detection rule: DMS provides built-in sensitive data detection rules that are designed for different industries based on the relevant laws and regulations. You can also customize detection rules that detect sensitive data based on the metadata of a database or the data that is stored in the database. Data types: DMS provides data types that are defined based on various laws and regulations. You can also create custom data types. Level 1 data types: include types such as personal information, enterprise information, and location information. Level 2 data types: include types such as mobile phone numbers, email addresses, and bank card numbers. Masking algorithm: DMS supports hash, redaction, substitution, transformation, and encryption algorithms to mask data. You can configure custom masking rules based on the built-in masking algorithms. Masking policy: DMS generates a masking policy after you configure a masking rule for the selected sensitive fields.
+Sensitivity level: Certain business data, such as mobile numbers and ID card numbers, is sensitive. The fields that store sensitive data must be encrypted before they are displayed during regular queries. DMS supports the following three sensitivity levels based on the sensitivity of the data: Low Sensitivity
+
+> **Note:** For a database instance that is managed in Secure Collaboration mode, the security level of the data stored in the database instance is Low Sensitivity by default.
+
+Moderate Sensitivity High Sensitivity
+
+> **Note:** After you set the sensitivity levels for data, take note of the following rules:
+> When you query data in the SQLConsole, the Moderate Sensitivity and High Sensitivity fields on which you have no permissions are displayed as strings of asterisks (*) or in a custom manner.
+> To query, export, or change Moderate Sensitivity or High Sensitivity fields, you must apply for the permissions on these fields.
+> A database administrator (DBA) or DMS administrator can configure special approval processes for exporting or changing data that contains Moderate Sensitivity or High Sensitivity fields.
+
+Detection rule: DMS provides built-in sensitive data detection rules that are designed for different industries based on the relevant laws and regulations. You can also customize detection rules that detect sensitive data based on the metadata of a database or the data that is stored in the database. Data types: DMS provides data types that are defined based on various laws and regulations. You can also create custom data types. Level 1 data types: include types such as personal information, enterprise information, and location information. Level 2 data types: include types such as mobile phone numbers, email addresses, and bank card numbers. Masking algorithm: DMS supports hash, redaction, substitution, transformation, and encryption algorithms to mask data. You can configure custom masking rules based on the built-in masking algorithms. Masking policy: DMS generates a masking policy after you configure a masking rule for the selected sensitive fields.
 
 #### 8.6.2 Enable the sensitive data protection feature
 
@@ -4700,7 +5177,13 @@ If a database contains sensitive data, you can enable the sensitive data protect
 
 **Prerequisites**
 
-You are a DMS administrator, a database administrator (DBA), or a security administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console. The database is supported by the sensitive data protection feature. The following types of databases are supported: Relational databases: MySQL, SQL Server, PostgreSQL, Oracle, Dameng (DM), PolarDB-X, and OceanBase Data warehouses: AnalyticDB for MySQL and AnalyticDB for PostgreSQL
+You are a DMS administrator, a database administrator (DBA), or a security administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
+
+The database is supported by the sensitive data protection feature. The following types of databases are supported: Relational databases: MySQL, SQL Server, PostgreSQL, Oracle, Dameng (DM), PolarDB-X, and OceanBase Data warehouses: AnalyticDB for MySQL and AnalyticDB for PostgreSQL
 
 **Procedure**
 
@@ -4710,7 +5193,10 @@ You are a DMS administrator, a database administrator (DBA), or a security admin
 3. On the Sensitive Data Dashboard page, click the **Not opened** tab in the **Instance List**
 section.
 4. Find the database instance for which you want to enable the sensitive data protection
-feature and click **Enable Now** in the **Operation** column. This tab displays only database instances for which the sensitive data protection feature is disabled.
+feature and click **Enable Now** in the **Operation** column.
+
+> **Note:** This tab displays only database instances for which the sensitive data protection feature is disabled.
+
 5. In the **Enable Sensitive Data Protection** dialog box, turn on **Configure Scan Task**,
 configure the Scan Method parameter, and then click **OK**. Table 1. Configure a scan task
 
@@ -4721,7 +5207,9 @@ configure the Scan Method parameter, and then click **OK**. Table 1. Configure a
 | Periodic Task | Specify the time and interval to run the scan task. DMS automatically scans the metadata in the specified database and marks sensitive data on a regular basis. |
 
 6. In the **Scan Task Configuration Results** dialog box, click **Account Authorization**.
-If the database instance is managed in Flexible Management or Stable Change mode, you must authorize DMS to access the database instance.
+
+> **Note:** If the database instance is managed in Flexible Management or Stable Change mode, you must authorize DMS to access the database instance.
+
 7. In the dialog box that appears, enter the username and password of the database account
 that is used to log on to the database instance and click **OK**.
 8. **Optional:**To view the information about the scan task, click **Task details** in the
@@ -4736,7 +5224,11 @@ This topic describes how to adjust the sensitivity levels of fields and change t
 
 **Prerequisites**
 
-You are a Data Management (DMS) administrator, a database administrator (DBA), or a security administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console.
+You are a Data Management (DMS) administrator, a database administrator (DBA), or a security administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
 
 **Procedure**
 
@@ -4746,7 +5238,18 @@ You are a Data Management (DMS) administrator, a database administrator (DBA), o
 3. On the Sensitive Data List page, click the **Field Control** tab.
 Adjust the sensitivity level of one or more fields. a. Click the icon to the left of a database. All fields of the database are displayed. b. Find the field for which you want to adjust the sensitivity level and click **Adjust**
 **Sensitivity Level** in the **Operation** column.
-To adjust the sensitivity level of multiple fields to the same level, select the fields and click **Change security level** in the upper-left corner of this tab. c. In the **Sensitivity level adjustment** dialog box, select the sensitivity level that you want to set and click **Confirm**. Change the masking rule for one or more fields. a. On the Field Control tab, select one or more fields for which you want to change the masking rule. b. Click **Change Masking Rule** in the upper-left corner of this tab. c. In the **Data Masking Rule must be selected.** dialog box, select a custom masking rule and click **Save**. For more information about custom masking rules, see Create a data masking rule. The default data masking rule is DEFAULT. To reset the masking rule to DEFAULT for a field, click **Reset Masking Rule** in the **Operation** column. Grant permissions on fields. You can grant permissions on fields only for a database instance that is managed in Security Collaboration mode. You cannot grant permissions on fields for a database instance that is managed in Flexible Management or Stable Change mode. a. On the Field Control tab, select one or more fields on which you want to grant permissions. b. Click **Authorize User** in the upper-left corner of this tab. c. In the **Authorize User** dialog box, select one or more users to which you want to grant permissions from the **Add User** drop-down list. d. Configure the parameters as required in the **Permission Configuration** section. The following table describes the parameters that you must specify. If you do not grant a user the permissions on fields, the values of the fields are encrypted to the user.
+
+> **Note:** To adjust the sensitivity level of multiple fields to the same level, select the fields and click **Change security level** in the upper-left corner of this tab.
+
+c. In the **Sensitivity level adjustment** dialog box, select the sensitivity level that you want to set and click **Confirm**. Change the masking rule for one or more fields. a. On the Field Control tab, select one or more fields for which you want to change the masking rule. b. Click **Change Masking Rule** in the upper-left corner of this tab. c. In the **Data Masking Rule must be selected.** dialog box, select a custom masking rule and click **Save**. For more information about custom masking rules, see Create a data masking rule.
+
+> **Note:** The default data masking rule is DEFAULT. To reset the masking rule to DEFAULT for a field, click **Reset Masking Rule** in the **Operation** column.
+
+Grant permissions on fields.
+
+> **Note:** You can grant permissions on fields only for a database instance that is managed in Security Collaboration mode. You cannot grant permissions on fields for a database instance that is managed in Flexible Management or Stable Change mode.
+
+a. On the Field Control tab, select one or more fields on which you want to grant permissions. b. Click **Authorize User** in the upper-left corner of this tab. c. In the **Authorize User** dialog box, select one or more users to which you want to grant permissions from the **Add User** drop-down list. d. Configure the parameters as required in the **Permission Configuration** section. The following table describes the parameters that you must specify. If you do not grant a user the permissions on fields, the values of the fields are encrypted to the user.
 
 | Parameter | Description |
 |---|---|
@@ -4757,7 +5260,10 @@ e. Click **OK**. Revoke permissions on sensitive fields. Find the sensitive fiel
 **Management authority** in the **Operation** column.
 On the Management authority page, select **Sensitive Column Permission** for the
 **Classification** parameter.
-Click **Recycle Permission** in the **Actions** column. To view the authorization details of the sensitive field, click **View Details** in the **Actions** column. You can also grant or revoke other permissions on the database on the Management authority page.
+Click **Recycle Permission** in the **Actions** column.
+
+> **Note:** To view the authorization details of the sensitive field, click **View Details** in the **Actions** column.
+> You can also grant or revoke other permissions on the database on the Management authority page.
 
 #### 8.6.4 Manage sensitive data detection rules
 
@@ -4765,7 +5271,11 @@ The sensitive data protection feature of Data Management (DMS) provides dozens o
 
 **Prerequisites**
 
-You are a DMS administrator, a database administrator (DBA), or a security administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console.
+You are a DMS administrator, a database administrator (DBA), or a security administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
 
 **Procedure**
 
@@ -4788,7 +5298,10 @@ the following table. Then, click **Submit**.
 |---|---|
 
 6. Enable the sensitive data detection rule that you create.
-By default, a sensitive data detection rule is disabled after it is created. A sensitive data detection rule takes effect only after you enable the rule. You cannot modify built-in sensitive data detection rules. However, you can disable built-in sensitive data detection rules. After you enable or disable a sensitive data detection rule, the setting takes effect in the next scan task.
+
+> **Note:** By default, a sensitive data detection rule is disabled after it is created. A sensitive data detection rule takes effect only after you enable the rule.
+> You cannot modify built-in sensitive data detection rules. However, you can disable built-in sensitive data detection rules.
+> After you enable or disable a sensitive data detection rule, the setting takes effect in the next scan task.
 
 #### 8.6.5 Create a data masking rule
 
@@ -4796,7 +5309,11 @@ The sensitive data protection feature of Data Management (DMS) provides a built-
 
 **Prerequisites**
 
-You are a DMS administrator, a database administrator (DBA), or a security administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console.
+You are a DMS administrator, a database administrator (DBA), or a security administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
 
 **Procedure**
 
@@ -4808,11 +5325,16 @@ pane, choose **Sensitive Data > Data Masking Management**.
 4. In the **Create Rule** panel, set the parameters as required.
 DMS provides five types of built-in data masking algorithms: hash (Hash), redaction (Cover up), substitution (Replacement), transformation (Transformation), and encryption (Encryption). Hash MD5: a widely used cryptographic hash function that can generate a 128-bit (16-byte) hash value. SHA1: a cryptographic hash function that can generate a 160-bit (20-byte) hash value called a message digest. SHA256: generates a 256-bit hash value. HMAC: a cryptographic technique that uses keys and a hash function to perform authentication. Cover up Full cover: masks the entire value of a field. For example, if you want to fully mask the phone number 1381111****, set the Cover string parameter to ***********. In this case, the phone number is masked to
 ***********.
-Fixed position cover: masks the specified part of a field. For example, if you want to mask the second part of the IP address 192.168.255.254, set the Cover string parameter to *** and the Mask position configuration parameter to (5,7). In this case, the IP address is masked to 192.***.255.254. Fixed character mask: masks the specified characters of a field. For example, if you want to mask example in the email address username@example.com, set the Cover string parameter to ******* and the String to be obscured parameter to example. In this case, the email address is masked to username@*******.com. Replacement Map replacement: replaces a specified string with another specified string. For example, if you want to replace ab in the string abcd with mn, set the Match String parameter to ab and the Replace By parameter to mn. In this case, the string is masked to mncd. Random replacement: replaces the specified part of a field with the random characters that you specify. For example, if you want to replace username in the email address username@example.com with random characters, set the Replacement position parameter to (1,8) and the Random character parameter to abc. In this case, the email address may be masked to acbbbbac@example.com. If you specify two or more random characters, the masking result is random. Transformation Number rounding: rounds down a number to the Nth digit before the decimal point. For example, if you set the Keep the first decimal place parameter to 2, the number 1234.12 is masked to 1230. Date rounded: rounds a date and time. For example, if you set the Date rounding level parameter to hour, 2021-10-14 15:15:30 is masked to 2021-10-14 15:00:00. Character displacement: moves characters of a field leftward in a loop manner. For example, if you set the String left shift number parameter to 2, the number 345678 is masked to 567834. Encryption DES: uses the Data Encryption Standard (DES) algorithm to encrypt data. The key is 8 characters in length, and the masking result is 16 characters in length. AES: a more advanced encryption algorithm compared with the DES algorithm. The key is 16 characters in length, and the masking result is 32 characters in length.
+Fixed position cover: masks the specified part of a field. For example, if you want to mask the second part of the IP address 192.168.255.254, set the Cover string parameter to *** and the Mask position configuration parameter to (5,7). In this case, the IP address is masked to 192.***.255.254. Fixed character mask: masks the specified characters of a field. For example, if you want to mask example in the email address username@example.com, set the Cover string parameter to ******* and the String to be obscured parameter to example. In this case, the email address is masked to username@*******.com. Replacement Map replacement: replaces a specified string with another specified string. For example, if you want to replace ab in the string abcd with mn, set the Match String parameter to ab and the Replace By parameter to mn. In this case, the string is masked to mncd. Random replacement: replaces the specified part of a field with the random characters that you specify. For example, if you want to replace username in the email address username@example.com with random characters, set the Replacement position parameter to (1,8) and the Random character parameter to abc. In this case, the email address may be masked to acbbbbac@example.com.
+
+> **Note:** If you specify two or more random characters, the masking result is random.
+
+Transformation Number rounding: rounds down a number to the Nth digit before the decimal point. For example, if you set the Keep the first decimal place parameter to 2, the number 1234.12 is masked to 1230. Date rounded: rounds a date and time. For example, if you set the Date rounding level parameter to hour, 2021-10-14 15:15:30 is masked to 2021-10-14 15:00:00. Character displacement: moves characters of a field leftward in a loop manner. For example, if you set the String left shift number parameter to 2, the number 345678 is masked to 567834. Encryption DES: uses the Data Encryption Standard (DES) algorithm to encrypt data. The key is 8 characters in length, and the masking result is 16 characters in length. AES: a more advanced encryption algorithm compared with the DES algorithm. The key is 16 characters in length, and the masking result is 32 characters in length.
 5. **Optional:**Test the masking rule.
 i. Enter the data to be masked. ii. Click **Test**. iii. Check whether the masking rule works as expected.
 6. Click **Submit**.
-By default, the DEFAULT built-in rule is applied on sensitive data. For more information about how to apply a custom data masking rule on sensitive data, see Manage sensitive data.
+
+> **Note:** By default, the DEFAULT built-in rule is applied on sensitive data. For more information about how to apply a custom data masking rule on sensitive data, see Manage sensitive data.
 
 #### 8.6.6 Configure row-level access control
 
@@ -4820,11 +5342,17 @@ In some cases, different users may access different rows in the same table, whic
 
 **Prerequisites**
 
-You are a DMS administrator, a database administrator (DBA), or a security administrator. To view the role of your account, move the pointer over the icon in the upper-right corner of the DMS console.
+You are a DMS administrator, a database administrator (DBA), or a security administrator.
+
+> **Note:** To view the role of your account, move the pointer over the
+> icon in the
+> upper-right corner of the DMS console.
 
 **Background information**
 
-Row-level access control is used to provide horizontal data protection for tables. All the rows in a table are distinguished by one or more specified values. These values are called control values. To access a row that corresponds to a control value in the DMS console, you must have permissions on the row. A control value may correspond to multiple rows. If a user has permissions on a control value that corresponds to multiple rows, the user has permissions on all the rows that correspond to the control value.
+Row-level access control is used to provide horizontal data protection for tables. All the rows in a table are distinguished by one or more specified values. These values are called control values. To access a row that corresponds to a control value in the DMS console, you must have permissions on the row.
+
+> **Note:** A control value may correspond to multiple rows. If a user has permissions on a control value that corresponds to multiple rows, the user has permissions on all the rows that correspond to the control value.
 
 **Usage notes**
 
@@ -4860,7 +5388,11 @@ i. Click **Create Control Group**. ii. In the Create Control Group dialog box, s
 
 iii. Click **Add**.
 5. Add control values.
-i. Find the created control group and click **Details** in the **Actions** column. ii. Click **Add Row Value**. iii. In the Import Row Value dialog box, specify whether to append row values and enter the required row values. Separate multiple row values with commas (,). iv. Click **Import**.
+i. Find the created control group and click **Details** in the **Actions** column. ii. Click **Add Row Value**. iii. In the Import Row Value dialog box, specify whether to append row values and enter the required row values.
+
+> **Note:** Separate multiple row values with commas (,).
+
+iv. Click **Import**.
 
 **What to do next**
 
@@ -4884,12 +5416,18 @@ We recommend that you use data watermarks when you export more than 200 data ent
 
 **Embed watermarks**
 
-Identification information is embedded into data or a file as a watermark to identify the data or file. In the following example, an ApsaraDB RDS for MySQL instance that is managed in Security Collaboration mode is used.
+Identification information is embedded into data or a file as a watermark to identify the data or file.
+
+> **Note:** In the following example, an ApsaraDB RDS for MySQL instance that is managed in Security Collaboration mode is used.
+
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Database Development > Data Export > SQL Result**
 **Set Export**.
-If you use the simple mode of the DMS console, move the pointer over the icon in the upper-left corner and choose **All functions > Database Development > Data**
-**Export > SQL Result Set Export**.
+
+> **Note:** If you use the simple mode of the DMS console, move the pointer over the
+> icon in
+> the upper-left corner and choose **All functions > Database Development > Data** **Export > SQL Result Set Export**.
+
 3. On the Data Export Tickets page, configure the parameters that are described in the
 following table.
 
@@ -4916,7 +5454,9 @@ following table.
 4. After you complete the configurations, click **Submit** and wait for approval.
 DMS prechecks the SQL statements.
 5. Click **Submit for Approval** and wait for approval.
-On the Ticket Details page, you can view the approval progress in the **Approval** step.
+
+> **Note:** On the Ticket Details page, you can view the approval progress in the **Approval** step.
+
 6. In the **Execute/Automatic Execution** step, click **Export**.
 7. In the **Export Settings** dialog box, configure the parameters that are described in the
 following table.
@@ -4930,7 +5470,8 @@ following table.
 | Execution Strategy | Required. The strategy used to export the file. Valid values: Running immediately: DMS immediately exports the file after you click Confirm Execution. Schedule: DMS exports the file at the point in time that you specify. You can specify a point in time during off-peak hours. Note The configurations cannot be modified after you set this parameter to Schedule and confirm the configurations. |
 | Export Mode | Required. The export mode of the file. Valid values: Speed Mode: If you select this mode, the export task cannot be terminated before it is complete. Ordinary Mode: If you select this mode, the export task can be terminated. |
 
-DMS exports the file based on your configurations. You can view the export progress in the Execute/Automatic Execution step.
+> **Note:** DMS exports the file based on your configurations. You can view the export progress in the Execute/Automatic Execution step.
+
 8. After the file is exported, click **Download Exported File** to download the file.
 
 **Extract watermarks**
@@ -4938,8 +5479,11 @@ DMS exports the file based on your configurations. You can view the export progr
 DMS provides the watermark extraction feature that allows you to check whether files are embedded with unperceivable watermarks.
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **Security and Specifications > Data Watermark**.
-If you use the simple mode of the DMS console, move the pointer over the icon in the upper-left corner and choose **All functions > Security and Specifications >**
-**Data Watermark**.
+
+> **Note:** If you use the simple mode of the DMS console, move the pointer over the
+> icon in
+> the upper-left corner and choose **All functions > Security and Specifications >** **Data Watermark**.
+
 3. On the Data Watermark page, click **Data Watermark** in the upper-right corner.
 4. On the **Data Watermark Tickets** page, configure the parameters that are described in
 the following table.
@@ -4974,7 +5518,9 @@ The data archiving feature in Data Management (DMS) lets you periodically migrat
 
 **Prerequisites**
 
-The source and destination databases must be registered in DMS. The source table to be archived must have a primary key or a unique key. We recommend that the source table contain a modification time field to use as a filter for data archiving.
+The source and destination databases must be registered in DMS. The source table to be archived must have a primary key or a unique key.
+
+> We recommend that the source table contain a modification time field to use as a filter for data archiving.
 
 **Procedure**
 
@@ -5002,10 +5548,13 @@ The source and destination databases must be registered in DMS. The source table
 the task to complete. If the task fails, in the execution area of the ticket, click **Details** in the Actions column to view the task logs and identify the cause. If the failure is due to an intermittent issue, such as a network or database connection failure, you can click **Resume from breakpoint** to retry the task.
 7. The task is complete.
 8. **Optional:** After the data is successfully archived and verified, you can delete the archived
-data from the source table and optimize the tablespace. i. Clean up the archived data from the source table. If you enabled the post-archive action, the system cleans up the archived data from the source table and creates a backup temporary table in the source database. To clean up the backup temporary table, create a new standard data change ticket. At the bottom of the data archiving ticket details page, click **Click to view the DROP SQL of**
-**the temporary table**, and copy the SQL statement to clean up the backup temporary table.
-If you did not enable the post-archive action, you must manually clean up the archived data. To clean up the archived data from the source table, create a new standard data change ticket. ii. Optimize the source tablespace: Create a new lock-free data change ticket to optimize the source tablespace. At the bottom of the data archiving ticket details page, click **Click to view the SQL for source**
-**tablespace optimization**, and copy the SQL statement to optimize the source tablespace.
+data from the source table and optimize the tablespace. i. Clean up the archived data from the source table. If you enabled the post-archive action, the system cleans up the archived data from the source table and creates a backup temporary table in the source database. To clean up the backup temporary table, create a new standard data change ticket.
+
+> At the bottom of the data archiving ticket details page, click **Click to view the DROP SQL of** **the temporary table**, and copy the SQL statement to clean up the backup temporary table.
+
+If you did not enable the post-archive action, you must manually clean up the archived data. To clean up the archived data from the source table, create a new standard data change ticket. ii. Optimize the source tablespace: Create a new lock-free data change ticket to optimize the source tablespace.
+
+> At the bottom of the data archiving ticket details page, click **Click to view the SQL for source** **tablespace optimization**, and copy the SQL statement to optimize the source tablespace.
 
 **Periodic scheduling**
 
@@ -5039,7 +5588,11 @@ Add a user to the DMS tenant of your Alibaba Cloud account.
 3. In the upper-left corner of the page, click **New**.
 4. In the **Add User** dialog box, enter the unique ID (UID) of your Alibaba Cloud account in the
 **Alibaba Cloud Account** field.
-To view the UID, move the pointer over the icon in the upper-right corner of the DMS console.
+
+> **Note:** To view the UID, move the pointer over the
+> icon in the upper-right
+> corner of the DMS console.
+
 5. Select one or more system roles for the user to add.
 
 | Role | Description | Permission |
@@ -5134,7 +5687,9 @@ You are a DMS administrator.
 1. Log on to the DMS console.
 2. In the top navigation bar, choose **O&M > Configuration Management**.
 3. Find the desired parameter and click **Change** in the **Actions** column of the parameter.
-You can click **Change History** to view the historical changes of the parameter.
+
+> **Note:** You can click **Change History** to view the historical changes of the parameter.
+
 4. In the Change Parameter Configuration dialog box, enter a value.
 5. Click **Confirm Change**.
 

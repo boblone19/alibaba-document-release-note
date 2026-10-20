@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 56
 source_pdf: "37a258220bc2dc72_Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20VPN%20Gateway%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # VPN Gateway User Guide 20260629
@@ -52,22 +52,24 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. nsole
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**.
 
 ## 2 Getting started
@@ -170,7 +172,9 @@ describes the parameters.
 | IP Address | Enter the static public IP address of the gateway device in the data center. |
 | Description | Enter a description for the customer gateway. The description must be 2 to 100 characters in length. The description can contain digits, hyphens (-), underscores ( ), full-width periods (。), full- _ width commas (，), and full-width colons (：). It must start with a letter and cannot start with http:// or https://. |
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 6. Create a customer gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **Customer Gateway** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **Customer Gateway** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -213,7 +217,10 @@ connection.
 3. On the **IPsec Connections** page, find the IPsec-VPN connection that you want to manage
 and click **Download Peer Configuration** in the **Actions** column.
 4. In the **IPsec Connection Configuration** dialog box, copy and save the configuration
-information. The values of RemoteSubnet and LocalSubnet in the downloaded configuration file are opposite to the values that you specified when you create the IPsec-VPN connection. For a VPN gateway, RemoteSubnet refers to the CIDR block of the data center, whereas LocalSubnet refers to the CIDR block of the VPC. For a gateway device, LocalSubnet refers to the CIDR block of the data center, whereas RemoteSubnet refers to the CIDR block of the VPC.
+information.
+
+> **Note:** The values of RemoteSubnet and LocalSubnet in the downloaded configuration file are opposite to the values that you specified when you create the IPsec-VPN connection. For a VPN gateway, RemoteSubnet refers to the CIDR block of the data center, whereas LocalSubnet refers to the CIDR block of the VPC. For a gateway device, LocalSubnet refers to the CIDR block of the data center, whereas RemoteSubnet refers to the CIDR block of the VPC.
+
 5. Load the configuration of the IPsec-VPN connection to the gateway device in the data
 center. For more information, consult the vendor of your gateway device.
 
@@ -316,7 +323,9 @@ A newly created VPN gateway is in the **Preparing** state and changes to the **N
 
 1. In the left-side navigation pane, choose **VPN > SSL Server**.
 2. In the top navigation bar, select the region in which you want to create an SSL server.
-Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
+> **Note:** Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
 3. On the **SSL Servers** page, click **Create SSL Server**.
 4. On the **Create SSL Server** page, configure the parameters. The following table describes
 the parameters.
@@ -358,7 +367,9 @@ describes the parameters.
 | VPN Gateway | The VPN gateway that you want to associate with the SSL client. Note You can also click Create VPN Gateway to create a VPN gateway. |
 | SSL Server | Select the SSL server that you want to associate with the SSL client. Note You can also click Create SSL Server to create an SSL server to be associated. |
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 5. On the **SSL Clients** page, find the desired SSL client and click **Download** in the **Actions**
 column.
 6. View the downloaded SSL client certificate on your on-premises machine.
@@ -383,7 +394,9 @@ Configure a client that runs Windows i. Download and install OpenVPN. Download O
 brew install openvpn
 ```
 
-Make sure that homebrew is installed before you install OpenVPN. ii. Copy the SSL client certificate package that you downloaded in Step 3 to the configuration directory of OpenVPN and decompress the package. Then, initiate an SSL- VPN connection. a. Back up all configuration files in the /usr/local/etc/openvpn folder. b. Run the following command to delete the configuration files of OpenVPN:
+> **Note:** Make sure that homebrew is installed before you install OpenVPN.
+
+ii. Copy the SSL client certificate package that you downloaded in Step 3 to the configuration directory of OpenVPN and decompress the package. Then, initiate an SSL- VPN connection. a. Back up all configuration files in the /usr/local/etc/openvpn folder. b. Run the following command to delete the configuration files of OpenVPN:
 
 ```
 rm /usr/local/etc/openvpn/*
@@ -414,7 +427,9 @@ sudo /usr/local/opt/openvpn/sbin/openvpn --config /usr/local/etc/openvpn/config.
 
 ### 2.3 Overview of gateway routes
 
-After you create an IPsec-VPN connection by using a VPN gateway, you must add a route to the VPN gateway. Route-based IPsec-VPN allows you to route network traffic in multiple ways and facilitates the configuration and maintenance of VPN policies. You can add the following two types of route to a VPN gateway: Policy-based routes Destination-based routes Policy-based routes take precedence over destination-based routes.
+After you create an IPsec-VPN connection by using a VPN gateway, you must add a route to the VPN gateway. Route-based IPsec-VPN allows you to route network traffic in multiple ways and facilitates the configuration and maintenance of VPN policies. You can add the following two types of route to a VPN gateway: Policy-based routes Destination-based routes
+
+> **Note:** Policy-based routes take precedence over destination-based routes.
 
 **Policy-based routes**
 
@@ -462,7 +477,11 @@ parameters.
 | SSL Connections | The number of SSL-VPN connections based on the maximum number of clients that can connect at the same time. Note This parameter is required only if you set SSL-VPN to Enable. |
 |---|---|
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements. You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services. For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for cloud services.
+> For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+
 6. Create a VPN gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **VPN Gateway** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **VPN Gateway** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -479,7 +498,12 @@ On the **VPN Gateways** page, you can add tags to VPN gateways for management. F
 
 **Delete a VPN gateway**
 
-You can delete VPN gateways that you no longer need. After you delete a VPN gateway, you can no longer establish IPsec-VPN or SSL-VPN connections to the VPN gateway. Before you delete a VPN gateway, make sure that the following conditions are met: The IPsec-VPN connections established to the VPN gateway are deleted. For more information, see the Delete an IPsec-VPN connection section of the Create and manage IPsec-VPN connections topic. The SSL server associated with the VPN gateway is deleted. For more information, see the Delete an SSL server section of the Create and manage an SSL server topic.
+You can delete VPN gateways that you no longer need. After you delete a VPN gateway, you can no longer establish IPsec-VPN or SSL-VPN connections to the VPN gateway.
+
+> **Note:** Before you delete a VPN gateway, make sure that the following conditions are met:
+> The IPsec-VPN connections established to the VPN gateway are deleted. For more information, see the Delete an IPsec-VPN connection section of the Create and manage IPsec-VPN connections topic.
+> The SSL server associated with the VPN gateway is deleted. For more information, see the Delete an SSL server section of the Create and manage an SSL server topic.
+
 1. On the **VPN Gateways** page, find the VPN gateway that you want to delete, and then click
 **Delete** in the **Actions** column.
 2. In the **Delete** dialog box, click **Release**.
@@ -634,7 +658,9 @@ describes the parameters.
 | Description | Enter a description for the customer gateway. The description must be 2 to 100 characters in length. The description can contain digits, hyphens (-), underscores ( ), full-width periods (。), full- _ width commas (，), and full-width colons (：). It must start with a letter and cannot start with http:// or https://. |
 |---|---|
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 6. Create a customer gateway.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **Customer Gateway** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **Customer Gateway** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -651,7 +677,10 @@ On the Customer Gateways page, you can add tags to customer gateways for managem
 
 **Delete a customer gateway**
 
-You can delete a customer gateway you no longer need. Before you delete a customer gateway, make sure that the IPsec-VPN connection that is associated with the customer gateway is deleted. For more information, see the Delete an IPsec-VPN connection section of the Create and manage IPsec-VPN connections topic.
+You can delete a customer gateway you no longer need.
+
+> **Note:** Before you delete a customer gateway, make sure that the IPsec-VPN connection that is associated with the customer gateway is deleted. For more information, see the Delete an IPsec-VPN connection section of the Create and manage IPsec-VPN connections topic.
+
 1. On the **Customer Gateways** page, find the customer gateway that you want to delete,
 and then click **Delete** in the **Actions** column.
 2. In the **Delete** dialog box, click **Release**.
@@ -727,7 +756,11 @@ connections
 | DPD Configuration | Specifies whether to enable the dead peer detection (DPD) feature. Default value: Enabled. After you enable DPD, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within the specified period of time, the connection fails. Then, the Internet Security Association and Key Management Protocol (ISAKMP) SA, IPsec SA, and IPsec tunnel are deleted. |
 | NAT Traversal | Specifies whether to enable the NAT traversal feature. Default value: Enabled. After you enable NAT traversal, the initiator does not check UDP ports during Internet Key Exchange (IKE) negotiations and can automatically discover NAT gateway devices along the IPsec tunnel. |
 
-connections Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+connections
+
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 6. Create an IPsec-VPN connection.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **IPsec Connection** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **IPsec Connection** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -756,7 +789,9 @@ After you create an IPsec-VPN connection, you can download its configuration.
 1. On the **IPsec Connections** page, find the IPsec-VPN connection that you want to manage
 and click **Download Peer Configuration** in the **Actions** column.
 2. In the **IPsec Connection Configuration** dialog box, copy and save the configuration
-information. The values of RemoteSubnet and LocalSubnet in the downloaded configuration file are opposite to the values that you specified when you create the IPsec-VPN connection. For a VPN gateway, RemoteSubnet refers to the CIDR block of the data center, whereas LocalSubnet refers to the CIDR block of the VPC. For a gateway device, LocalSubnet refers to the CIDR block of the data center, whereas RemoteSubnet refers to the CIDR block of the VPC.
+information.
+
+> **Note:** The values of RemoteSubnet and LocalSubnet in the downloaded configuration file are opposite to the values that you specified when you create the IPsec-VPN connection. For a VPN gateway, RemoteSubnet refers to the CIDR block of the data center, whereas LocalSubnet refers to the CIDR block of the VPC. For a gateway device, LocalSubnet refers to the CIDR block of the data center, whereas RemoteSubnet refers to the CIDR block of the VPC.
 
 **Delete an IPsec-VPN connection**
 
@@ -772,9 +807,8 @@ This topic describes how to configure a security group to control the inbound an
 
 **Procedure**
 
-**Important**
+> **Important:** You can modify or delete security group rules in the ECS console.
 
-You can modify or delete security group rules in the ECS console.
 1. Log in to the VPC console.
 2. In the left-side navigation pane, choose **VPN > IPsec-VPN Connection**.
 3. In the top navigation bar, select the region in which you want to create an IPsec-VPN
@@ -824,7 +858,9 @@ A VPN gateway is created, and SSL-VPN is enabled for the VPN gateway. For more i
 1. Log in to the VPC console.
 2. In the left-side navigation pane, choose **VPN > SSL Server**.
 3. In the top navigation bar, select the region in which you want to create an SSL server.
-Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
+> **Note:** Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
 4. On the **SSL Servers** page, click **Create SSL Server**.
 5. On the **Create SSL Server** page, configure the parameters. The following table describes
 the parameters.
@@ -849,7 +885,9 @@ the parameters.
 | IDaaS Instance | Select the Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance used for authentication. Note This parameter is required when you enable two-factor authentication. |
 | IDaaS Application | Select the ID of the IDaaS application used for authentication. Note This parameter is required when you enable two-factor authentication. |
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 6. Create an SSL server.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **SSL Server** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **SSL Server** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -895,7 +933,9 @@ This topic describes how to configure a security group to control the inbound an
 1. Log in to the VPC console.
 2. In the left-side navigation pane, choose **VPN > SSL Server**.
 3. In the top navigation bar, select the region in which you want to create an SSL server.
-Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
+> **Note:** Make sure that the SSL server and the VPN gateway that you created reside in the same region.
+
 4. On the **SSL Servers** page, find the SSL server that you want to manage and click
 **Configure Routing Security Groups** in the **Actions** column.
 5. In the **Configure Routing Security Groups** dialog box, configure the following
@@ -945,7 +985,9 @@ describes the parameters.
 | SSL Server | Select the SSL server that you want to associate with the SSL client. Note You can also click Create SSL Server to create an SSL server to be associated. |
 |---|---|
 
-Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> **Note:** Before you click Submit to create the instance, you can view and check the configurations of the instance in the right-side **Configuration overview** section.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+
 6. Create an SSL client.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created, and **SSL Client** is displayed in the **Cloud resources** column of the service. If no service whose **Cloud resources** value is **SSL Client** exists on the Service Management page, confirm the parameters and click **Submit**. For more information about service management, see the **Manage services** topic in
 **Apsara Uni-manager Operations Console User Guide** .
@@ -1044,7 +1086,11 @@ Before you start, make sure that the following requirements are met: Simple Log 
 2. In the left-side navigation pane, choose **VPN > VPN Gateway**.
 3. In the top navigation bar, select the region in which the VPN gateway resides.
 4. You can use the following methods to view the monitoring data of a VPN gateway.
-View the monitoring data on the VPN Gateways page. a. On the **VPN Gateways** page, click in the **Monitor** column of the desired VPN gateway. b. The **Monitor** panel appears. You can view the monitoring information on this page. View the monitoring data on the details page. a. On the **VPN Gateways** page, find the desired VPN gateway and click its ID. b. On the page that appears, click the **Monitor** tab. By default, the system displays the monitoring data within the last hour. You can also choose 3 hours, 6 hours, or 12 hours or specify a **custom** time period. VPN Gateway provides the following monitoring information:
+View the monitoring data on the VPN Gateways page. a. On the **VPN Gateways** page, click in the **Monitor** column of the desired VPN gateway. b. The **Monitor** panel appears. You can view the monitoring information on this page. View the monitoring data on the details page. a. On the **VPN Gateways** page, find the desired VPN gateway and click its ID. b. On the page that appears, click the **Monitor** tab.
+
+> **Note:** By default, the system displays the monitoring data within the last hour. You can also choose 3 hours, 6 hours, or 12 hours or specify a **custom** time period.
+
+VPN Gateway provides the following monitoring information:
 
 | Metric | Description |
 |---|---|
@@ -1066,8 +1112,8 @@ In the **Monitor** panel, you can create threshold-triggered alert rules. When t
 1. On the **Monitor** page, click
 next to a metric.
 2. In the **Create Alert Rule** dialog box, configure parameters and click **OK**.
-The following table describes only the parameters that are related to this topic. For other parameters, see **Alert rules** > **Create an alert rule** in **Alerting service** of
-**CloudMonitor CMS User Guide**.
+
+> **Note:** The following table describes only the parameters that are related to this topic. For other parameters, see **Alert rules** > **Create an alert rule** in **Alerting service** of **CloudMonitor CMS User Guide**.
 
 | Parameter | Description |
 |---|---|

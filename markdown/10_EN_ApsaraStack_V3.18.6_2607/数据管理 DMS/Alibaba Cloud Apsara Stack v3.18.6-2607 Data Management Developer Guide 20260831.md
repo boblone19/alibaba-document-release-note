@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 447
 source_pdf: "6b6c678348703384_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%20DMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Management%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831
@@ -256,17 +256,17 @@ You can still use the ASAPI gateway to call API operations. For more information
 1. Obtain an AccessKey pair.
 Obtain the AccessKey pair that is required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or a Security Token Service (STS) AccessKey 3- tuple to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or a Security Token Service (STS) AccessKey 3tuple to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For more information, see Obtain the values of common headers.
 3. Obtain the organization ID and the resource set ID.
 You must call an API operation to query the resource set ID. For more information about how to query resource set IDs, see the ListResourceGroup section in Apsara Uni-manager M anagement Console Developer Guide.
 
-**Note**
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set.
+> If you do not specify the `<x-acs-organizationid>` header, the organization to which the current user belongs is used by default.
+> If you do not specify the `<x-acs-resourcegroupid>` header, this header is left empty by default. If you specify a resource set ID, you must also specify an organization ID.
 
-When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` header, the organization to which the current user belongs is used by default. If you do not specify the `<x-acs-resourcegroupid>` header, this header is left empty by default. If you specify a resource set ID, you must also specify an organization ID.
 4. Obtain the API reference.
 Obtain the developer guide of the cloud service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Usage notes on development documentation.
 5. Obtain the endpoint of the cloud service.
@@ -289,17 +289,17 @@ browser and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must follow the instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
 
-The first time you log on to the Apsara Uni-manager Management Console, you must follow the instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform operations based
 on your logon scenario: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
@@ -333,9 +333,7 @@ AccessKey credentials are assigned by RAM or STS. You can use one type of Access
 
 An AccessKey pair is used to verify the identity of the request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -351,9 +349,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within the current account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within the current account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -384,9 +380,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain an STS AccessKey 3-tuple.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourRoleSessionName>: Replace the parameter with the name of the current session.
+> <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role.
+> <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
 ```java
 public static void main(String[] args) {
@@ -437,9 +438,14 @@ e RAM role.
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of ECS:
 
-**Note**
-
-In the following sample code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
+> **Note:** In the following sample code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourStsAccesskeyID>: Replace the parameter with your AccessKey ID.
+> <yourStsAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourStsToken>. Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -513,9 +519,9 @@ To call API operations of DMS in Apsara Stack by using the POP gateway, you must
 | Alibaba Cloud SDK for Python | DMS SDK for Python | Get started with DMS SDK for Python |
 | Alibaba Cloud SDK for Go | DMS SDK for Go | Get started with DMS SDK for Go |
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. or SDK for Java
+or SDK for Java
 
 ## 3 Call examples for SDK for Java
 
@@ -540,9 +546,15 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and set the request parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code.
+> The variables to be replaced are listed as follows:
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace the variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <DMSProductCode>: Replace this variable with the service code of DMS in Apsara Stack.
+> <DMSProductEndpoint>: Replace this variable with the endpoint of DMS in Apsara Stack.
 
-In the following sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code. The variables to be replaced are listed as follows: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <DMSProductCode>: Replace this variable with the service code of DMS in Apsara Stack. <DMSProductEndpoint>: Replace this variable with the endpoint of DMS in Apsara Stack. or SDK for Java
+or SDK for Java
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogRequest; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogResponse; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class GetOpLogSampleTest {
@@ -595,9 +607,7 @@ This topic describes how to install and use DMS SDK for Java. Alibaba Cloud SDK 
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. DMS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
-**Note**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -606,17 +616,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret.
 ```
 
-**Note**
-
-In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
 #### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. or SDK for Java You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -725,9 +737,16 @@ If you want to send a CommonRequest request, you must obtain the values of the f
 
 or SDK for Java The following sample code provides an example on how to call the RegisterUser operation of Data Management (DMS) to register a user. The DMS API is in the Remote Procedure Call (RPC) style.
 
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. Variables: <yourRegionID>: Replace the variable with the region ID. <yourAccessKeyID>: Replace the variable with the AccessKey ID. <yourAccessKeySecret>: Replace the variable with the AccessKey secret. <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token. <yourResourceGroupID>: Replace the variable with the resource set ID. <yourOrganizationID>: Replace the variable with the organization ID. <yourInstanceID>: Replace the variable with the instance ID. <http://192.168.XX.XX:33XX>: Replace the variable with the IP address and port of the proxy.
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> Variables:
+> <yourRegionID>: Replace the variable with the region ID.
+> <yourAccessKeyID>: Replace the variable with the AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with the AccessKey secret.
+> <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token.
+> <yourResourceGroupID>: Replace the variable with the resource set ID.
+> <yourOrganizationID>: Replace the variable with the organization ID.
+> <yourInstanceID>: Replace the variable with the instance ID.
+> <http://192.168.XX.XX:33XX>: Replace the variable with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -847,9 +866,13 @@ AccessKey Secret.
 3. Send the request and handle the response or exceptions.
 or SDK for Python
 
-**Note**
-
-In the following code example, replace all variable parameters with your actual values. Do not retain the angle brackets (<>) in the final code. The variable parameters to replace are as follows: <yourRegionID>: Replace this with your actual region ID. <yourAccessKeyID>: Replace this with your actual AccessKey ID. <yourAccessKeySecret>: Replace this with your actual AccessKey Secret. <DMSProductCode>: Replace this with the product code of DMS in your Apsara Stack environment. <DMSProductEndpoint>: Replace this with the endpoint of DMS in your Apsara Stack environment.
+> **Note:** In the following code example, replace all variable parameters with your actual values. Do not retain the angle brackets (<>) in the final code.
+> The variable parameters to replace are as follows:
+> <yourRegionID>: Replace this with your actual region ID.
+> <yourAccessKeyID>: Replace this with your actual AccessKey ID.
+> <yourAccessKeySecret>: Replace this with your actual AccessKey Secret.
+> <DMSProductCode>: Replace this with the product code of DMS in your Apsara Stack environment.
+> <DMSProductEndpoint>: Replace this with the endpoint of DMS in your Apsara Stack environment.
 
 ```python
 #!/usr/bin/env python
@@ -865,9 +888,9 @@ print(str(response, encoding='utf-8'))
 
 This topic describes how to install and use DMS SDK for Python. Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, Python 3.x, and later versions. You can install Alibaba Cloud SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK for Python of a cloud service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use DMS SDK for Python, you must install the core library of Alibaba Cloud SDK for Python and DMS SDK for Python.
 
-To use the SDK for Python of a cloud service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use DMS SDK for Python, you must install the core library of Alibaba Cloud SDK for Python and DMS SDK for Python. If you use Python 2.x, run the following command to install the SDK core library:
+If you use Python 2.x, run the following command to install the SDK core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -895,9 +918,7 @@ pip3 install aliyun-python-sdk-dms-enterprise
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
-**Important**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
@@ -907,9 +928,7 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
 **Add OpenSSL support**
 
@@ -1014,9 +1033,18 @@ or SDK for Python For example, if you want to initiate a CommonRequest request t
 
 The following sample code provides an example on how to call the ListUsers operation of Data Management (DMS) to query a list of users.
 
-**Note**
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> Variables:
+> <yourRegionID>: Replace the variable with the region ID.
+> <yourAccessKeyID>: Replace the variable with the AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with the AccessKey secret.
+> <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token.
+> <yourResourceGroupID>: Replace the variable with the resource set ID.
+> <yourOrganizationID>: Replace the variable with the organization ID.
+> <yourInstanceID>: Replace the variable with the instance ID.
+> <ecs.aliyuncs.com>: Replace the variable with the endpoint of the required service.
 
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. Variables: <yourRegionID>: Replace the variable with the region ID. <yourAccessKeyID>: Replace the variable with the AccessKey ID. <yourAccessKeySecret>: Replace the variable with the AccessKey secret. <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token. <yourResourceGroupID>: Replace the variable with the resource set ID. <yourOrganizationID>: Replace the variable with the organization ID. <yourInstanceID>: Replace the variable with the instance ID. <ecs.aliyuncs.com>: Replace the variable with the endpoint of the required service. or SDK for Python
+or SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1083,9 +1111,15 @@ To use the SDK for Go, perform the following steps:
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
 
-**Note**
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> The following section describes the parameters:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <DMSProductCode>: Replace the parameter with the service code of DMS in Apsara Stack.
+> <DMSProductEndpoint>: Replace the parameter with the endpoint of DMS in Apsara Stack.
 
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <DMSProductCode>: Replace the parameter with the service code of DMS in Apsara Stack. <DMSProductEndpoint>: Replace the parameter with the endpoint of DMS in Apsara Stack. or SDK for Go
+or SDK for Go
 
 ```java
 package main import (
@@ -1126,9 +1160,9 @@ This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK support
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
-**Important**
+> **Important:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised. The following code provides an example on how to initialize a DMS client instance: or SDK for Go
+The following code provides an example on how to initialize a DMS client instance: or SDK for Go
 
 ```
 // Initialize a client instance. Client, err := dms-enterprise.NewClientWithAccessKey(
@@ -1143,9 +1177,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 secret.
 ```
 
-**Note**
-
-In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
 #### 5.2.3 Initiate a request
 
@@ -1158,9 +1190,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise
 
 2. Create a client instance that contains all API operations of DMS.
 
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
+> **Note:** In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
 ```
 Client,err := dms_enterprise.NewClientWithAccessKey( // Replace the parameter with t he service name.
@@ -1205,9 +1235,7 @@ response,err := Client.DescribeInstances(request) if err != nil {
 
 After you send a request, if an error occurs on the SDK side and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain the error message in a `ClientError` of DMS SDK for Go:
 
-**Important**
-
-If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1234,9 +1262,7 @@ response, err := Client.ListInstances(request) if clientError, ok := err.(*error
 
 The SDK wraps an error returned by the server into a `ServerError` and returns the error to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a ServerError and Response of DMS SDK for Go: or SDK for Go
 
-**Important**
-
-If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1270,9 +1296,18 @@ If you want to call the API operations of a cloud service that does not provide 
 
 The following sample code provides an example on how to call the ListUserTenants operation of Data Management (DMS) to query a list of tenants. The DMS API is in the Remote Procedure Call (RPC) style. or SDK for Go
 
-**Note**
+> **Note:** In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code.
+> Variables:
+> <yourRegionID>: Replace the variable with the region ID.
+> <yourAccessKeyID>: Replace the variable with the AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with the AccessKey secret.
+> <ecs.aliyuncs.com>: Replace the variable with the endpoint of the service.
+> <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token.
+> <yourResourceGroupID>: Replace the variable with the resource set ID.
+> <yourOrganizationID>: Replace the variable with the organization ID.
+> <yourInstanceID>: Replace the variable with the instance ID.
 
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. Variables: <yourRegionID>: Replace the variable with the region ID. <yourAccessKeyID>: Replace the variable with the AccessKey ID. <yourAccessKeySecret>: Replace the variable with the AccessKey secret. <ecs.aliyuncs.com>: Replace the variable with the endpoint of the service. <yourSecurityToken>: Replace the variable with the Security Token Service (STS) token. <yourResourceGroupID>: Replace the variable with the resource set ID. <yourOrganizationID>: Replace the variable with the organization ID. <yourInstanceID>: Replace the variable with the instance ID. or SDK for Go
+or SDK for Go
 
 ```java
 package main import (
@@ -1619,11 +1654,10 @@ Sample success responses `XML` format
 
 Disables an Apsara Stack tenant account. This operation is related to the disable user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management
 > User Management. The administrator of DMS Enterprise can call this operation to disable
+
 an Apsara Stack tenant account that is temporarily not used in DMS Enterprise. After an Apsara Stack tenant account is disabled, the permissions that are granted to the Apsara Stack tenant account are revoked. The data owner configurations and database administrator (DBA) configurations are also disabled.
 
-**Note**
-
-This operation only stops an Apsara Stack tenant account from logging on to your DMS Enterprise console. The Apsara Stack tenant account is not disabled After an Apsara Stack tenant account is disabled, you cannot use the account to log on to your DMS Enterprise console until the account is enabled again. However, the disabled account still exists in DMS Enterprise.
+> **Note:** This operation only stops an Apsara Stack tenant account from logging on to your DMS Enterprise console. The Apsara Stack tenant account is not disabled After an Apsara Stack tenant account is disabled, you cannot use the account to log on to your DMS Enterprise console until the account is enabled again. However, the disabled account still exists in DMS Enterprise.
 
 **Request parameters**
 
@@ -1671,9 +1705,7 @@ Sample success responses `XML` format
 
 Enables a disabled Apsara Stack tenant account. This operation is related to the enable user feature of Data Management (DMS) Enterprise. To use this feature, perform the following steps: Log on to the DMS Enterprise console, choose System Management > User Management. The administrator of DMS Enterprise can call this operation to enable an Apsara Stack tenant account that is disabled in DMS Enterprise. After an Apsara Stack tenant account is enabled, you can use the account to log on to the DMS Enterprise console and perform the required operations.
 
-**Note**
-
-This operation only removes the limit of a disabled Apsara Stack tenant account that cannot be used to log on to the DMS Enterprise console. Other operations that can be performed by the Apsara Stack tenant account are not affected.
+> **Note:** This operation only removes the limit of a disabled Apsara Stack tenant account that cannot be used to log on to the DMS Enterprise console. Other operations that can be performed by the Apsara Stack tenant account are not affected.
 
 **Request parameters**
 
@@ -1773,11 +1805,10 @@ Sample success responses `XML` format
 
 Deletes an Apsara Stack tenant account. This operation is related to the delete user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management
 > User Management. The administrator of DMS Enterprise can call this operation to delete an
+
 Apsara Stack tenant account that is no longer used in DMS Enterprise. After an Apsara Stack tenant account is deleted, the permissions that are granted to the Apsara Stack tenant account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
 
-**Note**
-
-This operation only removes the relationship between an Apsara Stack tenant account and your DMS Enterprise. The Apsara Stack tenant account is not deleted. After you delete an Apsara Stack tenant account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+> **Note:** This operation only removes the relationship between an Apsara Stack tenant account and your DMS Enterprise. The Apsara Stack tenant account is not deleted. After you delete an Apsara Stack tenant account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
 
 **Request parameters**
 
@@ -7885,9 +7916,7 @@ uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/\n\n/* origin table[data_modify] ex
 
 Runs a schema synchronization task. If the security rules of a database instance specify that a schema synchronization ticket must be approved before schema synchronization is performed, you must call the SubmitStructSyncOrderApproval operation to submit the ticket for approval.
 
-**Note**
-
-You can call the GetStructSyncJobDetail operation to query whether you must submit a schema synchronization ticket for approval.
+> **Note:** You can call the GetStructSyncJobDetail operation to query whether you must submit a schema synchronization ticket for approval.
 
 **Request parameters**
 

@@ -5,7 +5,7 @@ doc_version: "20251204"
 pdf_pages: 137
 source_pdf: "f955d88deb264853_Alibaba Cloud Apsara Stack V3.18.6 DataWorks Operations and Maintenance Guide 20251204.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataWorks%20Operations%20and%20Maintenance%20Guide%2020251204.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # DataWorks Operations and Maintenance Guide
@@ -194,9 +194,7 @@ The following is a typical Data Development scenario:
 3. Use DataWorks to synchronize the analysis results from MaxCompute back to the original
 databases. DataX data synchronization Data RDS collection SQL/MR/Shell Data ODPSCompu and storage analysis Design Oracle workflow SQL/MR/Shell Scheduled task ads ...
 
-**Note**
-
-Base is an alternative name for DataWorks that appears in some technical contexts.
+> **Note:** Base is an alternative name for DataWorks that appears in some technical contexts.
 
 **Scenario 2: Data synchronization**
 
@@ -250,14 +248,13 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter the username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, click **Product**
 **Operation**.
@@ -360,9 +357,7 @@ This section displays the number of successful instances, number of instances no
 
 This section displays the total number of slots, the number of used slots, the number of unavailable slots, and the number of idle slots for DataWorks.
 
-**Note**
-
-Slots are resources that can be used by DataWorks for instance scheduling.
+> **Note:** Slots are resources that can be used by DataWorks for instance scheduling.
 
 **Total Number of Finished Tasks**
 
@@ -632,12 +627,7 @@ Scale-out The physical hosts that you want to add to your DataWorks cluster are 
 Scale-in The server role of the template host is **BaseBizCdpGatewayWithNc#** or
 **BaseBizGatewayWithNc#**.
 
-**Note**
-
-You can go to the **DataWorks** page. Then, click **O&M** in the upper-right corner, and click the **Services** tab. In the left-side navigation pane, click **Data**
-**Warehouse**. On the page that appears, click the **Instances** tab. In the server role list,
-find the server role **BaseBizCdpGatewayWithNc#** or **BaseBizGatewayWithNc#**, and click the server role name to go to the Apsara Infrastructure Management console and view the hosts with the server role **BaseBizCdpGatewayWithNc#** or
-**BaseBizGatewayWithNc#**.
+> **Note:** You can go to the **DataWorks** page. Then, click **O&M** in the upper-right corner, and click the **Services** tab. In the left-side navigation pane, click **Data** **Warehouse**. On the page that appears, click the **Instances** tab. In the server role list, find the server role **BaseBizCdpGatewayWithNc#** or **BaseBizGatewayWithNc#**, and click the server role name to go to the Apsara Infrastructure Management console and view the hosts with the server role **BaseBizCdpGatewayWithNc#** or **BaseBizGatewayWithNc#**.
 
 **Scale out a DataWorks cluster**
 
@@ -1100,9 +1090,8 @@ column. In the Modify Checker dialog box, configure relevant parameters.
 **Type**: The value **System Default** indicates that parameters, such as **Execution Interval**
 and **Parameters**, use the default settings. The value **Custom** indicates that the parameters can be customized.
 
-**Note**
+> **Note:** Configure the **Execution Interval** parameter based on the **crontab** command.
 
-Configure the **Execution Interval** parameter based on the **crontab** command.
 5. Click **OK**. The scheduling item is modified.
 
 **View faulty hosts**
@@ -1237,9 +1226,7 @@ Your ABM account is granted the required permissions to perform O&M operations o
 
 You can view operation logs by service. For example, to view the operation logs of MaxCompute, you must go to the MaxCompute page first. The following describes how to view the operation logs of MaxCompute.
 
-**Note**
-
-This page displays only the O&M operations of a service. Note that the O&M operations of job services are not included.
+> **Note:** This page displays only the O&M operations of a service. Note that the O&M operations of job services are not included.
 
 **Procedure**
 
@@ -1273,9 +1260,9 @@ top to save the logs to your local device.
 
 DataWorks deep inspection covers and collects the monitoring alerts, resource usage, and key metrics of DataWorks. This allows you to check the health status of DataWorks in a visualized manner, prevent unexpected risks before major issues or faults occur, and ensure service stability.
 
-**Note**
+> **Note:** Apsara Big Data Manager does not revoke inspection reports. However, the risks generated in all inspection reports and the corresponding thresholds are collected.
 
-Apsara Big Data Manager does not revoke inspection reports. However, the risks generated in all inspection reports and the corresponding thresholds are collected. DataWorks deep inspection covers the following items:
+DataWorks deep inspection covers the following items:
 
 ### 3.2 Introduction to DataWorks service roles
 
@@ -1761,9 +1748,8 @@ Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, 
 **Management**.
 2. Go to the BasicCluster details page.
 
-**Note**
+> **Note:** You must go to the cluster details page for the corresponding service to obtain the logon address of the database to which you want to log in. In this example, the base service is used. You need to select the service based on your business scenario.
 
-You must go to the cluster details page for the corresponding service to obtain the logon address of the database to which you want to log in. In this example, the base service is used. You need to select the service based on your business scenario.
 3. On the **Resource Details** tab of the **Cluster Details** page, filter resources of the **db** type.
 View the value in the Resource Application Result column of the corresponding database and obtain the name of and connection information about the database. Then, log in the database based on the connection information. and commands
 
@@ -1832,10 +1818,7 @@ search for the service that you want to view.
 4. Find the service and click the
 icon next to the value in the **Service Registration** column to view the details of the registration variables of the service.
 
-**Note**
-
-If a large amount of data exists, you can click the data displayed in the **Service**
-**Registration** column to view the content in the Registration Variables message.
+> **Note:** If a large amount of data exists, you can click the data displayed in the **Service** **Registration** column to view the content in the Registration Variables message.
 
 **Change the domain name of a service**
 
@@ -1916,9 +1899,9 @@ and commands
 
 Enter the container that runs the service as an admin user, and then run the following commands to restart services.
 
-**Note**
+> **Note:** Only admin users can run the following commands to restart the service.
 
-Only admin users can run the following commands to restart the service. To restart the base-biz-cdp service, run the `/home/admin/cdp_server/bin/appctl.sh` `restart` command. To restart the base-biz-gateway service, run the
+To restart the base-biz-cdp service, run the `/home/admin/cdp_server/bin/appctl.sh` `restart` command. To restart the base-biz-gateway service, run the
 
 ```
  /home/admin/alisatasknode/target/alisatasknode/bin/serverctl
@@ -1980,9 +1963,8 @@ in the upper-left corner and choose **All Products >**
 3. On the **Dashboard** page, click **Running** in the **Instances** section. The **Cycle Instance**
 page appears. On this page, you can view all the running instances in the current workspace.
 
-**Note**
+> **Note:** You can stop only instances that are running.
 
-You can stop only instances that are running.
 4. Select the instances that you want to stop.
 5. Choose **More > Stop** in the lower-left corner.
 6. In the message that appears, click **Stop**.
@@ -2019,9 +2001,9 @@ To search for a string in a specified file and display only the first few lines 
 grep -C Number of lines ["String"] [File name]
 ```
 
-**Note**
+> **Note:** The -C parameter is an uppercase letter. Set its value to a number.
 
-The -C parameter is an uppercase letter. Set its value to a number. To search for a string in a specified file and display only the last few lines that contain the string, run the command in the following format:
+To search for a string in a specified file and display only the last few lines that contain the string, run the command in the following format:
 
 ```
 grep -A Number of lines ["String"] [File name]
@@ -2179,11 +2161,14 @@ The system is conducive to change. For example, make sure that the storage space
 **Procedure**
 
 1. Create a buffer cluster.
-perations Skip this step if an existing buffer cluster has idle servers and the physical machine, memory, CPU, and disk size of the idle servers are the same as those of current servers that run the base-biz-gateway service. Note: In the scale-out procedure, use actual parameter values and IP addresses instead of the parameter values in this example.
+perations Skip this step if an existing buffer cluster has idle servers and the physical machine, memory, CPU, and disk size of the idle servers are the same as those of current servers that run the base-biz-gateway service.
 
-**Note**
+> **Note:** In the scale-out procedure, use actual parameter values and IP addresses instead of the parameter values in this example.
 
-When you plan to scale out the cluster by using Deployment Planner, make sure that the name of the new buffer cluster is different from that of any existing buffer cluster. i. Copy and paste _tianji_imports to the /apsarapangu/disk3/u_disk/ directory of the OPS1 server and run the following command in the tianji_zhuque_sdk directory:
+
+> **Note:** When you plan to scale out the cluster by using Deployment Planner, make sure that the name of the new buffer cluster is different from that of any existing buffer cluster.
+
+i. Copy and paste _tianji_imports to the /apsarapangu/disk3/u_disk/ directory of the OPS1 server and run the following command in the tianji_zhuque_sdk directory:
 
 ```
 ./tianji_zhuque_exchanger.py import --skip_packages -o ${Desired state of Apsara In frastructure Management} -c tianji_dest.conf
@@ -2197,9 +2182,9 @@ cd /cloud/app/tianji-tools/PrivateCloudTool#/tianji_ops_tool/current ln -s /clou
 
 2. Scale in the buffer cluster by moving idle servers to the default cluster.
 
-**Note**
+> **Note:** You can use the default cluster to scale out the cluster that runs the base-biz-cdp and base-biz-gateway services.
 
-You can use the default cluster to scale out the cluster that runs the base-biz-cdp and base-biz-gateway services. i. On the **Cluster Details** page, click the **Desired State Configuration** tab. perations ii. Click the **machine_group.conf** file. Make sure that the value of the **scalable** parameter is **true** for the new buffer cluster. iii. Run the following commands on the OPS1 server to scale in the buffer cluster:
+i. On the **Cluster Details** page, click the **Desired State Configuration** tab. perations ii. Click the **machine_group.conf** file. Make sure that the value of the **scalable** parameter is **true** for the new buffer cluster. iii. Run the following commands on the OPS1 server to scale in the buffer cluster:
 
 ```
 cd /cloud/app/tianji-tools/PrivateCloudTool#/tianji_ops_tool/current ln -s /cloud/data/bootstrap_controller/BootstrapController#/bootstrap_controller/tianji_des conf clt2.conf (If a message indicating that a soft link already exists appears aft er you run this command, proceed with the next command.) ./tianji_ops_tool.py contract_nc -c [buffer cluster name] -l [Hostname of the serve r to be removed], [Hostname of the server to be removed],.... --config clt2.conf -s [SRG name]
@@ -2265,9 +2250,9 @@ icon in the **Resource Application Result** column to view the database connecti
 
 If a server that runs the base-biz-gateway service fails, you can redeploy the server after it is repaired. If you want to remove a healthy server from the cluster that runs the base-biz-gateway service, perform the steps described in this topic.
 
-**Note**
-
-Before you remove a healthy server, perform an on-site check to ensure that the following conditions are met: No business applications are running on the server. The hostname of the server is correct.
+> **Note:** Before you remove a healthy server, perform an on-site check to ensure that the following conditions are met:
+> No business applications are running on the server.
+> The hostname of the server is correct.
 
 **Procedure**
 
@@ -2359,9 +2344,8 @@ perations
 6. Enter `docker exec -it yourID bash` in the code editor and press Enter to go to the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with a container ID.
 
-You need to replace yourID with a container ID.
 7. Enter `su - admin` in the code editor and press Enter to switch to the admin account.
 8. Enter `/home/admin/base-biz-tenant/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizTenant service. If the **OK** and **NGINX start Done** messages appear, the BaseBizTenant service is restarted.
@@ -2395,9 +2379,8 @@ the right side of the page.
 6. Enter `docker exec -it yourID bash` in the code editor and press Enter to go to the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with a container ID.
 
-You need to replace yourID with a container ID.
 7. Enter the following statements in the code editor and press Enter to restart the Redis
 service:
 
@@ -2438,9 +2421,8 @@ perations
 5. Enter `docker exec -it yourID bash` in the code editor and press Enter to go to the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with a container ID.
 
-You need to replace yourID with a container ID.
 6. Enter `su - admin` in the code editor and press Enter to switch to the admin account.
 7. Enter `/home/admin/base-biz-dmc/bin/jbossctl restart` in the code editor and press Enter
 to restart the BaseBizDmc service. If the **OK** and **NGINX start Done** messages appear, the BaseBizDmc service is restarted.
@@ -2476,9 +2458,8 @@ the right side of the page.
 6. Enter `docker exec -it yourID bash` in the code editor and press Enter to go to the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with a container ID.
 
-You need to replace yourID with a container ID.
 7. Enter `su - admin` in the code editor and press Enter to switch to the admin account.
 8. Enter `/home/admin/base-biz-alisa/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizAlisa service. perations If the **OK** and **NGINX start Done** messages appear, the BaseBizAlisa service is restarted.
@@ -2514,9 +2495,8 @@ the right side of the page.
 6. Enter `docker exec -it yourID bash` in the code editor and press Enter to log on to the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with the container ID.
 
-You need to replace yourID with the container ID.
 7. Enter `su - admin` in the code editor and press Enter to switch to the admin account.
 8. Enter `/home/admin/base-biz-phoenix/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizPhoenix service. If the **OK** and **NGINX start Done** messages appear, the BaseBizPhoenix service is restarted.
@@ -2552,9 +2532,8 @@ the right side of the page.
 6. Enter `docker exec -it yourID bash` in the code editor and press Enter to enter the
 corresponding container.
 
-**Note**
+> **Note:** You need to replace yourID with a container ID.
 
-You need to replace yourID with a container ID.
 7. Enter `su - admin` in the code editor and press Enter to switch to the admin account.
 8. Enter `/home/admin/alisatasknode/target/alisatasknode/bin/serverctl restart` in the code
 editor and press Enter to restart the BaseBizCdpGateway service. perations
@@ -2616,9 +2595,7 @@ restart the service.
 8. After you restart the service, run the ps -ef|grep java command to check whether the
 process is started.
 
-**Note**
-
-The preceding steps can be performed to restart the BaseBizCdpGateway service that is deployed in a container.
+> **Note:** The preceding steps can be performed to restart the BaseBizCdpGateway service that is deployed in a container.
 
 **Restart the BaseBizCdpGateway service deployed on physical**
 
@@ -2687,9 +2664,7 @@ update alisa_group set max_slot = xxxx where group_display_name='region_test';
 3. Restart the base-biz-alisa service. For more information, see Restart the BaseBizAlisa
 service.
 
-**Note**
-
-Both base-biz-alisa services need to be restarted. After one base-biz-alisa service is restarted, you can restart the other.
+> **Note:** Both base-biz-alisa services need to be restarted. After one base-biz-alisa service is restarted, you can restart the other.
 
 **Specify the custom resource group as the default resource**
 
@@ -2707,9 +2682,8 @@ select resource_group_id,name,identifier,is_default,project_env from phoenix_res
 create table phoenix_app_resgroup_20200108_bak as select * from phoenix_app_resgroup; // Back up the table. update phoenix_app_resgroup set is_default=1 where is_default=0 and app_id=xxxx; update phoenix_app_resgroup set is_default=0 where app_id=xxxx and resource_group_id=1; select * from phoenix_app_resgroup where app_id=xxxx; // View data again after the ch ange.
 ```
 
-**Note**
-
-After the change, one workspace has only two data entries whose is_default value is 1. If the preceding result is not displayed, the change is invalid. You must check the operations you have performed. The resource group belongs to a tenant so that you must change the default resource group for all workspaces that are created by the tenant.
+> **Note:** After the change, one workspace has only two data entries whose is_default value is 1. If the preceding result is not displayed, the change is invalid. You must check the operations you have performed.
+> The resource group belongs to a tenant so that you must change the default resource group for all workspaces that are created by the tenant.
 
 **Change the resource group for multiple nodes at a time**
 
@@ -2761,13 +2735,15 @@ iii. In the left-side navigation pane, click **Custom Resource Group**. iv. Clic
 2. In the **Add Resource Group** wizard, perform the following steps:
 i. In the **Create Resource Group** step, set the **Resource Group Name** parameter.
 
-**Note**
+> **Note:** The name can contain letters, digits, and underscores (_), and must start with a letter.
 
-The name can contain letters, digits, and underscores (_), and must start with a letter. ii. Click **Next**. iii. In the **Add Server** step, set the parameters as required. iv. Click **Next**. v. Perform the steps that are described in the **Install Agent** step.
+ii. Click **Next**. iii. In the **Add Server** step, set the parameters as required. iv. Click **Next**. v. Perform the steps that are described in the **Install Agent** step.
 
-**Note**
+> **Note:** If an error occurs when you run the `install.sh` command or you need to run it again, run the rm –rf install.sh command in the same directory as the
+> `install.sh` command to delete the generated file. Then, run the `install.sh` command again.
+> The commands to run during the installation and initialization process differ for each user. Run relevant commands based on the instructions on the initialization interface.
 
-If an error occurs when you run the `install.sh` command or you need to run it again, run the rm –rf install.sh command in the same directory as the `install.sh` command to delete the generated file. Then, run the `install.sh` command again. The commands to run during the installation and initialization process differ for each user. Run relevant commands based on the instructions on the initialization interface. vi. Click **Next**. vii. In the **Test Connection** step, click **Refresh** and check the status of the ECS instance. viii. Click **Complete**. Resource groups that you have created on the Data Integration page can be used only in workspaces to which they belong. If you create a resource group in Workspace A, this resource group cannot be used in Workspace B. If you need to use a resource group in Workspace B, perform the preceding steps to create one in Workspace B.
+vi. Click **Next**. vii. In the **Test Connection** step, click **Refresh** and check the status of the ECS instance. viii. Click **Complete**. Resource groups that you have created on the Data Integration page can be used only in workspaces to which they belong. If you create a resource group in Workspace A, this resource group cannot be used in Workspace B. If you need to use a resource group in Workspace B, perform the preceding steps to create one in Workspace B.
 3. View the newly created resource group in the alisa database.
 
 ```
@@ -2807,9 +2783,8 @@ insert ignore into alisa_cluster(
 update alisa_node set cluster_name='sys_region_cdp_${regionId}' where node_name='ECS instance name';
 ```
 
-**Note**
+> **Note:** You must check the name of the ECS instance in the current region.
 
-You must check the name of the ECS instance in the current region.
 6. Mount the cluster that is created in this region to the resource group.
 
 ```
@@ -2826,10 +2801,7 @@ group, and save and commit the node. The preceding steps describe how to create 
 update alisa_group set cluster_name='4be2***' where group_name='4be2***';
 ```
 
-**Note**
-
-**group_name** and **cluster_name** indicate the name and cluster name of
-the custom resource group.
+> **Note:** **group_name** and **cluster_name** indicate the name and cluster name of the custom resource group.
 
 ## 6 Common issues and solutions
 
@@ -2851,9 +2823,14 @@ The issue may occur due to any one of the following four reasons: A gateway serv
 
 To resolve this issue, follow these steps: Check the status of a gateway server in the database. i. Log on to the database that hosts the base-biz-alisa service. In Apsara Stack V3, you can find the database endpoint from the resource list of the base cluster in Apsara Infrastructure Management. ii. Run the select * from alisa_node; command to check the values of the active_type and live fields. If the value of the live field is -1, the server is offline. If the value of the active_type field is -1, the server is overloaded.
 
-**Note**
+> **Note:** In either case, use SSH to connect to the gateway server and then check the server load and heartbeat.
+> Run the `tail -f/home/admin/alisatasknode/logs/heartbeat.log` command to check the heartbeat of the gateway server.
+> If the heartbeat log is updated every five seconds, the heartbeat is normal. Otherwise, check the configuration files for an error.
+> Run the top command to display the load of the gateway server.
+> The status of the server becomes -1 in the database as a result of the high load. In this case, check whether the CPU and memory are overloaded. You can find out the high-load processes in the output of the top command.
+> You can run the ps -ef|greppid command to view processes of the specified node and identify which process causes the high load. To terminate a process, run the `kill -9 [process ID]` command. After the load drops, check whether the status of the server resumes to 1.
 
-In either case, use SSH to connect to the gateway server and then check the server load and heartbeat. Run the `tail -f/home/admin/alisatasknode/logs/heartbeat.log` command to check the heartbeat of the gateway server. If the heartbeat log is updated every five seconds, the heartbeat is normal. Otherwise, check the configuration files for an error. Run the top command to display the load of the gateway server. The status of the server becomes -1 in the database as a result of the high load. In this case, check whether the CPU and memory are overloaded. You can find out the high-load processes in the output of the top command. You can run the ps -ef|greppid command to view processes of the specified node and identify which process causes the high load. To terminate a process, run the `kill -9 [process ID]` command. After the load drops, check whether the status of the server resumes to 1. Check whether the slots that handle concurrent jobs are fully occupied. Log on to the database that hosts the base-biz-alisa service and run the following statements:
+Check whether the slots that handle concurrent jobs are fully occupied. Log on to the database that hosts the base-biz-alisa service and run the following statements:
 
 ```
 select group_name,max_slot from alisa_group where group_name like '%default%'; select exec_target,sum(slot) from alisa_task where status=2 group by exec_target;
@@ -2867,29 +2844,27 @@ select task_id,gateway,slot,create_time from alisa_task where status=2 and creat
 
 Log on to the gateway server and run the ps -ef|grep task_id command.
 
-**Note**
+> **Note:** Replace task_id in this command with one of the node IDs that are returned by the preceding SELECT statement. You can obtain the node name from the command output.
 
-Replace task_id in this command with one of the node IDs that are returned by the preceding SELECT statement. You can obtain the node name from the command output. Then, you can troubleshoot the node. If required, run the `kill -9` command to terminate the node and release resources immediately. Otherwise, new nodes can start only after the existing nodes are completed. Check whether the disk on a gateway server is full. Log on to the gateway server and run the `df -h` command to check whether the disk attached to /home/admin is full. If the disk is full, run the `du-sh` command to identify the files in the /home/admin directory that consume a large amount of space. You can manually remove some large log files from the /home/admin/alisatasknode/taskinfo/ directory. Check the system time of servers in the base cluster against the time of the NTP server. i. Log on to the database that hosts the base-biz-alisa service and run the select now(); command to view the current time of the database. ii. Check the system time of servers in the base cluster against the time of the database. iii. Run the date command on the servers to check whether the system time of each server is synchronized with the time of the database. If the time difference is greater than 30 seconds, the base-biz-alisa service may fail. In this case, synchronize the system time of servers in the base cluster with the time of the NTP server.
+Then, you can troubleshoot the node. If required, run the `kill -9` command to terminate the node and release resources immediately. Otherwise, new nodes can start only after the existing nodes are completed. Check whether the disk on a gateway server is full. Log on to the gateway server and run the `df -h` command to check whether the disk attached to /home/admin is full. If the disk is full, run the `du-sh` command to identify the files in the /home/admin directory that consume a large amount of space. You can manually remove some large log files from the /home/admin/alisatasknode/taskinfo/ directory. Check the system time of servers in the base cluster against the time of the NTP server. i. Log on to the database that hosts the base-biz-alisa service and run the select now(); command to view the current time of the database. ii. Check the system time of servers in the base cluster against the time of the database. iii. Run the date command on the servers to check whether the system time of each server is synchronized with the time of the database. If the time difference is greater than 30 seconds, the base-biz-alisa service may fail. In this case, synchronize the system time of servers in the base cluster with the time of the NTP server.
 
-**Note**
+> **Note:** In Apsara Stack V3, you can find the servers of the base cluster in the service list in the Apsara Infrastructure Management console and follow the proceeding steps to resolve the issue.
 
-In Apsara Stack V3, you can find the servers of the base cluster in the service list in the Apsara Infrastructure Management console and follow the proceeding steps to resolve the issue. Rename the phoenix folder to change it to a .bak file and restart the base-biz-alisa service. If the issue persists after you perform the preceding steps, run the following command on the gateway server:
+Rename the phoenix folder to change it to a .bak file and restart the base-biz-alisa service. If the issue persists after you perform the preceding steps, run the following command on the gateway server:
 
 ```
 cd /home/admin/alisatasknode/taskinfo/prevDay/phoenix/
 ```
 
-**Note**
+> **Note:** Replace prevDay in this command with the date of the previous day in the format YYYYMMDD, for example, 20180306.
 
-Replace prevDay in this command with the date of the previous day in the format YYYYMMDD, for example, 20180306. In this directory, run the `mkdir test` command. If the error message "Cannot create directory too many links" appears, the issue occurs because the number of subdirectories in the directory has reached the maximum and you cannot create more subdirectories. To resolve this issue, follow these steps: i. Rename the /home/admin/alisatasknode/taskinfo/20180306/phoenix directory as /home/admin/alisatasknode/taskinfo/20180306/phoenix.bak. ii. Run the following command to restart the base-biz-alisa service:
+In this directory, run the `mkdir test` command. If the error message "Cannot create directory too many links" appears, the issue occurs because the number of subdirectories in the directory has reached the maximum and you cannot create more subdirectories. To resolve this issue, follow these steps: i. Rename the /home/admin/alisatasknode/taskinfo/20180306/phoenix directory as /home/admin/alisatasknode/taskinfo/20180306/phoenix.bak. ii. Run the following command to restart the base-biz-alisa service:
 
 ```python
 sudo su admin -c "/home/admin/alisatasknode/target/alisatasknode/bin/serverctlrestart"
 ```
 
-**Note**
-
-This is a rare problem which tends to occur when a gateway server uses the third extended (ext3) file system.
+> **Note:** This is a rare problem which tends to occur when a gateway server uses the third extended (ext3) file system.
 
 ### 6.2 An out-of-memory (OOM) error occurs when synchronizing data from an Oracle database
 
@@ -2946,9 +2921,7 @@ Run the following command in either of the phoenix containers. Note that you can
 curl -v -H "Accept:application/json"-H "Content-type: application/json"-X POST -d'{"o pCode":11,"opSEQ":12345,"opUser":"067605","name":"SYSTEM","bizdate":"2017-04-2300:00: 00","gmtdate":"2017-04-2400:00:00"}' http://localhost:7001/engine/2.0/flow/create_unified_daily
 ```
 
-**Note**
-
-bizdate refers to the previous day, and gmtdate refers to the current day. Modify the command if needed before running it.
+> **Note:** bizdate refers to the previous day, and gmtdate refers to the current day. Modify the command if needed before running it.
 
 ### 6.4 What do I do if the number and usage of tables are not displayed on the Data Map page?
 
@@ -2970,9 +2943,8 @@ resource of the accesskey type.
 Result column to obtain the username and password.
 4. Use the obtained username and password to log in to the base_meta project.
 
-**Note**
+> **Note:** To log in to the base_meta project, enter the domain name of the base_meta project in the address bar of your browser. By default, the domain name is in the following format: ide.Apsara Stack second-level domain.
 
-To log in to the base_meta project, enter the domain name of the base_meta project in the address bar of your browser. By default, the domain name is in the following format: ide.Apsara Stack second-level domain.
 5. Go to the Operation Center page of the base_meta project.
 If a failed task exists, rerun the task. After the task is rerun, check whether data is displayed on the Data Map page as expected. If the task fails to be rerun, contact Apsara Stack technical support for troubleshooting.
 

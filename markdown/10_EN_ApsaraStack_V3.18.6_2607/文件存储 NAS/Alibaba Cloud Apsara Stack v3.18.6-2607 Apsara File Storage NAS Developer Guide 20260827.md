@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 129
 source_pdf: "7c4a3ca49af0e46d_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Developer Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Developer Guide 20260827
@@ -113,17 +113,17 @@ browser and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log on**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Re-enter the username and password as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
@@ -158,9 +158,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. Access credentials can be assigned to request senders by RAM or STS: RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. STS: assigns an access credential that consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the headers for access control. Otherwise, an error that indicates insufficient permissions may occur. The following table describes the headers.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator to ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator to ensure security.
 
 | Header | Description |
 |---|---|
@@ -177,9 +175,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -210,9 +206,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer ove
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain an access credential assigned by STS.
 
-**Note**
-
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> from the final code.
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> from the final code.
 
 ```java
 public static void main(String[] args) {
@@ -263,9 +257,7 @@ in the preceding step.
 3. Use the access credential assigned by STS to call an API operation of a cloud service. The
 following sample code shows how to call the `DescribeRegions` operation of File Storage NAS (NAS).
 
-**Note**
-
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> from the final code.
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> from the final code.
 
 ```xml
 public static void main(String[] args) {
@@ -361,9 +353,9 @@ The following table describes the additional response parameters that are return
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain File Storage NAS SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Apsara Stack SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java or Python. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java or Python. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. The following table provides links to the references and GitHub source code of NAS SDKs for different programming languages.
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. The following table provides links to the references and GitHub source code of NAS SDKs for different programming languages.
 
 | Programming language | GitHub source code |
 |---|---|
@@ -388,9 +380,7 @@ An authorized account and an AccessKey pair are obtained. The AccessKey pair con
 
 If you use Apache Maven to manage Java projects, import JAR files to the pom.xml file of the projects.
 
-**Note**
-
-To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2.
+> **Note:** To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2.
 
 **Use Apsara Stack SDK for Java**
 
@@ -399,9 +389,7 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exceptions.
 
-**Note**
-
-In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
 ```java
 import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsRequest; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsResponse; public class Main {
@@ -494,9 +482,7 @@ This topic describes how to install NAS SDK for Java. Apsara Stack SDK for Java 
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
-**Note**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Note:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -507,17 +493,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 or SDK for Java
 
-**Note**
-
-In the preceding sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code.
+> **Note:** In the preceding sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code.
 
 #### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
-**Note**
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. or SDK for Java
+or SDK for Java
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -640,9 +630,16 @@ or SDK for Java For example, if you want to call the CreateFileSystem operation,
 
 This example shows how to call the DescribeFileSystems operation to query file systems.
 
-**Note**
-
-In the following sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code. Variables: <yourRegionID>: Replace the variable with your region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <yourSecurityToken>: Replace the variable with your security token. <yourResourceGroupID>: Replace the variable with your resource set ID. <yourOrganizationID>: Replace the variable with your organization ID. <yourInstanceID>: Replace the variable with your instance ID. <http://192.168.XX.XX:33XX>: Replace the variable with your IP address and port of the proxy.
+> **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code.
+> Variables:
+> <yourRegionID>: Replace the variable with your region ID.
+> <yourAccessKeyID>: Replace the variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the variable with your AccessKey secret.
+> <yourSecurityToken>: Replace the variable with your security token.
+> <yourResourceGroupID>: Replace the variable with your resource set ID.
+> <yourOrganizationID>: Replace the variable with your organization ID.
+> <yourInstanceID>: Replace the variable with your instance ID.
+> <http://192.168.XX.XX:33XX>: Replace the variable with your IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; class DescribeFileSystems {
@@ -793,9 +790,9 @@ This topic describes how to install Alibaba Cloud SDK for Python and File Storag
 1. Install Alibaba Cloud SDK for Python.
 Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
-**Note**
+> **Note:** To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use NAS SDK for Python, you must install the SDK core library for Python and NAS SDK for Python.
 
-To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use NAS SDK for Python, you must install the SDK core library for Python and NAS SDK for Python. If you use Python 2.x, run the following command to install the SDK core library:
+If you use Python 2.x, run the following command to install the SDK core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -824,9 +821,7 @@ pip3 install aliyun-python-sdk-nas
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
-**Important**
-
-Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+> **Important:** Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 clt = client.AcsClient(access_key, access_secret, region_id)
@@ -836,9 +831,7 @@ clt = client.AcsClient(access_key, access_secret, region_id)
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
 
-**Note**
-
-The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
+> **Note:** The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
 
 **Add OpenSSL dependency**
 
@@ -949,9 +942,17 @@ For example, if you want to call the CreateFileSystem operation, you must use `r
 
 This example shows how to call the DescribeFileSystems operation to query file systems. or SDK for Python
 
-**Note**
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code.
+> You need to configure the following variables:
+> <yourRegionID>: Replace the parameter with the region ID.
+> <yourAccessKeyID>: Replace the parameter with your AccessKey ID.
+> <yourAccessKeySecret>: Replace the parameter with your AccessKey secret.
+> <yourSecurityToken>: Replace the parameter with your security token.
+> <yourResourceGroupID>: Replace the parameter with the resource set ID.
+> <yourOrganizationID>: Replace the parameter with the organization ID.
+> <yourInstanceID>: Replace the parameter with the instance ID.
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. You need to configure the following variables: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. or SDK for Python
+or SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest

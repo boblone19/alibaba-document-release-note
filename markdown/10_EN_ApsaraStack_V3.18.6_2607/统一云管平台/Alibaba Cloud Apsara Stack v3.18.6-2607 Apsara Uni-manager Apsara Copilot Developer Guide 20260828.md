@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 57
 source_pdf: "caee149f91f6b63c_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Developer Guide 20260828.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Apsara%20Copilot%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Developer Guide 20260828
@@ -79,9 +79,7 @@ We recommend that you use the AccessKey pair of a personal account to call the A
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -91,9 +89,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 choose **User Information** from the shortcut menu.
 3. In the **Apsara Stack AccessKey Pair** section, obtain the AccessKey pair.
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -298,9 +294,7 @@ Before you use an SDK for Java to call the API of a cloud service over the point
 We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose **Products** > **Application Services** > **OpenAPI Explorer** in the top navigation bar. On the OpenAPI Explorer page, choose **API Integration** > **SDK Sample**
 **Code** in the top navigation bar.
 
-**Important**
-
-We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
+> **Important:** We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
 
 **Examples**
 
@@ -449,9 +443,7 @@ For Apsara Stack, use CommonRequest to make API calls. In the Apsara Uni-manager
 **Developer Portal**. Then, choose **API Integration** > **API Debugging** to view the
 recommended SDK versions and sample code.
 
-**Important**
-
-Do not download SDKs directly from the SDK Center for Apsara Stack environments. SDKs for the Alibaba Cloud public cloud might not support Apsara Stack APIs and can cause compatibility issues. Use them with caution.
+> **Important:** Do not download SDKs directly from the SDK Center for Apsara Stack environments. SDKs for the Alibaba Cloud public cloud might not support Apsara Stack APIs and can cause compatibility issues. Use them with caution.
 
 **Background information**
 
@@ -600,9 +592,7 @@ This topic describes how to use the POP Python software development kit (SDK) to
 
 In Apsara Stack, use CommonRequest to make API calls. You can find the recommended SDK version and sample code in the Apsara Uni-manager Management Console. To do this, navigate to **Products** > **Development Tools** > **API And Tools** > **Developer Portal** and select **API Integration** > **API Debugging**.
 
-**Important**
-
-Do not download SDKs directly from the SDK Center for Apsara Stack scenarios. The SDKs for the public cloud may not support Apsara Stack APIs or have compatibility issues. Use them with caution.
+> **Important:** Do not download SDKs directly from the SDK Center for Apsara Stack scenarios. The SDKs for the public cloud may not support Apsara Stack APIs or have compatibility issues. Use them with caution.
 
 **Background information**
 
@@ -698,7 +688,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS. client.do_action_with_exception(request)
 ```
 
-**Ignore certificates**
+> **Ignore certificates**
 
 **Important**
 
@@ -1183,11 +1173,11 @@ POST /api/open/api/GetChatHistory HTTP/1.1
 |---|---|---|---|
 |   |   | "2026-01- 22T09:04:45Z"},"0 2fab45f-5770- 45b9-85e2- dc8e4defa06a": {"role":"user","thin kingEnabled":0,"rat ing":0,"childrenIds" :["ecd0f609-9fd5- 49d7-a3bc- dddd89658100"]," msgId":"02fab45f- 5770-45b9-85e2- dc8e4defa06a","ty pe":"content","cont ent":"What can the AI assistant do for me?","chatSource": |   |
 
-"default","actionNo
+> "default","actionNo deType":"default"," timestamp":"2026- 01- 22T09:04:29Z"}}
 
 **Examples**
 
-deType":"default"," timestamp":"2026- Sample requests 22T09:04:29Z"}}
+Sample requests
 
 ```
 POST /api/open/api/GetChatHistory HTTP/1.1 Content-Type: application/json

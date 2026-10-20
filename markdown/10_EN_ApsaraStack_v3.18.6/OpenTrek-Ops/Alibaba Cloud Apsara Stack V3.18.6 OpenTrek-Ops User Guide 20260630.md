@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 39
 source_pdf: "a5de1b840e361908_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek-Ops  User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek-Ops/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek-Ops%20%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # OpenTrek-Ops User Guide 20260630
@@ -80,7 +80,15 @@ Logging in and logging out are basic operations for using the OpenTrek-Ops platf
 1. Open a browser.
 2. In the address bar, enter the endpoint of the OpenTrek-Ops platform and press Enter.
 3. Enter the correct username and password.
-Obtain the username and password for logging in to the OpenTrek-Ops platform from the administrator. If you enter an incorrect password multiple times in a row, the system enables the verification code login feature. If the number of consecutive incorrect attempts reaches the upper limit, the system locks the account. Contact the administrator to unlock the account. When you log in to the OpenTrek-Ops platform for the first time, the system may require you to change the initial password. Follow the prompts to change the password. To improve security, the password must meet the following requirements: The password must contain uppercase and lowercase English letters. The password must contain Arabic numerals (0 to 9). The password must contain special characters. The password must be 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password for logging in to the OpenTrek-Ops platform from the administrator.
+> If you enter an incorrect password multiple times in a row, the system enables the verification code login feature. If the number of consecutive incorrect attempts reaches the upper limit, the system locks the account. Contact the administrator to unlock the account.
+> When you log in to the OpenTrek-Ops platform for the first time, the system may require you to change the initial password. Follow the prompts to change the password. To improve security, the password must meet the following requirements:
+> The password must contain uppercase and lowercase English letters.
+> The password must contain Arabic numerals (0 to 9).
+> The password must contain special characters.
+> The password must be 10 to 20 characters in length.
+
 4. Click **Log In**.
 
 **Log out of the system**
@@ -225,14 +233,13 @@ of the team card.
 
 **Delete a team**
 
-Before you delete a team, make sure that you clean up all agents under the team.
+> **Note:** Before you delete a team, make sure that you clean up all agents under the team.
+
 1. On the **Agent Team** page, select the target team and click **Enter** in the lower-right corner
 of the team card.
 2. Click **Delete** in the upper-right corner of the page, and then click **Confirm Delete**.
 
-**Warning**
-
-The delete operation is irreversible. Proceed with caution.
+> **Warning:** The delete operation is irreversible. Proceed with caution.
 
 **Batch operations**
 
@@ -316,7 +323,10 @@ The skill management feature applies to the following scenarios: Manage and publ
 2. In the left-side navigation pane, choose **Asses**>**Skills**.
 On the **Skills** page, you can obtain the following information: View the total number of skills, the number of enabled skills, the number of disabled skills, and the total number of installations. Use the search box to search for a target skill by skill name. Use the category filter to filter skills by All, Efficiency Tools, Data Analysis, Content Creation, Development Tools, or Other. Click **Create Skill** to create a new skill. Center View skill cards. which display information such as the skill icon, name, description, version number, update time, and enablement status.
 3. Create a skill.
-The system provides the following built-in skills: Word/DOCX, PDF, ADL_memory, Excel/XLSX, agent-browser, Skill Builder/Creator, and PowerPoint/PPTX. It also supports custom skill creation. i. On the **Skills** page, click **Create Skill**. ii. Fill in the following information in the creation form:
+
+> **Note:** The system provides the following built-in skills: Word/DOCX, PDF, ADL_memory, Excel/XLSX, agent-browser, Skill Builder/Creator, and PowerPoint/PPTX. It also supports custom skill creation.
+
+i. On the **Skills** page, click **Create Skill**. ii. Fill in the following information in the creation form:
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -327,9 +337,16 @@ The system provides the following built-in skills: Word/DOCX, PDF, ADL_memory, E
 
 iii. After the system uploads the skill package, click **Create Skill**.
 4. Enable or disable a skill.
-If you disable a skill, agents that have installed it cannot call it anymore. i. Find the target skill in the skill list and click the card to go to the skill details page. ii. Click **Enable** or **Disable** in the upper-right corner of the details page. iii. The system updates the status after you confirm the operation.
+
+> **Note:** If you disable a skill, agents that have installed it cannot call it anymore.
+
+i. Find the target skill in the skill list and click the card to go to the skill details page. ii. Click **Enable** or **Disable** in the upper-right corner of the details page. iii. The system updates the status after you confirm the operation.
 5. Delete a skill.
-Center You cannot delete system built-in skills. Find the target skill in the skill list and click the card to go to the skill details page. Click
+Center
+
+> **Note:** You cannot delete system built-in skills.
+
+Find the target skill in the skill list and click the card to go to the skill details page. Click
 **Delete**, and then click **Confirm Delete** in the dialog box.
 Or click the **Delete** icon in the upper-right corner of the skill card, and then click **Confirm**
 **Delete** in the dialog box.
@@ -393,15 +410,16 @@ In the server list, click a server name to view the basic info, connection confi
 5. Disable or enable an MCP server.
 For a server in the **Enabled** status, click the disable icon in the **Actions** column of the target server. For a server in the **Disabled** status, click the enable icon in the **Actions** column of the target server.
 6. Edit an MCP server.
-You cannot edit servers imported from a gateway. Click **Edit** in the **Actions** column of the target server. In the **Edit MCP Server** dialog box, modify the **Description**, **Server Address**, **Headers**, **Environment Variables**, and
+
+> **Note:** You cannot edit servers imported from a gateway.
+
+Click **Edit** in the **Actions** column of the target server. In the **Edit MCP Server** dialog box, modify the **Description**, **Server Address**, **Headers**, **Environment Variables**, and
 **Timeout**.
 Center
 7. Delete an MCP server.
 Click **Delete** in the **Actions** column of the target server. In the **Confirm Delete** dialog box, click **Delete**.
 
-**Important**
-
-This operation is irreversible. Proceed with caution.
+> **Important:** This operation is irreversible. Proceed with caution.
 
 ### 5.3 Agent Infra
 
@@ -426,7 +444,11 @@ Add a model Center a. On the **Model Services** tab, click **Add Model** and con
 | API Key | Yes | Contact Alibaba Cloud technical support to obtain the API key. |
 | API Endpoint | Yes | Contact Alibaba Cloud technical support to obtain the API endpoint. |
 
-b. Click **Confirm**. Edit a model Before you modify the infrastructure configuration, make sure that the modifications do not affect running agent tasks. a. Click the edit icon in the **Actions** column of the target model. b. Modify the related parameters and click **Save Changes**. Remove a model a. Click the remove icon in the **Actions** column of the target model. b. In the dialog box that appears, click **Delete**.
+b. Click **Confirm**. Edit a model
+
+> **Note:** Before you modify the infrastructure configuration, make sure that the modifications do not affect running agent tasks.
+
+a. Click the edit icon in the **Actions** column of the target model. b. Modify the related parameters and click **Save Changes**. Remove a model a. Click the remove icon in the **Actions** column of the target model. b. In the dialog box that appears, click **Delete**.
 4. Kubernetes clusters
 Import a cluster Center a. On the **K8S Cluster** tab, click **Import Cluster** and configure the following parameters.
 
@@ -451,10 +473,10 @@ Import a gateway a. On the **AI Gateway** tab, click **Import Gateway** and conf
 | AI Gateway Name | Yes | Select the gateway instance to import. |
 | API Key | Yes | Contact Alibaba Cloud technical support to obtain the API key. |
 
-Center b. Click **Import**. If you import an ASCM AI gateway, the system automatically imports the **MCP**
-**configuration** and **AI model configuration** associated with the AI gateway after
-you click **Import**. You can view the configurations on the **MCP** page and the **Agent**
-**Infra**>**Model Services** page.
+Center b. Click **Import**.
+
+> **Note:** If you import an ASCM AI gateway, the system automatically imports the **MCP** **configuration** and **AI model configuration** associated with the AI gateway after you click **Import**. You can view the configurations on the **MCP** page and the **Agent** **Infra**>**Model Services** page.
+
 View details Click the name of the target gateway to view details such as the **Basic Information**,
 **Access Points**, **model API**, and **MCP** of the gateway.
 Edit a gateway Click the edit icon in the **Actions** column of the target gateway. In the **Edit Higress**
@@ -472,9 +494,7 @@ m Settings
 
 This article describes the functions and configuration methods of the OpenTrek-Ops platform system settings module, including tenant management, cloud platform management, channel management and system configuration four functions.
 
-**Important**
-
-Please use system administrator login for system setup.
+> **Important:** Please use system administrator login for system setup.
 
 ### 6.1 Organization management
 
@@ -517,13 +537,15 @@ iii. Click **Confirm Create** to complete the creation.
 i. Find the target tenant in the tenant list. ii. Click the edit icon in the **Actions** column to modify configuration information such as the tenant name and description. iii. Click **Save changes** to update the tenant. m Settings
 5. Delete a tenant.
 
-**Warning**
+> **Warning:** Deleting a tenant is a high-risk operation. Proceed with caution. The system cannot recover any data under the tenant after deletion.
 
-Deleting a tenant is a high-risk operation. Proceed with caution. The system cannot recover any data under the tenant after deletion. i. Find the target tenant in the tenant list. ii. Click the delete icon in the **Actions** column. iii. Click **Confirm Delete** in the confirmation dialog box. The system removes the tenant from the list after a successful deletion.
+i. Find the target tenant in the tenant list. ii. Click the delete icon in the **Actions** column. iii. Click **Confirm Delete** in the confirmation dialog box. The system removes the tenant from the list after a successful deletion.
 
 **Next steps**
 
-Log in as the created tenant administrator to perform initial tenant configuration. This includes registering model services and importing Kubernetes clusters. For more information, see Agent Infra. When you log in for the first time, the system prompts you to initialize the password. Follow the prompts to set a new password and store it securely.
+Log in as the created tenant administrator to perform initial tenant configuration. This includes registering model services and importing Kubernetes clusters. For more information, see Agent Infra.
+
+> **Note:** When you log in for the first time, the system prompts you to initialize the password. Follow the prompts to set a new password and store it securely.
 
 ### 6.2 Platform management
 
@@ -559,9 +581,8 @@ Click the edit icon in the **Actions** column of the target cloud platform. You 
 6. Delete a cloud platform configuration.
 Click the delete icon in the **Actions** column of the target cloud platform. In the dialog box that appears, click **Confirm Delete**.
 
-**Warning**
+> **Warning:** The delete operation is irreversible. The system permanently deletes all configurations under the cloud platform. Proceed with caution.
 
-The delete operation is irreversible. The system permanently deletes all configurations under the cloud platform. Proceed with caution.
 7. Disable or enable a cloud platform.
 m Settings Click the disable or enable icon in the **Actions** column of the target cloud platform to complete the operation.
 
@@ -581,7 +602,9 @@ Click the switch in the upper-right corner of the target channel card to enable 
 3. On the **Platform Management** page, click **System Configuration**. You can modify the
 preset configuration item for the skill package size.
 4. Click **Edit** in the **Actions** column to modify the configuration value.
-The modification takes effect immediately for all tenants. Adjust the value with caution to prevent an oversized skill from affecting the loading performance.
+
+> **Note:** The modification takes effect immediately for all tenants. Adjust the value with caution to prevent an oversized skill from affecting the loading performance.
+
 5. Click **Save**.
 enant management
 
@@ -592,7 +615,11 @@ This topic describes how to switch and manage tenants. You have logged in to the
 2. Click the current tenant at the bottom of the left-side menu to switch tenants. The system
 isolates resources for different tenants to ensure independence.
 3. Configure the tenant.
-In the tenant switch dialog, click the settings button for the target tenant. Enter the designated administrator in the input box and authorize the user as the Ops administrators of the current tenant. Ensure that the tenant administrator added the organization of the selected user to the platform. Click **Confirm Authorization**, and then click **Back** in the upper-right corner of the page. stant
+In the tenant switch dialog, click the settings button for the target tenant. Enter the designated administrator in the input box and authorize the user as the Ops administrators of the current tenant.
+
+> **Note:** Ensure that the tenant administrator added the organization of the selected user to the platform.
+
+Click **Confirm Authorization**, and then click **Back** in the upper-right corner of the page. stant
 
 ## 8 AI Assistant
 

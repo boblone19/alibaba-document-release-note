@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 12
 source_pdf: "ccbfcd64d1a24b60_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AI Studio Product Introduction 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/AI%20Studio/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20AI%20Studio%20Product%20Introduction%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # OpenTrek AI Studio Product Introduction 20260630

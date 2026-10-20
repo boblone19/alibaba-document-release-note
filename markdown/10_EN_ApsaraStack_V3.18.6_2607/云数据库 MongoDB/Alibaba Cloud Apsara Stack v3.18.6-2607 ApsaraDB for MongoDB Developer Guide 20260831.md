@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 224
 source_pdf: "0e0b8bb95b558e1e_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20MongoDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Developer Guide 20260831
@@ -168,11 +168,19 @@ By default, Apsara Stack Enterprise Edition V3.16.0 and later versions use the p
 **Procedure**
 
 1. Obtain an AccessKey pair.
-For more information, see Obtain an AccessKey pair. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
+For more information, see Obtain an AccessKey pair.
+
+> **Note:** We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
+
 2. Obtain a region ID.
 For more information, see Obtain common header parameters.
 3. Obtain an organization ID and a resource set ID.
-Obtain an organization ID by calling the GetOrganizationList operation. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. Obtain a resource set ID by calling the ListResourceGroup operation. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used. If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set ID, you must also specify an organization ID.
+Obtain an organization ID by calling the GetOrganizationList operation. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. Obtain a resource set ID by calling the ListResourceGroup operation. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide.
+
+> **Note:** When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set.
+> If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used.
+> If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set ID, you must also specify an organization ID.
+
 4. View the developer guide of the cloud service that you want to use to learn how to make
 the API call. Obtain the developer guide of the cloud service that you want to use. This way, you can learn the features of API operations and the calling of the API operations. For more information, see Apsara Stack documentation.
 5. Obtain the endpoint of ApsaraDB for MongoDB.
@@ -211,9 +219,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An access credential that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -229,7 +235,8 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -330,7 +337,15 @@ To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID. or SDK for Java
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables.
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
+
+or SDK for Java
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dds.model.v20151201.*; public class DescribeAccounts {
@@ -373,17 +388,30 @@ This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. A
 
 #### 3.2.2 Configure authentication credentials
 
-When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
+
+> **Note:** Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
 ```xml
 DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", " <yourAccessKeyID>", "<yourAccessKeySecret>")
 ```
 
-You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> **Note:** You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
 #### 3.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java
+
+> **Note:** You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code.
+> The following list describes the variables:
+> <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds.
+> <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds.
+> <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER.
+> <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER.
+> <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -525,7 +553,14 @@ To use ApsaraDB for MongoDB SDK for Python, perform the following steps:
 an AccessKey ID, and an AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
-or SDK for Python Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
+or SDK for Python
+
+> **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
+> The following section describes the variables.
+> <yourRegionID>: Replace this variable with your region ID.
+> <yourAccessKeyID>: Replace this variable with your AccessKey ID.
+> <yourAccessKeySecret>: Replace this variable with your AccessKey secret.
+> <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
 
 ```python
 #!/usr/bin/env python
@@ -579,19 +614,24 @@ pip3 install aliyun-python-sdk-dds
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Python supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
 
-**Important**
-
-Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+> **Important:** Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
 ```
 clt = client.AcsClient(<yourRegionID>, <yourAccessKeyID>, <yourAccessKeySecret>)
 ```
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
 #### 4.2.3 Set HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. or SDK for Python
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
+
+> **Note:** The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+
+or SDK for Python
 
 **Add OpenSSL support**
 
@@ -632,14 +672,21 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 ```
 
 2. Create an ACS client.
-The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. or SDK for Python
+
+> **Note:** The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+
+or SDK for Python
 
 ```
 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials)
 ```
 
 3. Create a request object.
-<yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+
+> **Note:** <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
 request = DescribeAccountsRequest() request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>")
@@ -702,7 +749,14 @@ The following code provides an example on how to use ApsaraDB for MongoDB SDK fo
 1. Initialize a client instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. or SDK for Go
+
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+
+or SDK for Go
 
 ```java
 package main import (
@@ -745,15 +799,18 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Go supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
 
-**Important**
+> **Important:** Do not disclose any code that may contain your AccessKey pair. For example, your AccessKey pair may become disclosed if you commit your code to a public GitHub project, which could compromise your Alibaba Cloud account.
 
-Do not disclose any code that may contain your AccessKey pair. For example, your AccessKey pair may become disclosed if you commit your code to a public GitHub project, which could compromise your Alibaba Cloud account. or SDK for Go
+or SDK for Go
 
 ```
 client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> **Note:** In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
 #### 5.2.3 Initiate a request
 
@@ -768,14 +825,23 @@ package main import (
 
 `)`
 2. Create a service client that contains all API operations of the service.
-You must use actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+
+> **Note:** You must use actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
 client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<yo urAccessKeySecret>")
 ```
 
 3. Use the `xxx.CreateXXXRequest` method to create a request.
-The naming convention for this method is ${service}.Create${apiName}Request . The **${service}** part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The **${apiName}** part specifies an API name. Example: DescribeRegions. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. or SDK for Go
+The naming convention for this method is ${service}.Create${apiName}Request . The **${service}** part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The **${apiName}** part specifies an API name. Example: DescribeRegions.
+
+> **Note:** <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+
+or SDK for Go
 
 ```
 request := dds.CreateDescribeAccountsRequest()
@@ -806,9 +872,7 @@ response, err := client.DescribeAccounts(request) if err != nil {
 
 If an error occurs in the SDK when you send a request and cannot be automatically handled, the SDK returns a `ClientError` . The following code provides an example on how to determine and obtain the error message in the `ClientError` :
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -820,7 +884,9 @@ dicates ApsaraDB for MongoDB.
     "fmt"
 ```
 
-`)` or SDK for Go
+> `)`
+
+or SDK for Go
 
 ```
 response, err := Client.DescribeAccounts(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -836,9 +902,7 @@ response, err := Client.DescribeAccounts(request) if clientError, ok := err.(*er
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code provides an example on how to determine and obtain the error message in ServerError and Response:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -850,7 +914,7 @@ dicates ApsaraDB for MongoDB.
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := Client.DescribeAccounts(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1058,9 +1122,10 @@ u must add the x-acs-security-token field to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: e API calls Java
+e API calls Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -1208,9 +1273,9 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Configuration methods**
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: e API calls
+e API calls
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -1334,9 +1399,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1995,8 +2059,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 8.2.1 MigrateToOtherZone
 
-Call the MigrateToOtherZone operation to migrate a MongoDB instance to another availability zone. This operation applies to replica set instances. Sharded cluster instances do not support this operation. If the instance has a public endpoint, you must first call the
-**ReleasePublicNetworkAddress** operation to release the public endpoint.
+Call the MigrateToOtherZone operation to migrate a MongoDB instance to another availability zone. This operation applies to replica set instances. Sharded cluster instances do not support this operation.
+
+> **Note:** If the instance has a public endpoint, you must first call the **ReleasePublicNetworkAddress** operation to release the public endpoint.
 
 **Request parameters**
 
@@ -2170,8 +2235,9 @@ Sample success responses `XML` format
 
 #### 8.2.3 MigrateAvailableZone
 
-You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call
-**ReleasePublicNetworkAddress** to release the public endpoint.
+You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances.
+
+> **Note:** If you have applied for a public endpoint of the instance, you must first call **ReleasePublicNetworkAddress** to release the public endpoint.
 
 **Request parameters**
 
@@ -4045,7 +4111,9 @@ Sample success responses `XML` format
 
 #### 8.6.4 SwitchDBInstanceHA
 
-You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes.
+You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
+
+> **Note:** On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes.
 
 **Request parameters**
 
@@ -4089,7 +4157,11 @@ Sample success responses `XML` format
 
 #### 8.6.5 UpgradeDBInstanceEngineVersion
 
-You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The available database versions are subject to the storage engine used by the instance. You can call the **DescribeAvailableEngineVersion** operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
+
+> **Note:** The available database versions are subject to the storage engine used by the instance. You can call the **DescribeAvailableEngineVersion** operation to view the available database versions.
+> The database version cannot be downgraded after it is upgraded.
+> The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
 
 **Request parameters**
 
@@ -4129,7 +4201,9 @@ Sample success responses `XML` format
 
 #### 8.6.6 UpgradeDBInstanceKernelVersion
 
-You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The instance will be restarted once during the upgrade. Perform this operation during off-peak hours.
+You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
+
+> **Note:** The instance will be restarted once during the upgrade. Perform this operation during off-peak hours.
 
 **Request parameters**
 
@@ -4310,7 +4384,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 8.7.2 ResetAccountPassword
 
-You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. This operation can reset only the password of the root account of an instance.
+You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance.
+
+> **Note:** This operation can reset only the password of the root account of an instance.
 
 **Request parameters**
 
@@ -4745,7 +4821,11 @@ Sample success responses `XML` format
 
 #### 8.9.2 ModifyDBInstanceTDE
 
-You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine.
+You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files.
+
+> **Note:** After TDE is enabled, it cannot be disabled.
+
+Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine.
 
 **Request parameters**
 
@@ -4802,7 +4882,9 @@ Sample success responses `XML` format
 
 #### 8.10.1 ModifyDBInstanceSSL
 
-Call the ModifyDBInstanceSSL operation to modify the Secure Sockets Layer (SSL) configuration of a MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance. The database version of the instance is 3.4, 4.0, or 4.2. The instance restarts once during the process of enabling, updating, or disabling SSL. We recommend that you perform these operations during off-peak hours.
+Call the ModifyDBInstanceSSL operation to modify the Secure Sockets Layer (SSL) configuration of a MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance. The database version of the instance is 3.4, 4.0, or 4.2.
+
+> **Note:** The instance restarts once during the process of enabling, updating, or disabling SSL. We recommend that you perform these operations during off-peak hours.
 
 **Request parameters**
 
@@ -5214,7 +5296,9 @@ Sample success responses `XML` format
 
 #### 8.11.5 DescribeAuditLogFilter
 
-You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances.
+You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation.
+
+> **Note:** This operation is applicable only to replica set instances, but not to sharded cluster instances.
 
 **Request parameters**
 
@@ -6065,7 +6149,9 @@ e, default is 33554432(i.e. 32MB)",
 
 #### 8.14.3 ModifyParameters
 
-You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the **DescribeParameterTemplates** operation to query the parameters that take effect only after the instance is restarted.
+You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation.
+
+> **Note:** If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the **DescribeParameterTemplates** operation to query the parameters that take effect only after the instance is restarted.
 
 **Request parameters**
 
@@ -6346,7 +6432,9 @@ internal.example.com/xxxxx/xxxxx.tar.gz",
 
 #### 8.15.5 RestoreDBInstance
 
-Restores data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances. Standalone instances and sharded cluster instances are not supported. You can clone a standalone instance by creating an instance from a backup set. You can clone a sharded cluster instance by calling the CreateShardingDBInstance operation. This operation overwrites the data of the current instance, and the data cannot be restored. Proceed with caution.
+Restores data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances. Standalone instances and sharded cluster instances are not supported. You can clone a standalone instance by creating an instance from a backup set. You can clone a sharded cluster instance by calling the CreateShardingDBInstance operation.
+
+> **Note:** This operation overwrites the data of the current instance, and the data cannot be restored. Proceed with caution.
 
 **Request parameters**
 
@@ -6388,7 +6476,11 @@ Sample success responses `XML` format
 
 #### 8.15.6 DescribeBackupDBs
 
-You can call this operation to view the databases at a specified time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance. You can call the **CreateDBInstance** operation to restore a database for an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set instance is used. The database engine version of the instance must be **3.0**, **3.4**, **4.0**, or **4.2**.
+You can call this operation to view the databases at a specified time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance.
+
+> **Note:** You can call the **CreateDBInstance** operation to restore a database for an ApsaraDB for MongoDB instance.
+
+Before you call this operation, make sure that the following requirements are met: A replica set instance is used. The database engine version of the instance must be **3.0**, **3.4**, **4.0**, or **4.2**.
 
 **Request parameters**
 

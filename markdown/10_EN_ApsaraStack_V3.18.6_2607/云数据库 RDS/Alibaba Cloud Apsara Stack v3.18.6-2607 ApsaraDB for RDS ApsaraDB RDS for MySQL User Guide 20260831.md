@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 168
 source_pdf: "070a32e25bf25147_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20MySQL%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831
@@ -142,9 +142,7 @@ The maximum IOPS of an ApsaraDB RDS for MySQL instance that uses local disks var
 min{1800 + 30 × Storage capacity, 25000}
 ```
 
-**Note**
-
-If the throughput of an ApsaraDB RDS for MySQL instance reaches the upper limit, the IOPS of the instance also decreases.
+> **Note:** If the throughput of an ApsaraDB RDS for MySQL instance reaches the upper limit, the IOPS of the instance also decreases.
 
 **Primary ApsaraDB RDS for MySQL instances**
 
@@ -243,17 +241,17 @@ Before you log on to the Apsara Uni-manager Management Console, the endpoint of 
 1. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 2. Click **Log On**.
 3. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
 ## 5 Quick start
@@ -365,9 +363,8 @@ ApsaraDB RDS instance by using an internal endpoint, make sure that the two inst
 3. In the left-side navigation pane, click **Data Security**.
 4. On the **Whitelist Settings** tab, click **Modify**.
 
-**Note**
+> **Note:** Click **Create Whitelist** to create a custom group.
 
-Click **Create Whitelist** to create a custom group.
 5. In the **Modify Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed
 to connect to your ApsaraDB RDS instance, and then click **OK**. Then, click OK to save the configuration. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.XX range can access your ApsaraDB RDS instance. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances that are created within the current Alibaba Cloud account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
@@ -637,9 +634,8 @@ The instance is in the **Running** state.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click **Restart Instance** in the upper-right corner.
 
-**Note**
+> **Note:** When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 
-When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 4. In the Restart Instance message, click **Confirm**.
 
 ### 6.4 Change instance specifications
@@ -658,9 +654,8 @@ page that appears, click the ID of the instance that you want to manage or click
 4. On the **Change Specifications** page, configure the **Edition**, **Storage Type**, **Instance**
 **Type**, **Storage Capacity**, and **Switching Time** parameters.
 
-**Note**
+> **Note:** If you set the **Switching Time** parameter to **Specified Time**, you must specify a point in time for the change.
 
-If you set the **Switching Time** parameter to **Specified Time**, you must specify a point in time for the change.
 5. Click **Submit**.
 6. Confirm the changes and click **OK**.
 
@@ -686,9 +681,7 @@ to data in the database and query operations such as performance monitoring are 
 **Window**.
 4. Select a maintenance window and click **Save**.
 
-**Note**
-
-The maintenance window is displayed in UTC+8.
+> **Note:** The maintenance window is displayed in UTC+8.
 
 ### 6.6 Change the data replication mode
 
@@ -761,9 +754,8 @@ the right of **Automated Update of Minor Engine Version**.
 3. In the **Configuration Information** section of the page, click **Update Minor Engine**
 **Version**.
 
-**Note**
+> **Note:** The **Upgrade Minor Engine Version** button is displayed only when a new minor engine version is available.
 
-The **Upgrade Minor Engine Version** button is displayed only when a new minor engine version is available.
 4. In the dialog box that appears, specify the Update Time parameter and click **OK**.
 
 **FAQ**
@@ -794,13 +786,13 @@ during off-peak hours and ensure that your application has a reconnection mechan
 4. You can perform the following operations:
 Export parameters On the Editable Parameters tab, click **Export Parameters**. The parameter settings of the ApsaraDB RDS instance are exported as a TXT file to your computer. Modify parameters in a batch by importing a file i. After you modify parameters in the exported parameter file, click **Import Parameters** and paste the parameter settings to the field. ii. Click **OK**. iii. In the upper-right corner of the page, click **Apply Changes**.
 
-**Note**
+> **Note:** If a modified parameter requires an instance restart to take effect, the system prompts you to restart the instance. Perform this operation during off-peak hours and ensure that your application has a reconnection mechanism.
+> If the parameter modifications have not been submitted, you can click **Cancel** to cancel the modifications.
 
-If a modified parameter requires an instance restart to take effect, the system prompts you to restart the instance. Perform this operation during off-peak hours and ensure that your application has a reconnection mechanism. If the parameter modifications have not been submitted, you can click **Cancel** to cancel the modifications. Modify a single parameter i. On the **Editable Parameters** tab, find the parameter that you want to modify and click the icon in the **Actual Value** column. ii. Enter a new value based on the value range that is displayed. iii. Click **OK**. iv. In the upper-right corner of the page, click **Apply Changes**.
+Modify a single parameter i. On the **Editable Parameters** tab, find the parameter that you want to modify and click the icon in the **Actual Value** column. ii. Enter a new value based on the value range that is displayed. iii. Click **OK**. iv. In the upper-right corner of the page, click **Apply Changes**.
 
-**Note**
-
-If a modified parameter requires an instance restart to take effect, the system prompts you to restart the instance. Perform this operation during off-peak hours and ensure that your application has a reconnection mechanism. If the parameter modifications have not been submitted, you can click **Cancel** to cancel the modifications.
+> **Note:** If a modified parameter requires an instance restart to take effect, the system prompts you to restart the instance. Perform this operation during off-peak hours and ensure that your application has a reconnection mechanism.
+> If the parameter modifications have not been submitted, you can click **Cancel** to cancel the modifications.
 
 **View the parameter modification history**
 
@@ -816,13 +808,11 @@ If a modified parameter requires an instance restart to take effect, the system 
 
 When you modify the following parameters in a primary RDS for MySQL instance, the modification will automatically apply to the same parameters in the read-only instances of the primary instance. lower_case_table_names
 
-**Note**
+> **Note:** You cannot modify this parameter if your ApsaraDB RDS instance runs MySQL 8.0.
 
-You cannot modify this parameter if your ApsaraDB RDS instance runs MySQL 8.0. innodb_large_prefix loose_validate_password_length default_time_zone rpl_semi_sync_slave_enabled
+innodb_large_prefix loose_validate_password_length default_time_zone rpl_semi_sync_slave_enabled
 
-**Note**
-
-If you modify other parameters on a primary instance, you must manually apply the same modifications to its read-only instances.
+> **Note:** If you modify other parameters on a primary instance, you must manually apply the same modifications to its read-only instances.
 
 **Appendix 2: List of modifiable parameters**
 
@@ -1283,10 +1273,7 @@ This topic describes how to view details of read-only instances. You can go to t
 2. On the **Instances** page, click the ID of a read-only instance. The **Basic Information** page
 appears.
 
-**Note**
-
-In the instance list, **Instance Role** of read-only instances is displayed as
-**Read-only Instance**.
+> **Note:** In the instance list, **Instance Role** of read-only instances is displayed as **Read-only Instance**.
 
 **View details of a read-only instance from the Basic Information**
 
@@ -1321,19 +1308,15 @@ click **Locked Instances**.
 4. On the **Restore Instance** page, select **Storage Capacity** and **Network Type** for the new
 instance and click **Submit**.
 
-**Note**
-
-If you set **Network Type** to **VPC**, you must configure a **virtual private cloud**
-**(VPC)** and a **vSwitch**.
-Other configurations remain the same as the original instance and cannot be changed.
+> **Note:** If you set **Network Type** to **VPC**, you must configure a **virtual private cloud** **(VPC)** and a **vSwitch**.
+> Other configurations remain the same as the original instance and cannot be changed.
 
 **Destroy an instance**
 
 You can destroy an ApsaraDB RDS instance that is no longer needed in the recycle bin.
 
-**Warning**
+> **Warning:** After you destroy an ApsaraDB RDS instance, **all** the backup files of the instance are destroyed, including regular data backup files, archived backup files, and log backup files. The destroyed backup files **cannot be restored**. Proceed with caution.
 
-After you destroy an ApsaraDB RDS instance, **all** the backup files of the instance are destroyed, including regular data backup files, archived backup files, and log backup files. The destroyed backup files **cannot be restored**. Proceed with caution.
 1. Log on to the ApsaraDB RDS console.
 2. In the upper-left corner of the page, select an organization. In the left-side navigation pane,
 click **Locked Instances**.
@@ -1492,9 +1475,10 @@ The ApsaraDB RDS instance is in the **Running** state. A database account is cre
 column.
 5. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
 
-**Note**
-
-The password must meet the following requirements: It can be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: !@#$%^&*()_+-= .
+> **Note:** The password must meet the following requirements:
+> It can be 8 to 32 characters in length.
+> It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+> The following special characters are supported: !@#$%^&*()_+-= .
 
 ### 7.3 Product Material Optimization Pro
 
@@ -2034,9 +2018,8 @@ numbers.
 4. In the upper-right corner of the Database Connection section, click **Change Endpoint**.
 5. In the dialog box that appears, set Connection Type, Endpoint, and Port, and then click **OK**.
 
-**Note**
-
-The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be a value within the range of 1000 to 5999.
+> **Note:** The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter.
+> The port number must be a value within the range of 1000 to 5999.
 
 ### 9.2 Apply for and release an internal endpoint or a public endpoint for an instance
 
@@ -2095,10 +2078,7 @@ An IP address whitelist is configured. For more information about how to configu
 
 5. Click **Login**.
 
-**Note**
-
-If you want the browser to remember the password, select **Remember**
-**password** before you click **Login**.
+> **Note:** If you want the browser to remember the password, select **Remember** **password** before you click **Login**.
 
 ### 9.4 Configure the hybrid access solution for an instance
 
@@ -2256,7 +2236,8 @@ The dedicated proxy currently provides one proxy endpoint, and the read/write sp
 3. In the left-side navigation pane, click **Database Proxy**.
 4. On the **Proxy Service** tab, set the **Single-node Proxy Instance Specification CPU**
 **(Cores)** parameter, and under **Adjustment Plan**, click **Apply**.
-The recommended number of proxy nodes is 1/8 of the total CPU cores of the primary instance and all its read-only instances, rounded up. For example, if the primary instance has 8 CPU cores and a read-only instance has 4 CPU cores, the recommended number of proxies is ⌈(8 + 4) / 8⌉ = 2.
+
+> The recommended number of proxy nodes is 1/8 of the total CPU cores of the primary instance and all its read-only instances, rounded up. For example, if the primary instance has 8 CPU cores and a read-only instance has 4 CPU cores, the recommended number of proxies is ⌈(8 + 4) / 8⌉ = 2.
 
 **Disable proxy service**
 
@@ -2265,11 +2246,7 @@ The recommended number of proxy nodes is 1/8 of the total CPU cores of the prima
 4. In the upper-right corner of the page, click **Disable Proxy Service**.
 5. Click **OK**.
 
-**Important**
-
-After you disable the dedicated proxy service, the proxy endpoint becomes unavailable,
-**but the primary instance endpoint is not affected** . If you re-enable the service,
-the system assigns a new proxy endpoint. Before disabling the service, switch your application to the primary instance endpoint or another available connection method.
+> **Important:** After you disable the dedicated proxy service, the proxy endpoint becomes unavailable, **but the primary instance endpoint is not affected** . If you re-enable the service, the system assigns a new proxy endpoint. Before disabling the service, switch your application to the primary instance endpoint or another available connection method.
 
 ### 10.2 Configure a connection pool
 
@@ -2366,9 +2343,7 @@ The following requests are routed only to the primary instance: All requests tha
 
 Easier maintenance by using a unified endpoint If you do not enable the read/write splitting feature, you must add the endpoints of the primary and read-only instances to your application. This way, your database system routes write requests to the primary instance and read requests to the read-only instances. If you enable the read/write splitting feature, you can use a dedicated proxy endpoint to implement read/write splitting. After your application is connected to this endpoint, your database system routes read and write requests to the primary and read-only instances based on the read weights of these instances. This reduces maintenance costs. You can also create read-only instances to improve the read capability of your database system. You do not need to modify the configuration data on your application. Higher performance and lower maintenance costs by using a native link You can build your own proxy layer on the cloud to implement read/write splitting. In this case, data needs to be parsed and forwarded by multiple components before the data reaches your database system. As a result, response latencies increase. The read/write splitting feature is embedded in the ApsaraDB RDS ecosystem to reduce response latencies, increase processing speeds, and reduce maintenance costs. Ideal in a variety of use scenarios based on configurable read weights and thresholds You can specify the read weights of the primary and read-only instances. You can also specify the latency threshold for data replication to the read-only instances. High availability based on instance-level health checks The read/write splitting feature enables ApsaraDB RDS to actively check the health status of the primary and read-only instances. If a read-only instance unexpectedly breaks down or its data replication latency exceeds the specified threshold, ApsaraDB RDS stops routing read requests to the instance. ApsaraDB RDS redirects read requests that are destined for the faulty read-only instance to healthy instances in your database system. This ensures service availability in the event of faults on individual read-only instances. After the faulty read-only instance is recovered, ApsaraDB RDS resumes routing read requests to the instance.
 
-**Note**
-
-To avoid single points of failure (SPOFs), we recommend that you create at least two read-only instances.
+> **Note:** To avoid single points of failure (SPOFs), we recommend that you create at least two read-only instances.
 
 **Precautions**
 
@@ -2680,9 +2655,8 @@ ApsaraDB RDS instance by using an internal endpoint, make sure that the two inst
 3. In the left-side navigation pane, click **Data Security**.
 4. On the **Whitelist Settings** tab, click **Modify**.
 
-**Note**
+> **Note:** Click **Create Whitelist** to create a custom group.
 
-Click **Create Whitelist** to create a custom group.
 5. In the **Modify Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed
 to connect to your ApsaraDB RDS instance, and then click **OK**. Then, click OK to save the configuration. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.XX range can access your ApsaraDB RDS instance. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances that are created within the current Alibaba Cloud account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
@@ -2711,15 +2685,13 @@ enable SSL encryption and click **OK**.
 7. Click Download CA Certificate to download the SSL CA certificate files in a compressed
 package. The file that you downloaded is a package that contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: a CA certificate file that is used for an operating system or application that is not Windows-based. JKS file: an SSL certificate file that is stored in the Java-supported truststore. You can use this file to import the SSL certificate files from an SSL certificate chain into Java-based applications. The default password is apsaradb.
 
-**Note**
-
-If the JKS file is used in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. Open the `/jre/lib/security/java.security` file on the host where your application resides and modify the following configurations:
+> **Note:** If the JKS file is used in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. Open the `/jre/lib/security/java.security` file on the host where your application resides and modify the following configurations:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 224 jdk.certpath.disabledAlgorithms=MD2, RSA keySize < 1024
 ```
 
-If you do not modify these configurations, the following error is reported. In most cases, other similar errors are also caused by invalid Java security configurations:
+> If you do not modify these configurations, the following error is reported. In most cases, other similar errors are also caused by invalid Java security configurations:
 
 ```
 javax.net.ssl.SSLHandshakeException: DHPublicKey does not comply to algorithm c onstraints
@@ -2738,16 +2710,14 @@ After SSL encryption is enabled, you must configure an SSL certificate on your a
 required settings based on the following figure.
 4. Click **OK**.
 
-**Note**
+> **Note:** If the `connection is being used` error message is displayed, the previous session remains connected. In this case, you must restart Navicat.
 
-If the `connection is being used` error message is displayed, the previous session remains connected. In this case, you must restart Navicat.
 5. Double-click the database to test whether the database is connected.
 
 **Update the validity period of an SSL CA certificate**
 
-**Note**
+> **Note:** The **Update Validity** operation causes your RDS instance to restart. Proceed with caution.
 
-The **Update Validity** operation causes your RDS instance to restart. Proceed with caution.
 1. Log on to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instances page, find the instance
 that you want to manage and click the ID of the instance or click **Manage** in the **Actions** column to go to the **Basic Information** page.
@@ -2757,9 +2727,9 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 
 **Disable SSL encryption**
 
-**Note**
+> **Note:** When you disable SSL encryption, your RDS instance restarts. In this case, the system triggers a primary/secondary switchover to reduce the impacts on your workloads. We still recommend that you disable SSL encryption during off-peak hours.
+> Disabling SSL encryption enhances access performance but reduces security for the RDS instance. We recommend that you disable SSL encryption only in secure environments.
 
-When you disable SSL encryption, your RDS instance restarts. In this case, the system triggers a primary/secondary switchover to reduce the impacts on your workloads. We still recommend that you disable SSL encryption during off-peak hours. Disabling SSL encryption enhances access performance but reduces security for the RDS instance. We recommend that you disable SSL encryption only in secure environments.
 1. Log on to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instances page, find the instance
 that you want to manage and click the ID of the instance or click **Manage** in the **Actions** column to go to the **Basic Information** page.
@@ -2784,10 +2754,7 @@ The key that is used for TDE is created and managed by KMS. ApsaraDB RDS does no
 
 When TDE is being enabled, your ApsaraDB RDS instance is restarted and all services are disconnected. Make appropriate service arrangements before you enable TDE. Proceed with caution. After you enable TDE, you cannot disable TDE. After you enable TDE, you cannot change the key that is used for TDE. After you enable TDE, you must decrypt the data on your RDS instance if you want to restore the data to an on-premises database. For more information, see Decrypt a table. After you enable TDE, the CPU utilization of your RDS instance significantly increases. If you use an existing custom key for TDE, take note of the following information: If you disable the key, configure a plan to delete the key, or delete the key material, the key becomes unavailable. If your RDS instance restarts after you revoke the key, your RDS instance becomes unavailable. You must use an Alibaba Cloud account or an account to which the AliyunSTSAssumeRoleAccess policy is attached.
 
-**Note**
-
-For more information, see topics about key management in **Key Management**
-**Service > User Guide**.
+> **Note:** For more information, see topics about key management in **Key Management** **Service > User Guide**.
 
 **Use a key that is automatically generated by Alibaba Cloud**
 
@@ -2799,9 +2766,9 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 5. In the **TDE Settings** section, turn on **TDE Status**.
 6. In the dialog box that appears, select **Use Automatically Generated Key** and click **OK**.
 
-**Note**
-
-If the instance runs MySQL 5.7 on RDS High-availability Edition, you can select one of the following encryption methods: SM4 encryption AES_256_CBC encryption
+> **Note:** If the instance runs MySQL 5.7 on RDS High-availability Edition, you can select one of the following encryption methods:
+> SM4 encryption
+> AES_256_CBC encryption
 
 **Use an existing custom key**
 
@@ -2813,9 +2780,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 5. In the **TDE Settings** section, turn on **TDE Status**.
 6. In the dialog box that appears, select **Use an existing custom key** and click **OK**.
 
-**Note**
-
-If you do not have a custom key, you need to click **go to the KMS console** to create a CMK and import your own key material. For more information, see the **Create a key** section in **Key Management ServiceKey Management Service > User Guide**.
+> **Note:** If you do not have a custom key, you need to click **go to the KMS console** to create a CMK and import your own key material. For more information, see the **Create a key** section in **Key Management ServiceKey Management Service > User Guide**.
 
 **Encrypt a table**
 
@@ -2843,9 +2808,9 @@ This topic describes how to use the SQL audit feature on an ApsaraDB RDS for MyS
 
 **Background information**
 
-**Important**
+> **Important:** You cannot view records generated before you enable the SQL audit feature.
 
-You cannot view records generated before you enable the SQL audit feature. You can view the incremental data of your ApsaraDB RDS for MySQL instance in SQL audit logs or binary logs. However, these two methods differ in the following aspects:
+You can view the incremental data of your ApsaraDB RDS for MySQL instance in SQL audit logs or binary logs. However, these two methods differ in the following aspects:
 **SQL audit logs** are similar to audit logs in MySQL. They record all DML and DDL operations
 by using network protocol analysis. SQL audit does not parse the actual parameter values. If a large number of SQL statements are executed to query data, a small amount of data may be lost. The incremental data obtained by using this method may be inaccurate.
 **Binary logs** record all add, delete, and modify operations that are performed in the
@@ -2868,9 +2833,7 @@ If you no longer require the SQL audit feature, you can disable the feature to r
 6. After the logs are exported, click **Disable SQL Auditing**.
 7. In the message that appears, click **OK**.
 
-**Important**
-
-After the SQL audit feature is disabled, all SQL audit logs, including historical SQL audit logs, are deleted. Before you disable the SQL audit feature, we recommend that you export the SQL audit logs to your on-premises machine.
+> **Important:** After the SQL audit feature is disabled, all SQL audit logs, including historical SQL audit logs, are deleted. Before you disable the SQL audit feature, we recommend that you export the SQL audit logs to your on-premises machine.
 
 **Enable the SQL audit feature**
 
@@ -2891,9 +2854,7 @@ By default, audit logs are stored in SLS-inner. You can switch them to an access
 4. Click the **SQL Audit** tab.
 5. Turn on the Enable Log Storage to SLS-PUB switch and click **OK**.
 
-**Important**
-
-The change cannot be reversed. Proceed with caution.
+> **Important:** The change cannot be reversed. Proceed with caution.
 
 ## 14 Service availability
 
@@ -2924,9 +2885,8 @@ Data is synchronized between the primary and secondary ApsaraDB RDS instances in
 3. In the left-side navigation pane, click **Service Availability**.
 4. On the right side of the page, click **Switch Primary/Secondary Instance**.
 
-**Note**
+> **Note:** You may encounter one or two service interruptions during a switchover. Make sure that your application is configured to automatically reconnect to the instance.
 
-You may encounter one or two service interruptions during a switchover. Make sure that your application is configured to automatically reconnect to the instance.
 5. In the dialog box that appears, configure the switchover time (**Switch Immediately** or
 **Within Specified Time RangeCurrent Settings**), and then click **OK**.
 
@@ -2978,9 +2938,7 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. Click the **Backup Settings** tab.
 5. Click **Edit** and configure the following parameters.
 
-**Note**
-
-To ensure data security, the system compares the new backup cycle and time with the original settings and selects the most recent point in time to back up the data. Therefore, the next backup may still be performed based on the original backup cycle and time. For example, assume that the scheduled backup cycle and time are set to 19:00-20:00 every Wednesday. If you modify the backup cycle and time to 19:00-20:00 every Thursday before the scheduled backup occurs, the system still backs up data at the original scheduled time of 19:00-20:00 on Wednesday.
+> **Note:** To ensure data security, the system compares the new backup cycle and time with the original settings and selects the most recent point in time to back up the data. Therefore, the next backup may still be performed based on the original backup cycle and time. For example, assume that the scheduled backup cycle and time are set to 19:00-20:00 every Wednesday. If you modify the backup cycle and time to 19:00-20:00 every Thursday before the scheduled backup occurs, the system still backs up data at the original scheduled time of 19:00-20:00 on Wednesday.
 
 | Parameter | Description |
 |---|---|
@@ -3008,9 +2966,11 @@ Manual backup of ApsaraDB RDS supports both full physical and logical backups. T
 3. Click **Back Up Instance** in the upper-right corner.
 4. In the dialog box that appears, set the backup mode and backup policy and then click **OK**.
 
-**Note**
-
-The following backup modes are available: Physical backup: directly backs up all files in all databases. Logical backup: extracts data from the databases by using SQL statements and backs up the data in the text format. If you select logical backup, you must select one of the following backup policies: Instance Backup: backs up the entire instance. Single-Database Backup: backs up one of the databases on the instance.
+> **Note:** The following backup modes are available:
+> Physical backup: directly backs up all files in all databases.
+> Logical backup: extracts data from the databases by using SQL statements and backs up the data in the text format. If you select logical backup, you must select one of the following backup policies:
+> Instance Backup: backs up the entire instance.
+> Single-Database Backup: backs up one of the databases on the instance.
 
 ### 15.3 Download data backup files and log backup files
 
@@ -3042,9 +3002,12 @@ To download data backup files, click the **Data Backup** tab. To download log ba
 6. Find the data backup file or log backup file that you want to download, and click **Download**
 **Instance Backup** or **Download** in the **Actions** column.
 
-**Note**
+> **Note:** If the Download button is unavailable, check whether the requirements in the Limits section are met.
+> If you want to download data backup file and use the backup file to restore data, we recommend that you select the data backup file created closest to the point in time when the required data exists.
+> If the log backup file is used to restore the data of your RDS instance to an on- premises database, take note of the following items:
+> The instance ID of the log backup file must be the same as the instance ID of the backup set that you select.
+> The start time of the log backup file must be later than the end time of the backup set that you select and earlier than the point in time to which you want to restore the data of your RDS instance.
 
-If the Download button is unavailable, check whether the requirements in the Limits section are met. If you want to download data backup file and use the backup file to restore data, we recommend that you select the data backup file created closest to the point in time when the required data exists. If the log backup file is used to restore the data of your RDS instance to an onpremises database, take note of the following items: The instance ID of the log backup file must be the same as the instance ID of the backup set that you select. The start time of the log backup file must be later than the end time of the backup set that you select and earlier than the point in time to which you want to restore the data of your RDS instance.
 7. In the dialog box that appears, click **Download**.
 
 | Download method | Description |
@@ -3056,15 +3019,15 @@ ation
 | Download URL | Copy the download URL. If you want to use other tools to download the file, use this method. |
 |---|---|
 
-**Note**
-
-If you use a Linux operating system, you can run the following command to download the file:
+> **Note:** If you use a Linux operating system, you can run the following command to download the file:
 
 ```
 wget -c '<Download URL of the backup file>' -O <File name>
 ```
 
-The -c option enables resumable download. The -O option saves the downloaded file by using a specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
+> The -c option enables resumable download.
+> The -O option saves the downloaded file by using a specified name. We recommend that you use the file name contained in the download URL.
+> If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
 ### 15.4 Upload binlogs
 
@@ -3152,9 +3115,7 @@ After you log in to the ApsaraDB RDS console and go to the Diagnostics page of D
 4. On the **Diagnostics** tab, you can view the following information.
 Current resource usage: You can view the CPU, memory, IOPS, storage, and connection usage of the current instance. Database basic information: You can view the database engine, source, and specifications of the current instance. Database performance: You can view the risks, alerts, slow SQL queries, and deadlocks related to the current instance within the specified time period. This helps you quickly identify anomalies.
 
-**Note**
-
-You can click **Create Reports** in the upper-right corner of the database view to diagnose the database. After the diagnostic is complete, you can click **View History** to view the historical diagnostics.
+> **Note:** You can click **Create Reports** in the upper-right corner of the database view to diagnose the database. After the diagnostic is complete, you can click **View History** to view the historical diagnostics.
 
 #### 16.2.2 Session Management
 
@@ -3191,9 +3152,8 @@ more information, see the **SQL optimization** section.
 **End sessions**: To terminate a session, you must enter the database account and
 password for authentication. You can also use a database account with the permissions to terminate the sessions created by using other database accounts, such as a privileged account.
 
-**Note**
-
-In the **User** column of a session, you can view the database account that is used to create the session. Click **End Session History** to query the operation records of all terminated sessions, including the task ID, start time, and end time. This facilitates tracing and auditing.
+> **Note:** In the **User** column of a session, you can view the database account that is used to create the session.
+> Click **End Session History** to query the operation records of all terminated sessions, including the task ID, start time, and end time. This facilitates tracing and auditing.
 
 **Session statistics**
 
@@ -3262,9 +3222,7 @@ which facilitates baseline data recording and detailed data comparison. Each row
 **Data download**: On the **Real-time Tables** tab, click the **Download** button in the
 upper-right corner of the page to export the current report data to your local device.
 
-**Note**
-
-Some database engines (MongoDB and Redis) do not support the report download feature. The actual availability depends on what the console displays.
+> **Note:** Some database engines (MongoDB and Redis) do not support the report download feature. The actual availability depends on what the console displays.
 
 **Parameter description**
 
@@ -3312,9 +3270,9 @@ tables. Data in the information_schema.innodb_lock_waits table is used for datab
 
 i. **Analyze the most recent deadlock** On the **Recent Deadlock Analysis** tab, click **Create Analysis Task**.
 
-**Note**
+> **Note:** If multiple deadlocks have occurred, DAS analyzes only the most recent deadlock and retains the deadlock data.
 
-If multiple deadlocks have occurred, DAS analyzes only the most recent deadlock and retains the deadlock data. ii. **View details** a. After the diagnostic task is complete, select a time range and click **View Details** in the
+ii. **View details** a. After the diagnostic task is complete, select a time range and click **View Details** in the
 **Details** column of the diagnostic task list under recent deadlock analysis to view the
 results of deadlock diagnostic tasks that were triggered during the time range. b. In the panel that appears, you can view the deadlock details.
 
@@ -3343,13 +3301,12 @@ After you log in to the ApsaraDB RDS console and navigate to the Dashboard page 
 3. In the left-side navigation pane, choose **Autonomy Services > Dashboard**.
 On the **Performance Trends** tab, you can view the trends of changes in the TPS, QPS, and sessions. You can also click **More Metrics** to customize the metrics you want to view.
 
-**Note**
+> **Note:** Click the
+> icon next to the name of a metric to view its description.
 
-Click the icon next to the name of a metric to view its description. On the **Performance Trend Comparison** tab, select two time periods to compare the performance metrics collected within the specified time periods. On the **Custom Charts** tab, you can centrally display and manage the desired performance metrics in one chart by customizing performance charts. This simplifies troubleshooting.
+On the **Performance Trend Comparison** tab, select two time periods to compare the performance metrics collected within the specified time periods. On the **Custom Charts** tab, you can centrally display and manage the desired performance metrics in one chart by customizing performance charts. This simplifies troubleshooting.
 
-**Note**
-
-You must create a dashboard if this is the first time you use **custom charts**.
+> **Note:** You must create a dashboard if this is the first time you use **custom charts**.
 
 ### 16.4 View slow query logs
 
@@ -3385,9 +3342,7 @@ Click **Create Reports**. In the dialog box that appears, select a time range (L
 
 Click **Auto-generating Report Settings**, select **Scheduled Trigger**, select days and a specific time, and then click **OK**.
 
-**Note**
-
-Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
+> **Note:** Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
 
 **View diagnostic report details**
 
@@ -3466,9 +3421,7 @@ databasename: the name of the on-premises MySQL database. If you want to grant a
 
 3. Use the data export tool of mysqldump to export data from the database as a data file.
 
-**Important**
-
-Do not update data during data export. In this step, only data is exported. Stored procedures, triggers, and functions are not exported.
+> **Important:** Do not update data during data export. In this step, only data is exported. Stored procedures, triggers, and functions are not exported.
 
 ```
  mysqldump -h localIp -u userName -p --opt --default-character-set=utf8 --hex-blob
@@ -3478,9 +3431,7 @@ dbName --skip-triggers > /tmp/dbName.sql
 Parameter description: localIp: the IP address of the host where the on-premises MySQL database resides. userName: the account that is used to migrate data from the on-premises MySQL database. dbName: the name of the on-premises MySQL database. /tmp/dbName.sql: the name of the exported data file.
 4. Use mysqldump to export stored procedures, triggers, and functions.
 
-**Important**
-
-Skip this step if no stored procedures, triggers, or functions are used in the database. When stored procedures, triggers, and functions are exported, you must remove the DEFINER to ensure compatibility with ApsaraDB RDS for MySQL.
+> **Important:** Skip this step if no stored procedures, triggers, or functions are used in the database. When stored procedures, triggers, and functions are exported, you must remove the DEFINER to ensure compatibility with ApsaraDB RDS for MySQL.
 
 ```
  mysqldump -h localIp -u userName -p --opt --default-character-set=utf8 --hex-blob
@@ -3499,10 +3450,7 @@ In this example, the files are uploaded to the following paths:
 6. Log on to the ECS console and import both the data file and the stored procedure file to the
 destination ApsaraDB RDS for MySQL instance.
 
-**Note**
-
-For information about how to log on to the ECS instance, see topics in the
-**Connect to an instance** section of ECS User Guide.
+> **Note:** For information about how to log on to the ECS instance, see topics in the **Connect to an instance** section of ECS User Guide.
 
 | mysql -h intranet4example.mysql.rds.aliyuncs.com –u userName -p dbName < |   |
 |---|---|

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 24
 source_pdf: "04e41b44cb4fe55d_Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Developer Guide 20260422.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Managed%20Service%20for%20Prometheus%20Developer%20Guide%2020260422.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Managed Service for Prometheus Developer Guide 20260422

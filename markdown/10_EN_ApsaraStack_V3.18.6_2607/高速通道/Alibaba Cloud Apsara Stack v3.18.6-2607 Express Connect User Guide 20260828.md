@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 50
 source_pdf: "8529d5d91d207f33_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260828
@@ -55,22 +55,25 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. Enter the correct username and password.
 Connect console Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+> **Forgot password**
+> If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. Follow the instructions to complete the password change. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
-
-**Forgot password**
-
-If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, choose **Products > Networking > Express Connect**.
 6. In the top navigation bar, select the region.
 
@@ -104,7 +107,9 @@ One end of a peering connection functions as the initiator and the other end fun
 
 **Connection process and status**
 
-In the peering connection process, the initiator initiates a connection. The acceptor then receives the connection, after which the connection is established successfully. During different stages of the connection process, the status of a peering connection is also different, as shown in the following table. If you choose to create both ends at the same time when establishing a peering connection, the system automatically initiates and establishes a connection. In this case, the initiator and the acceptor become activated after being created.
+In the peering connection process, the initiator initiates a connection. The acceptor then receives the connection, after which the connection is established successfully. During different stages of the connection process, the status of a peering connection is also different, as shown in the following table.
+
+> **Note:** If you choose to create both ends at the same time when establishing a peering connection, the system automatically initiates and establishes a connection. In this case, the initiator and the acceptor become activated after being created.
 
 | Connection process | Initiator status | Acceptor status |
 |---|---|---|
@@ -125,7 +130,9 @@ You can apply for an Express Connect circuit to establish a connection. You can 
 
 ### 2.4 VBRs
 
-Virtual border routers (VBRs) are an abstraction of Express Connect circuits that are isolated and virtualized by using the Layer 3 overlay and vSwitch technologies in the Software Defined Network (SDN) architecture. A VBR is deployed between the customer-premises equipment (CPE) and a virtual private cloud (VPC) and is used to exchange data between the VPC and data center. Similar to VPC routers, each VBR manages a route table. You can add routes to the route table of a VBR to control network traffic forwarding.
+Virtual border routers (VBRs) are an abstraction of Express Connect circuits that are isolated and virtualized by using the Layer 3 overlay and vSwitch technologies in the Software Defined Network (SDN) architecture. A VBR is deployed between the customer-premises equipment (CPE) and a virtual private cloud (VPC) and is used to exchange data between the VPC and data center.
+
+> **Note:** Similar to VPC routers, each VBR manages a route table. You can add routes to the route table of a VBR to control network traffic forwarding.
 
 **Features**
 
@@ -149,7 +156,10 @@ Before you apply for an Express Connect circuit, you must choose an access point
 
 **Step 2: Apply for an Express Connect circuit**
 
-To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
+> **Note:** To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
+
+## 1 Log on to the Express Connect console
+
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, click **Apply for Physical Connection**.
 4. Go to the Apsara Uni-manager Operations Console to configure an Express Connect circuit
@@ -194,11 +204,19 @@ ID in the **ID/Name** column.
 | Subnet Mask (IPv6 Address) | Enter the subnet mask of the IPv6 addresses that you specified for the VBR and the gateway device in the data center. Note This parameter is required if Enable is selected for the IPv6 Support parameter. |
 |---|---|
 
-Specify the IP addresses based on your network plan. The IP addresses must be in the same CIDR block. We recommend that:
+> **Note:** Specify the IP addresses based on your network plan. The IP addresses must be in the same CIDR block. We recommend that:
+
 1. The specified IP addresses do not conflict with IP addresses in the cloud or on-
 premises IP addresses.
 2. Use private IP addresses.
-Example: IPv4 address of the gateway at the Alibaba Cloud side: 10.0.0.1 IPv4 address of the gateway at the customer side: 10.0.0.2 IPv4 subnet mask: 255.255.255.252 Set IPv6 Address of Gateway at Alibaba Cloud Side to 2408:4004:cc:400::1 (GUA address). Set IPv6 Address of Gateway at Customer Side to 2408:4004:cc:400::2 (GUA address). Set Subnet Mask (IPv6 Address) to 2408:4004:cc:400::/56.
+
+> Example:
+> IPv4 address of the gateway at the Alibaba Cloud side: 10.0.0.1
+> IPv4 address of the gateway at the customer side: 10.0.0.2
+> IPv4 subnet mask: 255.255.255.252
+> Set IPv6 Address of Gateway at Alibaba Cloud Side to 2408:4004:cc:400::1 (GUA address).
+> Set IPv6 Address of Gateway at Customer Side to 2408:4004:cc:400::2 (GUA address).
+> Set Subnet Mask (IPv6 Address) to 2408:4004:cc:400::/56.
 
 **Step 5: Create a peering connection between the VBR and the**
 
@@ -234,9 +252,10 @@ After a connection over the Express Connect circuit is established between the d
 | Health check source IP | Enter the source IP address for the health check. Note The health check source IP address must be an available IP address within the CIDR block of a VSwitch in the local VPC. |
 | Health check destination IP | Enter the destination IP address for the health check. Note The health check destination IP address must be the IP address of the port on the on-premises device at the other end of the leased line associated with the VBR. |
 
-Before you create the instance, you can view and verify the configuration in the
-**Configuration Overview** pane on the right side of the page.
-Click a field to go to the corresponding parameter and modify it as needed. Click **Quota Management** (if the organization/resource set has no quota) or click **Manage** in the **Quota** section (if the organization/resource set has a quota) to manage quotas for cloud products. For more information about quota management, see the **Quota Management** chapter in the **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** Before you create the instance, you can view and verify the configuration in the **Configuration Overview** pane on the right side of the page.
+> Click a field to go to the corresponding parameter and modify it as needed.
+> Click **Quota Management** (if the organization/resource set has no quota) or click **Manage** in the **Quota** section (if the organization/resource set has a quota) to manage quotas for cloud products.
+> For more information about quota management, see the **Quota Management** chapter in the **Apsara Uni-manager Operations Console User Guide** .
 
 ## 3 Overview
 
@@ -244,7 +263,6 @@ The Express Connect console provides an overview of your resources, such as conn
 
 **Procedure**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Overview**.
 3. On the Overview page, you can view the connections and instances. You can analyze the
 trends of resource usage to better manage your resources.
@@ -282,7 +300,11 @@ following table.
 | Basic Configurations |   |
 | Bandwidth | The maximum bandwidth for the private connections. Only 10000Mbps is supported. |
 
-Before you click submit to create the instance, you can view and check the configurations of the instance in the **Configuration overview** section on the right side. You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements. You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for the cloud service. For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+> **Note:** Before you click submit to create the instance, you can view and check the configurations of the instance in the **Configuration overview** section on the right side.
+> You can click a field to go to the corresponding parameter and modify the parameter setting based on your business requirements.
+> You can click **Quota Management** (the organization/resource set does not have quotas) or click **Quota Management** (the organization/resource set has quotas) in the **Quota** section to manage quotas for the cloud service.
+> For more information about quota management, see the **Quota management** topic in **Apsara Uni-manager Management Console User Guide** .
+
 5. Create the peering connection.
 Confirm the parameters and click **Confirm Order** if the following requirements are met: On the Service Management page, a service is created and **Router Interface (VPC-to-**
 **VPC)** is displayed in the **Cloud resources** column of the service.
@@ -326,7 +348,11 @@ If the service whose **Cloud resources** value is **Router Interface (VPC-to-VPC
 
 **VPC-to-VPC connection list**
 
-On the **VPC-to-VPC** page, you can view the created peering connections. At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries. You can use a keyword or a specific filter condition to filter peering connections. Click the icon in the upper-right corner of the peering connection list to select the columns that you want to show or hide. You can also drag a column name to adjust its order. Click the ID in the **Requester** column to view the details of the requester. Click **Route Settings** in the **Requester** column to manage the route configurations of the requester. Click the ID in the **Acceptor** column to view the details of the acceptor. Click **Route Settings** in the **Acceptor** column to manage the route configurations of the acceptor. Click the icon next to the value in the **Requester** or **Acceptor** column to modify the name of the requester or acceptor.
+On the **VPC-to-VPC** page, you can view the created peering connections.
+
+> **Note:** At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries.
+
+You can use a keyword or a specific filter condition to filter peering connections. Click the icon in the upper-right corner of the peering connection list to select the columns that you want to show or hide. You can also drag a column name to adjust its order. Click the ID in the **Requester** column to view the details of the requester. Click **Route Settings** in the **Requester** column to manage the route configurations of the requester. Click the ID in the **Acceptor** column to view the details of the acceptor. Click **Route Settings** in the **Acceptor** column to manage the route configurations of the acceptor. Click the icon next to the value in the **Requester** or **Acceptor** column to modify the name of the requester or acceptor.
 
 **Tag management**
 
@@ -347,7 +373,9 @@ You can modify the peer information when a peering connection is not active.
 
 **Initiate a connection**
 
-If you create a peering connection for two VPCs within the same account, the system of Express Connect automatically creates the requester and acceptor. You do not need to manually initiate the connection. The system automatically sends the connection request and establishes the connection. If you create a peering connection for two VPCs that belong to different accounts, you must manually initiate the connection. Only the requester can initiate the peering connection. The acceptor must wait for the requester to initiate the peering connection.
+> **Note:** If you create a peering connection for two VPCs within the same account, the system of Express Connect automatically creates the requester and acceptor. You do not need to manually initiate the connection. The system automatically sends the connection request and establishes the connection.
+> If you create a peering connection for two VPCs that belong to different accounts, you must manually initiate the connection. Only the requester can initiate the peering connection. The acceptor must wait for the requester to initiate the peering connection.
+
 1. On the **VPC-to-VPC** page, find the peering connection and click **Initiate Connection** in
 the **Actions** column.
 2. In the **Initiate Connection** message, click **OK**.
@@ -378,7 +406,8 @@ This topic describes how to configure route tables for a virtual private cloud (
 
 **Add peer routes to the requester**
 
-In this example, you can manage only operating system route tables. To manage custom route tables, go to the Route Tables page in the VPC console.
+> **Note:** In this example, you can manage only operating system route tables. To manage custom route tables, go to the Route Tables page in the VPC console.
+
 1. Log in to the Express Connect console.
 2. In the left-side navigation pane, click **VPC-to-VPC**.
 3. On the **VPC-to-VPC** page, find the peering connection that you want to manage and click
@@ -402,7 +431,8 @@ and click **OK**.
 
 **Add peer routes to the acceptor**
 
-In this example, you can manage only operating system route tables. To manage custom routing tables, go to the Route Tables page in the VPC console.
+> **Note:** In this example, you can manage only operating system route tables. To manage custom routing tables, go to the Route Tables page in the VPC console.
+
 1. Log in to the Express Connect console.
 2. In the left-side navigation pane, click **VPC-to-VPC**.
 3. On the **VPC-to-VPC** page, find the peering connection that you want to manage and click
@@ -437,7 +467,6 @@ You have created the VBR instance that you want to connect. For more information
 
 **Create a peering connection**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **VBR-to-VPC Connection**.
 3. On the **VBR-to-VPC Connection** page, click **Create Peering Connection**.
 4. On the **Create Peering Connection** page, set the following parameters.
@@ -471,9 +500,11 @@ ns
 | Health check destination IP | Enter the destination IP address for the health check. Note The health check destination IP address must be the IP address of the port on the on-premises device at the other end of the leased line associated with the VBR. |
 |---|---|
 
-Before you create the instance, you can view and verify the configuration in the
-**Configuration Overview** pane on the right side of the page.
-Click a field to go to the corresponding parameter and modify it as needed. Click **Quota Management** (if the organization/resource set has no quota) or click **Manage** in the **Quota** section (if the organization/resource set has a quota) to manage quotas for cloud products. For more information about quota management, see the **Quota Management** chapter in the **Apsara Uni-manager Operations Console User Guide** .
+> **Note:** Before you create the instance, you can view and verify the configuration in the **Configuration Overview** pane on the right side of the page.
+> Click a field to go to the corresponding parameter and modify it as needed.
+> Click **Quota Management** (if the organization/resource set has no quota) or click **Manage** in the **Quota** section (if the organization/resource set has a quota) to manage quotas for cloud products.
+> For more information about quota management, see the **Quota Management** chapter in the **Apsara Uni-manager Operations Console User Guide** .
+
 5. Create the peering connection.
 If a service exists in Service Management where **Cloud Resource** is set to **Router**
 **Interface (VBR Interconnection)**: confirm the configuration parameters and click
@@ -488,7 +519,11 @@ For more information about service management, see the **Manage services** topic
 
 **VBR-to-VPC connection list**
 
-The **VBR-to-VPC Connection** page lists the details of created peering connections. The list is limited to 100 pages and can display a maximum of 10,000 entries. To view data beyond this limit, use the filter feature. You can search for a specific peering connection by entering a keyword or using advanced filters. Click an instance ID in the **Initiator Instance** column to view the configuration information of the initiator instance. Click an instance ID in the **Acceptor Instance** column to view the configuration information of the acceptor instance. Click the icon next to the name in the **Initiator Instance** column to modify the initiator router interface name. The name must be 2 to 128 characters in length, must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-). ns
+The **VBR-to-VPC Connection** page lists the details of created peering connections.
+
+> **Note:** The list is limited to 100 pages and can display a maximum of 10,000 entries. To view data beyond this limit, use the filter feature.
+
+You can search for a specific peering connection by entering a keyword or using advanced filters. Click an instance ID in the **Initiator Instance** column to view the configuration information of the initiator instance. Click an instance ID in the **Acceptor Instance** column to view the configuration information of the acceptor instance. Click the icon next to the name in the **Initiator Instance** column to modify the initiator router interface name. The name must be 2 to 128 characters in length, must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-). ns
 
 **Tag management**
 
@@ -516,7 +551,11 @@ If you need to use a deactivated peering connection again, you can reactivate th
 
 **Health check**
 
-Health checks are supported when both the source and destination are IPv6 addresses. Health checks are not supported when the source is an IPv4 address and the destination is an IPv6 address. An "invalid address" error occurs. Health checks are not supported when the source is an IPv6 address and the destination is an IPv4 address. An "invalid address" error occurs. Health checks are supported when both the source and destination are IPv4 addresses.
+> **Note:** Health checks are supported when both the source and destination are IPv6 addresses.
+> Health checks are not supported when the source is an IPv4 address and the destination is an IPv6 address. An "invalid address" error occurs.
+> Health checks are not supported when the source is an IPv6 address and the destination is an IPv4 address. An "invalid address" error occurs.
+> Health checks are supported when both the source and destination are IPv4 addresses.
+
 1. On the **VBR-to-VPC Connection** page, find the target peering connection, and in the
 **Actions** column, click **Health Check**.
 2. In the **Health Check** dialog box, configure the following parameters, select **I have read**
@@ -535,9 +574,8 @@ ns
 
 **Delete a connection**
 
-**Warning**
+> **Warning:** Before you delete a VBR-to-VPC connection, you must verify whether any bare-metal resources exist in the peer VPC.
 
-Before you delete a VBR-to-VPC connection, you must verify whether any bare-metal resources exist in the peer VPC.
 1. On the **VBR-to-VPC Connection** page, find the target peering connection, and in the
 **Actions** column, click **Delete**.
 2. (Optional) If bare-metal resources exist in the peer VPC, follow the prompts in the dialog
@@ -556,7 +594,8 @@ To create a dedicated connection, you must apply for an Express Connect circuit 
 
 **Apply for an Express Connect circuit**
 
-To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
+> **Note:** To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
+
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, click **Apply for Physical Connection**.
 4. Go to the Apsara Uni-manager Operations Console to configure an Express Connect circuit
@@ -566,7 +605,11 @@ as prompted.
 
 **The list of Express Connect circuits**
 
-On the **Express Connect circuit** page, you can view the created Express Connect circuit in the list. At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries. You can use a keyword or a specific filter condition to filter Express Connect circuits. Click next to the name of an Express Connect circuit in the **ID/Name** column to modify the name. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` .
+On the **Express Connect circuit** page, you can view the created Express Connect circuit in the list.
+
+> **Note:** At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries.
+
+You can use a keyword or a specific filter condition to filter Express Connect circuits. Click next to the name of an Express Connect circuit in the **ID/Name** column to modify the name. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` .
 
 **Tag management**
 
@@ -706,7 +749,6 @@ A VBR is a router between a customer-premises equipment (CPE) in a data center a
 
 **Create a VBR**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, click **Create VBR**.
 4. In the **Create VBR** dialog box, specify the following parameters and click **OK**.
@@ -734,17 +776,29 @@ A VBR is a router between a customer-premises equipment (CPE) in a data center a
 | IPv6 Address of Gateway at Customer Side | Enter an IPv6 address for the gateway device in the data center to route network traffic between the data center and the VPC. Note This parameter is required if Enable is selected for the IPv6 Support parameter. |
 | Subnet Mask (IPv6 Address) | Enter the subnet mask of the IPv6 addresses that you specified for the VBR and the gateway device in the data center. Note This parameter is required if Enable is selected for the IPv6 Support parameter. |
 
-Specify the IP addresses based on your network plan. The IP addresses must be in the same CIDR block. We recommend that:
+> **Note:** Specify the IP addresses based on your network plan. The IP addresses must be in the same CIDR block. We recommend that:
+
 1. The specified IP addresses do not conflict with IP addresses in the cloud or on-
 premises IP addresses.
 2. Use private IP addresses.
-Example: IPv4 address of the gateway at the Alibaba Cloud side: 10.0.0.1 IPv4 address of the gateway at the customer side: 10.0.0.2 IPv4 subnet mask: 255.255.255.252 Set IPv6 Address of Gateway at Alibaba Cloud Side to 2408:4004:cc:400::1 (GUA address). Set IPv6 Address of Gateway at Customer Side to 2408:4004:cc:400::2 (GUA address). Set Subnet Mask (IPv6 Address) to 2408:4004:cc:400::/56.
+
+> Example:
+> IPv4 address of the gateway at the Alibaba Cloud side: 10.0.0.1
+> IPv4 address of the gateway at the customer side: 10.0.0.2
+> IPv4 subnet mask: 255.255.255.252
+> Set IPv6 Address of Gateway at Alibaba Cloud Side to 2408:4004:cc:400::1 (GUA address).
+> Set IPv6 Address of Gateway at Customer Side to 2408:4004:cc:400::2 (GUA address).
+> Set Subnet Mask (IPv6 Address) to 2408:4004:cc:400::/56.
 
 **Related operations**
 
 **VBR list**
 
-On the **Virtual Border Router** page, you can view the created VBRs in the list. At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries. You can use a keyword or a specific filter condition to filter VBRs. Click next to the name in the **ID/Name** column to modify the name of the VBR.
+On the **Virtual Border Router** page, you can view the created VBRs in the list.
+
+> **Note:** At most 100 pages are supported and a total of 10,000 entries can be displayed. To view more than 10,000 entries, use filter conditions to filter specific entries.
+
+You can use a keyword or a specific filter condition to filter VBRs. Click next to the name in the **ID/Name** column to modify the name of the VBR.
 
 **Manage tags**
 
@@ -794,7 +848,6 @@ After you create a virtual border router, you can associate an Express Connect c
 
 **Add an Express Connect circuit**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Physical Connection** tab.
@@ -804,7 +857,6 @@ information, see Create a peering connection.
 
 **Modify an Express Connect circuit**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Physical Connection** tab.
@@ -823,7 +875,6 @@ After you create a VBR, you must add routes that point to the Express Connect ci
 
 **Add a route**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Route Entry** tab.
@@ -838,10 +889,9 @@ After you create a VBR, you must add routes that point to the Express Connect ci
 
 **Delete a route**
 
-**Important**
+> **Important:** Before you delete a route, make sure that the **Status** of the route is **Available**.
+> Before you delete a route whose **Next Hop Type** is **VPC**, check whether bare metal resources exist in the peer VPC.
 
-Before you delete a route, make sure that the **Status** of the route is **Available**. Before you delete a route whose **Next Hop Type** is **VPC**, check whether bare metal resources exist in the peer VPC.
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Route Entry** tab.
@@ -868,7 +918,6 @@ Before you configure BGP routing, take note of the following limits: You can spe
 **Step 1: Create a BGP group**
 
 Before you configure BGP routing, you must create a BGP group with the requested ASN.
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **BGP Groups** tab.
@@ -952,7 +1001,6 @@ This topic describes how to create a peering connection. After you create a virt
 
 **Create a peering connection**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **VBR-to-VPC** tab.
@@ -962,7 +1010,6 @@ Create a peering connection.
 
 **Manage a peering connection**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **VBR-to-VPC** tab.
@@ -983,7 +1030,6 @@ Two VBRs are created in the same region and each VBR is connected to your data c
 
 **Create a failover group**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Failover Groups** tab.
@@ -1000,11 +1046,12 @@ Two VBRs are created in the same region and each VBR is connected to your data c
 
 After you complete the preceding steps, the **status** of the failover group changes to
 **Normal**.
-You cannot modify the configuration of a failover group after the failover group is created. If the configuration does not meet your requirements, you can delete the failover group and create one again. For more information, see Delete a failover group.
+
+> **Note:** You cannot modify the configuration of a failover group after the failover group is created.
+> If the configuration does not meet your requirements, you can delete the failover group and create one again. For more information, see Delete a failover group.
 
 **Delete a failover group**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **Failover Groups** tab.
@@ -1020,7 +1067,6 @@ You can attach a virtual border router (VBR) to a Cloud Enterprise Network (CEN)
 
 **CEN authorization**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **CEN Cross-Account Authorization** tab.
@@ -1031,7 +1077,6 @@ You can attach a virtual border router (VBR) to a Cloud Enterprise Network (CEN)
 **Revoke CEN authorization**
 
 You can revoke the CEN authorization based on your business requirements. Revoking the CEN authorization does not disconnect the VBR that corresponds to the CEN instance.
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click **Virtual Border Router**.
 3. On the **Virtual Border Router** page, find the VBR and click its ID in the **ID/Name** column.
 4. On the details page of the VBR, click the **CEN Cross-Account Authorization** tab.
@@ -1049,7 +1094,11 @@ Express Connect allows you to view the operation logs of related resources. The 
 1. Log in to the Express Connect console.
 2. In the left-side navigation pane, click **Operation Logs**.
 3. On the Operation Logs page, view the operation logs.
-Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator. If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded. Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator.
+> If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded.
+> Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
 4. Click **Advanced Filter** to search for operation logs by specifying filter conditions. The
 following table describes the filter conditions.
 
@@ -1075,7 +1124,12 @@ column. In the **View Operation Details** panel, view information in the **Basic
 
 1. Log in to the Express Connect console.
 2. View the operation logs of a single instance on the instance details page.
-i. In the left-side navigation pane, click **Physical Connection** or **Virtual Border Router**. ii. On the page that appears, find the instance that you want to manage and click its ID. iii. On the instance details page, click the **Operation Logs** tab. Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator. If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded. Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+i. In the left-side navigation pane, click **Physical Connection** or **Virtual Border Router**. ii. On the page that appears, find the instance that you want to manage and click its ID. iii. On the instance details page, click the **Operation Logs** tab.
+
+> **Note:** Operation logs are retained for seven days. To adjust the retention period, modify the log storage settings as an administrator.
+> If you extend the retention period by modifying the log storage settings, the log data before the new retention period is not recorded.
+> Up to 100 pages of records can be displayed on the list, and up to 100 records can be displayed on each page. If more than 10,000 records are available, specify filter conditions to filter the records.
+
 3. **Optional.** Search for operation logs by specifying filter conditions, such as **Operation**
 **Name** and **Operator**. The following table describes the filter conditions.
 
@@ -1101,7 +1155,6 @@ As the number of instances increases, it becomes more difficult to manage instan
 
 **Add tags**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click the menu item corresponding to the type of the
 resources that you want to manage.
 3. Add tags to instances based on the following information.
@@ -1118,7 +1171,6 @@ b. In the **Batch Add Tags** dialog box, configure the **Tag Key** and **Tag Val
 
 **Remove tags**
 
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click the menu item corresponding to the type of the
 resources that you want to manage.
 3. Remove tags based on the following information.
@@ -1129,7 +1181,6 @@ c. In the **Edited** message, check the tag information and click **Close**.
 **Search for instances by tag**
 
 After you add tags to instances, you can quickly filter the instances by tag.
-1. Log on to the Express Connect console.
 2. In the left-side navigation pane, click the menu item corresponding to the type of the
 resources that you want to manage.
 3. On the instances page, choose **Advanced Filter > Filter by Tag**.

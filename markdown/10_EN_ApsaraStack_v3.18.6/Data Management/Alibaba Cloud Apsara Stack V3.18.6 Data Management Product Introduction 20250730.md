@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 20
 source_pdf: "75d3fd05c1241aa7_Alibaba Cloud Apsara Stack V3.18.6 Data Management Product Introduction 20250730.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Data%20Management%20Product%20Introduction%2020250730.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Data Management Product Introduction 20250730
@@ -27,9 +27,7 @@ Data Management (DMS) is a fully managed service that is provided by Apsara Stac
 
 Relational databases: MySQL: ApsaraDB RDS for MySQL, PolarDB-X, MySQL databases from other cloud service providers, and self-managed MySQL databases SQL Server: ApsaraDB RDS for SQL Server, SQL Server databases from other cloud service providers, and self-managed SQL Server databases PostgreSQL: ApsaraDB RDS for PostgreSQL, PostgreSQL databases from other cloud service providers, and self-managed PostgreSQL databases Self-managed Dameng (DM) databases Self-managed Oracle databases ApsaraDB for OceanBase and self-managed OceanBase databases NoSQL databases: Redis: ApsaraDB for Redis, Redis databases from other cloud service providers, and selfmanaged Redis databases MongoDB: ApsaraDB for MongoDB, MongoDB databases from other cloud service providers, and self-managed MongoDB databases Graph Database (GDB) Online analytical processing (OLAP) databases: AnalyticDB for MySQL AnalyticDB for PostgreSQL
 
-**Note**
-
-Self-managed databases are databases that are installed on Apsara Stack Elastic Compute Service (ECS) instances, instances from other cloud service providers, or servers in data centers.
+> **Note:** Self-managed databases are databases that are installed on Apsara Stack Elastic Compute Service (ECS) instances, instances from other cloud service providers, or servers in data centers.
 
 **Features**
 

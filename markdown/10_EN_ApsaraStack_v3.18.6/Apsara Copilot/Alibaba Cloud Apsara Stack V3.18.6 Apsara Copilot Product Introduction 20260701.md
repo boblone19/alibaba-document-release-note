@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 9
 source_pdf: "5fbdc1040cd2196e_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Product Introduction 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20Product%20Introduction%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Copilot Product Introduction 20260701

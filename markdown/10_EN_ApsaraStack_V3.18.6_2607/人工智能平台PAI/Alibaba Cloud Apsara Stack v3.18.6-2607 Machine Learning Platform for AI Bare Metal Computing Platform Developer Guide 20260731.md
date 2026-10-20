@@ -5,7 +5,7 @@ doc_version: "20260731"
 pdf_pages: 355
 source_pdf: "7779ada17d41158e_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Developer%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Developer Guide 20260731
@@ -170,9 +170,7 @@ When you call an Apsara Stack API operation, you must provide multiple header pa
 | x-acs- instanceid | The ID of the resource on which you want to perform the operation. | bmcp-bpnopt**** | You can obtain the resource ID from the cloud service instance list in the Apsara Uni-manager Management Console. 1. Log on to the Apsara Uni-manager Management Console. 2. In the top navigation bar, choose Products > Computing > Bare Metal Computing Platform (BMCP). 3. In the left-side navigation pane, click Cluster Management and Node Management. 4. View the resource ID, such as a cluster ID or a node ID, in the corresponding resource list. |
 |---|---|---|---|
 
-**Note**
-
-For cloud service resource instance API operations that return lists, the response includes the ResourceGroupName (the resource group name), ResourceGroup (the resource group ID), DepartmentName (the organization name), and Department (the organization ID) parameters by default.
+> **Note:** For cloud service resource instance API operations that return lists, the response includes the ResourceGroupName (the resource group name), ResourceGroup (the resource group ID), DepartmentName (the organization name), and Department (the organization ID) parameters by default.
 
 **Obtain the endpoint**
 
@@ -193,9 +191,7 @@ Obtain an AccessKey, configure the access credentials as environment variables. 
 | Use Security Token Service (STS) temporary access credentials | ALIBABA CLOUD ACCESS KEY _ _ _ ID, _ ALIBABA CLOUD ACCESS KEY _ _ _ SECRET, and _ ALIBABA CLOUD SESSION TO _ _ _ KEN | An AccessKey ID obtained from STS starts with STS, for example, STS.**************** . Use the temporary identity credentials that are obtained from STS, which include an AccessKey ID, an AccessKey secret, and a security token. |
 |---|---|---|
 
-**Important**
-
-After the configuration is complete, restart or refresh the build and runtime environment, including the IDE, command-line interface, other desktop applications, and background services, to ensure that the latest system environment variables are loaded.
+> **Important:** After the configuration is complete, restart or refresh the build and runtime environment, including the IDE, command-line interface, other desktop applications, and background services, to ensure that the latest system environment variables are loaded.
 
 **Linux**
 
@@ -306,13 +302,11 @@ If your application is deployed and runs in a highly secure and stable environme
 
 **Background information**
 
-**Warning**
+> **Warning:** The AccessKey pair of a personal account is a restricted AccessKey pair that is managed by the permission system of the Apsara Uni-manager Management Console. In contrast, an organization AccessKey pair has broader permissions, and administrators must verify the security of the operations.
 
-The AccessKey pair of a personal account is a restricted AccessKey pair that is managed by the permission system of the Apsara Uni-manager Management Console. In contrast, an organization AccessKey pair has broader permissions, and administrators must verify the security of the operations. The Apsara Uni-manager Management Console provides both personal and organization AccessKey pairs. (Note that only operations administrators and first-level organization administrators can obtain an organization AccessKey pair.) We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and related cloud services.
+The Apsara Uni-manager Management Console provides both personal and organization AccessKey pairs. (Note that only operations administrators and first-level organization administrators can obtain an organization AccessKey pair.) We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and related cloud services.
 
-**Note**
-
-If you use the AccessKey pair of a personal account, you must add the following parameters to the request header: x-acs-regionid (the region ID), x-acs-organizationid (the organization ID), x-acs-resourcegroupid (the resource group ID), and x-acs-instanceid (the cloud service resource ID). For specific operations, see the preparations topic of each service.
+> **Note:** If you use the AccessKey pair of a personal account, you must add the following parameters to the request header: x-acs-regionid (the region ID), x-acs-organizationid (the organization ID), x-acs-resourcegroupid (the resource group ID), and x-acs-instanceid (the cloud service resource ID). For specific operations, see the preparations topic of each service.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -321,9 +315,7 @@ If you use the AccessKey pair of a personal account, you must add the following 
 click **User Information**.
 3. In the **AccessKey** section, view the AccessKey information of your personal account.
 
-**Note**
-
-The AccessKey ID and AccessKey Secret are the credentials that you use to access cloud resources. They grant full permissions of the account. Keep them secure.
+> **Note:** The AccessKey ID and AccessKey Secret are the credentials that you use to access cloud resources. They grant full permissions of the account. Keep them secure.
 
 **Obtain an organization AccessKey pair**
 
@@ -350,9 +342,7 @@ Generic calls that allow you to call any API operation have the following benefi
 | setAction("DescribeBmcpCluster") |   |   |
 |   |   | to specify |
 
-**Note**
-
-Replace the variables in the sample code in this topic with actual values. Do not retain the angle brackets (<>) in your final code.
+> **Note:** Replace the variables in the sample code in this topic with actual values. Do not retain the angle brackets (<>) in your final code.
 
 **Java example**
 

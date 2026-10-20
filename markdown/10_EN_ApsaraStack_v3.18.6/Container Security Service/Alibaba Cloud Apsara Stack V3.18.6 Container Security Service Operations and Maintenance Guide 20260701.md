@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 50
 source_pdf: "466bc43925b755b5_Alibaba Cloud Apsara Stack V3.18.6 Container Security Service Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Security%20Service%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Container Security Service Operations and Maintenance Guide
@@ -590,9 +590,9 @@ SIGN/VERIFY signing feature.
 
 **High-availability server side**
 
-**Note**
+> **Note:** High availability is delivered by using stateless applications.
 
-High availability is delivered by using stateless applications. The server side of Container Security Service (CSS) consists of stateless applications and implements load balancing based on virtual IP addresses (VIPs) and Dubbo to ensure service availability. The server side is stateless. If you have at least two physical machines, service availability is ensured when one physical machine runs as expected. Data is stored in middleware such as Diamond and MetaQ or cloud services such as MiniRDS, Simple Log Service, Object Storage Service (OSS), and Tair. The middleware and cloud services provide high data storage availability. CSS provides API operations that can be called over HTTPS and implements load balancing based on domain names and VIPs to ensure service availability. Service calls in CSS depend on the Dubbo microservices framework. Software-based load balancing of Dubbo ensures service availability.
+The server side of Container Security Service (CSS) consists of stateless applications and implements load balancing based on virtual IP addresses (VIPs) and Dubbo to ensure service availability. The server side is stateless. If you have at least two physical machines, service availability is ensured when one physical machine runs as expected. Data is stored in middleware such as Diamond and MetaQ or cloud services such as MiniRDS, Simple Log Service, Object Storage Service (OSS), and Tair. The middleware and cloud services provide high data storage availability. CSS provides API operations that can be called over HTTPS and implements load balancing based on domain names and VIPs to ensure service availability. Service calls in CSS depend on the Dubbo microservices framework. Software-based load balancing of Dubbo ensures service availability.
 
 | Third-party Application User Server Guard Ag VIP DNS |   |
 |---|---|
@@ -606,9 +606,9 @@ High availability is delivered by using stateless applications. The server side 
 
 **Zone-disaster recovery**
 
-**Note**
+> **Note:** Zone-disaster recovery is delivered by using the active-active mode.
 
-Zone-disaster recovery is delivered by using the active-active mode. The zone-disaster recovery architecture of Container Security Service (CSS) follows the rules of the active-active mode. In this architecture, disaster recovery is ensured by cloud storage services or middleware.
+The zone-disaster recovery architecture of Container Security Service (CSS) follows the rules of the active-active mode. In this architecture, disaster recovery is ensured by cloud storage services or middleware.
 
 | Data Ingress Data Ingress Primary/Secondary Primary/Secondary Network VIP VIP Netwo SasContainerService Aegisbiz SasContainerService Aegisbiz Active-active Server Serve Guard Guar AegisimageAnalyzer ...... AegisimageAnalyzer ...... MiniRDS MiniRDS Primary/Secondary Cloud OSS OSS Cloud Storage Storage OSS OSS Tair MetaQ Tair MetaQ Active-active Middleware Middlew Diamond Dubbo Diamond Dubbo Primary Data Center Secondary Data Center |   |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -639,9 +639,9 @@ The following table describes the disaster recovery solution in each component.
 
 **Geo-disaster recovery**
 
-**Note**
+> **Note:** Geo-disaster recovery is delivered based on independent regions.
 
-Geo-disaster recovery is delivered based on independent regions. The multi-region architecture of CSS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
+The multi-region architecture of CSS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
 
 ### 1.4 Monitor objects and send alert notifications
 
@@ -653,7 +653,8 @@ System monitoring of Container Security Service (CSS) is connected to the Tianji
 
 **Important**
 
-Note: The alerting feature is not enabled for versions earlier than Apsara Stack V3.17.1. This section describes the monitoring metrics of applications.
+> **Note:** The alerting feature is not enabled for versions earlier than Apsara Stack V3.17.1. This section describes the monitoring metrics of applications.
+
 
 **aegisbiz**
 
@@ -770,9 +771,7 @@ Note: The alerting feature is not enabled for versions earlier than Apsara Stack
 | aegisimageanalyzer health c _ _ ontainer serverrole _ | health check (service role) |   |   |   |
 | aegisimageanalyzer health c _ _ ontainer cluster _ | health check (Cluster) |   |   |   |
 
-**Note**
-
-For more information about the system monitoring of reusable Server Guard applications, see Server Guard Operations Guide.
+> **Note:** For more information about the system monitoring of reusable Server Guard applications, see Server Guard Operations Guide.
 
 **Business metrics**
 

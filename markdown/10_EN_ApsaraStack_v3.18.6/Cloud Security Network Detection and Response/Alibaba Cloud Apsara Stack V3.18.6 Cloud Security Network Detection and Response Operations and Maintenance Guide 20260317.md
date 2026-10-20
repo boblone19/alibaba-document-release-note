@@ -5,7 +5,7 @@ doc_version: "20260317"
 pdf_pages: 19
 source_pdf: "134f6d302cd2a02e_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Operations and Main"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Network%20Detection%20and%20Response%20Operations%20and%20Maintenance%20Guide%2020260317.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Network Detection and Response Operations and Maintenance Guide
@@ -40,11 +40,23 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. cture Management console You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. cture Management console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Platforms > Apsara Infrastructure Management Framework**.
@@ -202,7 +214,11 @@ This topic describes how to view the network interface controller (NIC) types, c
 lspci | grep net
 ```
 
-NICs used by NDR servers consist of management NICs and business NICs. A management NIC is a local NIC of a server. A management NIC is usually a GE NIC, such as the I350 NIC shown in the preceding figure. A business NIC is a NIC that receives mirrored traffic. A business NIC is usually a 10GE NIC, such as the 82599ES NIC shown in the preceding figure. NDR servers use NICs of specific types as business NICs. The following NIC types are supported:
+> **Note:** NICs used by NDR servers consist of management NICs and business NICs.
+> A management NIC is a local NIC of a server. A management NIC is usually a GE NIC, such as the I350 NIC shown in the preceding figure.
+> A business NIC is a NIC that receives mirrored traffic. A business NIC is usually a 10GE NIC, such as the 82599ES NIC shown in the preceding figure.
+> NDR servers use NICs of specific types as business NICs.
+> The following NIC types are supported:
 
 ```json
 ["RP2000","RP1000","MT28800","MT27800", "MT27700", "MT27710", "X710", "XL710" , "X520", "82599ES", "82599EB", "82599"]
@@ -214,7 +230,7 @@ NICs used by NDR servers consist of management NICs and business NICs. A managem
 /home/admin/beaver_drv/beaver_lib/bvpp_sdk/bvpp/tools/ether_ctl --dump
 ```
 
-Check the values in the `link` column. If a value in the link column is `down` , you need to troubleshoot the cable connection or optical module.
+> **Note:** Check the values in the `link` column. If a value in the link column is `down` , you need to troubleshoot the cable connection or optical module.
 
 **View the link status**
 
@@ -222,7 +238,7 @@ Check the values in the `link` column. If a value in the link column is `down` ,
 /home/admin/beaver_drv/beaver_lib/bvpp_sdk/scripts/bvpp_lldp_info.py
 ```
 
-You can use the preceding script to view the information about the peer device and port that are connected to the NDR server.
+> **Note:** You can use the preceding script to view the information about the peer device and port that are connected to the NDR server.
 
 ### 3.5 Use packet capture tools
 
@@ -236,7 +252,16 @@ This topic describes the built-in packet capture tools of Network Detection and 
 /home/admin/beaver_drv/bin/example_no_dpdk pkt_desc 1 -1 <IP address>
 ```
 
-The following logs are generated: `is_v6` : indicates whether IPv6 is used. Valid values: 0 and 1. A value of `0` indicates that IPv6 is not used. A value of `1` indicates that IPv6 is used. `sip` : the source IP address. `dip` : the destination IP address. `sport` : the source port. `dport` : the destination port. `dscp_cxp_id` : the hexadecimal value of the VLAN ID. This can be used to determine whether the traffic is on a specific VLAN. `aliuid` : the tenant UID. This can be used to distinguish the traffic of different tenants. A value of 0 indicates the non-tenant resources, an error in the synchronization of NDR resources, or an error in mirrored traffic.
+The following logs are generated:
+
+> **Note:** `is_v6` : indicates whether IPv6 is used. Valid values: 0 and 1. A value of `0` indicates that IPv6 is not used. A value of `1` indicates that IPv6 is used.
+> `sip` : the source IP address.
+> `dip` : the destination IP address.
+> `sport` : the source port.
+> `dport` : the destination port.
+> `dscp_cxp_id` : the hexadecimal value of the VLAN ID. This can be used to determine whether the traffic is on a specific VLAN.
+> `aliuid` : the tenant UID. This can be used to distinguish the traffic of different tenants.
+> A value of 0 indicates the non-tenant resources, an error in the synchronization of NDR resources, or an error in mirrored traffic.
 
 **CapTool**
 
@@ -269,7 +294,7 @@ rx|tx|drop|kernel|pre_routing|local_in|post_routing|pre_routing6|local_in6|post_
          --version
 ```
 
-The results of CapTool can be displayed on the screen or stored to packet capture (PCAP) files. However, you cannot distinguish traffic among tenants.
+> **Note:** The results of CapTool can be displayed on the screen or stored to packet capture (PCAP) files. However, you cannot distinguish traffic among tenants.
 
 ### 3.6 Replay packets
 

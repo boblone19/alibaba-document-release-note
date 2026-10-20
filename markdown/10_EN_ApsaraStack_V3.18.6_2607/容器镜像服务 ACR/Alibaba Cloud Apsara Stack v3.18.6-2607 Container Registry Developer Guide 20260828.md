@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 147
 source_pdf: "e468a45feffc1fcb_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828
@@ -151,9 +151,8 @@ Apsara Stack allows you to call API operations by using the point of presence (P
 1. Obtain AccessKey credentials.
 Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey 3-tuple.
 
-**Note**
+> **Note:** We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-We recommend that you use the AccessKey pair of a personal account assigned by Resource Access Management (RAM) or an access credential assigned by Security Token Service (STS) to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For more information, see Obtain the values of common header parameters.
 3. Obtain an organization ID and a resource set ID.
@@ -186,15 +185,11 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**Note**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First login**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. In the top navigation bar, choose **Products > Others > API Tool**.
 
@@ -228,9 +223,7 @@ AccessKey pairs are classified into AccessKey pairs assigned by Resource Access 
 
 An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
 | Parameter | Description |
 |---|---|
@@ -247,9 +240,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -280,9 +271,14 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer ove
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. <sts.aliyuns.com>: Replace it with your actual STS endpoint.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <yourRegionID>: Replace it with the actual region ID.
+> <yourAccessKeyID>: Replace it with your AccessKey ID.
+> <yourAccessKeySecret>: Replace it with your AccessKey secret.
+> <yourRoleSessionName>: Replace it with your current session name.
+> <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role.
+> <sts.aliyuns.com>: Replace it with your actual STS endpoint.
 
 ```java
 public static void main(String[] args) {
@@ -335,9 +331,11 @@ e that is obtained in the previous step.
 3. Use the AccessKey pair assigned by STS to call API operations of cloud services. In the
 following code, the `CreateNamespace` API operation of Container Registry Advanced Edition is called.
 
-**Note**
-
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <accesskeyId>: Replace it with your actual AccessKey ID. <accessKeySecret>: Replace it with your actual AccessKey secret. <securityToken>: Replace it with your actual security token.
+> **Note:** You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code.
+> The following list describes the variables:
+> <accesskeyId>: Replace it with your actual AccessKey ID.
+> <accessKeySecret>: Replace it with your actual AccessKey secret.
+> <securityToken>: Replace it with your actual security token.
 
 ```java
 // This file is auto-generated, don't edit it. Thanks. package com.aliyun.sample; import com.aliyun.tea.*; import com.aliyun.cr20181201.*; import com.aliyun.cr20181201.models.*; import com.aliyun.teaopenapi.*; import com.aliyun.teaopenapi.models.*; public class Sample {
@@ -432,9 +430,9 @@ The following response parameters are returned by default when you call operatio
 
 To use points of presence (POPs) to call Apsara Stack API operations, you must use the Container Registry SDK. This topic describes how to obtain Alibaba Cloud SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
-**Note**
+> **Note:** We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system.
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
 ### 1.3 Standard SDK
 
@@ -448,9 +446,7 @@ This topic describes how to install Java.
 
 You must use Java 6 or later. To install the core library of Alibaba Cloud SDK for Java, you can add the following dependency to the POM file:
 
-**Note**
-
-In the following example, the core library of SDK V4.5.21 is installed.
+> **Note:** In the following example, the core library of SDK V4.5.21 is installed.
 
 ```xml
 <dependency>
@@ -464,9 +460,7 @@ In the following example, the core library of SDK V4.5.21 is installed.
 
 To install Container Registry SDK for Java by using Apache Maven, add the following dependency to the project file:
 
-**Note**
-
-In the following example, SDK V4.1.2 is installed.
+> **Note:** In the following example, SDK V4.1.2 is installed.
 
 ```xml
 <dependency>
@@ -589,9 +583,7 @@ This topic describes how to install SDK for Java.
 
 You must use Java 8 or later. To install OpenAPI Portal SDK for Java, you can add the following dependency to the POM file:
 
-**Note**
-
-In this topic, a dependency of version 0.0.19 is used.
+> **Note:** In this topic, a dependency of version 0.0.19 is used.
 
 ```xml
 <dependency>
@@ -605,9 +597,7 @@ In this topic, a dependency of version 0.0.19 is used.
 
 To install the Container Registry SDK for Java by using Apache Maven, add the following dependency to the project file:
 
-**Note**
-
-In this topic, a dependency of version 1.0.1 is used.
+> **Note:** In this topic, a dependency of version 1.0.1 is used.
 
 ```xml
 <dependency>
@@ -3349,9 +3339,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 Deletes a namespace.
 
-**Note**
-
-After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+> **Note:** After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
 
 **Request parameters**
 
@@ -3631,9 +3619,7 @@ Sample success responses `XML` format
 
 Deletes an image repository.
 
-**Important**
-
-If you delete a repository, all images in the repository are deleted as well.
+> **Important:** If you delete a repository, all images in the repository are deleted as well.
 
 **Request parameters**
 

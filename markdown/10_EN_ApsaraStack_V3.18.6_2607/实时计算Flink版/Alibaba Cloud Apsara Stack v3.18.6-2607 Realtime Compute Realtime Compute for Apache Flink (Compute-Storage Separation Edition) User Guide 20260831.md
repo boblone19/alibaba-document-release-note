@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 105
 source_pdf: "62a81085d3e58e56_Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97Flink%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Realtime%20Compute%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide 20260831
@@ -89,16 +89,29 @@ You have obtained the service domain name for the Apsara Uni-manager Management 
 **Log in to the Realtime Compute for Apache Flink management console**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
-key. You can click the current language in the upper-right corner to switch to another language.
+key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+
 2. Enter your username and password.
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
+> **Note:** You can obtain the username and logon password from an operations administrator.
+> If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %.
+
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy Agreement, And User**
 **Agreement**.
-The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement. The **Product Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
+
+> The **Product Service Agreement**, **Privacy Agreement**, and **User Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
+
 4. Click **Account Logon** or **Authorized Logon**.
-The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
+> **Note:** The Authorized Logon button is displayed only if the global IdP setting for third-party authentication is enabled. This display name can be customized. The default name is "Authorized Logon".
+
 5. If multi-factor authentication (MFA) is enabled for your account, follow the steps for one of the following
-scenarios: When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
+scenarios:
+
+> **Note:** When you log on from the Internet, multi-factor authentication (MFA) is mandatory by default.
 
 **First logon after MFA is enabled**
 
@@ -136,9 +149,7 @@ This topic describes how to create a Flink workspace.
 
 You have created the organization and resource set to which the user belongs, and granted the required permissions to the user.
 
-**Important**
-
-Complete Authorization policies in the management console first to configure user workspace access permissions. The user must have at least the permissions to create and view Realtime Compute for Apache Flink workspaces.
+> **Important:** Complete Authorization policies in the management console first to configure user workspace access permissions. The user must have at least the permissions to create and view Realtime Compute for Apache Flink workspaces.
 
 **Procedure**
 
@@ -171,9 +182,7 @@ This topic describes how to create and manage namespaces in the management conso
 
 The target organization and resource set have been created, and the corresponding permissions have been granted to the target user.
 
-**Important**
-
-The access permissions to target namespaces are configured for the user. For more information about the configuration method, see Authorization policies in the management console. The user must have at least the permissions to create and view the workspaces and namespaces in the management console of Realtime Compute for Apache Flink.
+> **Important:** The access permissions to target namespaces are configured for the user. For more information about the configuration method, see Authorization policies in the management console. The user must have at least the permissions to create and view the workspaces and namespaces in the management console of Realtime Compute for Apache Flink.
 
 **Procedure**
 
@@ -181,8 +190,17 @@ The access permissions to target namespaces are configured for the user. For mor
 2. Create a namespace.
 i. In the left-side navigation pane, choose **Flink (Compute-Storage Separation Edition) > Workspace**
 **Management**.
-ii. Find the workspace that you want to manage, and click **Create Namespace** in the **Actions** column. iii. (Optional) Select a service catalog. Flink (Compute-storage Decoupled Edition) supports integration with service catalog for operations control. After you create a service catalog, you can customize the relevant parameters, and perform inquiries and workflow review. After a service catalog is created, the **Billing Method** parameter is displayed when you create a Flink namespace. Currently, only **Pay-as-you-go** is supported. If you have not created a service catalog, skip this step. a. If two or more service catalogs are created, select a service catalog on the page that appears. For more information about how to create a service catalog, see Appendix: Create a service catalog of this topic. If only one service catalog exists, it is selected by default and the system automatically navigates to the **Select a Service Directory** interface. If multiple service catalogs exist, click **Create Namespace** and the system navigates to the
-**Select Service Catalog** page.
+ii. Find the workspace that you want to manage, and click **Create Namespace** in the **Actions** column. iii. (Optional) Select a service catalog.
+
+> **Note:** Flink (Compute-storage Decoupled Edition) supports integration with service catalog for operations control. After you create a service catalog, you can customize the relevant parameters, and perform inquiries and workflow review.
+> After a service catalog is created, the **Billing Method** parameter is displayed when you create a Flink namespace. Currently, only **Pay-as-you-go** is supported.
+> If you have not created a service catalog, skip this step.
+
+a. If two or more service catalogs are created, select a service catalog on the page that appears. For more information about how to create a service catalog, see Appendix: Create a service catalog of this topic.
+
+> **Note:** If only one service catalog exists, it is selected by default and the system automatically navigates to the **Select a Service Directory** interface.
+> If multiple service catalogs exist, click **Create Namespace** and the system navigates to the **Select Service Catalog** page.
+
 b. After you select the target service catalog, click **Activate service** to go to the **Create Namespace** page**.** iv. On the **Create Namespace** page, specify the parameters in the **Section** and **Basic Information** sections.
 
 **Section**
@@ -211,7 +229,11 @@ namespace .
 
 **Related operations**
 
-Go to the development console of Realtime Compute for Apache Flink Find the namespace that you want to manage, and click **Console** in the **Operation** column to go to the development console of Realtime Compute for Apache Flink. Modify the number of CUs If service catalogs have been created, you can perform operations control when you change the number of CUs. For more information about how to create a service catalog, see Appendix: Create a service catalog of this topic. Find the namespace that you want to manage, click Modify CU quantity in the **Operation** column to adjust the CU quantity, and then click **Confirm Order**.
+Go to the development console of Realtime Compute for Apache Flink Find the namespace that you want to manage, and click **Console** in the **Operation** column to go to the development console of Realtime Compute for Apache Flink. Modify the number of CUs
+
+> **Note:** If service catalogs have been created, you can perform operations control when you change the number of CUs. For more information about how to create a service catalog, see Appendix: Create a service catalog of this topic.
+
+Find the namespace that you want to manage, click Modify CU quantity in the **Operation** column to adjust the CU quantity, and then click **Confirm Order**.
 
 **Important**
 
@@ -224,9 +246,9 @@ Reducing the CU quantity may prevent Flink from recovering after a restart. Chec
 3. Click **Create a service** to go to the **Create a service** page.
 4. On the **Create a service** page, select a product and resource for the **Product** parameter.
 5. Specify other parameters as prompted, such as **Service name** and **Authorization type**.
-For more information about parameters, see the **Apsara Uni-manager Management Console User**
-**Guide > Operations Center > Service Operations > Service Catalog** section on the Alibaba
-Cloud Apsara Stack official website.
+
+> **Note:** For more information about parameters, see the **Apsara Uni-manager Management Console User** **Guide > Operations Center > Service Operations > Service Catalog** section on the Alibaba Cloud Apsara Stack official website.
+
 6. Click **Submit** to create the service catalog. You can create namespaces for the catalog and manage the
 **Modify CU quantity** parameter.
 Problem: Why isn't the target Namespace listed, even though my account has the necessary permissions? Cause: This can happen for one of two reasons: The resource set that contains the Namespace does not include your account. Your account is not in the same organization as the UID used to create the Namespace. Problem: When I go to the Workspace List page, why are some action buttons missing or grayed out? Cause: Your resource management role lacks the permissions to create or delete workspaces or projects. Contact your administrator to configure the required access permissions. For more information, see Console authorization. You cannot access the development console because you do not have an assigned business role in the project where the **Console** button is grayed out. Contact the resource owner to assign a business role. Problem: Why do I receive a "permission denied" error when I try to create, modify, or delete a project? Cause: As shown in the figure, your current role is not authorized to perform these operations. Contact your administrator to configure project access permissions. For more information, see Console authorization. ed
@@ -284,7 +306,11 @@ INSERT INTO print_table SELECT SUBSTRING(randstr,0,8) from datagen_source;
 3. Select **Stateless Start** and click **Start**. For more information, see Start a deployment.
 If the job status changes from the current state to **Running**, the job runs normally.
 4. View the Flink compute results.
-i. On the **Job O&M** page, click the target job name. The **Deployment Details** page expands by default. ed ii. On the **Job Log > Operational Log > Running Task Managers** tab, click **Path, ID**. On the **Operational Log** tab, click the drop-down list on the right side of **Job** to select a running job. By default, the system selects the currently running job. iii. Select the **Log** tab to view the Flink compute results. You can also view the compute results on the **Flink UI** page. For more information, see View startup and operational logs.
+i. On the **Job O&M** page, click the target job name. The **Deployment Details** page expands by default. ed ii. On the **Job Log > Operational Log > Running Task Managers** tab, click **Path, ID**.
+
+> **Note:** On the **Operational Log** tab, click the drop-down list on the right side of **Job** to select a running job. By default, the system selects the currently running job.
+
+iii. Select the **Log** tab to view the Flink compute results. You can also view the compute results on the **Flink UI** page. For more information, see View startup and operational logs.
 
 ### 3.2 Quick start for Flink JAR jobs
 
@@ -352,7 +378,11 @@ For more information about configuration parameters, see Job deployment.
 and click **Start** in the **Actions** column.
 2. Select **Stateless start** and click **Start**. For more information, see Start a deployment.
 3. After the job status changes to **Running**, view the Flink compute results.
-i. On the **Job O&M** page, click the name of the target job. The **Deployment details** page expands by default. ed ii. On the **Job log > Operational log > Running Task Managers** tab, click **Path, ID**. On the **Operational log** tab, click the drop-down list on the right side of **Job** to select a running job. The system selects the currently running job by default. iii. Click **Log list**. In the log file with the **.out** suffix, search for shakespeare to view the Flink compute results. You can also view the compute results on the **Flink UI** page. For more information, see View startup and operational logs.
+i. On the **Job O&M** page, click the name of the target job. The **Deployment details** page expands by default. ed ii. On the **Job log > Operational log > Running Task Managers** tab, click **Path, ID**.
+
+> **Note:** On the **Operational log** tab, click the drop-down list on the right side of **Job** to select a running job. The system selects the currently running job by default.
+
+iii. Click **Log list**. In the log file with the **.out** suffix, search for shakespeare to view the Flink compute results. You can also view the compute results on the **Flink UI** page. For more information, see View startup and operational logs.
 
 **Batch job**
 
@@ -418,7 +448,11 @@ ment
 5. On the **Workspace List** page, find the target workspace and click **Configure IP Address for External**
 **Storage** in the **Actions** column.
 6. Click **+IP Address**, enter the IP address information, and then click **OK**.
-i. Obtain the IP address of the ApsaraDB RDS for MySQL instance. You can log on to the OPS machine and run the `ping` command to view the IP address of the endpoint. ii. Add the IP address to the network access allowlist of the current Flink workspace. For more information, see Configure IP Address for External Storage.
+i. Obtain the IP address of the ApsaraDB RDS for MySQL instance.
+
+> **Note:** You can log on to the OPS machine and run the `ping` command to view the IP address of the endpoint.
+
+ii. Add the IP address to the network access allowlist of the current Flink workspace. For more information, see Configure IP Address for External Storage.
 
 **Step 2: Develop a Flink CDC data ingestion job**
 
@@ -577,7 +611,11 @@ ment i. Configure the source and destination, fill in the **MySQL configuration 
 |   | MySQL server-id | The unique ID for each MySQL database client. Valid values: 5400 to 6400. This parameter also supports an ID range format, such as 5400-5408. When you enable the incremental read mode with multiple concurrent threads, set this parameter to an ID range so that each concurrent thread uses a different ID. Important Do not use the same server ID as other jobs or services that access the database. |
 | Destination | Hologres Catalog | You can directly select an existing destination Hologres Catalog. If you have not created a destination Hologres Catalog in advance, click Create Catalog to create one. |
 
-ii. Create a plan. ment Multi-database and multi-table synchronization a. On the **Multi-database and multi-table synchronization** tab, select the source databases and table names for the destination. b. Click **Save plan**, and then click **Next**. c. Review the SQL code that the system generates based on the destination databases and tables you selected, and then click **OK**. You can modify the **File name**, **Storage location**, or **Engine version** as needed. Sharded database and table merging a. On the **Sharded database and table merging** tab, select the source databases and table names for the destination, or directly enter the destination database and table names you created. We recommend that you use regular expressions to specify the source database and source table information. b. Click **Save plan**, and then click **Next**. In a single job, you can create multiple plans for multi-database and multi-table synchronization and sharded database and table merging at the same time. c. Review the SQL code that the system generates based on the destination databases and tables you selected, and then click **OK**. You can modify the **File name**, **Storage location**, or **Engine version** as needed.
+ii. Create a plan. ment Multi-database and multi-table synchronization a. On the **Multi-database and multi-table synchronization** tab, select the source databases and table names for the destination. b. Click **Save plan**, and then click **Next**. c. Review the SQL code that the system generates based on the destination databases and tables you selected, and then click **OK**. You can modify the **File name**, **Storage location**, or **Engine version** as needed. Sharded database and table merging a. On the **Sharded database and table merging** tab, select the source databases and table names for the destination, or directly enter the destination database and table names you created.
+
+> **Note:** We recommend that you use regular expressions to specify the source database and source table information.
+
+b. Click **Save plan**, and then click **Next**. In a single job, you can create multiple plans for multi-database and multi-table synchronization and sharded database and table merging at the same time. c. Review the SQL code that the system generates based on the destination databases and tables you selected, and then click **OK**. You can modify the **File name**, **Storage location**, or **Engine version** as needed.
 5. Click **Create**.
 ment After the job is created, the system navigates to the SQL job development page. The subsequent operations are identical to those of standard job development. For parameter configuration details and subsequent operations, see SQL job development and Start a deployment.
 
@@ -647,7 +685,10 @@ This topic describes the procedure for developing Flink SQL streaming jobs, incl
 ment
 1. Create an SQL streaming job.
 2. Write DDL and DML code.
-The metadata management capability allows you to reuse table schemas across different jobs. When you edit an SQL job in the Flink development console, the system automatically completes field and table names after you enter a few characters. The following code provides an example.
+
+> **Note:** The metadata management capability allows you to reuse table schemas across different jobs. When you edit an SQL job in the Flink development console, the system automatically completes field and table names after you enter a few characters.
+
+The following code provides an example.
 
 ```
 -- Create the source table datagen_source. CREATE TEMPORARY TABLE datagen_source(
@@ -700,11 +741,17 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 
 **Notes**
 
-Parameters configured in the Realtime Compute for Apache Flink console have lower priority than those in deployment code. To ensure normal deployment operation, configure Checkpoint-related parameters in the Realtime Compute for Apache Flink console. Do not configure Checkpoint-related parameters in deployment code. If the upstream or downstream storage that DataStream deployments access provides an allowlist mechanism, configure the allowlist. To avoid conflicts between JAR package dependencies, note the following points: Use the same version of the Apache Flink dependency library in your Pom file as the Flink version selected on the draft development page. For Flink-related dependencies, set scope to provided, that is, add `<scope>provided</scope>` . Flinkrelated dependencies mainly include non-connector dependencies that start with `flink-` in the `org.apache.flink` group, such as flink-streaming-java, flink-streaming-java_2.11, flink-java, and flinkruntime. Configure dependencies before draft development to avoid Flink dependency conflicts. Package other third-party dependencies by using Shade. For more information about Shade packaging, see Apache Maven Shade Plugin. Only methods explicitly marked with @Public or @PublicEvolving in the source code of Apache Flink are publicly available for user calls. Alibaba Cloud Realtime Compute for Apache Flink only guarantees product compatibility with these methods. For DataStream APIs supported by built-in Flink service Connectors, use their built-in dependencies.
+Parameters configured in the Realtime Compute for Apache Flink console have lower priority than those in deployment code. To ensure normal deployment operation, configure Checkpoint-related parameters in the Realtime Compute for Apache Flink console. Do not configure Checkpoint-related parameters in deployment code. If the upstream or downstream storage that DataStream deployments access provides an allowlist mechanism, configure the allowlist. To avoid conflicts between JAR package dependencies, note the following points: Use the same version of the Apache Flink dependency library in your Pom file as the Flink version selected on the draft development page. For Flink-related dependencies, set scope to provided, that is, add `<scope>provided</scope>` . Flinkrelated dependencies mainly include non-connector dependencies that start with `flink-` in the `org.apache.flink` group, such as flink-streaming-java, flink-streaming-java_2.11, flink-java, and flinkruntime.
+
+> **Note:** Configure dependencies before draft development to avoid Flink dependency conflicts.
+
+Package other third-party dependencies by using Shade. For more information about Shade packaging, see Apache Maven Shade Plugin. Only methods explicitly marked with @Public or @PublicEvolving in the source code of Apache Flink are publicly available for user calls. Alibaba Cloud Realtime Compute for Apache Flink only guarantees product compatibility with these methods. For DataStream APIs supported by built-in Flink service Connectors, use their built-in dependencies.
 
 **Draft development**
 
-You must develop JAR drafts offline, then deploy and run the drafts in the Realtime Compute for Apache Flink development console. ment
+> **Note:** You must develop JAR drafts offline, then deploy and run the drafts in the Realtime Compute for Apache Flink development console.
+
+ment
 
 **References**
 
@@ -748,9 +795,10 @@ equal to 60
 
 Package the draft by using the maven-shade-plugin.
 
-**Important**
+> **Important:** If you choose to introduce connectors as additional dependencies, confirm that the scope of connector-related dependencies is `provided` when packaging the draft.
+> If you choose to package connectors together as dependencies, simply use the default scope (compile).
 
-If you choose to introduce connectors as additional dependencies, confirm that the scope of connector-related dependencies is `provided` when packaging the draft. If you choose to package connectors together as dependencies, simply use the default scope (compile). Configuration of maven-shade-plugin for reference ment
+Configuration of maven-shade-plugin for reference ment
 
 ```xml
 <build>
@@ -822,11 +870,16 @@ ment
 
 **Test and deploy the draft**
 
-Realtime Compute for Apache Flink cannot access the Internet by default. Your code may fail direct local testing. We recommend that you perform unit testing separately. For JAR draft deployment, see Job deployment. If you select method 1 to deploy a draft packaged with connectors, remember to upload the related JAR package of the connector. If you need to read configuration files, also upload them as additional dependencies.
+Realtime Compute for Apache Flink cannot access the Internet by default. Your code may fail direct local testing. We recommend that you perform unit testing separately. For JAR draft deployment, see Job deployment.
+
+> **Note:** If you select method 1 to deploy a draft packaged with connectors, remember to upload the related JAR package of the connector.
+> If you need to read configuration files, also upload them as additional dependencies.
 
 **Complete sample code**
 
-This sample code processes data from a Kafka data source and writes the results to MySQL. This example is for reference only. For more guidelines on code style and quality, see Code style and quality guidelines. This example does not include configurations of runtime parameters such as checkpoints, time-to-live (TTL), or restart policy. You can customize these configurations on the **Configuration** page after deploying the draft. Because configuration items set in code take higher precedence, we recommend that you perform custom configuration after draft deployment to facilitate subsequent modifications and application.
+This sample code processes data from a Kafka data source and writes the results to MySQL. This example is for reference only. For more guidelines on code style and quality, see Code style and quality guidelines.
+
+> **Note:** This example does not include configurations of runtime parameters such as checkpoints, time-to-live (TTL), or restart policy. You can customize these configurations on the **Configuration** page after deploying the draft. Because configuration items set in code take higher precedence, we recommend that you perform custom configuration after draft deployment to facilitate subsequent modifications and application.
 
 **FlinkDemo.java**
 
@@ -1211,8 +1264,10 @@ docker run -it --rm -v $PWD:/build -w /build quay.io/pypa/manylinux2014_x86_64 .
 
 After the command is executed, a file named **venv.zip** is generated. This file is the virtual environment for **Python 3.7**. You can also modify the preceding scripts to install other required third-party Python packages in the virtual environment.
 2. Use a **Python 3.7** virtual environment in Python jobs.
-i. Log in to the Realtime Compute for Apache Flink development console. ii. In the left navigation bar, click **File Management** and upload the **venv.zip** file. The file upload size limit in the Realtime Compute for Apache Flink development console is 200 MB. Because a Python virtual environment usually exceeds this limit, you need to upload the file through the OSS management console. For more information, see **Object Storage Service User Guide >**
-**Objects (Files) > Upload files**.
+i. Log in to the Realtime Compute for Apache Flink development console. ii. In the left navigation bar, click **File Management** and upload the **venv.zip** file.
+
+> **Note:** The file upload size limit in the Realtime Compute for Apache Flink development console is 200 MB. Because a Python virtual environment usually exceeds this limit, you need to upload the file through the OSS management console. For more information, see **Object Storage Service User Guide >** **Objects (Files) > Upload files**.
+
 iii. In **O&M Center > Job O&M**, click **Deploy Job**, and in the **Python Archives** setting, select the
 **venv.zip** file.
 iv. Click **Advanced Settings** on the right, and in the **More Flink Configurations** section, add configuration information.
@@ -1227,7 +1282,11 @@ v. Click **Save**.
 
 This section describes how to use third-party Python packages in the following two scenarios: Use a third-party Python package that can be directly imported If your third-party Python package is Zip Safe, you can use it directly in a Python job without installation. Follow these steps: i. Download a third-party Python package that can be directly imported. a. Open the PyPI page in your browser. b. In the search box, enter the name of the target third-party Python package, for example, **apache-**
 **flink 1.12.2**.
-c. In the search results, click the name of the target package. d. In the left-side navigation pane, click Download files. e. Click the package name that contains **cp37-cp37m-manylinux1** to download. ii. Log in to the Realtime Compute for Apache Flink development console. iii. In the left-side navigation pane, click **File Management** and upload the third-party Python package. iv. On the **O&M Center > Job O&M** page, click **Deploy Job**, and in the **Python Libraries** configuration item, select the uploaded third-party Python package. v. Click **Save**. Use a third-party Python package that requires compilation If your third-party Python package is a **tar.gz** archive or a source code package with a **setup.py** file in its root directory, the package usually needs to be compiled before it can be used. You must compile the package in an environment that is compatible with Flink before you can call it in a Python job. We recommend that you use the **quay.io/pypa/manylinux2014_x86_64** container's **Python 3.7** to compile third-party Python packages. Packages compiled in this container are compatible with most Linux environments. For more information, see manylinux. The installation path for **Python 3.7** is **/opt/python/cp37-cp37m/bin/python3**. ment This topic uses the **opencv-python-headless** third-party Python package as an example to describe how to compile and use it. i. Compile the third-party Python package. a. Prepare the **build.sh** script on your local machine. The content is as follows.
+c. In the search results, click the name of the target package. d. In the left-side navigation pane, click Download files. e. Click the package name that contains **cp37-cp37m-manylinux1** to download. ii. Log in to the Realtime Compute for Apache Flink development console. iii. In the left-side navigation pane, click **File Management** and upload the third-party Python package. iv. On the **O&M Center > Job O&M** page, click **Deploy Job**, and in the **Python Libraries** configuration item, select the uploaded third-party Python package. v. Click **Save**. Use a third-party Python package that requires compilation If your third-party Python package is a **tar.gz** archive or a source code package with a **setup.py** file in its root directory, the package usually needs to be compiled before it can be used. You must compile the package in an environment that is compatible with Flink before you can call it in a Python job. We recommend that you use the **quay.io/pypa/manylinux2014_x86_64** container's **Python 3.7** to compile third-party Python packages. Packages compiled in this container are compatible with most Linux environments. For more information, see manylinux.
+
+> **Note:** The installation path for **Python 3.7** is **/opt/python/cp37-cp37m/bin/python3**.
+
+ment This topic uses the **opencv-python-headless** third-party Python package as an example to describe how to compile and use it. i. Compile the third-party Python package. a. Prepare the **build.sh** script on your local machine. The content is as follows.
 
 ```bash
 #!/bin/bash
@@ -1246,8 +1305,10 @@ c. Run the following command in your CLI.
 docker run -it --rm -v $PWD:/build -w /build quay.io/pypa/manylinux2014_x86_64 /bin/bash build.sh
 ```
 
-After the command is executed, a file named **deps.zip** is generated. This file is the compiled thirdparty Python package. You can also modify **requirements.txt** to install other required third-party Python packages. In addition, you can specify multiple Python dependencies in the **requirements.txt** file. ii. Use the third-party Python package **deps.zip** in a Python job. a. Log in to the Realtime Compute for Apache Flink development console. b. In the left navigation bar, click **File Management** and upload **deps.zip**. Realtime Compute for Apache Flink limits the maximum file upload size to 200 MB. Because a Python virtual environment is typically larger than this limit, you need to upload the file by using the Object Storage Service (OSS) management console. For more information, see **Object**
-**Storage Service User Guide > Objects > Upload files**.
+After the command is executed, a file named **deps.zip** is generated. This file is the compiled thirdparty Python package. You can also modify **requirements.txt** to install other required third-party Python packages. In addition, you can specify multiple Python dependencies in the **requirements.txt** file. ii. Use the third-party Python package **deps.zip** in a Python job. a. Log in to the Realtime Compute for Apache Flink development console. b. In the left navigation bar, click **File Management** and upload **deps.zip**.
+
+> **Note:** Realtime Compute for Apache Flink limits the maximum file upload size to 200 MB. Because a Python virtual environment is typically larger than this limit, you need to upload the file by using the Object Storage Service (OSS) management console. For more information, see **Object** **Storage Service User Guide > Objects > Upload files**.
+
 c. On the **O&M Center > Job O&M** page, click **Deploy Job**, and in the **Python Libraries** setting, select
 **deps.zip**.
 d. Click **Save**.
@@ -1428,7 +1489,10 @@ After you develop a draft and deploy the draft as a deployment, you must start t
 
 **Usage limits**
 
-You can specify startup options for only streaming deployments. Only the Simple Log Service (SLS) and ApsaraMQ for Kafka source table connectors allow you to configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box. The Specify source's start time (SLS/Kafka) parameter that is configured in the Start Job dialog box takes precedence over the startTime parameter that is configured in the DDL code of a draft. If you configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box and the startTime parameter in the DDL code, the configuration of the Specify source's start time (SLS/Kafka) parameter takes effect. Not all connector types support the startTime parameter. For more information about whether the parameters in the WITH clause for each type of connector include the startTime parameter, see the related topic of the specific type of connector. The startTime parameter takes effect only if a new deployment is started and the startTime parameter is configured. If you start a deployment based on a checkpoint or savepoint, the startTime parameter does not take effect even if this parameter is configured.
+You can specify startup options for only streaming deployments. Only the Simple Log Service (SLS) and ApsaraMQ for Kafka source table connectors allow you to configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box. The Specify source's start time (SLS/Kafka) parameter that is configured in the Start Job dialog box takes precedence over the startTime parameter that is configured in the DDL code of a draft. If you configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box and the startTime parameter in the DDL code, the configuration of the Specify source's start time (SLS/Kafka) parameter takes effect.
+
+> **Note:** Not all connector types support the startTime parameter. For more information about whether the parameters in the WITH clause for each type of connector include the startTime parameter, see the related topic of the specific type of connector.
+> The startTime parameter takes effect only if a new deployment is started and the startTime parameter is configured. If you start a deployment based on a checkpoint or savepoint, the startTime parameter does not take effect even if this parameter is configured.
 
 **Precautions**
 
@@ -1474,7 +1538,9 @@ After you change the SQL logic, deployment version, WITH parameters, or deployme
 
 **Precautions**
 
-When you restart a stopped deployment, you can choose to start it from scratch (stateless) and specify a data read timestamp, or restore the deployment from a selected savepoint. For more information, see Start a deployment. If you modify the SQL or other logic, which results in state incompatibility, you can only start the deployment from scratch (stateless).
+When you restart a stopped deployment, you can choose to start it from scratch (stateless) and specify a data read timestamp, or restore the deployment from a selected savepoint. For more information, see Start a deployment.
+
+> **Note:** If you modify the SQL or other logic, which results in state incompatibility, you can only start the deployment from scratch (stateless).
 
 **Procedure**
 
@@ -1513,7 +1579,11 @@ You can create up to 20 resource plans. When you enable unaligned checkpoints, t
 
 **Considerations**
 
-When any tuning mode restarts a job, the job temporarily stops consuming data. In VVR 8.0.1 and later, the Flink system first attempts to restart the job by using dynamic parameter updates, and then attempts a full job restart. Dynamic parameter updates reduce business interruption time by 30% to 98% compared with a full job restart, depending on the job status and logic. Currently, this method supports only concurrency modifications. For more information, see Dynamic parameter update. If you use DataStream jobs or custom SQL connectors, make sure that the job code does not configure job concurrency. Otherwise, intelligent tuning and scheduled tuning cannot adjust job resources, which means the auto-tuning configuration does not take effect. Intelligent tuning cannot resolve all performance bottlenecks of streaming jobs. Streaming job performance depends on both upstream and downstream systems. If a bottleneck occurs in Flink, you can resolve it through Flink resource tuning. However, tuning policies process jobs based on specific assumptions, such as smooth traffic changes, no data skew, and linear throughput scaling with increased concurrency for each operator. When the business logic significantly deviates from these assumptions, the job may encounter exceptions. Examples include: The system cannot trigger concurrency modification operations, the job cannot reach a normal state, or the job restarts continuously. Performance issues occur in user-defined scalar functions (UDFs), user-defined aggregate functions (UDAFs), or user-defined table-valued functions (UDTFs). Intelligent tuning cannot identify issues in external systems. If external system issues occur, you must resolve them on your own. When an external system fails or responds slowly, the job concurrency increases, which adds pressure to the external system and may cause a cascading failure. Common external system issues include: Insufficient partitions in DataHub or insufficient throughput in Message Queue for Apache RocketMQ. Sink performance issues. Deadlocks in ApsaraDB RDS. During resource adjustment, the system compares resources and determines the adjustment method. If the resource plan to apply changes the CPU or memory compared with the current online configuration, the job uses a stop-and-start method for resource adjustment. This may cause business interruption, data replay latency, and startup failures due to insufficient resources. If only the concurrency changes, the system adjusts resources directly through the dynamic scaling path to reduce stream interruption time. For more information, see Dynamic parameter update.
+When any tuning mode restarts a job, the job temporarily stops consuming data.
+
+> **Note:** In VVR 8.0.1 and later, the Flink system first attempts to restart the job by using dynamic parameter updates, and then attempts a full job restart. Dynamic parameter updates reduce business interruption time by 30% to 98% compared with a full job restart, depending on the job status and logic. Currently, this method supports only concurrency modifications. For more information, see Dynamic parameter update.
+
+If you use DataStream jobs or custom SQL connectors, make sure that the job code does not configure job concurrency. Otherwise, intelligent tuning and scheduled tuning cannot adjust job resources, which means the auto-tuning configuration does not take effect. Intelligent tuning cannot resolve all performance bottlenecks of streaming jobs. Streaming job performance depends on both upstream and downstream systems. If a bottleneck occurs in Flink, you can resolve it through Flink resource tuning. However, tuning policies process jobs based on specific assumptions, such as smooth traffic changes, no data skew, and linear throughput scaling with increased concurrency for each operator. When the business logic significantly deviates from these assumptions, the job may encounter exceptions. Examples include: The system cannot trigger concurrency modification operations, the job cannot reach a normal state, or the job restarts continuously. Performance issues occur in user-defined scalar functions (UDFs), user-defined aggregate functions (UDAFs), or user-defined table-valued functions (UDTFs). Intelligent tuning cannot identify issues in external systems. If external system issues occur, you must resolve them on your own. When an external system fails or responds slowly, the job concurrency increases, which adds pressure to the external system and may cause a cascading failure. Common external system issues include: Insufficient partitions in DataHub or insufficient throughput in Message Queue for Apache RocketMQ. Sink performance issues. Deadlocks in ApsaraDB RDS. During resource adjustment, the system compares resources and determines the adjustment method. If the resource plan to apply changes the CPU or memory compared with the current online configuration, the job uses a stop-and-start method for resource adjustment. This may cause business interruption, data replay latency, and startup failures due to insufficient resources. If only the concurrency changes, the system adjusts resources directly through the dynamic scaling path to reduce stream interruption time. For more information, see Dynamic parameter update.
 
 **Enable and configure intelligent tuning**
 
@@ -1591,9 +1661,8 @@ must also specify the effective date range.
 4. (Optional) Click **Add Resource Configuration Period** and then configure the effective time and resource
 configuration. You can configure resource tuning plans for multiple time periods in the same scheduled plan.
 
-**Important**
+> **Important:** In the same scheduled plan, the trigger time of an **Add Resource Configuration Period** entry must be more than 30 minutes apart from the trigger time of any existing resource configuration. Otherwise, you cannot save the new resource configuration.
 
-In the same scheduled plan, the trigger time of an **Add Resource Configuration Period** entry must be more than 30 minutes apart from the trigger time of any existing resource configuration. Otherwise, you cannot save the new resource configuration.
 5. Click **OK** to save the scheduled plan.
 6. Click **Apply** in the **Actions** column next to the name of the target scheduled resource plan.
 
@@ -1674,13 +1743,14 @@ You can use the following formulas for calculation:
 **maximum value) = MAX (**⌈**Total TM CPU/16 Cores**⌉**,**⌈**Total TM memory/64 GiB**⌉**)**.
 Total TM CPU = Configured concurrency/Configured slots per TaskManager × Configured CPU per TM. Total TM memory = Configured concurrency/Configured slots per TaskManager × Configured memory per TM. The default maximum TM CPU is 16 Cores. The default maximum TM memory is 64 GiB.
 **Actual number of slots allocatable per TM** = **⌈Configured concurrency/Actual number of TMs⌉.**
-Round up each calculated ratio to the nearest integer. You can also set the numberOfTaskSlots parameter in the **Other configurations** section of the
-**Runtime parameter configuration** area on the **Deployment details** tab. This parameter
-has the same function as the **Slots per TaskManager** setting in the console, but takes higher priority.
+
+> **Note:** Round up each calculated ratio to the nearest integer.
+> You can also set the numberOfTaskSlots parameter in the **Other configurations** section of the **Runtime parameter configuration** area on the **Deployment details** tab. This parameter has the same function as the **Slots per TaskManager** setting in the console, but takes higher priority.
 
 **Expert mode (fine-grained) configuration item description**
 
-Only SQL jobs support expert mode configuration. After you deploy a job, if you modify the SQL or resource configuration, you must regenerate the resource plan to ensure that the job starts properly.
+> **Note:** Only SQL jobs support expert mode configuration.
+> After you deploy a job, if you modify the SQL or resource configuration, you must regenerate the resource plan to ensure that the job starts properly.
 
 **Configure basic resources**
 
@@ -1692,7 +1762,11 @@ Only SQL jobs support expert mode configuration. After you deploy a job, if you 
 
 **Configure slot resources**
 
-i. In **Expert Mode**, click **Get Now** to obtain the resource plan. ii. Click the icon on the **SLOT** box. iii. **Modify the SLOT** configuration. The concurrency value that you set here applies uniformly to all operators in the slot sharing group. After you complete the configuration, the system automatically performs the following operations: The system automatically generates the memory required by Statebackend, Python, and operators based on the computing logic of the job. You do not need to configure the memory manually. We recommend that you adjust the Heap Memory and Off-Heap Memory sizes only when a specific exception or requirement occurs, such as an OOM error or severe GC in the job. During normal job operation, adjusting the Heap Memory and Off-Heap Memory sizes does not significantly change the job throughput. iv. Click **OK**.
+i. In **Expert Mode**, click **Get Now** to obtain the resource plan. ii. Click the icon on the **SLOT** box. iii. **Modify the SLOT** configuration. The concurrency value that you set here applies uniformly to all operators in the slot sharing group. After you complete the configuration, the system automatically performs the following operations: The system automatically generates the memory required by Statebackend, Python, and operators based on the computing logic of the job. You do not need to configure the memory manually.
+
+> **Note:** We recommend that you adjust the Heap Memory and Off-Heap Memory sizes only when a specific exception or requirement occurs, such as an OOM error or severe GC in the job. During normal job operation, adjusting the Heap Memory and Off-Heap Memory sizes does not significantly change the job throughput.
+
+iv. Click **OK**.
 
 **Configure operator concurrency and chaining policies**
 
@@ -1703,7 +1777,10 @@ i. Modify the VERTEX concurrency. Click the icon on the target VERTEX to batch s
 | Concurrency | The concurrency of the corresponding operator. |
 | Chaining policy | A chain is a logical computing chain formed by connecting multiple operators. Chaining improves job execution efficiency and performance and reduces data transmission and serialization overhead between operators. However, you may need to break a chain to better control the job execution flow and performance. The following chaining policies are supported: ALWAYS (default): The operator can always chain with upstream and downstream operators. HEAD: The current operator serves as the head node of the chain. It breaks the chain only with upstream operators, while downstream nodes remain chained with the current operator. NEVER: The current operator does not chain with any upstream or downstream operators. |
 
-We recommend that you set the concurrency of source nodes proportional to the number of partitions, so that the concurrency value evenly divides the partition count. For example, if Kafka has 16 partitions, set the concurrency to 16, 8, or 4 to avoid data skew. Also, do not set the concurrency of source nodes too low, because a single source that reads excessive data may cause an ingress bottleneck and reduce job throughput. We recommend that you configure the concurrency of non-source nodes based on your needs. Set higher concurrency for nodes with heavy traffic and lower concurrency for nodes with light traffic. iv. Click **OK**.
+> **Note:** We recommend that you set the concurrency of source nodes proportional to the number of partitions, so that the concurrency value evenly divides the partition count. For example, if Kafka has 16 partitions, set the concurrency to 16, 8, or 4 to avoid data skew. Also, do not set the concurrency of source nodes too low, because a single source that reads excessive data may cause an ingress bottleneck and reduce job throughput.
+> We recommend that you configure the concurrency of non-source nodes based on your needs. Set higher concurrency for nodes with heavy traffic and lower concurrency for nodes with light traffic.
+
+iv. Click **OK**.
 4. Click **Save**.
 5. Restart the job.
 After you configure job resources, you must restart the job to apply the changes.
@@ -1718,7 +1795,9 @@ Dynamic update of the parameter configuration of a Flink deployment can make the
 
 **Background**
 
-If you use the traditional parameter update method for a deployment, you must restart the deployment. Issues, such as service interruption, delay in data backtracking, and resource consumption spikes, may occur. This prolongs the deployment cancellation time, which may affect business continuity. When you use the dynamic parameter update feature, a REST request is sent to a deployment that is running. This feature allows a deployment to reuse existing JobManager and TaskManagers and enables the system to update parameter configurations of the deployment by performing in-place restarts or even update parameter configurations without restarting the deployment. This reduces the cost caused by deployment restart. The dynamic parameter update feature is used together with the resource preapplication and state lazy loading capabilities to accelerate the startup of the deployment after the parameter configurations of the deployment are updated. This reduces the service interruption time caused by parameter update from minutes to seconds. For example, if you perform dynamic scaling for a deployment that performs data read, map, and write operations, you can use the dynamic parameter update feature to significantly reduce the service interruption time. The following figure shows the comparison of the service interruption time between dynamic parameter update and traditional parameter update. You can dynamically change the value of the Parallelism parameter to perform dynamic scaling of TaskManagers.
+If you use the traditional parameter update method for a deployment, you must restart the deployment. Issues, such as service interruption, delay in data backtracking, and resource consumption spikes, may occur. This prolongs the deployment cancellation time, which may affect business continuity. When you use the dynamic parameter update feature, a REST request is sent to a deployment that is running. This feature allows a deployment to reuse existing JobManager and TaskManagers and enables the system to update parameter configurations of the deployment by performing in-place restarts or even update parameter configurations without restarting the deployment. This reduces the cost caused by deployment restart. The dynamic parameter update feature is used together with the resource preapplication and state lazy loading capabilities to accelerate the startup of the deployment after the parameter configurations of the deployment are updated. This reduces the service interruption time caused by parameter update from minutes to seconds. For example, if you perform dynamic scaling for a deployment that performs data read, map, and write operations, you can use the dynamic parameter update feature to significantly reduce the service interruption time. The following figure shows the comparison of the service interruption time between dynamic parameter update and traditional parameter update.
+
+> **Note:** You can dynamically change the value of the Parallelism parameter to perform dynamic scaling of TaskManagers.
 
 **Usage limits**
 
@@ -1737,11 +1816,8 @@ i. Log in to the development console. ii. In the left-side navigation pane, choo
 2. On the **Configuration** tab, click **Edit** on the right side of the **Resources** or **Parameters** section.
 3. Modify the values of parameters that support dynamic updates, and then click **Save**.
 
-**Important**
+> **Important:** Only the **parallelism**, **checkpoint interval**, **checkpoint timeout**, and **minimum pause between** **checkpoints** parameters support dynamic updates. When you change the value of a supported parameter, the **Dynamic Update** button appears. Click the button to apply your changes. If you also modify parameters that do not support dynamic updates, you must restart the job to apply those changes.
 
-Only the **parallelism**, **checkpoint interval**, **checkpoint timeout**, and **minimum pause between**
-**checkpoints** parameters support dynamic updates. When you change the value of a supported
-parameter, the **Dynamic Update** button appears. Click the button to apply your changes. If you also modify parameters that do not support dynamic updates, you must restart the job to apply those changes.
 4. Click **Hot-update** in the upper-right corner of the page.
 5. In the dialog box that appears, review the prompt information and click **OK**.
 After you click **OK**, an icon that indicates dynamic parameter update appears.
@@ -1754,13 +1830,14 @@ If you want to make the change to the configuration of a parameter that cannot b
 
 You can use the session cluster mode to deploy or debug jobs, improving Job Manager (JM) resource utilization and accelerating job startup. This topic describes usage recommendations and the creation procedure for session clusters in Realtime Compute for Apache Flink.
 
-**Important**
-
-Session clusters share a single JobManager across all jobs. A JobManager failure causes all jobs in the cluster to fail. Do not use session clusters in production environments.
+> **Important:** Session clusters share a single JobManager across all jobs. A JobManager failure causes all jobs in the cluster to fail. Do not use session clusters in production environments.
 
 **Background information**
 
-Realtime Compute for Apache Flink supports two cluster modes: per-job clusters and session clusters. The two cluster modes have the following differences: Per-job cluster (default): Resources are isolated between jobs, and each job requires a dedicated JM. Small jobs have low JM resource utilization. Therefore, per-job clusters are suitable for jobs that consume large amounts of resources or run continuously and stably. Session cluster: Multiple jobs can share the same JM, which improves JM resource utilization. Therefore, session clusters are suitable for jobs that consume fewer resources or start and stop frequently, effectively reducing resource costs. Session clusters do not support the auto-tuning feature. Creating a session cluster consumes cluster resources regardless of whether you use the session cluster. The amount of consumed resources depends on the resource configuration that you select when you create the cluster.
+Realtime Compute for Apache Flink supports two cluster modes: per-job clusters and session clusters. The two cluster modes have the following differences: Per-job cluster (default): Resources are isolated between jobs, and each job requires a dedicated JM. Small jobs have low JM resource utilization. Therefore, per-job clusters are suitable for jobs that consume large amounts of resources or run continuously and stably. Session cluster: Multiple jobs can share the same JM, which improves JM resource utilization. Therefore, session clusters are suitable for jobs that consume fewer resources or start and stop frequently, effectively reducing resource costs.
+
+> **Note:** Session clusters do not support the auto-tuning feature.
+> Creating a session cluster consumes cluster resources regardless of whether you use the session cluster. The amount of consumed resources depends on the resource configuration that you select when you create the cluster.
 
 **Usage limits**
 
@@ -1881,7 +1958,10 @@ You can upload the UDF JAR file in one of the following ways:
 **Upload File**: Next to the **Select File** option, click **Select File** and select the UDF artifact file. If there
 are dependency files, click **Select File** next to the **Dependency File** option and select the dependency files.
 **External URL**: Enter the external URL of the file.
-The Realtime Compute for Apache Flink console parses your JAR file, automatically detects classes that implement Flink UDF, UDAF, and UDTF interfaces, and fills the Function Name field with the class names. For Java UDFs, you can package dependencies into the UDF JAR file or upload them separately as a dependency file. For Python UDFs, we recommend uploading dependencies as a separate dependency file. When a custom function's artifact file or its dependency files are large, you can upload them by using an external URL. Note that if the external URL is an OSS bucket address, the dependency files must be located in the `sql-artifacts/namespaces/{namespace}` directory. The bucket must have at least public read access. The URL must use the HTTP protocol and cannot contain encoded characters.
+The Realtime Compute for Apache Flink console parses your JAR file, automatically detects classes that implement Flink UDF, UDAF, and UDTF interfaces, and fills the Function Name field with the class names. For Java UDFs, you can package dependencies into the UDF JAR file or upload them separately as a dependency file. For Python UDFs, we recommend uploading dependencies as a separate dependency file. When a custom function's artifact file or its dependency files are large, you can upload them by using an external URL. Note that if the external URL is an OSS bucket address, the dependency files must be located in the `sql-artifacts/namespaces/{namespace}` directory.
+
+> **Note:** The bucket must have at least public read access. The URL must use the HTTP protocol and cannot contain encoded characters.
+
 5. In the **Manage Functions** dialog box, verify the function information and click **Create Function**.
 After the function is registered, the dialog box displays information about the **Registered Functions**. You can then remove any unnecessary functions. After you remove functions, the dialog box appears as shown. Verify the function details, and then close the dialog box.
 6. In the **Functions** list on the left of the SQL editor, you can view all registered UDFs.
@@ -1904,9 +1984,9 @@ You can upload the updated JAR file in one of the following ways:
 are dependency files, click **Select File** next to the **Dependency File** option and select the dependency files.
 **External URL**: Enter the external URL of the file.
 
-**Important**
+> **Important:** The new JAR file that you upload must contain the classes for all currently registered UDFs. You cannot remove the class of a UDF during an update.
+> The new UDF JAR file takes effect only when you restart a job or submit a new one. Running jobs continue to use the old JAR file until they are restarted.
 
-The new JAR file that you upload must contain the classes for all currently registered UDFs. You cannot remove the class of a UDF during an update. The new UDF JAR file takes effect only when you restart a job or submit a new one. Running jobs continue to use the old JAR file until they are restarted.
 3. Click **Modify**.
 
 **Delete a user-defined function**
@@ -1914,7 +1994,10 @@ The new JAR file that you upload must contain the classes for all currently regi
 If a JAR file is no longer needed, you can delete it.
 1. In the left-side navigation pane, click **SQL Development**.
 2. On the **Functions** tab, hover over the name of the target JAR file and click the
-icon. Before you delete a JAR file, make sure that no jobs or SQL files reference any UDFs registered from it.
+icon.
+
+> **Note:** Before you delete a JAR file, make sure that no jobs or SQL files reference any UDFs registered from it.
+
 3. Select the **Delete the associated file** checkbox.
 Deleting the UDF JAR file also deletes all UDFs registered from it. This action is required to prevent orphaned data and references.
 4. Click **OK**.
@@ -1958,7 +2041,7 @@ After you create a Paimon catalog, the system automatically creates a database n
 
 **Important**
 
-You cannot delete the default database in DLF, MaxCompute, or Sync catalogs. You can delete the default database only in Filesystem catalogs.
+> You cannot delete the default database in DLF, MaxCompute, or Sync catalogs. You can delete the default database only in Filesystem catalogs.
 
 ```
 -- Replace my-catalog with the name of the Paimon catalog that you created. USE CATALOG `my-catalog`; -- Replace my_db with the name of the database that you want to delete. DROP DATABASE `my_db`; -- Deletes only databases that contain no tables. DROP DATABASE `my_db` CASCADE; -- Deletes the database and all tables in the database.
@@ -1966,7 +2049,9 @@ You cannot delete the default database in DLF, MaxCompute, or Sync catalogs. You
 
 **View or delete a Paimon catalog**
 
-On the **Data Management** page, view or delete a Paimon catalog. View: On the **Catalog List** page, view the **Catalog Name** and **Type**. To view the databases and tables in a catalog, click **View**. Delete: On the **Catalog List** page, click **Delete** in the **Actions** column of the target catalog. You can also enter DROP CATALOG <catalog name>; in the SQL development text editor, select the code, and then click **Run**. Deleting a Paimon catalog removes only the record from Data Management in the Realtime Compute for Apache Flink project. This operation does not affect the data files of Paimon tables. After you delete a catalog, you can recreate the Paimon catalog to reuse the Paimon tables in the catalog.
+On the **Data Management** page, view or delete a Paimon catalog. View: On the **Catalog List** page, view the **Catalog Name** and **Type**. To view the databases and tables in a catalog, click **View**. Delete: On the **Catalog List** page, click **Delete** in the **Actions** column of the target catalog. You can also enter DROP CATALOG <catalog name>; in the SQL development text editor, select the code, and then click **Run**.
+
+> **Note:** Deleting a Paimon catalog removes only the record from Data Management in the Realtime Compute for Apache Flink project. This operation does not affect the data files of Paimon tables. After you delete a catalog, you can recreate the Paimon catalog to reuse the Paimon tables in the catalog.
 
 ### 6.3 Manage Hologres catalogs
 
@@ -2042,7 +2127,8 @@ After you configure a Hologres catalog, you can view Hologres metadata by perfor
 2. From the drop-down list in the top menu bar, switch to the target Hologres catalog. This topic uses holo as
 an example.
 3. View information about databases, tables, and functions in different Hologres catalogs.
-If the schema is public, the system omits the schema prefix from the table name and directly displays tableName.
+
+> **Note:** If the schema is public, the system omits the schema prefix from the table name and directly displays tableName.
 
 **Use a Hologres catalog**
 
@@ -2085,7 +2171,10 @@ CREATE TABLE `${catalog_name}`.`${db_name}`.`${schema_name.table_name}` (
   'connector' = 'hologres'
 ```
 
-); When you create a table under a registered Hologres data service, the connector parameter in the WITH clause is required and must be set to hologres. You can omit other parameters such as endpoint. You cannot directly add or modify WITH parameters in a Hologres table. Instead, you can add or modify WITH parameters in an INSERT statement by using SQL hints.
+);
+
+> **Note:** When you create a table under a registered Hologres data service, the connector parameter in the WITH clause is required and must be set to hologres. You can omit other parameters such as endpoint.
+> You cannot directly add or modify WITH parameters in a Hologres table. Instead, you can add or modify WITH parameters in an INSERT statement by using SQL hints.
 
 **Read data from a Hologres table**
 
@@ -2099,8 +2188,7 @@ INSERT INTO ${other_sink_table} SELECT ... FROM `${catalog_name}`.`${db_name}`.`
 INSERT INTO `${catalog_name}`.`${db_name}`.`${schema_name.table_name}` SELECT ... FROM ${other_source_table}
 ```
 
-If the schema is public, you can omit the schema name prefix when you enter
-**${schema_name.table_name}** and directly specify the table name, which is ${table_name}.
+> **Note:** If the schema is public, you can omit the schema name prefix when you enter **${schema_name.table_name}** and directly specify the table name, which is ${table_name}.
 
 **Delete a Hologres catalog**
 
@@ -2111,7 +2199,10 @@ If the schema is public, you can omit the schema name prefix when you enter
 DROP CATALOG ${catalog_name}
 ```
 
-Replace ${catalog_name} with the name of the Hologres catalog that you want to delete from the Realtime Compute for Apache Flink console. Deleting a Hologres catalog does not affect running jobs, but it affects jobs that are not published or jobs that require pause and recovery. Proceed with caution.
+Replace ${catalog_name} with the name of the Hologres catalog that you want to delete from the Realtime Compute for Apache Flink console.
+
+> **Note:** Deleting a Hologres catalog does not affect running jobs, but it affects jobs that are not published or jobs that require pause and recovery. Proceed with caution.
+
 3. Click **Deploy**.
 4. On the left side, click the **Metadata** tab.
 5. Click the
@@ -2198,7 +2289,13 @@ Only the VVR 11.5.0 engine supports Kerberos authentication. ApsaraMQ for Kafka 
 
 **Prerequisites**
 
-Create a workspace and create a namespace. Obtain the Kerberos client configuration file, `krb5.conf` . This file is typically located in the `/etc/krb5.conf` directory on the Key Distribution Center (KDC) server. Contact your Kerberos administrator to obtain the Flink client principal and its corresponding keytab file. A principal name typically has the format `flink@YOUR-REALM.COM` . In this format, `flink` is a custom username, and `YOUR-REALM.COM` is the Kerberos Realm for the cluster. The realm must be in uppercase.
+Create a workspace and create a namespace. Obtain the Kerberos client configuration file, `krb5.conf` .
+
+> **Note:** This file is typically located in the `/etc/krb5.conf` directory on the Key Distribution Center (KDC) server.
+
+Contact your Kerberos administrator to obtain the Flink client principal and its corresponding keytab file.
+
+> **Note:** A principal name typically has the format `flink@YOUR-REALM.COM` . In this format, `flink` is a custom username, and `YOUR-REALM.COM` is the Kerberos Realm for the cluster. The realm must be in uppercase.
 
 **Enable Kerberos authentication**
 
@@ -2302,8 +2399,12 @@ For more information, see **Enterprise > Resource management > Organization mana
 by default. You can also create a resource set based on your business requirements. For more information, see **Enterprise > Resource management > Manage resource sets > Create**
 **a resource set** in Apsara Uni-manager Management Console User Guide.
 3. Create a user.
-For more information, see **Enterprise > User management > User management > Create a user** in Apsara Uni-manager Management Console User Guide, and assign a role with appropriate permissions to the user. ices We recommend that you select the resource set administrator or a preset role by the organization administrator. The preset roles are configured with permissions to create, modify, delete, and view workspaces and namespaces. Users assigned with the preset Resource User role can view and modify workspaces and namespaces. To view role permissions or create a custom role, see **Enterprise Center > Access Control > Role**
-**authorization** in Apsara Uni-manager Management Console User Guide.
+For more information, see **Enterprise > User management > User management > Create a user** in Apsara Uni-manager Management Console User Guide, and assign a role with appropriate permissions to the user. ices
+
+> **Note:** We recommend that you select the resource set administrator or a preset role by the organization administrator. The preset roles are configured with permissions to create, modify, delete, and view workspaces and namespaces.
+> Users assigned with the preset Resource User role can view and modify workspaces and namespaces.
+> To view role permissions or create a custom role, see **Enterprise Center > Access Control > Role** **authorization** in Apsara Uni-manager Management Console User Guide.
+
 4. Add the user to the resource set.
 For more information, see **Enterprise > Resource management > Manage resource sets > Manage**
 **resource set members** in Apsara Uni-manager Management Console User Guide, and add the user to
@@ -2344,7 +2445,9 @@ ices
 
 Create a custom role and grant permissions to the role as needed. If you want to use a default role in the system, skip this step.
 1. Log in to the Realtime Compute for Apache Flink development console.
-Log in with a member account that has the owner role or role management permissions.
+
+> **Note:** Log in with a member account that has the owner role or role management permissions.
+
 2. In the left-side navigation pane, choose **Security > Permissions**, and then click the **Role Management**
 tab.
 3. Click **Add Role** and specify the parameters.
@@ -2366,16 +2469,19 @@ the role or reassign them to other roles. A member who has the role deletion per
 
 Bind a role to a member to grant permissions.
 1. Log in to the Realtime Compute for Apache Flink development console.
-ices Log in with a member account that has the owner role or role management permissions. The owner role can grant business access permissions (editor or view) to RAM users in the same organization. You are not allowed to grant permissions to users in a different level-1 organization. Even if a permission is successfully granted to a user in a different level-1 organization, the permission is not displayed in the list after the user logs in.
+ices
+
+> **Note:** Log in with a member account that has the owner role or role management permissions.
+> The owner role can grant business access permissions (editor or view) to RAM users in the same organization. You are not allowed to grant permissions to users in a different level-1 organization. Even if a permission is successfully granted to a user in a different level-1 organization, the permission is not displayed in the list after the user logs in.
+
 2. In the left-side navigation pane, choose **Security > Permissions**, and then click the **Members** tab.
 3. Click **Add Member** to add a member and configure the **Role** parameter for the member.
 Parameter description:
 **Member Information**: In the upper-right corner of the Apsara Uni-manager Management Console, click
 the profile picture of the current user to view the **UID** information.
 
-**Important**
+> **Important:** You cannot add a member that already exists.
 
-You cannot add a member that already exists.
 **Role**: Both system roles and custom roles can be selected. Move the pointer over a role to view the role
 description.
 5. Click **OK**.
@@ -2498,8 +2604,8 @@ Apsara Copilot hosting mode The Apsara Copilot hosting mode is an out-of-the-box
 
 **Apsara Copilot hosting mode**
 
-Before you use the Apsara Copilot hosting mode, refer to the **Apsara Uni-manager Management**
-**Console > Apsara Copilot User Guide** to enable Apsara Copilot.
+> **Note:** Before you use the Apsara Copilot hosting mode, refer to the **Apsara Uni-manager Management** **Console > Apsara Copilot User Guide** to enable Apsara Copilot.
+
 1. Log in to the Realtime Compute for Apache Flink management console.
 2. View the preset MCP list.
 i. In the left-side navigation pane, choose **AI Column > AI Native API MCP Service**. ii. In the **MCP List > Flink Management MCP** section, click the icon to go to the **MCP Details** page. rver iii. Click **Tools** to view the preset MCP list. The following table describes the current preset tools.

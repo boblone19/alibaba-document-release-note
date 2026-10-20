@@ -5,7 +5,7 @@ doc_version: "20240305"
 pdf_pages: 37
 source_pdf: "4048e1e71bea4567_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide 20240305.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Migration%20Center%20User%20Guide%2020240305.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide
@@ -53,7 +53,13 @@ You have obtained the endpoint, username, and password of the one-stop cloud mig
 1. In the address bar of your browser, enter the endpoint of the Cloud Migration Center
 console and press the Enter key.
 2. Enter your username and password.
-Obtain the username and password for logging on to the console from the administrator. When you log on to the one-stop cloud migration service center console for the first time, you need to change the password of the logon username. Follow the instructions to complete the password change. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password for logging on to the console from the administrator.
+
+> **Note:** When you log on to the one-stop cloud migration service center console for the first time, you need to change the password of the logon username. Follow the instructions to complete the password change. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log on**.
 4. In the left-side navigation pane, click **Tool Center > Server Migration Center**.
 
@@ -80,11 +86,18 @@ The endpoint of the Apsara Uni-manager Operations Console, username, and passwor
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
-You need to obtain the username and password from an operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%).
+You need to obtain the username and password from an operations administrator.
+
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. The password must be 8 to 20 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%).
+
 3. Click **Log on**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
-operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**. For more information, see the **"Manage MFA"** section in **Apsara Uni-manager**
-**Management Console User Guide**.
+operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information, see the **"Manage MFA"** section in **Apsara Uni-manager** **Management Console User Guide**.
 
 **Step 2: Create a RAM role and a RAM user and grant**
 
@@ -99,7 +112,11 @@ i. In the top navigation bar, click **Configurations**. ii. On the **Service-lin
 4. Create a user group.
 i. In the top navigation bar, click **Enterprise**. ii. In the left-side navigation pane, choose **Users > User Groups**. iii. On the User Groups page, click **Create a user group**. iv. In the **Create a user group** dialog box, configure the User Group Name, Organization, and Role Permissions parameters. v. Click **OK**.
 5. Create a RAM role and grant permissions to the role.
-i. In the top navigation bar, click **Enterprise**. ii. In the left-side navigation pane, choose **Permissions > Role Permissions**. iii. Click **Create RAM Role**. iv. On the **Create RAM Role** page, configure the required information. The following part describes the parameters: Role Name: Enter a name for the role. Sharing Range: Select a sharing range based on your business requirements. v. Click **Create RAM Role**. vi. On the **User Groups** tab, click **Add User Group** and select a user group. vii. On the **Permissions** tab, click **Add Policy**. If an existing SMC policy exists, click **Select Existing Policy** and select a policy. viii. In the dialog box that appears, set Policy Name and Policy Content. You must create two polices. We recommend that you name the polices AliyunSMCFullAccess and AliyunSMCRolePolicy. AliyunSMCFullAccess Policy `{`
+i. In the top navigation bar, click **Enterprise**. ii. In the left-side navigation pane, choose **Permissions > Role Permissions**. iii. Click **Create RAM Role**. iv. On the **Create RAM Role** page, configure the required information. The following part describes the parameters: Role Name: Enter a name for the role. Sharing Range: Select a sharing range based on your business requirements. v. Click **Create RAM Role**. vi. On the **User Groups** tab, click **Add User Group** and select a user group. vii. On the **Permissions** tab, click **Add Policy**.
+
+> **Note:** If an existing SMC policy exists, click **Select Existing Policy** and select a policy.
+
+viii. In the dialog box that appears, set Policy Name and Policy Content. You must create two polices. We recommend that you name the polices AliyunSMCFullAccess and AliyunSMCRolePolicy. AliyunSMCFullAccess Policy `{`
 
 ```json
   "Version": "1",
@@ -278,7 +295,10 @@ iv. Decompress the SMC client package. Use one of the following methods to decom
 | go2aliyun client2.5.8 windows i386.zi _ _ _ p | x86 | Window s | 32 | ECS image ECS instance |
 | go2aliyun client2.5.8 windows x86 6 _ _ _ _ 4.zip | x86 | Window s | 64 |   |
 
-In the preceding table, 2.5.8 indicates a sample version number of the SMC client. The version number of your downloaded SMC client package prevails. SMC allows you to migrate Linux ARM64 servers. The supported instance families are the general-purpose instance family g6r and compute-optimized instance family c6r. v. Decompress the client package that is compatible with the operating system of the migration source. The following figure shows the decompressed folders and files. Table 2. Description of the main files of the SMC client
+> **Note:** In the preceding table, 2.5.8 indicates a sample version number of the SMC client. The version number of your downloaded SMC client package prevails.
+> SMC allows you to migrate Linux ARM64 servers. The supported instance families are the general-purpose instance family g6r and compute-optimized instance family c6r.
+
+v. Decompress the client package that is compatible with the operating system of the migration source. The following figure shows the decompressed folders and files. Table 2. Description of the main files of the SMC client
 
 | Folder or file | Description |
 |---|---|
@@ -290,7 +310,10 @@ In the preceding table, 2.5.8 indicates a sample version number of the SMC clien
 | client data _ | The migration data file, which stores the information about the intermediate instance and the migration progress. |
 
 2. **(Optional)** Exclude files or directories from the migration.
-The block replication feature must be enabled if you migrate a source server that runs on the Windows operating system. In this case, you cannot exclude files or directories from the migration. If you migrate a source server that runs on the Windows operating system, skip this step. You can add the files or directories that you want to exclude from the migration to the configuration file in the Excludes directory. The following section describes the configuration files of the Linux operating system. The configuration file of the system disk: rsync_excludes_linux.txt. The configuration file of the data disk: the name of the system disk with the index number of the disk as the suffix. Example: rsync_excludes_linux_disk1.txt. The following table describes the examples on how to exclude configuration files from the migration.
+
+> **Note:** The block replication feature must be enabled if you migrate a source server that runs on the Windows operating system. In this case, you cannot exclude files or directories from the migration. If you migrate a source server that runs on the Windows operating system, skip this step.
+
+You can add the files or directories that you want to exclude from the migration to the configuration file in the Excludes directory. The following section describes the configuration files of the Linux operating system. The configuration file of the system disk: rsync_excludes_linux.txt. The configuration file of the data disk: the name of the system disk with the index number of the disk as the suffix. Example: rsync_excludes_linux_disk1.txt. The following table describes the examples on how to exclude configuration files from the migration.
 
 | Configuration examples | Configuration file |
 |---|---|
@@ -298,7 +321,11 @@ The block replication feature must be enabled if you migrate a source server tha
 | Example 2: Exclude files and directories /mnt/disk1/mydirs2/docs2/words2 from the data disk /mnt/disk1/mydirs2/docs2/excels2/report 2.txt | Remove the prefix of a Linux path. In this example, /mnt/disk1 is removed. The final configuration file is as follows: /mydirs2/docs2/words2/ /mydirs2/docs2/excels2/report2.txt |
 
 3. Run the SMC client to import the information about the migration source.
-i. Open the SMC client folder and run the SMC client. Windows: Use one of the following methods to run the SMC client: To run the Windows GUI version, double-click the go2aliyun_gui.exe file. To run the Windows CLI version, double-click the go2aliyun_client.exe file. When you run the program, you must click **OK** to confirm that you have the administrator privilege. Linux: Run one of the following commands in the directory in which the go2aliyun_client file resides based on the root and sudo permissions. In this example, the go2aliyun_client file resides in the go2aliyun_client2.5.8_linux_x86_64 directory. Run the following commands in sequence if the Linux operating system supports the root permissions.
+i. Open the SMC client folder and run the SMC client. Windows: Use one of the following methods to run the SMC client: To run the Windows GUI version, double-click the go2aliyun_gui.exe file. To run the Windows CLI version, double-click the go2aliyun_client.exe file.
+
+> **Note:** When you run the program, you must click **OK** to confirm that you have the administrator privilege.
+
+Linux: Run one of the following commands in the directory in which the go2aliyun_client file resides based on the root and sudo permissions. In this example, the go2aliyun_client file resides in the go2aliyun_client2.5.8_linux_x86_64 directory. Run the following commands in sequence if the Linux operating system supports the root permissions.
 
 ```
 cd go2aliyun_client2.5.8_linux_x86_64 chmod +x go2aliyun_client ./go2aliyun_client
@@ -310,7 +337,11 @@ Run the following commands in sequence if the Linux operating system supports th
 cd go2aliyun_client2.5.8_linux_x86_64 sudo chmod +x ./go2aliyun_client sudo ./go2aliyun_client
 ```
 
-ii. Enter the endpoint of SMC and the AccessKey pair of your Alibaba Cloud Apsara Stack account. Obtain the endpoint of SMC in advance. For more information, see Preparations on the source server. Obtain an AccessKey pair of your Alibaba Cloud Apsara Stack account in advance. For more information, see the "Step 3: Obtain the AccessKey pair of the organization" section of the Preparations in the Apsara Uni-manager Operations Console topic. If the AccessKey pair that you enter is invalid, open the user_config.json file, delete the values of the **access_id** and **secret_key** parameters, and then run the client again. Windows servers To run the Windows GUI version, enter the `endpoint of SMC` in the **SMC ********** field. Enter the `AccessKey ID` in the **Account AK** field. Enter the `AccessKey secret` in the
+ii. Enter the endpoint of SMC and the AccessKey pair of your Alibaba Cloud Apsara Stack account. Obtain the endpoint of SMC in advance. For more information, see Preparations on the source server. Obtain an AccessKey pair of your Alibaba Cloud Apsara Stack account in advance. For more information, see the "Step 3: Obtain the AccessKey pair of the organization" section of the Preparations in the Apsara Uni-manager Operations Console topic.
+
+> If the AccessKey pair that you enter is invalid, open the user_config.json file, delete the values of the **access_id** and **secret_key** parameters, and then run the client again.
+
+Windows servers To run the Windows GUI version, enter the `endpoint of SMC` in the **SMC ********** field. Enter the `AccessKey ID` in the **Account AK** field. Enter the `AccessKey secret` in the
 **Account SK**field. Then, click **Run**. For more information, see Use the Windows GUI
 version of the SMC client.
 
@@ -324,17 +355,20 @@ endpoint of SMC,
 endpoint of SMC,
 ```
 
-`AccessKey ID`, and Enter the `AccessKey secret` and click `Enter` . The following messages may appear: If no snapshot dependency is installed on your source server, a message appears. The following figure shows the details of the message. You can install a snapshot dependency based on whether you need to enable the block replication feature. If you need to enable the block replication feature when you create a migration job and the source server can access the Internet, enter `yes` to automatically install a snapshot dependency. If you do not enable the block replication feature when you create a migration job `no`. or the source server cannot access the Internet, enter If the snapshot dependency fails to be installed, do not enable the block replication feature when you create a migration job. Otherwise, the migration may fail. By default, the rsync tool is installed on most mainstream migration sources. If the rsync tool is not installed on your source server, the message in the following figure is returned. Enter `yes` to automatically install the rsync tool. Enter `no` if you want to manually install the rsync tool. If SELinux is enabled on the migration source, a message that prompts you to disable SELinux appears. Enter `yes` to disable SELinux. The following figure shows how to disable SELinux.
+`AccessKey ID`, and Enter the `AccessKey secret` and click `Enter` . The following messages may appear: If no snapshot dependency is installed on your source server, a message appears. The following figure shows the details of the message. You can install a snapshot dependency based on whether you need to enable the block replication feature. If you need to enable the block replication feature when you create a migration job and the source server can access the Internet, enter `yes` to automatically install a snapshot dependency. If you do not enable the block replication feature when you create a migration job `no`. or the source server cannot access the Internet, enter
 
-**Important**
+> **Note:** If the snapshot dependency fails to be installed, do not enable the block replication feature when you create a migration job. Otherwise, the migration may fail.
 
-Do not close the client until the migration is complete. Otherwise, the migration source is disconnected from the SMC console and the migration fails.
+By default, the rsync tool is installed on most mainstream migration sources. If the rsync tool is not installed on your source server, the message in the following figure is returned. Enter `yes` to automatically install the rsync tool. Enter `no` if you want to manually install the rsync tool. If SELinux is enabled on the migration source, a message that prompts you to disable SELinux appears. Enter `yes` to disable SELinux. The following figure shows how to disable SELinux.
+
+> **Important:** Do not close the client until the migration is complete. Otherwise, the migration source is disconnected from the SMC console and the migration fails.
+
 4. View import results of the information about the migration source.
 If the Import Source Server [s-bxxxxxxxxxxxx] Successfully! message is returned, the information about the migration source is imported to the SMC console.
 
-**Important**
+> **Important:** Do not close the client. Otherwise, the migration fails.
 
-Do not close the client. Otherwise, the migration fails. If you import the information about the migration source for the first time, a record is automatically generated in the SMC console and the source migration is in the Online state. The default name of the source migration is in the <host name of the migration source + IP address of the migration source> format. The following figure shows an example. When you import the information about a migration source, SMC collects information about the source server, including the CPU, memory, CPU utilization, memory usage, and internal IP address. Click the ID of the migration source to view the information. The following figure shows the information. After the migration job is complete, you can create an ECS instance by using the information about the source server. After the information about the migration source is imported, create and start a migration job in the SMC console to migrate the source server. For more information, see Step 2: Create and start a migration task. If the message Error or Goto Aliyun Not Finished! appears, the information about the migration source failed to be imported. The following figure shows the error message. We recommend that you troubleshoot the issue, and run the client again.
+If you import the information about the migration source for the first time, a record is automatically generated in the SMC console and the source migration is in the Online state. The default name of the source migration is in the <host name of the migration source + IP address of the migration source> format. The following figure shows an example. When you import the information about a migration source, SMC collects information about the source server, including the CPU, memory, CPU utilization, memory usage, and internal IP address. Click the ID of the migration source to view the information. The following figure shows the information. After the migration job is complete, you can create an ECS instance by using the information about the source server. After the information about the migration source is imported, create and start a migration job in the SMC console to migrate the source server. For more information, see Step 2: Create and start a migration task. If the message Error or Goto Aliyun Not Finished! appears, the information about the migration source failed to be imported. The following figure shows the error message. We recommend that you troubleshoot the issue, and run the client again.
 
 ### 2.5 Step 2: Create and start a migration job
 
@@ -361,7 +395,9 @@ i. In the left-side pane, click **Migration Sources**. ii. On the Migration Sour
 **Destination Region**: required. The ID of the Apsara Stack region to which you want to
 migrate the source server.
 **Migration Job Name**: the name of the migration job.
-The job name must be unique within an Apsara Stack region.
+
+> **Note:** The job name must be unique within an Apsara Stack region.
+
 **Job Description**: the description of the migration job.
 **Destination Disk Size (GiB)**: the disk configurations of the destination Elastic
 Compute Service (ECS) instance. The following table describes the parameters.
@@ -394,7 +430,10 @@ If you select **ECS Instance**, you can configure the parameters that are descri
 **Execution Method**: the mode in which the migration job is run. Valid values:
 **Run Now**: The migration job starts immediately after it is created.
 **Run Later**: The migration job automatically starts at the specified time after it is
-created. The earliest time that you can specify to run a migration job is 10 minutes after the job is created.
+created.
+
+> **Note:** The earliest time that you can specify to run a migration job is 10 minutes after the job is created.
+
 **Create Only**: After the migration job is created, you must manually start the
 migration job. Default value: **Run Now**.
 
@@ -419,7 +458,10 @@ compression ratio based on your business requirements. If the bandwidth is limit
 **Intermediate Instance Type**: the instance type of the intermediate instance. Select
 an instance type based on your business requirements. This parameter is displayed only if the **Destination Type** parameter is set to **ECS Image**. If you specify an instance type, SMC creates an intermediate instance of the specified instance type. If the specified instance type is unavailable, the migration job fails to be created. If you do not specify an instance type, SMC automatically selects an instance type to create an intermediate instance. iv. After you configure the preceding parameters, click **OK**.
 3. Start the migration job.
-If the Execution Method parameter is set to **Run Now**, skip this step. If the Execution Method parameter is set to **Create Only** or **Run Later**, you can perform the following steps to start the migration job. i. In the left-side pane, click **Migration Jobs**. ii. Find the migration job and click **Run** in the Actions column. To pause a migration job in the **Synchronizing** state, click **Pause** in the **Actions** column.
+
+> **Note:** If the Execution Method parameter is set to **Run Now**, skip this step. If the Execution Method parameter is set to **Create Only** or **Run Later**, you can perform the following steps to start the migration job.
+
+i. In the left-side pane, click **Migration Jobs**. ii. Find the migration job and click **Run** in the Actions column. To pause a migration job in the **Synchronizing** state, click **Pause** in the **Actions** column.
 
 **What to do next**
 
@@ -473,7 +515,10 @@ Make sure that the SMC client is running during the migration. If data transmiss
 To ensure stable migration, we recommend that you exclude dynamic data directories, such as the data directories of large databases, before you start an incremental migration job. Later, you can stop the services on the source server and migrate the excluded data directories. Skip this step if you do not need to exclude dynamic data directories from migration. To exclude dynamic data directories, perform the following steps. You do not need to stop the services that are running on the source server.
 1. Log on to the source server.
 2. **(Optional)** Exclude files or directories from the migration.
-The block replication feature must be enabled if you migrate a source server that runs on the Windows operating system. In this case, you cannot exclude files or directories from the migration. If you migrate a source server that runs on the Windows operating system, skip this step. You can add the files or directories that you want to exclude from the migration to the configuration file in the Excludes directory. The following section describes the configuration files of the Linux operating system. The configuration file of the system disk: rsync_excludes_linux.txt. The configuration file of the data disk: the name of the system disk with the index number of the disk as the suffix. Example: rsync_excludes_linux_disk1.txt. The following table describes the examples on how to exclude configuration files from the migration.
+
+> **Note:** The block replication feature must be enabled if you migrate a source server that runs on the Windows operating system. In this case, you cannot exclude files or directories from the migration. If you migrate a source server that runs on the Windows operating system, skip this step.
+
+You can add the files or directories that you want to exclude from the migration to the configuration file in the Excludes directory. The following section describes the configuration files of the Linux operating system. The configuration file of the system disk: rsync_excludes_linux.txt. The configuration file of the data disk: the name of the system disk with the index number of the disk as the suffix. Example: rsync_excludes_linux_disk1.txt. The following table describes the examples on how to exclude configuration files from the migration.
 
 | Configuration examples | Configuration file |
 |---|---|
@@ -501,7 +546,11 @@ migrations. You can specify a time interval in the range of one hour to seven da
 during incremental migration. Valid values: 1 to 10. An image is generated for each incremental migration. If the total number of images exceeds the upper limit, the earliest unused image is deleted.
 **Execution Method**: the mode in which the migration job is run. In this example, **Run**
 **Now** is selected.
-The incremental migration job immediately starts after it is created. Data is migrated in the following way: data from a source server i. During the first incremental migration, SMC migrates all data except the excluded directories and files, and generates a full image. You can use this image to create an Elastic Compute Service (ECS) instance for verification. ii. After the first incremental migration is complete, SMC automatically migrates incremental data and generates images at specific points in time based on the time interval that you specify. The image generated for each incremental migration is a full image of the source server at a specific point in time. The image contains the incremental data at the point in time of migration and all earlier migrated data. In the image names that are generated during incremental migration, `CYCLE_X` indicates that the image is generated by the Xth incremental migration. For example, if an image name contains CYCLE_2, the image is generated by the second incremental migration, as shown in the following figure.
+The incremental migration job immediately starts after it is created. Data is migrated in the following way: data from a source server i. During the first incremental migration, SMC migrates all data except the excluded directories and files, and generates a full image. You can use this image to create an Elastic Compute Service (ECS) instance for verification. ii. After the first incremental migration is complete, SMC automatically migrates incremental data and generates images at specific points in time based on the time interval that you specify.
+
+> **Note:** The image generated for each incremental migration is a full image of the source server at a specific point in time. The image contains the incremental data at the point in time of migration and all earlier migrated data.
+
+In the image names that are generated during incremental migration, `CYCLE_X` indicates that the image is generated by the Xth incremental migration. For example, if an image name contains CYCLE_2, the image is generated by the second incremental migration, as shown in the following figure.
 
 **Step 3: Stop the services on the source server and run the**
 
@@ -521,8 +570,10 @@ the migration job.
 
 **What to do next**
 
-After you obtain the image generated for the last migration, you can perform the following operations: Create an ECS instance to verify the image. i. On the **Migration Jobs** page, find the migration job and view the ID of the image generated for the last migration in the **Migration Result** column. data from a source server ii. Go to the **Create Instance** page in the ECS console and select the image generated for the last migration as **Custom Image**. Configure other parameters based on your business requirements and purchase an ECS instance. For more information, see the "Create an instance" topic in **Elastic Compute Service User Guide**. iii. Connect to the ECS instance and check the migrated system. Pause an incremental migration job. You can stop an incremental migration job only if the job is in the **Synchronizing** or
-**Pending** state.
+After you obtain the image generated for the last migration, you can perform the following operations: Create an ECS instance to verify the image. i. On the **Migration Jobs** page, find the migration job and view the ID of the image generated for the last migration in the **Migration Result** column. data from a source server ii. Go to the **Create Instance** page in the ECS console and select the image generated for the last migration as **Custom Image**. Configure other parameters based on your business requirements and purchase an ECS instance. For more information, see the "Create an instance" topic in **Elastic Compute Service User Guide**. iii. Connect to the ECS instance and check the migrated system. Pause an incremental migration job.
+
+> **Note:** You can stop an incremental migration job only if the job is in the **Synchronizing** or **Pending** state.
+
 i. On the **Migration Jobs** page, find the migration job and click the icon in the **Actions** column. ii. Select **Pause**. iii. In the **Pause Migration Job** dialog box, click **OK**. Delete an incremental migration job. i. On the **Migration Jobs** page, find the migration job and click the icon in the **Actions** column. ii. Select **Delete**. iii. In the **Delete Migration Job** dialog box, click **OK**. n ECS instance
 
 ## 5 Migrate a server to an ECS instance
@@ -535,9 +586,14 @@ Server Migration Center (SMC) can be used to migrate servers to Elastic Compute 
 
 The preparations for the migration are complete. For more information, see Prepare a source server. An ECS instance is created as the destination ECS instance. Make sure that the instance has no data or the data of the instance is backed up by using images, snapshots, or other resources.
 
-**Warning**
+> **Warning:** After a migration job is created, all original data is deleted from the destination ECS instance. If the destination ECS instance contains important data, we recommend that you do not directly migrate the source server to the destination instance. In this case, we recommend that you set the Destination Type parameter to ECS Image to migrate the source server to an ECS image and then create an ECS instance by using the image.
+> If you migrate data from an ECS instance, make sure that the source ECS instance and the destination ECS instance are different. Otherwise, the migration may fail and data on the cloud disks of the source instance may be lost.
 
-After a migration job is created, all original data is deleted from the destination ECS instance. If the destination ECS instance contains important data, we recommend that you do not directly migrate the source server to the destination instance. In this case, we recommend that you set the Destination Type parameter to ECS Image to migrate the source server to an ECS image and then create an ECS instance by using the image. If you migrate data from an ECS instance, make sure that the source ECS instance and the destination ECS instance are different. Otherwise, the migration may fail and data on the cloud disks of the source instance may be lost. The information about the source server is imported to the SMC console. For more information, see Step 1: Import the information about a migration source. Make sure that the SMC client is running during the migration. If data transmission is interrupted, you can restart the SMC client and the migration job to resume the migration. The operating system of the destination ECS instance is the same as that of the source server. The number of data disks attached to the destination ECS instance is greater than or equal to that of data disks attached to the source server. Otherwise, the disk data of the source server cannot be migrated to the destination ECS instance. In this case, you must attach more data disks to the ECS instance. For more information, see the "Attach a data disk" topic in **Elastic Compute Service User Guide**. The capacity of the system disks and data disks attached to the destination ECS instance is larger than or equal to that of the system disks and data disks attached to the source server. Otherwise, the data of the source server cannot be fully migrated to the destination ECS instance. In this case, you must extend the data disks and system disks attached to the ECS instance. For more information, see the "Expand a disk" topic in **Elastic Compute**
+The information about the source server is imported to the SMC console. For more information, see Step 1: Import the information about a migration source.
+
+> **Note:** Make sure that the SMC client is running during the migration. If data transmission is interrupted, you can restart the SMC client and the migration job to resume the migration.
+
+The operating system of the destination ECS instance is the same as that of the source server. The number of data disks attached to the destination ECS instance is greater than or equal to that of data disks attached to the source server. Otherwise, the disk data of the source server cannot be migrated to the destination ECS instance. In this case, you must attach more data disks to the ECS instance. For more information, see the "Attach a data disk" topic in **Elastic Compute Service User Guide**. The capacity of the system disks and data disks attached to the destination ECS instance is larger than or equal to that of the system disks and data disks attached to the source server. Otherwise, the data of the source server cannot be fully migrated to the destination ECS instance. In this case, you must extend the data disks and system disks attached to the ECS instance. For more information, see the "Expand a disk" topic in **Elastic Compute**
 **Service User Guide**.
 
 **Procedure**

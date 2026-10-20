@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 318
 source_pdf: "e19f2acab89ac1c5_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20260828
@@ -125,15 +125,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -829,9 +825,7 @@ i. Go to the **Protection Mode Management** tab and click **Manage** in the **Se
 ii. In the Protection Scope dialog box, clear the abnormal instances.
 2. Reinstall the agent.
 
-**Important**
-
-The agent installation commands vary with instance types.
+> **Important:** The agent installation commands vary with instance types.
 
 **If the ECS Cloud Assistant module does not exist:**
 
@@ -882,7 +876,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, click **Security Overview**.
 4. Click the **Security Overview** tab to view the global security information and security trend
 dashboard. The Security Overview tab displays the numbers of security vulnerabilities and security events on servers. You can view information about security vulnerabilities, including
@@ -921,9 +918,7 @@ icon.
 3. Then, click **Create**, complete the following configurations, and then click **Save**.
 On the **Select Statistics** tab, select the type of data that you want to display in real time on the dashboard. You can select **All** to display all types of data. You can also select a specific data type. On the **Configurations** tab, configure the **Title** and **Title Decoration** parameters. If you want to display a dashboard, find the dashboard on the **Scenarios** page, move the pointer over the dashboard, and then click **Enable Now**.
 
-**Note**
-
-The number of dashboards that you can create is unlimited.
+> **Note:** The number of dashboards that you can create is unlimited.
 
 **SAS page**
 
@@ -1000,14 +995,15 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Assets** > **Asset Management**.
 4. On the **Assets** page, click **Synchronize Assets**.
 Server Guard obtains the information about the most recent servers and updates the server list.
 
-**Note**
-
-The system takes 1 minute to update the information. Wait until the information is updated.
+> **Note:** The system takes 1 minute to update the information. Wait until the information is updated.
 
 **View the server information**
 
@@ -1055,9 +1051,9 @@ In the left-side navigation tree of the **Assets** page, manage server groups an
 **Classification**. On the **Server Groups** page, you can manage server groups.
 Create a server group: Click**Add Group**. In the dialog box that appears, enter a group name in the **Group name**field, select the servers that you want to add to the group, and then click**OK**.
 
-**Note**
+> **Note:** Alternatively, you can skip the step of specifying assets. After you click **OK**, you can add assets to the group that you create.
 
-Alternatively, you can skip the step of specifying assets. After you click **OK**, you can add assets to the group that you create. Modify a server group: Find the server group that you want to modify and click**Manage** in the**Actions**column. Delete a server group: Find the server group that you want to delete and click**Delete** in the**Actions**column. Manage server tags: You can add **tags** to servers to identify their special attributes. This allows you to search for servers that have the same attributes. In the left-side navigation tree, manage server tags in the **Tag** section. Create a tag: Click **Manage**. In the Add Tag dialog box, enter a tag name, select the servers to which you want to add the tag, and then click **OK**. Delete a tag: Find the tag that you want to delete and click the icon. In the Note message, click **OK**.
+Modify a server group: Find the server group that you want to modify and click**Manage** in the**Actions**column. Delete a server group: Find the server group that you want to delete and click**Delete** in the**Actions**column. Manage server tags: You can add **tags** to servers to identify their special attributes. This allows you to search for servers that have the same attributes. In the left-side navigation tree, manage server tags in the **Tag** section. Create a tag: Click **Manage**. In the Add Tag dialog box, enter a tag name, select the servers to which you want to add the tag, and then click **OK**. Delete a tag: Find the tag that you want to delete and click the icon. In the Note message, click **OK**.
 
 **Manage downloaded tasks**
 
@@ -1077,7 +1073,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Assets** > **Server Fingerprints**.
 4. On the **Server Fingerprints** page, view the server fingerprints.
 **View server fingerprints in global overview**: Click the **Overview** tab to view the
@@ -1138,7 +1137,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Vulnerabilities** page, manually scan vulnerabilities or run an automatic periodic
 scan task on your servers.
@@ -1193,15 +1195,13 @@ You can select an organization, a resource set, and a region in the top navigati
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Linux Software** tab, view the detected Linux software vulnerabilities.
 
-**Note**
+> **Note:** You can search for specific vulnerabilities by using the search and filter features.
 
-You can search for specific vulnerabilities by using the search and filter features.
 5. Click a vulnerability. In the panel that appears, you can view the details of the vulnerability
 and the assets that are affected by the vulnerability.
 
-**Note**
+> **Note:** You can find affected assets by using the search and filter features.
 
-You can find affected assets by using the search and filter features.
 **Details**: This tab displays the basic information about the vulnerability, including the CVE
 ID, vulnerability impact score, and the security bulletin. You can click the **CVE ID** to view more information about the vulnerability.
 **Pending vulnerability**: This tab displays the servers that are affected by the
@@ -1237,15 +1237,13 @@ You can select an organization, a resource set, and a region in the top navigati
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Windows System** tab, view the detected Windows system vulnerabilities.
 
-**Note**
+> **Note:** You can search for specific vulnerabilities by using the search and filter features.
 
-You can search for specific vulnerabilities by using the search and filter features.
 5. Click a vulnerability. In the panel that appears, you can view details about the vulnerability
 and the assets that are affected by the vulnerability.
 
-**Note**
+> **Note:** You can find affected assets by using the search and filter features.
 
-You can find affected assets by using the search and filter features.
 **Detail**: This tab displays the basic information about the vulnerability.
 **Pending vulnerability**: This tab displays the servers that are affected by the
 vulnerability.
@@ -1282,15 +1280,13 @@ You can select an organization, a resource set, and a region in the top navigati
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Web CMS** tab, view all vulnerabilities.
 
-**Note**
+> **Note:** You can search for specific vulnerabilities by using the search and filter features.
 
-You can search for specific vulnerabilities by using the search and filter features.
 5. Click a vulnerability. In the panel that appears, you can view details about the vulnerability
 and the assets that are affected by the vulnerability.
 
-**Note**
+> **Note:** You can find affected assets by using the search and filter features.
 
-You can find affected assets by using the search and filter features.
 6. Handle the vulnerability based on its impact. The following table describes the actions that
 are used to fix vulnerabilities. Table 1 Actions to fix vulnerabilities
 
@@ -1357,7 +1353,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. In the upper-right corner, click **Settings** to configure vulnerability management policies.
 Configure policies in non-multi-level organization mode
@@ -1399,9 +1398,9 @@ After you enable the baseline check feature, Apsara Stack Security automatically
 
 By default, the following baselines are disabled. To check these baselines, make sure that these baselines do not affect your business and select them when you configure a custom policy. Baselines related to weak passwords for specific applications such as MySQL, PostgreSQL, and SQL Server
 
-**Note**
+> **Note:** If these baselines are enabled, the system attempts to log on to servers with weak passwords. The logon attempts consume server resources and generate a large number of logon failure records.
 
-If these baselines are enabled, the system attempts to log on to servers with weak passwords. The logon attempts consume server resources and generate a large number of logon failure records. Baselines related to classified protection of cybersecurity Internationally agreed best practices for security
+Baselines related to classified protection of cybersecurity Internationally agreed best practices for security
 
 **Baselines**
 
@@ -1446,14 +1445,18 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Baseline Check**.
 4. In the upper-right corner of the Baseline Check page, click **Manage Policy**. In the **Manage**
 **Policy** panel, manage baseline check policies.
 
-**Important**
+> **Important:** In multi-level organization mode, your operations take effect only on the resource sets on which you have permissions in the current organization.
+> In multi-level organization mode, the resource sets on which you have permissions have different configurations if **Nonunified Value** is displayed. You can configure the resource sets to ensure that the configurations are the same.
 
-In multi-level organization mode, your operations take effect only on the resource sets on which you have permissions in the current organization. In multi-level organization mode, the resource sets on which you have permissions have different configurations if **Nonunified Value** is displayed. You can configure the resource sets to ensure that the configurations are the same. Create a standard baseline check policy: Click **Create Standard Policy**. In the panel that appears, configure the parameters and click **OK**.
+Create a standard baseline check policy: Click **Create Standard Policy**. In the panel that appears, configure the parameters and click **OK**.
 
 | Parameter | Description |
 |---|---|
@@ -1477,17 +1480,23 @@ Create a custom baseline check policy: Click **Create Custom Policy**. In the pa
 
 Modify a baseline check policy. In the policy list, find the policy that you want to modify and click **Edit** in the **Actions** column.
 
-**Note**
+> **Note:** You cannot modify the baselines of the default policy. You can only modify the server groups to which the default policy is applied.
 
-You cannot modify the baselines of the default policy. You can only modify the server groups to which the default policy is applied. Modify multiple policies at a time (supported only in multi-level organization mode): If you create multiple policies that have the same name and the same type under different resource sets, click **Centrally Edit** below the policy list to modify the policies at a time.
+Modify multiple policies at a time (supported only in multi-level organization mode): If you create multiple policies that have the same name and the same type under different resource sets, click **Centrally Edit** below the policy list to modify the policies at a time.
 
-**Note**
+> **Note:** If the resource sets have different configurations after you modify the policies as an administrator, the system displays a message instructing you to change the configurations to ensure that all resource sets have the same configurations.
 
-If the resource sets have different configurations after you modify the policies as an administrator, the system displays a message instructing you to change the configurations to ensure that all resource sets have the same configurations. Delete a baseline check policy: In the policy list, find the policy that you want to delete and click **Delete** in the **Actions** column.
+Delete a baseline check policy: In the policy list, find the policy that you want to delete and click **Delete** in the **Actions** column.
 
-**Important**
+> **Important:** You cannot restore a policy after you delete the policy. You cannot delete the default policy.
 
-You cannot restore a policy after you delete the policy. You cannot delete the default policy. Specify the baseline check levels: In the **Baseline Check Level** section, specify the baseline check levels. Valid values: High, Medium, and Low. In multi-level organization mode, the icon for a level indicates that the level is specified in specific resource sets. You can clear the selected items to configure baseline check levels in a centralized manner. Create custom weak password rules: Server Guard provides default weak password rules based on the Alibaba Cloud threat intelligence. You can also use a template to upload custom weak password rules. Make sure that the size of the file that you upload does not exceed 5 KB. In the **Custom Weak Password Rules** section, click **Import File** to upload an onpremises file of weak password rules. To export the uploaded file, right-click the name of the file to save the file or click the name of the file to save the file on the preview page.
+Specify the baseline check levels: In the **Baseline Check Level** section, specify the baseline check levels. Valid values: High, Medium, and Low. In multi-level organization mode, the icon for a level indicates that the level is specified in specific resource sets. You can clear the selected items to configure baseline check levels in a centralized manner.
+
+> Create custom weak password rules: Server Guard provides default weak password rules based on the Alibaba Cloud threat intelligence. You can also use a template to upload custom weak password rules. Make sure that the size of the file that you upload does not exceed 5 KB.
+
+In the **Custom Weak Password Rules** section, click **Import File** to upload an onpremises file of weak password rules.
+
+> To export the uploaded file, right-click the name of the file to save the file or click the name of the file to save the file on the preview page.
 
 ##### 4.3.2.3 View baseline check results and handle baseline risks
 
@@ -1504,7 +1513,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Baseline Check**.
 4. In the upper part of the **Baseline Check** page, view the summary of baseline check
 results. You can filter data by baseline check policy. You can select a baseline check policy from the **Select Policy** drop-down list to view the following information:
@@ -1518,9 +1530,7 @@ If the number below **Last Pass Rate** is green, the pass rate of the checked se
 The **Baseline Check** page displays the details of all baselines, such as **Baseline**, **Checked**
 **Items**, **Failed Items/Affected Servers**, **Category**, and **Last Checked At**.
 
-**Note**
-
-You can also select a baseline check policy from the **Select Policy** drop-down list to view the baselines that are specified in the policy.
+> **Note:** You can also select a baseline check policy from the **Select Policy** drop-down list to view the baselines that are specified in the policy.
 
 **View the details of a baseline**
 
@@ -1531,7 +1541,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Baseline Check**.
 4. In the **Baseline** column, click a baseline to view the details of the baseline.
 Baseline details include the affected assets and the numbers of **Passed Items** and **At-Risk**
@@ -1546,10 +1559,7 @@ appears, find the asset that you want to manage and click **View** in the **Acti
 2. Find a check item and click **Details** in the **Actions** column to view the description, result,
 and suggestion for the check item.
 
-**Note**
-
-We recommend that you follow the suggestions to manage check items whose status is
-**Failed** at the earliest opportunity, especially high-risk check items.
+> **Note:** We recommend that you follow the suggestions to manage check items whose status is **Failed** at the earliest opportunity, especially high-risk check items.
 
 **Manage failed check items**
 
@@ -1559,17 +1569,13 @@ In the At-Risk Items panel, manage failed check items.
 
 If you want to disable alerts for a check item, click **Whitelist** to add the check item to the whitelist. Check items in the whitelist do not trigger alerts.
 
-**Note**
-
-You can also select multiple check items and click **Whitelist** in the lower-left corner to add the check items to the whitelist at a time.
+> **Note:** You can also select multiple check items and click **Whitelist** in the lower-left corner to add the check items to the whitelist at a time.
 
 **Repair**
 
 Server Guard allows you to fix only multiple baseline risks that are detected based on the Alibaba Cloud standards at a time. You can select multiple servers that have the same baseline risks.
 
-**Important**
-
-Fixing baseline risks may be risky. Before you handle baseline risks, make sure that a backup is performed.
+> **Important:** Fixing baseline risks may be risky. Before you handle baseline risks, make sure that a backup is performed.
 
 **Remove check items from the whitelist**
 
@@ -1606,7 +1612,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Risk Exposure Detection**.
 4. On the **Asset Exposure** tab of the **Risk Exposure Detection** page, view the information
 about exposed assets. Filter assets: Filter assets by vulnerability, asset group, or port. View the exposure details of an asset: Find the asset whose details you want to view and click **Exposure Details** in the **Actions** column. In the panel that appears, you can view the communication link topology between the asset and the Internet, and the details of the links. Export data of exposed assets: Click the icon in the upper-right corner of the exposed asset list to export and save the details of the exposed assets to your computer. The exported file is an Excel file.
@@ -1620,7 +1629,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Risk Exposure Detection**.
 4. On the **Application exposure** tab of the **Risk Exposure Detection** page, view the
 information about exposed applications. Filter applications: Filter applications by specifying whether vulnerabilities exist or entering the service version or middleware version, or the service name or middleware name. View the exposure details of an application: Find the application whose details you want to view and click **Exposure Details** in the **Actions** column. In the panel that appears, you can view the exposure details of the application. Export data of an exposed application: Click the icon in the upper-right corner of the list of exposed applications to export and save the details of the exposed applications to your computer. The exported file is an Excel file.
@@ -1642,7 +1654,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Application Protection**.
 4. On the **Configuration** tab of the **Application Protection** page, click **Create**
 **Application**. In the dialog box that appears, specify a name and enter remarks for the
@@ -1772,7 +1787,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Application Protection**.
 4. On the **Alert** tab of the **Application Protection** page, view the information about alert
 events. On the **Alert** tab, the doughnut charts display the behaviors of applications after the application protection feature is enabled for the applications and the statistics about attacks on the applications. The list in the lower part of the page displays the details of each attack. The details include the type, URL, behavior data, and processing method of each attack. View statistics about application behaviors The **Application Behavior Statistics** section displays the application behaviors that are monitored by the application protection feature and the behavior types. The behavior types include normal behavior and attacks. View attack statistics The **Attack Statistics** section displays the attacks that are detected by the application protection feature and the types of attacks. View attack details The list in the lower part of the Application Protection page displays the information about each attack. In the list, you can view the time, type, URL, behavior data, and processing method of each attack. You can also click **View** in the **Operation** column of an attack to view the attack details in the **Details** panel, including vulnerability details, request details, and server details.
@@ -1787,14 +1805,17 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Prevention** > **Application Protection**.
 4. On the **Whitelist** tab of the **Application Protection** page, click **Configure Whitelist**.
 In the **Configure Whitelist** panel, perform the following steps to configure a whitelist rule and select applications to which you want to apply the rule. i. In the **Rule Name** field, enter a name for the rule. ii. In the **Source IP Address** field, enter the source IP addresses that you want to add to the whitelist. You can enter up to 100 IP addresses or CIDR blocks.
 
-**Important**
+> **Important:** If you enter 0.0.0.0/0, Server Guard allows requests from all IP addresses. Proceed with caution.
 
-If you enter 0.0.0.0/0, Server Guard allows requests from all IP addresses. Proceed with caution. iii. In the **Request Path** section, configure the path that is used to match requests from the IP addresses in the whitelist. You can select one of the following match methods for the path:
+iii. In the **Request Path** section, configure the path that is used to match requests from the IP addresses in the whitelist. You can select one of the following match methods for the path:
 **Prefix Match**: If requests are sent from IP addresses in the whitelist and the prefixes of
 the request paths match a specific prefix, the requests are allowed. Example:
 
@@ -1809,9 +1830,10 @@ the request paths match a specific suffix, the requests are allowed. Example:
  /Vulns/file/io/read .
 ```
 
-**Note**
+> **Note:** When Server Guard matches a request path against the specified condition, Server Guard ignores the content in the query string. For example, the request path is
+> http://127.0.XX.XX:8088/Vulns/file/io/read?path=/etc/passwd . Server Guard ignores the question mark (?) and the content that follows the question mark (?). In this example, ?path=/etc/passwd is ignored.
 
-When Server Guard matches a request path against the specified condition, Server Guard ignores the content in the query string. For example, the request path is http://127.0.XX.XX:8088/Vulns/file/io/read?path=/etc/passwd . Server Guard ignores the question mark (?) and the content that follows the question mark (?). In this example, ?path=/etc/passwd is ignored. iv. In the **Threat Type** section, select the types of attacks that you want to detect and click
+iv. In the **Threat Type** section, select the types of attacks that you want to detect and click
 **Next**.
 v. In the Selected Applications panel, select the applications to which you want to apply the whitelist rule and click **OK**. After you complete the configuration, the whitelist rule takes effect on all online RASP agents in the applications that you select for the rule.
 
@@ -1886,7 +1908,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Virus Defense**.
 4. In the upper-right corner of the **Anti-virus** tab, click **Scan Settings**.
 5. In the **Scan Settings** panel, configure the **Scan Cycle**, **Scan mode**, and **Scan Scope**
@@ -1907,9 +1932,8 @@ click **OK**.
 
 **Handle alerts**
 
-**Important**
+> **Important:** Virus removal may cause service interruptions. Before you perform deep cleanup, we recommend that you manually back up snapshots of your system to prevent unnecessary losses.
 
-Virus removal may cause service interruptions. Before you perform deep cleanup, we recommend that you manually back up snapshots of your system to prevent unnecessary losses.
 1. On the **Anti-virus** tab, click **Process**.
 2. Click **Process**, select the required servers, and then click **Batch handled**. Alternatively,
 find a server and click **Handle** in the **Actions** column.
@@ -2045,7 +2069,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Tamper Proofing**.
 4. The first time you use web tamper proofing, click **Add Servers for Protection** on the
 **Tamper Proofing** page.
@@ -2087,9 +2114,7 @@ this topic.
 | Excluded File Formats | The formats of the files that do not require protection. Server Guard does not protect files in the excluded formats. |
 | Excluded Files | The files that do not require protection. Enter a value in the Subdirectory name/File name format. Example: dir2/file3 . Click Add File to add another file. |
 
-**Important**
-
-The **Excluded Sub-Directories**, **Excluded File Formats**, and **Excluded Files** parameters are evaluated by using a logical **OR**.
+> **Important:** The **Excluded Sub-Directories**, **Excluded File Formats**, and **Excluded Files** parameters are evaluated by using a logical **OR**.
 
 **Sample configuration**
 
@@ -2118,17 +2143,16 @@ in the Add Servers for Protection panel and click the icon in the **Protection**
 On the **Protection** tab of the **Tamper Proofing** page, view the details of the protection status. The overview statistics on web tamper proofing, and the statistics on the top 5 protected files and top 5 blocked processes in the last 15 days Details of alerts triggered by web tamper proofing The alert list displays all alerts that are generated for abnormal file changes on your server regardless of whether the alerts are generated in **Interception Mode** or **Alert Mode**. You can view the details of an alert, including the severity level, alert name, affected assets, file path, process name, and protection status. The severity level is **Medium**. List of **Handled** alerts By default, alerts that are generated in Interception Mode are displayed, and the **status** of the alerts is **Defended**. This indicates that the web tamper proofing feature detects abnormal file changes and then intercepts the processes that modify files. List of **Unhandled** alerts Alerts that are generated in **Alert Mode** are displayed, and the default **status** of the alerts is **Unhandled**. This indicates that the web tamper proofing feature generates alerts for suspicious processes and abnormal file changes. If an intercepted process that modifies files or the process that modifies files and then triggers an alert is required by your workloads, you can add the process to the whitelist to allow the process. After you add a process for which an alert is generated to the whitelist, the status of the alert changes to **Added to Whitelist**, and the alert is added to the
 **Handled** alert list. For more information, see **Add a process to the whitelist** .
 
-**Important**
-
-If an alert is reported more than 100 times, we recommend that you handle the alert at the earliest opportunity.
+> **Important:** If an alert is reported more than 100 times, we recommend that you handle the alert at the earliest opportunity.
 
 **Add a process to the whitelist**
 
 If you confirm that the process that modifies the protected files on your server is normal and want the process to modify the files, you can add the process to the whitelist.
 
-**Important**
+> **Important:** You can add a process to the process whitelist only if the operating system and kernel versions of your server are supported by the whitelist feature. For more information, see **Supported versions of operating systems and kernels** .
+> Attackers may exploit the processes in the whitelist to compromise your server. We recommend that you add only trusted processes to the whitelist.
 
-You can add a process to the process whitelist only if the operating system and kernel versions of your server are supported by the whitelist feature. For more information, see **Supported versions of operating systems and kernels** . Attackers may exploit the processes in the whitelist to compromise your server. We recommend that you add only trusted processes to the whitelist. On the **Protection** tab of the **Tamper Proofing** page, add a normal process to the whitelist.
+On the **Protection** tab of the **Tamper Proofing** page, add a normal process to the whitelist.
 
 **Add a process for which an alert is generated to the whitelist**
 
@@ -2175,7 +2199,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Application Whitelists**.
 4. On the **Policies** tab of the **Application Whitelist** page, click **Create Policy**.
 5. In the**Create Application Whitelist** panel, configure an application whitelist policy and
@@ -2204,7 +2231,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Application Whitelists**.
 4. On the **Application Whitelist**page, click the **Servers**tab and view the servers on which
 the policy takes effect. You can filter servers by policy status, policy mode, and asset status. You can also filter servers by server group and protection status. In the server list, you can perform the following operations: View the policy details of a server: Find the server that you want to view and click
@@ -2220,7 +2250,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Application Whitelists**.
 4. On the **Application Whitelist** page, click the **Knowledge Bases** tab and then click the
 **Process Collection** tab.
@@ -2330,10 +2363,7 @@ After Apsara Stack Security generates an alert, the information about the alert 
 **Alerts** page. After the alert is handled, the status of the alert changes from **Unhandled**
 **Alerts** to **Handled**.
 
-**Note**
-
-Apsara Stack Security retains the records of **Unhandled Alerts** and **Handled** on the
-**Security Alerts** page. By default, the records of **Unhandled Alerts** are displayed.
+> **Note:** Apsara Stack Security retains the records of **Unhandled Alerts** and **Handled** on the **Security Alerts** page. By default, the records of **Unhandled Alerts** are displayed.
 
 **Platform**
 
@@ -2344,7 +2374,9 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
 **View the details of an alert**
 
@@ -2358,19 +2390,15 @@ In multi-level organization mode,all data permissions are managed by using resou
 the **Actions** column. In the dialog box that appears, configure Process Method and click
 **Process Now**.
 
-**Note**
+> **Note:** If the alert is related to multiple exceptions, the details panel of the alert appears after you click **Handle**. You can separately handle the exceptions in the panel.
 
-If the alert is related to multiple exceptions, the details panel of the alert appears after you click **Handle**. You can separately handle the exceptions in the panel.
 **Ignore**: If you ignore the alert, the status of the alert changes to **Handled**. Server Guard
 no longer generates this alert.
 **Add To Whitelist**: If the alert is a false positive, you can add the alert to the whitelist.
 Then, the status of the alert changes to **Handled**. Server Guard no longer generates this alert. In the **Handled** alert list, you can click **Cancel whitelist** to remove the alert from the whitelist.
 
-**Note**
+> **Note:** A false positive indicates that Server Guard generated an alert on a normal process. A common false positive includes alerts that are generated for a **suspicious process** **that sends TCP packets**. The false positive notifies you that suspicious scans on other devices are detected on your servers.
 
-A false positive indicates that Server Guard generated an alert on a normal process. A common false positive includes alerts that are generated for a **suspicious process**
-**that sends TCP packets**. The false positive notifies you that suspicious scans on
-other devices are detected on your servers.
 **Handled manually**: This alert reports a suspicious exception. We recommend that you
 troubleshoot the exception based on the handling suggestions. After you troubleshoot the exception, click Process Now. Then, the alert status changes to Handled.
 **Batch unhandled**: This method allows you to handle multiple alerts at a time. Before
@@ -2415,7 +2443,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Security Alerts**.
 4. On the Security Alerts page, click the name of the required alert in the **Event** column. The
 alert details panel appears.
@@ -2435,7 +2466,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Security Alerts**.
 4. On the **Security Alerts** page, click **Quarantine** in the upper-right corner.
 In the **Quarantine** panel, you can perform the following operations: View information about quarantined files. The information includes server IP addresses, paths that store the files, file status, and modification time. Click **Restore** in the **Actions** column to remove a file. The file is displayed in the alert list again.
@@ -2457,7 +2491,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **Security Alerts**.
 4. In the upper-right corner of the page that appears, click **Settings**.
 If you have multiple organizations, select the required organization and resource set. Then, configure parameters on different tabs.
@@ -2468,20 +2505,17 @@ a. In the **Approved Logon Location** section, click **Manage** on the right sid
 
 **Configure advanced logon settings**
 
-**Note**
+> **Note:** When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard sends you alerts if your assets receive logon requests that are outside the logon settings. The procedure to configure advanced logon settings is similar to the procedure to configure **approved** **logon locations**. You can follow the preceding procedure to **create**, **modify**, and **delete** advanced logon settings.
 
-When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard sends you alerts if your assets receive logon requests that are outside the logon settings. The procedure to configure advanced logon settings is similar to the procedure to configure **approved**
-**logon locations**. You can follow the preceding procedure to **create**, **modify**, and
-**delete** advanced logon settings.
 Turn on or turn off the switch to the right of **Unapproved IP Address Alert**. If you turn on the switch and your assets receive logon requests from unapproved IP addresses, alerts are triggered. Turn on or turn off the switch to the right of **Unapproved Logon Time Alert**. If you turn on the switch and your assets receive logon requests in unapproved time ranges, alerts are triggered. Turn on or turn off the switch to the right of **Unapproved Account Logon Alert**. If you turn on the switch and your assets receive logon requests from unapproved accounts, alerts are triggered.
 
 **Add web directories to scan**
 
 Server Guard automatically scans web directories of data assets in your servers and runs dynamic and static scan tasks. You can also manually add custom web directories. a. In the **Add Scan Targets** section, click **Manage** on the right side. b. Specify a valid web directory and select the servers on which the web directory is scanned.
 
-**Note**
+> **Note:** To ensure the scan performance and efficiency, we recommend that you do not specify a root directory.
 
-To ensure the scan performance and efficiency, we recommend that you do not specify a root directory. c. Click **OK**.
+c. Click **OK**.
 
 **Modify a whitelist rule**
 
@@ -2532,7 +2566,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Defense** > **SDK for Malicious File Detection** .
 4. Click the **OSS Object Check** tab, detect one or more buckets by using an appropriate
 detection method. The following table describes the supported detection methods. If your bucket is not displayed in the list on the **OSS Object Check** tab, you can click
@@ -2550,9 +2587,9 @@ detection method. The following table describes the supported detection methods.
 
 View the overall information about at-risk OSS objects On the **At-risk File Overview** tab, you can view the following information: the total number of OSS objects that are checked, the number of objects at each risk level, and the remaining check quota. The risk levels include high, medium, and low. View the details of at-risk objects In the list of at-risk objects of the At-risk File Overview tab, find the object whose details you want to view and click **Details** in the **Actions** column. In the details panel, view details of the object on the tabs, including Object Details and Event Description.
 
-**Note**
+> **Note:** If risks are detected in an object, the object may be embedded with viruses such as malicious scripts and DDoS trojans. We recommend that you handle the object at the earliest opportunity based on the suggestions provided on the Event Description tab.
 
-If risks are detected in an object, the object may be embedded with viruses such as malicious scripts and DDoS trojans. We recommend that you handle the object at the earliest opportunity based on the suggestions provided on the Event Description tab. View the statistics on OSS object detection On the **OSS Object Check** tab, you can view the following information: the number of buckets in which malicious objects are detected, the number of objects at each risk level, and the total number of buckets. The risk levels include high, medium, and low. View the detection results of a bucket In the bucket list of the **OSS Object Check** tab, find the bucket whose detection results you want to view and click **Details** in the **Actions** column. On the Object Check Details page, you can view the information about the bucket on the Basic Information and At-risk Object Details tabs.
+View the statistics on OSS object detection On the **OSS Object Check** tab, you can view the following information: the number of buckets in which malicious objects are detected, the number of objects at each risk level, and the total number of buckets. The risk levels include high, medium, and low. View the detection results of a bucket In the bucket list of the **OSS Object Check** tab, find the bucket whose detection results you want to view and click **Details** in the **Actions** column. On the Object Check Details page, you can view the information about the bucket on the Basic Information and At-risk Object Details tabs.
 
 #### 4.4.7 Use the core file monitoring feature
 
@@ -2560,7 +2597,9 @@ The core file monitoring feature monitors access to core files on servers in rea
 
 **Important**
 
-In multi-level organization mode, pay attention to the following items: Only an account that has level-1 organization permissions or global organization permissions can create, modify, or delete a rule. You can view the status of hosts within the permission scope by resource set.
+In multi-level organization mode, pay attention to the following items: Only an account that has level-1 organization permissions or global organization permissions can create, modify, or delete a rule.
+
+> You can view the status of hosts within the permission scope by resource set.
 
 **Limits**
 
@@ -2576,9 +2615,10 @@ Before the core file monitoring feature works, you must create rules to specify 
 
 We recommend that you configure monitoring rules for core system files and important configuration files. Before you create a rule, you must determine the files to monitor and the scope of processes that are allowed to access the files. For core business files, you must configure an alert rule for all processes and multiple allow rules for allowed processes. This helps ensure that all access operations on the files are monitored and unnecessary alerts are not generated.
 
-**Important**
+> **Important:** If you do not configure an alert rule for all processes, you cannot monitor the access operations performed by processes that are beyond the scope of the specified process path. All out-of-scope processes can bypass the monitoring of Server Guard.
+> When you configure an allow rule, we recommend that you do not use a wildcard character to specify a process path. If you use a wildcard character to specify a process path, attackers can exploit the allow rule to access your server files after bypassing the monitoring of Server Guard.
 
-If you do not configure an alert rule for all processes, you cannot monitor the access operations performed by processes that are beyond the scope of the specified process path. All out-of-scope processes can bypass the monitoring of Server Guard. When you configure an allow rule, we recommend that you do not use a wildcard character to specify a process path. If you use a wildcard character to specify a process path, attackers can exploit the allow rule to access your server files after bypassing the monitoring of Server Guard. For example, the path of the core files that you want to monitor is /etc/sysctl.conf, and the allowed process is systemd. To monitor the file path /etc/sysctl.conf, you must configure two rules. Rule 1: Set the Handling Method parameter to Alert, set the Process Path parameter to an asterisk ( `*` ), set the File Path parameter to `/etc/sysctl.conf` , and select all options for the File operation parameter. The asterisk (*) specifies all processes. Rule 2: Set the Handling Method parameter to Release, set the Process Path parameter to `/usr/lib/systemd/systemd` , set the File Path parameter to `/etc/sysctl.conf` , and select all options for the File operation parameter. If you want to monitor core files on multiple servers, you can specify the file paths on all servers in an alert rule and set the Process Path parameter to an asterisk (*). Then, configure multiple allow rules for different process paths that you want to allow on different servers.
+For example, the path of the core files that you want to monitor is /etc/sysctl.conf, and the allowed process is systemd. To monitor the file path /etc/sysctl.conf, you must configure two rules. Rule 1: Set the Handling Method parameter to Alert, set the Process Path parameter to an asterisk ( `*` ), set the File Path parameter to `/etc/sysctl.conf` , and select all options for the File operation parameter. The asterisk (*) specifies all processes. Rule 2: Set the Handling Method parameter to Release, set the Process Path parameter to `/usr/lib/systemd/systemd` , set the File Path parameter to `/etc/sysctl.conf` , and select all options for the File operation parameter. If you want to monitor core files on multiple servers, you can specify the file paths on all servers in an alert rule and set the Process Path parameter to an asterisk (*). Then, configure multiple allow rules for different process paths that you want to allow on different servers.
 
 **Procedure**
 
@@ -2589,7 +2629,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. On the **Defense > Core File Monitoring** page, click the **Monitoring Rule** tab.
 4. Click **New Rule**. In the New rule panel, configure the parameters and click **Determine**.
 
@@ -2698,7 +2741,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, click **Log Retrieval**.
 4. On the **Quick Search** tab, configure search conditions.
 
@@ -2716,9 +2762,8 @@ In multi-level organization mode,all data permissions are managed by using resou
 **Save Search**: Click **Save Search** to save a search condition, which can be used for
 subsequent log searches.
 
-**Important**
+> **Important:** The Save Search button is displayed only when at least one result is returned based on the search conditions.
 
-The Save Search button is displayed only when at least one result is returned based on the search conditions.
 **Saved Search Conditions**: Click **Saved Search Conditions** to select and use a search
 condition that you saved.
 
@@ -2726,7 +2771,8 @@ condition that you saved.
 
 **Important**
 
-The advanced search feature can be used only after you activate Simple Log Service. To activate Simple Log Service, contact the administrator.
+> The advanced search feature can be used only after you activate Simple Log Service. To activate Simple Log Service, contact the administrator.
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
@@ -2734,7 +2780,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, click **Log Retrieval**.
 4. On the **Advanced Search** tab, follow the on-screen instructions to search for logs.
 
@@ -2891,7 +2940,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Setting** > **Settings**.
 4. Click the **Agent** tab.
 5. **Optional.** Click the **Client to be installed** tab to view the number of servers on which the
@@ -2903,18 +2955,15 @@ CLI Installation
 
 a. On the **CLI Installation** tab, find the operating system of your server and click **Copy** on the right.
 
-**Note**
+> **Note:** If you do not find the required installation command for the operating system of your server, click **Create Installation Command**, configure the **Organization**, **Resource Set**, and **Client Type** parameters, and then click OK. Then, click **Copy** on the right.
 
-If you do not find the required installation command for the operating system of your server, click **Create Installation Command**, configure the **Organization**,
-**Resource Set**, and **Client Type** parameters, and then click OK. Then, click
-**Copy** on the right.
 b. Run the command on your server. c. Click the **Installation Verification** tab to verify the command based on the operating system of the server.
 
 **Deploy Hosts Outside Apsara Stack**
 
-**Important**
+> **Important:** Before you install the Server Guard agent, make sure that you have a sufficient quota, and the domain name of the server is resolved to Server Guard. You can click **View Domain Name Resolution** or **View Quota** to view the required information.
 
-Before you install the Server Guard agent, make sure that you have a sufficient quota, and the domain name of the server is resolved to Server Guard. You can click **View Domain Name Resolution** or **View Quota** to view the required information. a. Click **Manage Service Provider**. On the **Assets** page, click the **Server(s)** tab. b. On the tab that appears, click **Create Provider**, configure the **Provider Name** parameter, and then click **OK**. c. Go to the **Agent Installation** page. On the **Agent Installation Guide** tab, click **CLI**
+a. Click **Manage Service Provider**. On the **Assets** page, click the **Server(s)** tab. b. On the tab that appears, click **Create Provider**, configure the **Provider Name** parameter, and then click **OK**. c. Go to the **Agent Installation** page. On the **Agent Installation Guide** tab, click **CLI**
 **Installation**.
 d. In the **Deploy Hosts Outside Apsara Stack** section, find the newly added service provider and click Create Installation Command. In the dialog box that appears, configure the **Client Type**, **Effective Duration**, **Region**, **Data Center**, and **Asset**
 **Group** parameters.
@@ -2924,10 +2973,8 @@ e. After the configuration is complete, click **Copy** and run the command on yo
 
 **Image Installation**
 
-**Important**
+> **Important:** Before you install the Server Guard agent, make sure that your you have a sufficient quota, and the domain name of the server is resolved to Server Guard. You can click **View Domain Name Resolution** or **View Quota** to view the required information.
 
-Before you install the Server Guard agent, make sure that your you have a sufficient quota, and the domain name of the server is resolved to Server Guard. You can click
-**View Domain Name Resolution** or **View Quota** to view the required information.
 a. On the **Image Installation** tab, install the agent as prompted. b. Click the **Installation Verification** tab and copy the required command on this tab based on the operating system of the server to verify the installation result.
 
 #### 4.6.2 Manage protection capabilities and protection modes
@@ -2945,7 +2992,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Server Settings** > **Settings**.
 4. On the **Protection Capability Settings** tab of the **Settings** tab, configure the following
 protection capabilities. In multi-level organization mode, servers can be filtered by resource set.
@@ -2995,14 +3045,17 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Defense Rules** tab of the **Malicious Behavior Defense** tab, search for and
 manage a system defense rule. Search for a system defense rule Method 1: On the **Defense Rules** tab, enter the name of the system defense rule in the search box. Method 2: On the **Defense Rules** tab, select a value in the **Attack Phase** section to filter system defense rules. Manage a system defense rule Enable or disable a system defense rule: If a system defense rule is not suitable for your business scenario and affects the security score of your assets, you can disable the rule. a. Select one or more system defense rules based on your business requirements. b. In the lower-left corner of the system defense rule list, click **Enable** or **Disabled**. Manage servers on which a system defense rule takes effect
 
-**Note**
+> **Note:** After you remove a server from a system defense rule, Server Guard no longer detects or reports risks on the server based on the rule.
 
-After you remove a server from a system defense rule, Server Guard no longer detects or reports risks on the server based on the rule. a. Find a system defense rule and click**Management host** in the **Actions** column. b. In the **Management host** panel, add servers to the rule or remove servers from the rule. Then, click **OK**.
+a. Find a system defense rule and click**Management host** in the **Actions** column. b. In the **Management host** panel, add servers to the rule or remove servers from the rule. Then, click **OK**.
 
 **Manage custom defense rules**
 
@@ -3013,16 +3066,19 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Custom Defense Rule** tab of the **Malicious Behavior Defense** tab, click **New**
 **rule**.
 5. In the **New rule** panel, configure the **Rule Type** parameter, the required parameters, and
 the **Action** parameter based on your business requirements. Then, click **Next**. The required parameters vary based on the value of the Rule Type parameter. If you want to add specific behavior to the whitelist, make sure that the Rule Type parameter for the defense rule uses one of the following values:
 
-**Note**
+> **Note:** You can add only the behavior of the Process hash type to the blacklist.
 
-You can add only the behavior of the Process hash type to the blacklist. Process hash Command Line Process Network File Read and Write Operation on Registry Dynamic-link Library Loading File Renaming
+Process hash Command Line Process Network File Read and Write Operation on Registry Dynamic-link Library Loading File Renaming
 6. In the server list of the **New rule** panel, select the servers on which you want the rule to
 take effect and click **Finish**. By default, a newly created custom defense rule is enabled. You can modify the rule and manage the servers on which the rule takes effect.
 
@@ -3040,7 +3096,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Audit of High-risk Commands** tab, click **New rule**.
 5. In the **New rule** panel, configure the parameters and click **Next**.
@@ -3080,7 +3139,8 @@ You can create a defense rule against brute-force attacks and specify a trigger 
 
 **Important**
 
-If you want to add an IP address to the whitelist of defense against brute-force attacks, you can click the number below **Approved logon IP** and specify an IP address as an approved logon IP address. Defense rules against brute-force attacks do not block logon requests from approved logon IP addresses.
+> If you want to add an IP address to the whitelist of defense against brute-force attacks, you can click the number below **Approved logon IP** and specify an IP address as an approved logon IP address. Defense rules against brute-force attacks do not block logon requests from approved logon IP addresses.
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
@@ -3088,7 +3148,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Anti-brute Force Cracking** tab, click the **Defense Policy** tab and click **Create**
 **Policy**.
@@ -3116,7 +3179,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Anti-brute Force Cracking** tab, click the **System Rule** tab and perform the
 following operations as needed. View the information about a system rule You can view the following information: blocked IP address, port, effective servers, rule name, interception mode (Alinet), validity period, and status. An effective server refers to a server to which a rule is applied. Enable a system rule If a system rule is disabled, you can turn on the switch in the **Status** column to enable the system rule. Then, Security Center continues to block logons from the IP address that is specified in the system rule. Disable a system rule If a system rule is enabled and you confirm that the blocking of the IP address specified in the system rule is a false positive, you can disable the rule to allow logons from the IP address. To disable the rule, turn off the switch in the **Status** column. Delete a rule To delete a rule, click **Delete** in the **Operate** column.
@@ -3131,7 +3197,10 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 **Note**
 
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Settings** > **Rule Settings**.
 4. On the **Anti-brute Force Cracking** tab, click the **Custom Defense Rules** tab and
 perform the following operations as needed. Create a custom IP address blocking policy Click **Create Rule**. In the **Create IP Address Blocking Policy** panel, configure the parameters and click **OK**. The following table describes the parameters.
@@ -3171,15 +3240,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**Note**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-**First logon**
-
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -3245,9 +3310,9 @@ thresholds for traffic redirection. i. Find the rule whose thresholds you want t
 ii. In the **Modify Threshold** dialog box, specify custom thresholds and click **OK**. iii. **Optional.** Click **Automatic DDoS Traffic Redirection and Scrubbing**. In the **Enable**
 **Automatic Redirection** message, click **OK**.
 
-**Note**
+> **Note:** By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off.
 
-By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
+If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
 #### 5.2.3 Manage Server Guard rules
 
@@ -3280,9 +3345,8 @@ You can create custom Web Application Firewall (WAF) rules based on your busines
 
 **Procedure**
 
-**Important**
+> **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
-WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -3371,9 +3435,7 @@ disable the attack blocking feature. configurations After you disable the attack
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
-**Important**
-
-All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
+> **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
 
 **Procedure**
 
@@ -3432,17 +3494,20 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. configurations
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 3. Enter the correct username and password.
 configurations
 
-**Note**
+> **Note:** Obtain the username and password that are used to log in to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
 
-Obtain the username and password that are used to log in to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Product Operation > Security O&M > Cloud Shield**
 **Operations Center**.
@@ -3481,7 +3546,9 @@ detection rule and silence threshold for high-risk command audit and click **Sav
 
 **Important**
 
-configurations If you modify the global brute-force attack detection rule, the detection rules for bruteforce attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
+configurations
+
+> If you modify the global brute-force attack detection rule, the detection rules for brute- force attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
 
 | Parameter | Description |
 |---|---|
@@ -3537,10 +3604,8 @@ If your Apsara Stack environment is inaccessible over the Internet, you can manu
 **Generate Upgrade Identifier**. Then, use the generated upgrade identifier to obtain
 and download update packages. b. Click Import Upgrade Package. In the Manually Import offline upgrade packages dialog box, drag the downloaded update packages to the dotted box. Alternatively, click the icon to upload the update packages.
 
-**Note**
+> **Note:** Before you upload the update packages, click the link in the **Manually Import** **offline upgrade packages** dialog box and trust the certificate.
 
-Before you upload the update packages, click the link in the **Manually Import**
-**offline upgrade packages** dialog box and trust the certificate.
 After you import the update packages, you can view the update packages on the Feature Library Upgrade and Version Upgrade tabs and perform updates.
 
 **Online Automatic Import**

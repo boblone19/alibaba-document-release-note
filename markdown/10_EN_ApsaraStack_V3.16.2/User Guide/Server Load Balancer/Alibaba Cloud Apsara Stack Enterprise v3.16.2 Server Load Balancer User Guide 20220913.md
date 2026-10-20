@@ -5,7 +5,7 @@ doc_version: "20220913"
 pdf_pages: 64
 source_pdf: "3e714cba1b12ec8d_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer User Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Load%20Balancer%20User%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer User Guide
@@ -152,6 +152,7 @@ You can release SLB instances that are no longer needed to reduce costs. The bac
 1. Log on to the SLB console.
 2. On the Inst ances page, find the SLB instance that you want to release and choose
 > Release
+
 in the Actions column, or select the SLB instance and click Release at the lower part of the page.
 3. In the Release panel, select Release Now.
 The system releases the SLB instances at 30-minute and hour marks. However, the system stops billing the SLB instance at the specified release time.
@@ -211,7 +212,9 @@ This topic describes how to start or stop a Server Load Balancer (SLB) instance.
 2. In the left-side navigation pane, choose Inst ances > Inst ances.
 3. Find the SLB instance that you want to manage and choose
 > St art or
+
 > St op in the
+
 Act ions column.
 4. To start or stop multiple SLB instances at a time, select the SLB instances and click St art or St op
 at the lower part of the page.
@@ -223,6 +226,7 @@ This topic describes how to release a Server Load Balancer (SLB) instance. You c
 2. In the left-side navigation pane, choose Inst ances > Inst ances.
 3. Find the SLB instance that you want to release and choose
 > Release in the Actions column.
+
 4. In the Release panel, click Release Now.
 5. Click Next .
 6. Click OK. Enter the verification code that you obtained to release the SLB instance.
@@ -452,6 +456,7 @@ This topic describes how to enable access control for a listener. You can enable
 2. Click the ID of the SLB instance for which you want to enable access control.
 3. Click the List ener tab, find the listener that you want to manage, and then choose
 > Set
+
 Access Cont rol in the Act ions column.
 4. Set the following parameters and click OK.
 
@@ -469,6 +474,7 @@ This topic describes how to disable access control for a listener.
 3. Click the List ener tab next to the Inst ance Det ails tab.
 4. Find the listener for which you want to disable access control and choose
 > Set Access
+
 Cont rol in the Actions column.
 5. In the Access Cont rol Set t ings panel, disable access control and click OK.
 

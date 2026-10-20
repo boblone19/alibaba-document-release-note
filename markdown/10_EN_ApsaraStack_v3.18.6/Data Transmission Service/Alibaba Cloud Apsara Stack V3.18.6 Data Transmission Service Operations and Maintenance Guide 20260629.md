@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 32
 source_pdf: "45b58ca37518b1e5_Alibaba Cloud Apsara Stack V3.18.6 Data Transmission Service Operations and Maintenance Guide 202606"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Data%20Transmission%20Service%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Data Transmission Service Operations and Maintenance Guide
@@ -55,7 +55,10 @@ This topic describes how to log on to the Data Transmission Service (DTS) O&M co
 **Prerequisites**
 
 1. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 2. In the top navigation bar of the Apsara Uni-manager Operations Console, click **Products**.
 3. Choose **Databases** > **Data Transmission Service**. Then, you are navigated to the **DTS**
 **O&M console**.
@@ -68,7 +71,10 @@ This topic describes how to manage data migration, data synchronization, and cha
 1. Log in to the DTS O&M console.
 2. In the left-side navigation pane, choose **Task Management > All Tasks**.
 3. In the upper part of the page, you can enter a keyword in the search box and click **Query**
-to search for tasks. You can also click **Advanced Options** to specify more filter conditions to filter tasks.
+to search for tasks.
+
+> **Note:** You can also click **Advanced Options** to specify more filter conditions to filter tasks.
+
 4. Find the task that you want to manage and click the task name.
 5. On the **Task Details** page, perform the following operations based on your business
 requirements:
@@ -79,7 +85,9 @@ You can view the instance information, task information, source database informa
 
 **View the basic information about a module**
 
-a. Find the module that you want to view, such as the Structure Migration, Full Migration, or Sync module and click **Details**. b. On the **Basic information** tab, you can view the basic information about the module, including the task ID, the IP address of the server on which the module runs, and the running version. For example, you can view the running version in the Running version parameter that starts with `core-` .
+a. Find the module that you want to view, such as the Structure Migration, Full Migration, or Sync module and click **Details**. b. On the **Basic information** tab, you can view the basic information about the module, including the task ID, the IP address of the server on which the module runs, and the running version.
+
+> **Note:** For example, you can view the running version in the Running version parameter that starts with `core-` .
 
 **View the point in time at which the latest data record is**
 
@@ -89,7 +97,9 @@ a. Find the **Sync** or **Full Migration** module and click **Details**. b. On t
 
 **Perform full data verification**
 
-In the upper-right corner of the Task Details page, click **Full calibration**. In the dialog box that appears, configure the parameters and click **Add**. This feature is supported only by some databases, such as MySQL, PolarDB for PostgreSQL, and MongoDB. In addition, the source and destination databases must have the same database engine.
+In the upper-right corner of the Task Details page, click **Full calibration**. In the dialog box that appears, configure the parameters and click **Add**.
+
+> **Note:** This feature is supported only by some databases, such as MySQL, PolarDB for PostgreSQL, and MongoDB. In addition, the source and destination databases must have the same database engine.
 
 | Param eter | Description | Usage notes |
 |---|---|---|
@@ -109,7 +119,9 @@ In the upper-right corner of the Task Details page, click **Full calibration**. 
 
 **Perform incremental data verification**
 
-In the upper-right corner of the Task Details page, click **Incremental Check**. In the dialog box that appears, configure the parameters and click **Add**. This feature is supported only by some databases, such as MySQL, PolarDB for PostgreSQL, and MongoDB. In addition, the source and destination databases must have the same database engine.
+In the upper-right corner of the Task Details page, click **Incremental Check**. In the dialog box that appears, configure the parameters and click **Add**.
+
+> **Note:** This feature is supported only by some databases, such as MySQL, PolarDB for PostgreSQL, and MongoDB. In addition, the source and destination databases must have the same database engine.
 
 |   | Param eter | Description |   |   | Usage notes |
 |---|---|---|---|---|---|
@@ -162,9 +174,7 @@ In the **Task Information** section, click **Modify Configuration** to modify th
 
 In the **Task Information** section, click **Release Task**.
 
-**Warning**
-
-After a task is released, all data of the task is deleted and cannot be retrieved. Proceed with caution.
+> **Warning:** After a task is released, all data of the task is deleted and cannot be retrieved. Proceed with caution.
 
 **Update the change tracking information (supported only by**
 
@@ -180,37 +190,36 @@ A DTS task comprises multiple modules. This topic explains how to manage them.
 **Management > Asynchronous Tasks**.
 3. Find the target task and click the task name.
 4. The status of each module is displayed at the top of the **Task Details** page.
-The color of each module indicates its status: Red: The module has failed. Blue: The module is running. Yellow: The module is paused. Green: The module is complete or has no latency.
+
+> **Note:** The color of each module indicates its status:
+> Red: The module has failed.
+> Blue: The module is running.
+> Yellow: The module is paused.
+> Green: The module is complete or has no latency.
+
 5. Click **Details** for a module to open its management page.
 6. On the module's management page, you can perform the following operations:
-The following steps use the **schema migration** module as an example. The procedure is similar for other modules. On the **Basic Information** tab, you can restart, pause, or skip the module, replace the instance, or modify its memory, module configuration, or task configuration.
 
-**Important**
+> **Note:** The following steps use the **schema migration** module as an example. The procedure is similar for other modules.
 
-When modifying the module configuration:
+On the **Basic Information** tab, you can restart, pause, or skip the module, replace the instance, or modify its memory, module configuration, or task configuration.
 
-**Configurable parameters**
+> **Important:** When modifying the module configuration:
 
-Click **Module Configuration**. The system displays the parameters that you
+> **Configurable parameters**
+> Click **Module Configuration**. The system displays the parameters that you
 
 |   | mysql concurrent metadata |
 |---|---|
 | mysql concurrent metadata read thread count |   |
 
-items and their constraints (for example, "The thread count cannot be less than 5") are subject to what is displayed in the console.
-
-**Parameter descriptions**
-
-To view a parameter's full description, hover over it in the **Parameter**
-**Description** column. The description appears at the top of the page.
-
-**Activation and risks**
-
-You must restart the task for module configuration changes to take effect. Restarting a task can lead to data consistency issues, service interruption, or a rollback of migration progress.
-
-**We recommend performing this operation under the guidance of**
-
-**Alibaba Cloud technical support.**
+> items and their constraints (for example, "The thread count cannot be less than 5") are subject to what is displayed in the console.
+> **Parameter descriptions**
+> To view a parameter's full description, hover over it in the **Parameter** **Description** column. The description appears at the top of the page.
+> **Activation and risks**
+> You must restart the task for module configuration changes to take effect.
+> Restarting a task can lead to data consistency issues, service interruption, or a rollback of migration progress.
+> **We recommend performing this operation under the guidance of** **Alibaba Cloud technical support.**
 
 On the **Migration Objects** tab, you can view the information, status, and DDL statements for each migration object.
 
@@ -228,13 +237,18 @@ After the memory is resized, you must restart the task for the new memory to tak
 1. Log in to the DTS O&M console.
 2. In the left-side navigation pane, choose **Task Management > All Tasks**.
 3. In the upper part of the page, you can enter a keyword in the search box and click **Query**
-to search for tasks. You can also click **Advanced Options** to specify more filter conditions to filter tasks.
+to search for tasks.
+
+> **Note:** You can also click **Advanced Options** to specify more filter conditions to filter tasks.
+
 4. Click the name of the task that you want to manage. On the **Task Details** page, click
 **Details** in the **Incremental Data Service** module.
 5. On the **Incremental Data Service** page, click the **DStore** tab and click **Detailed** in the
 Operation column.
 6. In the dialog box that appears, click **Modification** to the right of **Running memory**.
-If the memory size you enter is less than 100 MB, the system automatically ignores this setting and restores to the default memory size of the current instance type.
+
+> **Note:** If the memory size you enter is less than 100 MB, the system automatically ignores this setting and restores to the default memory size of the current instance type.
+
 7. Click **Determine**.
 
 ## 4 Task engine
@@ -245,7 +259,8 @@ On the Task Query page, you can find tasks in the task engine using the task ID,
 1. Log on to the DTS console.
 2. In the navigation pane on the left, click **Task Engine > Task Query**.
 3. On the **Task Engine - Query** page, specify the filter conditions and click **Query**.
-Click the **ID** of a task to view its detailed information.
+
+> **Note:** Click the **ID** of a task to view its detailed information.
 
 ## 5 Monitoring and alerting
 
@@ -260,7 +275,9 @@ A full data migration task needs to read data from the source database and write
 2. In the navigation pane on the left, choose **Monitoring and Alerting > Full Data**
 **Monitoring**.
 3. On the **Full Data Monitoring** page, specify filter conditions, such as task ID, name, status,
-database type, and region, and then click **Query**. You can view the status of the full migration and the data transfer progress. You can also click a task name to open the task details page. You can enable the **Auto-refresh** feature. The system then automatically updates the Full Data Monitoring page, so you do not need to refresh it manually.
+database type, and region, and then click **Query**. You can view the status of the full migration and the data transfer progress. You can also click a task name to open the task details page.
+
+> **Note:** You can enable the **Auto-refresh** feature. The system then automatically updates the Full Data Monitoring page, so you do not need to refresh it manually.
 
 ### 5.2 View dashboard data
 
@@ -268,14 +285,17 @@ You can use the DTS O&M platform to view dashboards for full data migration, inc
 1. Log on to the DTS console.
 2. In the navigation pane on the left, click **Monitoring and Alerting > Full Data Migration**
 **Dashboard**.
-You can also click **Monitoring and Alerting > Incremental Data Migration**
-**Dashboard** or **Monitoring and Alerting > Data Synchronization**
-**Dashboard** to view other dashboards.
-The information displayed varies by dashboard. For example, the **Incremental**
-**Data Migration Dashboard** and **Data Synchronization Dashboard** display
-task performance information.
+
+> **Note:** You can also click **Monitoring and Alerting > Incremental Data Migration** **Dashboard** or **Monitoring and Alerting > Data Synchronization** **Dashboard** to view other dashboards.
+> The information displayed varies by dashboard. For example, the **Incremental** **Data Migration Dashboard** and **Data Synchronization Dashboard** display task performance information.
+
 3. Perform the following operations as needed.
-View information about full data migration tasks The **Full Data Migration Dashboard** page displays the basic information, status, and monitoring data for all full data migration tasks. You can also filter tasks by specifying conditions at the top of the page or enable the auto-refresh feature. On the **Full Data Migration Dashboard**, the color of the **Alarm** information indicates the task status: blue indicates Pending, yellow indicates Running, green indicates Successful, and red indicates Failed. Manage a single task In the **Operations** column, you can pause, restart, or skip a task. Manage tasks in a batch Select one or more tasks to pause, restart, or skip them in a batch. View batch operation records On the **Batch Records** tab, you can view the records of previous batch operations.
+View information about full data migration tasks The **Full Data Migration Dashboard** page displays the basic information, status, and monitoring data for all full data migration tasks.
+
+> **Note:** You can also filter tasks by specifying conditions at the top of the page or enable the auto-refresh feature.
+> On the **Full Data Migration Dashboard**, the color of the **Alarm** information indicates the task status: blue indicates Pending, yellow indicates Running, green indicates Successful, and red indicates Failed.
+
+Manage a single task In the **Operations** column, you can pause, restart, or skip a task. Manage tasks in a batch Select one or more tasks to pause, restart, or skip them in a batch. View batch operation records On the **Batch Records** tab, you can view the records of previous batch operations.
 
 ## 6 Cluster management
 
@@ -295,7 +315,11 @@ The DStore module is used to store incremental data. You can view the details of
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Cluster Management > DStore Workbench**.
 3. On the **DStore Workbench** page, perform the following operations based on your business
-requirements. In the upper-right corner of the page, you can enter a keyword to search for tasks or click Advanced Options to specify more filter conditions to filter tasks. View the details of a functional module Click a tab to view the details of specific tasks on the tab. Restart or pause multiple tasks at a time a. Click the **Batch Restart Reader/Writer** tab. b. Select one or more tasks. c. Click **Batch Restart** or **Batch Pause**. d. In the dialog box that appears, click **Batch Run**.
+requirements.
+
+> **Note:** In the upper-right corner of the page, you can enter a keyword to search for tasks or click Advanced Options to specify more filter conditions to filter tasks.
+
+View the details of a functional module Click a tab to view the details of specific tasks on the tab. Restart or pause multiple tasks at a time a. Click the **Batch Restart Reader/Writer** tab. b. Select one or more tasks. c. Click **Batch Restart** or **Batch Pause**. d. In the dialog box that appears, click **Batch Run**.
 
 ## 7 Resource management
 
@@ -352,20 +376,36 @@ as **Private cloud IP address whitelist**) in the upper-left corner and click **
 
 ### 9.1 View alerts
 
-On the **Alerts** page, you can search for alerts by product, alert ID, source, level, status, and time range. You can then perform O&M operations on a target alert. For more information about monitoring, alerts, and platform O&M operations, see the
-**Apsara Uni-manager Management Console O&M Guide** .
+On the **Alerts** page, you can search for alerts by product, alert ID, source, level, status, and time range. You can then perform O&M operations on a target alert.
+
+> **Note:** For more information about monitoring, alerts, and platform O&M operations, see the **Apsara Uni-manager Management Console O&M Guide** .
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top menu bar, choose **Monitoring and Alerts > Alert Management > Alerts**.
 The **Open** tab is displayed by default. You can also switch to the **Closed** tab to view the details of closed alerts.
 6. In the **Resource Ownership** section at the top of the page, select **dts**.
-You can also enter a keyword for a fuzzy search or use the **Advanced Search** options.
+
+> **Note:** You can also enter a keyword for a fuzzy search or use the **Advanced Search** options.
+
 7. In the **Alert Metric ID/Alert Metric Name** column, click the ID of the target alert to open
 the alert details page.
 8. **Optional:** Process the alert information.
@@ -382,7 +422,11 @@ This topic describes the types of Data Transmission Service (DTS) logs and how t
 
 1.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported. 3.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
+3.
 4. Click **Log In**.
 5. Go to the DTS **Service Management** page.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top menu bar, choose **Platform O&M > Apsara Infrastructure Management >**
@@ -407,11 +451,13 @@ i. Obtain the ID of the task that you want to query. For more information, see M
 iii. Run the cd /apsara/cloud/app/dts-dts/DtsNode#/dts_node/current/run/<Task ID>
 ```
 
-command to navigate to the log storage directory. Other components i. Access the terminal for the component. ii. Run the docker ps | grep <Component name> command to query the ID of the container that stores the component logs. iii. Run the `docker exec -it <Container ID> /bin/bash` command to access the container. iv. Run the `cd <Log path>` command to navigate to the log storage path to view the logs. Most DTS component logs are stored in /dts/<Component name>/logs/<Component name>.log. For more information, see Main log components.
+command to navigate to the log storage directory. Other components i. Access the terminal for the component. ii. Run the docker ps | grep <Component name> command to query the ID of the container that stores the component logs. iii. Run the `docker exec -it <Container ID> /bin/bash` command to access the container. iv. Run the `cd <Log path>` command to navigate to the log storage path to view the logs.
+
+> **Note:** Most DTS component logs are stored in /dts/<Component name>/logs/<Component name>.log. For more information, see Main log components.
 
 **Main log components**
 
-The logs for the DtsNode component are stored on the host. The logs for other components are stored in containers.
+> **Note:** The logs for the DtsNode component are stored on the host. The logs for other components are stored in containers.
 
 | Component | Log file location | Description |
 |---|---|---|
@@ -448,7 +494,10 @@ On the **Task Details** page, most modules of a data migration task are the same
 
 **Skip a precheck item**
 
-If a task fails the precheck, you can skip a specific precheck item in the DTS O&M console. Before you skip a precheck item, you must be aware of the issues that are detected in the precheck and the impact of the operation. For example, if you skip a precheck item for permissions on the source database, you may fail to complete a data migration or data synchronization task due to insufficient permissions.
+If a task fails the precheck, you can skip a specific precheck item in the DTS O&M console.
+
+> **Note:** Before you skip a precheck item, you must be aware of the issues that are detected in the precheck and the impact of the operation. For example, if you skip a precheck item for permissions on the source database, you may fail to complete a data migration or data synchronization task due to insufficient permissions.
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Task Management > All Tasks**.
 3. Find the target task and click the task name.
@@ -483,7 +532,10 @@ definition cannot be obtained due to insufficient permissions of the database ac
 3. Find the target task and click the task name.
 4. On the **Task Details** page, click **Details** in the **Full Data Migration** section.
 5. Click the **Basic Information** tab and check the following parameters.
-You can also click the **Migration Objects** and **Run Logs** tabs to troubleshoot issues. View the IP address of the server on which the Full Data Migration module is run. If the migration fails due to a whitelist issue, you can add the IP address to the whitelist of the source or destination database. Troubleshoot the issue based on the error message. In this example, the request data
+
+> **Note:** You can also click the **Migration Objects** and **Run Logs** tabs to troubleshoot issues.
+
+View the IP address of the server on which the Full Data Migration module is run. If the migration fails due to a whitelist issue, you can add the IP address to the whitelist of the source or destination database. Troubleshoot the issue based on the error message. In this example, the request data
 
 | e of the | max allowed packet _ _ |   |
 |---|---|---|
@@ -503,7 +555,8 @@ Then, click **Restart** to restart the full data migration task.
 Troubleshoot a data synchronization issue On the **Task Details** page, find the **Data Synchronization** module and click **Details**. Troubleshoot an incremental data migration issue On the **Task Details** page, find the **Incremental Data Migration** module and click
 **Details**.
 5. Click the **Basic Information** tab and check the following parameters.
-You can also click the **Run Logs** tab to troubleshoot issues.
+
+> **Note:** You can also click the **Run Logs** tab to troubleshoot issues.
 
 | Parameter | Description |
 |---|---|
@@ -534,4 +587,6 @@ section.
 6. In the DRC Workbench, find the topic based on the endpoint and manage the topic. For
 more information, see Manage change tracking tasks in DRC Workbench.
 7. On the **Incremental Management** tab, find the store that you want to manage and click
-the **+** icon next to it to view the start consumption checkpoint, current consumption checkpoint, and status information. In this example, the store status indicates that the task failed to read the binary logs. You need to check whether a binlogdump process exists in the source database and whether its status is normal.
+the **+** icon next to it to view the start consumption checkpoint, current consumption checkpoint, and status information.
+
+> **Note:** In this example, the store status indicates that the task failed to read the binary logs. You need to check whether a binlogdump process exists in the source database and whether its status is normal.

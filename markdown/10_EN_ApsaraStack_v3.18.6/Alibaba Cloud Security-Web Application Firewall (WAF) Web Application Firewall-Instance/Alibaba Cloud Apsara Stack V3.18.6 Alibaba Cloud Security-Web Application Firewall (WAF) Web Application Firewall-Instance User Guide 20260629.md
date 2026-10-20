@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 54
 source_pdf: "bbb612f7cc54680b_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Web Applica"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Web%20Application%20Firewall-Instance%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Firewall-Instance User Guide 20260629
@@ -81,11 +81,18 @@ The URL of the Apsara Uni-manager Management Console is obtained from a deployme
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar of your
 browser and press the Enter key.
 2. Enter your username and password.
-You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You can obtain the username and password that are used to log on to the Apsara Unimanager Management Console from the operations administrator.
+
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 8 to 20 characters in length and contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your logon scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You log on to the Apsara Uni-manager Management Console after MFA is enabled and an MFA device is bound. Enter a six-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in **Apsara Uni-manager Management Console User Guide** .
+operations based on your logon scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. Scenario 2: You log on to the Apsara Uni-manager Management Console after MFA is enabled and an MFA device is bound. Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
 ### 2.2 User roles and permissions
 
@@ -112,11 +119,23 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 
 ### 2.4 Getting started
@@ -165,11 +184,9 @@ configure the parameters that are described in the following table and click **O
 
 After you create an instance, you can perform the following operations in the instance list: View the information about the instance In the instance list on the Web Application Firewall page, you can view the information of the WAF instance that you created, including the instance name, access entry, VPC, number of detection nodes, QPS, and whether an update is available. You can view the WAF QPS quota in the upper-right corner of the page.
 
-**Important**
+> **Important:** When the **Update Available** column of a WAF instance displays **Available**, and you directly perform the update, data errors may occur. We recommend that you upgrade the instance before you perform subsequent operations.
+> To upgrade the WAF instance, log in to the Apsara Uni-manager Operations Console and choose **Cloud Services > WAF Instance Management > WAF Instance** **Management** in the **Cloud Shield Operations Center**. For more information, see **Web Application Firewall - Instance O&M Guide > Instance management**.
 
-When the **Update Available** column of a WAF instance displays **Available**, and you directly perform the update, data errors may occur. We recommend that you upgrade the instance before you perform subsequent operations. To upgrade the WAF instance, log in to the Apsara Uni-manager Operations Console and choose **Cloud Services > WAF Instance Management > WAF Instance**
-**Management** in the **Cloud Shield Operations Center**. For more information, see
-**Web Application Firewall - Instance O&M Guide > Instance management**.
 Specify the columns that you want to view in the instance list In the upper-right corner of the Web Application Firewall page, click the icon. In the dialog box that appears, select the columns that you want to display in the instance list. VPC management You can manage VPCs only when you set the **VPC Protection Mode** to **Multiple VPC**
 **Protection**. Click **VPC Management** in the **Operation** column of a WAF instance to add
 or remove VPCs. Scale out or scale in the instance On the Web Application Firewall page, find the instance that you want to manage and click
@@ -178,9 +195,15 @@ Number of Detection Engines parameter and click OK. The Number of Detection Engi
 **Release** in the **Operation** column. In the dialog box that appears, enter **Confirm Release**
 and click **OK**.
 
-**Warning**
+> **Warning:** After the instance is released, it cannot be restored.
+> Before you release the WAF instance, make sure that no services are protected by the WAF instance and that the corresponding instance data has been deleted.
 
-After the instance is released, it cannot be restored. Before you release the WAF instance, make sure that no services are protected by the WAF instance and that the corresponding instance data has been deleted. Go to the instance details page On the Web Application Firewall page, find the instance that you want to view and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column. On the page that appears, view information about the instance in the Statistics, Detection Logs, Configure Protection, System Settings, and System Info modules. In Apsara Stack versions earlier than v3.18.6 sp-2512, after you add a site, you must manually modify the Elastic Compute Service (ECS) security group of the WAF instance to allow detection node traffic. Otherwise, the back-to-origin request may fail. In Apsara Stack v3.18.6 sp-2512 and later, no manual configuration is required because the security group automatically allows detection node traffic. on
+Go to the instance details page On the Web Application Firewall page, find the instance that you want to view and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column. On the page that appears, view information about the instance in the Statistics, Detection Logs, Configure Protection, System Settings, and System Info modules.
+
+> **Note:** In Apsara Stack versions earlier than v3.18.6 sp-2512, after you add a site, you must manually modify the Elastic Compute Service (ECS) security group of the WAF instance to allow detection node traffic. Otherwise, the back-to-origin request may fail.
+> In Apsara Stack v3.18.6 sp-2512 and later, no manual configuration is required because the security group automatically allows detection node traffic.
+
+on
 
 ## 4 Statistics information
 
@@ -209,7 +232,8 @@ You can specify the following filter conditions to view specific access informat
 **IP** or **SESSION**
 **All**, **Site**, or **URL**
 **Requests Within 30 Seconds** or **Average Response Time**
-Only real-time access monitoring information of the top 100 web services that are most frequently accessed is displayed.
+
+> **Note:** Only real-time access monitoring information of the top 100 web services that are most frequently accessed is displayed.
 
 ### 4.3 Export protection reports
 
@@ -223,7 +247,10 @@ Web Application Firewall (WAF) can automatically export protection reports. You 
 a region from the **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **Statistics > Export**.
 4. On the Export page, export protection reports.
-All protection reports are displayed on the **Protection Reports** tab regardless of whether the protection reports are manually exported or automatically exported. Manually export a protection report On the **Protection Reports** tab, click **Generate Report**. Configure the parameters and click **OK**. The following table describes the parameters.
+
+> **Note:** All protection reports are displayed on the **Protection Reports** tab regardless of whether the protection reports are manually exported or automatically exported.
+
+Manually export a protection report On the **Protection Reports** tab, click **Generate Report**. Configure the parameters and click **OK**. The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -248,7 +275,11 @@ Automatically export a protection report On the **Scheduled Reports** tab, click
 
 **Manage protection reports**
 
-On the **Protection Reports** tab, you can view and manage protection reports. Filter protection reports Click **Filter**, specify filter conditions, and then click **Ok**. The logical relationship among multiple filter conditions is AND. Only protection reports that match all filter conditions are displayed. View report details on Find the protection report whose details you want to view and click the icon in the
+On the **Protection Reports** tab, you can view and manage protection reports. Filter protection reports Click **Filter**, specify filter conditions, and then click **Ok**.
+
+> **Note:** The logical relationship among multiple filter conditions is AND. Only protection reports that match all filter conditions are displayed.
+
+View report details on Find the protection report whose details you want to view and click the icon in the
 **Actions** column.
 Download protection reports Select the protection reports that you want to download and choose **More > Download**
 **Selected Reports**.
@@ -300,7 +331,11 @@ You can use attack detection logs to analyze attacks on your web services. You c
 **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you
 want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **Detection Logs > Attack Detection Logs**.
-On the Attack Detection Logs page, you can view attack detection logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**. Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met. Download logs a. Select one or more logs that you want to download, move the pointer over **More** in the upper-right corner of the page, and then select **Download Selected Logs(.json)** or
+On the Attack Detection Logs page, you can view attack detection logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**.
+
+> **Note:** Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met.
+
+Download logs a. Select one or more logs that you want to download, move the pointer over **More** in the upper-right corner of the page, and then select **Download Selected Logs(.json)** or
 **Download Selected Logs(.csv)**. In the Alert message, click **Ok**.
 b. In the left-side navigation pane, choose **Detection Logs > Log Download**
 **Management**. On the Log Download Management page, find the download task that
@@ -315,7 +350,11 @@ You can use HTTP flood protection logs to analyze the HTTP flood attacks on your
 **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you
 want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **Detection Logs > HTTP Flood Protection Logs**.
-On the HTTP Flood Protection Logs page, you can view HTTP flood protection logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**. Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met. Add an HTTP flood attack to the blacklist Find the HTTP flood attack that you want to add to the blacklist and click the icon in the **Actions** column to create a blacklist rule. In the **Add to Blacklist** panel, enter a name for the blacklist rule and click **OK**.
+On the HTTP Flood Protection Logs page, you can view HTTP flood protection logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**.
+
+> **Note:** Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met.
+
+Add an HTTP flood attack to the blacklist Find the HTTP flood attack that you want to add to the blacklist and click the icon in the **Actions** column to create a blacklist rule. In the **Add to Blacklist** panel, enter a name for the blacklist rule and click **OK**.
 
 ### 5.3 System operation logs
 
@@ -326,7 +365,11 @@ This topic describes how to view system operation logs.
 **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you
 want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **Detection Logs > System Operations Logs**.
-On the System Operations Logs page, you can view system operation logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**. Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met. Download logs a. Select one or more logs that you want to download, move the pointer over **More**, and then select **Download Selected Logs (.json)** or Download Selected Logs (.csv). In the Alert message, click **Ok**. b. In the left-side navigation pane, choose **Detection Logs > Log Download**
+On the System Operations Logs page, you can view system operation logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**.
+
+> **Note:** Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met.
+
+Download logs a. Select one or more logs that you want to download, move the pointer over **More**, and then select **Download Selected Logs (.json)** or Download Selected Logs (.csv). In the Alert message, click **Ok**. b. In the left-side navigation pane, choose **Detection Logs > Log Download**
 **Management**. On the Log Download Management page, find the download task that
 you created and click the icon in the **Actions** column.
 
@@ -339,7 +382,11 @@ This topic describes how to view access logs.
 **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you
 want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **Detection Logs > Access Logs**.
-On the Access Logs page, you can view access logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**. Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met. Download logs a. Select one or more logs that you want to download, move the pointer over **More**, and then select **Download Selected Logs(.json)** or **Download Selected Logs(.csv)**. In the Alert message, click **Ok**. b. In the left-side navigation pane, choose **Detection Logs > Log Download**
+On the Access Logs page, you can view access logs. You can also perform the following operations based on your business requirements: Filter logs Click **Filter**. In the panel that appears, specify filter conditions and click **Ok**.
+
+> **Note:** Multiple filter conditions are evaluated by using the logical AND operator. The system returns logs only if all conditions are met.
+
+Download logs a. Select one or more logs that you want to download, move the pointer over **More**, and then select **Download Selected Logs(.json)** or **Download Selected Logs(.csv)**. In the Alert message, click **Ok**. b. In the left-side navigation pane, choose **Detection Logs > Log Download**
 **Management**. On the Log Download Management page, find the download task that
 you created and click the icon in the **Actions** column.
 
@@ -433,9 +480,7 @@ parameters that are described in the following table and click **Next**.
 8. In the **Protection Policy** step of the **Add Protected Site** panel, configure the parameters
 that are described in the following table and click **Next**. Then, go to the **OK** step.
 
-**Important**
-
-You can configure a protection policy only if you set the **Configure Response Method** parameter to **Forward to Backend Servers**.
+> **Important:** You can configure a protection policy only if you set the **Configure Response Method** parameter to **Forward to Backend Servers**.
 
 | Parameter | Description |
 |---|---|
@@ -482,9 +527,9 @@ Add a VIP in a VPC to WAF. a. On the **VPC SLB Virtual IP** or **VPC ALB Virtual
 
 Add an EIP.
 
-**Important**
+> **Important:** After you enable EIPs in **System Settings > Instance System Settings**, you can manage EIPs.
 
-After you enable EIPs in **System Settings > Instance System Settings**, you can manage EIPs. a. In the left-side navigation pane, click **EIP management**. On the page that appears, click **Add EIP**. b. In the **Add EIP** panel, configure the EIP and related information and click **OK**.
+a. In the left-side navigation pane, click **EIP management**. On the page that appears, click **Add EIP**. b. In the **Add EIP** panel, configure the EIP and related information and click **OK**.
 
 | Parameter | Description |
 |---|---|
@@ -505,9 +550,7 @@ icon in the **Actions** column to view the details of the EIP. Click the icon ne
 **Enable bypass**: On the **EIP Details** page, click **Enable bypass** and enter an EIP to
 enable the bypass mode.
 
-**Important**
-
-The bypass mode takes effect on the inbound and outbound traffic of all websites that are associated with the EIP. In bypass mode, the EIP is connected to the specified tenant SLB instance and traffic is not inspected by WAF.
+> **Important:** The bypass mode takes effect on the inbound and outbound traffic of all websites that are associated with the EIP. In bypass mode, the EIP is connected to the specified tenant SLB instance and traffic is not inspected by WAF.
 
 ### 6.2 Protection policies
 
@@ -562,7 +605,8 @@ iii. Click **Ok**.
 6. **Optional.** Delete protection policies.
 Select the protection policies that you want to delete and choose **More** > **Delete Selected**
 **Protection Policies**. In the message that appears, click **Ok**.
-The default protection policy cannot be deleted.
+
+> **Note:** The default protection policy cannot be deleted.
 
 ### 6.3 Global custom rules
 
@@ -601,9 +645,7 @@ a region from the **Region** drop-down list and click **Access with Authorized R
 4. Click **Add Rule**. In the panel that appears, configure the parameters that are described in
 the following table and click **OK**.
 
-**Important**
-
-We recommend that you use the Monitor mode for a newly created custom rule and monitor the results of the rule for a period of time. If no false positives are generated, use the Block mode for the rule.
+> **Important:** We recommend that you use the Monitor mode for a newly created custom rule and monitor the results of the rule for a period of time. If no false positives are generated, use the Block mode for the rule.
 
 | Parameter | Description |
 |---|---|
@@ -650,7 +692,10 @@ You can configure tamper-proofing rules to protect web page data from being tamp
 **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you
 want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **System Settings > Instance System Settings**.
-On the Instance System Settings page, set the **Anti Tamper** parameter to **On** to enable the tamper-proofing feature. By default, the tamper-proofing feature is disabled. After you set the **Anti Tamper** parameter to **On**, the Anti Tamper Rule module is displayed in the left-side navigation pane of the console.
+On the Instance System Settings page, set the **Anti Tamper** parameter to **On** to enable the tamper-proofing feature.
+
+> **Note:** By default, the tamper-proofing feature is disabled. After you set the **Anti Tamper** parameter to **On**, the Anti Tamper Rule module is displayed in the left-side navigation pane of the console.
+
 4. In the left-side navigation pane, choose **Configure Protection > Anti Tamper Rule**.
 5. On the Anti Tamper Rule page, click **Add Rule**. In the **Add Anti Tamper Rule** panel,
 configure the parameters that are described in the following table and click **OK**.
@@ -750,7 +795,9 @@ a region from the **Region** drop-down list and click **Access with Authorized R
 
 ### 6.8 Certificate management
 
-After you upload a certificate on the Certificates page, you can select the certificate when you add a website to Web Application Firewall (WAF) on the Protection Site Management page. This topic describes how to upload a certificate. When you add an HTTPS website for protection on the **Protection Site Management** page, you must select the certificate to which the domain name of the HTTPS website is bound.
+After you upload a certificate on the Certificates page, you can select the certificate when you add a website to Web Application Firewall (WAF) on the Protection Site Management page. This topic describes how to upload a certificate.
+
+> **Note:** When you add an HTTPS website for protection on the **Protection Site Management** page, you must select the certificate to which the domain name of the HTTPS website is bound.
 
 **Upload a certificate**
 
@@ -797,7 +844,9 @@ This topic describes how to create an online backup.
 a region from the **Region** drop-down list and click **Access with Authorized Role**. Find the instance that you want to manage and click its name in the **WAF Instance Name** column or **Console Entry** in the Access Entry column.
 3. In the left-side navigation pane, choose **System Settings > Online Backup**.
 4. On the Online Backup page, click **Create Backup**. In the **Add Backups** panel, configure
-the Description parameter and click OK. You can back up information such as protected websites and related protection policies, online backup rules, and certificates.
+the Description parameter and click OK.
+
+> **Note:** You can back up information such as protected websites and related protection policies, online backup rules, and certificates.
 
 **Manage online backups**
 

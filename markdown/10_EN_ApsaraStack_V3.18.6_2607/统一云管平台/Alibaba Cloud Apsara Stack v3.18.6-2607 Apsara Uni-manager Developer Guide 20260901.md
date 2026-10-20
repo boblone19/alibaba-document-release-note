@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 1134
 source_pdf: "b740cb8c2abcce1e_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Guide 20260901
@@ -328,9 +328,7 @@ An AccessKey pair is used to verify the identity of a request sender based on sy
 
 The Apsara Uni-manager Management Console provides two types of AccessKey pairs: those for personal accounts and those for organization accounts. We recommend that you use AccessKey pairs for personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 
-**Note**
-
-Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
+> **Note:** Only operations administrators and level-1 organization administrators can obtain AccessKey pairs for organization accounts.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -348,15 +346,12 @@ To use AccessKey pairs for personal accounts, you must configure the header para
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-The AccessKey pair provides full access to cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair provides full access to cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
-**Warning**
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -379,9 +374,8 @@ i. Log on to the Apsara Infrastructure Management console. ii. In the left-side 
 
 with the `internet-domain` value.
 
-**Note**
+> **Note:** Delete ${global:} in the final endpoint.
 
-Delete ${global:} in the final endpoint.
 3. Call the AssumeRole operation of STS to obtain the AccessKey 3-tuple. The following
 example shows how to call the operation by using STS SDK for Java.
 
@@ -399,7 +393,7 @@ example shows how to call the operation by using STS SDK for Java.
 |---|---|
 | <sts.aliyuns.com> |   |
 
-values. Delete angle brackets (<>) in your code.
+> values. Delete angle brackets (<>) in your code.
 
 ```xml
 public static void main(String[] args) {
@@ -462,8 +456,6 @@ CM user. Replace "<yourRoleArn>" with the actual RAM role obtained in the first 
 4. Use the obtained AccessKey 3-tuple to call API operations of cloud services. The following
 example shows how to use STS SDK for Java to call the DescribeZones operation of ECS.
 
-**Note**
-
 |   | <yourRegionID> |   |
 |---|---|---|
 | <yourStsToken> |   |   |
@@ -471,7 +463,7 @@ example shows how to use STS SDK for Java to call the DescribeZones operation of
 | <yourStsAccesskeyID> |   |
 |---|---|
 
-`<yourStsToken>` , `<yourResourceGroupID>` , and `<yourOrganizationID>` with the actual values. Delete angle brackets (<>) in your code.
+> **Note:** `<yourStsToken>` , `<yourResourceGroupID>` , and `<yourOrganizationID>` with the actual values. Delete angle brackets (<>) in your code.
 
 ```java
 public static void main(String[] args) {
@@ -675,15 +667,14 @@ Configuration format of the endpoint in a unit region:
  ascm.${global:region}.${global:internet-domain}
 ```
 
-**Note**
-
-${global:internet-domain} and ${global:region} are variables. Replace them with the actual values that you retrieve. The final endpoint does not include ${global:} .
+> **Note:** ${global:internet-domain} and ${global:region} are variables. Replace them with the actual values that you retrieve. The final endpoint does not include ${global:} .
 
 **Obtain actual values of variables**
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **Apsara Infrastructure Management**
 > **Resources**. The **Product & Cluster O&M** page appears.
+
 3. On the **Product & Cluster O&M** page, enter `ascm-A` in the **Product | Cluster** text box,
 locate the ascm-A-xxx cluster, and then click **Cluster Details** in the Actions column.
 4. On the **cluster details** page, click the **Desired State Configuration** tab.
@@ -745,12 +736,10 @@ and select **Apsara Uni-manager**.
 7. On the **SDK Sample** tab, view the SDK information. Switch between Java, Python, and Go
 to view the SDK information for the corresponding language. e API calls
 
-**Note**
-
-The Common edition supports generalized calls and debugging. Click **View**
-**Dependency File** to view its dependencies. These dependencies are available
-for download from the public central repository. The Premium Edition includes a release report with details such as the SDK version, a list of SDK APIs, and availability notes. The Premium Edition does not support debugging and is not available in the public repository. You must download the complete project. If the SDK type is grayed out and cannot be selected, it indicates that the product does not support the Premium Edition or that no data is available. For each language, you can also click **Download Complete Project**, **View**
-**Dependency File**, and **Copy**.
+> **Note:** The Common edition supports generalized calls and debugging. Click **View** **Dependency File** to view its dependencies. These dependencies are available for download from the public central repository.
+> The Premium Edition includes a release report with details such as the SDK version, a list of SDK APIs, and availability notes. The Premium Edition does not support debugging and is not available in the public repository. You must download the complete project.
+> If the SDK type is grayed out and cannot be selected, it indicates that the product does not support the Premium Edition or that no data is available.
+> For each language, you can also click **Download Complete Project**, **View** **Dependency File**, and **Copy**.
 
 ### 2.3 SDK for Java
 
@@ -780,9 +769,7 @@ Go to the **Developer Portal** > **API Integration** > **API Debugging** page to
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for identity verification. The SDK for Java supports identity verification based on an AccessKey pair or an STS AccessKey pair. e API calls
 
-**Important**
-
-Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```xml
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -798,9 +785,8 @@ ll.
 
 );
 
-**Note**
-
-In the preceding code sample, `<yourRegionID>` , `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and `<yourSecurityToken>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
+> **Note:** In the preceding code sample, `<yourRegionID>` , `<yourAccessKeyID>` ,
+> `<yourAccessKeySecret>` , and `<yourSecurityToken>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
 
 **Create and configure a request connection**
 
@@ -822,7 +808,9 @@ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsCli
 |---|---|
 | <http://192.168.XX.XX:33XX> |   |
 
-based on your service. Do not include the angle brackets (<>) in your code. e API calls
+> based on your service. Do not include the angle brackets (<>) in your code.
+
+e API calls
 
 **Create a request named CommonRequest**
 
@@ -832,9 +820,8 @@ CommonRequest supports all API operations.
 // Create an API request and set the parameters. CommonRequest request = new CommonRequest(); // Parameters for API operations of the Unified Cloud Management Platform. request.setSysProduct("ascm"); request.setSysVersion("2019-05-10"); request.setSysUriPattern("<yourCallUriPattern>"); // The endpoint of the Unified Cloud Management Platform. request.setSysDomain("<ascmEndpoint>"); // Set the request method. request.setSysMethod(MethodType.POST); // Set the headers. // Set the identity, which identifies the call source. This parameter is required but h as no practical effect and can be set to any value. request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>"); // Set the business parameters for the operation. ... // Set the Content-Type. request.setHttpContentType(FormatType.JSON);
 ```
 
-**Note**
-
-In the preceding code sample, `<yourCallUriPattern>` , `<ascmEndpoint>` , and `<yourCallerSdkSource>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
+> **Note:** In the preceding code sample, `<yourCallUriPattern>` , `<ascmEndpoint>` , and
+> `<yourCallerSdkSource>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
 
 **Configure the parameters related to the core library of Alibaba**
 
@@ -997,7 +984,7 @@ ultiple common Header parameters, including x-acs-regionid, x-acs-organizationid
 |---|---|---|
 | <http://192.168.XX.XX:33XX> |   |   |
 
-`<yourCallerSdkSource>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
+> `<yourCallerSdkSource>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
 
 ### 2.4 SDK for Python
 
@@ -1013,9 +1000,9 @@ An AccessKey pair or a Security Token Service (STS) AccessKey pair is obtained. 
 
 Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Alibaba Cloud SDK for Python by using pip. e API calls
 
-**Note**
+> **Note:** We recommend that you use Python 3.x.
 
-We recommend that you use Python 3.x. Install the SDK for Python 3.x:
+Install the SDK for Python 3.x:
 
 ```bash
 # Install the core library of Alibaba Cloud SDK.
@@ -1041,9 +1028,7 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 
 The SDK for Python supports identity verification based on an AccessKey pair or an STS AccessKey pair.
 
-**Important**
-
-Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```xml
 credentials = StsTokenCredential(
@@ -1058,9 +1043,8 @@ o None.
 
 `)`
 
-**Note**
-
-In the preceding sample code, the `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and `<yourSecurityToken>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and
+> `<yourSecurityToken>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Create and configure a request connection**
 
@@ -1088,9 +1072,8 @@ iness requirements. You can configure a proxy in the following code:
 
 `)`
 
-**Note**
-
-In the preceding sample code, the `<connectionTimeout>` , `<readTimeout>` , and `<http://192.168.XX.XX:33XX>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<connectionTimeout>` , `<readTimeout>` , and
+> `<http://192.168.XX.XX:33XX>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Create a request named CommonRequest**
 
@@ -1118,9 +1101,8 @@ request.set_content_type('application/json')
 
 e API calls
 
-**Note**
-
-In the preceding sample code, the `<yourCallUriPattern>` , `<ascmEndpoint>` , and `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<yourCallUriPattern>` , `<ascmEndpoint>` , and
+> `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Configure the parameters related to the core library of Alibaba**
 
@@ -1215,7 +1197,7 @@ print(str(response, encoding='utf-8'))
 |---|---|---|
 | <ascmEndpoint> |   |   |
 
-are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 ### 2.5 SDK for Go
 
@@ -1249,9 +1231,7 @@ go env -W GOPROXY='https://goproxy.cn,direct'
 
 The SDK for Go supports identity verification based on an AccessKey pair or an STS AccessKey pair.
 
-**Important**
-
-Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+> **Important:** Keep code that contains your AccessKey pair or STS AccessKey pair confidential. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```xml
 credential := credentials.NewStsTokenCredential(
@@ -1265,9 +1245,8 @@ credential := credentials.NewStsTokenCredential(
 
 `)` e API calls
 
-**Note**
-
-In the preceding sample code, the `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and `<yourSecurityToken>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<yourAccessKeyID>` , `<yourAccessKeySecret>` , and
+> `<yourSecurityToken>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Create and configure a request connection**
 
@@ -1292,9 +1271,8 @@ if err != nil {
 
 `*/`
 
-**Note**
-
-In the preceding sample code, the `<connectionTimeout>` , `<readTimeout>` , and `<http://192.168.XX.XX:33XX>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<connectionTimeout>` , `<readTimeout>` , and
+> `<http://192.168.XX.XX:33XX>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Create a request named CommonRequest**
 
@@ -1310,9 +1288,8 @@ CommonRequest supports all API operations. e API calls
 request.Product ="ascm" request.Version = "2019-05-10" // The RESTful path of the API operation that you called. For example, the RESTful path of the GetOrganizationList operation is /ascm/auth/organization/queryList. For the REST ful paths of other API operations, see the related API references. request.PathPattern = "<yourCallUriPattern>" // The endpoint of the Apsara Uni-manager Management Console. request.Domain = "<ascmEndpoint>" // Specify the request method. request.Method = "POST" // Specify the request protocol. Valid values: http and https. request.Scheme = "https" // Configure Header parameters. // Configure the identifier of the requester to identify the source of the call. This p arameter is required and used only for identification. You can set this parameter to a random value. request.Headers["x-acs-caller-sdk-source"] = "<yourCallerSdkSource>" // Configure business parameters for the API operation. ... // Configure the Content-Type parameter. request.SetContentType("application/json")
 ```
 
-**Note**
-
-In the preceding sample code, the `<yourCallUriPattern>` , `<ascmEndpoint>` , and `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> **Note:** In the preceding sample code, the `<yourCallUriPattern>` , `<ascmEndpoint>` , and
+> `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 **Configure the parameters related to the core library of Alibaba**
 
@@ -1373,9 +1350,8 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 When you send a request, if an error occurs on the SDK and cannot be automatically handled, the SDK returns a **ClientError**. The following code shows how to identify and obtain the error message in the ClientError:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1385,7 +1361,9 @@ package main import (
     "fmt"
 ```
 
-`)` e API calls
+> `)`
+
+e API calls
 
 ```
 response, err := client.ProcessCommonRequest(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1403,9 +1381,8 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
 
 When the server returns an error message, the SDK wraps the message into a ServerError and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to identify and obtain the error message in the ServerError and response:
 
-**Important**
-
-When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+> **Important:** When you use a specific error struct, you must add the error package
+> `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1415,7 +1392,7 @@ package main import (
     "fmt"
 ```
 
-`)`
+> `)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1543,7 +1520,7 @@ e API calls
 |---|---|---|
 | <http://192.168.XX.XX:33XX> |   |   |
 
-`<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
+> `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
 ## 3 API reference
 
@@ -7529,9 +7506,7 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | ascmUserI d | Integ er | Body | No | 123 | The ID of the user. |
 
-**Note**
-
-The required parameters support loginName, userAccessKeyId, pk, and ascmUserId. If no parameters are specified, the information of the caller is queried. If multiple parameters are specified, one parameter is selected as the actual query parameter in the following order: loginName, userAccessKeyId, pk, and ascmUserId.
+> **Note:** The required parameters support loginName, userAccessKeyId, pk, and ascmUserId. If no parameters are specified, the information of the caller is queried. If multiple parameters are specified, one parameter is selected as the actual query parameter in the following order: loginName, userAccessKeyId, pk, and ascmUserId.
 
 **Response parameters**
 
@@ -14866,9 +14841,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request parameters
 
 Deletes a user group.
 
-**Note**
-
-When you delete a user group, the system automatically unbinds resources such as roles, users, and resource sets from the user group.
+> **Note:** When you delete a user group, the system automatically unbinds resources such as roles, users, and resource sets from the user group.
 
 **Request headers**
 
@@ -23597,9 +23570,7 @@ POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1
 | status | String | Body | No | Available | The status of the instance specifications. Valid values: Available Unavailable If the status of a specification is Unavailable, you cannot create PolarDB-X instances of the specification. |
 | label | String | Body | No | true | Specifies whether to return the name of the instance families. Default value: false. Valid values: true false |
 
-**Note**
-
-If none of these parameters are specified, all PolarDB-X 1.0 instance families are returned.
+> **Note:** If none of these parameters are specified, all PolarDB-X 1.0 instance families are returned.
 
 **Response parameters**
 
@@ -30765,9 +30736,9 @@ To enable page integration for the Unified Cloud Management Platform, go to **Pr
 **Developer Tools** > **Developer Portal** > **Page Integration** and select **Page Exposure**
 **Configuration**.
 
-**Important**
+> **Important:** Only operations administrators and platform administrators have this permission.
 
-Only operations administrators and platform administrators have this permission. Developer Portal anagement Platform Integration Page Integration Page Exposure Settings
+Developer Portal anagement Platform Integration Page Integration Page Exposure Settings
 
 **Global Page Integration Toggle**
 

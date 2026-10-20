@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 35
 source_pdf: "76ed93e132a54a57_Alibaba Cloud Apsara Stack V3.18.6 Elastic File System NAS Operations and Maintenance Guide 20260701"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%98%BF%E9%87%8C%E4%BA%91%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20EFS-NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20File%20System%20NAS%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Elastic File System NAS Operations and Maintenance Guide
@@ -106,7 +106,8 @@ A role is a collection of access permissions. You can assign different roles to 
 
 **Add a user and grant permissions to the user**
 
-1. Log in to the Apsara Uni-manager Operations Console.
+## 1 Log in to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, click **User Authorities**.
 3. In the left-side navigation pane, click **User Management**.
 4. On the **Users** tab of the **Users** page, click **Add**.
@@ -369,33 +370,27 @@ The shutdown and repair feature allows you to shut down a running node and perfo
 
 This feature is applicable to scenarios in which you need to shut down and repair a running and accessible node but do not require hard disk repair.
 
-**Important**
-
-If a node is inaccessible or requires hard disk repair, contact Apsara Stack technical support.
+> **Important:** If a node is inaccessible or requires hard disk repair, contact Apsara Stack technical support.
 
 **Usage notes**
 
-**Warning**
+> **Warning:** When you repair a machine, strictly follow the hardware maintenance specifications and procedures. Do not disassemble the machine or perform operations on the machine while it is energized, which may cause more faults or personal injury.
 
-When you repair a machine, strictly follow the hardware maintenance specifications and procedures. Do not disassemble the machine or perform operations on the machine while it is energized, which may cause more faults or personal injury. In each cluster, only one machine can be repaired at a time. Do not shut down the machine for repair until the **IDC Operation** step. After you shut down a machine for repair, if the machine is disconnected for more than 180 minutes, the Elastic File Storage-File Storage NAS (EFS-NAS) cluster restores the data of the node to another node. We recommend that you minimize the shutdown time of your machine. O&M
+In each cluster, only one machine can be repaired at a time. Do not shut down the machine for repair until the **IDC Operation** step. After you shut down a machine for repair, if the machine is disconnected for more than 180 minutes, the Elastic File Storage-File Storage NAS (EFS-NAS) cluster restores the data of the node to another node. We recommend that you minimize the shutdown time of your machine. O&M
 
 **Prerequisites**
 
 The node name and IP address of the machine to be repaired are obtained on the Node Operations page of the EFS-NAS console. Other nodes are healthy.
 
-**Important**
+> **Important:** If another node has exceptions or alerts, fix them before you perform the repair.
 
-If another node has exceptions or alerts, fix them before you perform the repair. The preparations for machine repair are completed to minimize the machine shutdown time.
-1. Log in to the Apsara Uni-manager Operations Console.
-ii. In the top navigation bar, choose **Platform Operation > Resource Management**.
+The preparations for machine repair are completed to minimize the machine shutdown time. ii. In the top navigation bar, choose **Platform Operation > Resource Management**.
 2. Start a shutdown and repair task.
 i. In the left-side navigation pane, choose **Resource Management > Machines**. ii. On the Machines page, find the machine that you want to manage and click **Details** in the **Actions** column. iii. In the upper-right corner of the machine details page, click **Machine Management** and select **Power Off and Repair** from the drop-down list. iv. In the **Confirmation** dialog box, confirm that the machine information is correct, enter the reason for this operation, and then click **OK**.
 3. On the Machine maintenance page, perform repair operations.
 After you start a repair task, the system follows the workflow and runs the task. The following table describes the repair steps. Step 4 requires manual operations. Other steps are automatically completed by the system.
 
-**Important**
-
-If a step fails, handle the exception and retry the step.
+> **Important:** If a step fails, handle the exception and retry the step.
 
 | No. | Step | Execution method | Description |
 |---|---|---|---|
@@ -461,9 +456,8 @@ click **Modify QoS** in the **Operation** column.
 
 **Delete QoS configuration**
 
-**Important**
+> **Important:** Deleted QoS configuration cannot be recovered. Proceed with caution. If you delete a QoS configuration, only the association between the QoS policy and the file system is removed, and the QoS policy itself is not deleted.
 
-Deleted QoS configuration cannot be recovered. Proceed with caution. If you delete a QoS configuration, only the association between the QoS policy and the file system is removed, and the QoS policy itself is not deleted.
 1. On the **File System Management** page, find the file system that you want to manage and
 click **Delete QoS configuration** in the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -510,16 +504,14 @@ ge file systems
 2. In the **Configure QoS** panel, modify the Name, Maximum Bandwidth, and Maximum OPS
 parameters based on your business requirements.
 
-**Note**
+> **Note:** After the name of a QoS policy is modified, the system automatically updates references to this name in all associated file system configurations to ensure name consistency.
 
-After the name of a QoS policy is modified, the system automatically updates references to this name in all associated file system configurations to ensure name consistency.
 3. Click **OK**.
 
 **Delete a QoS policy**
 
-**Important**
+> **Important:** If you delete a QoS policy, the QoS configurations of all associated file systems become invalid. Evaluate the potential impact on your business before you delete the QoS policy. A deleted QoS policy cannot be recovered. Proceed with caution.
 
-If you delete a QoS policy, the QoS configurations of all associated file systems become invalid. Evaluate the potential impact on your business before you delete the QoS policy. A deleted QoS policy cannot be recovered. Proceed with caution.
 1. On the **Strategy Management** page, find the QoS policy that you want to delete and click
 **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -533,31 +525,20 @@ Configure QoS policies for file systems. For more information, see Configure QoS
 ### 7.1 Manage system alerts
 
 Alerts related to Elastic File Storage-File Storage NAS (EFS-NAS) are reported to the monitoring and alerting center of the Apsara Uni-manager Operations Console. After alerts are triggered in the system, you can view the alerts and the details of each alert. We recommend that you handle alerts at the earliest opportunity. You can close alerts based on your business requirements.
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alert** > **Alert Management** > **Alert List**.
 
-**Note**
+> **Note:** On the Alert List page, you can click **Handle Now** above the alert list to go to the **Events** page. The Event Center aggregates and displays all alert data and provides response levels for organizations to deliver emergency response and improve O&M efficiency.
 
-On the Alert List page, you can click **Handle Now** above the alert list to go to the
-**Events** page. The Event Center aggregates and displays all alert data and provides
-response levels for organizations to deliver emergency response and improve O&M efficiency.
 3. On the **Alert List** page, select efs-nas from the **Resource Owner** drop-down list.
 The system automatically displays the alerts related to EFS-NAS. You can view the information about alerts in the columns, including **Alert Level**, **Alert Item ID**, **Resource**
 **Owner**, **Alert Information**, **Alert Status**, **Alert Start Time**, **Last Alert Time/Duration**,
 and **Alerts**.
 
-**Note**
+> **Note:** By default, the list of alerts that are not closed is displayed. You can click the **Disabled** tab to view the list of alerts that are closed.
+> On the **Not Disabled** tab, the system does not display closed alerts by default. However, you can click **Advanced Filter** and configure the Alert Status parameter to filter and view the closed alerts. Similarly, on the **Disabled** tab, the system does not display the alerts that are not closed by default. You can click **Advanced Filter** and configure the Alert Status parameter to filter and view the alerts that are not closed.
+> You can click the up or down arrow next to **Alert Level** or **Last Alert** **Time/Duration** to sort alerts.
+> You can select a value from the **Resource Owner** drop-down list or enter a keyword in the search box on the Alert List page to search for alerts. You can also click **Advanced Filter** and configure the **Alert Item ID**, , **Alert Start** **Time**, **Alert Level**, **Alert Status**, **Alert Source**, **Object Type**, **Alert Object** **Name**, and **Alert Attributes** parameters to search for alerts. You can set the **Alert Level**, **Alert Status**, and **Alert Source** parameters to multiple values.
 
-By default, the list of alerts that are not closed is displayed. You can click the
-**Disabled** tab to view the list of alerts that are closed.
-On the **Not Disabled** tab, the system does not display closed alerts by default. However, you can click **Advanced Filter** and configure the Alert Status parameter to filter and view the closed alerts. Similarly, on the **Disabled** tab, the system does not display the alerts that are not closed by default. You can click
-**Advanced Filter** and configure the Alert Status parameter to filter and view the
-alerts that are not closed. You can click the up or down arrow next to **Alert Level** or **Last Alert**
-**Time/Duration** to sort alerts.
-You can select a value from the **Resource Owner** drop-down list or enter a keyword in the search box on the Alert List page to search for alerts. You can also click **Advanced Filter** and configure the **Alert Item ID**, , **Alert Start**
-**Time**, **Alert Level**, **Alert Status**, **Alert Source**, **Object Type**, **Alert Object**
-**Name**, and **Alert Attributes** parameters to search for alerts. You can set the
-**Alert Level**, **Alert Status**, and **Alert Source** parameters to multiple values.
 Find the alert that you want to manage and click the value in the **Alert Item ID** column to view the details of the alert.
 4. **Close an alert based on your business requirements** : After an alert is handled and no
 issue is identified or the alert does not need to be handled, you can click **Close** in the
@@ -574,7 +555,6 @@ To enhance risk monitoring and accelerate emergency response, Elastic File Stora
 **Event levels**
 
 L1: major events. When a major event occurs, the overall features of a cloud service are unavailable, and a wide range of related hardware and software resources, cloud service instances that are provided, and dependent service instances are abnormal. L2: significant events. When a significant event occurs, the overall features of a cloud service are abnormal, and the overall features of a worker server role cluster are abnormal, or some dependent service instances are abnormal. L3: routine events. When a routine event occurs, exceptions occur in a single cloud service instance, work software instance, work resource node, or management software instance. Handle the routine event at the earliest opportunity. L4: exceptions. When an exception occurs, no fault is caused but the exception needs to be handled. L5: information, which indicates other events that require attention.
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alert** > **Event Center** > **Events**.
 On the Events page, events at the L1, L2, L3, L4, or L5 level and in the **Pending Response** or **Processing** state are displayed by default.
 3. Click **Advanced Filter**, select efs-nas from the **Project** drop-down list, and then click
@@ -595,18 +575,16 @@ After you respond to an event, you can click **Transfer** or **Close** on the ev
 ## 8 Cloud platform monitoring
 
 The cloud platform monitoring feature enables you to understand the running status of Elastic File Storage-File Storage NAS (EFS-NAS) clusters, services, and components. This way, you can identify and troubleshoot issues at the earliest opportunity.
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alert > Monitor Management > Tianjimon**.
 3. In the left-side navigation pane, choose Cloud Product Business Monitoring > Cloud Product
 Monitoring. On the **Product Monitoring** page, find the **efs-nas** product and click the product name.
 4. On the **Cloud Product: efs-nas** page, click the cluster that you want to view, and view its
 monitoring data on the right side.
 
-**Note**
+> **Note:** To view the monitoring data of abnormal clusters, select the **Show Abnormal** **Only** check box.
+> Move the pointer over a trend chart to display and view the value at a specific point in time.
+> You can turn on **Auto Refresh** in the upper-right corner to automatically update the monitoring data.
 
-To view the monitoring data of abnormal clusters, select the **Show Abnormal**
-**Only** check box.
-Move the pointer over a trend chart to display and view the value at a specific point in time. You can turn on **Auto Refresh** in the upper-right corner to automatically update the monitoring data.
 **View the monitoring data of a cluster**: Find the cluster whose monitoring data you
 want to view, click the cluster name, and view the status, basic monitoring data, and machines of the cluster on the right side. The following table describes the related operations that you can perform.
 
@@ -650,7 +628,6 @@ The operational logs of Elastic File Storage-File Storage NAS (EFS-NAS) are repo
 
 **View log maps**
 
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Query**.
 3. In the **Advanced Filter** section of the **Log Map** page, select **efs-nas** from the **Products**
 drop-down list, specify conditions such as **Service**, **Log Type**, **Log Name**, and **Status** based on your business requirements, and then click **Search**. The system displays the log configurations of EFS-NAS.
@@ -670,7 +647,6 @@ enter
 
 **Query run logs**
 
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Query**.
 3. In the left-side navigation pane, click Log Query. On the **Log Query** page, click the
 **Platform Logs** tab. On this tab, configure the query conditions. The following table
@@ -704,7 +680,6 @@ ge storage capacity
 ## 10 Manage storage capacity
 
 The storage capacity information of all EFS-NAS clusters is integrated into the Storage Capacity module of the Apsara Uni-manager Operations Console. You can view the capacity usage of all EFS-NAS clusters in a unified data view. This way, you can identify resource bottlenecks in a timely manner and make proper scaling plans to improve resource utilization and O&M efficiency. In addition, you can configure alert rules for EFS-NAS clusters based on their capacity usage. When the capacity usage of a cluster exceeds the specified threshold, the system automatically triggers an alert to help you quickly locate the cluster with abnormal capacity usage.
-1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Capacity > Storage Capacity**.
 3. In the left-side navigation pane, choose Storage Capacity > EFS-NAS. On the **EFS-NAS**
 page, you can view the cluster overview, capacity allocation rate trend, and capacity details, and configure alert rules based on your business requirements. The following table describes these operations.

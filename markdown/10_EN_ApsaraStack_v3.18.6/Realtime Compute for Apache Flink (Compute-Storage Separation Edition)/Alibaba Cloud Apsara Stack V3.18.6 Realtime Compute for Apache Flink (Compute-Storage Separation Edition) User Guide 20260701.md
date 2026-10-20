@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 524
 source_pdf: "7b13c149aeee2b2f_Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edi"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97FLink/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide 20260701
@@ -115,18 +115,17 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
-**Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
-the Apsara Uni-manager Management Console User Guide.
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see the **Security Center** > **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in the Apsara Uni-manager Management Console User Guide.
+
 5. In the top navigation bar, move the pointer over **Products** and choose **Big Data**
 **Computing > Realtime Compute for Apache Flink**.
 6. In the left-side navigation pane, choose **Flink (Compute-storage Decoupled Edition) >**
@@ -148,7 +147,7 @@ As the product evolves and on-site metering requirements grow, management of Fli
 | Resource management | Permissions for managing project resources, including creating, modifying, deleting, and querying workspaces. Users with these permissions can manage project resources in the Realtime Compute for Apache Flink management console. |
 | Business role | Permissions for deplolyments within a specific project, including owner, editor, and view (read-only). These permissions primarily affect actual business operations. Users authorized with business roles can log in to the Realtime Compute for Apache Flink development console via Realtime Compute for Apache Flink management console to perform draft development and O&M management. |
 
-This topic describes resource management role authorization. To configure business role permissions and grant access to the Realtime Compute for Apache Flink development console, see Security management.
+> **Note:** This topic describes resource management role authorization. To configure business role permissions and grant access to the Realtime Compute for Apache Flink development console, see Security management.
 
 **Procedure**
 
@@ -167,11 +166,12 @@ creates a default resource set for that organization. You can create additional 
 3. Create the target user.
 For detailed steps, see **Apsara Uni-Manager Management Console User Guide >**
 **Enterprise center > User management > Users > Create a user**, and assign
-corresponding roles based on role permission scope. We recommend selecting the preset Resource Set Administrator or Organization Administrator role. These preset roles grant permissions to create, modify, delete, and view workspaces and projects. If you select the preset Resource User role, the user can view and modify workspaces and projects. To view role permissions or create custom roles, see **Apsara Uni-manager**
+corresponding roles based on role permission scope.
 
-**Management Console User Guide > Enterprise > Access control > Role**
+> **Note:** We recommend selecting the preset Resource Set Administrator or Organization Administrator role. These preset roles grant permissions to create, modify, delete, and view workspaces and projects.
+> If you select the preset Resource User role, the user can view and modify workspaces and projects.
+> To view role permissions or create custom roles, see **Apsara Uni-manager** **Management Console User Guide > Enterprise > Access control > Role** **authorization**.
 
-**authorization**.
 4. Add the target user to the target resource set.
 For detailed steps, see **Apsara Uni-manager Management Console User Guide >**
 
@@ -260,9 +260,7 @@ for the organization by default. You can also create a resource set based on you
 For more information, see **Apsara Uni-manager Management Console User Guide >**
 **Enterprise Center > Member management > User management > Create a user**.
 
-**Important**
-
-Make sure that the user has permissions to create and view namespaces in Realtime Compute for Apache Flink.
+> **Important:** Make sure that the user has permissions to create and view namespaces in Realtime Compute for Apache Flink.
 
 **Procedure**
 
@@ -469,11 +467,8 @@ ii. Configure basic settings. Specify **Starting Strategy**. Click **More** and 
 3. After you click Start, you can view the transition process from the current state to a desired
 state and the final result. When the state changes to RUNNING, the deployment is running properly.
 
-**Important**
+> **Important:** If you want to start a batch deployment, you must change the deployment type from STREAM to **BATCH** on the **Deployments** page. By default, the system displays **streaming deployments**. To start a batch deployment, follow the instructions in the console.
 
-If you want to start a batch deployment, you must change the deployment type from STREAM to **BATCH** on the **Deployments** page. By default, the system displays
-**streaming deployments**. To start a batch deployment, follow the instructions in the
-console.
 4. View the computing result
 ed View the computing result of a streaming deployment: a. On the **Deployments** page, click the name of the deployment that you want to manage. The **Overview** tab appears by default. b. In the **Current Job** section, click **Flink UI**. The **Overview** page of **Apache Flink**
 **Dashboard** appears by default.
@@ -578,11 +573,8 @@ start, and then click **Start** in the **Actions** column. i. Configure resource
 3. After you click Start, you can view the transition process from the current state to a desired
 state and the final result. When the state changes to RUNNING, the deployment is running properly.
 
-**Important**
+> **Important:** If you want to start a batch deployment, you must change the deployment type from STREAM to **BATCH** on the **Deployments** page. By default, the system displays **streaming deployments**. To start a batch deployment, follow the instructions in the console.
 
-If you want to start a batch deployment, you must change the deployment type from STREAM to **BATCH** on the **Deployments** page. By default, the system displays
-**streaming deployments**. To start a batch deployment, follow the instructions in the
-console.
 4. View the computing result.
 In the left-side navigation pane, click **Artifacts**. Download the result file. In this example, the result file is 2025-05-30--15/prefix-db40307b-47ff-4cba-acbc-18febf890137-0.ext. pment
 
@@ -666,7 +658,11 @@ i. Configure the source, sink, and the parameters in the **MySQL(source) Configu
 |   | MySQL server-id | Enter a unique ID for each MySQL database client. Valid values: 5400 to 6400. This parameter can also be set to an ID range, such as 5400-5408. If you enable parallel reading in incremental reading mode, we recommend that you set this parameter to a value range to ensure that the server ID for each parallel thread is unique. Important We recommend that you do not use the same server ID for different deployments or services that access the database. |
 | Sink | Hologres Catalog | You can select the Hologres catalog that you created. If no Hologres catalog exists, click Create Catalog. |
 
-ii. Create a plan. pment Multi-database and multi-table synchronization a. On the **To Single Database** tab, select the source database and table name. b. Click **Save Plan** and then click **Next**. c. View the SQL code that is generated based on the destination database and table that you selected. Then, click **OK**. You can modify the **Name**, **Location**, or **Engine Version** parameter based on your business requirements. pment Sharded-data merging a. On the **To Multiple Databases** tab, select the names of the source databases and tables, or enter the names of the destination databases and tables. We recommend that you use regular expressions to specify the source databases and source tables. b. Click **Save Plan** and then click **Next**. You can create multiple plans for multi-database and multi-table synchronization and sharded-data merging at the same time in a draft. c. View the SQL code that is generated based on the destination database and table that you selected. Then, click **OK**. You can modify the **Name**, **Location**, or **Engine Version** parameter based on your business requirements. After the draft is created, the draft development page appears. The subsequent operations are the same as the operations that are used to develop a common draft. For more information about the parameter configurations and subsequent operations, see Draft development and Start a deployment.
+ii. Create a plan. pment Multi-database and multi-table synchronization a. On the **To Single Database** tab, select the source database and table name. b. Click **Save Plan** and then click **Next**. c. View the SQL code that is generated based on the destination database and table that you selected. Then, click **OK**. You can modify the **Name**, **Location**, or **Engine Version** parameter based on your business requirements. pment Sharded-data merging a. On the **To Multiple Databases** tab, select the names of the source databases and tables, or enter the names of the destination databases and tables.
+
+> **Note:** We recommend that you use regular expressions to specify the source databases and source tables.
+
+b. Click **Save Plan** and then click **Next**. You can create multiple plans for multi-database and multi-table synchronization and sharded-data merging at the same time in a draft. c. View the SQL code that is generated based on the destination database and table that you selected. Then, click **OK**. You can modify the **Name**, **Location**, or **Engine Version** parameter based on your business requirements. After the draft is created, the draft development page appears. The subsequent operations are the same as the operations that are used to develop a common draft. For more information about the parameter configurations and subsequent operations, see Draft development and Start a deployment.
 
 #### 4.1.2 Code templates
 
@@ -751,7 +747,10 @@ i. In the left-side navigation pane, click **SQL Editor**. In the upper-left cor
 
 v. Click **Create**.
 3. Write DDL and DML statements.
-The metadata management feature allows you to reuse the table schema that is created in different drafts. When you edit an SQL draft on the SQL Editor page in the console of fully managed Flink, the system automatically completes the fields and table names after you enter only specific characters. The following sample code shows how to configure the partition.discovery.interval.ms option: pment
+
+> **Note:** The metadata management feature allows you to reuse the table schema that is created in different drafts. When you edit an SQL draft on the SQL Editor page in the console of fully managed Flink, the system automatically completes the fields and table names after you enter only specific characters.
+
+The following sample code shows how to configure the partition.discovery.interval.ms option: pment
 
 ```
 -- Create a source table named datagen_source. CREATE TEMPORARY TABLE datagen_source(
@@ -805,11 +804,15 @@ To prevent the impact of factors such as deployment and network environments, ta
 
 **Usage notes**
 
-The parameters in the deployment code take precedence over the parameters that you configured in the Realtime Compute for Apache Flink console. To ensure that your deployment runs as expected, we recommend that you configure checkpoint-related parameters in the Realtime Compute for Apache Flink console instead of in the deployment code. If the upstream and downstream storage systems that Flink DataStream deployments access use a whitelist mechanism, you must configure whitelists. To prevent conflicts between JAR package dependencies, take note of the following items: Make sure that the Realtime Compute for Apache Flink version that you select on the Draft Editor page is the same as that specified in the dependency library of Apache Flink in the POM file. Specify `<scope>provided</scope>` for dependencies related to Realtime Compute for Apache Flink. Dependencies related to Realtime Compute for Apache Flink mainly include non-connector dependencies whose names start with `flink-` in the `org.apache.flink` group, such as flink-streaming-java, flink-streaming-java_2.11, flinkjava, and flink-runtime. We recommend that you configure dependencies during draft development to avoid Flink dependency conflicts. pment Use the Shade plug-in to package other third-party dependencies. For more information, see Apache Maven Shade plug-in. Call only methods that are explicitly marked with @Public or @PublicEvolving in the source code of Apache Flink. Apsara Stack Realtime Compute for Apache Flink only ensures compatibility with these methods. Use the built-in dependencies of Realtime Compute for Apache Flink if the DataStream APIs supported by the built-in connectors of Realtime Compute for Apache Flink are used.
+The parameters in the deployment code take precedence over the parameters that you configured in the Realtime Compute for Apache Flink console. To ensure that your deployment runs as expected, we recommend that you configure checkpoint-related parameters in the Realtime Compute for Apache Flink console instead of in the deployment code. If the upstream and downstream storage systems that Flink DataStream deployments access use a whitelist mechanism, you must configure whitelists. To prevent conflicts between JAR package dependencies, take note of the following items: Make sure that the Realtime Compute for Apache Flink version that you select on the Draft Editor page is the same as that specified in the dependency library of Apache Flink in the POM file. Specify `<scope>provided</scope>` for dependencies related to Realtime Compute for Apache Flink. Dependencies related to Realtime Compute for Apache Flink mainly include non-connector dependencies whose names start with `flink-` in the `org.apache.flink` group, such as flink-streaming-java, flink-streaming-java_2.11, flinkjava, and flink-runtime.
+
+> **Note:** We recommend that you configure dependencies during draft development to avoid Flink dependency conflicts.
+
+pment Use the Shade plug-in to package other third-party dependencies. For more information, see Apache Maven Shade plug-in. Call only methods that are explicitly marked with @Public or @PublicEvolving in the source code of Apache Flink. Apsara Stack Realtime Compute for Apache Flink only ensures compatibility with these methods. Use the built-in dependencies of Realtime Compute for Apache Flink if the DataStream APIs supported by the built-in connectors of Realtime Compute for Apache Flink are used.
 
 **Develop a draft**
 
-You must develop drafts in your on-premises environment before you deploy the drafts for running in the Realtime Compute for Apache Flink console.
+> **Note:** You must develop drafts in your on-premises environment before you deploy the drafts for running in the Realtime Compute for Apache Flink console.
 
 **References**
 
@@ -861,9 +864,11 @@ score is greater than 60.
 
 Package the JAR file of the draft by using maven-shade-plugin.
 
-**Important**
+> **Important:** If you upload the uber JAR files of the connectors to the development console of Realtime Compute for Apache Flink and call the uber JAR files as additional dependency files in a DataStream draft, you must specify
+> `<scope>provided</scope>` for dependencies of the connectors when you package the JAR file of the draft.
+> If you package the connectors as project dependencies into the JAR file of your draft, you must specify <scope>compile</scope> for dependencies of the connectors when you package the JAR file of the draft.
 
-If you upload the uber JAR files of the connectors to the development console of Realtime Compute for Apache Flink and call the uber JAR files as additional dependency files in a DataStream draft, you must specify `<scope>provided</scope>` for dependencies of the connectors when you package the JAR file of the draft. If you package the connectors as project dependencies into the JAR file of your draft, you must specify <scope>compile</scope> for dependencies of the connectors when you package the JAR file of the draft. Configuration of maven-shade-plugin for reference
+Configuration of maven-shade-plugin for reference
 
 ```xml
 <build>
@@ -939,13 +944,18 @@ implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransfor
 
 **Test and deploy the draft**
 
-By default, Realtime Compute for Apache Flink cannot access the Internet. In this case, you may be unable to directly test your code in an on-premises machine. We recommend that you separately perform unit tests. For more information, seeCreate a deployment. If you use the JAR files of the connectors when you deploy the draft, you must upload the JAR files of the connectors to the Realtime Compute for Apache Flink console. If you want to read the configuration file, you must add the configuration file to the Additional Dependencies field in the Create Jar Deployment dialog box. pment
+By default, Realtime Compute for Apache Flink cannot access the Internet. In this case, you may be unable to directly test your code in an on-premises machine. We recommend that you separately perform unit tests. For more information, seeCreate a deployment.
+
+> **Note:** If you use the JAR files of the connectors when you deploy the draft, you must upload the JAR files of the connectors to the Realtime Compute for Apache Flink console.
+> If you want to read the configuration file, you must add the configuration file to the Additional Dependencies field in the Create Jar Deployment dialog box.
+
+pment
 
 **Complete sample code**
 
-In this example, data of the Kafka data source is processed and written to the MySQL database. This example is for reference only. For more information about the code style and quality guidelines, see Apache Flink Code Style and Quality Guide. The example does not include some runtime configurations, such as the checkpoint, timeto-live (TTL), and restart policy. You can customize the preceding configurations on the
-**Deployment Details** page after the deployment is created. Configurations submitted by
-code take precedence. We recommend that you use custom configurations when you create deployments to facilitate subsequent modification and use.
+In this example, data of the Kafka data source is processed and written to the MySQL database. This example is for reference only. For more information about the code style and quality guidelines, see Apache Flink Code Style and Quality Guide.
+
+> **Note:** The example does not include some runtime configurations, such as the checkpoint, time- to-live (TTL), and restart policy. You can customize the preceding configurations on the **Deployment Details** page after the deployment is created. Configurations submitted by code take precedence. We recommend that you use custom configurations when you create deployments to facilitate subsequent modification and use.
 
 **FlinkDemo.java**
 
@@ -1402,7 +1412,11 @@ docker run -it --rm -v $PWD:/build -w /build quay.io/pypa/manylinux2014_x86_64 .
 
 After you run this command, the system generates a file named **venv.zip**. This file is the virtual environment for **Python 3.7**. You can also modify the preceding script to install required third-party Python packages in the virtual environment.
 2. Use the Python 3.7 virtual environment in a Python Job.
-i. Log in to the Realtime Compute for Apache Flink console. ii. On the **Artifacts** page, click **Upload Artifact** to upload the venv.zip file. Realtime Compute for Apache Flink allows you to upload files up to 200 MB in size, while the size of a Python virtual environment usually exceeds this limit. Therefore, you must upload the file by using the OSS management console. iii. On the **Deployments** page, click the name of the target Job. iv. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. On the right side of the **Python Archives** parameter, select the venv.zip file. pment v. In the **Parameters** section, click **Edit** in the upper-right corner. On the right side of the
+i. Log in to the Realtime Compute for Apache Flink console. ii. On the **Artifacts** page, click **Upload Artifact** to upload the venv.zip file.
+
+> **Note:** Realtime Compute for Apache Flink allows you to upload files up to 200 MB in size, while the size of a Python virtual environment usually exceeds this limit. Therefore, you must upload the file by using the OSS management console.
+
+iii. On the **Deployments** page, click the name of the target Job. iv. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. On the right side of the **Python Archives** parameter, select the venv.zip file. pment v. In the **Parameters** section, click **Edit** in the upper-right corner. On the right side of the
 **Other Configuration** parameter, add the following configuration:
 
 ```
@@ -1413,7 +1427,11 @@ vi. Click **Save**.
 
 **Use third-party Python packages**
 
-The following section describes how to use third-party Python packages in two scenarios: Use third-party Python packages that you can directly import If your third-party Python package is Zip Safe, you can use it in a Python job without installation. Perform the following steps: i. Download a third-party Python package that you can directly import. a. Open the PyPI page in your browser. b. In the search box, enter the name of the target third-party Python package, for example, **apache-flink 1.12.2**. c. In the search results, click the name of the target result. d. In the left-side navigation pane, click **Download files**. e. Click the package name that contains **cp37-cp37m-manylinux1** in the file name to download the package. ii. Log in to the Realtime Compute for Apache Flink console. iii. On the **Artifacts** page, click **Upload Artifacts** to upload the third-party Python package. iv. On the **Deployments** page, click the name of the target job. v. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. vi. On the right side of the **Python Libraries** parameter, select the uploaded third-party Python package. vii. Click **Save**. Use third-party Python packages that require compilation If your third-party Python package is a compressed package in **tar.gz** format or a source code package downloaded from another location, and a **setup.py** file exists in the root directory of the compressed package, this type of third-party Python package usually requires compilation before use. You must first compile the third-party Python package in an environment compatible with Flink, and then call the third-party Python package in a Python job. We recommend that you use **quay.io/pypa/manylinux2014_x86_64** container image with **Python 3.7** to compile third-party Python packages. The packages compiled by using this container are compatible with most Linux environments. For more information about this container image, see manylinux. The installation path of **Python 3.7** is **/opt/python/cp37-cp37m/bin/python3**. The following section uses the **opencv-python-headless** third-party Python package as an example to describe how to compile and use this third-party Python package. i. Compile the third-party Python package. pment a. Prepare the **build.sh** script locally. The content of the script is as follows:
+The following section describes how to use third-party Python packages in two scenarios: Use third-party Python packages that you can directly import If your third-party Python package is Zip Safe, you can use it in a Python job without installation. Perform the following steps: i. Download a third-party Python package that you can directly import. a. Open the PyPI page in your browser. b. In the search box, enter the name of the target third-party Python package, for example, **apache-flink 1.12.2**. c. In the search results, click the name of the target result. d. In the left-side navigation pane, click **Download files**. e. Click the package name that contains **cp37-cp37m-manylinux1** in the file name to download the package. ii. Log in to the Realtime Compute for Apache Flink console. iii. On the **Artifacts** page, click **Upload Artifacts** to upload the third-party Python package. iv. On the **Deployments** page, click the name of the target job. v. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. vi. On the right side of the **Python Libraries** parameter, select the uploaded third-party Python package. vii. Click **Save**. Use third-party Python packages that require compilation If your third-party Python package is a compressed package in **tar.gz** format or a source code package downloaded from another location, and a **setup.py** file exists in the root directory of the compressed package, this type of third-party Python package usually requires compilation before use. You must first compile the third-party Python package in an environment compatible with Flink, and then call the third-party Python package in a Python job. We recommend that you use **quay.io/pypa/manylinux2014_x86_64** container image with **Python 3.7** to compile third-party Python packages. The packages compiled by using this container are compatible with most Linux environments. For more information about this container image, see manylinux.
+
+> **Note:** The installation path of **Python 3.7** is **/opt/python/cp37-cp37m/bin/python3**.
+
+The following section uses the **opencv-python-headless** third-party Python package as an example to describe how to compile and use this third-party Python package. i. Compile the third-party Python package. pment a. Prepare the **build.sh** script locally. The content of the script is as follows:
 
 ```bash
 #!/bin/bash
@@ -1432,7 +1450,11 @@ c. Run the following command in the CMD command line:
 docker run -it --rm -v $PWD:/build -w /build quay.io/pypa/manylinux2014_x86_64 / bin/bash build.sh
 ```
 
-After you run this command, the system generates a file named **deps.zip**. This file is the compiled third-party Python package. You can also modify **requirements.txt** to install other required third-party Python packages. In addition, the **requirements.txt** file can specify multiple Python dependencies. ii. Use the third-party Python package **deps.zip** in a Python job. a. Log in to the Realtime Compute for Apache Flink console. b. On the **Artifacts** page, click **Upload Artifact** to upload **deps.zip**. Realtime Compute for Apache Flink allows you to upload files up to 200 MB in size, while the size of a Python virtual environment usually exceeds this limit. Therefore, you must upload the file by using the OSS management console. c. On the **Deployments** page, click the name of the target job. d. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. e. On the right side of the **Python Libraries** parameter, select **deps.zip**. f. Click **Save**.
+After you run this command, the system generates a file named **deps.zip**. This file is the compiled third-party Python package. You can also modify **requirements.txt** to install other required third-party Python packages. In addition, the **requirements.txt** file can specify multiple Python dependencies. ii. Use the third-party Python package **deps.zip** in a Python job. a. Log in to the Realtime Compute for Apache Flink console. b. On the **Artifacts** page, click **Upload Artifact** to upload **deps.zip**.
+
+> **Note:** Realtime Compute for Apache Flink allows you to upload files up to 200 MB in size, while the size of a Python virtual environment usually exceeds this limit. Therefore, you must upload the file by using the OSS management console.
+
+c. On the **Deployments** page, click the name of the target job. d. On the **Configuration** tab, find the **Basic** section and click **Edit** in the upper-right corner. e. On the right side of the **Python Libraries** parameter, select **deps.zip**. f. Click **Save**.
 
 **Use JAR packages**
 
@@ -1709,7 +1731,7 @@ CREATE TABLE datagen_source (
 | fields. <field>.sta rt | The start value of the sequence generator. | Same as the data type of <field> | No | None | This parameter takes effect when the fields. <field>.kind parameter is set to sequence. |
 | fields. <field>.en d | The end value of the sequence generator. | Same as the data type of <field> | No | None | This parameter takes effect when the fields. <field>.kind parameter is set to sequence. |
 
-Replace <field> in the parameter with the name of the field that you defined in the DDL statement.
+> **Note:** Replace <field> in the parameter with the name of the field that you defined in the DDL statement.
 
 **Generators**
 
@@ -2082,11 +2104,17 @@ Apache Iceberg is an open table format for data lakes. You can use Apache Iceber
 
 **Features**
 
-Apache Iceberg provides the following core capabilities: Builds a low-cost lightweight data lake storage service based on HDFS or OSS. Provides comprehensive atomicity, consistency, isolation, durability (ACID) semantics. Supports historical version backtracking. Supports efficient data filtering. Supports schema evolution. Supports partition evolution. Can be used together with self-managed Hive Metastores. You can use the efficient fault tolerance and stream processing capabilities of Flink to import a large amount of behavioral data in logs into an Apache Iceberg data lake in real time. Then, you can use Flink or another analytics engine to extract the value of your data.
+Apache Iceberg provides the following core capabilities: Builds a low-cost lightweight data lake storage service based on HDFS or OSS. Provides comprehensive atomicity, consistency, isolation, durability (ACID) semantics. Supports historical version backtracking. Supports efficient data filtering. Supports schema evolution. Supports partition evolution. Can be used together with self-managed Hive Metastores.
+
+> **Note:** You can use the efficient fault tolerance and stream processing capabilities of Flink to import a large amount of behavioral data in logs into an Apache Iceberg data lake in real time. Then, you can use Flink or another analytics engine to extract the value of your data.
 
 **Limits**
 
-Apache Iceberg must be used together with a Data Lake Formation (DLF) catalog. DLF Catalog supports Apache Iceberg v1 and v2 table formats. Only Realtime Compute for Apache Flink that uses Ververica Runtime (VVR) 8.0.7 or later supports the Apache Iceberg table format of version 2. In streaming read mode, only Apache Iceberg tables in which data is written in Append Only mode can be used as source tables.
+Apache Iceberg must be used together with a Data Lake Formation (DLF) catalog. DLF Catalog supports Apache Iceberg v1 and v2 table formats.
+
+> **Note:** Only Realtime Compute for Apache Flink that uses Ververica Runtime (VVR) 8.0.7 or later supports the Apache Iceberg table format of version 2.
+
+In streaming read mode, only Apache Iceberg tables in which data is written in Append Only mode can be used as source tables.
 
 **Syntax**
 
@@ -2173,7 +2201,9 @@ CREATE TABLE iceberg_table (
 
 **Sample code**
 
-Confirm that an OSS bucket and a DLF database are created. When you specify a **directory** for your DLF database, we recommend that you enter a directory in the ${warehouse}/${database_name}.db format. For example, if the value of the warehouse parameter is oss://iceberg-test/warehouse and the value of the database_name parameter is dlf_db, set the OSS directory of the dlf_db database to oss://iceberg-test/warehouse/dlf_db.db.
+Confirm that an OSS bucket and a DLF database are created.
+
+> **Note:** When you specify a **directory** for your DLF database, we recommend that you enter a directory in the ${warehouse}/${database_name}.db format. For example, if the value of the warehouse parameter is oss://iceberg-test/warehouse and the value of the database_name parameter is dlf_db, set the OSS directory of the dlf_db database to oss://iceberg-test/warehouse/dlf_db.db.
 
 **Sample code for an Apache Iceberg sink table**
 
@@ -2305,7 +2335,13 @@ The PostgreSQL CDC connector supports the incremental snapshot reading feature i
 
 **Prerequisites**
 
-The PostgreSQL CDC connector uses the logical replication feature of PostgreSQL to capture data changes. To use the connector, make sure that the following conditions are met: The wal_level parameter is set to logical, which specifies that the information required for logical decoding is included in WAL files. The REPLICA IDENTITY parameter of the subscribed table is set to FULL by using the `ALTER` TABLE schema.table REPLICA IDENTITY FULL; command. This ensures data consistency. REPLICA IDENTITY is a PostgreSQL-specific table-level parameter. The parameter specifies whether to include the previous values of the involved table columns in the INSERT and UPDATE events that are generated by the logical decoding plug-in. For more information, see REPLICA IDENTITY. The max_wal_senders and max_replication_slots parameters are set to a value greater than the number of occupied replication slots in the monitored database and the number of required replication slots for the Flink deployment. Your database account is assigned a superuser role or granted the LOGIN and REPLICATION permissions. Your database account is also granted the SELECT permission on the subscribed table for full data query. Configurations related to the preceding conditions may be different in ApsaraDB RDS for PostgreSQL, Amazon RDS for PostgreSQL, and self-managed PostgreSQL databases.
+The PostgreSQL CDC connector uses the logical replication feature of PostgreSQL to capture data changes. To use the connector, make sure that the following conditions are met: The wal_level parameter is set to logical, which specifies that the information required for logical decoding is included in WAL files. The REPLICA IDENTITY parameter of the subscribed table is set to FULL by using the `ALTER` TABLE schema.table REPLICA IDENTITY FULL; command. This ensures data consistency.
+
+> **Note:** REPLICA IDENTITY is a PostgreSQL-specific table-level parameter. The parameter specifies whether to include the previous values of the involved table columns in the INSERT and UPDATE events that are generated by the logical decoding plug-in. For more information, see REPLICA IDENTITY.
+
+The max_wal_senders and max_replication_slots parameters are set to a value greater than the number of occupied replication slots in the monitored database and the number of required replication slots for the Flink deployment. Your database account is assigned a superuser role or granted the LOGIN and REPLICATION permissions. Your database account is also granted the SELECT permission on the subscribed table for full data query.
+
+> **Note:** Configurations related to the preceding conditions may be different in ApsaraDB RDS for PostgreSQL, Amazon RDS for PostgreSQL, and self-managed PostgreSQL databases.
 
 **Limits**
 
@@ -2518,7 +2554,7 @@ Sample code:
 field_fieldValue1 DOUBLE, field_fieldValue2 INTEGER, ... field_fieldValueNINTEGER
 ```
 
-A TSDB for InfluxDB sink table can contain only the following fields: **metric**, **timestamp**, tag_*, and field_*.
+> **Note:** A TSDB for InfluxDB sink table can contain only the following fields: **metric**, **timestamp**, tag_*, and field_*.
 
 **Parameters in the WITH clause**
 
@@ -2643,7 +2679,11 @@ CREATE TABLE ots_sink (
   'valueColumns'='birthday'
 ```
 
-); You must specify a primary key for a Tablestore sink table. The latest output data is appended to the Tablestore sink table to update the table data. Dimension table
+);
+
+> **Note:** You must specify a primary key for a Tablestore sink table. The latest output data is appended to the Tablestore sink table to update the table data.
+
+Dimension table
 
 ```
 CREATE TABLE ots_dim (
@@ -2887,7 +2927,9 @@ CREATE TABLE clickhouse_sink (
 | ARRAY | ARRAY |
 |   | Nested |
 
-ClickHouse does not support the following data types of Realtime Compute for Apache Flink: TIME, MAP, MULTISET, and ROW. To use the NESTED data type of ClickHouse, you must map this data type to the ARRAY data type of Realtime Compute for Apache Flink. Sample code:
+> **Note:** ClickHouse does not support the following data types of Realtime Compute for Apache Flink: TIME, MAP, MULTISET, and ROW.
+
+To use the NESTED data type of ClickHouse, you must map this data type to the ARRAY data type of Realtime Compute for Apache Flink. Sample code:
 
 ```
 -- ClickHouse CREATE TABLE visits (
@@ -2917,7 +2959,9 @@ ClickHouse does not support the following data types of Realtime Compute for Apa
   `Goals.OrderID` ARRAY<STRING>
 ```
 
-); The DATETIME data type of ClickHouse can be accurate to the second, and the DATETIME64 data type can be accurate to the nanosecond. For Realtime Compute for Apache Flink that uses VVR of a version earlier than 6.0.6, when the JDBC driver provided by ClickHouse writes data of the DATETIME64 data type, a precision loss occurs and the data can be accurate only to the second. Therefore, Realtime Compute for Apache Flink can write data of the TIMESTAMP data type only in seconds. The value is displayed in the TIMESTAMP(0) format. For Realtime Compute for Apache Flink that uses VVR 6.0.6 or later, the precision loss issue is resolved. Realtime Compute for Apache Flink can write data of the DATETIME64 data type as expected.
+);
+
+> **Note:** The DATETIME data type of ClickHouse can be accurate to the second, and the DATETIME64 data type can be accurate to the nanosecond. For Realtime Compute for Apache Flink that uses VVR of a version earlier than 6.0.6, when the JDBC driver provided by ClickHouse writes data of the DATETIME64 data type, a precision loss occurs and the data can be accurate only to the second. Therefore, Realtime Compute for Apache Flink can write data of the TIMESTAMP data type only in seconds. The value is displayed in the TIMESTAMP(0) format. For Realtime Compute for Apache Flink that uses VVR 6.0.6 or later, the precision loss issue is resolved. Realtime Compute for Apache Flink can write data of the DATETIME64 data type as expected.
 
 **Sample code**
 
@@ -3105,7 +3149,13 @@ other table, the value of this field must be of the STRING data type.
   'indexName' = '<yourIndexName>'
 ```
 
-); If you define a primary key for a dimension table, only one key can be used to join the dimension table with another table. The key is the ID of a document in your Elasticsearch index. If you do not define a primary key for the dimension table, one or more keys can be used to join the dimension table with another table. The keys are the fields of a document in your Elasticsearch index. By default, the .keyword suffix is added to the names of the fields of the STRING data type to ensure compatibility. If the fields of the TEXT data type in the Elasticsearch table cannot be matched, you can set the value of the ignoreKeywordSuffix parameter to true. Sink table
+);
+
+> **Note:** If you define a primary key for a dimension table, only one key can be used to join the dimension table with another table. The key is the ID of a document in your Elasticsearch index.
+> If you do not define a primary key for the dimension table, one or more keys can be used to join the dimension table with another table. The keys are the fields of a document in your Elasticsearch index.
+> By default, the .keyword suffix is added to the names of the fields of the STRING data type to ensure compatibility. If the fields of the TEXT data type in the Elasticsearch table cannot be matched, you can set the value of the ignoreKeywordSuffix parameter to true.
+
+Sink table
 
 ```
 CREATE TABLE es_sink(
@@ -3121,7 +3171,13 @@ ticsearch-6.
   'index' = '<yourIndex>'
 ```
 
-); The Elasticsearch sink table is determined to work in upsert mode or append mode based on whether a primary key is defined. If a primary key is defined for the Elasticsearch sink table, the primary key must be a document ID, and the Elasticsearch sink table works in upsert mode. In this mode, the Elasticsearch sink table can consume UPDATE and DELETE messages. If no primary key is defined for the Elasticsearch sink table, Elasticsearch automatically generates a random document ID, and the Elasticsearch sink table works in append mode. In this mode, the Elasticsearch sink table can consume only INSERT messages. Specific data types, such as BYTES, ROW, ARRAY, and MAP, cannot be represented as strings. Therefore, fields of these data types cannot be used as primary key fields. The fields in the DDL statement correspond to the fields in an Elasticsearch document. Metadata, such as document IDs, is maintained on Elasticsearch clusters. Therefore, metadata cannot be written to Elasticsearch sink tables.
+);
+
+> **Note:** The Elasticsearch sink table is determined to work in upsert mode or append mode based on whether a primary key is defined.
+> If a primary key is defined for the Elasticsearch sink table, the primary key must be a document ID, and the Elasticsearch sink table works in upsert mode. In this mode, the Elasticsearch sink table can consume UPDATE and DELETE messages.
+> If no primary key is defined for the Elasticsearch sink table, Elasticsearch automatically generates a random document ID, and the Elasticsearch sink table works in append mode. In this mode, the Elasticsearch sink table can consume only INSERT messages.
+> Specific data types, such as BYTES, ROW, ARRAY, and MAP, cannot be represented as strings. Therefore, fields of these data types cannot be used as primary key fields.
+> The fields in the DDL statement correspond to the fields in an Elasticsearch document. Metadata, such as document IDs, is maintained on Elasticsearch clusters. Therefore, metadata cannot be written to Elasticsearch sink tables.
 
 **Parameters in the WITH clause**
 
@@ -3646,21 +3702,7 @@ CREATE TEMPORARY TABLE adb_table (
 
 );
 
-**Important**
-
-**The primary key that is specified in the Flink DDL statement must be consistent**
-
-**with the primary key of the physical table in the AnalyticDB for MySQL**
-
-**database. The primary key must be specified in the Flink DDL statement and**
-
-**exist in the physical table in the AnalyticDB for MySQL database at the same**
-
-**time. The name of the primary key specified in the Flink DDL statement must**
-
-**be the same as the name of the primary key of the physical table. If the primary**
-
-**keys are not the same, data may be incorrect.**
+> **Important:** **The primary key that is specified in the Flink DDL statement must be consistent** **with the primary key of the physical table in the AnalyticDB for MySQL** **database. The primary key must be specified in the Flink DDL statement and** **exist in the physical table in the AnalyticDB for MySQL database at the same** **time. The name of the primary key specified in the Flink DDL statement must** **be the same as the name of the primary key of the physical table. If the primary** **keys are not the same, data may be incorrect.**
 
 **Parameters in the WITH clause**
 
@@ -4245,7 +4287,7 @@ This topic describes how to use the ApsaraMQ for RocketMQ connector.
 
 **Important**
 
-ApsaraMQ for RocketMQ 4.x Standard Edition can process up to 5,000 messages per second. If you use ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware to connect to Realtime Compute for Apache Flink, deployments of Realtime Compute for Apache Flink may be unstable. Therefore, we recommend that you evaluate the impact if you want to use or plan to use ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware to connect to Realtime Compute for Apache Flink. We recommend that you use another messaging middleware service, such as Kafka, Simple Log Service (SLS), or DataHub, instead of ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware based on your business requirements. If you must use ApsaraMQ for RocketMQ 4.x Standard Edition to process a large number of messages, contact technical support to increase the number of messages that can be processed by ApsaraMQ for RocketMQ 4.x Standard Edition per second.
+> ApsaraMQ for RocketMQ 4.x Standard Edition can process up to 5,000 messages per second. If you use ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware to connect to Realtime Compute for Apache Flink, deployments of Realtime Compute for Apache Flink may be unstable. Therefore, we recommend that you evaluate the impact if you want to use or plan to use ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware to connect to Realtime Compute for Apache Flink. We recommend that you use another messaging middleware service, such as Kafka, Simple Log Service (SLS), or DataHub, instead of ApsaraMQ for RocketMQ 4.x Standard Edition as the messaging middleware based on your business requirements. If you must use ApsaraMQ for RocketMQ 4.x Standard Edition to process a large number of messages, contact technical support to increase the number of messages that can be processed by ApsaraMQ for RocketMQ 4.x Standard Edition per second.
 
 **Background information**
 
@@ -4374,7 +4416,9 @@ Sample code for a source table CSV format For example, a CSV message is recorded
 1,name,male 2,name,female
 ```
 
-An ApsaraMQ for RocketMQ message can contain zero to more data records. Multiple data records are separated by \n . You can use the following DDL statement to declare an ApsaraMQ for RocketMQ source table in a Realtime Compute for Apache Flink deployment: RocketMQ 5.x
+> **Note:** An ApsaraMQ for RocketMQ message can contain zero to more data records. Multiple data records are separated by \n .
+
+You can use the following DDL statement to declare an ApsaraMQ for RocketMQ source table in a Realtime Compute for Apache Flink deployment: RocketMQ 5.x
 
 ```
 CREATE TABLE mq_source(
@@ -4500,7 +4544,11 @@ CREATE TABLE mq_sink (
   'producerGroup'='<yourGroupName>'
 ```
 
-); If the messages of your ApsaraMQ for RocketMQ instance are in the binary format, only one field can be defined in the DDL statement and the field must be of the VARBINARY data type. Create an ApsaraMQ for RocketMQ result table in which the keys and tags fields are defined as the `keys` and `tags` of ApsaraMQ for RocketMQ messages. RocketMQ 5.x
+);
+
+> **Note:** If the messages of your ApsaraMQ for RocketMQ instance are in the binary format, only one field can be defined in the DDL statement and the field must be of the VARBINARY data type.
+
+Create an ApsaraMQ for RocketMQ result table in which the keys and tags fields are defined as the `keys` and `tags` of ApsaraMQ for RocketMQ messages. RocketMQ 5.x
 
 ```
 CREATE TABLE mq_sink (
@@ -4538,9 +4586,10 @@ CREATE TABLE mq_sink (
 
 **DataStream API**
 
-**Important**
+> **Important:** Only ApsaraMQ for RocketMQ 4.x instances support DataStream APIs.
+> If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink.
 
-Only ApsaraMQ for RocketMQ 4.x instances support DataStream APIs. If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The VVR engine of Realtime Compute for Apache Flink provides `MetaQSource` for reading data from ApsaraMQ for RocketMQ and the implementation class `MetaQOutputFormat` of `OutputFormat` for writing data to ApsaraMQ for RocketMQ. The following sample code shows how to use the ApsaraMQ for RocketMQ DataStream connector to read data from and write data to ApsaraMQ for RocketMQ:
+The VVR engine of Realtime Compute for Apache Flink provides `MetaQSource` for reading data from ApsaraMQ for RocketMQ and the implementation class `MetaQOutputFormat` of `OutputFormat` for writing data to ApsaraMQ for RocketMQ. The following sample code shows how to use the ApsaraMQ for RocketMQ DataStream connector to read data from and write data to ApsaraMQ for RocketMQ:
 
 ```
 /**
@@ -4782,7 +4831,7 @@ Dimension table-specific parameters
 | General | STRING | STRING |
 | Sink table- specific | SCORE | DOUBLE |
 
-The data of the SCORE type is added to the values of the SORTEDSET data type in ApsaraDB for Redis databases. You must manually set a score of the DOUBLE type for each sorted value and sort the values based on their scores in ascending order.
+> **Note:** The data of the SCORE type is added to the values of the SORTEDSET data type in ApsaraDB for Redis databases. You must manually set a score of the DOUBLE type for each sorted value and sort the values based on their scores in ascending order.
 
 **Sample code**
 
@@ -5079,7 +5128,9 @@ CREATE TABLE tair_table (
   'host' = '<yourHost>'
 ```
 
-); Tair (Redis OSS-compatible) is compatible with Redis data structures.
+);
+
+> **Note:** Tair (Redis OSS-compatible) is compatible with Redis data structures.
 
 **Parameters in the WITH clause**
 
@@ -5341,7 +5392,10 @@ CREATE TABLE rds_sink(
 |---|---|
 | VALUES (value1, value2, ...); |   |
 
-statement. If a physical table contains a unique index constraint besides a primary key constraint and two records with different primary keys but the same unique index are inserted into the physical table, downstream data is overwritten due to a conflict between the unique indexes. This causes data loss. If an auto-increment primary key is specified in an ApsaraDB RDS for MySQL database, you cannot declare the auto-increment field in the Flink DDL statement. During data writing, the database automatically configures the autoincrement field. The ApsaraDB RDS for MySQL connector can only be used to write or delete data that contains auto-increment fields but cannot be used to update the data. Dimension table
+> statement. If a physical table contains a unique index constraint besides a primary key constraint and two records with different primary keys but the same unique index are inserted into the physical table, downstream data is overwritten due to a conflict between the unique indexes. This causes data loss.
+> If an auto-increment primary key is specified in an ApsaraDB RDS for MySQL database, you cannot declare the auto-increment field in the Flink DDL statement. During data writing, the database automatically configures the auto- increment field. The ApsaraDB RDS for MySQL connector can only be used to write or delete data that contains auto-increment fields but cannot be used to update the data.
+
+Dimension table
 
 ```
 CREATE TABLE rds_dim(
@@ -5787,7 +5841,9 @@ CREATE TABLE tableName(
   'collection' = 'testcoll'
 ```
 
-`)` When you create a MongoDB CDC source table, you must declare the `_id STRING` column as the unique primary key.
+`)`
+
+> **Note:** When you create a MongoDB CDC source table, you must declare the `_id STRING` column as the unique primary key.
 
 **Parameters in the WITH clause**
 
@@ -6091,9 +6147,9 @@ By default, a MongoDB database whose version is earlier than 6.0 does not retain
 
 **Mongo CDC DataStream API**
 
-**Important**
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink.
 
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. Create a DataStream API program and use MongoDBSource. Sample code:
+Create a DataStream API program and use MongoDBSource. Sample code:
 
 ```
 MongoDBSource.builder()
@@ -6107,7 +6163,9 @@ MongoDBSource.builder()
   .build();
 ```
 
-To enable the incremental snapshot feature when you use the DataStream API, use the `MongoDBSource#builder()` method in the `com.ververica.cdc.connectors.mongodb.source` package during the construction of the MongoDBSource data source. If you do not need to enable the incremental snapshot
+> **Note:** To enable the incremental snapshot feature when you use the DataStream API, use the
+> `MongoDBSource#builder()` method in the
+> `com.ververica.cdc.connectors.mongodb.source` package during the construction of the MongoDBSource data source. If you do not need to enable the incremental snapshot
 
 |   | MongoDBSource#builder() |
 |---|---|
@@ -6133,7 +6191,11 @@ This topic describes how to use the DataHub connector.
 
 **Background information**
 
-DataHub is a real-time data distribution platform designed to process streaming data. You can publish and subscribe to streaming data in DataHub and distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data. DataHub is compatible with the Kafka protocol. You can use the standard Kafka connector instead of the Upsert Kafka connector to read data from or write data to DataHub. The following table describes the capabilities supported by the DataHub connector.
+DataHub is a real-time data distribution platform designed to process streaming data. You can publish and subscribe to streaming data in DataHub and distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data.
+
+> **Note:** DataHub is compatible with the Kafka protocol. You can use the standard Kafka connector instead of the Upsert Kafka connector to read data from or write data to DataHub.
+
+The following table describes the capabilities supported by the DataHub connector.
 
 | Item | Description |
 |---|---|
@@ -6326,9 +6388,7 @@ from datahub_source;
 
 **Datastream API**
 
-**Important**
-
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink.
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink.
 
 **DataHub source**
 
@@ -6770,9 +6830,9 @@ FROM sls_input;
 
 **DataStream API**
 
-**Important**
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The SLS DataStream connectors of different versions are stored in the Maven central repository.
 
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The SLS DataStream connectors of different versions are stored in the Maven central repository. Read data from SLS VVR of Realtime Compute for Apache Flink provides the implementation class SlsSourceFunction of SourceFunction to read data from SLS. Sample code:
+Read data from SLS VVR of Realtime Compute for Apache Flink provides the implementation class SlsSourceFunction of SourceFunction to read data from SLS. Sample code:
 
 ```java
 public class SlsDataStreamSource {
@@ -6915,7 +6975,11 @@ CREATE TABLE `<your-paimon-catalog>`.`<your-db>`.paimon_table (
   ...
 ```
 
-); If you have created an Apache Paimon table in the Apache Paimon catalog, you can directly use the table without the need to create another table. If you want to create a temporary Apache Paimon table in a catalog of storage other than Apache Paimon, you must specify the connector parameter and the storage path of the Apache Paimon table. The following sample code shows the syntax for creating an Apache Paimon table in such a catalog:
+);
+
+> **Note:** If you have created an Apache Paimon table in the Apache Paimon catalog, you can directly use the table without the need to create another table.
+
+If you want to create a temporary Apache Paimon table in a catalog of storage other than Apache Paimon, you must specify the connector parameter and the storage path of the Apache Paimon table. The following sample code shows the syntax for creating an Apache Paimon table in such a catalog:
 
 ```
 CREATE TEMPORARY TABLE paimon_table (
@@ -6976,7 +7040,7 @@ h, a file is automatically created.
 | scan.pa rallelis m | The degree of parallelism of the Apache Paimon source table. | Integer | No | No defa ult valu e. | None. |
 | sink.par allelism | The parallelism of the Apache Paimon sink table. | Integer | No | No defa ult valu e. | None. |
 
-For more information about the configuration items, see Configuration.
+> **Note:** For more information about the configuration items, see Configuration.
 
 **Feature description**
 
@@ -7053,7 +7117,14 @@ A MaxCompute table is created.
 
 **Limits**
 
-The MaxCompute connector supports only the at-least-once semantics. The at-least-once semantics is used to prevent data losses. In specific cases, duplicate data may be written to MaxCompute. MaxCompute provides different types of tunnels. Duplicate data may be generated based on the tunnel that you use. By default, a source table that operates in full mode reads data only from the partition specified by the partition parameter. Once all data from the partition is read, the deployment finishes and does not monitor for new partitions. To continuously monitor for new partitions, create an incremental source by specifying the startPartition parameter in the WITH clause. Each time a dimension table is updated, the dimension table checks for the latest partition. After the source table starts to run, it does not read the data that is newly added to a partition. We recommend that you run a deployment when the partition has complete data.
+The MaxCompute connector supports only the at-least-once semantics.
+
+> **Note:** The at-least-once semantics is used to prevent data losses. In specific cases, duplicate data may be written to MaxCompute. MaxCompute provides different types of tunnels. Duplicate data may be generated based on the tunnel that you use.
+
+By default, a source table that operates in full mode reads data only from the partition specified by the partition parameter. Once all data from the partition is read, the deployment finishes and does not monitor for new partitions. To continuously monitor for new partitions, create an incremental source by specifying the startPartition parameter in the WITH clause.
+
+> **Note:** Each time a dimension table is updated, the dimension table checks for the latest partition.
+> After the source table starts to run, it does not read the data that is newly added to a partition. We recommend that you run a deployment when the partition has complete data.
 
 **Syntax**
 
@@ -7197,9 +7268,8 @@ Dimension table-specific parameters When a deployment starts, the dimension tabl
 | STRUCT | ROW |
 | JSON | STRING |
 
-**Important**
-
-If a MaxCompute physical table contains a field of a nested composite data type (ARRAY, MAP, or STRUCT, etc) and a field of JSON type, you must specify `tblproperties('columnar.nested.type'='true')` when you create the MaxCompute physical table to allow Realtime Compute for Apache Flink to read data from and write data to the physical table correctly.
+> **Important:** If a MaxCompute physical table contains a field of a nested composite data type (ARRAY, MAP, or STRUCT, etc) and a field of JSON type, you must specify
+> `tblproperties('columnar.nested.type'='true')` when you create the MaxCompute physical table to allow Realtime Compute for Apache Flink to read data from and write data to the physical table correctly.
 
 **Sample code**
 
@@ -7443,9 +7513,12 @@ INSERT INTO blackhole_sink SELECT k, s.v, d.v FROM datagen_source AS s INNER JOI
 
 **DataStream**
 
-**Important**
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The MaxCompute DataStream connectors of different versions are stored in the Maven central repository.
+> To protect intellectual property, VVR 6.0.6 or later supports on-premises debugging of DataStream programs using the MaxCompute connector for up to 30 minutes. Any longer debugging session will result in the program being terminated with an error.
 
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The MaxCompute DataStream connectors of different versions are stored in the Maven central repository. To protect intellectual property, VVR 6.0.6 or later supports on-premises debugging of DataStream programs using the MaxCompute connector for up to 30 minutes. Any longer debugging session will result in the program being terminated with an error. If you submit a deployment in the development console of Realtime Compute for Apache Flink, an issue that MaxCompute-related classes cannot be found may occur. In this case, you must download the file with the uber.jar name extension from the Maven central repository, and add the file as an additional dependency of the deployment. For example, if the version of the ververica-connector-odps dependency of MaxCompute is 1.15-vvr-6.0.6, you can view the ververicaconnector-odps-1.15-vvr-6.0.6-uber.jar package in the directory of the Maven repository and download the package to your on-premises directory. The Maven dependencies of the MaxCompute connector contain the classes required to create the full source, incremental source, sink, and dimension tables.
+> If you submit a deployment in the development console of Realtime Compute for Apache Flink, an issue that MaxCompute-related classes cannot be found may occur. In this case, you must download the file with the uber.jar name extension from the Maven central repository, and add the file as an additional dependency of the deployment. For example, if the version of the ververica-connector-odps dependency of MaxCompute is 1.15-vvr-6.0.6, you can view the ververica- connector-odps-1.15-vvr-6.0.6-uber.jar package in the directory of the Maven repository and download the package to your on-premises directory.
+
+The Maven dependencies of the MaxCompute connector contain the classes required to create the full source, incremental source, sink, and dimension tables.
 
 ```xml
 <dependency>
@@ -7521,11 +7594,11 @@ Apache Kafka is an open source distributed message queue service. This service i
 
 The prerequisites vary based on the type of the Kafka cluster to which Realtime Compute for Apache Flink needs to connect. ApsaraMQ for Kafka cluster An ApsaraMQ for Kafka cluster is created. The ApsaraMQ for Kafka cluster resides in the same virtual private cloud (VPC) as Realtime Compute for Apache Flink. The CIDR blocks of Realtime Compute for Apache Flink are added to the whitelist of the ApsaraMQ for Kafka cluster.
 
-**Important**
+> **Important:** Take note of the following items for writing data into ApsaraMQ for Kafka:
+> ApsaraMQ for Kafka does not support the data compression algorithm Zstandard for data writing.
+> ApsaraMQ for Kafka does not support idempotent or transactional write operations. Therefore, you cannot use the exactly-once semantics supported by Kafka sink tables. If your Realtime Compute for Apache Flink uses **Ververica** **Runtime (VVR) 8.0.0** or later, you must disable the idempotent write feature by configuring `properties.enable.idempotence=false` for the **sink table**.
 
-Take note of the following items for writing data into ApsaraMQ for Kafka: ApsaraMQ for Kafka does not support the data compression algorithm Zstandard for data writing. ApsaraMQ for Kafka does not support idempotent or transactional write operations. Therefore, you cannot use the exactly-once semantics supported by Kafka sink tables. If your Realtime Compute for Apache Flink uses **Ververica**
-**Runtime (VVR) 8.0.0** or later, you must disable the idempotent write feature by
-configuring `properties.enable.idempotence=false` for the **sink table**. Self-managed Apache Kafka cluster The version of the self-managed Apache Kafka cluster is 0.11 or later. A network connection is established between Realtime Compute for Apache Flink and the self-managed Apache Kafka cluster. Only the client parameters of Apache Kafka 2.8 are supported. For more information about the configuration parameters of Kafka producers and consumers, see Consumer Configs and Producer Configs.
+Self-managed Apache Kafka cluster The version of the self-managed Apache Kafka cluster is 0.11 or later. A network connection is established between Realtime Compute for Apache Flink and the self-managed Apache Kafka cluster. Only the client parameters of Apache Kafka 2.8 are supported. For more information about the configuration parameters of Kafka producers and consumers, see Consumer Configs and Producer Configs.
 
 **Limits**
 
@@ -7761,7 +7834,11 @@ es that server address verification is disabled.*/
  'properties.ssl.truststore.location' = '/flink/usrlib/my-truststore.jks'  in the WITH
 ```
 
-clause to use the certificate after you upload the certificate file. The preceding code snippets provide examples of the configurations that are used in most cases. Before you configure the Kafka connector, contact Kafka server O&M personnel to obtain the correct security and authentication configuration information. Unlike Apache Flink, the SQL editor of Realtime Compute for Apache Flink escapes double quotation marks (") by default. Therefore, you do not need to add backslashes (\) as escape characters to the double quotation marks (") that are used to enclose the username and password when you configure the `properties.sasl.jaas.config` parameter.
+clause to use the certificate after you upload the certificate file.
+
+> **Note:** The preceding code snippets provide examples of the configurations that are used in most cases. Before you configure the Kafka connector, contact Kafka server O&M personnel to obtain the correct security and authentication configuration information.
+> Unlike Apache Flink, the SQL editor of Realtime Compute for Apache Flink escapes double quotation marks (") by default. Therefore, you do not need to add backslashes (\) as escape characters to the double quotation marks (") that are used to enclose the username and password when you configure the
+> `properties.sasl.jaas.config` parameter.
 
 **Start offset for a Kafka source table**
 
@@ -7769,7 +7846,11 @@ clause to use the certificate after you upload the certificate file. The precedi
 
 You can configure the **scan.startup.mode** parameter to specify the data reading startup mode for a Kafka source table. earliest-offset: reads data from the earliest offset of the current partition. latest-offset: reads data from the latest offset of the current partition. group-offsets: reads data from the offset that is committed by the consumer group that has the ID specified by the **properties.group.id** parameter. timestamp: reads data from the first message whose timestamp is greater than or equal to the timestamp that is specified by the **scan.startup.timestamp-millis** parameter. specific-offsets: reads data from the partition offset that is specified by the
 **scan.startup.specific-offsets** parameter.
-If you do not specify the start offset, the Kafka source table starts to read data from the offset that is committed by the consumer group that has the specified ID. The **scan.startup.mode** parameter takes effect only on the deployments that are started without states. If a deployment that uses the required states is started, data is read from the offset that is stored in a state backend. Sample code:
+
+> **Note:** If you do not specify the start offset, the Kafka source table starts to read data from the offset that is committed by the consumer group that has the specified ID.
+> The **scan.startup.mode** parameter takes effect only on the deployments that are started without states. If a deployment that uses the required states is started, data is read from the offset that is stored in a state backend.
+
+Sample code:
 
 ```
 CREATE TEMPORARY TABLE kafka_source (
@@ -7827,7 +7908,11 @@ Kafka is a message queue system that allows for only data addition and does not 
 
 **TABLE AS statement**
 
-The CREATE TABLE AS statement can perform data synchronization from a Kafka source table in the JSON format. If specific fields do not exist in a predefined table schema during data synchronization, Flink attempts to automatically infer the data types of the columns. If the inferred data types do not meet your business requirements, you can perform auxiliary type inference to declare the data types of the columns. For more information about the JSON format, see JSON Format. Type inference By default, Realtime Compute for Apache Flink displays only the first layer of data in the JSON text during type inference. Realtime Compute for Apache Flink infers the SQL data types based on the JSON data types, values, and the data type mappings. The following table lists the mappings between JSON data types and Flink SQL data types.
+The CREATE TABLE AS statement can perform data synchronization from a Kafka source table in the JSON format. If specific fields do not exist in a predefined table schema during data synchronization, Flink attempts to automatically infer the data types of the columns. If the inferred data types do not meet your business requirements, you can perform auxiliary type inference to declare the data types of the columns.
+
+> **Note:** For more information about the JSON format, see JSON Format.
+
+Type inference By default, Realtime Compute for Apache Flink displays only the first layer of data in the JSON text during type inference. Realtime Compute for Apache Flink infers the SQL data types based on the JSON data types, values, and the data type mappings. The following table lists the mappings between JSON data types and Flink SQL data types.
 
 | JSON data type | Flink SQL data type |
 |---|---|
@@ -7876,11 +7961,17 @@ CREATE TABLE evolvingKafkaSource (
   'format' = 'json'
 ```
 
-); However, if the data type that you specify in the DDL statement is different from the actual data type, you can use one of the following methods to handle the issue: If a column's declared data type has a wider range than the actual data type, the field is parsed according to the declared data type. For example, if a column declared as the DOUBLE type is used to hold BIGINT data, the data type of the column is parsed as DOUBLE. If the actual data type has a wider range than or is incompatible with the declared data type, an error is returned because CREATE TABLE AS does not support type changes. To resolve this, you must restart your deployment and declare a correct data type. The following figure shows the ranges of data types and the compatibility between the data types. In the preceding figure, data types closer to the root node have wider ranges. Data types on different branches are incompatible. Auxiliary type inference is not supported for complex data types, such as ROW, ARRAY, MAP, and MULTISET. By default, Realtime Compute for Apache Flink parses complex data types as STRING. In most cases, the JSON text in Kafka topics has a nested structure. If you want to extract nested columns from JSON texts, you can use one of the following methods: Declare `'json.infer-schema.flatten-nested-columns.enable'='true'` in the source table's DDL statement. This way, all nested columns are expanded to the top level in sequence. To prevent column name conflicts, Realtime Compute for Apache Flink uses path-based approach to name expanded columns.
+); However, if the data type that you specify in the DDL statement is different from the actual data type, you can use one of the following methods to handle the issue: If a column's declared data type has a wider range than the actual data type, the field is parsed according to the declared data type. For example, if a column declared as the DOUBLE type is used to hold BIGINT data, the data type of the column is parsed as DOUBLE. If the actual data type has a wider range than or is incompatible with the declared data type, an error is returned because CREATE TABLE AS does not support type changes. To resolve this, you must restart your deployment and declare a correct data type. The following figure shows the ranges of data types and the compatibility between the data types.
 
-**Important**
+> **Note:** In the preceding figure, data types closer to the root node have wider ranges. Data types on different branches are incompatible.
+> Auxiliary type inference is not supported for complex data types, such as ROW, ARRAY, MAP, and MULTISET.
+> By default, Realtime Compute for Apache Flink parses complex data types as STRING.
 
-Column name conflicts cannot be directly resolved. However, you can walk around this by setting 'json.ignore-parse-errors' to 'true' in the source table's DDL statement to ignore conflicts. Add `rowkey` AS JSON_VALUE(`properties`, `$.rowkey`) to the CREATE TABLE AS syntax in the DDL statement to add a computed column and specify the column that you want to expand.
+In most cases, the JSON text in Kafka topics has a nested structure. If you want to extract nested columns from JSON texts, you can use one of the following methods: Declare `'json.infer-schema.flatten-nested-columns.enable'='true'` in the source table's DDL statement. This way, all nested columns are expanded to the top level in sequence. To prevent column name conflicts, Realtime Compute for Apache Flink uses path-based approach to name expanded columns.
+
+> **Important:** Column name conflicts cannot be directly resolved. However, you can walk around this by setting 'json.ignore-parse-errors' to 'true' in the source table's DDL statement to ignore conflicts.
+
+Add `rowkey` AS JSON_VALUE(`properties`, `$.rowkey`) to the CREATE TABLE AS syntax in the DDL statement to add a computed column and specify the column that you want to expand.
 
 **Examples**
 
@@ -7982,7 +8073,7 @@ CREATE TABLE IF NOT EXISTS hologres.kafka.`sync_kafka`( WITH (
 ) AS TABLE vvp.`default`.kafkaTable;
 ```
 
-The key columns in a Kafka message do not support table schema changes and type inference. Manual declaration is required.
+> **Note:** The key columns in a Kafka message do not support table schema changes and type inference. Manual declaration is required.
 
 **Example 4: Synchronize table schema and data and perform**
 
@@ -8019,9 +8110,9 @@ CREATE TABLE IF NOT EXISTS hologres.kafka.`sync_kafka` WITH (
 
 **Datastream API**
 
-**Important**
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The Kafka DataStream connectors of different versions are stored in the Maven central repository.
 
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. The Kafka DataStream connectors of different versions are stored in the Maven central repository. Create a Kafka source You can use the KafkaSource class to create a Kafka source. The following sample code shows how to create a Kafka source to consume messages from the earliest offset of the "input-topic" topic. The consumer group is my-group. The value of each message is deserialized as a string.
+Create a Kafka source You can use the KafkaSource class to create a Kafka source. The following sample code shows how to create a Kafka source to consume messages from the earliest offset of the "input-topic" topic. The consumer group is my-group. The value of each message is deserialized as a string.
 
 ```
 KafkaSource<String> source = KafkaSource.<String>builder()
@@ -8072,7 +8163,16 @@ When you use a Kafka DataStream connector, you must configure the following Kafk
 | from the committed offset of each partition | ommittedOffsets()) |   |   |
 | and no reset strategy is specified. |   |   |   |
 
-If the built-in offset initializers do not meet your business requirements, you can create custom offset initializers. If you do not specify an offset initializer, the OffsetsInitializer.earliest() offset initializer is used by default. Streaming mode and batch mode A Kafka source can operate in streaming mode or batch mode. By default, a Kafka source operates in streaming mode. In this mode, the deployment continues to run until the deployment fails or is canceled. If you want a Kafka source to operate in batch mode, you can call the setBounded(OffsetsInitializer) method to specify a stop offset. When all partitions reach their stop offsets, the Kafka source exits. In most cases, a Kafka source that operates in streaming mode does not have a stop offset. If you want to debug a Kafka source that operates in streaming mode, you can call the setUnbounded(OffsetsInitializer) method to specify a stop offset. The methods that you can use to specify a stop offset vary based on whether you use the streaming mode or batch mode. Dynamic partition discovery If you want a running deployment to process data from new topics and from new partitions that match your subscription pattern without the need to restart the deployment, you can enable the dynamic partition discovery feature on the Kafka source. By default, the dynamic partition discovery feature is enabled, with an interval of 5 minutes. To disable this feature, you must explicitly set this parameter to a nonpositive value. The following sample code shows how to configure the partition.discovery.interval.ms parameter:
+> **Note:** If the built-in offset initializers do not meet your business requirements, you can create custom offset initializers.
+> If you do not specify an offset initializer, the OffsetsInitializer.earliest() offset initializer is used by default.
+
+Streaming mode and batch mode A Kafka source can operate in streaming mode or batch mode. By default, a Kafka source operates in streaming mode. In this mode, the deployment continues to run until the deployment fails or is canceled. If you want a Kafka source to operate in batch mode, you can call the setBounded(OffsetsInitializer) method to specify a stop offset. When all partitions reach their stop offsets, the Kafka source exits.
+
+> **Note:** In most cases, a Kafka source that operates in streaming mode does not have a stop offset. If you want to debug a Kafka source that operates in streaming mode, you can call the setUnbounded(OffsetsInitializer) method to specify a stop offset. The methods that you can use to specify a stop offset vary based on whether you use the streaming mode or batch mode.
+
+Dynamic partition discovery If you want a running deployment to process data from new topics and from new partitions that match your subscription pattern without the need to restart the deployment, you can enable the dynamic partition discovery feature on the Kafka source.
+
+> **Note:** By default, the dynamic partition discovery feature is enabled, with an interval of 5 minutes. To disable this feature, you must explicitly set this parameter to a non- positive value. The following sample code shows how to configure the partition.discovery.interval.ms parameter:
 
 ```
 KafkaSource.builder()
@@ -8086,7 +8186,11 @@ Event time and watermarks By default, a Kafka source uses the timestamp that is 
 env.fromSource(kafkaSource, new CustomWatermarkStrategy(), "Kafka Source With Custo m Watermark Strategy")
 ```
 
-For more information about how to define a watermark strategy, see Generating Watermarks. Consumer offsets When a checkpoint is generated, a Kafka source commits the Kafka consumer offset of each partition to Kafka brokers. This way, the Kafka consumer offsets that are recorded on Kafka brokers are consistent with the state of the checkpoint. The Kafka consumer can automatically commit the offsets on each partition to Kafka brokers on a regular basis. You can configure the automatic offset commission feature by using the enable.auto.commit and auto.commit.interval.ms parameters. If you disable the checkpointing feature, a Kafka source relies on the Kafka consumer to commit the offsets to Kafka brokers. Kafka sources do not use the committed offsets that are recorded on Kafka brokers for fault tolerance. When you commit offsets, Kafka brokers can monitor the progress of record consumption on each partition. Additional properties You can call the setProperties(Properties) and setProperty(String, String) methods to configure additional properties for the Kafka source and Kafka consumer. The following table describes the properties of a Kafka source.
+For more information about how to define a watermark strategy, see Generating Watermarks. Consumer offsets When a checkpoint is generated, a Kafka source commits the Kafka consumer offset of each partition to Kafka brokers. This way, the Kafka consumer offsets that are recorded on Kafka brokers are consistent with the state of the checkpoint. The Kafka consumer can automatically commit the offsets on each partition to Kafka brokers on a regular basis. You can configure the automatic offset commission feature by using the enable.auto.commit and auto.commit.interval.ms parameters. If you disable the checkpointing feature, a Kafka source relies on the Kafka consumer to commit the offsets to Kafka brokers.
+
+> **Note:** Kafka sources do not use the committed offsets that are recorded on Kafka brokers for fault tolerance. When you commit offsets, Kafka brokers can monitor the progress of record consumption on each partition.
+
+Additional properties You can call the setProperties(Properties) and setProperty(String, String) methods to configure additional properties for the Kafka source and Kafka consumer. The following table describes the properties of a Kafka source.
 
 | Property | Description |
 |---|---|
@@ -8540,15 +8644,27 @@ default value.
 **insertorreplace**: replaces the existing record in an entire row with the one that arrives
 later.
 **insertorupdate**: updates specific columns of the existing data. For example, a table has
-fields a, b, c, and d. The a field is the primary key. Only data in the a and b fields are written to Hologres. If duplicate primary keys exist, the system updates only data in the b field. Data in the c and d fields remains unchanged. If the **mutatetype** parameter is set to `insertorreplace` or `insertorupdate` , the system updates data based on the primary key. The number of columns in the sink table that is defined by Realtime Compute for Apache Flink can be different from the number of columns in the Hologres physical table. Make sure that the null value can be used to pad the missing columns. If the null value cannot be used to pad the missing columns, an error is returned. By default, the Hologres streaming sink node can import data to only one non-partitioned table. If the sink node imports data to the parent table of a partitioned table, data queries fail even if the data import is successful. To enable data to be automatically written to a partitioned table, you can set the **partitionRouter** parameter to true. Take note of the following items: You must set the **tablename** parameter to the name of the parent table. If no partitioned table is created, you must specify **createparttable=true** in the WITH clause to enable the automatic creation of a partitioned table. If you do not perform the preceding configuration, data import fails.
+fields a, b, c, and d. The a field is the primary key. Only data in the a and b fields are written to Hologres. If duplicate primary keys exist, the system updates only data in the b field. Data in the c and d fields remains unchanged.
+
+> **Note:** If the **mutatetype** parameter is set to `insertorreplace` or `insertorupdate` , the system updates data based on the primary key.
+> The number of columns in the sink table that is defined by Realtime Compute for Apache Flink can be different from the number of columns in the Hologres physical table. Make sure that the null value can be used to pad the missing columns. If the null value cannot be used to pad the missing columns, an error is returned.
+
+By default, the Hologres streaming sink node can import data to only one non-partitioned table. If the sink node imports data to the parent table of a partitioned table, data queries fail even if the data import is successful. To enable data to be automatically written to a partitioned table, you can set the **partitionRouter** parameter to true. Take note of the following items: You must set the **tablename** parameter to the name of the parent table. If no partitioned table is created, you must specify **createparttable=true** in the WITH clause to enable the automatic creation of a partitioned table. If you do not perform the preceding configuration, data import fails.
 
 **Data merging into a wide table**
 
-If you want to write data from multiple streaming deployments to a Hologres wide table, you can merge the data into a wide table. In this example, two methods are used to merge data into a wide table. Take note of the following limits: The wide table must have a primary key. The data of each stream must contain all fields in the primary key. If the wide table is a column-oriented table and the requests per second (RPS) value is large, the CPU utilization increases. We recommend that you disable dictionary encoding for the fields in the table.
+If you want to write data from multiple streaming deployments to a Hologres wide table, you can merge the data into a wide table. In this example, two methods are used to merge data into a wide table.
+
+> **Note:** Take note of the following limits:
+> The wide table must have a primary key.
+> The data of each stream must contain all fields in the primary key.
+> If the wide table is a column-oriented table and the requests per second (RPS) value is large, the CPU utilization increases. We recommend that you disable dictionary encoding for the fields in the table.
 
 **Method 1 (recommended)**
 
-You can use this method to merge data into a wide table only in Realtime Compute for Apache Flink that uses VVR 6.0.7 or later. For example, one Realtime Compute for Apache Flink data stream contains fields a, b, and c, and the other Realtime Compute for Apache Flink data stream contains fields a, d, and e. The Hologres wide table WIDE_TABLE contains fields a, b, c, d, and e, among which field a is the primary key. To merge data into a wide table, perform the following operations:
+> **Note:** You can use this method to merge data into a wide table only in Realtime Compute for Apache Flink that uses VVR 6.0.7 or later.
+
+For example, one Realtime Compute for Apache Flink data stream contains fields a, b, and c, and the other Realtime Compute for Apache Flink data stream contains fields a, d, and e. The Hologres wide table WIDE_TABLE contains fields a, b, c, d, and e, among which field a is the primary key. To merge data into a wide table, perform the following operations:
 1. Execute Flink SQL statements to create a Hologres sink table. Declare fields a, b, c, d, and e
 in the Flink SQL statements. Map the Hologres sink table to the Hologres wide table WIDE_TABLE.
 2. Parameter settings of the Hologres sink table:
@@ -8585,7 +8701,9 @@ BEGIN STATEMENT SET; INSERT INTO hologres_sink(a,b,c) select * from source1; -- 
 
 **Method 2**
 
-You can use this method to merge data into a wide table only in Realtime Compute for Apache Flink that uses VVR 6.0.6 or earlier. For example, one Realtime Compute for Apache Flink data stream contains fields a, b, and c, and the other Realtime Compute for Apache Flink data stream contains fields a, d, and e. The Hologres wide table WIDE_TABLE contains fields a, b, c, d, and e, among which field a is the primary key. To merge data into a wide table, perform the following operations:
+> **Note:** You can use this method to merge data into a wide table only in Realtime Compute for Apache Flink that uses VVR 6.0.6 or earlier.
+
+For example, one Realtime Compute for Apache Flink data stream contains fields a, b, and c, and the other Realtime Compute for Apache Flink data stream contains fields a, d, and e. The Hologres wide table WIDE_TABLE contains fields a, b, c, d, and e, among which field a is the primary key. To merge data into a wide table, perform the following operations:
 1. Execute Flink SQL statements to create two Hologres sink tables. One table is used to
 declare fields a, b, and c, and the other is used to declare fields a, d, and e. Map the two sink tables to the Hologres wide table named WIDE_TABLE.
 2. Parameter settings of the two Hologres sink tables:
@@ -8644,9 +8762,7 @@ You can execute the CREATE TABLE AS or CREATE DATABASE AS statements to synchron
 
 **DataStream API**
 
-**Important**
-
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. You can use the Hologres DataStream connectors of different versions stored in the Maven central repository. For Realtime Compute for Apache Flink that uses VVR 6.0.7, use the dependency of 1.15-vvr-6.0.7-1.
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. You can use the Hologres DataStream connectors of different versions stored in the Maven central repository. For Realtime Compute for Apache Flink that uses VVR 6.0.7, use the dependency of 1.15-vvr-6.0.7-1.
 
 **Build a class to read data from a Hologres source table**
 
@@ -8696,7 +8812,7 @@ final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEn
 env.fromSource(source, WatermarkStrategy.noWatermarks(), "Test source").print(); env.execute();
 ```
 
-The buildRecordConverter method is not included in the dependency of the VVR connector. This method is provided in ververica-connector-demo.
+> **Note:** The buildRecordConverter method is not included in the dependency of the VVR connector. This method is provided in ververica-connector-demo.
 
 **Build a class to write data to a Hologres sink table**
 
@@ -8716,7 +8832,7 @@ w Integer[0]); // Build HologresSinkFunction to write data to the Hologres sink 
 env.execute();
 ```
 
-The buildHologresWriter method is not included in the dependency of the VVR connector. This method is provided in ververica-connector-demo.
+> **Note:** The buildHologresWriter method is not included in the dependency of the VVR connector. This method is provided in ververica-connector-demo.
 
 **Time zones of Realtime Compute for Apache Flink and Hologres**
 
@@ -8793,9 +8909,9 @@ CDC source table You must select a VVR version based on the MySQL version. The f
 |   | 5.7.x |
 |   | 8.0.x |
 
-**Important**
+> **Important:** The default value of the scan.incremental.snapshot.enabled parameter is true. This indicates that the incremental savepoint feature is enabled by default. This ensures that ApsaraDB RDS for MySQL 5.6.X runs as expected. You cannot disable the incremental savepoint feature for ApsaraDB RDS for MySQL 5.6.X. This limit is removed from ApsaraDB RDS for MySQL 6.0.8 and ApsaraDB RDS for MySQL 8.0.1. Therefore, you can disable the incremental savepoint feature for ApsaraDB RDS for MySQL 6.0.8 and ApsaraDB RDS for MySQL 8.0.1. We recommend that you do not disable the incremental savepoint feature. If you disable this feature, the MySQL database is locked and the online business processing performance may be affected.
 
-The default value of the scan.incremental.snapshot.enabled parameter is true. This indicates that the incremental savepoint feature is enabled by default. This ensures that ApsaraDB RDS for MySQL 5.6.X runs as expected. You cannot disable the incremental savepoint feature for ApsaraDB RDS for MySQL 5.6.X. This limit is removed from ApsaraDB RDS for MySQL 6.0.8 and ApsaraDB RDS for MySQL 8.0.1. Therefore, you can disable the incremental savepoint feature for ApsaraDB RDS for MySQL 6.0.8 and ApsaraDB RDS for MySQL 8.0.1. We recommend that you do not disable the incremental savepoint feature. If you disable this feature, the MySQL database is locked and the online business processing performance may be affected. MySQL CDC source tables do not support watermarks. Only MySQL users who are granted specific permissions can use the MySQL CDC source connector to read full data and incremental data from a MySQL database. The permissions include SELECT, SHOW DATABASES, REPLICATION SLAVE, and REPLICATION CLIENT. If you use the CREATE TABLE AS statement together with the CREATE DATABASE AS statement to perform data synchronization, specific schema changes of the MySQL CDC source table can be synchronized to the sink table. In other scenarios, the schema changes of the MySQL CDC source table cannot be synchronized to the sink table. MySQL CDC source tables do not support the synchronization of truncate operations. We recommend that you do not read data from a secondary instance or a read-only secondary instance of ApsaraDB RDS for MySQL. By default, the binary log retention period of the secondary instance or read-only secondary instance of ApsaraDB RDS for MySQL is short. If the binary log file is deleted due to expiration, the deployment cannot consume the binary log data and an error occurs. Data of Multi-master Cluster (Database/Table) Edition of PolarDB for MySQL of 1.0.19 or earlier cannot be read for the MySQL CDC source table. Duplicate table IDs may be generated in binary log data of Multi-master Cluster (Database/Table) Edition of PolarDB for MySQL of 1.0.19 or earlier. This leads to incorrect mapping of the schema of the MySQL CDC source table. As a result, an error occurs when the binary log data is parsed. This issue is resolved in PolarDB for MySQL of a version later than 1.0.19. Dimension table and sink table The at-least-once semantics can be used. If an ApsaraDB RDS for MySQL sink table contains a primary key, idempotence can be used to ensure data correctness.
+MySQL CDC source tables do not support watermarks. Only MySQL users who are granted specific permissions can use the MySQL CDC source connector to read full data and incremental data from a MySQL database. The permissions include SELECT, SHOW DATABASES, REPLICATION SLAVE, and REPLICATION CLIENT. If you use the CREATE TABLE AS statement together with the CREATE DATABASE AS statement to perform data synchronization, specific schema changes of the MySQL CDC source table can be synchronized to the sink table. In other scenarios, the schema changes of the MySQL CDC source table cannot be synchronized to the sink table. MySQL CDC source tables do not support the synchronization of truncate operations. We recommend that you do not read data from a secondary instance or a read-only secondary instance of ApsaraDB RDS for MySQL. By default, the binary log retention period of the secondary instance or read-only secondary instance of ApsaraDB RDS for MySQL is short. If the binary log file is deleted due to expiration, the deployment cannot consume the binary log data and an error occurs. Data of Multi-master Cluster (Database/Table) Edition of PolarDB for MySQL of 1.0.19 or earlier cannot be read for the MySQL CDC source table. Duplicate table IDs may be generated in binary log data of Multi-master Cluster (Database/Table) Edition of PolarDB for MySQL of 1.0.19 or earlier. This leads to incorrect mapping of the schema of the MySQL CDC source table. As a result, an error occurs when the binary log data is parsed. This issue is resolved in PolarDB for MySQL of a version later than 1.0.19. Dimension table and sink table The at-least-once semantics can be used. If an ApsaraDB RDS for MySQL sink table contains a primary key, idempotence can be used to ensure data correctness.
 
 **Precautions**
 
@@ -8856,7 +8972,8 @@ CREATE TABLE mysqlcdc_source (
 |---|---|---|
 |   | (column1, column2, ...) VALUES (value1, value2, ...); |   |
 
-executed. If a unique index constraint other than a primary key constraint exists in a physical table and two records that have different primary keys but the same unique index are inserted into the physical table, downstream data is overwritten due to an index conflict, which causes data loss. If an auto-increment primary key is defined in the MySQL database, the autoincrement field cannot be declared in Flink DDL statements. During data writing, the database automatically configures the auto-increment field. The connector can be used to only write and delete data that has auto-increment fields and cannot be used to update such data.
+> executed. If a unique index constraint other than a primary key constraint exists in a physical table and two records that have different primary keys but the same unique index are inserted into the physical table, downstream data is overwritten due to an index conflict, which causes data loss.
+> If an auto-increment primary key is defined in the MySQL database, the auto- increment field cannot be declared in Flink DDL statements. During data writing, the database automatically configures the auto-increment field. The connector can be used to only write and delete data that has auto-increment fields and cannot be used to update such data.
 
 **Parameters in the WITH clause**
 
@@ -9028,7 +9145,9 @@ CDC source table
 
 **Important**
 
-We recommend that you use fields of the TINYINT(1) data type of MySQL to store only values 0 and 1. When the MySQL database uses the TINYINT(1) data type to store data of the BOOLEAN data type, the MySQL CDC source table maps the TINYINT(1) data type to the BOOLEAN data type of Realtime Compute for Apache Flink. If you use fields of the TINYINT(1) data type of MySQL to store values other than 0 and 1, the data may be inaccurate. Dimension table and sink table
+> We recommend that you use fields of the TINYINT(1) data type of MySQL to store only values 0 and 1. When the MySQL database uses the TINYINT(1) data type to store data of the BOOLEAN data type, the MySQL CDC source table maps the TINYINT(1) data type to the BOOLEAN data type of Realtime Compute for Apache Flink. If you use fields of the TINYINT(1) data type of MySQL to store values other than 0 and 1, the data may be inaccurate.
+
+Dimension table and sink table
 
 | Data type of MySQL | Data type of Realtime Compute for Apache Flink |
 |---|---|
@@ -9262,13 +9381,17 @@ sion to match multiple databases.
 
 `.` ); Elements in the preceding regular expressions: In this example, ^(test).* is used to match a database whose name starts with the specified prefix. This expression can be used to match databases whose names start with test, such as test1 or test2. In this example, .*[p$] is used to match a database whose name ends with the specified suffix. This expression can be used to match databases whose names end with p, such as cdcp or edcp. In this example, txc is used to match the specified database name. This expression can be used to match a database that has a specific name, such as txc. When the MySQL CDC source connector matches a full-path table name, the connector uses the database name and table name to uniquely identify a table. This way, databasename.table-name is used as the pattern to match a table. For example, the (^(test).*| ^(tpc).*| txc |.*[p$]| t{2}).(t[ 5-8]| tt) pattern can match the txc.tt and test2.test5 tables in the database.
 
-**Important**
+> **Important:** Values of table-name and database-name can also be separated by commas (,) to specify multiple tables or databases, such as `'table-name' = 'mytable1,mytable2'` . However, the separator conflicts with the commas (,) in regular expressions. If you use a regular expression that contains commas (,), you must rewrite the regular expression into an equivalent regular expression that contains vertical bars (|). For example, if you use the mytable_\d{1, 2) regular expression, you must rewrite the regular expression into an equivalent regular expression (mytable_\d{1}|mytable_\d{2}) to prevent comma conflicts.
 
-Values of table-name and database-name can also be separated by commas (,) to specify multiple tables or databases, such as `'table-name' = 'mytable1,mytable2'` . However, the separator conflicts with the commas (,) in regular expressions. If you use a regular expression that contains commas (,), you must rewrite the regular expression into an equivalent regular expression that contains vertical bars (|). For example, if you use the mytable_\d{1, 2) regular expression, you must rewrite the regular expression into an equivalent regular expression (mytable_\d{1}|mytable_\d{2}) to prevent comma conflicts. Parallelism control The MySQL CDC source connector can read full data in multiple subtasks at the same time. This improves the efficiency of data loading. If you use the MySQL CDC source connector together with the Autopilot feature that is provided by the VVP of Realtime Compute for Apache Flink, automatic scale-in can be performed during incremental data reading after parallel reading is complete. This helps reduce the computing resources that are consumed. You can configure the Parallelism parameter in Basic mode or Expert mode in the Deployment Starting Configuration - Streaming dialog box in the development console of Realtime Compute for Apache Flink. The setting of the Parallelism parameter varies based on the resource configuration mode. In Basic mode, the Parallelism parameter specifies the global parallelism of all deployments. In Expert mode, you can configure the Parallelism parameter for a specific vertex node based on your business requirements.
+Parallelism control The MySQL CDC source connector can read full data in multiple subtasks at the same time. This improves the efficiency of data loading. If you use the MySQL CDC source connector together with the Autopilot feature that is provided by the VVP of Realtime Compute for Apache Flink, automatic scale-in can be performed during incremental data reading after parallel reading is complete. This helps reduce the computing resources that are consumed. You can configure the Parallelism parameter in Basic mode or Expert mode in the Deployment Starting Configuration - Streaming dialog box in the development console of Realtime Compute for Apache Flink. The setting of the Parallelism parameter varies based on the resource configuration mode. In Basic mode, the Parallelism parameter specifies the global parallelism of all deployments. In Expert mode, you can configure the Parallelism parameter for a specific vertex node based on your business requirements.
 
-**Important**
+> **Important:** When you configure the Parallelism parameter for a deployment in Basic mode or Expert mode, make sure that the range of the server-id parameter declared in the table is greater than or equal to the value of the Parallelism parameter for the deployment. For example, if the range of the server-id parameter is 5404-5412, eight unique server IDs can be used. Therefore, you can configure a maximum of eight parallel subtasks. In addition, the range specified by the server-id parameter for the same MySQL instance in different deployments cannot overlap. Each deployment must be explicitly configured with a unique server ID.
 
-When you configure the Parallelism parameter for a deployment in Basic mode or Expert mode, make sure that the range of the server-id parameter declared in the table is greater than or equal to the value of the Parallelism parameter for the deployment. For example, if the range of the server-id parameter is 5404-5412, eight unique server IDs can be used. Therefore, you can configure a maximum of eight parallel subtasks. In addition, the range specified by the server-id parameter for the same MySQL instance in different deployments cannot overlap. Each deployment must be explicitly configured with a unique server ID. Automatic scale-in by using Autopilot When full data is read, a large amount of historical data is accumulated. In most cases, Realtime Compute for Apache Flink reads historical data in parallel to improve the efficiency of data reading. When incremental data is read, only a single subtask is run because the amount of binary log data is small and the global order must be ensured. The numbers of compute units (CUs) that are required during full data reading and incremental data reading are different. You can use the Autopilot feature to balance performance and resource consumption. Autopilot monitors the traffic for each task that is used by the MySQL CDC source table. If the binary log data is read in only one task and other tasks are idle during incremental data reading, Autopilot automatically reduces the number of CUs and the degree of parallelism. To enable Autopilot, you need to only set the Mode parameter of Autopilot to Active on the Deployments page. By default, the minimum interval at which the degree of parallelism is decreased is 24 hours. Startup mode You can configure the scan.startup.mode parameter to specify the mode in which the MySQL CDC source connector starts to read data from a MySQL database. Valid values: initial: When the MySQL CDC source connector starts for the first time, the connector reads full data in a database table. After the full data reading is complete, the connector switches to the incremental reading mode to read binary log data. This is the default value. earliest-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read accessible binary log data from the earliest offset. latest-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log data from the most recent offset. In this mode, the MySQL CDC source connector can read only data changes after the deployment is started. specific-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log data from the specified offset. You can specify the startup offset by using the name of a binary log file and the binary log file position or by using a GTID set. timestamp: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log events from the specified timestamp. Sample code:
+Automatic scale-in by using Autopilot When full data is read, a large amount of historical data is accumulated. In most cases, Realtime Compute for Apache Flink reads historical data in parallel to improve the efficiency of data reading. When incremental data is read, only a single subtask is run because the amount of binary log data is small and the global order must be ensured. The numbers of compute units (CUs) that are required during full data reading and incremental data reading are different. You can use the Autopilot feature to balance performance and resource consumption. Autopilot monitors the traffic for each task that is used by the MySQL CDC source table. If the binary log data is read in only one task and other tasks are idle during incremental data reading, Autopilot automatically reduces the number of CUs and the degree of parallelism. To enable Autopilot, you need to only set the Mode parameter of Autopilot to Active on the Deployments page.
+
+> **Note:** By default, the minimum interval at which the degree of parallelism is decreased is 24 hours.
+
+Startup mode You can configure the scan.startup.mode parameter to specify the mode in which the MySQL CDC source connector starts to read data from a MySQL database. Valid values: initial: When the MySQL CDC source connector starts for the first time, the connector reads full data in a database table. After the full data reading is complete, the connector switches to the incremental reading mode to read binary log data. This is the default value. earliest-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read accessible binary log data from the earliest offset. latest-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log data from the most recent offset. In this mode, the MySQL CDC source connector can read only data changes after the deployment is started. specific-offset: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log data from the specified offset. You can specify the startup offset by using the name of a binary log file and the binary log file position or by using a GTID set. timestamp: The MySQL CDC source connector skips the savepoint reading phase and starts to read binary log events from the specified timestamp. Sample code:
 
 ```
 CREATE TABLE mysql_source (...) WITH (
@@ -9294,9 +9417,10 @@ amp when the scan.startup.mode parameter is set to timestamp.
 
 `)`
 
-**Important**
+> **Important:** When a checkpoint is created, the MySQL CDC source connector records the current binary log event at the current offset as a log entry of the INFO level. The prefix of the log entry is `Binlog offset on checkpoint {checkpoint-id}` . The log entry can help you start the deployment from a specific checkpoint.
+> If the schema of a table is changed after the table is read, an error may occur when the scan.startup.mode parameter is set to earliest-offset, specific-offset, or timestamp. This is because the Debezium reader saves the latest table schema and earlier data that does not match the table schema cannot be correctly parsed.
 
-When a checkpoint is created, the MySQL CDC source connector records the current binary log event at the current offset as a log entry of the INFO level. The prefix of the log entry is `Binlog offset on checkpoint {checkpoint-id}` . The log entry can help you start the deployment from a specific checkpoint. If the schema of a table is changed after the table is read, an error may occur when the scan.startup.mode parameter is set to earliest-offset, specific-offset, or timestamp. This is because the Debezium reader saves the latest table schema and earlier data that does not match the table schema cannot be correctly parsed. MySQL CDC source tables that do not have a primary key In Realtime Compute for Apache Flink that uses VVR 6.0.7 or later, you can use MySQL CDC source tables that do not have a primary key. To use a MySQL CDC source table that does not have a primary key, you must configure the scan.incremental.snapshot.chunk.key-column parameter and specify only non-null fields. The processing semantics of a MySQL CDC source table that does not have a primary key is determined based on the behavior of the columns that are specified by the scan.incremental.snapshot.chunk.key-column parameter. If no update operation is performed on the specified columns, the exactly-once semantics are ensured. If the update operation is performed on the specified columns, only the at-least-once semantics are ensured. However, you can specify the downstream primary key and perform the idempotence operation to ensure data correctness. Reading of backup binary log files from ApsaraDB RDS for MySQL The MySQL CDC source connector supports the reading of backup binary log files from ApsaraDB RDS for MySQL. This operation is suitable for scenarios in which full data reading takes a long period of time, local binary log files are automatically deleted, and the backup binary log files that are automatically or manually uploaded are available. Sample code:
+MySQL CDC source tables that do not have a primary key In Realtime Compute for Apache Flink that uses VVR 6.0.7 or later, you can use MySQL CDC source tables that do not have a primary key. To use a MySQL CDC source table that does not have a primary key, you must configure the scan.incremental.snapshot.chunk.key-column parameter and specify only non-null fields. The processing semantics of a MySQL CDC source table that does not have a primary key is determined based on the behavior of the columns that are specified by the scan.incremental.snapshot.chunk.key-column parameter. If no update operation is performed on the specified columns, the exactly-once semantics are ensured. If the update operation is performed on the specified columns, only the at-least-once semantics are ensured. However, you can specify the downstream primary key and perform the idempotence operation to ensure data correctness. Reading of backup binary log files from ApsaraDB RDS for MySQL The MySQL CDC source connector supports the reading of backup binary log files from ApsaraDB RDS for MySQL. This operation is suitable for scenarios in which full data reading takes a long period of time, local binary log files are automatically deleted, and the backup binary log files that are automatically or manually uploaded are available. Sample code:
 
 ```
 CREATE TABLE mysql_source (...) WITH (
@@ -9326,9 +9450,9 @@ o parse events in binlog files.
 
 **MySQL CDC DataStream API**
 
-**Important**
+> **Important:** If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink.
 
-If you use DataStream to read and write data, you must use a DataStream connector to connect to Realtime Compute for Apache Flink. Create a DataStream API program and use the MySqlSource class. Sample code:
+Create a DataStream API program and use the MySqlSource class. Sample code:
 
 ```java
 import org.apache.flink.api.common.eventtime.WatermarkStrategy; import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment; import com.ververica.cdc.debezium.JsonDebeziumDeserializationSchema; import com.ververica.cdc.connectors.mysql.source.MySqlSource; public class MySqlSourceExample {
@@ -9550,7 +9674,10 @@ After you develop a draft and deploy the draft as a deployment, you must start t
 
 **Limits**
 
-You can specify startup options for only streaming deployments. ement Only the Simple Log Service (SLS)and ApsaraMQ for Kafka source table connectors allow you to configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box. The Specify source's start time (SLS/Kafka) parameter that is configured in the Start Job dialog box takes precedence over the startTime parameter that is configured in the DDL code of a draft. If you configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box and the startTime parameter in the DDL code, the configuration of the Specify source's start time (SLS/Kafka) parameter takes effect. Not all connector types support the startTime parameter. For more information about whether the parameters in the WITH clause for each type of connector include the startTime parameter, see the related topic of the specific type of connector. The startTime parameter takes effect only if a new deployment is started and the startTime parameter is configured. If you start a deployment based on a checkpoint or savepoint, the startTime parameter does not take effect even if this parameter is configured.
+You can specify startup options for only streaming deployments. ement Only the Simple Log Service (SLS)and ApsaraMQ for Kafka source table connectors allow you to configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box. The Specify source's start time (SLS/Kafka) parameter that is configured in the Start Job dialog box takes precedence over the startTime parameter that is configured in the DDL code of a draft. If you configure the Specify source's start time (SLS/Kafka) parameter in the Start Job dialog box and the startTime parameter in the DDL code, the configuration of the Specify source's start time (SLS/Kafka) parameter takes effect.
+
+> **Note:** Not all connector types support the startTime parameter. For more information about whether the parameters in the WITH clause for each type of connector include the startTime parameter, see the related topic of the specific type of connector.
+> The startTime parameter takes effect only if a new deployment is started and the startTime parameter is configured. If you start a deployment based on a checkpoint or savepoint, the startTime parameter does not take effect even if this parameter is configured.
 
 **Usage notes**
 
@@ -9590,7 +9717,9 @@ If you modify the SQL logic, change the deployment version, add or delete parame
 
 **Usage notes**
 
-If you restart a deployment that is canceled, you can select Start without state for Start Method and specify Start Time for Reading Data. You can also resume a deployment from the savepoint that you select. For more information about the configuration, see Start a deployment. If the state of the savepoint that is used to resume the deployment is not supported because you modify the deployment configurations, such as changing the SQL logic, the deployment can only be started without state.
+If you restart a deployment that is canceled, you can select Start without state for Start Method and specify Start Time for Reading Data. You can also resume a deployment from the savepoint that you select. For more information about the configuration, see Start a deployment.
+
+> **Note:** If the state of the savepoint that is used to resume the deployment is not supported because you modify the deployment configurations, such as changing the SQL logic, the deployment can only be started without state.
 
 **Procedure**
 
@@ -9656,7 +9785,10 @@ ement You can upload the UDF JAR file in one of the following ways:
 **Upload File**: Next to the **Select File** option, click **Select File** and select the UDF artifact
 file. If there are dependency files, click **Select File** next to the **Dependency File** option and select the dependency files.
 **External URL**: Enter the external URL of the file.
-The Realtime Compute for Apache Flink console parses your JAR file, automatically detects classes that implement Flink UDF, UDAF, and UDTF interfaces, and fills the Function Name field with the class names. For Java UDFs, you can package dependencies into the UDF JAR file or upload them separately as a dependency file. For Python UDFs, we recommend uploading dependencies as a separate dependency file. When a custom function's artifact file or its dependency files are large, you can upload them by using an external URL. Note that if the external URL is an OSS bucket address, the dependency files must be located in the `sql-artifacts/namespaces/{namespace}` directory. The bucket must have at least public read access. The URL must use the HTTP protocol and cannot contain encoded characters.
+The Realtime Compute for Apache Flink console parses your JAR file, automatically detects classes that implement Flink UDF, UDAF, and UDTF interfaces, and fills the Function Name field with the class names. For Java UDFs, you can package dependencies into the UDF JAR file or upload them separately as a dependency file. For Python UDFs, we recommend uploading dependencies as a separate dependency file. When a custom function's artifact file or its dependency files are large, you can upload them by using an external URL. Note that if the external URL is an OSS bucket address, the dependency files must be located in the `sql-artifacts/namespaces/{namespace}` directory.
+
+> **Note:** The bucket must have at least public read access. The URL must use the HTTP protocol and cannot contain encoded characters.
+
 5. In the **Manage Functions** dialog box, verify the function information and click **Create**
 **Function**.
 ement After the function is registered, the dialog box displays information about the **Registered**
@@ -9682,9 +9814,9 @@ You can upload the updated JAR file in one of the following ways:
 file. If there are dependency files, click **Select File** next to the **Dependency File** option and select the dependency files.
 **External URL**: Enter the external URL of the file.
 
-**Important**
+> **Important:** The new JAR file that you upload must contain the classes for all currently registered UDFs. You cannot remove the class of a UDF during an update.
+> The new UDF JAR file takes effect only when you restart a job or submit a new one. Running jobs continue to use the old JAR file until they are restarted.
 
-The new JAR file that you upload must contain the classes for all currently registered UDFs. You cannot remove the class of a UDF during an update. The new UDF JAR file takes effect only when you restart a job or submit a new one. Running jobs continue to use the old JAR file until they are restarted.
 3. Click **Modify**.
 
 **Delete a user-defined function**
@@ -9692,7 +9824,10 @@ The new JAR file that you upload must contain the classes for all currently regi
 If a JAR file is no longer needed, you can delete it.
 1. In the left-side navigation pane, click **SQL Development**.
 2. On the **Functions** tab, hover over the name of the target JAR file and click the
-icon. Before you delete a JAR file, make sure that no jobs or SQL files reference any UDFs registered from it.
+icon.
+
+> **Note:** Before you delete a JAR file, make sure that no jobs or SQL files reference any UDFs registered from it.
+
 3. Select the **Delete the associated file** checkbox.
 Deleting the UDF JAR file also deletes all UDFs registered from it. This action is required to prevent orphaned data and references.
 4. Click **OK**.
@@ -9738,7 +9873,9 @@ After you create an Apache Paimon catalog, a database named `default` is automat
 
 **Important**
 
-ement You cannot drop the default database from an Apache Paimon DLF catalog, an Apache Paimon MaxCompute catalog, or an Apache Paimon Sync catalog. You can only drop the default database from an Apache Paimon Filesystem catalog.
+ement
+
+> You cannot drop the default database from an Apache Paimon DLF catalog, an Apache Paimon MaxCompute catalog, or an Apache Paimon Sync catalog. You can only drop the default database from an Apache Paimon Filesystem catalog.
 
 ```
 -- Replace my-catalog with the name of the actual Apache Paimon catalog. USE CATALOG `my-catalog`; -- Replace my_db with the name of the database that you want to drop. DROP DATABASE 'my_db'; -- Drop an empty database. DROP DATABASE `my_db` CASCADE; -- Drop the database and all the associated tables.
@@ -9746,7 +9883,9 @@ ement You cannot drop the default database from an Apache Paimon DLF catalog, an
 
 **View or delete an Apache Paimon catalog**
 
-On the **Catalogs** page, view or delete an Apache Paimon catalog. View an Apache Paimon catalog: In the **Catalog List** section, find the catalog that you want to manage and view the information in the **Name** and **Type** columns. To view the databases and tables in the catalog, click **View** in the Actions column. Delete an Apache Paimon catalog: In the **Catalog List** section, find the catalog that you want to manage and click **Delete** in the **Actions** column. You can also delete an Apache Paimon catalog by executing the `DROP CATALOG <catalog` name>; command on the SQL Editor page. After the Apache Paimon catalog is deleted, only the catalog information on the Catalogs page in the Flink namespace is deleted. The data files of the Apache Paimon tables are retained. After the Apache Paimon catalog is deleted, you can re-create the Apache Paimon catalog by executing an SQL statement. Then, you can use the Apache Paimon tables in the catalog again.
+On the **Catalogs** page, view or delete an Apache Paimon catalog. View an Apache Paimon catalog: In the **Catalog List** section, find the catalog that you want to manage and view the information in the **Name** and **Type** columns. To view the databases and tables in the catalog, click **View** in the Actions column. Delete an Apache Paimon catalog: In the **Catalog List** section, find the catalog that you want to manage and click **Delete** in the **Actions** column. You can also delete an Apache Paimon catalog by executing the `DROP CATALOG <catalog` name>; command on the SQL Editor page.
+
+> **Note:** After the Apache Paimon catalog is deleted, only the catalog information on the Catalogs page in the Flink namespace is deleted. The data files of the Apache Paimon tables are retained. After the Apache Paimon catalog is deleted, you can re-create the Apache Paimon catalog by executing an SQL statement. Then, you can use the Apache Paimon tables in the catalog again.
 
 #### 6.3.3 Manage Hologres catalogs
 
@@ -9804,7 +9943,9 @@ After you create a Hologres catalog, you can perform the following operations to
 4. In the top navigation bar, switch to the Hologres catalog that you want to view. In this
 example, the Hologres catalog named holo is used.
 5. View the databases, tables, and functions in the Hologres catalog.
-ement If the public schema is used, the schema prefix is not added to a table name. In this case, only the table name is used.
+ement
+
+> **Note:** If the public schema is used, the schema prefix is not added to a table name. In this case, only the table name is used.
 
 **Use a Hologres catalog**
 
@@ -9826,7 +9967,12 @@ CREATE TABLE `${catalog_name}`.`${db_name}`.`${schema_name.table_name}` (
   'connector' = 'hologres'
 ```
 
-); When you create a table for a registered Hologres service, you must set the connector parameter to hologres in the WITH clause. Other parameters, such as endpoint, are optional. You are not allowed to directly add or modify parameters in the WITH clause for a Hologres table. You can use SQL hints to add or modify the parameters in the WITH clause in the INSERT statement. Read data from a Hologres table.
+);
+
+> **Note:** When you create a table for a registered Hologres service, you must set the connector parameter to hologres in the WITH clause. Other parameters, such as endpoint, are optional.
+> You are not allowed to directly add or modify parameters in the WITH clause for a Hologres table. You can use SQL hints to add or modify the parameters in the WITH clause in the INSERT statement.
+
+Read data from a Hologres table.
 
 ```
 INSERT INTO ${other_sink_table} SELECT ... FROM `${catalog_name}`.`${db_name}`.`${schema_name.table_name}`
@@ -9838,9 +9984,7 @@ Insert result data into a Hologres table.
 INSERT INTO `${catalog_name}`.`${db_name}`.`${schema_name.table_name}` SELECT ... FROM ${other_source_table}
 ```
 
-If the public schema is used, ${table_name} is used instead of
-**${schema_name.table_name}**. This is because the schema prefix is not added to the
-table name in this case.
+> **Note:** If the public schema is used, ${table_name} is used instead of **${schema_name.table_name}**. This is because the schema prefix is not added to the table name in this case.
 
 **Drop a Hologres catalog**
 
@@ -9854,7 +9998,11 @@ select SQ from the Type drop-down list.
 DROP CATALOG ${catalog_name}
 ```
 
-catalog_name is the name of the Hologres catalog that you want to drop from the development console of Realtime Compute for Apache Flink. The drop operation does not affect the deployments that are running. However, deployments that are not published or deployments that you want to suspend and then resume are affected. Proceed with caution. ement
+catalog_name is the name of the Hologres catalog that you want to drop from the development console of Realtime Compute for Apache Flink.
+
+> **Note:** The drop operation does not affect the deployments that are running. However, deployments that are not published or deployments that you want to suspend and then resume are affected. Proceed with caution.
+
+ement
 5. Click **Execute**.
 6. On the left side of the Draft Editor page, click the **Schemas** tab.
 7. Click the
@@ -9874,7 +10022,11 @@ You have created a MySQL instance and obtained its basic information. Network in
 
 **Limits**
 
-You cannot modify the configuration of a catalog after creation. To modify the configuration, delete the catalog and create another one. You can query only existing databases and tables, and cannot use Realtime Compute for Apache Flink to create databases or tables. When using a table as a source table, you can read data in streaming mode but not in batch mode. If you use a table provided by a MySQL catalog as a MySQL CDC source table, you must enable Binlog and other configurations on your ApsaraDB RDS for MySQL, PolarDB for MySQL, or self-managed MySQL instance. ement The system cannot identify tables whose CREATE TABLE statements contain PolarDBspecific syntax.
+You cannot modify the configuration of a catalog after creation. To modify the configuration, delete the catalog and create another one. You can query only existing databases and tables, and cannot use Realtime Compute for Apache Flink to create databases or tables. When using a table as a source table, you can read data in streaming mode but not in batch mode.
+
+> **Note:** If you use a table provided by a MySQL catalog as a MySQL CDC source table, you must enable Binlog and other configurations on your ApsaraDB RDS for MySQL, PolarDB for MySQL, or self-managed MySQL instance.
+
+ement The system cannot identify tables whose CREATE TABLE statements contain PolarDBspecific syntax.
 
 ```
 Example: PARTITION BY KEY(`idempotent_id`) PARTITIONS 16, UNIQUE KEY `uk_order_id` (`order_id`).
@@ -9961,9 +10113,7 @@ Under **Catalog List** of the **Catalogs** page, you can perform the following o
 **View**: Click **View** in the **Actions** column corresponding to the target catalog name to view
 database and table information under the catalog. Click **Delete** in the **Actions** column corresponding to the target catalog name. In the deletion dialog box, click **Delete**.
 
-**Important**
-
-The deletion operation removes only the created catalog and does not delete these tables in the corresponding service. Running deployments that use tables under this catalog are unaffected after deletion, but an error occurs (table not found) when redeploying or restarting them. Proceed with caution.
+> **Important:** The deletion operation removes only the created catalog and does not delete these tables in the corresponding service. Running deployments that use tables under this catalog are unaffected after deletion, but an error occurs (table not found) when redeploying or restarting them. Proceed with caution.
 
 **SQL commands**
 
@@ -9975,9 +10125,8 @@ The deletion operation removes only the created catalog and does not delete thes
 
 ement
 
-**Important**
+> **Important:** The deletion operation removes only the created catalog and does not delete these tables in the corresponding service. Running deployments that use tables under this catalog are unaffected after deletion, but an error occurs (table not found) when redeploying or restarting them. Proceed with caution.
 
-The deletion operation removes only the created catalog and does not delete these tables in the corresponding service. Running deployments that use tables under this catalog are unaffected after deletion, but an error occurs (table not found) when redeploying or restarting them. Proceed with caution.
 2. Select the corresponding command and click **Run**.
 
 **Use a MySQL catalog**
@@ -10004,7 +10153,9 @@ The logical tables of sharded databases and tables return two additional system 
 
 **schema changes in real time**
 
-ement Before synchronization, confirm the upstream and downstream storage supported by CTAS and CDAS. For example, MongoDB cannot be used as a sink table. An error occurs
+ement
+
+> **Note:** Before synchronization, confirm the upstream and downstream storage supported by CTAS and CDAS. For example, MongoDB cannot be used as a sink table. An error occurs
 
 |   | CREATE TABLE ... AS TABLE ... statement requires target catalog |
 |---|---|
@@ -10034,7 +10185,10 @@ Session clusters are applicable only to testing. Do not use session clusters in 
 
 **Background information**
 
-Realtime Compute for Apache Flink supports per-job clusters and session clusters. The two types of clusters have the following differences: ement Per-job clusters: This is the default cluster type. Each deployment requires an independent JobManager to implement resource isolation between deployments. The resource utilization of JobManagers for deployments that involve a small amount of data is low. Therefore, this type of cluster is suitable for deployments that consume a large number of resources or deployments that run in a continuous and stable manner. Session clusters: This type of cluster allows multiple deployments to use the same JobManager, which increases the resource utilization of the JobManager. This type of cluster is suitable for deployments that consume only a few resources or deployments that frequently start and stop. This effectively reduces resource costs. Session clusters do not support the autopilot feature. When you create a session cluster, the cluster resources are consumed regardless of whether you use the session cluster. The resource consumption is based on the configurations that you select when you create the cluster.
+Realtime Compute for Apache Flink supports per-job clusters and session clusters. The two types of clusters have the following differences: ement Per-job clusters: This is the default cluster type. Each deployment requires an independent JobManager to implement resource isolation between deployments. The resource utilization of JobManagers for deployments that involve a small amount of data is low. Therefore, this type of cluster is suitable for deployments that consume a large number of resources or deployments that run in a continuous and stable manner. Session clusters: This type of cluster allows multiple deployments to use the same JobManager, which increases the resource utilization of the JobManager. This type of cluster is suitable for deployments that consume only a few resources or deployments that frequently start and stop. This effectively reduces resource costs.
+
+> **Note:** Session clusters do not support the autopilot feature.
+> When you create a session cluster, the cluster resources are consumed regardless of whether you use the session cluster. The resource consumption is based on the configurations that you select when you create the cluster.
 
 **Limits**
 
@@ -10134,9 +10288,8 @@ ement
 **Member Information**: In the upper-right corner of the Apsara Uni-manager
 Management Console, click the profile picture of the current user to view the **UID**.
 
-**Important**
+> **Important:** A member that has already been added cannot be added again.
 
-A member that has already been added cannot be added again.
 3. Click **OK**.
 
 | the role in the | Actions | column. |
@@ -10238,7 +10391,9 @@ View Job Manager logs On the **Job Manager** tab, click **Logs**. View Task Mana
 **deployment details** page by default.
 2. In the **Actions** row of the **Status** tab, click **Flink UI** to enter the **Overview** page of
 **Apache Flink Dashboard**.
-The **Flink UI** entry appears only when the deployment state is **RUNNING**.
+
+> **Note:** The **Flink UI** entry appears only when the deployment state is **RUNNING**.
+
 3. In the left-side navigation pane, click **Task Managers** or **Job Manager**.
 After you click **Task Managers**, click the target **Path, ID**. On the **Logs** tab, view the Task Manager logs of the deployment. After you click **Job Manager**, on the **Logs** tab, view the Job Manager logs of the deployment.
 
@@ -10272,7 +10427,8 @@ Logs support pagination. Each page displays 1 MB of data, approximately 8,000–
 i. Log in to the Realtime Compute for Apache Flink console. ii. On the **Deployments** page, click the name of the target deployment to enter the
 **deployment details** page by default.
 2. On the **Logs** tab, select the **JM Exceptions** tab on the left to view Job Manager exceptions.
-In the **Exception History** section, you can view exceptions generated within the last seven days and filter by exception type to view history exceptions.
+
+> **Note:** In the **Exception History** section, you can view exceptions generated within the last seven days and filter by exception type to view history exceptions.
 
 **View logs of failed Task Managers**
 
@@ -10306,7 +10462,9 @@ To view historical deployment instance logs, you must enable log archiving in th
 
 **Notes**
 
-When a log file reaches the specified size, the system automatically archives the log by default and periodically deletes log files that exceed the archive retention period. After a deployment stops, uncleaned archived logs are retained and not automatically deleted. If you delete a deployment, its corresponding logs are also deleted. By default, the log configuration retains two files, each 5 MB in size. We recommend that you do not modify this value. ement The number of files shown in the image does not include the file currently being written. For example, if you configure this parameter as 1, the system saves up to two files: one in memory and one on your local disk.
+When a log file reaches the specified size, the system automatically archives the log by default and periodically deletes log files that exceed the archive retention period. After a deployment stops, uncleaned archived logs are retained and not automatically deleted. If you delete a deployment, its corresponding logs are also deleted. By default, the log configuration retains two files, each 5 MB in size. We recommend that you do not modify this value. ement
+
+> **Note:** The number of files shown in the image does not include the file currently being written. For example, if you configure this parameter as 1, the system saves up to two files: one in memory and one on your local disk.
 
 **View logs on the deployment log page**
 
@@ -10390,8 +10548,8 @@ Apsara Copilot - Hosting mode The Apsara Copilot in Hosting mode is an out-of-th
 
 **Apsara Copilot - Hosting mode**
 
-Before using Apsara Copilot in Hosting mode, refer to the **Apsara Uni-manager**
-**Management Console > Apsara Copilot User Guide** to enable Apsara Copilot.
+> **Note:** Before using Apsara Copilot in Hosting mode, refer to the **Apsara Uni-manager** **Management Console > Apsara Copilot User Guide** to enable Apsara Copilot.
+
 1. Procedure.
 2. View the preset MCP list provided by the system.
 In the left-side navigation pane, select **AI Hub > AI-Native API: MCP Service** to view the system's preset MCP list. The current preset tools are as follows:

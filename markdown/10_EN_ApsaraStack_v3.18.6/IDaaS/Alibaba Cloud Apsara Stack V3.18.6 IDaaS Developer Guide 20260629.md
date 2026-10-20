@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 555
 source_pdf: "9b5d932a8bc571d5_Alibaba Cloud Apsara Stack V3.18.6 IDaaS Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # IDaaS Developer Guide 20260629
@@ -12237,9 +12237,9 @@ Queries the synchronization scope of an application in an instance.
 
 **Usage notes**
 
-**Note**
+> **Note:** You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
 
-You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default. Debug
+Debug
 
 **Debugging**
 
@@ -12412,9 +12412,7 @@ PATCH /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId
 
 This operation does not return any operation-specific parameters.
 
-**Note**
-
-If the request was successful, the HTTP status code 200 is returned by default.
+> **Note:** If the request was successful, the HTTP status code 200 is returned by default.
 
 **Examples**
 
@@ -14393,10 +14391,7 @@ This topic describes how to use the Open ID Connect (OIDC) authorization code mo
 
 IDaaS uses the authorization code mechanism based on the standard OIDC protocol to implement SSO for custom applications of enterprises. Social identity providers (IdPs) such as DingTalk and WeChat use the Open Authorization (OAuth) protocol to implement QR codebased login. The OIDC protocol used by IDaaS is an upgraded version of the OAuth protocol.
 
-**Note**
-
-**Compatibility with OAuth**: The OIDC 1.0 protocol creates a user identity layer on top of
-the OAuth2.0 protocol. Therefore, the OIDC protocol is compatible with the OAuth2.0 protocol. The OIDC authorization code mechanism is similar to the OAuth2.0 authorization code mechanism. The difference is that when the OIDC authorization code mechanism is used, the user information endpoint is standardized, and the ID token of a user is returned from the token endpoint.
+> **Note:** **Compatibility with OAuth**: The OIDC 1.0 protocol creates a user identity layer on top of the OAuth2.0 protocol. Therefore, the OIDC protocol is compatible with the OAuth2.0 protocol. The OIDC authorization code mechanism is similar to the OAuth2.0 authorization code mechanism. The difference is that when the OIDC authorization code mechanism is used, the user information endpoint is standardized, and the ID token of a user is returned from the token endpoint.
 
 **How the authorization code mechanism works**
 
@@ -14474,9 +14469,8 @@ Sample response:
 
 The user is logged in to the application. You can use one of the following methods to obtain more identity information about the logged-in user and create the application-side login state: i. Use the id_token in the response to obtain the user ID after verification. ii. Use the access_token in the response to send a request to the IDaaS user endpoint to obtain the information of the logged-in user. For more information, see the following section.
 
-**Important**
+> **Important:** The scope of user data you can obtain is specified by the scope parameter in the request sent to the authorization endpoint in Step 1.
 
-The scope of user data you can obtain is specified by the scope parameter in the request sent to the authorization endpoint in Step 1.
 5. **Parse id_token by using a program**
 An `id_token` is a signature token in JSON Web Token (JWT) format that contains the user identity information. The id_token issued by IDaaS contains user data that is visible in plaintext after decryption and the signature. You can copy the complete content of `id_token` to the website JWT decryption website to better understand the content. Sample content: elf-managed applications
 
@@ -14587,9 +14581,9 @@ signKeyId);
         return jwtConsumerBuilder.build();
 ```
 
-**Important**
+> **Important:** Replace the issuer, appId, jwkJson, and jwt field values in the code with the actual information that is obtained from EIAM.
 
-Replace the issuer, appId, jwkJson, and jwt field values in the code with the actual information that is obtained from EIAM. Sample output:
+Sample output:
 
 ```
 JWT Claims Set:{sub=user_dt6kj6yf64cf4wjaknpbxjcwuu,
@@ -14617,9 +14611,7 @@ GET /v2/<instance_id>/<app_id>/oauth2/userinfo HTTP/1.0 Host: eiam-api-cn-hangzh
     "updated_at": 1653899948
 ```
 
-**Note**
-
-The characters returned by the UserInfo endpoint are consistent with the parameters in id_token. This indicates that the parameters configured in extended id_token are also returned from the UserInfo endpoint.
+> **Note:** The characters returned by the UserInfo endpoint are consistent with the parameters in id_token. This indicates that the parameters configured in extended id_token are also returned from the UserInfo endpoint.
 
 **Advanced settings**
 
@@ -14829,9 +14821,7 @@ following parameters: elf-managed applications
 proxy_set_header Host $host; proxy_set_header X-Forwarded-Proto https;
 ```
 
-**Note**
-
-If you use other proxy services or software, you need to check the configuration. Make sure that the correct HTTP headers `Host` and `X-forwarded-Proto` are specified in the request sent to Spring Boot.
+> **Note:** If you use other proxy services or software, you need to check the configuration. Make sure that the correct HTTP headers `Host` and `X-forwarded-Proto` are specified in the request sent to Spring Boot.
 
 **References**
 
@@ -15099,9 +15089,9 @@ IDaaS passes the complete account or organization information for all account an
 
 This event tests the connectivity based on the configuration information and validates the signature verification and encryption capabilities. elf-managed applications This event is a separate event type. Event code: urn:alibaba:idaas:app:event:common:test.
 
-**Note**
+> **Note:** This event can be triggered only by performing a test with one click in the IDaaS console. You cannot trigger the event by calling an API operation.
 
-This event can be triggered only by performing a test with one click in the IDaaS console. You cannot trigger the event by calling an API operation. The following code shows the `payload` part of a sample request after signature verification:
+The following code shows the `payload` part of a sample request after signature verification:
 
 ```json
   "iss": "urn:alibaba:idaas:app:event",
@@ -15257,11 +15247,8 @@ You can subscribe to this event in scenarios where an administrator needs to res
 
 **Important**
 
-Note: When you subscribe to this event, you must specify the synchronization scope for the event to take effect. Otherwise, changes are not synchronized to the applications. For more information about how to configure application synchronization, see
+> **Note:** When you subscribe to this event, you must specify the synchronization scope for the event to take effect. Otherwise, changes are not synchronized to the applications. For more information about how to configure application synchronization, see **Applications > Application Management > Synchronize accounts - IDaaS** **event callback**.
 
-**Applications > Application Management > Synchronize accounts - IDaaS**
-
-**event callback**.
 Event code: urn:alibaba:idaas:app:event:ud:user:update_password. For an example of parsed `bizData` , see the "Create an account" section of this topic.
 5. **Enable an account**
 You can subscribe to this event to change the status of an account from disabled to enabled. Event code: urn:alibaba:idaas:app:event:ud:user:enable. For an example of parsed `bizData` , see the "Create an account" section of this topic.
@@ -15636,9 +15623,9 @@ management page in the Identity as a Service (IDaaS) console. ii. **Access token
 
 **Important**
 
-elf-managed applications When you call an SCIM 2.0 operation, replace `{BaseUrl}` with the value of **SCIM Base**
-**URL** in the application of an EIAM instance and replace `<BearerToken>` with a valid SCIM
-bearer token.
+elf-managed applications
+
+> When you call an SCIM 2.0 operation, replace `{BaseUrl}` with the value of **SCIM Base** **URL** in the application of an EIAM instance and replace `<BearerToken>` with a valid SCIM bearer token.
 
 | Category | SCIM 2.0 operation | Supported | Description |
 |---|---|---|---|
@@ -17452,7 +17439,7 @@ You must obtain an access token before you can call most of the API operations i
 
 **Note**
 
-Note: Unlike Alibaba Cloud API operations, the Developer API operations provided by IDaaS rely on the secrets of applications in IDaaS for authentication, and users are granted permissions to call operations on the IDaaS API tab. Developer API permissions are not based on Resource Access Management (RAM).
+> **Note:** Unlike Alibaba Cloud API operations, the Developer API operations provided by IDaaS rely on the secrets of applications in IDaaS for authentication, and users are granted permissions to call operations on the IDaaS API tab. Developer API permissions are not based on Resource Access Management (RAM).
 
 **Sample code and debugging**
 

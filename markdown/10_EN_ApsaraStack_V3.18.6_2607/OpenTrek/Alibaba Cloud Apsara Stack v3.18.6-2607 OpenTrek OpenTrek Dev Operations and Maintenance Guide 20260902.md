@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 82
 source_pdf: "1d31861317b4e528_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260902
@@ -820,7 +820,8 @@ d01.inter.env17e.shuguang.com/aipaas_test/data-mixer-operators:2.1.1-hotx.3-gpu-
 
 **Custom images**
 
-Note: You must manually add a version for uploaded images.
+> **Note:** You must manually add a version for uploaded images.
+
 
 ###### 4.2.2.1.2 Create an AI gateway
 
@@ -1156,7 +1157,8 @@ skopeo copy oci-archive:sfm-kn-workflow_2.1.0-hotx.1.oci docker://__your_repo_en
 ```
 
 3. . Update the image**
-Note: Back up the original configurations. Sample command: `kubectl get pod -n sfm data-`
+> **Note:** Back up the original configurations. Sample command: `kubectl get pod -n sfm data-`
+
 
 ```
 engine-workflow -o yaml > data-engien-workflow_deploy.yaml.bak

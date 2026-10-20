@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 12
 source_pdf: "5b9ce7cb948aae9e_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience Cloud Platform Backup and O&M Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%B9%B3%E5%8F%B0%E5%A4%87%E4%BB%BD/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20Cloud%20Platform%20Backup%20and%20O%26M%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience Cloud Platform Backup and O&M Guide 20260701

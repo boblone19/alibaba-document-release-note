@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 96
 source_pdf: "359c45cf393a9b1e_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Geo-disaster Operations and Maint"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%82%E5%9C%B0%E5%AE%B9%E7%81%BEASRDR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Apsara Stack Resilience ASR for Geo-disaster Operations and Maintenance Guide
@@ -100,9 +100,7 @@ This manual is designed to help O&M personnel perform preventive maintenance on 
 
 The O&M personnel must possess skills and knowledge related to the information technology industry, including computer networking, computer operation, problem analysis, and troubleshooting. The O&M personnel must pass the pre-job training and understand the Apsara Stack system. The required knowledge for the system includes system principles, networking, features, and the usage of maintenance tools.
 
-**Important**
-
-The O&M personnel must comply with operation procedures during maintenance to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
+> **Important:** The O&M personnel must comply with operation procedures during maintenance to ensure personal safety and system security. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
 
 **Precautions**
 
@@ -140,7 +138,9 @@ This topic describes the O&M operations that can be performed by different roles
 
 #### 2.1.1 Log on to the ASR console
 
-Apsara Stack Resilience (ASR) for Zone-disaster Recovery provides three logon methods for various scenarios, including routine O&M, disaster recovery escape, and tenant operations. In this document, the Zone-disaster Recovery Management Platform ASR is referred to as the ASR console.
+Apsara Stack Resilience (ASR) for Zone-disaster Recovery provides three logon methods for various scenarios, including routine O&M, disaster recovery escape, and tenant operations.
+
+> **Note:** In this document, the Zone-disaster Recovery Management Platform ASR is referred to as the ASR console.
 
 **Prerequisites**
 
@@ -148,31 +148,54 @@ To log on from the Apsara Uni-manager Operations Console, you have obtained the 
 
 **Log on to the Unified O&M platform**
 
-The view that is rendered after you log on to the ASR console for zone-disaster recovery varies based on the permissions configured for your user account in the Apsara Unimanager Operations Console. If a user account has multiple permissions, the menu items for all corresponding roles are displayed. If a user is granted only the disaster recovery monitoring permission in the Apsara Uni-manager Operations Console, the Monitoring Center menu item in O&M mode and the Platform Monitoring and Overview menu items in normal mode are displayed. If a user is granted only the disaster recovery drill permission in the Apsara Unimanager Operations Console, the menu items for the normal mode view and the Monitoring Center menu item for the O&M mode view are displayed. If a user is granted only the disaster recovery O&M permission in the Apsara Unimanager Operations Console, only the feature modules for the O&M mode view are displayed, and you cannot switch to the normal mode view. If a user is granted both the disaster recovery monitoring and disaster recovery O&M permissions, or is granted the system administrator permission in the Apsara Uni-manager Operations Console, the features for both normal and O&M modes are displayed, and you can switch between them.
+> **Note:** The view that is rendered after you log on to the ASR console for zone-disaster recovery varies based on the permissions configured for your user account in the Apsara Uni- manager Operations Console. If a user account has multiple permissions, the menu items for all corresponding roles are displayed.
+> If a user is granted only the disaster recovery monitoring permission in the Apsara Uni-manager Operations Console, the Monitoring Center menu item in O&M mode and the Platform Monitoring and Overview menu items in normal mode are displayed.
+> If a user is granted only the disaster recovery drill permission in the Apsara Uni- manager Operations Console, the menu items for the normal mode view and the Monitoring Center menu item for the O&M mode view are displayed.
+> If a user is granted only the disaster recovery O&M permission in the Apsara Uni- manager Operations Console, only the feature modules for the O&M mode view are displayed, and you cannot switch to the normal mode view.
+> If a user is granted both the disaster recovery monitoring and disaster recovery O&M permissions, or is granted the system administrator permission in the Apsara Uni-manager Operations Console, the features for both normal and O&M modes are displayed, and you can switch between them.
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Platform Operation > Disaster recovery**
 **management > ASR for Zone-Disaster Recovery**.
 6. Click
 at the top of the navigation pane on the left to switch between the primary and secondary data centers.
 7. (Optional) In the navigation pane on the left, click Normal Mode or O&M Mode to switch
-between views. To switch views, you must have the disaster recovery monitoring, disaster recovery drill, or system administrator permission.
+between views.
+
+> **Note:** To switch views, you must have the disaster recovery monitoring, disaster recovery drill, or system administrator permission.
 
 **Disaster recovery escape logon**
 
-**Important**
+> **Important:** By default, the disaster recovery escape logon feature is disabled. To use this logon method, you must first enable the feature and set a logon password. For more information, see Manage escape logon.
 
-By default, the disaster recovery escape logon feature is disabled. To use this logon method, you must first enable the feature and set a logon password. For more information, see Manage escape logon.
 1. In your browser's address bar, enter the Zone-Disaster Recovery Management Platform ASR
-endpoint and press Enter. If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login. You can click the language drop-down list in the upper-right corner to switch the language. Simplified Chinese and English are supported.
+endpoint and press Enter. If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login.
+
+> **Note:** You can click the language drop-down list in the upper-right corner to switch the language. Simplified Chinese and English are supported.
+
 2. Enter your username and password.
-Obtain the username and password to log on to the ASR console from the deployment personnel or an administrator.
+
+> **Note:** Obtain the username and password to log on to the ASR console from the deployment personnel or an administrator.
+
 3. Click **Log on**.
 4. In the top navigation bar, click Normal Mode or O&M Mode to switch between views.
 5. In the top navigation bar, click a data center to open the corresponding data center page.
@@ -188,17 +211,17 @@ press the Enter key.
 2. On the login page, enter your username and password.
 You can obtain the username and password that are used to log in to the Apsara Unimanager Management Console from the operations administrator.
 
-**First login**
+> **Note:** **First login**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forgotten password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forgotten password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
-operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**. For more information about how to bind and enable MFA, see **Security Center** >
-**MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+operations based on your login scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA code and click **Authentication**. You have enabled and bound MFA: Enter the six-digit MFA code and click **Authentication**.
+
+> **Note:** For more information about how to bind and enable MFA, see **Security Center** > **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
+
 5. In the top navigation bar, select **Products**.
 6. In the navigation pane on the left, click **Disaster Recovery and Backup**.
 7. In the **Disaster Recovery and Backup** section, choose **Disaster Recovery > ASR for**
@@ -216,7 +239,9 @@ This topic describes how to view service monitoring information and the expected
 console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Monitoring > Product Monitoring**.
 3. On the **Product Monitoring** page, view monitoring items such as feature readiness,
-primary service location, and inspection results of all services. You can also view the number of disaster recovery (DR) instances and capacity usage of specific services. When you view monitoring information, make sure that the data is updated to the current time.
+primary service location, and inspection results of all services. You can also view the number of disaster recovery (DR) instances and capacity usage of specific services.
+
+> **Note:** When you view monitoring information, make sure that the data is updated to the current time.
 
 **Expected results**
 
@@ -232,11 +257,15 @@ This topic describes how to monitor data synchronization and view the expected r
 2. In the navigation pane on the left, choose **Platform Monitoring** > **Synchronization**
 **Monitoring**.
 3. On the Synchronization Monitoring page, you can view the data synchronization latency
-satisfaction rate, the number of instances with normal synchronization, the number of instances with abnormal synchronization, and the synchronization latency of each instance for RDS, Redis, PolarDB-X 2.0, MongoDB, AnalyticDB for PostgreSQL, OSS. Instances with abnormal synchronization are displayed in red at the top of the instance list. When you view metric information, ensure that the data update time is current.
+satisfaction rate, the number of instances with normal synchronization, the number of instances with abnormal synchronization, and the synchronization latency of each instance for RDS, Redis, PolarDB-X 2.0, MongoDB, AnalyticDB for PostgreSQL, OSS. Instances with abnormal synchronization are displayed in red at the top of the instance list.
+
+> **Note:** When you view metric information, ensure that the data update time is current.
 
 **Expected results**
 
-The data synchronization latency satisfaction rate is 100%. If this requirement is not met, troubleshoot and resolve the synchronization latency issues for the instances marked in red, or submit a ticket to contact Alibaba Cloud technical support.
+The data synchronization latency satisfaction rate is 100%.
+
+> **Note:** If this requirement is not met, troubleshoot and resolve the synchronization latency issues for the instances marked in red, or submit a ticket to contact Alibaba Cloud technical support.
 
 ### 2.2 Core alert handling
 
@@ -284,9 +313,8 @@ Data may fail to be written, and the services that depend on the metadatabase ma
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane of the **Apsara Infrastructure Management console** ,
 choose Resources > **Product & Cluster O&M**.
@@ -299,13 +327,17 @@ values of the db_host, user, db_password, db_port, and db_name parameters in the
 **Resource Application Result** column.
 7. Log on to the machine where the alert is reported.
 8. Run the following command to check whether the database is accessible:
-Run the command to log on to the database in an environment in which a MySQL client is available.
+
+> **Note:** Run the command to log on to the database in an environment in which a MySQL client is available.
 
 ```
 mysql -h${db_host} -u${user} -p${db_password} -P${db_port} -D${db_name}
 ```
 
-The following figure shows a sample output, which indicates that the connection is normal. Proceed based on the actual output. If the database is inaccessible, contact the ApsaraDB RDS production and R&D team.
+The following figure shows a sample output, which indicates that the connection is normal. Proceed based on the actual output.
+
+> **Note:** If the database is inaccessible, contact the ApsaraDB RDS production and R&D team.
+
 9. Execute the following SQL statement to view the read and write status of the database:
 
 ```
@@ -339,7 +371,11 @@ iv. Run the following command to check whether the instance is started:
 ps aux|grep ${Port number}
 ```
 
-The following figure shows a sample output. Proceed based on the actual output. If the instance fails to be started, contact the ApsaraDB RDS production and R&D team. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+The following figure shows a sample output. Proceed based on the actual output.
+
+> **Note:** If the instance fails to be started, contact the ApsaraDB RDS production and R&D team.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.3 drei_product
 
@@ -365,9 +401,7 @@ The alert impacts vary based on the alert cause. The following issues may occur:
 
 **Solution**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Instances exist in the secondary data center**
 
@@ -440,7 +474,8 @@ i. If the instance connection fails, handle the issue by referring to inspect_db
 2. On the **Product & Cluster O&M** page, check whether the serviceTest# component in the
 minirds-maotai cluster is at desired state.
 3. If the serviceTest# component is not at desired state, restart the component.
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.4 rpo_check
 
@@ -481,9 +516,8 @@ If the synchronization latency is in an abnormal state, the following issues may
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Databases > ApsaraDB**
 **Operations and Maintenance System**.
@@ -491,7 +525,11 @@ If a solution requires that you modify product configurations, you must initiate
 **console**, click **System Management**. In the left-side pane that appears, choose **Disaster**
 **Recovery Management > Disaster recovery switching**.
 4. On the **Disaster recovery switching** page, view the exception details and contact
-ApsaraDB RDS O&M engineers to fix the exception. If the DR instance is not started, restart the instance. a. Log on to the server on which the primary node of the DR instance is deployed. In this example, a MySQL instance is used. b. Run the following command. If the instance process does not exist, the instance is not started.
+ApsaraDB RDS O&M engineers to fix the exception. If the DR instance is not started, restart the instance. a. Log on to the server on which the primary node of the DR instance is deployed.
+
+> **Note:** In this example, a MySQL instance is used.
+
+b. Run the following command. If the instance process does not exist, the instance is not started.
 
 ```
 ps aux | grep ${Port number}
@@ -515,7 +553,11 @@ e. Run the following command and check whether the instance is started:
 ps aux | grep ${Port number}
 ```
 
-The following figure shows a sample output. Proceed based on your actual output. If the instance fails to be started or other exceptions occur, contact ApsaraDB RDS O&M engineers. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+The following figure shows a sample output. Proceed based on your actual output.
+
+> **Note:** If the instance fails to be started or other exceptions occur, contact ApsaraDB RDS O&M engineers.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 ##### 2.2.4.3 rpo_check (OSS)
 
@@ -541,9 +583,8 @@ If the synchronization latency is in an abnormal state, the following issues may
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 1. Check whether synchronization processes are enabled.
 i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara *********************************** , choose Resources > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter oss in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the ************ tab, find the **oss-ocm-server** service and click its name. v. In the Components pane, click **OcmServer#**. vi. On the Instances tab, click ************ in the **Actions** column of an instance and log on to the oss-ocm-server.OcmServer# terminal server. vii. Go to the `/cloud/app/oss-ocm-server/OcmServer#/ocm_server/current` directory. viii. Run the following command to obtain the AccessKey ID and AccessKey secret of OCM_CMD:
 
@@ -569,7 +610,19 @@ xi. Run the following command to check whether the content under the <BucketSync
 ./ocm_cmd gbm bucketName
 ```
 
-Check items and expected results: a. Whether synchronization processes exist: If the <BucketSyncMeta> tags exist, synchronization processes exist. b. Whether the synchronization direction is as expected: If the <SrcBucket>, <SrcLocation>, <DestBucket>, and <DestLocation> tags exist under the <BucketSyncMeta> tags and meet the following conditions, the synchronization direction is as expected. a. The values of the <SrcBucket> and <SrcLocation> tags are the same as those of the <Name> and <Location> tags under the <BucketMeta> tag. b. The values of the <DestBucket> and <DestLocation> tags are the same as those of the peer data center. c. Whether the synchronization status is normal: Under the <BucketSyncMeta> tag, the value of the <SyncStatus> tag is 0 or 1. Sample output:
+> **Note:** Check items and expected results:
+> a. Whether synchronization processes exist: If the <BucketSyncMeta> tags exist,
+> synchronization processes exist.
+> b. Whether the synchronization direction is as expected: If the <SrcBucket>,
+> <SrcLocation>, <DestBucket>, and <DestLocation> tags exist under the <BucketSyncMeta> tags and meet the following conditions, the synchronization direction is as expected.
+> a. The values of the <SrcBucket> and <SrcLocation> tags are the same as those of
+> the <Name> and <Location> tags under the <BucketMeta> tag.
+> b. The values of the <DestBucket> and <DestLocation> tags are the same as those
+> of the peer data center.
+> c. Whether the synchronization status is normal: Under the <BucketSyncMeta> tag,
+> the value of the <SyncStatus> tag is 0 or 1.
+
+Sample output:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <BucketMeta>
@@ -728,7 +781,11 @@ i. Log on to the Apsara Infrastructure Management console. ii. In the left-side 
 /apsara/deploy/dsu GetSyncTaskProgress Source location#Destination location#Source bucket#Destination bucket
 ```
 
-Replace Source location, Destination location, Source bucket, and Destination bucket with the values of the <SrcLocation>, <DestLocation>, <SrcBucket>, and <DestBucket> tags obtained in Step 1. In the command output, `new file last sync time` indicates the last time when files were synchronized. Obtain the RPO of OSS by subtracting the last synchronization time from the current time. If the synchronization processes are normal and the RPO of OSS is excessively large, the issue is caused because the QPS is excessively high and messages are accumulated. Contact OSS O&M engineers to resolve the issue. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+> **Note:** Replace Source location, Destination location, Source bucket, and Destination bucket with the values of the <SrcLocation>, <DestLocation>, <SrcBucket>, and <DestBucket> tags obtained in Step 1.
+
+In the command output, `new file last sync time` indicates the last time when files were synchronized. Obtain the RPO of OSS by subtracting the last synchronization time from the current time. If the synchronization processes are normal and the RPO of OSS is excessively large, the issue is caused because the QPS is excessively high and messages are accumulated. Contact OSS O&M engineers to resolve the issue.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.5 sync_check
 
@@ -760,9 +817,7 @@ If the DR status of MiddleWareAll is abnormal, the following issues may occur: F
 
 **Solution**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Wrong distroThreshold configuration of the vipserver**
 
@@ -781,9 +836,17 @@ curl -s http://vipserver.tbsite.net/vipserver/api/switches | python -m json.tool
 curl-s"http://${diamond_host}/diamond-server/basestone.do?method=syncUpdateAll"-d 'da taId=com.taobao.vipserver.switches&group=VIPSERVER_GROUP&content= {"distroThreshold":0.45}'
 ```
 
-To obtain the value of diamond_host, perform the following steps: i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management**
-**console**, choose Resources > **Product & Cluster O&M**.
-iii. On the Product & Cluster O&M page, enter MiddleWareAll in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the Services tab, find the **middleWare-diamond** service and click its name. v. On the **Registration Variables** tab, view the value of diamond_host.
+> **Note:** To obtain the value of diamond_host, perform the following steps:
+
+i. Log on to the Apsara Infrastructure Management console.
+
+> ii. In the left-side navigation pane of the **Apsara Infrastructure Management**
+> **console**, choose Resources > **Product & Cluster O&M**.
+> iii. On the Product & Cluster O&M page, enter MiddleWareAll in the search box. In the
+> search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column.
+> iv. On the Services tab, find the **middleWare-diamond** service and click its name.
+> v. On the **Registration Variables** tab, view the value of diamond_host.
+
 4. Run the following command to verify that the distroThreshold value is 0.45:
 
 ```bash
@@ -799,7 +862,9 @@ choose Resources > **Product & Cluster O&M**.
 results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column.
 4. On the Services tab, click the name of the service that is not at desired state.
 5. In the Components pane, click the abnormal component. On the Instances tab, find the
-abnormal instance and choose **Actions** > **Restart** in the **Actions** column. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+abnormal instance and choose **Actions** > **Restart** in the **Actions** column.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 ##### 2.2.5.3 sync_check (minirds-mt/rds)
 
@@ -827,9 +892,7 @@ If the DR status of minirds-mt/rds is abnormal, the following issues may occur: 
 
 **Solution**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Abnormal instance synchronization status**
 
@@ -840,7 +903,11 @@ In this example, ApsaraDB RDS is used.
 3. In the left-side navigation pane, click **System Management**.
 4. In the **System Management** pane, choose **Disaster Recovery Management** >
 **Disaster recovery switching**. In the **Maximum Latency from library** column, view the
-latency. If the value is greater than 0 and smaller than 60, wait for data to be synchronized from the primary database to the secondary database. If the value is smaller than -1, contact the technical account manager (TAM) to recreate the secondary database. If the value is a large positive integer and does not decrease, contact database O&M engineers for troubleshooting.
+latency.
+
+> **Note:** If the value is greater than 0 and smaller than 60, wait for data to be synchronized from the primary database to the secondary database.
+> If the value is smaller than -1, contact the technical account manager (TAM) to recreate the secondary database.
+> If the value is a large positive integer and does not decrease, contact database O&M engineers for troubleshooting.
 
 **Closed SSH tunnels**
 
@@ -848,7 +915,9 @@ In this example, MiniRDS is used.
 1. Check whether the sshd process of the peer MiniRDS service is started.
 i. Log on to the MiniRDS container. ii. Run the ps -ef|grep sshd command to view the sshd process. If the ssh process is not started, you can manually run the `/usr/sbin/sshd` command to start the sshd process. If the sshd process does not exist in the container, install the sshd plug-in by running the `yum install sshd` command.
 2. Modify the SSH tunnel configurations of the bcmc cluster.
-i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose Resources > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Modify the `/services/tianji-sshtunnel-` `client/user/SSHTunnelClient/ssh_tunnel_bcmc.conf` file. Add the following information to the file: FromProduct, FromClusterType, FromServerRole, FromService, FromUser, ToProduct, ToClusterType, ToServerRole, ToService, and ToUser. Then, submit the changes. The values of the FromClusterType and FromServerRole parameters vary based on the region type. For the central region, set the FromClusterType parameter to BcmcCluster and the FromServerRole parameter to Bcmc. For general regions, set the FromClusterType parameter to Bcmc4GeneralCluster and the FromServerRole parameter to Bcmc4General. Sample code:
+i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose Resources > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Modify the `/services/tianji-sshtunnel-` `client/user/SSHTunnelClient/ssh_tunnel_bcmc.conf` file. Add the following information to the file: FromProduct, FromClusterType, FromServerRole, FromService, FromUser, ToProduct, ToClusterType, ToServerRole, ToService, and ToUser. Then, submit the changes.
+
+> **Note:** The values of the FromClusterType and FromServerRole parameters vary based on the region type. For the central region, set the FromClusterType parameter to BcmcCluster and the FromServerRole parameter to Bcmc. For general regions, set the FromClusterType parameter to Bcmc4GeneralCluster and the FromServerRole parameter to Bcmc4General. Sample code:
 
 ```
 - FromProduct: bcmc
@@ -875,7 +944,9 @@ i. Log on to the bcmc.Bcmc# container.
 |---|---|
 | /home/admin/bcmc/config |   |
 
-shown in the following figure. iii. Run the `ssh <IP address>` command to check whether the IP addresses obtained in the previous step can be reached. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+shown in the following figure. iii. Run the `ssh <IP address>` command to check whether the IP addresses obtained in the previous step can be reached.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 ##### 2.2.5.4 sync_check (SLB)
 
@@ -901,16 +972,16 @@ If the DR status of SLB is abnormal, the following issues may occur: Instances c
 
 **Solution**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Closed SSH tunnels**
 
 1. Check whether the sshd process of the peer SLB service is started.
 i. Log on to the SLB container. ii. Run the ps -ef|grep sshd command to view the sshd process. If the ssh process is not started, you can manually run the `/usr/sbin/sshd` command to start the sshd process. If the sshd process does not exist in the container, install the sshd plug-in by running the `yum install sshd` command.
 2. Modify the SSH tunnel configurations of the bcmc cluster.
-i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose Resources > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Modify the `/services/tianji-sshtunnel-` `client/user/SSHTunnelClient/ssh_tunnel_bcmc.conf` file. Add the following information to the file: FromProduct, FromClusterType, FromServerRole, FromService, FromUser, ToProduct, ToClusterType, ToServerRole, ToService, and ToUser. Then, submit the changes. The values of the FromClusterType and FromServerRole parameters vary based on the region type. For the central region, set the FromClusterType parameter to BcmcCluster and the FromServerRole parameter to Bcmc. For general regions, set the FromClusterType parameter to Bcmc4GeneralCluster and the FromServerRole parameter to Bcmc4General. Sample code:
+i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose Resources > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Modify the `/services/tianji-sshtunnel-` `client/user/SSHTunnelClient/ssh_tunnel_bcmc.conf` file. Add the following information to the file: FromProduct, FromClusterType, FromServerRole, FromService, FromUser, ToProduct, ToClusterType, ToServerRole, ToService, and ToUser. Then, submit the changes.
+
+> **Note:** The values of the FromClusterType and FromServerRole parameters vary based on the region type. For the central region, set the FromClusterType parameter to BcmcCluster and the FromServerRole parameter to Bcmc. For general regions, set the FromClusterType parameter to Bcmc4GeneralCluster and the FromServerRole parameter to Bcmc4General. Sample code:
 
 ```
 - FromProduct: bcmc
@@ -969,7 +1040,9 @@ iv. Run the following command to check whether binding data is generated. Check 
 select * from network_conf_binding where network_conf_instance_id like "%xxxx%" \G
 ```
 
-In the command, replace xxxx with the instance IDs in the network_conf table. v. Run the following command to check the events:
+> **Note:** In the command, replace xxxx with the instance IDs in the network_conf table.
+
+v. Run the following command to check the events:
 
 ```
 select * from event where source_instance_id like '%lb_global_id%' \G
@@ -1001,7 +1074,9 @@ iv. Run the following command to check whether binding data is generated. Check 
 select * from network_conf_binding where network_conf_instance_id like "%xxxx%" \G
 ```
 
-In the command, replace xxxx with the instance IDs in the network_conf table. v. Run the following command to check the events:
+> **Note:** In the command, replace xxxx with the instance IDs in the network_conf table.
+
+v. Run the following command to check the events:
 
 ```
 select * from event where source_instance_id like '%listener_id%'\G
@@ -1015,7 +1090,8 @@ info admin detail_event event_id ${instance_id}
 
 If northbound data exists but network_conf and binding data does not exist, VIPs have failed to be created and the configurations are not delivered to the southbound interface. If northbound data and network_conf data exist but binding data does not exist, VIPs have been created but the configurations are not delivered to the forwarding device. If northbound data exists and network_conf and binding data also exists, VIPs have been created and the configurations have been delivered to the forwarding device.
 4. Contact SLB O&M engineers to resolve the issue.
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 ##### 2.2.5.5 sync_check (Kafka)
 
@@ -1041,9 +1117,7 @@ Abnormal Kafka disaster recovery status may cause: Data synchronization is not c
 
 **Handling methods**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Confirm the error message**
 
@@ -1062,7 +1136,9 @@ The environment requires at least 2 Kafka clusters and 2 Replicators, and must m
 3. Go to the **Message Queue For Apache Kafka** page, and confirm that the instances meet
 the prerequisites in the **Instance List** in the left menu bar.
 4. In the **Disaster Recovery Cluster List** in the left menu bar, create a disaster recovery
-instance. i. Click **Create Disaster Recovery Cluster**. ii. Enter the **Disaster Recovery Cluster Name** and click **Next**. iii. Select the primary Kafka cluster instance in **Source Kafka Instance**, select the primary Replicator instance in **Source KafkaReplicator Instance**, and click **Next**. iv. Select the secondary Kafka cluster instance in **Target Kafka Instance**, select the secondary Replicator instance in **Target KafkaReplicator Instance**, and click **Create**. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+instance. i. Click **Create Disaster Recovery Cluster**. ii. Enter the **Disaster Recovery Cluster Name** and click **Next**. iii. Select the primary Kafka cluster instance in **Source Kafka Instance**, select the primary Replicator instance in **Source KafkaReplicator Instance**, and click **Next**. iv. Select the secondary Kafka cluster instance in **Target Kafka Instance**, select the secondary Replicator instance in **Target KafkaReplicator Instance**, and click **Create**.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 ##### 2.2.5.6 sync_check (Elasticsearch)
 
@@ -1090,9 +1166,7 @@ Elasticsearch disaster recovery status is abnormal, which may lead to: Data sync
 
 **Solutions**
 
-**Warning**
-
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
 **Confirm the error message**
 
@@ -1136,7 +1210,9 @@ link is configured successfully) ${masterInstance} represents the primary cluste
 of the query result are consistent, it indicates that data synchronization is complet e) ${user} represents the secondary cluster instance username; ${password} represents the secondary cluster instance password; ${slaveClusterMgmtVip} represents the manage ment domain name of the secondary cluster instance curl -u ${user}:${password} ${slaveClusterMgmtVip}:9200/_cat/xdcr? h=repository,index,localGCP,remoteGCP Kibana white screen operation (secondary cluster): GET /_cat/xdcr?h=repository,index,localGCP,remoteGCP
 ```
 
-During network outage failback, in addition to manually configuring and enabling the synchronization link in the primary data center (before the network outage), you may also need to delete the index in the primary data center to trigger a full synchronization (depending on whether partial data inconsistency between primary and secondary clusters is acceptable on site). If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+During network outage failback, in addition to manually configuring and enabling the synchronization link in the primary data center (before the network outage), you may also need to delete the index in the primary data center to trigger a full synchronization (depending on whether partial data inconsistency between primary and secondary clusters is acceptable on site).
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.6 inspect_product_cluster_aplus
 
@@ -1154,7 +1230,9 @@ Apsara Stack V3.14 and later
 
 **Causes**
 
-Rolling is not performed on specific clusters in the primary data center. For all clusters deployed in the secondary data center, except for Elastic Compute Service (ECS) compute clusters and storage clusters, rolling must be performed on the corresponding clusters in the primary data center. Rolling operations are not required for the clusters deployed only in the primary data center but not in the secondary data center.
+Rolling is not performed on specific clusters in the primary data center. For all clusters deployed in the secondary data center, except for Elastic Compute Service (ECS) compute clusters and storage clusters, rolling must be performed on the corresponding clusters in the primary data center.
+
+> **Note:** Rolling operations are not required for the clusters deployed only in the primary data center but not in the secondary data center.
 
 **Alert impacts**
 
@@ -1162,15 +1240,19 @@ If zone-disaster recovery deployment of cloud services is not complete, failover
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 1. Perform rolling on the primary clusters that have a corresponding secondary cluster and on
 which rolling is not performed.
 
-**Important**
+> **Important:** Usage notes:
+> Before you perform rolling, make sure that the primary and secondary clusters are at desired state.
+> For basic middleware, including middleWareAll, dauthProduct, aliware-taokeeper, and middleware-dncs, you must perform rolling immediately after the services reach desired state.
 
-Usage notes: Before you perform rolling, make sure that the primary and secondary clusters are at desired state. For basic middleware, including middleWareAll, dauthProduct, aliware-taokeeper, and middleware-dncs, you must perform rolling immediately after the services reach desired state. You must submit services for rolling based on the specified sequence. When rolling is performed on ApsaraMQ for RocketMQ, Object Storage Service (OSS), and Tablestore, transient disconnections occur. Before you perform rolling on these services, obtain a scheduled operation window from the customer. Submission sequence Rolling operations are performed at the cluster level. We recommend that you submit the operations in sequence. Submit the operations for the next cluster after a success message is returned for the current submission and the rolling of the current cluster starts on Apsara Infrastructure Management. The following table lists the submission sequence for rolling operations of various clusters.
+> You must submit services for rolling based on the specified sequence.
+> When rolling is performed on ApsaraMQ for RocketMQ, Object Storage Service (OSS), and Tablestore, transient disconnections occur. Before you perform rolling on these services, obtain a scheduled operation window from the customer.
+
+Submission sequence Rolling operations are performed at the cluster level. We recommend that you submit the operations in sequence. Submit the operations for the next cluster after a success message is returned for the current submission and the rolling of the current cluster starts on Apsara Infrastructure Management. The following table lists the submission sequence for rolling operations of various clusters.
 
 **Important**
 
@@ -1224,7 +1306,9 @@ c. Run the following command to check whether rolling is being performed on a se
 arkctl product rolling ${id}
 ```
 
-id indicates the service ID. Service IDs are obtained in the previous step. d. Run the following command to check whether the service is in the Ready state:
+> **Note:** id indicates the service ID. Service IDs are obtained in the previous step.
+
+d. Run the following command to check whether the service is in the Ready state:
 
 ```
 arkctl product list -iz
@@ -1242,9 +1326,12 @@ c. Run the following command to check whether the value of the haApsaraStack var
 arkctl dr aplus ${id}
 ```
 
-id indicates the service ID. Service IDs are obtained in the previous step.
+> **Note:** id indicates the service ID. Service IDs are obtained in the previous step.
+
 2. Check whether rolling is performed as required. The list of services on which rolling is not
-performed is expected to be empty. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+performed is expected to be empty.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.7 inspect_product_cluster_version
 
@@ -1272,9 +1359,9 @@ If service versions are inconsistent, the following issues may occur: Failover o
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution. For cloud services with different versions deployed in the primary and secondary data centers, contact the technical account manager (TAM) to upgrade the services.
+For cloud services with different versions deployed in the primary and secondary data centers, contact the technical account manager (TAM) to upgrade the services.
 
 #### 2.2.8 inspect_product_variable
 
@@ -1294,7 +1381,11 @@ Apsara Stack V3.14 and later
 
 **Causes**
 
-Due to the upgrade or scale-out of cloud services, or the migration of cloud services, the bcmc-dependent baseline variables that are obtained by using the tianji API are inconsistent with the baseline variables rendered by bcmc. For more information about the bcmc-dependent baseline variables that are obtained by the tianji API, see the `application-conf-opposite.yml` and `application-conf.yml` files in the `/opt/tianji/conf.tmpl` directory. For more information about baseline variables rendered in bcmc, see the
+Due to the upgrade or scale-out of cloud services, or the migration of cloud services, the bcmc-dependent baseline variables that are obtained by using the tianji API are inconsistent with the baseline variables rendered by bcmc.
+
+> **Note:** For more information about the bcmc-dependent baseline variables that are obtained by the tianji API, see the `application-conf-opposite.yml` and
+> `application-conf.yml` files in the `/opt/tianji/conf.tmpl` directory.
+> For more information about baseline variables rendered in bcmc, see the
 
 ```
  /alidata/conf/antx.properties  file.
@@ -1306,11 +1397,13 @@ Failover operations fail.
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution. If a service has been scaled out, the baseline variables of bcmc are changed. In this case, you must perform rolling on bcmc and re-render the baseline variables. i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose **Resources** > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. In the kv.conf file, press the Enter key at the end of the last line, and then click**Preview**
+If a service has been scaled out, the baseline variables of bcmc are changed. In this case, you must perform rolling on bcmc and re-render the baseline variables. i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose **Resources** > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. In the kv.conf file, press the Enter key at the end of the last line, and then click**Preview**
 **and Submit**.
-vi. In the dialog box that appears, click **Submit**. If bcmc should have obtained the variables of a service cluster in the secondary data center but obtained the variables of the corresponding cluster in the primary data center instead, the service may have been incrementally deployed recently. You need to check the serviceid.conf configuration file of the bcmc cluster and delete the corresponding configurations. i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose **Resources** > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Delete the configurations of the corresponding service in the serviceid.conf file. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+vi. In the dialog box that appears, click **Submit**. If bcmc should have obtained the variables of a service cluster in the secondary data center but obtained the variables of the corresponding cluster in the primary data center instead, the service may have been incrementally deployed recently. You need to check the serviceid.conf configuration file of the bcmc cluster and delete the corresponding configurations. i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose **Resources** > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Delete the configurations of the corresponding service in the serviceid.conf file.
+
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
 #### 2.2.9 inspect_product_cluster_deploy
 
@@ -1328,7 +1421,9 @@ Apsara Stack V3.14 and later
 
 **Causes**
 
-In the zone-disaster recovery scenario, if you want to configure disaster recovery (DR) for a service that does not support asymmetric DR, make sure that the service version is consistent and clusters are deployed in symmetric mode between the primary and secondary data centers. Otherwise, an exception is reported. The following services support asymmetric DR: ApsaraDB RDS, KVStore for Redis, Object Storage Service (OSS), Elastic Compute Service (ECS), and MaxCompute.
+In the zone-disaster recovery scenario, if you want to configure disaster recovery (DR) for a service that does not support asymmetric DR, make sure that the service version is consistent and clusters are deployed in symmetric mode between the primary and secondary data centers. Otherwise, an exception is reported.
+
+> **Note:** The following services support asymmetric DR: ApsaraDB RDS, KVStore for Redis, Object Storage Service (OSS), Elastic Compute Service (ECS), and MaxCompute.
 
 **Alert impacts**
 
@@ -1336,9 +1431,9 @@ If clusters are not deployed in symmetric mode as required, the following issues
 
 **Solution**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution. Contact the field technical account manager (TAM) to check whether the service is correctly deployed. If the service is incorrectly deployed, deploy new clusters and check the inspect_product_cluster_deploy item again. If the service is correctly deployed, ignore the exception.
+Contact the field technical account manager (TAM) to check whether the service is correctly deployed. If the service is incorrectly deployed, deploy new clusters and check the inspect_product_cluster_deploy item again. If the service is correctly deployed, ignore the exception.
 
 #### 2.2.10 Appendixes
 
@@ -1355,9 +1450,15 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 2. Enter your username and password.
-You need to obtain the username and password from an operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
+> **Note:** You need to obtain the username and password from an operations administrator.
+> The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -1370,7 +1471,9 @@ a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Enter
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For information about how to bind and enable MFA, see Manage MFA.
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For information about how to bind and enable MFA, see Manage MFA.
 
 **What to do next**
 
@@ -1378,7 +1481,10 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 
 1. If you forget the logon password, click **Forgot Password** below the Password field.
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
-parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
+parameters, specify the verification code, and then click **Confirm**.
+
+> **Note:** Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field.
+> The system sends a link for resetting the password to the email address that you specify.
 
 ##### 2.2.10.2 Log on to the Apsara Uni-manager Operations Console
 
@@ -1394,9 +1500,15 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the Enter key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and Traditional Chinese are supported.
+Press the Enter key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and Traditional Chinese are supported.
+
 3. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator.
+
+If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
 ##### 2.2.10.3 Log on to a container
@@ -1458,9 +1570,15 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page.
+Press the Enter key.
+
+> **Note:** You can select a language from the drop-down list in the upper-right corner of the page.
+
 3. Enter the username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator.
+
+If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 5. In the top navigation bar, choose **Platform Operation** > **Apsara Infrastructure**
 **Management** > **Resources**.
@@ -1521,13 +1639,18 @@ ii. Run the following SQL statement to set the read_only parameter to ON.
 2. Select **Instance Management** > **Instance List**, and click the instance that you want to
 operate.
 3. Select **Backup Policy** > **Create Temporary Backup**. In the dialog box that appears,
-select **FULL** > **Primary Database Physical Backup** > **Click To View** > **OK**. The database must not contain MyISAM tables.
+select **FULL** > **Primary Database Physical Backup** > **Click To View** > **OK**.
+
+> **Note:** The database must not contain MyISAM tables.
+
 4. Click **Backup And Recovery** and confirm that you can see the temporary backup of the
 primary database, which indicates that the backup is complete. (This can be completed within 18 hours)
 5. At the bottom of the **Basic Information** page, click **Rebuild [Secondary Database**
 **Rebuild|Node Rebuild]**. In the dialog box that appears, select **Force Primary Database**
 **Backup**, select the corresponding host, and select the rebuild method.
-Local rebuild means rebuilding on the host where the original secondary database is located, and cross-machine rebuild means selecting a different host.
+
+> **Note:** Local rebuild means rebuilding on the host where the original secondary database is located, and cross-machine rebuild means selecting a different host.
+
 6. Click **Submit**.
 7. Click **Task Management** and monitor the task progress until the task is complete.
 If tasks fail, contact the product and R&D team for assistance.
@@ -1560,7 +1683,9 @@ cluster that you want to manage and click Cluster Details in the Actions column.
 sudo my ${port}
 ```
 
-If you are the root user, you do not need to add `sudo` to the command. The following figure shows a sample output.
+> **Note:** If you are the root user, you do not need to add `sudo` to the command.
+
+The following figure shows a sample output.
 7. If `mysql>` is displayed, you have logged on to the abnormal instance.
 rvice O&M operations
 
@@ -1586,7 +1711,9 @@ secondary data centers are at desired state.
 
 **Expected results**
 
-The number of services that are not at desired state is zero. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+The number of services that are not at desired state is zero.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ### 3.2 DNS
 
@@ -1627,13 +1754,31 @@ python /root/opsbuild/tools/dataConsistCheck/localIdc_etcd_and_slave_compare.py
 **Expected results**
 
 1. The following figure shows a sample command output. The number of resource records
-(RRs) in the current zone queried from Terminal Server 1 is the same as that queried from Terminal Server 2. In the command output, rr stands for resource records. If the number of RRs in the current zone queried from Terminal Server 1 is inconsistent with that queried from Terminal Server 2, the difference is highlighted in the format of rr:{'ops1':[],'ops2':[]}. bcmc-minirds-check is the test domain name of Apsara Stack Resilience (ASR) for Zone-disaster Recovery. If the difference in bcmc-minirds-check is returned and highlighted in the command output, ignore it. rvice O&M operations
+(RRs) in the current zone queried from Terminal Server 1 is the same as that queried from Terminal Server 2.
+
+> **Note:** In the command output, rr stands for resource records.
+> If the number of RRs in the current zone queried from Terminal Server 1 is inconsistent with that queried from Terminal Server 2, the difference is highlighted in the format of rr:{'ops1':[],'ops2':[]}.
+> bcmc-minirds-check is the test domain name of Apsara Stack Resilience (ASR) for Zone-disaster Recovery. If the difference in bcmc-minirds-check is returned and highlighted in the command output, ignore it.
+
+rvice O&M operations
 2. The following figure shows a sample command output. The number of RRs in the current
-zone queried from the etcd cluster, that queried from Terminal Server 1, and that queried from Terminal Server 2 are the same. If the number of RRs queried from the etcd cluster is inconsistent with that queried from Terminal Server 1, the difference is highlighted in the format of rr:{'ops1':[],'etcd': []}.
+zone queried from the etcd cluster, that queried from Terminal Server 1, and that queried from Terminal Server 2 are the same.
+
+> **Note:** If the number of RRs queried from the etcd cluster is inconsistent with that queried from Terminal Server 1, the difference is highlighted in the format of rr:{'ops1':[],'etcd': []}.
+
 3. The following figure shows a sample command output. The number of RRs in the current
-zone queried from the etcd clusters is the same. If the number of RRs queried from the etcd clusters is inconsistent, the difference is highlighted in the format of rr:{'FirstEtcd':[],'SecondEtcd':[]}.
+zone queried from the etcd clusters is the same.
+
+> **Note:** If the number of RRs queried from the etcd clusters is inconsistent, the difference is highlighted in the format of rr:{'FirstEtcd':[],'SecondEtcd':[]}.
+
 4. The following figure shows a sample command output. The number of RRs in the current
-zone queried from the etcd cluster, that queried from Terminal Server 1, and that queried from Terminal Server 2 are the same. If the number of RRs queried from the etcd cluster is inconsistent with that queried from Terminal Server 1, the difference is highlighted in the format of rr:{'ops1':[],'etcd': []}. rvice O&M operations If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+zone queried from the etcd cluster, that queried from Terminal Server 1, and that queried from Terminal Server 2 are the same.
+
+> **Note:** If the number of RRs queried from the etcd cluster is inconsistent with that queried from Terminal Server 1, the difference is highlighted in the format of rr:{'ops1':[],'etcd': []}.
+
+rvice O&M operations
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.2.2 Check the domain name resolution service
 
@@ -1647,7 +1792,9 @@ Run the `dig +short dnsapi1.tbsite.net` command on Terminal Server 1 and Termina
 
 **Expected results**
 
-The IP address is correctly resolved. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+The IP address is correctly resolved.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ### 3.3 MiniRDS
 
@@ -1673,7 +1820,8 @@ view the task details.
 
 No task is displayed when you select **Interrupted tasks**, **Waiting tasks**, **Temporarily**
 **Closed tasks**, **Suspended tasks**, and **Running tasks**.
-If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.3.2 Check the DR status of instances
 
@@ -1697,7 +1845,9 @@ status.
 
 For every instance except dbaas_db, **OK** is displayed in the **Instance available** and
 **Switchable** columns, and the value in the **Maximum Latency from library** column is
-greater than or equal to 0 and less than 60. For every instance, **Read and write** is displayed in the **Master database information** column and **Read only** is displayed in the **From Library Information** column. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+greater than or equal to 0 and less than 60. For every instance, **Read and write** is displayed in the **Master database information** column and **Read only** is displayed in the **From Library Information** column.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.3.3 Check the status of instances
 
@@ -1717,7 +1867,9 @@ instance list, sort instances by the **CPU**, **QPS**, **Connections**, and **Di
 
 **Expected results**
 
-The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%. If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
+The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%.
+
+> **Note:** If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
 
 ### 3.4 ApsaraDB RDS
 
@@ -1739,7 +1891,8 @@ view the task details.
 
 rvice O&M operations No task is displayed when you select **Interrupted tasks**, **Waiting tasks**, **Temporarily**
 **Closed tasks**, **Suspended tasks**, and **Running tasks**.
-If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.4.2 Check the DR status of instances
 
@@ -1757,7 +1910,9 @@ status.
 
 **Expected results**
 
-For every instance, **OK** is displayed in the **Instance available** and **Switchable** columns, and the value in the **Maximum Latency from library** column is greater than or equal to 0 and less than 60. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+For every instance, **OK** is displayed in the **Instance available** and **Switchable** columns, and the value in the **Maximum Latency from library** column is greater than or equal to 0 and less than 60.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.4.3 Check the status of instances
 
@@ -1773,7 +1928,9 @@ instance list, sort instances by the **CPU**, **QPS**, **Connections**, and **Di
 
 **Expected results**
 
-The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%. If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
+The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%.
+
+> **Note:** If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
 
 ### 3.5 SLB
 
@@ -1794,7 +1951,9 @@ rvice O&M operations
 
 **Expected results**
 
-All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.5.2 Check the status of proxies
 
@@ -1811,7 +1970,9 @@ list admin proxy
 
 **Expected results**
 
-All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.5.3 Check the status of keyservers
 
@@ -1829,7 +1990,9 @@ list admin keyserver
 
 **Expected results**
 
-All values in the **status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+All values in the **status** column are **online**.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ### 3.6 OSS
 
@@ -1847,7 +2010,10 @@ center location}"; statement to query the buckets that are not in the location o
 
 **Expected results**
 
-No result is found. If no result is found, all buckets are in the location of the primary data center. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+No result is found.
+
+> **Note:** If no result is found, all buckets are in the location of the primary data center.
+> If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ### 3.7 ECS
 
@@ -1864,7 +2030,9 @@ status of all NCs.
 
 **Expected results**
 
-All values in the biz_status column are free. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+All values in the biz_status column are free.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ### 3.8 ASO
 
@@ -1887,7 +2055,9 @@ that you want to manage.
 
 **Expected results**
 
-The management and operation status of all ports are **Up** and traffic is normal. rvice O&M operations If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+The management and operation status of all ports are **Up** and traffic is normal. rvice O&M operations
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 #### 3.8.2 Check alerts
 
@@ -1902,7 +2072,9 @@ This topic describes how to view alerts in the Apsara Uni-manager Operations Con
 
 **Expected results**
 
-No alert is displayed. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
+No alert is displayed.
+
+> **Note:** If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
 ## 4 FAQ
 
@@ -1971,9 +2143,14 @@ This topic describes the directories in which the logs of Apsara Stack Resilienc
 | /home/admin/bcmc/scripts/{Service name}/logs/{Service name} synccheck.log _ | Stores the script inspection logs of a service. |
 | /home/admin/bcmc/scripts/{Service name}/logs/{Service name} switch.log _ | Stores the switchover logs of a service. |
 
-A log file whose name does not contain a date stores the logs generated for the current day.
+> **Note:** A log file whose name does not contain a date stores the logs generated for the current day.
+
 3. View logs. In this example, bcmc error logs are viewed.
-i. Run the `cd /home/admin/bcmc/logs/` command to go to the directory in which the logs are stored. xes ii. Run the `ll` command to query all files in the directory. iii. Run the `vim error.log` command to query the error log details. iv. Run the `/2022-12-15 00:04:03` command to query the log details at the specified time. Replace the time based on your business requirements. v. Run the `:q` command to exit the log details page.
+i. Run the `cd /home/admin/bcmc/logs/` command to go to the directory in which the logs are stored. xes ii. Run the `ll` command to query all files in the directory. iii. Run the `vim error.log` command to query the error log details. iv. Run the `/2022-12-15 00:04:03` command to query the log details at the specified time.
+
+> **Note:** Replace the time based on your business requirements.
+
+v. Run the `:q` command to exit the log details page.
 
 ### 5.2 Log on to a container
 
@@ -2100,7 +2277,9 @@ The following operations are complete:
 
 1. Go to the `new_ots_replication_tool` directory.
 2. Run the following command to modify the configurations of the secondary cluster:
-xes You must specify an instance name and a table name in the command. You can modify the configurations of one table each time. Only the configurations of the secondary cluster are modified. The configurations of the primary cluster are not affected.
+xes
+
+> **Note:** You must specify an instance name and a table name in the command. You can modify the configurations of one table each time. Only the configurations of the secondary cluster are modified. The configurations of the primary cluster are not affected.
 
 ```
 ./rep_checker.py sync_table_meta_for_secondary Instance name Table name

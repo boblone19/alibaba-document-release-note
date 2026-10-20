@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 126
 source_pdf: "20a2e5139b21aa67_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828
@@ -124,17 +124,17 @@ This topic describes the API call process and provides reference documentation.
 1. Obtain an AccessKey pair.
 To obtain the AccessKey pair required for API calls, see Obtain an AccessKey pair.
 
-**Note**
+> **Note:** We recommend that you use your personal AccessKey pair to call APIs of the Apsara Uni-manager Management Console and cloud products.
 
-We recommend that you use your personal AccessKey pair to call APIs of the Apsara Uni-manager Management Console and cloud products.
 2. Obtain the region ID.
 To obtain the region ID required for API calls, see Query the region ID.
 3. Obtain the organization ID and resource set ID.
 To obtain these IDs required for API calls, see Query the region ID.
 
-**Note**
+> **Note:** When calling an API, specify the organization and resource set by including the header parameters x-acs-organizationid and x-acs-resourcegroupid. This enables isolated queries for instance resources.
+> If you do not specify the organization ID (x-acs-organizationid), the system defaults to the organization to which the current user belongs.
+> If you do not specify the resource set ID (x-acs-resourcegroupid), it defaults to empty. However, if you specify a resource set, you must also specify the organization ID.
 
-When calling an API, specify the organization and resource set by including the header parameters x-acs-organizationid and x-acs-resourcegroupid. This enables isolated queries for instance resources. If you do not specify the organization ID (x-acs-organizationid), the system defaults to the organization to which the current user belongs. If you do not specify the resource set ID (x-acs-resourcegroupid), it defaults to empty. However, if you specify a resource set, you must also specify the organization ID.
 4. Locate the API documentation.
 Review the development guide for your target cloud product to understand its API functionalities and usage. For information on how to find the development guide, see Developer documentation usage instructions.
 5. Obtain the cloud product endpoint.
@@ -186,9 +186,7 @@ We recommend that you use the AccessKey pair of a personal account to call the A
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -198,9 +196,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 choose **User Information** from the shortcut menu.
 3. In the **Apsara Stack AccessKey Pair** section, obtain the AccessKey pair.
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -549,9 +545,10 @@ u must add the x-acs-security-token field to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: e API calls Java
+e API calls Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -699,9 +696,9 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Configuration methods**
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: e API calls
+e API calls
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -825,9 +822,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -906,9 +902,7 @@ Table 5. Parameter management API operations
 
 The endpoint for Redis APIs is `r-kvstore.example.com` .
 
-**Note**
-
-example.com is the custom domain name for your project. Contact your administrator to obtain the domain name.
+> **Note:** example.com is the custom domain name for your project. Contact your administrator to obtain the domain name.
 
 **Protocol**
 
@@ -973,9 +967,7 @@ After you call an API operation, KVStore for Redis returns data in the same form
 
 response, an HTTP status code in the `2xx` format indicates that the call is successful. An HTTP status code in the `4xx` or `5xx` format indicates that the call failed. The system returns responses for successful calls in XML or JSON format. You can specify the response format in request parameters. The system uses the XML format by default.
 
-**Note**
-
-The response examples in this topic have been formatted with line breaks or indents to provide a clear view. The responses in your actual running environments are not properly formatted as these examples.
+> **Note:** The response examples in this topic have been formatted with line breaks or indents to provide a clear view. The responses in your actual running environments are not properly formatted as these examples.
 
 **Sample success response**
 
@@ -1015,9 +1007,9 @@ Perform the following steps to sign an API request:
 1. Create a canonicalized query string by using request parameters.
 i. To construct a canonicalized query string, sort all request parameters by name in alphabetic order. These parameters include common request parameters and customized API request parameters. However, this does not include the Signature parameter.
 
-**Note**
+> **Note:** When you use the GET method to submit requests, you specify these parameters in the request URI that follow the question mark (?) and are connected with the ampersand (&).
 
-When you use the GET method to submit requests, you specify these parameters in the request URI that follow the question mark (?) and are connected with the ampersand (&). ii. Encode the name and value of each request parameter. Perform URL encoding on the names and values by using the UTF-8 character set. The following section shows the URL encoding rules: Uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), hyphens (-), underscores (_), periods (.), and tildes (~) are not encoded. Encode other characters in the %XY format, where `XY` specifies the ASCII code of the characters in the hexadecimal format. For example, double quotation marks (") are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA format. Spaces must be encoded as %20 . Do not encode spaces as plus signs (+).
+ii. Encode the name and value of each request parameter. Perform URL encoding on the names and values by using the UTF-8 character set. The following section shows the URL encoding rules: Uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), hyphens (-), underscores (_), periods (.), and tildes (~) are not encoded. Encode other characters in the %XY format, where `XY` specifies the ASCII code of the characters in the hexadecimal format. For example, double quotation marks (") are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA format. Spaces must be encoded as %20 . Do not encode spaces as plus signs (+).
 
 |   | Note Libraries that support URL encoding, such as java.net.URLEncoder, follow the Multipurpose Internet Mail Extensions (MIME) encoding rules of application/x- www-form-urlencoded . If this encoding method is used, replace the plus signs (+) in the encoded strings with %20 , the asterisks (*) with %2A , and %7E with a tilde (~) to conform to the encoding rules. |
 |---|---|
@@ -1038,15 +1030,14 @@ In this example, `HTTPMethod` specifies the HTTP method that is used to submit t
 3. As defined in RFC 2104, use the preceding signature string to calculate the signature into
 an HMAC value.
 
-**Note**
+> **Note:** The key that is used for calculating the signature is your AccessKey secret followed by an ampersand (&) (ASCII:38). The SHA1 algorithm is used for the calculation.
 
-The key that is used for calculating the signature is your AccessKey secret followed by an ampersand (&) (ASCII:38). The SHA1 algorithm is used for the calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the Signature parameter.
 
-**Note**
+> **Note:** When you submit the signature string to the KVStore for Redis instance as the final request parameter value, perform URL encoding on this parameter based on RFC 3986 rules. This is the same method that is used to process other parameters.
 
-When you submit the signature string to the KVStore for Redis instance as the final request parameter value, perform URL encoding on this parameter based on RFC 3986 rules. This is the same method that is used to process other parameters. DescribeDrdsInstances is used in this example. The following section shows the canonicalized query string:
+DescribeDrdsInstances is used in this example. The following section shows the canonicalized query string:
 
 ```
 http://r-kvstore.example.com/?Timestamp=2013-06- 01T10:33:56Z&Format=XML&AccessKeyId=testid&Action=DescribeInstances&SignatureMethod=HMAC- SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2015-01- 01&SignatureVersion=1.0
@@ -1084,9 +1075,7 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 
 The instances that you create by using your Alibaba Cloud account are the resources owned by the account. An account has the full operation permissions on the resources under this account by default. Alibaba Cloud Resource Access Management (RAM) allows you to grant the access and management permissions on resources under a cloud account to RAM users.
 
-**Note**
-
-Ignore this topic if you do not use Resource Access Management (RAM).
+> **Note:** Ignore this topic if you do not use Resource Access Management (RAM).
 
 #### 4.6.2 Authorized resource types in RAM
 
@@ -1185,9 +1174,7 @@ Table 2. Response parameters
 | InstanceId | String | r-bp1zxszhcgatnx**** | The ID of the instance. This value is globally unique. |
 | InstanceName | String | apitest | The name of the instance. |
 
-**Note**
-
-For historical compatibility, this operation may return some undocumented fields (such as Config and Region). Alibaba Cloud will gradually deprecate these fields. Therefore, do not rely on any undocumented fields when calling this API.
+> **Note:** For historical compatibility, this operation may return some undocumented fields (such as Config and Region). Alibaba Cloud will gradually deprecate these fields. Therefore, do not rely on any undocumented fields when calling this API.
 
 **Sample requests**
 
@@ -1588,9 +1575,7 @@ Queries detailed information about a KVStore for Redis instance.
 |---|---|---|---|
 |   | DDThh:mm:ssZ |   |   |
 
-**Note**
-
-Due to the compatibility with earlier versions, this topic does not describe some returned fields such as Config and Region for the operation. Alibaba Cloud will delete these fields in the future.
+> **Note:** Due to the compatibility with earlier versions, this topic does not describe some returned fields such as Config and Region for the operation. Alibaba Cloud will delete these fields in the future.
 
 **Sample requests**
 
@@ -1795,9 +1780,7 @@ Queries information about one or more KVStore for Redis instances.
 | VSwitchId | String | vsw- bp1e7clcw529l 773d**** | The ID of the vSwitch to which the instance belongs. |
 | PrivateIpAddr | String | 172.16.**.*** | The private IP address of the instance. |
 
-**Note**
-
-Due to the compatibility with earlier versions, this topic does not describe some returned fields such as Config for the operation. Alibaba Cloud will delete these fields in the future.
+> **Note:** Due to the compatibility with earlier versions, this topic does not describe some returned fields such as Config for the operation. Alibaba Cloud will delete these fields in the future.
 
 **Sample requests**
 
@@ -3505,9 +3488,9 @@ You do not need to manually apply reserved instances to pay-as-you-go instances.
 
 until the reserved instance expires. The computing power of a reserved instance is calculated by using the following formula: Normalization factor of the instance type × Number of instances that can be offset by the reserved instance.
 
-**Note**
+> **Note:** The normalization factor indicates the computing power of a reserved instance and varies based on the number of vCPUs. When you use a reserved instance, you can calculate the number of computing resources that you can obtain based on the instance type specified for the reserved instance and the normalization factor of the instance type. For information about how to view the normalization factor of each instance type, see View the normalization factor table.
 
-The normalization factor indicates the computing power of a reserved instance and varies based on the number of vCPUs. When you use a reserved instance, you can calculate the number of computing resources that you can obtain based on the instance type specified for the reserved instance and the normalization factor of the instance type. For information about how to view the normalization factor of each instance type, see View the normalization factor table. Reserved instances are matched to pay-as-you-go instances based on specific matching rules. Regional and zonal reserved instances use different matching rules to match pay-as-you-go instances. The following table describes the instance attributes that are used to define matching rules.
+Reserved instances are matched to pay-as-you-go instances based on specific matching rules. Regional and zonal reserved instances use different matching rules to match pay-as-you-go instances. The following table describes the instance attributes that are used to define matching rules.
 
 | Attribute | Regional reserved instance | Zonal reserved instance |
 |---|---|---|
@@ -3521,9 +3504,9 @@ Regional and zonal reserved instances can offset the fees of pay-as-you-go insta
 
 The regional reserved instances and pay-as-you-go instances reside in the same region. The regional reserved instances support cross-zone deduction for pay-as-you-go instances that reside in the same zone or different zones. The regional reserved instances and pay-as-you-go instances belong to the same instance family. Low-specification regional reserved instances can offset the fees of high-specification instances, and high-specification regional reserved instances can offset the fees of lowspecification instances.
 
-**Note**
+> **Note:** You can calculate the computing power to evaluate the usage of regional reserved instances when the reserved instances and pay-as-you-go instances have different specifications.
 
-You can calculate the computing power to evaluate the usage of regional reserved instances when the reserved instances and pay-as-you-go instances have different specifications. The regional reserved instances and pay-as-you-go instances run the same operating system.
+The regional reserved instances and pay-as-you-go instances run the same operating system.
 
 **Zonal reserved instances**
 
@@ -3537,18 +3520,15 @@ You can view eligible pay-as-you-go instances that match reserved instances. For
 
 Reserved instances can offset the fees of the computing resources (vCPUs and memory) of pay-as-you-go instances, but cannot offset the fees of other resources, such as network and storage resources. For information about the billing of Elastic Compute Service (ECS) instances, see Billing overview. Windows reserved instances can also offset the image fees of pay-as-you-go Windows instances.
 
-**Note**
-
-The purchase price of a reserved instance for Windows includes the cost of the Windows image. This cost can be used to offset the image portion of the bill for a payas-you-go instance that runs Windows.
+> **Note:** The purchase price of a reserved instance for Windows includes the cost of the Windows image. This cost can be used to offset the image portion of the bill for a pay- as-you-go instance that runs Windows.
 
 **Usage priorities**
 
 Savings plans and reserved instances can be applied to offset the fees of computing resources for pay-as-you-go instances. If you have multiple discount plans, the plans are applied in the following sequence:
 1. Reserved instances and resource plans, such as storage capacity units (SCUs).
 
-**Note**
+> **Note:** Reserved instances can offset the fees of pay-as-you-go computing resources. SCUs can offset the fees of pay-as-you-go storage resources. You can use a combination of reserved instances and SCUs in pay-as-you-go scenarios to significantly reduce the computing and storage costs.相关实践，请参见RI和SCU全链路使用实践。
 
-Reserved instances can offset the fees of pay-as-you-go computing resources. SCUs can offset the fees of pay-as-you-go storage resources. You can use a combination of reserved instances and SCUs in pay-as-you-go scenarios to significantly reduce the computing and storage costs.相关实践，请参见RI和SCU全链路使用实践。
 2. ECS compute savings plans.
 3. General-purpose savings plans.
 4. Coupons.
@@ -3622,9 +3602,7 @@ Reserved instances can offset the fees of pay-as-you-go computing resources. SCU
 
 多账号共享预留实例券时存在以下限制： 不支持被共享预留实例券的阿里云账号再将此预留实例券共享。 单个预留实例券最多支持共享到100个阿里云账号。 如果被共享的账号已经购买了预留实例券，优先使用自身账号的预留实例券进行抵扣。 不支持共享可用区级预留实例券的资源预留能力。
 
-**Note**
-
-建议您在多账号共享预留实例券场景中使用地域级预留实例券，或将可用区级预留实例券转为地域级预留实例券。具体操作，请参见修改预留实例券的可用区。
+> **Note:** 建议您在多账号共享预留实例券场景中使用地域级预留实例券，或将可用区级预留实例券转为地域级预留实例券。具体操作，请参见修改预留实例券的可用区。
 
 **开通预留实例券多账号共享**
 

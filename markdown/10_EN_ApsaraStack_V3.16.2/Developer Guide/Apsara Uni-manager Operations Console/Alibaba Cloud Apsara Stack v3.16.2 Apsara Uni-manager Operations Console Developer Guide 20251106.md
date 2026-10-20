@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 65
 source_pdf: "e619bdcaf233e7a9_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide
@@ -97,9 +97,11 @@ Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters: ! @ # $ %
 
-When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters: ! @ # $ %
 3. In the top navigation bar, click the user profile and select Personal information from the
 drop-down list. Then, you can view the user information on the User Profile page.
 
@@ -130,15 +132,13 @@ You must obtain an AccessKey pair before you call API operations of the Apsara U
 i. Log on to the Apsara Uni-manager Operations Console. ii. On the right side of the top navigation bar, click the user profile. iii. Select **Personal information** from the drop-down list.
 2. On the User Profile page, view the AccessKey ID and AccessKey secret of the RAM user.
 
-**Note**
+> **Note:** The AccessKey secret of an Apsara Stack tenant account cannot be displayed or used. Only the AccessKey secret of a RAM user can be displayed and used.
 
-The AccessKey secret of an Apsara Stack tenant account cannot be displayed or used. Only the AccessKey secret of a RAM user can be displayed and used. Only users who are assigned specific roles can use their AccessKey pairs to call specific API operations. For more information about roles, see Configure authentication credentials.
+Only users who are assigned specific roles can use their AccessKey pairs to call specific API operations. For more information about roles, see Configure authentication credentials.
 3. If no AccessKey pair of a RAM user is available, click **Create AccessKey Pair** to obtain an
 AccessKey pair.
 
-**Note**
-
-You can create a maximum of two AccessKey pairs for RAM users per account. The Create AccessKey Pair button is disabled after you create two AccessKey pairs.
+> **Note:** You can create a maximum of two AccessKey pairs for RAM users per account. The Create AccessKey Pair button is disabled after you create two AccessKey pairs.
 
 ### 2.4 Obtain the service domain name
 
@@ -269,9 +269,7 @@ amples for SDK for Java This topic describes how to install and use Apsara Uni-m
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
-**Note**
-
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
+> **Note:** Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(

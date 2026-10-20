@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 96
 source_pdf: "d43b7059b5d39eb6_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Operations and Maintenance Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20Operations%20and%20Maintenance%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Operations and Maintenance Guide 20260825
@@ -251,9 +251,9 @@ View all jobs and services.
 r al
 ```
 
-**Note**
+> **Note:** Typically, the returned list is large on a production cluster.
 
-Typically, the returned list is large on a production cluster. View the status of a single service. Replace the $<service name> variable with the actual service name.
+View the status of a single service. Replace the $<service name> variable with the actual service name.
 
 ```
 r wwl $<servicename>
@@ -289,9 +289,7 @@ Run the command without parameters to view other options.
 
 O&M engineers can use Xstream_tool to perform O&M operations from the command line. Before running specific commands, log on to the command-line interface as follows.
 
-**Note**
-
-Always use the admin account when using Xstream_tool.
+> **Note:** Always use the admin account when using Xstream_tool.
 
 **Access the command-line interface through Apsara**
 
@@ -354,9 +352,7 @@ $<project> and $<topic> with your actual project and topic names.
 
 Figure 4. Check the status of all shards for the current topic This helps you quickly locate issues with a specific shard.
 
-**Note**
-
-Xstream_tool is an admin tool for DataHub. Except for the commands demonstrated above, do not run other commands unless necessary. If your work requires additional commands, contact second-line O&M engineers first.
+> **Note:** Xstream_tool is an admin tool for DataHub. Except for the commands demonstrated above, do not run other commands unless necessary. If your work requires additional commands, contact second-line O&M engineers first.
 
 ### 1.6 View performance statistics in the DataHub console
 
@@ -426,23 +422,25 @@ Response: `{`
 
 `}` `]` `}` Figure 1. Set action to rma and action status to pending for the anomalous chunkserver host
 
-**Note**
+> **Note:** Replace the IP address and hostname in the sample code with those of your anomalous chunkserver host.
 
-Replace the IP address and hostname in the sample code with those of your anomalous chunkserver host. ii. Run the following command to configure audit logs:
+ii. Run the following command to configure audit logs:
 
 ```bash
 curl "http://127.0.0.1:7070/api/v5/AddAuditLog?object=/m/m1&category=action" -d '{" category":"action", "from":"tianji.HealingService#", "object":"/m/m1", "content": " {\n \"action\" : \"/action/rma\",\n \"description\" : \"/monitor/rma=error, mti me: 1513488046851649\",\n \"status\" : \"pending\"\n}\n" }'
 ```
 
-**Note**
-
-Replace the IP address and hostname in the sample code with those of your anomalous chunkserver host. Replace the value of the mtime parameter in the sample code with the current time. Run the following command to query mtime. The sample code is for your reference only. Command:
+> **Note:** Replace the IP address and hostname in the sample code with those of your anomalous chunkserver host.
+> Replace the value of the mtime parameter in the sample code with the current time.
+> Run the following command to query mtime. The sample code is for your reference only.
+> Command:
 
 ```bash
 curl "http://127.0.0.1:7070/api/v5/GetMachineInfo? hostname=m1&attr=action_name,action_status,action_description@mtime"
 ```
 
-Response: `{`
+> Response:
+> `{`
 
 ```json
     "err_code": 0,
@@ -458,7 +456,11 @@ Response: `{`
         "hostname@mtime": 1516120875605211
 ```
 
-`}` `}` Figure 2. Query mtime
+`}`
+
+> `}`
+> Figure 2. Query mtime
+
 2. Wait for approval.
 i. Check the action status of the host. Command:
 
@@ -545,9 +547,7 @@ DISK_ERROR state.
 puadmin lscs -m
 ```
 
-**Note**
-
-If the disk is not in the DISK_ERROR state, run the following command to set it to ERROR.
+> **Note:** If the disk is not in the DISK_ERROR state, run the following command to set it to ERROR.
 
 ```
 puadmin cs -stat tcp://hostname-or-IP:10260 -d disk-ID --set=ERROR
@@ -559,9 +559,8 @@ puadmin cs -stat tcp://hostname-or-IP:10260 -d disk-ID --set=ERROR
 sudo umount /dev/sdk1
 ```
 
-**Note**
+> **Note:** If `df` shows that the drive is not mounted, skip this step.
 
-If `df` shows that the drive is not mounted, skip this step.
 4. Hot-swap the disk.
 5. Upload the `repair_app_disk.sh` script (contact Alibaba Cloud Technical Support to obtain
 the script) to the target machine, and then execute the `sudo sh repair_app_disk.sh` command to format the disk.
@@ -574,9 +573,8 @@ puadmin cs -stat tcp://hostname-or-IP:10260 -d disk-ID --set=OK
 
 7. Restart the server to detect the new disk.
 
-**Note**
+> **Note:** You can restart the pangu_cs node by killing its process. This has no impact because DataHub is a distributed service. Restarting a single cs node does not affect overall service.
 
-You can restart the pangu_cs node by killing its process. This has no impact because DataHub is a distributed service. Restarting a single cs node does not affect overall service.
 8. Run the following command to verify that the drive status is now DISK_OK.
 
 ```
@@ -602,16 +600,21 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account.
+
+> The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted.
+> To enhance security, your password must meet the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. After you log on to the Apsara Uni-manager Operations Console, click **Product O&M** in the
 top menu bar.
@@ -747,9 +750,8 @@ On the **Service O&M** page, click **Hot Spot Analysis** in the left navigation 
 
 On the **Hot Spot Analysis** page, click **SHARD Count** to refresh the hot spot distribution view. You can also filter the data. The **qps** value indicates the number of requests per second for a machine in the cluster. A high **qps** value suggests that the machine handles more requests than others, which may indicate a hot spot.
 
-**Note**
-
-A normal cluster displays at least four rows of data because the minimum cluster size is four servers. At least two rows show a **qps** value other than N/A. This is because at least two of the four servers have the Frontend role and report a **qps** value. A server that shows N/A for this value either has only the Chunkserver role, is not co-located with a Frontend role, or is abnormal.
+> **Note:** A normal cluster displays at least four rows of data because the minimum cluster size is four servers.
+> At least two rows show a **qps** value other than N/A. This is because at least two of the four servers have the Frontend role and report a **qps** value. A server that shows N/A for this value either has only the Chunkserver role, is not co-located with a Frontend role, or is abnormal.
 
 ##### 3.3.2.4 DataHub service archiving latency
 
@@ -850,9 +852,9 @@ You can add compute nodes to or remove compute nodes from the blacklist or read-
 2. In the panel that appears, click **Run**. A message appears, indicating that the action is
 submitted.
 
-**Note**
+> **Note:** The value of the **Hostname** parameter is automatically filled. You do not need to specify a value for this parameter.
 
-The value of the **Hostname** parameter is automatically filled. You do not need to specify a value for this parameter. You can check whether a compute node is added to the **blacklist** in the **compute node** list after the configuration is complete.
+You can check whether a compute node is added to the **blacklist** in the **compute node** list after the configuration is complete.
 
 ##### 3.3.3.3 Service O&M for Apsara Distributed File System
 
@@ -921,9 +923,7 @@ This topic describes how to view the storage overview and storage node informati
 1. Go to the DataHub Pangu service O&M page.
 2. Switch to the **Storage** tab. By default, the **Storage Overview** page appears.
 
-**Note**
-
-The **Storage Overview** page displays Pangu's **rebalance status**, **metrics**, and information about **rack dimensions**.
+> **Note:** The **Storage Overview** page displays Pangu's **rebalance status**, **metrics**, and information about **rack dimensions**.
 
 **Set the storage node status**
 
@@ -962,10 +962,7 @@ Click **Operation**, and then click **History** next to **Clear System Recycle B
 **System Recycle Bin > Machine Details > View Details** in the failed step to identify the
 cause of the failure.
 
-**Note**
-
-To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
-**Details**, and **Runtime Parameters**.
+> **Note:** To analyze the cause of the task failure, review the **Parameter Settings**, **Machine** **Details**, and **Runtime Parameters**.
 
 ###### 3.3.3.3.6 Enable and disable automatic data balancing for Pangu
 
@@ -1015,10 +1012,7 @@ view the job execution details.
 3. On the job execution details page, click the **Machine Details** tab for the failed step. Then,
 click **View Details** to identify the cause of the failure.
 
-**Note**
-
-To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
-**Details**, and **Runtime Parameters**.
+> **Note:** To analyze the cause of the task failure, review the **Parameter Settings**, **Machine** **Details**, and **Runtime Parameters**.
 
 ###### 3.3.3.3.7 Perform a checkpoint on a Pangu Master
 
@@ -1039,10 +1033,7 @@ Click **Operation** and then click **History** for **Master Execute Checkpoint**
 6. If a checkpoint task fails, click **Details** for the execution record to determine the cause of
 the failure.
 
-**Note**
-
-To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
-**Details**, and **Runtime Parameters**.
+> **Note:** To analyze the cause of the task failure, review the **Parameter Settings**, **Machine** **Details**, and **Runtime Parameters**.
 
 ###### 3.3.3.3.8 Switch the Pangu Master
 
@@ -1074,10 +1065,7 @@ Click **Actions**, and then click **History** after **Master Execution Switch** 
 5. On the job execution details page, locate the failed step. On the **Machine Details** tab, click
 **View Details** to identify the cause of the failure.
 
-**Note**
-
-To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
-**Details**, and **Runtime Parameters**.
+> **Note:** To analyze the cause of the task failure, review the **Parameter Settings**, **Machine** **Details**, and **Runtime Parameters**.
 
 #### 3.3.4 Cluster O&M
 
@@ -1188,9 +1176,7 @@ This topic describes how to scale out physical hosts for a DataHub cluster in Ap
 
 The physical hosts to add are in the Default cluster of Apsara Infrastructure Management. The Default cluster in Apsara Infrastructure Management contains hosts with the **Product** type set to **DataHub**.
 
-**Note**
-
-Only **CS** and **frontend** nodes can be scaled out in a DataHub cluster.
+> **Note:** Only **CS** and **frontend** nodes can be scaled out in a DataHub cluster.
 
 **Background information**
 
@@ -1394,10 +1380,8 @@ To manually execute a scheduled job, click the **Scheduled Jobs** tab. The proce
 and click **Next**.
 8. After you complete **Confirm Job Threats**, click **Confirm Execution**.
 
-**Note**
+> **Note:** After you confirm the execution, an execution record is automatically generated on the **Execution History** page. For more information, see View job execution history.
 
-After you confirm the execution, an execution record is automatically generated on the
-**Execution History** page. For more information, see View job execution history.
 9. On the job execution interface, click **Start** at the top to start the job.
 If you exit the job execution interface without performing any operations, you can find the execution record on the **Execution History** page. Click **Details** in the **Actions** column to open the job execution interface again.
 
@@ -1490,9 +1474,9 @@ You have an Apsara Bigdata Manager account with O&M permissions for the product.
 
 **Background information**
 
-**Note**
+> **Note:** Scheduling and monitoring items vary by product. However, their configuration and operation methods are consistent.
 
-Scheduling and monitoring items vary by product. However, their configuration and operation methods are consistent. Scheduling items run scheduling scripts on all machines associated with a specified tianji role. This process generates raw alert data, including the scheduling item that triggered the alert, the severity level, the affected machines, and the alert result. The raw data is sent to ABM's database for storage. Monitoring items display the raw alert data generated by scheduling items on the corresponding product pages in ABM. After mounting, you can configure filter policies to show only the alert results relevant to your needs on that page. Both scheduling and monitoring items are built-in and cannot be added. However, you can modify certain parameters for both, such as enable or disable status, runtime parameters, and description. Monitoring items also support configuring mount targets and deletion.
+Scheduling items run scheduling scripts on all machines associated with a specified tianji role. This process generates raw alert data, including the scheduling item that triggered the alert, the severity level, the affected machines, and the alert result. The raw data is sent to ABM's database for storage. Monitoring items display the raw alert data generated by scheduling items on the corresponding product pages in ABM. After mounting, you can configure filter policies to show only the alert results relevant to your needs on that page. Both scheduling and monitoring items are built-in and cannot be added. However, you can modify certain parameters for both, such as enable or disable status, runtime parameters, and description. Monitoring items also support configuring mount targets and deletion.
 
 **Access the management page**
 
@@ -1523,9 +1507,8 @@ appears, configure the parameters.
 **List** use the system's default configurations. **Custom** means you can customize these
 parameters.
 
-**Note**
+> **Note:** **Scheduling Interval** is configured using the **crontab** command.
 
-**Scheduling Interval** is configured using the **crontab** command.
 3. After configuring the parameters, click **OK**. The interface displays a success message.
 
 **View the list of failed machines**
@@ -1672,9 +1655,8 @@ You have an Apsara Bigdata Manager account with the required O&M permissions for
 
 Operation audit is specific to each product. To view the operation audit for a product, first navigate to that product’s interface.
 
-**Note**
+> **Note:** Operation audit displays the O&M history from the product’s **O&M** interface. It does not include O&M operations for job services.
 
-Operation audit displays the O&M history from the product’s **O&M** interface. It does not include O&M operations for job services.
 1. Log on to Apsara Bigdata Manager.
 2. In the upper-left corner, click the
 icon and select DataHub.
@@ -1712,9 +1694,7 @@ Perform routine maintenance to ensure the normal state of DataHub control compon
 
 **2.2 Inspection items**
 
-**Note**
-
-This topic uses Apsara Stack V3 as an example. The screenshots may differ from those provided in the following sections, depending on the version of Apsara Stack. Your actual business environment prevails.
+> **Note:** This topic uses Apsara Stack V3 as an example. The screenshots may differ from those provided in the following sections, depending on the version of Apsara Stack. Your actual business environment prevails.
 
 **2.2.1 Apsara Infrastructure Management dashboard**
 
@@ -1732,9 +1712,7 @@ search for DataHub clusters and view their status.
 
 If **Ready** is displayed in the Status column, the DataHub cluster is in the normal state and works as expected. If **Not Ready** is displayed in the Status column, the DataHub cluster is in the abnormal state and must be fixed.
 
-**Note**
-
-If any DataHub service role is not at the desired state or an error occurs during a rolling task for deployment or upgrade, take a screenshot of the error promptly and submit a ticket.
+> **Note:** If any DataHub service role is not at the desired state or an error occurs during a rolling task for deployment or upgrade, take a screenshot of the error promptly and submit a ticket.
 
 **2.2.1.2 Check the operating system**
 
@@ -1750,9 +1728,7 @@ iii. In the **Services** section of the page that appears, enter **datahub** in 
 
 Normal: No **Emergency** alerts are displayed. Abnormal: One or more **Emergency** alerts are displayed.
 
-**Note**
-
-The Alert History page displays the alerts about the preceding core system metrics. If an alert is displayed for a core system metric, take a screenshot of the alert promptly and submit a ticket.
+> **Note:** The Alert History page displays the alerts about the preceding core system metrics. If an alert is displayed for a core system metric, take a screenshot of the alert promptly and submit a ticket.
 
 **2.2.2 Cluster configurations**
 
@@ -1844,9 +1820,9 @@ Normal: All Job Scheduler server roles are in the good state, which indicates th
 
 Check whether the frontend request QPS and the queue length are in the proper range.
 
-**Note**
+> **Note:** A high frontend request QPS and a high queue length affect the efficiency of frontend request processing.
 
-A high frontend request QPS and a high queue length affect the efficiency of frontend request processing. i. Copy and paste the hostnames of the DataHub frontend servers to the `datahub_frontend.list file` in the /tmp directory of the OPS1 server. The datahub_frontend.list file must be created in advance. ii. Run the batch check commands on OPS1:
+i. Copy and paste the hostnames of the DataHub frontend servers to the `datahub_frontend.list file` in the /tmp directory of the OPS1 server. The datahub_frontend.list file must be created in advance. ii. Run the batch check commands on OPS1:
 
 ```
 // Run the following command on OPS1 as the root user: cd /tmp/ // In Apsara Stack V3.10.X and earlier, run the following command: pssh -h datahub_frontend.list -i "curl http://127.0.0.1/ez_status" // In versions later than Apsara Stack V3.10.X, run the following command: pssh -h datahub_frontend.list -i "curl http://127.0.0.1:8081/ez_status"
@@ -1856,7 +1832,10 @@ Expected output:
 
 **Inspection results**
 
-Normal: The frontend request QPS is smaller than 15,000, and the queue length is smaller than 100. Abnormal: The frontend request QPS is 15,000 or greater, and the queue length is greater than or equal to 100 and smaller than 2,000. Alternatively, the queue length of a single frontend server is greater than those of other servers for an extended period of time or exceeds the maximum threshold of 2,000. In these cases, the frontend server is a hot server. Note: The frontend request QPS and the queue length change dynamically. If the frontend request QPS is greater than 15,000 and the queue length is greater than 100 or even close to 2,000 for 30 minutes or longer, an exception occurs. In this case, take a screenshot of the exception promptly and submit a ticket to DataHub technical support. The following figure shows an exception in which the queue length is greater than 100 for several hours continuously. For example, the queue length of a single frontend server is 1,895, obviously greater than that of other frontend servers. In this case, the frontend server is a hot server.
+Normal: The frontend request QPS is smaller than 15,000, and the queue length is smaller than 100. Abnormal: The frontend request QPS is 15,000 or greater, and the queue length is greater than or equal to 100 and smaller than 2,000. Alternatively, the queue length of a single frontend server is greater than those of other servers for an extended period of time or exceeds the maximum threshold of 2,000. In these cases, the frontend server is a hot server.
+
+> **Note:** The frontend request QPS and the queue length change dynamically. If the frontend request QPS is greater than 15,000 and the queue length is greater than 100 or even close to 2,000 for 30 minutes or longer, an exception occurs. In this case, take a screenshot of the exception promptly and submit a ticket to DataHub technical support. The following figure shows an exception in which the queue length is greater than 100 for several hours continuously. For example, the queue length of a single frontend server is 1,895, obviously greater than that of other frontend servers. In this case, the frontend server is a hot server.
+
 
 **2.2.4.2 Check the number of shards on DataHub broker servers**
 
@@ -1948,9 +1927,7 @@ obtain and click the icon in the **Actions** column to go to the monitoring dash
 
 Check the overall read and write latency of the DataHub cluster. i. Log in to the Apsara Uni-manager Operations Console and go to the ABM page. ii. On the **Instrument cluster** page of ABM, find the **Cluster read/write latency** metric in the DataHub section.
 
-**Note**
-
-In the preceding figure, the read/write latency metric is measured in milliseconds.
+> **Note:** In the preceding figure, the read/write latency metric is measured in milliseconds.
 
 **Inspection results**
 
@@ -1984,14 +1961,9 @@ Check whether data pushed from the business side to topic shards meets the busin
 
 Normal: All shards are in the Active state. The earliest data time is recorded. The latest data time is recorded. Generally, the displayed time is close to or the same as the current time in UTC+8 format. A data amount is displayed for each shard, and data is evenly distributed to the shards. Abnormal: One or more shards are not in the Active state. For example, a shard is in the Closed state. The earliest data time is not recorded, and the corresponding column is empty. The latest data time is not recorded, and the corresponding column is empty. Alternatively, the displayed time is earlier than the current time. For example, the displayed time is tens of minutes, several hours, or even several days earlier than the current time. No data amount is displayed for a shard, or data is not evenly distributed to the shards. Alternatively, the display on the Shards tab is abnormal, or an error is reported when you go to the Shards tab.
 
-**Note**
-
-**Shard Status**: If some shards are in a state other than Active, such as Closed,
-you must confirm with the customer whether the shards are split and whether the shards meet the business requirements and expectations for the scenario.
-**Earliest Data Time and Latest Data Time**: If the earliest data time and latest
-data time are empty, no data is pushed to the topic after the customer creates the topic. If this issue is detected, inform the customer of the issue. You must confirm with the customer whether the customer plans to push data to the topic and whether the customer wants to retain the topic. If the customer confirms that the topic is not required any longer, delete the topic. Otherwise, the topic consumes DataHub backend server resources. If a large number of topics exist, contact Alibaba Cloud technical support to check the issue by using the script tool described in Obtain the latest data write time in all shards by using Apsara Stack V3.
-**Data Amount**: If no data amount is displayed, resolve the issue by using the
-same method described above. If some data amount is displayed, but the data amount of one or more shards is significantly higher or lower than that of other shards, record the inspection results and inform the customer of the results. The customer can adjust services based on the information.
+> **Note:** **Shard Status**: If some shards are in a state other than Active, such as Closed, you must confirm with the customer whether the shards are split and whether the shards meet the business requirements and expectations for the scenario.
+> **Earliest Data Time and Latest Data Time**: If the earliest data time and latest data time are empty, no data is pushed to the topic after the customer creates the topic. If this issue is detected, inform the customer of the issue. You must confirm with the customer whether the customer plans to push data to the topic and whether the customer wants to retain the topic. If the customer confirms that the topic is not required any longer, delete the topic. Otherwise, the topic consumes DataHub backend server resources. If a large number of topics exist, contact Alibaba Cloud technical support to check the issue by using the script tool described in Obtain the latest data write time in all shards by using Apsara Stack V3.
+> **Data Amount**: If no data amount is displayed, resolve the issue by using the same method described above. If some data amount is displayed, but the data amount of one or more shards is significantly higher or lower than that of other shards, record the inspection results and inform the customer of the results. The customer can adjust services based on the information.
 
 **3.2.2.3 Check the data archiving and synchronization service**
 
@@ -2005,9 +1977,8 @@ ii. Find a synchronization task and click **View** in the **Actions** column to 
 
 i. Normal: The synchronization task is in the RUNNING or EXECUTING state, the synchronization latency is less than 5 minutes, and the amount of dirty data is 0. The display on the Synchronization Task tab is normal, and no error is reported. ii. Abnormal: The synchronization task is in a state other than RUNNING, such as HANG or ERROR. Errors are displayed on the topic details page. The synchronization latency is more than 5 minutes, and the amount of dirty data is not 0. Errors are displayed on the Synchronization Task tab. If this happens, take a screenshot promptly and contact the customer on the business side to resolve the issue. If the issue persists, submit a ticket to DataHub technical support.
 
-**Note**
-
-Synchronization checkpoint: Data before this checkpoint has been synchronized to a third-party service, such as MaxCompute or ApsaraDB RDS. Synchronization latency: Calculate the latency by using the following formula:
+> **Note:** Synchronization checkpoint: Data before this checkpoint has been synchronized to a third-party service, such as MaxCompute or ApsaraDB RDS.
+> Synchronization latency: Calculate the latency by using the following formula:
 
 ```
  Current time - Synchronization checkpoint .

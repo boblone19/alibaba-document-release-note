@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 159
 source_pdf: "12f8b3b576725a5b_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20PolarDB%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629
@@ -120,10 +120,7 @@ This topic describes the instance types of PolarDB. Different instance types del
 
 **PolarDB (High-availability Edition)**
 
-**Note**
-
-For PolarDB, different database versions are supported for different compatibility types. If the **compatibility type** is **PostgreSQL**, only **database version****14** is supported. If the
-**compatibility type** is **Oracle**, **database versions****14** and **11.2** are supported.
+> **Note:** For PolarDB, different database versions are supported for different compatibility types. If the **compatibility type** is **PostgreSQL**, only **database version****14** is supported. If the **compatibility type** is **Oracle**, **database versions****14** and **11.2** are supported.
 
 | Edition | Databas e version | Instance family | Code of instance type | CPU and memory | Maximu m connecti ons | Maximu m IOPS | Storage capacity |
 |---|---|---|---|---|---|---|---|
@@ -195,17 +192,17 @@ Before you log on to the Apsara Uni-manager Management Console, the endpoint of 
 1. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Uppercase or lowercase letters
+> Digits
+> Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 2. Click **Log On**.
 3. If your account has multi-factor authentication (MFA) enabled, perform corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable** **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable**
-**MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
 ## 5 Quick Start
@@ -276,9 +273,9 @@ This topic describes how to configure a whitelist for a PolarDB instance. Only e
 
 Whitelists make your PolarDB instance more secure and do not interrupt the operations of your PolarDB instance when you configure whitelists. We recommend that you perform maintenance on your whitelists on a regular basis. To configure a whitelist, perform the following operations: Configure a whitelist: Add IP addresses to allow them to connect to the PolarDB instance.
 
-**Note**
+> **Note:** The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance.
 
-The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance. Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
+Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
 
 **Procedure**
 
@@ -289,9 +286,8 @@ The default IP address whitelist contains only the IP address 127.0.0.1. This in
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
 
-**Note**
+> **Note:** You can also click **Create Whitelist** to create a whitelist.
 
-You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
@@ -360,9 +356,8 @@ correct, specify the **Database Account** and **Database password** parameters.
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-**Note**
+> **Note:** If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For information about how to connect to a host, see Configure an IP address whitelist.
 
-If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For information about how to connect to a host, see Configure an IP address whitelist.
 7. The **SQLConsole** page appears after you log on to the instance. Execute a statement in the
 following format to create a database:
 
@@ -435,9 +430,8 @@ For more information about how to use DMS to connect to an ApsaraDB RDS instance
 instance. For more information about how to configure a whitelist, see Configure an IP address whitelist.
 2. Start the pgAdmin 4 client.
 
-**Note**
+> **Note:** For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
 
-For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
 3. Right-click **Servers** and choose **Create > Server**, as shown in the following figure.
 4. On the **General** tab of the **Create - Server** dialog box, enter the name of the server, as
 shown in the following figure.
@@ -455,9 +449,7 @@ following figure.
 7. If the connection information is correct, choose **Servers > Server Name > Databases >**
 **postgres**. If the following page appears, the connection is established.
 
-**Important**
-
-The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
+> **Important:** The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
 ## 6 Instances
 
@@ -522,9 +514,8 @@ This topic describes how to manually restart an ApsaraDB RDS instance. This appl
 **Information** page.
 4. In the upper-right corner of the page, click **Restart Instance**.
 
-**Important**
+> **Important:** When you restart an instance, a network interruption occurs. We recommend that you make appropriate arrangements for your workloads and make sure that your applications are configured with automatic reconnection policies.
 
-When you restart an instance, a network interruption occurs. We recommend that you make appropriate arrangements for your workloads and make sure that your applications are configured with automatic reconnection policies.
 5. In the message that appears, click **Confirm**.
 
 ### 6.3 Set a maintenance window
@@ -541,9 +532,10 @@ This topic describes how to set a maintenance window for an ApsaraDB RDS instanc
 **Window**.
 5. Select a maintenance window and click **Save**.
 
-**Note**
-
-The maintenance window is in UTC+8. Before the maintenance starts, ApsaraDB RDS sends text messages and emails to the contacts that are associated with your Apsara Stack account. To ensure the stability of the maintenance process, the instance changes to the Maintaining Instance state before the maintenance window. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, apart from account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable. During the maintenance window, one or two network interruptions may occur. Make sure that you configure automatic reconnection policies for your applications to avoid service disruptions.
+> **Note:** The maintenance window is in UTC+8.
+> Before the maintenance starts, ApsaraDB RDS sends text messages and emails to the contacts that are associated with your Apsara Stack account.
+> To ensure the stability of the maintenance process, the instance changes to the Maintaining Instance state before the maintenance window. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, apart from account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable.
+> During the maintenance window, one or two network interruptions may occur. Make sure that you configure automatic reconnection policies for your applications to avoid service disruptions.
 
 ### 6.4 Configure primary/secondary switchover
 
@@ -555,9 +547,7 @@ ApsaraDB RDS provides the primary/secondary switchover feature to ensure the hig
 
 Data is synchronized in real time between the primary and secondary instances. You can access only the primary instance. The secondary instance serves only as a backup instance and does not allow external access. After the switchover, the original primary instance becomes the secondary instance.
 
-**Note**
-
-During a switchover, a network interruption may occur. Make sure that your applications are configured with automatic reconnection policies.
+> **Note:** During a switchover, a network interruption may occur. Make sure that your applications are configured with automatic reconnection policies.
 
 **Procedure**
 
@@ -569,9 +559,9 @@ During a switchover, a network interruption may occur. Make sure that your appli
 5. In the **Availability Information** section, click **Switch Primary/Secondary Instance**.
 6. In the **Switch Primary/Secondary Instance** dialog box, click **OK**.
 
-**Note**
+> **Note:** During the switchover, operations such as managing databases and accounts and changing network types cannot be performed. Therefore, we recommend that you select Switch Within Maintenance Window.
 
-During the switchover, operations such as managing databases and accounts and changing network types cannot be performed. Therefore, we recommend that you select Switch Within Maintenance Window. For more information about how to set a maintenance window, see Set a maintenance window.
+For more information about how to set a maintenance window, see Set a maintenance window.
 
 ### 6.5 Release an instance
 
@@ -584,9 +574,8 @@ This topic describes how to manually release a PolarDB instance.
 3. In the **Actions** column corresponding to the instance, click **More** and select **Release**
 **Instance** from the drop-down list.
 
-**Note**
+> **Note:** After an instance is released, the instance data is immediately deleted. We recommend that you back up the data and download the backup file before you release an instance. For more information, see Back up a PolarDB instance and Download backup files.
 
-After an instance is released, the instance data is immediately deleted. We recommend that you back up the data and download the backup file before you release an instance. For more information, see Back up a PolarDB instance and Download backup files.
 4. In the message that appears, click **Confirm**.
 
 ### 6.6 Read-only instance
@@ -665,9 +654,8 @@ This topic describes how to change the instance type and storage space of a Pola
 4. In the **Configuration Information** section of the **Basic Information** page, click **Change**
 **Specifications**.
 
-**Important**
+> **Important:** While you change specifications of an instance, a network interruption of about 30 seconds may occur, and most of the operations related to databases, accounts, and network operations cannot be performed. We recommend that you make appropriate arrangements for you workloads before you change specifications.
 
-While you change specifications of an instance, a network interruption of about 30 seconds may occur, and most of the operations related to databases, accounts, and network operations cannot be performed. We recommend that you make appropriate arrangements for you workloads before you change specifications.
 5. Change specifications based on your business requirements and click **Submit**.
 
 ### 6.8 Set instance parameters
@@ -686,21 +674,21 @@ You can use the console to view and modify the values of some parameters and vie
 5. You can perform the following operations:
 Export parameters Click **Export Parameters** to save the parameter file in TXT format to your local computer. This TXT file contains all parameter values for the instance. Modify parameters in a batch i. After you modify the exported parameter file, click **Import Parameters** and paste the content of the parameter file into the dialog box.
 
-**Note**
+> **Note:** Select **Show Modified Parameters Only** to view the modified parameters.
 
-Select **Show Modified Parameters Only** to view the modified parameters. ii. Click **OK**. iii. In the upper-right corner, click **Submit Parameters**.
+ii. Click **OK**. iii. In the upper-right corner, click **Submit Parameters**.
 
-**Note**
+> **Note:** If a parameter modification requires an instance restart to take effect, the system prompts you to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application has a reconnection mechanism.
+> You can click **Cancel** to discard the modifications before they are submitted.
 
-If a parameter modification requires an instance restart to take effect, the system prompts you to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application has a reconnection mechanism. You can click **Cancel** to discard the modifications before they are submitted. Modify a single parameter i. In the **Modifiable Parameters** list, find the parameter that you want to modify and click the icon in the **Running Parameter Value** column. ii. Enter a parameter value within the displayed value range. iii. Click **OK**.
+Modify a single parameter i. In the **Modifiable Parameters** list, find the parameter that you want to modify and click the icon in the **Running Parameter Value** column. ii. Enter a parameter value within the displayed value range. iii. Click **OK**.
 
-**Note**
+> **Note:** Select **Show Modified Parameters Only** to view the modified parameters.
 
-Select **Show Modified Parameters Only** to view the modified parameters. iv. In the upper-right corner, click **Submit Parameters**.
+iv. In the upper-right corner, click **Submit Parameters**.
 
-**Note**
-
-If a parameter modification requires an instance restart to take effect, the system prompts you to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application has a reconnection mechanism. You can click **Cancel** to discard the modifications before they are submitted.
+> **Note:** If a parameter modification requires an instance restart to take effect, the system prompts you to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application has a reconnection mechanism.
+> You can click **Cancel** to discard the modifications before they are submitted.
 
 **View parameter modification history**
 
@@ -960,9 +948,8 @@ For more information about how to use DMS to connect to an ApsaraDB RDS instance
 instance. For more information about how to configure a whitelist, see Configure an IP address whitelist.
 2. Start the pgAdmin 4 client.
 
-**Note**
+> **Note:** For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
 
-For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
 3. Right-click **Servers** and choose **Create > Server**, as shown in the following figure.
 4. On the **General** tab of the **Create - Server** dialog box, enter the name of the server, as
 shown in the following figure.
@@ -982,9 +969,7 @@ following figure.
 7. If the connection information is correct, choose **Servers > Server Name > Databases >**
 **postgres**. If the following page appears, the connection is established.
 
-**Important**
-
-The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
+> **Important:** The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
 ### 7.2 Use DMS to log on to a PolarDB instance
 
@@ -1017,10 +1002,7 @@ The IP address whitelist is configured. For more information about how to config
 
 6. Click **Login**.
 
-**Note**
-
-If you want the browser to remember the password, select **Remember**
-**password** before you click **Login**.
+> **Note:** If you want the browser to remember the password, select **Remember** **password** before you click **Login**.
 
 ### 7.3 Change the network type of an instance
 
@@ -1044,9 +1026,8 @@ Precautions After you change the network type from VPC to classic network, the i
 **Network**.
 6. In the message that appears, click **OK**.
 
-**Note**
+> **Note:** After the network type is changed to classic network, only ECS instances within the classic network can connect to the PolarDB instance by using the internal endpoint. You must configure the internal endpoint for the ECS instances.
 
-After the network type is changed to classic network, only ECS instances within the classic network can connect to the PolarDB instance by using the internal endpoint. You must configure the internal endpoint for the ECS instances.
 7. Configure a whitelist to allow ECS instances within the classic network to connect to the
 PolarDB instance by using the internal endpoint.
 
@@ -1061,23 +1042,23 @@ PolarDB instance by using the internal endpoint.
 6. In the Switch to VPC dialog box, select a VPC and a vSwitch and specify whether to retain
 the classic network endpoint.
 
-**Note**
+> **Note:** Select a VPC. We recommend that you select the VPC where your ECS instances are deployed. Otherwise, the ECS instances cannot communicate with the PolarDB instance over the internal network.
+> Select a vSwitch. If no vSwitches are available in the selected VPC, create one in the same zone where the PolarDB instance is deployed. For more information, see Create a vSwitch in Quick Start of **VPC User Guide**. **> > >**
+> Clear or select **Reserve original classic endpoint**.
+> **Clear the option**
+> The classic network endpoint is not retained and changes to a VPC endpoint.
+> When you change the network type from classic network to VPC, a transient connection that lasts approximately 30 seconds occurs and ECS instances that reside in the classic network are immediately disconnected from the PolarDB instance.
+> **Select the option**
+> The classic network endpoint is retained, and a new VPC endpoint is generated. In this case, the PolarDB instance runs in hybrid access mode. Classic network-housed ECS instances and VPC-housed ECS instances can connect to the PolarDB instance over an internal network. For more information, see Configure the hybrid access solution for an instance.
+> When you change the network type from classic network to VPC, no transient connection occurs. The connection between each classic network-housed ECS instance and the PolarDB instance remains available until the classic network endpoint expires.
+> To migrate your business to the VPC without interruption, you must add the VPC endpoint to access the ECS instances before the classic network endpoint expires. Seven days before the classic network endpoint expires, the system sends a text message to the phone number bound to your Apsara Stack account every day.
 
-Select a VPC. We recommend that you select the VPC where your ECS instances are deployed. Otherwise, the ECS instances cannot communicate with the PolarDB instance over the internal network. Select a vSwitch. If no vSwitches are available in the selected VPC, create one in the same zone where the PolarDB instance is deployed. For more information, see Create a vSwitch in Quick Start of **VPC User Guide**. **> > >** Clear or select **Reserve original classic endpoint**.
-
-**Clear the option**
-
-The classic network endpoint is not retained and changes to a VPC endpoint. When you change the network type from classic network to VPC, a transient connection that lasts approximately 30 seconds occurs and ECS instances that reside in the classic network are immediately disconnected from the PolarDB instance.
-
-**Select the option**
-
-The classic network endpoint is retained, and a new VPC endpoint is generated. In this case, the PolarDB instance runs in hybrid access mode. Classic network-housed ECS instances and VPC-housed ECS instances can connect to the PolarDB instance over an internal network. For more information, see Configure the hybrid access solution for an instance. When you change the network type from classic network to VPC, no transient connection occurs. The connection between each classic network-housed ECS instance and the PolarDB instance remains available until the classic network endpoint expires. To migrate your business to the VPC without interruption, you must add the VPC endpoint to access the ECS instances before the classic network endpoint expires. Seven days before the classic network endpoint expires, the system sends a text message to the phone number bound to your Apsara Stack account every day. For more information, see Configure the hybrid access solution for an instance.
+For more information, see Configure the hybrid access solution for an instance.
 7. Add the private IP address of the required VPC-hosted ECS instance to an IP address
 whitelist of the VPC network type on the PolarDB instance. This way, the ECS instance can access the PolarDB instance over an internal network. If no IP address whitelists of the VPC network type are available, create one.
 
-**Note**
-
-If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed.
+> **Note:** If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires.
+> If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed.
 
 ### 7.4 Configure the hybrid access solution for an instance
 
@@ -1129,9 +1110,7 @@ You must use the internal endpoint and port number to access a PolarDB instance.
 4. In the **Basic Information** section, view the internal and public endpoints and port
 numbers.
 
-**Note**
-
-The endpoints and port numbers are displayed only after you configure an IP address whitelist or security group for the PolarDB instance.
+> **Note:** The endpoints and port numbers are displayed only after you configure an IP address whitelist or security group for the PolarDB instance.
 
 **Modify the internal endpoint and port number**
 
@@ -1144,9 +1123,8 @@ The endpoints and port numbers are displayed only after you configure an IP addr
 6. In the dialog box that appears, set **Connection Type** to **Internal Endpoint**.
 7. Modify the endpoint prefix and port number and then click **OK**.
 
-**Note**
-
-The prefix of an endpoint must be 8 to 64 characters in length and can contain only letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be within the range of 1000 to 5999.
+> **Note:** The prefix of an endpoint must be 8 to 64 characters in length and can contain only letters, digits, and hyphens (-). It must start with a lowercase letter.
+> The port number must be within the range of 1000 to 5999.
 
 **FAQ**
 
@@ -1206,9 +1184,11 @@ This topic describes how to use the ApsaraDB RDS console to reset the password o
 5. In the **Actions** column corresponding to the account, click **Reset Password**.
 6. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
 
-**Note**
-
-The password must meet the following requirements: It can be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: !@#$%^&*()_+-=
+> **Note:** The password must meet the following requirements:
+> It can be 8 to 32 characters in length.
+> It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+> It can contain the following special characters:
+> !@#$%^&*()_+-=
 
 ### 8.3 Lock or unlock an account
 
@@ -1224,9 +1204,7 @@ to go to the **Basic Information** page.
 5. In the left-side navigation pane of the page that appears, click **Accounts**.
 6. Click **Lock** in the **Actions** column corresponding to the account.
 
-**Note**
-
-Wait a few minutes. When the **Status** column displays **Locking**, the account is locked. If you want to use the account again, click **Unlock** in the **Actions** column.
+> **Note:** Wait a few minutes. When the **Status** column displays **Locking**, the account is locked. If you want to use the account again, click **Unlock** in the **Actions** column.
 
 ### 8.4 Delete an account
 
@@ -1246,9 +1224,7 @@ to go to the **Basic Information** page.
 5. Find the account that you want to delete and click **Delete** in the Actions column.
 6. In the message that appears, click **OK**.
 
-**Note**
-
-Accounts in the **Processing** state cannot be deleted.
+> **Note:** Accounts in the **Processing** state cannot be deleted.
 
 ## 9 Databases
 
@@ -1284,9 +1260,8 @@ A PolarDB instance is created. For more information, see Create an instance.
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-**Note**
+> **Note:** If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
 
-If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
 7. The **SQLConsole** page appears after you log on to the instance. Execute a statement in the
 following format to create a database:
 
@@ -1335,9 +1310,8 @@ This topic describes how to delete a database in the PolarDB instance.
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-**Note**
+> **Note:** If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
 
-If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
 7. The **SQLConsole** page appears after you log on to the instance. Execute the following
 statement to delete a database:
 
@@ -1424,9 +1398,9 @@ This topic describes how to configure a whitelist for a PolarDB instance. Only e
 
 Whitelists make your PolarDB instance more secure and do not interrupt the operations of your PolarDB instance when you configure whitelists. We recommend that you perform maintenance on your whitelists on a regular basis. To configure a whitelist, perform the following operations: Configure a whitelist: Add IP addresses to allow them to connect to the PolarDB instance.
 
-**Note**
+> **Note:** The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance.
 
-The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance. Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
+Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
 
 **Procedure**
 
@@ -1437,9 +1411,8 @@ The default IP address whitelist contains only the IP address 127.0.0.1. This in
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
 
-**Note**
+> **Note:** You can also click **Create Whitelist** to create a whitelist.
 
-You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
@@ -1462,17 +1435,14 @@ The SQL Audit feature does not affect instance performance. SQL audit logs are r
 6. Click **Enable SQL Audit** or **Enable now**.
 7. In the message that appears, click **Confirm**.
 
-**Note**
-
-After you enable the SQL Audit feature, you can query SQL information based on conditions such as the time, DB, user, and keyword.
+> **Note:** After you enable the SQL Audit feature, you can query SQL information based on conditions such as the time, DB, user, and keyword.
 
 **Disable SQL audit**
 
 You can disable SQL audit when it is no longer needed. To disable SQL audit, perform the following steps:
 
-**Important**
+> **Important:** When you disable the SQL Audit feature, all SQL audit records, including historical logs, are cleared. Before you disable this feature, you must export and save the audit logs to your local computer.
 
-When you disable the SQL Audit feature, all SQL audit records, including historical logs, are cleared. Before you disable this feature, you must export and save the audit logs to your local computer.
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1492,9 +1462,7 @@ click **Manage** in the **Actions** column of the instance. The **Basic Informat
 4. Click the **SQL Audit** tab.
 5. Enable the storage of audit logs in SLS-PUB.
 
-**Important**
-
-This action cannot be undone. Proceed with caution.
+> **Important:** This action cannot be undone. Proceed with caution.
 
 ### 11.3 Configure SSL encryption
 
@@ -1517,15 +1485,14 @@ encryption and click **OK**.
 7. After the state of SSL encryption is displayed as **Enabled**, click **Download CA Certificate**.
 The downloaded file is a package that contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: used to import CA certificates to other operating systems or applications. JKS file: the Java truststore file. The password is apsaradb. It is used to import the CA certificate chain to Java programs.
 
-**Note**
-
-When the JKS file is used in Java, you must modify the default JDK security configurations in JDK 7 and JDK 8. Open the `jre/lib/security/java.security` file on the server that connects to your database and modify the following configurations:
+> **Note:** When the JKS file is used in Java, you must modify the default JDK security configurations in JDK 7 and JDK 8. Open the
+> `jre/lib/security/java.security` file on the server that connects to your database and modify the following configurations:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 224 jdk.certpath.disabledAlgorithms=MD2, RSA keySize < 1024
 ```
 
-If you do not modify these configurations, the following error is reported. In most cases, other similar errors are also caused by invalid Java security configurations:
+> If you do not modify these configurations, the following error is reported. In most cases, other similar errors are also caused by invalid Java security configurations:
 
 ```
 javax.net.ssl.SSLHandshakeException: DHPublicKey does not comply to algorithm c onstraints
@@ -1542,21 +1509,18 @@ After you change the endpoint that has SSL encryption enabled or when the SSL ce
 5. On the page that appears, click the **SSL Encryption** tab. Click **Update Validity**.
 6. In the **Update SSL Certificate Validity** message, click **OK**.
 
-**Note**
+> **Note:** The update of the validity period causes the ApsaraDB RDS instance to restart. Proceed with caution.
 
-The update of the validity period causes the ApsaraDB RDS instance to restart. Proceed with caution.
 7. After the validity period of the certificate is updated, download and configure the certificate
 again.
 
-**Note**
-
-For more information about how to download a certificate, see Step 7 in the "Enable SSL encryption and download an SSL certificate" section.
+> **Note:** For more information about how to download a certificate, see Step 7 in the "Enable SSL encryption and download an SSL certificate" section.
 
 **Disable SSL encryption**
 
-**Note**
+> **Note:** If you disable SSL encryption, the ApsaraDB RDS instance restarts. We recommend that you disable SSL encryption during off-peak hours.
+> After you disable SSL encryption, access performance increases, but security decreases. We recommend that you disable SSL encryption only in secure environments.
 
-If you disable SSL encryption, the ApsaraDB RDS instance restarts. We recommend that you disable SSL encryption during off-peak hours. After you disable SSL encryption, access performance increases, but security decreases. We recommend that you disable SSL encryption only in secure environments.
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1583,9 +1547,8 @@ You cannot disable TDE after it is enabled. You can enable TDE only when you cre
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. On the **Create Instance** page, set **Enable TDE** to Yes.
 
-**Note**
+> **Note:** For more information about how to create an instance, see Create an instance.
 
-For more information about how to create an instance, see Create an instance.
 4. Click **Submit**.
 
 **View the TDE status**
@@ -1646,17 +1609,13 @@ following table lists the parameters.
 4. In the upper-right corner of the page, click **Back Up Instance**.
 5. Select the backup mode and backup policy, and click **OK**.
 
-**Note**
+> **Note:** The backup mode is **Full Backup** and the backup policy is **Instance** **Backup**.
 
-The backup mode is **Full Backup** and the backup policy is **Instance**
-**Backup**.
 6. In the upper-right corner, click the
 icon to view the task progress displayed in the
 **Task Progress** list.
 
-**Note**
-
-You cannot download backup files to your computer.
+> **Note:** You cannot download backup files to your computer.
 
 **FAQ**
 
@@ -1682,9 +1641,11 @@ For a data backup, click the **Data Backups** tab. For a log backup, click the *
 6. Select a time range, find the target data backup or archived log, and then click **Download**
 **Instance Backup** or **Download** in the **Actions** column.
 
-**Note**
+> **Note:** If you are restoring data, select the data backup file that is closest in time to the desired recovery point.
+> If you use a log backup to restore data to a local database, note the following:
+> The instance ID of the log backup must match the instance ID of the data backup.
+> The start time of the log backup must be after the timestamp of the data backup and before the desired recovery point.
 
-If you are restoring data, select the data backup file that is closest in time to the desired recovery point. If you use a log backup to restore data to a local database, note the following: The instance ID of the log backup must match the instance ID of the data backup. The start time of the log backup must be after the timestamp of the data backup and before the desired recovery point.
 7. In the dialog box that appears, select a download method.
 
 | Download method | Description |
@@ -1692,15 +1653,15 @@ If you are restoring data, select the data backup file that is closest in time t
 | Download button | Downloads the backup file directly using your browser. |
 | Download address | Copies the download address. Use this address to download the backup file with other tools. |
 
-**Note**
-
-To download the file on a Linux system, run the following command:
+> **Note:** To download the file on a Linux system, run the following command:
 
 ```
 wget -c '<Backup file download URL>' -O <File name>
 ```
 
-The -c option enables resumable downloads. The -O option saves the downloaded file with the specified name. We recommend that you use the original file name from the URL. If the URL contains multiple parameters, enclose the URL in single quotation marks (') to prevent download failures.
+> The -c option enables resumable downloads.
+> The -O option saves the downloaded file with the specified name. We recommend that you use the original file name from the URL.
+> If the URL contains multiple parameters, enclose the URL in single quotation marks (') to prevent download failures.
 
 ### 12.3 Data restoration
 
@@ -1784,10 +1745,7 @@ CloudDBA provides the Session Manager feature for RDS instances. You can use thi
 4. In the navigation pane on the left, click **CloudDBA > Quick Diagnostics**.
 5. Click the **Session Manager** tab.
 
-**Note**
-
-For more information, see the "Instance Session" chapter in the **Database Autonomy**
-**Service (DAS) > User Guide**.
+> **Note:** For more information, see the "Instance Session" chapter in the **Database Autonomy** **Service (DAS) > User Guide**.
 
 ### 14.3 Real-time performance
 
@@ -1802,10 +1760,7 @@ CloudDBA provides a real-time performance feature for ApsaraDB RDS. This feature
 4. In the navigation pane on the left, click **CloudDBA > Quick Diagnostics**.
 5. Click the **Real-time Performance** tab.
 
-**Note**
-
-For more information, see the "Real-time performance" topic in the **Database**
-**Autonomy Service (DAS) > User Guide**.
+> **Note:** For more information, see the "Real-time performance" topic in the **Database** **Autonomy Service (DAS) > User Guide**.
 
 ### 14.4 Storage analysis
 
@@ -1824,10 +1779,7 @@ The storage analysis feature shows the storage overview and available days of st
 4. In the navigation pane on the left, click **CloudDBA > Quick Diagnostics**.
 5. Click the **Storage Analysis** tab.
 
-**Note**
-
-For more information, see the Storage Analysis chapter in the **Database Autonomy**
-**Service (DAS) > User Guide**.
+> **Note:** For more information, see the Storage Analysis chapter in the **Database Autonomy** **Service (DAS) > User Guide**.
 
 ### 14.5 Slow query logs
 
@@ -1839,10 +1791,7 @@ In PolarDB, CloudDBA provides the slow query logs feature. This feature allows y
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, choose **CloudDBA > Slow Query Logs**.
 
-**Note**
-
-For more information, see Slow query logs in **Database Autonomy**
-**Service User Guide**.
+> **Note:** For more information, see Slow query logs in **Database Autonomy** **Service User Guide**.
 
 ## 15 Extensions
 
@@ -1850,9 +1799,7 @@ This topic describes the extensions and extension versions supported by PolarDB.
 
 **Supported extensions and extension versions**
 
-**Note**
-
-This topic lists the extensions and their versions that are supported by different PolarDB kernel versions. This information helps you quickly determine which extensions are supported by your instance. For more information about supported extensions, you can run the following command in your database.
+> **Note:** This topic lists the extensions and their versions that are supported by different PolarDB kernel versions. This information helps you quickly determine which extensions are supported by your instance. For more information about supported extensions, you can run the following command in your database.
 
 ```
 SELECT * FROM pg_available_extensions;
@@ -2068,9 +2015,7 @@ Examples:
 
 If your project uses Hibernate to connect to a PolarDB database, specify the driver class and dialect for the database in your Hibernate configuration file named `hibernate.cfg.xml` .
 
-**Note**
-
-Only Hibernate 3.6 and later versions support PostgresPlusDialect.
+> **Note:** Only Hibernate 3.6 and later versions support PostgresPlusDialect.
 
 ```
 <property name="connection.driver_class">com.aliyun.polardb.Driver</property> <property name="connection.url">jdbc:polardb://pc-
@@ -2086,9 +2031,10 @@ By default, Druid 1.1.24 and later support the PolarDB JDBC driver. You do not n
 dataSource.setDriverClassName("com.aliyun.polardb.Driver"); dataSource.setDbType("postgresql");
 ```
 
-**Note**
+> **Note:** Druid versions earlier than 1.1.24 are not adapted to PolarDB. Therefore, you must set
+> `dbtype` to `postgresql` .
 
-Druid versions earlier than 1.1.24 are not adapted to PolarDB. Therefore, you must set `dbtype` to `postgresql` . For more information about how to encrypt database passwords in a Druid connection pool, see Database password encryption.
+For more information about how to encrypt database passwords in a Druid connection pool, see Database password encryption.
 
 **Adapt to Activiti**
 
@@ -2569,9 +2515,7 @@ For 32-bit x86 UNIX or Linux, download PolarDB-ODBC_Linux_X86_32.tar.gz. For 64-
 1. Download the ODBC driver.
 2. Install the ODBC driver.
 
-**Note**
-
-After you decompress the package, you can use the ODBC driver without installation. Run the following command to decompress the package:
+> **Note:** After you decompress the package, you can use the ODBC driver without installation. Run the following command to decompress the package:
 
 ```
 tar -zxvf polardb_oracle_odbc.tar.gz
@@ -2614,9 +2558,7 @@ version of your OS. For more information, see Download the driver.
 information, see Download the driver.
 2. Install the ODBC driver.
 
-**Note**
-
-After you decompress the package, you can use the ODBC driver without installation. Run the following command to decompress the package:
+> **Note:** After you decompress the package, you can use the ODBC driver without installation. Run the following command to decompress the package:
 
 ```
 tar -zxvf polardb_oracle_odbc.tar.gz
@@ -2650,9 +2592,8 @@ vim /etc/odbcinst.ini
 [POLARDB] Description = ODBC for POLARDB Driver = /root/target/lib/unix/polar-odbc.so Setup = /root/target/lib/unix/libodbcpolarS.so Driver64 = /root/target/lib/unix/polar-odbc.so Setup64 = /root/target/lib/unix/libodbcpolarS.so Database = <Name of the database> Servername = <Endpoint of the database> Password = <Password> Port = <Port number> Username = <Username> Trace = yes TraceFile = /tmp/odbc.log FileUsage = 1
 ```
 
-**Note**
+> **Note:** In the preceding sample code, replace /root with the actual path of the `target` folder.
 
-In the preceding sample code, replace /root with the actual path of the `target` folder.
 5. Connect to PolarDB.
 
 ```
@@ -2688,9 +2629,10 @@ cd samples
 ## Run Test2.
 ```
 
-**Note**
+> **Note:** `Test1` contains an example in which add, delete, update, and query operations are performed. `Test2` contains an example in which cursors and output parameters are used.
+> The following sample code is only a snippet of the source code. To view the complete source code, check the `Test1` and `Test2` files in the `samples` folder of the ODBC driver package.
 
-`Test1` contains an example in which add, delete, update, and query operations are performed. `Test2` contains an example in which cursors and output parameters are used. The following sample code is only a snippet of the source code. To view the complete source code, check the `Test1` and `Test2` files in the `samples` folder of the ODBC driver package. Sample code of Test1:
+Sample code of Test1:
 
 ```
 ... int main(int argc, char* argv[])
@@ -2815,9 +2757,10 @@ iii. Set environment variables in Linux.
 export LD_LIBRARY_PATH= /usr/lib
 ```
 
-**Note**
+> **Note:** If the libiconv.so files already exist in your system, you can directly use these files. You can also follow the instructions in the libiconv documentation to download, compile, and install libiconv, and then use the compiled .so files.
+> In Linux, the libiconv.so files provided by the PolarDB OCI driver are for reference only.
 
-If the libiconv.so files already exist in your system, you can directly use these files. You can also follow the instructions in the libiconv documentation to download, compile, and install libiconv, and then use the compiled .so files. In Linux, the libiconv.so files provided by the PolarDB OCI driver are for reference only. Windows i. Configure environment variables. Most IDEs in Windows is capable of importing the paths of linked files. In this topic, Visual Studio 2019 is used to illustrate how to import the paths of linked files, as shown in the following figure. ii. On the properties tab of the project, add additional library directories. Then, add the .dll files in the driver directory to **Additional Library Directories**.
+Windows i. Configure environment variables. Most IDEs in Windows is capable of importing the paths of linked files. In this topic, Visual Studio 2019 is used to illustrate how to import the paths of linked files, as shown in the following figure. ii. On the properties tab of the project, add additional library directories. Then, add the .dll files in the driver directory to **Additional Library Directories**.
 
 **Write code**
 
@@ -4707,9 +4650,7 @@ void drop_stored_procs (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
 |---|---|---|---|
 |   | "//localhost:5432" |   |   |
 
-**Note**
-
-For more information about the Oracle native OCI driver, visit OCI: Introduction.
+> **Note:** For more information about the Oracle native OCI driver, visit OCI: Introduction.
 
 **Compile code**
 
@@ -4833,7 +4774,10 @@ extension=php_pgsql.dll extension=php_pdo_pgsql.dll
 ```
 
 3. Copy the `libpq.dll` file from the C:\wamp\bin\php\php5.3.5 directory to the
-C:\windows\system32\ directory. Note: php5.3.5 is used in this example, and the actual directory varies based on your client version.
+C:\windows\system32\ directory.
+
+> **Note:** php5.3.5 is used in this example, and the actual directory varies based on your client version.
+
 4. Restart the Apache service.
 
 **Prepare the environment in Linux**
@@ -4975,9 +4919,7 @@ REVOKE scott FROM myuser;
 
 **Connect to the orcl_polardb database**
 
-**Note**
-
-The following operations must be performed by using the scott account. Otherwise, the created tables and objects do not belong to scott and permission errors may occur.
+> **Note:** The following operations must be performed by using the scott account. Otherwise, the created tables and objects do not belong to scott and permission errors may occur.
 
 ```
 ./psql -h polardbaddress.polardb.rds.aliyuncs.com -p 3433 -U scott -d orcl_polardb
@@ -5418,9 +5360,9 @@ END;
 
 When you update data across partitions, PostgreSQL and Oracle use different trigger behaviors. PostgreSQL: The triggers of multiple partition tables are run. Oracle: The relevant triggers are run only once. By default, PolarDB for PostgreSQL (Compatible with Oracle) is compatible with the trigger behavior of Oracle.
 
-**Note**
+> **Note:** Statement-level triggers are used in the same way as standard tables.
 
-Statement-level triggers are used in the same way as standard tables. Setting `polar_compatible_oracle_trigger` to off indicates that PolarDB for PostgreSQL (Compatible with Oracle) uses the trigger behavior of PostgreSQL. The triggers of multiple partition tables are run.
+Setting `polar_compatible_oracle_trigger` to off indicates that PolarDB for PostgreSQL (Compatible with Oracle) uses the trigger behavior of PostgreSQL. The triggers of multiple partition tables are run.
 
 ```
 SET polar_compatible_oracle_trigger = off;

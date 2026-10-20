@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 116
 source_pdf: "1231082b4b518207_Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud Operations and Maintenance Guide 20260629.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9CVPC/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Virtual%20Private%20Cloud%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Virtual Private Cloud Operations and Maintenance Guide
@@ -82,9 +82,16 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+ager Operations Console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ## 2 Dashboard
@@ -143,7 +150,8 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
+## 1 Log on to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Dashboard** > **Network Topology**.
@@ -164,13 +172,15 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 
 **Create a view**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Dashboard** > **Custom Views**.
 4. On the Custom Views page, click **Create View**.
 5. In the Create View dialog box, configure the **View Name** and **View Description**
-parameters, and then click **OK**. After the view is created, the page of the view automatically appears. The view name must be unique. If the **Data Already Existing** message appears, you must change the view name, and then click **OK** when no name conflict occurs.
+parameters, and then click **OK**. After the view is created, the page of the view automatically appears.
+
+> **Note:** The view name must be unique. If the **Data Already Existing** message appears, you must change the view name, and then click **OK** when no name conflict occurs.
+
 6. Create a subview.
 i. Click the icon in the view section. ii. In the Create Subview panel, configure the following parameters and click **OK**. After the subview is created, the page of the view automatically appears, on which the subview is displayed.
 
@@ -200,9 +210,8 @@ icon in the upper-right corner of the subview section.
 
 **Delete a view**
 
-**Important**
+> **Important:** If you delete a view, all subviews of the view are also deleted. Proceed with caution.
 
-If you delete a view, all subviews of the view are also deleted. Proceed with caution.
 1. Search for the view that you want to delete.
 2. In the upper-right corner of the view section, click **Delete View**.
 3. In the message that appears, click **OK**.
@@ -231,7 +240,6 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has rea
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
@@ -240,7 +248,12 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has rea
 parameter to view the physical network devices in Apsara Stack. You can view information about the physical network devices in the columns, including
 **Device Name**, **Management IP address**, **SN**, **Business Domain**, **Vendor**, **Model**, **Role**,
 **Online Time**, **Ping status**, **Snmp status**, and **Last Updated**.
-You can click **Export** in the upper-right corner of the Network Monitoring tab to export the information about the physical network devices to your computer. If the ping or Simple Network Management Protocol (SNMP) is abnormal, Unreachable in red is displayed in the **Ping status** or **Snmp status** column. In the upper-right corner of the Network Monitoring tab, you can enter a device name or an IP address in the search box to search for the physical network device, and then view its information. The **Management IP address**, **Ping status**, and **Snmp status** columns can be used to sort the physical network devices. The **Role** column can be used to filter the physical network devices.
+
+> **Note:** You can click **Export** in the upper-right corner of the Network Monitoring tab to export the information about the physical network devices to your computer.
+> If the ping or Simple Network Management Protocol (SNMP) is abnormal, Unreachable in red is displayed in the **Ping status** or **Snmp status** column.
+> In the upper-right corner of the Network Monitoring tab, you can enter a device name or an IP address in the search box to search for the physical network device, and then view its information.
+> The **Management IP address**, **Ping status**, and **Snmp status** columns can be used to sort the physical network devices. The **Role** column can be used to filter the physical network devices.
+
 5. Find the physical network device that you want to view and click its name or click **Details**
 in the **Details** column to view the details of the physical network device. The following table describes the details of the physical network device.
 
@@ -280,7 +293,6 @@ If you use the network element management feature of the Network Operations Cons
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
@@ -301,21 +313,27 @@ You can modify the password of a physical network device.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
 **Management**.
 4. On the Network Element Management page, click the Password management tab. On the
 **Password management** tab, query current network devices.
-You can enter a device name in the search box to perform an exact search.
+
+> **Note:** You can enter a device name in the search box to perform an exact search.
+
 5. Select one or more devices whose passwords you want to modify and click **Add to**
 **implementation**. Then, the devices whose passwords you want to modify are displayed in
-the **Implementation equipment** section on the right. To remove a device from the **Implementation equipment** section, you can click
-**Management** in the **Operation** column of the device, and then select **Delete**. You
-can also click **Empty** in the upper-right corner to remove all devices from the Implementation equipment section.
+the **Implementation equipment** section on the right.
+
+> **Note:** To remove a device from the **Implementation equipment** section, you can click **Management** in the **Operation** column of the device, and then select **Delete**. You can also click **Empty** in the upper-right corner to remove all devices from the Implementation equipment section.
+
 6. In the lower-right corner of the Password management tab, enter values in the **User name**
-and **Old password** fields, and click **Verification**. The system verifies the old password before you can modify the passwords. If multiple devices are added to the Implementation equipment section and the old passwords of the devices are different, you need to separately verify the old passwords. After the verification is passed, **Verified** is displayed in the Verification status column.
+and **Old password** fields, and click **Verification**. The system verifies the old password before you can modify the passwords.
+
+> **Note:** If multiple devices are added to the Implementation equipment section and the old passwords of the devices are different, you need to separately verify the old passwords.
+> After the verification is passed, **Verified** is displayed in the Verification status column.
+
 7. After the verification is passed, modify the passwords for one or more devices.
 Modify the password of a device. a. In the Implementation equipment section, find the device whose password you want to modify, click **Management** in the **Operation** column, and then select **Set account**
 **password**.
@@ -331,7 +349,6 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has rea
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
@@ -340,7 +357,9 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has rea
 **comparison** tab. On the Configuration consistency comparison tab, view the information
 about the network devices in the columns, including **Device Name**, **Device**
 **Manufacturer**, **Device logon IP address**, and **Result**.
-You can enter a device name in the search box to perform an exact search.
+
+> **Note:** You can enter a device name in the search box to perform an exact search.
+
 5. Select one or more devices whose configurations you want to compare and click
 **Consistency comparison**.
 Click **Refresh status** to update the comparison status. Click **Export result** to export the comparison results to your computer for viewing.
@@ -351,7 +370,6 @@ The Syslog module records and stores the logs generated by network hardware devi
 
 **View logs**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** >**Syslog**.
@@ -384,13 +402,17 @@ Syslog Details panel, view more detailed information about the log, such as the 
 
 **Export logs**
 
-On the Syslog page, click **Export Logs** in the upper-left corner to export the logs to your computer for viewing. By default, all logs are exported.
+On the Syslog page, click **Export Logs** in the upper-left corner to export the logs to your computer for viewing.
+
+> **Note:** By default, all logs are exported.
 
 **Test the log parsing feature**
 
 1. On the Syslog page, click **Test Analysis** in the upper-left corner.
 2. In the Test Analysis dialog box, enter content in the **Original Text** field and click **Submit**.
-If you click **Reset**, the content in the Original Text field is cleared.
+
+> **Note:** If you click **Reset**, the content in the Original Text field is cleared.
+
 3. In the Parsing Results section, view the parsed information, such as the description,
 hostname, and log level.
 
@@ -402,7 +424,6 @@ hostname, and log level.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **XGW Cluster**
@@ -410,7 +431,11 @@ hostname, and log level.
 4. On the XGW Cluster Management page, select a region ID from the **Region** drop-down list
 and click **Synchronize data** to obtain the latest data of the XGW cluster list.
 5. Find the cluster that you want to manage, click **Quick Settings** in the **Operation** column,
-and then select **Set backup zone**. The cluster that you select as the secondary zone must have the same architecture and reside in the same region as the current cluster. Click **Set backup zone**. Then, the system checks the data. After the data is checked, you can configure a secondary zone.
+and then select **Set backup zone**.
+
+> **Note:** The cluster that you select as the secondary zone must have the same architecture and reside in the same region as the current cluster.
+> Click **Set backup zone**. Then, the system checks the data. After the data is checked, you can configure a secondary zone.
+
 6. Select a secondary zone from the Select backup zone drop-down list and click **OK**.
 
 #### 4.1.2 XGW management
@@ -423,13 +448,16 @@ In scenarios such as multi-cloud geo-disaster recovery and hybrid cloud, you can
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **NAT**
 **Gateway Monitoring**.
 4. On the NAT Gateway Monitoring page, select a cluster, specify a time range, enter the
-tunnel ID, and then click **Query** to view the trend chart of the NAT gateway. You can move the pointer over a point in time in the chart to view the corresponding monitoring data. The following table describes the metrics displayed in the chart.
+tunnel ID, and then click **Query** to view the trend chart of the NAT gateway.
+
+> **Note:** You can move the pointer over a point in time in the chart to view the corresponding monitoring data.
+
+The following table describes the metrics displayed in the chart.
 
 | Metric | Description |
 |---|---|
@@ -449,7 +477,6 @@ This topic describes how to view the instances of a router interface and the O&M
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **RI Instances**.
@@ -459,7 +486,10 @@ This topic describes how to view the instances of a router interface and the O&M
 **Instance Name**, **Peer RI ID**, **Peer Router ID**, **Peer Router Type**, and **Peer Region ID**
 parameters to filter router interface instances.
 6. Click **Search**. The router interface instances that match the UID are displayed on the RI
-Instances page. If you select **VPC ID** from the drop-down list in the **Search Condition** section, all router interface instances that belong to the virtual private cloud (VPC) are automatically queried.
+Instances page.
+
+> **Note:** If you select **VPC ID** from the drop-down list in the **Search Condition** section, all router interface instances that belong to the virtual private cloud (VPC) are automatically queried.
+
 7. Find the router interface instance that you want to manage and click **Details** in the
 **Operation** column. On the details page, view the detailed O&M information about the
 router interface instance. If usage data exists, the usage data is also displayed on the page.
@@ -472,7 +502,6 @@ The Apsara virtual switch (AVS) management feature allows you to view the basic 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **AVS O&M** > **AVS**
@@ -609,7 +638,6 @@ The following table describes the metrics.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the navigation pane on the left, choose **Network Products** > **VPC O&M** > **VPC-On-**
@@ -636,9 +664,7 @@ Search for vSwitches: Click **Advanced Filter** and then specify the **Instance 
 Delete a vSwitch: Find a vSwitch that you want to delete and click **Delete** in the
 **Operation** column. In the dialog box that appears, click **OK**.
 
-**Important**
-
-After you delete a vSwitch, the vSwitch cannot be restored. Proceed with caution.
+> **Important:** After you delete a vSwitch, the vSwitch cannot be restored. Proceed with caution.
 
 #### 4.3.2 VPC workflows
 
@@ -646,7 +672,6 @@ You can view and manage workflows in the VPC Business Foundation System.
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Product O&M** > **Network O&M** > **Network O&M Console**.
 3. In the navigation pane on the left, choose **Network Products** > **VPC O&M** > **VPC**
 **Workflow**.
@@ -791,7 +816,6 @@ The network inspection feature allows you to schedule network inspection tasks o
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Inspection**.
@@ -800,14 +824,26 @@ the following columns: **Name**, **Description**, **Execution Cycle**, **Status*
 **Executions**, **Product**, **Service**, and **Role**.
 You can click **Advanced Filter** and filter inspection configurations by **Name**, **Product**,
 **Service**, **Role**, Status, or their combinations.
-Click the up and down arrow icon next to **Number of Executions** to sort data in ascending or descending order.
+
+> **Note:** Click the up and down arrow icon next to **Number of Executions** to sort data in ascending or descending order.
+
 5. Find the inspection configuration that you want to view and click **View Details** in the
 **Operation** column. In the panel that appears, view the details of the inspection
 configuration on the **Execution Information** and **Related Events** tabs. On the **Execution Information** tab, view the information in the **Basic Information** and
 **Execution Information** sections. In the **Execution Information** section, you can
 perform the following operations: Filter tasks by **Task ID**, **Status**, **Operation Time**, or their combinations. Find the task that you want to view, and move the pointer over the value in the **The**
 **execution status** column or **Execution Parameters** and **Additional Information** in
-the **Operation** column to view the execution result, execution parameters, and additional information of the task. Description of execution states: waiting: The inspection task is waiting to be triggered. running: The inspection task is running. success: The inspection task is successfully executed. failed: The inspection task failed to be executed. timeout: The inspection task timed out. cleaned: The inspection task is deleted when the cloud platform is initialized. On the **Related Events** tab, view the related events. View the event information in the following columns: **Event Name**, **Event**
+the **Operation** column to view the execution result, execution parameters, and additional information of the task.
+
+> **Note:** Description of execution states:
+> waiting: The inspection task is waiting to be triggered.
+> running: The inspection task is running.
+> success: The inspection task is successfully executed.
+> failed: The inspection task failed to be executed.
+> timeout: The inspection task timed out.
+> cleaned: The inspection task is deleted when the cloud platform is initialized.
+
+On the **Related Events** tab, view the related events. View the event information in the following columns: **Event Name**, **Event**
 **Description**, **Associated Object**, **Event Source Type**, **Event Source**, **Event**
 **Timeout Period**, **Event Severity**, **Associated Alert ID**, and **Triggered At**.
 Click **Advanced Filter** and filter events by **Time**, **Event Name**, **Associated Object**,
@@ -836,7 +872,6 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Intelligent Path**
@@ -861,7 +896,11 @@ appears, configure the following parameters and click **Analysis**.
 | Timeout period | The timeout period of the packet capture in the analysis task. If this period is exceeded, the packet capture stops. Unit: minutes. | 5 |
 
 5. In the **Path analysis** section, the status timeline of the analysis task is displayed, and the
-estimated time required for each phase is displayed. The topology of the path is displayed at the bottom of the timeline. After the analysis is complete, the analysis result is displayed. For path nodes of the ECS type or physical machine type, you can click the hyperlink in the topology to go to the details page. After you select the topology, you can drag the topology and change the location of the topology.
+estimated time required for each phase is displayed. The topology of the path is displayed at the bottom of the timeline. After the analysis is complete, the analysis result is displayed.
+
+> **Note:** For path nodes of the ECS type or physical machine type, you can click the hyperlink in the topology to go to the details page.
+> After you select the topology, you can drag the topology and change the location of the topology.
+
 6. In the **Diagnosis details** section, the details of the task are displayed.
 7. In the **Analyze one by one** section, the analysis details of the packets captured by the
 task are displayed if the analysis task is successful. You can view the analysis details of packets one by one.
@@ -902,7 +941,10 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and in the 
 | Destination VpcId | The ID of the VPC in which the destination node resides. |
 
 5. Click **Analysis**. In the **Topology Analysis** section, view and manage the logical topology.
-Click any topology icon to view related content in the panel that appears. For a path node of the ECS type, you can go to the ECS console to view the instance details. For a path node of the NC type, you can click the **blue link** in the topology to view details. You can also go to the machine details page of the Apsara Infrastructure Management console to view details.
+
+> **Note:** Click any topology icon to view related content in the panel that appears.
+> For a path node of the ECS type, you can go to the ECS console to view the instance details.
+> For a path node of the NC type, you can click the **blue link** in the topology to view details. You can also go to the machine details page of the Apsara Infrastructure Management console to view details.
 
 ### 6.3 Network instance diagnostics
 
@@ -918,7 +960,6 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Instance**
@@ -926,7 +967,12 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 4. In the **One-click analysis of the running status of network instances** section, select
 the service whose instance you want to diagnose, enter the ID of the instance, and then click **Diagnose now**. You can select one of the following values: SLB DNS Elastic IP Address Virtual Board Router Physical Connection NAT Gateway DCI Connection External Connection
 5. The Network instance diagnosis results page appears. On this page, view the information in
-the **Instance details**, **Instance topology**, and **Diagnosis details** sections. The **Instance details** section is displayed only when you select SLB in the previous step. In the field at the top of the Network instance diagnosis results page, the ID of the diagnosed instance is displayed by default. You can also enter the ID of another instance and click **Diagnose now** to perform diagnostics. In this example, an Server Load Balancer (SLB) instance is diagnosed and its diagnostic results are described. Instance details: Instance topology: In the topology example shown in the preceding figure, the leftmost column displays the SLB instance, the middle column displays the listeners of the SLB instance, and the rightmost column displays the backend servers that correspond to the listeners. If a backend server is of the ECS type or the machine type of Apsara Infrastructure Management, click realServer in the topology. A panel appears to show the server details. After you select the topology, you can drag the topology to change the location of the topology. Diagnosis details: This section displays the information about diagnostic items in the following columns: **Diagnostic item name**, **Description**, **Diagnostic results**, and
+the **Instance details**, **Instance topology**, and **Diagnosis details** sections.
+
+> **Note:** The **Instance details** section is displayed only when you select SLB in the previous step.
+> In the field at the top of the Network instance diagnosis results page, the ID of the diagnosed instance is displayed by default. You can also enter the ID of another instance and click **Diagnose now** to perform diagnostics.
+
+In this example, an Server Load Balancer (SLB) instance is diagnosed and its diagnostic results are described. Instance details: Instance topology: In the topology example shown in the preceding figure, the leftmost column displays the SLB instance, the middle column displays the listeners of the SLB instance, and the rightmost column displays the backend servers that correspond to the listeners. If a backend server is of the ECS type or the machine type of Apsara Infrastructure Management, click realServer in the topology. A panel appears to show the server details. After you select the topology, you can drag the topology to change the location of the topology. Diagnosis details: This section displays the information about diagnostic items in the following columns: **Diagnostic item name**, **Description**, **Diagnostic results**, and
 **Diagnosis details**.
 6. You can also perform the following operations in the **Task list** section on the Network
 Instance Diagnosis page to view historical diagnostic results of an instance: Specify a time range, find the diagnostic task that you want to view, and then click **Details** in the **Operation** column to go to the Network instance diagnosis results page. On this page, view the diagnostic results in the **Instance details**, **Instance topology**, and
@@ -942,7 +988,6 @@ The container network diagnostics feature helps you quickly analyze container ne
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Diagnose Container**
@@ -975,7 +1020,6 @@ The Network Health Assessment module evaluates and diagnoses the health status o
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Health**
@@ -1028,8 +1072,8 @@ ii. In the **Abnormal Event** section, click Advanced Filter and configure the K
 | Clear Time | The time when the abnormal event was cleared. |
 
 a. Find the abnormal event that you want to view and click **Details** in the Operation column. In the Exception event details panel, view the details of the abnormal event. b. Click **Confirm** in the Operation column to mark the event as an abnormal event. c. Handle the abnormal event based on its name, issue description, severity level, and associated instance, and then click **Clear** in the Operation column.
-**Clear** is displayed in the Operation column of an abnormal event only after you
-click **Confirm** in the Operation column of the abnormal event.
+
+> **Note:** **Clear** is displayed in the Operation column of an abnormal event only after you click **Confirm** in the Operation column of the abnormal event.
 
 ### 6.6 Optical transceiver module diagnostics
 
@@ -1039,13 +1083,15 @@ The Optical Module Diagnostics module analyzes and predicts the status of optica
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Optical Module**
 **Diagnostics**.
 4. In the upper part of the Optical Module Diagnostics page, view the status distribution of
-optical transceiver modules on the current day and the status distribution of optical transceiver modules within a specific period of time. The status of an optical transceiver module can be health, sub-health, exception, or unknown. The line chart shows the trend in the proportion of optical transceiver modules in the health state.
+optical transceiver modules on the current day and the status distribution of optical transceiver modules within a specific period of time.
+
+> **Note:** The status of an optical transceiver module can be health, sub-health, exception, or unknown. The line chart shows the trend in the proportion of optical transceiver modules in the health state.
+
 5. In the lower part of the Optical Module Diagnostics page, view the basic information and
 analysis results of optical transceiver modules. You can click **Advanced Filter** and then filter optical transceiver modules by **optical transceiver module model**, **optical**
 **transceiver module manufacturer**, **optical transceiver module status**, **hostname**,
@@ -1082,7 +1128,6 @@ NOE ping provides full-path probing for physical networks to help diagnose globa
 
 **Deploy the NOE ping agent**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Product O&M** > **Network O&M** > **Network O&M Console**.
 3. In the navigation pane on the left, choose **Intelligent Diagnosis** > **NOE ping**.
 4. On the **Agent Information** tab, click **Deploy**.
@@ -1103,7 +1148,6 @@ and then click **OK**.
 
 **View intra-AZ probing results**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Product O&M** > **Network O&M** > **Network O&M Console**.
 3. In the navigation pane on the left, choose **Intelligent Diagnosis** > **NOE ping**.
 4. On the **Intra-AZ Probing Results** tab, view the probing results.
@@ -1117,7 +1161,6 @@ and then click **OK**.
 
 **View inter-AZ probing results**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Product O&M** > **Network O&M** > **Network O&M Console**.
 3. In the navigation pane on the left, choose **Intelligent Diagnosis** > **NOE ping**.
 4. On the **Inter-AZ Probing Results** tab, view the probing results.
@@ -1173,7 +1216,10 @@ The steps after Parameter Check vary based on the tool. Click the icon of a step
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Toolbox** >
 **ToolList**.
 4. On the **Tools** page, find the tool that you want to execute and click **Initiate Execution** in
-the **Actions** column. You can also click **Initiate Execution** in the upper-right corner of the **Tool Details** page to create a tool execution workflow.
+the **Actions** column.
+
+> **Note:** You can also click **Initiate Execution** in the upper-right corner of the **Tool Details** page to create a tool execution workflow.
+
 5. In the **Initiate Execution** dialog box, configure the parameters and click **OK**.
 The parameters to be configured vary based on the tool.
 6. After the tool execution workflow is created, you are redirected to the **Tool Execution**
@@ -1199,11 +1245,16 @@ The Tool Executions page displays the tool execution history.
 
 To filter executions, click **Advanced Filter** and configure the **Tool Name**, **Execution**
 **Result**, **Execution Time**, **Submitted By**, **Workflow ID**, and **Execution Parameters**
-parameters. For more information about the meaning of **execution results**, see the Execution result explanation section of this topic.
+parameters.
+
+> **Note:** For more information about the meaning of **execution results**, see the Execution result explanation section of this topic.
 
 **View the details of an execution**
 
-Find the execution that you want to view and click **View Details** in the **Actions** column. On the **Tool Execution Details** page, view the details of the execution. The execution details vary based on the tool.
+Find the execution that you want to view and click **View Details** in the **Actions** column. On the **Tool Execution Details** page, view the details of the execution.
+
+> **Note:** The execution details vary based on the tool.
+
 **Basic Information**: displays **Tool Name**, **Tool Code**, **Workflow ID**, **Execution Time**,
 **Execution Status**, **Submitted By**, **Affected Product**, **Risk Level**, **Workflow Is**
 **Rolled Back or Not**, **Description of Applicable Conditions**, and **Scenario**
@@ -1280,7 +1331,6 @@ Only some instances in VPCs are displayed on the Network Asset Management page. 
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **Network Asset**
@@ -1357,7 +1407,6 @@ The collection settings feature is applicable to scenarios such as multi-cloud g
 
 **Procedure**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **IP Address Pool**
@@ -1375,7 +1424,6 @@ The reverse access feature implements active access from base cloud services to 
 
 **Create a reverse access instance**
 
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **Reverse Access**.
@@ -1452,7 +1500,8 @@ iv. On the **ECS Reverse Authorization** tab, perform the following operations.
 1. Find the reverse access instance that you want to modify and click **Modify** in the
 **Operation** column.
 2. In the dialog box that appears, modify the parameters and click **Modify**.
-You can modify only the **Instance ID/Name** and **Description** parameters.
+
+> **Note:** You can modify only the **Instance ID/Name** and **Description** parameters.
 
 **Delete a reverse access instance**
 
@@ -1461,7 +1510,8 @@ You can modify only the **Instance ID/Name** and **Description** parameters.
 2. On the **Reverse Access Instance Details** page, click **Delete Instance** in the upper-right
 corner.
 3. In the message that appears, click **Delete**.
-Before you delete a reverse access instance, you must delete all application servers and address pools that are associated with the instance. Otherwise, the instance cannot be deleted.
+
+> **Note:** Before you delete a reverse access instance, you must delete all application servers and address pools that are associated with the instance. Otherwise, the instance cannot be deleted.
 
 ### 7.4 Cloud instance management
 
@@ -1520,7 +1570,9 @@ In the **Create Listener** step, configure the following parameters and click **
 | Configurations | Click Configurations to specify Scheduling Policy, Session Persistence (Seconds), and Health Check Method. |
 |---|---|
 
-You can click **Add Listener** to add multiple listeners. Click **Delete** in the Delete column of a listener to delete the listener.
+> **Note:** You can click **Add Listener** to add multiple listeners.
+> Click **Delete** in the Delete column of a listener to delete the listener.
+
 6. Optional. After the cloud instance is created, it enters the **Working** state. You can go to the
 **Cloud Instance Management** page and view the instance in the instance list.
 
@@ -1552,13 +1604,10 @@ The existing resource management operation is not performed.
 
 **Procedure**
 
-**Important**
+> **Important:** The existing resource management operation attempts to manage **SingleTunnel**, **AnyTunnel**, and **Direct AnyTunnel** resources created in Apsara Network Intelligence. You cannot repeat this operation after all resources are successfully managed.
+> After you perform this operation, if instances whose **Tunnel Type** is **InvalidResource** are displayed, the instances are abnormal resources in Apsara Network Intelligence. The creation of the instances may be terminated or the instances may be invalid.
+> The status of these instances displays **Invalid**. You can only view and delete these instances. You cannot modify the backend servers or listeners of these instances. To do this, you need to delete the existing instances and recreate them.
 
-The existing resource management operation attempts to manage **SingleTunnel**,
-**AnyTunnel**, and **Direct AnyTunnel** resources created in Apsara Network
-Intelligence. You cannot repeat this operation after all resources are successfully managed. After you perform this operation, if instances whose **Tunnel Type** is
-**InvalidResource** are displayed, the instances are abnormal resources in Apsara
-Network Intelligence. The creation of the instances may be terminated or the instances may be invalid. The status of these instances displays **Invalid**. You can only view and delete these instances. You cannot modify the backend servers or listeners of these instances. To do this, you need to delete the existing instances and recreate them.
 1. On the **Cloud Instance Management** page, click **Existing Resource Management**
 above the list.
 2. In the message that appears, confirm the information and click **OK**. Then, resource
@@ -1666,8 +1715,9 @@ The steps after Parameter Check vary based on the change plan. Click the icon of
 **Plan List**.
 4. On the **Change Plans** page, find the change plan that you want to execute and click
 **Initiate Execution** in the **Actions** column.
-You can also click **Initiate Execution** in the upper-right corner of the **Change Plan**
-**Details** page to create a change workflow.
+
+> **Note:** You can also click **Initiate Execution** in the upper-right corner of the **Change Plan** **Details** page to create a change workflow.
+
 5. In the **Initiate Execution** dialog box, configure the parameters and click **OK**.
 The parameters vary based on the change plan.
 6. After the change workflow is created, you are redirected to the **Execution Details** page.
@@ -1692,11 +1742,16 @@ following columns: **Workflow ID**, **Plan Name**, **Description**, **Execution 
 
 To filter executions, click **Advanced Filter** and configure the **Plan Name**, **Execution**
 **Result**, **Execution Time**, **Submitted By**, **Workflow ID**, and **Execution Parameters**
-parameters. For more information about the definitions of execution results, see the Definitions of execution results section of this topic.
+parameters.
+
+> **Note:** For more information about the definitions of execution results, see the Definitions of execution results section of this topic.
 
 **View the details of an execution**
 
-Find the execution that you want to view and click **View Details** in the **Actions** column. On the **Execution Details** page, view the details of the execution. The execution details vary based on the change plan.
+Find the execution that you want to view and click **View Details** in the **Actions** column. On the **Execution Details** page, view the details of the execution.
+
+> **Note:** The execution details vary based on the change plan.
+
 **Basic Information**: displays **Solution Name**, **Solution Code**, **Workflow ID**,
 **Execution Time**, **Execution Status**, **Submitted By**, **Affected Product**, **Risk Level**,
 **Workflow Is Rolled Back or Not**, **Description of Applicable Conditions**, and
@@ -1778,7 +1833,10 @@ Click **Advanced Filter** to filter cloud services by **Data Center**, **Product
 **Enable IPv6**.
 Click **Refresh Cluster Status** in the **Actions** column of a cluster to manually update the status of the cluster. Click **IPv6 Service Dependency** in the **Actions** column of a cluster. In the dialog box that appears, you can view the status of dependent services and the IPv6 status of these services. Click **Enable IPv6** in the **Actions** column of a cluster to enable IPv6 for the cluster. a. In the message that appears, check the IPv6 status of the dependent services and click
 **OK**.
-Before you enable IPv6 for a cluster, you need to check whether the cluster has dependent services. If yes, enable IPv6 for the dependent service first. b. In the message that appears, check whether IPv6 is enabled for all dependent services and click **OK**. c. You are redirected to the details page of the service orchestration record. Then, enable IPv6 for the cluster. For more information, see the **Execution records** topic below **O&M services** in
+
+> **Note:** Before you enable IPv6 for a cluster, you need to check whether the cluster has dependent services. If yes, enable IPv6 for the dependent service first.
+
+b. In the message that appears, check whether IPv6 is enabled for all dependent services and click **OK**. c. You are redirected to the details page of the service orchestration record. Then, enable IPv6 for the cluster. For more information, see the **Execution records** topic below **O&M services** in
 **Apsara Uni-manager Operations Console User Guide** .
 
 ## 9 Platform management
@@ -1801,7 +1859,11 @@ The read and write permissions on Log Center are obtained.
 3. In the left-side navigation pane, choose **Platform Management > Log Management >**
 **Log Query**.
 4. On the **Platform Logs** tab, filter logs by **Products**, **Log Type**, **Log Name**, **Time Range**,
-and **Query Conditions**. You can select multiple values for **Products**, **Log Type**, and **Log Name**. When you specify **Query Conditions**, you can enter a keyword to query data. You can specify a query condition that contains the and, or, and not operators. Example: (44 or http) and error not fatal.
+and **Query Conditions**.
+
+> **Note:** You can select multiple values for **Products**, **Log Type**, and **Log Name**.
+
+When you specify **Query Conditions**, you can enter a keyword to query data. You can specify a query condition that contains the and, or, and not operators. Example: (44 or http) and error not fatal.
 5. View the query results displayed in the lower part of the page.
 
 | Section | Description |
@@ -1814,7 +1876,10 @@ and **Query Conditions**. You can select multiple values for **Products**, **Log
 
 6. On the **Local Logs** tab, filter logs by **Products**, **Service**, **Component**, and **Log Path**.
 7. In the lower part of the page, click the desired machine on the left side, and then view its
-logs displayed on the right side. You can filter logs by **Time Range** and **Keyword**. You can click **Export Logs** to export the logs to your on-premises machine.
+logs displayed on the right side.
+
+> **Note:** You can filter logs by **Time Range** and **Keyword**.
+> You can click **Export Logs** to export the logs to your on-premises machine.
 
 ### 9.2 Metric management
 

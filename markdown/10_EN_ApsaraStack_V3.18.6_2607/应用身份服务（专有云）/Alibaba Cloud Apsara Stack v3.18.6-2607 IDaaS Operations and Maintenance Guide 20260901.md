@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 20
 source_pdf: "9810393f145ceb2c_Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Operations and Maintenance Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20IDaaS%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Operations and Maintenance Guide 20260901
@@ -88,9 +88,9 @@ This topic describes the zone-disaster recovery architecture (active-active mode
 
 **Zone-disaster recovery**
 
-**Note**
+> **Note:** Zone-disaster recovery is delivered by using the active-active mode.
 
-Zone-disaster recovery is delivered by using the active-active mode. The zone-disaster recovery architecture of IDaaS follows the rules of the active-active mode. In this architecture, disaster recovery is ensured by cloud storage services or middleware. Data ingress Data ingress
+The zone-disaster recovery architecture of IDaaS follows the rules of the active-active mode. In this architecture, disaster recovery is ensured by cloud storage services or middleware. Data ingress Data ingress
 
 |   |   |   | Primary/Secondary |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -129,9 +129,9 @@ Primary data center Primary data center The following table describes each compo
 
 **Geo-disaster recovery**
 
-**Note**
+> **Note:** Geo-disaster recovery is delivered based on independent regions.
 
-Geo-disaster recovery is delivered based on independent regions. The multi-region architecture of IDaaS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
+The multi-region architecture of IDaaS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
 
 ### 1.4 Capacity planning
 
@@ -183,14 +183,13 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
 
-**Note**
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator.
 
-Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. The first time you log on to the Apsara Uni-manager Operations Console, you must change the password of your username. To ensure the security of your account, we recommend that you use a password that meets the minimum complexity requirements. The password must contain letters, digits, and special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
+The first time you log on to the Apsara Uni-manager Operations Console, you must change the password of your username. To ensure the security of your account, we recommend that you use a password that meets the minimum complexity requirements. The password must contain letters, digits, and special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
 4. Click Log On to log on to the Apsara Uni-manager Operations Console.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Base/Platforms > Apsara Infrastructure Management**.

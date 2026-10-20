@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 9
 source_pdf: "b605be375daecafe_Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20VPN%20Gateway%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Operations and Maintenance Guide 20260828
@@ -43,9 +43,10 @@ The information about inspection configurations includes **Name**, **Description
 You can click **Advanced Filter** and filter inspection configurations by **Name**, **Product**,
 **Service**, **Role**, **Status**, or their combinations.
 
-**Note**
+> **Note:** Click the
+> icon next to **Number of Executions** to sort data in ascending or
+> descending order.
 
-Click the icon next to **Number of Executions** to sort data in ascending or descending order.
 5. In the inspection configuration list, find the inspection configuration that you want to view
 and click **View Details** in the **Actions** column. In the panel that appears, view the inspection item details. On the **Execution Information** tab, view the **Basic Information**, **Execution**
 **Information**, and execution task list.
@@ -57,16 +58,15 @@ In the **Execution Information** section, you can view the following information
 In the execution task list, you can view task information such as **Task ID**, **Start Time**, and **Status**. You can filter tasks by **Task ID**, **Status**, **Operation Time**, or their combinations. Find the task that you want to view, and move the pointer over the value in the
 **Status** column to view the execution result.
 
-**Note**
+> **Note:** Description of execution states:
+> **WAITING**: The inspection task is waiting to be triggered.
+> **RUNNING**: The inspection task is running.
+> **SUCCESS**: The inspection task is successfully executed.
+> **FAILED**: The inspection task failed to be executed.
+> **TIMEOUT**: The inspection task timed out.
+> **CLEANED**: The inspection task is deleted when the cloud platform is initialized.
 
-Description of execution states:
-**WAITING**: The inspection task is waiting to be triggered.
-**RUNNING**: The inspection task is running.
-**SUCCESS**: The inspection task is successfully executed.
-**FAILED**: The inspection task failed to be executed.
-**TIMEOUT**: The inspection task timed out.
-**CLEANED**: The inspection task is deleted when the cloud platform is
-initialized. Find the task that you want to view and move the pointer over **Execution**
+Find the task that you want to view and move the pointer over **Execution**
 **Parameters** in the **Actions** column to view execution parameters.
 Find the task that you want to view and move the pointer over **Additional**
 **Information** in the **Actions** column to view additional information.

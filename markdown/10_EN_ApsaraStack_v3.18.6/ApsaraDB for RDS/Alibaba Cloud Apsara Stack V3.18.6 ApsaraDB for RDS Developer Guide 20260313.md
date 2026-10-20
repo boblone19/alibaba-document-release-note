@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 397
 source_pdf: "a2ef24517af782eb_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS Developer Guide 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20Developer%20Guide%2020260313.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # ApsaraDB for RDS Developer Guide 20260313
@@ -192,17 +192,17 @@ browser and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types:
+> Letters
+> Digits
+> Special characters, including ! @ # $ %
 
-The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform operations based
 on your logon scenarios: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**. ll Apsara Stack SDKs
 
-**Note**
+> **Note:** For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 
-For more information, see the **Bind a virtual MFA device to enable MFA** topic in
-**Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
@@ -252,9 +252,7 @@ ll Apsara Stack SDKs
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -264,9 +262,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 choose **User Information** from the shortcut menu.
 3. In the **Apsara Stack AccessKey Pair** section, obtain the AccessKey pair.
 
-**Note**
-
-The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you with full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -624,9 +620,10 @@ u must add the x-acs-security-token field to the header.
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
@@ -787,9 +784,9 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Configuration methods**
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: ll Apsara Stack SDKs
+ll Apsara Stack SDKs
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -918,9 +915,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Set th
 
 **Disable certificate verification**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can set the `verify` parameter to false.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1021,9 +1017,7 @@ Creates an ApsaraDB RDS instance. For more information about the instance types 
 | Port | String | 3306 | The port that is used to connect to the instance. Note The DBInstanceNetType parameter indicates whether the port is an internal port or a public port. |
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
 
-**Note**
-
-In the new version of SDK, the default timeout period on the client side is different from the default timeout period on the instance. If you use the new version of SDK to call this operation, a timeout error may be reported even if the operation is successfully called. To prevent this issue, you can set the ReadTimeout parameter to 20000 before you call this operation.
+> **Note:** In the new version of SDK, the default timeout period on the client side is different from the default timeout period on the instance. If you use the new version of SDK to call this operation, a timeout error may be reported even if the operation is successfully called. To prevent this issue, you can set the ReadTimeout parameter to 20000 before you call this operation.
 
 **Examples**
 
@@ -1674,9 +1668,7 @@ Sample success responses `XML` format
 
 Changes the instance type or storage capacity of an ApsaraDB RDS instance. This operation is supported for primary and read-only instances. This operation is not supported for disaster recovery or temporary instances. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks. At least one of the DBInstanceClass and DBInstanceStorage parameters is specified in the request. If you want to decrease the storage capacity, the specified storage capacity is greater than or equal to 1.1 times the used storage capacity. The instance is a primary or read-only instance.
 
-**Note**
-
-If you want to upgrade the RDS edition of the instance, for example, from the Basic Edition to the High-availability Edition, you need only to select a proper instance type.
+> **Note:** If you want to upgrade the RDS edition of the instance, for example, from the Basic Edition to the High-availability Edition, you need only to select a proper instance type.
 
 **Request parameters**
 
@@ -1734,9 +1726,7 @@ Sample success responses `XML` format
 
 Queries the details of the regions that are available to ApsaraDB RDS. Before you call the CreateDBInstance operation to create an instance, you can call the DescribeRegions operation to query the available regions and zones.
 
-**Note**
-
-If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+> **Note:** If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
 
 **Request parameters**
 
@@ -1832,9 +1822,7 @@ Sample success responses `XML` format
 
 Migrates an ApsaraDB RDS instance across zones within the same region. For example, if an instance is located in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
-**Note**
-
-You can migrate the instance between zones only within the same region. For example, you cannot migrate the instance from a zone in the China (Hangzhou) region to a zone in the China (Qingdao) region.
+> **Note:** You can migrate the instance between zones only within the same region. For example, you cannot migrate the instance from a zone in the China (Hangzhou) region to a zone in the China (Qingdao) region.
 
 **Request parameters**
 
@@ -2383,9 +2371,7 @@ Sample success responses `XML` format
 
 Updates the minor engine version of an ApsaraDB RDS instance. An update to the minor engine version enhances performance, introduces new features, and fixes known bugs. For more information, see Update the minor engine version of an ApsaraDB RDS for MySQL instance, Update the minor engine version of an ApsaraDB RDS for SQL Server instance, and Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance.
 
-**Note**
-
-This operation is supported only for instances that run the MySQL, SQL Server, or PostgreSQL database engine.
+> **Note:** This operation is supported only for instances that run the MySQL, SQL Server, or PostgreSQL database engine.
 
 **Request parameters**
 
@@ -2686,9 +2672,8 @@ uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</connectionString>
 
 Modifies the endpoint and port number of an ApsaraDB RDS instance. ApsaraDB RDS provides the internal and public endpoints. It allows hybrid access by using both a Virtual Private Cloud (VPC) endpoint and a classic network endpoint.
 
-**Note**
-
-You can modify only the prefix of an endpoint. The read/write splitting endpoint cannot be modified.
+> **Note:** You can modify only the prefix of an endpoint.
+> The read/write splitting endpoint cannot be modified.
 
 **Request parameters**
 
@@ -2930,9 +2915,7 @@ Sample success responses `XML` format
 
 Creates a database on an ApsaraDB RDS instance. If you want to perform data management tasks such as data change and schema design, use Data Management System (DMS). Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The maximum number of databases in the instance is not reached. You can call the DescribeDBInstanceAttribute operation to query the maximum number of databases. The instance is not a read-only instance.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL with local SSDs or SQL Server 2017 EE. You can execute the CREATE DATABASE statement to create a database.
+> **Note:** This operation is not supported for instances that run PostgreSQL with local SSDs or SQL Server 2017 EE. You can execute the CREATE DATABASE statement to create a database.
 
 **Request parameters**
 
@@ -2982,9 +2965,7 @@ Sample success responses `XML` format
 
 Deletes a database from an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance. The instance runs the MySQL or SQL Server database engine.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL. You can execute the DROP DATABASE statement to delete a database.
+> **Note:** This operation is not supported for instances that run PostgreSQL. You can execute the DROP DATABASE statement to delete a database.
 
 **Request parameters**
 
@@ -3028,9 +3009,7 @@ Sample success responses `XML` format
 
 Queries the details of databases on an ApsaraDB RDS instance.
 
-**Note**
-
-If the request parameters are incorrectly specified, the response is null.
+> **Note:** If the request parameters are incorrectly specified, the response is null.
 
 **Request parameters**
 
@@ -3148,9 +3127,7 @@ Sample success responses `XML` format
 
 Modifies the description of a database.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL or PolarDB.
+> **Note:** This operation is not supported for instances that run PostgreSQL or PolarDB.
 
 **Request parameters**
 
@@ -3197,9 +3174,7 @@ Sample success responses `XML` format
 
 Copies databases across ApsaraDB RDS instances. This operation can also be used to restore specific databases to an existing instance by point in time or backup set. Before you call this operation, make sure that the following requirements are met: The source and destination instances belong to the same Apsara Stack tenant account. The source and destination instances run the same version of database engine. The source and destination instances reside in the same region and use the same network type. Their zones can be different. The destination instance does not have databases whose names are the same as those of the databases that you want to copy. The available storage capacity of the destination instance is larger than the size of the databases that you want to copy from the source instance.
 
-**Note**
-
-This operation is applicable only to ApsaraDB RDS for SQL Server 2012 or 2016. You can restore specific databases or tables of an ApsaraDB RDS for MySQL instance to the original instance or a new instance.
+> **Note:** This operation is applicable only to ApsaraDB RDS for SQL Server 2012 or 2016. You can restore specific databases or tables of an ApsaraDB RDS for MySQL instance to the original instance or a new instance.
 
 **Request parameters**
 
@@ -3251,9 +3226,9 @@ Sample success responses `XML` format
 
 Creates an account that is used to manage databases on an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
 
-**Note**
-
-This operation is supported only for instances that run MySQL, PostgreSQL, or SQL Server. This operation is not supported for instances that run SQL Server 2017 EE or SQL Server 2019 EE. You can create multiple privileged accounts and multiple standard accounts for each ApsaraDB RDS instance that runs PostgreSQL with standard SSDs. You can create only a single privileged account for each ApsaraDB RDS instance that runs PostgreSQL 9.4 or PostgreSQL 10.0 with local SSDs.
+> **Note:** This operation is supported only for instances that run MySQL, PostgreSQL, or SQL Server. This operation is not supported for instances that run SQL Server 2017 EE or SQL Server 2019 EE.
+> You can create multiple privileged accounts and multiple standard accounts for each ApsaraDB RDS instance that runs PostgreSQL with standard SSDs.
+> You can create only a single privileged account for each ApsaraDB RDS instance that runs PostgreSQL 9.4 or PostgreSQL 10.0 with local SSDs.
 
 **Request parameters**
 
@@ -3306,9 +3281,8 @@ Sample success responses `XML` format
 
 Deletes an account from an ApsaraDB for RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE or PostgreSQL with local SSDs. If the instance runs PostgreSQL with standard SSDs and the account to be deleted has permissions on databases, tables, or other objects, this operation only locks the account. To delete the account, you must revoke the permissions.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE or PostgreSQL with local SSDs.
+> If the instance runs PostgreSQL with standard SSDs and the account to be deleted has permissions on databases, tables, or other objects, this operation only locks the account. To delete the account, you must revoke the permissions.
 
 **Request parameters**
 
@@ -3438,9 +3412,7 @@ Sample success responses `XML` format
 
 Queries information of the accounts that are created on an ApsaraDB RDS instance.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE or PostgreSQL.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE or PostgreSQL.
 
 **Request parameters**
 
@@ -3556,9 +3528,7 @@ Sample success responses `XML` format
 
 Grants an account the permissions on a database of an ApsaraDB for RDS instance. Each account can be granted permissions on one or more databases. Before you call this operation, make sure that the instance is in the running state.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL with local SSDs, SQL Server 2017 EE, or PolarDB.
+> **Note:** This operation is not supported for instances that run PostgreSQL with local SSDs, SQL Server 2017 EE, or PolarDB.
 
 **Request parameters**
 
@@ -3607,9 +3577,8 @@ Sample success responses `XML` format
 
 Revokes database access permissions of an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
 
-**Note**
-
-The permissions that can be revoked include SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, and TRIGGER. This operation is not supported for instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
+> **Note:** The permissions that can be revoked include SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, and TRIGGER.
+> This operation is not supported for instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
 
 **Request parameters**
 
@@ -3657,9 +3626,7 @@ Sample success responses `XML` format
 
 Modifies the description of a database account.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
+> **Note:** This operation is not supported for instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
 
 **Request parameters**
 
@@ -3704,9 +3671,7 @@ Sample success responses `XML` format
 
 Resets the password of an account on an ApsaraDB RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
-**Note**
-
-This operation is not supported for accounts that are created by using SQL statements on instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
+> **Note:** This operation is not supported for accounts that are created by using SQL statements on instances that run PostgreSQL, SQL Server 2017 EE, or PolarDB.
 
 **Request parameters**
 
@@ -3751,9 +3716,7 @@ Sample success responses `XML` format
 
 Resets permissions of the privileged account.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2008 R2 because they do not have privileged accounts.
+> **Note:** This operation is not supported for instances that run SQL Server 2008 R2 because they do not have privileged accounts.
 
 **Request parameters**
 
@@ -4026,9 +3989,9 @@ Sample success responses `XML` format
 
 Restores the data of an ApsaraDB RDS instance to a new instance. The new instance is also called a cloned instance. Before you call this operation, make sure that the following requirements are met: The original instance is in the running state. The original instance does not have ongoing migration tasks. The log backup feature is enabled for the original instance to support point-in-time restoration. The primary instance has at least one completed backup set before you clone the instance by backup set.
 
-**Note**
+> **Note:** RAM users can be used to create cloned instances. Make sure that your RAM users have been granted permissions to clone instances.
 
-RAM users can be used to create cloned instances. Make sure that your RAM users have been granted permissions to clone instances. Take note of the following information: The new instance has the same IP address whitelist, SQL Explorer (SQL Audit), alert threshold, backup, and parameter settings as the original instance. The data and account information of the new instance is the same as that indicated by the backup set or point in time used for restoration of the original instance.
+Take note of the following information: The new instance has the same IP address whitelist, SQL Explorer (SQL Audit), alert threshold, backup, and parameter settings as the original instance. The data and account information of the new instance is the same as that indicated by the backup set or point in time used for restoration of the original instance.
 
 **Request parameters**
 
@@ -4090,9 +4053,7 @@ Sample success responses `XML` format
 
 Queries the backup sets of an ApsaraDB RDS instance.
 
-**Note**
-
-A backup set can be used to restore data only when its **BackupStatus** value is **Success**.
+> **Note:** A backup set can be used to restore data only when its **BackupStatus** value is **Success**.
 
 **Request parameters**
 
@@ -4717,9 +4678,7 @@ Sample success responses `XML` format
 
 Queries the information of the restorable databases and tables in a specific backup set. Before you call the RestoreTable operation to restore individual databases or tables of an ApsaraDB RDS for MySQL instance, you can call this operation to query the information of the restorable databases and tables.
 
-**Note**
-
-This operation is supported only for instances that run MySQL 8.0, MySQL 5.7, or MySQL 5.6 on RDS High-availability Edition with local SSDs.
+> **Note:** This operation is supported only for instances that run MySQL 8.0, MySQL 5.7, or MySQL 5.6 on RDS High-availability Edition with local SSDs.
 
 **Request parameters**
 
@@ -4813,9 +4772,7 @@ Sample success responses `XML` format
 
 Restores individual databases or tables for an ApsaraDB RDS instance. ApsaraDB RDS for MySQL allows you to restore individual databases or tables. If one or more databases or tables of an ApsaraDB RDS instance are accidentally deleted, you can use a backup set to restore the databases or tables. For more information, see Restore individual databases and tables for an ApsaraDB RDS for MySQL instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing migration tasks. If you want to restore data to a specific point in time, the log backup feature is enabled for the instance. The restoration of individual databases or tables is enabled, and new backups are created. The instance does not contain tables that have the same names as the new tables.
 
-**Note**
-
-This operation is supported only for instances that run MySQL.
+> **Note:** This operation is supported only for instances that run MySQL.
 
 **Request parameters**
 
@@ -6080,9 +6037,7 @@ Sample success responses `XML` format
 
 Enables or disables the automatic primary/secondary switchover feature for an ApsaraDB RDS instance. After the switchover, the original primary instance becomes the secondary instance.
 
-**Note**
-
-This operation is supported only for instances that run MySQL on RDS Highavailability Edition.
+> **Note:** This operation is supported only for instances that run MySQL on RDS High- availability Edition.
 
 **Request parameters**
 
@@ -6208,9 +6163,7 @@ Sample success responses `XML` format
 
 Modifies an IP address whitelist of an ApsaraDB RDS instance. This operation allows you to add more IP addresses to a whitelist to allow their access to the instance.
 
-**Note**
-
-Before you call this operation, make sure that the instance is in the running state.
+> **Note:** Before you call this operation, make sure that the instance is in the running state.
 
 **Request parameters**
 
@@ -6455,9 +6408,7 @@ Sample success responses `XML` format
 
 Queries Secure Sockets Layer (SSL) settings of an ApsaraDB RDS instance.
 
-**Note**
-
-This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs.
+> **Note:** This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs.
 
 **Request parameters**
 
@@ -6540,9 +6491,8 @@ Sample success responses `XML` format
 
 Modifies the SSL encryption settings of an ApsaraDB RDS instance. This operation is used to configure SSL encryption for an instance.
 
-**Note**
-
-This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs. SSL encryption is not supported for connections to read/write splitting endpoints.
+> **Note:** This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs.
+> SSL encryption is not supported for connections to read/write splitting endpoints.
 
 **Request parameters**
 
@@ -6634,9 +6584,7 @@ Sample success responses `XML` format
 
 Queries the data encryption status of an ApsaraDB RDS instance. This operation is used to view the Transparent Data Encryption (TDE) configuration of an instance.
 
-**Note**
-
-This operation is supported only for instances that run MySQL 5.6, SQL Server 2019 SE, or SQL Server EE.
+> **Note:** This operation is supported only for instances that run MySQL 5.6, SQL Server 2019 SE, or SQL Server EE.
 
 **Request parameters**
 
@@ -6877,9 +6825,7 @@ Sample success responses `XML` format
 
 Queries the monitoring frequency of an ApsaraDB RDS instance.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL. The query granularity of these instances is self-adaptive based on the query time range.
+> **Note:** This operation is not supported for instances that run PostgreSQL. The query granularity of these instances is self-adaptive based on the query time range.
 
 **Request parameters**
 
@@ -6926,9 +6872,7 @@ Sample success responses `XML` format
 
 Modifies the monitoring frequency of an ApsaraDB RDS instance. ApsaraDB RDS provides different monitoring frequency settings for different instances. For more information, see **Set a monitoring frequency** in **ApsaraDB RDS****User Guide**.
 
-**Note**
-
-This operation is not supported for instances that run PostgreSQL. The query granularity of these instances is self-adaptive based on the query time range.
+> **Note:** This operation is not supported for instances that run PostgreSQL. The query granularity of these instances is self-adaptive based on the query time range.
 
 **Request parameters**
 
@@ -7089,9 +7033,7 @@ within the server scope. A fill factor is provided to optimize index data storag
 
 Modifies the parameters of an ApsaraDB RDS instance. You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance.
 
-**Note**
-
-Before you execute a parameter modification task, ApsaraDB RDS checks whether the parameters exist, whether they are editable, and whether the new parameter values are valid.
+> **Note:** Before you execute a parameter modification task, ApsaraDB RDS checks whether the parameters exist, whether they are editable, and whether the new parameter values are valid.
 
 **Request parameters**
 
@@ -8380,9 +8322,7 @@ is an informational message only; no user action is required</ErrorInfo>
 
 Queries the log backup files of an ApsaraDB RDS instance. If the **DownloadLink** value is null, ApsaraDB RDS does not provide a download URL. If the **DownloadLink** value is not null, ApsaraDB RDS provides a download URL for a log backup file. The expiration time of the URL is specified by the **LinkExpiredTime** parameter. You must download the log backup file before the expiration time. This operation returns SQL log entries that are generated over a specific time range. The beginning of the time range must be earlier than or equal to the time that is specified by the LogEndTime parameter. In addition, the end of the time range must be later than or equal to the time that is specified by the LogBeginTime parameter.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server.
+> **Note:** This operation is not supported for instances that run SQL Server.
 
 **Request parameters**
 
@@ -8844,9 +8784,10 @@ Sample success responses `XML` format
 
 Deletes log backup files from an ApsaraDB RDS instance. ApsaraDB RDS allows an instance to automatically upload log backup files to Object Storage Service (OSS) buckets. If the remaining storage space of an instance is insufficient, you can also manually upload the log backup files of the instance to OSS buckets. After the log backup files of an instance are uploaded, ApsaraDB RDS deletes these files from the instance to release storage space. When this operation is called, log backup files are uploaded from an instance to OSS buckets, and then are deleted from the instance. If the instance runs SQL Server, transaction log backup files are compressed before they are uploaded.
 
-**Note**
-
-This operation is supported only for instances that run MySQL or SQL Server. When you upload log backup files, the data restoration feature is not affected. This operation is called to release storage space. The backup storage usage is not reduced. The OSS buckets to which log backup files are uploaded are provided by ApsaraDB RDS. You do not need to purchase these OSS buckets. In addition, you cannot access these OSS buckets.
+> **Note:** This operation is supported only for instances that run MySQL or SQL Server.
+> When you upload log backup files, the data restoration feature is not affected.
+> This operation is called to release storage space. The backup storage usage is not reduced.
+> The OSS buckets to which log backup files are uploaded are provided by ApsaraDB RDS. You do not need to purchase these OSS buckets. In addition, you cannot access these OSS buckets.
 
 **Request parameters**
 
@@ -9185,9 +9126,7 @@ Sample success responses `XML` format
 
 Queries diagnostic reports of an ApsaraDB RDS instance. This operation returns the details of diagnostic reports such as the time range of monitoring data, report generation time, and download URL. The diagnostic reports are retained for 15 days.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE.
 
 **Request parameters**
 
@@ -9265,9 +9204,9 @@ i.aliyuncs.com/xxxxx",
 
 Obtains the information used to upload files.
 
-**Note**
+> **Note:** This operation is supported only for instances that run SQL Server.
 
-This operation is supported only for instances that run SQL Server. You can call this operation to create a username and password to log on to the file server, and a path to upload files. This information can be used to upload data files. After the upload is complete, you can migrate external data. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. Up to 20 files can be created for a single database per day. A 24-hour period is considered a single day. For example, if the last creation time was 2012-03-15 18:30:12, the next creation time must be later than 2012-03-16 18:30:12.
+You can call this operation to create a username and password to log on to the file server, and a path to upload files. This information can be used to upload data files. After the upload is complete, you can migrate external data. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. Up to 20 files can be created for a single database per day. A 24-hour period is considered a single day. For example, if the last creation time was 2012-03-15 18:30:12, the next creation time must be later than 2012-03-16 18:30:12.
 
 **Request parameters**
 
@@ -9340,9 +9279,7 @@ Sample success responses `XML` format
 
 Queries the details of data files for an ApsaraDB RDS instance. This operation returns the username used to log on to the file server. After data files are uploaded, their states are updated. This operation also returns the states of data files. If data files are available, you can migrate the data files and view their migration progress information.
 
-**Note**
-
-This operation is supported only for instances that run SQL Server.
+> **Note:** This operation is supported only for instances that run SQL Server.
 
 **Request parameters**
 
@@ -9463,9 +9400,8 @@ Migrates data across ApsaraDB RDS instances. We recommend that you use Data Tran
 **types** in **ApsaraDB RDS****Product Introduction**.
 The source and destination instances are created by using the same user credentials. The source and destination instances are in the running state. The source and destination databases are in the running state. The remaining storage space of the destination instance is greater than the storage space occupied by the source database.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE. You can migrate the data of multiple databases at a time.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE.
+> You can migrate the data of multiple databases at a time.
 
 **Request parameters**
 
@@ -9515,9 +9451,7 @@ Sample success responses `XML` format
 
 Cancels a migration task of an ApsaraDB RDS instance. This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE.
 
 **Request parameters**
 
@@ -9802,9 +9736,8 @@ Sample success responses `XML` format
 
 Queries backup data migration tasks for an ApsaraDB RDS for SQL Server instance. This operation allows you to query the backup data migration tasks that are created for an instance within the last week.
 
-**Note**
-
-This operation is supported only for full backup files. This operation is not supported for instances that run SQL Server 2017 EE.
+> **Note:** This operation is supported only for full backup files.
+> This operation is not supported for instances that run SQL Server 2017 EE.
 
 **Request parameters**
 
@@ -9894,9 +9827,7 @@ Sample success responses `XML` format
 
 Queries the backup file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 
-**Note**
-
-This operation is not supported for instances that run SQL Server 2017 EE or SQL Server 2019 EE.
+> **Note:** This operation is not supported for instances that run SQL Server 2017 EE or SQL Server 2019 EE.
 
 **Request parameters**
 
@@ -10169,9 +10100,8 @@ Sample success responses `XML` format
 
 Removes tags from ApsaraDB RDS instances.
 
-**Note**
-
-Up to 20 tags can be removed at a time. If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+> **Note:** Up to 20 tags can be removed at a time.
+> If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 
 **Request parameters**
 
@@ -10262,9 +10192,7 @@ In RAM, the following operations can be authorized to an RDS resource.
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
 | DescribeOptimizeAdviceOnMissPK | DescribeOptimizeAdviceOnExcessIndex |
 
-**Note**
-
-All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
+> **Note:** All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
 
 **RAM authentication rules of API operations**
 

@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 73
 source_pdf: "97c40b8e6195bd2c_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20AgentRuntime%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide 20260828
@@ -142,14 +142,15 @@ Before you log in to the Apsara Uni-Manager Management Console, confirm that you
 1. In the address bar of your browser, enter the service domain URL of the Apsara Uni-
 Manager Management Console and press Enter. g started
 
-**Note**
+> **Note:** Click the current language in the upper-right corner of the page to switch to another language.
+> The Authorize Login option appears only if you have configured a global IdP in third-party authentication. You can customize the name of "Authorize Login" as needed.
 
-Click the current language in the upper-right corner of the page to switch to another language. The Authorize Login option appears only if you have configured a global IdP in third-party authentication. You can customize the name of "Authorize Login" as needed. If you encounter issues such as needing to click "Continue to Access" multiple times or not seeing the entry point for the Apsara Uni-Manager Management Console, due to an expired browser certificate or HTTPS authentication being enabled, you must install a certificate before accessing the console normally. Click **Browser Certificate Installation** in the upper-right corner of the page to open the browser certificate installation guide.
+If you encounter issues such as needing to click "Continue to Access" multiple times or not seeing the entry point for the Apsara Uni-Manager Management Console, due to an expired browser certificate or HTTPS authentication being enabled, you must install a certificate before accessing the console normally. Click **Browser Certificate Installation** in the upper-right corner of the page to open the browser certificate installation guide.
 2. Enter the correct username and password.
 
-**Note**
+> **Note:** Contact the operations administrator to obtain the username and password for logging in to the console.
+> When logging in to the Apsara Uni-Manager Management Console for the first time, you must change your password as prompted. To enhance security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, numbers, and special symbols (such as exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%)).
 
-Contact the operations administrator to obtain the username and password for logging in to the console. When logging in to the Apsara Uni-Manager Management Console for the first time, you must change your password as prompted. To enhance security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, numbers, and special symbols (such as exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%)).
 3. Click **Log In**.
 4. If multi-factor authentication (MFA) is activated for your account, follow one of the
 procedures below:
@@ -162,11 +163,8 @@ a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bin
 
 Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
+> **Note:** For instructions on how to bind and enable MFA, see the **Manage multi-factor** **authentication** section in the Apsara Uni-Manager Management Console User Guide.
 
-For instructions on how to bind and enable MFA, see the **Manage multi-factor**
-**authentication** section in the Apsara Uni-Manager Management Console User
-Guide.
 5. In the top navigation bar, select **Products > Middleware > Microservices Tools and**
 **Platforms > Agent Runtime Service** to go to the AgentRuntime console.
 
@@ -349,9 +347,9 @@ Code creation If you create the Agent via code creation, enter a question for de
 
 On the **Release Management** tab of the Agent details page, manage Agent versions and endpoints.
 
-**Note**
+> **Note:** After creating a version, you cannot modify it. To distinguish and upgrade to a new version, enter a larger version number.
 
-After creating a version, you cannot modify it. To distinguish and upgrade to a new version, enter a larger version number. Version management
+Version management
 **Create**: On the **Release Management** tab of the Agent details page, click **Publish** in
 the upper-right corner. In the **Release version** dialog box, enter the following configuration items and click **OK**.
 
@@ -790,9 +788,9 @@ Debug MCPS On the **Debug MCPS** tab of the tool details page, select a tool fro
 
 On the **Version Management** tab of the tool details page, manage tool versions and endpoints.
 
-**Note**
+> **Note:** After creating a version, you cannot modify it. To distinguish from and upgrade to a new version, enter a higher version number.
 
-After creating a version, you cannot modify it. To distinguish from and upgrade to a new version, enter a higher version number. Version management
+Version management
 **Create**: On the **Version Management** tab of the tool details page, click **Publish** in the
 upper-right corner. In the **Publish** dialog box, configure the following items and click **OK**.
 
@@ -1054,10 +1052,9 @@ rce management
 | Deploy accelerated storage | The bucket name for deployment distribution acceleration cache. | e.g. my-deploy-cache-bucket |
 | OSS volumes | The bucket used for ACK PVC volume mounting. | e.g. my-pvc-bucket |
 
-**Note**
+> **Note:** **User Upload package**, **Deploy accelerated storage**, and **OSS volumes** can point to different buckets or share the same bucket. Make sure that the configured authentication credentials have read/write permissions for all specified buckets.
 
-**User Upload package**, **Deploy accelerated storage**, and **OSS volumes** can
-point to different buckets or share the same bucket. Make sure that the configured authentication credentials have read/write permissions for all specified buckets. Click **More > Edit computing power pool** in the upper-right corner. On the **Edit**
+Click **More > Edit computing power pool** in the upper-right corner. On the **Edit**
 **computing power pool** page, view information such as **Node name**, **IP address**,
 **Specifications**, **Security level**, **Operating system**, **CPU type**, and **Status**.
 In the computing power pool list, select one or more target node names. Then, click **OK**.
@@ -1128,9 +1125,9 @@ To avoid hardcoding sensitive information such as keys and tokens in code or too
 
 Credentials in AgentRun fall into two main categories: Credentials for accessing Agent services: to access and use resources on the Agent. For more information, see Access credentials in Quickly create an agent and Access credentials in Create an agent via code. rce management
 
-**Note**
+> **Note:** When you create an agent via quick creation method, configure only the credentials for accessing the Agent, and the Agent automatically acquires the credentials required to access the specified tools. No additional configuration is necessary.
 
-When you create an agent via quick creation method, configure only the credentials for accessing the Agent, and the Agent automatically acquires the credentials required to access the specified tools. No additional configuration is necessary. Credentials for accessing tools: to access tools. For more information, see Access credentials in Create a system tool. None and Access credentials in Create a custom tool.
+Credentials for accessing tools: to access tools. For more information, see Access credentials in Create a system tool. None and Access credentials in Create a custom tool.
 
 **Create a credential**
 

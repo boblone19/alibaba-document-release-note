@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 406
 source_pdf: "03d0d6ca55dd25dd_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Realtime%20Compute%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide
@@ -281,7 +281,9 @@ An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
-Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account. Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following steps:
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manage Management Console. If you need to obtain the AccessKey pair of an account that has permissions on an organization, make sure that your operation is allowed by an administrator. This ensures security. The account that has permissions on an organization is a privileged account.
+
+Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and choose
 User Inf ormat ion from the shortcut menu.
@@ -8199,7 +8201,10 @@ REGEXP_REPLACE
 Syntax: string regexp_replace(string str, string pattern, string replacement)
 ```
 
-Description: Returns a string from the str string with its substrings that match the pattern regular expression replaced with the replacement string. Note: Backslashes (\) are used in a regular expression to escape special characters. If any argument is NULL, the return value is NULL. Example:
+Description: Returns a string from the str string with its substrings that match the pattern regular expression replaced with the replacement string.
+
+> **Note:** Backslashes (\) are used in a regular expression to escape special characters. If any argument is NULL, the return value is NULL. Example:
+
 
 ```
 regexp_replace('100-200', '(\\d+)', 'num') = 'num-num' regexp_replace('2014-03-13', '-', '') = '20140313' regexp_replace('foobar', 'oo|ar', '') = 'fb'
@@ -8211,7 +8216,10 @@ REGEXP_EXTRACT
 Syntax: string regexp_extract(string str, string pattern, int index)
 ```
 
-Description: Returns a substring of the str string that matches the pattern regular expression. Multiple substrings may all match the pattern. The index parameter identifies the substring to be returned. The value of the index parameter starts from 1. Note: A backslash (\) is used in a regular expression to escape special characters. If any argument is NULL, the return value is NULL. Example:
+Description: Returns a substring of the str string that matches the pattern regular expression. Multiple substrings may all match the pattern. The index parameter identifies the substring to be returned. The value of the index parameter starts from 1.
+
+> **Note:** A backslash (\) is used in a regular expression to escape special characters. If any argument is NULL, the return value is NULL. Example:
+
 
 ```
 regexp_extract('foothebar', 'foo(. *?)( bar)', 2) = 'bar' regexp_extract('100-200', '(\\d+)-(\\d+)', 1) = '100'

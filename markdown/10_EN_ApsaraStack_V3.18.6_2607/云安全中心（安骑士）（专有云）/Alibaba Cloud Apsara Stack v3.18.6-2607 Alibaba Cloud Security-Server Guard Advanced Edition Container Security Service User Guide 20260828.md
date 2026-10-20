@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 71
 source_pdf: "d46793b5f019da8b_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service User Guide 20260828
@@ -110,13 +110,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -136,10 +134,17 @@ The container management feature allows you to synchronize assets and connect se
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Asset > Container Management**.
 4. On the **Container Management** page, synchronize assets or connect self-managed
-clusters. Click **Synchronize Assets** to synchronize the assets. The asset synchronization results take effect once every half an hour. Do not frequently click the button. Click **On-premises cluster access**. In the **Manage a on-premises cluster cluster** panel, click **On-premises cluster access**. Specify the parameters on the **Mirror-**
+clusters. Click **Synchronize Assets** to synchronize the assets.
+
+> **Note:** The asset synchronization results take effect once every half an hour. Do not frequently click the button.
+
+Click **On-premises cluster access**. In the **Manage a on-premises cluster cluster** panel, click **On-premises cluster access**. Specify the parameters on the **Mirror-**
 **hosted cluster access** or **Custom Image Repository Cluster Integration** tab.
 5. On the **Container Management** page, find the cluster that you want to manage and click
 its name in the **Cluster Information** column or click **View** in the **Actions** column to go to the details page of the cluster. On the page that appears, you can click**Namespaces**, **Worker**, **Apply**, **Pod**, **Container**, or **Runtime mirroring** to go to the details page of specific assets to view asset details or manage assets. The following table describes the assets and related operations.
@@ -192,7 +197,10 @@ You can use a network topology to view container assets from the Internet and cl
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Asset > Container Network Topology**.
 4. On the **Cluster Overview** page, click the **Internet Perspective** or **Cluster Perspective**
 tab.
@@ -210,10 +218,17 @@ You can use the image management feature to synchronize assets and connect image
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Asset > Image Management**.
 4. On the **Image management** page, synchronize assets or connect image repositories.
-Click **Synchronize Assets** to synchronize assets. The asset synchronization results take effect once every half an hour. Do not frequently click the button. Click **Image warehouse access**. In the **Image warehouse access** panel, configure the parameters. For more information, see **Connect to a third-party image repository**.
+Click **Synchronize Assets** to synchronize assets.
+
+> **Note:** The asset synchronization results take effect once every half an hour. Do not frequently click the button.
+
+Click **Image warehouse access**. In the **Image warehouse access** panel, configure the parameters. For more information, see **Connect to a third-party image repository**.
 5. On the **Image management** page, find the image repository that you want to manage and
 click **View** in the **Actions** column. You can view information about an image in the following columns: **Mirror information**,
 **Size**, **Latest Detection Time**, **Scan status**, **Scan progress**, and **Risk Status**.
@@ -239,7 +254,10 @@ The feature of container image scan can detect and identify high-risk system vul
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **CI/CD security > Image Scan**.
 
 **Immediately scan images**
@@ -284,7 +302,10 @@ The scanner integration feature can detect image risks in the project building s
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **CI/CD security > Scanner Integration**.
 4. On the **Scanner Integration** page, click **Click to view documentation** to view the
 
@@ -303,7 +324,10 @@ The vulnerability management feature of Container Security Service (CSS) is prov
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Vulnerabilities**.
 4. In the upper-right corner of the **Vulnerabilities** page, click **Settings** to navigate to the
 Server Guard console. In the left-side navigation pane, choose **Security Prevention** >
@@ -312,10 +336,19 @@ configure the types of vulnerabilities that you want to detect, and parameters i
 5. On the **Vulnerabilities** page, view information including the node vulnerabilities and the
 time when a system vulnerability was last detected.
 6. Click **Scan Now** to start a vulnerability scan task.
-The scan task requires 1 to 5 minutes to complete. Wait until the scan task is complete. You can refresh the page to view the most recent statistics. After the scan task is complete, you can view and handle the detected vulnerabilities.
+
+> **Note:** The scan task requires 1 to 5 minutes to complete. Wait until the scan task is complete. You can refresh the page to view the most recent statistics.
+
+After the scan task is complete, you can view and handle the detected vulnerabilities.
 7. On the **Vulnerabilities** page, click the **Linux Software**or**Application(Urgent**
 **Vulnerability Included)** tab.
-i. Click a security bulletin or click **View** in the **Actions** column of a security bulletin. In the panel that appears, perform the following operations: Click **Globally Add to White** in the upper-right corner to add the security bulletin to the whitelist for all affected assets. After you add the security bulletin to the whitelist, the security bulletin is no longer marked as unhandled. The system no longer notifies you of the security bulletin. This operation affects all assets. If you want to manage the applicable scope of the whitelist, go to the Settings panel. If you want to remove the security bulletin from the whitelist or change the reason for adding the security bulletin to the whitelist, go to the Settings panel. Click the **Detail** tab and click a CVE ID to view the details of the vulnerability. Click the **Pending vulnerability** tab and click **Verify** in the **Actions** column of a vulnerability. You can also select multiple vulnerabilities and click **Verify** below the vulnerability list to verify the vulnerabilities at a time. Click the **Pending vulnerability** tab and click **Ignore** in the **Actions** column of a vulnerability. You can also select multiple vulnerabilities and click **Ignore** below the vulnerability list to ignore the vulnerabilities at a time. ii. Return to the Vulnerabilities page. Select multiple vulnerabilities and click **Add to**
+i. Click a security bulletin or click **View** in the **Actions** column of a security bulletin. In the panel that appears, perform the following operations: Click **Globally Add to White** in the upper-right corner to add the security bulletin to the whitelist for all affected assets.
+
+> **Note:** After you add the security bulletin to the whitelist, the security bulletin is no longer marked as unhandled. The system no longer notifies you of the security bulletin.
+> This operation affects all assets. If you want to manage the applicable scope of the whitelist, go to the Settings panel.
+> If you want to remove the security bulletin from the whitelist or change the reason for adding the security bulletin to the whitelist, go to the Settings panel.
+
+Click the **Detail** tab and click a CVE ID to view the details of the vulnerability. Click the **Pending vulnerability** tab and click **Verify** in the **Actions** column of a vulnerability. You can also select multiple vulnerabilities and click **Verify** below the vulnerability list to verify the vulnerabilities at a time. Click the **Pending vulnerability** tab and click **Ignore** in the **Actions** column of a vulnerability. You can also select multiple vulnerabilities and click **Ignore** below the vulnerability list to ignore the vulnerabilities at a time. ii. Return to the Vulnerabilities page. Select multiple vulnerabilities and click **Add to**
 **Whitelist** to add the vulnerabilities to the whitelist at a time.
 iii. In the upper-right corner of the vulnerability list, click the icon to download vulnerabilities as a file.
 
@@ -330,7 +363,10 @@ The baseline check feature can help you identify baseline risks in an efficient 
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Baseline Check**.
 4. In the upper-right corner of the **Baseline Check** page, click **Manage Policies**. In the
 Manage Policies panel, click **Add standard policy** or click **Edit** in the **Actions** column of an existing standard policy. In the panel that appears, configure the parameters and click
@@ -356,7 +392,10 @@ perform the following operations: Move the pointer over an asset name to view th
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Baseline Check**.
 4. On the Baseline Check page, click the **Risk situation** tab to view the risks of baseline
 checks. You can search for risks by risk level, status, baseline type, and check item.
@@ -381,7 +420,10 @@ The intrusion alert feature is developed based on the big data alerting model th
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Intrusion Alerts**.
 4. On the **Intrusion Alerts** page, view the numbers of at-risk nodes, at-risk containers, all
 risk items, and high-risk items. You can specify filter conditions to view information about an alert such as the severity, event, and affected assets. You can move the pointer over the name of an affected asset to view the details of the affected asset.
@@ -402,7 +444,10 @@ The container firewall feature helps you protect container assets from attacks. 
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. Click the **Protection status** tab to view the number of risks in the last 24 hours, the
 number of risks in the last 30 days, the number of risks in the last 180 days, the numbers of unprotected clusters and total clusters, and the total number of rules. You can view the alerts generated by the container firewall feature in the alert list. Find an alert and click **Details** in the **Operation** column to view the details of the alert.
@@ -413,7 +458,11 @@ b. In the **Create rules** panel, configure parameters. In the **Source configur
 **Rule status**, and **Priority** parameters.
 c. In the Defense rules panel, find a rule and click the icon in the **Enabled status** column, or select multiple rules and click **Batch open** below the rule list. Enable protection In the cluster list, find a cluster and click the icon in the **Defensive status** column, or select multiple clusters and click **Batch open** below the cluster list. Restore the interceptable status to normal In the cluster list, find a cluster and click **Recovery** in the **Interceptible status** column.
 6. On the **Network object** tab, click **Add Network Object**. In the **Add Object** panel,
-configure the **Object name**, **Object type**, **Namespaces**, and **Image** parameters, and click **OK**. Valid values of Object type are Container, IP, and Domain Name. Fuzzy match by suffix is supported for **Namespaces** and **Image**. Example: abc*. After you create a network object, you can add the network object to a protection rule.
+configure the **Object name**, **Object type**, **Namespaces**, and **Image** parameters, and click **OK**. Valid values of Object type are Container, IP, and Domain Name.
+
+> **Note:** Fuzzy match by suffix is supported for **Namespaces** and **Image**. Example: abc*.
+
+After you create a network object, you can add the network object to a protection rule.
 
 ##### 3.3.4.1 Create a network object
 
@@ -430,7 +479,10 @@ The malicious behavior defense feature is enabled for your assets.
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. On the **Container Firewall** page, click the **Network object** tab.
 5. On the **Network object** tab, click **Add Network Object**.
@@ -449,7 +501,9 @@ parameters.
 | Tag | The tag of the pod. You can select one or more tags. A tag is the business attribute that is attached to the containers in a Kubernetes cluster after the containers are started. You can add custom tags to identify pods. Tags are the basic match conditions in defense rules. Note You can enter the tag of a cluster. Fuzzy match by suffix is supported. Example: a*. |
 
 7. Click OK.
-The created network object is displayed on the Network object tab. You can click **Edit** or **Delete** in the **Actions** column of the network object to modify or delete it. You can also select multiple network objects and click **Batch delete** below the network object list to delete the network objects at a time. You can delete a network object only if the network object is not added to a defense rule.
+The created network object is displayed on the Network object tab. You can click **Edit** or **Delete** in the **Actions** column of the network object to modify or delete it. You can also select multiple network objects and click **Batch delete** below the network object list to delete the network objects at a time.
+
+> **Note:** You can delete a network object only if the network object is not added to a defense rule.
 
 **What to do next**
 
@@ -474,7 +528,10 @@ A defense rule that is created in the container firewall module is used to imple
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. On the **Container Firewall** page, click the **Protection management** tab.
 5. In the cluster list of the **Protection management** tab, find the cluster for which you want
@@ -497,9 +554,7 @@ ii. Click **Next**. iii. **Destination configuration** You need to configure the
 8. Click **Determine**.
 The defense rules that you create are displayed in the defense rule list in descending order based on priority. By default, a newly created defense rule is disabled. You must enable the defense rule to allow the rule to take effect. For more information about how to enable a defense rule, see Manage the defense status and defense rules of a cluster. After you enable the defense rules of a cluster, the rules are applied in sequence based on the priorities that you specify.
 
-**Important**
-
-If traffic from the source network object does not hit the first defense rule, the subsequent rules are used. When a rule is hit, the rule processes the traffic based on the action that you specify in the rule. If no defense rules are hit, the container firewall feature allows the traffic.
+> **Important:** If traffic from the source network object does not hit the first defense rule, the subsequent rules are used. When a rule is hit, the rule processes the traffic based on the action that you specify in the rule. If no defense rules are hit, the container firewall feature allows the traffic.
 
 ##### 3.3.4.3 Manage the defense status and defense rules of a cluster
 
@@ -522,7 +577,10 @@ The defense rule that is created for the cluster can take effect only when the i
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. On the **Container Firewall** page, click the Protection management tab.
 5. In the cluster list of the **Protection management** tab, find the cluster for which you want
@@ -530,12 +588,7 @@ to manage the defense status. Click the or icon in the **Defensive status** colu
 **shutdown** below the cluster list to manage the defense status for multiple clusters at a
 time.
 
-**Important**
-
-You can enable defense rules for a cluster only when **Normal** is displayed in the
-**Interceptable status** column of the cluster. If **Exception** or **Normal to Be**
-**Confirmed** is displayed in the **Interceptable status** column, you cannot enable
-defense rules for the cluster.
+> **Important:** You can enable defense rules for a cluster only when **Normal** is displayed in the **Interceptable status** column of the cluster. If **Exception** or **Normal to Be** **Confirmed** is displayed in the **Interceptable status** column, you cannot enable defense rules for the cluster.
 
 **Manage defense rules**
 
@@ -544,11 +597,20 @@ defense rules for the cluster.
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. On the **Container Firewall** page, click the Protection management tab.
 5. In the cluster list of the **Protection management** tab, find the cluster for which you want
-to manage defense rules. i. Click **Rule management** in the **Actions** column to go to the **Defense rules** panel. ii. In the defense rule list of the **Defense rules** panel, you can perform the following operations on the defense rules: Enable or disable one or more defense rules Click the or icon in the **Enabled status** column of a defense rule to enable or disable the defense rule. You can also select multiple defense rules and click **Batch open** or **Batch shutdown** below the rule list to enable or disable the defense rules at a time. View the details of a defense rule Find the rule that you want to view and click **Details** in the **Operation** column to go to the **Details** panel. In the Details panel, view the configurations of the source network object and destination network object, and other details of the defense rule. Modify a defense rule Find the rule that you want to modify and click **Edit** in the **Operation** column to go to the **Edit rules** panel. In the Edit rules panel, modify the defense rule. The modifications to the defense rule take effect within 1 minute. Delete one or more defense rules Find the rule that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click OK to delete the rule. You can also select multiple defense rules and click **Batch delete** below the rule list to delete the defense rules at a time. The delete operation takes effect within 1 minute.
+to manage defense rules. i. Click **Rule management** in the **Actions** column to go to the **Defense rules** panel. ii. In the defense rule list of the **Defense rules** panel, you can perform the following operations on the defense rules: Enable or disable one or more defense rules Click the or icon in the **Enabled status** column of a defense rule to enable or disable the defense rule. You can also select multiple defense rules and click **Batch open** or **Batch shutdown** below the rule list to enable or disable the defense rules at a time. View the details of a defense rule Find the rule that you want to view and click **Details** in the **Operation** column to go to the **Details** panel. In the Details panel, view the configurations of the source network object and destination network object, and other details of the defense rule. Modify a defense rule Find the rule that you want to modify and click **Edit** in the **Operation** column to go to the **Edit rules** panel. In the Edit rules panel, modify the defense rule.
+
+> **Note:** The modifications to the defense rule take effect within 1 minute.
+
+Delete one or more defense rules Find the rule that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click OK to delete the rule. You can also select multiple defense rules and click **Batch delete** below the rule list to delete the defense rules at a time.
+
+> **Note:** The delete operation takes effect within 1 minute.
 
 ##### 3.3.4.4 View protection status
 
@@ -565,14 +627,19 @@ The Protection status tab displays only the alerts generated by defense rules wh
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Firewall**.
 4. On the **Container Firewall** page, click the **Protection status** tab.
 5. On the **Protection status** tab, view the protection status of the container firewall.
 The Protection status tab displays defense statistics and the alert list. Defense statistics You can view the defense statistics in the following sections: **Number of risks in the**
 **last 24 hours**, **Number of risks in the last 30 days** , **Number of risks in the last**
 **180 days**, **Unprotected clusters/total clusters**, and **Total number of rules**.
-Alert list You can view the alerts that are sorted by generation time in reverse chronological order. All the alerts are generated by the defense rules whose action is set to Alert or Intercept. If alerts are generated for the same source pod, destination pod, port number, and cluster on the same calendar day, the number of alerts is calculated as 1, and the number of times of access attempts is displayed in the **Number of attempts** column. You can click **Edit Rule** in the Actions column of an alert to modify the defense rule that generated the alert. You can also click the icon next to **Edit Rule** to modify the action of the defense rule that generated the alert. The modifications to the defense rule take effect within 1 minute.
+Alert list You can view the alerts that are sorted by generation time in reverse chronological order. All the alerts are generated by the defense rules whose action is set to Alert or Intercept. If alerts are generated for the same source pod, destination pod, port number, and cluster on the same calendar day, the number of alerts is calculated as 1, and the number of times of access attempts is displayed in the **Number of attempts** column. You can click **Edit Rule** in the Actions column of an alert to modify the defense rule that generated the alert. You can also click the icon next to **Edit Rule** to modify the action of the defense rule that generated the alert.
+
+> **Note:** The modifications to the defense rule take effect within 1 minute.
 
 #### 3.3.5 Container file protection
 
@@ -585,7 +652,10 @@ The container file protection feature can monitor directories and files in conta
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container File**
 **Protection**.
 4. On the **Container File Protection** page, click **New rule**.
@@ -610,9 +680,9 @@ After you create a rule, you can perform the following operations on the **Conta
 **Protection** page:
 Copy the rule Click **Copy** in the **Actions** column to copy the rule. Enable or disable the rule Click the switch in the **Enable** column to enable or disable the rue. Edit the rule Click **Edit** in the **Actions** column to modify the name, configurations, and scope of the rule. Delete the rule
 
-**Important**
+> **Important:** The deleted rule cannot be restored. Before you delete a rule, make sure that you no longer require the rule.
 
-The deleted rule cannot be restored. Before you delete a rule, make sure that you no longer require the rule. Click **Delete** in the **Actions** column. In the message that appears, click **OK** to delete the rule.
+Click **Delete** in the **Actions** column. In the message that appears, click **OK** to delete the rule.
 
 #### 3.3.6 Use proactive defense for containers
 
@@ -641,10 +711,17 @@ After you create a rule of the At-risk Image Blocking type for a cluster, a requ
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Proactive Defense for**
 **Containers**. On the page that appears, select **At-risk Image Blocking** from the Rule type
-section and click **New rule**. If you created a rule for a cluster, find the rule and click **Copy** in the **Operation** column. In the **Copy Rule** panel, you can modify the parameters of the rule based on your business requirements and click **OK**. image
+section and click **New rule**.
+
+> **Note:** If you created a rule for a cluster, find the rule and click **Copy** in the **Operation** column. In the **Copy Rule** panel, you can modify the parameters of the rule based on your business requirements and click **OK**.
+
+image
 4. In the New rule panel, configure the parameters in the Add rule step and click **Next**. The
 following table describes the parameters.
 
@@ -696,7 +773,10 @@ By default, CSS provides the system rule for non-image program defense. The syst
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Proactive Defense for**
 **Containers**.
 4. In the **Rule type** section of the Proactive Defense for Containers page, click **Drift**
@@ -745,7 +825,10 @@ CSS provides the same types of custom rules and system rules. You can configure 
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Proactive Defense for**
 **Containers**.
 4. In the **Rule type** section of the Proactive Defense for Containers page, click **Container**
@@ -784,10 +867,8 @@ The container signature feature signs trusted container images and verifies the 
 A key is created based on an **asymmetric encryption algorithm in Key Management**
 **Service (KMS)**.
 
-**Important**
+> **Important:** Only **asymmetric key algorithms** support the container signature feature. When you create a KMS key, set the **Key Specifications** parameter to RSA_2048 and the **Key** **Usage** parameter to SIGN/VERIFY.
 
-Only **asymmetric key algorithms** support the container signature feature. When you create a KMS key, set the **Key Specifications** parameter to RSA_2048 and the **Key**
-**Usage** parameter to SIGN/VERIFY.
 A Container Service for Kubernetes (ACK) cluster is created and the `kritis-validation-` `hook` component is installed in the cluster.
 
 **Procedure**
@@ -797,11 +878,15 @@ A Container Service for Kubernetes (ACK) cluster is created and the `kritis-vali
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose **Runtime Detection > Container Signature**.
 4. On the Container Signature page, click the **Witness** tab. On the Witness tab, click **Create a**
 **witness**. In the Create a witness panel, configure the parameters and click **OK**.
-If a witness already exists, you can skip this step and go to the next step to configure the policy.
+
+> **Note:** If a witness already exists, you can skip this step and go to the next step to configure the policy.
 
 | Parameter | Description |
 |---|---|
@@ -839,7 +924,10 @@ The intrusion alert feature is developed based on the big data alerting model th
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, click **Log Retrieval**.
 4. On the **Log Retrieval** page, specify the **log source**, **log field**, **query condition**, and
 **keyword**, and click **Search**.
@@ -869,7 +957,10 @@ container network topology feature, a small amount of additional CPU resources i
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose Runtime Detection > Feature Settings. On the
 **Feature Settings** page, turn on the **Container Network topology collection** switch.
 image
@@ -882,7 +973,10 @@ After you enable this feature, CSS blocks the abnormal network behaviors between
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose Runtime Detection > Feature Settings. On the
 **Feature Settings** page, turn on the **Installation Status** switch.
 You can click **Manage** to customize the management scope of the plug-in. image
@@ -895,7 +989,10 @@ The container escape prevention feature detects risky operations from multiple d
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose Runtime Detection > Feature Settings. On the
 **Feature Settings** page, turn on the **Threat Detection** switch.
 4. In the left-side navigation pane, choose **Runtime Detection > Proactive Defense for**
@@ -909,10 +1006,19 @@ protection rules. After you turn on the Threat Detection switch for the containe
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set. The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+
+> The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
+
 3. In the left-side navigation pane, choose Runtime Detection > Feature Settings. On the
 **Feature Settings** page, click **Manage** under the Authorization management feature to
-customize the protection scope of your cluster. After you bind the authorization to a cluster and container protection is enabled for the cluster, you cannot unbind the authorization from the cluster or bind the authorization to another cluster within 30 days. After the container cluster is released or scaled in, the system automatically revokes the authorization bound to the cluster. After you scale out a container cluster that is integrated with the container security protection capability, even if the number of CPU cores in the cluster exceeds the authorization quota, the container protection feature still protects all CPU cores in the cluster. However, the authorization cannot be bound to another cluster whose number of CPU cores exceeds the maximum authorization quota. image igurations
+customize the protection scope of your cluster.
+
+> **Note:** After you bind the authorization to a cluster and container protection is enabled for the cluster, you cannot unbind the authorization from the cluster or bind the authorization to another cluster within 30 days.
+> After the container cluster is released or scaled in, the system automatically revokes the authorization bound to the cluster.
+> After you scale out a container cluster that is integrated with the container security protection capability, even if the number of CPU cores in the cluster exceeds the authorization quota, the container protection feature still protects all CPU cores in the cluster. However, the authorization cannot be bound to another cluster whose number of CPU cores exceeds the maximum authorization quota.
+
+image igurations
 
 ## 4 Apsara Stack Security configurations
 
@@ -935,13 +1041,11 @@ press the Enter key.
 2. Enter your username and password.
 You need to obtain the username and password from an operations administrator.
 
-**First logon**
+> **Note:** **First logon**
+> The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
+> **Forget password**
+> If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 
-The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %
-
-**Forget password**
-
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
@@ -1006,7 +1110,10 @@ thresholds for traffic redirection. i. Find the rule whose thresholds you want t
 **Solution** column.
 ii. In the **Modify Threshold** dialog box, specify custom thresholds and click **OK**. iii. **Optional.** Click **Automatic DDoS Traffic Redirection and Scrubbing**. In the **Enable**
 **Automatic Redirection** message, click **OK**.
-By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
+
+> **Note:** By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off.
+
+If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
 #### 4.2.3 Manage Server Guard rules
 
@@ -1039,9 +1146,8 @@ You can create custom Web Application Firewall (WAF) rules based on your busines
 
 **Procedure**
 
-**Important**
+> **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
-WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1130,9 +1236,7 @@ disable the attack blocking feature. igurations After you disable the attack blo
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
-**Important**
-
-All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
+> **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. Proceed with caution when you modify the account information.
 
 **Procedure**
 
@@ -1189,11 +1293,22 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open a web browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. igurations You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key. igurations
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the correct username and password.
-igurations Obtain the username and password that are used to log in to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account. The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted. To enhance security, make sure that your password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
-# $ %
-The password is 10 to 20 characters in length.
+igurations
+
+> **Note:** Obtain the username and password that are used to log in to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+> If you enter an invalid password three consecutive times, the system enables the image verification login feature. If you enter an invalid password five consecutive times, the system locks your account. In this case, you can contact the administrator to unlock your account.
+> The first time that you log in to the Apsara Uni-manager Operations Console, change the password for your account as prompted.
+> To enhance security, make sure that your password meets the following requirements:
+> The password contains uppercase and lowercase letters.
+> The password contains digits.
+> The password contains at least one of the following special characters: ! @ # $ %
+> The password is 10 to 20 characters in length.
+
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Product Operation > Security O&M > Cloud Shield**
 **Operations Center**.
@@ -1232,7 +1347,9 @@ detection rule and silence threshold for high-risk command audit and click **Sav
 
 **Important**
 
-igurations If you modify the global brute-force attack detection rule, the detection rules for bruteforce attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
+igurations
+
+> If you modify the global brute-force attack detection rule, the detection rules for brute- force attacks on all host assets, such as tenant-side hosts and platform-side physical servers, are affected. The attack analysis result of Server Guard is also affected. Proceed with caution.
 
 | Parameter | Description |
 |---|---|
@@ -1286,8 +1403,10 @@ configuration tab, configure the Upgrade Package Import parameter.
 
 If your Apsara Stack environment is inaccessible over the Internet, you can manually import update packages to update the feature libraries or versions of Apsara Stack Security services. igurations a. Set the Upgrade Package Import parameter to **Offline Manual Import** and click
 **Generate Upgrade Identifier**. Then, use the generated upgrade identifier to obtain
-and download update packages. b. Click Import Upgrade Package. In the Manually Import offline upgrade packages dialog box, drag the downloaded update packages to the dotted box. Alternatively, click the icon to upload the update packages. Before you upload the update packages, click the link in the **Manually Import**
-**offline upgrade packages** dialog box and trust the certificate.
+and download update packages. b. Click Import Upgrade Package. In the Manually Import offline upgrade packages dialog box, drag the downloaded update packages to the dotted box. Alternatively, click the icon to upload the update packages.
+
+> **Note:** Before you upload the update packages, click the link in the **Manually Import** **offline upgrade packages** dialog box and trust the certificate.
+
 After you import the update packages, you can view the update packages on the Feature Library Upgrade and Version Upgrade tabs and perform updates.
 
 **Online Automatic Import**

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 13
 source_pdf: "dfeedd5b13ba5ba3_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Product Introduction 20250930.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Product%20Introduction%2020250930.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Bare Metal Computing Platform Product Introduction 20250930

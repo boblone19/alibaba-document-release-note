@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 74
 source_pdf: "557c1c2920316438_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations and Maintenance Guide 20260828"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations and Maintenance Guide 20260828
@@ -72,9 +72,7 @@ This guide helps the O&M personnel perform routine maintenance and troubleshooti
 
 The O&M personnel must possess IT skills, including knowledge for computer networks, computer operations, and troubleshooting. They should be familiar with common commands in Linux, Docker, and DNS. In addition, O&M personnel must pass the pre-job training and learn the knowledge for the Apsara Stack system. The required knowledge for the system includes but is not limited to the usage of maintenance tools such as Apsara Infrastructure Management and Apsara Stack Doctor.
 
-**Important**
-
-The O&M personnel must comply with operation procedures during maintenance to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
+> **Important:** The O&M personnel must comply with operation procedures during maintenance to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
 
 **Precautions**
 
@@ -464,15 +462,12 @@ The console logon may fail.
 
 **Solutions**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 1. Contact the R&D personnel to log on to the authentication service to locate and resolve the
 issue based on the specific error.
 
-**Note**
-
-If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
 ### 7.2 one_router_business_error_alarm
 
@@ -507,9 +502,8 @@ The consoles of services such as OSS and Tablestore may become unavailable.
 
 **Solutions**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 1. Copy the EagleEye ID (Eagleeye-Traceid) of the error request and enter the Docker of
 SR:oneService-admin.one-console2#. In the /logs/asconsole-logger directory, run the following command to view the log:
 
@@ -520,9 +514,7 @@ grep <EagleEye ID of the error report> *
 Check the log related to the error code.
 2. Contact the OneConsole R&D personnel to locate and resolve the issue.
 
-**Note**
-
-If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
 ### 7.3 one_console_slow_request_alarm
 
@@ -555,16 +547,13 @@ The console may respond slowly.
 
 **Solutions**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 1. Locate the service to which the API belongs based on the product and action.
 2. Contact the R&D personnel of the service to which the API belongs to locate and resolve the
 issue.
 
-**Note**
-
-If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
 ### 7.4 one_console_request_timeout_alarm
 
@@ -599,16 +588,13 @@ Requests initiated by other service consoles may time out, causing the consoles 
 
 **Solutions**
 
-**Warning**
+> **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the TAM before you can perform the steps of the solution.
 1. Locate the service to which the API belongs based on the product and action.
 2. Contact the R&D personnel of the service to which the API belongs to locate and resolve the
 issue.
 
-**Note**
-
-If the alert persists after you perform the preceding steps, submit a ticket to contact Apsara Stack technical support.
+> **Note:** If the alert persists after you perform the preceding steps, submit a ticket to contact Apsara Stack technical support.
 
 ## 8 Appendixes
 
@@ -1174,9 +1160,9 @@ Method 1: a. Enter the VM where the server role PopAliyunCom# is located. b. Acc
 grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/trace.log
 ```
 
-**Important**
+> **Important:** The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs.
 
-The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs. Method 2: a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
+Method 2: a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
 4. Based on the preceding logs, analyze which module consumes longer time.
 
 ### 9.6 What do I do if an error is returned when I call the API operations of Blink in the Apsara Uni-manager Management Console?
@@ -1252,9 +1238,7 @@ This topic describes how to troubleshoot the insufficient permissions issue when
 
 When you create instances in the Apsara Uni-manager Management Console, the system prompts insufficient permissions.
 
-**Note**
-
-This topic describes a general method for determining permissions. Creating an instance is used in the example.
+> **Note:** This topic describes a general method for determining permissions. Creating an instance is used in the example.
 
 **Solution**
 
@@ -1276,9 +1260,7 @@ select * from ascm_privilege wherecode='<asapiErrorCode>'\G
 5. Check whether the permissions of the current user are selected.
 i. Log on to the Apsara Uni-manager Management Console as an administrator. ii. In the top navigation bar, click **Enterprise**. iii. In the left-side navigation pane, choose **Users > Users**. iv. Find the user for which an insufficient permissions error is reported and click the username. v. View the user role next to the user profile. vi. In the top navigation bar, click **Enterprise**. vii. In the left-side navigation pane, click **Roles**. viii. Find the role and click the role name. Check whether the permissions confirmed in Step 4 are selected.
 
-**Note**
-
-You can modify only the permissions of custom roles. If the preset roles do not meet the requirements, create a custom role and grant permissions. For more information about how to create a role and grant permissions, see Apsara Uni-manager Management Console User Guide.
+> **Note:** You can modify only the permissions of custom roles. If the preset roles do not meet the requirements, create a custom role and grant permissions. For more information about how to create a role and grant permissions, see Apsara Uni-manager Management Console User Guide.
 
 ### 9.8 An API operation called by using an SDK is not found
 
@@ -1413,9 +1395,7 @@ sudo docker exec -it <Container ID> bash
 The tool used in the X86 architecture is asapiTools, and the tool used in the ARM architecture is asapiTools-arm64.
 4. Run the following code to synchronize all API operations from POP to ASAPI:
 
-**Important**
-
-In this command, the service name is case-sensitive. Enter the actual service name.
+> **Important:** In this command, the service name is case-sensitive. Enter the actual service name.
 
 ```
 ./asapiTools pop -p <Service name> <Version number>
@@ -1478,9 +1458,8 @@ mysql -h <db_asapi_db_host> -P<db_asapi_port> -u<db_asapi_user> -p<db_asapi_pass
 iod based on the actual time for the backend API operation. update ops_api set timeout = 30000 where namespace = "Drds" and name ="DescribeDrdsRdsInstances" and api_version = "2019-01-23"; insert into api_timeout_unlimited(namespace,name,api_version,category_id) values ("Drds "," DescribeDrdsRdsInstances ","2019-01-23","privateCloud");
 ```
 
-**Note**
+> **Note:** If the table api_timeout_unlimited is not provided in the current version, you can skip the second part of the command.
 
-If the table api_timeout_unlimited is not provided in the current version, you can skip the second part of the command.
 6. After the execution is successful, wait for 5 minutes. Configure ASAPI to call the API operation
 again. If the fault persists, contact the O&M support personnel of Apsara Stack.
 
@@ -1515,15 +1494,16 @@ The alerts are generated due to two reasons: The unimanager-base.IdentityService
 
 1. Obtain the causes of the alerts and corresponding trace IDs from the alert sources.
 
-**Note**
+> **Note:** The source of the ascm_login_api_inspect_alert alert is Apsara Stack Doctor (ASD).
+> The source of the ascm_login_check_health_alarm alert is the ASAPI gateway of the Apsara Uni-manager Management Console.
 
-The source of the ascm_login_api_inspect_alert alert is Apsara Stack Doctor (ASD). The source of the ascm_login_check_health_alarm alert is the ASAPI gateway of the Apsara Uni-manager Management Console. i. Log in to the SlsInner console. ii. Query logs related to the ascm_login_api_inspect_alert alert in the biz_alert_log Logstore of the tjm-asd-console project by specifying BizExType:AscmLoginFault as the query condition. Query logs related to the ascm_login_check_health_alarm alert in the tjmcollector_biz_alert_log_ascm_asapi Logstore of the tjm-asapi project by specifying BizExType:AsapiHealthCheck as the query condition. The following figure shows the SLS log related to a ascm_login_api_inspect_alert alert from ASD. You can obtain the EagleEye ID of the trace corresponding to the alert. In the log, EntityType indicates the abnormal component or service, and ErrorType indicates the error code that can be used to locate the component or service that affects the login to the Apsara Uni-manager Management Console. If the value of EntityType is Ram, Aas, ummak, Pop, or Tair, the alert is generated because the basic services are abnormal.
+i. Log in to the SlsInner console. ii. Query logs related to the ascm_login_api_inspect_alert alert in the biz_alert_log Logstore of the tjm-asd-console project by specifying BizExType:AscmLoginFault as the query condition. Query logs related to the ascm_login_check_health_alarm alert in the tjmcollector_biz_alert_log_ascm_asapi Logstore of the tjm-asapi project by specifying BizExType:AsapiHealthCheck as the query condition. The following figure shows the SLS log related to a ascm_login_api_inspect_alert alert from ASD. You can obtain the EagleEye ID of the trace corresponding to the alert. In the log, EntityType indicates the abnormal component or service, and ErrorType indicates the error code that can be used to locate the component or service that affects the login to the Apsara Uni-manager Management Console. If the value of EntityType is Ram, Aas, ummak, Pop, or Tair, the alert is generated because the basic services are abnormal.
 2. Handle login API alerts caused by basic service exceptions.
 i. Use ASD to query the cause and logs of the alerts. ii. Use the emergency mode of the Apsara Uni-manager Management Console. a. Enable the emergency mode if you cannot log in to the Apsara Uni-manager Management Console. b. Click Emergency Mode. c. Log in to ASD to troubleshoot the alerts and enable the emergency mode.
 
-**Note**
+> **Note:** Log in to ASD from the Apsara Uni-manager Operations Console. If you cannot log in to the Apsara Uni-manager Operations Console, you can use the emergency mode of the Apsara Uni-manager Operations Console.
 
-Log in to ASD from the Apsara Uni-manager Operations Console. If you cannot log in to the Apsara Uni-manager Operations Console, you can use the emergency mode of the Apsara Uni-manager Operations Console. d. ASD performs diagnostics and prompts you to enable the emergency mode. e. Click Downgrade to restore login to the Apsara Uni-manager Management Console. Then, you can log in to the Apsara Uni-manager Management Console as expected for further operations. A notice is displayed on the top navigation bar of the Apsara Uni-manager Management Console. f. Optional. Disable the emergency mode in the downgrade configurations of ASD.
+d. ASD performs diagnostics and prompts you to enable the emergency mode. e. Click Downgrade to restore login to the Apsara Uni-manager Management Console. Then, you can log in to the Apsara Uni-manager Management Console as expected for further operations. A notice is displayed on the top navigation bar of the Apsara Uni-manager Management Console. f. Optional. Disable the emergency mode in the downgrade configurations of ASD.
 3. Handle login API alerts caused by the Apsara Uni-manager Management Console exceptions.
 i. Log in to ASD. ii. Query the logs related to the unimanager-base.IdentityService# service role. iii. Send the logs to the R&D engineers for troubleshooting.
 
@@ -1559,9 +1539,8 @@ For resources such as virtual private clouds (VPCs) and ECS security groups that
 3. On the **Products** page, enter the service whose information you want to change and click
 **Search**.
 
-**Note**
+> **Note:** Currently, vpc and slb are supported. vpc is used in this example.
 
-Currently, vpc and slb are supported. vpc is used in this example.
 4. Find the desired service and click **Switch List** in the Actions column.
 5. Search for `strictOwnership` in the switch list and check whether the Current Value switch is
 turned on. If this switch is turned on, click **Change Switch Status** in the Actions column.
@@ -1608,9 +1587,7 @@ cd /opt/taobao/tengine/bin sh nginxctl reload
 
 Log in to TianJi, view the serviceManagement cluster details, and check the value of the registration variable "unimanager-coms-cms-vip-biz.vip_ip" for unimanager-cosm.ComsCms.
 
-**Note**
-
-If you need IPv6 support, contact Alibaba Cloud technical support.
+> **Note:** If you need IPv6 support, contact Alibaba Cloud technical support.
 
 **View the realServer IP**
 

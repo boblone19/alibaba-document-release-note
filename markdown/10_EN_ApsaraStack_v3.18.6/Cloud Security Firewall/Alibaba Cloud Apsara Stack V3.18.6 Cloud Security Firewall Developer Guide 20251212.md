@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 114
 source_pdf: "7703c5b6813f39c3_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Developer Guide 20251212.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Firewall%20Developer%20Guide%2020251212.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Cloud Security Firewall Developer Guide 20251212
@@ -76,18 +76,17 @@ Management Console and press Enter.
 2. Enter the correct username and password.
 You can obtain the username and password to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
-**Note**
+> **Note:** When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters:
+> Uppercase or lowercase letters (A to Z, a to z)
+> Digits (0 to 9)
+> Special characters (such as exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
 
-When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters (such as exclamation mark (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
 operations based on your scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter the 6-digit MFA code and click **Authenticate**.
 
-**Note**
+> **Note:** For more information about how to bind and enable an MFA device, see the **Bind and** **Enable a Virtual MFA Device** section in the **Apsara Uni-manager Management** **Console User Guide**.
 
-For more information about how to bind and enable an MFA device, see the **Bind and**
-**Enable a Virtual MFA Device** section in the **Apsara Uni-manager Management**
-**Console User Guide**.
 5. In the top menu bar, choose **Products > Application Services > Developer Portal**.
 
 ### 1.2 Obtain an AccessKey pair
@@ -98,9 +97,7 @@ AccessKey credentials are assigned by Resource Access Management (RAM) or Securi
 
 An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID identifies a user. The AccessKey secret is a string used to encrypt signatures. AccessKey credentials can be assigned by RAM or STS: RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. STS: assigns an access credential that consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the following request headers for access control. Otherwise, an error indicating insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. To obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+> **Warning:** The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. To obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -120,9 +117,7 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 3. In the **Alibaba Cloud AccessKey** section, you can view the AccessKey information of your
 personal account.
 
-**Note**
-
-The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+> **Note:** The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
 **Obtain an AccessKey pair for organizations**
 
@@ -341,9 +336,10 @@ the x-acs-security-token field to the header
 
 `}` `}` `}`
 
-**Important**
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
+> To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting:
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java e API calls
+Java e API calls
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
@@ -497,9 +493,7 @@ The default value is `false` .
 
 **Settings**
 
-**Important**
-
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
+> **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:
 
 ```
 // Configure HTTPSInsecure for the request (affects only the current request) request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the HTTPSInsecure sett ing for the request.
@@ -627,9 +621,8 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use ht
 
 **Ignore certificate**
 
-**Important**
-
-When accessing OpenAPI using HTTPS protocol, the SDK will verify SSL/TLS certificate validity by default. If your code environment does not have a certificate environment, it will report a certificate verification failure error. To ensure communication security in production environments, we recommend keeping verification enabled. If you must ignore certificate verification in a test environment, you can set it through the `verify` parameter.
+> **Important:** When accessing OpenAPI using HTTPS protocol, the SDK will verify SSL/TLS certificate validity by default. If your code environment does not have a certificate environment, it will report a certificate verification failure error.
+> To ensure communication security in production environments, we recommend keeping verification enabled. If you must ignore certificate verification in a test environment, you can set it through the `verify` parameter.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -725,9 +718,9 @@ You must sign all API requests to ensure security. Alibaba Cloud uses the reques
 
 1. Create a canonicalized query string by arranging the request parameters.
 
-**Note**
+> **Note:** The request parameters include operation-specific parameters and all common request parameters except Signature.
 
-The request parameters include operation-specific parameters and all common request parameters except Signature. i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
+i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string based on the following
 rule:
 
@@ -737,9 +730,8 @@ StringToSign=HTTPMethod + "&" + percentEncode("/") + "&" + percentEncode(Canonic
 
 3. Calculate the HMAC value of the string-to-sign based on the HMAC definition in RFC 2104.
 
-**Note**
+> **Note:** Your AccessKey secret in combination with an ampersand (&) (ASCII:38) is used as the key for the HMAC calculation. The SHA1 algorithm is used to calculate the HMAC value of the string-to-sign.
 
-Your AccessKey secret in combination with an ampersand (&) (ASCII:38) is used as the key for the HMAC calculation. The SHA1 algorithm is used to calculate the HMAC value of the string-to-sign.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 
 ```
@@ -1107,9 +1099,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 Creates an access control policy to a specific policy group for a VPC firewall.
 
-**Note**
-
-The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+> **Note:** The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
 
 **Request parameters**
 
@@ -1178,9 +1168,7 @@ For a list of error codes, see Error codes.
 
 Queries the information of the access control policies for a specific VPC firewall.
 
-**Note**
-
-The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+> **Note:** The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
 
 **Request parameters**
 
@@ -1330,9 +1318,7 @@ For a list of error codes, see Error codes.
 
 Modifies the configuration of an access control policy in a specific policy group for a VPC firewall.
 
-**Note**
-
-The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+> **Note:** The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
 
 **Request parameters**
 
@@ -1448,9 +1434,7 @@ For a list of error codes, see Error codes.
 
 Deletes an access control policy from a specific policy group for a VPC firewall.
 
-**Note**
-
-The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+> **Note:** The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
 
 **Request parameters**
 

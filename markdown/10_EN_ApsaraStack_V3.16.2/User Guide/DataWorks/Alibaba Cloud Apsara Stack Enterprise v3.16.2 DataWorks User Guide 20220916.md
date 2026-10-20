@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 995
 source_pdf: "28d3e3c95042bbdb_Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20DataWorks%20User%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide
@@ -18425,6 +18425,7 @@ More > Change Prot ocol in the Actions column.
 2. In the Change Prot ocol dialog box, change the protocol used by the API and click OK.
 View the statistics of an API On the APIs of Published tab, find the API of which you want to view the statistics and choose More
 > View St at ist ics in the Actions column. The page for viewing the statistics of the API appears.
+
 View the APIs that you are authorized to access On the Manage APIs page, click the Aut horized t o Use tab to view the APIs that you are authorized to access. You can perform the following operations on the APIs that you are authorized to access: Find the API that you want to test and click T est in the Actions column to test the API on the T est APIs page. Find the API on which you want to remove access permissions and click Delet e. In the Delet e aut horized message, click OK to remove access permissions on the API. If you remove access permissions on an API, the workspace to which you belong can no longer call the API. View the APIs that you authorize others to access On the Manage APIs page, click the Aut horize Ot hers t o Use tab to view the APIs that you authorize others to access. You can perform the following operations on the APIs that you authorize others to access: Find the API that you want to test and click T est in the Actions column to test the API on the T est APIs page. Find the API on which you want to manage access permissions and click Manage in the Actions column. In the Aut horizat ion dialog box, revoke or modify the permissions of a workspace on the API.
 
 ### 15.8 View API statistics

@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 186
 source_pdf: "c75b61a745b2e510_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20260828
@@ -271,9 +271,7 @@ You can use an AccessKey pair to authenticate API calls. AccessKey pairs support
 
 An AccessKey pair is used to verify the identity of a requester. An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are used for symmetric encryption. The AccessKey ID identifies the user, and the AccessKey secret is used to encrypt the signature string. The two authorization modes for an AccessKey pair are as follows: An AccessKey ID and an AccessKey secret authorized by RAM for a third-party requester. An AccessKey ID, an AccessKey secret, and a security token authorized by STS for a thirdparty requester. For more information, see Obtain STS access credentials. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pair of a personal account to call APIs of the Apsara Uni-manager Management Console and cloud products. When you use a personal account AccessKey pair, you may need to add specific parameters to the request header to prevent errors related to insufficient permissions.
 
-**Warning**
-
-A personal account AccessKey is a restricted key managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has higher permissions. An administrator must ensure that operations that use this key are secure.
+> **Warning:** A personal account AccessKey is a restricted key managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has higher permissions. An administrator must ensure that operations that use this key are secure.
 
 | Parameter | Description |
 |---|---|
@@ -289,9 +287,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. In the upper-right corner, click your profile picture, and then click **User Information**.
 3. In the **AccessKey** section, you can view the AccessKey information for your account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. This pair grants full access to your cloud resources. Keep your AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. This pair grants full access to your cloud resources. Keep your AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -589,6 +585,7 @@ To call API operations in Apsara Stack using the POP gateway, you must obtain th
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **Apsara Infrastructure Management**
 > **O&M Tools**.
+
 3. In the navigation pane on the left, choose **O&M Tools** > **Service Registration Variable**
 **Dashboard**.
 4. On the **Service Registration Variable Dashboard** page, click **Advanced Filter**.
@@ -846,9 +843,9 @@ For example, the original request uses the following HTTPS method:
 https://mq.console.${global:internet-domain}/json/topic/create
 ```
 
-**Note**
+> **Note:** To access the region in single-region deployment or access the central region in multi- region deployment, use ${global:internet-domain} to specify the domain name to be accessed. To access a regular region in multi-region deployment, use ${global:region}.${global:internet-domain} to specify the domain name to be accessed.
 
-To access the region in single-region deployment or access the central region in multiregion deployment, use ${global:internet-domain} to specify the domain name to be accessed. To access a regular region in multi-region deployment, use ${global:region}.${global:internet-domain} to specify the domain name to be accessed. The request contains the following parameters, including common parameters and operationspecific parameters:
+The request contains the following parameters, including common parameters and operationspecific parameters:
 
 **Key_2=Value_2&Key_1=Value_1&Key_3=Value_3**
 
@@ -3911,7 +3908,10 @@ Response:
 
 ###### 4.1.4.3.1 Overview
 
-It is a message that you want to send. A valid message must contain the topic, body, optional tags, and message key. Note: The length of the custom key-value pair for a message is not constrained, but all custom key-value pairs cannot exceed 32,767 bytes after they are serialized.
+It is a message that you want to send. A valid message must contain the topic, body, optional tags, and message key.
+
+> **Note:** The length of the custom key-value pair for a message is not constrained, but all custom key-value pairs cannot exceed 32,767 bytes after they are serialized.
+
 
 ###### 4.1.4.3.2 Default message construction
 

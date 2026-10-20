@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 17
 source_pdf: "ceeb21805ccff8e4_Alibaba Cloud Apsara Stack V3.18.6 Tair（Redis OSS-compatible） Product Introduction 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tair%EF%BC%88Redis%20OSS-compatible%EF%BC%89%20Product%20Introduction%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Tair（Redis OSS-compatible） Product Introduction 20260630

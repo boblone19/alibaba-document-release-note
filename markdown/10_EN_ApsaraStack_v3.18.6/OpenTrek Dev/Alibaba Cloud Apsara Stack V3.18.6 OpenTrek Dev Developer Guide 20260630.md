@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 279
 source_pdf: "40a1cda92d3af2c7_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek%20Dev/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20Dev%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # OpenTrek Dev Developer Guide 20260630
@@ -533,9 +533,7 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Unimanager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
+> **Warning:** The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni- manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 | Header | Description |
 |---|---|
@@ -551,9 +549,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
-**Note**
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
+> **Note:** An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
 
@@ -8362,9 +8358,7 @@ These APIs provide services for platform tenants.
 
 Open APIs use API Keys for authentication. API Keys are an identity verification mechanism that controls access to APIs. Before making an API call, you must provide a valid key to authenticate your request. This topic describes how to obtain an API Key for the Application Center API.
 
-**Important**
-
-You can obtain API Keys for the Application Center API directly from Alibaba Cloud Model Studio. To obtain API Keys for the Knowledge Center API, contact the administrator for the relevant API module.
+> **Important:** You can obtain API Keys for the Application Center API directly from Alibaba Cloud Model Studio. To obtain API Keys for the Knowledge Center API, contact the administrator for the relevant API module.
 
 **Procedure**
 
@@ -9876,6 +9870,7 @@ Use this API to query the details of fields in a specified table of a knowledge 
 
 Go to Homepage > Profile Picture > APP_KEY and create an APP_KEY. Then, go to Homepage > Profile Picture
 > Workspace Management to obtain the code for the target workspace. If the Workspace Management menu
+
 is not visible, contact the tenant administrator or the administrator of the target workspace.
 
 **Request URL**

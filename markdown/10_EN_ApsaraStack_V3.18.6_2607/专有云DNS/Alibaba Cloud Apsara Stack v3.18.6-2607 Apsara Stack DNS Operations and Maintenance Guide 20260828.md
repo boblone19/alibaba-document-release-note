@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 19
 source_pdf: "4aa25cfbfb4d4b06_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and Maintenance Guide 20260828.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and Maintenance Guide 20260828
@@ -49,9 +49,16 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser is available. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
 3. Enter the username and password.
-ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+ager Operations Console
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
 ## 2 Classic Network
@@ -60,7 +67,8 @@ ager Operations Console Obtain the username and password that are used to log on
 
 #### 2.1.1 opsDNS monitoring
 
-1. Log on to the Apsara Uni-manager Operations Console.
+## 1 Log on to the Apsara Uni-manager Operations Console.
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **opsDNS Management** >
@@ -85,7 +93,6 @@ CNAME record to a domain name, remove other records from the domain name. A doma
 5. You cannot add CNAME records to defined zones in the cloud, such as tbsite.net.
 6. You can add domain names only to defined zones in the cloud. You cannot register a
 domain name for a zone outside the cloud.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **opsDNS Management** >
@@ -117,7 +124,6 @@ Create a DNS record: Click **Create DNS Record**. In the Create DNS Record dialo
 #### 2.2.1 Node management (in-cloud)
 
 The Node Management page displays the DNS servers within the cloud. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Tenant DNS Management** >
@@ -129,12 +135,13 @@ servers is displayed in the following columns: **Service Instance IP Address**, 
 5. In the upper-left corner of the page, click **Create Emergency Group**. In the dialog box
 that appears, turn on or off **Emergency Group**. If you turn on **Emergency Group**, configure the **Service Instance** parameter to create an emergency group.
 6. Return to the Node Management page.
-Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
+Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column.
+
+> **Note:** After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
 #### 2.2.2 Node management (cross-cloud)
 
 The Node Management page displays the DNS servers across clouds. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
-1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Tenant DNS Management** >
@@ -146,7 +153,9 @@ servers is displayed in the following columns: **Service Instance IP Address**, 
 5. In the upper-left corner of the page, click **Create Emergency Group**. In the dialog box
 that appears, turn on or off **Emergency Group**. If you turn on **Emergency Group**, configure the **Service Instance** parameter to create an emergency group.
 6. Return to the Node Management page.
-Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
+Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column.
+
+> **Note:** After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
 ## 3 Appendix
 

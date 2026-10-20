@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 41
 source_pdf: "ae9e3d85d82e3dbb_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Product Introduction 20260828
@@ -137,7 +137,9 @@ AegisMaster Aegiserver Aegisupdate Client management
 
 **Client**
 
-The server consists of the following main modules: Basic capabilities: Provides common Alibaba Cloud Security capabilities, a console, and an OpenAPI. Agent management: Manages agent connections, configurations, rules, and patch packages. Core capabilities: Includes asset management, alerts, log management, file collection, and security reports. Detection and defense: Provides detection and defense for vulnerabilities, baselines, files, networks, and processes. Detection engines: Includes commercial virus detection engines, Alibaba's self-developed virus detection engine, and a big data compute engine. Server Guard uses a typical client/server (C/S) architecture, which includes a server and a client. The server is responsible for core capabilities such as asset management, detection, and defense. The client monitors host status, executes detection scripts, and provides defense in real time.
+The server consists of the following main modules: Basic capabilities: Provides common Alibaba Cloud Security capabilities, a console, and an OpenAPI. Agent management: Manages agent connections, configurations, rules, and patch packages. Core capabilities: Includes asset management, alerts, log management, file collection, and security reports. Detection and defense: Provides detection and defense for vulnerabilities, baselines, files, networks, and processes. Detection engines: Includes commercial virus detection engines, Alibaba's self-developed virus detection engine, and a big data compute engine.
+
+> **Note:** Server Guard uses a typical client/server (C/S) architecture, which includes a server and a client. The server is responsible for core capabilities such as asset management, detection, and defense. The client monitors host status, executes detection scripts, and provides defense in real time.
 
 **Feature architecture**
 
@@ -330,7 +332,11 @@ CentOS 5/6/7, Red Hat 5/6/7. Debian 3.0/3.1/4/5/6/7/8/9/10/11/SID. Ubuntu precis
 
 **Detection and fixing of Windows system vulnerabilities**
 
-Server Guard subscribes to the official Microsoft update source to detect unpatched, high-risk vulnerabilities in your ECS instances. It then pushes official Microsoft patches to fix them. Push and offline updates are supported. By default, the system pushes patches only for high-risk vulnerabilities. Security updates and patches for low-risk vulnerabilities require manual updates. Windows vulnerabilities: Windows Server 2008, Windows Server 2012, Windows Server 2016, Windows Server 2019.
+Server Guard subscribes to the official Microsoft update source to detect unpatched, high-risk vulnerabilities in your ECS instances. It then pushes official Microsoft patches to fix them.
+
+> **Note:** Push and offline updates are supported. By default, the system pushes patches only for high-risk vulnerabilities. Security updates and patches for low-risk vulnerabilities require manual updates.
+
+Windows vulnerabilities: Windows Server 2008, Windows Server 2012, Windows Server 2016, Windows Server 2019.
 
 **Detection and fixing of Web-CMS vulnerabilities**
 
@@ -387,9 +393,7 @@ Server Guard automatically analyzes the exposure of ECS instances. Server Guard 
 | Host exposure details | Exposure method, exposed component, exposed port, exploitable vulnerability, weak password, security alert, server exposure link topology graph. |
 | Application exposure details | Exposed middleware name, type, version, exposure method, associated vulnerability, affected asset, latest scan time. |
 
-**Warning**
-
-The risk exposure check requires extensive data management of assets, applications, and risks. It relies on the Dipper engine. You cannot use this feature if your environment does not have this engine.
+> **Warning:** The risk exposure check requires extensive data management of assets, applications, and risks. It relies on the Dipper engine. You cannot use this feature if your environment does not have this engine.
 
 ### 4.4 Intrusion prevention
 
@@ -405,9 +409,7 @@ backdoor programs, malicious programs, high-risk programs, worms, suspicious pro
 
 Immediate scan: Immediately starts a scan task. You can apply policies to specific asset groups. Periodic scan: Configure a scan schedule to periodically scan selected servers in a specified asset group.
 
-**Warning**
-
-Risk exposure checks require extensive data management of assets, applications, and risks. This feature depends on the Dipper engine. You cannot use this feature if your environment does not have this engine.
+> **Warning:** Risk exposure checks require extensive data management of assets, applications, and risks. This feature depends on the Dipper engine. You cannot use this feature if your environment does not have this engine.
 
 **Real-time protection**
 
@@ -424,7 +426,11 @@ Proactive defense can intercept risk-associated actions such as virus trojans, m
 
 **Anti-ransomware**
 
-The anti-ransomware feature can trap ransomware and monitor data restoration risks. It helps you block ransomware from running, identify assets with inadequate backup policies, and reduce the risk of data restoration failure after a ransomware attack. Ransomware trapping: Server Guard creates random bait files on the server. If a suspicious process attempts to modify a bait file, Server Guard immediately detects and blocks the ransomware behavior. The bait files are used only to capture new types of ransomware and do not affect your services. This feature is effective only for Windows. Backup risk monitoring: Assets with inadequate backup habits face data restoration risks after a ransomware attack. This feature helps you quickly identify risks in asset backup policies and reminds you to fix them promptly.
+The anti-ransomware feature can trap ransomware and monitor data restoration risks. It helps you block ransomware from running, identify assets with inadequate backup policies, and reduce the risk of data restoration failure after a ransomware attack. Ransomware trapping: Server Guard creates random bait files on the server. If a suspicious process attempts to modify a bait file, Server Guard immediately detects and blocks the ransomware behavior. The bait files are used only to capture new types of ransomware and do not affect your services.
+
+> **Note:** This feature is effective only for Windows.
+
+Backup risk monitoring: Assets with inadequate backup habits face data restoration risks after a ransomware attack. This feature helps you quickly identify risks in asset backup policies and reminds you to fix them promptly.
 
 **Webshell prevention**
 
@@ -469,7 +475,9 @@ This mode provides second-level backup and restoration protection for file tampe
 
 **Driver protection mode**
 
-This mode provides real-time interception and protection against file tampering in protected directories. This mode generates alerts for file tampering in protected directories without blocking the action. This mode adds specified processes to a modification whitelist. The kernel version must support the related plugin. ARM architecture is not currently supported.
+This mode provides real-time interception and protection against file tampering in protected directories. This mode generates alerts for file tampering in protected directories without blocking the action. This mode adds specified processes to a modification whitelist.
+
+> **Note:** The kernel version must support the related plugin. ARM architecture is not currently supported.
 
 **Application whitelist**
 
@@ -500,9 +508,7 @@ off-cloud IDCs, and hosts on other clouds.
 suspicious logon, anomalous activity, sensitive file tampering, suspicious network connection, abnormal account, application intrusion event, persistence backdoor, and application threat detection.
 **Supported alert types:** Webshell, malicious process (cloud scan), and malicious script.
 
-**Warning**
-
-The computing capability of the Server Guard threat detection models depends on the Dipper engine. You cannot use this feature if your environment does not have this engine.
+> **Warning:** The computing capability of the Server Guard threat detection models depends on the Dipper engine. You cannot use this feature if your environment does not have this engine.
 
 **Threat intelligence-based detection**
 
@@ -510,9 +516,8 @@ Server Guard can effectively identify potential threats in your assets based on 
 **Supported intelligence types:** Malicious domain names, malicious IP addresses, dark web
 communication IP addresses, command and control (C&C) communication IP addresses, miner pool communication IP addresses, malicious URLs, and malicious download sources.
 
-**Warning**
-
-The Server Guard threat intelligence detection feature depends on the Dipper engine. You cannot use this feature if your environment does not have this engine. If you want to use threat intelligence in the Server Guard console, you must separately purchase Alibaba Cloud threat intelligence.
+> **Warning:** The Server Guard threat intelligence detection feature depends on the Dipper engine. You cannot use this feature if your environment does not have this engine.
+> If you want to use threat intelligence in the Server Guard console, you must separately purchase Alibaba Cloud threat intelligence.
 
 **Custom security rules**
 
@@ -540,9 +545,7 @@ Logon logs: Successful system logons. Brute-force attack logs: Failed system log
 
 You can use the search bar on the Log Analysis page of the Server Guard console to perform custom log query and analysis in multiple complex scenarios. Logs are categorized into host logs and security logs, which are divided into 10 subtypes. Server Guard provides near-realtime automatic log collection and storage. Server Guard also provides the log query, analysis, and shipping capabilities that are supported by Simple Log Service. After you select a specific log type, you can query and analyze the collected logs of this type in real time. You can also enable the log synchronization feature to synchronize logs of Server Guard to tenant-side Logstores of users.
 
-**Warning**
-
-To use the advanced search feature, follow the instructions on the Server Guard page.
+> **Warning:** To use the advanced search feature, follow the instructions on the Server Guard page.
 
 ### 4.6 Host settings
 

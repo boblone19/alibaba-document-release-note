@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 373
 source_pdf: "1e649a57cb95f10e_Secondary Edition) User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary/Secondary%20Edition%29%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/Secondary Edition) User Guide 20260831
@@ -154,9 +154,17 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key. g on to the Cloud-native Databas e PolarDB console You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. g on to the Cloud-native Databas e PolarDB console
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language.
+> The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button.
+
+If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
+> **Note:** Obtain the username and password from an operations administrator.
+> The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios:
@@ -169,8 +177,10 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
-**Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+Enter the 6-digit MFA verification code and click **Authenticate**.
+
+> **Note:** For more information about how to enable MFA and bind an MFA device, see the **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
+
 5. In the top menu bar, click **Products > Databases > Relational Database > Cloud-**
 **native Database PolarDB**.
 stance types
@@ -336,7 +346,9 @@ The local disk-based PolarDB for PostgreSQL instance that you want to restart is
 **of local disk instances** page, find the instance that you want to manage and click its ID or
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. Click **Restart Instance** in the upper-right corner.
-When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
+
+> **Note:** When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
+
 4. In the dialog box that appears, click **OK**.
 
 ### 4.3 Change specifications
@@ -380,7 +392,8 @@ click its ID or click **Management** in the **Operation** column of the instance
 3. In the **Configuration Information** section of the page that appears, click **Settings** to the
 right of **Maintenance Window**.
 4. Select a maintenance window and click **Yes**.
-The maintenance window is displayed in UTC+8.
+
+> **Note:** The maintenance window is displayed in UTC+8.
 
 ### 4.5 Primary/standby switchover
 
@@ -390,9 +403,7 @@ ApsaraDB for PolarDB supports primary/standby switchover. This feature ensures h
 
 stances The architecture of a PolarDB for PostgreSQL (Primary/Standby Edition) instance is designed to ensure service availability in the event of a single node failure. If the primary node fails, the standby node is promoted to primary. If the standby node fails or the former primary node is demoted to standby, the instance's control plane first waits for the affected node to recover and re-establish data synchronization with the current primary node. If the wait time exceeds a specified threshold, the control plane initiates a cross-host rebuild to create a new standby node on a different host. The deprecated standby node is then released and its resources are reclaimed by a periodic inspection task. The primary and standby nodes of a PolarDB for PostgreSQL (Primary/Standby Edition) instance synchronize data in real time. You can access only the primary instance. The standby instance serves only as a backup and does not handle service requests. After a primary/standby switchover, the former primary instance becomes the standby instance.
 
-**Important**
-
-A primary/standby switchover may cause a transient interruption. Perform this operation during off-peak hours and ensure that your application has an automatic reconnection mechanism.
+> **Important:** A primary/standby switchover may cause a transient interruption. Perform this operation during off-peak hours and ensure that your application has an automatic reconnection mechanism.
 
 **Procedure**
 
@@ -404,9 +415,7 @@ A primary/standby switchover may cause a transient interruption. Perform this op
 5. In the dialog box that appears, set the switchover to take place immediately or at a
 specified time, and then click **OK**.
 
-**Important**
-
-During a primary/standby switchover, operations such as managing databases and accounts or switching network types cannot be performed. Schedule the switchover within a maintenance window.
+> **Important:** During a primary/standby switchover, operations such as managing databases and accounts or switching network types cannot be performed. Schedule the switchover within a maintenance window.
 
 ### 4.6 Release an instance
 
@@ -441,13 +450,13 @@ Upgrading the minor engine version restarts the instance and causes a transient 
 column. This opens the **Basic Information** page.
 3. To the right of the **Configuration Information** section, click **Upgrade Minor Engine**
 **Version**.
-If this button does not appear, the kernel is already the latest version.
+
+> **Note:** If this button does not appear, the kernel is already the latest version.
+
 4. In the dialog box that appears, select a **DB Minor Version** (optional), set the **Upgrade**
 **Time**, and click **OK**.
 
-**Important**
-
-If you do not select a target minor version, the system upgrades the instance to the latest minor engine version by default.
+> **Important:** If you do not select a target minor version, the system upgrades the instance to the latest minor engine version by default.
 
 ### 4.8 Manage instances in the recycle bin
 
@@ -468,15 +477,16 @@ click **Recycle Bin**.
 3. Find the released instance and click **Rebuild and restore** in the Operation column.
 4. On the PolarDB Primary-Secondary Edition Recovery page, select **Database Version**,
 **Storage Capacity**, and **Network Type** for the new instance and click **Submit**.
-If you set **Network Type** to **VPC**, you must configure a virtual private cloud (**VPC**) and a **vSwitch**. Other configurations remain the same as the original instance and cannot be changed.
+
+> **Note:** If you set **Network Type** to **VPC**, you must configure a virtual private cloud (**VPC**) and a **vSwitch**.
+> Other configurations remain the same as the original instance and cannot be changed.
 
 **Destroy an instance**
 
 You can destroy a PolarDB instance that is no longer needed in the recycle bin.
 
-**Warning**
+> **Warning:** After you destroy an instance, **all** the backup files of the instance are destroyed, including regular data backup files, archived backup files, and log backup files. The destroyed backup files **cannot be restored**. Proceed with caution.
 
-After you destroy an instance, **all** the backup files of the instance are destroyed, including regular data backup files, archived backup files, and log backup files. The destroyed backup files **cannot be restored**. Proceed with caution.
 1. Log in to the PolarDB console.
 2. In the upper-left corner of the page, select an organization. In the left-side navigation pane,
 click **Recycle Bin**.
@@ -585,13 +595,17 @@ On the Modifiable Parameters tab, click **Export Parameters**. The parameter set
 
 **Modify parameters in batches by importing a file**
 
-a. Modify the parameter settings in the TXT file. Then, click **Import Parameters**. In the Import Parameters dialog box, copy the parameter settings from the TXT file and paste them to the dialog box. b. Click **OK**. c. In the upper part of the page, click **Apply Changes**. If the new parameter settings take effect only after you restart the instance, the system prompts you to restart the instance. We recommend that you restart the instance during off-peak hours and make sure that your application is configured to automatically reconnect to the instance. Before the new parameter values are applied, you can click **Cancel**
-**Changes** to cancel the modification.
+a. Modify the parameter settings in the TXT file. Then, click **Import Parameters**. In the Import Parameters dialog box, copy the parameter settings from the TXT file and paste them to the dialog box. b. Click **OK**. c. In the upper part of the page, click **Apply Changes**.
+
+> **Note:** If the new parameter settings take effect only after you restart the instance, the system prompts you to restart the instance. We recommend that you restart the instance during off-peak hours and make sure that your application is configured to automatically reconnect to the instance.
+> Before the new parameter values are applied, you can click **Cancel** **Changes** to cancel the modification.
 
 **Modify a single parameter**
 
-a. On the **Modifiable Parameters** tab, find the parameter that you want to modify and click the icon in the **Current Value** column. b. Enter a value based on the value range. c. Click **OK**. stances d. In the upper part of the page, click **Apply Changes**. If the new parameter settings take effect only after you restart the instance, the system prompts you to restart the instance. We recommend that you restart the instance during off-peak hours and make sure that your application is configured to automatically reconnect to the instance. Before the new parameter values are applied, you can click **Cancel**
-**Changes** to cancel the modification.
+a. On the **Modifiable Parameters** tab, find the parameter that you want to modify and click the icon in the **Current Value** column. b. Enter a value based on the value range. c. Click **OK**. stances d. In the upper part of the page, click **Apply Changes**.
+
+> **Note:** If the new parameter settings take effect only after you restart the instance, the system prompts you to restart the instance. We recommend that you restart the instance during off-peak hours and make sure that your application is configured to automatically reconnect to the instance.
+> Before the new parameter values are applied, you can click **Cancel** **Changes** to cancel the modification.
 
 **View the parameter modification history**
 
@@ -825,7 +839,13 @@ If you change the endpoint or port number of your instance, you must update the 
 **of local disk instances** page, find the instance that you want to manage and click its ID or
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the **Basic Information** section, view the internal and public endpoints and port numbers
-of the instance. atabase connection You can also switch to the **Database Connection** page and view the internal and public endpoints and port numbers. The internal and public endpoints of an instance are displayed only after you configure IP address whitelists for the instance. For more information, see Configure an IP address whitelist. The public endpoint of an instance is displayed only after you apply for a public endpoint for the instance.
+of the instance. atabase connection
+
+> **Note:** You can also switch to the **Database Connection** page and view the internal and public endpoints and port numbers.
+
+The internal and public endpoints of an instance are displayed only after you configure IP address whitelists for the instance. For more information, see Configure an IP address whitelist.
+
+> The public endpoint of an instance is displayed only after you apply for a public endpoint for the instance.
 
 **Change the internal and public endpoints and port numbers**
 
@@ -837,7 +857,8 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 4. On the right side of the page, click **Modify the connection address**.
 5. In the dialog box that appears, set **Connection type** to **Public network** or **VPC**.
 6. Modify the endpoint prefix and port number and then click **OK**.
-The prefix of the endpoint must contain letters, digits, hyphens (-), and periods (.). It must start with a letter and end with a letter or digit. The length of each segment of the domain name (separated by periods) cannot exceed 63 characters. The total length cannot exceed 253 characters. The port number must be 4 digits between 3000 and 5999.
+
+> **Note:** The prefix of the endpoint must contain letters, digits, hyphens (-), and periods (.). It must start with a letter and end with a letter or digit. The length of each segment of the domain name (separated by periods) cannot exceed 63 characters. The total length cannot exceed 253 characters. The port number must be 4 digits between 3000 and 5999.
 
 **Apply for or release a public endpoint**
 
@@ -849,9 +870,9 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 4. Click **Apply for public network** or **Release the public network** to the right of the Public
 network address field.
 
-**Important**
+> **Important:** You can decide whether to enable the IPv6 feature when applying for the public endpoint.
+> A released endpoint cannot be restored and can only be reapplied for. Before you release an endpoint, make sure that your application is connected to the cluster by using another endpoint.
 
-You can decide whether to enable the IPv6 feature when applying for the public endpoint. A released endpoint cannot be restored and can only be reapplied for. Before you release an endpoint, make sure that your application is connected to the cluster by using another endpoint.
 5. Click **OK**.
 
 **Enable or disable the IPv6 feature**
@@ -864,9 +885,8 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the left-side navigation pane, click **Database Connection**.
 4. Enable or disable IPv6.
 
-**Important**
+> **Important:** After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 
-After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 5. Click **OK**.
 
 ### 5.2 Connect to an instance
@@ -888,7 +908,9 @@ For more information about how to use DMS to connect to an ApsaraDB RDS instance
 1. Add the IP address of the pgAdmin client to an IP address whitelist of the ApsaraDB RDS
 instance. For more information about how to configure a whitelist, see Configure an IP whitelist.
 2. Start the pgAdmin 4 client.
-For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
+
+> **Note:** For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Windows).
+
 3. Right-click **Servers** and choose **Create > Server**, as shown in the following figure.
 4. On the **General** tab of the **Create - Server** dialog box, enter the name of the server, as
 shown in the following figure.
@@ -906,9 +928,7 @@ following figure. atabase connection
 7. If the connection information is correct, choose **Servers > Server Name > Databases >**
 **postgres**. If the following page appears, the connection is established.
 
-**Important**
-
-The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
+> **Important:** The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
 ### 5.3 Use DMS to log on to a PolarDB for PostgreSQL instance that uses local disks
 
@@ -945,7 +965,8 @@ atabase connection
 | Database Password | The password used to log on to the database. |
 
 5. Click **Login**.
-If you want the browser to save the password, select **Remember password** and then click **Login**.
+
+> **Note:** If you want the browser to save the password, select **Remember password** and then click **Login**.
 
 ### 5.4 Configure the hybrid access solution
 
@@ -1009,7 +1030,9 @@ atabase connection
 5. In the upper-right corner of the Database Connection section, click **Switch to Classic**
 **Network**.
 6. In the dialog box that appears, click **OK**.
-After the network type is changed to classic network, only ECS instances within the classic network can connect to the PolarDB instance by using the internal endpoint. You must configure the internal endpoint for the ECS instances.
+
+> **Note:** After the network type is changed to classic network, only ECS instances within the classic network can connect to the PolarDB instance by using the internal endpoint. You must configure the internal endpoint for the ECS instances.
+
 7. Configure a whitelist to allow ECS instances within the classic network to connect to the
 PolarDB instance by using the internal endpoint.
 
@@ -1022,17 +1045,27 @@ PolarDB instance by using the internal endpoint.
 4. In the left-side navigation pane, click **Database Connection**.
 5. In the upper-right corner of the Database Connection section, click **Switch to VPC**.
 6. In the Switch to VPC dialog box, select a VPC and vSwitch and specify whether to retain the
-endpoint used in the classic network. atabase connection Select a VPC. We recommend that you select the VPC where your ECS instances are deployed. Otherwise, the ECS instances cannot communicate with the PolarDB instance over the internal network. Select a vSwitch. If no vSwitches are available in the selected VPC, create one in the same zone where the PolarDB instance is deployed. For more information, see Create a vSwitch in Quick Start of **VPC User Guide**. Determine whether to select the **Reserve Original Classic Network Endpoint** option. The following table describes the details.
+endpoint used in the classic network. atabase connection
 
-**Not selected**
+> **Note:** Select a VPC. We recommend that you select the VPC where your ECS instances are deployed. Otherwise, the ECS instances cannot communicate with the PolarDB instance over the internal network.
+> Select a vSwitch. If no vSwitches are available in the selected VPC, create one in the same zone where the PolarDB instance is deployed. For more information, see Create a vSwitch in Quick Start of **VPC User Guide**.
+> Determine whether to select the **Reserve Original Classic Network Endpoint** option. The following table describes the details.
+> **Not selected**
+> The classic network endpoint is not retained, and the endpoint of the instance changes to a VPC endpoint.
+> When you change the network type, a 30-second network interruption may occur, and connections between ECS instances in the classic network and the PolarDB instance are interrupted.
+> **Selected**
+> The classic network endpoint is retained, and a new VPC endpoint is generated. In such cases, the PolarDB instance runs in hybrid access mode. ECS instances in both the classic network and a VPC can connect to the PolarDB instance over an internal network.
+> When you change the network type, no network interruptions occur. Connections between ECS instances in the classic network and the PolarDB instance remain available until the classic network endpoint expires.
+> To migrate your business to the VPC without interruption, you must add the VPC endpoint to access the ECS instances before the classic network endpoint expires. Seven days before the classic network endpoint expires, the system sends a text message to the phone number bound to your Apsara Stack account every day.
 
-The classic network endpoint is not retained, and the endpoint of the instance changes to a VPC endpoint. When you change the network type, a 30-second network interruption may occur, and connections between ECS instances in the classic network and the PolarDB instance are interrupted.
-
-**Selected**
-
-The classic network endpoint is retained, and a new VPC endpoint is generated. In such cases, the PolarDB instance runs in hybrid access mode. ECS instances in both the classic network and a VPC can connect to the PolarDB instance over an internal network. When you change the network type, no network interruptions occur. Connections between ECS instances in the classic network and the PolarDB instance remain available until the classic network endpoint expires. To migrate your business to the VPC without interruption, you must add the VPC endpoint to access the ECS instances before the classic network endpoint expires. Seven days before the classic network endpoint expires, the system sends a text message to the phone number bound to your Apsara Stack account every day. For more information, see Hybrid access from both the classic network and VPCs.
+For more information, see Hybrid access from both the classic network and VPCs.
 7. Add the internal IP addresses of ECS instances in the selected VPC to a VPC whitelist. This
-allows the ECS instances to access the PolarDB instance over the internal network. If no VPC whitelists are available, create a whitelist. If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed. counts
+allows the ECS instances to access the PolarDB instance over the internal network. If no VPC whitelists are available, create a whitelist.
+
+> **Note:** If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires.
+> If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed.
+
+counts
 
 ## 6 Accounts
 
@@ -1165,7 +1198,12 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 4. Find the account that you want to manage and click **Reset Password** in the Operation
 column.
 5. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
-The password must meet the following requirements: It must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: ! @ # $ % ^ & * ( ) _ + - =
+
+> **Note:** The password must meet the following requirements:
+> It must be 8 to 32 characters in length.
+> It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+> It can contain the following special characters:
+> ! @ # $ % ^ & * ( ) _ + - =
 
 ### 6.3 Delete an account
 
@@ -1184,7 +1222,8 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the left-side navigation pane, click **Accounts**.
 4. Find the account that you want to delete and click **Delete** in the Operation column.
 5. In the message that appears, click **OK**.
-Accounts in the processing state cannot be deleted.
+
+> **Note:** Accounts in the processing state cannot be deleted.
 
 ### 6.4 Lock an account
 
@@ -1250,7 +1289,10 @@ atabases
 | Database Password | The password of the database account. |
 
 5. Click **Login**. If you want the browser to save the password, select **Remember password**
-before you click **Login**. If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
+before you click **Login**.
+
+> **Note:** If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
+
 6. The **SQLConsole** page appears after you log on to the instance. Execute a statement in the
 following format to create a database:
 
@@ -1297,7 +1339,10 @@ the **Database Type**, **Instance Region**, and **Connection String Address** pa
 | Database Password | The password of the database account. |
 
 5. Click **Login**. If you want the browser to save the password, select **Remember password**
-before you click **Login**. atabases If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
+before you click **Login**. atabases
+
+> **Note:** If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For more information, see Configure an IP address whitelist.
+
 6. The **SQLConsole** page appears after you log on to the PolarDB for PostgreSQL instance.
 Execute the following statement to delete the database:
 
@@ -1517,7 +1562,9 @@ This topic describes how to configure an IP address whitelist for a PolarDB for 
 
 **Background information**
 
-The IP whitelist is a core security mechanism for the PolarDB for PostgreSQL Primary/Secondary Edition instance. You can explicitly authorize trusted IP addresses or CIDR blocks to effectively block unauthorized access. We recommend that you regularly maintain the whitelist policy to follow the principle of least privilege. Configuring the whitelist does not affect normal instance operations. You can use the following methods to configure a whitelist: Configure an IP whitelist: Add IPv4 or IPv6 addresses and CIDR blocks to allow access from specific clients. Configure an Elastic Compute Service (ECS) security group: Associate an ECS security group, which automatically allow access from all ECS instances in the group (only for instances in the same region and with the same network type). If an ECS instance needs to access a PolarDB instance by using an internal endpoint, make sure that the two instances reside in the same region and have the same network type (such as VPC). Otherwise, the connection will fail even if the whitelist is correctly configured.
+The IP whitelist is a core security mechanism for the PolarDB for PostgreSQL Primary/Secondary Edition instance. You can explicitly authorize trusted IP addresses or CIDR blocks to effectively block unauthorized access. We recommend that you regularly maintain the whitelist policy to follow the principle of least privilege. Configuring the whitelist does not affect normal instance operations. You can use the following methods to configure a whitelist: Configure an IP whitelist: Add IPv4 or IPv6 addresses and CIDR blocks to allow access from specific clients. Configure an Elastic Compute Service (ECS) security group: Associate an ECS security group, which automatically allow access from all ECS instances in the group (only for instances in the same region and with the same network type).
+
+> **Note:** If an ECS instance needs to access a PolarDB instance by using an internal endpoint, make sure that the two instances reside in the same region and have the same network type (such as VPC). Otherwise, the connection will fail even if the whitelist is correctly configured.
 
 **Procedure**
 
@@ -1529,7 +1576,14 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 4. On the **Whitelist Settings** tab, perform one of the following operations:
 Edit the default group: locate the `default` group and click **Edit** in the Operation column. To create a custom whitelist, click **Add a whitelist group**. You can specify IPv4 or IPv6 as the network type to implement protocol stack isolation.
 5. In the panel that appears, you can:
-Delete an existing IP address or CIDR block. Click **Add** and enter the IP address or CIDR block to be authorized. For example, `10.10.10.0/24` indicates that the `10.10.10.x` range is allowed. ata security Separate multiple entries with commas (,). Do not contain spaces before or after the commas. Example: `192.168.0.1,172.16.213.9,2001:db8::/32` . Click **Load the internal IP address of the ECS instance** . The internal IP addresses of all ECS instances under the current account are automatically listed for quick selection. Click **Import File (.txt)** to import IP addresses in the `.txt` format. After you add an IP address to the `default` group, the system automatically removes the default reserved address `127.0.0.1` . Once the network type of the custom group is selected, it cannot be changed. Configure it carefully based on the actual service protocol stack.
+Delete an existing IP address or CIDR block. Click **Add** and enter the IP address or CIDR block to be authorized. For example, `10.10.10.0/24` indicates that the `10.10.10.x` range is allowed. ata security
+
+> **Note:** Separate multiple entries with commas (,). Do not contain spaces before or after the commas. Example: `192.168.0.1,172.16.213.9,2001:db8::/32` .
+
+Click **Load the internal IP address of the ECS instance** . The internal IP addresses of all ECS instances under the current account are automatically listed for quick selection. Click **Import File (.txt)** to import IP addresses in the `.txt` format.
+
+> **Note:** After you add an IP address to the `default` group, the system automatically removes the default reserved address `127.0.0.1` .
+> Once the network type of the custom group is selected, it cannot be changed. Configure it carefully based on the actual service protocol stack.
 
 ### 10.2 Configure SSL encryption
 
@@ -1552,15 +1606,20 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 **Certificate (to Prevent Database Disguise)** to enable SSL encryption.
 6. In the dialog box that appears, select the endpoint that you want to protect. If you select
 **Custom Certificate**, specify **Server Certificate** and **Private Key of Server Certificate**,
-and click **OK**. ata security After you configure the server certificate, the certificate is automatically updated and your cluster will be restarted. Before you renew the certificate, make sure that your businesses are not interrupted by this operation.
+and click **OK**. ata security
+
+> **Note:** After you configure the server certificate, the certificate is automatically updated and your cluster will be restarted. Before you renew the certificate, make sure that your businesses are not interrupted by this operation.
+
 7. After **SSL Encryption** displays **Enabled** and **Configuration Status** displays **Successful**,
-click **Download CA Certificate**. The package that you download contains the following files: P7B file: contains the CA certificate that can be imported to a Windows operating system. PEM file: contains the CA certificate that can be imported to an operating system other than Windows or an application that is not run on Windows. JKS file: the Java truststore file. The password is apsaradb. The file is used to import the CA certificate chain to Java programs. If you want to use a JKS certificate file in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. In the `jre/lib/security/java.security` file of the server that connects to the PolarDB for PostgreSQL cluster, modify the following two configurations:
+click **Download CA Certificate**. The package that you download contains the following files: P7B file: contains the CA certificate that can be imported to a Windows operating system. PEM file: contains the CA certificate that can be imported to an operating system other than Windows or an application that is not run on Windows. JKS file: the Java truststore file. The password is apsaradb. The file is used to import the CA certificate chain to Java programs.
+
+> **Note:** If you want to use a JKS certificate file in Java, you must modify the default JDK security configuration in JDK 7 and JDK 8. In the `jre/lib/security/java.security` file of the server that connects to the PolarDB for PostgreSQL cluster, modify the following two configurations:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 224 jdk.certpath.disabledAlgorithms=MD2, RSA keySize < 1024
 ```
 
-If you do not modify the configurations, the following error is returned. In most cases, other similar errors are also caused by invalid Java security configurations:
+> If you do not modify the configurations, the following error is returned. In most cases, other similar errors are also caused by invalid Java security configurations:
 
 ```
 javax.net.ssl.SSLHandshakeException: DHPublicKey does not comply to algorithm c onstraints
@@ -1576,7 +1635,9 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the left-side navigation pane, click **Data Security** to go to the **Data Security** page.
 4. In the certificate type section of the On the **SSL** tab, click **Modify** to the right of **Configure**
 **Database Certificate (to Prevent Database Disguise)** to renew the certificate.
-The renewal operation will restart the cluster. Proceed with caution.
+
+> **Note:** The renewal operation will restart the cluster. Proceed with caution.
+
 5. After the SSL certificate is renewed, download and configure the SSL certificate again.
 ata security For more information about how to download an SSL certificate, see Step 7 in the Enable SSL encryption and download an SSL certificate section of this topic.
 
@@ -1592,11 +1653,17 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the left-side navigation pane, click **Data Security** to go to the **Data Security** page.
 4. In the **Configure Client CA Certificate** section of the **SSL** tab, click **Enable Client CA**
 **Certificate**. In the dialog box that appears, enter the public key of the client CA certificate
-and click **OK**. After you modify the client CA certificate, the cluster is automatically restarted. Make sure that your business is not interrupted.
+and click **OK**.
+
+> **Note:** After you modify the client CA certificate, the cluster is automatically restarted. Make sure that your business is not interrupted.
+
 5. After the client CA certificate is enabled, you can configure the client certificate revocation
 list file. In the **Upload or Update Revocation File of Client Certificate** section, click
 **Enable Certificate Revocation File**. In the dialog box that appears, enter the content of
-the file and click **OK**. After you modify the client certificate revocation list file, the cluster is automatically restarted. Make sure that your business is not interrupted.
+the file and click **OK**.
+
+> **Note:** After you modify the client certificate revocation list file, the cluster is automatically restarted. Make sure that your business is not interrupted.
+
 6. Optional. After the certificate is uploaded, you can click **View Client CA Certificate**
 **Details** to confirm the current certificate configuration. If the certificate is no longer used,
 click **Clear Client CA Certificate** or **Clear Certificate Revocation File**.
@@ -1610,7 +1677,11 @@ After SSL encryption is enabled, you can configure the ACL level for connecting 
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Data Security** to go to the **Data Security** page.
 4. On the **SSL** tab, click **Modify** to the right of **Configure ACL**. In the dialog box that appears,
-select an SSL authentication method. ata security After you configure the ACL, the cluster automatically restarts. Make business arrangements and proceed with caution. Select **verify-ca**, **verify-full**, or **cert** only after you configure the client CA certificate or client certificate revocation list file. For more information, see the Configure a client CA certificate or client certificate revocation list file section of this topic.
+select an SSL authentication method. ata security
+
+> **Note:** After you configure the ACL, the cluster automatically restarts. Make business arrangements and proceed with caution.
+> Select **verify-ca**, **verify-full**, or **cert** only after you configure the client CA certificate or client certificate revocation list file. For more information, see the Configure a client CA certificate or client certificate revocation list file section of this topic.
+
 **prefer**: preferentially encrypts the data link. You can connect clients to the cluster over
 SSL connections based on your business requirements.
 **required**: encrypts the data link. This method denies non-SSL client connections, allows
@@ -1623,7 +1694,9 @@ data link, performs client authentication, and checks whether the certificate CN
 
 **Disable SSL encryption**
 
-After you disable SSL encryption, the cluster is restarted. We recommend that you disable SSL encryption during off-peak hours. After you disable SSL encryption for a cluster, the performance of your cluster is improved but data security is compromised. We recommend that you disable SSL encryption only in secure environments.
+> **Note:** After you disable SSL encryption, the cluster is restarted. We recommend that you disable SSL encryption during off-peak hours.
+> After you disable SSL encryption for a cluster, the performance of your cluster is improved but data security is compromised. We recommend that you disable SSL encryption only in secure environments.
+
 1. Log in to the PolarDB console.
 2. In the left-side navigation pane, choose Primary/Secondary Edition > Instances. On the **List**
 **of local disk instances** page, find the instance that you want to manage and click its ID or
@@ -1684,9 +1757,8 @@ You can query SQL information by criteria such as time range, database name, dat
 
 If you no longer need to audit SQL activity, you can disable the sql audit feature.
 
-**Important**
+> **Important:** Disabling the sql audit feature permanently deletes all sql audit records, including historical data. Before you disable this feature, we recommend exporting the audit logs and saving them locally.
 
-Disabling the sql audit feature permanently deletes all sql audit records, including historical data. Before you disable this feature, we recommend exporting the audit logs and saving them locally.
 1. Log on to the ApsaraDB for PolarDB console.
 2. On the **instance list** page, click the ID of the target instance or click **manage** in the
 **actions** column, which takes you to the **basic information** page.
@@ -1708,9 +1780,9 @@ instance, which takes you to the **basic information** page. ata security
 4. On the right side of the page, click the **sql audit** tab.
 5. Enable the option to store audit logs in SLS-PUB.
 
-**Important**
+> **Important:** This action cannot be undone. Proceed with caution.
 
-This action cannot be undone. Proceed with caution. ackup
+ackup
 
 ## 11 Backup
 
@@ -1761,10 +1833,13 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the upper-right corner of the page, click **Backup Instance**. The Backup Instance dialog
 box appears.
 4. Select the backup mode and click **OK**.
-You can set the backup mode and backup policy only to **Full Backup** and **Instance**
-**Backup**.
+
+> **Note:** You can set the backup mode and backup policy only to **Full Backup** and **Instance** **Backup**.
+
 5. Click the
-icon in the upper-right corner to view the progress in the **Task Progress** column. Wait until the task is complete. You cannot download backup files to your computer.
+icon in the upper-right corner to view the progress in the **Task Progress** column. Wait until the task is complete.
+
+> **Note:** You cannot download backup files to your computer.
 
 **FAQ**
 
@@ -1791,7 +1866,13 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 To download data backup files, click the **Data Backup** tab. To download log backup files, click the **Log Backup (Previously Archived Logs)** tab.
 5. Select a time range.
 6. Find the data backup or log backup file that you want to download, and click Download
-Instance Backup or **Download** in the **Actions** column. If you want to download a data backup file and use the data backup file to restore data, we recommend that you select the data backup file created closest to the point in time when the required data exists. If the log backup file is used to restore data to an on-premises database, take note of the following items: The instance ID of the log backup file (redolog) must be the same as the instance ID of the data backup file that you select. The start time of the log backup file must be later than the end time of the data backup file that you select and earlier than the point in time to which you want to restore the data of your cluster.
+Instance Backup or **Download** in the **Actions** column.
+
+> **Note:** If you want to download a data backup file and use the data backup file to restore data, we recommend that you select the data backup file created closest to the point in time when the required data exists.
+> If the log backup file is used to restore data to an on-premises database, take note of the following items:
+> The instance ID of the log backup file (redolog) must be the same as the instance ID of the data backup file that you select.
+> The start time of the log backup file must be later than the end time of the data backup file that you select and earlier than the point in time to which you want to restore the data of your cluster.
+
 7. In the **Download Instance Backup Set** dialog box, select a download method.
 
 | Download method | Description |
@@ -1804,17 +1885,21 @@ ackup
 | Copy the internal URL. | Download the backup file from the internal URL. If your Elastic Compute Service (ECS) and PolarDB for PostgreSQL instance reside within the same region, you can log on to the ECS instance and use the internal URL to download the file. This method is fast and secure. |
 | Copy the public URL | Download the backup file from the public URL. If you want to use other tools to download the file, use the public URL. |
 
-If you use a Linux operating system, you can run the following command to download the file:
+> **Note:** If you use a Linux operating system, you can run the following command to download the file:
 
 ```
 wget -c '<Download URL of the backup file>' -O <File name>
 ```
 
-The -c option enables the resumable download feature. The -O option saves the downloaded file by using the specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
+> The -c option enables the resumable download feature.
+> The -O option saves the downloaded file by using the specified name. We recommend that you use the file name contained in the download URL.
+> If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
 ### 11.3 Restore full data
 
-PolarDB supports cloning a new instance from a backup set or a point in time, fully restoring the database data, account information, and instance configuration of the primary instance. The cloned instance runs independently without affecting the primary instance, and supports custom configurations such as specifications and network settings. This is suitable for scenarios such as full recovery after accidental deletion or corruption of the primary instance, audit backtracking, and quick build of a test environment. This topic is suitable for full data restoration. For more information about how to restore data of databases and tables, see Restore data of databases and tables.
+PolarDB supports cloning a new instance from a backup set or a point in time, fully restoring the database data, account information, and instance configuration of the primary instance. The cloned instance runs independently without affecting the primary instance, and supports custom configurations such as specifications and network settings. This is suitable for scenarios such as full recovery after accidental deletion or corruption of the primary instance, audit backtracking, and quick build of a test environment.
+
+> **Note:** This topic is suitable for full data restoration. For more information about how to restore data of databases and tables, see Restore data of databases and tables.
 
 **Background information**
 
@@ -1914,7 +1999,9 @@ Without quoted identifiers: Names can contain letters, digits, and underscores (
 
 **Metadata logic of point-in-time recovery (PITR)**
 
-ackup If you choose to restore data to a specific point in time, the list of databases and tables that you obtain is retrieved from the metadata of the most recent full backup before the target point in time, not from the real‑time state of databases and tables at that target time. The destination table must exist in the full backup. Otherwise, the backup cannot be restored. If the original database or table has been deleted, you can restore data only by backup set, but not by point in time. The selected point in time must fall within the recoverable range. To use the point-in-time restoration method, make sure that the full backup set that is closest to the specified point in time contains the tables to be restored. The recoverable time range is determined by the log backup retention period configured in the backup settings. PostgreSQL WAL logs record data changes, but do not independently retain historical metadata snapshots. To balance accuracy and system overhead, the metadata from the most recent backup set is currently used as the basis for selecting objects to be restored. In a production environment where the schemas of the databases and tables remain relatively stable, this method is generally reliable.
+ackup If you choose to restore data to a specific point in time, the list of databases and tables that you obtain is retrieved from the metadata of the most recent full backup before the target point in time, not from the real‑time state of databases and tables at that target time. The destination table must exist in the full backup. Otherwise, the backup cannot be restored. If the original database or table has been deleted, you can restore data only by backup set, but not by point in time. The selected point in time must fall within the recoverable range. To use the point-in-time restoration method, make sure that the full backup set that is closest to the specified point in time contains the tables to be restored. The recoverable time range is determined by the log backup retention period configured in the backup settings.
+
+> **Note:** PostgreSQL WAL logs record data changes, but do not independently retain historical metadata snapshots. To balance accuracy and system overhead, the metadata from the most recent backup set is currently used as the basis for selecting objects to be restored. In a production environment where the schemas of the databases and tables remain relatively stable, this method is generally reliable.
 
 **Limits**
 
@@ -2220,9 +2307,7 @@ GanosBase TSDB is a time series database service that is provided as an extensio
 
 To enable GanosBase TSDB in a PolarDB for PostgreSQL cluster, you must add **timescaledb** to the `shared_preload_libraries` parameter. You can modify the shared_preload_libraries parameter in the PolarDB console.
 
-**Important**
-
-The cluster restarts after you modify the shared_preload_libraries parameter. Proceed with caution.
+> **Important:** The cluster restarts after you modify the shared_preload_libraries parameter. Proceed with caution.
 
 **Install the extension**
 
@@ -2242,7 +2327,8 @@ CREATE EXTENSION timescaledb; CREATE EXTENSION ganos_tsdb;
 |---|---|
 | metadata insert trigger (21128) _ _ |   |
 
-extension, contact us to obtain related permissions and then reinstall the extension. Alternatively, install the extension in the PUBLIC schema, which avoids permissionrelated issues.
+> extension, contact us to obtain related permissions and then reinstall the extension.
+> Alternatively, install the extension in the PUBLIC schema, which avoids permission- related issues.
 
 ```
 CREATE EXTENSION ganos_tsdb WITH SCHEMA PUBLIC CASCADE;
@@ -2351,7 +2437,8 @@ ALTER TABLE transaction_data replica IDENTITY DEFAULT;
 SELECT create_hypertable('transaction_data', 'tm', chunk_time_interval => INTERVAL '1 day');
 ```
 
-If the common table already contains data, you need to include the `migrate_data` parameter and set it to `true` to migrate the existing data to the hypertable. If the common table contains a large amount of data, the migration process may take a significant amount of time.
+> **Note:** If the common table already contains data, you need to include the `migrate_data` parameter and set it to `true` to migrate the existing data to the hypertable. If the common table contains a large amount of data, the migration process may take a significant amount of time.
+
 4. (Optional) Modify the partitioning interval of the hypertable.
 
 ```
@@ -2724,7 +2811,8 @@ You need to add the CIDR block of the virtual private cloud (VPC) to which the P
 CREATE EXTENSION IF NOT EXISTS mysql_fdw;
 ```
 
-Only privileged accounts can execute this statement.
+> **Note:** Only privileged accounts can execute this statement.
+
 2. Define a MySQL server.
 
 ```
@@ -2733,7 +2821,9 @@ CREATE SERVER <The server name>
     OPTIONS (channel_name 'The channel name');
 ```
 
-PolarDB for PostgreSQL allows you to specify the connection information of the MySQL instance only by using channel_name in the OPTIONS statement. In the following sample code, a polar_channel named mysqlchannel is used:
+> **Note:** PolarDB for PostgreSQL allows you to specify the connection information of the MySQL instance only by using channel_name in the OPTIONS statement.
+
+In the following sample code, a polar_channel named mysqlchannel is used:
 
 ```
 CREATE SERVER mysql_server
@@ -2755,7 +2845,9 @@ CREATE USER MAPPING FOR pgtest SERVER mysql_server OPTIONS (username 'mysqltest'
 ```
 
 4. Create a foreign table for the MySQL instance by using the PolarDB for PostgreSQL user
-that is specified in Step 3. The field names in the foreign MySQL table must be the same as the field names in the table in the MySQL database. You can choose to create only the fields that you want to query. For example, if the table in the MySQL database contains the ID, NAME, and AGE fields, you can create the ID and NAME fields in the foreign MySQL table.
+that is specified in Step 3.
+
+> **Note:** The field names in the foreign MySQL table must be the same as the field names in the table in the MySQL database. You can choose to create only the fields that you want to query. For example, if the table in the MySQL database contains the ID, NAME, and AGE fields, you can create the ID and NAME fields in the foreign MySQL table.
 
 ```
 CREATE FOREIGN TABLE <Table name> (<Field name> <Data type>,<Field name> <Data type>...) server <Server name> options (dbname '<MySQL database name>', table_name '< MySQL table name>');
@@ -2768,7 +2860,9 @@ CREATE FOREIGN TABLE ft_test (id1 int, name1 text) server mysql_server options (
 ```
 
 5. Check whether you can perform read and write operations to the MySQL database.
-You can use the foreign MySQL table to check whether you can perform read and write operations on the MySQL database. Data can be written to the table in the MySQL database only when the table is assigned a primary key. If the table is not assigned a primary key, the following error is returned:
+You can use the foreign MySQL table to check whether you can perform read and write operations on the MySQL database.
+
+> **Note:** Data can be written to the table in the MySQL database only when the table is assigned a primary key. If the table is not assigned a primary key, the following error is returned:
 
 ```
 ERROR: first column of remote table must be unique for INSERT/UPDATE/DELETE op eration. SELECT * FROM ft_test ; INSERT INTO ft_test VALUES (2,'abc'); INSERT 0 1 INSERT INTO ft_test SELECT generate_series(3,100),'abc'; INSERT 0 98 SELECT count(*) FROM ft_test ;
@@ -2838,7 +2932,11 @@ CREATE SERVER ossserver FOREIGN DATA WRAPPER oss_fdw OPTIONS (
     key 'xxx'
 ```
 
-); Parameters in the statement: `host` : the endpoint of OSS. `bucket` : the name of the OSS bucket. `id` / `key` : the AccessKey ID and AccessKey secret of your Alibaba Cloud account.
+);
+
+> **Note:** Parameters in the statement:
+
+`host` : the endpoint of OSS. `bucket` : the name of the OSS bucket. `id` / `key` : the AccessKey ID and AccessKey secret of your Alibaba Cloud account.
 
 **Map a foreign table to an OSS directory**
 
@@ -3204,7 +3302,11 @@ The decoderbufs extension depends on the following libraries: PostgreSQL: Engine
 
 **Usage**
 
-The decoderbufs extension is loaded automatically by default, so you do not need to load it manually. You must set the wal_level parameter to logical. This setting adds the information required for logical decoding to the write-ahead logging (WAL). The wal_level parameter can be modified in the console. The cluster restarts after you modify the parameter. Proceed with caution. The following example shows how to perform logical replication:
+The decoderbufs extension is loaded automatically by default, so you do not need to load it manually. You must set the wal_level parameter to logical. This setting adds the information required for logical decoding to the write-ahead logging (WAL).
+
+> **Note:** The wal_level parameter can be modified in the console. The cluster restarts after you modify the parameter. Proceed with caution.
+
+The following example shows how to perform logical replication:
 1. Create a logical replication slot and set the decoder plugin to decoderbufs.
 
 ```
@@ -3270,7 +3372,9 @@ wal2json is a logic decoding plug-in that provides the following features: Acces
 
 **Usage notes**
 
-Because PolarDB for PostgreSQL uses the replication method of `REPLICA_IDENTITY_FULL` , the entire row of data is displayed during UPDATE and DELETE, instead of the columns before and after UPDATE and DELETE. To modify only the columns before and after UPDATE, you must set the `polar_create_table_with_full_replica_identity` parameter to off. This parameter cannot be modified in the console. You must contact technical support to modify the parameter. The wal2json plug-in requires logical encoding and decoding. You must modify the `wal_level` parameter to `logical` . The wal_level parameter can be modified in the console. The cluster restarts after you modify the parameter. Proceed with caution.
+Because PolarDB for PostgreSQL uses the replication method of `REPLICA_IDENTITY_FULL` , the entire row of data is displayed during UPDATE and DELETE, instead of the columns before and after UPDATE and DELETE. To modify only the columns before and after UPDATE, you must set the `polar_create_table_with_full_replica_identity` parameter to off. This parameter cannot be modified in the console. You must contact technical support to modify the parameter. The wal2json plug-in requires logical encoding and decoding. You must modify the `wal_level` parameter to `logical` .
+
+> **Note:** The wal_level parameter can be modified in the console. The cluster restarts after you modify the parameter. Proceed with caution.
 
 **Execute SQL statements to obtain JSON objects**
 
@@ -3810,7 +3914,8 @@ Similarity calculation of large amounts of data is key in areas such as e-commer
 CREATE EXTENSION smlar;
 ```
 
-The % operator of the smlar extension conflicts with that of the rum extension. Therefore, you cannot create the two extensions in the same schema.
+> **Note:** The % operator of the smlar extension conflicts with that of the rum extension. Therefore, you cannot create the two extensions in the same schema.
+
 2. Execute the following statement to calculate the similarity of two arrays.
 
 ```
@@ -3837,7 +3942,8 @@ Sample result:
 (1 row)
 ```
 
-For more information about other functions, see the **Functions and operators** section of this topic.
+> **Note:** For more information about other functions, see the **Functions and operators** section of this topic.
+
 3. Uninstall the smlar extension.
 
 ```
@@ -4146,7 +4252,12 @@ Sample result:
 (1 row)
 ```
 
-bigm_similarity Purpose: obtains the similarity between two strings. Request parameters: two request parameters of the STRING type. Return value: a floating-point number that indicates the similarity between the two strings. Implementation: Identify the 2-gram elements that are included in both of the two strings. The return value ranges from 0 to 1. A value of 0 indicates that the two strings are different. A value of 1 indicates that the two strings are the same. This function adds a space before and after each string. Therefore, the similarity between the `ABC` string and the `B` string is 0, and the similarity between the `ABC` string and the `A` string is 0.25. This function is case-sensitive. For example, this function determines that the similarity between the `ABC` string and the `abc` string is 0. Example:
+bigm_similarity Purpose: obtains the similarity between two strings. Request parameters: two request parameters of the STRING type. Return value: a floating-point number that indicates the similarity between the two strings. Implementation: Identify the 2-gram elements that are included in both of the two strings. The return value ranges from 0 to 1. A value of 0 indicates that the two strings are different. A value of 1 indicates that the two strings are the same.
+
+> **Note:** This function adds a space before and after each string. Therefore, the similarity between the `ABC` string and the `B` string is 0, and the similarity between the `ABC` string and the `A` string is 0.25.
+> This function is case-sensitive. For example, this function determines that the similarity between the `ABC` string and the `abc` string is 0.
+
+Example:
 
 ```
 SELECT bigm_similarity('full text search', 'text similarity search');
@@ -4184,7 +4295,11 @@ Sample result:
 ----------------- (1 row)
 ```
 
-pg_gin_pending_stats Purpose: obtains the number of pages and the number of tuples in the pending list of a GIN index. Request parameters: one parameter that specifies the name or OID of the GIN index. Return value: the number of pages and the number of tuples in the pending list of the GIN index. If you set the **FASTUPDATE** parameter to **False** for a GIN index, the GIN index does not have a pending list. In this case, this function returns two values, 0 and 0. Example:
+pg_gin_pending_stats Purpose: obtains the number of pages and the number of tuples in the pending list of a GIN index. Request parameters: one parameter that specifies the name or OID of the GIN index. Return value: the number of pages and the number of tuples in the pending list of the GIN index.
+
+> **Note:** If you set the **FASTUPDATE** parameter to **False** for a GIN index, the GIN index does not have a pending list. In this case, this function returns two values, 0 and 0.
+
+Example:
 
 ```
 SELECT * FROM pg_gin_pending_stats('pg_tools_idx');
@@ -4201,7 +4316,11 @@ Sample result:
 
 **Behavior control parameters**
 
-pg_bigm.enable_recheck This parameter specifies whether to perform a recheck. We recommend that you use the default value ON. This way, you can obtain accurate query results. Example: i. Prepare test data.
+pg_bigm.enable_recheck This parameter specifies whether to perform a recheck.
+
+> **Note:** We recommend that you use the default value ON. This way, you can obtain accurate query results.
+
+Example: i. Prepare test data.
 
 ```
 CREATE TABLE tbl (doc text); INSERT INTO tbl VALUES('He is awaiting trial'); INSERT INTO tbl VALUES('It was a trivial mistake'); CREATE INDEX tbl_idx ON tbl USING gin (doc gin_bigm_ops);
@@ -4262,7 +4381,11 @@ Sample result:
 (2 rows)
 ```
 
-pg_bigm.gin_key_limit This parameter specifies the maximum number of 2-gram elements that can be used to perform a full-text search. The default value is 0, which specifies that all 2-gram elements are used. If query performance decreases due to the use of all 2-gram elements, you can decrease the value of this parameter. pg_bigm.similarity_limit This parameter specifies the threshold for similarity. The tuples between which the similarity exceeds the specified threshold are returned as similarity search results.
+pg_bigm.gin_key_limit This parameter specifies the maximum number of 2-gram elements that can be used to perform a full-text search. The default value is 0, which specifies that all 2-gram elements are used.
+
+> **Note:** If query performance decreases due to the use of all 2-gram elements, you can decrease the value of this parameter.
+
+pg_bigm.similarity_limit This parameter specifies the threshold for similarity. The tuples between which the similarity exceeds the specified threshold are returned as similarity search results.
 
 **Appendix: Comparison between the pg_bigm extension and the**
 
@@ -4292,7 +4415,9 @@ The pg_jieba extension provides the following text search modes: jiebacfg: exact
 
 **Install and uninstall the extension**
 
-Only privileged accounts are authorized to execute the following statements. Install the pg_jieba extension.
+> **Note:** Only privileged accounts are authorized to execute the following statements.
+
+Install the pg_jieba extension.
 
 ```
 CREATE EXTENSION pg_jieba;
@@ -4455,7 +4580,9 @@ store this information, an additional scan is required to retrieve it after the 
 **Slow phrase queries**: GIN indexes require position information to perform phrase
 searches.
 **Slow timestamp sorting**: GIN indexes cannot store related information in an index that
-contains lexemes. Therefore, an additional scan is required. The `RUM` extension is based on GIN indexes. It solves these issues by storing extra information, such as word or timestamp positions, in the RUM index. RUM indexes take longer to build and have slower insert performance than GIN indexes. This is because RUM indexes must store additional information in addition to keys and use general Write-Ahead Logging (WAL) records.
+contains lexemes. Therefore, an additional scan is required. The `RUM` extension is based on GIN indexes. It solves these issues by storing extra information, such as word or timestamp positions, in the RUM index.
+
+> **Note:** RUM indexes take longer to build and have slower insert performance than GIN indexes. This is because RUM indexes must store additional information in addition to keys and use general Write-Ahead Logging (WAL) records.
 
 **rum general operators**
 
@@ -4547,13 +4674,15 @@ The `rum_tsvector_hash_ops` operator class stores the hash values and position
 | mation of | tsvector |
 |---|---|
 
-information of `tsvector` lexemes. It supports sorting by the `<=>` operator, but does not support prefix search. The `rum_tsvector_hash_ops` operator class supports sorting using the `<=>` , <=| ,
+information of `tsvector` lexemes. It supports sorting by the `<=>` operator, but does not support prefix search.
+
+> **Note:** The `rum_tsvector_hash_ops` operator class supports sorting using the `<=>` , <=| , and |=> operators. It can be used with the `rum_tsvector_addon_ops` ,
 
 |   | rum tsvector addon ops _ _ _ |
 |---|---|
 | rum anyarray addon ops _ _ _ |   |
 
-and |=> operators. It can be used with the `rum_tsvector_addon_ops` , The `rum_TYPE_ops` operator class supports the following data types and operators:
+The `rum_TYPE_ops` operator class supports the following data types and operators:
 
 | le data types: int2 , int4 , int8 , float4 , float8 , money , oid , timetz , date , interval , macaddr , inet , cidr , text , varchar bytea , bit , varbit , numeric , timestamp , and timestamptz . |   | , | float4 |   |   | , | float8 |   |   | , , | money |   | , | oid |   | , |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4847,7 +4976,9 @@ The following result is returned:
 (5 rows)
 ```
 
-Because posting trees have a fixed-length right border and fixed-length non-leaf posting items, a bug may occur in RUM when an index is created by sorting additional information that is passed by reference. The `rum_tsvector_hash_addon_ops` operator class stores the hash values of `tsvector` lexemes and values in an addon field. This operator class does not support prefix search. The `rum_tsquery_ops` operator class applies to the `tsquery` data type and stores the branches of the query tree as additional information. Example: i. Prepare data:
+> **Note:** Because posting trees have a fixed-length right border and fixed-length non-leaf posting items, a bug may occur in RUM when an index is created by sorting additional information that is passed by reference.
+
+The `rum_tsvector_hash_addon_ops` operator class stores the hash values of `tsvector` lexemes and values in an addon field. This operator class does not support prefix search. The `rum_tsquery_ops` operator class applies to the `tsquery` data type and stores the branches of the query tree as additional information. Example: i. Prepare data:
 
 ```
 CREATE TABLE test_array (i int2[]); INSERT INTO test_array VALUES ('{}'), ('{0}'), ('{1,2,3,4}'), ('{1,2,3}'), ('{1,2}' ), ('{1}'); CREATE INDEX idx_array ON test_array USING rum (i rum_anyarray_ops);
@@ -5042,7 +5173,12 @@ Use a privileged account to execute the following statement:
 CREATE EXTENSION age;
 ```
 
-Add the extension to the search path and pre-load libraries of the database or user. Compatibility issues may occur when you use Data Management (DMS) to configure the `search_path` . In such cases, you can use **PolarDB-Tools** to execute related statements. Load the extension to a session:
+Add the extension to the search path and pre-load libraries of the database or user.
+
+> **Note:** Compatibility issues may occur when you use Data Management (DMS) to configure the
+> `search_path` . In such cases, you can use **PolarDB-Tools** to execute related statements.
+
+Load the extension to a session:
 
 ```
 SELECT * FROM ag_catalog.get_cypher_keywords() limit 0;
@@ -5060,7 +5196,9 @@ Permanently load the extension:
 ALTER DATABASE <dbname> SET search_path = public,ag_catalog; ALTER USER <username> SET search_path = public,ag_catalog; ALTER DATABASE <dbname> SET session_preload_libraries TO 'age'; ALTER USER <username> SET session_preload_libraries TO 'age';
 ```
 
-After executing the preceding statements, reconnect to the cluster to load the extension. If a standard user wants to use this extension, you can perform the following operations:
+> **Note:** After executing the preceding statements, reconnect to the cluster to load the extension.
+
+If a standard user wants to use this extension, you can perform the following operations:
 1. Grant the `USAGE` permissions.
 
 ```
@@ -5143,7 +5281,13 @@ The hypopg extension helps you check whether an index can improve one or more qu
 
 **Overview**
 
-The hypopg extension is an open source third-party extension supported by PolarDB for PostgreSQL and PolarDB for PostgreSQL (Compatible with Oracle). Hypothetical indexes created by the hypopg extension do not exist in any system tables. Instead, they are stored in the private memory of your connection. Because hypothetical indexes do not physically exist in any files, they are used only by simple EXPLAIN statements that do not include the ANALYZE option. Hypothetical indexes are not real indexes and do not consume CPU, disk, or other resources. The hypopg extension supports the following index types: btree: B-tree indexes. brin: Block Range Indexes (BRIN). hash: Hash indexes. bloom: Bloom indexes. You must install the bloom extension first.
+The hypopg extension is an open source third-party extension supported by PolarDB for PostgreSQL and PolarDB for PostgreSQL (Compatible with Oracle). Hypothetical indexes created by the hypopg extension do not exist in any system tables. Instead, they are stored in the private memory of your connection. Because hypothetical indexes do not physically exist in any files, they are used only by simple EXPLAIN statements that do not include the ANALYZE option. Hypothetical indexes are not real indexes and do not consume CPU, disk, or other resources.
+
+> **Note:** The hypopg extension supports the following index types:
+> btree: B-tree indexes.
+> brin: Block Range Indexes (BRIN).
+> hash: Hash indexes.
+> bloom: Bloom indexes. You must install the bloom extension first.
 
 **Usage notes**
 
@@ -5174,13 +5318,14 @@ Sample result:
 (1 row)
 ```
 
-The result shows that version 1.3.1 of the hypopg extension is installed. You can also execute an SQL statement to query the pg_extension table to check whether the hypopg extension is installed. Example:
+> **Note:** The result shows that version 1.3.1 of the hypopg extension is installed.
+> You can also execute an SQL statement to query the pg_extension table to check whether the hypopg extension is installed. Example:
 
 ```
 SELECT * FROM pg_extension WHERE extname = 'hypopg';
 ```
 
-Sample result:
+> Sample result:
 
 ```
 extname | extowner | extnamespace | extrelocatable | extversion | extconf ig | extcondition --------+----------+--------------+----------------+------------+---------- +--------------
@@ -5232,7 +5377,8 @@ Sample result:
 (2 rows)
 ```
 
-The query performs a sequential scan because the hypo table has no index.
+> **Note:** The query performs a sequential scan because the hypo table has no index.
+
 2. Create a hypothetical index. Example:
 
 ```
@@ -5254,7 +5400,10 @@ The following table describes the parameters.
 | 13925 | The identifier of the hypothetical index. |
 | <13925>btree hypo id _ _ | The name of the generated hypothetical index. |
 
-A simple B-tree index in the id column accelerates this query. The `hypopg_create_index()` function accepts any standard `CREATE INDEX` statement and creates a hypothetical index for each statement. Any other statements passed to the function are ignored. The identifier is dynamically generated. In this example, it is 13925.
+> **Note:** A simple B-tree index in the id column accelerates this query.
+> The `hypopg_create_index()` function accepts any standard `CREATE INDEX` statement and creates a hypothetical index for each statement. Any other statements passed to the function are ignored.
+> The identifier is dynamically generated. In this example, it is 13925.
+
 3. Execute an EXPLAIN statement to determine whether the database uses the index.
 Example:
 
@@ -5272,7 +5421,8 @@ Sample result:
 (2 rows)
 ```
 
-The query plan indicates that the database uses this index.
+> **Note:** The query plan indicates that the database uses this index.
+
 4. Execute an EXPLAIN ANALYZE statement to check whether the database uses the
 hypothetical index during actual execution. Example:
 
@@ -5294,7 +5444,7 @@ ws=1 loops=1)
 (5 rows)
 ```
 
-During actual execution, the database does not use the hypothetical index.
+> **Note:** During actual execution, the database does not use the hypothetical index.
 
 **Hypothetical index operations**
 
@@ -5418,7 +5568,9 @@ Lower overhead: PostgreSQL uses variable-length data types to store IPv6 data. T
 
 **Single-address data types and type conversions**
 
-The following three data types are used to store single IP addresses: `ip4` : Accepts input in the `nnn.nnn.nnn.nnn` format. The data is stored as a 32-bit unsigned integer. `ip6` : Accepts input in the standard hexadecimal format for an IPv6 address. The data is stored as two 64-bit values. `ipaddress` : Accepts input in the `ip4` or `ip6` format. For these three data types, `ip4r` provides the following type conversion rules: In the following table, `ipX` represents any of the three data types described above.
+The following three data types are used to store single IP addresses: `ip4` : Accepts input in the `nnn.nnn.nnn.nnn` format. The data is stored as a 32-bit unsigned integer. `ip6` : Accepts input in the standard hexadecimal format for an IPv6 address. The data is stored as two 64-bit values. `ipaddress` : Accepts input in the `ip4` or `ip6` format. For these three data types, `ip4r` provides the following type conversion rules:
+
+> **Note:** In the following table, `ipX` represents any of the three data types described above.
 
 | Source type | Target type | Format |
 |---|---|---|
@@ -5463,7 +5615,9 @@ The following three data types are used to store a range of IP addresses:
 |---|---|
 | 2001::-2001::ffff |   |
 
-range `2001::/112` is equivalent to `2001::-2001::ffff` . `iprange` : Accepts input in either the `ip4r` or `ip6r` format. For these three data types, `ip4r` provides the following type conversion rules: In the following table, `ipXr` represents any of the three data types described above.
+range `2001::/112` is equivalent to `2001::-2001::ffff` . `iprange` : Accepts input in either the `ip4r` or `ip6r` format. For these three data types, `ip4r` provides the following type conversion rules:
+
+> **Note:** In the following table, `ipXr` represents any of the three data types described above.
 
 | Source type | Target type | Format |
 |---|---|---|
@@ -5565,13 +5719,14 @@ Check the task Configure the Check the task Repeat the previous Repeat the previ
 
 **Functions**
 
-For security purposes, only privileged accounts have the permissions to invoke the
+> **Note:** For security purposes, only privileged accounts have the permissions to invoke the following functions to perform operations on the `cron.job` table. Standard accounts have only the view permission on the `cron.job` table.
 
 |   | cron.job |
 |---|---|
 | cron.job |   |
 
-following functions to perform operations on the `cron.job` table. Standard accounts have only the view permission on the `cron.job` table. All scheduled tasks are stored in the `postgres` database. To perform operations on a scheduled task, you must connect to the `postgres` database. Scheduled tasks are run based on Greenwich Mean Time (GMT). You must convert your local time into GMT.
+> All scheduled tasks are stored in the `postgres` database. To perform operations on a scheduled task, you must connect to the `postgres` database.
+> Scheduled tasks are run based on Greenwich Mean Time (GMT). You must convert your local time into GMT.
 
 **Create a scheduled task**
 
@@ -5659,7 +5814,7 @@ cron.unschedule(job_id BIGINT); cron.unschedule(job_name TEXT);
 
 **Usage**
 
-To ensure security, you can perform the following operations only as a privileged user.
+> **Note:** To ensure security, you can perform the following operations only as a privileged user.
 
 **Install the pg_cron extension**
 
@@ -5809,13 +5964,15 @@ SELECT cron.schedule('* * 4 * *', 'SELECT 1;');
 
 Data collection requires the `pg_stat_statements` and `pg_stat_kcache` extensions. Ensure that they are added to the `shared_preload_libraries` parameter of the sampled database. They are loaded by default.
 
-**Important**
+> **Important:** The cluster restarts after you modify the parameter. Proceed with caution.
 
-The cluster restarts after you modify the parameter. Proceed with caution. In the sampled database, you must create the `pg_stat_statements` extension. You can also create the `pg_stat_kcache` extension to collect more information. Storing sample information consumes disk space. This extension has an automatic cleanup mechanism, but you must still manage data retention. A single sampling operation is time-consuming. Therefore, do not perform sampling too frequently. The recommended frequency is one to two times per hour.
+In the sampled database, you must create the `pg_stat_statements` extension. You can also create the `pg_stat_kcache` extension to collect more information. Storing sample information consumes disk space. This extension has an automatic cleanup mechanism, but you must still manage data retention. A single sampling operation is time-consuming. Therefore, do not perform sampling too frequently. The recommended frequency is one to two times per hour.
 
 **Usage**
 
-Due to the security restrictions of `dblink` , the profile database and the server database must be created in the same PolarDB for PostgreSQL cluster. The following steps describe how to create a server database and a profile database. During sampling, the profile database sends a sampling request to the server database. After the server database receives the request, it returns its statistics to the profile database. The statistics are then stored in a table. This allows you to obtain statistics for other databases from the profile database.
+> **Note:** Due to the security restrictions of `dblink` , the profile database and the server database must be created in the same PolarDB for PostgreSQL cluster.
+
+The following steps describe how to create a server database and a profile database. During sampling, the profile database sends a sampling request to the server database. After the server database receives the request, it returns its statistics to the profile database. The statistics are then stored in a table. This allows you to obtain statistics for other databases from the profile database.
 
 **Server database**
 
@@ -6030,7 +6187,7 @@ Sample result:
 (1 row)
 ```
 
-A circle is divided into 360 degrees. One degree is divided into 60 minutes. One minute is divided into 60 seconds.
+> **Note:** A circle is divided into 360 degrees. One degree is divided into 60 minutes. One minute is divided into 60 seconds.
 
 **Constructors**
 
@@ -6079,7 +6236,9 @@ Sample result:
 ------ (1 row)
 ```
 
-Retrieve the longitude and latitude of a spherical point in degrees. In the pg_sphere extension, the `long(spoint)` function has been changed to
+Retrieve the longitude and latitude of a spherical point in degrees.
+
+> **Note:** In the pg_sphere extension, the `long(spoint)` function has been changed to
 
 ```
  long_sphere(spoint) .
@@ -6180,7 +6339,11 @@ The sequential_uuid extension provides two universally unique identifier (UUID) 
 
 **Background information**
 
-Standard random UUID generators select values uniformly from a given range. This leads to poor data locality when you insert data into an index because all index leaf pages are equally likely to be hit. This can force the entire index into memory. This is not an issue for small indexes. However, the cache hit ratio drops quickly when the index size exceeds the shared buffer or RAM size. Compared to random UUIDs, UUIDs that are based on sequences and timestamps have a sequential pattern. This pattern ensures that new data is almost always inserted at the rightmost edge of the index because new sequence values are greater than previous ones and timestamps monotonically increase. This helps improve the cache hit ratio. UUID generators with sequential patterns increase the predictability of UUIDs and the probability of cross-machine collisions. For more information about the benefits of sequential UUIDs, see Sequential UUID Generators. The main goal of the sequential_uuid extension is to generate more sequential UUIDs without significantly reducing randomness. A reduction in randomness can increase the probability of collisions and the predictability of the UUIDs.
+Standard random UUID generators select values uniformly from a given range. This leads to poor data locality when you insert data into an index because all index leaf pages are equally likely to be hit. This can force the entire index into memory. This is not an issue for small indexes. However, the cache hit ratio drops quickly when the index size exceeds the shared buffer or RAM size. Compared to random UUIDs, UUIDs that are based on sequences and timestamps have a sequential pattern. This pattern ensures that new data is almost always inserted at the rightmost edge of the index because new sequence values are greater than previous ones and timestamps monotonically increase. This helps improve the cache hit ratio.
+
+> **Note:** UUID generators with sequential patterns increase the predictability of UUIDs and the probability of cross-machine collisions.
+
+For more information about the benefits of sequential UUIDs, see Sequential UUID Generators. The main goal of the sequential_uuid extension is to generate more sequential UUIDs without significantly reducing randomness. A reduction in randomness can increase the probability of collisions and the predictability of the UUIDs.
 
 **Generator design**
 
@@ -6190,13 +6353,17 @@ The simplest way to make UUIDs more sequential is to use a sequential value as a
 (nextval('s') / 256) % 65536
 ```
 
-The generator loops back after every 16,777,216 (256 × 65,536) UUIDs are generated. The block size is defined by the number of UUIDs it contains. The timestamp-based UUID generator has a default of 65,536 blocks, the same as the sequence-based generator. The block ID is calculated as follows:
+> **Note:** The generator loops back after every 16,777,216 (256 × 65,536) UUIDs are generated.
+> The block size is defined by the number of UUIDs it contains.
+
+The timestamp-based UUID generator has a default of 65,536 blocks, the same as the sequence-based generator. The block ID is calculated as follows:
 
 ```
 (timestamp / 60) % 65536
 ```
 
-The generator loops back approximately every 45 days. The block size is defined as a time interval. The default value is 60 seconds.
+> **Note:** The generator loops back approximately every 45 days.
+> The block size is defined as a time interval. The default value is 60 seconds.
 
 **UUID generation functions**
 
@@ -6230,7 +6397,7 @@ Sample result:
 (1 row)
 ```
 
-The default values for these parameters are suitable for most scenarios.
+> **Note:** The default values for these parameters are suitable for most scenarios.
 
 ### 12.17 pg_pathman
 
@@ -6456,7 +6623,11 @@ parent table is not included in the execution plan.
 (3 rows)
 ```
 
-When you use range partitioning, take note of the following items: The partition key column must contain the NOT NULL constraint. The number of partitions must be sufficient to cover all existing records. Perform non-blocking data migration. After data migration is completed, disable the parent table.
+> **Note:** When you use range partitioning, take note of the following items:
+> The partition key column must contain the NOT NULL constraint.
+> The number of partitions must be sufficient to cover all existing records.
+> Perform non-blocking data migration.
+> After data migration is completed, disable the parent table.
 
 **Perform hash partitioning**
 
@@ -6571,13 +6742,18 @@ Check constraints:
 (get_hash_part_idx(timestamp_hash(crt_time), 128) = 122) Inherits: part_test
 ```
 
-When you use hash partitioning, take note of the following items: The partition key column must contain the NOT NULL constraint. Perform non-blocking data migration. After data migration is completed, disable the parent table. The pg_pathman extension can work regardless of how the statement is written.
+> **Note:** When you use hash partitioning, take note of the following items:
+> The partition key column must contain the NOT NULL constraint.
+> Perform non-blocking data migration.
+> After data migration is completed, disable the parent table.
+> The pg_pathman extension can work regardless of how the statement is written.
 
 |   | select * from part test where crt time = _ _ |
 |---|---|
 | '2016-10-25 00:00:00'::timestamp; |   |
 
-partitioning. HASH partition columns are not limited to int-type columns. The column types are automatically converted by a hash function.
+> partitioning.
+> HASH partition columns are not limited to int-type columns. The column types are automatically converted by a hash function.
 
 **Migrate data to partitions**
 
@@ -6771,7 +6947,7 @@ Examples:
 SELECT merge_range_partitions('part_test_1'::regclass, 'part_test_1_2'::regclass);
 ```
 
-The following error is returned if you merge the partitions that are not adjacent.
+> **Note:** The following error is returned if you merge the partitions that are not adjacent.
 
 ```
 SELECT merge_range_partitions('part_test_2'::regclass, 'part_test_12'::regclass)
@@ -7105,9 +7281,7 @@ SELECT count(*) FROM part_test_2;
 
 You can disable the pg_pathman extension for a parent table. Function:
 
-**Important**
-
-The `disable_pathman_for` operation is irreversible. Proceed with caution.
+> **Important:** The `disable_pathman_for` operation is irreversible. Proceed with caution.
 
 ```
 \sf disable_pathman_for CREATE OR REPLACE FUNCTION public.disable_pathman_for(parent_relid regclass)
@@ -7313,7 +7487,7 @@ Child tables: part_test_10,
               ......
 ```
 
-We recommend that you disable automatic partition propagation for range-partitioned tables because inappropriate automatic partition propagation may require an extended period of time to complete.
+> **Note:** We recommend that you disable automatic partition propagation for range-partitioned tables because inappropriate automatic partition propagation may require an extended period of time to complete.
 
 **Configure a callback function**
 
@@ -7541,7 +7715,16 @@ Only sequential search for high-dimensional vectors is supported in cross-node p
 
 **Algorithms used by PASE**
 
-IVFFlat IVFFlat is a simplified version of the IVFADC algorithm. IVFFlat is suitable for business scenarios that require high precision but can tolerate up to 100 milliseconds taken for queries. IVFFlat has the following advantages compared with other algorithms: If the vector to query is one of the candidate datasets, IVFFlat delivers 100% recall. IVFFlat uses a simple structure to create indexes at fast speeds, and the created indexes occupy less storage. You can specify a centroid for clustering and reconfigure parameters to control precision. The algorithm parameters are interpretable, which allows users to fully control the accuracy of the algorithm. The following figure shows how IVFFlat works. The following procedure describes how IVFFlat works: i. IVFFlat uses a clustering algorithm such as k-means to divide vectors in the highdimensional space into clusters based on implicit clustering properties. This way, each cluster has a centroid. ii. IVFFlat traverses the centroids of all clusters to identify the n centroids that are nearest to the vector that you want to query. iii. IVFFlat traverses and sorts all vectors in the clusters to which the identified n centroids belong. Then, IVFFlat obtains the nearest k vectors. When IVFFlat attempts to identify the nearest n centroids, IVFFlat skips the clusters that are located far from the vector that you want to query. This expedites the query. However, IVFFlat cannot ensure that all the similar k vectors are included in the clusters to which the identified n centroids belong. As a result, precision may decrease. You can use the variable n to control precision. A larger value of n indicates higher precision but more computing workloads. In the first phase, IVFFlat works in the same way as IVFADC. The main differences between IVFFlat and IVFADC lie in the second phase. In the second phase, IVFADC uses product quantization to eliminate the need for traversal computing workloads. This expedites the query but decreases precision. IVFFlat implements brute-force search to ensure precision and allows you to control computing workloads. HNSW HNSW is a graph-based ANN algorithm that is suitable for queries among tens of millions or more vector datasets. Responses to these queries must be returned within 10 milliseconds or less. HNSW searches for similar vectors among proximity graph neighbors. If the data volume is large, HNSW significantly improves performance compared with other algorithms. However, HNSW requires the storage of proximity graph neighbors, which occupy storage space. In addition, after the precision of HNSW reaches a specific level, you cannot increase the precision of HNSW by reconfiguring parameters. The following figure shows how HNSW works. The following procedure describes how HNSW works: i. HNSW builds a hierarchical structure that consists of multiple layers, which are also called graphs. Each layer is the panorama and skip list of its lower layer. ii. HNSW randomly selects an element from the top layer to start a search. iii. HNSW identifies the neighbors of the selected element and adds the identified neighbors to a fixed-length dynamic list based on the distances of the identified neighbors to the selected element. HNSW continues to identify the neighbors of each neighbor that is included in the list and adds the identified neighbors to the list. Every time HNSW adds a neighbor to the list, HNSW re-sorts the neighbors in the list and retains only the first k neighbors. If the list changes, HNSW continues to search until the list reaches the final state. Then, HNSW uses the first element in the list as the start for a search in the lower layer. iv. HNSW repeats the third step until it completes a search in the bottom layer. HNSW constructs a multi-layer structure by using the Navigable Small World (NSW) algorithm that is designed to construct single-layer structures. The employment of an approach for selecting proximity graph neighbors enables HNSW to deliver higher query speedup than clustering algorithms. IVFFlat and HNSW are suitable for specific business scenarios. For example, IVFFlat is suitable for image comparison at high precision, and HNSW is suitable for searches with recommended recall. More industry-leading algorithms will be integrated into PASE.
+IVFFlat IVFFlat is a simplified version of the IVFADC algorithm. IVFFlat is suitable for business scenarios that require high precision but can tolerate up to 100 milliseconds taken for queries. IVFFlat has the following advantages compared with other algorithms: If the vector to query is one of the candidate datasets, IVFFlat delivers 100% recall. IVFFlat uses a simple structure to create indexes at fast speeds, and the created indexes occupy less storage. You can specify a centroid for clustering and reconfigure parameters to control precision. The algorithm parameters are interpretable, which allows users to fully control the accuracy of the algorithm. The following figure shows how IVFFlat works. The following procedure describes how IVFFlat works: i. IVFFlat uses a clustering algorithm such as k-means to divide vectors in the highdimensional space into clusters based on implicit clustering properties. This way, each cluster has a centroid. ii. IVFFlat traverses the centroids of all clusters to identify the n centroids that are nearest to the vector that you want to query. iii. IVFFlat traverses and sorts all vectors in the clusters to which the identified n centroids belong. Then, IVFFlat obtains the nearest k vectors.
+
+> **Note:** When IVFFlat attempts to identify the nearest n centroids, IVFFlat skips the clusters that are located far from the vector that you want to query. This expedites the query. However, IVFFlat cannot ensure that all the similar k vectors are included in the clusters to which the identified n centroids belong. As a result, precision may decrease. You can use the variable n to control precision. A larger value of n indicates higher precision but more computing workloads.
+> In the first phase, IVFFlat works in the same way as IVFADC. The main differences between IVFFlat and IVFADC lie in the second phase. In the second phase, IVFADC uses product quantization to eliminate the need for traversal computing workloads. This expedites the query but decreases precision. IVFFlat implements brute-force search to ensure precision and allows you to control computing workloads.
+
+HNSW HNSW is a graph-based ANN algorithm that is suitable for queries among tens of millions or more vector datasets. Responses to these queries must be returned within 10 milliseconds or less. HNSW searches for similar vectors among proximity graph neighbors. If the data volume is large, HNSW significantly improves performance compared with other algorithms. However, HNSW requires the storage of proximity graph neighbors, which occupy storage space. In addition, after the precision of HNSW reaches a specific level, you cannot increase the precision of HNSW by reconfiguring parameters. The following figure shows how HNSW works. The following procedure describes how HNSW works: i. HNSW builds a hierarchical structure that consists of multiple layers, which are also called graphs. Each layer is the panorama and skip list of its lower layer. ii. HNSW randomly selects an element from the top layer to start a search. iii. HNSW identifies the neighbors of the selected element and adds the identified neighbors to a fixed-length dynamic list based on the distances of the identified neighbors to the selected element. HNSW continues to identify the neighbors of each neighbor that is included in the list and adds the identified neighbors to the list. Every time HNSW adds a neighbor to the list, HNSW re-sorts the neighbors in the list and retains only the first k neighbors. If the list changes, HNSW continues to search until the list reaches the final state. Then, HNSW uses the first element in the list as the start for a search in the lower layer. iv. HNSW repeats the third step until it completes a search in the bottom layer.
+
+> **Note:** HNSW constructs a multi-layer structure by using the Navigable Small World (NSW) algorithm that is designed to construct single-layer structures. The employment of an approach for selecting proximity graph neighbors enables HNSW to deliver higher query speedup than clustering algorithms.
+
+IVFFlat and HNSW are suitable for specific business scenarios. For example, IVFFlat is suitable for image comparison at high precision, and HNSW is suitable for searches with recommended recall. More industry-leading algorithms will be integrated into PASE.
 
 **PASE usage**
 
@@ -7558,15 +7741,26 @@ PASE-type-based construction Examples
 SELECT ARRAY[2, 1, 1]::float4[] <?> pase(ARRAY[3, 1, 1]::float4[]) AS distance; SELECT ARRAY[2, 1, 1]::float4[] <?> pase(ARRAY[3, 1, 1]::float4[], 0) AS distance; SELECT ARRAY[2, 1, 1]::float4[] <?> pase(ARRAY[3, 1, 1]::float4[], 0, 1) AS distance;
 ```
 
-<?> is a PASE-type operator, which is used to calculate the similarity between the vectors to the left and right of a specific element. The vector to the left must use the float4[] data type, and the vector to the right must use the PASE data type. The PASE data type is defined in PASE and can contain up to three constructors. Take the `float4[], 0, 1` part in the preceding third statement as an example. The first parameter specifies the vector to the right with the float4[] data type. The second parameter does not serve a special purpose and can be set to 0. The third parameter specifies the similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product. The vector to the left must have the same number of dimensions as the vector to the right. Otherwise, the system reports similarity calculation errors. String-based construction Examples
+> **Note:** <?> is a PASE-type operator, which is used to calculate the similarity between the vectors to the left and right of a specific element. The vector to the left must use the float4[] data type, and the vector to the right must use the PASE data type.
+> The PASE data type is defined in PASE and can contain up to three constructors. Take the `float4[], 0, 1` part in the preceding third statement as an example. The first parameter specifies the vector to the right with the float4[] data type. The second parameter does not serve a special purpose and can be set to 0. The third parameter specifies the similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product.
+> The vector to the left must have the same number of dimensions as the vector to the right. Otherwise, the system reports similarity calculation errors.
+
+String-based construction Examples
 
 ```
 SELECT ARRAY[2, 1, 1]::float4[] <?> '3,1,1'::pase AS distance; SELECT ARRAY[2, 1, 1]::float4[] <?> '3,1,1:0'::pase AS distance; SELECT ARRAY[2, 1, 1]::float4[] <?> '3,1,1:0:1'::pase AS distance;
 ```
 
-The string-based construction method differs from the PASE-type-based construction in the following aspect: The string-based construction method uses colons (:) to separate parameters. Take the `3,1,1:0:1` part in the preceding third statement as an example: The first parameter specifies the vector to the right. The second parameter does not serve a special purpose and can be set to 0. The third parameter specifies the similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product.
+> **Note:** The string-based construction method differs from the PASE-type-based construction in the following aspect: The string-based construction method uses colons (:) to separate parameters. Take the `3,1,1:0:1` part in the preceding third statement as an example: The first parameter specifies the vector to the right. The second parameter does not serve a special purpose and can be set to 0. The third parameter specifies the similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product.
+
 3. Use IVFFlat or HNSW to create an index.
-If you use the Euclidean distance method to calculate a vector similarity, the original vector does not need to be processed. If you use the dot product or the cosine method to calculate a vector similarity, the original vector must be normalized. For example, if the original vector is , it must comply with the following formula: . In this example, the dot product is the same as the cosine value. IVFFlat Examples
+
+> **Note:** If you use the Euclidean distance method to calculate a vector similarity, the original vector does not need to be processed. If you use the dot product or the cosine method to calculate a vector similarity, the original vector must be normalized. For example, if the original vector is
+> , it must comply with the following formula:
+> . In this example, the dot product is the same as
+> the cosine value.
+
+IVFFlat Examples
 
 ```
 CREATE INDEX ivfflat_idx ON vectors_table USING
@@ -7614,13 +7808,19 @@ IVFFlat index Examples
 SELECT id, vector <#> '1,1,1'::pase as distance FROM vectors_ivfflat ORDER BY vector <#> '1,1,1:10:0'::pase ASC LIMIT 10;
 ```
 
-<#> is an operator that is used by IVFFlat indexes. You must execute the ORDER BY statement to make an IVFFlat index take effect. An IVFFlat index allows vectors to be sorted in ascending order. The PASE data type requires three parameters to specify a vector. These parameters are separated by colons (:). For example, `1,1,1:10:0` includes three parameters. The first parameter specifies the vector to query. The second parameter specifies the query efficiency of IVFFlat with a value range of (0,1000], in which a larger value indicates higher query accuracy but poorer query performance. The third parameter specifies the vector similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product. The dot product method requires the normalization of vectors. The order of dot products is opposite to the order of Euclidean distances. HNSW index Examples
+> **Note:** <#> is an operator that is used by IVFFlat indexes.
+> You must execute the ORDER BY statement to make an IVFFlat index take effect. An IVFFlat index allows vectors to be sorted in ascending order.
+> The PASE data type requires three parameters to specify a vector. These parameters are separated by colons (:). For example, `1,1,1:10:0` includes three parameters. The first parameter specifies the vector to query. The second parameter specifies the query efficiency of IVFFlat with a value range of (0,1000], in which a larger value indicates higher query accuracy but poorer query performance. The third parameter specifies the vector similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product. The dot product method requires the normalization of vectors. The order of dot products is opposite to the order of Euclidean distances.
+
+HNSW index Examples
 
 ```
 SELECT id, vector <?> '1,1,1'::pase as distance FROM vectors_ivfflat ORDER BY vector <?> '1,1,1:100:0'::pase ASC LIMIT 10;
 ```
 
-<?> is an operator that is used by the HNSW index. You must execute the ORDER BY statement to make an IVFFlat index take effect. An IVFFlat index allows vectors to be sorted in ascending order. The PASE data type requires three parameters to specify a vector. These parameters are separated by colons (:). For example, `1,1,1:10:0` includes three parameters. The first parameter specifies the vector to query. The second parameter specifies the query efficiency of HNSW with a value range of (0, ∞), in which a larger value indicates higher query accuracy but lower query performance. We recommend that you set the second parameter to 40 and then test the value by small increases until you find the most suitable value for your business. The third parameter specifies the vector similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product. The dot product method requires the normalization of vectors. The order of dot products is opposite to the order of Euclidean distances.
+> **Note:** <?> is an operator that is used by the HNSW index.
+> You must execute the ORDER BY statement to make an IVFFlat index take effect. An IVFFlat index allows vectors to be sorted in ascending order.
+> The PASE data type requires three parameters to specify a vector. These parameters are separated by colons (:). For example, `1,1,1:10:0` includes three parameters. The first parameter specifies the vector to query. The second parameter specifies the query efficiency of HNSW with a value range of (0, ∞), in which a larger value indicates higher query accuracy but lower query performance. We recommend that you set the second parameter to 40 and then test the value by small increases until you find the most suitable value for your business. The third parameter specifies the vector similarity calculation method, where the value 0 represents the Euclidean distance method and the value 1 represents the dot product method. A dot product is also called an inner product. The dot product method requires the normalization of vectors. The order of dot products is opposite to the order of Euclidean distances.
 
 **Appendix**
 
@@ -7642,7 +7842,9 @@ $$
 LANGUAGE plpgsql;
 ```
 
-The dot product of a normalized vector is the same as its cosine value. Therefore, you can also follow this example to calculate the cosine value of a vector. Create an IVFFlat index from an external centroid file. This is an advanced feature. You must upload an external centroid file to the specified directory of the server and use this file to create an IVFFlat index. This file is in the following format:
+> **Note:** The dot product of a normalized vector is the same as its cosine value. Therefore, you can also follow this example to calculate the cosine value of a vector.
+
+Create an IVFFlat index from an external centroid file. This is an advanced feature. You must upload an external centroid file to the specified directory of the server and use this file to create an IVFFlat index. This file is in the following format:
 
 ```
 Number of dimensions|Number of centroids|Centroid vector dataset
@@ -7689,13 +7891,15 @@ Automatically load the extension for a single user. Execute the following statem
 ALTER USER xxx set session_preload_libraries='pg_hint_plan';
 ```
 
-Replace xxx in the statement with the actual username. Execute the following statement to load the extension for a single database.
+> **Note:** Replace xxx in the statement with the actual username.
+
+Execute the following statement to load the extension for a single database.
 
 ```
 ALTER DATABASE xxx set session_preload_libraries='pg_hint_plan';
 ```
 
-If the account cannot log in to the database due to improper configurations, execute one of the following statements to log in to PolarDB through another account or database and reset the configurations.
+> **Note:** If the account cannot log in to the database due to improper configurations, execute one of the following statements to log in to PolarDB through another account or database and reset the configurations.
 
 ```
 ALTER USER xxx reset session_preload_libraries; ALTER DATABASE xxx reset session_preload_libraries;
@@ -7806,7 +8010,10 @@ This type of hint specifies the order in which two or more tables are joined. Yo
      JOIN table table3 t3 ON (t2.key = t3.key);
 ```
 
-Components: `NestLoop(t1 t2)` : specifies the method for joining the t1 and t2 tables. `MergeJoin(t1 t2 t3)` : specifies the method for joining the t1, t2, and t3 tables. `Leading(t1 t2 t3)` : specifies the order in which the three tables are joined.
+> **Note:** Components:
+> `NestLoop(t1 t2)` : specifies the method for joining the t1 and t2 tables.
+> `MergeJoin(t1 t2 t3)` : specifies the method for joining the t1, t2, and t3 tables.
+> `Leading(t1 t2 t3)` : specifies the order in which the three tables are joined.
 
 **Hints for row number correction**
 
@@ -7905,7 +8112,7 @@ The following table lists all supported hint syntaxes. You can add the hints as 
 |   | NoPX() | Prohibits a cross-node parallel execution. |
 | Hints for GUC parameter setting | Set(GUC-param value) | Specifies the value of a GUC parameter when the optimizer runs. |
 
-The pg_hint_plan extension can also specify the execution plan generated during a cross-node parallel execution. During a cross-node parallel execution, the Rows(table table[ table...] correction) hint is not supported. The hints for join methods can be used only to join two tables, and the hints for join order can be used only for all tables.
+> **Note:** The pg_hint_plan extension can also specify the execution plan generated during a cross-node parallel execution. During a cross-node parallel execution, the Rows(table table[ table...] correction) hint is not supported. The hints for join methods can be used only to join two tables, and the hints for join order can be used only for all tables.
 
 ### 12.22 varbitx
 
@@ -8061,9 +8268,7 @@ This extension is available only for PolarDB for PostgreSQL 16 instances.
 
 On the **parameter settings** page of your PolarDB instance, add `pg_search` to the `shared_preload_libraries` parameter, and then click **Submit Parameters**.
 
-**Important**
-
-Modifying the `shared_preload_libraries` parameter automatically restarts the instance. To minimize service disruption, perform this operation during off-peak hours.
+> **Important:** Modifying the `shared_preload_libraries` parameter automatically restarts the instance. To minimize service disruption, perform this operation during off-peak hours.
 
 **Install the pg_search extension**
 
@@ -8139,15 +8344,22 @@ CREATE INDEX test_search_idx ON test USING bm25(id,description,rating) WITH(
         "rating": {"fast": true}
 ```
 
-`}'` ); `indexed` : Controls whether a column is indexed. The default value is `true` . `fast` : Enables columnar storage to accelerate filtering and sorting. The default value is `false` for text fields and `true` for numeric, boolean, and datetime fields. `tokenizer` : Specifies a tokenizer for a text field. To view available tokenizers, run
+`}'` );
+
+> **Note:** `indexed` : Controls whether a column is indexed. The default value is `true` .
+> `fast` : Enables columnar storage to accelerate filtering and sorting. The default value is `false` for text fields and `true` for numeric, boolean, and datetime fields.
+> `tokenizer` : Specifies a tokenizer for a text field. To view available tokenizers, run
 
 ```
  SELECT * FROM pgsearch.tokenizers(); .
 ```
 
-BM25 indexes support partial indexes ( `WHERE` clause) and expression indexes.
+> BM25 indexes support partial indexes ( `WHERE` clause) and expression indexes.
+
 3. . Run search queries**
-Use the `@@@` operator to perform a full-text search and the `pgsearch.score()` function to retrieve the BM25 relevance score. For queries with non-text filtering conditions, such as `rating>1` , add the corresponding columns to the BM25 index to enable predicate pushdown and significantly improve query performance.
+Use the `@@@` operator to perform a full-text search and the `pgsearch.score()` function to retrieve the BM25 relevance score.
+
+> **Note:** For queries with non-text filtering conditions, such as `rating>1` , add the corresponding columns to the BM25 index to enable predicate pushdown and significantly improve query performance.
 
 **Basic keyword search**
 
@@ -8285,7 +8497,9 @@ between multiple metrics (for example, whether CPU usage rises synchronously whe
 **Real-time tables**: Suitable for viewing exact metric values at a specific point in time,
 which facilitates baseline data recording and detailed data comparison. Each row in the table represents a sampling point in time, and each column corresponds to the specific value of a metric. oudDBA
 **Data download**: On the **Real-time Tables** tab, click the **Download** button in the
-upper-right corner of the page to export the current report data to your local device. Some database engines (MongoDB and Redis) do not support the report download feature. The actual availability depends on what the console displays.
+upper-right corner of the page to export the current report data to your local device.
+
+> **Note:** Some database engines (MongoDB and Redis) do not support the report download feature. The actual availability depends on what the console displays.
 
 **Parameter description**
 
@@ -8310,7 +8524,10 @@ When database issues, such as deadlocks, occur, you can use the lock analysis fe
 **of local disk instances** page, find the instance that you want to manage and click its ID or
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, choose **CloudDBA > Diagnostics**. Then, click **Diagnose**
-on the **Lock Analysis** tab. If multiple deadlocks have occurred, DAS analyzes only **the most recent deadlock** and retains the deadlock data.
+on the **Lock Analysis** tab.
+
+> **Note:** If multiple deadlocks have occurred, DAS analyzes only **the most recent deadlock** and retains the deadlock data.
+
 4. After the diagnostic task is complete, select a time range and click **View Details** in the
 **Details** column of the diagnostic task list under recent deadlock analysis to view the
 results of deadlock diagnostic tasks that were triggered during the time range. oudDBA
@@ -8331,7 +8548,10 @@ The database instance that you want to manage is connected to Database Autonomy 
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, choose **CloudDBA > Diagnostics**. Then, click the
 **Storage Analysis** tab.
-PolarDB for PostgreSQL supports displaying tablespace information at the schema level. This allows you to distinguish between tablespaces with the same name across different schemas. It makes it easier to locate the storage usage of a business module. On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
+
+> **Note:** PolarDB for PostgreSQL supports displaying tablespace information at the schema level. This allows you to distinguish between tablespaces with the same name across different schemas. It makes it easier to locate the storage usage of a business module.
+
+On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
 ### 14.3 Performance Trend
 
@@ -8356,7 +8576,9 @@ oudDBA
 2. On the **Instances** page, click the ID of the target instance to go to the instance details
 page.
 3. In the navigation pane on the left, click **CloudDBA > Performance Trend**.
-On the **Performance Trend** tab, view the performance trend of each metric within the selected time range. Click **More Metrics** to select the metrics whose performance trends you want to view. In a metric trend chart, click **Details** to enlarge the chart. You can also change the time range to view the change trends of the metric over different periods. On the **Performance Trend Comparison** tab, set two time ranges and click **View** to see a chart that compares the performance trends. On the **Custom Chart** tab, create custom monitoring dashboards as needed. You can display multiple required performance monitoring metrics in a single chart for easier troubleshooting and analysis. If this is your first time, first click **Add Monitoring Dashboard**.
+On the **Performance Trend** tab, view the performance trend of each metric within the selected time range. Click **More Metrics** to select the metrics whose performance trends you want to view. In a metric trend chart, click **Details** to enlarge the chart. You can also change the time range to view the change trends of the metric over different periods. On the **Performance Trend Comparison** tab, set two time ranges and click **View** to see a chart that compares the performance trends. On the **Custom Chart** tab, create custom monitoring dashboards as needed. You can display multiple required performance monitoring metrics in a single chart for easier troubleshooting and analysis.
+
+> **Note:** If this is your first time, first click **Add Monitoring Dashboard**.
 
 ### 14.4 Slow query logs
 
@@ -8369,8 +8591,8 @@ In PolarDB, CloudDBA provides the slow query log analysis feature that allows yo
 **of local disk instances** page, find the instance that you want to manage and click its ID or
 click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, choose **CloudDBA > Slow Query Logs**.
-For more information, see the **Slow query logs** topic in **Database Autonomy**
-**Service (DAS) > User Guide.** .
+
+> **Note:** For more information, see the **Slow query logs** topic in **Database Autonomy** **Service (DAS) > User Guide.** .
 
 ### 14.5 Diagnostic reports
 
@@ -8396,7 +8618,9 @@ Click **Create Reports**. In the dialog box that appears, select a time range (L
 
 **time**
 
-Click **Auto-generating Report Settings**, select **Scheduled Trigger**, select days and a specific time, and then click **OK**. Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
+Click **Auto-generating Report Settings**, select **Scheduled Trigger**, select days and a specific time, and then click **OK**.
+
+> **Note:** Due to system scheduling and resource usage, diagnostic reports may be generated with a delay. The actual time prevails.
 
 **View diagnostic report details**
 
@@ -8475,9 +8699,15 @@ You do not need to go to the DTS console. All task statuses are displayed on thi
 
 **endpoints**
 
-When the incremental synchronization latency approaches zero and no errors are reported, you can proceed to change the endpoint configured in your application. We recommend that the endpoint switching be performed during off-peak hours and the reconnection mechanism of your application be verified in advance.
+When the incremental synchronization latency approaches zero and no errors are reported, you can proceed to change the endpoint configured in your application.
+
+> **Note:** We recommend that the endpoint switching be performed during off-peak hours and the reconnection mechanism of your application be verified in advance.
+
 1. On the **Database migration results** tab, confirm that the migration status is normal and
-then click **Migrate Endpoint** in the Operation column. In the result list, you can view the details of the task, such as the creation time, running status, the number of rows in the source when the task starts, and the number of rows in the destination when the task ends. Once the task starts, if the source data changes, data inconsistency occurs between the source and destination after the task is complete.
+then click **Migrate Endpoint** in the Operation column. In the result list, you can view the details of the task, such as the creation time, running status, the number of rows in the source when the task starts, and the number of rows in the destination when the task ends.
+
+> **Note:** Once the task starts, if the source data changes, data inconsistency occurs between the source and destination after the task is complete.
+
 2. On the tab that appears, confirm the information about the source and destination
 databases and click **Switch Endpoint**.
 
@@ -8515,7 +8745,10 @@ User question: Is DTS migration task `l65e721` running correctly? If there are e
 
 **operations**
 
-capabilities This topic describes how to migrate data from a PolarDB for PostgreSQL 14 cluster to a PolarDB for PostgreSQL 16 cluster through visualized operations. The quick migration feature depends on ApsaraDB RDS, PolarDB for PostgreSQL, Data Transmission Service (DTS), and OneConsole. You must upgrade the preceding component versions to the destination versions or later.
+capabilities This topic describes how to migrate data from a PolarDB for PostgreSQL 14 cluster to a PolarDB for PostgreSQL 16 cluster through visualized operations.
+
+> **Note:** The quick migration feature depends on ApsaraDB RDS, PolarDB for PostgreSQL, Data Transmission Service (DTS), and OneConsole. You must upgrade the preceding component versions to the destination versions or later.
+
 1. . Overview**
 PolarDB allows you to migrate data from a PolarDB for PostgreSQL 14 cluster to a PolarDB for PostgreSQL 16 cluster. This feature is often used for major engine version upgrades of PolarDB for PostgreSQL. Solution overview: After you create a PolarDB for PostgreSQL 16 cluster, you can use DTS to migrate data to the PolarDB for PostgreSQL 16 cluster. You need only to change the service address after the migration.
 
@@ -8614,7 +8847,8 @@ You need to create an extension on the corresponding database before you perform
 
 **cluster**
 
-The account permissions on the PolarDB for PostgreSQL 16 cluster are the same as those on the PolarDB for PostgreSQL 14 cluster. You need to only export and import the account permissions.
+> **Note:** The account permissions on the PolarDB for PostgreSQL 16 cluster are the same as those on the PolarDB for PostgreSQL 14 cluster. You need to only export and import the account permissions.
+
 1. Export user permissions from the source database:
 i. Use a privileged account, which is assumed to be `juhuan` in this example. capabilities
 
@@ -8927,7 +9161,8 @@ SELECT privilege_type FROM information_schema.table_privileges WHERE grantee = '
 
 **Procedure**
 
-Data migration applies to database migration scenarios.
+> **Note:** Data migration applies to database migration scenarios.
+
 1. Log on to the PolarDB console. In the left-side navigation pane, choose **AI Capabilities >**
 **Intelligent Migration**.
 2. On the Intelligent Migration page, click **PolarDB-PG Primary-Secondary Edition to**
@@ -8964,7 +9199,10 @@ capabilities
 6. If an IP address whitelist is configured for your PolarDB for PostgreSQL cluster, you must
 add the CIDR blocks of DTS servers to the whitelist. Then, click **Test Connectivity and**
 **Proceed**.
-capabilities If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+capabilities
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 7. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -8990,15 +9228,17 @@ describes the parameters.
 capabilities
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, a precheck is performed. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, a precheck is performed. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until **Success Rate** reaches 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 **Data synchronization procedure**
 
-Data synchronization applies to table transmission and migration to the cloud.
+> **Note:** Data synchronization applies to table transmission and migration to the cloud.
+
 1. Log on to the PolarDB console. In the left-side navigation pane, choose **AI Capabilities >**
 **Intelligent Migration**.
 2. On the Intelligent Migration page, click **PolarDB-PG Primary-Secondary Edition to**
@@ -9034,7 +9274,10 @@ capabilities
 6. If an IP address whitelist is configured for your PolarDB for PostgreSQL cluster, you must
 add the CIDR blocks of DTS servers to the whitelist. Then, click **Test Connectivity and**
 **Proceed**.
-capabilities If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+capabilities
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 7. Select the objects to be synchronized and the synchronization types. The following table
 describes the parameters.
 
@@ -9059,9 +9302,12 @@ describes the parameters.
 
 9. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. capabilities If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
+capabilities
+
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
+
 0. Wait until **Success Rate** displays 100% and then click **Back**.
 
 ##### 15.1.3.1 Prechecks
@@ -9134,7 +9380,10 @@ Before migration, you need to manually create the plug-ins in the respective dat
 
 ###### 15.1.3.1.3 Account migration
 
-This topic describes how to migrate an account. The account permissions on a PolarDB for PostgreSQL 16 cluster are the same as those on a PolarDB for PostgreSQL 14 cluster. You only need to export and import the account permissions.
+This topic describes how to migrate an account.
+
+> **Note:** The account permissions on a PolarDB for PostgreSQL 16 cluster are the same as those on a PolarDB for PostgreSQL 14 cluster. You only need to export and import the account permissions.
+
 1. Export user permissions from the source database as follows:
 i. Use a privileged account, which is assumed to be `juhuan` in this example.
 
@@ -9453,11 +9702,14 @@ SELECT privilege_type FROM information_schema.table_privileges WHERE grantee = '
 
 ###### 15.1.3.2.1 Data migration
 
-This topic describes how to migrate data. You can migrate data from an on-premises database, self-managed database, or thirdparty database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
+This topic describes how to migrate data.
+
+> **Note:** You can migrate data from an on-premises database, self-managed database, or third- party database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
 
 **Procedure**
 
-Data migration applies to database migration scenarios.
+> **Note:** Data migration applies to database migration scenarios.
+
 1. Log on to the Data Transmission Service (DTS) console. On the **Data Migration** page, click
 **Create Task**, select a region, and specify the number of tasks that you want to create.
 capabilities
@@ -9496,7 +9748,9 @@ describes the parameters.
 4. If an IP address whitelist is configured for your PolarDB for PostgreSQL cluster, you must
 add the CIDR blocks of DTS servers to the whitelist. Then, click **Test Connectivity and**
 **Proceed**.
-If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 5. Select the objects to be migrated and the migration types. The following table describes the
 parameters.
 
@@ -9525,15 +9779,18 @@ describes the parameters.
 
 7. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 8. Wait until **Success Rate** displays 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ###### 15.1.3.2.2 Data synchronization
 
-capabilities This topic describes how to synchronize data. The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
+capabilities This topic describes how to synchronize data.
+
+> **Note:** The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
 
 **Procedure**
 
@@ -9577,7 +9834,9 @@ capabilities
 5. If an IP address whitelist is configured for your PolarDB for PostgreSQL cluster, you must
 add the CIDR blocks of DTS servers to the whitelist. Then, click **Test Connectivity and**
 **Proceed**.
-If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
+> **Note:** If no whitelist is configured for your PolarDB for PostgreSQL cluster, ignore the whitelist settings and click **Test Connectivity and Proceed**.
+
 6. Select the objects to be synchronized and the synchronization types. The following table
 describes the parameters.
 
@@ -9603,9 +9862,9 @@ describes the parameters.
 capabilities
 8. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
 
 #### 15.1.4 Migrate data from ApsaraDB RDS for PostgreSQL to PolarDB for PostgreSQL through visualized operations
@@ -9679,7 +9938,10 @@ Create a PolarDB for PostgreSQL cluster before you perform the migration. To pre
 
 **Usage notes**
 
-Instance type: We recommend that you use the same instance type as the ApsaraDB RDS for PostgreSQL instance. VPC: We recommend that you deploy the PolarDB for PostgreSQL cluster in the same VPC as the ApsaraDB RDS for PostgreSQL instance. If you use a different VPC, make sure that the VPC is accessible to applications before you start the migration. Network whitelist: After you create a PolarDB for PostgreSQL cluster, configure the same network whitelist as the ApsaraDB RDS for PostgreSQL instance to prevent application inaccessibility. capabilities The instance ID changes after the migration. If you are in one of the following scenarios, we recommend that you communicate with the relevant teams in advance to ensure that all involved systems are switched after the migration. The migration does not change the connection string information, and does not affect the existing endpoints. However, if you change the configurations, you need to update the configurations in the following systems: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. CloudMonitor: CloudMonitor monitors the destination instance after the migration. Data Security Center (DSC, formerly known as SDDP) does not support PolarDB.
+Instance type: We recommend that you use the same instance type as the ApsaraDB RDS for PostgreSQL instance. VPC: We recommend that you deploy the PolarDB for PostgreSQL cluster in the same VPC as the ApsaraDB RDS for PostgreSQL instance. If you use a different VPC, make sure that the VPC is accessible to applications before you start the migration. Network whitelist: After you create a PolarDB for PostgreSQL cluster, configure the same network whitelist as the ApsaraDB RDS for PostgreSQL instance to prevent application inaccessibility. capabilities The instance ID changes after the migration. If you are in one of the following scenarios, we recommend that you communicate with the relevant teams in advance to ensure that all involved systems are switched after the migration. The migration does not change the connection string information, and does not affect the existing endpoints. However, if you change the configurations, you need to update the configurations in the following systems: Database services: DTS and Data Management (DMS) that are accessed over cloud instances. Big data services: DataWorks and DataHub that are accessed over cloud instances. CloudMonitor: CloudMonitor monitors the destination instance after the migration.
+
+> **Note:** Data Security Center (DSC, formerly known as SDDP) does not support PolarDB.
+
 3. . Pre-upgrade check on the ApsaraDB RDS for PostgreSQL**
 
 **instance**
@@ -9785,6 +10047,7 @@ The following results show that the check objects pass the compatibility checks:
 >   --old-datadir=/var/lib/pgsql/13/data \
 >   --new-datadir=/var/lib/pgsql/14/data \
 >   --check
+
 Performing Consistency Checks ----------------------------- Checking cluster versions ok Checking database user is the install user ok Checking database connection settings ok Checking for prepared transactions ok Checking for system-defined composite types in user tables ok Checking for reg* data types in user tables ok Checking for contrib/isn with bigint-passing mismatch ok Checking for user-defined encoding conversions ok Checking for user-defined postfix operators ok Checking for incompatible polymorphic functions ok Checking for presence of required libraries ok Checking database user is the install user ok Checking for prepared transactions ok Checking for new cluster tablespace directories ok *Clusters are compatible*
 ```
 
@@ -10114,12 +10377,17 @@ SELECT privilege_type FROM information_schema.table_privileges WHERE grantee = '
 
 **Data migration procedure**
 
-Data migration applies to database migration scenarios.
+> **Note:** Data migration applies to database migration scenarios.
+
 1. Log on to the DTS console. On the **Data Migration** page, click **Create Task**, select a
-region, and specify the number of tasks that you want to create. During the migration process, the connection to the database may be closed several times. We recommend that you do not use the db owner user to perform the migration. If you create a privileged user to perform the migration, you may not have sufficient permissions on certain objects. We recommend that you use the super administrator aurora defined by ApsaraDB RDS and PolarDB to migrate data on DTS.
+region, and specify the number of tasks that you want to create.
+
+> **Note:** During the migration process, the connection to the database may be closed several times. We recommend that you do not use the db owner user to perform the migration. If you create a privileged user to perform the migration, you may not have sufficient permissions on certain objects. We recommend that you use the super administrator aurora defined by ApsaraDB RDS and PolarDB to migrate data on DTS.
+
 2. On the Data Migration page, find the data migration task that you created and click
 **Configure Task**.
-Do not use domain names to connect the source and destination databases because the domain names of the databases will be replaced in subsequent steps.
+
+> **Note:** Do not use domain names to connect the source and destination databases because the domain names of the databases will be replaced in subsequent steps.
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -10168,15 +10436,17 @@ capabilities
 
 6. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 7. Wait until **Success Rate** displays 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 **Data synchronization procedure**
 
-Data synchronization applies to table transmission and migration to the cloud.
+> **Note:** Data synchronization applies to table transmission and migration to the cloud.
+
 1. Log on to the DTS console. On the **Data Synchronization** page, click **Create Task**, select
 a region, and specify the number of tasks that you want to create.
 2. On the Data Synchronization page, find the data synchronization task that you created and
@@ -10234,14 +10504,17 @@ capabilities
 
 6. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 7. Wait until Success Rate displays 100% and then click **Back**.
 
 **Set a database user to read-only**
 
-Procedure: Assume that the user used by the application system is app_user.
+Procedure:
+
+> **Note:** Assume that the user used by the application system is app_user.
+
 1. Set app_user to read-only.
 2. Close the connections of app_user to ensure that the configuration of setting the user to
 read-only takes effect. The database connection pool supports re-establishment of database connections.
@@ -10300,13 +10573,21 @@ If you want to roll back the migration, perform Step 5 to switch to the endpoint
 
 ###### 15.1.4.1.1 Migrate data
 
-This topic describes how to migrate data. You can migrate data from an on-premises database, self-managed database, or thirdparty database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
+This topic describes how to migrate data.
+
+> **Note:** You can migrate data from an on-premises database, self-managed database, or third- party database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
+
 1. Log on to the Data Transmission Service (DTS) console. On the **Data Migration** page, click
 **Create Task**, select a region, and specify the number of instances.
-During the migration process, the connection to the database may be closed several times. We recommend that you do not use the db owner user to perform the migration. If you create a privileged user to perform the migration, you may not have sufficient permissions on certain objects. We recommend that you use the super administrator aurora defined by ApsaraDB RDS and PolarDB to migrate data on DTS.
+
+> **Note:** During the migration process, the connection to the database may be closed several times. We recommend that you do not use the db owner user to perform the migration. If you create a privileged user to perform the migration, you may not have sufficient permissions on certain objects. We recommend that you use the super administrator aurora defined by ApsaraDB RDS and PolarDB to migrate data on DTS.
+
 2. On the Data Migration page, find the data migration instance that you created and click
 **Configure Task**. Then, configure the source and destination databases.
-Do not use domain names to connect the source and destination databases because the domain names of the databases will be replaced in subsequent steps. capabilities
+
+> **Note:** Do not use domain names to connect the source and destination databases because the domain names of the databases will be replaced in subsequent steps.
+
+capabilities
 
 | Section | Parameter | Description |
 |---|---|---|
@@ -10356,15 +10637,19 @@ capabilities
 6. In the lower part of the page, click **Next: Precheck and Start Task**.
 capabilities
 
-**Important**
+> **Important:** Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck.
+> If the task fails to pass the precheck, click **View Cause** and fix the issue by following the on-screen instruction. Then, perform a precheck again.
 
-Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click **View Cause** and fix the issue by following the on-screen instruction. Then, perform a precheck again.
 7. Wait until **Success Rate** displays 100% and then click **Back**.
-If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
+
+> **Note:** If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
 ###### 15.1.4.1.2 Data synchronization
 
-This topic describes how to synchronize data. The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
+This topic describes how to synchronize data.
+
+> **Note:** The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
+
 1. Log on to the Data Transmission Service (DTS) console. In the left-side navigation pane,
 click Data Synchronization. On the **Data Synchronization** page, click **Create Task**. In the panel that appears, select a region and specify the number of tasks that you want to create.
 2. On the Data Synchronization page, find the data synchronization task that you created and
@@ -10419,9 +10704,9 @@ capabilities
 
 6. In the lower part of the page, click **Next: Precheck and Start Task**.
 
-**Important**
+> **Important:** Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck.
+> If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 
-Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails the precheck, click **View Details** and fix the issue by following the on-screen instructions. Then, perform a precheck again.
 7. Wait until Success Rate displays 100% and then click **Back**.
 capabilities
 
@@ -10434,7 +10719,8 @@ This topic describes how to view data migration tasks and their status.
 1. Log on to the Data Transmission Service (DTS) console.
 2. In the left-side navigation pane, click **Data Migration**.
 3. Select the migration instance whose migration status and progress you want to view.
-To view detailed information, click **Task Details** for the migration instance.
+
+> **Note:** To view detailed information, click **Task Details** for the migration instance.
 
 ##### 15.1.4.2 Prechecks
 
@@ -10516,6 +10802,7 @@ The following result is returned: capabilities
 >   --old-datadir=/var/lib/pgsql/13/data \
 >   --new-datadir=/var/lib/pgsql/14/data \
 >   --check
+
 Performing Consistency Checks ----------------------------- Checking cluster versions ok Checking database user is the install user ok Checking database connection settings ok Checking for prepared transactions ok Checking for system-defined composite types in user tables ok Checking for reg* data types in user tables ok Checking for contrib/isn with bigint-passing mismatch ok Checking for user-defined encoding conversions ok Checking for user-defined postfix operators ok Checking for incompatible polymorphic functions ok Checking for presence of required libraries ok Checking database user is the install user ok Checking for prepared transactions ok Checking for new cluster tablespace directories ok *Clusters are compatible*
 ```
 
@@ -10920,7 +11207,9 @@ Your Apsara Stack tenant accounts have management permissions on the following s
 
 **Confirm the network plan**
 
-Ensure that the same VPC is used for unified deployment of the following resources: PolarDB for PostgreSQL cluster ACK cluster on which the AI Gateway (Higress engine) instance depends AI resource pool to which Dify belongs You must confirm the VPC ID of the destination ACK cluster in the ACK console in advance.
+Ensure that the same VPC is used for unified deployment of the following resources: PolarDB for PostgreSQL cluster ACK cluster on which the AI Gateway (Higress engine) instance depends AI resource pool to which Dify belongs
+
+> **Note:** You must confirm the VPC ID of the destination ACK cluster in the ACK console in advance.
 
 **Prerequisites**
 
@@ -10931,7 +11220,7 @@ Ensure that the same VPC is used for unified deployment of the following resourc
 | Dify instance | The Dify instance is deployed in the previously mentioned VPC. The MCP Server-Sent Event (SSE) plug-in is installed. |
 | Network connectivity | The external IP address of the VPC to which the AI Gateway instance belongs is added to the whitelist of the PolarDB for PostgreSQL cluster. The Dify instance can resolve MCP domain names through private DNS resolution. |
 
-If the components are not deployed in the same VPC, you must use Cloud Enterprise Network (CEN), Express Connect, or VPC peering connection to establish network connections between these components. This topic does not cover cross-VPC scenarios.
+> **Note:** If the components are not deployed in the same VPC, you must use Cloud Enterprise Network (CEN), Express Connect, or VPC peering connection to establish network connections between these components. This topic does not cover cross-VPC scenarios.
 
 **Usage notes**
 
@@ -10951,14 +11240,14 @@ several seconds to several minutes for the changes to take effect.
 Log in to the **API Gateway console**. On the **Cluster Management** page, click **Importing**
 **a K8s cluster**.
 
-**Important**
+> **Important:** The ACK cluster on which the AI Gateway instance depends and the PolarDB for PostgreSQL cluster that you create must **reside in the same VPC**.
+> **To find the VPC of the ACK cluster** , log in to the **ACK console**. On the **Clusters** page, click the name of the cluster that you want to view. On the cluster details page, click the **Cluster Resources** tab to view the details of the VPC.
 
-The ACK cluster on which the AI Gateway instance depends and the PolarDB for PostgreSQL cluster that you create must **reside in the same VPC**.
-**To find the VPC of the ACK cluster** , log in to the **ACK console**. On the
-**Clusters** page, click the name of the cluster that you want to view. On the
-cluster details page, click the **Cluster Resources** tab to view the details of the VPC.
 2. **Create an AI Gateway instance**
-On the **AI Gateway** page, click **Create an instance** and configure the following parameters: Gateway Type: Select **AI Gateway**. Deployment Architecture: Select **K8s**. Kubernetes Cluster: Select the ACK cluster imported in Step 1. For more information about how to configure other parameters, see the "Create a gateway instance" section in the AI Gateway User Guide on the API Gateway official website.
+On the **AI Gateway** page, click **Create an instance** and configure the following parameters: Gateway Type: Select **AI Gateway**. Deployment Architecture: Select **K8s**. Kubernetes Cluster: Select the ACK cluster imported in Step 1.
+
+> **Note:** For more information about how to configure other parameters, see the "Create a gateway instance" section in the AI Gateway User Guide on the API Gateway official website.
+
 3. **Record the external IP address of the VPC to which the AI Gateway instance**
 
 **belongs**
@@ -10968,8 +11257,10 @@ After the AI Gateway instance is created, you can obtain the external IP address
 **Step 2: Create and configure a PolarDB for PostgreSQL cluster**
 
 1. **Create a PolarDB for PostgreSQL cluster**
-When you create a PolarDB for PostgreSQL cluster, set the network type to **VPC** and make sure that the selected VPC **is the same as the VPC** for the ACK cluster on which the AI Gateway instance depends. capabilities After you create a PolarDB for PostgreSQL cluster, open the **Databases** tab of the instance details page. Create a database named `mcp_db_server` , and insert test data into the database. You can use DMS or a client to connect to the database and insert test data into the database. For more information, see Use DMS to log in to a PolarDB for PostgreSQL instance that uses local disks. On the **Accounts** tab of the instance details page, create a regular account and grant it the read-only permissions on the database that you created in the previous step. Currently, the MCP service supports only data query. **It does not support data**
-**changes or deletions**. Therefore, you need to grant only the read-only permissions.
+When you create a PolarDB for PostgreSQL cluster, set the network type to **VPC** and make sure that the selected VPC **is the same as the VPC** for the ACK cluster on which the AI Gateway instance depends. capabilities After you create a PolarDB for PostgreSQL cluster, open the **Databases** tab of the instance details page. Create a database named `mcp_db_server` , and insert test data into the database. You can use DMS or a client to connect to the database and insert test data into the database. For more information, see Use DMS to log in to a PolarDB for PostgreSQL instance that uses local disks. On the **Accounts** tab of the instance details page, create a regular account and grant it the read-only permissions on the database that you created in the previous step.
+
+> **Note:** Currently, the MCP service supports only data query. **It does not support data** **changes or deletions**. Therefore, you need to grant only the read-only permissions.
+
 4. **Configure a database whitelist**
 Click the **Data Security** tab of the instance details page, and add the external IP address obtained in Substep 3 of Step 1 to the whitelist of the database.
 5. **Record the internal endpoint and port number of the database**
@@ -10979,7 +11270,9 @@ The internal endpoint and port number are used to create an MCP service in the A
 
 **3.1 Create a service**
 
-Open the AI Gateway instance created in Step 1. On the **Service** tab of the instance details page, create a service. Configure the following parameters: Source Type: Select **DNS Domain Name**. Node: Select the internal endpoint and port number of the database that you obtained in Substep 5 of Step 2. Protocol Type: Select **HTTP**. For more information about how to configure other parameters, see the "Create a service" section in the AI Gateway User Guide on the API Gateway official website.
+Open the AI Gateway instance created in Step 1. On the **Service** tab of the instance details page, create a service. Configure the following parameters: Source Type: Select **DNS Domain Name**. Node: Select the internal endpoint and port number of the database that you obtained in Substep 5 of Step 2. Protocol Type: Select **HTTP**.
+
+> **Note:** For more information about how to configure other parameters, see the "Create a service" section in the AI Gateway User Guide on the API Gateway official website.
 
 **3.2 Create a domain name**
 
@@ -10987,7 +11280,9 @@ Open the AI Gateway instance created in Step 1. On the **Domain name** tab of th
 
 **3.3 Create an MCP service**
 
-Open the AI Gateway instance created in Step 1. On the **MCP Management** tab of the instance details page, click **Create MCP Service**. Configure the following parameters: MCP Endpoint: Select the domain name created in Step 3.2. Service Type: Select **DB**. Backend Service: Select the service created in Step 3.1. Database configuration: Specify the database type, username, password, and database name based on the information configured in Step 2. capabilities For more information about how to configure other parameters, see the "Manage MCP services" section in the AI Gateway User Guide on the API Gateway official website.
+Open the AI Gateway instance created in Step 1. On the **MCP Management** tab of the instance details page, click **Create MCP Service**. Configure the following parameters: MCP Endpoint: Select the domain name created in Step 3.2. Service Type: Select **DB**. Backend Service: Select the service created in Step 3.1. Database configuration: Specify the database type, username, password, and database name based on the information configured in Step 2. capabilities
+
+> **Note:** For more information about how to configure other parameters, see the "Manage MCP services" section in the AI Gateway User Guide on the API Gateway official website.
 
 **Step 4: Configure a private DNS instance (enable Dify to**
 
@@ -11007,18 +11302,32 @@ Click **Associate VPC** in the **Actions** column of the domain name created in 
 
 **Step 5: Call the MCP service in Dify**
 
-Before you use Dify, make the following preparations and take note of the following items: The resource pool and resource quota are configured. In the ACK console, add ECS instances and then add them to resource quotas. We recommend that you add two ECS instances, each with 16 cores, 32 GB of memory, and 200 GB of hard disks. To prevent unpredictable bugs or Dify creation failures due to resource preemption or node taints, we recommend that you create a dedicated resource quota for Dify, add ECS instances to this quota, and then create a Dify instance within this dedicated resource quota. By default, a Dify instance requires 4 CPU cores and 8 GB of memory.
+> **Note:** Before you use Dify, make the following preparations and take note of the following items:
+> The resource pool and resource quota are configured.
+> In the ACK console, add ECS instances and then add them to resource quotas. We recommend that you add two ECS instances, each with 16 cores, 32 GB of memory, and 200 GB of hard disks.
+> To prevent unpredictable bugs or Dify creation failures due to resource preemption or node taints, we recommend that you create a dedicated resource quota for Dify, add ECS instances to this quota, and then create a Dify instance within this dedicated resource quota.
+> By default, a Dify instance requires 4 CPU cores and 8 GB of memory.
+
 1. **Create a Dify instance**
-For more information, see Tutorials in AI Studio User Guide on the AI Studio official website. i. Log in to the **AI Studio console**. In the left-side navigation pane, choose **Agent**
+
+> **Note:** For more information, see Tutorials in AI Studio User Guide on the AI Studio official website.
+
+i. Log in to the **AI Studio console**. In the left-side navigation pane, choose **Agent**
 **Development Platform > Dify Open Source Edition**. On the page that appears, click
 **Create Dify**.
 ii. In the Basic Configuration step, specify the environment name and description, select the created resource quota, enter the administrator password, and then click **Next**. capabilities iii. In the Parameter step, we recommend that you set the Dify version to 1.7.1. In addition, you must create a bucket in the OSS console and specify the bucket in a **Parameter** configuration item. Keep the default value of authVersion. iv. In the Plugin step, **the MCP SSE plug-in must be installed**. Install other plug-ins based on your business requirements. Wait until the application status changes to Running. This process usually takes about 5 minutes.
 2. **Add a Dify user**
-Before you create a Dify user, make sure that a Dify instance is created as described in Step 5.1 and the Dify instance is in the Running state. i. Log in to the **AI Studio console**. In the left-side navigation pane, choose **Agent**
+
+> **Note:** Before you create a Dify user, make sure that a Dify instance is created as described in Step 5.1 and the Dify instance is in the Running state.
+
+i. Log in to the **AI Studio console**. In the left-side navigation pane, choose **Agent**
 **Development Platform > Dify Open Source Edition**. On the page that appears, find
 the Dify instance that you created and click **User Management**. ii. Click **Add User**. iii. Select an unadded user from the associated users, enter an **8-character** password, and set the user as an **administrator**.
 3. **Add a Dify model**
-i. Click **Model Service Management** for the Dify instance. ii. Click **Add Model**. iii. Configure the model information. After you select configuration options, the model name, model URL, and API key are automatically specified. If no value is specified in the API key field, you are not the creator of the model service. Contact the creator of the online service to obtain the API key and enter it manually.
+i. Click **Model Service Management** for the Dify instance. ii. Click **Add Model**. iii. Configure the model information.
+
+> **Note:** After you select configuration options, the model name, model URL, and API key are automatically specified. If no value is specified in the API key field, you are not the creator of the model service. Contact the creator of the online service to obtain the API key and enter it manually.
+
 4. **Log in to the Dify instance**
 i. Click the icon for the Dify instance. ii. In the dialog box that appears, specify **Email address** and **Password**, and then click
 **Sign in**.
@@ -11050,9 +11359,7 @@ i. After you save the MCP configuration, click **Studio** and then select a spec
 
 This topic describes how to grant a tenant organization the permissions to access Server Load Balancer (SLB) and helps you efficiently resolve related issues.
 
-**Important**
-
-If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
+> **Important:** If you need to create and use IPv6 addresses for your business, you must ensure that the current tenant organization has explicitly granted database services the permissions to access SLB. If such permissions are not granted, IPv6 addresses cannot be created.
 
 **Procedure**
 

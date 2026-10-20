@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 405
 source_pdf: "04bdd1688657c3ce_Alibaba Cloud Apsara Stack V3.18.6 CloudMonitor User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20CloudMonitor%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # CloudMonitor User Guide 20260629
@@ -159,13 +159,24 @@ CloudMonitor provides the following features: cloud service monitoring, host mon
 
 **Usage notes**
 
-**Important**
+> **Important:** You can view the business data of CloudMonitor based on different dimensions. To do so, select an organization, a resource set, and a region in the top navigation bar of the CloudMonitor console.
+> Do not perform operations in the root organization.
 
-You can view the business data of CloudMonitor based on different dimensions. To do so, select an organization, a resource set, and a region in the top navigation bar of the CloudMonitor console. Do not perform operations in the root organization.
-
-**Note**
-
-When you view information in a list, take note of the following points: The , , , and buttons are displayed above the list. You can adjust the list based on your business requirements. : refreshes the list. : displays information in the default or compact mode. : shows or hides specific items in the list. Move the pointer over a display item and click the icon to the right of the display item to adjust the order of the items. : displays information in full screen mode. You can resize the width of columns based on your business requirements. The column width configuration is stored in the local storage of the browser. If you clear the local storage, the configuration becomes invalid.
+> **Note:** When you view information in a list, take note of the following points:
+> The
+> ,
+> ,
+> , and
+> buttons are displayed above the list. You can adjust the list
+> based on your business requirements.
+> : refreshes the list.
+> : displays information in the default or compact mode.
+> : shows or hides specific items in the list. Move the pointer over a display
+> item and click the
+> icon to the right of the display item to adjust the order
+> of the items.
+> : displays information in full screen mode.
+> You can resize the width of columns based on your business requirements. The column width configuration is stored in the local storage of the browser. If you clear the local storage, the configuration becomes invalid.
 
 ## 2 Overview
 
@@ -279,21 +290,21 @@ The **alert trend** section displays the number of alerts over time. In each bar
 **Occurrences**, **Start Time**, **Last Occurrence**, and **Duration (s).**
 Click an alert's **Alert ID/Name** to view its details page. In the upper-right corner of the page, click **Acknowledge** or **Close** to change the alert's processing status. The change is also recorded in the timeline. In the upper-right corner of the page, click **One-click Diagnosis**. Apsara Assistant uses the alert ID to query details, run an automated analysis, and display a detailed summary report. View basic information about the alert in the Basic Information section. View additional information about the alert in the **Extended Attributes** section.
 
-**Note**
+> **Note:** The displayed extended attributes vary depending on the alert.
 
-The displayed extended attributes vary depending on the alert. In the **timeline** section, add events such as **Alert Triggered**, **Alert Investigation**,
+In the **timeline** section, add events such as **Alert Triggered**, **Alert Investigation**,
 **root cause analysis**, **Alert Closed**, and **Alert Response**.
 Click **Add**. In the **Add Timeline Event** panel, configure **Select Node**, **Time**, and
 **Description**.
 The **alert analysis** section shows detailed monitoring metrics and an alert trace diagram. Click **Monitoring Chart** to specify a custom time range and view the trend chart for monitoring metrics.
 
-**Note**
+> **Note:** The alert analysis section does not appear for alerts that do not originate from CMS.
 
-The alert analysis section does not appear for alerts that do not originate from CMS. In the **Alert Feedback** section, view the **Alert Validity** and **Alert Accuracy**.
+In the **Alert Feedback** section, view the **Alert Validity** and **Alert Accuracy**.
 
-**Note**
+> **Note:** You can provide feedback on an alert's validity and accuracy when you close it.
 
-You can provide feedback on an alert's validity and accuracy when you close it. Once the triggering condition is resolved, the system periodically updates the alert state based on the corresponding alert rule. If the alert state is not updated promptly, you can manually change its processing status to **in progress** or **closed**. To set the status to **in progress**: Single alert: In the alert list, click **Acknowledge** in the **Actions** column for an alert to change its **processing status** to **in progress**. Multiple alerts: Select the alerts and click **Batch Acknowledge**. This changes their
+Once the triggering condition is resolved, the system periodically updates the alert state based on the corresponding alert rule. If the alert state is not updated promptly, you can manually change its processing status to **in progress** or **closed**. To set the status to **in progress**: Single alert: In the alert list, click **Acknowledge** in the **Actions** column for an alert to change its **processing status** to **in progress**. Multiple alerts: Select the alerts and click **Batch Acknowledge**. This changes their
 **processing status** to **in progress**.
 To set the status to **closed**: Single alert: On the **alert list** page, click **Close** in the **Actions** column for an alert. Its **processing status** changes to **closed**, and the alert moves to the **historical**
 **alerts** tab.
@@ -311,10 +322,8 @@ For more information about alert rules in ARMS and the operations that you can p
 
 **SLS**
 
-**Note**
+> **Note:** If the system prompts that the operation is unauthorized, click **Authorization operation** **SLS permissions** and open the page again.
 
-If the system prompts that the operation is unauthorized, click **Authorization operation**
-**SLS permissions** and open the page again.
 Cloud Monitor allows you to subscribe to the metric store of SLS. For more information, see
 **Simple Log Service** > **User Guide**.
 
@@ -360,9 +369,7 @@ A notification policy lets you filter, consolidate, and reduce noise from trigge
 
 6. Click **OK**.
 
-**Note**
-
-Cloud Monitor (CMS) uses a large language model to provide intelligent analysis, automatically generating root cause analysis and troubleshooting suggestions in alert notifications. This feature helps you quickly locate faults, makes alerts more actionable, and reduces both manual analysis time and the mean time to respond.
+> **Note:** Cloud Monitor (CMS) uses a large language model to provide intelligent analysis, automatically generating root cause analysis and troubleshooting suggestions in alert notifications. This feature helps you quickly locate faults, makes alerts more actionable, and reduces both manual analysis time and the mean time to respond.
 
 **View notification policy**
 
@@ -373,15 +380,14 @@ After creating a notification policy, you can view its details. The **Notificati
 **Effective period**, **Notification history**, **Notification target**, and **Webhook**
 **configuration**.
 
-**Note**
-
-Use the dropdown lists or the search box at the top of the policy list to quickly find a notification policy. Click the icon next to the Policy status column to filter policies by status. Hover over the number in the **Notification rules**, **Effective period**, or
-**Notification target** column to view details.
-Click the icon in the **Notification history** column to view the notification history from the last three days. The history includes details such as **Alert ID/Alert**
-**name**, **Alert level**, **Alert object/Product**, **Alert content**, **Processing status**,
-**Alert start time**, **Last alert time**, and **Send time**.
-Click **View More** in the upper-right corner to go to the **Message Center >**
-**Unread Messages** page.
+> **Note:** Use the dropdown lists or the search box at the top of the policy list to quickly find a notification policy.
+> Click the
+> icon next to the Policy status column to filter policies by status.
+> Hover over the number in the **Notification rules**, **Effective period**, or **Notification target** column to view details.
+> Click the
+> icon in the **Notification history** column to view the notification
+> history from the last three days. The history includes details such as **Alert ID/Alert** **name**, **Alert level**, **Alert object/Product**, **Alert content**, **Processing status**, **Alert start time**, **Last alert time**, and **Send time**.
+> Click **View More** in the upper-right corner to go to the **Message Center >** **Unread Messages** page.
 
 **Modify notification policy**
 
@@ -399,9 +405,9 @@ the parameters, see Create a notification policy.
 
 You can disable a policy that you do not currently need.
 
-**Important**
+> **Important:** Before you disable a notification policy, ensure its **Policy status** is **Enabled**.
 
-Before you disable a notification policy, ensure its **Policy status** is **Enabled**. Disable a single policy i. In the list on the **Notification Policy** page, find the target policy and click **Disable** in the Actions column. ii. Click **OK**. Disable policies in batches i. In the list on the **Notification Policy** page, select the checkboxes of the target policies. ii. Click **Batch disable** below the list. iii. Click **OK**.
+Disable a single policy i. In the list on the **Notification Policy** page, find the target policy and click **Disable** in the Actions column. ii. Click **OK**. Disable policies in batches i. In the list on the **Notification Policy** page, select the checkboxes of the target policies. ii. Click **Batch disable** below the list. iii. Click **OK**.
 
 **Enable notification policy**
 
@@ -409,9 +415,9 @@ Before you disable a notification policy, ensure its **Policy status** is **Enab
 
 You can enable a disabled policy when you need it again.
 
-**Important**
+> **Important:** Before you enable a notification policy, ensure its **Policy status** is **Disabled**.
 
-Before you enable a notification policy, ensure its **Policy status** is **Disabled**. Enable a single policy i. In the list on the **Notification Policy** page, find the target policy and click **Enable** in the Actions column. ii. Click **OK**. Enable policies in batches i. In the list on the **Notification Policy** page, select the checkboxes of the target policies. ii. Click **Batch enable** below the list. iii. Click **OK**.
+Enable a single policy i. In the list on the **Notification Policy** page, find the target policy and click **Enable** in the Actions column. ii. Click **OK**. Enable policies in batches i. In the list on the **Notification Policy** page, select the checkboxes of the target policies. ii. Click **Batch enable** below the list. iii. Click **OK**.
 
 **Delete notification policy**
 
@@ -458,10 +464,10 @@ describes the parameters.
 After a blocking policy is created, you can view the details of the blocking policy. On the **Masking policy** page, view the **Policy name**, **Policy description**, **Policy status**,
 **Masking rules**, and **Masking period**.
 
-**Note**
-
-You can select a blocking policy from the drop-down list or enter a policy name in the search box to quickly find a blocking policy. You can click the icon next to Policy status to filter blocking policies. You can move the pointer over the number in the **Masking rules** and **Masking**
-**period** columns to view the details.
+> **Note:** You can select a blocking policy from the drop-down list or enter a policy name in the search box to quickly find a blocking policy.
+> You can click the
+> icon next to Policy status to filter blocking policies.
+> You can move the pointer over the number in the **Masking rules** and **Masking** **period** columns to view the details.
 
 **Modify a blocking policy**
 
@@ -479,9 +485,9 @@ information about the parameters, see Create a blocking policy.
 
 You can disable a blocking policy if you do not need it.
 
-**Important**
+> **Important:** Before you disable a blocking policy, make sure that the **status** of the policy is **Enabled**.
 
-Before you disable a blocking policy, make sure that the **status** of the policy is **Enabled**. Disable a single blocking policy i. On the **Masking policy** page, find the blocking policy that you want to disable and click
+Disable a single blocking policy i. On the **Masking policy** page, find the blocking policy that you want to disable and click
 **Disable** in the **Operation** column.
 ii. In the message that appears, click **OK**. Disable multiple blocking policies at a time i. On the **Masking policy** page, select the blocking policies that you want to disable. ii. Click **Batch disable** in the lower-left corner of the policy list. iii. In the message that appears, click **OK**.
 
@@ -491,9 +497,9 @@ ii. In the message that appears, click **OK**. Disable multiple blocking policie
 
 If you need to use a disabled blocking policy again, you can enable the blocking policy.
 
-**Important**
+> **Important:** Before you enable a blocking policy, make sure that the **Policy Status** is **Disabled**.
 
-Before you enable a blocking policy, make sure that the **Policy Status** is **Disabled**. Enable a single blocking policy i. On the **Masking policy** page, find the blocking policy that you want to enable and click
+Enable a single blocking policy i. On the **Masking policy** page, find the blocking policy that you want to enable and click
 **Enable** in the **Operation** column.
 ii. In the message that appears, click **OK**. Enable multiple blocking policies at a time i. On the **Masking policy** page, select the blocking policies that you want to enable. ii. Click **Batch enable** in the lower-left corner of the policy list. iii. In the message that appears, click **OK**.
 
@@ -545,21 +551,16 @@ The installation or upgrade process takes approximately five minutes. After the 
 
 **Install or upgrade the CloudMonitor agent globally**
 
-**Note**
+> **Note:** This operation takes effect on multiple ECS instances and can be performed every 30 minutes.
 
-This operation takes effect on multiple ECS instances and can be performed every 30 minutes.
 1. On the **Host Monitoring** page, click **Install/Upgrade Agent**.
 2. In the **Install/Upgrade Agent** dialog box, select **Install Only for Uninstalled**, **Only**
 **Upgrade for Installed**, or **Install and Upgrade to Latest Version** .
 
-**Note**
+> **Note:** **Install Only for Uninstalled**: installs the CloudMonitor agent only on the ECS instances that are not installed with the agent.
+> **Only Upgrade for Installed**: upgrades the CloudMonitor agent for the ECS instances that are installed with the agent.
+> **Install and Upgrade to Latest Version** : installs and upgrades the CloudMonitor agent to the latest version for all existing ECS instances.
 
-**Install Only for Uninstalled**: installs the CloudMonitor agent only on the ECS
-instances that are not installed with the agent.
-**Only Upgrade for Installed**: upgrades the CloudMonitor agent for the ECS
-instances that are installed with the agent.
-**Install and Upgrade to Latest Version** : installs and upgrades the
-CloudMonitor agent to the latest version for all existing ECS instances.
 3. Click **Execute Now**.
 
 **Install the CloudMonitor agent on a single ECS instance**
@@ -568,11 +569,9 @@ CloudMonitor agent to the latest version for all existing ECS instances.
 icon.
 2. In the message that appears, click **OK**.
 
-**Note**
-
-If the CloudMonitor agent fails to be installed, click the icon in the **Agent Status** column to view the installation failure details, including **Last Installation Failure**
-**Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent**
-**Output**.
+> **Note:** If the CloudMonitor agent fails to be installed, click the
+> icon in the **Agent Status**
+> column to view the installation failure details, including **Last Installation Failure** **Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent** **Output**.
 
 #### 4.1.2 Process monitoring
 
@@ -701,9 +700,7 @@ You can use the custom role feature in Resource Access Management (RAM) to assig
 
 This topic lists the metrics for Kubernetes container monitoring.
 
-**Note**
-
-These metrics apply to instances that do not support Prometheus monitoring 2.0. For instances that support Prometheus monitoring 2.0, click the instance name to go to the Kubernetes container monitoring page.
+> **Note:** These metrics apply to instances that do not support Prometheus monitoring 2.0. For instances that support Prometheus monitoring 2.0, click the instance name to go to the Kubernetes container monitoring page.
 
 **Cluster**
 
@@ -810,9 +807,8 @@ This article describes the monitoring metrics for ECS.
 
 The **Namespace** is **acs_ecs_dashboard**. The default **Period** is **60** seconds and must be a multiple of 60.
 
-**Note**
-
-When connected to a public cloud, you can switch platforms to view metrics for your ECS instances. The following metrics are collected from the host machine (virtualization) layer and may differ slightly from metrics collected within the operating system.
+> **Note:** When connected to a public cloud, you can switch platforms to view metrics for your ECS instances.
+> The following metrics are collected from the host machine (virtualization) layer and may differ slightly from metrics collected within the operating system.
 
 | Metric | Unit | Metric name | Dimensions | Description |
 |---|---|---|---|---|
@@ -830,9 +826,9 @@ When connected to a public cloud, you can switch platforms to view metrics for y
 
 The **Namespace** is **acs_ecs_dashboard**. The default **Period** is **15** seconds and can be set to an integer multiple of 15.
 
-**Note**
-
-To collect OS-level metrics, you need to install the monitoring agent on an ECS instance. To install the agent, in the Cloud Monitor console, choose Host Monitoring from the left navigation pane. On the **ECS Monitoring List** page, select the instances that you want to monitor, and then click **Batch Install or Upgrade Plug-in** at the bottom of the list. After the monitoring agent is installed, monitoring data appears on the charts within 5 to 10 minutes.
+> **Note:** To collect OS-level metrics, you need to install the monitoring agent on an ECS instance.
+> To install the agent, in the Cloud Monitor console, choose Host Monitoring from the left navigation pane. On the **ECS Monitoring List** page, select the instances that you want to monitor, and then click **Batch Install or Upgrade Plug-in** at the bottom of the list.
+> After the monitoring agent is installed, monitoring data appears on the charts within 5 to 10 minutes.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -867,9 +863,8 @@ To collect OS-level metrics, you need to install the monitoring agent on an ECS 
 
 **Mapping legacy to new GPU metrics**
 
-**Important**
-
-CloudMonitor has standardized its GPU monitoring metrics. After you upgrade the Argusagent, legacy GPU metrics are deprecated. If you use these legacy metrics in external applications or dashboards, you must replace them with the new metrics. After you upgrade CloudMonitor, it automatically updates your existing alert rules to use the new GPU metrics.
+> **Important:** CloudMonitor has standardized its GPU monitoring metrics. After you upgrade the Argusagent, legacy GPU metrics are deprecated. If you use these legacy metrics in external applications or dashboards, you must replace them with the new metrics.
+> After you upgrade CloudMonitor, it automatically updates your existing alert rules to use the new GPU metrics.
 
 **NVIDIA**
 
@@ -1021,9 +1016,7 @@ The **Namespace** is **acs_ecs_dashboard**. The **Period** defaults to **60** se
 
 **CPU credits**
 
-**Note**
-
-These metrics are displayed only for the `ecs.t5` instance type; they are not available for other instance families.
+> **Note:** These metrics are displayed only for the `ecs.t5` instance type; they are not available for other instance families.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -2730,9 +2723,7 @@ This topic describes the monitoring metrics for Apsara File Storage NAS. The def
 
 This topic lists the monitoring metrics for NAT Gateway. The **Namespace** is **acs_nat_gateway**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
-**Note**
-
-If you use a public cloud, you can switch cloud platforms to view the monitoring metrics for your NAT Gateway.
+> **Note:** If you use a public cloud, you can switch cloud platforms to view the monitoring metrics for your NAT Gateway.
 
 **Instance metrics**
 
@@ -2758,9 +2749,7 @@ If you use a public cloud, you can switch cloud platforms to view the monitoring
 
 This topic describes the monitoring metrics for Server Load Balancer (SLB). The value of **namespace** is **acs_slb_dashboard**; the **Period** defaults to **60** seconds and can be any integer multiple of 60.
 
-**Note**
-
-If you are connected to a public cloud, you can switch between cloud platforms to view monitoring metrics for that platform's Server Load Balancer (SLB).
+> **Note:** If you are connected to a public cloud, you can switch between cloud platforms to view monitoring metrics for that platform's Server Load Balancer (SLB).
 
 **Instance metrics**
 
@@ -2862,9 +2851,7 @@ This topic describes the metrics for Application Load Balancer. The **Namespace*
 
 This topic lists the monitoring metrics for Elastic IP Address. The **Namespace** is **acs_vpc_eip**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
-**Note**
-
-If you are connected to a public cloud, switch to that cloud platform to view the monitoring metrics for its Elastic IP Addresses.
+> **Note:** If you are connected to a public cloud, switch to that cloud platform to view the monitoring metrics for its Elastic IP Addresses.
 
 | Metric name | Unit | Metric | Dimensions | Description |
 |---|---|---|---|---|
@@ -3331,9 +3318,7 @@ This topic describes the monitoring metrics for Web Application Firewall. The va
 
 This topic describes the metrics for AI Studio (online service). The **Namespace** is **acs_online_service**. The **Period** defaults to **60** seconds and can be any integer multiple of 60.
 
-**Note**
-
-DCU- and NPU-related metrics are displayed only for the corresponding accelerator types.
+> **Note:** DCU- and NPU-related metrics are displayed only for the corresponding accelerator types.
 
 **Task monitoring**
 
@@ -3402,9 +3387,7 @@ On the **Topology** tab, you can view the relationships between instances, clust
 
 This document describes the monitoring metrics for AI Studio (Model Evaluation). The **namespace** is **acs_model_evaluation**. The default **period** is **60** seconds and can be set to any integer multiple of 60.
 
-**Note**
-
-DCU and NPU metrics are available only for instances equipped with the respective accelerator cards.
+> **Note:** DCU and NPU metrics are available only for instances equipped with the respective accelerator cards.
 
 | Metric | Unit | Metric name | Dimensions | Description |
 |---|---|---|---|---|
@@ -3430,9 +3413,7 @@ DCU and NPU metrics are available only for instances equipped with the respectiv
 
 This topic describes the monitoring metrics for AI Studio (Notebook modeling). The **Namespace** is **acs_notebook_modeling**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
-**Note**
-
-Metrics related to DCUs and NPUs are displayed only for the corresponding accelerator types.
+> **Note:** Metrics related to DCUs and NPUs are displayed only for the corresponding accelerator types.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -3464,9 +3445,7 @@ On the Topology association tab, you can view the association details for instan
 
 This document describes the metrics for AI Studio (Task Modeling). The **Namespace** is **acs_task_modeling**. The **Period** is **60** seconds by default and can be set to any integer multiple of 60.
 
-**Note**
-
-Metrics related to DCUs and NPUs appear only for compute instances that use these accelerator types.
+> **Note:** Metrics related to DCUs and NPUs appear only for compute instances that use these accelerator types.
 
 **Task monitoring**
 
@@ -3522,9 +3501,7 @@ On the Topology Association tab, you can view association details for instances,
 
 This topic describes the monitoring metrics for AI Studio (Visualized Modeling). The **namespace** is **acs_pipeline_draft**. The **Period** defaults to **60** seconds and must be a multiple of 60.
 
-**Note**
-
-DCU and NPU metrics appear only for their corresponding hardware types.
+> **Note:** DCU and NPU metrics appear only for their corresponding hardware types.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -3550,9 +3527,7 @@ DCU and NPU metrics appear only for their corresponding hardware types.
 
 This topic describes the monitoring metrics for AI Studio (Model Finetuning). The **Namespace** is **acs_finetune**. The default **Period** is **60** seconds and must be a multiple of 60.
 
-**Note**
-
-DCU- and NPU-related metrics are displayed only for their corresponding accelerator types.
+> **Note:** DCU- and NPU-related metrics are displayed only for their corresponding accelerator types.
 
 **Task monitoring**
 
@@ -3602,9 +3577,7 @@ DCU- and NPU-related metrics are displayed only for their corresponding accelera
 
 This topic describes the metrics for AI Studio (Batch Inference). The **Namespace** is **acs_batch_inference**. The **Period** defaults to **60** seconds and can be any integer multiple of 60.
 
-**Note**
-
-DCU and NPU metrics are displayed only for their corresponding accelerator types.
+> **Note:** DCU and NPU metrics are displayed only for their corresponding accelerator types.
 
 | Metric | Unit | MetricName | Dimensions | Description |
 |---|---|---|---|---|
@@ -3842,9 +3815,7 @@ This topic describes the monitoring metrics for Elastic Fault-tolerant Service. 
 
 On the cloud service monitoring page, you can view monitoring charts for cloud product resources to understand their operational status. You can also set alert rules to monitor the status of your resources. When an alert rule is triggered, Cloud Monitor automatically sends an alert notification. This lets you be promptly informed about the status of your resources.
 
-**Important**
-
-In the root organization, you can only view monitoring charts and alert rules. You cannot manage alert rules.
+> **Important:** In the root organization, you can only view monitoring charts and alert rules. You cannot manage alert rules.
 
 **View monitoring charts**
 
@@ -3859,9 +3830,8 @@ On the monitoring page of a target cloud product, you can view the operational s
 **Monitoring Chart** in the **Operation** column. The monitoring charts for that resource are
 displayed.
 
-**Note**
-
-After you select a time period, the chart displays the monitoring data for that period. You can view data from the last 7 days at most.
+> **Note:** After you select a time period, the chart displays the monitoring data for that period.
+> You can view data from the last 7 days at most.
 
 **View alert rules**
 
@@ -3873,11 +3843,9 @@ cloud product or for a specified resource in the current organization and resour
 **Condition Description**, **Enable**, **Notification Recipient**, **Validity**, and **Rule Execution**
 **Record**.
 
-**Note**
+> **Note:** On the monitoring page of the target cloud product, you can click **Create Alert** **Rule** at the top of the page to create a custom alert rule for the cloud product. For more information, see Create an alert rule.
 
-On the monitoring page of the target cloud product, you can click **Create Alert**
-**Rule** at the top of the page to create a custom alert rule for the cloud product.
-For more information, see Create an alert rule. For other alert rule operations, see Manage alert rules.
+For other alert rule operations, see Manage alert rules.
 
 ### 4.3 Kubernetes container monitoring
 
@@ -3902,11 +3870,9 @@ columns for **Instance ID/Name**, **Organization/Resource Set**, **Region**, **I
 **Identifier**, **Cluster Type**, **Cluster Version**, **Node Count**, **Network Mode**, **Availability**
 **zone ID**, **Security group ID**, and **VPC ID**.
 
-**Note**
+> **Note:** On the **Kubernetes container monitoring** page, click **Alert Rules** in the **Actions** column for a cluster to open the **Alert Rules** tab. For more information, see alert rules.
+> To add a new alert rule, click **Create Alert Rule** above the list. For information about the configuration parameters, see Create an alert rule.
 
-On the **Kubernetes container monitoring** page, click **Alert Rules** in the
-**Actions** column for a cluster to open the **Alert Rules** tab. For more information,
-see alert rules. To add a new alert rule, click **Create Alert Rule** above the list. For information about the configuration parameters, see Create an alert rule.
 5. View instance details.
 For an instance that does not support Prometheus monitoring 2.0, click its **Instance**
 **ID/Name** to view the cluster details page.
@@ -3915,57 +3881,63 @@ In the basic information section, view the **Cluster Name**, **Cluster ID**, **C
 The **Monitoring Charts** tab displays charts for the cluster's CPU, memory, and file system metrics. You can switch the time range of the charts to **1 Hour**, **3 Hours**, **6**
 **Hours**, **12 Hours**, **1 Day**, **3 Days**, **7 Days**, or a custom time range.
 
-**Note**
+> **Note:** On the **Kubernetes container monitoring** page, you can also click **Monitoring Charts** in the **Actions** column for a cluster to open the **Monitoring Charts** tab directly.
+> You can change the layout of the charts to **1 per row**, **2 per row**, or **3 per** **row** by selecting an option from the drop-down list on the right.
+> Click the
+> icon on the right of a metric chart to add a rule description and
 
-On the **Kubernetes container monitoring** page, you can also click
-**Monitoring Charts** in the **Actions** column for a cluster to open the
-**Monitoring Charts** tab directly.
-You can change the layout of the charts to **1 per row**, **2 per row**, or **3 per**
-**row** by selecting an option from the drop-down list on the right.
-Click the icon on the right of a metric chart to add a rule description and create an alert rule. For information about the configuration parameters, see Create an alert rule. Click the icon on the right of a metric chart to enlarge it. The **Nodes** tab lists the **Instance Name/ID**, **Status**, **CPU utilization**, and **memory**
+create an alert rule. For information about the configuration parameters, see Create an alert rule.
+
+> Click the
+> icon on the right of a metric chart to enlarge it.
+
+The **Nodes** tab lists the **Instance Name/ID**, **Status**, **CPU utilization**, and **memory**
 **utilization** for each node in the cluster. To open the node details page, click a node's
 instance name/ID or click **View Details** in the **Actions** column. In the basic information section, view the **Instance Name** and **Cluster ID**. The **Monitoring Charts** tab displays charts for CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1 Hour**, **3 Hours**, **6**
 **Hours**, **12 Hours**, **1 Day**, **3 Days**, **7 Days**, **14 Days**, or a custom time range.
 
-**Note**
+> **Note:** You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right.
+> Click the
+> icon on the right of a metric chart to enlarge it.
 
-You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right. Click the icon on the right of a metric chart to enlarge it. The **Pod List** tab displays pods associated with the current node, showing their
+The **Pod List** tab displays pods associated with the current node, showing their
 **Instance Name**, **CPU Usage**, and **Memory Usage**. To open a pod's details page,
 click its **Instance Name** or click **View Details** in the Actions column. In the basic information section, view the **Instance Name** and **Namespace**. The **Monitoring Charts** tab displays charts for the pod's CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1**
 **Hour**, **3 Hours**, **6 Hours**, **12 Hours**, **1 Day**, **3 Days**, **7 Days**, **14 Days**, or a
 custom time range.
 
-**Note**
+> **Note:** You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right.
+> Click the
+> icon on the right of a metric chart to enlarge it.
 
-You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right. Click the icon on the right of a metric chart to enlarge it. The **Workloads** tab shows the **Instance Name**, **CPU Usage**, and **Memory Usage** for workloads in the cluster. To view an instance's details, click its **Instance Name** or click
+The **Workloads** tab shows the **Instance Name**, **CPU Usage**, and **Memory Usage** for workloads in the cluster. To view an instance's details, click its **Instance Name** or click
 **View Details** in the Actions column.
 
-**Note**
+> **Note:** Click the **Namespace** drop-down list to switch between namespaces.
+> Click **Deployment**, **StatefulSet**, **DaemonSet**, **CronJob**, **Job**, or **Pod** above the instance list to filter by workload type.
+> **Deployment**: Monitors Deployment resources in a namespace. The list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
+> **StatefulSet**: Monitors StatefulSet resources in a namespace. The list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
+> **DaemonSet**: Monitors DaemonSet resources in a namespace. The list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
+> **CronJob**: Monitors CronJob resources in a namespace. The list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
+> **Job**: Monitors Job resources in a namespace. The list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
+> **Pod**: Displays a list of pods associated with the cluster, including pod names and CPU/memory usage. You can also access the monitoring details for each pod.
 
-Click the **Namespace** drop-down list to switch between namespaces. Click **Deployment**, **StatefulSet**, **DaemonSet**, **CronJob**, **Job**, or **Pod** above the instance list to filter by workload type.
-**Deployment**: Monitors Deployment resources in a namespace. The
-list displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
-**StatefulSet**: Monitors StatefulSet resources in a namespace. The list
-displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
-**DaemonSet**: Monitors DaemonSet resources in a namespace. The list
-displays instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
-**CronJob**: Monitors CronJob resources in a namespace. The list displays
-instance names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
-**Job**: Monitors Job resources in a namespace. The list displays instance
-names and CPU/memory usage. Detailed metrics include CPU allocation limit, CPU usage, maximum available file system size, and network receive/send rates. The view also lists the pods associated with the workload and provides their monitoring details.
-**Pod**: Displays a list of pods associated with the cluster, including pod
-names and CPU/memory usage. You can also access the monitoring details for each pod. In the basic information section, view the **Instance Name** and **Namespace**. The **Monitoring Charts** tab displays charts for CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1 Hour**, **3 Hours**, **6**
+In the basic information section, view the **Instance Name** and **Namespace**. The **Monitoring Charts** tab displays charts for CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1 Hour**, **3 Hours**, **6**
 **Hours**, **12 Hours**, **1 Day**, **3 Days**, **7 Days**, **14 Days**, or a custom time range.
 
-**Note**
+> **Note:** You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right.
+> Click the
+> icon on the right of a metric chart to enlarge it.
 
-You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right. Click the icon on the right of a metric chart to enlarge it. The **Pod List** tab lists the pods associated with the current workload, including the pod's **Instance Name**, **CPU Usage**, and **Memory Usage**. To open a pod's details page, click its instance name or click **View Details** in the Actions column. In the basic information section, view the **Instance Name** and **Namespace**. The **Monitoring Charts** tab displays charts for the pod's CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1**
+The **Pod List** tab lists the pods associated with the current workload, including the pod's **Instance Name**, **CPU Usage**, and **Memory Usage**. To open a pod's details page, click its instance name or click **View Details** in the Actions column. In the basic information section, view the **Instance Name** and **Namespace**. The **Monitoring Charts** tab displays charts for the pod's CPU, memory, file system, and network metrics. You can switch the time range of the charts to **1**
 **Hour**, **3 Hours**, **6 Hours**, **12 Hours**, **1 Day**, **3 Days**, **7 Days**, **14 Days**, or a
 custom time range.
 
-**Note**
+> **Note:** You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right.
+> Click the
+> icon on the right of a metric chart to enlarge it.
 
-You can change the layout to **1 per row**, **2 per row**, or **3 per row** by selecting an option from the drop-down list on the right. Click the icon on the right of a metric chart to enlarge it. The **Event List** tab displays up to 100 of the most recent event records from the last 6 hours for the current instance. The listed information includes **Event Name**, **Event**
+The **Event List** tab displays up to 100 of the most recent event records from the last 6 hours for the current instance. The listed information includes **Event Name**, **Event**
 **Level**, **Event Status**, **Event Content**, and **Time**.
 For an instance that supports Prometheus monitoring 2.0, click its **Instance ID/Name** to view the cluster details page. The cluster details page provides metric dashboards, including **Monitoring Overview**,
 **Core Component Monitoring**, **Node Monitoring**, **Application Monitoring**,
@@ -4042,9 +4014,8 @@ CloudMonitor provides the availability monitoring feature to help you check whet
 
 **Procedure**
 
-**Note**
+> **Note:** Availability monitoring allows you to use Elastic Compute Service (ECS) instances as the monitoring nodes.
 
-Availability monitoring allows you to use Elastic Compute Service (ECS) instances as the monitoring nodes.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Migration and O&M Management** > **O&M**
 **and Monitoring** > **CloudMonitor**.
@@ -4141,15 +4112,13 @@ The **Time-series Metrics** tab appears by default.
 4. In the **Cloud Service List** on the left, click a target cloud service to view its corresponding
 metrics in the list on the right.
 
-**Note**
+> **Note:** You can search for metrics by **Metric Name** and **Product**. Fuzzy search is supported.
 
-You can search for metrics by **Metric Name** and **Product**. Fuzzy search is supported.
 5. Click the
 icon to the left of a metric name to expand its details and view the metric lineage. The lineage shows the data dependencies for the metric, from the initial SQL creation to the final data source in an SLS Project and Logstore, as well as the DIM table in Cloud Monitor.
 
-**Note**
+> **Note:** Not all cloud service metrics have DIM table data.
 
-Not all cloud service metrics have DIM table data.
 6. Click each stage to open the **Availability Monitoring Details** page. On the **Inspection**
 **Item Details** page, check for data. Use the inspection item results to determine whether
 the problem occurred with the raw data, during intermediate processing, or during final aggregation and calculation. If an error occurs, the inspection item results display a prompt to help you troubleshoot and track the issue.
@@ -4181,9 +4150,9 @@ metrics, enter an instance ID, set the aggregation value and time, and click **Q
 
 **Configure the data retention period**
 
-**Important**
-
-Data lifecycle settings apply only to metric data. Evaluate your Tablestore capacity before proceeding. Configuration by organization, resource group, or individual metric is not supported. The settings apply to all metrics integrated with Cloud Monitor.
+> **Important:** Data lifecycle settings apply only to metric data.
+> Evaluate your Tablestore capacity before proceeding.
+> Configuration by organization, resource group, or individual metric is not supported. The settings apply to all metrics integrated with Cloud Monitor.
 
 **Add a configuration**
 
@@ -4837,9 +4806,8 @@ The following preset dashboards are available: Alibaba Cloud DNS Message Queue E
 
 **Rename a directory**
 
-**Important**
+> **Important:** You cannot rename preset directories.
 
-You cannot rename preset directories.
 1. On the **Custom Dashboard** page, click the
 icon to the right of the directory.
 2. In the text box, enter a new name for the directory.
@@ -4847,18 +4815,17 @@ icon to the right of the directory.
 
 **Delete a directory**
 
-**Important**
+> **Important:** You cannot delete preset directories.
+> When you delete a directory, all dashboards within it are also deleted. This action cannot be undone.
 
-You cannot delete preset directories. When you delete a directory, all dashboards within it are also deleted. This action cannot be undone.
 1. On the **Custom Dashboard** page, click the
 icon to the right of the directory.
 2. In the dialog box that appears, click **OK**.
 
 **Create a dashboard**
 
-**Important**
+> **Important:** You must create a directory before creating a dashboard. Otherwise, the dashboard cannot be saved.
 
-You must create a directory before creating a dashboard. Otherwise, the dashboard cannot be saved.
 1. On the **Custom Dashboard** page, click **Create Dashboard** at the top of the page.
 2. In the **Create Dashboard** dialog box, enter a **Dashboard Name**, select a **Dashboard**
 **Directory**, then click **OK**.
@@ -4871,29 +4838,28 @@ a. Click **New Card**, then select **New Card**. b. On the new card page, config
 **Data Configuration**: Click **Add Query**, then select the **cloud product**, **metric**,
 **aggregation method**, and **monitoring scope**.
 
-**Note**
+> **Note:** You can add multiple data configurations.
 
-You can add multiple data configurations. (Optional) **Data Transformation**: Click **Add Data Transformation > Data**
+(Optional) **Data Transformation**: Click **Add Data Transformation > Data**
 **Filtering** and select the data columns you want to filter. Click **Add Data**
 **Transformation > Column Rename** to rename data columns. Click **Add Data**
 **Transformation > Table Join** to merge multiple tables into a single table. This
 transformation applies only to tables.
 
-**Important**
+> **Important:** You must complete the Data Configuration before applying data transformations.
 
-You must complete the Data Configuration before applying data transformations. (Optional) **Chart Configuration**: Configure the chart type, chart elements, axes, legend, reference lines, reference areas, and more. c. After you finish the configuration, click **Apply to Dashboard** above the chart.
+(Optional) **Chart Configuration**: Configure the chart type, chart elements, axes, legend, reference lines, reference areas, and more. c. After you finish the configuration, click **Apply to Dashboard** above the chart.
 
-**Note**
-
-To discard your changes, click **Cancel** above the chart. Click the **Last 1 Hour** drop-down list above the chart to select or customize the time range for the chart.
+> **Note:** To discard your changes, click **Cancel** above the chart.
+> Click the **Last 1 Hour** drop-down list above the chart to select or customize the time range for the chart.
 
 **Add a row container**
 
 a. On the dashboard page, click **New Card** and select **New Row Container**. b. Hover over the row container and click the icon to edit the row name.
 
-**Note**
+> **Note:** To delete the row container, hover over it and click the
+> icon.
 
-To delete the row container, hover over it and click the icon.
 4. After adding cards and row containers, you can customize the dashboard layout.
 In the **Layout Template** drop-down list at the upper-right corner of the canvas, select **1**
 **per row**, **2 per row**, **3 per row**, or **4 per row**.
@@ -4902,15 +4868,13 @@ Drag cards to rearrange their positions. Click the icon at the upper-right corne
 5. (Optional) Click the **Last 1 Hour** drop-down list at the top of the dashboard to select or
 customize the monitoring time range for the entire dashboard.
 
-**Note**
+> **Note:** The time range set on the card editing page is a temporary override that applies only within the editor. When you return to the dashboard, the dashboard-level time range takes precedence.
 
-The time range set on the card editing page is a temporary override that applies only within the editor. When you return to the dashboard, the dashboard-level time range takes precedence.
 6. (Optional) Click the drop-down list to the right of
 to set the automatic refresh interval for the dashboard.
 
-**Note**
+> **Note:** Selecting Off disables automatic refresh.
 
-Selecting Off disables automatic refresh.
 7. (Optional) At the top of the dashboard, click the
 icon to view or edit the dashboard's basic settings and JSON mode.
 
@@ -4918,9 +4882,7 @@ icon to view or edit the dashboard's basic settings and JSON mode.
 
 In Basic Settings, you can view or modify the dashboard name and the editable switch.
 
-**Note**
-
-If this switch is on, you can modify the dashboard's contents and layout. If it is off, these actions are disabled.
+> **Note:** If this switch is on, you can modify the dashboard's contents and layout. If it is off, these actions are disabled.
 
 **JSON mode**
 
@@ -4930,9 +4892,8 @@ icon to save the dashboard.
 
 **Modify dashboard content and layout**
 
-**Important**
+> **Important:** You cannot modify the content or layout of preset dashboards.
 
-You cannot modify the content or layout of preset dashboards.
 1. On the **Custom Dashboard** page, select a directory, then click the name of the dashboard
 you want to modify from the list on the right.
 2. On the dashboard details page, modify the cards, row containers, and layout as needed. For
@@ -4940,9 +4901,8 @@ more information, see Create a dashboard.
 
 **Rename a dashboard**
 
-**Important**
+> **Important:** You cannot rename preset dashboards.
 
-You cannot rename preset dashboards.
 1. On the **Custom Dashboard** page, click the target directory. In the dashboard list on the
 right, click **Edit** in the Actions column of the dashboard.
 2. In the **Edit Dashboard** dialog box, enter a new name for the dashboard.
@@ -4950,9 +4910,7 @@ right, click **Edit** in the Actions column of the dashboard.
 
 **Move a dashboard**
 
-**Important**
-
-You cannot move preset dashboards.
+> **Important:** You cannot move preset dashboards.
 
 **Move a single dashboard**
 
@@ -4973,18 +4931,19 @@ destination directory.
 
 **Set a default dashboard**
 
-**Important**
+> **Important:** You can only set one dashboard as the default.
+> Setting a dashboard as the default replaces the previous one. This dashboard is then displayed automatically when you navigate to the Custom Dashboard page.
+> To return to the directory page from the default dashboard, click the
+> icon in the
+> upper-left corner.
 
-You can only set one dashboard as the default. Setting a dashboard as the default replaces the previous one. This dashboard is then displayed automatically when you navigate to the Custom Dashboard page. To return to the directory page from the default dashboard, click the icon in the upper-left corner.
 1. On the **Custom Dashboard** page, click the target directory. In the dashboard list on the
 right, click **Set as Default Dashboard** in the Actions column of the dashboard you want to set as default.
 2. Click **OK**.
 
 **Delete a dashboard**
 
-**Important**
-
-You cannot delete preset dashboards.
+> **Important:** You cannot delete preset dashboards.
 
 **Delete a single dashboard**
 
@@ -5020,9 +4979,8 @@ You can filter alert history by cloud service, instance, and alert level. You ca
 **product selection**, **Rule ID**, **Rule name**, **Instance ID**, **Alarm Level**, and Start and end
 time filter condition.
 
-**Note**
+> **Note:** This page does not display faulty Data Transmission Service (DTS) instances.
 
-This page does not display faulty Data Transmission Service (DTS) instances.
 5. On the Alert History page, perform the required operations. The following table describes
 the operations that you can perform.
 
@@ -5037,9 +4995,7 @@ the operations that you can perform.
 
 You can configure alert rules for host monitoring metrics and instances in cloud service monitoring. You can apply an alert rule to all resources, an application group, or an instance. Alert Service sends alert notifications to contacts by using emails, DingTalk messages, and webhook URLs.
 
-**Note**
-
-You cannot manage alert rules in the root organization.
+> **Note:** You cannot manage alert rules in the root organization.
 
 #### 7.2.1 Create an alert rule
 
@@ -5049,9 +5005,8 @@ Cloud Monitor lets you create alert rules for integrated cloud products like ECS
 
 During the effective period of an alert rule, Cloud Monitor checks at the specified detection frequency if a metric has crossed its threshold. If it does, Cloud Monitor triggers an alert and sends it to the designated alert contacts or notification platforms.
 
-**Note**
-
-Except for ApsaraDB for RDS (legacy link), which has a detection frequency of 60 to 300 seconds, all other cloud products have a minimum detection frequency of one minute. You can configure message accumulation alert thresholds for ApsaraMQ for Kafka on a per-topic basis, which allows you to set different thresholds for each topic.
+> **Note:** Except for ApsaraDB for RDS (legacy link), which has a detection frequency of 60 to 300 seconds, all other cloud products have a minimum detection frequency of one minute.
+> You can configure message accumulation alert thresholds for ApsaraMQ for Kafka on a per-topic basis, which allows you to set different thresholds for each topic.
 
 **Procedure**
 
@@ -5117,6 +5072,7 @@ Use the alert rules page to modify, disable, enable, and delete alert rules.
 1. Log on to the Apsara Uni-manager O&M console.
 2. In the top navigation bar, click **Products** and choose **Migration and O&M Management**
 > **O&M and Monitoring** > **Cloud Monitor**.
+
 3. In the left-side navigation pane, choose **Alerting** > **Alert Rules**.
 4. Find the target alert rule and take the required action.
 
@@ -5154,9 +5110,7 @@ When you create an alert notification policy, you can add contacts or contact gr
 
 You need to configure the DingTalk or email notification method for the selected alert contacts, and specify their DingTalk secrets or email addresses. You can create or modify the DingTalk secrets and email addresses, and configure the notification methods when you create or modify users. For more information, see the "Create a user" topic in Apsara Unimanager Management Console User Guide. The DingTalk secret is optional: If you have specified a secret, notifications are sent by using the specified secret. If you have not specified a secret, notifications are sent by using the secret of the message gateway of the Apsara Uni-manager Management Console. For more information about how to configure the message gateway of the Apsara Unimanager Management Console, see the "Message gateways" topic in Apsara Unimanager Management Console User Guide.
 
-**Note**
-
-You need to contact Alibaba Cloud technical support to activate the corresponding network channel service.
+> **Note:** You need to contact Alibaba Cloud technical support to activate the corresponding network channel service.
 
 **Send notifications using webhook URLs**
 
@@ -5166,9 +5120,8 @@ Cloud Monitor sends POST requests to the domain names that are configured by use
 
 If you want to use your platform to handle alerts and have a service to receive requests sent by Cloud Monitor, you can configure the alert callback settings when you create an alert notification policy. For more information about how to create an alert notification policy, see Notification policy.
 
-**Important**
-
-You must specify a domain name instead of an IP address when you configure the alert callback settings. The URL that you specify must be connected to the networks of the alert center of Cloud Monitor and the primary and secondary data centers.
+> **Important:** You must specify a domain name instead of an IP address when you configure the alert callback settings.
+> The URL that you specify must be connected to the networks of the alert center of Cloud Monitor and the primary and secondary data centers.
 
 **Request method**
 
@@ -6102,9 +6055,9 @@ details about the parameters, see Create an availability monitoring task.
 
 You can disable a task to temporarily stop probing a resource.
 
-**Important**
+> **Important:** Before you disable a task, make sure its **Monitoring Status** is **Enabled**.
 
-Before you disable a task, make sure its **Monitoring Status** is **Enabled**. g Disable a single task i. On the **Service Availability Monitoring** page, find the task and click **Disable** in the
+g Disable a single task i. On the **Service Availability Monitoring** page, find the task and click **Disable** in the
 **Actions** column.
 ii. Click **OK**. Disable tasks in batch i. On the **Service Availability Monitoring** page, select the checkboxes next to the tasks you want to disable. ii. Click **Batch Disable** at the bottom of the list. iii. Click **OK**.
 
@@ -6112,9 +6065,9 @@ ii. Click **OK**. Disable tasks in batch i. On the **Service Availability Monito
 
 You can enable a disabled task to resume probing.
 
-**Important**
+> **Important:** Before you enable a task, make sure its **Monitoring Status** is **Disabled**.
 
-Before you enable a task, make sure its **Monitoring Status** is **Disabled**. Enable a single task i. On the **Service Availability Monitoring** page, find the task and click **Enable** in the
+Enable a single task i. On the **Service Availability Monitoring** page, find the task and click **Enable** in the
 **Actions** column.
 ii. Click **OK**. Enable tasks in batch i. On the **Service Availability Monitoring** page, select the checkboxes next to the tasks you want to enable. ii. Click **Batch Enable** at the bottom of the list. iii. Click **OK**.
 
@@ -6141,9 +6094,9 @@ Only one detection task can be created per top-level organization. Before creati
 **service role**, and for **Service Name**, select **CloudMonitor**.
 Global network connectivity for an ECS instance means that its vSwitch or the instance itself is connected to SNAT. The ECS instance used as a detection source must have ArgusAgent version 3.5.10 or later installed. To probe public targets, such as a public-facing SLB instance, the ECS instance must also have global network connectivity. If no eligible ECS instances are found within the specified detection scope, the detection task is not created. If an ECS detection source no longer meets the requirements, it is automatically replaced with a new, compliant ECS instance. If no suitable replacement can be found, the task is disabled.
 
-**Important**
+> **Important:** If an alert is triggered by a detection source that is later replaced, the alert may persist for up to 24 hours.
 
-If an alert is triggered by a detection source that is later replaced, the alert may persist for up to 24 hours. An ECS detection source may be automatically replaced in the following scenarios: The ECS instance is released. The ArgusAgent on the ECS instance disconnects. The detection target has a public address, but either the target or the ECS detection source loses its global network connectivity due to operational changes. g The detection target has a VPC address, but the VPC of the ECS detection source is changed. The detection target is a VPC, and the actual probed object is an ECS instance within that VPC. The probe is blocked due to a change in the security group of the target ECS instance. The detection target is an ApsaraDB for Redis instance, and a change to its IP address whitelist blocks the probe. Detection tasks for SLB, ApsaraDB RDS, and ApsaraDB for Redis instances are categorized by VPC addresses and public addresses. Probing targets in a classic network is not supported. If an instance has both a VPC address and a public address (such as an EIP), only the VPC address is probed. An ECS detection source for a VPC target must be in the same VPC as the target. An ECS detection source for a public network target must have global network connectivity. If a detection target only has a classic network address, the Cloud Service Availability Monitoring feature cannot be used. For ECS detection, instances within the same default security group probe each other using Ping. For VPC detection, one ECS instance is selected from each of two connected VPCs to probe each other. If the probes fail due to security group rules, a notification is displayed on the page. The detection method is Ping for SLB and Telnet for ApsaraDB RDS and ApsaraDB for Redis. An SLB instance cannot be probed by an ECS instance that is part of its backend server group. Similarly, an SLB instance automatically created for an ACK cluster cannot be probed by an ECS instance serving as a node in that cluster. The system automatically adapts to the addition or removal of detection sources and targets with a maximum delay of 20 minutes. However, status changes are not currently supported. This means that if a target instance is no longer in a `Running/Healthy` state but still exists, the availability probe continues to run. Currently supported cloud services: Elastic Compute Service (ECS), ApsaraDB RDS, ApsaraDB for Redis, Server Load Balancer (SLB), Alibaba Cloud DNS, Object Storage Service (OSS), Network Attached Storage (NAS), Tablestore, PolarDB (Primary/Standby Edition), Data Transmission Service (DTS), Elasticsearch, PolarDB for Xscale (Data Node), PolarDB (Cluster Edition), Lindorm, AnalyticDB for PostgreSQL, ApsaraDB for MongoDB (Sharded Cluster), DataWorks, Apsara File Storage (APFS), Cloud Parallel File System (CPFS), Bare Metal Compute Platform (BMCP) (Node), MaxCompute, Bare Metal Management Service (BMS), Realtime Compute for Apache Flink, ApsaraMQ for RocketMQ, ApsaraMQ for Kafka, Container Service for Kubernetes (ACK) Monitoring, Bastionhost (Tenant), Database Audit, Data Masking and Watermarking, Privileged Access Management (PAM), Vulnerability Scan Engine, AnalyticDB for MySQL 3.0, AI Studio (Task Modeling), AI Studio (Model Evaluation), AI Studio (Notebook Modeling), AI Studio (Online Service), AI Studio (Batch Inference), AI Studio (Model Tuning), and Hologres.
+An ECS detection source may be automatically replaced in the following scenarios: The ECS instance is released. The ArgusAgent on the ECS instance disconnects. The detection target has a public address, but either the target or the ECS detection source loses its global network connectivity due to operational changes. g The detection target has a VPC address, but the VPC of the ECS detection source is changed. The detection target is a VPC, and the actual probed object is an ECS instance within that VPC. The probe is blocked due to a change in the security group of the target ECS instance. The detection target is an ApsaraDB for Redis instance, and a change to its IP address whitelist blocks the probe. Detection tasks for SLB, ApsaraDB RDS, and ApsaraDB for Redis instances are categorized by VPC addresses and public addresses. Probing targets in a classic network is not supported. If an instance has both a VPC address and a public address (such as an EIP), only the VPC address is probed. An ECS detection source for a VPC target must be in the same VPC as the target. An ECS detection source for a public network target must have global network connectivity. If a detection target only has a classic network address, the Cloud Service Availability Monitoring feature cannot be used. For ECS detection, instances within the same default security group probe each other using Ping. For VPC detection, one ECS instance is selected from each of two connected VPCs to probe each other. If the probes fail due to security group rules, a notification is displayed on the page. The detection method is Ping for SLB and Telnet for ApsaraDB RDS and ApsaraDB for Redis. An SLB instance cannot be probed by an ECS instance that is part of its backend server group. Similarly, an SLB instance automatically created for an ACK cluster cannot be probed by an ECS instance serving as a node in that cluster. The system automatically adapts to the addition or removal of detection sources and targets with a maximum delay of 20 minutes. However, status changes are not currently supported. This means that if a target instance is no longer in a `Running/Healthy` state but still exists, the availability probe continues to run. Currently supported cloud services: Elastic Compute Service (ECS), ApsaraDB RDS, ApsaraDB for Redis, Server Load Balancer (SLB), Alibaba Cloud DNS, Object Storage Service (OSS), Network Attached Storage (NAS), Tablestore, PolarDB (Primary/Standby Edition), Data Transmission Service (DTS), Elasticsearch, PolarDB for Xscale (Data Node), PolarDB (Cluster Edition), Lindorm, AnalyticDB for PostgreSQL, ApsaraDB for MongoDB (Sharded Cluster), DataWorks, Apsara File Storage (APFS), Cloud Parallel File System (CPFS), Bare Metal Compute Platform (BMCP) (Node), MaxCompute, Bare Metal Management Service (BMS), Realtime Compute for Apache Flink, ApsaraMQ for RocketMQ, ApsaraMQ for Kafka, Container Service for Kubernetes (ACK) Monitoring, Bastionhost (Tenant), Database Audit, Data Masking and Watermarking, Privileged Access Management (PAM), Vulnerability Scan Engine, AnalyticDB for MySQL 3.0, AI Studio (Task Modeling), AI Studio (Model Evaluation), AI Studio (Notebook Modeling), AI Studio (Online Service), AI Studio (Batch Inference), AI Studio (Model Tuning), and Hologres.
 
 **View detection results**
 
@@ -6159,9 +6112,11 @@ g
 **Detection Type**, or by entering an **Instance ID**. The total number of instances for the
 cloud service and their operational statuses are displayed at the bottom of the page.
 
-**Note**
+> **Note:** Red indicates that the instance has an availability alert.
+> Gray indicates that no alert was generated for the instance.
+> Green indicates that the instance is running normally.
 
-Red indicates that the instance has an availability alert. Gray indicates that no alert was generated for the instance. Green indicates that the instance is running normally. Click the color block for a successful instance. In the pop-up window, click **Detection**
+Click the color block for a successful instance. In the pop-up window, click **Detection**
 **Details** to view its monitoring details.
 Click the color block for a failed instance. In the pop-up window, click **Detection Details** to view the failure message. Click **Associated Alerts** to view the related alert details in the alert list.
 5. On the **Detection Results** tab, click **View Alert Rules** in the upper-right corner of a
@@ -6358,10 +6313,7 @@ The x-axis indicates the time, and the y-axis indicates the number of events. Mo
 6. In the System Events section, view the event information. Find the event that you want to
 view and click **Details** in the Operation column. In the System events detail panel, you can view the event details in **JSON** format.
 
-**Note**
-
-System events are reported to the alert center. You can view the alert details on the
-**Alert Center** > **Alert List** page.
+> **Note:** System events are reported to the alert center. You can view the alert details on the **Alert Center** > **Alert List** page.
 
 #### 9.1.3 Create a system event-triggered alert rule
 
@@ -6444,14 +6396,13 @@ Data ranking is available for only the first 1,000 instances of a cloud service 
 5. Filter instances.
 i. Click **filter** and set the filter conditions as needed.
 
-**Note**
+> **Note:** You can click **Add Item** to set multiple filter conditions.
 
-You can click **Add Item** to set multiple filter conditions. ii. Click **sort** to set the sort conditions.
+ii. Click **sort** to set the sort conditions.
 
-**Note**
+> **Note:** **sort**: You can sort data in ascending order (smallest to largest) or descending order (largest to smallest).
 
-**sort**: You can sort data in ascending order (smallest to largest) or descending order
-(largest to smallest). iii. Click **field** to select the fields to display.
+iii. Click **field** to select the fields to display.
 6. (Optional) Click **export data** at the top of the page, set the export scope, customize the
 task name, and then click **OK**.
 
@@ -6467,9 +6418,8 @@ The data subscription feature involves creating a task and then consuming the da
 
 **Procedure**
 
-**Important**
+> **Important:** You can create a maximum of five data subscription tasks. To request a limit increase, contact Apsara Stack technical support.
 
-You can create a maximum of five data subscription tasks. To request a limit increase, contact Apsara Stack technical support.
 1. Log on to the Apsara Uni-manager console.
 2. In the top navigation bar, click **Products** and choose **Migration & O&M** > **O&M and**
 **Monitoring** > **Cloud Monitor**.
@@ -6493,11 +6443,12 @@ You can create a maximum of five data subscription tasks. To request a limit inc
 |   | SlsAk | The AccessKey ID (AK) of the primary organization. |
 |   | SlsSk | The AccessKey Secret (SK) of the primary organization. |
 
-**Note**
+> **Note:** To obtain the AK and SK of a primary organization:
 
-To obtain the AK and SK of a primary organization: i. Log on to the Apsara Uni-manager console. ii. Choose **Enterprise > Resource Management > Organization Management**, select the target organization, and click **Manage AccessKey** in the **Basic**
-**Information** section. The **Manage AccessKey** page displays the organization's AK
-and SK.
+i. Log on to the Apsara Uni-manager console.
+
+> ii. Choose **Enterprise > Resource Management > Organization Management**,
+> select the target organization, and click **Manage AccessKey** in the **Basic** **Information** section. The **Manage AccessKey** page displays the organization's AK and SK.
 
 **View subscription tasks**
 
@@ -6533,10 +6484,8 @@ You can delete tasks that you no longer need.
 
 You can temporarily disable a data subscription task.
 
-**Important**
+> **Important:** Before you disable a data subscription task, make sure its **Subscription Status** is **Enabled**.
 
-Before you disable a data subscription task, make sure its **Subscription Status** is
-**Enabled**.
 1. On the **Data Subscription** page, find the task you want to disable and click **Disable** in the
 **Actions** column.
 2. Click **OK**.
@@ -6547,10 +6496,8 @@ Before you disable a data subscription task, make sure its **Subscription Status
 
 You can enable a disabled task to resume its data subscription.
 
-**Important**
+> **Important:** Before you enable a data subscription task, make sure its **Subscription Status** is **Disabled**.
 
-Before you enable a data subscription task, make sure its **Subscription Status** is
-**Disabled**.
 1. On the **Data Subscription** page, find the task you want to enable and click **Enable** in the
 **Actions** column.
 2. Click **OK**.
@@ -6589,14 +6536,13 @@ You can create a log monitoring metric to track and analyze log data in real tim
 **information**, **Log Data Source**, and **Compute Configuration**.
 i. In the **Basic information** step, enter a name in the **Monitoring Item Name** field and click **Next step**.
 
-**Note**
+> **Note:** A metric name must be unique in a level-1 organization.
 
-A metric name must be unique in a level-1 organization. ii. In the **Log Data Source** step, configure the **SLS log source**, **SlsProject**, and
+ii. In the **Log Data Source** step, configure the **SLS log source**, **SlsProject**, and
 **SlsLogstore** parameters and click **Next step**.
 
-**Note**
+> **Note:** **SLS log source**: the source of the log data. Default value: Redline.
 
-**SLS log source**: the source of the log data. Default value: Redline.
 **SlsProject**: the name of the project in SLS.
 **SlsLogstore**: the name of the Logstore in SLS.
 iii. In the **Compute Configuration** step, configure the **Unit**, **Aggregation cycle**,
@@ -6631,9 +6577,8 @@ On the **Monitoring chart** tab, view the monitoring charts of the metric. You c
 
 You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, view the alert rules of the metric.
 
-**Note**
-
-You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. You can click buttons in the **Operation** column to manage alert rules. For more information, see Manage alert rules.
+> **Note:** You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule.
+> You can click buttons in the **Operation** column to manage alert rules. For more information, see Manage alert rules.
 
 **Modify a metric**
 
@@ -6641,9 +6586,8 @@ You can click **Create alarm rules** to create an alert rule. For more informati
 
 If the information about a metric changes, you can modify the metric.
 
-**Note**
+> **Note:** The name of a metric cannot be modified.
 
-The name of a metric cannot be modified.
 1. On the **Log Monitoring** page, find the metric that you want to modify and click **Edit** in the
 **Operation** column.
 2. In the **Edit Log Monitoring** panel, follow the steps in the wizard to modify the metric
@@ -6698,9 +6642,8 @@ CloudMonitor (CMS) supports monitoring only for preset cloud product metrics. Fo
 | Statistical Method | Select a statistical method for the metric. Valid values:A verage, Maximum, Minimum, Sum, and Value. |
 |---|---|
 
-**Note**
+> **Note:** After the metric is added, CloudMonitor starts receiving the reported monitoring data in approximately 10 minutes.
 
-After the metric is added, CloudMonitor starts receiving the reported monitoring data in approximately 10 minutes.
 5. After you configure the parameters, click **OK**. The new metric appears on the Metric
 Monitoring tab.
 
@@ -6718,11 +6661,8 @@ column.
 2. In the **Modify Metric** dialog box, you can modify the **Metric Description**, **Metric Period**,
 **Metric Unit**, **Metric Dimension**, and **Statistical Method**.
 
-**Note**
+> **Note:** If you modify the **Metric Period**, **Metric Unit**, **Metric Dimension**, or **Statistical** **Method**, the associated alert rules may become invalid. You may need to manually modify the alert rules on the Alert Rules tab.
 
-If you modify the **Metric Period**, **Metric Unit**, **Metric Dimension**, or **Statistical**
-**Method**, the associated alert rules may become invalid. You may need to manually
-modify the alert rules on the Alert Rules tab.
 3. When you are finished, click **OK**.
 
 **Clone a metric**
@@ -6738,9 +6678,7 @@ items. When you are finished, click **OK**.
 column.
 2. Click **OK** in the confirmation dialog box to delete the metric.
 
-**Note**
-
-Deleted metrics cannot be recovered. Proceed with caution.
+> **Note:** Deleted metrics cannot be recovered. Proceed with caution.
 
 **Alert rules**
 
@@ -6815,11 +6753,7 @@ custom events.
 
 **Custom event list**
 
-**Note**
-
-To create an alert rule for a custom event, find the custom event and click **Create an**
-**Event Alarm rule** in the **Operation** column. In the **Create an Event Alarm rule**
-panel, configure parameters to create an alert rule for the custom event. For more information, see the Create an event-triggered alert rule section of this topic.
+> **Note:** To create an alert rule for a custom event, find the custom event and click **Create an** **Event Alarm rule** in the **Operation** column. In the **Create an Event Alarm rule** panel, configure parameters to create an alert rule for the custom event. For more information, see the Create an event-triggered alert rule section of this topic.
 
 **Event-triggered alert rules**
 
@@ -6856,9 +6790,8 @@ The name of the custom event cannot be modified.
 
 **Disable one or more event-triggered alert rules**
 
-**Note**
-
-If you do not need to receive alert notifications about a custom event, you can disable the event-triggered alert rules that are created for the custom event. You can disable the custom event-triggered alert rules that are in the **Enable** state.
+> **Note:** If you do not need to receive alert notifications about a custom event, you can disable the event-triggered alert rules that are created for the custom event.
+> You can disable the custom event-triggered alert rules that are in the **Enable** state.
 
 **Disable a single event-triggered alert rule**
 
@@ -6872,9 +6805,7 @@ i. On the **Event alarm rules** tab, select the alert rules that you want to dis
 
 **Enable one or more event-triggered alert rules**
 
-**Note**
-
-You can enable the custom event-triggered alert rules that are in the **Disable** state.
+> **Note:** You can enable the custom event-triggered alert rules that are in the **Disable** state.
 
 **Enable a single event-triggered alert rule**
 
@@ -6888,9 +6819,7 @@ i. On the **Event alarm rules** tab, select the alert rules that you want to ena
 
 **Delete one or more event-triggered alert rules**
 
-**Note**
-
-After you delete a custom event-triggered alert rule, CloudMonitor no longer sends the related alert notifications to you.
+> **Note:** After you delete a custom event-triggered alert rule, CloudMonitor no longer sends the related alert notifications to you.
 
 **Delete a single event-triggered alert rule**
 

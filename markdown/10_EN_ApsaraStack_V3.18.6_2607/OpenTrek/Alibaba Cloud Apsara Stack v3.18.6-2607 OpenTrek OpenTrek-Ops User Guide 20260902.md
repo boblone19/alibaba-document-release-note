@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 68
 source_pdf: "c76bd8003dea53f0_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops  User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek-Ops%20%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops User Guide 20260902
@@ -113,9 +113,14 @@ You have obtained the endpoint, username, and password of the OpenTrek-Ops platf
 2. Enter the endpoint of the OpenTrek-Ops platform in the address bar and press Enter.
 3. Enter the correct username and password.
 
-**Note**
+> **Note:** Obtain the username and password for logging in to the OpenTrek-Ops platform from the administrator.
+> If you enter an incorrect password multiple times in a row, the system enables the verification code logon feature. If you reach the maximum number of consecutive incorrect attempts, the system locks the account. Contact the administrator to activate the account.
+> When you log in to the OpenTrek-Ops platform for the first time, the system may require you to change the initial password. Follow the prompts to change the password. To improve security, the password must meet the following requirements:
+> The password must contain uppercase and lowercase English letters.
+> The password must contain Arabic numerals (0 to 9).
+> The password must contain special characters.
+> The password must be 10 to 20 characters in length.
 
-Obtain the username and password for logging in to the OpenTrek-Ops platform from the administrator. If you enter an incorrect password multiple times in a row, the system enables the verification code logon feature. If you reach the maximum number of consecutive incorrect attempts, the system locks the account. Contact the administrator to activate the account. When you log in to the OpenTrek-Ops platform for the first time, the system may require you to change the initial password. Follow the prompts to change the password. To improve security, the password must meet the following requirements: The password must contain uppercase and lowercase English letters. The password must contain Arabic numerals (0 to 9). The password must contain special characters. The password must be 10 to 20 characters in length.
 4. Click **Log In**.
 
 **Log out of the system**
@@ -276,9 +281,9 @@ Select the **ProCode** tab and fill in the following information in the form:
 After you fill in the information, click **Create App** to complete the creation. After the application is created, the new agent appears in the agent list.
 4. Discover an agent.
 
-**Note**
+> **Note:** Discover and integrate existing agents from Alibaba Cloud Model Studio or Dify.
 
-Discover and integrate existing agents from Alibaba Cloud Model Studio or Dify. OpenTrek Dev On the **Agent Management** page, click **Discover Agent**. On the **OpenTrek Dev** tab, configure the following parameters:
+OpenTrek Dev On the **Agent Management** page, click **Discover Agent**. On the **OpenTrek Dev** tab, configure the following parameters:
 
 | Parameter | Description |
 |---|---|
@@ -304,9 +309,10 @@ Click **Import Agent**. The new agent appears in the agent list after the creati
 5. View the agent details.
 On the **Agent Management** page, find the target agent and click the agent card to go to the agent details page. On the agent details page, view the following information: Basic information: The name, type, description, creation time, project, primary model, and more. Running status: Running, Changing, Stopped, or Abnormal. Configuration information: The running configuration parameters of the agent, such as overview, persona, skills and tools, channels, cloud resources, version history, security settings, metrics analysis, trace analysis, and topology.
 
-**Note**
+> **Note:** For pro-code agents, you can view the details of instances and scaling, backup and version, metrics analysis, and trace analysis.
+> For workflow agents, you can view the details of overview, channels, and version management.
 
-For pro-code agents, you can view the details of instances and scaling, backup and version, metrics analysis, and trace analysis. For workflow agents, you can view the details of overview, channels, and version management. Operational logs: The historical execution records of the agent, including historical tasks and logs.
+Operational logs: The historical execution records of the agent, including historical tasks and logs.
 
 **Related operations**
 
@@ -397,15 +403,12 @@ On the project details page, select the **Trace Analysis** tab to view all trace
 
 **Delete a project**
 
-**Note**
+> **Note:** Before you delete a project, make sure that all agents under the project are cleaned up.
 
-Before you delete a project, make sure that all agents under the project are cleaned up.
 1. On the **Project Management** page, select the target project and click the project card.
 2. Click **Delete** in the upper-right corner of the page, and then click **Confirm Delete**.
 
-**Warning**
-
-The deletion operation is irreversible. Proceed with caution.
+> **Warning:** The deletion operation is irreversible. Proceed with caution.
 
 **Batch operations**
 
@@ -454,9 +457,9 @@ You have logged on to the OpenTrek-Ops platform. You have obtained the role of a
 Go to the **Skills** management page, where you can obtain the following information: View the total number of skills, the number of enabled skills, the number of disabled skills, and the total number of installations. Use the search box to search for a target skill by name. Use category filters to filter skills by All, Efficiency Tools, Data Analysis, Content Creation, Development Tools, or Others. Click **Create Skill** to create a new skill. View skill cards that display the skill icon, name, description, version number, update time, and enablement status.
 3. Create a skill.
 
-**Note**
+> **Note:** The system provides built-in skills. The actual data prevails.
 
-The system provides built-in skills. The actual data prevails. i. On the **Skills** management page, click **Create Skill**. ii. Fill in the following information in the creation form:
+i. On the **Skills** management page, click **Create Skill**. ii. Fill in the following information in the creation form:
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -468,14 +471,14 @@ The system provides built-in skills. The actual data prevails. i. On the **Skill
 iii. After the skill package upload completes, click **Create Skill**. The system enables the skill by default after you add it.
 4. Enable or disable a skill.
 
-**Note**
+> **Note:** After you disable a skill, agents that have installed the skill can no longer call it.
 
-After you disable a skill, agents that have installed the skill can no longer call it. i. Find the target skill in the skill list and click the card to go to the skill details page. ii. Click **Enable** or **Disable** in the upper-right corner of the details page. iii. The system updates the status after you confirm the operation.
+i. Find the target skill in the skill list and click the card to go to the skill details page. ii. Click **Enable** or **Disable** in the upper-right corner of the details page. iii. The system updates the status after you confirm the operation.
 5. Delete a skill.
 
-**Note**
+> **Note:** You cannot delete built-in skills.
 
-You cannot delete built-in skills. Find the target skill in the skill list, click the card to go to the skill details page, click **Delete**, and then click **Confirm Delete** in the dialog box.
+Find the target skill in the skill list, click the card to go to the skill details page, click **Delete**, and then click **Confirm Delete** in the dialog box.
 6. Update the version.
 i. Click the target skill card in the skill list. ii. Click **Update Version** in the upper-right corner of the skill details page. iii. Upload the new version file in the update version dialog box. The system automatically performs a security scan and then completes the update. iv. Click **Start Update**.
 7. View skill details.
@@ -520,17 +523,15 @@ In the server list, click a server name to view the basic information, connectio
 For a server whose status is **Enabled**, click the disable icon in the **Actions** column of the target server . For a server whose status is **Disabled**, click the enable icon in the **Actions** column of the target server .
 6. Edit an MCP server.
 
-**Note**
+> **Note:** You cannot edit servers that were imported from the gateway.
 
-You cannot edit servers that were imported from the gateway. i. Click the edit icon in the Actions column of the target server to edit the **Description**,
+i. Click the edit icon in the Actions column of the target server to edit the **Description**,
 **Server Endpoint**, **Headers**, and **Timeout Period** of the MCP server.
 ii. Click **Next: Impact Confirmation**. iii. Confirm the impact scope, and then click **Confirm Save and Deploy**.
 7. Delete an MCP server.
 Click the delete icon in the **Actions** column of the target server , and then click **Delete** in the **Confirm Deletion** dialog box.
 
-**Important**
-
-This operation is irreversible. Proceed with caution.
+> **Important:** This operation is irreversible. Proceed with caution.
 
 **Plugin**
 
@@ -624,12 +625,8 @@ Import a gateway a. On the **AI Gateway** tab, click **Import Gateway** and conf
 
 ructure b. Click **Import**.
 
-**Note**
+> **Note:** If you import an ASCM AI gateway, the system automatically imports the **MCP** **configuration** and **AI model configuration** associated with the AI gateway after you click **Import**. You can view these configurations on the **MCP** page and the **Infrastructure** > **Model Services** page.
 
-If you import an ASCM AI gateway, the system automatically imports the **MCP**
-**configuration** and **AI model configuration** associated with the AI gateway after
-you click **Import**. You can view these configurations on the **MCP** page and the
-**Infrastructure** > **Model Services** page.
 View details Click the name of the target gateway to view detailed information such as **Basic**
 **Information**, **Access Points**, **Model API**, and **MCP**.
 Edit a gateway a. Click the edit icon in the **Actions** column of the target gateway, and then edit the
@@ -653,9 +650,9 @@ b. Click **Confirm**. View model details. On the **Model Services** tab, view in
 **Inference Type**, **Protocol**, **Source**.
 Click the name of the target model in the model list to view the **Basic Information**, source, and **Access Endpoint** of the model. Edit a model ructure
 
-**Note**
+> **Note:** Before you modify the infrastructure configuration, make sure that the modification does not affect running agent tasks.
 
-Before you modify the infrastructure configuration, make sure that the modification does not affect running agent tasks. a. Click the edit icon in the **Actions** column of the target model. b. Edit the relevant parameters and click **Next: Impact Confirmation**. c. Verify the impact, and then click **Confirm & Apply**. Otherwise, click **Back to Edit** to re-edit. Remove a model a. Click the remove icon in the **Actions** column of the target model. b. In the pop-up dialog box click **Delete**.
+a. Click the edit icon in the **Actions** column of the target model. b. Edit the relevant parameters and click **Next: Impact Confirmation**. c. Verify the impact, and then click **Confirm & Apply**. Otherwise, click **Back to Edit** to re-edit. Remove a model a. Click the remove icon in the **Actions** column of the target model. b. In the pop-up dialog box click **Delete**.
 5. Data Storage
 On the **Data Storage** tab, click the name of an instance to view the **Basic Information** and **Access Endpoints** details of the instance.
 6. K8S Cluster
@@ -690,9 +687,9 @@ b. Click **Confirm**. Edit a platform Click the edit icon in the **Actions** col
 **Confirm**.
 ructure
 
-**Warning**
+> **Warning:** This operation is irreversible. Proceed with caution.
 
-This operation is irreversible. Proceed with caution. ty center
+ty center
 
 ## 8 Security center
 
@@ -751,9 +748,8 @@ information about the rule, including basic information, severity levelthreat ca
 
 **Add a rule**
 
-**Note**
+> **Note:** TFor more information about how to add an agent rules, see Agent list.
 
-TFor more information about how to add an agent rules, see Agent list.
 1. Click **Add Rule**.
 2. Configure the following parameters and click **Add**.
 
@@ -780,18 +776,16 @@ ty center
 1. Click the switch in the **Actions** column of the target security rule.
 2. In the pop-up dialog box that appears, click **ConfirmOK**.
 
-**Note**
-
-When eanbledAfter you enable the rule, the rule participates in blocksing tool calls.
+> **Note:** When eanbledAfter you enable the rule, the rule participates in blocksing tool calls.
 
 **Disable a rule**
 
 1. Click the switch in the **Actions** column of the target security rule.
 2. In the pop-up dialog box that appears, click **ConfirmOK**.
 
-**Note**
+> **Note:** WhenAfter you disabled the rule, the rule no longer blocks any tool calls.
 
-WhenAfter you disabled the rule, the rule no longer blocks any tool calls. ty center
+ty center
 
 **File guardprotection**
 
@@ -938,9 +932,7 @@ m settings
 
 This section describes the features and configuration methods of the system settings modules in the OpenTrek-Ops platform, including tenant management and platform management.
 
-**Important**
-
-Log in as the system administrator to configure system settings.
+> **Important:** Log in as the system administrator to configure system settings.
 
 ### 12.1 Tenant management
 
@@ -984,17 +976,17 @@ iii. Click **Confirm Create** to complete the creation.
 i. Find the target tenant in the tenant list. ii. Click the edit icon in the **Actions** column to modify the tenant name, description, organization, and other configuration information. iii. Click **Save Changes** to update the tenant.
 5. Delete a tenant.
 
-**Warning**
+> **Warning:** Deleting a tenant is a high-risk operation. Proceed with caution. You cannot recover any data under this tenant after deletion.
 
-Deleting a tenant is a high-risk operation. Proceed with caution. You cannot recover any data under this tenant after deletion. i. Find the target tenant in the tenant list. ii. Click the delete icon in the **Actions** column. iii. In the confirmation dialog box, click **Confirm Delete**. The system removes the tenant from the list after a successful deletion.
+i. Find the target tenant in the tenant list. ii. Click the delete icon in the **Actions** column. iii. In the confirmation dialog box, click **Confirm Delete**. The system removes the tenant from the list after a successful deletion.
 
 **Next steps**
 
 Log in as the administrator of the newly created tenant to perform initial tenant configuration, including registering model services and importing Kubernetes clusters. For more information, see Infrastructure.
 
-**Note**
+> **Note:** When you log in for the first time, the system prompts you to initialize the password. Follow the prompts to set a new password and keep it secure.
 
-When you log in for the first time, the system prompts you to initialize the password. Follow the prompts to set a new password and keep it secure. m settings
+m settings
 
 ### 12.2 Configuration management
 
@@ -1024,17 +1016,17 @@ Click the switch in the upper-right corner of the target channel card to enable 
 3. On the **Configuration** page, select **System Configuration** to modify the preset
 configuration items of the system. ProCode Runtime Configuration Click the edit icon in the **Actions** column to modify the available runtimes for the procode agent, and then click **Save**. Skill Package Size Click the edit icon in the **Actions** column to modify the configuration value, and then click **Save**. m settings
 
-**Note**
+> **Note:** The modifications take effect immediately for all tenants. Adjust the size with caution and prevent an excessively oversized skill pack from affecting the loading performance.
 
-The modifications take effect immediately for all tenants. Adjust the size with caution and prevent an excessively oversized skill pack from affecting the loading performance. Agent Console Hide Sidebar Click the edit icon in the **Actions** column to modify the configuration value, and then click **Save**. Deployment Features Configuration Click the edit icon in the **Actions** column to modify the global parameters for the platform deployment mode, and then click **Save & Apply**.
+Agent Console Hide Sidebar Click the edit icon in the **Actions** column to modify the configuration value, and then click **Save**. Deployment Features Configuration Click the edit icon in the **Actions** column to modify the global parameters for the platform deployment mode, and then click **Save & Apply**.
 
-**Note**
+> **Note:** Modifying the deployment mode configuration triggers a hot update. All changes take effect immediately without restart.
 
-Modifying the deployment mode configuration triggers a hot update. All changes take effect immediately without restart. AI Assistant Model Config
+AI Assistant Model Config
 
-**Note**
+> **Note:** The model configuration affects all intelligent assistant instances. Modifications take effect within the next synchronization cycle.
 
-The model configuration affects all intelligent assistant instances. Modifications take effect within the next synchronization cycle. a. Click the edit icon in the **Actions** column. b. Click **Add LLM Config**, configure the parameters, and then click **Save**. Default Cluster Config Click the edit icon in the **Actions** column to enter the cluster configurations. If you enable the default cluster, the system automatically imports this cluster when you create a new tenant. After editing, click **Save**.
+a. Click the edit icon in the **Actions** column. b. Click **Add LLM Config**, configure the parameters, and then click **Save**. Default Cluster Config Click the edit icon in the **Actions** column to enter the cluster configurations. If you enable the default cluster, the system automatically imports this cluster when you create a new tenant. After editing, click **Save**.
 
 **Data subscription**
 
@@ -1075,9 +1067,9 @@ on the right side of the current login account and select **Current Tenant**. Yo
 3. Configure tenant settings.
 In the tenant switching dialog box, click the settings button for the target tenant. Enter the specified administrator in the input box and authorize the user as the Ops administrator of the current tenant.
 
-**Note**
+> **Note:** Ensure that the tenant administrator has added the organization of the selected user to the platform.
 
-Ensure that the tenant administrator has added the organization of the selected user to the platform. Click **Confirm Authorization**, and then click **Back** in the upper-right corner of the page.
+Click **Confirm Authorization**, and then click **Back** in the upper-right corner of the page.
 
 ## 14 FAQ
 

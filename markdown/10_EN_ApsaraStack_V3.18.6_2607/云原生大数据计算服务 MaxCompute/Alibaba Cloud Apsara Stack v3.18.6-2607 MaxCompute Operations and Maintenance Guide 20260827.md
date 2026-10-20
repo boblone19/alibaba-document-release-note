@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 160
 source_pdf: "0da8b934b461ff0b_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Operations and Maintenance Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Operations and Maintenance Guide 20260827
@@ -144,7 +144,10 @@ represent different execution logic. Fuxi tasks can be linked together through p
 5. Fuxi instance: An instance of a Fuxi task and the smallest unit of work scheduled by the
 task scheduling system. During execution, a single task breaks down into many logical units that are processed in parallel to increase speed. All instances of a task share the same execution logic but operate on different input and output data.
 6. Fuxi worker: A low-level concept in the task scheduling system. A worker is an operating
-system process. Multiple Fuxi instances can share and reuse a single worker, but a worker can process only one instance at a time. InstanceID: The unique identifier for a MaxCompute job. It is essential for troubleshooting. You can construct the logview for an instance by using its project name and InstanceID. service master/job master: Master nodes for service and job tasks, respectively. They request and schedule resources, creating work plans for workers, and monitoring the worker lifecycle.
+system process. Multiple Fuxi instances can share and reuse a single worker, but a worker can process only one instance at a time.
+
+> **Note:** InstanceID: The unique identifier for a MaxCompute job. It is essential for troubleshooting. You can construct the logview for an instance by using its project name and InstanceID.
+> service master/job master: Master nodes for service and job tasks, respectively. They request and schedule resources, creating work plans for workers, and monitoring the worker lifecycle.
 
 ## 2 O&M commands and tools
 
@@ -167,7 +170,9 @@ When a platform AccessKey pair is blocked by ACL due to being used outside its a
 
 **Account management for cloud services > Account ACL control**.
 **PPv2 enablement required for VPC scenarios**:
-To obtain full capability support within a VPC, you must enable the `odpsPPV2Enable` feature and set `odpsPPV2Enable` to `true` when you plan data in Deployment Planner. After this feature is enabled, the system can identify and verify the VPC information during an authentication process, and record the corresponding VPC ID in ACL blocking logs to facilitate security audit and troubleshooting. To check whether the `odpsPPV2Enable` feature is enabled, perform the following steps: i. Log in to the Apsara Infrastructure Management console. In the left-side navigation pane, choose **Resource Management > Product & Cluster O&M**. On the Product & Cluster O&M page, enter `odps` in the **Product | Cluster** search box to search for MaxCompute clusters. ii. Find the cluster that you want to manage and click **Cluster Details** in the **Actions** column to go to the cluster details page. iii. On the **Desired State Configuration** tab, find the `kv.conf` and `tag.conf` files. iv. Click **Show Content** on the right side to check whether the values of the `odpsPPV2Enable` parameters in the two files are `true` . If the `odpsPPV2Enable` parameters are not specified in the configuration or the corresponding values of the parameters are `false` , contact MaxCompute O&M engineers to adjust the configuration.
+To obtain full capability support within a VPC, you must enable the `odpsPPV2Enable` feature and set `odpsPPV2Enable` to `true` when you plan data in Deployment Planner. After this feature is enabled, the system can identify and verify the VPC information during an authentication process, and record the corresponding VPC ID in ACL blocking logs to facilitate security audit and troubleshooting. To check whether the `odpsPPV2Enable` feature is enabled, perform the following steps: i. Log in to the Apsara Infrastructure Management console. In the left-side navigation pane, choose **Resource Management > Product & Cluster O&M**. On the Product & Cluster O&M page, enter `odps` in the **Product | Cluster** search box to search for MaxCompute clusters. ii. Find the cluster that you want to manage and click **Cluster Details** in the **Actions** column to go to the cluster details page. iii. On the **Desired State Configuration** tab, find the `kv.conf` and `tag.conf` files. iv. Click **Show Content** on the right side to check whether the values of the `odpsPPV2Enable` parameters in the two files are `true` .
+
+> **Note:** If the `odpsPPV2Enable` parameters are not specified in the configuration or the corresponding values of the parameters are `false` , contact MaxCompute O&M engineers to adjust the configuration.
 
 ### 2.2 odpscmd commands
 
@@ -420,7 +425,11 @@ Example:
 ```
 
 **Parameters**:
--c: the encoding format of the data file. Default value: UTF-8. -cf: specifies whether the file is a CSV file. Default value: False. Only TXT and CSV files can be downloaded. TXT files are downloaded by default. -ci: the indexes of the columns from which you want to download data. The column indexes start from 0. Separate column indexes with commas (,). -cn: the names of the columns from which you want to download data. Separate column names with commas (,). -cp and -compress: specifies whether to compress the local file before you download the file. This helps reduce data usage. By default, the local file is compressed. -dfp: the format of DATETIME data. Default value: yyyy-MM-dd HH:mm:ss. -e: specifies whether to represent data of the DOUBLE type that you want to download by using an exponential function. If the data is not represented by an exponential function, retain a maximum of 20 digits. -fd: the column delimiter used in the local data file. By default, commas (,) are used as the column delimiter. -h: specifies whether the data file has a table header. If you set this parameter to true, the data file has a table header. In this case, Dship skips the table header and uploads data from the second row. `-h=true` and `threads>1` cannot be used together. -limit: the number of rows that you want to download. -ni: specifies the NULL data identifier. Default value: `""` (empty string). -rd: the row delimiter used in the local data file. Default value: \r\n. -sd: the session directory. -t: specifies the number of threads. Default value: 1. -te: the Tunnel endpoint. -time: specifies whether the download time is tracked. Default value: False. -threads: the number of threads. Default value: 1. -tz: the time zone. Default value: local time zone, such as Asia/Shanghai.
+-c: the encoding format of the data file. Default value: UTF-8. -cf: specifies whether the file is a CSV file. Default value: False. Only TXT and CSV files can be downloaded. TXT files are downloaded by default. -ci: the indexes of the columns from which you want to download data. The column indexes start from 0. Separate column indexes with commas (,). -cn: the names of the columns from which you want to download data. Separate column names with commas (,). -cp and -compress: specifies whether to compress the local file before you download the file. This helps reduce data usage. By default, the local file is compressed. -dfp: the format of DATETIME data. Default value: yyyy-MM-dd HH:mm:ss. -e: specifies whether to represent data of the DOUBLE type that you want to download by using an exponential function. If the data is not represented by an exponential function, retain a maximum of 20 digits. -fd: the column delimiter used in the local data file. By default, commas (,) are used as the column delimiter. -h: specifies whether the data file has a table header. If you set this parameter to true, the data file has a table header. In this case, Dship skips the table header and uploads data from the second row.
+
+> **Note:** `-h=true` and `threads>1` cannot be used together.
+
+-limit: the number of rows that you want to download. -ni: specifies the NULL data identifier. Default value: `""` (empty string). -rd: the row delimiter used in the local data file. Default value: \r\n. -sd: the session directory. -t: specifies the number of threads. Default value: 1. -te: the Tunnel endpoint. -time: specifies whether the download time is tracked. Default value: False. -threads: the number of threads. Default value: 1. -tz: the time zone. Default value: local time zone, such as Asia/Shanghai.
 
 **Purge**
 
@@ -717,7 +726,10 @@ iv. Run the following command to check whether the machine that you want to shut
 ```
 
 3. Shut down the machine for maintenance. After the maintenance is completed, restart the
-machine. Do not compromise the system during the maintenance.
+machine.
+
+> **Note:** Do not compromise the system during the maintenance.
+
 4. Run the following commands to remove the machine from the blacklist of Job Scheduler:
 
 ```
@@ -804,7 +816,10 @@ curl http://127.0.0.1:7070/api/v5/GetMachineInfoPackage? hostname=m1&attr=sr.id,
 **Return results**:
 A large amount of information is returned. Search for the items in the `doing` state.
 7. Shut down the machine when the status of the rma action becomes `approved or doing` .
-After the maintenance is complete, restart the machine. If you want to clone the machine after the maintenance is complete, proceed to the next step. Otherwise, skip the next step.
+After the maintenance is complete, restart the machine.
+
+> **Note:** If you want to clone the machine after the maintenance is complete, proceed to the next step. Otherwise, skip the next step.
+
 8. Clone the machine.
 i. After the maintenance is complete, run the following command to clone the machine on the OPS1 server:
 
@@ -933,7 +948,10 @@ iv. Run the following command to check whether the machine that you want to shut
 ```
 
 3. Shut down the machine for maintenance. After the maintenance is completed, restart the
-machine. Do not compromise the system during the maintenance.
+machine.
+
+> **Note:** Do not compromise the system during the maintenance.
+
 4. Run the following commands to remove the machine from the blacklist of Job Scheduler:
 
 ```
@@ -963,8 +981,9 @@ On the **Desired State Configuration** tab, enter `role.conf` into the search bo
 3. In the right-side editor, modify the machine tags and click **Preview and Submit**.
 4. In the **Confirm and Submit** dialog box, enter the change description and click **Submit**.
 5. The cluster starts rolling, and the changes start to take effect.
-On the **Action History** tab, you can check the task status. If the task status is
-**Succeeded**, the changes are in effect.
+
+> **Note:** On the **Action History** tab, you can check the task status. If the task status is **Succeeded**, the changes are in effect.
+
 6. After the changes are applied, run the r ttrl; command on the TerminalService page to
 confirm the changes.
 
@@ -991,7 +1010,9 @@ tj_show -r fuxi.Tubo#;
 ```
 
 2. Divide the number of machines by 3 to obtain the number of workers.
-The number of workers ranges from 1 to 3.
+
+> **Note:** The number of workers ranges from 1 to 3.
+
 3. Modify the number of workers in the env.cfg file in the `vim /apsara/odps_service/deploy`
 directory.
 
@@ -1045,9 +1066,15 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+
 3. Enter the username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. After you have read and selected the privacy policy, click **Agree to Privacy Policy and**
 **Log In**.
 5. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, click
@@ -1064,7 +1091,11 @@ The Apsara Bigdata Manager (ABM) dashboard displays key metrics of MaxCompute. I
 **Go to the dashboard**
 
 1. Log in to the ABM console. By default, the **Instrument cluster** tab appears.
-To return to the **Instrument cluster** tab from other pages, click the icon in the upper-left corner and select **ABM**.
+
+> **Note:** To return to the **Instrument cluster** tab from other pages, click the
+> icon in the
+> upper-left corner and select **ABM**.
+
 2. On the **Instrument cluster** tab, select a region from the **Area** drop-down list in the upper-
 left corner to view the key metrics of MaxCompute in the selected region.
 
@@ -1088,7 +1119,12 @@ The resource library displays the resource usage of MaxCompute. This topic descr
 **Go to the Resource Library tab**
 
 1. Log in to the Apsara Bigdata Manager (ABM) console. By default, the **Instrument cluster**
-tab appears. To return to the **Instrument cluster** tab from other pages, click the icon in the upper-left corner and select **ABM**.
+tab appears.
+
+> **Note:** To return to the **Instrument cluster** tab from other pages, click the
+> icon in the
+> upper-left corner and select **ABM**.
+
 2. On the **Instrument cluster** tab, click the **Resource Library** tab.
 
 **View the resource library of MaxCompute**
@@ -1110,7 +1146,11 @@ After you log in to the **ABM** console, the **Instrument cluster** tab appears 
 **MaxCompute**.
 2. In the top navigation bar, click **Monitoring**.
 3. Click the **Degree of health** tab to view the health check information.
-The Degree of health tab displays the monitoring checkers, monitoring sources, severity level, and monitoring details. You can filter data based on your business requirements. You can click the icon to the left of a monitoring checker to view information such as the host status and the report time.
+The Degree of health tab displays the monitoring checkers, monitoring sources, severity level, and monitoring details. You can filter data based on your business requirements.
+
+> **Note:** You can click the
+> icon to the left of a monitoring checker to view information such as
+> the host status and the report time.
 
 #### 4.2.4 Reports
 
@@ -1164,7 +1204,9 @@ The Project List page displays all projects and project details of MaxCompute cl
 1. Go to the Business operation and maintenance tab of MaxCompute.
 2. In the left-side navigation pane of the **Business operation and maintenance** tab, choose
 **Project Management > Project List**. On the **Project List** page, you can view the
-projects in a cluster. The **Project List** page displays the key information about each project, including the project name, cluster, used storage, storage quota, storage usage, number of files, owner, and creation time of each project.
+projects in a cluster.
+
+> **Note:** The **Project List** page displays the key information about each project, including the project name, cluster, used storage, storage quota, storage usage, number of files, owner, and creation time of each project.
 
 **View project details**
 
@@ -1233,7 +1275,9 @@ to **Cluster** to filter projects.
 **List** page, select multiple projects for which you want to switch the channel configuration
 and click **Switch Channel Configuration** below the list. The **Toggle Project Channel**
 **Configuration** dialog box appears.
-Select one or more projects.
+
+> **Note:** Select one or more projects.
+
 **Switch the channel configuration for a single project** : On the **Project List** page,
 click the name of the project that you want to manage. On the page that appears, click
 **Channel > Channel Configuration > Switch Channel Configuration**. The **Switch**
@@ -1264,11 +1308,15 @@ On the **Operation** tab, you can view daily job snapshots within the previous w
 
 On the **Storage** tab, you can view the following information: **Storage space water level**,
 **Physical Storage Used**, **Physical storage quota**, and **Physical Storage Remaining**. You
-can also view the chart that displays the trend of storage usage, including the number of files in Apsara Distributed File System, storage size, number of tables, number of partitions, and redundant storage space on a daily basis. The trend curves are shown in different colors. The Storage tab displays only the information about storage resources. To view the information about computing resources, click the **Calculation** tab.
+can also view the chart that displays the trend of storage usage, including the number of files in Apsara Distributed File System, storage size, number of tables, number of partitions, and redundant storage space on a daily basis. The trend curves are shown in different colors.
+
+> **Note:** The Storage tab displays only the information about storage resources. To view the information about computing resources, click the **Calculation** tab.
 
 **Calculation**
 
-On the **Calculation** tab, you can view the quota groups of the project and the details of each quota group. To view the details of a quota group, click the quota group name in the **Quota Name** column. For more information about quota groups, see Quota group management. The Calculation tab displays only the information about computing resources. To view the information about storage resources, click the **Storage** tab.
+On the **Calculation** tab, you can view the quota groups of the project and the details of each quota group. To view the details of a quota group, click the quota group name in the **Quota Name** column. For more information about quota groups, see Quota group management.
+
+> **Note:** The Calculation tab displays only the information about computing resources. To view the information about storage resources, click the **Storage** tab.
 
 **Configuration**
 
@@ -1316,14 +1364,12 @@ appears by default.
 After storage encryption is enabled, all data that is newly written to the project is automatically encrypted.
 1. On the **Encryption** tab, click **Modify** in the Actions column. In the **Configure Encrypted**
 **Storage** panel, configure the **Encryption Algorithm**, **region**, and **project** parameters.
-The AES-CTR, AES-256, RC4, and SM4 encryption algorithms are supported.
+
+> **Note:** The AES-CTR, AES-256, RC4, and SM4 encryption algorithms are supported.
+
 2. Click **Run**.
 
-**Important**
-
-After storage encryption is enabled, the value in the **Whether the storage is**
-**encrypted** column is **encrypted**. After storage encryption is enabled for a project, this
-feature cannot be disabled.
+> **Important:** After storage encryption is enabled, the value in the **Whether the storage is** **encrypted** column is **encrypted**. After storage encryption is enabled for a project, this feature cannot be disabled.
 
 **Encrypt historical data**
 
@@ -1388,7 +1434,9 @@ A message appears, indicating that the package is installed.
 
 ###### 4.3.1.2.5 Migrate MaxCompute projects
 
-Apsara Big Data Manager (ABM) allows you to migrate MaxCompute projects across regions from one cluster to another. This helps balance the computing and storage resources of each cluster. The project migration feature is supported only when the clusters are deployed in multiregion mode.
+Apsara Big Data Manager (ABM) allows you to migrate MaxCompute projects across regions from one cluster to another. This helps balance the computing and storage resources of each cluster.
+
+> **Note:** The project migration feature is supported only when the clusters are deployed in multi- region mode.
 
 **Create a project migration task**
 
@@ -1430,9 +1478,9 @@ If you migrate multiple projects at a time, the process requires many steps to c
 3. After the **Start to Replicate** step is completed, check the difference in data volumes
 between the migrated project in the source cluster and the corresponding project in the destination cluster.
 
-**Important**
+> **Important:** We recommend that you run the next step only when the difference in data volumes does not exceed 5%.
 
-We recommend that you run the next step only when the difference in data volumes does not exceed 5%. To check the data volume of a project, log in to the admingateway host in the cluster in which the project resides and run the **pu dirmeta**
+To check the data volume of a project, log in to the admingateway host in the cluster in which the project resides and run the **pu dirmeta**
 **/product/aliyun/odps/${project_name}/** command.
 4. If the difference in data volumes does not exceed 5%, perform one of the following
 operations: Change the default cluster: Click **OK** in the Actions column of the **Switch Default**
@@ -1441,16 +1489,14 @@ default cluster of the migrated project. In this example, the default cluster is
 **Default Cluster** step. After you perform this operation, the source cluster is still used as
 the default cluster of the project. After the default cluster is changed, data is written to the destination cluster.
 
-**Warning**
+> **Warning:** During project migration, the migrated project in the source cluster and the corresponding project in the destination cluster synchronize data based on the data replication list to ensure data consistency. A long period of time is required to complete data synchronization. Therefore, after the default cluster is changed, we recommend that you wait for about one week before you proceed to the next step.
 
-During project migration, the migrated project in the source cluster and the corresponding project in the destination cluster synchronize data based on the data replication list to ensure data consistency. A long period of time is required to complete data synchronization. Therefore, after the default cluster is changed, we recommend that you wait for about one week before you proceed to the next step.
 5. Wait for about one week and check whether the data volume of the migrated project in the
 source cluster is the same as that of the corresponding project in the destination cluster. To check the data volume of a project, log in to the admingateway host in the cluster in which the project resides and run the **pu dirmeta**
 **/product/aliyun/odps/${project_name}/** command.
 
-**Warning**
+> **Warning:** Before you proceed to the next step, make sure that the data volume of the migrated project in the source cluster is the same as that of the corresponding project in the destination cluster. Otherwise, data may be lost.
 
-Before you proceed to the next step, make sure that the data volume of the migrated project in the source cluster is the same as that of the corresponding project in the destination cluster. Otherwise, data may be lost.
 6. To retain the migrated project in the source cluster, click **Skip** in the Actions column of the
 **Remove Source Cluster** step before you perform the **Clear Replication** step.
 7. After the data volume of the migrated project in the source cluster becomes the same as
@@ -1511,7 +1557,10 @@ Apsara Big Data Manager (ABM) displays the quota groups of all projects in a Max
 **Modify a quota group**
 
 1. On the **Quota Group List** page, click **Modification** in the **Actions** column of a quota
-group. In the **Modifying a Quota Group** panel, modify the parameters. If time-sharing management is already enabled for the quota group that you want to modify, you need to adjust the time-sharing management configuration first.
+group. In the **Modifying a Quota Group** panel, modify the parameters.
+
+> **Note:** If time-sharing management is already enabled for the quota group that you want to modify, you need to adjust the time-sharing management configuration first.
+
 2. Click **Run** to apply the modifications.
 
 **View the details about a quota group**
@@ -1527,9 +1576,11 @@ On the **Quota Group List** page, click **Details** in the **Actions** column of
 2. Click **time sharing management** in the **Actions** column of a quota group to go to the
 **Time-Sharingmanagement** tab.
 3. Click **Set timesharing**. In the **Set timesharing** panel, specify **Time period** and click **OK**
-to add a time period, and then click **Use TimeSet**. You can click **New** to add a time period and click **Delete** to delete a time period. For a quota group that has time-sharing management enabled, you can click
-**Edit** in the **Actions** column to modify the time-sharing management settings. In
-the **Modify Timesharing Configuration** panel, modify the time-sharing management parameters.
+to add a time period, and then click **Use TimeSet**.
+
+> **Note:** You can click **New** to add a time period and click **Delete** to delete a time period.
+> For a quota group that has time-sharing management enabled, you can click **Edit** in the **Actions** column to modify the time-sharing management settings. In the **Modify Timesharing Configuration** panel, modify the time-sharing management parameters.
+
 4. To disable time-sharing management for a quota group, click **Set timesharing** again. In
 the panel that appears, click **Close TimeSet**.
 
@@ -1556,7 +1607,11 @@ The job snapshot feature allows you to manage the tasks that are created in MaxC
 
 You can perform the following operations: View the details of a job snapshot generated at a specific point in time of a day. The details include the instance, project, quota group, submitter, duration, minimum CPU utilization, maximum CPU utilization, minimum memory usage, maximum memory usage, DataWorks node ID, status, start time, priority, and type. View the details of job snapshots generated within a specific time period. The details include the instance, project, quota group, average CPU utilization, peak CPU utilization, average memory usage, peak memory usage, number of collections, earliest collection time, latest collection time, start time, priority, and type. You can also view the operational logs of a job to identify errors.
 1. Search for job snapshots.
-On the **JobSnapshot** tab, click the date and time in the upper-right corner to filter job snapshots by day. Click the **All**, **Running**, **Waiting for Resources**, or **Initializing** tab to view job snapshots in the corresponding state. On the **JobSnapshot(TimeRange)** tab, click the date and time in the upper-right corner to query job snapshots within the specified time period.
+On the **JobSnapshot** tab, click the date and time in the upper-right corner to filter job snapshots by day.
+
+> **Note:** Click the **All**, **Running**, **Waiting for Resources**, or **Initializing** tab to view job snapshots in the corresponding state.
+
+On the **JobSnapshot(TimeRange)** tab, click the date and time in the upper-right corner to query job snapshots within the specified time period.
 2. Find the desired snapshot and click **Logview** in the **Operation** column. In the **Generate**
 **Logview** dialog box, click **Run** to view the LogView information of the job.
 
@@ -1590,7 +1645,10 @@ The following table describes the parameters.
 **View execution history**
 
 1. Yo can view the status and progress of job log collection.
-i. On the **JobSnapshot** tab, choose **Actions > Execution History**. ii. In the **Execution History** panel, you can view the status of the current log collection task and historical log collection tasks. `RUNNING` indicates that the task is collecting logs. `SUCCESS` indicates that the task is completed. `FAILED` indicates that the task failed. If the task is in the `RUNNING` state, you can click **Details** in the **Details** column of the task to view the progress.
+i. On the **JobSnapshot** tab, choose **Actions > Execution History**. ii. In the **Execution History** panel, you can view the status of the current log collection task and historical log collection tasks.
+
+> **Note:** `RUNNING` indicates that the task is collecting logs. `SUCCESS` indicates that the task is completed. `FAILED` indicates that the task failed. If the task is in the `RUNNING` state, you can click **Details** in the **Details** column of the task to view the progress.
+
 2. View the path where job logs are stored.
 After the log collection task is completed, click **Details** in the **Details** column of the task in the **Execution History** panel. Then, view the path where the collected job logs are stored in the **Job Log Collection** step.
 
@@ -1630,7 +1688,8 @@ The following table describes the parameters.
 2. Click **Compare Versions** below merge parameter to view the differences between the
 original and modified values.
 3. Click **Run**.
-The merge task that you created appears in the **Cluster merge task** section.
+
+> **Note:** The merge task that you created appears in the **Cluster merge task** section.
 
 **Create a merge task for a project**
 
@@ -1654,7 +1713,8 @@ The following table describes the parameters.
 | Maximum number of running jobs | The maximum number of jobs that can run concurrently for the selected project. This parameter is a global parameter. The jobs refer to all types of jobs in the selected project. |
 
 2. Click **Run**.
-The merge task that you created appears in the **project merge task** section.
+
+> **Note:** The merge task that you created appears in the **project merge task** section.
 
 **View merge task statistics**
 
@@ -1682,7 +1742,9 @@ In the **merge statistics** section, click **New merge type**. In the **Edit mer
 2. Click **Compare Versions** below **merge parameter** to view the differences between the
 original and modified values.
 3. Click **Run**.
-The merge type that you created appears in the **merge statistics** section. To modify the merge type, click **Modify** in the **Operation** column.
+
+> **Note:** The merge type that you created appears in the **merge statistics** section.
+> To modify the merge type, click **Modify** in the **Operation** column.
 
 ###### 4.3.1.5.2 Compress idle files
 
@@ -1722,11 +1784,15 @@ The following table describes the parameters.
 2. You can click **Compare Versions** below the Archive parameter parameter to view the
 differences between the original and modified values.
 3. After you complete the configuration, click **Run**.
-The archive task that you create appears in the **Cluster archive task** list.
+
+> **Note:** The archive task that you create appears in the **Cluster archive task** list.
 
 **Create an archive task for a project**
 
-If excessive idle files exist in only a few projects of a MaxCompute cluster, you can create an archive task to compress the idle files in a specific project. If the tables or partitions of a project are not ranked among the top 100,000 in the cluster, the archive task cannot compress the idle files in the project.
+If excessive idle files exist in only a few projects of a MaxCompute cluster, you can create an archive task to compress the idle files in a specific project.
+
+> **Note:** If the tables or partitions of a project are not ranked among the top 100,000 in the cluster, the archive task cannot compress the idle files in the project.
+
 1. In the **project archive task** section of the **TaskConfiguration** tab, click **New archive**
 **task**. In the **Edit a project archive task** panel, configure the parameters.
 The following table describes the parameters.
@@ -1746,7 +1812,8 @@ The following table describes the parameters.
 | Maximum number of running jobs | The maximum number of jobs that can be concurrently run for the selected project. This parameter is a global parameter. The jobs refer to all types of jobs in the selected project. |
 
 2. After you complete the configuration, click **Run**.
-The newly created archive task appears in the list of archive tasks for projects.
+
+> **Note:** The newly created archive task appears in the list of archive tasks for projects.
 
 **View archive task statistics**
 
@@ -1774,7 +1841,9 @@ In the **archive statistics** section, click **New archive type**. In the **Edit
 2. After you complete the configuration, click **Compare Versions** below the **archive**
 **parameter** parameter to view the differences between the original and modified values.
 3. Then, click **Run**.
-The archive type that you add appears in the **archive statistics** list. To modify an archive type, click **Modify** in the **Operation** column of the archive type.
+
+> **Note:** The archive type that you add appears in the **archive statistics** list.
+> To modify an archive type, click **Modify** in the **Operation** column of the archive type.
 
 ###### 4.3.1.5.3 Analyze MaxCompute resources
 
@@ -1882,7 +1951,9 @@ In the **Project Overview** section, click **Start Synchronization** in the **Ac
 
 **Switch the default compute cluster**
 
-In the **Project Overview** section, click **Switch Default Compute Cluster** in the **Actions** column for the target project. In the dialog box that appears, click **Execute**. A direct switch of the default compute cluster can cause data loss. Before you switch, ensure that data synchronization is complete and stop all data writes.
+In the **Project Overview** section, click **Switch Default Compute Cluster** in the **Actions** column for the target project. In the dialog box that appears, click **Execute**.
+
+> **Note:** A direct switch of the default compute cluster can cause data loss. Before you switch, ensure that data synchronization is complete and stop all data writes.
 
 **View the switch history**
 
@@ -2003,7 +2074,9 @@ The **YuancangMonitoring** tab displays the completion time of the output tasks 
 **Yuan warehouse output time**: displays information about the output tasks of the
 metadata repository, including **Data Date**, **Completion time**, **Acquisition time**,
 **Consumption**, and **Error Message**.
-The **Completion time** column displays the time when an output task was completed. The **Acquisition time** column displays the latest status of an output task retrieved by ABM.
+
+> **Note:** The **Completion time** column displays the time when an output task was completed. The **Acquisition time** column displays the latest status of an output task retrieved by ABM.
+
 **Running time**: displays the time consumption trend of output tasks within the specified
 period of time.
 
@@ -2049,8 +2122,8 @@ This section describes how to identify the cause of the failure to start a servi
 2. On the **Execution History** page, find the job that you want to view and click **Details**.
 3. In the **Service Role Startup** panel, choose **Service Role Startup > Servers > View**
 **Details** to locate the failure cause.
-You can analyze the cause of the failure by combining **Parameter Configuration**,
-**Execution Output**, and **Execution Parameters**.
+
+> **Note:** You can analyze the cause of the failure by combining **Parameter Configuration**, **Execution Output**, and **Execution Parameters**.
 
 ###### 4.3.2.1.7 Start Admin Console
 
@@ -2073,8 +2146,9 @@ submitted.
 
 1. On the **Control Services** page, click **Execution History** in the upper-right corner. In the
 **Execution History** panel, you can view the history of the Start AdminConsole operation.
-**RUNNING** indicates that the "Start AdminConsole" task is in progress. **SUCCESS**
-indicates that the task has succeeded. **FAILED** indicates that the task has failed.
+
+> **Note:** **RUNNING** indicates that the "Start AdminConsole" task is in progress. **SUCCESS** indicates that the task has succeeded. **FAILED** indicates that the task has failed.
+
 2. If the status of the task is **RUNNING**, click **Details** in the Details column to view the
 execution progress.
 
@@ -2086,8 +2160,8 @@ If the status of a "Start AdminConsole" task is **FAILED**, you can view the exe
 2. In the **Execution History** panel, find the task that you want to view and click **Details**.
 3. In the **Start AdminConsole** panel, choose **Start AdminConsole > Machine Details >**
 **View Details** corresponding to the failed step to locate the cause of failure.
-You can analyze the cause of failure by clicking **Parameter Configuration** and
-**Execution Parameters**.
+
+> **Note:** You can analyze the cause of failure by clicking **Parameter Configuration** and **Execution Parameters**.
 
 ###### 4.3.2.1.8 Collect service logs
 
@@ -2121,8 +2195,9 @@ The following table describes the parameters.
 
 1. On the **Control Services** page, click **Execution History** in the upper-right corner. In the
 **Execution History** panel, you can view the history of the service log collection operation.
-**RUNNING** indicates that service logs are being collected. **SUCCESS** indicates that
-service logs are collected. **FAILED** indicates that service logs fail to be collected.
+
+> **Note:** **RUNNING** indicates that service logs are being collected. **SUCCESS** indicates that service logs are collected. **FAILED** indicates that service logs fail to be collected.
+
 2. If a service log collection task is in the **RUNNING** state, click **Details** in the Details column
 to view the progress of the task.
 
@@ -2134,8 +2209,8 @@ If the status is **FAILED**, you can view the execution logs to identify the cau
 2. In the **Execution History** panel, find the task that you want to view and click **Details**.
 3. In the **Service log collection** panel, choose **Service log collection > Servers > View**
 **Details** to locate the cause of failure.
-You can analyze the cause of failure by clicking **Parameter Configuration** and
-**Execution Parameters**.
+
+> **Note:** You can analyze the cause of failure by clicking **Parameter Configuration** and **Execution Parameters**.
 
 ###### 4.3.2.1.9 Change the number of control nodes
 
@@ -2156,7 +2231,9 @@ operation has been submitted.
 
 1. On the **Control Services** page, click **Execution History** in the upper-right corner. In the
 **Execution History** panel, view the operation history of control information modification.
-For control information modification tasks, **RUNNING** indicates that the execution is in progress, **SUCCESS** indicates that the execution succeeds, and **FAILED** indicates that the execution fails.
+
+> **Note:** For control information modification tasks, **RUNNING** indicates that the execution is in progress, **SUCCESS** indicates that the execution succeeds, and **FAILED** indicates that the execution fails.
+
 2. Find a task in the **RUNNING** state, and click **Details** in the Details column to view the
 execution progress.
 
@@ -2169,8 +2246,8 @@ The following example describes how to locate the cause of a failure to modify t
 in the Details page.
 3. In the **Control Quantity Modification** panel, choose **Control Quantity Modification >**
 **Servers > View Details** to locate the failure cause.
-You can analyze the cause of the failure by combining **Parameter Configuration** and
-**Execution Parameters**.
+
+> **Note:** You can analyze the cause of the failure by combining **Parameter Configuration** and **Execution Parameters**.
 
 ##### 4.3.2.2 Job Scheduler O&M
 
@@ -2319,7 +2396,11 @@ You can add compute nodes to or remove compute nodes from the blacklist or read-
 1. On the **ComputeNodes** tab, find the desired compute node and click **Actions > Add**
 **blacklist** in the Actions column.
 2. In the panel that appears, click **Run**. A message appears, indicating that the action is
-submitted. The value of the **Hostname** parameter is automatically filled. You do not need to specify a value for this parameter. You can check whether a compute node is added to the **blacklist** in the **compute node** list after the configuration is complete.
+submitted.
+
+> **Note:** The value of the **Hostname** parameter is automatically filled. You do not need to specify a value for this parameter.
+
+You can check whether a compute node is added to the **blacklist** in the **compute node** list after the configuration is complete.
 
 ###### 4.3.2.2.5 Enable and disable SQL acceleration
 
@@ -2331,7 +2412,10 @@ You can enable or disable SQL acceleration for Job Scheduler in the Apsara Big D
 2. In the upper-right corner of the page, click **Actions > Enable SQL acceleration**.
 3. In the **Enable SQL acceleration** panel, configure the **WorkerSpans** parameter.
 **WorkerSpans**: the default resource quota of the cluster and the resource quota for a
-specific period. Default value: **default:2,12-23:2**. The default value indicates that the default resource quota is 2 and the resource quota for the period from 12:00 to 23:00 is also 2. You can set the resource quota based on your business requirements. For example, you can set this parameter to default:2,12- 23:4 to increase the resource quota in peak hours.
+specific period. Default value: **default:2,12-23:2**.
+
+> **Note:** The default value indicates that the default resource quota is 2 and the resource quota for the period from 12:00 to 23:00 is also 2. You can set the resource quota based on your business requirements. For example, you can set this parameter to default:2,12- 23:4 to increase the resource quota in peak hours.
+
 4. Click **Run**.
 
 **Disable SQL acceleration**
@@ -2351,8 +2435,9 @@ After you submit the action of enabling or disabling SQL acceleration, you can v
 The execution history displays the current status, submission time, start time, end time, and operator of each execution.
 3. Find the job that you want to view and click **Details** in the Details column. In the **Enable**
 **SQL acceleration** panel, choose **Enable SQL acceleration > Servers > View Details**
-to locate the cause of the failure. You can analyze the cause of the failure by combining **Parameter Configuration**,
-**Servers**, **Commands**, and **Execution Parameters**.
+to locate the cause of the failure.
+
+> **Note:** You can analyze the cause of the failure by combining **Parameter Configuration**, **Servers**, **Commands**, and **Execution Parameters**.
 
 ###### 4.3.2.2.6 Restart a master node of Job Scheduler
 
@@ -2471,7 +2556,11 @@ Service role description This service role does not depend on other service role
 
 **PanguChunkserver#**
 
-Service role description This service role depends on the PanguMaster# role. You must deploy this role on at least three physical servers for a cluster and in multiple racks. This is because three replicas are written when you write data to a cluster. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. You must make sure that a request for shutting down data nodes is approved. In this case, data migration is complete. Logs Logs are stored in the following directory:
+Service role description This service role depends on the PanguMaster# role. You must deploy this role on at least three physical servers for a cluster and in multiple racks. This is because three replicas are written when you write data to a cluster. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned.
+
+> **Note:** You must make sure that a request for shutting down data nodes is approved. In this case, data migration is complete.
+
+Logs Logs are stored in the following directory:
 
 ```
  /cloud/app/pangu/PanguChunkserver#/pangu_chunkserver .
@@ -2509,16 +2598,15 @@ This topic describes how to view the storage overview and storage node informati
 
 1. Go to the service O&M page for Apsara Distributed File System.
 2. Click the **StorageManagement** tab. By default, the **StorageOverview** tab appears.
-The **StorageOverview** tab displays the following information about Apsara Distributed File System: **rebalance Status**, **Total Nodes**, **Number of normal nodes**, **Total**
-**number of disks**, **Number of normal disks**, **Total storage size**, and **Remaining**
-**storage size**.
+
+> **Note:** The **StorageOverview** tab displays the following information about Apsara Distributed File System: **rebalance Status**, **Total Nodes**, **Number of normal nodes**, **Total** **number of disks**, **Number of normal disks**, **Total storage size**, and **Remaining** **storage size**.
 
 **Go to the storage node page**
 
 1. Go to the service O&M page for Apsara Distributed File System.
 2. Click the **StorageManagement > StorageNode** tab.
-The **StorageNode** tab displays information about all storage nodes of Apsara Distributed File System, including **Number of chunks**, **Total Space**, **Remaining**
-**space**, **Status**, **TTL**, and **sendBuffer**.
+
+> **Note:** The **StorageNode** tab displays information about all storage nodes of Apsara Distributed File System, including **Number of chunks**, **Total Space**, **Remaining** **space**, **Status**, **TTL**, and **sendBuffer**.
 
 **Set the status of a storage node**
 
@@ -2526,7 +2614,10 @@ You can set the status of a storage node to **Disabled** or **Normal**. This exa
 1. On the **StorageNode** tab, find the desired node and choose **Actions > Set Storage**
 **Node to Down State**.
 2. In the **Set Storage Node to Down State** dialog box, click **Run**.
-The **Volume** and **Hostname** parameters are automatically specified based on the storage node you selected. After you complete the preceding steps, you can check whether the status of storage node is changed in the storage node list.
+
+> **Note:** The **Volume** and **Hostname** parameters are automatically specified based on the storage node you selected.
+
+After you complete the preceding steps, you can check whether the status of storage node is changed in the storage node list.
 
 **Set the status of a data disk**
 
@@ -2534,7 +2625,9 @@ You can set the status of a data disk to **Error** or **Normal**. This example s
 1. On the **StorageNode** tab, find the desired node and choose **Actions > Set data disk to**
 **error state**.
 2. In the **Set data disk to error state** panel, specify **DiskId**.
-The **Volume** and **Hostname** parameters are automatically specified based on the storage node you selected.
+
+> **Note:** The **Volume** and **Hostname** parameters are automatically specified based on the storage node you selected.
+
 3. After you complete the configuration, click **Run**.
 
 ###### 4.3.2.3.5 Change the primary master node of Apsara Distributed File System
@@ -2565,9 +2658,14 @@ to manage and choose **Actions > Master perform switching**. In the Master perfo
 | Log gap _ | The maximum log gap between the original primary and secondary master nodes. During the switchover, the system checks the log gap between the original primary and secondary master nodes. If the gap is less than the specified value, the switchover is allowed. Otherwise, you cannot change the primary master node. Default value: 100000. |
 
 4. After you complete the configuration, click Click **Run**. A message appears, indicating that
-the request is submitted. The **Master performs switching** panel appears. The **Master performs switching** panel shows the switchover history. **RUNNING** indicates that the execution is in progress. **SUCCESS** indicates that the execution succeeds. **FAILED** indicates that the execution fails.
+the request is submitted. The **Master performs switching** panel appears.
+
+> **Note:** The **Master performs switching** panel shows the switchover history. **RUNNING** indicates that the execution is in progress. **SUCCESS** indicates that the execution succeeds. **FAILED** indicates that the execution fails.
+
 5. If an execution is in the FAILED state, click **Details** in the Details column to identify the
-cause of the failure. You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
+cause of the failure.
+
+> **Note:** You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
 
 ###### 4.3.2.3.6 Run a checkpoint on a master node of Apsara Distributed File System
 
@@ -2586,15 +2684,19 @@ Your ABM account is granted the required permissions to perform O&M operations o
 3. In the **master status** section of the **ServiceRole** tab, find the master node that you want
 to manage, move the pointer over **Actions** in the Actions column, and then select **The**
 **Master executes the Checkpoint**. In the The Master executes the Checkpoint panel,
-configure the **Volume** parameter. By default, the **Volume** parameter is set to **$(volume.volume)**.
+configure the **Volume** parameter.
+
+> **Note:** By default, the **Volume** parameter is set to **$(volume.volume)**.
+
 4. Click **Run**. The Success message appears to inform you that the request is submitted. The
 **The Master executes the Checkpoint** panel appears.
-In the **The Master executes the Checkpoint** panel, the history of checkpoints on the master node is displayed. **RUNNING** indicates that the request is being processed.
-**SUCCESS** indicates that the request is successful. **FAILED** indicates that the request
-fails.
+
+> **Note:** In the **The Master executes the Checkpoint** panel, the history of checkpoints on the master node is displayed. **RUNNING** indicates that the request is being processed. **SUCCESS** indicates that the request is successful. **FAILED** indicates that the request fails.
+
 5. If an operation record is in the FAILED state, click **Details** in the Details column to identify
-the cause of the failure. You can analyze the cause of the failure by combining **Parameter Configuration**,
-**Servers**, and **Execution Parameters**.
+the cause of the failure.
+
+> **Note:** You can analyze the cause of the failure by combining **Parameter Configuration**, **Servers**, and **Execution Parameters**.
 
 ###### 4.3.2.3.7 Clear the recycle bin of Apsara Distributed File System
 
@@ -2625,8 +2727,8 @@ bin. The execution history displays the current status, submission time, start t
 3. Find the job that you want to view and click **Details** in the Details column. In the **Clean up**
 **the system Recycle bin** panel, choose **Clean up the system Recycle bin > Servers >**
 **View Details** to locate the cause of the failure.
-You can analyze the cause of the failure by combining **Parameter Configuration**,
-**Servers**, and **Execution Parameters**.
+
+> **Note:** You can analyze the cause of the failure by combining **Parameter Configuration**, **Servers**, and **Execution Parameters**.
 
 ###### 4.3.2.3.8 Enable or disable data rebalancing for Apsara Distributed File System
 
@@ -2663,12 +2765,14 @@ After you enable or disable data rebalancing, you can check whether the operatio
 **History** next to **Enable automatic data equalization**.
 2. In the **Execution History** panel, view the execution history of operations for enabling data
 rebalancing. The execution history displays the current status, submission time, start time, end time, and operator of each operation.
-**RUNNING** indicates that the operation is in progress. **SUCCESS** indicates that the
-operation is completed. **FAILED** indicates that the operation failed.
+
+> **Note:** **RUNNING** indicates that the operation is in progress. **SUCCESS** indicates that the operation is completed. **FAILED** indicates that the operation failed.
+
 3. Find the operation that you want to view and click **Details** in the Details column. In the
 **Enable automatic data equalization** panel, choose **Enable automatic data**
 **equalization > Servers > View Details** in the failed step to locate the cause of failure.
-You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
+
+> **Note:** You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
 
 ##### 4.3.2.4 Tunnel service
 
@@ -2815,7 +2919,8 @@ analysis, click the icon. Then, you can view the uplink throughput and downlink 
 **Tunnel traffic** charts.
 **Time selection**: Select a time range.
 **Project Name**: Select one or more projects from the drop-down list.
-The traffic data comes from `tianjimon` . Make sure that this system functions as expected.
+
+> **Note:** The traffic data comes from `tianjimon` . Make sure that this system functions as expected.
 
 ###### 4.3.2.4.5 Configuration management
 
@@ -2835,7 +2940,9 @@ lists next to **Regional Cluster** and click the icon.
 3. On the Endpointconfiguration tab, click **New** in the upper-right corner. In the **Added**
 **endpoint** panel, configure the **New Cluster** and **The new host** parameters.
 4. Click **Run**. The endpoint is added.
-On the **Endpointconfiguration** tab, select the endpoints that you want to remove and click **Delete** in the upper-right corner to remove multiple endpoints at a time. On the **Endpointconfiguration** tab, find the endpoint that you want to modify and click **Modification** in the **Actions** column to modify the endpoint.
+
+> **Note:** On the **Endpointconfiguration** tab, select the endpoints that you want to remove and click **Delete** in the upper-right corner to remove multiple endpoints at a time.
+> On the **Endpointconfiguration** tab, find the endpoint that you want to modify and click **Modification** in the **Actions** column to modify the endpoint.
 
 **Switch the tunnel configurations**
 
@@ -2876,7 +2983,8 @@ On the **ConfigurationManagement** tab, select a region from the **Geography** d
 | bandwidthT opology | In the bandwidthTopology section, click Modify bandwidthTopology. Modify Configuration Content based on your business requirements, click Compare Versions, confirm that the modifications are correct, and then clickR un. |
 |---|---|
 
-In the **base_config**, **infoBetweenClusters**, and **taskParams** sections, you can sort entries by column information in ascending or descending order. Keyword search is supported. In the **virtualResource** and **bandwidthTopology** sections, you can filter data based on existing columns. In addition, you can use the drop-down **menu** to export data to a **CSV** or **XLS** file, **adjust column widths to fit content automatically**, and **configure which columns are displayed** .
+> **Note:** In the **base_config**, **infoBetweenClusters**, and **taskParams** sections, you can sort entries by column information in ascending or descending order. Keyword search is supported.
+> In the **virtualResource** and **bandwidthTopology** sections, you can filter data based on existing columns. In addition, you can use the drop-down **menu** to export data to a **CSV** or **XLS** file, **adjust column widths to fit content automatically**, and **configure which columns are displayed** .
 
 #### 4.3.3 Cluster O&M
 
@@ -3011,7 +3119,9 @@ The Machine List tab displays information about all hosts in the current MaxComp
 
 1. Go to the cluster O&M tab of MaxCompute.
 2. Click the **Machine List** tab. On this tab, you can view information about all hosts in the
-current cluster, including the hostname, IP address, role, and host type. To view detailed information about a host, click the name of the host in the **Hostname** column. Then, the Host O & M tab appears.
+current cluster, including the hostname, IP address, role, and host type.
+
+> **Note:** To view detailed information about a host, click the name of the host in the **Hostname** column. Then, the Host O & M tab appears.
 
 ##### 4.3.3.5 Scale a MaxCompute cluster
 
@@ -3065,10 +3175,15 @@ selected host is used.
 
 After you scale out or scale in a cluster, you can view the execution history to check whether the operation is successful. The system executes the operation by running a job. It provides execution records and logs for each execution so that you can identify faults occurred during the execution. This section describes how to identify the cause of a scale-in failure. You can follow the same procedure to identify the cause of a scale-out failure.
 1. Click **Execution History** in the upper-right corner of the page. In the **Execution History**
-panel, view the execution history of scale-in operations. The execution history displays the name, current status, submission time, start time, end time, and operator of each operation. Scale-out and scale-in operations are time-consuming. **RUNNING** indicates that the operation is in progress. **SUCCESS** indicates that the operation is completed. **FAILED** indicates that the operation failed.
+panel, view the execution history of scale-in operations. The execution history displays the name, current status, submission time, start time, end time, and operator of each operation.
+
+> **Note:** Scale-out and scale-in operations are time-consuming. **RUNNING** indicates that the operation is in progress. **SUCCESS** indicates that the operation is completed. **FAILED** indicates that the operation failed.
+
 2. Find the operation that you want to view and click **Details** in the Details column. In the
 **Node shrinkage** panel, choose **Node shrinkage > Servers > View Details** in the failed
-step to locate the cause of failure. You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
+step to locate the cause of failure.
+
+> **Note:** You can analyze the cause of failure by clicking **Parameter Configuration**, **Servers**, and **Execution Parameters**.
 
 #### 4.3.4 Host O&M
 
@@ -3201,7 +3316,9 @@ can click the icon in the upper-left corner and then choose **Big Data Computing
 3. On the MaxCompute page, click **Management** in the top navigation bar. In the left-side
 navigation pane, click **Job Services**. The **Job Execution** page appears.
 4. On the **Job Execution** page, click the **Jobs** tab.
-To manually run a cron job, click the **Cron Jobs** tab. The procedure for manually running a cron job is the same as that for manually running a regular job. In this example, a regular job is run.
+
+> **Note:** To manually run a cron job, click the **Cron Jobs** tab. The procedure for manually running a cron job is the same as that for manually running a regular job. In this example, a regular job is run.
+
 5. On the **Jobs** tab, find a job and choose **Actions > Run**.
 6. In the dialog box that appears, configure the parameters in the **Configure target group**
 **and parameters** step, and then click **Next Step**.
@@ -3329,7 +3446,8 @@ Your Apsara Big Data Manager (ABM) account is granted the required permissions o
 
 **Background information**
 
-Different services have different scheduling and monitoring checkers, but you can configure and manage them in the same manner.
+> **Note:** Different services have different scheduling and monitoring checkers, but you can configure and manage them in the same manner.
+
 **Scheduling checkers**: These checkers run scheduling scripts on the servers of specific
 Apsara Infrastructure Management roles and generate raw alert data. Raw alert data provides information about the checker, server, alert severity, and alert content. Raw alert data is stored in the ABM database.
 **Monitoring checkers**: Monitoring checkers will collect raw alert data generated by
@@ -3350,7 +3468,10 @@ The mount points of scheduling checkers are built-in, and you cannot add, modify
 **Configuration > Scheduling** tab appears.
 The **Scheduling** tab displays all scheduling checkers of the service.
 2. On the **Scheduling** tab, find the scheduling checker that you want to view and click **View**
-in the Actions column to view its details. The details of the scheduling checker include the name, alias, description, and steps of the checker.
+in the Actions column to view its details.
+
+> **Note:** The details of the scheduling checker include the name, alias, description, and steps of the checker.
+
 3. On the Scheduling tab, find the scheduling checker that you want to view and click the
 icon on the left to view the mount points of the scheduling checker.
 
@@ -3361,9 +3482,10 @@ You can configure the scheduling interval and operation settings of a scheduling
 **Configuration > Scheduling** tab appears.
 2. On the **Scheduling** tab, find the scheduling checker that you want to manage and click
 **Edit** in the Actions column. In the Modify Checker dialog box, configure the parameters.
-**Type**: If you set this parameter to **System Default**, other parameters, such as
-**Execution Interval** and **Parameters**, are set to the default values. If you set
-this parameter to **Custom**, you can configure other parameters as needed. Configure the **Execution Interval** parameter based on the **crontab** command.
+
+> **Note:** **Type**: If you set this parameter to **System Default**, other parameters, such as **Execution Interval** and **Parameters**, are set to the default values. If you set this parameter to **Custom**, you can configure other parameters as needed.
+> Configure the **Execution Interval** parameter based on the **crontab** command.
+
 3. After you complete the configuration, click **OK**.
 
 **View faulty hosts**
@@ -3372,7 +3494,8 @@ You can view all faulty hosts in the current cluster.
 1. In the left-side navigation pane, click **Health Management**. By default, the **Monitoring**
 **Configuration > Scheduling** tab appears.
 2. Click **Faulty Servers** in the upper-right corner to view the faulty hosts in the cluster.
-The list shows all faulty hosts in the current cluster and the role of each host in Apsara Infrastructure Management.
+
+> **Note:** The list shows all faulty hosts in the current cluster and the role of each host in Apsara Infrastructure Management.
 
 **Modify a monitoring checker**
 
@@ -3485,7 +3608,10 @@ Your Apsara Big Data Manager (ABM) account is granted the required permissions o
 can click the icon in the upper-left corner and then choose **Big Data Computing >**
 **MaxCompute**.
 3. On the MaxCompute page, click **Management** in the top navigation bar. In the left-side
-navigation pane of the **Management** page, click **Operational Audit**. The **Operational Audit** page displays the historical O&M operations of MaxCompute. The information about MaxCompute O&M operations includes the operation name, operation ID, risk, current status, submission time, start time, end time, operator, type, parameters, and details. The Operational Audit page displays only the historical O&M operations of a big data service. Take note that the O&M operations of job services are not displayed.
+navigation pane of the **Management** page, click **Operational Audit**. The **Operational Audit** page displays the historical O&M operations of MaxCompute. The information about MaxCompute O&M operations includes the operation name, operation ID, risk, current status, submission time, start time, end time, operator, type, parameters, and details.
+
+> **Note:** The Operational Audit page displays only the historical O&M operations of a big data service. Take note that the O&M operations of job services are not displayed.
+
 4. Click **Details** for an operation to view the O&M operation details.
 If an O&M operation fails, view the cause of failure.
 5. When an O&M task is in the Not Started, Pending, Exception, or Failure state, you can
@@ -3505,7 +3631,9 @@ upper part of the panel.
 
 ### 5.1 Overview
 
-The deep inspection feature helps you check the monitoring alerts, resource usage, and key metrics of MaxCompute. You can use this feature to check the health status of the platform to avoid unexpected risks. This helps ensure the stability of MaxCompute clusters. The deep inspection feature can check information about the following aspects: MaxCompute cluster inspection: checks the health status of MaxCompute clusters. MaxCompute risk inspection: checks for risks that affect the health of MaxCompute clusters. Apsara Big Data Manager (ABM) does not recycle inspection reports, but collects all risks and related thresholds that are contained in the inspection reports.
+The deep inspection feature helps you check the monitoring alerts, resource usage, and key metrics of MaxCompute. You can use this feature to check the health status of the platform to avoid unexpected risks. This helps ensure the stability of MaxCompute clusters. The deep inspection feature can check information about the following aspects: MaxCompute cluster inspection: checks the health status of MaxCompute clusters. MaxCompute risk inspection: checks for risks that affect the health of MaxCompute clusters.
+
+> **Note:** Apsara Big Data Manager (ABM) does not recycle inspection reports, but collects all risks and related thresholds that are contained in the inspection reports.
 
 ### 5.2 Inspect clusters
 
@@ -3744,19 +3872,19 @@ This topic describes how to query and allocate the storage and computing resourc
 The available storage resources in a MaxCompute cluster are limited and can be calculated based on the number of compute nodes in the cluster. The storage capacity of a MaxCompute cluster is managed by using Apsara Distributed File System. You can run the commands of Apsara Distributed File System to query the storage information, such as the storage usage. The following metrics are used to measure the storage resources of a cluster:
 **Storage capacity**: the total size of files that can be stored in a cluster. You can calculate
 the storage capacity of a cluster based on the following formula: Storage capacity = Number of machines × [Size of a single disk × (Number of disks on a single machine - 1)] × System security threshold × System compression ratio/Number of distributed replicas.
-**System compression ratio**: Based on the compression ratio of standard TPC-H
-test datasets, the ratio of data size before compression to data size after compression is 3 to 1. The ratio varies based on the actual data.
-**Number of distributed replicas**: In most cases, the number of distributed
-replicas is 3.
-**System security threshold**: **The default value is 0.85 in the MaxCompute**
-**system.** You can specify a custom security threshold based on your business
-requirements. A value of 0.85 indicates that if more than 85% of the total storage capacity is used, the security level is low. You must scale out the system based on your business requirements or delete unnecessary data. View the storage capacity of a MaxCompute cluster Run the `puadmin lscs` command on Cluster AG. The total disk space, total free space, and total file size are displayed at the end of the command output. Figure 1: Storage capacity of a cluster Parameters:
-**Total Disk Size**: the total physical storage space. Each file is stored
-in three replicas. The logical space is one third of the physical space.
-**Total Free Disk Size**: the available storage space, excluding the
-storage space of recycle bins on chunk servers.
-**Total File Size**: the physical space occupied by the files of Apsara
-Distributed File System, including the files that are stored in the /deleted/ directory. Run the following command on Cluster AG to query the storage space used by all projects:
+
+> **Note:** **System compression ratio**: Based on the compression ratio of standard TPC-H test datasets, the ratio of data size before compression to data size after compression is 3 to 1. The ratio varies based on the actual data.
+> **Number of distributed replicas**: In most cases, the number of distributed replicas is 3.
+> **System security threshold**: **The default value is 0.85 in the MaxCompute** **system.** You can specify a custom security threshold based on your business requirements. A value of 0.85 indicates that if more than 85% of the total storage capacity is used, the security level is low. You must scale out the system based on your business requirements or delete unnecessary data.
+
+View the storage capacity of a MaxCompute cluster Run the `puadmin lscs` command on Cluster AG. The total disk space, total free space, and total file size are displayed at the end of the command output. Figure 1: Storage capacity of a cluster
+
+> **Note:** Parameters:
+> **Total Disk Size**: the total physical storage space. Each file is stored in three replicas. The logical space is one third of the physical space.
+> **Total Free Disk Size**: the available storage space, excluding the storage space of recycle bins on chunk servers.
+> **Total File Size**: the physical space occupied by the files of Apsara Distributed File System, including the files that are stored in the /deleted/ directory.
+
+Run the following command on Cluster AG to query the storage space used by all projects:
 
 ```
 pu ls -l pangu://localcluster/product/aliyun/odps/
@@ -3768,11 +3896,13 @@ Example:
 pu ls -l pangu://localcluster/product/aliyun/odps/|grep adsmr -A 4 -- Query the storage space that is used by a single project. In this example, the s torage usage of the adsmr project is queried.
 ```
 
-Figure 2: Storage usage of a project Parameters:
-**Length**: the logical length used by the project. The physical length
-required is three times the logical length.
-**FileNumber**: the number of files that are stored.
-**DirNumber**: the number of directories that are created.
+Figure 2: Storage usage of a project
+
+> **Note:** Parameters:
+> **Length**: the logical length used by the project. The physical length required is three times the logical length.
+> **FileNumber**: the number of files that are stored.
+> **DirNumber**: the number of directories that are created.
+
 **File size**: the total number of files that can be stored in a cluster. This number depends on
 the memory capacity of PanguMaster. A large number of small files or an improper number of files in a cluster will affect the stability of the cluster and its services. The index files of Apsara Distributed File System, including the information about Apsara Distributed File System files and directories, are stored in the memory of PanguMaster. Each file in the memory of PanguMaster corresponds to a file node. The memory of PanguMaster is occupied by file nodes, directories of all levels, and chunks. A large file is split into multiple chunks in Apsara Distributed File System. Therefore, the factors that affect the memory usage of PanguMaster include the number of files, directory hierarchy, and number of chunks. If the size of the original files in Apsara Distributed File System is large, the memory usage of PanguMaster is relatively low. In scenarios where a large number of small files are stored, Pangu Master occupies a large amount of memory. We recommend that you perform the following operations to optimize the memory usage of PanguMaster: Delete empty directories and reduce the number of directory levels. Do not manually create directories. A directory is automatically created when a file is created. Store multiple files in one directory. You can store up to 100,000 files in a directory. Decrease the length of file names and directory names to reduce the memory usage and network traffic in PanguMaster. Reduce the number of small tables and files. We recommend that you use the tunnel service to upload and commit MaxCompute tables only when the table size reaches `64` `MB` . The following table shows the maximum number of files supported by PanguMaster with different memory specifications.
 
@@ -3788,15 +3918,26 @@ Query the number of files stored in a MaxCompute cluster Run the `pu quota` comm
 pu ls -l pangu://localcluster/product/aliyun/odps/|grep adsmr -A 4
 ```
 
-Figure 4: Total number of files that are stored in a project of a MaxCompute cluster Parameters:
-**FileNumber**: the number of files that are stored.
-**DirNumber**: the number of directories that are created.
-**FileNumber** + **DirNumber** = Total number of files stored in the
-adsmr project.
+Figure 4: Total number of files that are stored in a project of a MaxCompute cluster
+
+> **Note:** Parameters:
+> **FileNumber**: the number of files that are stored.
+> **DirNumber**: the number of directories that are created.
+> **FileNumber** + **DirNumber** = Total number of files stored in the adsmr project.
 
 **Computing resources**
 
-Computing resources in a MaxCompute cluster typically refer to CPU and memory resources. Total computing resources = Number of CPU cores and memory size of a single compute node × Number of machines. The system on each machine occupies one CPU core. Therefore, if a machine has 56 CPU cores, 55 CPU cores are managed by the distributed scheduler and are scheduled to the services of MaxCompute. The remaining memory is allocated by Job Scheduler. Typically, for every CPU core, 4 GB of memory is allocated to a MaxCompute task. This ratio varies based on MaxCompute tasks. Query computing resources Run the `r ttrl` command on Cluster AG to query all computing resources of a cluster. Figure 5: Computing resources of a cluster The domain names of Tubo machines are displayed in the first column. The CPU cores of Tubo machines are displayed in the second column, and the unit is u. One CPU core equals 100 u. The memory size of Tubo machines is displayed in the third column, and the unit is MB. The tags that are added to Tubo machines in Job Scheduler are displayed in the fourth column. Run the `r tfrl` command on Cluster AG to query the remaining computing resources of a cluster. Figure 6: Remaining computing resources of a cluster The domain names of Tubo machines are displayed in the first column. The CPU cores of Tubo machines are displayed in the second column, and the unit is u. One CPU core equals 100 u. The memory size of Tubo machines is displayed in the third column, and the unit is MB. The tags that are added to Tubo machines in Job Scheduler are displayed in the fourth column. Run the `r cru` command on Cluster AG to query the resources used by the tasks running in MaxCompute. Figure 7: Resources used by running tasks The task names are displayed in the first column. The CPU cores that are used by tasks are displayed in the second column. The memory that is used by tasks is displayed in the third column. The number of Fuxi instances that are started by the corresponding role for tasks in Job Scheduler is displayed in the fourth column.
+Computing resources in a MaxCompute cluster typically refer to CPU and memory resources. Total computing resources = Number of CPU cores and memory size of a single compute node × Number of machines. The system on each machine occupies one CPU core. Therefore, if a machine has 56 CPU cores, 55 CPU cores are managed by the distributed scheduler and are scheduled to the services of MaxCompute. The remaining memory is allocated by Job Scheduler. Typically, for every CPU core, 4 GB of memory is allocated to a MaxCompute task. This ratio varies based on MaxCompute tasks. Query computing resources Run the `r ttrl` command on Cluster AG to query all computing resources of a cluster. Figure 5: Computing resources of a cluster
+
+> **Note:** The domain names of Tubo machines are displayed in the first column. The CPU cores of Tubo machines are displayed in the second column, and the unit is u. One CPU core equals 100 u. The memory size of Tubo machines is displayed in the third column, and the unit is MB. The tags that are added to Tubo machines in Job Scheduler are displayed in the fourth column.
+
+Run the `r tfrl` command on Cluster AG to query the remaining computing resources of a cluster. Figure 6: Remaining computing resources of a cluster
+
+> **Note:** The domain names of Tubo machines are displayed in the first column. The CPU cores of Tubo machines are displayed in the second column, and the unit is u. One CPU core equals 100 u. The memory size of Tubo machines is displayed in the third column, and the unit is MB. The tags that are added to Tubo machines in Job Scheduler are displayed in the fourth column.
+
+Run the `r cru` command on Cluster AG to query the resources used by the tasks running in MaxCompute. Figure 7: Resources used by running tasks
+
+> **Note:** The task names are displayed in the first column. The CPU cores that are used by tasks are displayed in the second column. The memory that is used by tasks is displayed in the third column. The number of Fuxi instances that are started by the corresponding role for tasks in Job Scheduler is displayed in the fourth column.
 
 **Allocate resources to projects in a MaxCompute cluster**
 
@@ -3804,19 +3945,27 @@ Computing resources in a MaxCompute cluster typically refer to CPU and memory re
 
 The storage capacity and the maximum number of files are configured when you create a project. You can modify the configurations in MaxCompute Admin Console. If the following error messages are returned, the occupied storage space or the number of files has exceeded the limit. In this case, you must organize the data in the project by deleting unnecessary tables or expanding the storage capacity. Figure 8: Error messages
 
-**Important**
-
-The sum of the storage usage of all projects cannot exceed the total storage capacity of a cluster. Similarly, the total number of files in all projects cannot exceed the total number of files supported by a cluster. Therefore, you must properly plan storage space and the maximum number of files for each project and make timely adjustments based on your business requirements.
+> **Important:** The sum of the storage usage of all projects cannot exceed the total storage capacity of a cluster. Similarly, the total number of files in all projects cannot exceed the total number of files supported by a cluster. Therefore, you must properly plan storage space and the maximum number of files for each project and make timely adjustments based on your business requirements.
 
 **Allocate computing resources**
 
-Computing resource allocation means planning quota groups. What is a quota group? MaxCompute clusters can be divided into different resource groups (quota groups). A quota group represents a certain amount of allocated CPU and memory resources and the scheduling policy of the quota group. You can specify the MinQuota and MaxQuota parameters to configure the CPU and memory resources of a quota group. MinQuota specifies the minimum amount of resources allocated to the quota group, and MaxQuota specifies the maximum amount of resources allocated to the quota group. For example, MinCPU=500 indicates that the quota group can allocate at least 5 (500/100) cores. MaxCPU=2000 indicates that the quota group can allocate at most 20 (2000/100) cores. By default, MaxCompute uses the fairness-aware integrated resource (FAIR) scheduling policy and the first-in-first-out (FIFO) scheduling policy. The difference between the FIFO and FAIR scheduling policies is the sort key of WaitingQueue. If each schedule unit has its own priority, both the FAIR and FIFO scheduling policies allocate resources to high-priority schedule units first. If all schedule units share the same priority, the FIFO scheduling policy sorts the schedule units based on the time when they are submitted. The schedule units that are submitted earlier have a higher priority. The FAIR scheduling policy sorts the schedule units based on the value of the slotNum parameter. A smaller value of the slotNum parameter specifies a higher priority. This way, the same resources are allocated to schedule units of the same priority. You can run the `r quota` command on Cluster AG to query the quota group settings. Run the following command on Cluster AG to create and modify a quota group based on your business requirements:
+Computing resource allocation means planning quota groups. What is a quota group? MaxCompute clusters can be divided into different resource groups (quota groups). A quota group represents a certain amount of allocated CPU and memory resources and the scheduling policy of the quota group. You can specify the MinQuota and MaxQuota parameters to configure the CPU and memory resources of a quota group. MinQuota specifies the minimum amount of resources allocated to the quota group, and MaxQuota specifies the maximum amount of resources allocated to the quota group. For example, MinCPU=500 indicates that the quota group can allocate at least 5 (500/100) cores. MaxCPU=2000 indicates that the quota group can allocate at most 20 (2000/100) cores. By default, MaxCompute uses the fairness-aware integrated resource (FAIR) scheduling policy and the first-in-first-out (FIFO) scheduling policy. The difference between the FIFO and FAIR scheduling policies is the sort key of WaitingQueue. If each schedule unit has its own priority, both the FAIR and FIFO scheduling policies allocate resources to high-priority schedule units first. If all schedule units share the same priority, the FIFO scheduling policy sorts the schedule units based on the time when they are submitted. The schedule units that are submitted earlier have a higher priority. The FAIR scheduling policy sorts the schedule units based on the value of the slotNum parameter. A smaller value of the slotNum parameter specifies a higher priority. This way, the same resources are allocated to schedule units of the same priority.
+
+> **Note:** You can run the `r quota` command on Cluster AG to query the quota group settings.
+
+Run the following command on Cluster AG to create and modify a quota group based on your business requirements:
 
 ```
 sh /apsara/deploy/rpc_wrapper/rpc.sh setquota -i $QUOTAID -a $QUOTANAME -t fair -s $m ax_cpu_quota $max_mem_quota -m $min_cpu_quota $min_mem_quota
 ```
 
-If the **$QUOTAID** parameter is specified, the specified quota group is modified. If the $QUOTAID parameter is not specified, a quota group is created. Plan quota groups To plan quota groups properly, you must first understand the relationship between MaxCompute projects and quota groups. When you create a project, you must specify the quota group to which the project belongs. You can change the quota group after the project is created. The resources in a quota group can be used by the tasks of all projects belong to the quota group. Therefore, tasks sharing the same quota group may compete for resources during peak hours. For example, one or more large tasks ma occupy all resources in the quota group while other computing tasks have to wait. In the following figure, a great number of tasks are waiting for resources, whereas the remaining resources of the cluster remain idle. Figure 9: Tasks waiting for resources In this case, you can check the quota usage. The quota group is allocated 50 CPU cores and all allocated CPU cores are used. The tasks of projects that belong to the quota group must wait until the quota is available. The remaining resources of the cluster cannot be used by these tasks. Therefore, you must plan quota groups based on the following principles: Plan quota groups based on business scenarios to avoid resource contention in an oversized resource pool. You also need to avoid creating an excessive number of small-sized resource pools. Otherwise, the scheduling of large tasks may be restricted or a large task may occupy the entire quota group for a long period of time. Consider the MinQuota and MaxQuota parameters when you plan quota groups. You can overcommit the resources in your cluster. That is, the sum of the maximum quotas of all quota groups can be greater than the total amount of cluster resources. However, the overcommitment ratio cannot be too large. Take the following factors into consideration when you plan quota groups: the priorities of tasks, task duration, amount of task data, and characteristics of computing tasks. Configure quota groups properly for peak hours. We recommend that you configure a separate quota group for tasks that are important and time-consuming. Planning quota groups and selecting quota groups for projects is a resource pre-allocation strategy. You also need to adjust your resource allocation in a timely manner based on the actual resource demands.
+> **Note:** If the **$QUOTAID** parameter is specified, the specified quota group is modified. If the $QUOTAID parameter is not specified, a quota group is created.
+
+Plan quota groups To plan quota groups properly, you must first understand the relationship between MaxCompute projects and quota groups.
+
+> **Note:** When you create a project, you must specify the quota group to which the project belongs. You can change the quota group after the project is created.
+
+The resources in a quota group can be used by the tasks of all projects belong to the quota group. Therefore, tasks sharing the same quota group may compete for resources during peak hours. For example, one or more large tasks ma occupy all resources in the quota group while other computing tasks have to wait. In the following figure, a great number of tasks are waiting for resources, whereas the remaining resources of the cluster remain idle. Figure 9: Tasks waiting for resources In this case, you can check the quota usage. The quota group is allocated 50 CPU cores and all allocated CPU cores are used. The tasks of projects that belong to the quota group must wait until the quota is available. The remaining resources of the cluster cannot be used by these tasks. Therefore, you must plan quota groups based on the following principles: Plan quota groups based on business scenarios to avoid resource contention in an oversized resource pool. You also need to avoid creating an excessive number of small-sized resource pools. Otherwise, the scheduling of large tasks may be restricted or a large task may occupy the entire quota group for a long period of time. Consider the MinQuota and MaxQuota parameters when you plan quota groups. You can overcommit the resources in your cluster. That is, the sum of the maximum quotas of all quota groups can be greater than the total amount of cluster resources. However, the overcommitment ratio cannot be too large. Take the following factors into consideration when you plan quota groups: the priorities of tasks, task duration, amount of task data, and characteristics of computing tasks. Configure quota groups properly for peak hours. We recommend that you configure a separate quota group for tasks that are important and time-consuming. Planning quota groups and selecting quota groups for projects is a resource pre-allocation strategy. You also need to adjust your resource allocation in a timely manner based on the actual resource demands.
 
 ### 6.2 Work with IPv4/IPv6 dual stack
 
@@ -3831,7 +3980,8 @@ MaxCompute supports IPv4 by default. To use the IPv4/IPv6 dual stack feature, co
 1. Complete transformation to support IPv6 on the platform side.
 2. Enable IPv6 for MaxCompute. For more information, see **Network changes > Feature**
 **orchestration > IPv6 dashboard** in **VPC O&M Guide**.
-We recommend that you also enable PPv2 when enabling IPv6 in case the blacklist and whitelist do not take effect. For more information, see the Account usage management section of the Usage notes topic.
+
+> **Note:** We recommend that you also enable PPv2 when enabling IPv6 in case the blacklist and whitelist do not take effect. For more information, see the Account usage management section of the Usage notes topic.
 
 ### 6.3 Troubleshoot common issues and data skew issues
 

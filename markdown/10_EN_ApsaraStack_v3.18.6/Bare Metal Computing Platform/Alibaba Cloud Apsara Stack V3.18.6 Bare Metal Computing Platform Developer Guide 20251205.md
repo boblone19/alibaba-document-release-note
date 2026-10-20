@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 158
 source_pdf: "c245a5536e4728eb_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Developer Guide 20251205.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Developer%20Guide%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Bare Metal Computing Platform Developer Guide 20251205
@@ -123,15 +123,13 @@ To obtain the AccessKey for a personal account, perform the following steps:
 3. In the **Alibaba Cloud AccessKey** area, view the AccessKey information for your personal
 account.
 
-**Important**
-
-Your AccessKey ID and AccessKey secret are your credentials for accessing your cloud resources. These keys grant full permissions to your account. Keep them secure.
+> **Important:** Your AccessKey ID and AccessKey secret are your credentials for accessing your cloud resources. These keys grant full permissions to your account. Keep them secure.
 
 **Obtain an organization's AccessKey**
 
-**Warning**
+> **Warning:** The AccessKey pair for a personal account is managed by the permission system of the Apsara Uni-manager Management Console. An organization's AccessKey pair has more permissions than a personal account's AccessKey pair. If you want to obtain an organization's AccessKey pair, you must have approval from an administrator to ensure security.
 
-The AccessKey pair for a personal account is managed by the permission system of the Apsara Uni-manager Management Console. An organization's AccessKey pair has more permissions than a personal account's AccessKey pair. If you want to obtain an organization's AccessKey pair, you must have approval from an administrator to ensure security. To obtain an organization's AccessKey pair, perform the following steps:
+To obtain an organization's AccessKey pair, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, click **Enterprise**.
 3. In the navigation pane on the left, choose **Resource Management > Organization**
@@ -216,7 +214,10 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 **Important**
 
-When you use the HTTPS protocol to access OpenAPI, the SDK enables SSL/TLS certificate validation by default. If your code environment does not have a valid certificate, a certificate validation failed error is reported. To ensure communication security in a production environment, you must keep this feature enabled. To ignore certificate validation in a test environment, you can set the following parameter: Java
+> When you use the HTTPS protocol to access OpenAPI, the SDK enables SSL/TLS certificate validation by default. If your code environment does not have a valid certificate, a certificate validation failed error is reported.
+> To ensure communication security in a production environment, you must keep this feature enabled. To ignore certificate validation in a test environment, you can set the following parameter:
+
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate validation. clientConfig.setIgnoreSSLCerts(true)

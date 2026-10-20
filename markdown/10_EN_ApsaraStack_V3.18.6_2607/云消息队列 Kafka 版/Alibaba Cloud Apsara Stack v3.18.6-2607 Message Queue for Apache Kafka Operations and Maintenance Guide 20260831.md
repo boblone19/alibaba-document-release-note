@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 44
 source_pdf: "aea4b9061a1eaba3_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Operations and Maintenance Gu"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Operations and Maintenance Guide 20260831
@@ -59,9 +59,16 @@ You must perform various maintenance operations on ApsaraMQ for Kafka to ensure 
 This topic describes how to log in to the Kafka Operations Console. The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser is available. We recommend that you use Google Chrome.
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported. r Guide
+Press the ENTER key.
+
+> **Note:** You can click the current language in the upper-right corner to switch to another language. Simplified Chinese, English, and traditional Chinese are supported.
+
+r Guide
 3. Enter the username and password.
-Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
+
+> **Note:** Obtain the username and password that are used to log on to the Apsara Uni- manager Operations Console from a deployment engineer or an administrator.
+
+If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 5. In the top navigation bar, choose **Product Operation > Middleware > Kafka**
 **Operations Console**.
@@ -92,7 +99,8 @@ This topic describes how to view, configure, and diagnose instances.
 1. Log in to the Kafka Operations Console.
 2. In the left-side navigation pane, click **Instances**.
 3. The **Instance List** page displays the basic information about the instances.
-The system synchronizes instance information every 10 minutes. Therefore, the instance data on the current page may be delayed.
+
+> **Note:** The system synchronizes instance information every 10 minutes. Therefore, the instance data on the current page may be delayed.
 
 | Parameter | Description |
 |---|---|
@@ -154,17 +162,31 @@ On the Metadata Management page, you can use **ZooKeeper** to view and manage me
 2. In the left-side navigation pane, click **Metadata Management**.
 3. On the **Metadata Management** page, view and manage ApsaraMQ for Kafka metadata.
 **Broker ZooKeeper**: This tab displays the core metadata of ApsaraMQ for Kafka clusters
-in ZooKeeper. r Guide a. Click the **Broker ZooKeeper** tab. On this tab, select the ID of an ApsaraMQ for Kafka instance from the **Instance ID** drop-down list. The metadata path of the instance is displayed on the left side of the tab. Click **Refresh** to obtain the latest ZooKeeper data. b. In the left-side navigation tree, click a node. The detailed data of the node is displayed on the right side.
+in ZooKeeper. r Guide a. Click the **Broker ZooKeeper** tab. On this tab, select the ID of an ApsaraMQ for Kafka instance from the **Instance ID** drop-down list. The metadata path of the instance is displayed on the left side of the tab.
 
-**Important**
+> **Note:** Click **Refresh** to obtain the latest ZooKeeper data.
 
-a. Do not modify ZooKeeper data in the production environment. This may cause service interruptions. b. If you delete a node, the normal operation of ApsaraMQ for Kafka is affected. Proceed with caution. Click **Edit node** to modify the JSON data of the node. This operation can be performed only in the environments that support writing. Click **Delete Node** to delete the ZooKeeper node.
+b. In the left-side navigation tree, click a node. The detailed data of the node is displayed on the right side.
+
+> **Important:** a. Do not modify ZooKeeper data in the production environment. This may cause
+> service interruptions.
+> b. If you delete a node, the normal operation of ApsaraMQ for Kafka is affected.
+> Proceed with caution.
+
+Click **Edit node** to modify the JSON data of the node. This operation can be performed only in the environments that support writing. Click **Delete Node** to delete the ZooKeeper node.
 **Middleware ZooKeeper**: This tab displays the metadata of ApsaraMQ for Kafka
-middleware components in ZooKeeper. ApsaraMQ for Kafka middleware components include the following items: `kafka-console` : console-related configurations `kafkaReplicator` : replication task configurations `kafkaConnect` : Cloud Connector (CC) instance configurations a. Click the **Middleware ZooKeeper** tab. The metadata path is displayed on the left side of the tab. Click **Refresh** to obtain the latest ZooKeeper data. b. In the left-side navigation tree, click a node. The detailed data of the node is displayed on the right side.
+middleware components in ZooKeeper. ApsaraMQ for Kafka middleware components include the following items: `kafka-console` : console-related configurations `kafkaReplicator` : replication task configurations `kafkaConnect` : Cloud Connector (CC) instance configurations a. Click the **Middleware ZooKeeper** tab. The metadata path is displayed on the left side of the tab.
 
-**Important**
+> **Note:** Click **Refresh** to obtain the latest ZooKeeper data.
 
-a. Do not modify ZooKeeper data in the production environment. This may cause service interruptions. b. If you delete a node, the normal operation of ApsaraMQ for Kafka is affected. Proceed with caution. Click **Edit node** to modify the JSON data of the node. This operation can be performed only in the environments that support writing. Click **Delete Node** to delete the ZooKeeper node.
+b. In the left-side navigation tree, click a node. The detailed data of the node is displayed on the right side.
+
+> **Important:** a. Do not modify ZooKeeper data in the production environment. This may cause
+> service interruptions.
+> b. If you delete a node, the normal operation of ApsaraMQ for Kafka is affected.
+> Proceed with caution.
+
+Click **Edit node** to modify the JSON data of the node. This operation can be performed only in the environments that support writing. Click **Delete Node** to delete the ZooKeeper node.
 
 ### 2.6 Upgrade a cluster
 
@@ -172,13 +194,16 @@ r Guide On the **Cluster Upgrade** page, you can manage key components such as B
 
 **Upgrade a cluster**
 
-You can upgrade only the clusters whose **Upgrade Status** is **Upgrade Required**.
+> **Note:** You can upgrade only the clusters whose **Upgrade Status** is **Upgrade Required**.
+
 1. Log in to the Kafka Operations Console.
 2. In the left-side navigation pane, click **Upgrade**.
 3. On the **Cluster Upgrade** page, find the cluster that you want to upgrade and click
 **Upgrade** in the **Operation** column.
 4. In the **Cluster Upgrade** dialog box, confirm that the cluster information is correct,
-configure the **Remark** parameter, and then click **OK**. After the upgrade is complete, the **Upgrade Status** changes to **Up to date**.
+configure the **Remark** parameter, and then click **OK**.
+
+> **Note:** After the upgrade is complete, the **Upgrade Status** changes to **Up to date**.
 
 **View the upgrade record**
 
@@ -206,7 +231,9 @@ This topic describes how to query a list of pods in ApsaraMQ for Kafka. The info
 alibaba-kafka-autotest-***** 0/1 Completed 0 5h14m 10.**.*.** a*******8.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-multi-*******-kafka-0 2/2 Running 0 35m 10.**.**.** a*******4.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-multi-*******-kafka-1 2/2 Running 0 35m 10.**.**.** a*******8.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-multi-*******-kafka-2 2/2 Running 0 36m 10.**.**.** a*******8.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-*******-0 2/2 Running 1 23h 10.**.**.*** a*******5.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-*******-1 2/2 Running 0 23h 10.**.**.*** a*******3.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-*******-2 2/2 Running 1 23h 10.**.**.*** a*******6.cloud.b**.am****** <none> <none> alibaba-kafka-console-*******b59-bqvn6 1/1 Running 0 172m 10.**.**.** a*******3.cloud.b**.am****** <none> <none> alibaba-kafka-operator-*******9cc-s8s49 1/1 Running 0 23h 10.**.**.*** a*******3.cloud.b**.am****** <none> <none>
 ```
 
-In most cases, the kafka-cluster cluster has three pods, the operator cluster has only one pod, and the manager cluster has one or two pods. The number of pods varies based on the deployment environment. In normal cases, pods are in the Running state.
+> **Note:** In most cases, the kafka-cluster cluster has three pods, the operator cluster has only one pod, and the manager cluster has one or two pods.
+> The number of pods varies based on the deployment environment.
+> In normal cases, pods are in the Running state.
 
 #### 3.1.2 Query the information about a pod
 
@@ -422,7 +449,7 @@ QoS Class: Burstable Node-Selectors: networking.alibaba.com/asw=asw-cn-*******-e
 Events: <none>
 ```
 
-In most cases, the value of the Events parameter is <none>.
+> **Note:** In most cases, the value of the Events parameter is <none>.
 
 #### 3.1.3 Query the logs of a pod
 
@@ -442,11 +469,7 @@ This topic describes how to query the logs of a pod in ApsaraMQ for Kafka. The i
 
 This topic describes how to restart a Pod for Message Queue for Apache Kafka.
 
-**Important**
-
-**Warning**
-
-This is a high-risk operation. Perform this procedure only with the assistance of O&M personnel.
+> **Important:** This is a high-risk operation. Perform this procedure only with the assistance of O&M personnel.
 
 **Background information**
 
@@ -535,11 +558,7 @@ Finalizers: [kubernetes.io/pvc-protection] Capacity: 90Gi Access Modes: RWO Volu
 
 This topic describes common issues with pod operation and maintenance.
 
-**Important**
-
-**Warning**
-
-These are high-risk operations. Work with operations and maintenance (O&M) personnel before you proceed.
+> **Important:** These are high-risk operations. Work with operations and maintenance (O&M) personnel before you proceed.
 
 **Pod in Terminating state**
 
@@ -564,7 +583,7 @@ Cause This issue typically occurs when an incorrect ZooKeeper configuration addr
 |---|---|
 | '{print $1}' \| xargs -i docker cp {}:/home/admin/logs/alikafka/server.lo |   |
 
-the log file to the host machine.
+> the log file to the host machine.
 
 **Pod in Error state**
 
@@ -982,9 +1001,7 @@ This topic lists common issues with process operations and maintenance.
 
 **Precautions**
 
-**Warning**
-
-The following operations are high-risk. Perform them only with the assistance of operations personnel.
+> **Warning:** The following operations are high-risk. Perform them only with the assistance of operations personnel.
 
 **Restarting a Pod's Message Queue for Apache Kafka process**
 
@@ -1066,7 +1083,8 @@ ApsaraMQ for Kafka.
 alibaba-kafka-cluster-multi-alibaba-kafka-0 2/2 Running 1 24h 10.**.**.** a36******4.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-1 2/2 Running 4 24h 10.**.**.** a36******8.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-2 2/2 Running 0 24h 10.**.**.** a36******8.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-default-0 2/2 Running 3 47h 10.**.**.** a36******5.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-default-1 2/2 Running 2 47h 10.**.**.** a36******3.cloud.b**.am****** <none> <none> alibaba-kafka-cluster-private-paas-default-2 2/2 Running 3 47h 10.**.**.** a36******6.cloud.b**.am****** <none> <none> alibaba-kafka-console-6dc*****59-bqvn6 1/1 Running 0 26h 10.**.**.** a36*****3.cloud.b**.am****** <none> <none> alibaba-kafka-operator-6b***** 9cc-s8s49 1/1 Running 0 47h 10.**.**.** a36******3.cloud.b**.am****** <none> <none>
 ```
 
-In normal cases, pods are in the Running state.
+> **Note:** In normal cases, pods are in the Running state.
+
 3. Run the `kubectl describe pod <pod>` command to query the information about a pod.
 
 | example, if the name of a pod is | alibaba-kafka-cluster-private-paas-default-0 |   |
@@ -1264,7 +1282,7 @@ QoS Class: Burstable Node-Selectors: networking.alibaba.com/asw=asw-cn-*******-e
 Events: <none>
 ```
 
-In most cases, the value of the Events parameter is <none>.
+> **Note:** In most cases, the value of the Events parameter is <none>.
 
 ### 4.2 Inspect the resource availability
 
@@ -1290,7 +1308,7 @@ Filesystem Size Used Avail Use% Mounted on /dev/mapper/vg_apsara_paas-yoda--0c86
                        89G  191M   88G   1% /alidata1
 ```
 
-In most cases, the disk usage is lower than 90%.
+> **Note:** In most cases, the disk usage is lower than 90%.
 
 **Inspect abnormal metrics**
 
@@ -1398,4 +1416,4 @@ query the data of the meta.properties file.
 broker.id=1001
 ```
 
-After a physical server is restarted, ApsaraMQ for Kafka registers three brokers in pods based on the broker IDs in the meta.properties file. In normal cases, the broker IDs 1001, 1002, and 1003 are returned.
+> **Note:** After a physical server is restarted, ApsaraMQ for Kafka registers three brokers in pods based on the broker IDs in the meta.properties file. In normal cases, the broker IDs 1001, 1002, and 1003 are returned.

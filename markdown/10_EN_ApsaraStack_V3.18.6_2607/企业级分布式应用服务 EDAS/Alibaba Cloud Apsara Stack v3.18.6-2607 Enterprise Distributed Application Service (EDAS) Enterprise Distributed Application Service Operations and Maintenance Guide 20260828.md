@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 71
 source_pdf: "8b4d0e4b3d38ee87_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Operations and Maintenance Guide 20260828
@@ -73,16 +73,31 @@ The system architecture of EDAS consists of the console, data collection system,
 
 **Component architecture**
 
-Each system in EDAS contains one or more components. The component architecture is shown in the following figure. Figure 2. EDAS component architecture Call EDAS Admin StarAgent ECS Send commands EDAS CaiFs (EDAS + Gateway) EDAS KAM Download files/scripts Forward + EDAS KAM Managed through API EDAS Web = K8s Cluster + server/Mirana Server EDAS PaaS Service registration and subscription Get DNCS VIP
+Each system in EDAS contains one or more components. The component architecture is shown in the following figure. Figure 2. EDAS component architecture
+
+> Call
+
+EDAS Admin StarAgent ECS Send commands EDAS CaiFs (EDAS + Gateway) EDAS KAM
+
+> Download files/scripts
+> Forward
+
++ EDAS KAM Managed through API EDAS Web = K8s Cluster + server/Mirana Server EDAS PaaS
+
+> Service registration and subscription
+> Get DNCS VIP
 
 | Service a | uthenticatiDona |
 |---|---|
 
-EDAS DNCS Dauth EDAS SP CaiAddress Get HSF service information Metadata Cache Legend: Middleware-Redis miniRDS EDAS Other Managed resources
+EDAS DNCS Dauth EDAS SP CaiAddress
 
-**Note**
+> Get HSF service information
+> Cache Metadata
 
-In Apsara Stack Enterprise Edition 3.16 and later, EDAS, StarAgent, and Middleware-Redis are migrated to Platform as a Service (PaaS). The original EDAS Admin, EDAS KAM, EDAS EAM, and EDAS PaaS components are merged into EDAS Web Server. The figure shows only the main call relationships and dependent components. The edas-lite-arms-console component is also available as a supplement if Application Real-Time Monitoring Service (ARMS) is not deployed.
+Legend: Middleware-Redis miniRDS EDAS Other Managed resources
+
+> **Note:** In Apsara Stack Enterprise Edition 3.16 and later, EDAS, StarAgent, and Middleware-Redis are migrated to Platform as a Service (PaaS). The original EDAS Admin, EDAS KAM, EDAS EAM, and EDAS PaaS components are merged into EDAS Web Server. The figure shows only the main call relationships and dependent components. The edas-lite-arms-console component is also available as a supplement if Application Real-Time Monitoring Service (ARMS) is not deployed.
 
 | Component | Node type | Number of nodes | Description |
 |---|---|---|---|
@@ -151,14 +166,13 @@ We recommend that you use Chrome.
 2. In the address bar, enter the endpoint for the Apsara Uni-manager Operations Console:
 `region-id.aso.intranet-domain-id.com` . Press Enter.
 
-**Note**
+> **Note:** You can click the language selector in the upper-right corner to switch languages. Simplified Chinese, English, and Traditional Chinese are supported.
 
-You can click the language selector in the upper-right corner to switch languages. Simplified Chinese, English, and Traditional Chinese are supported.
 3. Enter your username and password.
 
-**Note**
+> **Note:** Obtain your username and password for the Apsara Uni-manager Operations Console from your deployment team or administrator.
 
-Obtain your username and password for the Apsara Uni-manager Operations Console from your deployment team or administrator. If you enter an incorrect password three times in a row, the system displays an image CAPTCHA. If you enter an incorrect password five times in a row, your account is locked. Contact your administrator to unlock it. On your first logon to the Apsara Uni-manager Operations Console, you must change your password. Follow the on-screen prompts to complete the change. To improve security, your new password must meet the following requirements: Contain both uppercase and lowercase English letters. Contain Arabic numerals (0–9). Contain at least one special character, such as an exclamation mark (!), at sign (@), number sign (#), dollar sign ($), or percent sign (%). Be 10 to 20 characters long.
+If you enter an incorrect password three times in a row, the system displays an image CAPTCHA. If you enter an incorrect password five times in a row, your account is locked. Contact your administrator to unlock it. On your first logon to the Apsara Uni-manager Operations Console, you must change your password. Follow the on-screen prompts to complete the change. To improve security, your new password must meet the following requirements: Contain both uppercase and lowercase English letters. Contain Arabic numerals (0–9). Contain at least one special character, such as an exclamation mark (!), at sign (@), number sign (#), dollar sign ($), or percent sign (%). Be 10 to 20 characters long.
 4. Click **Account Logon**.
 5. In the top menu bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **O&M > Apsara Infrastructure Management > Resource Management**.
@@ -1181,15 +1195,13 @@ Scripts are usually located in `/home/admin/bin` . After execution, a return val
 3. . Check basic metrics using the tsar command**
 For information about the tsar command: Use tsar to check CPU, memory, I/O, network, and load metrics. For example: `tsar -li 1` prints real-time statistics once per second. Use tsar with parameters to check specific metrics. For example: `tsar --nginx` checks performance metrics for the ingress Nginx.
 
-**Note**
+> **Note:** CPU usage should stay below 50%. Memory usage should stay below 70%. Load should stay below 20%. The network retransmission rate should be under 1%. If any metric exceeds these thresholds, investigate further.
 
-CPU usage should stay below 50%. Memory usage should stay below 70%. Load should stay below 20%. The network retransmission rate should be under 1%. If any metric exceeds these thresholds, investigate further.
 4. . Check JVM status using Java tools**
 Use tools such as jstat, jmap, and jstack to diagnose and monitor the JVM. For example: To check garbage collection (GC) status, run a command that prints output every second.
 
-**Note**
+> **Note:** If full GC occurs frequently, investigate the root cause.
 
-If full GC occurs frequently, investigate the root cause.
 5. . Check network connectivity using netstat or ss**
 Count active network connections.
 
@@ -1203,21 +1215,18 @@ You can sort network connectivity statistics.
 netstat -nat|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn
 ```
 
-**Note**
+> **Note:** The number of ESTABLISHED connections is typically high. If the number of TIME_WAIT or CLOSE_WAIT connections exceeds 1000, investigate and resolve the issue.
 
-The number of ESTABLISHED connections is typically high. If the number of TIME_WAIT or CLOSE_WAIT connections exceeds 1000, investigate and resolve the issue.
 6. . Check resource usage using top, free, and df**
 The top command shows host-level metrics.
 
-**Note**
+> **Note:** Check for CPU usage above 50%, memory usage above 80%, or disk usage above 90%.
 
-Check for CPU usage above 50%, memory usage above 80%, or disk usage above 90%.
 7. . Check database status using Mini DuKang**
 Log on to ASO. In the navigation pane on the left, click **Platform O&M > Control Service**
 
-**Note**
+> **Note:** Monitor the I/O, Connections, and disk space metrics for values that exceed their warning thresholds.
 
-Monitor the I/O, Connections, and disk space metrics for values that exceed their warning thresholds.
 8. . EDAS data checks**
 Log on to the EDAS database. Verify the DNCS IP addresses. A single data center must have four IP addresses, and a disaster recovery data center must have seven IP addresses. These IP addresses must match the `docker ip` of the DNCS Server. Verify the Redis IP addresses. These addresses must match either the pod IP or the service IP of middleware-redis.
 
@@ -1346,14 +1355,14 @@ Use the Chrome browser.
 2. In the address bar, enter the endpoint for the Apsara Uni-manager Operations Console,
 `{region-id}.aso.{intranet-domain-id}.com` , and press Enter.
 
-**Note**
+> **Note:** You can switch the language by clicking the current language in the upper-right corner. The console supports Simplified Chinese, English, and Traditional Chinese.
 
-You can switch the language by clicking the current language in the upper-right corner. The console supports Simplified Chinese, English, and Traditional Chinese. Enterthecorrectusernameandpassword er Guide
+Enterthecorrectusernameandpassword er Guide
 3. Enter the correct username and password.
 
-**Note**
+> **Note:** Obtain the username and password to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator.
 
-Obtain the username and password to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. If you enter an incorrect password three consecutive times, the system enables the Captcha logon feature. If you enter an incorrect password five consecutive times, your account is locked. Contact an administrator to reactivate it. When you log on to the Apsara Uni-manager Operations Console for the first time, you are required to change your password. Follow the prompts to complete the password change. For security, your password must meet the following requirements: Contain both uppercase and lowercase letters. Contain digits (0 to 9). Contain special characters, such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%). Be 10 to 20 characters in length.
+If you enter an incorrect password three consecutive times, the system enables the Captcha logon feature. If you enter an incorrect password five consecutive times, your account is locked. Contact an administrator to reactivate it. When you log on to the Apsara Uni-manager Operations Console for the first time, you are required to change your password. Follow the prompts to complete the password change. For security, your password must meet the following requirements: Contain both uppercase and lowercase letters. Contain digits (0 to 9). Contain special characters, such as the exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%). Be 10 to 20 characters in length.
 4. Click **Account Logon**.
 5. In the top menu bar of the Apsara Uni-manager Operations Console, choose **Product O&M**
 
