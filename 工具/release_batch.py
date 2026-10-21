@@ -48,7 +48,15 @@ def pdf_path(row, pdf_dir):
 
 def download(row, pdf_dir=None):
     dest = pdf_path(row, pdf_dir)
+    if os.path.exists(dest) and os.path.getsize(dest) > 1024:
+        with open(dest, "rb") as fh:
+            if fh.read(5) == b"%PDF-":
+                row["_pdf"], row["_bytes"] = dest, os.path.getsize(dest)
+                return row, None            # 已下过就别再花流量：转换失败重跑时用得上
     os.makedirs(os.path.dirname(dest), exist_ok=True)
+    if os.path.exists(dest) and open(dest, "rb").read(5) == b"%PDF-":
+        row["_pdf"], row["_bytes"] = dest, os.path.getsize(dest)
+        return row, None            # 暂存里已有完整 PDF（上次转换失败或被中断）→ 不重复下载
     try:
         req = urllib.request.Request(quoted(row["url"]), headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=600) as h:
@@ -179,16 +187,21 @@ def main():
     print(f"[3/4] 缓存索引已更新：本次新增/刷新 {len(ok)} 本，转换失败 {len(errs) - errs_before} 本")
     print(f"      索引现共 {len(cached)} 条")
 
-    if not a.no_delete:
-        import shutil
-        shutil.rmtree(pdf_dir, ignore_errors=True)
-        print(f"[4/4] 已删除 PDF 暂存目录（交付树只留 Markdown）")
-    else:
-        print(f"[4/4] 保留 PDF 于 {os.path.relpath(pdf_dir, ROOT)}")
-
     by = {}
     for kind, label, msg in errs:
         by.setdefault(kind, []).append((label, msg))
+
+    if not a.no_delete:
+        import shutil
+        if by.get("convert") or by.get("download"):
+            # 有失败就别清：留下的 PDF 下次 download() 会复用，不然白跑一遍流量
+            print(f"[4/4] 有失败，保留 {os.path.relpath(pdf_dir, ROOT)} 供重跑复用")
+        else:
+            shutil.rmtree(pdf_dir, ignore_errors=True)
+            print("[4/4] 已删除 PDF 暂存目录（交付树只留 Markdown）")
+    else:
+        print(f"[4/4] 保留 PDF 于 {os.path.relpath(pdf_dir, ROOT)}")
+
     for k, v in by.items():
         print(f"  {k} 失败 {len(v)}：")
         for label, msg in v[:8]:

@@ -122,7 +122,7 @@ def en_list(version=""):
                     "product": prod, "category": dt, "docType": dt, "label": fn,
                     "pages": None, "bytes": None, "prodVer": ver,
                     "pdfLocal": False, "pdfCloud": "", "url": u,
-                    "localPath": f"10_EN_ApsaraStack_{safe(ver)}/{safe(cat) or '未分组'}/{book_file(cid, fn)}.pdf",
+                    "localPath": f"10_EN_ApsaraStack_{safe(ver)}/{safe(prod) or '未分组'}/{book_file(cid, fn)}.pdf",
                     "inScope": dt in ("User Guide", "Product Introduction", "Developer Guide")})
     return out
 
