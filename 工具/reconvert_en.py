@@ -1,17 +1,18 @@
-"""用升级版 pdf2md 重转全部英文 Markdown：补回目录（Table of Contents）与标题编号。
+"""用最新版 pdf2md 重转已转出的 Markdown：补回目录、标题编号、提示框引用块。
 
-背景：旧转换把封面/目录页连同正文一起裁掉，且标题编号（"1.1."）被剥掉，
-导致 md 里既没有目录也没有编号。升级后的 pdf2md 会
-  * 保留标题编号（### 1.1 What is API Gateway）；
-  * 正文最前面输出由 PDF 书签重建的 ## Table of Contents；
-  * 用书签全标题补全页面上被折行截断的标题。
+原名只转英文；现加 --lang 支持中文（文件名沿用来避免 README 里链接失效）。
+英文树的演进（同一提交线）：
+  * toc+numbered-headings：保留标题编号、补由书签重建的 ## Table of Contents
+  * note-quotes：Note/Important/Warning 提示框输出成 Markdown 引用块
 
-  python3 工具/reconvert_en.py --plan            只统计
-  python3 工具/reconvert_en.py --limit 3         先试 3 本
-  python3 工具/reconvert_en.py                   全量重转（断点续跑：已带新标记的跳过）
+  python3 工具/reconvert_en.py --plan                 英文：只统计
+  python3 工具/reconvert_en.py --lang zh --plan       中文：只统计
+  python3 工具/reconvert_en.py --lang zh --limit 5    中文先试 5 本
+  python3 工具/reconvert_en.py                        英文全量（断点续跑：已带最新标记的跳过）
 
-流程：按缓存索引取 lang=en 且已登记 markdown 的行 → 从 source_url 重下 PDF
-（暂存 .scratch/pdf_reconvert_en/）→ 原地覆盖同名 md（title/版本号沿用旧 front matter）
+流程：取缓存索引该语言、已有 markdown 的行 → 按 source_url/url 重下 PDF
+（暂存 .scratch/pdf_reconvert_<lang>/）→ 原地覆盖同名 md（title/版本号/原始 PDF 文件名
+沿用旧 front matter，中文册的 "21_手册名_code.pdf" 命名不会变成临时名）
 → 更新缓存索引（sha/KB/字符数）→ 删 PDF。转完即删，交付树只留 Markdown。
 """
 import argparse
@@ -29,8 +30,9 @@ import cache  # noqa: E402
 import pdf2md  # noqa: E402
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36"
-SCRATCH = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "pdf_reconvert_en")
-NEW_TAG = "toc+numbered-headings+note-quotes"
+SCRATCH_BASE = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "pdf_reconvert")
+SCRATCH = SCRATCH_BASE + "/en"          # main() 里按 --lang 重设（fork 出来的 worker 继承）
+NEW_TAG = "toc+numbered-headings+note-quotes+edge-junk"
 
 
 def quoted(url):
@@ -39,13 +41,13 @@ def quoted(url):
 
 
 def front_matter(md_path):
-    """沿用旧 md 的 title/版本号/源 URL，保证文件元数据不漂移。"""
+    """沿用旧 md 的 title/版本号/源 URL/原 PDF 文件名，保证文件元数据不漂移。"""
     head = open(md_path, encoding="utf-8").read(3000)
 
     def g(k):
         m = re.search(rf'^{k}: "(.*)"\s*$', head, re.M)
         return m.group(1) if m else ""
-    return g("title"), g("product_version"), g("doc_version"), g("source_url")
+    return (g("title"), g("product_version"), g("doc_version"), g("source_url"), g("source_pdf"))
 
 
 def already_done(md_path):
@@ -57,7 +59,7 @@ def already_done(md_path):
 
 def worker(row):
     md_path = os.path.join(ROOT, row["markdown"])
-    title, prodver, docver, src_url = front_matter(md_path)
+    title, prodver, docver, src_url, src_pdf = front_matter(md_path)
     url = src_url or row.get("url") or ""
     import hashlib
     real = re.sub(r'[\\/:*?"<>|]+', "_", urllib.parse.unquote(url).rsplit("/", 1)[-1])[:100]
@@ -78,7 +80,7 @@ def worker(row):
     open(pdf, "wb").write(data)
     try:
         nchars, cerr = pdf2md.convert(pdf, md_path, url=url, title=title or row.get("label", ""),
-                                      prodver=prodver, docver=docver)
+                                      prodver=prodver, docver=docver, src_pdf=src_pdf)
         if not cerr:
             import pymupdf
             with pymupdf.open(pdf) as d:
@@ -102,11 +104,14 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--force", action="store_true", help="连已带新标记的也重转")
     ap.add_argument("--only", help="只重转该 JSON 清单里列出的 md（元素含 \"md\" = 仓库相对路径），隐含 --force")
+    ap.add_argument("--lang", default="en", choices=["en", "zh"], help="重转哪种语言（默认英文）")
     ap.add_argument("--workers", type=int, default=6)
     a = ap.parse_args()
 
+    global SCRATCH
+    SCRATCH = os.path.join(SCRATCH_BASE, a.lang)
     cached = cache.load(ROOT)
-    rows = [r for r in cached.values() if r.get("lang") == "en" and r.get("markdown")
+    rows = [r for r in cached.values() if r.get("lang") == a.lang and r.get("markdown")
             and os.path.exists(os.path.join(ROOT, r["markdown"]))]
     todo = rows if (a.force or a.only) else [r for r in rows if not already_done(os.path.join(ROOT, r["markdown"]))]
     if a.only:
@@ -117,7 +122,7 @@ def main():
         print(f"清单 {len(want)} 条，索引命中 {len(todo)} 条，未登记 {len(want - have)} 条")
     if a.limit:
         todo = todo[: a.limit]
-    print(f"英文 {len(rows)} 本，待重转 {len(todo)} 本 → {SCRATCH}")
+    print(f"{a.lang} 共 {len(rows)} 本已转出，待重转 {len(todo)} 本 → {SCRATCH}")
     if a.plan or not todo:
         return 0
     os.makedirs(SCRATCH, exist_ok=True)

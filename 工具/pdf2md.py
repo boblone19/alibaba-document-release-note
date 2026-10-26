@@ -35,6 +35,11 @@ NOTE_LEAD = re.compile(r"^\**\s*((?:Important\s+)?Note|NOTICE|Notice|IMPORTANT|I
                        r"|CAUTION|Caution|DANGER|Danger|说明|注意|警告|重要|禁止)\s*\**\s*[:：]\s*\**\s*(.*)$", re.S)
 
 
+def note_head(lab):
+    """提示框标签的加粗前缀：中文标签配全角冒号，英文配半角，避免 **说明:** 这种混排。"""
+    return f"**{lab}：**" if re.search(r"[\u4e00-\u9fff]", lab) else f"**{lab}:**"
+
+
 def _rgb(c):
     return ((c >> 16) & 255, (c >> 8) & 255, c & 255) if isinstance(c, int) else (0, 0, 0)
 
@@ -95,7 +100,7 @@ def note_blocks(md):
                 pieces.append(("text", frag.strip()))
                 break
             pieces.append(("text", frag[:m.start()].strip()))
-            pieces.append(("note", f"> **{lab}:** {body}"))
+            pieces.append(("note", f"> {note_head(lab)} {body}"))
             frag = ""
             break
         head = [p[1] for p in pieces if p[0] == "text" and p[1]]
@@ -406,12 +411,12 @@ class Manual:
             self.blank()
         out, labelled = [], False
         if lab and parts[0][0] != "p":
-            out.append(f"> **{lab}:**")
+            out.append(f"> {note_head(lab)}")
             labelled = True
         for kind, text in parts:
             head = "> "
             if lab and not labelled and kind == "p":
-                head += f"**{lab}:** "
+                head += note_head(lab) + " "
                 labelled = True
             out.append(head + ("- " + text if kind == "b" else text))
         self.out += out
@@ -456,7 +461,7 @@ class Manual:
             self.blank()
             self.out += [f"```{_lang(body)}", body, "```", ""]
 
-    def junk(self, txt, raw, flagged, size=99.0):
+    def junk(self, txt, raw, flagged, size=99.0, edge=True):
         if PAGEJUNK.match(raw.strip()) or BOILER.search(txt):
             return True
         # 小字号的章名/编号行：页眉碎片或目录页残留（能与书签编号对上的真标题不在此列）
@@ -468,9 +473,10 @@ class Manual:
             return False
         if "·" in txt and not raw.strip().startswith(("·", "•")):
             return True
-        # 页眉的正确判据：跨页重复出现（真页眉每页都有，正文断行不会）
+        # 页眉判据：跨页重复 + 贴页眉/页脚带。只按重复数会误杀正文套话
+        # （实测 DNS 开发指南每接口必现的"该接口使用公共请求头…"101 次被整句删掉）
         key = re.sub(r"\s+", " ", txt).strip().lower()
-        if len(key) <= 60 and self.frequent.get(key, 0) >= self.freq_min:
+        if edge and len(key) <= 60 and self.frequent.get(key, 0) >= self.freq_min:
             return True
         return False
 
@@ -570,9 +576,12 @@ class Manual:
                 if bdata:
                     blocks.append((round(min(b.y0 for _r, _s, b in bdata), 1), len(blocks),
                                    self.note_kind(bdata), bdata))
+            ph = page.rect.height or 842.0          # 页高，用于判断页眉/页脚带
+
             def plain(sq, bd):
                 for li, (raw, spans, box) in enumerate(bd):
-                    items.append((round(box.y0, 1), sq * 10000 + li, "L", (raw, spans, box.x0)))
+                    edge = box.y0 <= ph * 0.14 or box.y1 >= ph * 0.86
+                    items.append((round(box.y0, 1), sq * 10000 + li, "L", (raw, spans, box.x0, edge)))
 
             i2, nbl = 0, len(blocks)
             while i2 < nbl:
@@ -610,7 +619,7 @@ class Manual:
                     self.blank()
                     self.out += [payload, ""]
                     continue
-                raw, spans, x0 = payload
+                raw, spans, x0, edge = payload
                 txt = raw.strip()
                 if self.drop_next and re.sub(r"\s+", " ", normalize(txt)).strip().lower().rstrip(".·") == self.drop_next:
                     self.drop_next = ""      # 编号行已用书签补全成标题，标题文字行不再重复输出
@@ -631,7 +640,7 @@ class Manual:
                     continue
                 size = max(round(sp.get("size", 0) or 0, 1) for sp in spans)
                 flagged = size >= HEAD_MIN_PT or bool(HEAD_NUM.match(raw))
-                if self.junk(txt, raw, flagged, size):
+                if self.junk(txt, raw, flagged, size, edge=edge):
                     continue
                 if _is_code(spans):
                     self.code.append(raw.rstrip())
@@ -685,7 +694,9 @@ class Manual:
             md = CJKSP.sub("", md)
         return md
 
-def convert(pdf, outpath, url="", title="", prodver="", docver=""):
+def convert(pdf, outpath, url="", title="", prodver="", docver="", src_pdf=""):
+    """src_pdf：写进 front matter 的原始 PDF 文件名。默认用暂存文件名，
+    但中文册的交付命名是 "21_手册名_手册code.pdf"，重转时不能变成临时名。"""
     m = Manual(pdf)
     body = m.run()
     pages = m.pdf.page_count
@@ -698,14 +709,22 @@ def convert(pdf, outpath, url="", title="", prodver="", docver=""):
             + (f'product_version: "{prodver}"\n' if prodver else '')
             + (f'doc_version: "{docver}"\n' if docver else '')
             + f'pdf_pages: {pages}\n'
-            + (f'source_pdf: "{os.path.basename(pdf)}"\n')
+            + (f'source_pdf: "{os.path.basename(src_pdf or pdf)}"\n')
             + (f'source_url: "{url}"\n' if url else "")
-            + 'converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)\n---\n\n')
+            + 'converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)\n---\n\n')
     open(outpath, "w", encoding="utf-8").write(
         head + f"# {name}\n\n"
-        + (("## Table of Contents\n\n" + toc + "\n\n") if toc else "")
+        + ((("## 目录" if _zh_doc(name, body) else "## Table of Contents") + "\n\n" + toc + "\n\n") if toc else "")
         + body.strip() + "\n")
     return len(body), None   # 正文体量，供缓存登记
+
+
+def _zh_doc(name, body):
+    """中文册的目录标题行该用「目录」而不是「Table of Contents」。
+    判据：书名里有汉字，或正文开头 3000 字里汉字足够多。"""
+    if re.search(r"[\u4e00-\u9fff]", name):
+        return True
+    return len(re.findall(r"[\u4e00-\u9fff]", body[:3000])) > 60
 
 
 if __name__ == "__main__":
